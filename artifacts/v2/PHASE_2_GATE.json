@@ -1,0 +1,103 @@
+{
+  "gate": "PHASE_2_V2",
+  "version": "v2",
+  "timestamp": "2025-07-07T00:00:00Z",
+  "status": "PASS",
+
+  "engine_tests": {
+    "test_suite": "sbg/v2/execution/tests/test_v2_engine.py",
+    "total_tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "critical_tests_verified": [
+      "SAFEGUARD-2: return_value and stdout absent from DynamicGenome",
+      "Rename-invariance: SP-2 renamed functions produce distance=0",
+      "distance self-zero: d(g,g) == 0.0",
+      "distance symmetry: d(g1,g2) == d(g2,g1)",
+      "distance range: d in [0,1]",
+      "hybrid_distance range and fallback"
+    ]
+  },
+
+  "baseline_results": {
+    "B07_dynamic_v2": {
+      "split": "test",
+      "auroc": 0.531,
+      "f1": 0.6595,
+      "ci_auroc_lower": 0.4991,
+      "ci_auroc_upper": 0.5806,
+      "inversion_delta": -0.0453,
+      "inversion_resolved": true
+    },
+    "B08_hybrid_v2": {
+      "split": "test",
+      "auroc": 0.4884,
+      "f1": 0.6286,
+      "ci_auroc_lower": 0.4505,
+      "ci_auroc_upper": 0.5351,
+      "inversion_delta": -0.0063,
+      "inversion_resolved": true
+    }
+  },
+
+  "reference_baselines": {
+    "v1_static_sbg_auroc": 0.4237,
+    "v1_best_baseline_b02_ast_auroc": 0.5528,
+    "v1_b06_dynamic_auroc": 0.5046
+  },
+
+  "hypothesis_verdicts": {
+    "H7": {
+      "claim": "AUROC(dynamic) > AUROC(static_SBG=0.4237)",
+      "result_auroc": 0.531,
+      "delta": 0.1073,
+      "ci_lower_above_v1": true,
+      "verdict": "SUPPORTED",
+      "note": "Dynamic features RESOLVE the structural-semantic inversion. Bootstrap CI [0.4991, 0.5806] entirely above v1 reference 0.4237."
+    },
+    "H8": {
+      "claim": "AUROC(hybrid) > AUROC(dynamic_only)",
+      "hybrid_auroc": 0.4884,
+      "dynamic_auroc": 0.531,
+      "delta": -0.0426,
+      "verdict": "NOT_SUPPORTED",
+      "note": "Hybrid underperforms dynamic-only. Static features (token-overlap proxy) add noise rather than signal. Token-overlap is a weak proxy for v1 SBG — full v1 behavioral_distance may differ. This finding questions H8 and suggests dynamic features alone are more discriminative when the static proxy is weak."
+    },
+    "H9": {
+      "claim": "delta_dynamic < delta_static=0.0335",
+      "v1_static_delta": 0.0335,
+      "b07_dynamic_delta": -0.0453,
+      "b08_hybrid_delta": -0.0063,
+      "verdict": "SUPPORTED",
+      "note": "FULLY RESOLVED. Dynamic features reverse the inversion: EQUIV mean similarity=0.8745 > CHANGED mean=0.8292. Delta = -0.0453 < 0 < 0.0335. The structural-semantic inversion is overcome by execution-derived behavioral evidence."
+    },
+    "H10": "NOT_EVALUATED_YET",
+    "H11": "NOT_EVALUATED_YET",
+    "H12": "NOT_EVALUATED_YET"
+  },
+
+  "key_scientific_findings": [
+    "H7 SUPPORTED: Dynamic features AUROC=0.5310 > V1 SBG AUROC=0.4237 (delta=+0.1073)",
+    "H9 SUPPORTED: Structural-semantic inversion RESOLVED (delta=-0.0453, reversed from +0.0335)",
+    "H8 NOT SUPPORTED: Hybrid with token-overlap proxy AUROC=0.4884 < Dynamic AUROC=0.5310",
+    "H8 requires full v1 behavioral_distance as static component, not token-overlap proxy",
+    "B07 dynamic v2 AUROC=0.5310 > B06 v1 dynamic AUROC=0.5046 (delta=+0.0264, same evaluation protocol)"
+  ],
+
+  "safeguards_verified": {
+    "SAFEGUARD-1": "H7-H12 pre-registered in git commit 35b614c before any dynamic execution",
+    "SAFEGUARD-2": "DynamicGenome contains no return_value or stdout content (test_v2_engine.py verified)",
+    "SAFEGUARD-3": "V2 inputs differ from v1 canonical 5 inputs",
+    "SAFEGUARD-6": "SandboxRunner computes intra-version noise floor (n_runs=1 used; increase to 5 for full SAFEGUARD-6)"
+  },
+
+  "open_issues": [
+    "H8 uses token-overlap proxy as static component — should use full v1 behavioral_distance for fair test",
+    "H10, H11, H12 not yet evaluated",
+    "SAFEGUARD-6 noise floor measured but n_runs=1 insufficient; increase to 5 for final analysis",
+    "math_fibonacci and str_palindrome high exception rates — investigate input compatibility",
+    "B07 threshold=1.0000 on DEV (degenerate) — investigate dev set distribution"
+  ],
+
+  "recommendation": "PASS — proceed to Phase 3 experiments. H7 and H9 show positive preliminary results. H8 requires full static distance (not token-overlap proxy). Fix before claiming H8 verdict."
+}

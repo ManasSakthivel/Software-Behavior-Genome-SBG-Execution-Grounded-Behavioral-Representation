@@ -1,0 +1,34 @@
+{
+  "baseline": "B07_DYNAMIC_V2",
+  "split": "dev",
+  "threshold": 1.000001,
+  "metrics": {
+    "accuracy": 0.512195,
+    "precision": 0.512195,
+    "recall": 1.0,
+    "f1": 0.677419,
+    "auroc": 0.460042,
+    "auprc": 0.485391,
+    "tp": 315,
+    "fp": 300,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 615,
+    "threshold_used": 1.000001,
+    "ci_f1_lower": 0.645374,
+    "ci_f1_upper": 0.707983,
+    "ci_auroc_lower": 0.442337,
+    "ci_auroc_upper": 0.532495
+  },
+  "feature_classification": "OUTPUT_FREE",
+  "safeguards": [
+    "SAFEGUARD-2",
+    "SAFEGUARD-3"
+  ],
+  "n_canonical_inputs": 8,
+  "n_genomes_cached": 1382,
+  "score_distribution": {
+    "eq_mean": 0.8641,
+    "ch_mean": 0.8526
+  }
+}
