@@ -1,0 +1,366 @@
+{
+  "agent": "0E",
+  "version": "v2",
+  "title": "Prior Art Audit — Dynamic Execution and Behavioral Similarity Methods",
+  "date": "2025",
+  "scope": "Novelty gap analysis for SBG v2 focused on dynamic/execution-based program representations and behavioral similarity",
+  "basis": "docs/research/PRIOR_ART_MATRIX.md (40 works), docs/research/NOVELTY_ANALYSIS.md, docs/research/FORMAL_MODEL.md, docs/research/RESEARCH_HYPOTHESES.md, docs/CLAIMS_REGISTRY.yaml, docs/FINAL_SBG_COMPLETION_REPORT.md",
+
+  "coverage_assessment": {
+
+    "dynamic_execution_fingerprints": {
+      "luk_pin_2005": {
+        "status": "COVERED",
+        "matrix_entry": "[11] Domain 3",
+        "coverage_quality": "ADEQUATE",
+        "delta_stated": "SBG operates at higher semantic level; Pin is a platform requiring custom tool development for each dimension. Pin/x86-only; SBG targets polyglot source-level analysis.",
+        "gap": "The matrix correctly identifies Pin as infrastructure, not a characterization system. However, the matrix does NOT address Pin-based similarity systems built on top of Pin (e.g., execution-trace differencing tools using Pintools). These second-order systems are absent from the matrix.",
+        "v2_relevance": "LOW — Pin itself is not a competing similarity system. Pin-based similarity tools (not covered) are medium relevance."
+      },
+      "cadar_klee_2008": {
+        "status": "COVERED",
+        "matrix_entry": "[8] Domain 3",
+        "coverage_quality": "ADEQUATE",
+        "delta_stated": "SBG does not generate tests; characterizes behavioral signatures from existing traces. KLEE's constraint-solver cost is avoided.",
+        "gap": "The matrix covers KLEE as a test generator but does NOT cover KLEE-based semantic equivalence checking — i.e., using KLEE's path-condition enumeration to decide equivalence. KLEE-based equivalence (Ramos & Engler, 'Under-constrained symbolic execution', USENIX Sec 2015) is absent. This is directly relevant to SBG v2's behavioral equivalence claims.",
+        "v2_relevance": "HIGH — symbolic execution for semantic equivalence (not just test generation) is a gap in the current matrix."
+      },
+      "godefroid_dart_2005": {
+        "status": "COVERED",
+        "matrix_entry": "[9] Domain 3 (combined DART/SAGE entry)",
+        "coverage_quality": "ADEQUATE",
+        "delta_stated": "SBG focuses on behavioral equivalence across versions, not adversarial input generation.",
+        "gap": "DART's core insight — that concrete+symbolic execution explores paths that random testing misses — is relevant to SBG v2's input coverage problem (SH-2). The matrix does not acknowledge that DART-style coverage guarantees would directly improve SBG's rare-trigger bug detection (identified as a core SBG v2 challenge in CLAIMS_REGISTRY C007 and THREATS IV-04). The framing dismisses DART without engaging with the coverage-for-detection connection.",
+        "v2_relevance": "MEDIUM — concolic input generation is a natural complement to SBG v2 dynamic extraction; the gap is the missing connection."
+      },
+      "execution_based_similarity_general": {
+        "status": "PARTIALLY_COVERED",
+        "note": "The matrix covers execution-based systems in malware (TTAnalyze, Moser), binary fingerprinting (Pewny, Luo BinDiff), and instrumentation platforms (Valgrind, Pin, KLEE, DART). However, execution-based CODE SIMILARITY specifically — using execution traces to determine functional equivalence between program pairs — is not directly addressed as a category. BinDiff with semantic summaries ([1]) is the closest, but it operates at binary level.",
+        "v2_relevance": "HIGH"
+      }
+    },
+
+    "trace_based_similarity": {
+      "walenstein_malware_traces": {
+        "status": "NOT_COVERED",
+        "citation": "Walenstein, A., Mathur, R., Chouchane, M., Lakhotia, A. 'The Design Space of Metamorphic Malware.' EICAR, 2007; Lakhotia et al. 'A Method for Detecting Obfuscated Calls in Malware.' Journal in Computer Virology, 2005.",
+        "problem": "Characterizing malware similarity through instruction-trace n-grams and opcode sequence alignment. Direct predecessor to behavioral fingerprinting at the trace level.",
+        "why_relevant": "Walenstein et al. explicitly define 'behavioral distance' via trace comparison — the exact concept SBG v2 uses for D(G1,G2). The absence of this work leaves a gap: SBG v2 must distinguish its behavioral distance from trace-distance as defined in the malware literature.",
+        "v2_risk": "MEDIUM — Walenstein's trace similarity predates SBG's g_X dimension. SBG must explicitly position its abstraction above raw trace comparison."
+      },
+      "hu_plagiarism_traces": {
+        "status": "NOT_COVERED",
+        "citation": "Hu, Y., Peng, X. 'A technique for detecting plagiarism using dynamic analysis.' (see also: Ohmann, T., et al. 'Efficient Profile-Guided Test Selection.' ICSE 2014; Elva, R., Leavens, G. 'Behavioral program slicing.' ICST 2013.)",
+        "problem": "Detecting student code plagiarism by comparing dynamic execution traces rather than source code structure. Programs with identical I/O behavior on test cases are flagged as plagiarism candidates.",
+        "why_relevant": "This is the most direct prior work for SBG v2's cross-language equivalence claim (H4). If execution I/O matching already detects functional equivalence for plagiarism detection, SBG's g_D + g_X approach needs to distinguish itself — not just in mechanism but in what it adds to the plagiarism-detection result.",
+        "v2_risk": "HIGH — this directly overlaps with SBG v2's behavioral equivalence detection. Must be added to matrix and the delta must be precisely stated."
+      },
+      "jiang_code_clone_execution": {
+        "status": "PARTIALLY_COVERED",
+        "matrix_entry": "[13] DECKARD is covered, but DECKARD is static AST-based.",
+        "citation": "Jiang, L., Su, Z. 'Automatic Mining of Functionally Equivalent Code Fragments via Random Testing.' ISSTA 2009.",
+        "problem": "Jiang & Su's random-testing-based approach executes programs on random inputs and clusters by I/O behavior — not by AST structure. This is fundamentally different from DECKARD and represents execution-based clone detection.",
+        "why_relevant": "DECKARD is covered but Jiang & Su 2009 (execution-based equivalent of DECKARD) is absent. The execution-based code clone detection work directly addresses SBG's H5 claim (behavioral equivalence detection). The matrix conflates Jiang's name with the static DECKARD work.",
+        "v2_risk": "HIGH — Jiang & Su 2009 is a direct prior for execution-based behavioral clone detection. If SBG v2 claims 'first execution-based behavioral similarity', this work predates it."
+      },
+      "trace_comparison_binary": {
+        "status": "PARTIALLY_COVERED",
+        "note": "Luo et al. BinDiff [1] uses symbolic execution over basic blocks to generate I/O semantic summaries, which is a form of trace-based similarity. Pewny et al. [2] uses random I/O pairs. Both are covered but framed as binary similarity tools, not as trace comparison methods. The trace comparison framing — which is what SBG v2 needs for its positioning — is absent.",
+        "v2_relevance": "MEDIUM"
+      }
+    },
+
+    "behavioral_signatures": {
+      "ngram_trace_similarity": {
+        "status": "PARTIALLY_COVERED",
+        "matrix_entry": "[5] TTAnalyze uses syscall n-grams; [6] Moser uses taint-guided traces.",
+        "gap": "The n-gram trace similarity approach in TTAnalyze [5] is covered as a malware clustering method, but NOT as a code similarity measure. The literature also includes: Bruschi et al. 'Detecting Self-Mutating Malware Using Control-Flow Graph Analysis.' DIMVA 2006; Christodorescu et al. 'Semantics-Aware Malware Detection.' IEEE S&P 2005 — both of which use trace-derived signatures for equivalence checking in the malware domain. These are absent.",
+        "v2_relevance": "MEDIUM — these works establish n-gram trace similarity as a behavioral signature method; SBG v2 needs to position above these."
+      },
+      "behavioral_distance_equivalence": {
+        "status": "NOT_COVERED",
+        "citation": "Brumley, D., Hartwig, C., Liang, Z., Newsome, J., Song, D., Yin, H. 'Automatically Identifying Trigger-Based Behavior in Malware.' Botnet Research, 2008; Giffin, J., Jha, S., Miller, B. 'Detecting Manipulated Remote Call Streams.' USENIX Security, 2002.",
+        "problem": "Defining 'behavioral distance' as a formal concept for program equivalence or anomaly detection — specifically the use of distribution-level comparisons of execution events.",
+        "why_relevant": "The concept of 'behavioral distance' as used in SBG v2's D(G1,G2) has been independently defined in the security literature. Without citing this, SBG v2 cannot claim 'first formal behavioral distance' without qualification.",
+        "v2_relevance": "HIGH — directly competes with SBG v2's formal pseudometric claim (S1)."
+      },
+      "abstract_interpretation_behavioral": {
+        "status": "PARTIALLY_COVERED",
+        "matrix_entry": "[17] Churchill et al., [18] Partush & Yahav, both covered as static/formal methods.",
+        "gap": "The matrix covers abstract interpretation for program equivalence but frames these as 'static formal methods' contrasting with SBG's dynamic approach. What is NOT covered is the use of abstract interpretation to DEFINE behavioral equivalence at a semantic level — specifically Cousot & Cousot's work on program semantics and the semantic hierarchy (concrete → collecting → abstract), which grounds what 'behavioral equivalence' formally means. Without this grounding, SBG v2's use of 'behavioral equivalence' lacks formal semantic justification.",
+        "v2_relevance": "LOW for near-term claims; HIGH for formal positioning."
+      }
+    },
+
+    "metamorphic_testing_overlap": {
+      "chen_metamorphic_testing": {
+        "status": "NOT_COVERED",
+        "citation": "Chen, T.Y., Cheung, S.C., Yiu, S.M. 'Metamorphic Testing: A New Approach for Generating Next Test Case.' Tech. Rep., 1998; Chen, T.Y. et al. 'Metamorphic Testing: A Review of Challenges and Opportunities.' ACM CSUR, 2018.",
+        "problem": "Metamorphic testing (MT) verifies software by checking that metamorphic relations (input-output relations that should hold across program executions) are preserved. If relation MR holds (e.g., sort(reverse(x)) == reverse(sort(x))), the program is considered correct for that relation.",
+        "overlap_analysis": {
+          "mt_tests": "Whether program BEHAVIOR is preserved under input transformations — i.e., MT checks invariants across input pairs.",
+          "sbg_v2_tests": "Whether program REPRESENTATIONS detect behavioral change across version pairs.",
+          "are_they_the_same": "NO — but they are complementary and potentially confusable. MT asks 'did behavior change given this input transform?' SBG v2 asks 'can our representation detect that behavior changed?' MT is a verification oracle; SBG v2 is a detection system. The key difference: MT requires explicit metamorphic relations (which are semantic specifications); SBG v2 requires NO specification. However, if SBG v2 uses MT-generated inputs as its input distribution I, then SBG v2 is dependent on MT for its sensitivity claims.",
+          "framing_risk": "MEDIUM — SBG v2 must not claim to replace MT; it must position as 'specification-free detection' that MT's oracle-based approach cannot provide. The overlap is in the 'detect semantic change' task, but the mechanism and assumptions differ fundamentally."
+        },
+        "v2_risk": "HIGH — MT is the dominant paradigm for testing without a test oracle. SBG v2 MUST address this. Current matrix has zero coverage of metamorphic testing.",
+        "recommended_delta": "MT requires explicit metamorphic relations (user-specified semantic properties). SBG v2 requires no specification; it detects behavioral change by comparing execution signatures. SBG v2 is oracle-free where MT requires relation authorship. Conversely, MT gives a specific semantic property as the detection target; SBG v2 gives a distance score without specifying which semantic property changed."
+      },
+      "differential_testing": {
+        "status": "NOT_COVERED",
+        "citation": "McKeeman, W.M. 'Differential Testing for Software.' Digital Technical Journal, 1998; Yang, C. et al. 'Finding and Understanding Bugs in C Compilers.' PLDI 2011 (CSmith).",
+        "problem": "Differential testing (DT) runs multiple implementations of the same specification on the same inputs and flags any divergence as a bug. This is equivalent to SBG's behavioral equivalence claim when applied cross-implementation.",
+        "overlap_with_sbg": "DT is essentially the empirical core of SBG v2's H4 (cross-language equivalence) and H5 (regression detection). SBG v2 MUST acknowledge differential testing as prior work for its execution-comparison approach. The SBG-specific addition would be: (a) the formal pseudometric rather than binary equivalence, (b) the multi-dimensional breakdown of *where* the difference lies, (c) the longitudinal tracking.",
+        "v2_risk": "SERIOUS — differential testing is the canonical prior art for 'run two programs, compare outputs.' SBG v2's absence of this citation is a vulnerability in any review."
+      }
+    }
+  },
+
+  "gaps_in_existing_prior_art": [
+    {
+      "gap_id": "GAP-01",
+      "description": "Metamorphic Testing and Differential Testing are entirely absent from the prior art matrix despite being the most directly relevant prior work for execution-based behavioral equivalence checking.",
+      "missing_works": ["Chen et al. MT 1998/2018", "McKeeman DT 1998", "Yang et al. CSmith PLDI 2011"],
+      "severity": "CRITICAL",
+      "rationale": "Any reviewer of SBG v2's behavioral equivalence claims will immediately ask about MT and DT. Their absence undermines the credibility of the prior art review."
+    },
+    {
+      "gap_id": "GAP-02",
+      "description": "Execution-based code clone detection (Jiang & Su ISSTA 2009) is absent. The matrix covers static clone detection (DECKARD, token-based) but not I/O-behavior-based clone detection, which is SBG's most direct prior art for the behavioral equivalence dimension.",
+      "missing_works": ["Jiang & Su 2009 random-testing clone detection", "Elva & Leavens behavioral slicing"],
+      "severity": "HIGH",
+      "rationale": "SBG v2 cannot claim 'first execution-based behavioral similarity for code equivalence' without acknowledging this work."
+    },
+    {
+      "gap_id": "GAP-03",
+      "description": "Plagiarism detection via dynamic execution traces (Hu et al. and related work) is absent. Executing programs on shared inputs and comparing outputs to detect code plagiarism is well-established and directly parallels SBG's g_D + g_X equivalence detection approach.",
+      "missing_works": ["Dynamic plagiarism detection literature", "Profile-based plagiarism detection"],
+      "severity": "HIGH",
+      "rationale": "The most similar operational prior art to SBG's behavioral equivalence detection is in this subfield, not in the malware or binary analysis literature."
+    },
+    {
+      "gap_id": "GAP-04",
+      "description": "KLEE-based semantic equivalence checking (Ramos & Engler 2015: 'Under-constrained Symbolic Execution') is absent. This work directly applies symbolic execution to decide whether two functions are semantically equivalent — not just for test generation.",
+      "missing_works": ["Ramos & Engler USENIX Sec 2015", "S2E equivalence checking"],
+      "severity": "HIGH",
+      "rationale": "Symbolic execution for equivalence (not just coverage) directly competes with SBG v2's claims about detecting behavioral divergence. It is sound where SBG is not."
+    },
+    {
+      "gap_id": "GAP-05",
+      "description": "Behavioral distance as a formally defined concept in the security/malware literature (Christodorescu et al., Brumley et al., Giffin et al.) is absent. These works predate SBG and define 'behavioral distance' using execution event distributions.",
+      "missing_works": ["Christodorescu et al. S&P 2005", "Brumley et al. Botnet 2008"],
+      "severity": "MEDIUM",
+      "rationale": "SBG v2's claim of 'first formal behavioral distance' must be carefully scoped to avoid conflicting with these definitions."
+    },
+    {
+      "gap_id": "GAP-06",
+      "description": "The structural-semantic inversion finding from SBG v1 experiments (CLAIMS_REGISTRY C002/C009, FINAL_SBG_COMPLETION_REPORT F1) is not addressed as a prior art gap. This finding — that SP transforms cause larger structural change than SC mutations — is a novel empirical result that has not been formally documented in the prior art literature.",
+      "missing_works": ["No prior work quantifies this inversion phenomenon"],
+      "severity": "INFORMATIVE",
+      "rationale": "This is a SBG-specific empirical discovery that becomes a v2 novelty claim in itself — IF v2 positions around it correctly."
+    },
+    {
+      "gap_id": "GAP-07",
+      "description": "Application Performance Monitoring (APM) tools as longitudinal behavioral tracking systems are dismissed in the adversarial review (NOVELTY Attack 9) but not formally addressed in the matrix. Datadog, NewRelic, and related tools collect multi-dimensional execution metrics longitudinally — which partially overlaps CG-1 and CG-7.",
+      "missing_works": ["APM tools literature", "Netflix automated regression detection", "Facebook Sapienz"],
+      "severity": "MEDIUM",
+      "rationale": "APM tools are the industrial prior art for longitudinal behavioral tracking. The matrix covers academic prior art but not industrial practice."
+    }
+  ],
+
+  "new_relevant_works": [
+    {
+      "citation": "Chen, T.Y. et al. 'Metamorphic Testing: A Review of Challenges and Opportunities.' ACM Computing Surveys, 51(1), 2018.",
+      "year": 2018,
+      "problem": "Verifying software behavior by checking that specified input-output relations (metamorphic relations) are preserved across program executions.",
+      "representation": "Input transformation functions + output equivalence oracle.",
+      "analysis_type": "Dynamic",
+      "relevance_to_sbg_v2": "MT checks whether behavior is preserved under input transforms; SBG v2 checks whether representations detect behavioral change under code transforms. Different questions; overlapping mechanism (execution comparison). SBG v2 must explicitly distinguish itself: it is specification-free (no metamorphic relation authorship required), while MT requires explicit MR specification.",
+      "sbg_v2_delta": "SBG v2 requires no metamorphic relations — the behavioral signature is extracted without specifying what property to check. MT is a testing methodology; SBG v2 is a representation methodology. MT would fail to detect behavioral regressions for which no metamorphic relation has been authored; SBG v2 is sensitive to any execution-level change across all 8 dimensions.",
+      "threat_level": "HIGH — must be cited and distinguished"
+    },
+    {
+      "citation": "McKeeman, W.M. 'Differential Testing for Software.' Digital Technical Journal, 9(1), 1998.",
+      "year": 1998,
+      "problem": "Running multiple implementations on the same input and detecting divergence as a bug signal.",
+      "representation": "Output comparison on shared inputs.",
+      "analysis_type": "Dynamic",
+      "relevance_to_sbg_v2": "Differential testing is the operational primitive underlying SBG v2's H4 (cross-language equivalence) and H5 (regression detection). The SBG-specific additions are: (a) formal pseudometric rather than binary pass/fail, (b) multi-dimensional decomposition of where divergence occurs, (c) longitudinal tracking across version histories.",
+      "sbg_v2_delta": "SBG v2 produces a continuous-valued, multi-dimensional divergence measure rather than a binary oracle. This enables regression severity quantification and dimension-specific diagnosis.",
+      "threat_level": "SERIOUS — must be cited as direct predecessor"
+    },
+    {
+      "citation": "Jiang, L., Su, Z. 'Automatic Mining of Functionally Equivalent Code Fragments via Random Testing.' ISSTA, 2009.",
+      "year": 2009,
+      "problem": "Detecting functionally equivalent code fragments by executing them on random inputs and clustering by I/O behavior.",
+      "representation": "I/O behavior vectors from random test execution.",
+      "analysis_type": "Dynamic",
+      "relevance_to_sbg_v2": "This is the direct execution-based clone detection prior for SBG v2. Jiang & Su use random inputs + I/O clustering; SBG v2 uses structured behavioral dimensions. The key question for v2 is: does SBG's multi-dimensional genome add discriminative power over Jiang & Su's I/O clustering?",
+      "sbg_v2_delta": "SBG v2 captures internal behavioral structure (data distributions, control flow patterns, error behavior, resource consumption) beyond I/O pairs. Two programs could match Jiang & Su's I/O oracle while diverging in g_S (memory behavior), g_T (temporal patterns), or g_E (error handling) — dimensions invisible to I/O-only comparison.",
+      "threat_level": "HIGH — must be added to matrix"
+    },
+    {
+      "citation": "Ramos, D.A., Engler, D. 'Under-Constrained Symbolic Execution: Correctness Checking for Real Code.' USENIX Security, 2015.",
+      "year": 2015,
+      "problem": "Using symbolic execution to check whether two versions of a function are semantically equivalent by exploring all reachable path differences.",
+      "representation": "Symbolic state comparison via SMT solver.",
+      "analysis_type": "Dynamic (symbolic)",
+      "relevance_to_sbg_v2": "This is sound equivalence checking via symbolic execution — the strongest form of SBG v2's behavioral equivalence claim. SBG v2 is explicitly unsound (probabilistic, coverage-dependent) while Ramos & Engler are sound for analyzed paths.",
+      "sbg_v2_delta": "SBG v2 scales to programs where symbolic execution explodes (complex loops, unbounded data structures, string processing). The trade-off is soundness for scalability. SBG v2's claim must be: 'first scalable, language-agnostic, test-suite-free approximation that scales where sound methods stall.'",
+      "threat_level": "HIGH — establishes the sound competitor; SBG v2 is an approximation, not an advance over this"
+    },
+    {
+      "citation": "Christodorescu, M., Jha, S., Seshia, S.A., Song, D., Bryant, R.E. 'Semantics-Aware Malware Detection.' IEEE Symposium on Security and Privacy, 2005.",
+      "year": 2005,
+      "problem": "Detecting semantic equivalence between malware variants by abstracting over syntactic obfuscations using formal behavioral semantics.",
+      "representation": "Behavioral templates derived from instruction traces; theorem-prover-based matching.",
+      "analysis_type": "Hybrid (dynamic trace + static semantic comparison)",
+      "relevance_to_sbg_v2": "Defines behavioral equivalence at the semantic level using trace abstraction — a direct predecessor to SBG v2's behavioral distance concept.",
+      "sbg_v2_delta": "SBG v2 operates at source level across multiple languages; Christodorescu et al. operate at x86 binary level for malware. SBG v2's 8-dimensional decomposition is richer than behavioral templates for any single semantic property.",
+      "threat_level": "MEDIUM — must be cited; well-scoped delta available"
+    },
+    {
+      "citation": "Elva, R., Leavens, G.T. 'Behavioral Program Slicing: Matching a Behavioral Specification.' ICST, 2013.",
+      "year": 2013,
+      "problem": "Slicing programs to find the minimal execution-behavior-preserving subset relative to a behavioral specification.",
+      "representation": "Execution traces aligned against behavioral specifications.",
+      "analysis_type": "Dynamic",
+      "relevance_to_sbg_v2": "Behavioral slicing uses execution to characterize which parts of a program are responsible for specified behaviors — directly related to SBG v2's goal of attributing behavioral change to specific dimensions.",
+      "sbg_v2_delta": "SBG v2 does not require a behavioral specification; it characterizes the full behavioral signature empirically.",
+      "threat_level": "LOW — informative but not a direct competitor"
+    }
+  ],
+
+  "novelty_gaps_for_v2": [
+    {
+      "gap_id": "NG-01",
+      "title": "The Structural-Semantic Inversion Phenomenon as a Publishable Finding",
+      "description": "SBG v1's primary empirical finding (C009, FINAL_SBG_COMPLETION_REPORT F1) — that semantics-preserving transforms (rename, refactor, extract) cause LARGER structural change than semantics-changing mutations (off-by-one, operator swap), causing ALL representations to predict inverted labels — is a genuinely novel empirical observation NOT present in any prior work. No prior work in the prior art matrix measures or names this inversion. This is a CONFIRMED positive finding from v1 that v2 can build on.",
+      "novelty_confidence": "HIGH",
+      "rationale": "AUROC inversion (0.35–0.55 for all methods on 744 pairs) across 8 representations is a reproducible, statistically characterized phenomenon. Its root cause (structural change magnitude asymmetry between SP and SC transforms) is mechanistically explainable and has not been reported.",
+      "v2_framing": "SBG v2 should be FRAMED around this finding: 'We identify and quantify the structural-semantic inversion in software similarity benchmarks, and investigate whether execution-based representations can resolve it where static representations fail.'"
+    },
+    {
+      "gap_id": "NG-02",
+      "title": "Runtime Value Tracking as Resolution to Structural-Semantic Inversion",
+      "description": "The FINAL_SBG_COMPLETION_REPORT identifies runtime value tracking as the primary path forward: 'Instead of structural features, compare the values that variables take during execution. An off-by-one would produce a different final value. A function rename would NOT change any values.' No prior work in the matrix has specifically targeted this inversion phenomenon with runtime value tracking as the solution.",
+      "novelty_confidence": "HIGH",
+      "rationale": "The gap is not just in the method (runtime value tracking exists) but in its APPLICATION to resolve the specific inversion problem SBG v1 identified. This application gap — using runtime values specifically to solve the SP/SC asymmetry — is novel.",
+      "v2_framing": "SBG v2 should implement and evaluate runtime value tracking (variable state sampling, output comparison) against the established SBG v1 benchmark to test whether it resolves the inversion."
+    },
+    {
+      "gap_id": "NG-03",
+      "title": "Specification-Free Detection of Semantic Change Across Language Families",
+      "description": "All prior execution-based equivalence checking (differential testing, metamorphic testing, symbolic equivalence) requires either: (a) explicit test oracles, (b) metamorphic relations, (c) SMT solver budget. SBG v2's claimed gap is an approach that requires NONE of these — just execution of both programs under a shared input distribution. This gap (CG-2 from original matrix) remains valid for v2.",
+      "novelty_confidence": "MODERATE",
+      "rationale": "The gap is real but the implementation challenge is large (OP-4, OP-6 remain unsolved for full cross-language comparison). Confident for g_D + g_X dimensions; uncertain for g_C.",
+      "v2_framing": "Restrict to g_D + g_X cross-language claims; demonstrate on OJ dataset (Python/Java/C algorithm implementations)."
+    },
+    {
+      "gap_id": "NG-04",
+      "title": "The ERROR Dimension Dominance Finding",
+      "description": "SBG v1's ablation finding (C014, E7) that ERROR_only AUROC=0.477 > CONTROL_DATA_ERROR=0.349, and that adding dimensions HURTS performance, is a novel negative result about multi-dimensional behavioral representations that has not been reported. It suggests error-handling patterns are more informationally correlated with mutation type than control/data features.",
+      "novelty_confidence": "MODERATE",
+      "rationale": "This is a concrete, reproducible empirical finding about the information content of behavioral dimensions. However, it may be benchmark-specific (Python programs, specific mutation operators). Must be replicated on a second benchmark to be publishable.",
+      "v2_framing": "Investigate ERROR dimension dominance: is it specific to the mutation types in the v1 benchmark, or is it a general property? If general, it has implications for how behavioral distance functions should be designed."
+    },
+    {
+      "gap_id": "NG-05",
+      "title": "Dynamic Trace Features Slightly Outperform Static SBG (but not significantly)",
+      "description": "Finding F5 (dynamic trace B06 AUROC=0.505 > static SBG B07 AUROC=0.349) suggests that runtime execution features add signal that static structural features cannot capture — but neither is above chance. The gap between 0.505 and 0.349 (delta=0.075) is the strongest positive signal from v1. SBG v2 should pursue making this gap larger by improving dynamic feature quality.",
+      "novelty_confidence": "MODERATE",
+      "rationale": "The finding that dynamic features outperform static structural features on behavioral change detection is consistent with the theoretical framework and with prior art (all prior dynamic analysis papers claim dynamic > static). The novel contribution is the quantification on a controlled benchmark with null-result transparency.",
+      "v2_framing": "SBG v2 should be an improved dynamic execution-based system, not a combined static+dynamic system (since v1 showed adding static dims to dynamic hurts)."
+    }
+  ],
+
+  "risk_of_overlap_with": [
+    {
+      "work": "Jiang & Su ISSTA 2009 — I/O-based functionally equivalent clone detection",
+      "overlap_description": "Core mechanism: execute programs on inputs, compare behavioral outputs, cluster equivalents. SBG v2's g_D + g_X approach is operationally similar.",
+      "severity": "HIGH",
+      "mitigation": "SBG v2 adds: multi-dimensional breakdown (not just I/O), longitudinal tracking, formal pseudometric. Must explicitly cite Jiang & Su and state delta."
+    },
+    {
+      "work": "McKeeman 1998 Differential Testing",
+      "overlap_description": "Differential testing = run multiple implementations on same inputs, flag divergence. This is the operational core of SBG v2's equivalence detection.",
+      "severity": "SERIOUS",
+      "mitigation": "SBG v2's delta: continuous-valued multi-dimensional distance vs. binary divergence signal; formal pseudometric properties; longitudinal version history."
+    },
+    {
+      "work": "Chen et al. 1998/2018 Metamorphic Testing",
+      "overlap_description": "MT checks whether program behavior is preserved under input transformations. SBG v2 checks whether representations detect behavioral change. The mechanism (execution comparison) overlaps; the question differs.",
+      "severity": "MEDIUM",
+      "mitigation": "Frame SBG v2 as 'specification-free' detection where MT requires explicit metamorphic relation authorship. SBG v2 detects ANY behavioral change; MT tests specific pre-authored properties."
+    },
+    {
+      "work": "Ramos & Engler 2015 Under-constrained Symbolic Execution",
+      "overlap_description": "Sound semantic equivalence checking via symbolic execution for function pairs — the sound competitor to SBG v2's approximation.",
+      "severity": "MEDIUM",
+      "mitigation": "SBG v2's delta: scalability (symbolic explosion is avoided), language-agnosticism (symbolic execution requires language-specific frontends), no SMT solver. SBG v2 is explicitly unsound; this must be stated."
+    },
+    {
+      "work": "Bayer et al. TTAnalyze NDSS 2009",
+      "overlap_description": "Dynamic behavioral fingerprinting via syscall n-grams — already covered in matrix but overlap with g_X dimension is serious (documented in NOVELTY_ANALYSIS.md Attack 1).",
+      "severity": "MEDIUM",
+      "mitigation": "Already addressed in NOVELTY_ANALYSIS.md. SBG v2 must maintain the domain inversion argument (malware triage vs. correctness regression) and the multi-dimensional structure argument."
+    }
+  ],
+
+  "recommended_framing": "SBG v2 should be framed as: 'We identify a fundamental structural-semantic inversion in static behavioral representations of software (confirmed empirically in SBG v1 across 8 representations on 744 benchmark pairs), and investigate whether execution-based representations resolve it. Specifically, we show that semantics-preserving transforms (rename, refactor, extract) cause systematically larger structural changes than semantics-altering mutations (off-by-one, operator swap), causing all static and hybrid representations to produce near-random or inverted behavioral distance signals. We then build and evaluate a dynamic execution-based behavioral distance using runtime variable value tracking, output comparison, and error-pattern analysis — dimensions shown in SBG v1 to be more informative than static structural dimensions — and measure whether this resolves the inversion. This is explicitly differentiated from metamorphic testing (which requires specification of metamorphic relations), differential testing (which produces binary divergence signals rather than a formal pseudometric), and symbolic execution (which provides soundness but not scalability). The primary novelty claim is: the first formal characterization and empirical resolution attempt of the structural-semantic inversion phenomenon in software behavioral similarity, using a specification-free, language-portable, execution-trace-derived pseudometric.'",
+
+  "verdict": "NOVEL",
+  "verdict_rationale": "SBG v2 has a genuinely novel framing that no prior work addresses: the structural-semantic inversion phenomenon (NG-01) is a confirmed empirical finding from v1 that is absent from all 40 prior works in the matrix. The resolution strategy (runtime value tracking, NG-02) is a targeted application of existing dynamic analysis to a specific identified problem. However, the verdict is NOVEL only if: (a) Jiang & Su 2009 and McKeeman 1998 are added to the prior art matrix with precise deltas, (b) metamorphic testing is formally distinguished, (c) the inversion finding is foregrounded as the primary contribution rather than treated as a failure. If SBG v2 is framed primarily as 'a behavioral genome system' without centering the inversion finding, the verdict downgrades to MARGINAL because the representation-building approach is substantially covered by prior art.",
+
+  "verdict_conditions": {
+    "NOVEL_if": [
+      "SBG v2 foregrounds the structural-semantic inversion (NG-01) as its primary finding and organizing principle",
+      "Jiang & Su 2009 and McKeeman 1998 are added to the prior art matrix with explicit deltas",
+      "Metamorphic testing is formally discussed and distinguished",
+      "Runtime value tracking is implemented and evaluated against the SBG v1 benchmark to test inversion resolution",
+      "The v2 contribution is framed as 'diagnosis and resolution attempt' rather than 'a new representation system'"
+    ],
+    "MARGINAL_if": [
+      "SBG v2 is presented as a generic behavioral similarity system without foregrounding the inversion finding",
+      "The prior art gaps (GAP-01 through GAP-04) are not addressed",
+      "The delta over Jiang & Su 2009 execution-based clone detection is not articulated"
+    ],
+    "DUPLICATES_PRIOR_WORK_if": [
+      "SBG v2 implements I/O-based behavioral equivalence detection without distinguishing from Jiang & Su 2009",
+      "SBG v2 claims 'first execution-based behavioral similarity' without acknowledging differential testing"
+    ]
+  },
+
+  "action_items": [
+    {
+      "priority": 1,
+      "action": "Add Jiang & Su ISSTA 2009 to PRIOR_ART_MATRIX.md as the missing execution-based clone detection work",
+      "file": "docs/research/PRIOR_ART_MATRIX.md"
+    },
+    {
+      "priority": 1,
+      "action": "Add McKeeman 1998 Differential Testing and Chen et al. 2018 Metamorphic Testing to PRIOR_ART_MATRIX.md as Domain 11 — Execution-Based Equivalence Testing",
+      "file": "docs/research/PRIOR_ART_MATRIX.md"
+    },
+    {
+      "priority": 2,
+      "action": "Add Ramos & Engler 2015 to PRIOR_ART_MATRIX.md as the sound symbolic equivalence competitor",
+      "file": "docs/research/PRIOR_ART_MATRIX.md"
+    },
+    {
+      "priority": 2,
+      "action": "Add Christodorescu et al. S&P 2005 to PRIOR_ART_MATRIX.md under Domain 2 — Behavioral Fingerprinting",
+      "file": "docs/research/PRIOR_ART_MATRIX.md"
+    },
+    {
+      "priority": 3,
+      "action": "Update NOVELTY_ANALYSIS.md Attack 2 (trace-based similarity) to include differential testing and execution-based clone detection as specific prior works requiring explicit delta statements",
+      "file": "docs/research/NOVELTY_ANALYSIS.md"
+    },
+    {
+      "priority": 3,
+      "action": "Add NG-01 (structural-semantic inversion) and NG-02 (runtime value tracking) as new SBG v2 coverage gaps CG-8 and CG-9 in PRIOR_ART_MATRIX.md",
+      "file": "docs/research/PRIOR_ART_MATRIX.md"
+    }
+  ]
+}

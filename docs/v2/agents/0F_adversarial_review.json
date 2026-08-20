@@ -1,0 +1,103 @@
+{
+  "agent": "0F",
+  "task": "Adversarial review of SBG v2 novelty and experimental validity",
+  "generated_at": "2025-07-07T00:00:00Z",
+  "verdict": "CONDITIONAL_NOVEL",
+  "summary": "SBG v2 is conditionally novel if it enforces SAFEGUARD-1 (pre-registration) and SAFEGUARD-2 (output-free features). The structural-semantic inversion is a genuinely undocumented phenomenon. Three P0 risks must be resolved before experiments begin.",
+
+  "p0_risks": [
+    {
+      "risk_id": "AV1",
+      "severity": "P0",
+      "title": "Post-hoc hypothesis formulation",
+      "description": "H7-H12 were formulated after observing v1 results (inversion delta=0.0335, SBG AUROC=0.4237). A reviewer will ask: were these hypotheses written before or after you saw the v1 data? If after, they are exploratory results framed as confirmatory tests.",
+      "mitigation_required": "SAFEGUARD-1: Commit H7-H12 to git with timestamp BEFORE any dynamic execution begins. The git commit hash provides verifiable evidence that hypotheses preceded results. H7-H12 must be explicitly labeled 'post-hoc motivated by v1, evaluated on held-out data' in any paper.",
+      "status": "MITIGABLE_REQUIRES_PREREGISTRATION"
+    },
+    {
+      "risk_id": "AV2",
+      "severity": "P0",
+      "title": "Benchmark gaming via output comparison",
+      "description": "If v2 dynamic features include program output values (return values, stdout content), the evaluation trivially encodes ground truth: semantics-changing programs produce different outputs by definition. This reduces SBG v2 to differential testing (McKeeman 1998), not a behavioral genome. High AUROC from output comparison is scientifically meaningless for the genome claim.",
+      "mitigation_required": "SAFEGUARD-2: Classify every v2 dynamic feature as Output-free (admissible) vs Output-proximate (differential testing only) BEFORE any feature engineering. SBG claims must use only Output-free features. Output-proximate features may exist in a separate B09_differential_testing baseline.",
+      "status": "MITIGABLE_REQUIRES_FEATURE_AUDIT"
+    },
+    {
+      "risk_id": "AV3",
+      "severity": "P0",
+      "title": "Circular evaluation via output-proximate features",
+      "description": "If output-proximate features contaminate the SBG genome, the evaluation is circular: the genome is measuring the ground truth (behavioral equivalence is defined by output equivalence). Claiming SBG v2 outperforms v1 by including output comparison is not a scientific advance over differential testing.",
+      "mitigation_required": "Architectural separation: DynamicGenome uses only Output-free features. A separate B09 baseline uses output comparison. Never mix in experimental results.",
+      "status": "MITIGABLE_REQUIRES_SEPARATION"
+    }
+  ],
+
+  "p1_risks": [
+    {
+      "risk_id": "AV4",
+      "severity": "P1",
+      "title": "Missing prior art: execution-based clone detection",
+      "description": "Jiang & Su (ISSTA 2009) 'Automatic Mining of Functionally Equivalent Code Fragments via Random Testing' detects code clones using execution I/O comparison. This is directly relevant to v2 and is missing from the prior art matrix. v2 must precisely differentiate from this work.",
+      "mitigation": "Add to PRIOR_ART_MATRIX.md. Delta: Jiang & Su use output comparison (differential testing); SBG v2 uses output-FREE structural execution features (call patterns, branch coverage)."
+    },
+    {
+      "risk_id": "AV5",
+      "severity": "P1",
+      "title": "Intra-version noise may exceed inter-version signal",
+      "description": "Programs using time.sleep, id(), datetime.now(), or threading produce non-deterministic traces. If intra-version std exceeds inter-version signal delta, dynamic features are noise, not signal.",
+      "mitigation": "SAFEGUARD-6: Run genome extraction >=5 times per program. Measure intra-version variance. Exclude features where intra-version std > inter-version signal (10% threshold)."
+    },
+    {
+      "risk_id": "AV6",
+      "severity": "P1",
+      "title": "Multiple comparisons inflate false positive rate",
+      "description": "Testing 12 hypotheses (H1-H12) without correction gives ~46% familywise false positive rate at alpha=0.05. Claiming any hypothesis is 'SUPPORTED' without correction is methodologically unsound.",
+      "mitigation": "SAFEGUARD-7: Holm-Bonferroni across full family H1-H12 (n=12). alpha_corrected = 0.0042. Report both uncorrected and Holm-corrected p-values."
+    }
+  ],
+
+  "p2_risks": [
+    {
+      "risk_id": "AV7",
+      "severity": "P2",
+      "title": "Small cross-language sample (n=15) insufficient for power",
+      "description": "V1 had 15 cross-language pairs. At Bonferroni-corrected alpha=0.0042, power for medium effect (d=0.3) is approximately 25%. H11 cross-language result will be inconclusive by design.",
+      "mitigation": "Explicitly label H11 as PILOT/EXPLORATORY. Report power calculation. Do not claim H11 is 'SUPPORTED' even if directionally positive with low p."
+    },
+    {
+      "risk_id": "AV8",
+      "severity": "P2",
+      "title": "Hot-path signature uses function names (v1 flaw)",
+      "description": "V1 hot_path_signature = SHA-256(function names) — invalidated by SP-2 (rename). If v2 carries this feature forward, SP-2 transforms will appear behaviorally different despite identical execution structure.",
+      "mitigation": "V2 replaces name-based hot path with rank-based call frequency vector (anon_call_freq). Names used only for counting, not as features."
+    }
+  ],
+
+  "p3_risks": [
+    {
+      "risk_id": "AV9",
+      "severity": "P3",
+      "title": "SP-8 divergence bug creates false EQUIVALENT labels",
+      "description": "Agent 0H documented that SP-8 (extract function) has real behavioral divergence in some corpus programs, producing mislabeled EQUIVALENT pairs. This affects H10 (refactoring robustness) specifically.",
+      "mitigation": "Exclude SP-8 pairs from H10 analysis. Document as data quality limitation."
+    }
+  ],
+
+  "novelty_verdict": {
+    "gap": "Structural-semantic inversion is not documented, named, or quantified in prior literature. This is the organizing scientific contribution of SBG v1+v2.",
+    "v2_contribution": "V2 quantifies whether dynamic execution evidence overcomes the inversion. This is the specific research question that is novel.",
+    "delta_over_b06": "B06 (v1 dynamic, AUROC=0.5046) uses raw execution trace comparison with degenerate threshold. V2 SBG uses structured behavioral genome dimensions (anonymized call frequency, coverage consistency, exception type sets) — a structural abstraction over raw traces.",
+    "delta_over_jiang_su": "Jiang & Su use output comparison (differential testing). V2 SBG uses output-FREE structural execution features — the genome claim requires this distinction.",
+    "weakest_claim": "Cross-language generalization (H11) — underpowered, exploratory only."
+  },
+
+  "recommendation": "CONDITIONAL_PASS — proceed to Phase 1 ONLY after SAFEGUARD-1 (pre-registration of H7-H12) is committed to git. Do not run any dynamic execution before that commit exists.",
+  "assumptions": [
+    "H7-H12 will be evaluated on the same held-out test split as H1-H6 (no new contamination)",
+    "Feature oracle audit (SAFEGUARD-2) will happen before any experiment runs",
+    "v2 dynamic genome will NOT include return values or stdout content"
+  ],
+  "unresolved_issues": [
+    "Need git commit hash as evidence for SAFEGUARD-1 timestamp"
+  ]
+}

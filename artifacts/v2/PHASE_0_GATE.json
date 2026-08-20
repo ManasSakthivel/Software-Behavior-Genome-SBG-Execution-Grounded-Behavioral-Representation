@@ -1,0 +1,73 @@
+{
+  "gate": "PHASE_0_V2",
+  "version": "v2",
+  "timestamp": "2025-07-07T00:00:00Z",
+  "status": "CONDITIONAL_PASS",
+  "recommendation": "PROCEED_TO_PREREGISTRATION_ONLY",
+
+  "gate_criteria": {
+    "v1_results_verified": "PASS",
+    "prior_art_augmented_with_missing_citations": "CONDITIONAL — add Jiang & Su 2009, Chen 1998, McKeeman 1998",
+    "novelty_gap_defined": "PASS — structural-semantic inversion undocumented in prior art",
+    "p0_risks_identified": "PASS — AV1, AV2, AV3 documented with mitigations",
+    "safeguards_defined": "PASS — SAFEGUARD-1 through SAFEGUARD-7 specified",
+    "preregistration_completed": "CONDITIONAL — H7-H12 must be committed to git BEFORE any dynamic execution",
+    "feature_oracle_audit_completed": "CONDITIONAL — must classify all v2 features before experiments"
+  },
+
+  "agent_outputs": {
+    "0A_repo_map": "COMPLETE",
+    "0B_baseline_audit": "COMPLETE",
+    "0C_leakage_audit": "COMPLETE",
+    "0D_statistical_audit": "COMPLETE",
+    "0E_prior_art_audit": "COMPLETE",
+    "0F_adversarial_review": "COMPLETE",
+    "0G_architecture": "COMPLETE",
+    "0H_benchmark_audit": "COMPLETE"
+  },
+
+  "v1_verified_metrics": {
+    "sbg_auroc": 0.4237,
+    "best_baseline_auroc": 0.5528,
+    "inversion_delta": 0.0335,
+    "near_identical_sc_fraction": 0.9918,
+    "mcnemar_p": 1.0,
+    "e3_permutation_p": 1.0,
+    "b06_dynamic_auroc": 0.5046
+  },
+
+  "v2_research_question": "Can execution-derived behavioral evidence overcome the structural-semantic inversion documented in SBG v1?",
+
+  "blocking_conditions": [
+    "SAFEGUARD-1: H7-H12 must be pre-registered in a git commit BEFORE any dynamic execution",
+    "SAFEGUARD-2: Feature oracle audit must classify all v2 dynamic features before experiments"
+  ],
+
+  "non_blocking_conditions": [
+    "Add Jiang & Su 2009 to PRIOR_ART_MATRIX.md",
+    "Add Chen 1998 metamorphic testing",
+    "Add McKeeman 1998 differential testing",
+    "Fix v1 PRIOR_ART_MATRIX.md missing 3 citations"
+  ],
+
+  "v2_hypotheses_preview": {
+    "H7": "AUROC(dynamic) > AUROC(static_SBG=0.4237)",
+    "H8": "AUROC(hybrid) > AUROC(dynamic_only)",
+    "H9": "delta_dynamic < delta_static=0.0335 (inversion reduced)",
+    "H10": "AUROC robust across SP transform types (max variance < 0.10)",
+    "H11": "AUROC(cross-language) > 0.6 — PILOT only, N=15 underpowered",
+    "H12": "AUROC(regression_hybrid) > 0.5528 (best static baseline)"
+  },
+
+  "statistical_protocol": {
+    "correction": "Holm-Bonferroni",
+    "family_size": 12,
+    "alpha_familywise": 0.05,
+    "alpha_bonferroni_per_test": 0.0042,
+    "primary_metric": "AUROC",
+    "threshold_selection": "DEV split only",
+    "bootstrap_resamples": 1000
+  },
+
+  "next_action": "Write docs/v2/HYPOTHESES_V2.md + docs/v2/FEATURE_ORACLE.md and git commit immediately"
+}

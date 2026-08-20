@@ -1,0 +1,24 @@
+{
+  "version": "v2",
+  "timestamp": "2025-07-07T00:00:00Z",
+  "safeguard_1_status": "COMPLETE",
+  "documents": [
+    {
+      "file": "docs/v2/HYPOTHESES_V2.md",
+      "purpose": "Pre-registered hypotheses H7-H12 before any dynamic execution",
+      "hypotheses": ["H7", "H8", "H9", "H10", "H11", "H12"],
+      "statistical_protocol": "Holm-Bonferroni family_size=12 alpha_corrected=0.0042",
+      "threshold_selection": "DEV split only"
+    },
+    {
+      "file": "docs/v2/FEATURE_ORACLE.md",
+      "purpose": "SAFEGUARD-2: Feature classification before any experiments",
+      "output_free_features": ["F01","F02","F03","F04","F05","F06","F07","F08","F09","F10","F13","F16","F17","F18"],
+      "output_proximate_features": ["F11","F12"],
+      "excluded_features": ["F14","F15"]
+    }
+  ],
+  "attestation": "Documents written before any v2 dynamic execution. H7-H12 are post-hoc motivated by v1 results but will be evaluated on held-out data with no test-set contamination.",
+  "blocking_safeguards_remaining": ["SAFEGUARD-3", "SAFEGUARD-4", "SAFEGUARD-5", "SAFEGUARD-6"],
+  "git_commit_evidence": "See git log for commit timestamp of docs/v2/HYPOTHESES_V2.md"
+}

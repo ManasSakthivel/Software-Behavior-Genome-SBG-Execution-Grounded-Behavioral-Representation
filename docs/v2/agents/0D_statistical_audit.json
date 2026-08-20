@@ -1,0 +1,72 @@
+{
+  "agent": "0D",
+  "v1_audit": {
+    "cis_correct": true,
+    "bonferroni_correct": true,
+    "mcnemar_documented": true,
+    "effect_sizes_present": true,
+    "issues": [
+      "McNemar test is uninformative (b=c=0, p=1.0) due to threshold degeneracy (threshold=1.000001) for both B02 and B08, preventing statistical differentiation of F1-scores.",
+      "The sample size of N=744 test pairs is slightly underpowered compared to the Phase 1 target of N=800 pairs required for 80% power at d=0.3 at the Bonferroni-corrected alpha level of 0.0017.",
+      "Bootstrap confidence intervals are wide relative to effect sizes (e.g., SBG AUROC CI spans 0.097, Best baseline CI spans 0.085), indicating borderline medium effect (Cohen's d ≈ 0.45).",
+      "E3 permutation test for variance difference yields p=1.0 because the observed variance difference is in the opposite direction of the H3 claim (SP_std > SC_std), showing that refactoring transforms are actually more variable than mutations."
+    ]
+  },
+  "v2_statistical_protocol": {
+    "alpha_familywise": 0.01,
+    "n_hypotheses_v2": 6,
+    "correction_method": "Holm-Bonferroni",
+    "primary_metrics": [
+      "AUROC (primary, threshold-independent due to degeneracy risks)",
+      "F1-score (evaluated using thresholds optimized on DEV split only)",
+      "Cohen's d / Glass's delta (for continuous comparisons and variance stability)",
+      "Cohen's h (for difference in proportions / F1-score comparisons)"
+    ],
+    "test_per_hypothesis": {
+      "H7": {
+        "description": "Dynamic behavioral genomes achieve higher discrimination (AUROC) than static genomes on test set.",
+        "primary_metric": "AUROC",
+        "statistical_test": "Paired McNemar test on predictions (using thresholds set on DEV split) and bootstrap AUROC comparison.",
+        "effect_size": "Cohen's h (predictions) / Delta AUROC"
+      },
+      "H8": {
+        "description": "Hybrid representations (static + dynamic) achieve higher discrimination (AUROC) than pure dynamic representations on test set.",
+        "primary_metric": "AUROC",
+        "statistical_test": "Paired McNemar test on predictions (using thresholds set on DEV split) and bootstrap AUROC comparison.",
+        "effect_size": "Cohen's h (predictions) / Delta AUROC"
+      },
+      "H9": {
+        "description": "Dynamic behavioral representations reduce structural-semantic inversion by showing significantly higher delta(EQUIV_mean - CHANGED_mean) compared to static behavioral representations.",
+        "primary_metric": "Delta similarity (EQUIV_mean - CHANGED_mean)",
+        "statistical_test": "Paired permutation test on the difference of deltas between dynamic and static representation pairs.",
+        "effect_size": "Glass's delta"
+      },
+      "H10": {
+        "description": "Dynamic and hybrid representations exhibit robustness (retaining discrimination power) across code noise levels.",
+        "primary_metric": "AUROC retention",
+        "statistical_test": "Friedman-like permutation analog test across noise levels to evaluate robustness.",
+        "effect_size": "Kendall's W (or permutation variance ratio)"
+      },
+      "H11": {
+        "description": "Behavioral genomes achieve high matching accuracy on cross-language equivalents (Python vs Java).",
+        "primary_metric": "AUROC",
+        "statistical_test": "Paired McNemar test on cross-language pairs, explicitly acknowledging small n (n=15) and reporting low statistical power.",
+        "effect_size": "Cohen's h"
+      },
+      "H12": {
+        "description": "The SBG v2 system detects regression behavior with AUROC significantly exceeding the best structural baseline.",
+        "primary_metric": "AUROC",
+        "statistical_test": "AUROC comparison with 1000-resample bootstrap confidence intervals.",
+        "effect_size": "Delta AUROC"
+      }
+    },
+    "threshold_selection": "dev_only",
+    "sample_size_assessment": {
+      "test_set_size": 744,
+      "adequate_for_medium_effect": true,
+      "power_at_d_0_3": 0.858,
+      "target_power": 0.80,
+      "recommendation_v2": "To maintain 80% power under the stricter Holm-Bonferroni correction at alpha=0.000833, expand the test split to at least 1000 pairs (or at least 1280 pairs to provide a conservative margin)."
+    }
+  }
+}
