@@ -1,0 +1,113 @@
+{
+  "manifest": "PHASE4_FINAL_MANIFEST",
+  "phase": 4,
+  "status": "COMPLETE",
+  "generated_for": "external review",
+  "waves": {
+    "wave_0_forensic_precheck": {
+      "artifacts": ["docs/v2/PHASE4_FORENSIC_PLAN.md"]
+    },
+    "wave_1_entrypoint_fix": {
+      "artifacts": [
+        "artifacts/v2/ENTRYPOINT_VALIDATION.json",
+        "docs/v2/ENTRYPOINT_LIMITATION.md"
+      ]
+    },
+    "wave_2_h10_robustness": {
+      "artifacts": [
+        "artifacts/v2/H10_ROBUSTNESS_RESULTS.json",
+        "docs/v2/H10_ROBUSTNESS_ANALYSIS.md"
+      ]
+    },
+    "wave_3_sc3_forensic": {
+      "artifacts": [
+        "artifacts/v2/SC3_FORENSIC_RESULTS.json",
+        "docs/v2/SC3_FORENSIC_ANALYSIS.md"
+      ]
+    },
+    "wave_4_sp2_forensic": {
+      "artifacts": [
+        "artifacts/v2/SP2_FORENSIC_RESULTS.json",
+        "docs/v2/SP2_FORENSIC_ANALYSIS.md"
+      ]
+    },
+    "wave_5_h11_cross_language": {
+      "artifacts": [
+        "artifacts/v2/H11_CROSS_LANGUAGE_RESULTS.json",
+        "docs/v2/H11_CROSS_LANGUAGE_ANALYSIS.md"
+      ]
+    },
+    "wave_6_h12_regression": {
+      "artifacts": [
+        "artifacts/v2/H12_REGRESSION_RESULTS.json",
+        "docs/v2/H12_REGRESSION_ANALYSIS.md"
+      ]
+    },
+    "wave_7_modern_baseline": {
+      "artifacts": [
+        "artifacts/v2/MODERN_BASELINE_RESULTS.json",
+        "docs/v2/MODERN_BASELINE_ANALYSIS.md"
+      ]
+    },
+    "wave_8_feature_ablation": {
+      "artifacts": ["artifacts/v2/H10_FEATURE_ABLATION.json"]
+    },
+    "wave_9_shortcut_audit": {
+      "artifacts": ["artifacts/v2/PHASE4_SHORTCUT_AUDIT.json"]
+    },
+    "wave_10_statistical_reconciliation": {
+      "artifacts": [
+        "artifacts/v2/PHASE4_STATISTICAL_RECONCILIATION.json",
+        "docs/v2/PHASE4_STATISTICAL_RECONCILIATION.md"
+      ]
+    },
+    "wave_11_hostile_review": {
+      "reviewers": [
+        "ML/representation-learning",
+        "Programming Languages",
+        "Empirical Software Engineering",
+        "Statistics",
+        "Stanford/ICSE-style senior reviewer"
+      ],
+      "consolidated_in": "docs/v2/PHASE4_GATE_REPORT.md#5-hostile-review-consolidation-wave-11"
+    },
+    "final_gate": {
+      "artifacts": [
+        "docs/v2/PHASE4_GATE_REPORT.md",
+        "artifacts/v2/PHASE4_FINAL_MANIFEST.json",
+        "artifacts/v2/H10_FINAL_RESULTS.json",
+        "artifacts/v2/H11_FINAL_RESULTS.json",
+        "artifacts/v2/H12_FINAL_RESULTS.json",
+        "docs/v2/PHASE4_LIMITATIONS.md"
+      ]
+    }
+  },
+  "hypothesis_verdicts": {
+    "H10": "NOT_SUPPORTED",
+    "H11": "INSUFFICIENT_EVIDENCE / UNDERPOWERED",
+    "H12": "WEAKLY_SUPPORTED_BY_POINT_ESTIMATE / NOT_SIGNIFICANT_AFTER_CORRECTION"
+  },
+  "hostile_review_totals": {
+    "P0": 6,
+    "P1": 7,
+    "P2": 4
+  },
+  "test_suite": {
+    "passed": 721,
+    "failed": 0,
+    "regressions_from_phase4_changes": 0
+  },
+  "gate_checklist_items_satisfied": 21,
+  "gate_checklist_items_total": 21,
+  "constraints_honored": {
+    "no_test_set_tuning": true,
+    "no_frozen_data_modification": true,
+    "no_h7_h12_modification_after_seeing_results": true,
+    "no_cherry_picking_transformation_types": true,
+    "no_universal_detection_claim_made": true,
+    "no_fabricated_scores": true,
+    "no_0.5_imputation_without_justification": true
+  },
+  "scientific_verdict_summary": "SBG, as currently implemented and benchmarked, is a genuine but narrow and non-generalizing negative/mixed result: it beats a much weaker static baseline on a small, specific test set, but does not demonstrate general behavioral-equivalence detection across transformation types, languages, or real regressions.",
+  "next_action": "STOP. Return this gate report for external review. Do not begin README/paper packaging. Do not declare SBG complete."
+}

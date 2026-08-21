@@ -1,0 +1,122 @@
+{
+  "agent": "0C",
+  "generated": "2025",
+  "source_document": "docs/research/NOVELTY_ANALYSIS.md",
+  "inputs_reviewed": [
+    "docs/research/FORMAL_MODEL.md",
+    "docs/research/PRIOR_ART_MATRIX.md",
+    "artifacts/research/formal_model_summary.json",
+    "artifacts/research/prior_art_summary.json"
+  ],
+  "fatal_attacks": [],
+  "serious_attacks": [
+    {
+      "id": "A1",
+      "title": "SBG is merely another dynamic behavioral fingerprint (TTAnalyze / Bayer et al.)",
+      "argument": "TTAnalyze (2009) already extracts syscall n-gram behavioral fingerprints for dynamic program comparison at scale. SBG's INTERACTION dimension g_X is a superset of this representation. If g_X is already known, the remaining 7 dimensions are individually standard metrics. SBG may be TTAnalyze + seven labeled buckets of existing metrics.",
+      "rebuttal_available": true,
+      "rebuttal_summary": "TTAnalyze targets malware triage (one-shot clustering); SBG targets longitudinal behavioral regression tracking in known-good software. Domain inversion is real. Also, TTAnalyze cannot detect pure-computation regressions that never cross the syscall boundary — SBG's g_C, g_D, g_S capture these. The structural 8-dimensional decomposition preserves behavioral change type identity that a flat n-gram vector loses.",
+      "settling_experiment": "Run TTAnalyze-style syscall n-gram distance vs. full SBG D on Defects4J regression corpus. Measure per-dimension recall on algorithmic vs. OS-interfacing bugs. If SBG recall on pure-computation bugs exceeds TTAnalyze-style by >20 points, the multi-dimensional structure is empirically justified."
+    },
+    {
+      "id": "A3",
+      "title": "The genome is just a collection of standard metrics",
+      "argument": "Every individual genome component is a well-known metric with existing tools: branch coverage (gcov), call graphs (gprof), stack depth (Valgrind Massif), resource counts (perf stat), latency distributions (any profiler), syscall n-grams (TTAnalyze), exception rates (APM tools), code coverage (lcov). Assembling known metrics into a vector is not a scientific contribution.",
+      "rebuttal_available": true,
+      "rebuttal_summary": "No prior system produces the unified, formally normalized, comparable behavioral artifact G(P) = (g_C, g_D, g_S, g_R, g_T, g_E, g_X, g_U) with a formally specified pseudometric D. The contribution is (1) unified schema, (2) semantically motivated per-dimension distance choices, (3) longitudinal genome tracking, and (4) the regression oracle hypothesis H5. However, this rebuttal is stronger in principle than in practice until H5 is empirically validated.",
+      "settling_experiment": "Ablation study on Defects4J: compare each individual dimension alone vs. all 8 combined vs. prior art baselines. If full genome outperforms all individual dimensions and all baselines, multi-dimensional structure is justified. If any single dimension matches full genome performance, the 8-dimensional architecture is not empirically justified."
+    },
+    {
+      "id": "A4",
+      "title": "The cross-language claim does not logically follow",
+      "argument": "With EXECUTION dimension excluded, TEMPORAL and RESOURCE requiring unsolved normalization (OP-6), and CONTROL requiring cross-language alignment that is an explicit open problem (OP-4), the effective cross-language genome is 3-5 dimensions. The remaining claim reduces to 'programs with the same observable external behavior look similar on external interface metrics' — which is trivially true. The test-oracle objection also applies: H3 requires a shared test oracle to verify equivalence, making SBG redundant for the verification step.",
+      "rebuttal_available": true,
+      "rebuttal_summary": "H3 is the weakest hypothesis and the model flags it. The novel claim is that SBG provides runtime-behavioral evidence for cross-language equivalence without a shared IR — all prior cross-language similarity work is static and relies on syntactic/API-name similarity. g_X and g_D can detect cross-language equivalence even when variable names, API names, and code structure differ entirely. The claim must be narrowed to the achievable 3-5 dimensions.",
+      "settling_experiment": "50 paired algorithm implementations (Python vs. Java, OJ dataset). Measure D(C_E(G(P_Python)), C_E(G(P_Java))) for equivalent vs. non-equivalent pairs. Compare AUC against CLCDSA static baseline. H3 is validated if SBG achieves higher AUC than CLCDSA on behaviorally equivalent pairs."
+    }
+  ],
+  "moderate_attacks": [
+    {
+      "id": "A2",
+      "title": "SBG is equivalent to trace comparison / trace feature vectors",
+      "argument": "Genome extraction Phi is operationally a dimensionality reduction from trace space to feature vectors. Any trace comparison system that extracts features and computes distance subsumes SBG mechanically.",
+      "rebuttal_summary": "SBG is a semantic abstraction, not a trace compressor. It produces cross-language, cross-input, cross-environment stable behavioral signatures. Raw trace comparison is cross-language incoherent and cross-input incommensurable. The abstraction level (what behavior was produced) vs. the trace level (what instructions executed) is the distinction."
+    },
+    {
+      "id": "A5",
+      "title": "Combining known representations is not novel (Joern, ProGraML)",
+      "argument": "Joern (S&P 2014) and ProGraML (ICML 2021) already demonstrate the principle of combining multiple program representations into a single unified object. SBG merely adds a runtime modality.",
+      "rebuttal_summary": "Joern and ProGraML are entirely static. The dynamic behavioral pseudometric analog — combining 8 runtime behavioral features with formally specified distances — does not exist. The principle is not novel; the dynamic instantiation with formal pseudometric properties is."
+    },
+    {
+      "id": "A6",
+      "title": "Invariance claims have counterexamples; assumptions are unrealistically strong",
+      "argument": "H1 fails for non-deterministic programs (CE-1), input-distribution-sensitive programs (CE-2), and optimization-transformed programs (CE-3). Assumption A6 (determinism) is violated by the majority of production software.",
+      "rebuttal_summary": "All three counterexamples are acknowledged in the model (A6 explicit, H1 caveats explicit). The attack is strongest as a scope limitation: SBG guarantees apply only to deterministic programs under controlled execution. This scope must be stated more prominently in any publication."
+    },
+    {
+      "id": "A7",
+      "title": "No evidence that multi-dimensional distance outperforms single embedding",
+      "argument": "Learned neural embeddings (CodeBERT, GraphCodeBERT) produce single dense vectors that can capture cross-dimensional interactions. A hand-crafted 8-dimensional symbolic distance may be a suboptimal inductive bias. The comparison has not been run.",
+      "rebuttal_summary": "Existing neural embedding baselines are static (code structure, not runtime behavior). SBG's structured distance is interpretable (per-dimension breakdown) and language-agnostic at runtime. Whether SBG outperforms a learned behavioral embedding is an open empirical question that should be addressed."
+    },
+    {
+      "id": "A9",
+      "title": "Existing tools (APM, Pin, DynamoRIO) already do this end-to-end",
+      "argument": "APM tools (Datadog, NewRelic) collect resource/temporal/error/interaction metrics for running services and detect anomalies across deployments. Pin/DynamoRIO can be scripted to collect all SBG genome dimensions.",
+      "rebuttal_summary": "APM tools are monitoring dashboards, not behavioral comparison systems. They have no formal distance function, no normalized pseudometric, no regression oracle. Pin/DynamoRIO are platforms requiring custom development. SBG's novelty is the formal specification and the regression oracle hypothesis, not the data collection."
+    }
+  ],
+  "weak_attacks": [
+    {
+      "id": "A8",
+      "title": "'Genome' terminology is scientifically unjustified — it is marketing",
+      "argument": "The biological genome analogy is imprecise. The SBG 'genome' has no physical substrate, no replication mechanism, no evolutionary dynamics. The term exploits biological prestige without scientific justification.",
+      "rebuttal_summary": "The analogy is metaphorical and acknowledged as such. 'Genome' is used as a mnemonic for a complete, stable, heritable behavioral identity — a strained but not dishonest analogy. The formal object is defined precisely in Definition 8 regardless of terminology. Recommendation: use 'genome' only in high-level description; all formal definitions should use neutral language."
+    }
+  ],
+  "surviving_claims": [
+    {
+      "id": "S1",
+      "claim": "Formal behavioral pseudometric on execution-trace-derived features",
+      "confidence": "HIGH",
+      "description": "No prior work defines a formally specified, multi-dimensional, normalized pseudometric on execution-trace-derived behavioral features with formally stated metric properties, dimension-specific distance justifications, and explicit assumptions. Survives all 10 attacks."
+    },
+    {
+      "id": "S2",
+      "claim": "Longitudinal behavioral genome tracking across software version history",
+      "confidence": "HIGH",
+      "description": "No prior work defines or implements a versioned, queryable record of how a program's full behavioral profile evolves across its entire release history. All regression testing work compares pairs; no system maintains a cumulative behavioral history. Survives all 10 attacks."
+    },
+    {
+      "id": "S3",
+      "claim": "Test-suite-free regression oracle (H5)",
+      "confidence": "MODERATE — EMPIRICALLY UNPROVEN",
+      "description": "SBG proposes a regression detection oracle without requiring a test suite or formal specification, using only execution trace behavioral distance. No prior work demonstrates this. Novel as a claim; requires H5 empirical validation (recall >= 0.80, precision >= 0.70 on Defects4J)."
+    },
+    {
+      "id": "S4",
+      "claim": "Cross-language behavioral equivalence without shared IR",
+      "confidence": "MODERATE — NARROWER THAN CLAIMED",
+      "description": "SBG can detect behavioral equivalence across language families without requiring a shared compilation target, using g_X and g_D. All prior cross-language similarity work is static or requires shared IR. Claim is credible but must be narrowed to 3-5 achievable dimensions, not all 8. OP-4 and OP-6 must be resolved for full H3."
+    },
+    {
+      "id": "S5",
+      "claim": "Behavioral genome as software supply-chain artifact",
+      "confidence": "WEAK — VISION CLAIM",
+      "description": "Treating behavioral signatures as first-class supply-chain artifacts (analogous to SBOM) is a novel application vision but not a technical novelty requiring new algorithms. Should be presented as application vision, not core scientific contribution."
+    }
+  ],
+  "recommended_sharpening": [
+    "Lead with the regression oracle hypothesis (H5) as the primary falsifiable contribution, not the genome metaphor. Abstract should read: 'We propose and validate a test-suite-free, language-agnostic behavioral regression detector based on a formally specified execution-trace pseudometric.'",
+    "Constrain the cross-language claim (H3) to achievable dimensions (g_D, g_X, partial g_C). Do not claim H3 across all 8 dimensions until OP-4 and OP-6 are resolved.",
+    "Run the ablation study (Attack 3 settling experiment) before any publication: compare each individual dimension alone vs. full 8-dimensional genome vs. TTAnalyze-style baseline on Defects4J. If any single dimension matches full genome performance, justify multi-dimensional structure on interpretability grounds only.",
+    "State the determinism scope limitation (Assumption A6) prominently. SBG's stability and sensitivity guarantees apply to deterministic programs under controlled execution. Concurrent programs, time-dependent programs, and programs using unseeded randomness require additional policy specification.",
+    "Address Assumption A6 (non-determinism) with a defined canonical policy: fixed RNG seeds, serialized thread scheduling, or multiple-run averaging with variance tracking (OP-3).",
+    "Restrict 'genome' metaphor to high-level, non-formal contexts. All technical claims and definitions should use neutral language: 'behavioral fingerprint', 'behavioral profile', 'multi-dimensional behavioral signature'.",
+    "Run Attack 7's neural embedding comparison: train a behavioral embedding on execution trace features and compare against SBG structured distance on regression detection. Report the interpretability / discriminability trade-off explicitly.",
+    "The irreducible scientific contribution statement should be: 'A formally specified execution-behavioral pseudometric that detects semantic regressions in software version histories at high recall, without requiring test suites or formal specifications, and that is language-agnostic by construction.'"
+  ],
+  "novelty_verdict": "MODERATE",
+  "novelty_verdict_justification": "SBG has two clearly novel claims that survive all adversarial attacks (formal behavioral pseudometric S1; longitudinal behavioral genome S2), one potentially novel empirical claim requiring validation (test-suite-free regression oracle S3), and one novel-but-narrowed claim (cross-language equivalence S4). The project is not redundant with any reviewed prior work, but its contribution statement is currently spread across 8 dimensions and a genome metaphor rather than concentrated on the two strong claims. After sharpening, the project could support a STRONG verdict contingent on H5 empirical validation."
+}

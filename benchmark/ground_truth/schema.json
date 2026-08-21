@@ -1,0 +1,207 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sbg-project/schemas/ground_truth_record.json",
+  "title": "GroundTruthRecord",
+  "description": "Provenance record for a single SBG benchmark pair label, implementing the four-tier ground-truth protocol defined in BENCHMARK_DESIGN.md §3.",
+  "type": "object",
+  "required": [
+    "base_id",
+    "variant_id",
+    "transformation_type",
+    "semantic_relation",
+    "gt_tier",
+    "confidence",
+    "n_tests_run",
+    "n_divergent",
+    "divergent_examples",
+    "witness_input",
+    "validation_method",
+    "validator_version",
+    "timestamp"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "base_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stem identifier of the base program file (e.g. 'sort_v1')."
+    },
+    "variant_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stem identifier of the variant / transformed program file."
+    },
+    "transformation_type": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Transformation taxonomy code, e.g. 'SP-3' or 'SC-2'. Prefix 'SP-' implies semantics-preserving; prefix 'SC-' implies semantics-changing.",
+      "examples": ["SP-1","SP-2","SP-3","SP-4","SP-5","SP-6","SP-7","SP-8","SP-9","SP-10","SP-11","SP-12",
+                   "SC-1","SC-2","SC-3","SC-4","SC-5","SC-6","SC-7","SC-8","SC-9","SC-10","SC-11","SC-12","SC-13","SC-14"]
+    },
+    "semantic_relation": {
+      "type": "string",
+      "enum": ["EQUIVALENT", "CHANGED"],
+      "description": "'EQUIVALENT' = semantics-preserving pair (SP); 'CHANGED' = semantics-changing pair (SC)."
+    },
+    "gt_tier": {
+      "type": "string",
+      "enum": ["GT-T1", "GT-T2", "GT-T3", "GT-T4"],
+      "description": "Ground-truth tier. GT-T1 = formal proof (confidence ≥ 0.999); GT-T2 = exhaustive partition testing (≥ 0.990); GT-T3 = certified transformation + ≥ 1000 tests (≥ 0.950); GT-T4 = broad testing + expert review (≥ 0.900)."
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Calibrated confidence in the semantic_relation label. Must satisfy tier floor: GT-T1 ≥ 0.999, GT-T2 ≥ 0.990, GT-T3 ≥ 0.950, GT-T4 ≥ 0.900."
+    },
+    "n_tests_run": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of input/output test pairs executed during differential testing."
+    },
+    "n_divergent": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of test inputs on which the two programs produced different observable outputs. Must be 0 for EQUIVALENT labels."
+    },
+    "divergent_examples": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "JSON-serialised representation of a divergent input."
+      },
+      "maxItems": 5,
+      "description": "Up to 5 representative inputs on which divergence was observed (JSON strings). Empty for EQUIVALENT labels."
+    },
+    "witness_input": {
+      "oneOf": [
+        {"type": "string", "minLength": 1, "description": "JSON-serialised first witnessed divergent input."},
+        {"type": "null"}
+      ],
+      "description": "The first input that produced a divergent output, or null if no divergence was observed."
+    },
+    "validation_method": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Machine-readable method identifier, e.g. 'certified_transformation_differential_testing', 'exhaustive_partition_differential_testing', 'differential_testing_witness_found', 'sc_type_taxonomy_no_witness'. May include the prefix 'sp_pair_divergence_alert_' when an SP-labelled pair produced unexpected divergence.",
+      "examples": [
+        "exhaustive_partition_differential_testing",
+        "certified_transformation_differential_testing",
+        "broad_differential_testing",
+        "limited_differential_testing",
+        "differential_testing_divergence_found",
+        "differential_testing_witness_found",
+        "sc_type_taxonomy_no_witness",
+        "sp_pair_divergence_alert_broad_differential_testing",
+        "no_tests_run"
+      ]
+    },
+    "validator_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version string of the validator that produced this record (e.g. '1.0.0')."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC timestamp at which the record was produced (e.g. '2025-06-01T12:00:00+00:00')."
+    },
+    "formal_proof_artifact": {
+      "oneOf": [
+        {"type": "string", "minLength": 1, "description": "Path or URI to the formal proof artifact (GT-T1 only)."},
+        {"type": "null"}
+      ],
+      "description": "Path or URI to the stored formal proof object (GT-T1 only). Null for GT-T2 through GT-T4."
+    }
+  },
+  "allOf": [
+    {
+      "description": "EQUIVALENT labels must have zero divergences.",
+      "if": {
+        "properties": { "semantic_relation": { "const": "EQUIVALENT" } },
+        "required": ["semantic_relation"]
+      },
+      "then": {
+        "properties": {
+          "n_divergent": { "const": 0 },
+          "divergent_examples": { "maxItems": 0 },
+          "witness_input": { "type": "null" }
+        }
+      }
+    },
+    {
+      "description": "GT-T1 confidence floor: ≥ 0.999.",
+      "if": {
+        "properties": { "gt_tier": { "const": "GT-T1" } },
+        "required": ["gt_tier"]
+      },
+      "then": {
+        "properties": { "confidence": { "minimum": 0.999 } }
+      }
+    },
+    {
+      "description": "GT-T2 confidence floor: ≥ 0.990.",
+      "if": {
+        "properties": { "gt_tier": { "const": "GT-T2" } },
+        "required": ["gt_tier"]
+      },
+      "then": {
+        "properties": { "confidence": { "minimum": 0.990 } }
+      }
+    },
+    {
+      "description": "GT-T3 confidence floor: ≥ 0.950.",
+      "if": {
+        "properties": { "gt_tier": { "const": "GT-T3" } },
+        "required": ["gt_tier"]
+      },
+      "then": {
+        "properties": { "confidence": { "minimum": 0.950 } }
+      }
+    },
+    {
+      "description": "GT-T4 confidence floor: ≥ 0.900.",
+      "if": {
+        "properties": { "gt_tier": { "const": "GT-T4" } },
+        "required": ["gt_tier"]
+      },
+      "then": {
+        "properties": { "confidence": { "minimum": 0.900 } }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "base_id": "C1-qsort-v1",
+      "variant_id": "C1-qsort-v1-SP3-001",
+      "transformation_type": "SP-3",
+      "semantic_relation": "EQUIVALENT",
+      "gt_tier": "GT-T4",
+      "confidence": 0.952,
+      "n_tests_run": 1000,
+      "n_divergent": 0,
+      "divergent_examples": [],
+      "witness_input": null,
+      "validation_method": "broad_differential_testing",
+      "validator_version": "1.0.0",
+      "timestamp": "2025-06-01T12:00:00+00:00",
+      "formal_proof_artifact": null
+    },
+    {
+      "base_id": "C4-newton-v1",
+      "variant_id": "C4-newton-v1-SC2-001",
+      "transformation_type": "SC-2",
+      "semantic_relation": "CHANGED",
+      "gt_tier": "GT-T1",
+      "confidence": 0.999,
+      "n_tests_run": 500,
+      "n_divergent": 87,
+      "divergent_examples": ["1.0", "2.5", "-3.0", "0.001", "100.0"],
+      "witness_input": "1.0",
+      "validation_method": "differential_testing_witness_found",
+      "validator_version": "1.0.0",
+      "timestamp": "2025-06-01T12:01:00+00:00",
+      "formal_proof_artifact": null
+    }
+  ]
+}

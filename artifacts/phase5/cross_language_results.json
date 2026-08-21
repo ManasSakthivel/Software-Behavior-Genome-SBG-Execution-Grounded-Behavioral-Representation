@@ -1,0 +1,483 @@
+{
+  "experiment": "E9_cross_language_phase5",
+  "timestamp": "2026-08-20T06:25:40Z",
+  "hypothesis_addressed": [
+    "H4"
+  ],
+  "n_pairs": 15,
+  "n_equivalent": 11,
+  "n_changed": 4,
+  "method": "normalized_control_flow_features",
+  "feature_keys": [
+    "n_functions",
+    "n_loops",
+    "n_conditions",
+    "n_calls",
+    "cyclomatic_complexity",
+    "has_recursion",
+    "return_types_present",
+    "has_exception_handling"
+  ],
+  "equiv_mean_sim": 0.7479,
+  "changed_mean_sim": 0.7759,
+  "inversion": true,
+  "auroc": 0.4091,
+  "h4_verdict": {
+    "status": "NOT_SUPPORTED",
+    "interpretation": "Normalized control-flow features: EQUIV_mean=0.7479, CHANGED_mean=0.7759, AUROC=0.4091. H4 is NOT fully supported. Small corpus (n=15) limits statistical power. Full H4 evaluation requires larger corpus (50+ pairs per category)."
+  },
+  "pair_results": [
+    {
+      "pair_id": "cl_equiv_bubble_sort",
+      "semantic_relation": "EQUIVALENT",
+      "category": "sorting",
+      "python_features": {
+        "n_functions": 2,
+        "n_loops": 2,
+        "n_conditions": 1,
+        "n_calls": 11,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 2,
+        "n_conditions": 1,
+        "n_calls": 1,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.8309,
+      "python_cyclomatic_complexity": 4,
+      "java_cyclomatic_complexity": 4
+    },
+    {
+      "pair_id": "cl_equiv_binary_search",
+      "semantic_relation": "EQUIVALENT",
+      "category": "search",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 1,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 1,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.8667,
+      "python_cyclomatic_complexity": 4,
+      "java_cyclomatic_complexity": 4
+    },
+    {
+      "pair_id": "cl_equiv_factorial",
+      "semantic_relation": "EQUIVALENT",
+      "category": "mathematical",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 1,
+        "n_calls": 2,
+        "cyclomatic_complexity": 3,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 1,
+        "n_calls": 2,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": true
+      },
+      "normalized_cf_similarity": 0.7033,
+      "python_cyclomatic_complexity": 3,
+      "java_cyclomatic_complexity": 4
+    },
+    {
+      "pair_id": "cl_equiv_is_palindrome",
+      "semantic_relation": "EQUIVALENT",
+      "category": "string",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 0,
+        "n_conditions": 0,
+        "n_calls": 1,
+        "cyclomatic_complexity": 1,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 1,
+        "n_calls": 4,
+        "cyclomatic_complexity": 3,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.4567,
+      "python_cyclomatic_complexity": 1,
+      "java_cyclomatic_complexity": 3
+    },
+    {
+      "pair_id": "cl_equiv_fibonacci",
+      "semantic_relation": "EQUIVALENT",
+      "category": "mathematical",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 2,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 2,
+        "cyclomatic_complexity": 5,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": true
+      },
+      "normalized_cf_similarity": 0.7093,
+      "python_cyclomatic_complexity": 4,
+      "java_cyclomatic_complexity": 5
+    },
+    {
+      "pair_id": "cl_equiv_gcd",
+      "semantic_relation": "EQUIVALENT",
+      "category": "mathematical",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 0,
+        "n_calls": 1,
+        "cyclomatic_complexity": 2,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 0,
+        "n_calls": 2,
+        "cyclomatic_complexity": 2,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.8067,
+      "python_cyclomatic_complexity": 2,
+      "java_cyclomatic_complexity": 2
+    },
+    {
+      "pair_id": "cl_equiv_linear_search",
+      "semantic_relation": "EQUIVALENT",
+      "category": "search",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 1,
+        "n_calls": 2,
+        "cyclomatic_complexity": 3,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 1,
+        "n_calls": 1,
+        "cyclomatic_complexity": 3,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.8067,
+      "python_cyclomatic_complexity": 3,
+      "java_cyclomatic_complexity": 3
+    },
+    {
+      "pair_id": "cl_equiv_insertion_sort",
+      "semantic_relation": "EQUIVALENT",
+      "category": "sorting",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 2,
+        "n_conditions": 0,
+        "n_calls": 2,
+        "cyclomatic_complexity": 3,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 2,
+        "n_conditions": 0,
+        "n_calls": 1,
+        "cyclomatic_complexity": 3,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.8067,
+      "python_cyclomatic_complexity": 3,
+      "java_cyclomatic_complexity": 3
+    },
+    {
+      "pair_id": "cl_equiv_count_chars",
+      "semantic_relation": "EQUIVALENT",
+      "category": "string",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 0,
+        "n_calls": 1,
+        "cyclomatic_complexity": 2,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 0,
+        "n_loops": 1,
+        "n_conditions": 0,
+        "n_calls": 4,
+        "cyclomatic_complexity": 2,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.79,
+      "python_cyclomatic_complexity": 2,
+      "java_cyclomatic_complexity": 2
+    },
+    {
+      "pair_id": "cl_equiv_is_prime",
+      "semantic_relation": "EQUIVALENT",
+      "category": "mathematical",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 4,
+        "n_calls": 0,
+        "cyclomatic_complexity": 6,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 4,
+        "n_calls": 1,
+        "cyclomatic_complexity": 6,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.7467,
+      "python_cyclomatic_complexity": 6,
+      "java_cyclomatic_complexity": 6
+    },
+    {
+      "pair_id": "cl_changed_bubble_sort_off_by_one",
+      "semantic_relation": "CHANGED",
+      "category": "sorting",
+      "python_features": {
+        "n_functions": 2,
+        "n_loops": 2,
+        "n_conditions": 1,
+        "n_calls": 11,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 2,
+        "n_conditions": 1,
+        "n_calls": 1,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.8309,
+      "python_cyclomatic_complexity": 4,
+      "java_cyclomatic_complexity": 4
+    },
+    {
+      "pair_id": "cl_changed_binary_search_wrong_return",
+      "semantic_relation": "CHANGED",
+      "category": "search",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 1,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 1,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.8667,
+      "python_cyclomatic_complexity": 4,
+      "java_cyclomatic_complexity": 4
+    },
+    {
+      "pair_id": "cl_changed_factorial_wrong_start",
+      "semantic_relation": "EQUIVALENT",
+      "category": "mathematical",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 1,
+        "n_calls": 2,
+        "cyclomatic_complexity": 3,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 1,
+        "n_calls": 2,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": true
+      },
+      "normalized_cf_similarity": 0.7033,
+      "python_cyclomatic_complexity": 3,
+      "java_cyclomatic_complexity": 4
+    },
+    {
+      "pair_id": "cl_changed_fibonacci_wrong_base",
+      "semantic_relation": "CHANGED",
+      "category": "mathematical",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 2,
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 2,
+        "n_calls": 2,
+        "cyclomatic_complexity": 5,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": true
+      },
+      "normalized_cf_similarity": 0.7093,
+      "python_cyclomatic_complexity": 4,
+      "java_cyclomatic_complexity": 5
+    },
+    {
+      "pair_id": "cl_changed_is_prime_excludes_two",
+      "semantic_relation": "CHANGED",
+      "category": "mathematical",
+      "python_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 4,
+        "n_calls": 0,
+        "cyclomatic_complexity": 6,
+        "max_nesting_depth": 0,
+        "has_recursion": false,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "java_features": {
+        "n_functions": 1,
+        "n_loops": 1,
+        "n_conditions": 3,
+        "n_calls": 1,
+        "cyclomatic_complexity": 5,
+        "max_nesting_depth": 0,
+        "has_recursion": true,
+        "return_types_present": true,
+        "has_exception_handling": false
+      },
+      "normalized_cf_similarity": 0.6967,
+      "python_cyclomatic_complexity": 6,
+      "java_cyclomatic_complexity": 5
+    }
+  ],
+  "limitation": "Java features extracted via regex heuristics, not a Java AST parser. Corpus size: 15 pairs \u2014 too small for robust AUROC estimates. Java semantic equivalence validated by manual inspection only. This is a preliminary Phase 5 result; full H4 requires larger corpus.",
+  "seed": 42
+}

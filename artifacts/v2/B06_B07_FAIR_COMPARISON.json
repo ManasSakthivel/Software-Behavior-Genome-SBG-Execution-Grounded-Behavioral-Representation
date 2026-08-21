@@ -1,0 +1,22 @@
+{
+  "phase": "3B",
+  "fairness_audit": {
+    "b06_inputs_identical_to_b07": true,
+    "n_canonical_inputs": 8,
+    "seed_identical": true,
+    "n_runs_identical": true,
+    "verdict": "FAIR"
+  },
+  "b06_auroc": 0.504966,
+  "b07_auroc": 0.528356,
+  "delta_b07_minus_b06": 0.02339,
+  "paired_bootstrap_ci_on_delta": [
+    -0.041545,
+    0.05431
+  ],
+  "p_b07_beats_b06_one_sided": 0.638,
+  "b06_inversion_delta": -0.024734,
+  "b07_inversion_delta": -0.045037,
+  "comparison_verdict": "DIRECTIONALLY_B07_BETTER",
+  "note": "B06 uses mean pairwise distance on V2 canonical inputs (no DynamicGenome). B07 uses DynamicGenome features. Same inputs, different representations."
+}

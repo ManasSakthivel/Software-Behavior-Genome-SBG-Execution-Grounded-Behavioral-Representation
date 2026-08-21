@@ -1,0 +1,156 @@
+{
+  "experiment": "phase5_regression_detection",
+  "timestamp": "2026-08-20T06:26:53Z",
+  "hypothesis_addressed": [
+    "H5"
+  ],
+  "constructed_evolution_pairs": [
+    {
+      "id": "state_machine_v1_v2_regression",
+      "description": "Traffic light state machine: correct v1, regression in v2 (wrong next state)",
+      "semantic_relation": "CHANGED",
+      "category": "state_machine",
+      "scores": {
+        "AST": 1.0,
+        "Token": 0.9963,
+        "Static_SBG": 1.0
+      },
+      "method_signals": {
+        "AST": {
+          "similarity": 1.0,
+          "signal": "MISSED"
+        },
+        "Token": {
+          "similarity": 0.9963,
+          "signal": "MISSED"
+        },
+        "Static_SBG": {
+          "similarity": 1.0,
+          "signal": "MISSED"
+        }
+      },
+      "provenance": "CONSTRUCTED \u2014 not real production code. Demonstrates state-transition regression."
+    },
+    {
+      "id": "lru_cache_v1_v2_refactor",
+      "description": "LRU cache: v1 uses dict, v2 refactors to OrderedDict (behavior-preserving)",
+      "semantic_relation": "EQUIVALENT",
+      "category": "cache",
+      "scores": {
+        "AST": 0.9018,
+        "Token": 0.8802,
+        "Static_SBG": 0.9199
+      },
+      "method_signals": {
+        "AST": {
+          "similarity": 0.9018,
+          "signal": "CORRECT"
+        },
+        "Token": {
+          "similarity": 0.8802,
+          "signal": "CORRECT"
+        },
+        "Static_SBG": {
+          "similarity": 0.9199,
+          "signal": "CORRECT"
+        }
+      },
+      "provenance": "CONSTRUCTED \u2014 demonstrates semantics-preserving refactor (behavior-equivalent)."
+    },
+    {
+      "id": "rate_limiter_v1_v2_regression",
+      "description": "Rate limiter: v1 correct, v2 has off-by-one in max_requests check",
+      "semantic_relation": "CHANGED",
+      "category": "rate_limiting",
+      "scores": {
+        "AST": 0.9891,
+        "Token": 0.9946,
+        "Static_SBG": 0.9607
+      },
+      "method_signals": {
+        "AST": {
+          "similarity": 0.9891,
+          "signal": "MISSED"
+        },
+        "Token": {
+          "similarity": 0.9946,
+          "signal": "MISSED"
+        },
+        "Static_SBG": {
+          "similarity": 0.9607,
+          "signal": "MISSED"
+        }
+      },
+      "provenance": "CONSTRUCTED \u2014 demonstrates off-by-one regression in rate limiting logic."
+    }
+  ],
+  "phase1_regression_from_e10": {
+    "AST": {
+      "auroc": 0.5528,
+      "auroc_ci": [
+        0.5093,
+        0.5936
+      ],
+      "auprc": 0.4779,
+      "tpr_at_fpr5pct": {
+        "tpr": 0.0082,
+        "fpr": 0.0476,
+        "threshold": 0.572
+      },
+      "tpr_at_fpr10pct": {
+        "tpr": 0.0082,
+        "fpr": 0.0979,
+        "threshold": 0.678
+      },
+      "practical_regression_detection": "At FPR\u22645%: TPR=0.82% (catches 1% of regressions while mis-flagging \u22645% of non-regressions)"
+    },
+    "Token": {
+      "auroc": 0.4043,
+      "auroc_ci": [
+        0.3685,
+        0.446
+      ],
+      "auprc": 0.4154,
+      "tpr_at_fpr5pct": {
+        "tpr": 0.0,
+        "fpr": 0.0476,
+        "threshold": 0.9008
+      },
+      "tpr_at_fpr10pct": {
+        "tpr": 0.0464,
+        "fpr": 0.0979,
+        "threshold": 0.9135
+      },
+      "practical_regression_detection": "At FPR\u22645%: TPR=0.00% (catches 0% of regressions while mis-flagging \u22645% of non-regressions)"
+    },
+    "Static_SBG": {
+      "auroc": 0.3491,
+      "auroc_ci": [
+        0.3071,
+        0.3835
+      ],
+      "auprc": 0.3832,
+      "tpr_at_fpr5pct": {
+        "tpr": 0.0,
+        "fpr": 0.0476,
+        "threshold": 0.8222
+      },
+      "tpr_at_fpr10pct": {
+        "tpr": 0.0,
+        "fpr": 0.0979,
+        "threshold": 0.8591
+      },
+      "practical_regression_detection": "At FPR\u22645%: TPR=0.00% (catches 0% of regressions while mis-flagging \u22645% of non-regressions)"
+    }
+  },
+  "h5_verdict": {
+    "status": "NOT_SUPPORTED",
+    "phase1_best_auroc": 0.5528,
+    "constructed_pairs_n": 3,
+    "ast_direction_correct_on_constructed": false,
+    "interpretation": "Phase 1 benchmark: best regression detection AUROC=0.5528 < 0.65 threshold. Constructed evolution pairs (3 pairs): AST direction incorrect (EQUIV > CHANGED: False). H5 NOT SUPPORTED: regression detection is not reliable with current representations."
+  },
+  "finding": "Phase 1 benchmark: best regression detection AUROC=0.5528 < 0.65 threshold. Constructed evolution pairs (3 pairs): AST direction incorrect (EQUIV > CHANGED: False). H5 NOT SUPPORTED: regression detection is not reliable with current representations.",
+  "provenance_note": "All constructed evolution pairs are hand-crafted examples with explicit provenance (CONSTRUCTED label). They are NOT claimed to be real production code or real commit history.",
+  "seed": 42
+}

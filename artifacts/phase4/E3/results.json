@@ -1,0 +1,196 @@
+{
+  "experiment": "E3",
+  "timestamp": "2026-08-20T06:14:40Z",
+  "hypothesis_addressed": [
+    "H3"
+  ],
+  "n_equiv_pairs": 378,
+  "n_changed_pairs": 366,
+  "n_sp_types": 12,
+  "n_sc_types": 13,
+  "stability_results": {
+    "SBG_static": {
+      "sp_stats": {
+        "mean": 0.96193,
+        "std": 0.05954,
+        "ci_mean_lo": 0.95607,
+        "ci_mean_hi": 0.96779,
+        "ci_std_lo": 0.05378,
+        "ci_std_hi": 0.06473,
+        "n": 378
+      },
+      "sc_stats": {
+        "mean": 0.99544,
+        "std": 0.00929,
+        "ci_mean_lo": 0.99449,
+        "ci_mean_hi": 0.9964,
+        "ci_std_lo": 0.00662,
+        "ci_std_hi": 0.01184,
+        "n": 366
+      },
+      "var_diff_sc_minus_sp": -0.003459,
+      "permutation_p_one_sided": 1.0,
+      "glasses_delta": 0.5628,
+      "per_transform_std": {
+        "SP-2": 0.05726,
+        "SP-3": 0.04072,
+        "SP-4": 0.00268,
+        "SP-5": 0.03302,
+        "SP-6": 0.00685,
+        "SP-8": 0.02508,
+        "SP-9": 0.00418,
+        "SP-10": 0.0,
+        "SP-12": 0.00219,
+        "SP-11": 0.00594,
+        "SP-1": 0.0,
+        "SP-7": 0.05793
+      },
+      "per_mutation_std": {
+        "SC-1": 0.0,
+        "SC-2": 0.00441,
+        "SC-3": 0.0,
+        "SC-4": 0.00858,
+        "SC-5": 0.0,
+        "SC-6": 0.0005,
+        "SC-9": 0.0,
+        "SC-11": 0.00799,
+        "SC-13": 0.00658,
+        "SC-8": 0.00063,
+        "SC-12": 0.00393,
+        "SC-7": 0.03619,
+        "SC-10": 0.00104
+      }
+    },
+    "AST": {
+      "sp_stats": {
+        "mean": 0.9306,
+        "std": 0.14046,
+        "ci_mean_lo": 0.91633,
+        "ci_mean_hi": 0.944,
+        "ci_std_lo": 0.12231,
+        "ci_std_hi": 0.15719,
+        "n": 378
+      },
+      "sc_stats": {
+        "mean": 0.97772,
+        "std": 0.05339,
+        "ci_mean_lo": 0.97173,
+        "ci_mean_hi": 0.98301,
+        "ci_std_lo": 0.03628,
+        "ci_std_hi": 0.0686,
+        "n": 366
+      },
+      "var_diff_sc_minus_sp": -0.016879,
+      "permutation_p_one_sided": 1.0,
+      "glasses_delta": 0.3355,
+      "per_transform_std": {
+        "SP-2": 0.0,
+        "SP-3": 0.09658,
+        "SP-4": 0.00144,
+        "SP-5": 0.03356,
+        "SP-6": 0.06067,
+        "SP-8": 0.04339,
+        "SP-9": 0.00217,
+        "SP-10": 0.0,
+        "SP-12": 0.00095,
+        "SP-11": 0.00693,
+        "SP-1": 0.0,
+        "SP-7": 0.07777
+      },
+      "per_mutation_std": {
+        "SC-1": 0.0027,
+        "SC-2": 2e-05,
+        "SC-3": 0.0,
+        "SC-4": 0.00786,
+        "SC-5": 0.00192,
+        "SC-6": 0.01206,
+        "SC-9": 0.00851,
+        "SC-11": 0.0,
+        "SC-13": 0.0998,
+        "SC-8": 0.00189,
+        "SC-12": 0.00566,
+        "SC-7": 0.01107,
+        "SC-10": 0.008
+      }
+    },
+    "Token": {
+      "sp_stats": {
+        "mean": 0.96466,
+        "std": 0.0508,
+        "ci_mean_lo": 0.95918,
+        "ci_mean_hi": 0.9694,
+        "ci_std_lo": 0.03245,
+        "ci_std_hi": 0.07218,
+        "n": 378
+      },
+      "sc_stats": {
+        "mean": 0.97755,
+        "std": 0.02324,
+        "ci_mean_lo": 0.97521,
+        "ci_mean_hi": 0.97987,
+        "ci_std_lo": 0.02092,
+        "ci_std_hi": 0.02541,
+        "n": 366
+      },
+      "var_diff_sc_minus_sp": -0.00204,
+      "permutation_p_one_sided": 1.0,
+      "glasses_delta": 0.2537,
+      "per_transform_std": {
+        "SP-2": 0.02623,
+        "SP-3": 0.02762,
+        "SP-4": 0.02387,
+        "SP-5": 0.02361,
+        "SP-6": 0.02389,
+        "SP-8": 0.02151,
+        "SP-9": 0.02387,
+        "SP-10": 0.02383,
+        "SP-12": 0.02383,
+        "SP-11": 0.02884,
+        "SP-1": 0.14707,
+        "SP-7": 0.04845
+      },
+      "per_mutation_std": {
+        "SC-1": 0.02348,
+        "SC-2": 0.02385,
+        "SC-3": 0.02385,
+        "SC-4": 0.02495,
+        "SC-5": 0.02383,
+        "SC-6": 0.02403,
+        "SC-9": 0.02382,
+        "SC-11": 0.02384,
+        "SC-13": 0.0239,
+        "SC-8": 0.01376,
+        "SC-12": 0.00698,
+        "SC-7": 0.00162,
+        "SC-10": 0.00242
+      }
+    }
+  },
+  "h3_verdicts": {
+    "SBG_static": {
+      "status": "NOT_SUPPORTED",
+      "sp_std": 0.05954,
+      "sc_std": 0.00929,
+      "p_val": 1.0,
+      "interpretation": "SP std=0.0595 >= SC std=0.0093. p=1.0000 (not significant at \u03b1=0.05). H3 NOT SUPPORTED: SBG is NOT MORE stable under refactoring."
+    },
+    "AST": {
+      "status": "NOT_SUPPORTED",
+      "sp_std": 0.14046,
+      "sc_std": 0.05339,
+      "p_val": 1.0,
+      "interpretation": "SP std=0.1405 >= SC std=0.0534. p=1.0000 (not significant at \u03b1=0.05). H3 NOT SUPPORTED: SBG is NOT MORE stable under refactoring."
+    },
+    "Token": {
+      "status": "NOT_SUPPORTED",
+      "sp_std": 0.0508,
+      "sc_std": 0.02324,
+      "p_val": 1.0,
+      "interpretation": "SP std=0.0508 >= SC std=0.0232. p=1.0000 (not significant at \u03b1=0.05). H3 NOT SUPPORTED: SBG is NOT MORE stable under refactoring."
+    }
+  },
+  "statistical_method": "permutation_test_1000_resamples_seed42 + bootstrap_CI_1000_resamples",
+  "finding": "Stability analysis tests H3: is SBG more stable (lower variance) under semantics-preserving transforms than under mutations? See h3_verdicts per method. Note: even if H3 is supported, the practical utility is limited because all AUROCs are near-random \u2014 variance stability does NOT imply discrimination power.",
+  "scientific_verdict": "See h3_verdicts per method \u2014 H3 requires var(SP) < var(SC) AND p<0.05",
+  "seed": 42
+}

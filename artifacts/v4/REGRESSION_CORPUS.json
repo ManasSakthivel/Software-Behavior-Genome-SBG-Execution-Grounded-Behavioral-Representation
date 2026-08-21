@@ -1,0 +1,111 @@
+{
+  "experiment": "PHASE5_REGRESSION_CORPUS",
+  "version": "v4",
+  "track": "B_manually_curated",
+  "n_pairs": 8,
+  "n_changed": 4,
+  "n_equivalent": 4,
+  "sbg_v3": {
+    "n_extracted": 8,
+    "n_correct_at_0_5": 4,
+    "accuracy_at_0_5": 0.5,
+    "auroc": 0.3125,
+    "note": "n=8 pairs, informational only"
+  },
+  "ast_baseline": {
+    "n_correct_at_0_5": 4,
+    "accuracy_at_0_5": 0.5,
+    "auroc": 0.0625
+  },
+  "disclaimer": "Track B contains 8 manually curated pairs. N=8 is too small for statistical conclusions. Reported for exploratory evidence only. BugsInPy real corpus requires system dependencies not available.",
+  "per_pair_results": [
+    {
+      "name": "insertion_sort_off_by_one_fix",
+      "label": "CHANGED",
+      "numeric_label": 1,
+      "description": "Classic off-by-one fix: < vs <= in inner loop comparison",
+      "sbg_v3_similarity": 0.998258,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 0.99925,
+      "sbg_correct": false,
+      "ast_correct": false
+    },
+    {
+      "name": "binary_search_bounds_fix",
+      "label": "CHANGED",
+      "numeric_label": 1,
+      "description": "Binary search: hi=len(a) vs hi=len(a)-1 changes behavior on empty/single",
+      "sbg_v3_similarity": 1.0,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 0.992156,
+      "sbg_correct": false,
+      "ast_correct": false
+    },
+    {
+      "name": "fibonacci_memo_addition",
+      "label": "EQUIVALENT",
+      "numeric_label": 0,
+      "description": "Adding memoization: same outputs, different execution behavior",
+      "sbg_v3_similarity": 1.0,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 0.928021,
+      "sbg_correct": true,
+      "ast_correct": true
+    },
+    {
+      "name": "quicksort_pivot_change",
+      "label": "EQUIVALENT",
+      "numeric_label": 0,
+      "description": "Pivot selection: first element vs middle element (changes behavior on sorted input)",
+      "sbg_v3_similarity": 0.871491,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 0.986646,
+      "sbg_correct": true,
+      "ast_correct": true
+    },
+    {
+      "name": "bubble_sort_early_exit_fix",
+      "label": "EQUIVALENT",
+      "numeric_label": 0,
+      "description": "Early exit optimization: same output but fewer operations",
+      "sbg_v3_similarity": 0.930815,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 0.996088,
+      "sbg_correct": true,
+      "ast_correct": true
+    },
+    {
+      "name": "gcd_algorithm_change",
+      "label": "EQUIVALENT",
+      "numeric_label": 0,
+      "description": "Recursive to iterative GCD: equivalent output, different execution structure",
+      "sbg_v3_similarity": 1.0,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 0.894484,
+      "sbg_correct": true,
+      "ast_correct": true
+    },
+    {
+      "name": "sum_logic_error",
+      "label": "CHANGED",
+      "numeric_label": 1,
+      "description": "Real bug: sum initialized to 1 instead of 0",
+      "sbg_v3_similarity": 1.0,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 1.0,
+      "sbg_correct": false,
+      "ast_correct": false
+    },
+    {
+      "name": "max_function_boundary",
+      "label": "CHANGED",
+      "numeric_label": 1,
+      "description": "Real bug: max returns wrong value for empty list",
+      "sbg_v3_similarity": 1.0,
+      "sbg_v3_extracted": true,
+      "ast_similarity": 1.0,
+      "sbg_correct": false,
+      "ast_correct": false
+    }
+  ]
+}

@@ -82,20 +82,36 @@ def permutation_test_delta(sims1, sims2, labels, n_perm=1000, seed=42):
 
 def holm_bonferroni(p_values, alpha=0.05):
     """
-    Holm-Bonferroni correction.
-    Returns dict of hypothesis -> (corrected_reject, corrected_alpha).
+    Holm-Bonferroni correction with step-down stopping rule.
+
+    Step-down rule: iterate hypotheses from smallest to largest p-value.
+    At the first hypothesis where p > alpha/(n-rank), that hypothesis and
+    ALL subsequent ones (larger p-values) automatically FAIL — even if a
+    later hypothesis would pass at its own corrected threshold.
+
+    This is the standard Holm (1979) procedure. Without the stopping rule
+    the procedure reduces to Bonferroni, which is conservative.
+
+    Returns dict of hypothesis -> {p_value, holm_rank, corrected_alpha, reject_h0}.
     """
     n = len(p_values)
     sorted_items = sorted(p_values.items(), key=lambda x: x[1])
     results = {}
+    stopped = False  # step-down: once we fail to reject, all subsequent fail
     for rank, (hyp, p) in enumerate(sorted_items):
         corrected_alpha = alpha / (n - rank)
-        reject = p <= corrected_alpha
+        if stopped:
+            reject = False
+        else:
+            reject = p <= corrected_alpha
+            if not reject:
+                stopped = True  # step-down: stop accepting after first failure
         results[hyp] = {
             "p_value": p,
             "holm_rank": rank + 1,
             "corrected_alpha": round(corrected_alpha, 6),
             "reject_h0": reject,
+            "stopped_by_step_down": stopped and not reject,
         }
     return results
 

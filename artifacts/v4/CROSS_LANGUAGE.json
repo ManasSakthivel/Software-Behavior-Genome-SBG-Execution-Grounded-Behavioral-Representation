@@ -1,0 +1,93 @@
+{
+  "experiment": "PHASE6_CROSS_LANGUAGE",
+  "version": "v4",
+  "java_infrastructure": {
+    "java_binary": "/usr/bin/java",
+    "javac_binary": "/usr/bin/javac",
+    "java_available": true,
+    "version": "openjdk version \"17.0.18\" 2026-01-20\nIBM Semeru Runtime Open Edition 17.0.18.1 (build 17.0.18+8)\nEcl"
+  },
+  "java_execution_status": "AVAILABLE",
+  "java_limitation_reason": null,
+  "cross_formulation_test": {
+    "n_groups": 2,
+    "n_equiv_pairs": 4,
+    "n_changed_pairs": 5,
+    "auroc": 0.225,
+    "mean_equiv_similarity": 0.7683,
+    "mean_changed_similarity": 0.8867,
+    "note": "Cross-formulation = same semantic task, different Python implementation style. N is small; informational only. Tests if SBG is invariant to implementation style.",
+    "groups": [
+      {
+        "group": "sort_group",
+        "n_impl": 3,
+        "within_equiv_pairs": [
+          {
+            "pair": "merge_sort vs timsort_builtin",
+            "label": "EQUIVALENT",
+            "distance": 0.393734,
+            "sim": 0.606266
+          },
+          {
+            "pair": "merge_sort vs insertion_sort",
+            "label": "EQUIVALENT",
+            "distance": 0.275533,
+            "sim": 0.724467
+          },
+          {
+            "pair": "timsort_builtin vs insertion_sort",
+            "label": "EQUIVALENT",
+            "distance": 0.156663,
+            "sim": 0.843337
+          }
+        ],
+        "cross_changed_pairs": [
+          {
+            "pair": "merge_sort vs buggy_sort",
+            "label": "CHANGED",
+            "distance": 0.297867,
+            "sim": 0.702133
+          },
+          {
+            "pair": "timsort_builtin vs buggy_sort",
+            "label": "CHANGED",
+            "distance": 0.135428,
+            "sim": 0.864572
+          },
+          {
+            "pair": "insertion_sort vs buggy_sort",
+            "label": "CHANGED",
+            "distance": 0.03195,
+            "sim": 0.96805
+          }
+        ]
+      },
+      {
+        "group": "search_group",
+        "n_impl": 2,
+        "within_equiv_pairs": [
+          {
+            "pair": "linear_search vs binary_search",
+            "label": "EQUIVALENT",
+            "distance": 0.101017,
+            "sim": 0.898983
+          }
+        ],
+        "cross_changed_pairs": [
+          {
+            "pair": "linear_search vs wrong_search",
+            "label": "CHANGED",
+            "distance": 0.0,
+            "sim": 1.0
+          },
+          {
+            "pair": "binary_search vs wrong_search",
+            "label": "CHANGED",
+            "distance": 0.101017,
+            "sim": 0.898983
+          }
+        ]
+      }
+    ]
+  }
+}

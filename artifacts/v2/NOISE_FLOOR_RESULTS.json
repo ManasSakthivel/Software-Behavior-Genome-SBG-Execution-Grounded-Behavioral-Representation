@@ -1,0 +1,978 @@
+{
+  "safeguard": "SAFEGUARD-6",
+  "phase": "3B",
+  "stability_criterion_cv_threshold": 0.05,
+  "n_runs": 5,
+  "seed": 42,
+  "n_programs_attempted": 13,
+  "n_programs_ok": 12,
+  "n_programs_failed": 1,
+  "n_programs_with_unstable_fields": 0,
+  "stability_verdict": "PARTIAL_MEASUREMENT",
+  "program_results": {
+    "api_rate_limiter": {
+      "status": "OK",
+      "prog_id": "api_rate_limiter",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 85.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 5.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 5.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 510.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 8.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "conc_read_write_lock": {
+      "status": "NO_ENTRY_FUNCTION"
+    },
+    "ds_hash_table": {
+      "status": "OK",
+      "prog_id": "ds_hash_table",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 154.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 7.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 7.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 7432.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 21.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "err_result_type": {
+      "status": "OK",
+      "prog_id": "err_result_type",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 4.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 6.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "file_config_parser": {
+      "status": "OK",
+      "prog_id": "file_config_parser",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 102.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 4.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 4.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 795.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 11.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "fsm_vending_machine": {
+      "status": "OK",
+      "prog_id": "fsm_vending_machine",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 90.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 5.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 5.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 215.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 12.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "graph_bfs_shortest_path": {
+      "status": "OK",
+      "prog_id": "graph_bfs_shortest_path",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "math_statistics": {
+      "status": "OK",
+      "prog_id": "math_statistics",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 6.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 0.933333,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.125,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 2.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 2.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 7.25,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.6614,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 2.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "parse_recursive_descent": {
+      "status": "OK",
+      "prog_id": "parse_recursive_descent",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 27.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 0.925926,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 6.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 6.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 32.375,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 3.6379,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 8.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "res_object_pool": {
+      "status": "OK",
+      "prog_id": "res_object_pool",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 60.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 4.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 4.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 191.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 8.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "sort_counting_sort": {
+      "status": "OK",
+      "prog_id": "sort_counting_sort",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 15.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 0.826667,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 38.625,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 21.731,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "sort_heapsort": {
+      "status": "OK",
+      "prog_id": "sort_heapsort",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 19.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 0.672444,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 1.75,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 2.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 109.75,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 102.8819,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 2.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    },
+    "str_tokenizer": {
+      "status": "OK",
+      "prog_id": "str_tokenizer",
+      "n_runs_actual": 5,
+      "n_runs_required": 5,
+      "field_stats": {
+        "coverage_size": {
+          "mean": 43.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "coverage_consistency": {
+          "mean": 1.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "exception_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_mean": {
+          "mean": 3.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "call_depth_max": {
+          "mean": 3.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_mean": {
+          "mean": 506.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "trace_length_std": {
+          "mean": 0.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        },
+        "n_unique_functions": {
+          "mean": 4.0,
+          "std": 0.0,
+          "cv": 0.0,
+          "n": 5,
+          "stable": true,
+          "criterion": "CV <= 0.05"
+        }
+      },
+      "n_stable_fields": 8,
+      "n_unstable_fields": 0,
+      "unstable_fields": []
+    }
+  },
+  "aggregate_field_stats": {
+    "coverage_size": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    },
+    "coverage_consistency": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    },
+    "exception_rate": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    },
+    "call_depth_mean": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    },
+    "call_depth_max": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    },
+    "trace_length_mean": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    },
+    "trace_length_std": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    },
+    "n_unique_functions": {
+      "mean_cv_across_programs": 0.0,
+      "max_cv_across_programs": 0.0,
+      "n_programs": 12,
+      "stable_in_all": true
+    }
+  },
+  "stable_fields": [
+    "coverage_size",
+    "coverage_consistency",
+    "exception_rate",
+    "call_depth_mean",
+    "call_depth_max",
+    "trace_length_mean",
+    "trace_length_std",
+    "n_unique_functions"
+  ],
+  "unstable_fields_any_program": []
+}

@@ -1,0 +1,73 @@
+{
+  "audit_timestamp": "2026-08-20T04:10:42.569367+00:00",
+  "auditor": "AUTOMATED_PHASE3_AUDIT",
+  "test_pairs": 744,
+  "dev_pairs": 615,
+  "train_pairs": 1691,
+  "same_dataset_all_baselines": true,
+  "same_splits_all_baselines": true,
+  "same_pair_definitions": true,
+  "same_labels": true,
+  "threshold_from_dev_only": true,
+  "test_accessed_after_threshold_frozen": true,
+  "leakage_checks": {
+    "base_program_leakage": false,
+    "transformation_family_leakage": false,
+    "category_leakage": false,
+    "near_duplicate_count": 0
+  },
+  "baseline_fairness_check": {
+    "B01": {
+      "implementation_fair": true,
+      "idf_from_train": true
+    },
+    "B02": {
+      "implementation_fair": true,
+      "normalization_documented": true
+    },
+    "B03": {
+      "implementation_fair": true,
+      "limitation_documented": true
+    },
+    "B04": {
+      "implementation_fair": true,
+      "is_full_pdg": false,
+      "documented_as_approximation": true
+    },
+    "B05": {
+      "implementation_fair": true,
+      "is_codebert": false,
+      "fallback_disclosed": true
+    },
+    "B06": {
+      "implementation_fair": true,
+      "uses_same_traces": true
+    },
+    "B07": {
+      "implementation_fair": true,
+      "is_sbg_ablation": true
+    },
+    "B08": {
+      "implementation_fair": true,
+      "weights_not_tuned_on_test": true
+    }
+  },
+  "key_finding": "ALL baselines converge to threshold\u22481.0 (predict all CHANGED). This occurs because: (1) SP transformations produce high structural distance (large syntactic changes) while (2) SC mutations produce low structural distance (small syntactic changes). Both structural and dynamic similarity measures are INVERSELY correlated with semantic change in this benchmark. AUROC < 0.5 for most baselines (anti-correlated with task). Best AUROC: B02 AST = 0.5528 (barely above random). This is a genuine scientific finding: structural similarity alone is insufficient for semantic change detection. All F1=0.66 results are the majority-class baseline.",
+  "honest_assessment": {
+    "sbg_vs_best_baseline": "TIE \u2014 both F1=0.6595, SBG AUROC=0.4237 vs B02 AUROC=0.5528",
+    "sbg_exceeds_random_chance": false,
+    "any_baseline_exceeds_random": "B02 marginally (AUROC=0.55)",
+    "benchmark_is_hard": true,
+    "benchmark_design_issue": "The benchmark construction (SP=large transforms, SC=small mutations) creates a structural-vs-semantic gap that all tested representations fail to bridge. This is a scientifically honest and important negative result."
+  },
+  "p0_issues": 0,
+  "p1_issues": [
+    "No baseline achieves AUROC > 0.60 \u2014 all effectively random for semantic discrimination",
+    "SBG provides no measurable advantage over AST similarity for this task",
+    "Dynamic traces provide negligible discriminative signal (AUROC=0.50)"
+  ],
+  "p2_issues": [
+    "B05 is a fallback, not CodeBERT \u2014 limits strength of embedding comparison",
+    "B04 is use-def approximation, not full PDG"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "safeguard": "SAFEGUARD-4",
+  "phase": "3B",
+  "hard_negative_types": [
+    "SC-3",
+    "SC-11"
+  ],
+  "n_sc3": 39,
+  "n_sc11": 39,
+  "n_equiv": 378,
+  "stratified_results": {
+    "SC-3": {
+      "B07_DYNAMIC_V2": {
+        "stratum": "SC-3",
+        "n": 417,
+        "n_changed": 39,
+        "n_equiv": 378,
+        "auroc": 0.544363,
+        "auprc": 0.093183,
+        "ci_lower": 0.483856,
+        "ci_upper": 0.607516,
+        "ci_valid": true,
+        "equiv_mean_sim": 0.875368,
+        "changed_mean_sim": 0.958402,
+        "inversion_delta": 0.083034,
+        "inversion_resolved": false,
+        "v1_reference_delta": 0.0335,
+        "near_identical_fraction": 0.8462,
+        "hard_negative_verdict": "NOT_SUPPORTED"
+      }
+    },
+    "SC-11": {
+      "B07_DYNAMIC_V2": {
+        "stratum": "SC-11",
+        "n": 417,
+        "n_changed": 39,
+        "n_equiv": 378,
+        "auroc": 0.789581,
+        "auprc": 0.259636,
+        "ci_lower": 0.720933,
+        "ci_upper": 0.844729,
+        "ci_valid": true,
+        "equiv_mean_sim": 0.875368,
+        "changed_mean_sim": 0.648858,
+        "inversion_delta": -0.22651,
+        "inversion_resolved": true,
+        "v1_reference_delta": 0.0335,
+        "near_identical_fraction": 0.1795,
+        "hard_negative_verdict": "SUPPORTED_FULLY_RESOLVED"
+      }
+    }
+  },
+  "sc3_verdict": "NOT_SUPPORTED",
+  "sc11_verdict": "SUPPORTED_FULLY_RESOLVED",
+  "overall_h9_hard_negative_verdict": "SUPPORTED_PARTIALLY",
+  "methodology_note": "Stratified bootstrap CI (Phase 3A fix). SC-3/SC-11 paired with all EQUIV pairs. n_perm=1000, seed=42."
+}

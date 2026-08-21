@@ -1,0 +1,58 @@
+{
+  "phase": "4",
+  "wave": "10",
+  "analysis": "statistical_reconciliation_h10_h11_h12",
+  "purpose": "Apply the SAME Holm-Bonferroni family (H1-H12, n=12, alpha=0.05, step-down stopping rule) already established in artifacts/v2/STATISTICAL_INTEGRITY.json to the NEW Phase 4 H10/H11/H12 evidence, rather than inventing a new correction scheme. No new statistical test was invented after seeing results; the family, correction method, and step-down rule were all pre-registered in docs/v2/HYPOTHESES_V2.md and fixed by Phase 3A.",
+  "preregistered_family": {
+    "hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "H11", "H12"],
+    "family_size": 12,
+    "familywise_alpha": 0.05,
+    "correction_method": "Holm-Bonferroni step-down",
+    "source": "docs/v2/HYPOTHESES_V2.md Statistical Protocol section; artifacts/v2/STATISTICAL_INTEGRITY.json holm_bonferroni_table"
+  },
+  "p_values_used_per_hypothesis": {
+    "H9": {"p_value": 0.0, "source": "artifacts/v2/H9_CORRECTED_RESULTS.json (Phase 3B, frozen)"},
+    "H7": {"p_value": 0.000217, "source": "artifacts/v2/H7_CORRECTED_RESULTS.json (Phase 3B, frozen)"},
+    "H12": {"p_value": 0.065934, "source": "artifacts/v2/H12_REGRESSION_RESULTS.json (Phase 4 Wave 6, B07_DYNAMIC_V2 permutation_p, tie-corrected)"},
+    "H1_H6_H8_H10_H11": {
+      "p_value": 1.0,
+      "note": "H1-H6 and H8 retain their Phase 3A/3B p=1.0 (never rejected null; unchanged by Phase 4). H10's pre-registered test is a deterministic spread/fragile-drop criterion (docs/v2/H10_ROBUSTNESS_DESIGN.md), not a null-hypothesis significance test with its own p-value; consistent with the Phase 3A precedent (artifacts/v2/STATISTICAL_INTEGRITY.json), it is assigned p=1.0 in this family-wise reconciliation since the pre-registered falsification criterion (spread<0.10 AND no fragile type) is NOT met for B07 (Wave 2: spread=0.28636 for B07, far exceeding 0.10). H11 is explicitly pre-registered as EXPLORATORY/underpowered by design (docs/v2/H11_CROSS_LANGUAGE_DESIGN.md) and its N=12 lower-bound diagnostic has permutation_p~0.41-0.42 (artifacts/v2/H11_CROSS_LANGUAGE_RESULTS.json) -- far from significant -- so it is likewise assigned p=1.0 for this family-wise table, consistent with never rejecting H0."
+    }
+  },
+  "holm_bonferroni_table_updated": [
+    {"hypothesis": "H9", "p_value": 0.0,      "holm_rank": 1,  "corrected_alpha": 0.004167, "reject_h0": true,  "stopped_by_step_down": false},
+    {"hypothesis": "H7", "p_value": 0.000217, "holm_rank": 2,  "corrected_alpha": 0.004545, "reject_h0": true,  "stopped_by_step_down": false},
+    {"hypothesis": "H12","p_value": 0.065934, "holm_rank": 3,  "corrected_alpha": 0.005,    "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H1", "p_value": 1.0,      "holm_rank": 4,  "corrected_alpha": 0.005556, "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H2", "p_value": 1.0,      "holm_rank": 5,  "corrected_alpha": 0.00625,  "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H3", "p_value": 1.0,      "holm_rank": 6,  "corrected_alpha": 0.007143, "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H4", "p_value": 1.0,      "holm_rank": 7,  "corrected_alpha": 0.008333, "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H5", "p_value": 1.0,      "holm_rank": 8,  "corrected_alpha": 0.01,     "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H6", "p_value": 1.0,      "holm_rank": 9,  "corrected_alpha": 0.0125,   "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H8", "p_value": 1.0,      "holm_rank": 10, "corrected_alpha": 0.016667, "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H10","p_value": 1.0,      "holm_rank": 11, "corrected_alpha": 0.025,    "reject_h0": false, "stopped_by_step_down": true},
+    {"hypothesis": "H11","p_value": 1.0,      "holm_rank": 12, "corrected_alpha": 0.05,     "reject_h0": false, "stopped_by_step_down": true}
+  ],
+  "critical_reconciliation_finding": "H12's OWN pre-registered point-estimate criterion (docs/v2/H12_REGRESSION_DESIGN.md Sec 4.4: 'WEAKLY_SUPPORTED: hybrid AUROC > 0.5528 but CI lower bound <= 0.5528') labels the Wave 6 result WEAKLY_SUPPORTED because 0.5706 > 0.5528. However, that criterion is a single-test point-estimate/CI rule, NOT a family-wise-corrected significance test. When H12's permutation p-value (0.0659, vs the chance level AUROC=0.5, which is the null actually tested by the permutation procedure) is placed into the SAME Holm-Bonferroni family used for H7/H9 (this repository's own pre-registered correction method, applied consistently), it is rejected at holm_rank=3 with alpha_corrected=0.005 (0.0659 > 0.005). H12 does NOT survive family-wise correction. The two statements ('WEAKLY_SUPPORTED' by its own single-test rule vs 'NOT SIGNIFICANT' under the family-wise correction used everywhere else in this project) are not contradictory -- they answer different questions -- but reporting only the former without the latter would be a selective-reporting violation. This reconciliation documents both, explicitly, side by side.",
+  "power_analysis_summary": {
+    "H10": {
+      "status": "Not a power question -- H10's pre-registered criterion is deterministic (spread < 0.10, no fragile drop > 0.30), fully executed on N=744 with per-stratum n ranging 20-70. Criterion FAILS for every one of the 7 methods evaluated (artifacts/v2/H10_ROBUSTNESS_RESULTS.json). This is a well-powered NEGATIVE result, not an underpowered one."
+    },
+    "H11": {
+      "achievable_n": 12,
+      "preregistered_target_n": 15,
+      "power_at_achievable_n": 0.1067,
+      "power_at_preregistered_n": 0.25,
+      "required_n_for_80pct_power": "120-150",
+      "verdict": "SEVERELY UNDERPOWERED -- reported honestly as INSUFFICIENT_EVIDENCE/UNDERPOWERED, not NOT_SUPPORTED, per pre-registration (docs/v2/H11_CROSS_LANGUAGE_DESIGN.md Sec 6)."
+    },
+    "H12": {
+      "n": 94,
+      "n_regression": 55,
+      "n_control": 39,
+      "note": "N=94 is the full available corpus (all 55 frozen regression pairs + all successfully-generated stratified controls -- no subsampling). This is a MODEST-but-not-trivially-small N; the non-significance at family-wise correction is a genuine result at this N, not simply an artifact of too few samples the way H11 is. A larger, independently-sourced control corpus (not derived from the same base programs via SP-transforms) would be needed to test whether the p=0.0659 result would sharpen or wash out further; this is flagged as a limitation (see docs/v2/PHASE4_LIMITATIONS.md), not glossed over."
+    }
+  },
+  "no_post_hoc_test_invention_statement": "No statistical test, correction method, or significance threshold was changed, added, or removed after seeing Phase 4 results. The Holm-Bonferroni family (H1-H12, n=12), the alpha=0.05, and the step-down stopping rule are IDENTICAL to those pre-registered in docs/v2/HYPOTHESES_V2.md and already applied in Phase 3A (artifacts/v2/STATISTICAL_INTEGRITY.json). Phase 4 only supplies NEW p-values for H12 (previously undefined -- zero negative-class pairs) and reconfirms H10's deterministic non-significance and H11's severe under-power, both already the case in Phase 3B.",
+  "compute_auroc_tie_bug_cross_cutting_caveat": "baselines/common.py::compute_auroc() uses a naive stable-sort sweep with NO tie-averaging (confirmed by direct code reading this phase). This is DISCLOSED, not fixed at the shared-module level, to avoid silently altering the frozen H7-H10 aggregate results that the entire Phase 3A/3B/pre-registration record is built on. Its measured impact ranges from negligible on the main 744-pair test set (naive 0.5304 vs tie-corrected 0.5434 for B07, non-verdict-changing) to SEVERE on the small, highly-duplicated H12 regression+control corpus (naive 0.9515 vs tie-corrected 0.5706 for B07 -- a ~0.38 AUROC difference, with the naive figure producing a mathematically impossible bootstrap CI that did not even contain the point estimate). Every AUROC reported for H10/H11/H12 in Phase 4 uses either (a) the shared naive compute_auroc where duplication is known to be low (H10/Wave2, H11/Wave5 -- both continuous/near-unique feature spaces), or (b) an explicitly local, disclosed, tie-averaged override (H12/Wave6 only, where duplication was severe). This is a genuine methodology finding, not a bug limited to one experiment, and must be listed as a P1 in the hostile review and a limitation in the final gate report."
+}

@@ -30,8 +30,19 @@ from typing import Any, Callable, Dict, List, Optional
 
 from sbg.extraction.dynamic.tracer import Tracer, ExecutionTrace
 
-# Programs excluded from dynamic execution (non-deterministic threading)
-_UNSAFE_PROGRAMS = {"conc_producer_consumer", "conc_read_write_lock"}
+# Programs excluded from dynamic execution (non-deterministic threading).
+#
+# Phase 4 Wave 1 fix: "conc_read_write_lock" was removed from this set.
+# Its __main__ test block spawns real threads (non-deterministic), but the
+# class-based execution adapter used by baselines/v2/b07_dynamic_v2.py
+# (Wave 1) drives the class's public API SEQUENTIALLY — no threads are
+# spawned — so it is safe to execute deterministically. See
+# docs/v2/ENTRYPOINT_LIMITATION.md for the disclosed limitation (sequential
+# correctness only, not genuine concurrent contention).
+#
+# "conc_producer_consumer" is retained for documentation purposes only; no
+# such program currently exists in benchmark/corpus/base_programs/.
+_UNSAFE_PROGRAMS = {"conc_producer_consumer"}
 
 
 @dataclass

@@ -1,0 +1,122 @@
+"""
+Edit distance (Levenshtein) with full DP table and alignment reconstruction.
+
+Spec: Given two strings s and t, compute the minimum number of single-character
+edits (insertions, deletions, substitutions) needed to transform s into t.
+Uses a full O(|s|×|t|) DP table. Also exposes:
+  - align(s, t) → (edit_script, aligned_s, aligned_t): a human-readable
+    alignment showing which operations were applied, where '-' marks a gap.
+  - edit_distance_bounded(s, t, max_dist): return the distance if ≤ max_dist,
+    else return max_dist + 1 (early-exit optimisation using diagonal band).
+"""
+from typing import List, Tuple
+
+def edit_distance(s: str, t: str) -> int:
+    """Return the Levenshtein edit distance between s and t."""
+    (m, n) = (len(s), len(t))
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    for idx in range(m + 1):
+        dp[idx][0] = idx
+    for j in range(n + 1):
+        dp[0][j] = j
+    for idx in range(1, m + 1):
+        for j in range(1, n + 1):
+            if s[idx - 1] == t[j - 1]:
+                dp[idx][j] = dp[idx - 1][j - 1]
+            else:
+                dp[idx][j] = 1 + min(dp[idx - 1][j], dp[idx][j - 1], dp[idx - 1][j - 1])
+    return dp[m][n]
+
+def align(s: str, t: str) -> Tuple[List[str], str, str]:
+    """
+    Return (edit_script, aligned_s, aligned_t).
+    edit_script is a list of 'M'(match), 'S'(substitution), 'I'(insert), 'D'(delete).
+    aligned_s and aligned_t have '-' for gaps.
+    """
+    (m, n) = (len(s), len(t))
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    for idx in range(m + 1):
+        dp[idx][0] = idx
+    for j in range(n + 1):
+        dp[0][j] = j
+    for idx in range(1, m + 1):
+        for j in range(1, n + 1):
+            if s[idx - 1] == t[j - 1]:
+                dp[idx][j] = dp[idx - 1][j - 1]
+            else:
+                dp[idx][j] = 1 + min(dp[idx - 1][j], dp[idx][j - 1], dp[idx - 1][j - 1])
+    (ops, as_, at_) = ([], [], [])
+    (idx, j) = (m, n)
+    while idx > 0 or j > 0:
+        if idx > 0 and j > 0 and (s[idx - 1] == t[j - 1]) and (dp[idx][j] == dp[idx - 1][j - 1]):
+            ops.append('M')
+            as_.append(s[idx - 1])
+            at_.append(t[j - 1])
+            idx -= 1
+            j -= 1
+        elif idx > 0 and j > 0 and (dp[idx][j] == dp[idx - 1][j - 1] + 1):
+            ops.append('S')
+            as_.append(s[idx - 1])
+            at_.append(t[j - 1])
+            idx -= 1
+            j -= 1
+        elif idx > 0 and dp[idx][j] == dp[idx - 1][j] + 1:
+            ops.append('D')
+            as_.append(s[idx - 1])
+            at_.append('-')
+            idx -= 1
+        else:
+            ops.append('I')
+            as_.append('-')
+            at_.append(t[j - 1])
+            j -= 1
+    ops.reverse()
+    as_.reverse()
+    at_.reverse()
+    return (ops, ''.join(as_), ''.join(at_))
+
+def edit_distance_bounded(s: str, t: str, max_dist: int) -> int:
+    """Return edit distance, or max_dist+1 if distance > max_dist (early exit)."""
+    (m, n) = (len(s), len(t))
+    if abs(m - n) > max_dist:
+        return max_dist + 1
+    dp = [[max_dist + 1] * (n + 1) for _ in range(m + 1)]
+    for idx in range(min(m, max_dist) + 1):
+        dp[idx][0] = idx
+    for j in range(min(n, max_dist) + 1):
+        dp[0][j] = j
+    for idx in range(1, m + 1):
+        for j in range(max(1, idx - max_dist), min(n, idx + max_dist) + 1):
+            if s[idx - 1] == t[j - 1]:
+                dp[idx][j] = dp[idx - 1][j - 1]
+            else:
+                dp[idx][j] = 1 + min(dp[idx - 1][j], dp[idx][j - 1], dp[idx - 1][j - 1])
+    output = dp[m][n]
+    return output if output <= max_dist else max_dist + 1
+
+def test_edit_distance():
+    assert edit_distance('kitten', 'sitting') == 3
+    assert edit_distance('Saturday', 'Sunday') == 3
+    assert edit_distance('', '') == 0
+    assert edit_distance('abc', '') == 3
+    assert edit_distance('', 'abc') == 3
+    assert edit_distance('hello', 'hello') == 0
+    assert edit_distance('a', 'b') == 1
+    assert edit_distance('a', '') == 1
+    assert edit_distance('', 'a') == 1
+    (ops, as_, at_) = align('cat', 'cut')
+    assert 'S' in ops
+    assert len(as_) == len(at_)
+    assert edit_distance_bounded('kitten', 'sitting', 5) == 3
+    assert edit_distance_bounded('kitten', 'sitting', 2) == 3
+    (ops2, _, _) = align('Saturday', 'Sunday')
+    subs = ops2.count('S')
+    dels = ops2.count('D')
+    ins = ops2.count('I')
+    assert subs + dels + ins == edit_distance('Saturday', 'Sunday')
+    print('All edit_distance tests passed.')
+if __name__ == '__main__':
+    test_edit_distance()
+    print(f"edit_distance('kitten','sitting') = {edit_distance('kitten', 'sitting')}")
+    (ops, as_, at_) = align('Sunday', 'Saturday')
+    print(f"alignment:\n  {as_}\n  {at_}\n  {''.join(ops)}")

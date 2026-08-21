@@ -1,0 +1,138 @@
+{
+  "audit_id": "B06_FAIR_AUDIT",
+  "version": "v2",
+  "safeguard": "SAFEGUARD-5",
+  "date": "2025-07-07",
+  "purpose": "Document the fairness issue in the B06-original vs B07-DYNAMIC-V2 comparison and the resolution implemented by B06-V2-FAIR.",
+
+  "b06_original_configuration": {
+    "file": "baselines/b06_dynamic.py",
+    "artifact_dir": "artifacts/phase3/B06",
+    "inputs": {
+      "type": "v1_mixed",
+      "int_inputs": [-5, 0, 1, 5, 10, 100],
+      "list_inputs": [[], [1], [1, 2, 3], [5, 4, 3, 2, 1]],
+      "str_inputs": ["", "a", "hello", "hello world"],
+      "total_inputs": 14,
+      "rationale": "Fixed mixed-type inputs designed for general Python programs"
+    },
+    "feature_representation": "B06_FLAT_TRACE",
+    "features": [
+      "call_bigrams_jaccard",
+      "coverage_jaccard",
+      "ret_type_hist_l1",
+      "exception_rate_diff"
+    ],
+    "reported_metrics": {
+      "test_auroc": 0.504554,
+      "test_f1": 0.659459,
+      "test_auprc": 0.481404,
+      "threshold": 1.000001,
+      "n_test_samples": 744
+    }
+  },
+
+  "b07_dynamic_v2_configuration": {
+    "file": "baselines/v2/b07_dynamic_v2.py",
+    "artifact_dir": "artifacts/v2/B07",
+    "inputs": {
+      "type": "v2_canonical",
+      "list": [
+        [],
+        [1],
+        [3, 1, 4, 1, 5, 9, 2, 6],
+        [10, 9, 8, 7, 6, 5],
+        [0, 0, 0, 0],
+        [2, 1],
+        [-3, 0, 3],
+        [0, 1, 2, 3, 4, 5, 6, 7]
+      ],
+      "total_inputs": 8,
+      "rationale": "SAFEGUARD-3: v2 inputs independent from v1; list-only to match benchmark program signatures"
+    },
+    "feature_representation": "DYNAMIC_GENOME",
+    "features": [
+      "DynamicGenome via SandboxRunner + TraceNormalizer + DynamicGenomeExtractor"
+    ],
+    "reported_metrics": {
+      "test_auroc": 0.531023,
+      "test_f1": 0.659459,
+      "test_auprc": 0.510099,
+      "threshold": 1.000001,
+      "n_test_samples": 744
+    }
+  },
+
+  "fairness_issue": {
+    "description": "The comparison B06-original vs B07-DYNAMIC-V2 simultaneously varies two independent factors: (1) the input set used for execution and (2) the feature representation derived from those traces. This is a confounded comparison — any observed difference in AUROC cannot be attributed solely to the feature representation choice.",
+    "variable_1_inputs": {
+      "b06_original": "14 mixed-type inputs (int, list, str)",
+      "b07_dynamic_v2": "8 list-only V2 canonical inputs",
+      "confound": "YES — different coverage of program behaviour; mixed types may cause more exceptions in list-sorting programs, inflating exception_rate similarity artificially"
+    },
+    "variable_2_features": {
+      "b06_original": "Flat trace features: call bigrams + coverage + ret type + exception rate",
+      "b07_dynamic_v2": "DynamicGenome: structured representation via SandboxRunner + TraceNormalizer",
+      "confound": "YES — this is the intended experimental variable"
+    },
+    "severity": "MEDIUM",
+    "impact": "The +0.0264 AUROC gap (0.5310 - 0.5046) cannot be cleanly attributed to DynamicGenome vs flat features because the input protocol also changed. SAFEGUARD-5 in the Phase 0 audit explicitly required re-running B06 with v2 input protocol before claiming improvement.",
+    "safeguard_reference": "SAFEGUARD-5 — docs/v2/PHASE_0_BASELINE_AUDIT.md"
+  },
+
+  "b06_fair_v2_configuration": {
+    "file": "baselines/v2/b06_fair_v2.py",
+    "artifact_dir": "artifacts/v2/B06_FAIR",
+    "inputs": {
+      "type": "v2_canonical",
+      "source": "imported from baselines.v2.b07_dynamic_v2.V2_CANONICAL_INPUTS",
+      "total_inputs": 8,
+      "identical_to_b07": true
+    },
+    "feature_representation": "B06_FLAT_TRACE",
+    "features": [
+      "call_bigrams_jaccard",
+      "coverage_jaccard",
+      "ret_type_hist_l1",
+      "exception_rate_diff"
+    ],
+    "what_changed_from_b06_original": "ONLY the input set. The input protocol was changed from 14 mixed-type v1 inputs to 8 list-only V2_CANONICAL_INPUTS imported directly from B07.",
+    "what_did_not_change": [
+      "Feature representation (B06 flat trace: call bigrams, coverage, ret type, exception rate)",
+      "Similarity formula (equal-weight average of 4 features)",
+      "Threshold selection protocol (DEV split only, frozen for TEST)",
+      "Evaluation data (same pairs_dev.jsonl and pairs_test.jsonl)",
+      "Labels (same semantic_relation field)",
+      "AUROC computation (1 - similarity as CHANGED score)"
+    ]
+  },
+
+  "why_fair": {
+    "same_programs": "Both B06-V2-FAIR and B07 evaluate on the same benchmark/datasets/pairs_dev.jsonl and pairs_test.jsonl.",
+    "same_labels": "Both use the semantic_relation field: EQUIVALENT=0, CHANGED=1.",
+    "same_split": "Both use DEV to select threshold, TEST to report final metrics. TEST threshold never inspected during selection.",
+    "same_inputs": "Both use V2_CANONICAL_INPUTS imported from b07_dynamic_v2.py — the import statement is the concrete guarantee of identity.",
+    "only_difference": "Feature representation: B06-V2-FAIR uses flat trace aggregates; B07 uses DynamicGenome. This is the single independent variable under test.",
+    "conclusion": "B06-V2-FAIR vs B07-DYNAMIC-V2 is a controlled comparison of feature representations under a fixed execution protocol."
+  },
+
+  "expected_impact_of_input_change": {
+    "hypothesis": "Switching from mixed-type v1 inputs to list-only v2 inputs should IMPROVE B06's AUROC on this benchmark because the benchmark programs are predominantly list-processing algorithms. Mixed-type inputs (int, str) cause exceptions that contaminate the exception_rate feature with noise unrelated to algorithmic differences.",
+    "prediction": "B06-V2-FAIR AUROC > B06-original AUROC (0.5046). Magnitude uncertain; likely small.",
+    "null_hypothesis": "Input change has no effect on ranking quality; AUROC difference is within bootstrap CI overlap.",
+    "note": "If B06-V2-FAIR AUROC is significantly higher than B06-original, the reported v1 B06 number is an underestimate of flat-feature capability caused by input mismatch, not algorithmic limitation."
+  },
+
+  "files_created": [
+    "baselines/v2/b06_fair_v2.py",
+    "artifacts/v2/B06_FAIR_AUDIT.json",
+    "docs/v2/B06_FAIRNESS_REPORT.md"
+  ],
+  "files_modified": [],
+  "files_not_modified": [
+    "baselines/b06_dynamic.py",
+    "baselines/v2/b07_dynamic_v2.py",
+    "benchmark/datasets/pairs_test.jsonl",
+    "benchmark/datasets/pairs_dev.jsonl"
+  ]
+}

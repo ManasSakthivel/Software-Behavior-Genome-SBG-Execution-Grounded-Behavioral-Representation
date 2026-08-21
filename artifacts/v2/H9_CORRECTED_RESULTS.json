@@ -1,0 +1,16 @@
+{
+  "hypothesis": "H9",
+  "claim": "inversion_delta(dynamic_v2) < inversion_delta(v1_static = 0.0335)",
+  "protocol": "permutation_test_delta(), n_perm=1000, seed=42, one-sided",
+  "b07_dynamic_delta": -0.044853,
+  "v1_static_delta_recomputed": 0.026485,
+  "v1_static_delta_frozen": 0.0335,
+  "observed_difference": -0.071338,
+  "p_value": 0.0,
+  "alpha_uncorrected": 0.05,
+  "alpha_holm_corrected_conservative": 0.00417,
+  "verdict_uncorrected": "SUPPORTED",
+  "verdict_holm_corrected": "SUPPORTED",
+  "note": "obs_diff = delta_dynamic - delta_static = -0.0713. H9 supported if obs_diff < 0 (dynamic has lower or more-negative delta). p_value = fraction of permutations with diff <= obs_diff.",
+  "inversion_status": "FULLY_RESOLVED"
+}

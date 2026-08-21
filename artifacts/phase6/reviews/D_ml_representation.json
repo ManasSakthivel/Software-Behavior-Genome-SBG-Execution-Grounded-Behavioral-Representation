@@ -1,0 +1,42 @@
+{
+  "reviewer": "D \u2014 ML / Representation Learning",
+  "overall_assessment": "The missing CodeBERT baseline is a genuine gap that weakens the H2 claim. However, the fallback is labeled clearly and the claim status is NOT_SUPPORTED. The threshold degeneracy is acknowledged. No P0 issues.",
+  "p0": 0,
+  "p1": 1,
+  "p2": 2,
+  "p3": 1,
+  "findings": [
+    {
+      "severity": "P1",
+      "title": "B05 embedding baseline is a fallback (n-gram TF-IDF), not CodeBERT",
+      "detail": "The strongest neural code embedding baseline (CodeBERT, GraphCodeBERT, CodeT5) was not evaluated because PyTorch/transformers are not available. The fallback subword TF-IDF (B05, AUROC=0.369) substantially underestimates what a trained embedding model could achieve. H2 ('SBG outperforms embeddings') cannot be fully evaluated without a real embedding model.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "DOCUMENTED in Phase 3 gate and CLAIMS_REGISTRY.yaml C003. B05 is labeled 'EMBEDDING_FALLBACK' throughout. Claim C003 is explicitly marked NOT_SUPPORTED with this caveat."
+    },
+    {
+      "severity": "P2",
+      "title": "No learned similarity metric is compared",
+      "detail": "All baselines use unsupervised hand-crafted similarity. A supervised metric (contrastive learning on the train split) would provide a stronger upper bound for what is achievable. The system does not explore what accuracy is possible with learning.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Exploratory supervised baseline is a natural extension for Phase 6+."
+    },
+    {
+      "severity": "P2",
+      "title": "Threshold optimization on dev is degenerate (threshold=1.0)",
+      "detail": "E6 reports both B02 and B08 use threshold=1.0 (predict all CHANGED). This means F1 comparisons reflect majority-class baseline, not discriminative power. AUROC is the correct metric for this benchmark.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "ACKNOWLEDGED in Phase 4 gate audit. All claims use AUROC, not F1, as primary discriminative metric. F1 is reported but flagged."
+    },
+    {
+      "severity": "P3",
+      "title": "No dimension weight learning",
+      "detail": "DEFAULT_WEIGHTS in sbg/distance.py are set manually. A cross-validated weight search on the train+dev split could improve SBG performance without leaking test data.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Not tuned to avoid test contamination. Could be explored in future work."
+    }
+  ]
+}

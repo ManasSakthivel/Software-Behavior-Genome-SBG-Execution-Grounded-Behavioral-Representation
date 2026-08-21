@@ -93,7 +93,154 @@ def _load_entry_fn(source_path: str) -> Optional[Callable]:
             if getattr(obj, "__module__", None) == "_sbg_b07_prog":
                 return obj
 
+    # Phase 4 Wave 1 fix: class-based execution adapter fallback.
+    # Handles class-only programs with no top-level callable (e.g.
+    # conc_read_write_lock.py). See docs/v2/ENTRYPOINT_LIMITATION.md.
+    adapter = _build_class_adapter(mod)
+    if adapter is not None:
+        return adapter
+
     return None
+
+
+def _build_class_adapter(mod: types.ModuleType) -> Optional[Callable]:
+    """
+    Fallback entry point for class-only programs with no top-level callable
+    function (e.g. conc_read_write_lock.py — Phase 4 Wave 1 fix).
+
+    Builds a deterministic, SINGLE-THREADED driver over the module's
+    "primary" (outermost/composed) class using reflection over its public
+    methods, so it survives method-renaming transforms (SP-2) without
+    hardcoding any method names.
+
+    Class selection: composition-based, not source-order-based
+    -------------------------------------------------------------
+    Source-line ordering is UNRELIABLE here (inspect.getsourcelines fails
+    for modules loaded via importlib without sys.modules registration).
+    Instead, the "primary" class is detected structurally: a class C is
+    "composed" if an instance of C holds an attribute whose type is another
+    class also defined in this module (e.g. ProtectedDict holds a
+    ReadWriteLock instance). Composed/outer classes are preferred because
+    they typically enforce correct usage protocol (e.g. paired
+    acquire/release) internally, whereas driving an inner primitive class's
+    methods directly and independently can produce genuine deadlocks
+    (e.g. calling acquire_write() before release_read() on a raw
+    ReadWriteLock). If no composition relationship is found, falls back to
+    the class with the most public methods.
+
+    Rationale for safety
+    ---------------------
+    conc_read_write_lock was previously excluded from dynamic execution
+    entirely (via SandboxRunner._UNSAFE_PROGRAMS) because its __main__ test
+    block spawns real concurrent threads, which is non-deterministic. This
+    adapter does NOT spawn threads — it drives the class's public API
+    sequentially. This still exercises genuine lock acquire/release code
+    paths (ProtectedDict enforces correct acquire/release discipline
+    internally) but does not reproduce concurrent contention.
+
+    Disclosed limitation (docs/v2/ENTRYPOINT_LIMITATION.md): this adapter
+    measures SEQUENTIAL behavioral correctness of the class's public API,
+    not genuine concurrent/interleaved behavior.
+    """
+    classes = [
+        obj for _, obj in inspect.getmembers(mod, inspect.isclass)
+        if getattr(obj, "__module__", None) == mod.__name__
+        and not issubclass(obj, BaseException)
+    ]
+    if not classes:
+        return None
+
+    def _try_instantiate(cls: type) -> Any:
+        try:
+            return cls()
+        except Exception:
+            return None
+
+    instances: Dict[type, Any] = {}
+    for cls in classes:
+        inst = _try_instantiate(cls)
+        if inst is not None:
+            instances[cls] = inst
+
+    if not instances:
+        return None
+
+    # Prefer a class whose instance holds an attribute that is itself an
+    # instance of another discovered class (composition == likely "outer"
+    # class that safely wraps a primitive).
+    primary_cls = None
+    for cls, inst in instances.items():
+        try:
+            attr_values = list(vars(inst).values())
+        except TypeError:
+            continue
+        if any(type(v) in instances and type(v) is not cls for v in attr_values):
+            primary_cls = cls
+            break
+
+    if primary_cls is None:
+        # Fall back: class with the most public methods (heuristic proxy
+        # for "richer surface API" == likely the outer/composed class).
+        primary_cls = max(
+            instances,
+            key=lambda c: sum(
+                1 for n, _ in inspect.getmembers(instances[c], predicate=inspect.ismethod)
+                if not n.startswith("_")
+            ),
+        )
+
+    # Method NAMES are resolved once (not bound methods), so a fresh
+    # instance can be constructed on every call — see below.
+    method_names = [
+        name for name, _ in inspect.getmembers(instances[primary_cls], predicate=inspect.ismethod)
+        if not name.startswith("_")
+    ]
+    if not method_names:
+        return None
+
+    def _class_adapter_driver(inp: Any) -> None:
+        # A FRESH instance is created for EVERY individual method call (not
+        # shared across calls). This is required because some transform
+        # variants contain genuine bugs (e.g. SP-2's incomplete
+        # method-rename: a try/finally block that calls a lock-release
+        # method under its OLD name after the method was renamed — see
+        # docs/v2/ENTRYPOINT_LIMITATION.md). If such a bug leaves internal
+        # lock state corrupted (e.g. a reader count that is incremented but
+        # never decremented because the release call raised AttributeError),
+        # reusing the SAME instance for a subsequent method call would
+        # deadlock permanently on a real threading.Condition.wait() that is
+        # never notified. Fresh-instance-per-call fully isolates each
+        # individual call so a single broken transaction cannot cascade or
+        # hang the rest of genome extraction. This trades away cross-call
+        # state persistence (an already-disclosed limitation: this adapter
+        # measures per-call sequential correctness of the public API, not
+        # stateful behavior across a call sequence).
+        seq = inp if isinstance(inp, (list, tuple)) else [inp]
+        for v in seq:
+            for name in method_names:
+                try:
+                    instance = primary_cls()
+                except Exception:
+                    continue
+                m = getattr(instance, name, None)
+                if m is None:
+                    continue
+                try:
+                    n_p = len(inspect.signature(m).parameters)
+                except (TypeError, ValueError):
+                    n_p = 1
+                try:
+                    if n_p == 0:
+                        m()
+                    elif n_p == 1:
+                        m(v)
+                    else:
+                        m(v, v)
+                except Exception:
+                    pass  # tolerate arg/semantic mismatches; shape of trace is what matters
+        return None
+
+    return _class_adapter_driver
 
 
 def _extract_genome(source_path: str) -> Optional[DynamicGenome]:
@@ -129,7 +276,7 @@ def _extract_genome(source_path: str) -> Optional[DynamicGenome]:
         inputs_to_use = V2_CANONICAL_INPUTS
 
     try:
-        result = _runner.run(program_id, fn_to_trace, inputs_to_use, n_runs=1, seed=42)
+        result = _runner.run(program_id, fn_to_trace, inputs_to_use, n_runs=5, seed=42)
         nb = _normalizer.normalize(program_id, result.traces)
         genome = _extractor.extract(nb)
     except Exception:

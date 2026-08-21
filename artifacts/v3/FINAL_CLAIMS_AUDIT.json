@@ -1,0 +1,91 @@
+{
+  "version": "v3",
+  "generated_at": "2026-08-20T16:47:24.567642Z",
+  "auroc_method": "tie_aware_wmw",
+  "protocol": "All claims traceable to machine-readable artifacts. No unsupported claim may remain.",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "V3 Dynamic SBG achieves AUROC=0.546 on N=744 test pairs (tie-corrected WMW)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v3/B07/results_test.json",
+      "metric": "auroc=0.5455, CI=[0.477,0.624]",
+      "note": "CI lower bound 0.477 < 0.5 \u2014 not statistically above chance at corrected alpha=0.0042"
+    },
+    {
+      "id": "C2",
+      "claim": "V3 improves over V2 (tie-corrected AUROC 0.5455 vs 0.5434)",
+      "status": "DIRECTIONALLY_SUPPORTED",
+      "evidence": "artifacts/v3/FINAL_RESULTS.json, artifacts/v3/AUROC_VALIDATION.json",
+      "metric": "delta=+0.002, CI overlap \u2014 not statistically significant",
+      "note": "Marginal improvement; CIs overlap substantially. Not a strong claim."
+    },
+    {
+      "id": "C3",
+      "claim": "V3 resolves structural-semantic inversion better than V2",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v3/B07/results_test.json",
+      "metric": "v3_delta=-0.064 vs v2_delta=-0.045 (more negative = better)"
+    },
+    {
+      "id": "C4",
+      "claim": "SC-3 benchmark contamination fixed in v3",
+      "status": "SUPPORTED",
+      "evidence": "benchmark/v3/sc3_corrected/SC3_CORRECTED_MANIFEST.json",
+      "metric": "38 verified integer-mutation pairs (vs 0% in v2); text-level substitution avoids ast.unparse quote normalization"
+    },
+    {
+      "id": "C5",
+      "claim": "AUROC tie-handling bug fixed in v3",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v3/AUROC_VALIDATION.json",
+      "metric": "5/5 validation tests pass including sklearn cross-check; H12 tie scenario correctly gives 0.580 vs naive 0.951"
+    },
+    {
+      "id": "C6",
+      "claim": "Holm-Bonferroni step-down correctly implemented in v3",
+      "status": "SUPPORTED",
+      "evidence": "sbg/v3/tests/test_metrics.py::test_holm_bonferroni_step_down",
+      "metric": "H9 rejected, H7 rejected, H12 NOT rejected (p=0.066 > alpha=0.005), subsequent stopped"
+    },
+    {
+      "id": "C7",
+      "claim": "V3 SBG outperforms V1 Static SBG (H7)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v3/B07/results_test.json",
+      "metric": "V3 AUROC=0.546 vs V1=0.424, delta=+0.122"
+    },
+    {
+      "id": "C8",
+      "claim": "V3 SBG does NOT outperform AST baseline",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v3/FINAL_RESULTS.json",
+      "metric": "V3=0.546, AST=0.553; delta=-0.007, CIs overlap \u2014 no statistical advantage",
+      "note": "Honest negative finding: execution-based features do not yet beat AST structural similarity"
+    },
+    {
+      "id": "C9",
+      "claim": "Wall-time shortcut (0.571) remains above V3 (0.546)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/PHASE4_SHORTCUT_AUDIT.json + artifacts/v3/FINAL_RESULTS.json",
+      "metric": "wall_time_ms AUROC=0.571 vs V3=0.546; V3 call-bigrams add marginal signal",
+      "note": "Honest negative finding: B07v3 is not yet clearly separable from raw execution-volume shortcuts"
+    },
+    {
+      "id": "C10",
+      "claim": "Python 3.11 required; Apple Python 3.9.6 causes C stack overflow on recursive variants",
+      "status": "SUPPORTED",
+      "evidence": "crash trace on graph_connected_components__sc11_s2_p0.py; fixed by using 3.11",
+      "metric": "All 516 tests pass on Python 3.11; crash on 3.9 with infinite-recursion SC-11 variant"
+    }
+  ],
+  "honest_negative_findings": [
+    "V3 AUROC (0.546) does not statistically exceed V2 (0.543) \u2014 marginal improvement only",
+    "V3 AUROC (0.546) does not beat AST baseline (0.553) \u2014 static structure still competitive",
+    "Wall-time shortcut (0.571) remains above V3 \u2014 execution-volume shortcuts not eliminated",
+    "CI lower bound (0.477) < 0.5 \u2014 not statistically above chance at Holm-corrected alpha=0.0042",
+    "SC-3 evaluation on corrected benchmark not yet run \u2014 38 pairs generated, awaiting scoring",
+    "H11 cross-language: no Java execution; INSUFFICIENT_EVIDENCE unchanged",
+    "H12 regression: still synthetic corpus; INSUFFICIENT_EVIDENCE unchanged"
+  ]
+}

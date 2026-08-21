@@ -1,0 +1,43 @@
+{
+  "baseline": "B07_DYNAMIC_V3",
+  "version": "v3",
+  "split": "dev",
+  "threshold": 1.000001,
+  "metrics": {
+    "auroc": 0.580714,
+    "auprc": 0.582512,
+    "f1": 0.677419,
+    "precision": 0.512195,
+    "recall": 1.0,
+    "accuracy": 0.512195,
+    "tp": 315,
+    "fp": 300,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 615,
+    "n_positive": 315,
+    "n_negative": 300,
+    "threshold_used": 1.000001,
+    "ci_auroc_lower": 0.536564,
+    "ci_auroc_upper": 0.61388,
+    "bootstrap_n": 500,
+    "bootstrap_seed": 42,
+    "cluster_bootstrap_used": true,
+    "glasss_delta": -0.353907,
+    "permutation_p": 0.0,
+    "tie_fraction": 0.134275,
+    "tie_correction_applied": true,
+    "methodology_version": "v3_wmw_tie_aware"
+  },
+  "n_canonical_inputs": 11,
+  "genome_version": "DynamicGenomeV3",
+  "new_v3_features": [
+    "call_transition_bigrams",
+    "input_sensitivity_score",
+    "call_depth_variance",
+    "hot_path_stability",
+    "exception_causality_hash"
+  ],
+  "auroc_method": "tie_aware_wmw",
+  "bootstrap_method": "cluster_by_base_program"
+}

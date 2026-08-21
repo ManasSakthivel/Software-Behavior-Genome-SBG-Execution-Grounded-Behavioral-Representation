@@ -1,0 +1,57 @@
+{
+  "baseline_name": "MODERN_BASELINE_CODEBERT",
+  "model": "microsoft/codebert-base",
+  "method": "Mean-pooled last_hidden_state embedding, cosine similarity, NO fine-tuning, off-the-shelf (same usage pattern as B01/B02)",
+  "infrastructure_note": "pip3 IS available in this environment (contradicts an earlier Wave-0-era assumption that only checked `pip`, not `pip3`). transformers installed via `pip3 install --user transformers`. microsoft/codebert-base (~500MB) downloaded successfully from HuggingFace Hub \u2014 internet access is available. No huge infrastructure installation was required beyond a single pip install; total setup time was under 5 minutes.",
+  "graphcodebert_attempted": false,
+  "graphcodebert_reason": "CodeBERT succeeded on first attempt and produced a valid, reproducible modern baseline. Per the Phase 4 mandate to not spend excessive time on infrastructure once ANY modern baseline is available, a second model was not pursued.",
+  "protocol": {
+    "dev_split": "benchmark/datasets/pairs_dev.jsonl (frozen, 615 pairs)",
+    "test_split": "benchmark/datasets/pairs_test.jsonl (frozen, 744 pairs)",
+    "threshold_selection": "find_optimal_threshold on DEV ONLY; frozen threshold applied to TEST (no tuning on test)",
+    "fine_tuning": "NONE - off-the-shelf pretrained weights only",
+    "max_token_length": 512
+  },
+  "dev_metrics": {
+    "accuracy": 0.512195,
+    "precision": 0.512195,
+    "recall": 1.0,
+    "f1": 0.677419,
+    "auroc": 0.36146,
+    "auprc": 0.410978,
+    "tp": 315,
+    "fp": 300,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 615,
+    "threshold_used": 0.999871,
+    "ci_f1_lower": 0.645374,
+    "ci_f1_upper": 0.707983,
+    "ci_auroc_lower": 0.334681,
+    "ci_auroc_upper": 0.424921
+  },
+  "test_metrics": {
+    "accuracy": 0.450269,
+    "precision": 0.463866,
+    "recall": 0.754098,
+    "f1": 0.574402,
+    "auroc": 0.369662,
+    "auprc": 0.396228,
+    "tp": 276,
+    "fp": 319,
+    "fn": 90,
+    "tn": 59,
+    "n_samples": 744,
+    "threshold_used": 0.999871,
+    "ci_f1_lower": 0.536797,
+    "ci_f1_upper": 0.611282,
+    "ci_auroc_lower": 0.34465,
+    "ci_auroc_upper": 0.425447
+  },
+  "threshold": 0.9998709426651001,
+  "comparison_context": {
+    "B02_AST_test_auroc_reference": 0.5528,
+    "B07_dynamic_v2_test_auroc_reference": "0.5292 (Wave 1, entry-point-corrected) / 0.5310 (historical Phase 3B)",
+    "note": "Directly comparable \u2014 same 744 TEST pairs, same DEV-frozen-threshold protocol."
+  }
+}

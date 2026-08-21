@@ -1,0 +1,129 @@
+{
+  "version": "v2",
+  "generated_from": "frozen_artifacts",
+  "generation_timestamp": "2025-07-07T00:00:00Z",
+  "figures": {
+    "FIGURE_2": {
+      "title": "Structural-Semantic Inversion: Before and After Execution Grounding",
+      "type": "grouped_bar",
+      "source_artifacts": [
+        "artifacts/v2/B07/results_test.json",
+        "artifacts/v2/B08/results_test.json",
+        "artifacts/v2/PHASE_2_GATE.json"
+      ],
+      "data": {
+        "methods": ["V1 Static SBG", "V2 Dynamic", "V2 Hybrid"],
+        "equiv_mean": [0.9619, 0.874492, 0.79139],
+        "changed_mean": [0.9954, 0.829227, 0.785109],
+        "inversion_delta": [0.0335, -0.045265, -0.006281],
+        "status": "READY"
+      },
+      "axis_labels": {
+        "x": "Method",
+        "y": "Mean Similarity Score",
+        "title": "Structural-Semantic Inversion Resolution by Execution Grounding"
+      },
+      "key_finding": "Dynamic execution features reverse the inversion: delta=-0.0453 vs +0.0335"
+    },
+    "FIGURE_3": {
+      "title": "AUROC Comparison: All Baselines vs V2 Methods",
+      "type": "bar_with_ci",
+      "source_artifacts": [
+        "artifacts/phase3/BASELINE_COMPARISON.json",
+        "artifacts/v2/B07/results_test.json",
+        "artifacts/v2/B08/results_test.json"
+      ],
+      "data": {
+        "methods": ["B01_TOKEN", "B02_AST", "B03_CFG", "B04_DEP", "B05_EMBED",
+                    "B06_DYN", "B07_STATIC_SBG", "B08_FULL_SBG_V1",
+                    "B07_DYN_V2", "B08_HYB_V2"],
+        "auroc": [0.404263, 0.552845, 0.461315, 0.399305, 0.369395,
+                  0.504554, 0.349112, 0.423664,
+                  0.531023, 0.488442],
+        "ci_lower": [0.368512, 0.509315, 0.425356, 0.368233, 0.329148,
+                     0.487899, 0.307101, 0.401193,
+                     0.499136, 0.450492],
+        "ci_upper": [0.445702, 0.592881, 0.507328, 0.447124, 0.41064,
+                     0.567415, 0.382993, 0.482963,
+                     0.580563, 0.535058],
+        "status": "READY"
+      },
+      "key_finding": "Dynamic V2 AUROC=0.531 > V1 SBG=0.424 but < AST=0.553"
+    },
+    "FIGURE_4": {
+      "title": "Hard-Negative Performance: SC-3 and SC-11 Stratified Analysis",
+      "type": "grouped_bar",
+      "source_artifacts": ["artifacts/v2/HARD_NEGATIVE_RESULTS.json"],
+      "status": "READY",
+      "data": {
+        "methods": ["V1_STATIC_SBG", "B07_DYNAMIC_V2", "B08_HYBRID_V2"],
+        "sc3_auroc": [0.0, 0.544363, 0.35409],
+        "sc3_inversion_delta": [0.0381, 0.083029, 0.062551],
+        "sc11_auroc": [0.0, 0.789581, 0.71103],
+        "sc11_inversion_delta": [0.0341, -0.226533, -0.114801],
+        "n_sc3": 39,
+        "n_sc11": 39,
+        "key_finding": "SC-11 FULLY_RESOLVED by dynamic (delta=-0.227); SC-3 NOT resolved (delta=+0.083, 84.6% near-identical)"
+      }
+    },
+    "FIGURE_5": {
+      "title": "Robustness: AUROC by SP Transformation Type (B07 Dynamic V2)",
+      "type": "line_chart",
+      "source_artifacts": ["artifacts/v2/ROBUSTNESS_RESULTS.json"],
+      "status": "READY",
+      "data": {
+        "sp_types": ["SP-1", "SP-2", "SP-3", "SP-4", "SP-5", "SP-6", "SP-7", "SP-9", "SP-10", "SP-11", "SP-12"],
+        "b07_auroc": [0.551292, 0.240157, 0.249264, 0.493905, 0.484237, 0.502942, 0.399454, 0.502942, 0.502942, 0.377049, 0.502942],
+        "b02_auroc": [0.663934, 0.663934, 0.004624, 0.641656, 0.511139, 0.065153, 0.040437, 0.663934, 0.663934, 0.168033, 0.65861],
+        "b07_spread": 0.311135,
+        "b07_mean_auroc": 0.437011,
+        "h10_verdict": "NOT_SUPPORTED_FRAGILE",
+        "key_finding": "B07 AUROC spread=0.311 across SP types (criterion=0.10); NOT_SUPPORTED_FRAGILE"
+      }
+    },
+    "FIGURE_6": {
+      "title": "Ablation Study: AUROC by Genome Dimension Combination",
+      "type": "horizontal_bar",
+      "source_artifacts": ["artifacts/phase4/E7/ablation_table.json"],
+      "data": {
+        "conditions": [
+          "AST", "Dynamic_Trace", "ERROR_only", "CFG", "Full_SBG_8dim",
+          "CONTROL_only", "Token/TF-IDF", "DATA_only", "Dependency_Approx",
+          "Embedding_Fallback", "Static_SBG_all3", "CONTROL_DATA_ERROR", "CONTROL_DATA"
+        ],
+        "auroc": [
+          0.552845, 0.504554, 0.476978, 0.461315, 0.423664,
+          0.406085, 0.404263, 0.403331, 0.399305,
+          0.369395, 0.349112, 0.349112, 0.34286
+        ],
+        "ci_lower": [
+          0.509315, 0.487899, 0.430793, 0.425356, 0.401193,
+          0.368231, 0.368512, 0.359073, 0.368233,
+          0.329148, 0.307101, 0.307101, 0.301674
+        ],
+        "ci_upper": [
+          0.592881, 0.567415, 0.512002, 0.507328, 0.482963,
+          0.446428, 0.445702, 0.438084, 0.447124,
+          0.41064, 0.382993, 0.382993, 0.377535
+        ],
+        "status": "READY"
+      },
+      "key_finding": "ERROR_only outperforms CONTROL+DATA+ERROR combined (negative dimension interaction)"
+    },
+    "FIGURE_7": {
+      "title": "Cross-Language Generalization",
+      "type": "bar",
+      "source_artifacts": ["artifacts/phase5/cross_language_results.json"],
+      "status": "INSUFFICIENT_EVIDENCE — H11 cannot be evaluated without Java executor"
+    },
+    "FIGURE_8": {
+      "title": "Regression Detection Performance",
+      "type": "bar",
+      "source_artifacts": ["artifacts/v2/REGRESSION_RESULTS.json"],
+      "status": "INSUFFICIENT_EVIDENCE",
+      "h12_verdict": "INSUFFICIENT_EVIDENCE",
+      "reason": "Benchmark contains only regression pairs (N=55 label=1, 0 label=0). AUROC undefined.",
+      "data": null
+    }
+  }
+}

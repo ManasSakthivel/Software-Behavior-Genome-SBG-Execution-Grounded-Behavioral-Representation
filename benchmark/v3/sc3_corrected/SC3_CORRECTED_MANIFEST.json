@@ -1,0 +1,31 @@
+{
+  "version": "v3",
+  "mutation_type": "SC-3v3",
+  "mutation_category": "CONSTANT_MUTATION_INTEGER",
+  "generated_at": "2026-08-20T16:27:48.969121+00:00",
+  "generated_by": "benchmark/v3/generate_sc3_corrected.py",
+  "n_total_generated": 179,
+  "n_verified_behavioral_change": 38,
+  "n_unverified": 141,
+  "verification_rate": 0.212,
+  "n_programs_covered": 18,
+  "difficulty_distribution": {
+    "EASY": 34,
+    "HARD": 3,
+    "MEDIUM": 1
+  },
+  "pairs_file": "benchmark/v3/sc3_corrected/sc3_corrected_pairs.jsonl",
+  "variants_dir": "benchmark/v3/sc3_corrected/variants",
+  "scientific_notes": [
+    "CORRECTION_OF_V2_SC3_BUG: v2 SC3 used ast.unparse which normalizes quote styles",
+    "TEXT_LEVEL_SUBSTITUTION: mutations applied at character level, preserving all formatting",
+    "BEHAVIORAL_VERIFICATION: each mutation tested on canonical+boundary inputs",
+    "DISTINCT_FROM_FROZEN_V2: this is EXPLORATORY_SC3_CORRECTED, NOT the frozen v2 test set",
+    "INTEGER_ONLY: only integer constants are mutated (no string quote changes)"
+  ],
+  "v2_comparison": {
+    "v2_sc3_cosmetic_fraction": 0.769,
+    "v2_sc3_integer_mutation_fraction": 0.0,
+    "v3_integer_mutation_fraction": 1.0
+  }
+}

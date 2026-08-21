@@ -1,0 +1,222 @@
+[
+  {
+    "pair_id": "cl_equiv_bubble_sort",
+    "python_path": "phase5/cross_language/corpus/python/bubble_sort.py",
+    "java_path": "phase5/cross_language/corpus/java/bubble_sort.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "sorting",
+    "spec": "Sort an integer array in non-decreasing order using bubble sort algorithm. Return sorted array.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 5,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_binary_search",
+    "python_path": "phase5/cross_language/corpus/python/binary_search.py",
+    "java_path": "phase5/cross_language/corpus/java/binary_search.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "search",
+    "spec": "Binary search in sorted integer array. Return 0-based index of target, or -1 if not found.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 5,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_factorial",
+    "python_path": "phase5/cross_language/corpus/python/factorial.py",
+    "java_path": "phase5/cross_language/corpus/java/factorial.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "mathematical",
+    "spec": "Compute n factorial (n!) iteratively. Return 1 for n=0. Raise ValueError for n<0.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 5,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_is_palindrome",
+    "python_path": "phase5/cross_language/corpus/python/is_palindrome.py",
+    "java_path": "phase5/cross_language/corpus/java/is_palindrome.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "string",
+    "spec": "Check if string is a palindrome (case-insensitive). Return boolean.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 6,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_fibonacci",
+    "python_path": "phase5/cross_language/corpus/python/fibonacci.py",
+    "java_path": "phase5/cross_language/corpus/java/fibonacci.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "mathematical",
+    "spec": "Compute nth Fibonacci number (0-indexed). fib(0)=0, fib(1)=1. Iterative implementation.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 5,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_gcd",
+    "python_path": "phase5/cross_language/corpus/python/gcd.py",
+    "java_path": "phase5/cross_language/corpus/java/gcd.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "mathematical",
+    "spec": "Compute GCD of two non-negative integers using Euclidean algorithm.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 5,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_linear_search",
+    "python_path": "phase5/cross_language/corpus/python/linear_search.py",
+    "java_path": "phase5/cross_language/corpus/java/linear_search.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "search",
+    "spec": "Linear search in integer array. Return first 0-based index of target, or -1 if not found.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 4,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_insertion_sort",
+    "python_path": "phase5/cross_language/corpus/python/insertion_sort.py",
+    "java_path": "phase5/cross_language/corpus/java/insertion_sort.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "sorting",
+    "spec": "Sort integer array in non-decreasing order using insertion sort. Return sorted array.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 5,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_count_chars",
+    "python_path": "phase5/cross_language/corpus/python/count_chars.py",
+    "java_path": "phase5/cross_language/corpus/java/count_chars.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "string",
+    "spec": "Count character frequencies in a string. Return dict mapping char to count.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 4,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_equiv_is_prime",
+    "python_path": "phase5/cross_language/corpus/python/is_prime.py",
+    "java_path": "phase5/cross_language/corpus/java/is_prime.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "mathematical",
+    "spec": "Check if integer is prime. Return boolean. n<2 returns False.",
+    "ground_truth_method": "shared_test_oracle",
+    "n_test_cases": 7,
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Same specification, different language \u2014 EQUIVALENT"
+  },
+  {
+    "pair_id": "cl_changed_bubble_sort_off_by_one",
+    "python_path": "phase5/cross_language/corpus/python/bubble_sort.py",
+    "java_path": "phase5/cross_language/corpus/java_changed/bubble_sort_off_by_one.java",
+    "semantic_relation": "CHANGED",
+    "category": "sorting",
+    "mutation": "off-by-one: inner loop goes to n-i instead of n-1-i",
+    "ground_truth_method": "shared_test_oracle",
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Mutation: off-by-one: inner loop goes to n-i instead of n-1-i"
+  },
+  {
+    "pair_id": "cl_changed_binary_search_wrong_return",
+    "python_path": "phase5/cross_language/corpus/python/binary_search.py",
+    "java_path": "phase5/cross_language/corpus/java_changed/binary_search_wrong_return.java",
+    "semantic_relation": "CHANGED",
+    "category": "search",
+    "mutation": "returns index+1 instead of index (off-by-one in result)",
+    "ground_truth_method": "shared_test_oracle",
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Mutation: returns index+1 instead of index (off-by-one in result)"
+  },
+  {
+    "pair_id": "cl_changed_factorial_wrong_start",
+    "python_path": "phase5/cross_language/corpus/python/factorial.py",
+    "java_path": "phase5/cross_language/corpus/java_changed/factorial_wrong_start.java",
+    "semantic_relation": "EQUIVALENT",
+    "category": "mathematical",
+    "mutation": "loop starts at 1 instead of 2 (no functional difference for n>1, but counts an extra iteration)",
+    "ground_truth_method": "shared_test_oracle",
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "This is a SEMANTICS-PRESERVING change: result is identical. Labels it EQUIVALENT."
+  },
+  {
+    "pair_id": "cl_changed_fibonacci_wrong_base",
+    "python_path": "phase5/cross_language/corpus/python/fibonacci.py",
+    "java_path": "phase5/cross_language/corpus/java_changed/fibonacci_wrong_base.java",
+    "semantic_relation": "CHANGED",
+    "category": "mathematical",
+    "mutation": "fib(0) returns 1 instead of 0 (wrong base case)",
+    "ground_truth_method": "shared_test_oracle",
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Mutation: fib(0) returns 1 instead of 0 (wrong base case)"
+  },
+  {
+    "pair_id": "cl_changed_is_prime_excludes_two",
+    "python_path": "phase5/cross_language/corpus/python/is_prime.py",
+    "java_path": "phase5/cross_language/corpus/java_changed/is_prime_excludes_two.java",
+    "semantic_relation": "CHANGED",
+    "category": "mathematical",
+    "mutation": "missing special case for n=2 (reports 2 as composite)",
+    "ground_truth_method": "shared_test_oracle",
+    "languages": [
+      "Python",
+      "Java"
+    ],
+    "notes": "Mutation: missing special case for n=2 (reports 2 as composite)"
+  }
+]

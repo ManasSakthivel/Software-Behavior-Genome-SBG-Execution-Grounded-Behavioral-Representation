@@ -1,0 +1,119 @@
+{
+  "alpha_corrected": 0.0017,
+  "correction": "Bonferroni (6 primary hypotheses)",
+  "test_n": 744,
+  "comparisons": {
+    "SBG_vs_B01": {
+      "sbg_f1": 0.6595,
+      "B01_f1": 0.5843,
+      "delta_f1": 0.0752,
+      "sbg_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "B01_ci_f1": [
+        0.545648,
+        0.618619
+      ],
+      "ci_overlapping": false,
+      "cohens_h": 0.1552,
+      "note": "McNemar test requires per-pair predictions; full paired test in FAIRNESS_AUDIT.json"
+    },
+    "SBG_vs_B02": {
+      "sbg_f1": 0.6595,
+      "B02_f1": 0.6595,
+      "delta_f1": 0.0,
+      "sbg_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "B02_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_overlapping": true,
+      "cohens_h": 0.0,
+      "note": "McNemar test requires per-pair predictions; full paired test in FAIRNESS_AUDIT.json"
+    },
+    "SBG_vs_B03": {
+      "sbg_f1": 0.6595,
+      "B03_f1": 0.6595,
+      "delta_f1": 0.0,
+      "sbg_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "B03_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_overlapping": true,
+      "cohens_h": 0.0,
+      "note": "McNemar test requires per-pair predictions; full paired test in FAIRNESS_AUDIT.json"
+    },
+    "SBG_vs_B04": {
+      "sbg_f1": 0.6595,
+      "B04_f1": 0.6595,
+      "delta_f1": 0.0,
+      "sbg_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "B04_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_overlapping": true,
+      "cohens_h": 0.0,
+      "note": "McNemar test requires per-pair predictions; full paired test in FAIRNESS_AUDIT.json"
+    },
+    "SBG_vs_B05": {
+      "sbg_f1": 0.6595,
+      "B05_f1": 0.546,
+      "delta_f1": 0.1134,
+      "sbg_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "B05_ci_f1": [
+        0.505006,
+        0.584456
+      ],
+      "ci_overlapping": false,
+      "cohens_h": 0.2324,
+      "note": "McNemar test requires per-pair predictions; full paired test in FAIRNESS_AUDIT.json"
+    },
+    "SBG_vs_B06": {
+      "sbg_f1": 0.6595,
+      "B06_f1": 0.6595,
+      "delta_f1": 0.0,
+      "sbg_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "B06_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_overlapping": true,
+      "cohens_h": 0.0,
+      "note": "McNemar test requires per-pair predictions; full paired test in FAIRNESS_AUDIT.json"
+    },
+    "SBG_vs_B07": {
+      "sbg_f1": 0.6595,
+      "B07_f1": 0.6595,
+      "delta_f1": 0.0,
+      "sbg_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "B07_ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_overlapping": true,
+      "cohens_h": 0.0,
+      "note": "McNemar test requires per-pair predictions; full paired test in FAIRNESS_AUDIT.json"
+    }
+  }
+}

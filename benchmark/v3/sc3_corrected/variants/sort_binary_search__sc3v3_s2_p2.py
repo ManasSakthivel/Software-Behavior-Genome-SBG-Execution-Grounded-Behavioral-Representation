@@ -1,0 +1,142 @@
+# program_id: sort_binary_search
+# category: sorting_searching
+# spec_version: 1.0
+
+"""
+Binary search with multiple modes: exact, leftmost, rightmost, and range count.
+
+Spec: Given a sorted list and a target value, return different results depending
+on the mode:
+  - 'exact'     : index of any occurrence of target, or -1 if not found
+  - 'leftmost'  : index of the first occurrence, or -1 if not found
+  - 'rightmost' : index of the last occurrence, or -1 if not found
+  - 'count'     : number of times target appears (uses leftmost + rightmost)
+
+All operations are O(log n). The input list must be sorted in ascending order.
+Raises ValueError for unknown mode or unsorted (optional check).
+"""
+
+
+def binary_search(arr: list, target, mode: str = "exact"):
+    """
+    Multi-mode binary search on a sorted list.
+
+    Parameters
+    ----------
+    arr    : sorted list of comparable elements
+    target : value to search for
+    mode   : 'exact' | 'leftmost' | 'rightmost' | 'count'
+
+    Returns
+    -------
+    int : index (or count for 'count' mode), -1 if not found
+    """
+    if mode == "exact":
+        return _exact(arr, target)
+    elif mode == "leftmost":
+        return _leftmost(arr, target)
+    elif mode == "rightmost":
+        return _rightmost(arr, target)
+    elif mode == "count":
+        lo = _leftmost(arr, target)
+        if lo == -1:
+            return 0
+        hi = _rightmost(arr, target)
+        return hi - lo + 1
+    else:
+        raise ValueError(f"Unknown mode: {mode!r}. Use exact/leftmost/rightmost/count.")
+
+
+def _exact(arr: list, target) -> int:
+    lo, hi = 0, len(arr) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1
+
+
+def _leftmost(arr: list, target) -> int:
+    lo, hi = 0, len(arr) - 1
+    result = -1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target:
+            result = mid
+            hi = mid - 1   # keep searching left
+        elif arr[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return result
+
+
+def _rightmost(arr: list, target) -> int:
+    lo, hi = 0, len(arr) - 1
+    result = -1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target:
+            result = mid
+            lo = mid + 1   # keep searching right
+        elif arr[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return result
+
+
+# ---------- tests ----------
+
+def test_binary_search():
+    arr = [1, 2, 2, 4, 3, 4, 5]
+
+    # Test 1: exact hit
+    idx = binary_search(arr, 3, "exact")
+    assert arr[idx] == 3
+
+    # Test 2: exact miss
+    assert binary_search(arr, 99, "exact") == -1
+
+    # Test 3: leftmost duplicate
+    assert binary_search(arr, 2, "leftmost") == 1
+
+    # Test 4: rightmost duplicate
+    assert binary_search(arr, 2, "rightmost") == 3
+
+    # Test 5: count duplicates
+    assert binary_search(arr, 2, "count") == 3
+
+    # Test 6: count of absent element
+    assert binary_search(arr, 7, "count") == 0
+
+    # Test 7: single element list — found
+    assert binary_search([42], 42, "exact") == 0
+
+    # Test 8: single element list — not found
+    assert binary_search([42], 0, "exact") == -1
+
+    # Test 9: empty list
+    assert binary_search([], 5, "exact") == -1
+    assert binary_search([], 5, "count") == 0
+
+    # Test 10: bad mode raises ValueError
+    try:
+        binary_search(arr, 2, "bad")
+        assert False, "Should have raised ValueError"
+    except ValueError:
+        pass
+
+    print("All binary_search tests passed.")
+
+
+if __name__ == "__main__":
+    test_binary_search()
+    arr = [1, 2, 2, 2, 3, 4, 5]
+    print(f"leftmost(2)  = {binary_search(arr, 2, 'leftmost')}")
+    print(f"rightmost(2) = {binary_search(arr, 2, 'rightmost')}")
+    print(f"count(2)     = {binary_search(arr, 2, 'count')}")

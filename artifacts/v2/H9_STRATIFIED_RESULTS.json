@@ -1,0 +1,114 @@
+{
+  "phase": "3B",
+  "h9_claim": "inversion_delta(dynamic_v2) < inversion_delta(v1_static)",
+  "aggregate": {
+    "b07_delta": -0.045037,
+    "v1_delta": 0.026874,
+    "obs_diff": -0.071911,
+    "perm_p": 0.0,
+    "resolved": true,
+    "significant_holm_corrected": true
+  },
+  "per_sc_type": {
+    "SC-1": {
+      "n_changed": 33,
+      "b07_delta": -0.125119,
+      "v1_delta": 0.029079,
+      "resolved": true,
+      "improved_vs_v1": true
+    },
+    "SC-10": {
+      "n_changed": 6,
+      "b07_delta": 0.124632,
+      "v1_delta": 0.001667,
+      "resolved": false,
+      "improved_vs_v1": false
+    },
+    "SC-11": {
+      "n_changed": 39,
+      "b07_delta": -0.22651,
+      "v1_delta": 0.021933,
+      "resolved": true,
+      "improved_vs_v1": true
+    },
+    "SC-12": {
+      "n_changed": 9,
+      "b07_delta": -0.264451,
+      "v1_delta": 0.033619,
+      "resolved": true,
+      "improved_vs_v1": true
+    },
+    "SC-13": {
+      "n_changed": 39,
+      "b07_delta": 0.008002,
+      "v1_delta": 0.021604,
+      "resolved": false,
+      "improved_vs_v1": true
+    },
+    "SC-2": {
+      "n_changed": 39,
+      "b07_delta": 0.008002,
+      "v1_delta": 0.02406,
+      "resolved": false,
+      "improved_vs_v1": true
+    },
+    "SC-3": {
+      "n_changed": 39,
+      "b07_delta": 0.083034,
+      "v1_delta": 0.032142,
+      "resolved": false,
+      "improved_vs_v1": false
+    },
+    "SC-4": {
+      "n_changed": 33,
+      "b07_delta": 0.025805,
+      "v1_delta": 0.021316,
+      "resolved": false,
+      "improved_vs_v1": false
+    },
+    "SC-5": {
+      "n_changed": 39,
+      "b07_delta": 0.008002,
+      "v1_delta": 0.03304,
+      "resolved": false,
+      "improved_vs_v1": true
+    },
+    "SC-6": {
+      "n_changed": 36,
+      "b07_delta": -0.16814,
+      "v1_delta": 0.030805,
+      "resolved": true,
+      "improved_vs_v1": true
+    },
+    "SC-7": {
+      "n_changed": 6,
+      "b07_delta": 0.123189,
+      "v1_delta": -0.004966,
+      "resolved": false,
+      "improved_vs_v1": false
+    },
+    "SC-8": {
+      "n_changed": 9,
+      "b07_delta": -0.151399,
+      "v1_delta": 0.037868,
+      "resolved": true,
+      "improved_vs_v1": true
+    },
+    "SC-9": {
+      "n_changed": 39,
+      "b07_delta": -0.006103,
+      "v1_delta": 0.032359,
+      "resolved": true,
+      "improved_vs_v1": true
+    }
+  },
+  "n_sc_types_fully_resolved": 6,
+  "n_sc_types_improved_vs_v1": 9,
+  "n_sc_types_total": 13,
+  "resolution_fraction": 0.4615,
+  "sc3_resolved": false,
+  "sc11_resolved": true,
+  "h9_verdict": "SUPPORTED_WITH_TRANSFORMATION_DEPENDENT_LIMITATION",
+  "h9_reason": "Aggregate inversion resolved (delta<0, p<0.001). Only 6/13 SC types fully resolved.",
+  "preregistered_decision_rule": "SUPPORTED if: aggregate delta < 0 AND perm p < 0.00417 (Holm \u03b1 for H9 rank). SUPPORTED_WITH_LIMITATION if also: some SC types not resolved. NOT_SUPPORTED if aggregate delta >= 0."
+}

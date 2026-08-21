@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_06_constant_mutation",
+  "ground_truth": "CHANGED",
+  "shortcut_defeated": "structural_similarity",
+  "description": "One constant changes in the return statement: -1 → len(arr) as the 'not found' sentinel. Structural similarity is near 1.0. All inputs where the target is absent expose the divergence.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": true,
+  "expected_volume_same": false,
+  "boundary_inputs_required": true
+}

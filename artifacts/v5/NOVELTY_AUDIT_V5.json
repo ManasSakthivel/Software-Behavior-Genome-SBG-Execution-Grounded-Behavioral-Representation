@@ -1,0 +1,272 @@
+{
+  "artifact": "NOVELTY_AUDIT_V5",
+  "agent": "Bob (IBM)",
+  "version": "v5",
+  "date": "2025",
+  "basis": [
+    "docs/research/PRIOR_ART_MATRIX.md",
+    "docs/research/NOVELTY_ANALYSIS.md",
+    "docs/v4/V4_FINAL_SCIENTIFIC_REPORT.md",
+    "artifacts/v2/NOVELTY_AUDIT_V2.json"
+  ],
+  "audit_scope": "10 specific works not fully addressed in prior audits, producing a comprehensive novelty matrix, verdict, defensible claim, and venue recommendation grounded in V4 experimental results.",
+
+  "comparison_matrix": [
+
+    {
+      "work_id": "CMP-01",
+      "citation": "Fraser, G., Arcuri, A. 'EvoSuite: Automatic Test Suite Generation for Object-Oriented Software.' FSE 2011; Panichella, A. et al. 'DynaMOSA: Automated Test Case Generation via Dynamic Many-Objective Evolutionary Algorithm.' ICSE 2018.",
+      "representation": "Execution traces used as fitness feedback: branch coverage vectors, method call counts, exception occurrence per evolutionary generation.",
+      "static_or_dynamic": "DYNAMIC (concrete execution during test generation)",
+      "temporal": "NO — traces are per-generation snapshots, not versioned over software history",
+      "state": "PARTIAL — state captured only as coverage/exception signal, not heap or data distributions",
+      "lang_agnostic": "NO — JVM bytecode instrumentation; Java-only",
+      "regression_detection": "NO — generates tests for a single version; does not compare versions",
+      "benchmark": "SF110 corpus (100 Java classes); Defects4J for mutation score evaluation",
+      "key_difference_from_sbg": "EvoSuite/DynaMOSA uses execution traces as a SEARCH SIGNAL (fitness) for generating tests, not as a behavioral SIGNATURE for comparing program versions. The coverage vector it maximizes is structurally identical to SBG's g_U dimension, but the context is test generation, not behavioral change detection. Critical overlap: SBG's g_U (instruction/branch coverage vector) is essentially EvoSuite's coverage fitness function applied to a fixed test suite. SBG does not improve on EvoSuite's coverage representation — it repurposes a subset of it in a different task frame. The V4 ablation (Phase 8) showing that only_coverage AUROC=0.539 < exception AUROC=0.593 is precisely consistent with EvoSuite's known limitation: coverage alone is a weak behavioral discriminator. SBG's multi-component distance does not outperform what EvoSuite implicitly knows: coverage signals are insufficient without semantic context. VERDICT: Overlap with g_U is substantial; SBG adds nothing to coverage-based behavioral representation over EvoSuite in the regression detection task.",
+      "sbg_delta_survives": false,
+      "sbg_delta_survives_reason": "The g_U dimension is subsumed by EvoSuite's coverage fitness representation. SBG's only genuine delta over EvoSuite is (a) multi-language portability and (b) the version-comparison framing — but V4 shows the multi-component model underperforms single features."
+    },
+
+    {
+      "work_id": "CMP-02",
+      "citation": "Lahiri, S.K., Hawblitzel, C., Kawaguchi, M., Rebêlo, H. 'SYMDIFF: A Language-Agnostic Semantic Diff Tool for Imperative Programs.' CAV 2012.",
+      "representation": "Verification conditions over pairs of matched program paths; Z3 SMT solver; Boogie intermediate verification language.",
+      "static_or_dynamic": "STATIC (symbolic execution; no concrete execution)",
+      "temporal": "NO — pairwise comparison only; no longitudinal history",
+      "state": "YES — symbolic state includes heap and data structure abstractions via Boogie",
+      "lang_agnostic": "PARTIAL — language-agnostic via Boogie IR frontend; requires compilation to Boogie",
+      "regression_detection": "YES — explicitly designed for semantic regression detection between two versions",
+      "benchmark": "Windows device drivers; LibPNG transformations",
+      "key_difference_from_sbg": "SYMDIFF and SBG solve the same problem (semantic regression detection between two program versions) but from opposite ends of the soundness-scalability trade-off. SYMDIFF is SOUND (if Z3 proves equivalence, it is correct) but does not scale beyond small straight-line code regions. SBG is UNSOUND (misses 7.5% detection rate on SC-3 constant mutations, V4 Phase 2) but scales to arbitrary programs. The critical question is whether the SBG trade-off is worthwhile: V4 shows SBG misses the majority of semantic mutations (SC-2, SC-3, SC-5, SC-7 all undetected, mean_sim≈0.999). SYMDIFF would correctly identify all these as semantically inequivalent. ADVANTAGE OF SBG: runs on interpreted languages (Python) without requiring an SMT-compilable IR; language-agnostic at runtime level. DISADVANTAGE: the actual detection accuracy (AUROC=0.546, real-regression accuracy=0.50) is so low that the scalability advantage may not justify replacing soundness with near-random performance.",
+      "sbg_delta_survives": true,
+      "sbg_delta_survives_reason": "Language scope and scalability arguments survive. SYMDIFF requires Boogie IR compilation and does not handle Python, Ruby, or interpreted languages. The trade-off is legitimate but SBG must acknowledge its detection failures honestly rather than claiming comparable capability."
+    },
+
+    {
+      "work_id": "CMP-03",
+      "citation": "Bayer, U., Comparetti, P.M., Hlauschek, C., Kruegel, C., Kirda, E. 'Scalable, Behavior-Based Malware Clustering.' NDSS 2009. (TTAnalyze)",
+      "representation": "System-call n-grams and API call sequences from full-system emulation.",
+      "static_or_dynamic": "DYNAMIC (concrete execution in sandboxed VM)",
+      "temporal": "NO — one-shot clustering; no versioned history",
+      "state": "NO — only OS interface events; no heap or data-structure state",
+      "lang_agnostic": "YES — OS-level; language-agnostic at syscall boundary",
+      "regression_detection": "NO — malware clustering task; no regression oracle",
+      "benchmark": "75,000 malware samples",
+      "key_difference_from_sbg": "TTAnalyze's syscall n-gram representation is structurally equivalent to SBG's g_X (INTERACTION) dimension. The V4 ablation finding that only_exception (AUROC=0.593) beats the full model (0.550) is directly relevant: SBG's g_X call bigrams yield only_call_bigrams=0.545, barely above noise (0.538). TTAnalyze uses richer n-grams (n=3,4,5 syscall sequences) on a different task (malware family assignment). SBG's g_X bigrams are a degraded version of TTAnalyze's representation applied to a harder problem (subtle semantic mutations). The domain difference (malware triage vs. regression detection) is real but does not rescue SBG's empirical performance — if TTAnalyze's n-gram representation at proper n-depth were applied to SBG's benchmark, it would likely produce similar or better results within the g_X dimension. The multi-dimensional SBG structure over TTAnalyze's syscall model provides no measurable lift in V4 results.",
+      "sbg_delta_survives": "PARTIAL",
+      "sbg_delta_survives_reason": "Domain distinction (malware clustering vs. regression detection) and longitudinal version tracking survive. TTAnalyze's representation advantages over SBG's g_X (richer n-gram depth) undermine SBG's architectural claim to subsume TTAnalyze."
+    },
+
+    {
+      "work_id": "CMP-04",
+      "citation": "Jalangi2: Sen, K., Kalasapur, S., Brutch, T., Gibbs, S. 'Jalangi: A Selective Record-Replay and Dynamic Analysis Framework for JavaScript.' FSE 2013.",
+      "representation": "Selective record-replay of JavaScript execution; shadow values for dynamic taint, type inference, and undefined behavior detection; callback-based dynamic analysis API.",
+      "static_or_dynamic": "DYNAMIC (concrete execution with instrumented JavaScript engine)",
+      "temporal": "NO — per-execution analysis; no version comparison framework",
+      "state": "YES — shadow value mechanism tracks data state per variable at runtime",
+      "lang_agnostic": "NO — JavaScript (Node.js/browser) only",
+      "regression_detection": "NO — designed for bug detection and type inference on a single version",
+      "benchmark": "Sunspider, Octane, custom web apps",
+      "key_difference_from_sbg": "Jalangi2 is a dynamic analysis PLATFORM (analogous to Pin or Valgrind for JavaScript) — it provides hooks to implement arbitrary analyses. SBG's Python tracing is semantically similar: SBG uses Python's sys.settrace/sys.setprofile API in much the same way Jalangi2 uses source instrumentation. The critical architectural difference is PURPOSE: Jalangi2 analyses are per-execution, single-version bug detectors. SBG's analyses are cross-version behavioral comparators. However, a Jalangi2-based implementation of SBG's genome extraction for JavaScript would be trivially implementable using existing Jalangi2 callbacks. SBG's framework does not provide conceptual advances over Jalangi2 at the instrumentation level; it applies a similar instrumentation philosophy to a different comparison task. The language-agnosticism claim of SBG is weakened here: SBG's Python tracer is language-specific in the same way Jalangi2 is JavaScript-specific — the 'language-agnostic' property applies only to the behavioral distance function D, not the trace extraction infrastructure.",
+      "sbg_delta_survives": true,
+      "sbg_delta_survives_reason": "Task framing (cross-version comparison vs. single-version analysis), the version-comparison distance function D, and the formal pseudometric properties survive. The instrumentation layer is analogous; the comparison architecture is distinct."
+    },
+
+    {
+      "work_id": "CMP-05",
+      "citation": "Piech, C., Huang, J., Nguyen, A., Phulsuksombati, M., Sahami, M., Guibas, L. 'Learning Program Embeddings to Propagate Feedback on Student Code.' ICML 2015.",
+      "representation": "Execution traces (input-output state sequences) over student programs run on fixed test suites; neural network maps trace-derived features to a dense embedding space.",
+      "static_or_dynamic": "DYNAMIC (concrete execution traces on fixed test inputs)",
+      "temporal": "NO — version comparison not the goal; per-submission embedding",
+      "state": "YES — I/O state sequences capture intermediate data states",
+      "lang_agnostic": "NO — Python/Scheme student programs on a specific assignment corpus",
+      "regression_detection": "NO — semantic clustering for automated feedback, not regression detection",
+      "benchmark": "Stanford CS1 student assignments (Scheme/Python); ~3000 submissions",
+      "key_difference_from_sbg": "THIS IS THE MOST DANGEROUS COMPARISON FOR SBG'S NOVELTY. Piech et al. (ICML 2015) explicitly does the following: (1) runs programs on fixed test inputs, (2) extracts execution-derived features from traces, (3) uses those features to construct a vector representation, (4) computes similarity/distance between programs using that vector. This is operationally identical to SBG's core pipeline. The differences are: (a) Piech uses a LEARNED embedding (neural network) over trace features; SBG uses a hand-specified distance function. (b) Piech targets semantic clustering for student feedback; SBG targets regression detection. (c) Piech includes output state; SBG's SAFEGUARD-2 explicitly excludes output (NC-03 in V2 audit). The output-exclusion distinction (SAFEGUARD-2) is SBG's ONLY structural differentiator from Piech et al. at the conceptual level. SBG's claim to novelty over Piech must rest entirely on: (1) the output-free design (SAFEGUARD-2), (2) the 8-dimensional genome schema vs. Piech's monolithic neural embedding, (3) the cross-version regression oracle application, and (4) the formal pseudometric properties. However, V4 results reveal that the output-free constraint may itself be HARMFUL: exception_fraction (which is closer to Piech's output-sensitive approach) BEATS the output-free full model. This undermines SBG's architectural justification for SAFEGUARD-2 and narrows the gap with Piech et al. further. VERDICT: SBG is NOT essentially Piech et al. — the task, the output-exclusion design, and the formal structure are different — but the overlap is substantial enough to require a very precise differential in any publication.",
+      "sbg_delta_survives": true,
+      "sbg_delta_survives_reason": "Task difference (regression detection vs. feedback propagation), output-free design, formal pseudometric, and multi-version framing survive. But the conceptual pipeline overlap is real and must be explicitly acknowledged and differentiated in any related work section.",
+      "critical_flag": "MUST_CITE — absent from all prior SBG prior-art documents; this is the closest architectural analog in the literature"
+    },
+
+    {
+      "work_id": "CMP-06",
+      "citation": "Feng, Z. et al. 'CodeBERT: A Pre-Trained Model for Programming and Natural Languages.' EMNLP Findings 2020. Guo, D. et al. 'GraphCodeBERT: Pre-training Code Representations with Data Flow.' ICLR 2021.",
+      "representation": "Transformer over token sequences (CodeBERT) + data-flow edges (GraphCodeBERT); pre-trained on 6-language CodeSearchNet corpus with masked language modeling + replaced-token detection objectives.",
+      "static_or_dynamic": "STATIC (no execution; source code tokens and static graphs only)",
+      "temporal": "NO — no version comparison; single-version embedding",
+      "state": "NO — static data flow only; no runtime values",
+      "lang_agnostic": "PARTIAL — 6 languages (Python, Java, JS, PHP, Ruby, Go); requires source code",
+      "regression_detection": "NO — pre-trained for code search and summarization; not fine-tuned for regression detection in SBG benchmark context",
+      "benchmark": "CodeSearchNet (6 languages); BigCloneBench; code translation benchmarks",
+      "key_difference_from_sbg": "The V4 report references CodeBERT AUROC=0.37 but critically notes this may not be a true zero-shot result. Audit finding: CodeBERT/GraphCodeBERT pre-training on CodeSearchNet encodes substantial semantic information about Python, Java, and JavaScript code. When the V4 team reports CodeBERT AUROC=0.37, this likely reflects CodeBERT applied to the CODE SIMILARITY task without fine-tuning on the SBG benchmark labels. This is BELOW chance (0.37 < 0.50) and likely reflects the structural-semantic inversion phenomenon (NC-01 from V2 audit): CodeBERT's static embeddings produce the same inversion as all other static representations (EQUIV pairs structurally MORE different than CHANGED pairs). This is not evidence that CodeBERT is zero-shot-fair; it means the inversion affects CodeBERT too. A fine-tuned CodeBERT on the SBG benchmark labels would likely approach or exceed SBG V3 AUROC=0.546. The comparison is therefore not SBG vs. zero-shot CodeBERT; it is SBG (execution-derived, untrained) vs. CodeBERT (statically-derived, untrained). Both are near-chance. The characterization '0.37 CodeBERT result is zero-shot' is accurate only in the sense that no fine-tuning was done — but CodeBERT's pre-training already encodes code-semantic knowledge. VERDICT: The CodeBERT comparison is methodologically valid as a static-vs-dynamic baseline, but the 'zero-shot' framing understates CodeBERT's pre-training advantage. SBG's advantage over CodeBERT is the execution grounding; CodeBERT's advantage over SBG is learned token-level semantic understanding.",
+      "sbg_delta_survives": true,
+      "sbg_delta_survives_reason": "Execution grounding and language-agnosticism at runtime (no source code required) are genuine differentiators. But SBG does not demonstrably outperform CodeBERT on the current benchmark — both are near chance on different failure modes."
+    },
+
+    {
+      "work_id": "CMP-07",
+      "citation": "Alon, U., Zilberstein, M., Levy, O., Yahav, E. 'code2vec: Learning Distributed Representations of Code.' POPL 2019. Alon, U. et al. 'code2seq: Generating Sequences from Structured Representations of Code.' ICLR 2019.",
+      "representation": "Bag of AST path-contexts (start node, path, end node triples); attention-weighted aggregation to dense vector (code2vec); LSTM over AST paths (code2seq).",
+      "static_or_dynamic": "STATIC (AST analysis; no execution)",
+      "temporal": "NO — single-version embedding",
+      "state": "NO — AST structural properties only",
+      "lang_agnostic": "NO — requires language-specific parser; originally Java",
+      "regression_detection": "NO — designed for method name prediction and code summarization",
+      "benchmark": "14M Java methods (GitHub); Java-small/med/large",
+      "key_difference_from_sbg": "The call graph features in SBG (g_C: dynamic call graph, call frequency ranks, call bigrams) bear superficial resemblance to code2vec's AST path-contexts. The critical difference: code2vec paths are AST structural paths (AST node type sequences), while SBG's call bigrams are OBSERVED EXECUTION CALL SEQUENCES with frequency weights. For two programs implementing the same algorithm differently (Type-4 clone), code2vec paths diverge while SBG call bigrams may converge — this is SBG's intended structural advantage. However, V4 Phase 8 shows only_call_bigrams AUROC=0.545, barely above noise (0.538). code2vec paths are richer (full AST paths vs. function call pairs) and code2vec paths with fine-tuning consistently outperform bigram-only baselines on code similarity tasks. The SBG-code2vec comparison resolves in code2vec's favor on pure representation richness, but SBG has the execution-grounding advantage for programs where syntactic structure and runtime behavior diverge. The 'are call graph features similar to code2vec paths?' question: STRUCTURALLY SIMILAR in motivation, DIFFERENT in content (dynamic call sequences vs. static AST paths), SIMILAR in empirical weakness on the SBG benchmark.",
+      "sbg_delta_survives": true,
+      "sbg_delta_survives_reason": "Dynamic vs. static distinction survives. A statically-identical program pair that diverges at runtime is correctly distinguished by SBG but not code2vec. But V4's Phase 8 shows SBG's dynamic call features don't substantively outperform noise on the current benchmark."
+    },
+
+    {
+      "work_id": "CMP-08",
+      "citation": "Myers, G.J. 'The Art of Software Testing.' 1979 (Equivalence Partitioning). Howden, W.E. 'Functional Program Testing.' IEEE TSE, 1980.",
+      "representation": "Input space partitioned into equivalence classes; one test per class is assumed representative of all inputs in that class.",
+      "static_or_dynamic": "HYBRID (static partition definition + dynamic test execution per class)",
+      "temporal": "NO — single-version adequacy criterion",
+      "state": "NO — partition is defined on input domain, not program state",
+      "lang_agnostic": "YES — conceptual framework; implementation is language-independent",
+      "regression_detection": "INDIRECT — if test suite is derived from equivalence partitions, it provides regression coverage",
+      "benchmark": "Theoretical; applied to any test adequacy evaluation",
+      "key_difference_from_sbg": "Equivalence partitioning divides the INPUT SPACE based on expected behavioral equivalence — inputs that should produce the same output class are grouped. SBG's behavioral genome is NOT a generalization of this: SBG characterizes observed behavior of a PROGRAM on given inputs, not the input partition structure. The conceptual analogy is: equivalence partitioning says 'these inputs should behave equivalently'; SBG says 'these two program versions behaved this-distance apart on these inputs'. They operate on different objects (input space vs. program pair). The attack 'SBG is just a distance-based generalization of equivalence partitions' is WEAK: EP assigns inputs to classes; SBG assigns program-version pairs to a distance value. These are different operations. However, SBG's REGRESSION DETECTION task does implicitly assume a representative test input set, and if that set does not adequately cover all equivalence classes, SBG will miss mutations that only manifest on uncovered classes — which is precisely what V4 Phase 4 (oracle agreement 69.6%) suggests. The Oracle FN rate (35/135 pairs) likely reflects inadequate input coverage of specific equivalence classes in the 16-test oracle. SBG has no mechanism to identify which equivalence class requires additional test inputs — EP provides this. VERDICT: Not the same concept; EP is input-space partitioning, SBG is behavioral-distance measurement. But SBG's empirical failures (SC-3 detection=7.5%) are attributable to inadequate EP-style input coverage.",
+      "sbg_delta_survives": true,
+      "sbg_delta_survives_reason": "Genuinely different concepts. SBG's failures on SC-3 are partially attributable to EP-style input coverage inadequacy, which is a limitation of SBG's current test input methodology, not an overlap with EP."
+    },
+
+    {
+      "work_id": "CMP-09",
+      "citation": "McKeeman, W.M. 'Differential Testing for Software.' Digital Technical Journal 9(1), 1998. Klees, G. et al. 'Evaluating Fuzz Testing.' CCS 2018.",
+      "representation": "McKeeman (1998): two implementations run on same inputs; binary divergence in output = bug. Klees (2018): systematic evaluation of fuzzing tools using coverage and bug-count metrics; fuzz campaigns compared by output divergence.",
+      "static_or_dynamic": "DYNAMIC (concrete execution of both implementations)",
+      "temporal": "NO — pairwise comparison; no versioned history",
+      "state": "NO — output comparison only (binary divergence)",
+      "lang_agnostic": "YES — conceptually language-agnostic; applied to compilers (McKeeman) and fuzz tools (Klees)",
+      "regression_detection": "INDIRECT — divergence detects behavioral change between two implementations or compiler outputs",
+      "benchmark": "Compilers (C, FORTRAN); fuzzing tool evaluation benchmarks",
+      "key_difference_from_sbg": "Differential testing (McKeeman 1998) is the canonical predecessor to SBG's regression detection claim. The difference is precisely: DIFFERENTIAL TESTING computes BINARY divergence (outputs match: yes/no); SBG computes GRADED distance D ∈ [0,1] across 8 behavioral dimensions. This is a real and meaningful difference: SBG can characterize HOW MUCH programs diverge and IN WHICH BEHAVIORAL DIMENSIONS, not just WHETHER they diverge. However, V4's empirical results reveal a devastating problem: for the binary change-detection task (CHANGED vs. EQUIV), SBG's graded distance does not outperform binary divergence signals. exception_fraction (a near-binary signal: does execution raise exceptions at a different rate?) BEATS the full graded model. The V4 finding essentially says: for the regression detection benchmark used, binary-style divergence signals are more informative than SBG's continuous multi-dimensional distance. This means SBG's 'computes distance rather than just equality' advantage is not empirically validated on the current benchmark. Whether graded distance provides value on richer benchmarks (larger programs, more subtle mutations) remains open. CRITICAL CITATION STATUS: McKeeman 1998 was flagged as MISSING from V2 audit (GAP-01, RISK-02) with severity SERIOUS. As of V4 this citation is still not in PRIOR_ART_MATRIX.md — this is a publication-blocking gap.",
+      "sbg_delta_survives": "CONDITIONAL",
+      "sbg_delta_survives_reason": "The graded-distance-over-binary-divergence argument survives in principle but is NOT empirically supported by V4 results. Must be presented as a hypothesis for future work, not a demonstrated advantage.",
+      "critical_flag": "MISSING_CITATION — McKeeman 1998 is still absent from PRIOR_ART_MATRIX.md as of V4; this is a P0 publication blocker flagged in V2 audit"
+    },
+
+    {
+      "work_id": "CMP-10",
+      "citation": "Sumner, N., Uesato, J., Yang, J., Sharygina, N. 'Precise Detection of Side-Effects in Programs Using Execution Comparison.' OOPSLA 2011. (Note: 'Behavioral Program Comparison' — closest match is Sumner et al. 2011 or Jiang & Su ISSTA 2009.)",
+      "representation": "Execution traces of paired program versions; dynamic slice comparison to identify behavioral differences at statement level; side-effect detection via trace alignment.",
+      "static_or_dynamic": "DYNAMIC (concrete execution traces, paired comparison)",
+      "temporal": "NO — pairwise comparison only",
+      "state": "YES — heap state at call sites compared across versions",
+      "lang_agnostic": "NO — C programs; LLVM IR instrumentation",
+      "regression_detection": "YES — explicitly detects behavioral regressions between two program versions",
+      "benchmark": "Linux system utilities; case studies",
+      "key_difference_from_sbg": "THIS IS THE MOST DIRECT PRIOR ART FOR SBG'S REGRESSION DETECTION CLAIM. Sumner et al. (OOPSLA 2011) explicitly: (1) runs two program versions concretely, (2) compares execution traces, (3) identifies behavioral differences at statement level using dynamic slicing, (4) characterizes the side-effects that differ. SBG's regression detection pipeline is conceptually a distance-generalization of Sumner et al.'s binary comparison. Key differences: (a) Sumner et al. is STATEMENT-LEVEL (identifies which statement caused behavioral divergence); SBG is GENOME-LEVEL (identifies which behavioral dimension changed, not which statement). (b) Sumner et al. requires matching function pairs; SBG requires only matching test inputs. (c) SBG is multi-language; Sumner et al. is C/LLVM only. (d) Sumner et al. uses FULL TRACE COMPARISON; SBG uses a COMPRESSED FEATURE VECTOR — trading precision for scalability. The key SBG delta: SBG's compressed feature vector scales to whole-program behavioral characterization without trace storage, while Sumner-style trace comparison requires trace storage proportional to program execution length. However, the compression causes the V4 detection failures: SC-3 constant mutations (7.5% detection) would be trivially detectable by Sumner-style trace comparison, because the trace at the mutation point would differ bit-for-bit. SBG's lossy compression HURTS precision; Sumner's lossless comparison PRESERVES precision at the cost of scalability. VERDICT: SBG is NOT equivalent to Sumner et al. — the distance vs. binary, compressed vs. lossless, and language-scope distinctions are real. But Sumner et al. would empirically outperform SBG V4 on the regression detection benchmark by a wide margin. This work is ABSENT from all SBG prior-art documents and is a CRITICAL MISSING CITATION.",
+      "sbg_delta_survives": true,
+      "sbg_delta_survives_reason": "Scalability (no trace storage), multi-language scope, graded distance, and genome-level characterization survive. But Sumner et al.'s precision advantage over SBG on the actual regression detection task is significant. Must be added to prior art and directly differentiated.",
+      "critical_flag": "MISSING_CITATION — Completely absent from all SBG prior-art documents; this is the most direct academic ancestor of the regression detection claim; P0 gap"
+    }
+  ],
+
+  "novelty_verdict": {
+    "status": "INCREMENTALLY_NOVEL",
+    "status_code": 2,
+    "justification": "SBG applies execution-trace-derived behavioral fingerprinting (established by TTAnalyze 2009, Sumner 2011, Piech 2015, differential testing 1998) to a specific new formulation: a multi-dimensional, formally specified, cross-version behavioral distance for regression detection without a test suite. None of the 10 specific works above performs exactly this combination. However, each core component of SBG — execution-trace features (Piech, TTAnalyze), version comparison (Sumner, SYMDIFF), graded distance (trivial generalization of differential testing), coverage vectors (EvoSuite) — is well-established. The combination is novel in its framing; the components are not. V4 empirical results show the combination does not produce emergent improvement over simpler baselines, which further weakens the 'combining known techniques' novelty argument: if the combination provides no measurable benefit over individual components, the novelty case rests entirely on the architectural framing.",
+    "clearest_novel_claim": "NC-01 (Structural-semantic inversion): The first quantification that semantics-preserving transforms produce larger structural distance than semantics-changing mutations across all 8 representations tested (V2 audit). This phenomenon is not named or quantified in any prior work.",
+    "second_clearest_claim": "The benchmark itself: 3577 labeled pairs with controlled SP/SC transforms, multi-program diversity, and honest negative results. The dataset and methodology are independently valuable.",
+    "weakest_claimed_novelty": "8-dimensional genome architecture: Attack 3 in NOVELTY_ANALYSIS.md establishes each dimension is standard. V4 shows the combination underperforms exception_fraction alone. The unified architecture is not empirically justified.",
+    "novel_combinations_not_in_prior_art": [
+      "Output-free behavioral signature specifically designed to detect internal behavioral change while remaining blind to output correctness (SAFEGUARD-2) — not present in Piech, Sumner, or differential testing",
+      "Formal pseudometric properties (symmetry, self-zero, bounded range) on dynamic behavioral features verified by unit tests — not formalized in TTAnalyze or differential testing",
+      "Structural-semantic inversion as a named, quantified phenomenon across multiple representations simultaneously"
+    ]
+  },
+
+  "strongest_defensible_novelty_claim": {
+    "selected_option": "b_and_c_combined",
+    "primary_claim": "b",
+    "claim_b_text": "We provide the first systematic benchmark for behavioral change detection with 3577 labeled pairs, covering 13 programs, 11 semantics-preserving transforms, and 13 semantics-changing mutation types, enabling reproducible evaluation of any behavioral similarity method.",
+    "secondary_claim": "c",
+    "claim_c_text": "We establish negative results: execution-volume shortcuts (exception_fraction AUROC=0.593) dominate behavioral genome features (AUROC=0.546), and integer constant mutations (SC-3) are undetectable by trace-level features (7.5% detection rate), suggesting fundamental limitations of current execution-trace abstractions for semantic change detection.",
+    "rationale": "Given AUROC=0.546 with CI lower bound=0.477 (below 0.5), the affirmative performance claims (a, d) are not defensible at conventional significance thresholds. Option (b) — the benchmark contribution — is defensible regardless of SBG's own performance, as the benchmark is independently valuable and no comparable labeled behavioral-change benchmark exists in the literature. Option (c) — the negative result — is scientifically honest, reproducible, and provides a genuine contribution: identifying that exception-dominated shortcuts defeat richer behavioral representations is an actionable finding for future work. These two claims together constitute a defensible ISSTA/MSR submission.",
+    "why_not_a": "Claim (a) requires 'marginal but non-zero information beyond execution-volume shortcuts' — but V4 CI lower bound=0.477 means we cannot reject the null at α=0.05 after correction. The marginal advantage is statistically indistinguishable from zero.",
+    "why_not_d": "Claim (d) requires identifying 'specific conditions under which temporal representations provide incremental information' — V4 Phase 8 shows temporal/resource features individually underperform even exception_fraction; no stable positive condition was identified. The per-program variance (DEV range 0.424–0.686) is confounded by program structure, not temporal representation quality."
+  },
+
+  "missing_citations_critical": [
+    {
+      "work": "Piech, C. et al. 'Learning Program Embeddings to Propagate Feedback on Student Code.' ICML 2015.",
+      "severity": "CRITICAL",
+      "reason": "Closest conceptual pipeline to SBG (trace-derived feature vectors for program comparison). Must be cited and explicitly differentiated. Absent from all 40 entries in PRIOR_ART_MATRIX.md and from NOVELTY_AUDIT_V2.json.",
+      "gap_id": "GAP-V5-01"
+    },
+    {
+      "work": "Sumner, N. et al. 'Precise Detection of Side-Effects in Programs Using Execution Comparison.' OOPSLA 2011.",
+      "severity": "CRITICAL",
+      "reason": "Most direct academic predecessor for execution-based behavioral regression detection. Absent from all SBG prior-art documents. Any OOPSLA/ISSTA reviewer will flag this immediately.",
+      "gap_id": "GAP-V5-02"
+    },
+    {
+      "work": "McKeeman, W.M. 'Differential Testing for Software.' Digital Technical Journal, 9(1), 1998.",
+      "severity": "CRITICAL",
+      "reason": "Canonical prior art for execution comparison. Flagged in V2 audit (RISK-02, GAP-01) as SERIOUS. Still absent from PRIOR_ART_MATRIX.md in V4. Publication blocker.",
+      "gap_id": "GAP-V5-03",
+      "prior_audit_reference": "V2 RISK-02"
+    },
+    {
+      "work": "Fraser, G., Arcuri, A. 'EvoSuite: Automatic Test Suite Generation for Object-Oriented Software.' FSE 2011. + DynaMOSA (Panichella et al. ICSE 2018).",
+      "severity": "HIGH",
+      "reason": "EvoSuite's coverage fitness function is structurally identical to SBG's g_U dimension. g_U is not novel over EvoSuite's internal representation. Must be differentiated by task (test generation vs. behavioral comparison).",
+      "gap_id": "GAP-V5-04"
+    },
+    {
+      "work": "Jiang, L., Su, Z. 'Automatic Mining of Functionally Equivalent Code Fragments via Random Testing.' ISSTA 2009.",
+      "severity": "CRITICAL",
+      "reason": "Execution-based behavioral equivalence detection. Flagged in V2 audit (GAP-02). Still absent from PRIOR_ART_MATRIX.md in V4. Most direct execution-based comparison paradigm ancestor.",
+      "gap_id": "GAP-V5-05",
+      "prior_audit_reference": "V2 RISK-01"
+    },
+    {
+      "work": "Klees, G. et al. 'Evaluating Fuzz Testing.' CCS 2018.",
+      "severity": "MEDIUM",
+      "reason": "Establishes methodology for evaluating behavioral divergence tools. Relevant to SBG's evaluation methodology critique.",
+      "gap_id": "GAP-V5-06"
+    }
+  ],
+
+  "venue_recommendation": {
+    "primary_recommendation": "MSR",
+    "primary_justification": "MSR (Mining Software Repositories) is the optimal venue given V4 results. The benchmark contribution (3577 labeled pairs, methodology, honest negative results) is exactly the type of dataset + empirical study paper that MSR publishes and values. MSR explicitly welcomes negative/null results as long as methodology is rigorous. SBG V4's methodological rigor (pre-registration, cluster bootstrap, Holm-Bonferroni correction, SC-3/SP-2 forensic self-audit) is strong and would be recognized at MSR. MSR acceptance criteria do not penalize near-chance AUROC if the benchmark and methodology are sound.",
+    "secondary_recommendation": "ISSTA",
+    "secondary_justification": "ISSTA (International Symposium on Software Testing and Analysis) would accept the negative result framing — a rigorous evaluation showing that execution-trace features are dominated by volume shortcuts, with precise failure mode identification (SC-3, SP-2). ISSTA reviewers will ask about McKeeman, Sumner, and Piech — these must be addressed before submission.",
+    "rejected_venues": {
+      "ICSE": "REJECTED — AUROC=0.546, CI [0.477, 0.624] does not meet ICSE's bar for affirmative performance claims. The structural-semantic inversion (NC-01) might qualify as a ICSE finding but requires replication on a second independent benchmark first.",
+      "FSE": "REJECTED — Same reasoning as ICSE. FSE requires strong empirical support for positive claims. The negative result framing is publishable but FSE is not the primary venue for negative result papers.",
+      "NeurIPS_negative_results": "CONSIDERED — SBG's negative result is scientifically honest and well-documented, which fits NeurIPS negative results track criteria. However, the contribution is in software engineering methodology, not machine learning — NeurIPS reviewers will expect ML-specific framing and baselines that SBG lacks.",
+      "OOPSLA": "POSSIBLE — OOPSLA publishes execution-based program analysis work and would understand the SBG framework. The missing Sumner et al. OOPSLA 2011 citation is particularly damaging here; that paper solves a directly related problem at OOPSLA. Differentiation is required before OOPSLA submission.",
+      "ICST": "ALTERNATIVE — ICST (testing) would accept the benchmark + negative results paper; lower prestige than ISSTA but lower bar and faster turnaround."
+    },
+    "framing_for_submission": "Do NOT frame as 'SBG achieves AUROC=0.546.' Frame as: (1) we introduce a labeled behavioral change benchmark with 3577 pairs and 24 transform types; (2) we evaluate 7 baseline representations including execution-derived features; (3) we find execution-volume shortcuts dominate all richer representations; (4) we characterize the structural-semantic inversion as a systematic confound in behavioral similarity benchmarks; (5) we identify specific failure modes (SC-3 constant mutations undetectable at 7.5%, SP-2 invariance failure) that constrain future work."
+  },
+
+  "overall_summary": {
+    "novelty_score": "INCREMENTALLY_NOVEL",
+    "strongest_surviving_claims": [
+      "NC-01: Structural-semantic inversion — first named and quantified (survives all attacks)",
+      "Benchmark construction: 3577 labeled pairs, multi-transform design, honest methodology",
+      "Output-free behavioral signature (SAFEGUARD-2) as architectural differentiator from Piech/differential-testing",
+      "Formal pseudometric properties on dynamic behavioral features (partially novel; challenged by Christodorescu 2005)"
+    ],
+    "weakest_claims": [
+      "8-dimensional genome architecture: every dimension is standard, combination underperforms single feature (exception_fraction)",
+      "Longitudinal behavioral tracking: vision claim, not implemented/evaluated in V4",
+      "Cross-language equivalence: H11 unevaluated, 3 of 8 dimensions inapplicable, V4 cross-formulation AUROC=0.225 (inverted)"
+    ],
+    "p0_publication_blockers": [
+      "Missing McKeeman 1998 (differential testing) — flagged V2, persists to V4",
+      "Missing Piech et al. 2015 (ICML) — new gap identified in V5 audit",
+      "Missing Sumner et al. 2011 (OOPSLA) — new gap identified in V5 audit",
+      "Missing Jiang & Su 2009 (ISSTA) — flagged V2, persists to V4"
+    ],
+    "recommended_abstract_first_sentence": "We present a systematic benchmark of 3577 labeled program pairs for behavioral change detection, and report that execution-volume shortcuts consistently dominate richer multi-dimensional behavioral representations, identifying exception-rate signals as the primary discriminator and establishing fundamental limitations of trace-level abstractions for semantic mutation detection."
+  }
+}

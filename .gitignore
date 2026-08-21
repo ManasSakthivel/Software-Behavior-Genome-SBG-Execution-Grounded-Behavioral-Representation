@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+*.so
+.venv/
+venv/
+env/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Bob AI assistant workspace
+.bob/
+
+# Java compiled
+*.class
+*.jar
+benchmark/v5/java_programs/*.class
+
+# Large model weights (if any)
+*.bin
+*.pt
+*.pkl
+
+# Temp
+tmp/
+*.tmp

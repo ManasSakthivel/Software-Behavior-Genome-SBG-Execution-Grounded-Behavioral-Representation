@@ -1,0 +1,34 @@
+{
+  "baseline": "B06_FAIR_V2",
+  "fairness_note": "SAFEGUARD-5 compliant: B06 re-run with V2 inputs",
+  "split": "test",
+  "threshold_from": "dev",
+  "n_canonical_inputs": 8,
+  "threshold": 1.000001,
+  "metrics": {
+    "accuracy": 0.491935,
+    "precision": 0.491935,
+    "recall": 1.0,
+    "f1": 0.659459,
+    "auroc": 0.504966,
+    "auprc": 0.481751,
+    "tp": 366,
+    "fp": 378,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 744,
+    "threshold_used": 1.000001,
+    "ci_f1_lower": 0.626039,
+    "ci_f1_upper": 0.688987,
+    "ci_auroc_lower": 0.489001,
+    "ci_auroc_upper": 0.568129
+  },
+  "inversion_analysis": {
+    "equiv_mean_similarity": 0.834159,
+    "changed_mean_similarity": 0.80939,
+    "inversion_delta": -0.024768,
+    "v1_b06_delta": "not_recorded",
+    "b07_dynamic_v2_delta": -0.045265
+  },
+  "comparison_note": "B06-V2-FAIR vs B07: same inputs, different representations. Delta AUROC measures representation value."
+}

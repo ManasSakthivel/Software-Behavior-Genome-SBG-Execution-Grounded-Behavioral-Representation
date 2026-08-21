@@ -1,0 +1,121 @@
+{
+  "version": "v2",
+  "generated_at": "2025-07-07T00:00:00Z",
+  "protocol": "All claims must be traceable to machine-readable artifacts. No unsupported claim may remain.",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "V2 Dynamic SBG achieves AUROC=0.531 on N=744 test pairs",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/B07/results_test.json",
+      "metric": "auroc=0.5310, CI=[0.499, 0.581]",
+      "test_independence": "TEST split frozen before any V2 development",
+      "note": "CI barely clears 0.5; not statistically indistinguishable from random at conventional alpha"
+    },
+    {
+      "id": "C2",
+      "claim": "V2 Dynamic SBG resolves the structural-semantic inversion (inversion_delta < V1 delta=+0.034)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/B07/results_test.json + artifacts/v2/HARD_NEGATIVE_RESULTS.json",
+      "metric": "v2_delta=-0.045 vs v1_delta=+0.034",
+      "caveat": "Inversion NOT resolved for SC-3 (off-by-one), delta=+0.083. Resolved for SC-11 (wrong variable), delta=-0.227."
+    },
+    {
+      "id": "C3",
+      "claim": "Adding V1 static distance to V2 dynamic does not improve AUROC (H8)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/B08_CORRECT/results_test.json",
+      "metric": "hybrid_auroc=0.528 < dynamic_auroc=0.531; grid selected w_static=0.0",
+      "protocol": "Weight grid [0.0, 0.2, 0.4, 0.6, 0.8, 1.0] evaluated on DEV only before TEST",
+      "note": "V1 static signal appears dominated by dynamic signal in current setup"
+    },
+    {
+      "id": "C4",
+      "claim": "B06-V2-FAIR is worse than B07-DYNAMIC-V2 on same inputs (representation comparison)",
+      "status": "DIRECTIONALLY_SUPPORTED",
+      "evidence": "artifacts/v2/B06_FAIR/results_test.json + artifacts/v2/STATISTICAL_INTEGRITY.json",
+      "metric": "B06_FAIR AUROC=0.505 vs B07 AUROC=0.531; delta=+0.026 in favor of DynamicGenome",
+      "protocol": "SAFEGUARD-5: identical inputs (V2_CANONICAL_INPUTS); only representation differs",
+      "correction": "Phase 3A: CIs overlap [0.489,0.568] vs [0.499,0.581]. Two-sample z=0.80, p=0.21. Cannot claim statistical superiority; directional advantage observed.",
+      "original_status": "SUPPORTED",
+      "phase3a_corrected": true
+    },
+    {
+      "id": "C5",
+      "claim": "All 8 DynamicGenome scalar fields are stable (CV<=0.05) across repeated extractions",
+      "status": "PARTIALLY_SUPPORTED",
+      "evidence": "artifacts/v2/NOISE_FLOOR_RESULTS.json",
+      "metric": "1/10 programs tested (api_rate_limiter); all 8 fields stable (CV=0.0)",
+      "caveat": "9/10 benchmark programs FILE_NOT_FOUND. Full claim requires testing remaining programs."
+    },
+    {
+      "id": "C6",
+      "claim": "Dynamic SBG resolves inversion for wrong-variable changes (SC-11)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/HARD_NEGATIVE_RESULTS.json",
+      "metric": "SC-11 B07 AUROC=0.790, inversion_delta=-0.227"
+    },
+    {
+      "id": "C7",
+      "claim": "Dynamic SBG does NOT resolve inversion for off-by-one changes (SC-3)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/HARD_NEGATIVE_RESULTS.json",
+      "metric": "SC-3 B07 AUROC=0.544, inversion_delta=+0.083; 84.6% near-identical",
+      "note": "Off-by-one mutations produce execution traces indistinguishable from correct code without adversarial boundary-condition inputs"
+    },
+    {
+      "id": "C8",
+      "claim": "V2 Dynamic SBG robustness to structure-preserving transformations is poor (H10)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/ROBUSTNESS_RESULTS.json",
+      "metric": "B07 AUROC spread=0.311 across SP types (criterion=0.10)",
+      "note": "This is a genuine negative finding, not a failure to measure"
+    },
+    {
+      "id": "C9",
+      "claim": "Cross-language generalization of V2 SBG (H11)",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "evidence": "docs/v2/H11_CROSS_LANGUAGE_DESIGN.md",
+      "metric": "N=15, ~25% power at corrected alpha=0.0042",
+      "note": "Correctly pre-registered as EXPLORATORY. Not a falsified claim."
+    },
+    {
+      "id": "C10",
+      "claim": "V2 SBG detects regressions better than static baselines (H12)",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "evidence": "artifacts/v2/REGRESSION_RESULTS.json",
+      "metric": "N=55 (all regressions, no controls) — AUROC undefined",
+      "root_cause": "Benchmark lacks non-regression control pairs (label=0). Design flaw, not scientific failure."
+    },
+    {
+      "id": "C11",
+      "claim": "No test set leakage in V2 evaluation",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/LEAKAGE_AUDIT_V2.json",
+      "metric": "CLEAN_WITH_WARNINGS; no systematic leakage found"
+    },
+    {
+      "id": "C12",
+      "claim": "V2 Dynamic SBG outperforms V1 Static SBG (H7)",
+      "status": "SUPPORTED",
+      "evidence": "artifacts/v2/B07/results_test.json",
+      "metric": "AUROC=0.531 vs 0.424, delta=0.107, z≈5.08, CI=[0.499, 0.581]",
+      "note": "Does NOT outperform AST (B02 AUROC=0.553)"
+    },
+    {
+      "id": "C13",
+      "claim": "V2 Dynamic SBG outperforms AST baseline",
+      "status": "NOT_SUPPORTED",
+      "evidence": "artifacts/v2/B07/results_test.json + artifacts/phase3/B02/results_test.json",
+      "metric": "B07=0.531 < B02_AST=0.553",
+      "note": "Negative finding: execution-grounded representations do not yet outperform strong static structural analysis"
+    }
+  ],
+  "unsupported_claims": [],
+  "negative_findings": [
+    "H8: Static component adds no signal to dynamic in hybrid fusion (grid selected w_static=0.0)",
+    "H10: Dynamic SBG AUROC is not robust across SP transformation types (spread=0.311)",
+    "C13: Dynamic SBG does not outperform AST (AUROC 0.531 vs 0.553)",
+    "SC-3: Off-by-one mutations not distinguishable by dynamic execution traces"
+  ]
+}

@@ -1,0 +1,289 @@
+# SBG Claims Registry
+# =====================
+# Every claim in the project maps to evidence here.
+# Format: YAML list under top-level key 'claims'.
+#
+# Status values:
+#   SUPPORTED             — evidence clearly supports the claim
+#   PARTIALLY_SUPPORTED   — some evidence supports; important caveats exist
+#   NOT_SUPPORTED         — evidence contradicts the claim
+#   INSUFFICIENT_EVIDENCE — claim is plausible but evidence is too weak
+#   NOT_EVALUABLE         — cannot be evaluated with current data
+#
+# Last updated: Phase 4 complete
+
+claims:
+
+  - claim_id: C001
+    exact_claim: >
+      SBG extracts structured behavioral genomes from Python source code
+      across 8 dimensions: CONTROL, DATA, STATE, RESOURCE, TEMPORAL,
+      ERROR, INTERACTION, EXECUTION.
+    evidence_artifact: "artifacts/research/PHASE_2_GATE.json"
+    experiment: "Phase 2 unit tests"
+    metric: "test pass rate"
+    sample_size: 653
+    confidence_interval: "N/A (deterministic unit tests)"
+    statistical_test: "none — unit tests"
+    status: SUPPORTED
+    notes: >
+      All 653 unit tests pass across 3 consecutive runs. Genome extraction
+      is deterministic and serialization roundtrip passes. Static dimensions
+      (CONTROL, DATA, ERROR) tested at 84+53+20 tests. Dynamic dimensions
+      tested with 52+36+15+15+47 tests.
+
+  - claim_id: C002
+    exact_claim: >
+      Semantics-preserving transformations produce substantially smaller
+      SBG behavioral distance than semantics-changing mutations (H1).
+    evidence_artifact: "artifacts/phase4/E1/results.json"
+    experiment: "E1 + Phase 3 baseline results"
+    metric: "AUROC"
+    sample_size: 744
+    confidence_interval: "[0.375, 0.472] for SBG_static AUROC"
+    statistical_test: "bootstrap 1000 resamples seed=42"
+    status: NOT_SUPPORTED
+    notes: >
+      NEGATIVE RESULT. ALL tested representations including Full SBG show
+      INVERTED discrimination: CHANGED pairs have HIGHER structural
+      similarity than EQUIVALENT pairs (SBG_static: EQUIV_mean=0.9619,
+      CHANGED_mean=0.9954, delta=+0.0335). Root cause: SP transforms
+      (rename, restructure, extract) cause larger structural change than
+      SC mutations (off-by-one, operator swap). AUROC=0.22-0.55 for all
+      methods. This is an honest, important negative result.
+
+  - claim_id: C003
+    exact_claim: >
+      SBG outperforms token, AST, CFG, embedding baselines for
+      semantic-equivalence discrimination (H2).
+    evidence_artifact: "artifacts/phase4/E6/results.json"
+    experiment: "E6 + Phase 3"
+    metric: "AUROC"
+    sample_size: 744
+    confidence_interval: "SBG AUROC CI [0.375, 0.472]; AST CI [0.509, 0.594]"
+    statistical_test: "McNemar test (b=0, c=0, p=1.0); bootstrap CI overlap"
+    status: NOT_SUPPORTED
+    notes: >
+      NEGATIVE RESULT. Full SBG AUROC=0.4237, best baseline AST AUROC=0.5528.
+      SBG is ranked #4 of 8 baselines by AUROC. All CIs overlap with
+      random-chance baseline (0.5). McNemar test: b=c=0 (identical
+      majority-class predictions), p=1.0. This is an honest negative result.
+      NOTE: B05 uses subword n-gram fallback (not CodeBERT) — stronger
+      embedding baseline might perform differently.
+
+  - claim_id: C004
+    exact_claim: >
+      SBG similarity scores are stable (low variance) under
+      semantics-preserving transforms such as renaming, refactoring,
+      inlining, restructuring (H3).
+    evidence_artifact: "artifacts/phase4/E3/results.json"
+    experiment: "E3 + E11"
+    metric: "Variance ratio SP/SC; AUROC degradation under noise"
+    sample_size: 744
+    confidence_interval: "permutation test, 1000 permutations, seed=42"
+    statistical_test: "permutation test for variance difference"
+    status: NOT_SUPPORTED
+    notes: >
+      NEGATIVE RESULT. SBG_static: SP_std=0.0595 > SC_std=0.0093.
+      SP transforms produce MORE score variance than SC mutations —
+      the opposite of what H3 predicts. Permutation test p=1.0.
+      E11 confirms: dead code insertion degrades AST AUROC by 12.5%.
+      H3 is false in the opposite direction from the hypothesis.
+
+  - claim_id: C005
+    exact_claim: >
+      SBG generalizes consistently across Python programs not seen
+      during threshold selection.
+    evidence_artifact: "artifacts/phase4/E8/results.json"
+    experiment: "E8"
+    metric: "std of per-program AUROC"
+    sample_size: 13
+    confidence_interval: "bootstrap CI on mean per-program AUROC"
+    statistical_test: "bootstrap 1000 resamples seed=42"
+    status: INSUFFICIENT_EVIDENCE
+    notes: >
+      All 13 test programs are unseen during threshold selection.
+      AST: mean_AUROC=0.449, std=0.051 (moderate consistency).
+      Static_SBG: mean_AUROC=0.219, std=0.037 (consistent but poor).
+      Token: mean_AUROC=0.229, std=0.053. The generalization gap
+      is moderate but performance is near-chance throughout.
+      Only 13 programs is insufficient for strong generalization claims.
+
+  - claim_id: C006
+    exact_claim: >
+      Combining 8 behavioral dimensions provides measurable value
+      over any individual dimension (H6).
+    evidence_artifact: "artifacts/phase4/E7/results.json"
+    experiment: "E7"
+    metric: "AUROC per ablation condition"
+    sample_size: 744
+    confidence_interval: "bootstrap CI per condition"
+    statistical_test: "bootstrap 1000 resamples seed=42"
+    status: NOT_SUPPORTED
+    notes: >
+      NEGATIVE RESULT. Full 3-dim static SBG AUROC=0.3491 vs best single
+      dimension ERROR_only AUROC=0.4770. Combining CONTROL+DATA+ERROR
+      DEGRADES performance compared to ERROR alone. This suggests negative
+      dimension interaction — CONTROL and DATA dimensions add noise that
+      obscures the ERROR dimension's signal. H6 is not supported within
+      the static dimensions. Full 8-dim SBG (B08, AUROC=0.4237) also
+      underperforms dynamic-only B06 (AUROC=0.5046).
+
+  - claim_id: C007
+    exact_claim: >
+      SBG can detect behavioral regressions across software versions (H5).
+    evidence_artifact: "artifacts/phase4/E10/results.json"
+    experiment: "E10"
+    metric: "AUROC for regression detection; TPR at FPR≤5%"
+    sample_size: 744
+    confidence_interval: "bootstrap CI [0.509, 0.594] for best method (AST)"
+    statistical_test: "bootstrap 1000 resamples seed=42"
+    status: NOT_SUPPORTED
+    notes: >
+      NEGATIVE RESULT. Best regression detection AUROC=0.5528 (AST, not SBG).
+      At FPR≤5%: TPR=0.8% — catches <1% of regressions at 5% false alarm rate.
+      SC-3 and SC-11 mutations have similarity=1.0 (completely undetectable).
+      H5 requires AUROC>0.65 for practical utility.
+      The benchmark regression detection task is too hard for current static
+      representations. Runtime-value oracle approaches needed.
+
+  - claim_id: C008
+    exact_claim: >
+      SBG is language-agnostic: behavioral genome captures program
+      behavior independent of programming language (H4).
+    evidence_artifact: "artifacts/phase4/E9/results.json"
+    experiment: "E9 (preliminary only)"
+    metric: "N/A — illustrative pairs only"
+    sample_size: 5
+    confidence_interval: "N/A"
+    statistical_test: "N/A"
+    status: NOT_EVALUABLE
+    notes: >
+      E9 is preliminary only — 5 illustrative Python-only style pairs, not
+      true cross-language pairs. Full H4 evaluation requires Phase 5:
+      Python↔Java or Python↔JavaScript benchmark with shared specification.
+      Current token and AST features are language-specific and would fail
+      cross-language. Control-flow topology features are more promising.
+      H4 cannot be evaluated until Phase 5.
+
+  - claim_id: C009
+    exact_claim: >
+      All tested representations (Token, AST, CFG, Dependency, Embedding,
+      Dynamic Trace, Static SBG, Full SBG) fail to bridge the
+      structural-semantic inversion in this benchmark.
+    evidence_artifact: "artifacts/research/PHASE_3_GATE.json"
+    experiment: "Phase 3 + E1 + E2 + E4"
+    metric: "AUROC for all 8 baselines"
+    sample_size: 744
+    confidence_interval: "all AUROC CIs overlap with 0.5"
+    statistical_test: "bootstrap 1000 resamples seed=42 per baseline"
+    status: SUPPORTED
+    notes: >
+      CONFIRMED NEGATIVE FINDING. All 8 baselines: AUROC range 0.35–0.55.
+      E1 confirms EQUIV_mean < CHANGED_mean for all methods.
+      E2 confirms 86–99% of SC mutations are near-identical.
+      E4 confirms bytecode is also inverted (AUROC=0.327).
+      This structural-semantic inversion is the primary scientific finding.
+
+  - claim_id: C010
+    exact_claim: >
+      The SBG benchmark contains no cross-split program leakage.
+    evidence_artifact: "benchmark/splits/leakage_audit_report.json"
+    experiment: "Phase 1 leakage audit"
+    metric: "leakage count"
+    sample_size: 3577
+    confidence_interval: "N/A"
+    statistical_test: "deterministic scan"
+    status: SUPPORTED
+    notes: >
+      Phase 1 leakage audit found 0 base program leakage, 0 near-duplicates,
+      0 cross-split leakage. E8 confirms all 13 test programs are absent
+      from train/dev splits.
+
+  - claim_id: C011
+    exact_claim: >
+      SBG genome extraction is deterministic and reproducible across runs.
+    evidence_artifact: "artifacts/research/PHASE_2_GATE.json"
+    experiment: "Phase 2 determinism tests"
+    metric: "hash equality across 3 consecutive runs"
+    sample_size: 653
+    confidence_interval: "N/A"
+    statistical_test: "deterministic replay"
+    status: SUPPORTED
+    notes: >
+      All 653 Phase 2 tests pass across 3 consecutive runs with
+      identical results. Serialization roundtrip tests pass.
+      Canonicalization is idempotent.
+
+  - claim_id: C012
+    exact_claim: >
+      Best baseline AUROC = 0.5528 (AST) vs Full SBG AUROC = 0.4237
+      on the SBG Phase 1 benchmark (744 test pairs).
+    evidence_artifact: "artifacts/phase4/E6/results.json"
+    experiment: "E6 comprehensive comparison"
+    metric: "AUROC on test split"
+    sample_size: 744
+    confidence_interval: "AST CI [0.509, 0.594]; SBG CI [0.375, 0.472]"
+    statistical_test: "bootstrap 1000 resamples seed=42; McNemar test"
+    status: SUPPORTED
+    notes: >
+      These are the primary quantitative results. CIs do not overlap
+      (AST lower bound 0.509 > SBG upper bound 0.472), confirming AST
+      significantly outperforms Full SBG on this benchmark.
+
+  - claim_id: C013
+    exact_claim: >
+      Dynamic trace baseline (B06) AUROC=0.5046 outperforms
+      static SBG (B07) AUROC=0.3491, suggesting dynamic features
+      are more informative than static structural features for
+      semantic-change detection on this benchmark.
+    evidence_artifact: "artifacts/phase4/E5/results.json"
+    experiment: "E5 + Phase 3"
+    metric: "AUROC"
+    sample_size: 744
+    confidence_interval: "from Phase 3 artifacts"
+    statistical_test: "bootstrap 1000 resamples seed=42"
+    status: PARTIALLY_SUPPORTED
+    notes: >
+      Dynamic B06 (AUROC=0.505) > Static B07 (AUROC=0.349): delta=+0.075.
+      Both are near random. Full SBG B08 (AUROC=0.424) is intermediate —
+      adding static dims to dynamic actually degrades performance.
+      This is partially supported: dynamic is better than static SBG,
+      but neither is adequate. Cannot claim dynamic is "informative" in
+      an absolute sense when AUROC≈0.5.
+
+  - claim_id: C014
+    exact_claim: >
+      ERROR genome dimension alone achieves higher AUROC (0.477) than
+      any combination of static SBG dimensions including full
+      CONTROL+DATA+ERROR (0.349).
+    evidence_artifact: "artifacts/phase4/E7/results.json"
+    experiment: "E7 ablation"
+    metric: "AUROC per ablation condition"
+    sample_size: 744
+    confidence_interval: "bootstrap CI per condition"
+    statistical_test: "bootstrap 1000 resamples seed=42"
+    status: SUPPORTED
+    notes: >
+      E7 ablation table (sorted by AUROC): ERROR_only=0.477, CONTROL_only=0.406,
+      DATA_only=0.403, CONTROL_DATA_ERROR=0.349, CONTROL_DATA=0.343.
+      This is counter-intuitive: adding dimensions HURTS performance.
+      The ERROR genome captures error handling patterns which happen to
+      be more correlated with mutation type than CONTROL/DATA features.
+
+  - claim_id: C015
+    exact_claim: >
+      SBG extraction cost is feasible for large-scale evaluation:
+      static extraction takes <1ms per program.
+    evidence_artifact: "artifacts/phase4/E12/results.json"
+    experiment: "E12 runtime cost"
+    metric: "median extraction time (ms)"
+    sample_size: 64
+    confidence_interval: "IQR reported per component"
+    statistical_test: "3 warmup + 10 measured runs, median+IQR"
+    status: SUPPORTED
+    notes: >
+      CONTROL: 0.81ms, DATA: 0.78ms, ERROR: 0.79ms per program.
+      Static SBG pairwise: 3.75ms (267 pairs/sec).
+      AST similarity (B02): 37.90ms/pair (26 pairs/sec) — 10x slower than SBG.
+      Cost is not a bottleneck for the benchmark size used.

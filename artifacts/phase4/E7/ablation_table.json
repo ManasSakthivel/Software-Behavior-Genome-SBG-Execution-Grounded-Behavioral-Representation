@@ -1,0 +1,215 @@
+[
+  {
+    "condition": "AST",
+    "source": "Phase3_B02",
+    "test_f1": 0.659459,
+    "test_auroc": 0.552845,
+    "test_auprc": 0.47793,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.509315,
+      0.592881
+    ]
+  },
+  {
+    "condition": "Dynamic_Trace",
+    "source": "Phase3_B06",
+    "test_f1": 0.659459,
+    "test_auroc": 0.504554,
+    "test_auprc": 0.481404,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.487899,
+      0.567415
+    ]
+  },
+  {
+    "condition": "ERROR_only",
+    "source": "Phase4_E7_ablation",
+    "dimensions": [
+      "ERROR"
+    ],
+    "test_f1": 0.659459,
+    "test_auroc": 0.476978,
+    "test_auprc": 0.453439,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.430793,
+      0.512002
+    ]
+  },
+  {
+    "condition": "CFG",
+    "source": "Phase3_B03",
+    "test_f1": 0.659459,
+    "test_auroc": 0.461315,
+    "test_auprc": 0.445228,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.425356,
+      0.507328
+    ]
+  },
+  {
+    "condition": "Full_SBG_8dim",
+    "source": "Phase3_B08",
+    "test_f1": 0.659459,
+    "test_auroc": 0.423664,
+    "test_auprc": 0.421863,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.401193,
+      0.482963
+    ]
+  },
+  {
+    "condition": "CONTROL_only",
+    "source": "Phase4_E7_ablation",
+    "dimensions": [
+      "CONTROL"
+    ],
+    "test_f1": 0.659459,
+    "test_auroc": 0.406085,
+    "test_auprc": 0.409322,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.368231,
+      0.446428
+    ]
+  },
+  {
+    "condition": "Token/TF-IDF",
+    "source": "Phase3_B01",
+    "test_f1": 0.58427,
+    "test_auroc": 0.404263,
+    "test_auprc": 0.415352,
+    "test_ci_f1": [
+      0.545648,
+      0.618619
+    ],
+    "test_ci_auroc": [
+      0.368512,
+      0.445702
+    ]
+  },
+  {
+    "condition": "DATA_only",
+    "source": "Phase4_E7_ablation",
+    "dimensions": [
+      "DATA"
+    ],
+    "test_f1": 0.659459,
+    "test_auroc": 0.403331,
+    "test_auprc": 0.405687,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.359073,
+      0.438084
+    ]
+  },
+  {
+    "condition": "Dependency_Approx",
+    "source": "Phase3_B04",
+    "test_f1": 0.659459,
+    "test_auroc": 0.399305,
+    "test_auprc": 0.405839,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.368233,
+      0.447124
+    ]
+  },
+  {
+    "condition": "Embedding_Fallback",
+    "source": "Phase3_B05",
+    "test_f1": 0.546032,
+    "test_auroc": 0.369395,
+    "test_auprc": 0.401414,
+    "test_ci_f1": [
+      0.505006,
+      0.584456
+    ],
+    "test_ci_auroc": [
+      0.329148,
+      0.41064
+    ]
+  },
+  {
+    "condition": "Static_SBG_all3",
+    "source": "Phase3_B07",
+    "test_f1": 0.659459,
+    "test_auroc": 0.349112,
+    "test_auprc": 0.383177,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.307101,
+      0.382993
+    ]
+  },
+  {
+    "condition": "CONTROL_DATA_ERROR",
+    "source": "Phase4_E7_ablation",
+    "dimensions": [
+      "CONTROL",
+      "DATA",
+      "ERROR"
+    ],
+    "test_f1": 0.659459,
+    "test_auroc": 0.349112,
+    "test_auprc": 0.383177,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.307101,
+      0.382993
+    ]
+  },
+  {
+    "condition": "CONTROL_DATA",
+    "source": "Phase4_E7_ablation",
+    "dimensions": [
+      "CONTROL",
+      "DATA"
+    ],
+    "test_f1": 0.659459,
+    "test_auroc": 0.34286,
+    "test_auprc": 0.381487,
+    "test_ci_f1": [
+      0.626039,
+      0.688987
+    ],
+    "test_ci_auroc": [
+      0.301674,
+      0.377535
+    ]
+  }
+]

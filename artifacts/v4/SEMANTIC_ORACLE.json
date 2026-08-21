@@ -1,0 +1,756 @@
+{
+  "experiment": "PHASE4_SEMANTIC_ORACLE",
+  "version": "v4",
+  "n_pairs_evaluated": 200,
+  "oracle_agreement_rate": 0.6963,
+  "n_agree": 94,
+  "n_disagree": 41,
+  "n_unknown": 65,
+  "oracle_false_positives": 6,
+  "oracle_false_negatives": 35,
+  "benchmark_label_validity": "QUESTIONED",
+  "oracle_inputs_used": 16,
+  "limitation": "Oracle may miss mutations triggered by rare inputs. Agreement rate is a lower bound on label correctness.",
+  "disagreement_examples": [
+    "test__api_rate_limiter__sp-2_s0",
+    "test__api_rate_limiter__sp-2_s1",
+    "test__api_rate_limiter__sp-8_s1",
+    "test__api_rate_limiter__sc2_s0_p0",
+    "test__api_rate_limiter__sc2_s1_p0",
+    "test__api_rate_limiter__sc2_s2_p0",
+    "test__api_rate_limiter__sc3_s0_p0",
+    "test__api_rate_limiter__sc3_s1_p0",
+    "test__api_rate_limiter__sc3_s2_p0",
+    "test__api_rate_limiter__sc4_s0_p0"
+  ],
+  "per_pair_sample": [
+    {
+      "pair_id": "test__api_rate_limiter__sp-2_s0",
+      "transformation_type": "SP-2",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "CHANGED",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AttributeError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-2_s1",
+      "transformation_type": "SP-2",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "CHANGED",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AttributeError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-2_s2",
+      "transformation_type": "SP-2",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-3_s0",
+      "transformation_type": "SP-3",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-3_s1",
+      "transformation_type": "SP-3",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "UNKNOWN",
+      "agreement": "UNKNOWN",
+      "evidence": {
+        "reason": "load_failed"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-3_s2",
+      "transformation_type": "SP-3",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "UNKNOWN",
+      "agreement": "UNKNOWN",
+      "evidence": {
+        "reason": "load_failed"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-4_s0",
+      "transformation_type": "SP-4",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-4_s1",
+      "transformation_type": "SP-4",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-4_s2",
+      "transformation_type": "SP-4",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-5_s0",
+      "transformation_type": "SP-5",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-5_s1",
+      "transformation_type": "SP-5",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-5_s2",
+      "transformation_type": "SP-5",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-6_s0",
+      "transformation_type": "SP-6",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-6_s1",
+      "transformation_type": "SP-6",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-6_s2",
+      "transformation_type": "SP-6",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-8_s1",
+      "transformation_type": "SP-8",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "CHANGED",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "NameError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-8_s2",
+      "transformation_type": "SP-8",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-9_s0",
+      "transformation_type": "SP-9",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-9_s1",
+      "transformation_type": "SP-9",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-9_s2",
+      "transformation_type": "SP-9",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-10_s0",
+      "transformation_type": "SP-10",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-10_s1",
+      "transformation_type": "SP-10",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-10_s2",
+      "transformation_type": "SP-10",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-12_s0",
+      "transformation_type": "SP-12",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-12_s1",
+      "transformation_type": "SP-12",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sp-12_s2",
+      "transformation_type": "SP-12",
+      "benchmark_label": "EQUIVALENT",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc1_s0_p0",
+      "transformation_type": "SC-1",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AssertionError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc1_s1_p0",
+      "transformation_type": "SC-1",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AssertionError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc1_s2_p0",
+      "transformation_type": "SC-1",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AssertionError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc2_s0_p0",
+      "transformation_type": "SC-2",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc2_s1_p0",
+      "transformation_type": "SC-2",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc2_s2_p0",
+      "transformation_type": "SC-2",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc3_s0_p0",
+      "transformation_type": "SC-3",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc3_s1_p0",
+      "transformation_type": "SC-3",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc3_s2_p0",
+      "transformation_type": "SC-3",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc4_s0_p0",
+      "transformation_type": "SC-4",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc4_s1_p0",
+      "transformation_type": "SC-4",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc4_s2_p0",
+      "transformation_type": "SC-4",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc5_s0_p0",
+      "transformation_type": "SC-5",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc5_s1_p0",
+      "transformation_type": "SC-5",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc5_s2_p0",
+      "transformation_type": "SC-5",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc6_s0_p0",
+      "transformation_type": "SC-6",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AssertionError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc6_s1_p0",
+      "transformation_type": "SC-6",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AssertionError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc6_s2_p0",
+      "transformation_type": "SC-6",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "AssertionError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc9_s0_p0",
+      "transformation_type": "SC-9",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "NameError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc9_s1_p0",
+      "transformation_type": "SC-9",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "NameError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc9_s2_p0",
+      "transformation_type": "SC-9",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "NameError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc11_s0_p0",
+      "transformation_type": "SC-11",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "UnboundLocalError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc11_s1_p0",
+      "transformation_type": "SC-11",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "CHANGED",
+      "agreement": "AGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 16,
+        "n_agreements": 0,
+        "sample_diff": {
+          "input": "[]",
+          "out1": "None",
+          "out2": "None",
+          "exc1": null,
+          "exc2": "UnboundLocalError"
+        }
+      }
+    },
+    {
+      "pair_id": "test__api_rate_limiter__sc11_s2_p0",
+      "transformation_type": "SC-11",
+      "benchmark_label": "CHANGED",
+      "oracle_label": "LIKELY_EQUIVALENT",
+      "agreement": "DISAGREE",
+      "evidence": {
+        "n_inputs_tested": 16,
+        "n_diffs_found": 0,
+        "n_agreements": 16,
+        "limitation": "May miss subtle mutations with rare trigger inputs"
+      }
+    }
+  ]
+}

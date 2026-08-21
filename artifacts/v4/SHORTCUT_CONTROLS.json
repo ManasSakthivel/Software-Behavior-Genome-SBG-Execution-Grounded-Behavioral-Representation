@@ -1,0 +1,85 @@
+{
+  "experiment": "PHASE1_VOLUME_CONTROL",
+  "version": "v4",
+  "n_test_pairs": 744,
+  "sbg_v3_auroc": 0.539906,
+  "sbg_v3_ci": [
+    0.497297,
+    0.584079
+  ],
+  "best_shortcut": "exc_frac",
+  "best_shortcut_auroc": 0.567,
+  "sbg_vs_best_shortcut_delta": -0.027094,
+  "noise_floor_95th_pct": 0.537747,
+  "above_noise_floor": true,
+  "survives_shortcut_controls": false,
+  "verdict": "SBG_V3_ABOVE_NOISE_BUT_BELOW_BEST_SHORTCUT",
+  "detailed_results": {
+    "wall_ms": {
+      "auroc": 0.553269,
+      "ci_lower": 0.492107,
+      "ci_upper": 0.615762,
+      "permutation_p": 0.007,
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "call_count": {
+      "auroc": 0.553066,
+      "ci_lower": 0.507071,
+      "ci_upper": 0.597096,
+      "permutation_p": 0.0,
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "n_fns": {
+      "auroc": 0.552862,
+      "ci_lower": 0.503435,
+      "ci_upper": 0.60398,
+      "permutation_p": 0.0,
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "exc_frac": {
+      "auroc": 0.567,
+      "ci_lower": 0.521925,
+      "ci_upper": 0.616262,
+      "permutation_p": 0.0,
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "combined": {
+      "auroc": 0.564943,
+      "ci_lower": 0.503289,
+      "ci_upper": 0.630409,
+      "permutation_p": 0.002,
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "sbg_v3": {
+      "auroc": 0.539906,
+      "ci_lower": 0.497297,
+      "ci_upper": 0.584079,
+      "permutation_p": 0.042,
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "random_label": {
+      "auroc_mean": 0.499588,
+      "auroc_std": 0.0216,
+      "auroc_95th_percentile": 0.537747,
+      "ci_95": [
+        0.459359,
+        0.542015
+      ],
+      "n_shuffles": 200
+    }
+  },
+  "methodology": {
+    "pseudo_similarity": "1/(1+|feature_base - feature_variant|)",
+    "auroc": "WMW tie-aware (sbg.v3.metrics.compute_auroc_v3)",
+    "bootstrap": "cluster-by-base-program, 500 resamples",
+    "permutation": "1000 permutations",
+    "random_baseline": "200 label shuffles, 95th percentile",
+    "test_set": "benchmark/datasets/pairs_test.jsonl (frozen, 744 pairs)"
+  }
+}

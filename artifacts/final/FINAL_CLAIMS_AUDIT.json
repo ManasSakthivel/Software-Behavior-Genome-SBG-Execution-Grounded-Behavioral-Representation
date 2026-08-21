@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-08-20T06:33:39Z",
+  "claims_registry_path": "docs/CLAIMS_REGISTRY.yaml",
+  "n_claims": 15,
+  "status_summary": {
+    "SUPPORTED": 5,
+    "NOT_SUPPORTED": 5,
+    "PARTIALLY_SUPPORTED": 1,
+    "NOT_EVALUABLE": 1,
+    "INSUFFICIENT_EVIDENCE": 1
+  },
+  "all_claims_have_evidence": true,
+  "no_fabricated_labels": true,
+  "no_test_set_tuning": true,
+  "negative_results_preserved": true,
+  "key_supported_claims": [
+    "C001: SBG extracts structured genomes from Python (653 tests pass)",
+    "C009: All representations fail structural-semantic inversion (confirmed E1-E4)",
+    "C010: Zero cross-split data leakage (leakage audit clean)",
+    "C011: Extraction is deterministic (3 consecutive test runs identical)",
+    "C014: ERROR dimension best single static dim (AUROC=0.477 vs combined 0.349)"
+  ],
+  "key_negative_results": [
+    "C002: H1 NOT SUPPORTED \u2014 structural-semantic inversion",
+    "C003: H2 NOT SUPPORTED \u2014 SBG underperforms AST by 0.129 AUROC",
+    "C004: H3 NOT SUPPORTED \u2014 SP more variable than SC",
+    "C006: H6 NOT SUPPORTED \u2014 combining dims hurts",
+    "C007: H5 NOT SUPPORTED \u2014 regression detection near-chance"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "reviewer": "A \u2014 Program Analysis",
+  "overall_assessment": "The static extraction correctly implements what it claims but is clearly insufficient for semantic-change detection. The negative results are valid and important. The key finding (inversion) is correctly attributed to the limitation of structural features vs. semantic mutations. No P0 issues found.",
+  "p0": 0,
+  "p1": 1,
+  "p2": 2,
+  "p3": 1,
+  "findings": [
+    {
+      "severity": "P1",
+      "title": "Static control-flow extraction does not build explicit CFG",
+      "detail": "The ControlGenome uses AST-based McCabe approximation, not an actual control-flow graph. This means loop nesting, dominance, and infeasible paths are not captured. The claim 'CFG similarity' (B03) is also a structure approximation, not a full CFG. A true CFG-based baseline (e.g., using Joern or CodeAnalysis) would be stronger.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "ACKNOWLEDGED in Phase 3 gate as P2 limitation. B03 is 'CFG structure approximation.'"
+    },
+    {
+      "severity": "P2",
+      "title": "No inter-procedural analysis",
+      "detail": "All static extraction is intra-procedural. For programs with multiple functions, call chains and inter-procedural data flow are not captured. SC mutations in helper functions called from main functions may be invisible to single-function extraction.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Known limitation. Affects programs with deep call hierarchies."
+    },
+    {
+      "severity": "P2",
+      "title": "Error genome relies on exception type names, which may be renamed",
+      "detail": "ERROR genome captures exception type names (ValueError, RuntimeError, etc.). SP-1 (variable/name renaming) could rename exception types in custom exceptions, causing ERROR distance to increase for semantics-preserving renaming.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Theoretical concern. Custom exceptions are rare in benchmark programs."
+    },
+    {
+      "severity": "P3",
+      "title": "Bytecode analysis (E4) uses opcode Jaccard, not instruction semantics",
+      "detail": "E4 bytecode similarity is opcode multiset Jaccard. Two semantically different programs could have identical opcode distributions. Semantic bytecode analysis (symbolic execution, abstract interpretation) would be more rigorous.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "E4 documents this as 'approximation' and result shows INVERTED AUROC=0.327."
+    }
+  ]
+}

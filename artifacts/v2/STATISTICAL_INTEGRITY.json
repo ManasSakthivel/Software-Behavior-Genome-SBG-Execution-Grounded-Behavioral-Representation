@@ -1,0 +1,234 @@
+{
+  "phase": "3A",
+  "purpose": "Statistical integrity repairs to address bugs found by 8-agent forensic audit",
+  "generated_by": "experiments/v2/run_phase3a_repairs.py",
+  "bugs_fixed": [
+    {
+      "id": "BUG_1",
+      "severity": "CRITICAL",
+      "description": "SC-3 bootstrap CI mathematically impossible (point_estimate > upper_bound)",
+      "fix": "Stratified bootstrap in hard_negative_analysis.py::_bootstrap_ci()",
+      "status": "FIXED"
+    },
+    {
+      "id": "BUG_2",
+      "severity": "CRITICAL",
+      "description": "H9 permutation test never executed",
+      "fix": "permutation_test_delta() called in run_phase3a_repairs.py",
+      "status": "FIXED",
+      "p_value": 0.0,
+      "verdict": "SUPPORTED"
+    },
+    {
+      "id": "BUG_3",
+      "severity": "CRITICAL",
+      "description": "H7 formal statistical test never recorded in artifact",
+      "fix": "Hanley-McNeil two-sample z-test recorded in H7_CORRECTED_RESULTS.json",
+      "status": "FIXED",
+      "z_statistic": 3.5185,
+      "p_value": 0.00021698
+    },
+    {
+      "id": "BUG_4",
+      "severity": "MAJOR",
+      "description": "H8 used independent SE instead of paired SE",
+      "fix": "Paired bootstrap in run_phase3a_repairs.py::run_h8_paired_bootstrap()",
+      "status": "FIXED",
+      "paired_ci_on_delta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "BUG_5",
+      "severity": "HIGH",
+      "description": "Holm-Bonferroni step-down stopping rule missing",
+      "fix": "Added to e1_statistical_analysis.py::holm_bonferroni()",
+      "status": "FIXED"
+    },
+    {
+      "id": "BUG_6",
+      "severity": "HIGH",
+      "description": "Degenerate F1=0.659459 in primary tables for 7/11 baselines",
+      "fix": "F1 removed from primary tables; documented as threshold degeneracy",
+      "status": "DOCUMENTED",
+      "f1_value": 0.659459
+    },
+    {
+      "id": "BUG_7",
+      "severity": "MAJOR",
+      "description": "Multiple overclaimed SUPPORTED statuses (H9, C4)",
+      "fix": "H9 status updated; C4 corrected to DIRECTIONALLY_SUPPORTED",
+      "status": "FIXED",
+      "c4_corrected": "DIRECTIONALLY_SUPPORTED",
+      "h9_corrected": "SUPPORTED"
+    }
+  ],
+  "hypothesis_verdicts_corrected": {
+    "H7": {
+      "verdict": "SUPPORTED",
+      "p_value": 0.00021698,
+      "z_statistic": 3.5185,
+      "holm_reject": true
+    },
+    "H8": {
+      "verdict": "NOT_SUPPORTED",
+      "delta_auroc": 0.0,
+      "paired_ci": [
+        0.0,
+        0.0
+      ],
+      "holm_reject": false
+    },
+    "H9": {
+      "verdict": "SUPPORTED",
+      "p_value": 0.0,
+      "delta_dynamic": -0.044853,
+      "holm_reject": true
+    }
+  },
+  "holm_bonferroni_table": {
+    "H9": {
+      "p_value": 0.0,
+      "holm_rank": 1,
+      "corrected_alpha": 0.004167,
+      "reject_h0": true,
+      "stopped_by_step_down": false
+    },
+    "H7": {
+      "p_value": 0.00021698,
+      "holm_rank": 2,
+      "corrected_alpha": 0.004545,
+      "reject_h0": true,
+      "stopped_by_step_down": false
+    },
+    "H1": {
+      "p_value": 1.0,
+      "holm_rank": 3,
+      "corrected_alpha": 0.005,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H2": {
+      "p_value": 1.0,
+      "holm_rank": 4,
+      "corrected_alpha": 0.005556,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H3": {
+      "p_value": 1.0,
+      "holm_rank": 5,
+      "corrected_alpha": 0.00625,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H4": {
+      "p_value": 1.0,
+      "holm_rank": 6,
+      "corrected_alpha": 0.007143,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H5": {
+      "p_value": 1.0,
+      "holm_rank": 7,
+      "corrected_alpha": 0.008333,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H6": {
+      "p_value": 1.0,
+      "holm_rank": 8,
+      "corrected_alpha": 0.01,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H8": {
+      "p_value": 1.0,
+      "holm_rank": 9,
+      "corrected_alpha": 0.0125,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H10": {
+      "p_value": 1.0,
+      "holm_rank": 10,
+      "corrected_alpha": 0.016667,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H11": {
+      "p_value": 1.0,
+      "holm_rank": 11,
+      "corrected_alpha": 0.025,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    },
+    "H12": {
+      "p_value": 1.0,
+      "holm_rank": 12,
+      "corrected_alpha": 0.05,
+      "reject_h0": false,
+      "stopped_by_step_down": true
+    }
+  },
+  "f1_degeneracy": {
+    "bug": "BUG_6",
+    "description": "Degenerate F1 in primary comparison tables",
+    "f1_value": 0.659459,
+    "cause": "threshold=1.000001 predicts all pairs as CHANGED (majority-class prediction)",
+    "root_cause": "Mean CHANGED similarity \u2248 mean EQUIV similarity (inversion/near-inversion). No threshold separates the classes, so threshold selection degenerates to predict all as majority class.",
+    "affected_baselines": [
+      "B02_AST",
+      "B03_CFG",
+      "B04_DEP",
+      "V1_STATIC_SBG",
+      "B06_FAIR_V2",
+      "B07_DYNAMIC_V2",
+      "B08_HYBRID_V2_CORRECT"
+    ],
+    "action": "F1 removed from primary comparison tables. AUROC + AUPRC are primary metrics.",
+    "note": "F1=0.659 is reported as documentation of the discrimination collapse, not as a useful performance metric. A reviewer will correctly note that AUROC is the right metric here."
+  },
+  "c4_correction": {
+    "claim_id": "C4",
+    "original_status": "SUPPORTED",
+    "corrected_status": "DIRECTIONALLY_SUPPORTED",
+    "b06_auroc": 0.504966,
+    "b06_ci": [
+      0.489001,
+      0.568129
+    ],
+    "b07_auroc": 0.5281825541388382,
+    "b07_ci": [
+      0.49749,
+      0.579375
+    ],
+    "delta_b07_minus_b06": 0.023217,
+    "ci_overlap": true,
+    "ci_overlap_range": [
+      0.4975,
+      0.5681
+    ],
+    "z_approx_two_sample": 0.799,
+    "p_approx_one_sided": 0.2121,
+    "correction_note": "CIs overlap; directional advantage (B07 > B06 by +0.026 AUROC) is observed but not statistically significant at conventional thresholds. Claim corrected to DIRECTIONALLY_SUPPORTED pending paired significance test with raw per-pair score arrays."
+  },
+  "score_reproducibility": {
+    "b07_stored_auroc": 0.531023,
+    "b07_recomputed_auroc": 0.528183,
+    "b07_delta": 0.00284,
+    "b08_stored_auroc": 0.528096,
+    "b08_recomputed_auroc": 0.528183,
+    "b08_delta": 8.7e-05,
+    "tolerance": 0.02,
+    "status": "PASS"
+  },
+  "test_set_integrity": {
+    "n_pairs": 744,
+    "n_changed": 366,
+    "n_equiv": 378,
+    "frozen": true
+  }
+}

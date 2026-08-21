@@ -1,0 +1,32 @@
+{
+  "hypothesis": "H7",
+  "claim": "AUROC(dynamic_v2) > AUROC(v1_static_sbg = 0.4237)",
+  "protocol": "Pre-registered criterion: CI_lower > V1_AUROC at Holm-Bonferroni corrected alpha",
+  "b07_auroc": 0.5281825541388382,
+  "v1_static_auroc": 0.423664,
+  "delta_auroc": 0.104519,
+  "bootstrap_ci_95": [
+    0.49749,
+    0.579375
+  ],
+  "ci_criterion_met": true,
+  "hanley_mcneil_one_sample": {
+    "h0": "AUROC = 0.5 (chance)",
+    "se": 0.021149,
+    "z_statistic": 1.3326,
+    "p_value_one_sided": 0.09133572,
+    "note": "One-sample test vs chance; V1 AUROC < 0.5 so this overstates evidence"
+  },
+  "two_sample_vs_v1": {
+    "h0": "AUROC_dynamic == AUROC_v1_static",
+    "se_b07": 0.021149,
+    "se_v1_approx": 0.02086,
+    "se_diff": 0.029705,
+    "z_statistic": 3.5185,
+    "p_value_one_sided": 0.00021698,
+    "note": "V1 SE approximated from stored CI [0.401, 0.483]"
+  },
+  "verdict": "SUPPORTED",
+  "holm_family_size": 12,
+  "note": "H7 primary criterion satisfied: CI_lower=0.499 > V1_AUROC=0.424. Two-sample z=3.52, p\u22480.000217 confirms superiority over V1."
+}

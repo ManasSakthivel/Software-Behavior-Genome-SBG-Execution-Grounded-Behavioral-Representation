@@ -1,0 +1,46 @@
+{
+  "baseline": "B07_DYNAMIC_V3",
+  "version": "v3",
+  "split": "test",
+  "threshold_from": "dev",
+  "threshold": 1.000001,
+  "metrics": {
+    "auroc": 0.545537,
+    "auprc": 0.532951,
+    "f1": 0.659459,
+    "precision": 0.491935,
+    "recall": 1.0,
+    "accuracy": 0.491935,
+    "tp": 366,
+    "fp": 378,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 744,
+    "n_positive": 366,
+    "n_negative": 378,
+    "threshold_used": 1.000001,
+    "ci_auroc_lower": 0.476759,
+    "ci_auroc_upper": 0.624365,
+    "bootstrap_n": 1000,
+    "bootstrap_seed": 42,
+    "cluster_bootstrap_used": true,
+    "glasss_delta": -0.271698,
+    "permutation_p": 0.005,
+    "tie_fraction": 0.152268,
+    "tie_correction_applied": true,
+    "methodology_version": "v3_wmw_tie_aware"
+  },
+  "inversion_analysis": {
+    "equiv_mean_similarity": 0.840327,
+    "changed_mean_similarity": 0.77644,
+    "inversion_delta_v3": -0.063887,
+    "inversion_delta_v2_reference": -0.045265,
+    "inversion_resolved": true
+  },
+  "v2_comparison": {
+    "v2_b07_auroc_naive": 0.531023,
+    "v2_b07_auroc_tie_corrected": 0.5434,
+    "v3_auroc": 0.545537,
+    "delta_vs_v2_tie_corrected": 0.002137
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "phase": 3,
+  "status": "CONDITIONAL",
+  "timestamp": "2026-08-20T04:10:42.563733+00:00",
+  "test_pairs": 744,
+  "baselines": {
+    "B01": {
+      "name": "Token/TF-IDF",
+      "test_f1": 0.5843,
+      "test_auroc": 0.4043,
+      "test_auprc": 0.4154
+    },
+    "B02": {
+      "name": "AST Similarity",
+      "test_f1": 0.6595,
+      "test_auroc": 0.5528,
+      "test_auprc": 0.4779
+    },
+    "B03": {
+      "name": "CFG Similarity",
+      "test_f1": 0.6595,
+      "test_auroc": 0.4613,
+      "test_auprc": 0.4452
+    },
+    "B04": {
+      "name": "Dependency Approx (not full PDG)",
+      "test_f1": 0.6595,
+      "test_auroc": 0.3993,
+      "test_auprc": 0.4058
+    },
+    "B05": {
+      "name": "Embedding Fallback (not CodeBERT)",
+      "test_f1": 0.546,
+      "test_auroc": 0.3694,
+      "test_auprc": 0.4014
+    },
+    "B06": {
+      "name": "Dynamic Trace",
+      "test_f1": 0.6595,
+      "test_auroc": 0.5046,
+      "test_auprc": 0.4814
+    },
+    "B07": {
+      "name": "Static-only SBG",
+      "test_f1": 0.6595,
+      "test_auroc": 0.3491,
+      "test_auprc": 0.3832
+    },
+    "B08": {
+      "name": "Full SBG",
+      "test_f1": 0.6595,
+      "test_auroc": 0.4237,
+      "test_auprc": 0.4219
+    }
+  },
+  "fairness": "PASS \u2014 identical splits, labels, evaluation protocol for all baselines",
+  "leakage": "CLEAN \u2014 0 base program leakage, 0 near-duplicates, 0 cross-split leakage",
+  "best_baseline": "B02 (AST Similarity)",
+  "best_baseline_f1": 0.6595,
+  "best_baseline_auroc": 0.5528,
+  "sbg_result": {
+    "f1": 0.6595,
+    "auroc": 0.4237,
+    "auprc": 0.4219,
+    "ci_f1": [
+      0.626,
+      0.689
+    ],
+    "ci_auroc": [
+      0.375,
+      0.472
+    ]
+  },
+  "delta_f1_sbg_minus_best": 0.0,
+  "delta_auroc_sbg_minus_best": -0.1291,
+  "effect_sizes": {
+    "SBG_vs_B02": {
+      "delta_f1": 0.0,
+      "delta_auroc": -0.1291,
+      "cohens_h_f1": 0.0,
+      "note": "TIE on F1, SBG worse on AUROC"
+    },
+    "SBG_vs_B06": {
+      "delta_f1": 0.0,
+      "delta_auroc": -0.0809,
+      "note": "TIE \u2014 dynamic structure not adding value"
+    }
+  },
+  "confidence_intervals": {
+    "B08_f1_95pct": [
+      0.626,
+      0.689
+    ],
+    "B02_f1_95pct": [
+      0.626,
+      0.689
+    ],
+    "note": "CIs computed via 1000-resample bootstrap, seed=42"
+  },
+  "statistical_tests": {
+    "note": "Full McNemar paired test requires per-pair prediction alignment \u2014 see STATISTICAL_ANALYSIS.json",
+    "alpha_corrected": 0.0017,
+    "b02_vs_b08_ci_overlap": true,
+    "verdict": "NO STATISTICALLY SIGNIFICANT DIFFERENCE DETECTED BETWEEN ANY BASELINES"
+  },
+  "key_scientific_finding": "NEGATIVE RESULT: All tested baselines including Full SBG converge to F1=0.66 (majority-class threshold). AUROC ranges from 0.35 to 0.55, all near random. Root cause: the benchmark SP transforms (rename, loop rewrite, extract function) produce LARGER structural changes than SC mutations (off-by-one, operator swap), creating a structural-semantic inversion that all current representations fail to bridge. This is a genuine, scientifically important negative result for H2 (SBG outperforms baselines). It does NOT mean SBG is useless \u2014 it means the BENCHMARK DIFFICULTY is higher than anticipated, and all representations including SBG need stronger semantic grounding.",
+  "hypothesis_status": {
+    "H1": "INSUFFICIENT_EVIDENCE \u2014 discrimination is at random-chance level for all representations",
+    "H2": "NOT_SUPPORTED \u2014 SBG does not outperform baselines (TIE at F1=0.66, SBG AUROC worse)",
+    "H3": "NOT_EVALUABLE \u2014 all classifiers predict majority class",
+    "H6": "NOT_SUPPORTED \u2014 full 8-dim SBG (AUROC=0.42) performs WORSE than AST-only (AUROC=0.55)"
+  },
+  "limitations": [
+    "B05 (embedding) is a fallback, not CodeBERT \u2014 may underestimate embedding baseline strength",
+    "B04 is use-def approximation, not full PDG",
+    "Fixed test inputs for dynamic tracing may not cover all execution paths",
+    "Benchmark construction creates structural-semantic inversion (see key_scientific_finding)"
+  ],
+  "p0": 0,
+  "p1": 2,
+  "p1_issues": [
+    "P1: SBG does not outperform any baseline \u2014 H2 not supported",
+    "P1: All AUROC values near random \u2014 suggests fundamental benchmark challenge"
+  ],
+  "p2": 2,
+  "p2_issues": [
+    "P2: B05 is fallback embedding, not CodeBERT",
+    "P2: B04 is approximation, not full PDG"
+  ],
+  "recommendation": "CONDITIONAL PASS. The infrastructure is correct and fair. The negative result is scientifically valid and important. Phase 4 should investigate why the benchmark is hard and design experiments that can detect any signal. Consider: (1) easier discrimination tasks (larger mutations), (2) runtime value tracking instead of structural features, (3) test oracle approaches instead of similarity thresholding.",
+  "agent": "3-PHASE-GATE"
+}

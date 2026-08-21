@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-08-20T06:33:39Z",
+  "phase1_benchmark": {
+    "n_base_programs": 64,
+    "n_categories": 12,
+    "n_sp_transformation_types": 12,
+    "n_sc_mutation_types": 14,
+    "n_pairs_total": 3577,
+    "split_sizes": {
+      "train": 28,
+      "dev": 10,
+      "val": 9,
+      "test": 13
+    },
+    "test_pairs": 744,
+    "equiv_test_pairs": 378,
+    "changed_test_pairs": 366,
+    "leakage_status": "CLEAN \u2014 0 base program leakage",
+    "diversity_score": 0.8522,
+    "power": 0.858
+  },
+  "phase5_corpus": {
+    "n_python_programs": 10,
+    "n_java_programs": 10,
+    "n_cross_language_pairs": 15,
+    "oracle_validation": "PASS (10/10 Python)",
+    "categories": [
+      "sorting",
+      "search",
+      "mathematical",
+      "string"
+    ]
+  },
+  "total_programs": 74,
+  "total_pairs": 3592,
+  "languages": [
+    "Python",
+    "Java"
+  ],
+  "ground_truth_protocol": "differential testing + test oracle + manual validation"
+}

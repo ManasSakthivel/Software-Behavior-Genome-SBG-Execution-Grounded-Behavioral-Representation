@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "module": "invariant_identity",
+  "genome_dimension": "g_ID",
+  "title": "Rename-Invariant Function Identity (SP-2 Fix)",
+  "created_at": "2025-07",
+  "authors": ["SBG Research"],
+  "invariance_claims": ["SP-2 (function rename)", "SP-1 (variable rename)", "SP-param (parameter rename)", "whitespace/comment changes", "dead-code insertion"],
+
+  "A_problem_statement": {
+    "symptom": "SP-2 (function rename) invariance is broken in the current system because function identity is based on raw function names stored in genome keys and call-graph edges.",
+    "root_cause": "Function names are used directly as identity tokens. A rename changes the key even though the function's structure, behaviour, and position in the call graph are unchanged.",
+    "scope": "Static/structural identity only. This module does not replace dynamic tracing — it provides a rename-safe structural fingerprint for function alignment before dynamic comparison.",
+    "relationship_to_v5": "Complements StateTransitionGenome (g_T). g_T is rename-invariant at the transition level (uses func_idx). g_ID provides static pre-alignment: given two programs A and B, identify which function in A corresponds to which function in B before tracing."
+  },
+
+  "B_fingerprint_design": {
+    "dataclass": "FunctionFingerprint",
+    "fields": {
+      "param_count":            "int — number of formal parameters (positional + keyword-only)",
+      "has_return_value":       "bool — at least one non-bare return statement",
+      "has_default_params":     "bool — any default argument values",
+      "has_varargs":            "bool — *args or **kwargs present",
+      "n_branches":             "int — count of If/For/While/Try/With/ExceptHandler nodes",
+      "n_recursive_calls":      "int — structural self-call count (by name within body; approximation)",
+      "has_loop":               "bool — any For/While node present",
+      "has_nested_loop":        "bool — a loop that directly contains another loop",
+      "has_exception_handler":  "bool — any Try or ExceptHandler node",
+      "nesting_depth":          "int — max control-flow nesting depth",
+      "comprehension_count":    "int — ListComp/SetComp/DictComp/GeneratorExp count",
+      "literal_types":          "str — sorted CSV of Python types of literal constants (no values)",
+      "builtin_calls":          "str — sorted CSV of builtin function names called",
+      "body_structure_hash":    "str — SHA-256[:8] of AST node-type sequence (no names, no values)",
+      "n_module_fn_calls":      "int — count of calls to other top-level functions (count only, no names stored)"
+    },
+    "invariance_proofs": {
+      "variable_rename": "No variable Name nodes appear in body_structure_hash walk. Integer/bool fields are name-free. INVARIANT by construction.",
+      "function_rename": "Function name is not stored in any fingerprint field. body_structure_hash walks body statements only. n_recursive_calls uses name only as a local counter, not stored. INVARIANT by construction.",
+      "parameter_rename": "Param names never stored. param_count is count only. body_structure_hash omits arg Name nodes. INVARIANT by construction.",
+      "comment_whitespace": "ast.parse strips comments and normalises whitespace before the walk. INVARIANT by construction.",
+      "dead_code_insertion": "Each function fingerprinted independently. Inserting an unrelated function does not affect others' fingerprints. INVARIANT by construction."
+    }
+  },
+
+  "C_body_structure_hash": {
+    "algorithm": "Walk all AST nodes reachable from the function body (in field order, depth-first). Emit only the class name of each node (e.g. 'If', 'BinOp', 'Return'). Join with '/'. SHA-256 the UTF-8 byte string. Take first 8 hex characters.",
+    "what_is_excluded": ["all ast.Name id values", "all ast.Constant values", "all ast.Attribute attr values", "function names", "argument names", "decorator names"],
+    "what_is_included": ["node type sequence", "node tree shape (child order)", "operator types (ast.Add, ast.Sub, etc.)", "comparison types (ast.Gt, ast.Lt, etc.)"],
+    "collision_probability": "2^-32 at 8 hex chars. Acceptable for program-scale matching (typical modules have <100 functions). Extendable to 16 chars if needed.",
+    "example": "def f(x): if x > 0: return x  →  'If/Compare/Name/Constant/Gt/Return/Name'  (Name ids not included, only the node type 'Name')"
+  },
+
+  "D_similarity_function": {
+    "function": "fingerprint_similarity(fp1, fp2) → float in [0, 1]",
+    "strategy": "Weighted sum of per-field similarity scores, normalised by total weight.",
+    "field_weights": {
+      "body_structure_hash": 4.0,
+      "param_count":         2.0,
+      "n_branches":          2.0,
+      "nesting_depth":       1.5,
+      "comprehension_count": 1.5,
+      "literal_types":       1.5,
+      "builtin_calls":       1.5,
+      "has_return_value":    1.0,
+      "has_loop":            1.0,
+      "has_nested_loop":     1.0,
+      "has_exception_handler": 1.0,
+      "n_recursive_calls":   1.0,
+      "n_module_fn_calls":   1.0,
+      "has_default_params":  0.5,
+      "has_varargs":         0.5
+    },
+    "integer_field_score": "1 - |a - b| / max(a, b)  (returns 1.0 when both are 0)",
+    "boolean_field_score": "1.0 if equal, 0.0 otherwise",
+    "string_field_score":  "1.0 if equal, 0.0 otherwise",
+    "identity_property":   "fingerprint_similarity(fp, fp) == 1.0  — verified by T12"
+  },
+
+  "E_matching_algorithm": {
+    "function": "match_functions(fps_a, fps_b, threshold=0.4) → List[(idx_a, idx_b, score)]",
+    "algorithm": "Greedy bipartite matching",
+    "steps": [
+      "1. Compute all |A| × |B| pairwise similarity scores.",
+      "2. Filter to pairs with score >= threshold.",
+      "3. Sort by descending similarity.",
+      "4. Iterate: greedily assign best unmatched pair from each side.",
+      "5. Return matched triples sorted by descending score."
+    ],
+    "complexity": "O(|A| × |B| × log(|A||B|)) — suitable for module-scale programs",
+    "threshold_rationale": "0.4 balances recall (match renamed functions) vs precision (reject unrelated functions). Functions with identical structure score 1.0."
+  },
+
+  "F_program_identity": {
+    "function": "compute_program_identity(program_text) → ProgramIdentity",
+    "fields": {
+      "fingerprints":   "List[FunctionFingerprint] in definition order",
+      "call_graph":     "Dict[int, List[int]] — index of caller → list of callee indices. Names not stored.",
+      "root_index":     "int — index of root function (not called by any other)",
+      "program_hash":   "str — SHA-256[:16] of sorted body_structure_hashes. Rename-invariant program identifier."
+    },
+    "root_selection": {
+      "primary": "Function not appearing as a callee of any other module-level function.",
+      "tiebreak": "If multiple roots: (lowest n_branches, highest param_count) — purely structural.",
+      "fallback": "If all functions form a cycle, root_index = 0."
+    },
+    "program_hash_construction": "Sort all body_structure_hashes lexicographically, join with '|', SHA-256, take first 16 hex chars. Invariant to function order and all renames."
+  },
+
+  "G_test_coverage": {
+    "test_count": 12,
+    "tests": [
+      "T01 variable rename → same fingerprint",
+      "T02 function rename → same fingerprint",
+      "T03 parameter rename → same fingerprint",
+      "T04 semantically different → different fingerprints",
+      "T05 loop vs no-loop → different has_loop",
+      "T06 body_structure_hash ignores variable names",
+      "T07 match_functions aligns renamed program functions",
+      "T08 compute_program_identity finds correct root",
+      "T09 dead-code insertion doesn't change other fingerprints",
+      "T10 comment insertion doesn't change fingerprint",
+      "T11 program_hash is stable across renames",
+      "T12 fingerprint_similarity == 1.0 for identical structures"
+    ],
+    "result": "12/12 PASS"
+  },
+
+  "H_implementation": {
+    "file": "sbg/v5/invariant_identity.py",
+    "dependencies": "stdlib only — ast, hashlib, collections, itertools, dataclasses, typing",
+    "entry_points": [
+      "compute_function_fingerprint(func_node, module_fn_names) → FunctionFingerprint",
+      "fingerprint_similarity(fp1, fp2) → float",
+      "match_functions(fps_a, fps_b, threshold) → List[Tuple[int,int,float]]",
+      "compute_program_identity(program_text) → ProgramIdentity"
+    ],
+    "run_tests": "python3 sbg/v5/invariant_identity.py"
+  }
+}

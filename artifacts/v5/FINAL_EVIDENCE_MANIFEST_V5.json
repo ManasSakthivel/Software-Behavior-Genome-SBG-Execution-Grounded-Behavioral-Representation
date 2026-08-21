@@ -1,0 +1,138 @@
+{
+  "generated_at": "2026-08-21T11:48:51Z",
+  "version": "V5_FINAL",
+  "status": "FROZEN",
+  "n_artifacts": 18,
+  "artifacts": {
+    "artifacts/v5/ADVERSARIAL_REVIEW_V5.json": {
+      "sha256": "6cc2fb38adb33a765c7a107e47954ba65c3fffe4bf56ac9c23de5324872b7f9c",
+      "size_bytes": 18746
+    },
+    "artifacts/v5/B07/results_dev.json": {
+      "sha256": "fa1f0d6e87daafb356238633c7937a4bfafcc23644feb465036a87934e37e44d",
+      "size_bytes": 1094
+    },
+    "artifacts/v5/B07/results_test.json": {
+      "sha256": "e55ca5314c865f511a61075b538c370f00e5a492cdf9605c517ab4c737722cd4",
+      "size_bytes": 1101
+    },
+    "artifacts/v5/BENCHMARK_V5_PAIRS_MANIFEST.json": {
+      "sha256": "a5f3c84d4071ceec0af14cb086af772234d3608768939357d655ff7d6a3952e5",
+      "size_bytes": 120860
+    },
+    "artifacts/v5/CROSS_FORMULATION_ANALYSIS.json": {
+      "sha256": "dce15754802902affe56a2756e5534f33e649d621532bf57801cd283ac9e488b",
+      "size_bytes": 22698
+    },
+    "artifacts/v5/EXCEPTION_FORENSIC_ANALYSIS.json": {
+      "sha256": "288c187dbfad8f911ad2b097e54ef6139e0da06ae64e81b775d63ed10efdf14e",
+      "size_bytes": 4218
+    },
+    "artifacts/v5/HARD_NEGATIVE_BENCHMARK_DESIGN.json": {
+      "sha256": "2e1063b9db460ebb9fcae053e396cea2e2684d3353f49630bbb1a229e2307805",
+      "size_bytes": 10404
+    },
+    "artifacts/v5/INCREMENTAL_INFO_RESULTS.json": {
+      "sha256": "ad4264449c6eb1255459fd47158c57200f0f23698c10499a951acb20c3ec456d",
+      "size_bytes": 6213
+    },
+    "artifacts/v5/JAVA_INFRASTRUCTURE_DESIGN.json": {
+      "sha256": "b9e76501281f9ce464f4dcc7931ddf729ce2ac6ca3af54351a7fb8e384868615",
+      "size_bytes": 8110
+    },
+    "artifacts/v5/NOVELTY_AUDIT_V5.json": {
+      "sha256": "f668fee33db65fab9e9844501911dd6d8d1096e733da5a3017dddd4a677c81d4",
+      "size_bytes": 39072
+    },
+    "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json": {
+      "sha256": "b27eb9127869eda2814761d9da75f205ef60ff9eae4ed405b24c75dee232a35e",
+      "size_bytes": 11416
+    },
+    "artifacts/v5/REPRODUCIBILITY_AUDIT_V5.json": {
+      "sha256": "b51ddd57ba80147eee8042e0ece8503eb276d21464f9dc8a584b0ba5543581a6",
+      "size_bytes": 1705
+    },
+    "artifacts/v5/SC3_EXPOSURE_DESIGN.json": {
+      "sha256": "1a31eb855a1be80d9ac93d19c06ad9fb44689a59b249202a08ef1d6eda7ec5bf",
+      "size_bytes": 11388
+    },
+    "artifacts/v5/SC3_EXPOSURE_RESULTS.json": {
+      "sha256": "2324811b55b7bdd3aab4970fbe3361cf79920a9fa29d1fb532e4e524a04ac291",
+      "size_bytes": 114146
+    },
+    "artifacts/v5/SP2_INVARIANT_DESIGN.json": {
+      "sha256": "376dd69f00ec54d4d04c6c51221221abe4043fde2033fb4f8de5032ba56548a4",
+      "size_bytes": 8563
+    },
+    "artifacts/v5/STATE_TRANSITION_DESIGN.json": {
+      "sha256": "99104ad18ae9f5fcdaa333b631ab99be1330f47b5887ff0999f2e951fe055cfd",
+      "size_bytes": 10100
+    },
+    "artifacts/v5/TEMPORAL_GENOME_DESIGN.json": {
+      "sha256": "73eaa4355279a11f4927309b092cc818635120b35e20d6bb81bb9a0c54870da4",
+      "size_bytes": 6048
+    },
+    "artifacts/v5/VOLUME_SHORTCUT_ANALYSIS.json": {
+      "sha256": "ea6cc90dadded733304de274be19c6f1f7720e3e7f41946b59b18225d646240c",
+      "size_bytes": 2639
+    }
+  },
+  "key_results": {
+    "sbg_v3_auroc": 0.539906,
+    "sbg_v3_ci": [
+      0.497297,
+      0.584079
+    ],
+    "sbg_v5_auroc": 0.551246,
+    "sbg_v5_ci": [
+      0.505403,
+      0.594535
+    ],
+    "sbg_v5_permutation_p": 0.01,
+    "delta_v5_vs_v3": 0.01134,
+    "delta_v5_vs_exception_frac": -0.015754,
+    "exception_frac_auroc": 0.567,
+    "only_exception_auroc": 0.592947,
+    "regression_oracle_detection_rate": 0.9333333333333333,
+    "regression_exception_detection_rate": 0.2,
+    "regression_silent_bugs_detected": 9,
+    "regression_silent_bugs_total": 9,
+    "hard_negatives_oracle_correct": "12/12",
+    "hard_negatives_exception_frac_correct": "5/12",
+    "sc3_detection_input_guided": 0.24,
+    "sc3_detection_baseline": 0.075,
+    "sp2_invariance_tests": "12/12",
+    "v5_modules": [
+      "invariant_identity",
+      "temporal_genome_v5",
+      "state_transition_genome"
+    ],
+    "benchmark_programs_total": 99,
+    "benchmark_pairs_total": 3777
+  },
+  "hypothesis_verdicts": {
+    "H1": "NOT_SUPPORTED",
+    "H2": "NOT_SUPPORTED",
+    "H3": "NOT_SUPPORTED",
+    "H4": "PARTIAL_V5_INFRASTRUCTURE_BUILT",
+    "H5": "PARTIALLY_SUPPORTED_OUTPUT_ORACLE_93PCT",
+    "H6": "NOT_SUPPORTED",
+    "H7": "SUPPORTED",
+    "H8": "NOT_SUPPORTED",
+    "H9": "SUPPORTED",
+    "H10": "NOT_SUPPORTED",
+    "H11": "INSUFFICIENT_EVIDENCE",
+    "H12": "PARTIALLY_SUPPORTED"
+  },
+  "blocker_status": {
+    "exception_dominance": "INVESTIGATED_V5_POSITIVE_FINDINGS_DOCUMENTED",
+    "corpus_size": "EXPANDED_99_PROGRAMS_200_NEW_PAIRS",
+    "sc3_detection": "IMPROVED_FROM_7.5PCT_TO_24PCT_WITH_INPUT_GUIDANCE",
+    "sp2_invariance": "FIXED_INVARIANT_IDENTITY_12_12",
+    "java_execution": "IMPLEMENTED_3_PROGRAMS_RUNNING",
+    "prior_art_piech_2015": "ADDED_TO_PRIOR_ART_MATRIX",
+    "prior_art_sumner_2011": "ADDED_TO_PRIOR_ART_MATRIX",
+    "reproduction_check": "6_6_PASS",
+    "readme_pytest": "FIXED"
+  }
+}

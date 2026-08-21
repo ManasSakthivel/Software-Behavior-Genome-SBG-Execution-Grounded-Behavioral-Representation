@@ -1,0 +1,245 @@
+{
+  "agent": "0B",
+  "generated": "2025",
+  "source_document": "docs/research/FORMAL_MODEL.md",
+  "definitions_count": 22,
+  "propositions_count": 3,
+  "assumptions_count": 10,
+  "hypotheses_formalized": ["H1", "H2", "H3", "H4", "H5", "H6"],
+  "dimensions_defined": [
+    {
+      "id": "CONTROL",
+      "symbol": "g_C",
+      "definition_number": 9,
+      "space": "frequency vectors + dynamic call graph + branch probability vectors + loop iteration distributions",
+      "distance": "weighted L1 for frequency components; graph edit distance for DCG",
+      "key_features": ["execution_frequency_vector", "branch_probability_vector", "dynamic_call_graph", "loop_iteration_distribution"]
+    },
+    {
+      "id": "DATA",
+      "symbol": "g_D",
+      "definition_number": 10,
+      "space": "empirical value distributions + data-flow activation maps",
+      "distance": "Jensen-Shannon divergence",
+      "key_features": ["value_range_histograms", "data_flow_edge_activation", "type_frequency", "null_zero_prevalence"]
+    },
+    {
+      "id": "STATE",
+      "symbol": "g_S",
+      "definition_number": 11,
+      "space": "abstract heap summaries + stack depth distributions + state transition frequencies",
+      "distance": "structural graph distance (isomorphism-based)",
+      "key_features": ["heap_topology_sequence", "stack_depth_profile", "state_transition_frequency", "heap_growth_rate"]
+    },
+    {
+      "id": "RESOURCE",
+      "symbol": "g_R",
+      "definition_number": 12,
+      "space": "R_{>=0}^{m_R} where m_R = 4 + |syscalls|",
+      "distance": "normalized L2",
+      "key_features": ["cpu_instruction_count", "memory_peak", "io_volume", "system_call_count_vector", "file_descriptor_count", "network_byte_count"]
+    },
+    {
+      "id": "TEMPORAL",
+      "symbol": "g_T",
+      "definition_number": 13,
+      "space": "inter-event latency distributions + phase timing vectors + call latency vectors",
+      "distance": "Wasserstein-1 for distributions; L2 for vectors",
+      "key_features": ["inter_event_latency_distribution", "phase_timing", "call_latency_vector", "total_execution_time"]
+    },
+    {
+      "id": "ERROR",
+      "symbol": "g_E",
+      "definition_number": 14,
+      "space": "R_{>=0}^{m_E} where m_E = |exception_types| + |handlers| + 4",
+      "distance": "weighted L1",
+      "key_features": ["exception_type_frequency", "error_propagation_depth", "catch_coverage", "retry_recovery_pattern", "assertion_violation_rate", "abnormal_termination_rate"]
+    },
+    {
+      "id": "INTERACTION",
+      "symbol": "g_X",
+      "definition_number": 15,
+      "space": "n-gram distributions + access maps + signal handling vectors",
+      "distance": "JSD for n-grams; Jaccard for access maps",
+      "key_features": ["syscall_sequence_distribution", "ipc_pattern", "filesystem_access_pattern", "signal_handling", "output_byte_distribution"]
+    },
+    {
+      "id": "EXECUTION",
+      "symbol": "g_U",
+      "definition_number": 16,
+      "space": "{0,1}^|L| x R_{>=0}^|OP| x ...",
+      "distance": "Hamming for coverage; L1 for histograms",
+      "key_features": ["code_coverage_vector", "instruction_type_histogram", "hot_path_signature", "compilation_artifact_features", "parallelism_profile"]
+    }
+  ],
+  "key_definitions": {
+    "program": {
+      "number": 2,
+      "tuple": "<Sigma, Q, q_0, delta, F, M, A, E_P>",
+      "note": "Abstract state space Q may be non-computable; practical SBG uses finite trace approximations"
+    },
+    "input_distribution": {
+      "number": 4,
+      "tuple": "<Omega_I, F_I, mu_I>",
+      "canonical_instances": ["uniform_random", "production_trace", "coverage_guided", "adversarial"]
+    },
+    "execution_trace": {
+      "number": 5,
+      "event_tuple": "<location, operation, input_values, output_value, state_snapshot, timestamp>",
+      "termination_cases": ["normal", "abnormal", "divergent"]
+    },
+    "genome_extraction": {
+      "number": 7,
+      "formula": "Phi(P, I) = A({ phi(tau(P,i)) : i ~ mu_I, i in S })",
+      "decomposes_into_8_dimensions": true
+    },
+    "behavioral_distance": {
+      "number": 18,
+      "metric_type": "pseudometric",
+      "bounds": "[0, 1]",
+      "aggregation": "weighted L^p with default p=1, uniform weights"
+    },
+    "semantic_equivalence": {
+      "number": 19,
+      "notation": "P1 ≡_S P2 [I, E]",
+      "operational_approximation": "P1 ≡_S^epsilon P2 iff D(G(P1), G(P2)) < epsilon",
+      "undecidability_note": "Full semantic equivalence is undecidable by Rice's theorem; SBG computes empirical approximation only"
+    },
+    "aggregation_function": {
+      "number": 20,
+      "form": "F(d) = (sum_k w_k * d_k^p)^(1/p)",
+      "default_weights": "uniform 1/8",
+      "default_p": 1
+    }
+  },
+  "key_assumptions": [
+    {
+      "id": "A1",
+      "statement": "Environment is stable (fixed) during any single execution",
+      "consequence_if_violated": "Trace events are not reproducible; genome extraction is undefined"
+    },
+    {
+      "id": "A2",
+      "statement": "Version identity (which versions constitute the same program) is supplied externally",
+      "consequence_if_violated": "Longitudinal genome comparison (H4) has no defined object to compare"
+    },
+    {
+      "id": "A3",
+      "statement": "Inputs drawn from I are mutually independent",
+      "consequence_if_violated": "Sample aggregation formula in Definition 21 is biased; requires session-state modeling"
+    },
+    {
+      "id": "A4",
+      "statement": "Input space is measurable",
+      "consequence_if_violated": "Probability measure mu_I is ill-defined; statistical convergence arguments fail"
+    },
+    {
+      "id": "A5",
+      "statement": "All execution traces are finite (divergent executions excluded via timeout T_max)",
+      "consequence_if_violated": "Genome extraction is undefined for non-terminating programs; timeout introduces truncation bias"
+    },
+    {
+      "id": "A6",
+      "statement": "Execution is deterministic given fixed input and environment; non-determinism requires canonical policy (fixed seed, serialized scheduling)",
+      "consequence_if_violated": "Multiple traces for the same input produce different genome components; aggregation conflates non-determinism with behavioral variance"
+    },
+    {
+      "id": "A7",
+      "statement": "Sample size N is sufficient for distributional convergence of genome features",
+      "consequence_if_violated": "Estimated genome G_N deviates from population genome G_inf; false positive/negative regression detections increase"
+    },
+    {
+      "id": "A8",
+      "statement": "Chosen heap abstraction Q_abs is sufficiently expressive for the comparison task",
+      "consequence_if_violated": "STATE dimension cannot distinguish programs with meaningfully different memory behaviors"
+    },
+    {
+      "id": "A9",
+      "statement": "Clock resolution is sufficient that consecutive trace events have distinct timestamps",
+      "consequence_if_violated": "TEMPORAL dimension features collapse; inter-event latency distribution is degenerate"
+    },
+    {
+      "id": "A10",
+      "statement": "Location alignment map alpha covers all shared locations between program versions",
+      "consequence_if_violated": "CONTROL dimension distance over-estimates divergence for structurally renamed but equivalent locations"
+    }
+  ],
+  "hypotheses": {
+    "H1": {
+      "name": "Behavioral Genome Stability",
+      "formal_condition": "P ≡_S P' => D(G(P), G(P')) < epsilon_stable",
+      "empirical_target": "epsilon_stable <= 0.05 on standard benchmarks under production input distribution",
+      "dimension_caveats": ["TEMPORAL and RESOURCE may change under semantics-preserving optimizations"]
+    },
+    "H2": {
+      "name": "Behavioral Genome Sensitivity",
+      "formal_condition": "exists i : B(P^k, i) != B(P^{k+1}, i) => D(G^k, G^{k+1}) > epsilon_detect",
+      "empirical_target": "statistically separable D-distributions over known-buggy vs known-equivalent version pairs (Defects4J)",
+      "dependency": "requires sample S to cover inputs witnessing the behavioral difference"
+    },
+    "H3": {
+      "name": "Cross-Language Behavioral Equivalence",
+      "formal_condition": "P1 ≡_S P2 across languages => D(C_E(G(P1)), C_E(G(P2))) < epsilon_xlang",
+      "strongest_dimensions": ["CONTROL", "DATA", "INTERACTION"],
+      "weakest_dimensions": ["EXECUTION", "TEMPORAL", "RESOURCE"],
+      "open_problem_dependency": "OP-4 (cross-language location alignment)"
+    },
+    "H4": {
+      "name": "Behavioral Genome Versioning",
+      "formal_condition": "E[D(G^k, G^{k+1})] = O(|delta_code|^alpha) for some alpha > 0",
+      "caveat": "fails for non-local changes; holds in expectation over typical software change corpus"
+    },
+    "H5": {
+      "name": "Genome as Regression Oracle",
+      "formal_condition": "exists theta* : Recall(theta*) >= 0.80 and Precision(theta*) >= 0.70 on held-out corpus",
+      "dependencies": ["H2 (sensitivity)", "sufficient input coverage of regression-triggering inputs"]
+    },
+    "H6": {
+      "name": "Behavioral Genome Uniqueness",
+      "formal_condition": "Pr[D(G(P1), G(P2)) < epsilon_collision] <= delta_collision for uniformly sampled unrelated programs",
+      "empirical_targets": {"epsilon_collision": 0.05, "delta_collision": 0.01},
+      "caveat": "trivially simple programs violate this; meaningful only over behaviorally diverse corpora"
+    }
+  },
+  "open_problems": [
+    {
+      "id": "OP-1",
+      "title": "Optimal Sample Size",
+      "description": "For a given program P, input distribution I, and acceptable error epsilon, what is the minimum sample size N* such that ||G_N(P) - G_inf(P)||_G <= epsilon? Unknown in general; depends on variance of behavioral features across inputs."
+    },
+    {
+      "id": "OP-2",
+      "title": "Decidability of Operational Equivalence",
+      "description": "Is the epsilon-semantic equivalence relation ≡_S^epsilon decidable for all epsilon > 0 when restricted to finite-terminating programs? Depends on complexity of underlying genome features (GED is NP-hard)."
+    },
+    {
+      "id": "OP-3",
+      "title": "Confidence-Weighted Genome Distance",
+      "description": "Current distance D does not account for finite-sample uncertainty in genome estimation. A Welch t-statistic analog D_conf = D(G1,G2) / sqrt(sigma_G1^2 + sigma_G2^2) may yield better-calibrated regression detection."
+    },
+    {
+      "id": "OP-4",
+      "title": "Cross-Language Procedure Alignment",
+      "description": "CONTROL dimension encodes dynamic call graphs using procedure identifiers. Cross-language comparison requires a formal mapping between procedures across language boundaries (e.g., Python sort() <-> Java Collections.sort()). No such formal mapping is defined."
+    },
+    {
+      "id": "OP-5",
+      "title": "Heap Abstraction Selection",
+      "description": "STATE dimension is parameterized over an abstract heap domain Q_abs. A principled method for selecting the minimal-sufficient abstraction for a given comparison task is undefined."
+    },
+    {
+      "id": "OP-6",
+      "title": "Temporal Normalization Across Architectures",
+      "description": "TEMPORAL features require normalization when comparing programs across radically different architectures (interpreted Python vs native Rust). SPECint normalization is insufficient for this case; a formal architecture-agnostic temporal equivalence metric remains open."
+    }
+  ],
+  "prior_art_connections": {
+    "most_related_works": [
+      {"ref": "[5] Bayer et al. TTAnalyze NDSS 2009", "relation": "INTERACTION dimension g_X extends syscall n-gram representation; SBG adds 7 further dimensions and longitudinal tracking"},
+      {"ref": "[16] Godlin & Strichman DAC 2009", "relation": "H1-H2 address same semantic equivalence question as regression verification, but via empirical approximation rather than formal proof"},
+      {"ref": "[1] Luo et al. TIFS 2017", "relation": "Closest in spirit: I/O semantic summaries; SBG generalizes to 8 dimensions, source-level, and longitudinal genome"},
+      {"ref": "[19] Lahiri et al. SYMDIFF CAV 2012", "relation": "Semantic diff motivation shared; SBG replaces SMT solving with execution-based approximation"}
+    ],
+    "coverage_gaps_addressed": ["CG-1", "CG-2", "CG-3", "CG-4"]
+  }
+}

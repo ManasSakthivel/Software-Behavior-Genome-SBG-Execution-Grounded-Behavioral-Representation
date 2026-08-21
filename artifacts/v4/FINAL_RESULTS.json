@@ -1,0 +1,108 @@
+{
+  "version": "v4",
+  "generated_at": "2026-08-20T17:35:12.191710Z",
+  "frozen": true,
+  "experiment_set": "FLAGSHIP_SPRINT_v4",
+  "primary_test_set": "benchmark/datasets/pairs_test.jsonl (744 pairs, 13 programs)",
+  "primary_results": {
+    "B07_SBG_V3_frozen": {
+      "auroc": 0.545537,
+      "ci": [
+        0.476759,
+        0.624365
+      ],
+      "permutation_p": 0.005,
+      "source": "artifacts/v3/FINAL_RESULTS.json"
+    }
+  },
+  "v4_phase_results": {
+    "phase1": {
+      "verdict": "SBG_V3_ABOVE_NOISE_BUT_BELOW_BEST_SHORTCUT",
+      "sbg_auroc": 0.5399,
+      "best_shortcut": "exc_frac",
+      "best_shortcut_auroc": 0.567,
+      "noise_floor_95th": 0.5377
+    },
+    "phase2": {
+      "sc3_detection_rate": 0.075,
+      "n_pairs": 173,
+      "verdict": "SBG_FAILS_SC3_DETECTION"
+    },
+    "phase3": {
+      "test_auroc": 0.5455,
+      "dev_auroc": 0.4884,
+      "val_auroc": 0.5121,
+      "verdict": "HIGH_VARIANCE_BY_PROGRAM_SPLIT"
+    },
+    "phase4": {
+      "oracle_agreement": 0.696,
+      "n_evaluated": 135,
+      "label_validity": "QUESTIONED"
+    },
+    "phase5": {
+      "accuracy": 0.5,
+      "n_pairs": 8,
+      "sbg_auroc": 0.3125,
+      "verdict": "REGRESSION_DETECTION_FAILS"
+    },
+    "phase6": {
+      "java_available": true,
+      "cross_formulation_auroc": 0.225,
+      "verdict": "CROSS_FORMULATION_INVERTED"
+    },
+    "phase7": {
+      "sp2_mean_sim": 0.587,
+      "sc13_mean_sim": 0.999,
+      "sc3_mean_sim": 0.997,
+      "sc11_mean_sim": 0.667,
+      "verdict": "PARTIAL_INVARIANCE_FAILURES"
+    },
+    "phase8": {
+      "full_model_auroc": 0.5499,
+      "only_exception_auroc": 0.5929,
+      "v3_features_matter": false,
+      "verdict": "EXCEPTION_ALONE_BEATS_FULL_MODEL"
+    },
+    "phase9": {
+      "ranking": [
+        {
+          "baseline": "B07_sbg_v3",
+          "auroc": 0.546
+        },
+        {
+          "baseline": "B06_sbg_v2",
+          "auroc": 0.538
+        },
+        {
+          "baseline": "B04_volume",
+          "auroc": 0.538
+        },
+        {
+          "baseline": "B02_ast",
+          "auroc": 0.429
+        },
+        {
+          "baseline": "B01_tfidf",
+          "auroc": 0.385
+        }
+      ],
+      "sbg_rank": 1
+    },
+    "phase12": {
+      "n_p0_unresolved": 4,
+      "overall": "BORDERLINE_REJECT"
+    }
+  },
+  "hypothesis_verdicts": {
+    "H7": "SUPPORTED (V3>V1: 0.546>0.424)",
+    "H9": "SUPPORTED (inversion improved)",
+    "H10": "NOT_SUPPORTED (robustness spread=0.311)",
+    "H11": "INSUFFICIENT_EVIDENCE (no Java traces)",
+    "H12": "NOT_SUPPORTED (regression acc=0.50)",
+    "SC3": "NOT_SUPPORTED (detection rate 7.5%)",
+    "SP2": "PARTIAL_FAILURE (mean_sim=0.587)",
+    "VOL_CONTROL": "NEGATIVE (SBG below exc_frac)"
+  },
+  "scientific_verdict": "NEGATIVE_RESULT_WITH_SCIENTIFIC_VALUE",
+  "final_research_position": "SBG V3 does not demonstrate reliable behavioral discrimination above simple execution-volume statistics on the current benchmark. The representation is dominated by exception-rate proxies. The framework, forensic methodology, and honest failure-mode analysis represent a scientific contribution. Recommended reframing: negative result paper analyzing why dynamic behavioral genomes fail on current benchmarks and what would be needed to succeed."
+}

@@ -1,0 +1,368 @@
+{
+  "experiment": "E10",
+  "timestamp": "2026-08-20T06:19:19Z",
+  "hypothesis_addressed": [
+    "H5"
+  ],
+  "n_test_pairs": 744,
+  "n_equiv": 378,
+  "n_changed": 366,
+  "overall_regression_detection": {
+    "AST": {
+      "auroc": 0.5528,
+      "auroc_ci": [
+        0.5093,
+        0.5936
+      ],
+      "auprc": 0.4779,
+      "tpr_at_fpr5pct": {
+        "tpr": 0.0082,
+        "fpr": 0.0476,
+        "threshold": 0.572
+      },
+      "tpr_at_fpr10pct": {
+        "tpr": 0.0082,
+        "fpr": 0.0979,
+        "threshold": 0.678
+      },
+      "practical_regression_detection": "At FPR\u22645%: TPR=0.82% (catches 1% of regressions while mis-flagging \u22645% of non-regressions)"
+    },
+    "Token": {
+      "auroc": 0.4043,
+      "auroc_ci": [
+        0.3685,
+        0.446
+      ],
+      "auprc": 0.4154,
+      "tpr_at_fpr5pct": {
+        "tpr": 0.0,
+        "fpr": 0.0476,
+        "threshold": 0.9008
+      },
+      "tpr_at_fpr10pct": {
+        "tpr": 0.0464,
+        "fpr": 0.0979,
+        "threshold": 0.9135
+      },
+      "practical_regression_detection": "At FPR\u22645%: TPR=0.00% (catches 0% of regressions while mis-flagging \u22645% of non-regressions)"
+    },
+    "Static_SBG": {
+      "auroc": 0.3491,
+      "auroc_ci": [
+        0.3071,
+        0.3835
+      ],
+      "auprc": 0.3832,
+      "tpr_at_fpr5pct": {
+        "tpr": 0.0,
+        "fpr": 0.0476,
+        "threshold": 0.8222
+      },
+      "tpr_at_fpr10pct": {
+        "tpr": 0.0,
+        "fpr": 0.0979,
+        "threshold": 0.8591
+      },
+      "practical_regression_detection": "At FPR\u22645%: TPR=0.00% (catches 0% of regressions while mis-flagging \u22645% of non-regressions)"
+    }
+  },
+  "per_mutation_detectability": {
+    "SC-1": {
+      "n": 33,
+      "AST": {
+        "mean_sim": 0.9989,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9784,
+        "near_identical_frac": 0.9091,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 1.0,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-2": {
+      "n": 39,
+      "AST": {
+        "mean_sim": 0.998,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9771,
+        "near_identical_frac": 0.8462,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9901,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-3": {
+      "n": 39,
+      "AST": {
+        "mean_sim": 1.0,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9771,
+        "near_identical_frac": 0.8462,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 1.0,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-4": {
+      "n": 33,
+      "AST": {
+        "mean_sim": 0.988,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9763,
+        "near_identical_frac": 0.8182,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9896,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-5": {
+      "n": 39,
+      "AST": {
+        "mean_sim": 0.9824,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9772,
+        "near_identical_frac": 0.8462,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 1.0,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-6": {
+      "n": 36,
+      "AST": {
+        "mean_sim": 0.9815,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9755,
+        "near_identical_frac": 0.8333,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9998,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-9": {
+      "n": 39,
+      "AST": {
+        "mean_sim": 0.9923,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9772,
+        "near_identical_frac": 0.8462,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 1.0,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-11": {
+      "n": 39,
+      "AST": {
+        "mean_sim": 1.0,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.977,
+        "near_identical_frac": 0.8462,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.996,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-13": {
+      "n": 39,
+      "AST": {
+        "mean_sim": 0.8584,
+        "near_identical_frac": 0.0,
+        "detectability": "MEDIUM"
+      },
+      "Token": {
+        "mean_sim": 0.9774,
+        "near_identical_frac": 0.8462,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9881,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-8": {
+      "n": 9,
+      "AST": {
+        "mean_sim": 0.9973,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9791,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9993,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-12": {
+      "n": 9,
+      "AST": {
+        "mean_sim": 0.982,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9773,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9969,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    },
+    "SC-7": {
+      "n": 6,
+      "AST": {
+        "mean_sim": 0.9869,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9864,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9592,
+        "near_identical_frac": 0.5,
+        "detectability": "HARD"
+      }
+    },
+    "SC-10": {
+      "n": 6,
+      "AST": {
+        "mean_sim": 0.966,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Token": {
+        "mean_sim": 0.9962,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      },
+      "Static_SBG": {
+        "mean_sim": 0.9942,
+        "near_identical_frac": 1.0,
+        "detectability": "HARD"
+      }
+    }
+  },
+  "mutation_ranking_hardest_first": [
+    {
+      "mutation_type": "SC-3",
+      "ast_mean_sim": 1.0
+    },
+    {
+      "mutation_type": "SC-11",
+      "ast_mean_sim": 1.0
+    },
+    {
+      "mutation_type": "SC-1",
+      "ast_mean_sim": 0.9989
+    },
+    {
+      "mutation_type": "SC-2",
+      "ast_mean_sim": 0.998
+    },
+    {
+      "mutation_type": "SC-8",
+      "ast_mean_sim": 0.9973
+    },
+    {
+      "mutation_type": "SC-9",
+      "ast_mean_sim": 0.9923
+    },
+    {
+      "mutation_type": "SC-4",
+      "ast_mean_sim": 0.988
+    },
+    {
+      "mutation_type": "SC-7",
+      "ast_mean_sim": 0.9869
+    },
+    {
+      "mutation_type": "SC-5",
+      "ast_mean_sim": 0.9824
+    },
+    {
+      "mutation_type": "SC-12",
+      "ast_mean_sim": 0.982
+    },
+    {
+      "mutation_type": "SC-6",
+      "ast_mean_sim": 0.9815
+    },
+    {
+      "mutation_type": "SC-10",
+      "ast_mean_sim": 0.966
+    },
+    {
+      "mutation_type": "SC-13",
+      "ast_mean_sim": 0.8584
+    }
+  ],
+  "phase3_dynamic_auroc": 0.504554,
+  "h5_verdict": {
+    "status": "NOT_SUPPORTED",
+    "best_method_auroc": 0.5528,
+    "threshold_used": 0.65,
+    "interpretation": "Best regression detection AUROC=0.5528. H5 requires AUROC>0.65 for 'can detect regressions'. H5 is NOT SUPPORTED."
+  },
+  "finding": "Best regression detection AUROC=0.5528. H5 requires AUROC>0.65 for 'can detect regressions'. H5 is NOT SUPPORTED.",
+  "seed": 42
+}

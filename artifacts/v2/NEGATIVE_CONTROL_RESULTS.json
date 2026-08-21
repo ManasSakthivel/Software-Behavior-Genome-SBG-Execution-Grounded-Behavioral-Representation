@@ -1,0 +1,27 @@
+{
+  "phase": "3B",
+  "b07_auroc": 0.528356,
+  "random_label_baseline": {
+    "mean_auroc": 0.499719,
+    "ci_95": [
+      0.461127,
+      0.544121
+    ],
+    "n_permutations": 1000,
+    "seed": 42,
+    "p_value_b07_vs_random": 0.1,
+    "signal_significant": false,
+    "signal_above_mean": 0.028637
+  },
+  "shuffled_pair_baseline": {
+    "auroc": 0.551117,
+    "note": "Sims shuffled independently of labels \u2014 destroys pair correspondence"
+  },
+  "constant_baseline": {
+    "auroc": 0.501258,
+    "note": "All sims=0.5"
+  },
+  "noise_floor_auroc_upper": 0.544121,
+  "b07_above_noise_floor": false,
+  "verdict": "SIGNAL_WITHIN_NOISE_FLOOR"
+}

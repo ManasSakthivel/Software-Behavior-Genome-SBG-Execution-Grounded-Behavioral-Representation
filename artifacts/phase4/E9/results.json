@@ -1,0 +1,96 @@
+{
+  "experiment": "E9",
+  "timestamp": "2026-08-20T06:12:09Z",
+  "hypothesis_addressed": [
+    "H4"
+  ],
+  "status": "PRELIMINARY_ONLY",
+  "warning": "Full cross-language evaluation deferred to Phase 5. These pairs are Python-only with different idiomatic styles. They approximate cross-language divergence but are NOT true cross-language pairs. Do NOT include these results in quantitative claims.",
+  "n_illustrative_pairs": 5,
+  "pair_results": [
+    {
+      "id": "bubble_sort_python_vs_c_style",
+      "description": "Bubble sort: Python idiomatic vs C-style index loops",
+      "label": "EQUIVALENT",
+      "scores": {
+        "token_tfidf": 0.9544,
+        "ast_sequence": 0.5593,
+        "ast_node_type": 0.8242
+      },
+      "token_degradation": 0.0456,
+      "ast_seq_degradation": 0.4407,
+      "ast_type_degradation": 0.1758
+    },
+    {
+      "id": "fibonacci_recursive_vs_iterative",
+      "description": "Fibonacci: Python recursive vs iterative (different structure, same output)",
+      "label": "DIFFERENT_STRUCTURE_SAME_BEHAVIOR",
+      "scores": {
+        "token_tfidf": 0.3662,
+        "ast_sequence": 0.371,
+        "ast_node_type": 0.6483
+      },
+      "token_degradation": 0.6338,
+      "ast_seq_degradation": 0.629,
+      "ast_type_degradation": 0.3517
+    },
+    {
+      "id": "linear_search_python_vs_functional",
+      "description": "Linear search: explicit loop vs functional style",
+      "label": "EQUIVALENT",
+      "scores": {
+        "token_tfidf": 0.9056,
+        "ast_sequence": 0.4474,
+        "ast_node_type": 0.7808
+      },
+      "token_degradation": 0.0944,
+      "ast_seq_degradation": 0.5526,
+      "ast_type_degradation": 0.2192
+    },
+    {
+      "id": "sum_list_python_vs_c_style",
+      "description": "Sum of list: Pythonic sum() vs explicit C-style accumulator",
+      "label": "EQUIVALENT",
+      "scores": {
+        "token_tfidf": 0.2864,
+        "ast_sequence": 0.2174,
+        "ast_node_type": 0.4139
+      },
+      "token_degradation": 0.7136,
+      "ast_seq_degradation": 0.7826,
+      "ast_type_degradation": 0.5861
+    },
+    {
+      "id": "max_element_python_vs_java_style",
+      "description": "Find max element: Python max() vs Java-style for loop with comparison",
+      "label": "EQUIVALENT",
+      "scores": {
+        "token_tfidf": 0.8647,
+        "ast_sequence": 0.2308,
+        "ast_node_type": 0.4102
+      },
+      "token_degradation": 0.1353,
+      "ast_seq_degradation": 0.7692,
+      "ast_type_degradation": 0.5898
+    }
+  ],
+  "aggregate_similarities": {
+    "token_mean": 0.6755,
+    "ast_sequence_mean": 0.3652,
+    "ast_node_type_mean": 0.6155
+  },
+  "features_that_survive_language_boundary": [
+    "AST node type distribution (control flow patterns remain)",
+    "High-level algorithm structure (loops, conditionals)",
+    "Cyclomatic complexity approximation",
+    "Call graph topology (same functions called in same order)"
+  ],
+  "features_that_fail_cross_language": [
+    "Token/TF-IDF (language syntax tokens differ completely)",
+    "Variable/function name normalization (works for same language)",
+    "AST sequence edit distance (different syntax trees)",
+    "Keyword frequency (def/function/fn differ by language)"
+  ],
+  "h4_status": "NOT_EVALUABLE \u2014 insufficient cross-language data in Phase 4. Full H4 evaluation requires Phase 5 Python\u2194Java or Python\u2194JavaScript benchmark.",
+  "phase5_requirement": "Phase 5 must build at least 50 program pairs where the same specification is implemented in Python and Java/JavaScript. Only then can H4 be evaluated."
+}

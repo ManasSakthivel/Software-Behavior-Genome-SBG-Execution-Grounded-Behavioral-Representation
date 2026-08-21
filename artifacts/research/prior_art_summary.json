@@ -1,0 +1,406 @@
+{
+  "total_works": 40,
+  "agent": "0A",
+  "generated": "2025",
+  "source_document": "docs/research/PRIOR_ART_MATRIX.md",
+  "domains_covered": [
+    "software fingerprinting",
+    "behavioral fingerprinting",
+    "dynamic program analysis",
+    "semantic similarity",
+    "program equivalence",
+    "code embeddings",
+    "regression detection",
+    "mutation testing",
+    "program dependence",
+    "cross-language program analysis"
+  ],
+  "works_by_domain": {
+    "software_fingerprinting": [
+      {
+        "id": 1,
+        "citation": "Luo et al., 'Semantics-Based Obfuscation-Resilient Binary Diffing', IEEE TIFS 2017",
+        "year": 2017,
+        "analysis_type": "hybrid",
+        "language_scope": "binary"
+      },
+      {
+        "id": 2,
+        "citation": "Pewny et al., 'Cross-Architecture Bug Search in Binary Executables', IEEE S&P 2015",
+        "year": 2015,
+        "analysis_type": "dynamic",
+        "language_scope": "binary cross-architecture"
+      },
+      {
+        "id": 3,
+        "citation": "Eschweiler et al., 'discovRE', NDSS 2016",
+        "year": 2016,
+        "analysis_type": "static",
+        "language_scope": "binary cross-architecture"
+      },
+      {
+        "id": 4,
+        "citation": "Xu et al., 'Neural Network-based Binary Code Similarity Detection (Gemini)', CCS 2017",
+        "year": 2017,
+        "analysis_type": "static",
+        "language_scope": "binary"
+      }
+    ],
+    "behavioral_fingerprinting": [
+      {
+        "id": 5,
+        "citation": "Bayer et al., 'Scalable, Behavior-Based Malware Clustering (TTAnalyze)', NDSS 2009",
+        "year": 2009,
+        "analysis_type": "dynamic",
+        "language_scope": "Windows PE binaries"
+      },
+      {
+        "id": 6,
+        "citation": "Moser et al., 'Exploring Multiple Execution Paths for Malware Analysis', IEEE S&P 2007",
+        "year": 2007,
+        "analysis_type": "dynamic",
+        "language_scope": "x86 Windows binaries"
+      },
+      {
+        "id": 7,
+        "citation": "Kinable & Kostakis, 'Malware classification based on call graph clustering', JCV 2011",
+        "year": 2011,
+        "analysis_type": "static",
+        "language_scope": "PE binaries"
+      }
+    ],
+    "dynamic_program_analysis": [
+      {
+        "id": 8,
+        "citation": "Cadar et al., 'KLEE', OSDI 2008",
+        "year": 2008,
+        "analysis_type": "dynamic (symbolic execution)",
+        "language_scope": "C/C++ via LLVM IR"
+      },
+      {
+        "id": 9,
+        "citation": "Godefroid et al., 'DART/SAGE', PLDI 2005 / NDSS 2008",
+        "year": 2005,
+        "analysis_type": "hybrid (concolic)",
+        "language_scope": "C; Windows binaries"
+      },
+      {
+        "id": 10,
+        "citation": "Nethercote & Seward, 'Valgrind', PLDI 2007",
+        "year": 2007,
+        "analysis_type": "dynamic (binary instrumentation)",
+        "language_scope": "language-agnostic at binary level"
+      },
+      {
+        "id": 11,
+        "citation": "Luk et al., 'Pin', PLDI 2005",
+        "year": 2005,
+        "analysis_type": "dynamic",
+        "language_scope": "x86/x64 binaries"
+      }
+    ],
+    "semantic_similarity": [
+      {
+        "id": 12,
+        "citation": "Gabel & Su, 'A Study of the Uniqueness of Source Code', FSE 2010",
+        "year": 2010,
+        "analysis_type": "static",
+        "language_scope": "multi-language (C, Java, Python)"
+      },
+      {
+        "id": 13,
+        "citation": "Jiang et al., 'DECKARD', ICSE 2007",
+        "year": 2007,
+        "analysis_type": "static",
+        "language_scope": "C, Java"
+      },
+      {
+        "id": 14,
+        "citation": "White et al., 'Deep Learning Code Fragments for Code Clone Detection', ASE 2016",
+        "year": 2016,
+        "analysis_type": "static",
+        "language_scope": "Java"
+      },
+      {
+        "id": 15,
+        "citation": "Feng et al., 'Scalable Graph-based Bug Search for Firmware Images', CCS 2016",
+        "year": 2016,
+        "analysis_type": "static",
+        "language_scope": "ARM/MIPS firmware"
+      }
+    ],
+    "program_equivalence": [
+      {
+        "id": 16,
+        "citation": "Godlin & Strichman, 'Regression Verification', DAC 2009",
+        "year": 2009,
+        "analysis_type": "static (formal/SMT)",
+        "language_scope": "C"
+      },
+      {
+        "id": 17,
+        "citation": "Churchill et al., 'Sound Loop Summarization and Regression Verification', PLDI 2019",
+        "year": 2019,
+        "analysis_type": "static (abstract interpretation)",
+        "language_scope": "C"
+      },
+      {
+        "id": 18,
+        "citation": "Partush & Yahav, 'Abstract Semantic Differencing for Numerical Programs', SAS 2013",
+        "year": 2013,
+        "analysis_type": "static (abstract interpretation)",
+        "language_scope": "C (numerical)"
+      },
+      {
+        "id": 19,
+        "citation": "Lahiri et al., 'SYMDIFF', CAV 2012",
+        "year": 2012,
+        "analysis_type": "static (symbolic)",
+        "language_scope": "C, Boogie"
+      }
+    ],
+    "code_embeddings": [
+      {
+        "id": 20,
+        "citation": "Alon et al., 'code2vec', POPL 2019",
+        "year": 2019,
+        "analysis_type": "static",
+        "language_scope": "Java"
+      },
+      {
+        "id": 21,
+        "citation": "Alon et al., 'code2seq', ICLR 2019",
+        "year": 2019,
+        "analysis_type": "static",
+        "language_scope": "Java, C#"
+      },
+      {
+        "id": 22,
+        "citation": "Feng et al., 'CodeBERT', EMNLP 2020",
+        "year": 2020,
+        "analysis_type": "static",
+        "language_scope": "Python, Java, JS, PHP, Ruby, Go"
+      },
+      {
+        "id": 23,
+        "citation": "Guo et al., 'GraphCodeBERT', ICLR 2021",
+        "year": 2021,
+        "analysis_type": "static",
+        "language_scope": "Python, Java, JS, PHP, Ruby, Go"
+      }
+    ],
+    "regression_detection": [
+      {
+        "id": 24,
+        "citation": "Rothermel & Harrold, 'Analyzing Regression Test Selection Techniques', IEEE TSE 1996",
+        "year": 1996,
+        "analysis_type": "static + dynamic test execution",
+        "language_scope": "C, Java"
+      },
+      {
+        "id": 25,
+        "citation": "Baudry et al., 'Tailored Source Code Transformations to Synthesize Computationally Diverse Program Variants', ISSTA 2014",
+        "year": 2014,
+        "analysis_type": "hybrid",
+        "language_scope": "Java"
+      },
+      {
+        "id": 26,
+        "citation": "Cioroaica et al., 'Behavioral Regression Testing in Component-based Systems', SEAA 2018",
+        "year": 2018,
+        "analysis_type": "dynamic",
+        "language_scope": "component-model agnostic"
+      }
+    ],
+    "mutation_testing": [
+      {
+        "id": 27,
+        "citation": "Jia & Harman, 'An Analysis and Survey of the Development of Mutation Testing', IEEE TSE 2011",
+        "year": 2011,
+        "analysis_type": "static mutation + dynamic test execution",
+        "language_scope": "C, Java, Fortran"
+      },
+      {
+        "id": 28,
+        "citation": "Just et al., 'Defects4J', ISSTA 2014",
+        "year": 2014,
+        "analysis_type": "static (benchmark)",
+        "language_scope": "Java"
+      },
+      {
+        "id": 29,
+        "citation": "Coles et al., 'PIT: A Practical Mutation Testing Tool for Java', ICST 2016",
+        "year": 2016,
+        "analysis_type": "hybrid",
+        "language_scope": "Java (JVM)"
+      }
+    ],
+    "program_dependence": [
+      {
+        "id": 30,
+        "citation": "Ferrante et al., 'The Program Dependence Graph', ACM TOPLAS 1987",
+        "year": 1987,
+        "analysis_type": "static",
+        "language_scope": "general (FORTRAN/C)"
+      },
+      {
+        "id": 31,
+        "citation": "Reps et al., 'Precise Interprocedural Dataflow Analysis via Graph Reachability', POPL 1995",
+        "year": 1995,
+        "analysis_type": "static",
+        "language_scope": "general (C)"
+      },
+      {
+        "id": 32,
+        "citation": "Horwitz et al., 'Interprocedural Slicing Using Dependence Graphs', TOPLAS 1990",
+        "year": 1990,
+        "analysis_type": "static",
+        "language_scope": "general"
+      }
+    ],
+    "cross_language_program_analysis": [
+      {
+        "id": 33,
+        "citation": "Buch & Trivedi, 'Learning Program Semantics with Code Representations', SANER 2019",
+        "year": 2019,
+        "analysis_type": "static",
+        "language_scope": "Java, Python, C"
+      },
+      {
+        "id": 34,
+        "citation": "Nafi et al., 'CLCDSA: Cross Language Code Clone Detection', ASE 2019",
+        "year": 2019,
+        "analysis_type": "static",
+        "language_scope": "Java, C#, Python"
+      },
+      {
+        "id": 35,
+        "citation": "Tufano et al., 'Deep Learning Similarities from Different Representations', MSR 2018",
+        "year": 2018,
+        "analysis_type": "static",
+        "language_scope": "Java"
+      }
+    ],
+    "cross_domain_foundational": [
+      {
+        "id": 36,
+        "citation": "Ding et al., 'Asm2Vec', IEEE S&P 2019",
+        "year": 2019,
+        "analysis_type": "static",
+        "language_scope": "x86 binaries"
+      },
+      {
+        "id": 37,
+        "citation": "Ducasse et al., 'A Language Independent Approach for Detecting Duplicated Code', ICSM 1999",
+        "year": 1999,
+        "analysis_type": "static",
+        "language_scope": "language-agnostic (token level)"
+      },
+      {
+        "id": 38,
+        "citation": "Yamaguchi et al., 'Modeling and Discovering Vulnerabilities with Code Property Graphs (Joern)', IEEE S&P 2014",
+        "year": 2014,
+        "analysis_type": "static",
+        "language_scope": "C/C++"
+      },
+      {
+        "id": 39,
+        "citation": "DeFreez et al., 'Path-Based Function Embeddings', FSE 2018",
+        "year": 2018,
+        "analysis_type": "static",
+        "language_scope": "C via LLVM IR"
+      },
+      {
+        "id": 40,
+        "citation": "Cummins et al., 'ProGraML', ICML 2021",
+        "year": 2021,
+        "analysis_type": "static",
+        "language_scope": "language-agnostic via LLVM IR"
+      }
+    ]
+  },
+  "closest_to_sbg": [
+    {
+      "id": 1,
+      "citation": "Luo et al., 'Semantics-Based Obfuscation-Resilient Binary Diffing', IEEE TIFS 2017",
+      "reason": "Closest in spirit: uses I/O semantic summaries for equivalence. Differs: binary-only, pairwise, no longitudinal genome.",
+      "overlap_score": "high"
+    },
+    {
+      "id": 16,
+      "citation": "Godlin & Strichman, 'Regression Verification', DAC 2009",
+      "reason": "Directly targets program equivalence across versions. Differs: formal/static, C-only, does not scale.",
+      "overlap_score": "high"
+    },
+    {
+      "id": 19,
+      "citation": "Lahiri et al., 'SYMDIFF', CAV 2012",
+      "reason": "Semantic diff using symbolic methods. Differs: static, requires matched function pairs, SMT-constrained.",
+      "overlap_score": "high"
+    },
+    {
+      "id": 5,
+      "citation": "Bayer et al., 'TTAnalyze / Scalable Behavior-Based Malware Clustering', NDSS 2009",
+      "reason": "Dynamic behavioral fingerprinting at scale. Differs: malware-focused, single-version clustering, not regression.",
+      "overlap_score": "medium-high"
+    },
+    {
+      "id": 38,
+      "citation": "Yamaguchi et al., 'Code Property Graphs (Joern)', IEEE S&P 2014",
+      "reason": "Multi-layer program representation (AST+CFG+PDG). Differs: static only, vulnerability-focused, no dynamic dimension.",
+      "overlap_score": "medium"
+    },
+    {
+      "id": 40,
+      "citation": "Cummins et al., 'ProGraML', ICML 2021",
+      "reason": "Rich graph-based program representation for analysis tasks. Differs: LLVM IR only, no runtime values, no longitudinal tracking.",
+      "overlap_score": "medium"
+    }
+  ],
+  "coverage_gaps": [
+    {
+      "id": "CG-1",
+      "label": "Longitudinal Behavioral Genome Tracking",
+      "description": "No prior work builds a versioned behavioral genome tracking how a program's full behavioral profile evolves across its entire release history."
+    },
+    {
+      "id": "CG-2",
+      "label": "Cross-Language Behavioral Equivalence Without Common IR",
+      "description": "No work establishes behavioral equivalence between programs in fundamentally different paradigms (e.g., Python vs Rust vs Clojure) without requiring a shared compilation target."
+    },
+    {
+      "id": "CG-3",
+      "label": "Behavioral Genome as Supply-Chain Artifact",
+      "description": "No prior work treats a behavioral signature as a first-class supply-chain artifact (analogous to an SBOM) capturing behavioral provenance."
+    },
+    {
+      "id": "CG-4",
+      "label": "Unsupervised Behavioral Anomaly Detection Without Test Suites",
+      "description": "No work detects behavioral regression purely from unlabeled execution traces using unsupervised anomaly detection over behavioral embeddings."
+    },
+    {
+      "id": "CG-5",
+      "label": "Multi-Modal Behavioral Fingerprinting (Source + Binary + Runtime)",
+      "description": "No single framework jointly fingerprints a program at source, binary, and runtime levels and unifies all three into a single behavioral identity."
+    },
+    {
+      "id": "CG-6",
+      "label": "Behavioral Diff as a Developer-Facing Code Review Artifact",
+      "description": "No tool produces a human-readable behavioral diff suitable for inclusion in code review, precisely identifying what changed in program behavior rather than code structure."
+    },
+    {
+      "id": "CG-7",
+      "label": "Behavioral Genome Across Operating Environments",
+      "description": "No work characterizes how the same binary's behavior diverges across OS versions, hardware architectures, and library versions in a unified behavioral genome model."
+    }
+  ],
+  "statistics": {
+    "static_only": 27,
+    "dynamic_or_hybrid": 13,
+    "cross_language": 6,
+    "with_formal_soundness": 4,
+    "regression_focused": 5,
+    "year_range": "1987-2021",
+    "coverage_gaps_count": 7
+  }
+}

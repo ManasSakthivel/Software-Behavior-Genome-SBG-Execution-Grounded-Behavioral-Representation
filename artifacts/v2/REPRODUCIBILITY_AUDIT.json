@@ -1,0 +1,352 @@
+{
+  "audit_version": "v2.0",
+  "agent": "Agent-N: Reproducibility Audit",
+  "repo_root": "/Users/manassakthivel/Desktop/SF Projects/SBG",
+  "overall_status": "FAIL",
+  "n_violations": 9,
+  "violations": [
+    "SAFEGUARD-6_VIOLATION: b07_dynamic_v2.py n_runs=1 < 5",
+    "STATUS : PLACEHOLDER_PENDING_DATA",
+    "\"status\": \"PLACEHOLDER_PENDING_DATA\",",
+    "out = os.path.join(OUT_DIR, \"fig5_robustness_PLACEHOLDER.json\")",
+    "print(\"[fig5] PLACEHOLDER_PENDING_DATA\")",
+    "STATUS : PLACEHOLDER_PENDING_DATA",
+    "\"status\": \"PLACEHOLDER_PENDING_DATA\",",
+    "out = os.path.join(OUT_DIR, \"fig4_hard_negative_PLACEHOLDER.json\")",
+    "print(\"[fig4] PLACEHOLDER_PENDING_DATA\")"
+  ],
+  "checks": {
+    "artifact_existence_and_keys": {
+      "artifact_checks": [
+        {
+          "path": "artifacts/research/PHASE_0_GATE.json",
+          "exists": true,
+          "sha256": "c5e33166a2b6432d0c74a72aa98fa2545c87dd23f81b8605b964d58b5f0a7a18",
+          "size_bytes": 20992,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/research/PHASE_1_GATE.json",
+          "exists": true,
+          "sha256": "407f8927d954efc16fafbcd7a7ad9b2d9106c07a0bd299da6c8fb704a95057c7",
+          "size_bytes": 2096,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/research/PHASE_2_GATE.json",
+          "exists": true,
+          "sha256": "f88bebd7e02020a6949f2482cc1127ad0a545f96a0361730906d87ce0bb0b377",
+          "size_bytes": 2043,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/research/PHASE_3_GATE.json",
+          "exists": true,
+          "sha256": "4d78fa6ea25731d8729bf96f6880e1f7c033ef121df2a7977158d93c3d68c15e",
+          "size_bytes": 4851,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/research/PHASE_4_GATE.json",
+          "exists": true,
+          "sha256": "8e8f414753ce7ef1aed4b999ffc738cee453068a023b83ed104ffd2253a65876",
+          "size_bytes": 8396,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/research/PHASE_5_GATE.json",
+          "exists": true,
+          "sha256": "7a0697655340128d45e791482f1141eeb761ee7b138b452bdcf1b81e29bbf970",
+          "size_bytes": 3108,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/research/PHASE_6_GATE.json",
+          "exists": true,
+          "sha256": "6652ba86dfade91860a239b973f4c5f44f4ca38977ce23a40f3c32a223252cbe",
+          "size_bytes": 32844,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase3/B02/results_test.json",
+          "exists": true,
+          "sha256": "6d87c16bb958343ba885ea5b1968abc95655fb9384551c61aebb7e4f2a7c4626",
+          "size_bytes": 482,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase3/B08/results_test.json",
+          "exists": true,
+          "sha256": "efe00bff25e737473b821b673aeadbefc021b68ef040988cdaa26d59f481da6b",
+          "size_bytes": 551,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase4/E1/results.json",
+          "exists": true,
+          "sha256": "e0fa9acca567a11d2bc9bbcf45be5a7617a318fe123fc5d5a877b14789676992",
+          "size_bytes": 12161,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase4/E2/results.json",
+          "exists": true,
+          "sha256": "ce5f300269ff36eec866e875fab624c7c7d1babcaf4aa95dc2dfbc4ff8eb3276",
+          "size_bytes": 15122,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase4/E3/results.json",
+          "exists": true,
+          "sha256": "fa60c3d0e533862e0a611b786af0ea33e4f1582721f406f353aa3326d62c6c19",
+          "size_bytes": 5403,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase4/E6/results.json",
+          "exists": true,
+          "sha256": "b5c8cb99cc68a0b47829eb534fd71e9aaacdf4f7eabcaa770c09f471b35e976a",
+          "size_bytes": 4408,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase4/E7/results.json",
+          "exists": true,
+          "sha256": "c76c591015128b70d1a15ac0a57951c86a6626792cd69ae58c05c231bbf988d4",
+          "size_bytes": 7021,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase4/E10/results.json",
+          "exists": true,
+          "sha256": "90f2487c788afbff5a314988b558533f24f8c53b0e67441c62648e749ede8b84",
+          "size_bytes": 8381,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase4/E12/results.json",
+          "exists": true,
+          "sha256": "69149bcc9c3cb16b53bf60cf1e19fe229ee07389fb948e1f8739186eadf3bbdd",
+          "size_bytes": 2870,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase5/cross_language_results.json",
+          "exists": true,
+          "sha256": "96655ab97aafdaa333bfeef745de486bf330b5921a5c868a86593c8904c6a244",
+          "size_bytes": 14196,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/phase5/regression_results.json",
+          "exists": true,
+          "sha256": "10492220dae580714cd03cc97ae21f4c76943b0156e4e79686f30ab55da583ae",
+          "size_bytes": 4813,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "docs/CLAIMS_REGISTRY.yaml",
+          "exists": true,
+          "sha256": "946d8d3f7f2e299c4dd96eeb5cf95025fe85f7820be4e1a1b9a7c7e249e71b01",
+          "size_bytes": 12828,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/final/FINAL_REPRODUCIBILITY_MANIFEST.json",
+          "exists": true,
+          "sha256": "e38915be73948e2b69d0b386689de9526c4e51ea765d9f2715f773c77211f0c3",
+          "size_bytes": 2268,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/final/FINAL_EVIDENCE_MANIFEST.json",
+          "exists": true,
+          "sha256": "c951304f6609e65ba6a35fca5572c2b69c58afc6ed95c36c849dad7d1423d280",
+          "size_bytes": 3072,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "artifacts/v2/PREREGISTRATION_MANIFEST.json",
+          "exists": true,
+          "sha256": "a16b550fe9637c18fa743e21c49b32a4fce5b72b8745391ec29b346e1c75e1f1",
+          "size_bytes": 1164,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "experiments/REGISTRY.yaml",
+          "exists": true,
+          "sha256": "26feaa3dec47e680141e97ecc87a7e13ec94af3a1a5d2a83235b514b1b5c4bf2",
+          "size_bytes": 4610,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "baselines/common.py",
+          "exists": true,
+          "sha256": "0100d0fb3f07d654a6682c01146d9c3b151c6ca690e0046157d596740f0c3852",
+          "size_bytes": 10009,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "baselines/v2/b07_dynamic_v2.py",
+          "exists": true,
+          "sha256": "b857e3506938f7526c3d41d360a8b4350b09c6300b2c9740929e1c4e3a8ca987",
+          "size_bytes": 9858,
+          "missing_keys": [],
+          "parse_error": null
+        },
+        {
+          "path": "sbg/v2/execution/runner.py",
+          "exists": true,
+          "sha256": "4e0499b00515f1274eda2339cbde1c173327fd70aeb47b20791587a41c2c4298",
+          "size_bytes": 8571,
+          "missing_keys": [],
+          "parse_error": null
+        }
+      ],
+      "violations": []
+    },
+    "bootstrap_seed": {
+      "seed_42_confirmed": true,
+      "findings": [
+        "PASS: bootstrap uses random.Random(42) in baselines/common.py",
+        "INFO: bootstrap n_iterations=1000 (1000 expected)"
+      ]
+    },
+    "b07_safeguard_6": {
+      "safeguard_6_ok": false,
+      "n_runs_found": 1,
+      "violation": true,
+      "findings": [
+        "SAFEGUARD-6 VIOLATION: b07_dynamic_v2.py calls _runner.run(..., n_runs=1). SAFEGUARD-6 requires n_runs >= 5 for noise floor estimation. With n_runs=1 the noise_floor_stats contain a single sample \u2014 std is always 0.0, non_deterministic_flags will never fire, and the noise floor check is vacuous.",
+        "INFO: SandboxRunner.run() default n_runs=5",
+        "INFO: SandboxRunner default satisfies SAFEGUARD-6 (n_runs=5)",
+        "NOTE: b07_dynamic_v2.py overrides the default with n_runs=1, bypassing SAFEGUARD-6 noise floor check."
+      ]
+    },
+    "anti_patterns": {
+      "critical_hits": [
+        {
+          "file": "experiments/v2/figures/fig5_robustness.py",
+          "line": 4,
+          "pattern": "PLACEHOLDER",
+          "text": "STATUS : PLACEHOLDER_PENDING_DATA"
+        },
+        {
+          "file": "experiments/v2/figures/fig5_robustness.py",
+          "line": 46,
+          "pattern": "PLACEHOLDER",
+          "text": "\"status\": \"PLACEHOLDER_PENDING_DATA\","
+        },
+        {
+          "file": "experiments/v2/figures/fig5_robustness.py",
+          "line": 59,
+          "pattern": "PLACEHOLDER",
+          "text": "out = os.path.join(OUT_DIR, \"fig5_robustness_PLACEHOLDER.json\")"
+        },
+        {
+          "file": "experiments/v2/figures/fig5_robustness.py",
+          "line": 63,
+          "pattern": "PLACEHOLDER",
+          "text": "print(\"[fig5] PLACEHOLDER_PENDING_DATA\")"
+        },
+        {
+          "file": "experiments/v2/figures/fig4_hard_negative.py",
+          "line": 4,
+          "pattern": "PLACEHOLDER",
+          "text": "STATUS : PLACEHOLDER_PENDING_DATA"
+        },
+        {
+          "file": "experiments/v2/figures/fig4_hard_negative.py",
+          "line": 44,
+          "pattern": "PLACEHOLDER",
+          "text": "\"status\": \"PLACEHOLDER_PENDING_DATA\","
+        },
+        {
+          "file": "experiments/v2/figures/fig4_hard_negative.py",
+          "line": 56,
+          "pattern": "PLACEHOLDER",
+          "text": "out = os.path.join(OUT_DIR, \"fig4_hard_negative_PLACEHOLDER.json\")"
+        },
+        {
+          "file": "experiments/v2/figures/fig4_hard_negative.py",
+          "line": 60,
+          "pattern": "PLACEHOLDER",
+          "text": "print(\"[fig4] PLACEHOLDER_PENDING_DATA\")"
+        }
+      ],
+      "todo_hits": [],
+      "findings": [
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig5_robustness.py:4: STATUS : PLACEHOLDER_PENDING_DATA",
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig5_robustness.py:46: \"status\": \"PLACEHOLDER_PENDING_DATA\",",
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig5_robustness.py:59: out = os.path.join(OUT_DIR, \"fig5_robustness_PLACEHOLDER.json\")",
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig5_robustness.py:63: print(\"[fig5] PLACEHOLDER_PENDING_DATA\")",
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig4_hard_negative.py:4: STATUS : PLACEHOLDER_PENDING_DATA",
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig4_hard_negative.py:44: \"status\": \"PLACEHOLDER_PENDING_DATA\",",
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig4_hard_negative.py:56: out = os.path.join(OUT_DIR, \"fig4_hard_negative_PLACEHOLDER.json\")",
+        "CRITICAL_ANTI_PATTERN [PLACEHOLDER] in experiments/v2/figures/fig4_hard_negative.py:60: print(\"[fig4] PLACEHOLDER_PENDING_DATA\")",
+        "PASS: No TODO/FIXME in scanned source directories"
+      ]
+    },
+    "declared_hash_verification": {
+      "findings": [
+        "PASS hash: artifacts/research/PHASE_0_GATE.json (c5e33166a2b6432d\u2026)",
+        "PASS hash: artifacts/research/PHASE_1_GATE.json (407f8927d954efc1\u2026)",
+        "PASS hash: artifacts/research/PHASE_2_GATE.json (f88bebd7e02020a6\u2026)",
+        "PASS hash: artifacts/research/PHASE_3_GATE.json (4d78fa6ea25731d8\u2026)",
+        "PASS hash: artifacts/research/PHASE_4_GATE.json (8e8f414753ce7ef1\u2026)",
+        "PASS hash: artifacts/research/PHASE_5_GATE.json (7a0697655340128d\u2026)",
+        "PASS hash: artifacts/research/PHASE_6_GATE.json (6652ba86dfade918\u2026)",
+        "PASS hash: artifacts/phase3/B02/results_test.json (6d87c16bb958343b\u2026)",
+        "PASS hash: artifacts/phase3/B08/results_test.json (efe00bff25e73747\u2026)",
+        "PASS hash: artifacts/phase4/E1/results.json (e0fa9acca567a11d\u2026)",
+        "PASS hash: artifacts/phase4/E2/results.json (ce5f300269ff36ee\u2026)",
+        "PASS hash: artifacts/phase4/E3/results.json (fa60c3d0e533862e\u2026)",
+        "PASS hash: artifacts/phase4/E6/results.json (b5c8cb99cc68a0b4\u2026)",
+        "PASS hash: artifacts/phase4/E7/results.json (c76c591015128b70\u2026)",
+        "PASS hash: artifacts/phase4/E10/results.json (90f2487c788afbff\u2026)",
+        "PASS hash: artifacts/phase4/E12/results.json (69149bcc9c3cb16b\u2026)",
+        "PASS hash: artifacts/phase5/cross_language_results.json (96655ab97aafdaa3\u2026)",
+        "PASS hash: artifacts/phase5/regression_results.json (10492220dae58071\u2026)",
+        "PASS hash: docs/CLAIMS_REGISTRY.yaml (946d8d3f7f2e299c\u2026)"
+      ],
+      "mismatches": []
+    },
+    "registry_seeds": {
+      "findings": [
+        "PASS: EXP-B01 seed=42",
+        "PASS: EXP-B02 seed=42",
+        "PASS: EXP-B03 seed=42",
+        "PASS: EXP-B04 seed=42",
+        "PASS: EXP-B05 seed=42",
+        "PASS: EXP-B06 seed=42",
+        "PASS: EXP-B07 seed=42",
+        "PASS: EXP-B08 seed=42"
+      ],
+      "missing_seed": []
+    }
+  }
+}

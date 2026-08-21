@@ -1,0 +1,46 @@
+{
+  "experiment": "B07_DYNAMIC_V5",
+  "version": "v5",
+  "timestamp": "2026-08-21T11:44:08Z",
+  "seed": 42,
+  "weights": {
+    "v3": 0.5,
+    "temporal": 0.25,
+    "state": 0.25
+  },
+  "dev_auroc": 0.587597,
+  "dev_ci": [
+    0.505101,
+    0.667549
+  ],
+  "dev_n_valid": 176,
+  "dev_n_v5": 176,
+  "dev_v5_rate": 1.0,
+  "dev_time_s": 177.17,
+  "test_auroc": 0.551246,
+  "test_ci": [
+    0.505403,
+    0.594535
+  ],
+  "test_permutation_p": 0.01,
+  "test_n_valid": 643,
+  "test_n_v5": 643,
+  "test_v5_rate": 1.0,
+  "test_time_s": 1770.56,
+  "delta_vs_v3": null,
+  "delta_vs_exception_frac": -0.015754,
+  "v3_test_auroc_reference": null,
+  "exception_frac_reference": 0.567,
+  "v5_modules_integrated": [
+    "invariant_identity",
+    "temporal_genome_v5",
+    "state_transition_genome"
+  ],
+  "methodology": {
+    "entry_fn_discovery": "priority_list + invariant_identity_root + alphabetical_fallback",
+    "auroc": "WMW tie-aware (sbg.v3.metrics.compute_auroc_v3)",
+    "bootstrap": "cluster_by_base_program, 500 resamples",
+    "permutation": "1000 permutations",
+    "canonical_inputs": 11
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "version": "v3",
+  "generated_at": "2026-08-20T16:43:53.187410Z",
+  "python_version": "3.11.15",
+  "frozen": true,
+  "test_pairs": 744,
+  "dev_pairs": 615,
+  "n_programs": 13,
+  "auroc_method": "tie_aware_wmw_wilcoxon_mann_whitney",
+  "bootstrap_method": "cluster_by_base_program",
+  "primary_results": {
+    "B07_DYNAMIC_V3": {
+      "auroc": 0.545537,
+      "ci_lower": 0.476759,
+      "ci_upper": 0.624365,
+      "permutation_p": 0.005,
+      "tie_fraction": 0.152268,
+      "inversion_delta": -0.063887,
+      "inversion_resolved": true,
+      "glasss_delta": -0.271698,
+      "source": "artifacts/v3/B07/results_test.json"
+    },
+    "B07_DYNAMIC_V2_REFERENCE": {
+      "auroc_naive": 0.531023,
+      "auroc_tie_corrected": 0.5434,
+      "ci": [
+        0.499136,
+        0.580563
+      ],
+      "inversion_delta": -0.045265,
+      "source": "artifacts/v2/FINAL_RESULTS.json (frozen)"
+    },
+    "B02_AST_REFERENCE": {
+      "auroc": 0.552845,
+      "ci": [
+        0.509315,
+        0.592881
+      ],
+      "source": "artifacts/phase3/B02/results_test.json (frozen)"
+    },
+    "B05_CODEBERT_REFERENCE": {
+      "auroc": 0.369662,
+      "source": "artifacts/v2/MODERN_BASELINE_RESULTS.json (frozen)",
+      "note": "Below-chance inversion; embedding-based approach fails on this benchmark"
+    },
+    "WALL_TIME_SHORTCUT_REFERENCE": {
+      "auroc": 0.57058,
+      "source": "artifacts/v2/PHASE4_SHORTCUT_AUDIT.json",
+      "note": "wall_time_ms alone beats v2 B07; independent execution-volume confound"
+    }
+  },
+  "v3_vs_v2_comparison": {
+    "auroc_v2_naive": 0.531023,
+    "auroc_v2_tie_corrected": 0.5434,
+    "auroc_v3": 0.545537,
+    "delta_v3_vs_v2": 0.002137,
+    "ci_v3_lower": 0.476759,
+    "ci_v3_upper": 0.624365,
+    "ci_overlap_with_v2": true,
+    "inversion_delta_v2": -0.045265,
+    "inversion_delta_v3": -0.063887,
+    "inversion_improvement": -0.018622
+  },
+  "sc3_corrected_benchmark": {
+    "n_verified_pairs": 38,
+    "n_total_generated": 179,
+    "verification_rate": 0.212,
+    "n_programs": 18,
+    "difficulty_distribution": {
+      "EASY": 34,
+      "HARD": 3,
+      "MEDIUM": 1
+    },
+    "v2_cosmetic_fraction": 0.769,
+    "v3_integer_mutation_fraction": 1.0,
+    "source": "benchmark/v3/sc3_corrected/SC3_CORRECTED_MANIFEST.json"
+  },
+  "methodology_fixes": [
+    "AUROC: tie-aware WMW replaces naive stable-sort (sbg/v3/metrics.py)",
+    "Holm-Bonferroni: true step-down stopping rule (sbg/v3/metrics.py)",
+    "Bootstrap: cluster-by-base-program (sbg/v3/metrics.py)",
+    "Effect sizes: Glass delta + Cohen h computed (sbg/v3/metrics.py)",
+    "Permutation tests: implemented for all primary hypotheses",
+    "SC-3 benchmark: text-level mutation replaces ast.unparse (38 verified pairs)",
+    "SP-2 entry function: call-graph root selector (baselines/v3/b07_dynamic_v3.py)",
+    "Genome v3: call transition bigrams + input sensitivity + exception causality",
+    "Python 3.11: replaced Apple Python 3.9.6 for stable thread handling"
+  ],
+  "remaining_issues": {
+    "P0_resolved": [
+      "AUROC tie-handling (fixed in sbg/v3/metrics.py)",
+      "SC-3 contamination (38 verified corrected pairs in benchmark/v3/sc3_corrected/)",
+      "Python runtime: moved to 3.11 from 3.9 (eliminates C stack overflow)"
+    ],
+    "P1_resolved": [
+      "Holm-Bonferroni step-down (fixed)",
+      "Effect sizes missing (now computed)",
+      "Permutation tests (now implemented)",
+      "SP-2 entry function (call-graph root selector)"
+    ],
+    "P1_open": [
+      "H12 regression corpus: still synthetic (real corpus requires BugsInPy or GitHub mining)",
+      "H11 cross-language: no Java execution yet (requires 10-15 engineering days)",
+      "Cluster bootstrap CIs wider than v2 (expected \u2014 correctly reflects within-program correlation)",
+      "B09 CodeBERT not a standalone baseline (Phase 4 experiment only)"
+    ],
+    "P0_open": [
+      "AUROC 0.545 still below AST baseline (0.553) \u2014 not statistically distinguishable",
+      "Shortcut controls: wall_time_ms (0.571) still above v3 \u2014 further investigation needed"
+    ]
+  },
+  "hypothesis_verdicts": {
+    "H7": {
+      "claim": "V3 Dynamic SBG > V1 Static SBG",
+      "verdict": "SUPPORTED",
+      "v3_auroc": 0.545537,
+      "v1_auroc": 0.423664,
+      "delta": 0.121873
+    },
+    "H9": {
+      "claim": "Inversion resolved by dynamic features",
+      "verdict": "SUPPORTED",
+      "v3_inversion_delta": -0.063887,
+      "v1_inversion_delta": 0.0335
+    },
+    "SC3_corrected": {
+      "verdict": "REQUIRES_NEW_EVALUATION",
+      "status": "38 verified SC-3 corrected pairs generated; evaluation pending",
+      "v3_benchmark": "benchmark/v3/sc3_corrected/"
+    }
+  }
+}

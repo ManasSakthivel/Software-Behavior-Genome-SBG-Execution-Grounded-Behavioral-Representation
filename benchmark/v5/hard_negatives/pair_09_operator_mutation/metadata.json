@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_09_operator_mutation",
+  "ground_truth": "CHANGED",
+  "shortcut_defeated": "structural_similarity",
+  "description": "Single operator mutation: >= vs >. All inputs except age=18 produce the same result. Only the exact boundary case reveals the difference. Structural similarity is 0.99+.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": true,
+  "expected_volume_same": true,
+  "boundary_inputs_required": true
+}

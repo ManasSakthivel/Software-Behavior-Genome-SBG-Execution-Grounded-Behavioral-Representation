@@ -1,0 +1,444 @@
+{
+  "experiment": "E5",
+  "timestamp": "2026-08-20T06:15:25Z",
+  "hypothesis_addressed": [
+    "H5",
+    "H6"
+  ],
+  "n_test_pairs": 744,
+  "phase3_dynamic_results": {
+    "B06_dynamic": {
+      "auroc": 0.504554,
+      "f1": 0.659459
+    },
+    "B07_static_sbg": {
+      "auroc": 0.349112,
+      "f1": 0.659459
+    },
+    "B08_full_sbg": {
+      "auroc": 0.423664,
+      "f1": 0.659459
+    }
+  },
+  "overall_auroc": {
+    "Static_SBG": {
+      "auroc": 0.2198,
+      "ci_lo": 0.3059,
+      "ci_hi": 0.3821
+    },
+    "AST": {
+      "auroc": 0.4479,
+      "ci_lo": 0.5094,
+      "ci_hi": 0.5936
+    },
+    "Token": {
+      "auroc": 0.4043,
+      "ci_lo": 0.3661,
+      "ci_hi": 0.4474
+    }
+  },
+  "stratified_auroc_by_transform": {
+    "Static_SBG": {
+      "SP-2": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-3": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-4": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-5": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-6": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-8": {
+        "auroc": null,
+        "n": 17,
+        "note": "single_class"
+      },
+      "SP-9": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-10": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-12": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-1": {
+        "auroc": null,
+        "n": 33,
+        "note": "single_class"
+      },
+      "SC-2": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-3": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-4": {
+        "auroc": null,
+        "n": 33,
+        "note": "single_class"
+      },
+      "SC-5": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-6": {
+        "auroc": null,
+        "n": 36,
+        "note": "single_class"
+      },
+      "SC-9": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-11": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-13": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-11": {
+        "auroc": null,
+        "n": 12,
+        "note": "single_class"
+      },
+      "SC-8": {
+        "auroc": null,
+        "n": 9,
+        "note": "single_class"
+      },
+      "SC-12": {
+        "auroc": null,
+        "n": 9,
+        "note": "single_class"
+      },
+      "SP-1": {
+        "auroc": null,
+        "n": 22,
+        "note": "single_class"
+      },
+      "SP-7": {
+        "auroc": null,
+        "n": 15,
+        "note": "single_class"
+      },
+      "SC-7": {
+        "auroc": null,
+        "n": 6,
+        "note": "single_class"
+      },
+      "SC-10": {
+        "auroc": null,
+        "n": 6,
+        "note": "single_class"
+      }
+    },
+    "AST": {
+      "SP-2": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-3": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-4": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-5": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-6": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-8": {
+        "auroc": null,
+        "n": 17,
+        "note": "single_class"
+      },
+      "SP-9": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-10": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-12": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-1": {
+        "auroc": null,
+        "n": 33,
+        "note": "single_class"
+      },
+      "SC-2": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-3": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-4": {
+        "auroc": null,
+        "n": 33,
+        "note": "single_class"
+      },
+      "SC-5": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-6": {
+        "auroc": null,
+        "n": 36,
+        "note": "single_class"
+      },
+      "SC-9": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-11": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-13": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-11": {
+        "auroc": null,
+        "n": 12,
+        "note": "single_class"
+      },
+      "SC-8": {
+        "auroc": null,
+        "n": 9,
+        "note": "single_class"
+      },
+      "SC-12": {
+        "auroc": null,
+        "n": 9,
+        "note": "single_class"
+      },
+      "SP-1": {
+        "auroc": null,
+        "n": 22,
+        "note": "single_class"
+      },
+      "SP-7": {
+        "auroc": null,
+        "n": 15,
+        "note": "single_class"
+      },
+      "SC-7": {
+        "auroc": null,
+        "n": 6,
+        "note": "single_class"
+      },
+      "SC-10": {
+        "auroc": null,
+        "n": 6,
+        "note": "single_class"
+      }
+    },
+    "Token": {
+      "SP-2": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-3": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-4": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-5": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-6": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-8": {
+        "auroc": null,
+        "n": 17,
+        "note": "single_class"
+      },
+      "SP-9": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-10": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-12": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-1": {
+        "auroc": null,
+        "n": 33,
+        "note": "single_class"
+      },
+      "SC-2": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-3": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-4": {
+        "auroc": null,
+        "n": 33,
+        "note": "single_class"
+      },
+      "SC-5": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-6": {
+        "auroc": null,
+        "n": 36,
+        "note": "single_class"
+      },
+      "SC-9": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-11": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SC-13": {
+        "auroc": null,
+        "n": 39,
+        "note": "single_class"
+      },
+      "SP-11": {
+        "auroc": null,
+        "n": 12,
+        "note": "single_class"
+      },
+      "SC-8": {
+        "auroc": null,
+        "n": 9,
+        "note": "single_class"
+      },
+      "SC-12": {
+        "auroc": null,
+        "n": 9,
+        "note": "single_class"
+      },
+      "SP-1": {
+        "auroc": null,
+        "n": 22,
+        "note": "single_class"
+      },
+      "SP-7": {
+        "auroc": null,
+        "n": 15,
+        "note": "single_class"
+      },
+      "SC-7": {
+        "auroc": null,
+        "n": 6,
+        "note": "single_class"
+      },
+      "SC-10": {
+        "auroc": null,
+        "n": 6,
+        "note": "single_class"
+      }
+    }
+  },
+  "static_vs_dynamic_comparison": {
+    "static_best": {
+      "method": "AST",
+      "auroc": 0.4479
+    },
+    "dynamic_proxy": {
+      "method": "B06_dynamic_phase3",
+      "auroc": 0.504554,
+      "note": "Phase 3 result \u2014 dynamic trace baseline on same test set"
+    },
+    "hybrid": {
+      "method": "B08_full_sbg_phase3",
+      "auroc": 0.423664,
+      "note": "Phase 3 result \u2014 full 8-dim SBG including dynamic dims"
+    },
+    "does_dynamic_help": true,
+    "conclusion": "Adding dynamic dims improves AUROC by 0.0746 (0.3491 \u2192 0.4237). Dynamic features ADD value."
+  },
+  "finding": "Adding dynamic dims improves AUROC by 0.0746 (0.3491 \u2192 0.4237). Dynamic features ADD value.",
+  "limitation": "Full dynamic tracing requires program execution with representative inputs. B06/B07/B08 dynamic results are from Phase 3 with fixed synthetic inputs. Stratified analysis here uses only static methods (AST, Token, Static_SBG).",
+  "seed": 42
+}

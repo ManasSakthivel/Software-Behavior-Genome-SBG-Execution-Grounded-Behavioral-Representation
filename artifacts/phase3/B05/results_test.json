@@ -1,0 +1,26 @@
+{
+  "baseline": "B05",
+  "split": "test",
+  "threshold_from": "dev",
+  "threshold": 0.9864636196024941,
+  "metrics": {
+    "accuracy": 0.423387,
+    "precision": 0.445596,
+    "recall": 0.704918,
+    "f1": 0.546032,
+    "auroc": 0.369395,
+    "auprc": 0.401414,
+    "tp": 258,
+    "fp": 321,
+    "fn": 108,
+    "tn": 57,
+    "n_samples": 744,
+    "threshold_used": 0.986464,
+    "ci_f1_lower": 0.505006,
+    "ci_f1_upper": 0.584456,
+    "ci_auroc_lower": 0.329148,
+    "ci_auroc_upper": 0.41064
+  },
+  "fallback_embedding": true,
+  "intended_model": "CodeBERT (microsoft/codebert-base)"
+}

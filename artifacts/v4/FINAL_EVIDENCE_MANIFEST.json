@@ -1,0 +1,81 @@
+{
+  "version": "v4",
+  "generated_at": "2026-08-20T17:34:21.613305Z",
+  "frozen": true,
+  "artifacts": {
+    "v4/SHORTCUT_CONTROLS.json": {
+      "path": "artifacts/v4/SHORTCUT_CONTROLS.json",
+      "sha256_prefix": "7ec26b647d6e98dc"
+    },
+    "v4/SC3_CORRECTED_EVALUATION.json": {
+      "path": "artifacts/v4/SC3_CORRECTED_EVALUATION.json",
+      "sha256_prefix": "4e3a0954997d5722"
+    },
+    "v4/EXPANDED_CORPUS_EVAL.json": {
+      "path": "artifacts/v4/EXPANDED_CORPUS_EVAL.json",
+      "sha256_prefix": "009ce99dafedfc46"
+    },
+    "v4/SEMANTIC_ORACLE.json": {
+      "path": "artifacts/v4/SEMANTIC_ORACLE.json",
+      "sha256_prefix": "3d1ebca1f32a9972"
+    },
+    "v4/REGRESSION_CORPUS.json": {
+      "path": "artifacts/v4/REGRESSION_CORPUS.json",
+      "sha256_prefix": "20642820edb8d4ad"
+    },
+    "v4/CROSS_LANGUAGE.json": {
+      "path": "artifacts/v4/CROSS_LANGUAGE.json",
+      "sha256_prefix": "9eb739299dbec2b6"
+    },
+    "v4/ROBUSTNESS_PER_TRANSFORM.json": {
+      "path": "artifacts/v4/ROBUSTNESS_PER_TRANSFORM.json",
+      "sha256_prefix": "3fedfe51b42c38af"
+    },
+    "v4/FEATURE_ABLATION.json": {
+      "path": "artifacts/v4/FEATURE_ABLATION.json",
+      "sha256_prefix": "e59f7db796aa98d8"
+    },
+    "v4/STRONG_BASELINES.json": {
+      "path": "artifacts/v4/STRONG_BASELINES.json",
+      "sha256_prefix": "3b1b493ce9226e38"
+    },
+    "v4/HOSTILE_REVIEW.json": {
+      "path": "artifacts/v4/HOSTILE_REVIEW.json",
+      "sha256_prefix": "62537c35df813800"
+    }
+  },
+  "primary_result": {
+    "sbg_v3_auroc": 0.5455,
+    "ci": [
+      0.477,
+      0.624
+    ],
+    "permutation_p": 0.005,
+    "verdict": "NEGATIVE_RESULT_WITH_SCIENTIFIC_VALUE"
+  },
+  "v4_key_results": {
+    "phase1_volume_control": {
+      "sbg_auroc": 0.5399,
+      "best_shortcut_auroc": 0.567,
+      "best_shortcut": "exc_frac",
+      "verdict": "SBG_BELOW_SHORTCUT"
+    },
+    "phase8_ablation": {
+      "full_model": 0.5499,
+      "only_exception": 0.5929,
+      "finding": "Exception alone beats full model"
+    },
+    "phase3_generalization": {
+      "test": 0.5455,
+      "dev": 0.4884,
+      "val": 0.5121,
+      "finding": "High variance across program splits"
+    },
+    "phase9_baselines": {
+      "B07_sbg_v3": 0.546,
+      "B06_sbg_v2": 0.538,
+      "B04_volume": 0.538,
+      "B02_ast": 0.429
+    }
+  }
+}

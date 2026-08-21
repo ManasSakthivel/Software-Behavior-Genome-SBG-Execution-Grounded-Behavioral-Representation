@@ -1,0 +1,26 @@
+{
+  "baseline": "B06_FAIR_V2",
+  "fairness_note": "Same V2_CANONICAL_INPUTS as B07; B06 feature formula unchanged",
+  "split": "dev",
+  "n_canonical_inputs": 8,
+  "canonical_inputs_source": "baselines.v2.b07_dynamic_v2.V2_CANONICAL_INPUTS",
+  "threshold": 1.000001,
+  "metrics": {
+    "accuracy": 0.512195,
+    "precision": 0.512195,
+    "recall": 1.0,
+    "f1": 0.677419,
+    "auroc": 0.454159,
+    "auprc": 0.466814,
+    "tp": 315,
+    "fp": 300,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 615,
+    "threshold_used": 1.000001,
+    "ci_f1_lower": 0.645374,
+    "ci_f1_upper": 0.707983,
+    "ci_auroc_lower": 0.455634,
+    "ci_auroc_upper": 0.545275
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "reviewer": "E \u2014 Statistics",
+  "overall_assessment": "Statistical methodology is sound for the primary AUROC comparisons. The McNemar test degeneracy is a limitation but does not affect the AUROC-based conclusions. Bootstrap CIs are correctly computed. Multiple testing correction is applied (Bonferroni \u03b1=0.0017). No P0 issues.",
+  "p0": 0,
+  "p1": 1,
+  "p2": 2,
+  "p3": 1,
+  "findings": [
+    {
+      "severity": "P1",
+      "title": "McNemar test is uninformative when b=c=0",
+      "detail": "E6 McNemar test: b=0, c=0, p=1.0. This occurs because both B02 and B08 use threshold=1.0 (predict all CHANGED), making identical predictions. The McNemar test cannot distinguish methods that make identical predictions. AUROC comparison is valid but the inferential test for H2 is effectively null.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "DOCUMENTED in Phase 4 gate P2. H2 verdict is based on AUROC CI overlap, not McNemar. CIs do not overlap (AST lower bound > SBG upper bound)."
+    },
+    {
+      "severity": "P2",
+      "title": "Bootstrap CI width is large relative to effect sizes",
+      "detail": "SBG AUROC CI [0.375, 0.472] spans 0.097. Best baseline CI [0.509, 0.594] spans 0.085. These CIs do not overlap, which supports the ordering claim, but the absolute values are so close to 0.5 (chance) that the effect sizes are small. Cohen's d \u2248 0.45 for SBG vs AST \u2014 medium effect, borderline.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "Effect sizes reported in Phase 4 gate. Borderline medium effect noted."
+    },
+    {
+      "severity": "P2",
+      "title": "Permutation test for variance difference (E3) may have low power with n=744",
+      "detail": "E3 permutation test p=1.0 \u2014 extreme result suggesting test has degenerate behavior. A p-value of exactly 1.0 means zero permutations produced a diff as large as observed. This should be p=0.0 if observed diff is larger than all permutations, or 1.0 if all permutations are larger. Need to verify test direction.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "E3 shows SP_std > SC_std: var(SP) > var(SC). p=1.0 means NO permutation produced var(B)-var(A) >= observed (which is negative). H3 is clearly NOT SUPPORTED \u2014 the direction is wrong, not just non-significant."
+    },
+    {
+      "severity": "P3",
+      "title": "Power analysis was for N=800, actual test has N=744",
+      "detail": "Phase 1 power analysis required N=800 for 80% power at d=0.3. Actual test split has N=744 \u2014 slightly underpowered.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "DOCUMENTED in Phase 4 gate. Power is marginally adequate for d=0.3. For d=0.5 (medium), power is >90% at N=744."
+    }
+  ]
+}

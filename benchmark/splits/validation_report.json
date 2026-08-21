@@ -1,0 +1,69 @@
+{
+  "overall_passed": true,
+  "splits": {
+    "train": {
+      "split": "train",
+      "total_pairs": 1691,
+      "equivalent_pairs": 827,
+      "changed_pairs": 864,
+      "balance_ratio_sp_sc": 0.957,
+      "missing_variant_files": 0,
+      "invalid_python_files": 0,
+      "duplicate_pair_ids": 0,
+      "label_inconsistencies": 0,
+      "unique_base_programs": 28,
+      "issues_count": 0,
+      "issues": [],
+      "passed": true
+    },
+    "dev": {
+      "split": "dev",
+      "total_pairs": 615,
+      "equivalent_pairs": 300,
+      "changed_pairs": 315,
+      "balance_ratio_sp_sc": 0.952,
+      "missing_variant_files": 0,
+      "invalid_python_files": 0,
+      "duplicate_pair_ids": 0,
+      "label_inconsistencies": 0,
+      "unique_base_programs": 10,
+      "issues_count": 0,
+      "issues": [],
+      "passed": true
+    },
+    "val": {
+      "split": "val",
+      "total_pairs": 527,
+      "equivalent_pairs": 269,
+      "changed_pairs": 258,
+      "balance_ratio_sp_sc": 1.043,
+      "missing_variant_files": 0,
+      "invalid_python_files": 0,
+      "duplicate_pair_ids": 0,
+      "label_inconsistencies": 0,
+      "unique_base_programs": 9,
+      "issues_count": 0,
+      "issues": [],
+      "passed": true
+    },
+    "test": {
+      "split": "test",
+      "total_pairs": 744,
+      "equivalent_pairs": 378,
+      "changed_pairs": 366,
+      "balance_ratio_sp_sc": 1.033,
+      "missing_variant_files": 0,
+      "invalid_python_files": 0,
+      "duplicate_pair_ids": 0,
+      "label_inconsistencies": 0,
+      "unique_base_programs": 13,
+      "issues_count": 0,
+      "issues": [],
+      "passed": true
+    }
+  },
+  "cross_split_leakage_issues": [],
+  "total_pairs": 3577,
+  "total_equivalent": 1774,
+  "total_changed": 1803
+}

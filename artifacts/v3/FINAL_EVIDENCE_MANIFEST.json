@@ -1,0 +1,117 @@
+{
+  "version": "v3",
+  "generated_at": "2026-08-20T16:50:34.987031Z",
+  "python_version": "3.11.15",
+  "seed": 42,
+  "immutability": "v2 artifacts frozen; v3 artifacts generated fresh",
+  "test_suite": "516 pass / 0 fail (python3.11 -m pytest sbg/)",
+  "v3_metrics_tests": "19/19 pass (sbg/v3/tests/test_metrics.py)",
+  "artifacts": {
+    "sbg/v3/metrics.py": {
+      "hash": "b78ab2904a5fb465",
+      "description": "tie_aware_wmw_auroc_holm_bonferroni_cluster_bootstrap",
+      "exists": true
+    },
+    "sbg/v3/genome.py": {
+      "hash": "8cc7437bdc6323ac",
+      "description": "dynamic_genome_v3_call_bigrams_input_sensitivity",
+      "exists": true
+    },
+    "sbg/v3/tests/test_metrics.py": {
+      "hash": "cb919c67a6a59492",
+      "description": "auroc_validation_19_tests",
+      "exists": true
+    },
+    "baselines/v3/b07_dynamic_v3.py": {
+      "hash": "2846e0e1daaa9eba",
+      "description": "b07_v3_baseline",
+      "exists": true
+    },
+    "artifacts/v3/AUROC_VALIDATION.json": {
+      "hash": "1b6ee58dce2b2f20",
+      "description": "auroc_validation_all_pass",
+      "exists": true
+    },
+    "artifacts/v3/FINAL_RESULTS.json": {
+      "hash": "a786bb59c8d2d905",
+      "description": "primary_v3_results",
+      "exists": true
+    },
+    "artifacts/v3/FINAL_CLAIMS_AUDIT.json": {
+      "hash": "04ed4145fdf69911",
+      "description": "claims_audit_10_claims",
+      "exists": true
+    },
+    "artifacts/v3/B07/results_test.json": {
+      "hash": "80c4e696f6e66aa9",
+      "description": "b07_v3_test_auroc_0_5455",
+      "exists": true
+    },
+    "benchmark/v3/sc3_corrected/SC3_CORRECTED_MANIFEST.json": {
+      "hash": "43d0379ff845bc7f",
+      "description": "sc3_38_verified_pairs",
+      "exists": true
+    },
+    "docs/v3/AUROC_METHODOLOGY_AUDIT.md": {
+      "hash": "09228b20bccf336f",
+      "description": "auroc_methodology_documentation",
+      "exists": true
+    },
+    "docs/v3/SP2_FORENSIC_REPORT.md": {
+      "hash": "0cbffc9fd675918b",
+      "description": "sp2_forensic_documentation",
+      "exists": true
+    },
+    "docs/v3/REPRESENTATION_DESIGN.md": {
+      "hash": "97ebf1b9bf405087",
+      "description": "v3_genome_design",
+      "exists": true
+    },
+    "docs/v3/V3_FINAL_SCIENTIFIC_REPORT.md": {
+      "hash": "fb96f7bc39d49a62",
+      "description": "final_scientific_report",
+      "exists": true
+    },
+    "docs/v3/V3_HOSTILE_REVIEW.md": {
+      "hash": "f6fd12a7faf66dde",
+      "description": "hostile_review",
+      "exists": true
+    },
+    "artifacts/v2/FINAL_RESULTS.json": {
+      "hash": "327522d39327fde4",
+      "description": "frozen_v2_results",
+      "exists": true
+    },
+    "artifacts/v2/FINAL_CLAIMS_AUDIT.json": {
+      "hash": "eed51cadc9da91b7",
+      "description": "frozen_v2_claims",
+      "exists": true
+    }
+  },
+  "key_results": {
+    "B07_V3_TEST_AUROC": 0.545537,
+    "B07_V3_CI": [
+      0.476759,
+      0.624365
+    ],
+    "B07_V3_PERMUTATION_P": 0.005,
+    "B07_V3_INVERSION_DELTA": -0.063887,
+    "B07_V2_REFERENCE_NAIVE": 0.531023,
+    "B07_V2_REFERENCE_TIE_CORRECTED": 0.5434,
+    "AST_REFERENCE": 0.552845,
+    "WALL_TIME_SHORTCUT": 0.57058,
+    "CODEBERT_REFERENCE": 0.369662,
+    "SC3_CORRECTED_VERIFIED_PAIRS": 38,
+    "AUROC_VALIDATION_TESTS": "5/5 pass + sklearn cross-check",
+    "HOLM_BONFERRONI": "H9 and H7 rejected; H12 not rejected (p=0.066 > alpha=0.005)"
+  },
+  "scientific_verdict": "MIXED",
+  "publication_readiness": "workshop_or_empirical_study_NOT_icse_fse_main_track",
+  "command_to_reproduce": "/opt/homebrew/bin/python3.11 baselines/v3/b07_dynamic_v3.py",
+  "environment": {
+    "python_binary": "/opt/homebrew/bin/python3.11",
+    "python_version": "3.11.15",
+    "os": "darwin arm64"
+  },
+  "all_artifacts_present": true
+}

@@ -1,0 +1,80 @@
+{
+  "version": "v3",
+  "generated_at": "2026-08-20T16:41:27.356631Z",
+  "generated_by": "sbg/v3/tests/test_metrics.py + validation script",
+  "python_version": "3.11.15",
+  "implementation": "sbg/v3/metrics.py::compute_auroc_v3 (Wilcoxon-Mann-Whitney)",
+  "test_results": [
+    {
+      "name": "perfect_separation",
+      "expected": 1.0,
+      "got": 1.0,
+      "sklearn": 1.0,
+      "pass": true,
+      "sklearn_match": true
+    },
+    {
+      "name": "perfect_inversion",
+      "expected": 0.0,
+      "got": 0.0,
+      "sklearn": null,
+      "pass": true,
+      "sklearn_match": true
+    },
+    {
+      "name": "all_ties",
+      "expected": 0.5,
+      "got": 0.5,
+      "sklearn": 0.5,
+      "pass": true,
+      "sklearn_match": true
+    },
+    {
+      "name": "known_example_6_9",
+      "expected": 0.6666666666666666,
+      "got": 0.666667,
+      "sklearn": 0.666667,
+      "pass": true,
+      "sklearn_match": true
+    },
+    {
+      "name": "h12_regression_proxy",
+      "expected_range": [
+        0.5,
+        0.7
+      ],
+      "got": 0.58042,
+      "pass": true
+    }
+  ],
+  "all_pass": true,
+  "tie_handling": {
+    "method": "fractional_rank_wmw",
+    "v2_bug": "naive_stable_sort_no_tie_averaging",
+    "v2_main_test_naive": 0.531023,
+    "v2_main_test_tie_corrected": 0.5434,
+    "tie_correction_delta_main_test": 0.012377,
+    "h12_corpus_naive_auroc": 0.9515,
+    "h12_corpus_tie_corrected": 0.5706,
+    "h12_tie_fraction": 0.904255,
+    "tie_handling_verdict": "non_verdict_changing_for_h7_h9_h10; severe_for_h12_but_already_corrected_in_v2_phase4"
+  },
+  "v3_full_evaluation": {
+    "auroc": 0.545537,
+    "ci_lower": 0.476759,
+    "ci_upper": 0.624365,
+    "permutation_p": 0.005,
+    "inversion_delta": -0.063887,
+    "n_test_pairs": 744,
+    "python_version_used": "3.11.15"
+  },
+  "v2_vs_v3_comparison": {
+    "v2_auroc_naive": 0.531023,
+    "v2_auroc_tie_corrected": 0.5434,
+    "v3_auroc": 0.545537,
+    "delta_v3_vs_v2_tie_corrected": 0.002137,
+    "inversion_delta_v2": -0.045265,
+    "inversion_delta_v3": -0.063887,
+    "inversion_improvement": -0.018622
+  }
+}

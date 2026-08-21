@@ -1,0 +1,42 @@
+{
+  "reviewer": "C \u2014 Software Engineering",
+  "overall_assessment": "The synthetic benchmark and limited practical utility are significant limitations, but they are honestly documented. The negative results are useful precisely because they quantify the gap between structural similarity and semantic equivalence. No P0 issues.",
+  "p0": 0,
+  "p1": 1,
+  "p2": 2,
+  "p3": 1,
+  "findings": [
+    {
+      "severity": "P1",
+      "title": "Benchmark is synthetic: no real commit history used",
+      "detail": "All SP and SC transformations are generated programmatically from templates. Real-world code changes follow different distributions \u2014 developers rarely rename all variables and functions simultaneously (SP-1+SP-2 combined). Real regressions in production code often involve logic changes in complex contexts.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "ACKNOWLEDGED throughout. Phase 5 adds constructed evolution pairs. No real-world data is falsely claimed as real. Limitation is documented."
+    },
+    {
+      "severity": "P2",
+      "title": "64 base programs may not represent industrial diversity",
+      "detail": "The benchmark covers 12 categories but most programs are <100 lines. Industrial programs have complex inheritance hierarchies, async patterns, large state spaces, and third-party library dependencies not present here.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Acknowledged. Research-grade scope is appropriate for initial publication."
+    },
+    {
+      "severity": "P2",
+      "title": "Regression detection practical utility is near zero (TPR@FPR5%=0.8%)",
+      "detail": "E10 shows that at a 5% false-positive rate, SBG catches <1% of regressions. This makes the system practically useless as a regression detector at any reasonable operating point.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "HONESTLY REPORTED as NOT_SUPPORTED in H5. C009 claim explicitly states this."
+    },
+    {
+      "severity": "P3",
+      "title": "No integration with version control systems",
+      "detail": "The regression detection demo uses hand-crafted pairs, not real git diffs. A real-world deployment would need git integration, which is not built.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Out of scope for this research artifact. Would be engineering work."
+    }
+  ]
+}

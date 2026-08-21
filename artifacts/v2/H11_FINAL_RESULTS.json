@@ -1,0 +1,33 @@
+{
+  "artifact": "H11_FINAL_RESULTS",
+  "phase": 4,
+  "wave": 5,
+  "hypothesis": "H11",
+  "hypothesis_text": "Dynamic SBG's behavioral-equivalence detection generalizes across programming languages (at minimum Python <-> Java).",
+  "pre_registered_criterion": "Statistically powered comparison (target N and power per docs/v2/H11_CROSS_LANGUAGE_DESIGN.md) showing dynamic SBG AUROC improvement over static SBG across at least one real cross-language pair set.",
+  "verdict": "INSUFFICIENT_EVIDENCE / UNDERPOWERED",
+  "source_artifact": "artifacts/v2/H11_CROSS_LANGUAGE_RESULTS.json",
+  "source_doc": "docs/v2/H11_CROSS_LANGUAGE_ANALYSIS.md",
+  "key_numbers": {
+    "java_execution_infrastructure_available": false,
+    "javascript_execution_infrastructure_available": false,
+    "achievable_n": 12,
+    "achievable_power": 0.107,
+    "preregistered_design_n": 15,
+    "preregistered_design_power": 0.25,
+    "required_n_for_80pct_power": "approximately 120-150",
+    "python_only_proxy_auroc": 0.1818,
+    "n_changed_in_proxy": 1,
+    "proxy_interpretation": "not statistically meaningful; reported only as a lower-bound diagnostic, not as evidence of cross-language generalization"
+  },
+  "statistical_reconciliation": {
+    "family_wise_correction_applied": true,
+    "method": "Holm-Bonferroni across pre-registered H1-H12 family",
+    "survives_correction": "not applicable - underpowered, no significance claim made",
+    "reference": "artifacts/v2/PHASE4_STATISTICAL_RECONCILIATION.json"
+  },
+  "no_test_set_tuning": true,
+  "no_frozen_data_modified": true,
+  "no_language_agnostic_claim_made": true,
+  "notes": "No real Java or JavaScript execution ever occurred. The 'language agnostic' claim explicitly prohibited from being drawn from 10-15 examples per Phase 4 mandate; this prohibition is honored here."
+}

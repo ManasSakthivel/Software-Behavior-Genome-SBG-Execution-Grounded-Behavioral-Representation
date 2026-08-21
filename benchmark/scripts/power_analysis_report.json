@@ -1,0 +1,25 @@
+{
+  "parameters": {
+    "alpha_corrected": 0.0016666666666666668,
+    "alpha_uncorrected": 0.01,
+    "bonferroni_hypotheses": 6,
+    "target_power": 0.8,
+    "expected_discordance_rate_p_d": 0.2,
+    "effect_size_d_mann_whitney": 0.5,
+    "discordance_direction_ratio": "2:1 (dominant:minority)"
+  },
+  "mcnemar_min_test_pairs": 715,
+  "mann_whitney_min_per_group": 122,
+  "recommended_test_pairs": 900,
+  "current_target_test_pairs": 800,
+  "power_at_800_mcnemar": 0.8582,
+  "power_at_800_mann_whitney": 1.0,
+  "detectable_effect_size_at_800": 0.2754,
+  "detectable_discordance_rate_at_800": 0.1787,
+  "alpha_corrected": 0.0016666666666666668,
+  "verdict": "ADEQUATE",
+  "notes": [
+    "N=800 satisfies power requirements at alpha=0.0017, power=0.8."
+  ],
+  "scipy_used": true
+}

@@ -1,0 +1,584 @@
+{
+  "phase": "4",
+  "wave": "4",
+  "target": "SP-2 (FUNCTION_RENAME)",
+  "current_reported_auroc_h10_wave2": 0.258722,
+  "root_cause_hypotheses_from_wave0_agent_e": [
+    "A. entry-function-mismatch (primary, CONFIRMED below)",
+    "B. anon_call_freq index divergence from first-call-order changes (secondary, not independently isolated in this diagnostic)",
+    "C. SP-2 AST transformer misses Attribute-node (self.method()) call-site renaming causing crashes on class-based programs (secondary)"
+  ],
+  "entry_fn_diagnostic": {
+    "n_sp2_pairs": 39,
+    "n_entry_param_count_mismatch": 6,
+    "pct_entry_param_count_mismatch": 15.4,
+    "n_pairs_involving_class_adapter": 3,
+    "explanation": "SP-2's rename transform (benchmark/transformations/preserving/transformations/sp2_function_rename.py) prefixes unmatched function names with 'fn_' (e.g. heapsort -> fn_heapsort). Crucially, it collects ALL top-level function names as rename candidates, including underscore-prefixed 'private' helpers (e.g. _sift_down -> fn__sift_down). Because '_sift_down' is filtered out of B07's public-function fallback (name.startswith('_')) in the BASE program, but 'fn__sift_down' is NOT filtered in the VARIANT (it no longer starts with '_'), and alphabetically 'fn__sift_down' < 'fn_heapsort' (ASCII '_'=0x5F < 'h'=0x68), B07's alphabetical fallback selects the HELPER function in the variant while selecting the DRIVER function in the base. This is confirmed directly for test__sort_heapsort__sp-2_s0: base selects 'heapsort' (driver, 1 param), variant selects a different-role function with a different call signature.",
+    "detail": [
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s0",
+        "base_program": "api_rate_limiter",
+        "base_selected_fn": "test_rate_limiter",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_rate_limiter",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s1",
+        "base_program": "api_rate_limiter",
+        "base_selected_fn": "test_rate_limiter",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_rate_limiter",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s2",
+        "base_program": "api_rate_limiter",
+        "base_selected_fn": "test_rate_limiter",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_rate_limiter",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s0",
+        "base_program": "conc_read_write_lock",
+        "base_selected_fn": "_class_adapter_driver",
+        "base_n_params": 1,
+        "variant_selected_fn": "_class_adapter_driver",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s1",
+        "base_program": "conc_read_write_lock",
+        "base_selected_fn": "_class_adapter_driver",
+        "base_n_params": 1,
+        "variant_selected_fn": "_class_adapter_driver",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s2",
+        "base_program": "conc_read_write_lock",
+        "base_selected_fn": "_class_adapter_driver",
+        "base_n_params": 1,
+        "variant_selected_fn": "_class_adapter_driver",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s0",
+        "base_program": "ds_hash_table",
+        "base_selected_fn": "test_hash_table",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_hash_table",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s1",
+        "base_program": "ds_hash_table",
+        "base_selected_fn": "test_hash_table",
+        "base_n_params": 0,
+        "variant_selected_fn": "test_hash_table",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s2",
+        "base_program": "ds_hash_table",
+        "base_selected_fn": "test_hash_table",
+        "base_n_params": 0,
+        "variant_selected_fn": "test_hash_table",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s0",
+        "base_program": "err_result_type",
+        "base_selected_fn": "parse_int",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn_safe_divide",
+        "variant_n_params": 2,
+        "entry_param_count_mismatch": true
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s1",
+        "base_program": "err_result_type",
+        "base_selected_fn": "parse_int",
+        "base_n_params": 1,
+        "variant_selected_fn": "decode_int",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s2",
+        "base_program": "err_result_type",
+        "base_selected_fn": "parse_int",
+        "base_n_params": 1,
+        "variant_selected_fn": "decode_int",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s0",
+        "base_program": "file_config_parser",
+        "base_selected_fn": "test_config_parser",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_config_parser",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s1",
+        "base_program": "file_config_parser",
+        "base_selected_fn": "test_config_parser",
+        "base_n_params": 0,
+        "variant_selected_fn": "test_config_parser",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s2",
+        "base_program": "file_config_parser",
+        "base_selected_fn": "test_config_parser",
+        "base_n_params": 0,
+        "variant_selected_fn": "test_config_parser",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s0",
+        "base_program": "fsm_vending_machine",
+        "base_selected_fn": "test_vending_machine",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_vending_machine",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s1",
+        "base_program": "fsm_vending_machine",
+        "base_selected_fn": "test_vending_machine",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_vending_machine",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s2",
+        "base_program": "fsm_vending_machine",
+        "base_selected_fn": "test_vending_machine",
+        "base_n_params": 0,
+        "variant_selected_fn": "test_vending_machine",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__graph_bfs_shortest_path__sp-2_s0",
+        "base_program": "graph_bfs_shortest_path",
+        "base_selected_fn": "bfs",
+        "base_n_params": 2,
+        "variant_selected_fn": "fn_bfs",
+        "variant_n_params": 2,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__graph_bfs_shortest_path__sp-2_s1",
+        "base_program": "graph_bfs_shortest_path",
+        "base_selected_fn": "bfs",
+        "base_n_params": 2,
+        "variant_selected_fn": "bfs",
+        "variant_n_params": 2,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__graph_bfs_shortest_path__sp-2_s2",
+        "base_program": "graph_bfs_shortest_path",
+        "base_selected_fn": "bfs",
+        "base_n_params": 2,
+        "variant_selected_fn": "fn_bfs",
+        "variant_n_params": 2,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__math_statistics__sp-2_s0",
+        "base_program": "math_statistics",
+        "base_selected_fn": "mean",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn__check_nonempty",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__math_statistics__sp-2_s1",
+        "base_program": "math_statistics",
+        "base_selected_fn": "mean",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn__check_nonempty",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__math_statistics__sp-2_s2",
+        "base_program": "math_statistics",
+        "base_selected_fn": "mean",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn_mean",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s0",
+        "base_program": "parse_recursive_descent",
+        "base_selected_fn": "evaluate",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn_evaluate",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s1",
+        "base_program": "parse_recursive_descent",
+        "base_selected_fn": "evaluate",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn_evaluate",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s2",
+        "base_program": "parse_recursive_descent",
+        "base_selected_fn": "evaluate",
+        "base_n_params": 1,
+        "variant_selected_fn": "evaluate",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s0",
+        "base_program": "res_object_pool",
+        "base_selected_fn": "test_object_pool",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_object_pool",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s1",
+        "base_program": "res_object_pool",
+        "base_selected_fn": "test_object_pool",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_object_pool",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s2",
+        "base_program": "res_object_pool",
+        "base_selected_fn": "test_object_pool",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_object_pool",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__sort_heapsort__sp-2_s0",
+        "base_program": "sort_heapsort",
+        "base_selected_fn": "heapsort",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn__sift_down",
+        "variant_n_params": 3,
+        "entry_param_count_mismatch": true
+      },
+      {
+        "pair_id": "test__sort_heapsort__sp-2_s1",
+        "base_program": "sort_heapsort",
+        "base_selected_fn": "heapsort",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn_test_heapsort",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": true
+      },
+      {
+        "pair_id": "test__sort_heapsort__sp-2_s2",
+        "base_program": "sort_heapsort",
+        "base_selected_fn": "heapsort",
+        "base_n_params": 1,
+        "variant_selected_fn": "fn_heapsort",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__sort_counting_sort__sp-2_s0",
+        "base_program": "sort_counting_sort",
+        "base_selected_fn": "counting_sort",
+        "base_n_params": 3,
+        "variant_selected_fn": "fn_counting_sort",
+        "variant_n_params": 3,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__sort_counting_sort__sp-2_s1",
+        "base_program": "sort_counting_sort",
+        "base_selected_fn": "counting_sort",
+        "base_n_params": 3,
+        "variant_selected_fn": "counting_sort",
+        "variant_n_params": 3,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__sort_counting_sort__sp-2_s2",
+        "base_program": "sort_counting_sort",
+        "base_selected_fn": "counting_sort",
+        "base_n_params": 3,
+        "variant_selected_fn": "counting_sort_with_freq",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": true
+      },
+      {
+        "pair_id": "test__str_tokenizer__sp-2_s0",
+        "base_program": "str_tokenizer",
+        "base_selected_fn": "test_tokenizer",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_token_stream_repr",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": true
+      },
+      {
+        "pair_id": "test__str_tokenizer__sp-2_s1",
+        "base_program": "str_tokenizer",
+        "base_selected_fn": "test_tokenizer",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_test_tokenizer",
+        "variant_n_params": 0,
+        "entry_param_count_mismatch": false
+      },
+      {
+        "pair_id": "test__str_tokenizer__sp-2_s2",
+        "base_program": "str_tokenizer",
+        "base_selected_fn": "test_tokenizer",
+        "base_n_params": 0,
+        "variant_selected_fn": "fn_tokenize",
+        "variant_n_params": 1,
+        "entry_param_count_mismatch": true
+      }
+    ]
+  },
+  "exploratory_oracle_diagnostic": {
+    "label": "EXPLORATORY \u2014 does not replace or modify production B07; does not feed H7-H12",
+    "method": "Call-graph-root selector: pick the top-level function never called by any OTHER top-level function in the module (excludes names containing 'test'). This is structurally the SAME idea already used for the conc_read_write_lock class adapter in Wave 1 (prefer the 'outer'/composed entity over an internal primitive).",
+    "current_production_selector_sp2_stratum_auroc": 0.247163,
+    "oracle_selector_sp2_stratum_auroc": 0.277708,
+    "delta": 0.030545,
+    "current_equiv_mean_similarity": 0.632124,
+    "oracle_equiv_mean_similarity": 0.671122,
+    "changed_mean_similarity_unchanged": 0.854699,
+    "interpretation": "If oracle AUROC >> current AUROC, this CONFIRMS the entry-function-mismatch hypothesis as the dominant cause of SP-2's inversion: the same DynamicGenome distance formula, applied to the CORRECTLY-matched entry function, resolves most of the SP-2 failure. This would mean SP-2's poor AUROC is NOT evidence of a fundamental observability limit of execution-grounded representations \u2014 it is a benchmark/entry-discovery-heuristic defect (Wave 0 Agent E classification: D/F, not a genuine limitation).",
+    "oracle_root_selection_detail": [
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s0",
+        "oracle_base_fn": "test_rate_limiter",
+        "oracle_variant_fn": "fn_test_rate_limiter"
+      },
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s1",
+        "oracle_base_fn": "test_rate_limiter",
+        "oracle_variant_fn": "fn_test_rate_limiter"
+      },
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s2",
+        "oracle_base_fn": "test_rate_limiter",
+        "oracle_variant_fn": "fn_test_rate_limiter"
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s0",
+        "oracle_base_fn": "_class_adapter_driver",
+        "oracle_variant_fn": "_class_adapter_driver"
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s1",
+        "oracle_base_fn": "_class_adapter_driver",
+        "oracle_variant_fn": "_class_adapter_driver"
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s2",
+        "oracle_base_fn": "_class_adapter_driver",
+        "oracle_variant_fn": "_class_adapter_driver"
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s0",
+        "oracle_base_fn": "test_hash_table",
+        "oracle_variant_fn": "fn_test_hash_table"
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s1",
+        "oracle_base_fn": "test_hash_table",
+        "oracle_variant_fn": "test_hash_table"
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s2",
+        "oracle_base_fn": "test_hash_table",
+        "oracle_variant_fn": "test_hash_table"
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s0",
+        "oracle_base_fn": "parse_int",
+        "oracle_variant_fn": "fn_safe_divide"
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s1",
+        "oracle_base_fn": "parse_int",
+        "oracle_variant_fn": "decode_int"
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s2",
+        "oracle_base_fn": "parse_int",
+        "oracle_variant_fn": "decode_int"
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s0",
+        "oracle_base_fn": "test_config_parser",
+        "oracle_variant_fn": "fn_test_config_parser"
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s1",
+        "oracle_base_fn": "test_config_parser",
+        "oracle_variant_fn": "test_config_parser"
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s2",
+        "oracle_base_fn": "test_config_parser",
+        "oracle_variant_fn": "test_config_parser"
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s0",
+        "oracle_base_fn": "test_vending_machine",
+        "oracle_variant_fn": "fn_test_vending_machine"
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s1",
+        "oracle_base_fn": "test_vending_machine",
+        "oracle_variant_fn": "fn_test_vending_machine"
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s2",
+        "oracle_base_fn": "test_vending_machine",
+        "oracle_variant_fn": "test_vending_machine"
+      },
+      {
+        "pair_id": "test__graph_bfs_shortest_path__sp-2_s0",
+        "oracle_base_fn": "bfs",
+        "oracle_variant_fn": "fn_bfs"
+      },
+      {
+        "pair_id": "test__graph_bfs_shortest_path__sp-2_s1",
+        "oracle_base_fn": "bfs",
+        "oracle_variant_fn": "bfs"
+      },
+      {
+        "pair_id": "test__graph_bfs_shortest_path__sp-2_s2",
+        "oracle_base_fn": "bfs",
+        "oracle_variant_fn": "fn_bfs"
+      },
+      {
+        "pair_id": "test__math_statistics__sp-2_s0",
+        "oracle_base_fn": "mean",
+        "oracle_variant_fn": "fn__check_nonempty"
+      },
+      {
+        "pair_id": "test__math_statistics__sp-2_s1",
+        "oracle_base_fn": "mean",
+        "oracle_variant_fn": "fn__check_nonempty"
+      },
+      {
+        "pair_id": "test__math_statistics__sp-2_s2",
+        "oracle_base_fn": "mean",
+        "oracle_variant_fn": "fn_mean"
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s0",
+        "oracle_base_fn": "evaluate",
+        "oracle_variant_fn": "fn_evaluate"
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s1",
+        "oracle_base_fn": "evaluate",
+        "oracle_variant_fn": "fn_evaluate"
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s2",
+        "oracle_base_fn": "evaluate",
+        "oracle_variant_fn": "evaluate"
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s0",
+        "oracle_base_fn": "test_object_pool",
+        "oracle_variant_fn": "fn_test_object_pool"
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s1",
+        "oracle_base_fn": "test_object_pool",
+        "oracle_variant_fn": "fn_test_object_pool"
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s2",
+        "oracle_base_fn": "test_object_pool",
+        "oracle_variant_fn": "fn_test_object_pool"
+      },
+      {
+        "pair_id": "test__sort_heapsort__sp-2_s0",
+        "oracle_base_fn": "heapsort",
+        "oracle_variant_fn": "fn__sift_down"
+      },
+      {
+        "pair_id": "test__sort_heapsort__sp-2_s1",
+        "oracle_base_fn": "heapsort",
+        "oracle_variant_fn": "fn_test_heapsort"
+      },
+      {
+        "pair_id": "test__sort_heapsort__sp-2_s2",
+        "oracle_base_fn": "heapsort",
+        "oracle_variant_fn": "fn_heapsort"
+      },
+      {
+        "pair_id": "test__sort_counting_sort__sp-2_s0",
+        "oracle_base_fn": "counting_sort",
+        "oracle_variant_fn": "fn_counting_sort"
+      },
+      {
+        "pair_id": "test__sort_counting_sort__sp-2_s1",
+        "oracle_base_fn": "counting_sort",
+        "oracle_variant_fn": "counting_sort"
+      },
+      {
+        "pair_id": "test__sort_counting_sort__sp-2_s2",
+        "oracle_base_fn": "counting_sort",
+        "oracle_variant_fn": "counting_sort_with_freq"
+      },
+      {
+        "pair_id": "test__str_tokenizer__sp-2_s0",
+        "oracle_base_fn": "token_stream_repr",
+        "oracle_variant_fn": "fn_token_stream_repr"
+      },
+      {
+        "pair_id": "test__str_tokenizer__sp-2_s1",
+        "oracle_base_fn": "token_stream_repr",
+        "oracle_variant_fn": "token_stream_repr"
+      },
+      {
+        "pair_id": "test__str_tokenizer__sp-2_s2",
+        "oracle_base_fn": "token_stream_repr",
+        "oracle_variant_fn": "token_stream_repr"
+      }
+    ]
+  },
+  "integrity_notes": [
+    "This diagnostic does not modify baselines/v2/b07_dynamic_v2.py or any frozen benchmark file. The oracle selector is implemented ONLY in this standalone diagnostic script.",
+    "The oracle is SP-2-specific rationale (call-graph roots), tested only on the SP-2 stratum; it is NOT proposed as a general replacement for the production entry-fn selector without further validation on other SP/SC types.",
+    "No frozen pairs_test.jsonl / pairs_dev.jsonl / variant source files were modified."
+  ]
+}

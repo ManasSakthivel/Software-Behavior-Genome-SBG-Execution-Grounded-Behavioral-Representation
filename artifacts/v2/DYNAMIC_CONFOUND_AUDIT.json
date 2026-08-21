@@ -1,0 +1,45 @@
+{
+  "phase": "3B",
+  "n_pairs": 744,
+  "correlations": {
+    "base_program_length_chars": {
+      "r_with_similarity": -0.0397,
+      "r_with_distance": 0.0397,
+      "r_with_label": 0.0424,
+      "strong_confound": false
+    },
+    "base_token_count": {
+      "r_with_similarity": 0.0245,
+      "r_with_distance": -0.0245,
+      "r_with_label": 0.0285,
+      "strong_confound": false
+    },
+    "variant_length_chars": {
+      "r_with_similarity": -0.0812,
+      "r_with_distance": 0.0812,
+      "r_with_label": 0.0451,
+      "strong_confound": false
+    },
+    "delta_length_chars": {
+      "r_with_similarity": 0.0751,
+      "r_with_distance": -0.0751,
+      "r_with_label": -0.1036,
+      "strong_confound": false
+    },
+    "base_trace_length_mean": {
+      "r_with_similarity": -0.0678,
+      "r_with_distance": 0.0678,
+      "r_with_label": 0.0459,
+      "strong_confound": false
+    },
+    "base_n_unique_functions": {
+      "r_with_similarity": -0.052,
+      "r_with_distance": 0.052,
+      "r_with_label": 0.056,
+      "strong_confound": false
+    }
+  },
+  "strong_confounds": [],
+  "confound_verdict": "NO_STRONG_CONFOUNDS",
+  "note": "Threshold: |r| > 0.3 for strong confound. Correlations computed between confound variable and B07 distance (1 - sim). Strong confound \u2192 document but NOT remove (preregistered methodology)."
+}

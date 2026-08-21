@@ -1,0 +1,160 @@
+{
+  "phase": "4",
+  "wave": "3",
+  "investigation": "SC-3_FORENSIC_ANALYSIS",
+  "generated_by": "AGENT_F_wave0_wave3",
+
+  "sc3_manifest_definition": {
+    "id": "SC-3",
+    "name": "CONSTANT_MUTATION",
+    "description_in_manifest": "Perturb integer constants by ±1/2, or append suffix to strings",
+    "ast_targets": ["Constant(int)", "Constant(str)"],
+    "hard_negative": false
+  },
+
+  "actual_mutation_content_audit": {
+    "total_sc3_test_pairs": 39,
+    "unique_base_programs": 13,
+    "programs": [
+      "api_rate_limiter", "conc_read_write_lock", "ds_hash_table",
+      "err_result_type", "file_config_parser", "fsm_vending_machine",
+      "graph_bfs_shortest_path", "math_statistics", "parse_recursive_descent",
+      "res_object_pool", "sort_heapsort", "sort_counting_sort", "str_tokenizer"
+    ],
+    "mutation_categories_observed": {
+      "quote_style_only_double_to_single": {
+        "fraction": "30/39 = 76.9%",
+        "description": "All string literals changed from double-quotes to single-quotes; no content changed. Pure AST/cosmetic transformation. Zero behavioral impact.",
+        "examples": ["raise ValueError(\"msg\") -> raise ValueError('msg')", "print(\"x\") -> print('x')"]
+      },
+      "quote_style_plus_minor_formatting": {
+        "fraction": "9/39 = 23.1%",
+        "description": "Quote normalization plus additional cosmetic changes: multi-line dict/return flattened to single line, generator expression parenthesisation, whitespace removal, comment stripping, tuple unpacking style change (a,b = x,y -> (a,b) = (x,y)).",
+        "examples": [
+          "math_statistics: multi-line return dict flattened to one-line return dict (same keys/values)",
+          "file_config_parser: regex string re-written in single-quote form (same pattern)",
+          "str_tokenizer: _PATTERNS list reformatted (same content)"
+        ]
+      },
+      "integer_constant_perturbation_plus_minus_1": {
+        "fraction": "0/39 = 0%",
+        "description": "NONE observed. The manifest description says 'Perturb integer constants by ±1/2' but this was NOT implemented in any SC-3 variant in the test set."
+      },
+      "string_suffix_appended": {
+        "fraction": "0/39 = 0%",
+        "description": "NONE observed as genuine semantic suffix. The manifest description says 'append suffix to strings' but this was NOT implemented in any SC-3 variant."
+      }
+    },
+    "key_finding": "SC-3 as implemented is purely cosmetic. The manifest description is misleading: no integer constants were perturbed (±1/2) and no string suffixes were appended in any of the 39 test-set pairs. The actual mutation is a Python quote-normalisation pass (double -> single quotes) combined with optional code-style reformatting (whitespace, comment stripping, tuple-unpacking syntax). This is semantics-PRESERVING at the execution level, not semantics-changing."
+  },
+
+  "behavioral_execution_audit": {
+    "method": "Direct execution with V2_CANONICAL_INPUTS (8 inputs: [], [1], fibonacci digits, descending, all-zeros, minimal unsorted, negatives, range(8))",
+    "results_by_program": {
+      "sort_heapsort":          {"executes": true,  "n_inputs": 8, "identical_outputs": 8, "different_outputs": 0},
+      "sort_counting_sort":     {"executes": true,  "n_inputs": 8, "identical_outputs": 8, "different_outputs": 0},
+      "math_statistics":        {"executes": true,  "n_inputs": 8, "identical_outputs": 7, "different_outputs": 0, "note": "1 input errors (same error in base and variant)"},
+      "api_rate_limiter":       {"executes": true,  "n_inputs": 1, "note": "0-arg test harness, single run. Identical."},
+      "ds_hash_table":          {"executes": true,  "n_inputs": 1, "note": "0-arg test harness"},
+      "err_result_type":        {"executes": true,  "n_inputs": 1, "note": "str-input function"},
+      "fsm_vending_machine":    {"executes": true,  "n_inputs": 1, "note": "0-arg test harness"},
+      "graph_bfs_shortest_path":{"executes": true,  "n_inputs": 1, "note": "2-arg function"},
+      "file_config_parser":     {"executes": true,  "n_inputs": 1},
+      "parse_recursive_descent":{"executes": true,  "n_inputs": 1},
+      "res_object_pool":        {"executes": true,  "n_inputs": 1},
+      "str_tokenizer":          {"executes": true,  "n_inputs": 1},
+      "conc_read_write_lock":   {"executes": false, "note": "class-only, no entry function (known Wave 1 issue, imputed at 0.5)"}
+    },
+    "pairs_with_any_behavioral_difference": 0,
+    "pairs_with_identical_behavior_across_all_inputs": "36/39 (3 imputed at 0.5 for conc_read_write_lock)",
+    "conclusion": "ZERO behavioral differences detected across all 36 executable SC-3 pairs. SC-3 mutations do not change program behavior under any of the V2 canonical inputs."
+  },
+
+  "genome_similarity_distribution": {
+    "method": "DynamicGenome extraction via B07 pipeline, V2_CANONICAL_INPUTS, n_runs=5, seed=42",
+    "per_pair_similarities": {
+      "api_rate_limiter_s0": 1.0000, "api_rate_limiter_s1": 1.0000, "api_rate_limiter_s2": 1.0000,
+      "conc_read_write_lock_s0": 0.5000, "conc_read_write_lock_s1": 0.5000, "conc_read_write_lock_s2": 0.5000,
+      "ds_hash_table_s0": 0.6699, "ds_hash_table_s1": 0.9981, "ds_hash_table_s2": 0.9981,
+      "err_result_type_s0": 1.0000, "err_result_type_s1": 1.0000, "err_result_type_s2": 1.0000,
+      "file_config_parser_s0": 0.9942, "file_config_parser_s1": 0.9942, "file_config_parser_s2": 0.9942,
+      "fsm_vending_machine_s0": 0.9903, "fsm_vending_machine_s1": 0.9903, "fsm_vending_machine_s2": 0.9903,
+      "graph_bfs_shortest_path_s0": 1.0000, "graph_bfs_shortest_path_s1": 1.0000, "graph_bfs_shortest_path_s2": 1.0000,
+      "math_statistics_s0": 1.0000, "math_statistics_s1": 1.0000, "math_statistics_s2": 1.0000,
+      "parse_recursive_descent_s0": 1.0000, "parse_recursive_descent_s1": 1.0000, "parse_recursive_descent_s2": 1.0000,
+      "res_object_pool_s0": 0.9656, "res_object_pool_s1": 0.9656, "res_object_pool_s2": 0.9656,
+      "sort_heapsort_s0": 0.9998, "sort_heapsort_s1": 1.0000, "sort_heapsort_s2": 1.0000,
+      "sort_counting_sort_s0": 1.0000, "sort_counting_sort_s1": 1.0000, "sort_counting_sort_s2": 1.0000,
+      "str_tokenizer_s0": 0.9860, "str_tokenizer_s1": 0.9860, "str_tokenizer_s2": 0.9860
+    },
+    "mean_similarity": 0.9481,
+    "min_similarity": 0.5000,
+    "max_similarity": 1.0000,
+    "fraction_sim_ge_0p8": "35/39 = 89.7%",
+    "fraction_ambiguous_0p4_to_0p8": "4/39 = 10.3%",
+    "fraction_sim_lt_0p4": "0/39 = 0.0%"
+  },
+
+  "known_auroc_from_phase3b": {
+    "auroc": 0.544363,
+    "ci_lower": 0.483856,
+    "ci_upper": 0.607516,
+    "n": 417,
+    "n_changed": 39,
+    "n_equiv": 378,
+    "inversion_delta": 0.083034,
+    "near_identical_fraction": 0.8462,
+    "verdict": "NOT_SUPPORTED",
+    "source": "artifacts/v2/HARD_NEGATIVE_RESULTS.json"
+  },
+
+  "root_cause_classification": {
+    "primary_cause": "D",
+    "cause_D_label": "BENCHMARK_MUTATION_DESIGN_FAILURE",
+    "explanation": "SC-3 variants were generated by a code-style normalisation pass (double→single quotes, whitespace/comment stripping, minor expression reformatting) rather than by the semantics-changing mutation specified in the manifest ('Perturb integer constants by ±1/2, or append suffix to strings'). The actual changes are semantics-PRESERVING — identical to an SP (style-preserving) transformation — yet these pairs are labelled CHANGED. B07 correctly scores them as highly similar (mean similarity=0.9481) because their execution traces are identical. The AUROC of 0.544 reflects B07 correctly predicting EQUIVALENT for programs that ARE behaviorally equivalent, which is then penalised as a false-negative by the incorrect CHANGED label. The near-identical trace fraction of 84.6% is a direct consequence: traces are near-identical because the programs ARE near-identical.",
+    "secondary_contributing_factors": {
+      "cause_A_semantic_change_not_observable": "DOES_NOT_APPLY — no semantic change exists to observe; the mutation is purely cosmetic",
+      "cause_B_execution_path_not_reached": "DOES_NOT_APPLY — execution paths are identical because the code paths are unchanged",
+      "cause_C_feature_representation_limitation": "DOES_NOT_APPLY — the representation correctly captures the behavioral equivalence; the problem is the label is wrong",
+      "cause_E_insufficient_execution_diversity": "DOES_NOT_APPLY — adding more inputs cannot expose a behavioral difference that does not exist"
+    }
+  },
+
+  "label_error_analysis": {
+    "sc3_pairs_labeled_CHANGED": 39,
+    "sc3_pairs_that_are_actually_behaviorally_equivalent": 36,
+    "sc3_pairs_genuinely_uncertain_conc_read_write_lock": 3,
+    "fraction_mislabelled": "36/39 = 92.3% (or 100% if conc_read_write_lock also confirmed equivalent)",
+    "implication": "SC-3 is a contaminated mutation type. Its CHANGED label is incorrect for all 36 executable pairs. The AUROC of 0.544 should not be interpreted as a failure of B07 to detect behavioral changes; it is a consequence of B07 correctly predicting EQUIVALENT behaviour for programs that are equivalent, while the benchmark incorrectly labels those pairs as CHANGED."
+  },
+
+  "recommended_remediation": {
+    "option_1_relabel": "Relabel all SC-3 pairs as EQUIVALENT. This would immediately convert the 'inversion' into a correct-prediction signal. However this modifies the frozen benchmark.",
+    "option_2_exclude": "Exclude SC-3 from H9/H10 AUROC computation on grounds of benchmark construction failure. Report the exclusion explicitly. This preserves the frozen benchmark.",
+    "option_3_regenrate": "Regenerate SC-3 variants using the correct mutation logic (actual integer ±1 perturbation) as a SEPARATE parallel benchmark, clearly labelled Phase 4 EXPLORATORY. Do not replace the frozen test set.",
+    "preferred_wave4_action": "option_3_regenerate as EXPLORATORY experiment, plus option_2_exclude from primary H10 metrics with explicit documentation"
+  },
+
+  "exploratory_diagnostic_experiments": [
+    {
+      "label": "EXPLORATORY-SC3-A",
+      "name": "Correct integer-constant mutation generation",
+      "description": "Generate a fresh set of SC-3 variants using actual integer ±1 perturbation on the same 13 base programs. Run B07 on these new pairs. Expected: similarity will decrease where the mutated constant controls a loop bound or condition that the V2 canonical inputs exercise (e.g., sort_heapsort sift_down threshold, hash_table initial_capacity).",
+      "inputs_needed": "New variant files only — do not modify frozen test set. Label as EXPLORATORY_SC3_CORRECTED.",
+      "hypothesis": "Correct SC-3 with actual integer perturbation will yield AUROC > 0.60, closer to SC-11 (0.790), because DynamicGenome coverage and call-frequency vectors will diverge when loop bounds or capacity constants change."
+    },
+    {
+      "label": "EXPLORATORY-SC3-B",
+      "name": "Constant mutation targeting executed paths only",
+      "description": "Select only integer constants that lie on the hot path exercised by V2_CANONICAL_INPUTS (e.g., range(n) in heapsort where n is list length). Verify the mutation changes execution traces. This tests Cause-B (execution path not reached) as a secondary factor for hypothetical correct SC-3.",
+      "inputs_needed": "Static analysis pass to identify constants on executed paths."
+    }
+  ],
+
+  "integrity_notes": [
+    "No frozen benchmark files were modified.",
+    "No model was tuned.",
+    "This analysis is purely observational/diagnostic.",
+    "Phase 3B results (AUROC=0.544, delta=+0.083, near_identical=0.846) are confirmed correct given the benchmark as-is; the issue is the benchmark construction, not the measurement."
+  ]
+}

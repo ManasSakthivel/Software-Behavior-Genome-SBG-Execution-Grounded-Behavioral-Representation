@@ -1,0 +1,108 @@
+"""
+Binary search with multiple modes: exact, leftmost, rightmost, and range count.
+
+Spec: Given a sorted list and a target value, return different results depending
+on the mode:
+  - 'exact'     : index of any occurrence of target, or -1 if not found
+  - 'leftmost'  : index of the first occurrence, or -1 if not found
+  - 'rightmost' : index of the last occurrence, or -1 if not found
+  - 'count'     : number of times target appears (uses leftmost + rightmost)
+
+All operations are O(log n). The input list must be sorted in ascending order.
+Raises ValueError for unknown mode or unsorted (optional check).
+"""
+
+def fn_binary_search(arr: list, target, mode: str='exact'):
+    """
+    Multi-mode binary search on a sorted list.
+
+    Parameters
+    ----------
+    arr    : sorted list of comparable elements
+    target : value to search for
+    mode   : 'exact' | 'leftmost' | 'rightmost' | 'count'
+
+    Returns
+    -------
+    int : index (or count for 'count' mode), -1 if not found
+    """
+    if mode == 'exact':
+        return fn__exact(arr, target)
+    elif mode == 'leftmost':
+        return fn__leftmost(arr, target)
+    elif mode == 'rightmost':
+        return fn__rightmost(arr, target)
+    elif mode == 'count':
+        lo = fn__leftmost(arr, target)
+        if lo == -1:
+            return 0
+        hi = fn__rightmost(arr, target)
+        return hi - lo + 1
+    else:
+        raise ValueError(f'Unknown mode: {mode!r}. Use exact/leftmost/rightmost/count.')
+
+def fn__exact(arr: list, target) -> int:
+    (lo, hi) = (0, len(arr) - 1)
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1
+
+def fn__leftmost(arr: list, target) -> int:
+    (lo, hi) = (0, len(arr) - 1)
+    result = -1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target:
+            result = mid
+            hi = mid - 1
+        elif arr[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return result
+
+def fn__rightmost(arr: list, target) -> int:
+    (lo, hi) = (0, len(arr) - 1)
+    result = -1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target:
+            result = mid
+            lo = mid + 1
+        elif arr[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return result
+
+def test_binary_search():
+    arr = [1, 2, 2, 2, 3, 4, 5]
+    idx = fn_binary_search(arr, 3, 'exact')
+    assert arr[idx] == 3
+    assert fn_binary_search(arr, 99, 'exact') == -1
+    assert fn_binary_search(arr, 2, 'leftmost') == 1
+    assert fn_binary_search(arr, 2, 'rightmost') == 3
+    assert fn_binary_search(arr, 2, 'count') == 3
+    assert fn_binary_search(arr, 7, 'count') == 0
+    assert fn_binary_search([42], 42, 'exact') == 0
+    assert fn_binary_search([42], 0, 'exact') == -1
+    assert fn_binary_search([], 5, 'exact') == -1
+    assert fn_binary_search([], 5, 'count') == 0
+    try:
+        fn_binary_search(arr, 2, 'bad')
+        assert False, 'Should have raised ValueError'
+    except ValueError:
+        pass
+    print('All binary_search tests passed.')
+if __name__ == '__main__':
+    test_binary_search()
+    arr = [1, 2, 2, 2, 3, 4, 5]
+    print(f"leftmost(2)  = {fn_binary_search(arr, 2, 'leftmost')}")
+    print(f"rightmost(2) = {fn_binary_search(arr, 2, 'rightmost')}")
+    print(f"count(2)     = {fn_binary_search(arr, 2, 'count')}")
