@@ -52,6 +52,32 @@ The distance function is output-free — it never reads program outputs, only ex
 
 ---
 
+## Quick start
+
+```bash
+git clone https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation.git
+cd Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation
+
+pip install pytest          # only test dependency
+
+make quickstart             # smoke test — compare 3 program pairs, instant
+make test                   # 516 unit tests, ~25 sec
+make reproduce              # verify frozen results, 6/6 checks, instant
+make run-v5                 # full pipeline on test set, ~30 min
+```
+
+Or without `make`:
+
+```bash
+python3 examples/quickstart.py          # smoke test
+python3 -m pytest sbg/ -q               # tests
+python3 experiments/v5/reproduction_check.py   # reproducibility
+```
+
+See [`DEVELOPMENT.md`](DEVELOPMENT.md) for the full API walkthrough, how to add new baselines, and how to extend the benchmark.
+
+---
+
 ## Results
 
 I ran this against a benchmark of 3,777 program pairs (built from 99 Python programs across sorting, graphs, data structures, string algorithms, and more). Each pair is either semantics-preserving (a refactoring) or semantics-changing (a mutation).
