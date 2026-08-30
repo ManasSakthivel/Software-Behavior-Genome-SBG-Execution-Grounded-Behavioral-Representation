@@ -32,10 +32,10 @@ e97539766927f3ae6914c93f7ef556a7b81ecc68
 ## 2. Final Commit (after sprint)
 
 ```
-efbe19e
+8ab2e4a16de05974f9e42ddc5c0a49ef02fc087f
 ```
 
-Full SHA recorded by running `git rev-parse HEAD` after the sprint commit.
+Full SHA verified: `git rev-parse HEAD` → `8ab2e4a16de05974f9e42ddc5c0a49ef02fc087f`
 
 ---
 
