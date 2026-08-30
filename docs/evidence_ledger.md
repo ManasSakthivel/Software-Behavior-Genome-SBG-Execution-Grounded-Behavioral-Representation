@@ -95,3 +95,40 @@
 
 *Last updated: Phase 8 — Research Strengthening Sprint*  
 *All claims traceable to artifacts in `artifacts/v5/` and experiment scripts in `experiments/v5/`*
+
+---
+
+## Section 7 — EEP Repair Sprint + External Validation (Update)
+
+*Added: External Validation Sprint — QuixBugs zero-shot evaluation*
+
+### New Surviving Claims (EEP Sprint)
+
+| # | Claim | Evidence Source | Strength | Note |
+|---|---|---|---|---|
+| C-EEP1 | EEP detects 63.2% of synthetic regression corpus bugs | `results/repair/REPAIR_EVALUATION_RESULTS.json` | **STRONG** | AUROC=0.829, vs baseline 0.678 |
+| C-EEP2 | EEP generalizes to real QuixBugs programs (60.7% detection) | `results/external/QUIXBUGS_EVALUATION_RESULTS.json` | **STRONG** | Zero-shot, all hyperparameters frozen |
+| C-EEP3 | Combined AUROC=0.818 on N=66 real bugs (two datasets) | `results/external/QUIXBUGS_EVALUATION_RESULTS.json` | **MODERATE** | p=0.146, N<100 |
+| C-EEP4 | EEP FPR=0% on 5 rename-invariance negative controls | `results/external/QUIXBUGS_EVALUATION_RESULTS.json` | **STRONG** | Rename-invariant by construction |
+| C-EEP5 | Output-free guarantee: d=0.0 for same-structure, different-output programs | Phase 7 tests | **STRONG** | Formal property, verified by tests |
+| C-EEP6 | EEP new components (trace_length, line_seq) drive all improvement | Ablation: AUROC(line-seq-only)=0.829 vs AUROC(exc-only)=0.553 | **STRONG** | Line-seq is the primary signal |
+
+### Gap Status Update
+
+| Original Gap | Status After External Sprint |
+|---|---|
+| BugsInPy real-world evaluation | PARTIAL — QuixBugs (N=28) replaces BugsInPy for now |
+| N>13 programs on test split | RESOLVED — combined N=66 bugs |
+| Hard-negative pairs | IMPROVED — 5 rename controls, FPR=0% |
+| SBG above noise floor | RESOLVED — AUROC CI [0.765, 0.873] strongly above 0.5 |
+
+### Remaining Gaps
+
+1. **Statistical significance** — p=0.146, need N≥120 for α=0.05 with AUROC≈0.82
+2. **Cross-language** — Python-only, no Java/JS evaluation
+3. **Infinite-loop programs** — 3 QuixBugs programs skipped (bitcount, find_first_in_sorted, sqrt)
+4. **Same-path mutations** — 38% of bugs change return value only; permanently invisible to EEP
+
+*Added: External Validation Sprint — Full evidence in `results/external/QUIXBUGS_EVALUATION_RESULTS.json`*
+
+---
