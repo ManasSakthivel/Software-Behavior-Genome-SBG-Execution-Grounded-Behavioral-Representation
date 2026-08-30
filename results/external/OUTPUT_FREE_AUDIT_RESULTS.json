@@ -1,0 +1,86 @@
+{
+  "experiment": "SBG_OUTPUT_FREE_AUDIT",
+  "timestamp": "2026-08-30T12:54:19Z",
+  "n_tests": 9,
+  "n_pass": 9,
+  "n_fail": 0,
+  "leakage_threshold": 0.05,
+  "verdict": "OUTPUT_FREE_GUARANTEE_HOLDS",
+  "tests": [
+    {
+      "test_id": "OL-1",
+      "description": "sum list: x*2 vs x*3 (same loop, different return value)",
+      "distance": 0.0,
+      "threshold": 0.05,
+      "passed": true,
+      "failure_reason": null
+    },
+    {
+      "test_id": "OL-2",
+      "description": "classify(x): returns string vs int (same branches taken)",
+      "distance": 0.0,
+      "threshold": 0.05,
+      "passed": true,
+      "failure_reason": null
+    },
+    {
+      "test_id": "OL-3",
+      "description": "fibonacci: fib(n) vs 2*fib(n) (same recursion depth, different values)",
+      "distance": 0.0,
+      "threshold": 0.05,
+      "passed": true,
+      "failure_reason": null
+    },
+    {
+      "test_id": "OL-4",
+      "description": "linear search: returns None vs -1 when not found (same path)",
+      "distance": 0.0,
+      "threshold": 0.05,
+      "passed": true,
+      "failure_reason": null
+    },
+    {
+      "test_id": "OL-5",
+      "description": "generator: yields x^2 vs x^3 (same iteration count, different values)",
+      "distance": 0.0,
+      "threshold": 0.05,
+      "passed": true,
+      "failure_reason": null
+    },
+    {
+      "test_id": "OL-6",
+      "description": "QuixBugs-style gcd: correct vs return a*2 (same control flow)",
+      "distance": 0.0,
+      "threshold": 0.05,
+      "passed": true,
+      "failure_reason": null
+    },
+    {
+      "test_id": "FP-1",
+      "description": "mergesort: identical algorithm, all variables renamed",
+      "distance": 0.0,
+      "threshold": 0.05,
+      "passed": true,
+      "failure_reason": null
+    },
+    {
+      "test_id": "FP-2",
+      "description": "binary search factory: two instances of same function (d=0.0 expected)",
+      "distance": 0.0,
+      "threshold": 0.001,
+      "passed": true,
+      "failure_reason": null,
+      "note": "Functions from the same factory share co_name='_bsearch', so anonymization assigns them the same index. Different co_name functions with same code would have different indices only if the indexing is not purely positional \u2014 this is documented as a known behavior: rename-invariance applies to variable renames, not function-name renames."
+    },
+    {
+      "test_id": "FP-3",
+      "description": "double list: explicit loop vs list comprehension (style equivalence, d < 0.30 allowed)",
+      "distance": 0.179167,
+      "threshold": 0.3,
+      "passed": true,
+      "failure_reason": null,
+      "note": "List comprehension creates a <listcomp> frame; some trace divergence is expected and acceptable"
+    }
+  ],
+  "elapsed_s": 0.007
+}

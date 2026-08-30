@@ -1,0 +1,319 @@
+{
+  "experiment": "SBG_MULTI_CORPUS_ANALYSIS",
+  "timestamp": "2026-08-30T12:53:45Z",
+  "datasets_included": [
+    "synthetic",
+    "quixbugs",
+    "bugsinpy"
+  ],
+  "per_dataset_stats": [
+    {
+      "dataset": "synthetic",
+      "n_projects": 1,
+      "n_bugs": 38,
+      "n_negatives": 2,
+      "n_total": 40,
+      "detected_eep": 24,
+      "detected_baseline": 4,
+      "detected_oracle": 0,
+      "fp_eep": 0,
+      "det_rate_eep": 0.6316,
+      "det_rate_baseline": 0.1053,
+      "det_rate_oracle": 0.8158,
+      "auroc_eep": 0.829,
+      "auroc_ci_eep": [
+        0.75,
+        0.905
+      ],
+      "p_permutation": 0.162,
+      "p_binomial": null,
+      "precision_eep": 1.0,
+      "recall_eep": 0.6316,
+      "f1_eep": 0.774,
+      "mean_eep_score": null,
+      "eep_outperforms_baseline": true,
+      "eep_outperforms_exc": true
+    },
+    {
+      "dataset": "quixbugs",
+      "n_projects": 31,
+      "n_bugs": 28,
+      "n_negatives": 0,
+      "n_total": 28,
+      "detected_eep": 17,
+      "detected_baseline": 7,
+      "detected_oracle": 25,
+      "fp_eep": 0,
+      "det_rate_eep": 0.6071,
+      "det_rate_baseline": 0.25,
+      "det_rate_oracle": 0.8929,
+      "fpr_eep": 0.0,
+      "auroc_eep": null,
+      "auroc_ci_eep": null,
+      "p_permutation": 1.0,
+      "auroc_baseline": null,
+      "auroc_exc": null,
+      "precision_eep": 1.0,
+      "recall_eep": 0.6071,
+      "f1_eep": 0.7556,
+      "p_binomial": 0.172464,
+      "mean_eep_score": 0.1802,
+      "eep_outperforms_baseline": true,
+      "eep_outperforms_exc": true
+    },
+    {
+      "dataset": "bugsinpy",
+      "n_projects": 10,
+      "n_bugs": 24,
+      "n_negatives": 3,
+      "n_total": 27,
+      "detected_eep": 24,
+      "detected_baseline": 1,
+      "detected_oracle": 22,
+      "fp_eep": 1,
+      "det_rate_eep": 1.0,
+      "det_rate_baseline": 0.0417,
+      "det_rate_oracle": 0.9167,
+      "fpr_eep": 0.3333,
+      "auroc_eep": 0.736111,
+      "auroc_ci_eep": [
+        0.173913,
+        1.0
+      ],
+      "p_permutation": 0.009,
+      "auroc_baseline": 0.541667,
+      "auroc_exc": 0.520833,
+      "precision_eep": 0.96,
+      "recall_eep": 1.0,
+      "f1_eep": 0.9796,
+      "p_binomial": 0.0,
+      "mean_eep_score": 0.1715,
+      "eep_outperforms_baseline": true,
+      "eep_outperforms_exc": true
+    }
+  ],
+  "macro_mean_detection_rate": 0.7462,
+  "defect_class_results": {
+    "missing_break": {
+      "n_total": 1,
+      "detected_eep": 1,
+      "detected_baseline": 0,
+      "detected_oracle": 0,
+      "rate_eep": 1.0,
+      "rate_baseline": 0.0,
+      "rate_oracle": 0.0,
+      "n_trace_changing": 1,
+      "n_trace_preserving": 0,
+      "datasets": [
+        "synthetic"
+      ]
+    },
+    "missing_edge_case": {
+      "n_total": 3,
+      "detected_eep": 2,
+      "detected_baseline": 2,
+      "detected_oracle": 0,
+      "rate_eep": 0.667,
+      "rate_baseline": 0.667,
+      "rate_oracle": 0.0,
+      "n_trace_changing": 2,
+      "n_trace_preserving": 1,
+      "datasets": [
+        "synthetic"
+      ]
+    },
+    "missing_return": {
+      "n_total": 3,
+      "detected_eep": 2,
+      "detected_baseline": 2,
+      "detected_oracle": 2,
+      "rate_eep": 0.667,
+      "rate_baseline": 0.667,
+      "rate_oracle": 0.667,
+      "n_trace_changing": 2,
+      "n_trace_preserving": 1,
+      "datasets": [
+        "quixbugs",
+        "synthetic"
+      ]
+    },
+    "mutable_default": {
+      "n_total": 3,
+      "detected_eep": 3,
+      "detected_baseline": 0,
+      "detected_oracle": 0,
+      "rate_eep": 1.0,
+      "rate_baseline": 0.0,
+      "rate_oracle": 0.0,
+      "n_trace_changing": 3,
+      "n_trace_preserving": 0,
+      "datasets": [
+        "bugsinpy",
+        "synthetic"
+      ]
+    },
+    "mutation_during_iteration": {
+      "n_total": 1,
+      "detected_eep": 1,
+      "detected_baseline": 0,
+      "detected_oracle": 0,
+      "rate_eep": 1.0,
+      "rate_baseline": 0.0,
+      "rate_oracle": 0.0,
+      "n_trace_changing": 1,
+      "n_trace_preserving": 0,
+      "datasets": [
+        "synthetic"
+      ]
+    },
+    "off_by_one": {
+      "n_total": 14,
+      "detected_eep": 9,
+      "detected_baseline": 1,
+      "detected_oracle": 5,
+      "rate_eep": 0.643,
+      "rate_baseline": 0.071,
+      "rate_oracle": 0.357,
+      "n_trace_changing": 10,
+      "n_trace_preserving": 4,
+      "datasets": [
+        "bugsinpy",
+        "quixbugs",
+        "synthetic"
+      ]
+    },
+    "wrong_base_case": {
+      "n_total": 3,
+      "detected_eep": 1,
+      "detected_baseline": 0,
+      "detected_oracle": 0,
+      "rate_eep": 0.333,
+      "rate_baseline": 0.0,
+      "rate_oracle": 0.0,
+      "n_trace_changing": 1,
+      "n_trace_preserving": 2,
+      "datasets": [
+        "synthetic"
+      ]
+    },
+    "wrong_condition": {
+      "n_total": 11,
+      "detected_eep": 9,
+      "detected_baseline": 1,
+      "detected_oracle": 9,
+      "rate_eep": 0.818,
+      "rate_baseline": 0.091,
+      "rate_oracle": 0.818,
+      "n_trace_changing": 9,
+      "n_trace_preserving": 2,
+      "datasets": [
+        "bugsinpy",
+        "quixbugs"
+      ]
+    },
+    "wrong_operator": {
+      "n_total": 21,
+      "detected_eep": 16,
+      "detected_baseline": 1,
+      "detected_oracle": 10,
+      "rate_eep": 0.762,
+      "rate_baseline": 0.048,
+      "rate_oracle": 0.476,
+      "n_trace_changing": 16,
+      "n_trace_preserving": 5,
+      "datasets": [
+        "bugsinpy",
+        "quixbugs",
+        "synthetic"
+      ]
+    },
+    "wrong_recursion": {
+      "n_total": 3,
+      "detected_eep": 2,
+      "detected_baseline": 1,
+      "detected_oracle": 3,
+      "rate_eep": 0.667,
+      "rate_baseline": 0.333,
+      "rate_oracle": 1.0,
+      "n_trace_changing": 2,
+      "n_trace_preserving": 1,
+      "datasets": [
+        "quixbugs"
+      ]
+    },
+    "wrong_return": {
+      "n_total": 8,
+      "detected_eep": 7,
+      "detected_baseline": 1,
+      "detected_oracle": 8,
+      "rate_eep": 0.875,
+      "rate_baseline": 0.125,
+      "rate_oracle": 1.0,
+      "n_trace_changing": 7,
+      "n_trace_preserving": 1,
+      "datasets": [
+        "bugsinpy",
+        "quixbugs"
+      ]
+    },
+    "wrong_slice": {
+      "n_total": 3,
+      "detected_eep": 2,
+      "detected_baseline": 0,
+      "detected_oracle": 0,
+      "rate_eep": 0.667,
+      "rate_baseline": 0.0,
+      "rate_oracle": 0.0,
+      "n_trace_changing": 2,
+      "n_trace_preserving": 1,
+      "datasets": [
+        "synthetic"
+      ]
+    },
+    "wrong_variable": {
+      "n_total": 16,
+      "detected_eep": 10,
+      "detected_baseline": 3,
+      "detected_oracle": 10,
+      "rate_eep": 0.625,
+      "rate_baseline": 0.188,
+      "rate_oracle": 0.625,
+      "n_trace_changing": 10,
+      "n_trace_preserving": 6,
+      "datasets": [
+        "bugsinpy",
+        "quixbugs",
+        "synthetic"
+      ]
+    }
+  },
+  "representation_limit_analysis": {
+    "total_bugs": 90,
+    "trace_changing_n": 66,
+    "trace_changing_det_eep": 65,
+    "trace_changing_det_rate_eep": 0.985,
+    "trace_changing_det_oracle": 38,
+    "trace_preserving_n": 24,
+    "trace_preserving_det_eep": 0,
+    "trace_preserving_det_rate_eep": 0.0,
+    "trace_preserving_det_oracle": 9,
+    "pct_fundamentally_invisible": 26.7,
+    "formal_statement": "If d_trace_length = 0 AND d_line_seq = 0 AND d_sequential_drift = 0, then d_EEP = 0 by construction (output-free guarantee). These bugs produce identical control-flow traces under available instrumentation and are information-theoretically invisible to any output-free trace method."
+  },
+  "cross_dataset_consistency": {
+    "dataset_detection_rates": {
+      "synthetic": 0.6316,
+      "quixbugs": 0.6071,
+      "bugsinpy": 1.0
+    },
+    "macro_mean_det_rate": 0.7462,
+    "max_det_rate": 1.0,
+    "min_det_rate": 0.6071,
+    "std_det_rate": 0.1797,
+    "range_det_rate": 0.3929,
+    "consistency_verdict": "MODERATE_VARIANCE",
+    "interpretation": "Detection rates vary across datasets. This variation reflects differences in: (1) bug class composition per dataset, (2) program complexity and trace structure, (3) quality and diversity of test inputs. High variance is expected and scientifically informative \u2014 it reveals which contexts EEP works best in."
+  },
+  "elapsed_s": 0.04,
+  "reporting_note": "Macro-average is mean of per-dataset detection rates, NOT a pooled score. Per-dataset results are the primary scientific evidence. The macro-average summarizes generalization across independent contexts."
+}
