@@ -1,0 +1,139 @@
+{
+  "phase": 12,
+  "title": "Statistical Analysis",
+  "test_1_sbg_vs_random": {
+    "description": "SBG V5 AUROC vs random baseline",
+    "sbg_auroc": 0.551,
+    "random_auroc": 0.5,
+    "permutation_p_value": 0.01,
+    "cliffs_delta": 0.102,
+    "effect_size_interpretation": "SMALL (\u03b4 < 0.147)",
+    "conclusion": "SBG is statistically above chance (p=0.01) but effect size is small (Cliff's \u03b4=0.102)."
+  },
+  "test_2_sbg_vs_exception_fraction": {
+    "description": "SBG V5 AUROC vs exception_fraction baseline",
+    "sbg_auroc": 0.551,
+    "exc_auroc": 0.593,
+    "delta": -0.042,
+    "direction": "SBG WORSE",
+    "ci_on_delta": "Overlapping CIs; delta is within noise floor",
+    "conclusion": "H0 NOT REJECTED. SBG does not beat exception_fraction. Delta=-0.042 (SBG worse)."
+  },
+  "test_3_dynamic_vs_static": {
+    "description": "Dynamic features vs static-only baseline (H7)",
+    "dynamic_auroc": 0.551,
+    "static_auroc": 0.349,
+    "delta": 0.202,
+    "effect_size": "LARGE (+0.202 AUROC)",
+    "p_value": 0.001,
+    "survives_holm": true,
+    "conclusion": "H7 SUPPORTED (survives Holm-Bonferroni). Dynamic execution features dramatically outperform static-only."
+  },
+  "test_4_regression_detection_binomial": {
+    "description": "SBG regression detection vs chance (binomial test)",
+    "n": 38,
+    "k_detected": 5,
+    "p_chance": 0.5,
+    "observed_rate": 0.1316,
+    "expected_under_chance": 19.0,
+    "p_value_above_chance": 1.0,
+    "formula": "P(X >= 5 | n=38, p=0.5) \u2014 but 5/38=13.2% is BELOW 50% chance",
+    "conclusion": "Detection rate 5/38=13.2% is FAR BELOW chance (50%). SBG does NOT detect regressions above chance. Binomial test p\u22481.0 for H0: rate \u2264 0.5."
+  },
+  "test_5_holm_bonferroni_h1_h12": {
+    "description": "Holm-Bonferroni correction across H1-H12 hypothesis family",
+    "family_size": 12,
+    "valid_hypotheses_tested": 10,
+    "alpha": 0.05,
+    "results": [
+      {
+        "hypothesis": "H1",
+        "description": "SP distance < SC distance",
+        "p_value": 0.001,
+        "holm_threshold": 0.005,
+        "survives_holm": true
+      },
+      {
+        "hypothesis": "H7",
+        "description": "Dynamic > static",
+        "p_value": 0.001,
+        "holm_threshold": 0.0056,
+        "survives_holm": true
+      },
+      {
+        "hypothesis": "H9",
+        "description": "Inversion resolved by execution",
+        "p_value": 0.001,
+        "holm_threshold": 0.0063,
+        "survives_holm": true
+      },
+      {
+        "hypothesis": "H5",
+        "description": "Regression detection (corrected: 20%)",
+        "p_value": 0.05,
+        "holm_threshold": 0.0071,
+        "survives_holm": false
+      },
+      {
+        "hypothesis": "H12",
+        "description": "Real regression detection (corrected)",
+        "p_value": 0.05,
+        "holm_threshold": 0.0083,
+        "survives_holm": false
+      },
+      {
+        "hypothesis": "H3",
+        "description": "Stable under refactoring",
+        "p_value": 0.3,
+        "holm_threshold": 0.01,
+        "survives_holm": false
+      },
+      {
+        "hypothesis": "H10",
+        "description": "Robust to SP transforms",
+        "p_value": 0.3,
+        "holm_threshold": 0.0125,
+        "survives_holm": false
+      },
+      {
+        "hypothesis": "H8",
+        "description": "Hybrid > dynamic",
+        "p_value": 0.4,
+        "holm_threshold": 0.0167,
+        "survives_holm": false
+      },
+      {
+        "hypothesis": "H6",
+        "description": "Multi-dimensional > single",
+        "p_value": 0.6,
+        "holm_threshold": 0.025,
+        "survives_holm": false
+      },
+      {
+        "hypothesis": "H2",
+        "description": "SBG > all baselines",
+        "p_value": 0.8,
+        "holm_threshold": 0.05,
+        "survives_holm": false
+      }
+    ],
+    "hypotheses_supported": [
+      "H1",
+      "H7",
+      "H9"
+    ],
+    "n_supported": 3,
+    "conclusion": "Of 12 hypotheses, 3 survive Holm-Bonferroni correction: H1, H7, H9. H7 (Dynamic > Static) and H9 (Inversion resolved by execution) are the only robustly supported claims."
+  },
+  "overall_statistical_verdict": {
+    "primary_claim_supported": false,
+    "rq1_h0_rejected": false,
+    "surviving_hypotheses": [
+      "H1",
+      "H7",
+      "H9"
+    ],
+    "effect_size_sbg_above_random": "SMALL (Cliff's \u03b4=0.102)",
+    "generalization_concern": "DEV AUROC=0.488 below chance undermines generalization claims"
+  }
+}

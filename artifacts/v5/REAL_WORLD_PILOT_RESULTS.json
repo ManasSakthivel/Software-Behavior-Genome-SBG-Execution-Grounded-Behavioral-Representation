@@ -1,0 +1,157 @@
+{
+  "experiment": "REAL_WORLD_PILOT_QUIXBUGS_STYLE",
+  "version": "v5_phase5",
+  "timestamp": "2026-08-30T09:05:16Z",
+  "dataset": "QuixBugs-style inline pilot (10 CHANGED + 2 EQUIV pairs)",
+  "n_pairs": 12,
+  "n_changed": 10,
+  "n_equiv": 2,
+  "methodology": {
+    "predictor": "sbg_distance (output-free, Phase 3 formula)",
+    "oracle": "output_divergence (separate, labeled as BASELINE)",
+    "tau_star": 0.08,
+    "ground_truth": "pre-defined bug labels (all CHANGED pairs contain known bugs)",
+    "feasibility_note": "BugsInPy full evaluation requires pip install of project dependencies. This pilot uses self-contained QuixBugs-style programs as a feasibility check. Results represent a lower bound on evaluation difficulty."
+  },
+  "auroc": {
+    "sbg_output_free": 0.8,
+    "sbg_ci_95": [
+      0.5,
+      1.0
+    ],
+    "output_oracle_BASELINE": 0.8,
+    "random_baseline": 0.5
+  },
+  "detection_at_tau_star": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 8,
+    "tn": 2,
+    "precision": 1.0,
+    "recall": 0.2,
+    "f1": 0.33333333333333337
+  },
+  "rq4_verdict": "MARGINAL \u2014 SBG shows some signal but CI wide (small N=12)",
+  "pair_results": [
+    {
+      "id": "QB01",
+      "name": "binary_search_off_by_one",
+      "bug_type": "off_by_one",
+      "label": 1,
+      "sbg_distance": 0.00795081967218989,
+      "output_divergence": 0.0,
+      "detected_by_sbg": false,
+      "detected_by_output": false
+    },
+    {
+      "id": "QB02",
+      "name": "flatten_wrong_recursion",
+      "bug_type": "wrong_variable",
+      "label": 1,
+      "sbg_distance": 0.013888599687701992,
+      "output_divergence": 0.6,
+      "detected_by_sbg": false,
+      "detected_by_output": true
+    },
+    {
+      "id": "QB03",
+      "name": "coin_change_wrong_base",
+      "bug_type": "missing_base_case",
+      "label": 1,
+      "sbg_distance": 0.002632502632479756,
+      "output_divergence": 0.6,
+      "detected_by_sbg": false,
+      "detected_by_output": true
+    },
+    {
+      "id": "QB04",
+      "name": "max_subarray_wrong_init",
+      "bug_type": "wrong_variable",
+      "label": 1,
+      "sbg_distance": 0.012216302610566913,
+      "output_divergence": 0.0,
+      "detected_by_sbg": false,
+      "detected_by_output": false
+    },
+    {
+      "id": "QB05",
+      "name": "cycle_detect_wrong_return",
+      "bug_type": "wrong_operator",
+      "label": 1,
+      "sbg_distance": 0.016898550724718842,
+      "output_divergence": 0.0,
+      "detected_by_sbg": false,
+      "detected_by_output": false
+    },
+    {
+      "id": "QB06",
+      "name": "gcd_wrong_algorithm",
+      "bug_type": "wrong_operator",
+      "label": 1,
+      "sbg_distance": 0.6000000000000001,
+      "output_divergence": 0.2,
+      "detected_by_sbg": true,
+      "detected_by_output": true
+    },
+    {
+      "id": "QB07",
+      "name": "mergesort_missing_extend",
+      "bug_type": "missing_edge_case",
+      "label": 1,
+      "sbg_distance": 0.004815911976279006,
+      "output_divergence": 0.6,
+      "detected_by_sbg": false,
+      "detected_by_output": true
+    },
+    {
+      "id": "QB08",
+      "name": "lcs_wrong_index",
+      "bug_type": "wrong_variable",
+      "label": 1,
+      "sbg_distance": 0.14630841939434305,
+      "output_divergence": 0.2,
+      "detected_by_sbg": true,
+      "detected_by_output": true
+    },
+    {
+      "id": "QB09",
+      "name": "valid_parens_wrong_return",
+      "bug_type": "wrong_operator",
+      "label": 1,
+      "sbg_distance": 0.010700116686115473,
+      "output_divergence": 0.2,
+      "detected_by_sbg": false,
+      "detected_by_output": true
+    },
+    {
+      "id": "QB10",
+      "name": "fast_power_wrong_base_case",
+      "bug_type": "wrong_operator",
+      "label": 1,
+      "sbg_distance": 0.011802638006772202,
+      "output_divergence": 0.0,
+      "detected_by_sbg": false,
+      "detected_by_output": false
+    },
+    {
+      "id": "NEG01",
+      "name": "quicksort_renamed",
+      "bug_type": "SP_rename",
+      "label": 0,
+      "sbg_distance": 0.0037641381390513076,
+      "output_divergence": 0.0,
+      "detected_by_sbg": false,
+      "detected_by_output": false
+    },
+    {
+      "id": "NEG02",
+      "name": "fibonacci_renamed",
+      "bug_type": "SP_rename",
+      "label": 0,
+      "sbg_distance": 0.009267515923409082,
+      "output_divergence": 0.0,
+      "detected_by_sbg": false,
+      "detected_by_output": false
+    }
+  ]
+}

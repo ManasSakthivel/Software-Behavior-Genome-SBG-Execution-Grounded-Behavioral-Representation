@@ -1,0 +1,185 @@
+{
+  "phase": 10,
+  "title": "Failure Analysis",
+  "n_regression_corpus_v1": 15,
+  "n_regression_corpus_v2": 38,
+  "overall_detection_rates": {
+    "sbg_v1": {
+      "rate": 0.2,
+      "n_detected": 3,
+      "n_total": 15
+    },
+    "sbg_v2": {
+      "rate": 0.1316,
+      "n_detected": 5,
+      "n_total": 38
+    },
+    "exception_fraction_v1": {
+      "rate": 0.2,
+      "n_total": 15
+    },
+    "output_oracle_v1": {
+      "rate": 0.9333333333333333,
+      "n_total": 15
+    }
+  },
+  "silent_bugs": {
+    "n_total_v1": 8,
+    "n_detected_by_sbg_v1": 0,
+    "n_detected_by_output_oracle_v1": 7,
+    "interpretation": "Silent bugs (invisible to exception+volume) are entirely missed by SBG but detectable via output comparison. This is the core capability gap."
+  },
+  "bug_type_breakdown_n40": {
+    "SP_rename": {
+      "n_total": 2,
+      "n_detected_sbg": 0,
+      "n_detected_exc": 0,
+      "n_detected_out": 0,
+      "detection_rate_sbg": 0.0,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 0.0,
+      "why_invisible_to_sbg": "Semantics-preserving rename: expected EQUIV. SBG correctly returns low distance."
+    },
+    "missing_break": {
+      "n_total": 1,
+      "n_detected_sbg": 0,
+      "n_detected_exc": 0,
+      "n_detected_out": 1,
+      "detection_rate_sbg": 0.0,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 1.0,
+      "why_invisible_to_sbg": "Loop continues past first match, returning last match instead of first. Execution volume INCREASES (detectable by volume) but SBG distance threshold too low."
+    },
+    "missing_edge_case": {
+      "n_total": 3,
+      "n_detected_sbg": 2,
+      "n_detected_exc": 2,
+      "n_detected_out": 3,
+      "detection_rate_sbg": 0.667,
+      "detection_rate_exc": 0.667,
+      "detection_rate_output_oracle": 1.0,
+      "why_invisible_to_sbg": "DETECTABLE by SBG when the edge case triggers an exception (e.g., empty-list \u2192 exception). INVISIBLE when edge case only changes return value."
+    },
+    "missing_return": {
+      "n_total": 1,
+      "n_detected_sbg": 1,
+      "n_detected_exc": 1,
+      "n_detected_out": 1,
+      "detection_rate_sbg": 1.0,
+      "detection_rate_exc": 1.0,
+      "detection_rate_output_oracle": 1.0,
+      "why_invisible_to_sbg": "Missing return causes None propagation \u2192 often triggers TypeError or AttributeError downstream \u2192 DETECTABLE via exception_fraction."
+    },
+    "mutable_default": {
+      "n_total": 2,
+      "n_detected_sbg": 0,
+      "n_detected_exc": 0,
+      "n_detected_out": 1,
+      "detection_rate_sbg": 0.0,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 0.5,
+      "why_invisible_to_sbg": "State accumulates across calls. Canonical test inputs run functions independently \u2192 no accumulated state \u2192 invisible to single-call SBG."
+    },
+    "mutation_during_iteration": {
+      "n_total": 1,
+      "n_detected_sbg": 0,
+      "n_detected_exc": 0,
+      "n_detected_out": 1,
+      "detection_rate_sbg": 0.0,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 1.0,
+      "why_invisible_to_sbg": "RuntimeError during list mutation detected by output oracle but exception is intermittent; SBG canonical inputs may not trigger it."
+    },
+    "off_by_one": {
+      "n_total": 7,
+      "n_detected_sbg": 1,
+      "n_detected_exc": 0,
+      "n_detected_out": 6,
+      "detection_rate_sbg": 0.143,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 0.857,
+      "why_invisible_to_sbg": "Changes return VALUES by +/-1 but does not alter EXCEPTION BEHAVIOR or cause significantly different execution VOLUME on canonical inputs."
+    },
+    "wrong_base_case": {
+      "n_total": 3,
+      "n_detected_sbg": 0,
+      "n_detected_exc": 0,
+      "n_detected_out": 3,
+      "detection_rate_sbg": 0.0,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 1.0,
+      "why_invisible_to_sbg": "Recursion returns wrong value for base case but execution trace for non-base inputs is identical."
+    },
+    "wrong_operator": {
+      "n_total": 11,
+      "n_detected_sbg": 1,
+      "n_detected_exc": 1,
+      "n_detected_out": 10,
+      "detection_rate_sbg": 0.091,
+      "detection_rate_exc": 0.091,
+      "detection_rate_output_oracle": 0.909,
+      "why_invisible_to_sbg": "Arithmetic/comparison changes produce different outputs but identical exception profiles and near-identical loop counts. SBG features (exception_fraction, volume, call counts) are blind to value semantics."
+    },
+    "wrong_slice": {
+      "n_total": 3,
+      "n_detected_sbg": 0,
+      "n_detected_exc": 0,
+      "n_detected_out": 3,
+      "detection_rate_sbg": 0.0,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 1.0,
+      "why_invisible_to_sbg": "Slicing error produces wrong substring/sublist with identical length \u2192 volume unchanged, no exception."
+    },
+    "wrong_variable": {
+      "n_total": 6,
+      "n_detected_sbg": 0,
+      "n_detected_exc": 0,
+      "n_detected_out": 5,
+      "detection_rate_sbg": 0.0,
+      "detection_rate_exc": 0.0,
+      "detection_rate_output_oracle": 0.833,
+      "why_invisible_to_sbg": "Using wrong variable in computation changes result values but execution trace (calls, exceptions, volume) is identical."
+    }
+  },
+  "false_negative_summary": {
+    "n_false_negatives": 33,
+    "n_total_positive": 38,
+    "fn_rate": 0.868,
+    "false_negative_ids": [
+      "REG_03",
+      "REG_04",
+      "REG_05",
+      "REG_07",
+      "REG_09",
+      "REG_10",
+      "REG_11",
+      "REG_12",
+      "REG_13",
+      "REG_14",
+      "REG_15",
+      "QB06",
+      "QB08",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05",
+      "E06",
+      "E07",
+      "E08",
+      "E09",
+      "E10",
+      "E11",
+      "E12",
+      "E13",
+      "E14",
+      "E15",
+      "E16",
+      "E17",
+      "E18",
+      "E19",
+      "E20"
+    ]
+  },
+  "root_cause": "SBG features capture EXCEPTION BEHAVIOR and EXECUTION VOLUME. The majority of regression bugs (off_by_one, wrong_operator, wrong_variable, wrong_slice, wrong_base_case) change RETURN VALUES without altering exception rates or loop iteration counts. These bugs are fundamentally invisible to the current output-free SBG feature set. Only bugs that trigger exceptions (missing_return, missing_edge_case leading to exception) are reliably detected."
+}

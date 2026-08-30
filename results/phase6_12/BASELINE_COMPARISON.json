@@ -1,0 +1,124 @@
+{
+  "phase": 7,
+  "title": "Baseline Comparison Table",
+  "n_pairs": 744,
+  "methodology": "WMW tie-aware AUROC, bootstrap CI (1000 resamples, clustered by program, seed=42)",
+  "baselines": [
+    {
+      "name": "exception_fraction",
+      "auroc": 0.593,
+      "ci_95": [
+        0.548,
+        0.64
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "FINAL_EXPERIMENTAL_MATRIX.json",
+      "note": "BEST SINGLE FEATURE \u2014 defines minimum bar for SBG"
+    },
+    {
+      "name": "AST_edit_distance",
+      "auroc": 0.553,
+      "ci_95": [
+        0.509,
+        0.594
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "FINAL_EXPERIMENTAL_MATRIX.json",
+      "note": "Static baseline B02"
+    },
+    {
+      "name": "call_count",
+      "auroc": 0.553,
+      "ci_95": [
+        0.511,
+        0.597
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "FINAL_EXPERIMENTAL_MATRIX.json"
+    },
+    {
+      "name": "SBG_v5",
+      "auroc": 0.551,
+      "ci_95": [
+        0.505,
+        0.594
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "artifacts/v5/B07/results_test.json + FINAL_EXPERIMENTAL_MATRIX.json",
+      "note": "V5 with invariant_identity + temporal + state; B07 pipeline",
+      "rq1_status": "H0 NOT REJECTED \u2014 SBG V5 < exception_fraction"
+    },
+    {
+      "name": "call_bigrams",
+      "auroc": 0.545,
+      "ci_95": [
+        0.505,
+        0.586
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "FINAL_EXPERIMENTAL_MATRIX.json",
+      "note": "Order-sensitive; unique information"
+    },
+    {
+      "name": "SBG_v3",
+      "auroc": 0.54,
+      "ci_95": [
+        0.497,
+        0.584
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "FINAL_EXPERIMENTAL_MATRIX.json",
+      "note": "V3 8-component weighted distance"
+    },
+    {
+      "name": "volume_only",
+      "auroc": 0.535,
+      "ci_95": [
+        0.496,
+        0.577
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "FINAL_EXPERIMENTAL_MATRIX.json",
+      "note": "Not significant at alpha=0.05"
+    },
+    {
+      "name": "random",
+      "auroc": 0.5,
+      "ci_95": [
+        0.5,
+        0.5
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "theoretical",
+      "note": "Theoretical random baseline"
+    },
+    {
+      "name": "static_only",
+      "auroc": 0.349,
+      "ci_95": [
+        0.316,
+        0.383
+      ],
+      "output_free": true,
+      "n": 744,
+      "source": "FINAL_EXPERIMENTAL_MATRIX.json (H7 evidence: static baseline)",
+      "note": "Static-only predictor. Dynamic > Static is H7 (survives Holm-Bonferroni)."
+    }
+  ],
+  "key_finding": "SBG V5 (AUROC=0.551) is BELOW exception_fraction (AUROC=0.593). The multi-dimensional behavioral genome does not beat the best single feature. H0 NOT REJECTED for RQ1.",
+  "sbg_vs_best_baseline": {
+    "sbg_auroc": 0.551,
+    "best_baseline_name": "exception_fraction",
+    "best_baseline_auroc": 0.593,
+    "delta": -0.042,
+    "direction": "SBG WORSE"
+  }
+}

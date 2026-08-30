@@ -1,0 +1,190 @@
+import json, time
+from pathlib import Path
+
+REPO = Path('/Users/manassakthivel/Desktop/SF Projects/SBG')
+(REPO / 'results' / 'phase14').mkdir(parents=True, exist_ok=True)
+
+reviews = [
+    {
+        "reviewer_id": "A",
+        "persona": "Stanford Program Analysis Researcher (PLDI/ASE focus)",
+        "verdict": "WEAK_REJECT",
+        "score": 3,
+        "strengths": [
+            "H7 (dynamic > static) is a genuine contribution — survives Holm-Bonferroni, clear effect size",
+            "H9 (execution resolves structural-semantic inversion) is novel and well-supported",
+            "Output isolation methodology is rigorous — 7/7 safeguard checks pass",
+            "V5 identity normalization correctly addresses the SP-2 rename problem (12/12 unit tests)"
+        ],
+        "weaknesses": [
+            "Central multi-dimensional claim is self-falsified: exception_fraction (1 feature) beats full SBG (8+ features). The paper cannot claim SBG is better without addressing this.",
+            "Synthetic benchmark only — no real production code. No comparison to QuixBugs, BugsInPy, or Defects4J.",
+            "No comparison to any prior semantic similarity technique (Sumner 2011, DeepSim, Oreo). Novelty unsubstantiated.",
+            "N=13 test programs — CI too wide for generalization claims at a venue like ASE or PLDI.",
+            "Feature weights unprincipled (hand-set). No ablation shows these are optimal."
+        ],
+        "required_changes": [
+            "Reframe paper around H7/H9 positive findings rather than full SBG superiority",
+            "BugsInPy evaluation on >=50 real Python bugs",
+            "Comparison to Sumner 2011 behavioral distance on same evaluation population",
+            "Resolve exception dominance — either fix the representation or explain why it is fundamental"
+        ],
+        "recommendation": "NOT_READY",
+        "detailed_review": "The two supported hypotheses (H7, H9) provide genuine insight about dynamic vs static program analysis. However, the central contribution claim — that the multi-dimensional SBG representation outperforms simpler alternatives — is directly contradicted by the results. A single feature (exception_fraction=0.593) outperforming the full genome (0.551) on the primary benchmark is not a rounding issue; it is a fundamental representational problem. For ASE/PLDI acceptance, the evaluation must use real-world programs, the exception dominance must be resolved, and the paper must be grounded against prior art. This work could become publishable as an empirical study of behavioral distance if framed around the two positive findings and the honest negative result on multi-dimensionality."
+    },
+    {
+        "reviewer_id": "B",
+        "persona": "Empirical Software Engineering Researcher (EMSE/TSE focus)",
+        "verdict": "WEAK_REJECT",
+        "score": 3,
+        "strengths": [
+            "Rigorous output isolation methodology — addresses a real methodological flaw from earlier versions",
+            "Honest reporting of negative results (93.3% corrected to 20%) demonstrates scientific integrity",
+            "Reproducibility is strong — 6/6 checks pass, deterministic seeds documented",
+            "Holm-Bonferroni correction applied correctly to family of 12 hypotheses"
+        ],
+        "weaknesses": [
+            "DEV AUROC=0.488 (below chance) is unresolved. The TEST AUROC=0.551 on 13 programs may be a favorable random draw. The probability of this being sampling error is non-trivial (~30-40%).",
+            "All programs are synthetic hand-crafted benchmarks. Distribution of mutations may not reflect real bugs.",
+            "Regression corpus is N=40 pairs, all algorithmic programs. 33/38 bugs undetected (87%). This is the primary negative finding.",
+            "No statistical test for comparing SBG to exception_fraction — is the -0.042 delta statistically significant? CI overlap analysis needed.",
+            "8 of 12 hypotheses not supported — the paper's hypothesis framework is mostly falsified."
+        ],
+        "required_changes": [
+            "Provide statistical test for SBG vs exception_fraction comparison (not just point estimates)",
+            "Investigate DEV anomaly — is it SC-14 transform, program family differences, or something else? Run targeted analysis.",
+            "Real-world evaluation: BugsInPy subset (at minimum pandas + requests) even if partial",
+            "Reframe: the paper's contribution is now an empirical finding about limitations, not a method paper"
+        ],
+        "recommendation": "NOT_READY",
+        "detailed_review": "The paper has good methodological integrity but the empirical evidence does not support the claimed contribution. The DEV below-chance result (0.488) combined with only 13 test programs raises serious doubts about whether the TEST result (0.551) is reliable. An empirical SE paper needs to demonstrate that results generalize. With 13 programs and a DEV/TEST split inconsistency of 0.063 AUROC, generalization cannot be claimed. The output-free regression detection rate of 13.2% on a small algorithmic corpus is not publication-level evidence. This could become a valid negative-result or empirical-study paper with appropriate reframing and a real-world evaluation."
+    },
+    {
+        "reviewer_id": "C",
+        "persona": "ML/Representation Learning Researcher (NeurIPS/ICML focus)",
+        "verdict": "BORDERLINE",
+        "score": 4,
+        "strengths": [
+            "The output-free constraint is a well-motivated inductive bias for program analysis",
+            "The exception dominance finding is itself scientifically interesting — identifying which single feature captures most signal",
+            "Incremental information analysis is methodologically sound",
+            "The structural-semantic inversion finding (H9) is a meaningful empirical insight"
+        ],
+        "weaknesses": [
+            "No learned combination attempted. Before concluding the representation is inadequate, try even linear regression (OLS) on the 8 features. The negative result might be a combination failure, not a representation failure.",
+            "Exception dominance might not be a flaw — it might indicate SBG's features are capturing the right signal. The issue is the distance FORMULA not the features.",
+            "No neural baseline comparison. CodeBERT/GraphCodeBERT defect detection F1~0.65. SBG AUROC=0.551 looks weak in comparison without a fair evaluation.",
+            "The greedy cumulative AUROC (0.620) suggests value exists with better combination — but this is not evaluated properly on the test set."
+        ],
+        "required_changes": [
+            "Evaluate R10 (learned combination) on frozen test set — train on dev, test on test",
+            "At minimum compare to one neural baseline (CodeBERT on same program pairs)",
+            "Disentangle: is exception_fraction dominance a FEATURE issue or a COMBINATION issue?",
+            "Analyze: do SBG features add information CONDITIONAL on exception_fraction? Partial AUC analysis."
+        ],
+        "recommendation": "NOT_READY",
+        "detailed_review": "The representation might be informative but the distance formula is likely suboptimal. Before concluding 'SBG adds no value beyond exception_fraction,' one must try learning the combination. The OLS experiment (R10) estimates a greedy cumulative AUROC of 0.620, which exceeds exception_fraction (0.593) — but this is not a valid test because greedy addition is not the same as OLS on the full set. A proper learned combination on dev, evaluated on frozen test, would resolve this. If even a simple linear combination on dev fails to beat exception_fraction on test, THEN the representation failure claim is warranted. Currently, this important experiment is missing."
+    },
+    {
+        "reviewer_id": "D",
+        "persona": "Reproducibility Reviewer (ARTIFACT evaluation focus)",
+        "verdict": "WEAK_ACCEPT",
+        "score": 6,
+        "strengths": [
+            "Excellent artifact hygiene — SHA-256 hashes for all artifacts, deterministic seeds (seed=42), pinned test splits",
+            "make reproduce passes 6/6 checks including determinism verification",
+            "Output isolation mechanically verified by 7/7 safeguard gates in phase1_output_leakage_gate.py",
+            "Correction of 93.3%->20% shows scientific integrity — the original error is transparently documented",
+            "All reproduction commands documented and working"
+        ],
+        "weaknesses": [
+            "DISCREPANCY: exception_fraction AUROC reported as 0.593 in FINAL_EXPERIMENTAL_MATRIX.json but as 0.567 in INCREMENTAL_INFO_RESULTS.json and REPRESENTATION_ABLATION.json — a 2.6pp gap that is never explained",
+            "Regression evaluator uses a 3-feature PROXY (exception_fraction + jaccard + volume) not the full V5 pipeline — this inconsistency is documented but weakens the claim that V5 was evaluated on regression",
+            "Phase 8 claims 'greedy cumulative AUROC 0.620' but this uses greedy feature addition, not a proper held-out test",
+            "Per-program AUROC not available from existing artifacts — cannot verify per-program breakdown claimed in baseline docs"
+        ],
+        "required_changes": [
+            "Resolve the 0.567 vs 0.593 discrepancy for exception_fraction AUROC — document which evaluation context produces which value",
+            "Run full V5 pipeline (not proxy) on regression corpus and report result",
+            "Document clearly: the regression evaluator uses a 3-feature proxy, not the full V5 temporal+state pipeline"
+        ],
+        "recommendation": "CONDITIONAL",
+        "detailed_review": "The reproducibility infrastructure is genuinely strong. All major results trace to specific artifacts with hashes. The determinism guarantee is verified. The output isolation is mechanically checked. The main concern is the 0.567 vs 0.593 discrepancy for exception_fraction AUROC — this needs explanation. The two values likely come from different evaluation contexts (incremental analysis vs standalone optimized), but this must be stated explicitly. Once this is clarified and the proxy vs full-pipeline inconsistency is documented, the reproducibility concerns are addressable."
+    },
+    {
+        "reviewer_id": "E",
+        "persona": "IEEE Access Reviewer (broad systems paper focus)",
+        "verdict": "BORDERLINE",
+        "score": 4,
+        "strengths": [
+            "Well-motivated problem — output-free behavioral regression detection is genuinely useful",
+            "Clear identification of what the paper is NOT claiming (93.3% was output oracle, now corrected)",
+            "The two confirmed findings (H7, H9) provide enough content for a limited-scope paper",
+            "Implementation is open and reproducible"
+        ],
+        "weaknesses": [
+            "Main claim (SBG detects regressions) is not supported: 13.2% detection at τ*=0.08 is not actionable",
+            "Exception dominance (one feature beats full model) undermines the multi-dimensional genome motivation",
+            "Only Python programs evaluated — language-agnostic claim is unsubstantiated",
+            "The paper's scope is unclear: is it a method paper, an empirical study, or a tools paper?",
+            "IEEE Access expects clear novelty statement vs prior work — none provided here"
+        ],
+        "required_changes": [
+            "Choose a clear paper type: empirical study (reframe around what we LEARNED, including negative results)",
+            "Add comparison to at least one prior behavioral similarity technique",
+            "Real-world evaluation even at pilot scale (20+ BugsInPy pairs)",
+            "Add explicit threats-to-validity section addressing synthetic programs, single language, small N"
+        ],
+        "recommendation": "NOT_READY",
+        "detailed_review": "IEEE Access has a broad scope and accepts empirical negative results, but the paper currently lacks a clear contribution statement. If framed as 'we built a behavioral genome and evaluated it rigorously — here is what we found including negative results' this could work. But the current implicit framing as a positive contribution paper (SBG detects regressions, multi-dimensional > simple) is inconsistent with the results. Reframe around H7, H9, the exception dominance finding, and the silent-bug detection gap. That is a coherent empirical contribution. As currently framed, the paper will struggle at any venue."
+    }
+]
+
+aggregate = {
+    "mean_score": sum(r["score"] for r in reviews) / len(reviews),
+    "verdicts": {},
+    "scores": [r["score"] for r in reviews],
+    "consensus": "WEAK_REJECT — insufficient evidence for current form; major revision required",
+    "paper_readiness": "NOT_READY",
+    "path_to_publication": [
+        "1. BugsInPy evaluation on >=50 real Python bugs (BLOCKING)",
+        "2. Resolve exception dominance (either fix representation OR explicitly frame as negative result)",
+        "3. Statistical test for SBG vs exception_fraction comparison",
+        "4. Resolve DEV AUROC anomaly empirically",
+        "5. Reframe paper as empirical study centered on H7+H9 positive findings + honest negative findings",
+        "6. Compare to at least one prior semantic similarity technique"
+    ],
+    "positive_findings_defensible": [
+        "H7: Dynamic > static (p<0.01, survives Holm-Bonferroni)",
+        "H9: Execution resolves structural-semantic inversion (p<0.01)",
+        "Output isolation methodology is sound (7/7 gates pass)",
+        "V5 identity normalization is architecturally correct (12/12 unit tests)"
+    ],
+    "negative_findings_confirmed": [
+        "Full SBG does NOT beat exception_fraction on primary benchmark",
+        "Output-free SBG detects only 13.2% of regression bugs at τ*=0.08",
+        "Silent bugs (invisible to exception+volume): 0/10 detected by output-free predictor",
+        "DEV AUROC=0.488 below chance — generalization uncertain",
+        "10/12 hypotheses not supported"
+    ]
+}
+
+for r in reviews:
+    v = r["verdict"]
+    aggregate["verdicts"][v] = aggregate["verdicts"].get(v, 0) + 1
+
+output = {
+    "experiment": "PHASE14_ADVERSARIAL_REVIEW",
+    "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
+    "reviews": reviews,
+    "aggregate": aggregate
+}
+
+out_path = REPO / "results" / "phase14" / "ADVERSARIAL_REVIEWS.json"
+out_path.parent.mkdir(parents=True, exist_ok=True)
+with open(out_path, "w") as f:
+    json.dump(output, f, indent=2)
+print(f"Saved -> {out_path}")
+print(f"Verdicts: {aggregate['verdicts']}")
+print(f"Mean score: {aggregate['mean_score']:.1f}/10")
+print(f"Consensus: {aggregate['consensus']}")

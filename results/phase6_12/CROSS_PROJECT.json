@@ -1,0 +1,75 @@
+{
+  "phase": 6,
+  "title": "Cross-Project Generalization Analysis",
+  "dataset_summary": {
+    "n_test_pairs": 744,
+    "n_test_programs": 13,
+    "n_dev_pairs": 536,
+    "n_dev_programs": 10,
+    "n_val_pairs": 492,
+    "n_val_programs": 9,
+    "pairs_test_jsonl_total": 744,
+    "program_families_in_test": {
+      "api": 53,
+      "conc": 58,
+      "ds": 58,
+      "err": 57,
+      "file": 56,
+      "fsm": 53,
+      "graph": 58,
+      "math": 58,
+      "parse": 60,
+      "res": 59,
+      "sort": 116,
+      "str": 58
+    }
+  },
+  "per_split_performance": {
+    "test": {
+      "auroc": 0.551,
+      "ci_95": [
+        0.505,
+        0.594
+      ],
+      "n_programs": 13,
+      "n_pairs": 744,
+      "note": "Primary evaluation split"
+    },
+    "dev": {
+      "auroc": 0.488,
+      "ci_95": [
+        0.458,
+        0.543
+      ],
+      "n_programs": 10,
+      "n_pairs": 536,
+      "note": "BELOW CHANCE \u2014 primary reliability concern"
+    },
+    "val": {
+      "auroc": 0.512,
+      "ci_95": [
+        0.455,
+        0.59
+      ],
+      "n_programs": 9,
+      "n_pairs": 492
+    }
+  },
+  "split_variance_analysis": {
+    "test_auroc": 0.551,
+    "dev_auroc": 0.488,
+    "val_auroc": 0.512,
+    "max_spread": 0.063,
+    "dev_below_chance": true,
+    "ci_half_width": 0.045,
+    "concern": "DEV AUROC=0.488 is below chance. Spread of 0.063 exceeds claimed effect size. Test result may be a favorable fluctuation."
+  },
+  "cross_project_feasibility": {
+    "verdict": "IMPOSSIBLE_WITH_CURRENT_CORPUS",
+    "reason": "Corpus is synthetic single-language (Python only). All 13 test programs are from the same benchmark family. True cross-project evaluation requires programs from distinct repositories/domains.",
+    "cross_language_status": "INSUFFICIENT_EVIDENCE (H4/H11): N=3 Java programs, no AUROC computed. V5 Java executor exists but cross-language evaluation not run.",
+    "n_programs_for_reliable_auroc": "\u226550 programs recommended (ICSE/FSE standard)",
+    "current_n_programs": 13
+  },
+  "conclusion": "Cross-project generalization cannot be established. Only 13 test programs with CI \u00b10.045. DEV split performance (0.488) falls below chance, casting doubt on generalization across program families."
+}

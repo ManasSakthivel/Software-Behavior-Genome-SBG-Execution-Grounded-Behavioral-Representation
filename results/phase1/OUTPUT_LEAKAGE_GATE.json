@@ -1,0 +1,128 @@
+{
+  "experiment": "PHASE1_OUTPUT_LEAKAGE_GATE",
+  "timestamp": "2026-08-30T09:09:37Z",
+  "overall_status": "PASS",
+  "summary": {
+    "total_gates": 7,
+    "pass": 7,
+    "fail": 0,
+    "error": 0,
+    "skip": 0,
+    "elapsed_s": 0.008
+  },
+  "gates": [
+    {
+      "gate": "OL-1",
+      "status": "PASS",
+      "params": [
+        "g1",
+        "g2"
+      ],
+      "message": "distance_v3() signature has no output-related parameters"
+    },
+    {
+      "gate": "OL-2",
+      "status": "PASS",
+      "message": "compute_sbg_distance() code body contains no forbidden output terms"
+    },
+    {
+      "gate": "OL-3",
+      "status": "PASS",
+      "dist1": 0.46333332444445036,
+      "dist2": 0.46333332444445036,
+      "dist_no_output": 0.46333332444445036,
+      "message": "OL-3 PASS: Changing _return_values_PRIVATE does NOT change SBG distance. dist=0.463333 in all configurations."
+    },
+    {
+      "gate": "OL-4",
+      "status": "PASS",
+      "message": "distance_v5() source contains no forbidden output terms"
+    },
+    {
+      "gate": "OL-5",
+      "status": "PASS",
+      "trace_fields": [
+        "program_id",
+        "input_repr",
+        "events",
+        "return_value",
+        "exception",
+        "stdout",
+        "execution_time_ms",
+        "coverage",
+        "truncated"
+      ],
+      "trace_has_return_value": true,
+      "trace_has_stdout": true,
+      "message": "ExecutionTrace has return_value/stdout fields (expected \u2014 used by oracle only). DynamicGenomeExtractorV3 does NOT access .return_value or .stdout. Output fields exist but are NOT read by the genome extractor."
+    },
+    {
+      "gate": "OL-6",
+      "status": "PASS",
+      "message": "NormalizedBehavior does not contain return_value/stdout/stderr fields"
+    },
+    {
+      "gate": "OL-7",
+      "status": "PASS",
+      "all_fields": [
+        "program_id",
+        "coverage_size",
+        "coverage_consistency",
+        "anon_call_freq",
+        "hot_path_hash",
+        "exception_type_set",
+        "exception_rate",
+        "call_depth_mean",
+        "call_depth_max",
+        "trace_length_mean",
+        "trace_length_std",
+        "n_unique_functions",
+        "call_transition_bigrams",
+        "input_sensitivity_score",
+        "call_depth_variance",
+        "hot_path_stability",
+        "exception_causality_hash",
+        "provenance"
+      ],
+      "message": "DynamicGenomeV3 contains no output-related fields"
+    }
+  ],
+  "execution_path_trace": {
+    "step_1_program_to_tracer": {
+      "component": "sbg.extraction.dynamic.tracer.Tracer",
+      "input": "Python source file",
+      "output": "ExecutionTrace (events: line, call, return \u2014 NO return_values in feature path)",
+      "verified": true
+    },
+    "step_2_trace_to_normalizer": {
+      "component": "sbg.v2.execution.normalizer.TraceNormalizer",
+      "input": "List[ExecutionTrace]",
+      "output": "NormalizedBehavior (coverage_size, exception_rate, call_freq, etc.)",
+      "verified": true
+    },
+    "step_3_normalizer_to_genome": {
+      "component": "sbg.v3.genome.DynamicGenomeExtractorV3",
+      "input": "NormalizedBehavior + ExecutionTrace events",
+      "output": "DynamicGenomeV3 (coverage_size, call_transition_bigrams, exception_rate, etc.)",
+      "verified": true
+    },
+    "step_4_v5_extensions": {
+      "component": "sbg.v5.invariant_identity, sbg.v5.temporal_genome_v5, sbg.v5.state_transition_genome",
+      "input": "DynamicGenomeV3 + ExecutionTrace",
+      "output": "V5GenomeBundle (v3 + temporal + state)",
+      "verified": true
+    },
+    "step_5_distance": {
+      "component": "sbg.v5.distance_v5.distance_v5",
+      "input": "V5GenomeBundle pair (no outputs)",
+      "output": "distance score in [0, 1]",
+      "verified": true
+    },
+    "oracle_path_SEPARATE": {
+      "note": "Program outputs \u2192 output_divergence \u2014 computed in compute_output_oracle() ONLY. Never passed to distance function.",
+      "oracle_function": "experiments.v5.regression_evaluator.compute_output_oracle",
+      "verified": true
+    }
+  },
+  "conclusion": "All output-isolation gates passed. The SBG distance predictor operates exclusively on execution structure features (exception_fraction, call_patterns, coverage, timing). Program return values are captured only in _return_values_PRIVATE fields and are accessible only through compute_output_oracle(), which is clearly labeled as a BASELINE and never called by the predictor."
+}

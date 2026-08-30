@@ -1,73 +1,97 @@
 {
-  "experiment": "REGRESSION_EVALUATION",
-  "version": "v5",
-  "timestamp": "2026-08-21T11:50:41Z",
+  "experiment": "REGRESSION_EVALUATION_OUTPUT_FREE",
+  "version": "v5_phase3_corrected",
+  "timestamp": "2026-08-30T09:05:16Z",
+  "methodology": {
+    "safeguard_2_compliant": true,
+    "predictor": "sbg_distance = 0.50*exception_fraction + 0.30*exception_type_jaccard + 0.20*volume_ratio",
+    "predictor_reads_outputs": false,
+    "threshold_tau_star": 0.08,
+    "threshold_source": "median SBG distance of SP pairs from dev split (pre-fixed)",
+    "ground_truth": "pre-defined bug labels (all 15 pairs labeled CHANGED=1)",
+    "oracle_separation": "output_divergence computed in compute_output_oracle(), not in compute_sbg_distance()",
+    "note_on_previous_version": "The previous version (regression_evaluator.py before Phase 3) reported 93.3% as the SBG detection rate. That figure was the output oracle (output_divergence > 0), not the SBG distance. This corrected version reports honest output-free SBG performance."
+  },
   "n_pairs": 15,
   "detection_rates": {
-    "output_oracle": 0.9333333333333333,
-    "exception_fraction": 0.2,
-    "volume_proxy": 0.26666666666666666
+    "sbg_distance_output_free": 0.2,
+    "exception_fraction_only": 0.2,
+    "volume_ratio_only": 0.4666666666666667,
+    "output_oracle_BASELINE": 0.9333333333333333
   },
-  "n_detectable": {
-    "output_oracle": 14,
-    "exception_fraction": 3,
-    "volume_proxy": 4
+  "n_detected": {
+    "sbg_distance_output_free": 3,
+    "exception_fraction_only": 3,
+    "volume_ratio_only": 7,
+    "output_oracle_BASELINE": 14
   },
   "silent_bugs": {
-    "n_total": 9,
-    "n_detected_by_output": 9,
-    "detection_rate": 1.0
+    "n_total": 8,
+    "n_detected_by_sbg": 0,
+    "n_detected_by_output_oracle": 7,
+    "sbg_silent_detection_rate": 0.0,
+    "output_oracle_silent_detection_rate": 0.875
   },
   "bug_type_breakdown": {
     "off_by_one": {
       "n": 2,
-      "detected_output": 1,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 1
     },
     "missing_edge_case": {
       "n": 2,
-      "detected_output": 2,
-      "detected_exc": 2
+      "detected_sbg": 2,
+      "detected_exc": 2,
+      "detected_output": 2
     },
     "wrong_operator": {
       "n": 3,
-      "detected_output": 3,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 3
     },
     "wrong_variable": {
       "n": 2,
-      "detected_output": 2,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 2
     },
     "missing_return": {
       "n": 1,
-      "detected_output": 1,
-      "detected_exc": 1
+      "detected_sbg": 1,
+      "detected_exc": 1,
+      "detected_output": 1
     },
     "mutation_during_iteration": {
       "n": 1,
-      "detected_output": 1,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 1
     },
     "missing_break": {
       "n": 1,
-      "detected_output": 1,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 1
     },
     "mutable_default": {
       "n": 1,
-      "detected_output": 1,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 1
     },
     "wrong_slice": {
       "n": 1,
-      "detected_output": 1,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 1
     },
     "wrong_base_case": {
       "n": 1,
-      "detected_output": 1,
-      "detected_exc": 0
+      "detected_sbg": 0,
+      "detected_exc": 0,
+      "detected_output": 1
     }
   },
   "pair_results": [
@@ -75,296 +99,336 @@
       "id": "REG_01",
       "name": "binary_search_off_by_one",
       "bug_type": "off_by_one",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.002394859813040817,
-        "behavior_hash": 0.0,
+      "sbg_distance": 0.0066489361702127825,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.03324468085106391,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 0.0,
-        "sbg_proxy": 0.00023948598130408172
+        "behavior_hash_changed": false,
+        "detectable_by_output": false
       },
-      "detectable_by_output": false,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": true,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": false,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     },
     {
       "id": "REG_02",
       "name": "missing_base_case_empty_list",
       "bug_type": "missing_edge_case",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 2,
-      "distances": {
-        "exception_fraction": 0.5,
-        "exception_type_jaccard": 1.0,
-        "volume_ratio": 0.17254901960808247,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.5803750000000232,
+      "exception_only_distance": 0.5,
+      "volume_only_distance": 0.15187500000011575,
+      "detected_by_sbg": true,
+      "detected_by_exception_only": true,
+      "detected_by_volume_only": true,
+      "output_oracle": {
         "output_divergence": 0.5,
-        "sbg_proxy": 0.5672549019608082
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": true,
-      "detectable_by_volume": true,
-      "bug_visible_to_exception_expected": true,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": true,
+      "bug_visible_to_volume": true,
+      "is_silent_bug": false
     },
     {
       "id": "REG_03",
       "name": "wrong_comparison_operator",
       "bug_type": "wrong_operator",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 2,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.07342569269538916,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.01268770402608725,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.06343852013043624,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": true,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.40734256926953893
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": true,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": true,
+      "is_silent_bug": false
     },
     {
       "id": "REG_04",
       "name": "loop_fencepost_error",
       "bug_type": "off_by_one",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.019152854512511606,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.007804370447467953,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.03902185223733976,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.40191528545125116
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": true
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     },
     {
       "id": "REG_05",
       "name": "wrong_variable_in_product",
       "bug_type": "wrong_variable",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.01796536796487418,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.012344213649695424,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.06172106824847712,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": true,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.4017965367964874
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": true,
+      "is_silent_bug": false
     },
     {
       "id": "REG_06",
       "name": "missing_empty_guard",
       "bug_type": "missing_edge_case",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 2,
-      "distances": {
-        "exception_fraction": 0.5,
-        "exception_type_jaccard": 1.0,
-        "volume_ratio": 0.24928229665171023,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.5969414316706343,
+      "exception_only_distance": 0.5,
+      "volume_only_distance": 0.23470715835317096,
+      "detected_by_sbg": true,
+      "detected_by_exception_only": true,
+      "detected_by_volume_only": true,
+      "output_oracle": {
         "output_divergence": 0.5,
-        "sbg_proxy": 0.574928229665171
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": true,
-      "detectable_by_volume": true,
-      "bug_visible_to_exception_expected": true,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": true,
+      "bug_visible_to_volume": true,
+      "is_silent_bug": false
     },
     {
       "id": "REG_07",
       "name": "integer_division_truncation",
       "bug_type": "wrong_operator",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.011111111111778583,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.0021108179421239015,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.010554089710619507,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.40111111111117786
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     },
     {
       "id": "REG_08",
       "name": "missing_return_keyword",
       "bug_type": "missing_return",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.6666666666666666,
-        "exception_type_jaccard": 1.0,
-        "volume_ratio": 0.10246174318028775,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.6775789108571382,
+      "exception_only_distance": 0.6666666666666666,
+      "volume_only_distance": 0.22122788761902404,
+      "detected_by_sbg": true,
+      "detected_by_exception_only": true,
+      "detected_by_volume_only": true,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.8102461743180288
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": true,
-      "detectable_by_volume": true,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": true,
+      "bug_visible_to_volume": true,
+      "is_silent_bug": false
     },
     {
       "id": "REG_09",
       "name": "mutation_during_iteration",
       "bug_type": "mutation_during_iteration",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.005359394703900478,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.0020127795527063877,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.010063897763531938,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 0.6666666666666666,
-        "sbg_proxy": 0.2672026061370567
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": true
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     },
     {
       "id": "REG_10",
       "name": "wrong_index_access",
       "bug_type": "wrong_variable",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 2,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.033333333333653,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.010039840637663616,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.050199203188318074,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": true,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.4033333333333653
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": true,
+      "is_silent_bug": false
     },
     {
       "id": "REG_11",
       "name": "missing_break_finds_last",
       "bug_type": "missing_break",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.047044025157378044,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.012234042553041627,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.061170212765208135,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": true,
+      "output_oracle": {
         "output_divergence": 0.6666666666666666,
-        "sbg_proxy": 0.27137106918240445
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": true
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": true,
+      "is_silent_bug": false
     },
     {
       "id": "REG_12",
       "name": "mutable_default_argument",
       "bug_type": "mutable_default",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.019011976047754307,
-        "behavior_hash": 1.0,
+      "sbg_distance": 5.319148933386142e-05,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.0002659574466693071,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 0.6666666666666666,
-        "sbg_proxy": 0.2685678642714421
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     },
     {
       "id": "REG_13",
       "name": "wrong_string_slicing",
       "bug_type": "wrong_slice",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.04502164502110426,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.0049701789266136135,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.024850894633068065,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.40450216450211046
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     },
     {
       "id": "REG_14",
       "name": "wrong_sort_direction",
       "bug_type": "wrong_operator",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.015377532228219448,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.0024925224327019004,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.0124626121635095,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.401537753222822
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     },
     {
       "id": "REG_15",
       "name": "fibonacci_wrong_base_case",
       "bug_type": "wrong_base_case",
+      "ground_truth_label": 1,
       "n_trigger_inputs": 3,
-      "distances": {
-        "exception_fraction": 0.0,
-        "exception_type_jaccard": 0.0,
-        "volume_ratio": 0.049137568363394266,
-        "behavior_hash": 1.0,
+      "sbg_distance": 0.002631103074203809,
+      "exception_only_distance": 0.0,
+      "volume_only_distance": 0.013155515371019045,
+      "detected_by_sbg": false,
+      "detected_by_exception_only": false,
+      "detected_by_volume_only": false,
+      "output_oracle": {
         "output_divergence": 1.0,
-        "sbg_proxy": 0.40491375683633946
+        "behavior_hash_changed": true,
+        "detectable_by_output": true
       },
-      "detectable_by_output": true,
-      "detectable_by_exception": false,
-      "detectable_by_volume": false,
-      "bug_visible_to_exception_expected": false,
-      "bug_visible_to_volume_expected": false
+      "detected_by_output_oracle": true,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "is_silent_bug": true
     }
   ],
-  "methodology": {
-    "detection_criterion_output": "output_divergence > 0 (any input produces different result)",
-    "detection_criterion_exception": "exception_fraction_distance > 0 OR exception_type_jaccard > 0",
-    "detection_criterion_volume": "volume_ratio_distance > 0.05",
-    "seed": 42
-  },
   "scientific_interpretation": {
-    "key_finding": "9 of 15 bugs are invisible to exception_fraction AND volume shortcuts. Output oracle detects 9/9 of these 'silent' bugs. This demonstrates that behavioral comparison (output divergence) captures information that pure execution-volume/exception statistics miss.",
-    "limitation": "Detection relies on trigger inputs that expose the bug. For bugs not triggered by any test input, all methods fail. This is the SC-3 input-coverage problem: inputs must be boundary-aware."
+    "honest_sbg_detection_rate": "3/15 = 20.0% at threshold \u03c4*=0.0800. This is the output-free SBG predictor result.",
+    "ceiling_output_oracle": "14/15 = 93.3% \u2014 uses output comparison (not SBG). This is an upper bound on what behavioral information is detectable given the current test inputs.",
+    "gap_interpretation": "The gap between output oracle (93.3%) and SBG (20.0%) represents information that IS in the outputs but is NOT captured by the current output-free feature design."
   }
 }
