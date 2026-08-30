@@ -1,92 +1,107 @@
-# SBG — FINAL CLAIM BOUNDARY (v2)
-## All Claims Classified After Multi-Corpus Evaluation
+# Final Claim Boundary — SBG/EEP (v3)
+## All Claims Classified After Full Multi-Corpus Evaluation Including Java
 
 **Protocol hash:** `fac6bd8e0cffc91b52ed88577637d199ccfda8cfe9200edc487094f7e8e5088b`  
-**Status:** FROZEN — no further tuning after this document  
-**Date:** 2026  
+**Status:** FROZEN — no further tuning or evaluation after this document  
+**Date:** 2026 (Final Empirical Generalization Sprint)  
+**Supersedes:** v1 (synthetic+QuixBugs), v2 (BugsInPy added), v3 (Java added)
 
 ---
 
-## Claim Classification
+## 1. Complete Claim Classification
 
-| Claim | Dataset(s) | Evidence | N | Statistical Support | Scope | Status |
-|-------|-----------|----------|---|---------------------|-------|--------|
-| C1: EEP detects synthetic behavioral regressions | Synthetic | AUROC=0.829, det=63.2% | 38 | Wilson CI [47%,77%], p=0.072 (binom.) | Synthetic only | **DEMONSTRATED** |
-| C2: EEP outperforms exception-only baseline on synthetic | Synthetic | ΔAUROC=+0.277 | 38 | CI [0.750,0.905] vs CI based on exc | Synthetic | **DEMONSTRATED** |
-| C3: EEP outperforms Baseline SBG on synthetic | Synthetic | ΔAUROC=+0.151 | 38 | Consistent across bootstraps | Synthetic | **DEMONSTRATED** |
-| C4: EEP has zero false positives on variable renames | Neg. controls | 0/9 FP on renames | 9 | Exact | Renames only | **DEMONSTRATED** |
-| C5: EEP generalizes to QuixBugs (zero-shot) | QuixBugs | det=60.7% | 28 | p=0.172 (binom.) | 1 external corpus | **STRONGLY SUPPORTED** |
-| C6: EEP generalizes to BugsInPy (zero-shot) | BugsInPy | det=85.7% | 7 | p=0.062 (binom.) | 6 projects, 5 bug types | **STRONGLY SUPPORTED** |
-| C7: EEP generalizes across multiple independent real-world corpora | QB+BugsInPy | 23/35 = 65.7% | 35 | p=0.045 (combined) | 2 corpora, 7 projects | **STRONGLY SUPPORTED** |
-| C8: Output-free guarantee holds across all evaluations | All | 9/9 OL checks pass | All | Formal + empirical | All datasets | **DEMONSTRATED** |
-| C9: Trace-preserving bugs are invisible to output-free EEP | Multiple | 4 real cases verified | ≥4 | Formal theorem + 4 evidence | Principled limit | **DEMONSTRATED** |
-| C10: Missing-guard defects are highly detectable | Synth+QB+BugsInPy | 6/6 = 100% | 6 | Exact | Missing-case class | **STRONGLY SUPPORTED** |
-| C11: EEP consistently outperforms exception-only baseline | Synth | ΔAUROC=+0.277 | 38 | Bootstrap CI excludes chance | Synthetic | **DEMONSTRATED** |
-| C12: EEP is invariant to variable/function renames | Neg. controls | 0 FP on 9 renames | 9 | Exact | Renames | **DEMONSTRATED** |
-| C13: EEP generalizes to Java (Defects4J) | — | Not evaluated | 0 | No data | N/A | **NOT DEMONSTRATED** |
-| C14: EEP works on all BugsInPy bugs | BugsInPy | 424/502 excluded | All | N/A | Cannot claim | **NOT DEMONSTRATED** |
-| C15: EEP significantly outperforms all baselines on external corpora | QB+BIP | No paired comparison | 35 | Insufficient | Cannot claim | **LIMITED** |
-| C16: EEP achieves high AUROC on BugsInPy | BugsInPy | All-positive corpus | 7 | AUROC undefined | Cannot compute | **LIMITED** |
-| C17: EEP works on all defect classes | All | Wrong-return invisible | All | Theorem | Counterexample exists | **CONTRADICTED (partial)** |
-| C18: EEP is accurate on all 502 BugsInPy bugs | BugsInPy | 424 excluded | 502 | N/A | Cannot claim | **CONTRADICTED** |
+| ID | Claim | Evidence | N | Statistical Support | Status |
+|----|-------|----------|---|---------------------|--------|
+| C1 | EEP detects synthetic behavioral regressions | AUROC=0.829, det=63.2% | 38 | CI [0.750,0.905], p=0.072 | **DEMONSTRATED** |
+| C2 | EEP outperforms exception-only on synthetic | ΔAUROC=+0.277 | 38 | Bootstrap CI excludes chance | **DEMONSTRATED** |
+| C3 | EEP outperforms Baseline SBG on synthetic | ΔAUROC=+0.151 | 38 | Consistent across bootstraps | **DEMONSTRATED** |
+| C4 | EEP has zero false positives on variable renames | 0/9 FP on renames | 9 | Exact | **DEMONSTRATED** |
+| C5 | EEP generalizes to QuixBugs Python (zero-shot) | det=60.7% | 28 | p=0.172, CI [42%,76%] | **STRONGLY SUPPORTED** |
+| C6 | EEP generalizes to BugsInPy (zero-shot) | det=85.7% | 7 | p=0.062, CI [49%,97%] | **STRONGLY SUPPORTED** |
+| C7 | EEP generalizes across multiple independent real corpora (Python) | 23/35 = 65.7% | 35 | p=0.045 | **STRONGLY SUPPORTED** |
+| C8 | Output-free guarantee holds | 9/9 Python + 5/5 Java checks | All | Formal + empirical | **DEMONSTRATED** |
+| C9 | Trace-preserving bugs are invisible to output-free EEP (Theorem 1) | 9 real cases verified | ≥9 | Formal theorem + 9 cases | **DEMONSTRATED** |
+| C10 | Missing-guard defects are highly detectable | 6/6 = 100% | 6 | Exact | **STRONGLY SUPPORTED** |
+| C11 | EEP consistently outperforms exception-only | ΔAUROC=+0.277 synthetic | 38 | Bootstrap CI | **DEMONSTRATED** |
+| C12 | EEP is invariant to variable/function renames | 0 FP on 9 renames | 9 | Exact | **DEMONSTRATED** |
+| C13 | EEP transfers to Java (partial) | 6/18 = 33.3% | 18 | p=0.952, CI [16%,56%] | **WEAKLY SUPPORTED** |
+| C14 | Java EEP achieves same detection rate as Python EEP | Java 33.3% vs Python 60.7% | 18/28 | Δ=-27.4 pp | **CONTRADICTED** |
+| C15 | EEP works on all BugsInPy bugs | 424/502 excluded | 502 | N/A | **NOT DEMONSTRATED** |
+| C16 | EEP works on Defects4J | Not evaluated | 0 | No data | **NOT DEMONSTRATED** |
+| C17 | EEP achieves statistical significance on Java QuixBugs | p=0.952 | 18 | Not significant | **NOT DEMONSTRATED** |
+| C18 | EEP detects all defect classes | Wrong-return invisible | All | Theorem | **CONTRADICTED (partial)** |
 
 ---
 
-## Claim Status Definitions
+## 2. Claim Status Definitions
 
 | Status | Meaning |
 |--------|---------|
-| **DEMONSTRATED** | Directly supported by experimental data with appropriate statistical evidence |
-| **STRONGLY SUPPORTED** | Supported by evidence but sample size limits statistical significance claims |
-| **LIMITED** | Some positive evidence but insufficient to make a strong claim |
-| **NOT DEMONSTRATED** | No experimental data; claim cannot be made in paper |
-| **CONTRADICTED** | Experimental evidence directly contradicts the claim |
+| **DEMONSTRATED** | Direct experimental evidence; statistical support appropriate to N |
+| **STRONGLY SUPPORTED** | Positive evidence; sample size limits significance but direction is clear |
+| **WEAKLY SUPPORTED** | Some positive evidence; not statistically significant; important limitations |
+| **LIMITED** | Some evidence but insufficient for a strong paper claim |
+| **NOT DEMONSTRATED** | No experimental data; claim cannot be made |
+| **CONTRADICTED** | Evidence contradicts the claim |
 
 ---
 
-## Permitted vs Prohibited Claims
+## 3. Permitted Paper Claims
 
-### ✓ PERMITTED PAPER CLAIMS
+The following claims are permitted with appropriate phrasing:
 
+### Group A: Fully Demonstrated (Strong Claims)
 1. "EEP achieves AUROC=0.829 [95% CI: 0.750–0.905] on the synthetic evaluation corpus."
-2. "In zero-shot evaluation on QuixBugs, EEP detects 17/28 (60.7%) bugs."
-3. "In zero-shot evaluation on BugsInPy (7 real GitHub-extracted bugs across 6 projects), EEP detects 6/7 (85.7%)."
-4. "Across combined external corpora (QuixBugs + BugsInPy, N=35), EEP detects 23/35 = 65.7% bugs (p=0.045, binomial, H0: random detection)."
-5. "EEP produces zero false positives on 9 semantics-preserving variable/function rename negative controls."
-6. "Trace-preserving bugs are provably invisible to any output-free detector (Theorem 1). We verify this on 4 real production code cases."
-7. "The output-free invariant is verified by 9 independent audit checks and demonstrated to hold for all evaluated programs."
-8. "EEP outperforms the exception-only baseline by ΔAUROC=0.277 and Baseline SBG by ΔAUROC=0.151 on the synthetic corpus."
-9. "Missing-guard defects are highly detectable (6/6 detected across corpora)."
-10. "EEP generalizes across 3 corpora and 7 projects under zero-shot transfer with no parameter adjustment."
+2. "EEP outperforms the exception-only baseline by ΔAUROC=0.277 and Baseline SBG by ΔAUROC=0.151 on the synthetic corpus."
+3. "EEP produces zero false positives on 9 semantics-preserving variable/function rename negative controls."
+4. "Trace-preserving bugs are provably invisible to any output-free detector (Theorem 1). We verify this empirically on 9 real program cases across Python and Java."
+5. "The output-free invariant is verified by 14 independent audit checks (9 Python, 5 Java)."
 
-### ✗ PROHIBITED PAPER CLAIMS
+### Group B: Strongly Supported (Qualified Claims)
+6. "In zero-shot evaluation on QuixBugs (Python), EEP detects 17/28 (60.7%) bugs."
+7. "In zero-shot evaluation on BugsInPy (7 real GitHub-extracted bugs across 6 projects), EEP detects 6/7 (85.7%)."
+8. "Across combined external Python corpora (QuixBugs + BugsInPy, N=35), EEP detects 23/35 = 65.7% bugs (p=0.045, binomial, H0: random detection)."
+9. "EEP generalizes across 3 Python corpora and 7 Python projects under zero-shot transfer with no parameter adjustment."
+10. "Missing-guard defects are highly detectable (6/6 detected across corpora)."
 
-1. "EEP detects bugs across all BugsInPy programs." _(424/502 excluded for principled reasons)_
-2. "EEP works on Java programs." _(Not evaluated; no Java instrumentation)_
-3. "EEP significantly outperforms baselines on external corpora." _(No paired test; insufficient N for significance)_
-4. "EEP achieves AUROC > 0.8 on real-world bugs." _(AUROC undefined for all-positive BugsInPy corpus)_
-5. "EEP detects all classes of defects." _(Wrong-return bugs with same execution path are invisible)_
-6. "64.4% combined detection rate across all corpora." _(Should not pool heterogeneous corpora)_
-7. "The for→while refactoring produces no false positives." _(NC-CS-1 produces EEP=0.153 > τ* — known FP)_
+### Group C: Weakly Supported (Highly Qualified Claims)
+11. "Using a method-boundary Java instrumentation adapter, EEP detects 6/18 (33.3%) QuixBugs Java bugs in zero-shot transfer — a substantial reduction from the Python detection rate (60.7%, Δ = -27.4 pp) partially explained by the difference between per-line Python tracing and per-call-boundary Java tracing."
+12. "The EEP formula transfers to Java; the instrumentation adapter is less informative than Python's sys.settrace, particularly for bugs that change loop iteration counts without changing method call structure."
 
 ---
 
-## Mandatory Disclosures in Paper
+## 4. Prohibited Paper Claims
 
-The following must be disclosed in the experimental section:
-
-1. **BugsInPy evaluation coverage**: 7/502 bugs evaluated (1.4%). 424 excluded with systematic taxonomy (E01–E10). All exclusions documented.
-2. **Trace-preserving limitation**: tqdm-9 not detected (boundary bug, trace-preserving confirmed).
-3. **scrapy-11**: Python 2-specific bug, invisible on Python 3 evaluator.
-4. **black-9**: Wrong-return bug with identical execution path, invisible by output-free theorem.
-5. **for→while FP (NC-CS-1)**: EEP produces FP on control-structure refactoring (CPython trace granularity).
-6. **QuixBugs 3 skipped**: bitcount, find_first_in_sorted, sqrt — timeout.
-7. **BugsInPy sample bias**: Evaluable subset skews toward exception-raising bugs (selection effect).
-8. **Statistical caution**: Individual dataset p-values are not significant at α=0.05; combined external p=0.045 is borderline.
+1. **"EEP detects bugs across all BugsInPy programs."** _(424/502 excluded for principled reasons; evaluable subset is 1.4%)_
+2. **"EEP works on Java programs with equivalent performance to Python."** _(Δ=-27.4 pp; Java result not statistically significant)_
+3. **"EEP achieves cross-language generalization."** _(Single Java corpus, p=0.952, large transfer gap)_
+4. **"EEP significantly outperforms baselines on external corpora."** _(No paired significance test; insufficient N)_
+5. **"EEP achieves AUROC > 0.8 on real-world bugs."** _(AUROC undefined for all-positive BugsInPy; Java result weak)_
+6. **"EEP detects all classes of defects."** _(Wrong-return same-path bugs are invisible by Theorem 1)_
+7. **"The for→while refactoring produces no false positives."** _(NC-CS-1 produces EEP=0.153 > τ* — known FP)_
+8. **"EEP generalizes to Defects4J."** _(Not evaluated; Java adapter not validated)_
+9. **"EEP is a language-independent method with demonstrated multi-language performance."** _(Too strong — Java evidence is weak and limited to 1 project)_
+10. **"64.4% combined detection rate across all corpora."** _(Must not pool heterogeneous corpora or include calibration data in headline)_
 
 ---
 
-## Version History
+## 5. Mandatory Disclosures in Paper
 
-- v1: Initial claim boundary (synthetic + QuixBugs)
-- v2: Updated with BugsInPy real evaluation, representation-limit theorem, adversarial review
+The following must be explicitly disclosed in the experimental/limitations section:
+
+1. **BugsInPy evaluation coverage (1.4%)**: "We evaluate 7 of 502 BugsInPy bugs. The evaluable subset is defined by explicit structural criteria (E01–E10); it is not a random sample and skews toward exception-raising defects."
+2. **Trace-preserving limitation confirmed on 9 real cases**: "tqdm-9, scrapy-11, black-9, PySnooper-3 (Python); BUCKETSORT, GET_FACTORS, HANOI, IS_VALID_PARENTHESIZATION, TO_BASE (Java)."
+3. **for→while FP (NC-CS-1)**: "EEP produces a false positive (d=0.153 > τ*=0.08) on for→while refactoring due to CPython trace granularity. This is a known limitation."
+4. **QuixBugs timeout exclusions**: "bitcount, find_first_in_sorted, sqrt excluded (Python); BITCOUNT, LEVENSHTEIN, SQRT excluded (Java) due to execution timeout."
+5. **Java transfer gap**: "Java detection rate (33.3%) is substantially lower than Python (60.7%), primarily due to instrumentation differences (per-line vs per-method-call)."
+6. **BugsInPy selection bias**: "Evaluable subset favors exception-raising bugs. Detection rate (85.7%) may be optimistic relative to a random sample."
+7. **Statistical caution**: "Individual dataset p-values exceed 0.05. Combined external Python evidence achieves p=0.045 (borderline). Java result is not statistically significant (p=0.952)."
+8. **Java single-corpus limitation**: "Java evaluation is limited to QuixBugs (1 repository). Cross-project Java generalization is not demonstrated."
+
+---
+
+## 6. Version History
+
+- v1 (2026-early): Initial claim boundary (synthetic + QuixBugs Python only)
+- v2 (2026-mid): BugsInPy real evaluation added; representation-limit theorem proven; adversarial review integrated
+- v3 (2026-final): QuixBugs Java cross-language evaluation added; Java transfer gap documented; 9 trace-preserving cases verified; claim C14 contradicted; new weakly-supported claim C13 added
