@@ -1,6 +1,6 @@
 {
   "experiment": "SBG_MULTI_CORPUS_ANALYSIS",
-  "timestamp": "2026-08-30T12:53:45Z",
+  "timestamp": "2026-08-30T13:11:04Z",
   "datasets_included": [
     "synthetic",
     "quixbugs",
@@ -133,8 +133,8 @@
       "n_trace_changing": 2,
       "n_trace_preserving": 1,
       "datasets": [
-        "quixbugs",
-        "synthetic"
+        "synthetic",
+        "quixbugs"
       ]
     },
     "mutable_default": {
@@ -148,8 +148,8 @@
       "n_trace_changing": 3,
       "n_trace_preserving": 0,
       "datasets": [
-        "bugsinpy",
-        "synthetic"
+        "synthetic",
+        "bugsinpy"
       ]
     },
     "mutation_during_iteration": {
@@ -177,9 +177,9 @@
       "n_trace_changing": 10,
       "n_trace_preserving": 4,
       "datasets": [
-        "bugsinpy",
+        "synthetic",
         "quixbugs",
-        "synthetic"
+        "bugsinpy"
       ]
     },
     "wrong_base_case": {
@@ -207,8 +207,8 @@
       "n_trace_changing": 9,
       "n_trace_preserving": 2,
       "datasets": [
-        "bugsinpy",
-        "quixbugs"
+        "quixbugs",
+        "bugsinpy"
       ]
     },
     "wrong_operator": {
@@ -222,9 +222,9 @@
       "n_trace_changing": 16,
       "n_trace_preserving": 5,
       "datasets": [
-        "bugsinpy",
+        "synthetic",
         "quixbugs",
-        "synthetic"
+        "bugsinpy"
       ]
     },
     "wrong_recursion": {
@@ -252,8 +252,8 @@
       "n_trace_changing": 7,
       "n_trace_preserving": 1,
       "datasets": [
-        "bugsinpy",
-        "quixbugs"
+        "quixbugs",
+        "bugsinpy"
       ]
     },
     "wrong_slice": {
@@ -281,9 +281,9 @@
       "n_trace_changing": 10,
       "n_trace_preserving": 6,
       "datasets": [
-        "bugsinpy",
+        "synthetic",
         "quixbugs",
-        "synthetic"
+        "bugsinpy"
       ]
     }
   },
