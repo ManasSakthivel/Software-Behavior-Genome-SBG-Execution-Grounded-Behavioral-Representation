@@ -35,7 +35,7 @@ ada306bcf5ed01bdbe9d8b1fb266f24970347a8f
 ## 2. Final SHA (Repair Sprint)
 
 ```
-[to be computed after git commit]
+e870860f7c7d841a3defd0f8748ace9d4f75b41d
 ```
 
 ---
