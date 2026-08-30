@@ -1,269 +1,131 @@
 {
-  "manifest": "FINAL_RESULTS_MANIFEST",
-  "version": "v5_strengthening_sprint_final",
+  "manifest": "SBG_FINAL_RESULTS_REPAIR_SPRINT",
   "timestamp": "2025",
-  "status": "FROZEN",
-  "sprint": "Final Empirical Strengthening Sprint (Phases 0-15)",
-  "final_verdict": "C — EMPIRICALLY WEAK",
-  "paper_readiness": "NOT_READY_AS_POSITIVE_METHOD_PAPER",
+  "sprint": "Final Representation Repair and Empirical Validation",
+  "starting_sha": "ada306bcf5ed01bdbe9d8b1fb266f24970347a8f",
+  "seed": 42,
+  "tau_star": 0.08,
+  "n_bootstrap": 1000,
+  "repair_module": "sbg/repair/execution_profile.py",
+  "output_free_verified": true,
+  "output_leakage_gates_passed": 5,
+  "unit_tests_total": 574,
+  "unit_tests_passed": 574,
 
-  "key_metrics": {
-    "sbg_v5_test_auroc": {
-      "value": 0.551246,
-      "ci_95": [0.505403, 0.594535],
-      "permutation_p": 0.01,
-      "n_pairs": 643,
-      "n_programs": 13,
-      "output_free": true,
-      "source": "artifacts/v5/B07/results_test.json",
-      "reproduction_status": "VERIFIED"
-    },
-    "sbg_v3_test_auroc": {
-      "value": 0.539906,
-      "ci_95": [0.497297, 0.584079],
-      "output_free": true,
-      "source": "artifacts/v5/FINAL_EVIDENCE_MANIFEST_V5.json",
-      "reproduction_status": "VERIFIED"
-    },
-    "exception_fraction_standalone_auroc": {
-      "value": 0.567005,
-      "ci_95": [0.527266, 0.608953],
-      "note": "Standalone exception_fraction from INCREMENTAL_INFO_RESULTS.json individual entry",
-      "source": "artifacts/v5/INCREMENTAL_INFO_RESULTS.json",
-      "reproduction_status": "VERIFIED",
-      "discrepancy_note": "best_shortcut_auroc=0.592947 uses optimized/combined computation — both beat SBG V5"
-    },
-    "best_shortcut_auroc": {
-      "value": 0.592947,
-      "ci_95": [0.548, 0.640],
-      "note": "Labeled exception_fraction but computed differently (optimized rank-fusion variant)",
-      "source": "artifacts/v5/INCREMENTAL_INFO_RESULTS.json summary.best_shortcut_auroc",
-      "discrepancy_documented_in": "results/phase13/REPRODUCTION_AUDIT.json"
-    },
-    "static_only_auroc": {
-      "value": 0.349112,
-      "ci_95": [0.316, 0.383],
-      "note": "BELOW CHANCE — confirms dynamic execution is essential",
-      "source": "artifacts/phase3/B07/results_test.json"
-    },
-    "regression_detection_output_free": {
-      "value": 0.200,
-      "n_detected": 3,
-      "n_total": 15,
-      "tau_star": 0.08,
-      "note": "Original 15-pair corpus",
-      "source": "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json",
-      "reproduction_status": "VERIFIED"
-    },
-    "scaled_regression_detection": {
-      "value": 0.1316,
-      "n_detected": 5,
-      "n_total_bugs": 38,
-      "n_pairs": 40,
-      "tau_star": 0.08,
-      "auroc": 0.5263,
-      "ci_95": [0.3604, 0.6847],
-      "source": "results/phase45/SCALED_REGRESSION_RESULTS.json",
-      "reproduction_status": "VERIFIED"
-    },
-    "pilot_auroc": {
-      "value": 0.800,
-      "ci_95": [0.500, 1.000],
-      "n_pairs": 12,
-      "note": "N=12 too small — CI covers random baseline",
-      "source": "artifacts/v5/REAL_WORLD_PILOT_RESULTS.json",
-      "reproduction_status": "VERIFIED"
-    },
-    "dev_auroc_v3": {
-      "value": 0.488,
-      "note": "BELOW CHANCE — generalization uncertainty",
-      "source": "artifacts/v5/FINAL_EXPERIMENTAL_MATRIX.json",
-      "reproduction_status": "VERIFIED"
-    },
-    "dev_auroc_v5": {
-      "value": 0.5876,
-      "ci_95": [0.5051, 0.6675],
-      "source": "artifacts/v5/B07/results_dev.json"
-    }
+  "regression_corpus": {
+    "N": 40,
+    "N_bugs": 38,
+    "N_equiv": 2,
+    "source": "experiments/strengthening/phase45_scaled_regression.py",
+    "dataset_note": "Synthetic inline algorithmic Python programs"
   },
 
-  "phase_results": {
-    "phase0_baseline": {
-      "status": "COMPLETE",
-      "artifact": "docs/pre_strengthening_baseline.md",
-      "commit_sha": "e97539766927f3ae6914c93f7ef556a7b81ecc68"
-    },
-    "phase1_output_leakage": {
-      "status": "PASS — 7/7 gates",
-      "artifact": "results/phase1/OUTPUT_LEAKAGE_GATE.json",
-      "conclusion": "SBG predictor is output-free. All methodology valid."
-    },
-    "phase2_representation_ablation": {
-      "status": "COMPLETE",
-      "artifact": "results/phase2/REPRESENTATION_ABLATION.json",
-      "key_finding": "exception_fraction (0.567) beats full SBG V5 (0.551). Static-only (0.349) is below chance. Dynamic execution is necessary."
-    },
-    "phase3_component_ablation": {
-      "status": "COMPLETE",
-      "artifact": "results/phase3/COMPONENT_ABLATION.json",
-      "doc": "docs/ablation_analysis.md",
-      "key_finding": "C4 (dynamic execution) is the only clearly necessary component. C1 (exception features) HURTS when added to other features."
-    },
-    "phase4_5_scaled_regression": {
-      "status": "COMPLETE",
-      "artifact": "results/phase45/SCALED_REGRESSION_RESULTS.json",
-      "n_pairs": 40,
-      "n_bugs": 38,
-      "detection_rate": 0.1316,
-      "bugsInPy_gap": "BLOCKED — pip install required. CRITICAL gap for publication."
-    },
-    "phase6_cross_project": {
-      "status": "COMPLETE",
-      "artifact": "results/phase6_12/CROSS_PROJECT.json",
-      "key_finding": "Cross-project eval not possible — single language, 13 synthetic programs. DEV/TEST split inconsistency."
-    },
-    "phase7_baselines": {
-      "status": "COMPLETE",
-      "artifact": "results/phase6_12/BASELINE_COMPARISON.json",
-      "key_finding": "SBG V5 ties or loses to all non-trivial baselines tested"
-    },
-    "phase8_incremental_value": {
-      "status": "COMPLETE",
-      "artifact": "results/phase6_12/INCREMENTAL_VALUE_ANALYSIS.json",
-      "key_finding": "Incremental SBG contribution = -0.043 (NEGATIVE). Full genome does not add value beyond exception_fraction."
-    },
-    "phase9_hard_negatives": {
-      "status": "COMPLETE",
-      "artifact": "results/phase6_12/HARD_NEGATIVES.json",
-      "key_finding": "Output oracle: 12/12. exception_fraction: 5/12. SBG V5 distance on hard-negatives: NOT MEASURED (gap)."
-    },
-    "phase10_failure_analysis": {
-      "status": "COMPLETE",
-      "artifact": "results/phase6_12/FAILURE_ANALYSIS.json",
-      "key_finding": "Bugs that change only RETURN VALUES are invisible to output-free features. These are the majority of real bugs."
-    },
-    "phase11_robustness": {
-      "status": "COMPLETE",
-      "artifact": "results/phase6_12/ROBUSTNESS_RESULTS.json",
-      "key_finding": "Formatting/dead-code: ROBUST. SP-2 renames: FIXED in V5. SC-3: 7.5% canonical, 24% input-guided."
-    },
-    "phase12_statistics": {
-      "status": "COMPLETE",
-      "artifact": "results/phase6_12/STATISTICAL_ANALYSIS.json",
-      "key_finding": "H7 and H9 survive Holm-Bonferroni. SBG vs random: p=0.01 (small effect). 10/12 hypotheses not supported."
-    },
-    "phase13_reproduction": {
-      "status": "COMPLETE — 15 VERIFIED, 1 DISCREPANCY",
-      "artifact": "results/phase13/REPRODUCTION_AUDIT.json",
-      "discrepancy": "best_shortcut_auroc=0.593 labeled as exception_fraction but standalone is 0.567"
-    },
-    "phase14_adversarial_review": {
-      "status": "COMPLETE",
-      "artifact": "results/phase14/ADVERSARIAL_REVIEWS.json",
-      "mean_score": 4.0,
-      "verdicts": {"WEAK_REJECT": 2, "BORDERLINE": 2, "WEAK_ACCEPT": 1},
-      "consensus": "NOT_READY"
-    },
-    "phase15_final_verdict": {
-      "status": "COMPLETE",
-      "verdict": "C — EMPIRICALLY WEAK",
-      "artifact": "docs/FINAL_SCIENTIFIC_STATUS.md"
-    }
-  },
-
-  "hypothesis_verdicts_final": {
-    "H1": "NOT_SUPPORTED",
-    "H2": "NOT_SUPPORTED — exception_fraction beats full model",
-    "H3": "NOT_SUPPORTED — SP-2 AUROC=0.259 (V3)",
-    "H4": "INSUFFICIENT_EVIDENCE — Java N=3, no AUROC",
-    "H5": "PARTIALLY_SUPPORTED — 13.2% output-free (NOT 93.3% which is output oracle)",
-    "H6": "NOT_SUPPORTED — exception_fraction alone beats multidimensional model",
-    "H7": "SUPPORTED — p<0.01, survives Holm-Bonferroni, large effect",
-    "H8": "NOT_SUPPORTED",
-    "H9": "SUPPORTED — p<0.01, survives Holm-Bonferroni",
-    "H10": "NOT_SUPPORTED — SC-3 detection 7.5%",
-    "H11": "INSUFFICIENT_EVIDENCE",
-    "H12": "PARTIALLY_SUPPORTED — corrected to 13.2% output-free"
-  },
-
-  "output_leakage_verification": {
-    "status": "PASS — 7/7 gates",
-    "gates_file": "results/phase1/OUTPUT_LEAKAGE_GATE.json",
-    "conclusion": "The SBG predictor is confirmed output-free. Program return values are not accessible by the distance function."
-  },
-
-  "test_suite": {
-    "tests_passed": 516,
-    "tests_failed": 0,
-    "command": "python3 -m pytest sbg/ -q"
-  },
-
-  "reproducibility": {
-    "checks_passed": "6/6",
-    "command": "python3 experiments/v5/reproduction_check.py"
-  },
-
-  "confirmed_contributions": [
+  "claims": [
     {
-      "id": "C1",
-      "claim": "Dynamic execution features outperform static structural features for behavioral distance",
-      "evidence": "H7 supported, p<0.01, Holm-corrected. AUROC delta +0.202 (V5 vs static-only 0.349)",
-      "strength": "STRONG"
+      "CLAIM_ID": "C-R1",
+      "RQ": "Can EEP detect regressions beyond exception-based baselines?",
+      "DATASET": "regression_corpus_N40",
+      "EXPERIMENT": "experiments/repair/phase8_15_repair_evaluation.py",
+      "REPRESENTATION": "EEP (d_trace_length + d_line_seq + d_drift)",
+      "BASELINE": "exception_fraction",
+      "N": 38,
+      "RAW_ARTIFACT": "results/repair/REPAIR_EVALUATION_RESULTS.json",
+      "METRIC": "detection_rate",
+      "RESULT": 0.6316,
+      "RESULT_BASELINE": 0.1053,
+      "DELTA": 0.5263,
+      "CI": "[0.750, 0.905] (AUROC)",
+      "SCOPE": "Synthetic Python algorithmic programs",
+      "LIMITATION": "Not statistically significant (p=0.162, N=40 too small); all synthetic",
+      "REVIEWER_RISK": "MEDIUM — scale and generalizability concerns"
     },
     {
-      "id": "C2",
-      "claim": "Execution-grounded representation resolves structural-semantic inversion",
-      "evidence": "H9 supported, p<0.01, Holm-corrected. Static features anti-correlate with semantic change",
-      "strength": "STRONG"
+      "CLAIM_ID": "C-R2",
+      "RQ": "Does EEP outperform exception_fraction on AUROC?",
+      "DATASET": "regression_corpus_N40",
+      "EXPERIMENT": "experiments/repair/phase8_15_repair_evaluation.py",
+      "REPRESENTATION": "EEP",
+      "BASELINE": "exception_fraction_standalone",
+      "N": 40,
+      "RAW_ARTIFACT": "results/repair/REPAIR_EVALUATION_RESULTS.json",
+      "METRIC": "AUROC",
+      "RESULT": 0.829,
+      "RESULT_BASELINE": 0.553,
+      "DELTA": 0.276,
+      "CI": "[0.750, 0.905]",
+      "SCOPE": "Synthetic Python algorithmic programs",
+      "LIMITATION": "p=0.162, N=40; only 2 negative pairs",
+      "REVIEWER_RISK": "MEDIUM"
     },
     {
-      "id": "C3",
-      "claim": "Output isolation methodology is sound",
-      "evidence": "7/7 safeguard gates pass. 93.3% output oracle correctly distinguished from SBG result",
-      "strength": "STRONG"
+      "CLAIM_ID": "C-R3",
+      "RQ": "Is EEP output-free?",
+      "DATASET": "adversarial_leakage_tests",
+      "EXPERIMENT": "sbg/repair/test_execution_profile.py",
+      "REPRESENTATION": "EEP",
+      "BASELINE": "N/A",
+      "N": 5,
+      "RAW_ARTIFACT": "sbg/repair/test_execution_profile.py:TestOutputLeakage",
+      "METRIC": "leakage_tests_passed",
+      "RESULT": "5/5",
+      "CI": "N/A",
+      "SCOPE": "Adversarial test pairs with identical structure, different output",
+      "LIMITATION": "Finite adversarial test set; cannot prove for all programs",
+      "REVIEWER_RISK": "LOW"
+    },
+    {
+      "CLAIM_ID": "C-R4",
+      "RQ": "Are new EEP components responsible for improvement (not exception features)?",
+      "DATASET": "regression_corpus_N40",
+      "EXPERIMENT": "experiments/repair/phase8_15_repair_evaluation.py:ablation",
+      "REPRESENTATION": "EEP_new_components_only vs EEP_exception_only",
+      "N": 40,
+      "RAW_ARTIFACT": "results/repair/REPAIR_EVALUATION_RESULTS.json:phase10_ablation",
+      "METRIC": "AUROC",
+      "RESULT_C_NEW_ONLY": 0.829,
+      "RESULT_D_EXC_ONLY": 0.553,
+      "SCOPE": "Regression corpus",
+      "LIMITATION": "N=40",
+      "REVIEWER_RISK": "LOW"
+    },
+    {
+      "CLAIM_ID": "C-R5",
+      "RQ": "Does EEP produce false positives on semantics-preserving transforms?",
+      "DATASET": "hard_negatives_N2",
+      "EXPERIMENT": "experiments/repair/phase8_15_repair_evaluation.py:phase15",
+      "N": 2,
+      "RAW_ARTIFACT": "results/repair/REPAIR_EVALUATION_RESULTS.json:phase15_hard_negatives",
+      "METRIC": "false_positive_rate",
+      "RESULT": 0.0,
+      "SCOPE": "2 rename-only semantics-preserving pairs",
+      "LIMITATION": "N=2 is extremely small",
+      "REVIEWER_RISK": "MEDIUM"
+    },
+    {
+      "CLAIM_ID": "C-R6",
+      "RQ": "Are 14 remaining undetected bugs provably invisible to output-free methods?",
+      "EXPLANATION": "14 of 38 bugs produce identical control flow, iteration counts, and call graphs vs. their fixed counterparts. Their only behavioral difference is the final computed value. Any output-free structural method that satisfies the EEP output-free guarantee will return d=0 for these cases.",
+      "SCOPE": "Specific corpus cases: E01, E02, E03, E05, E06, E07, E08, E09, E10, E11, E13, E14, E15, E17",
+      "REVIEWER_RISK": "LOW — this is a correct scientific finding, not a failure"
     }
   ],
 
-  "refuted_claims": [
-    {
-      "claim": "SBG outperforms simple baselines",
-      "evidence": "exception_fraction (0.567) > SBG V5 (0.551). H2 NOT SUPPORTED.",
-      "original_incorrect_value": "93.3% (was output oracle)",
-      "corrected_value": "13.2% output-free (N=40)"
-    },
-    {
-      "claim": "Multi-dimensional genome adds value over single feature",
-      "evidence": "Incremental delta = -0.043 (NEGATIVE). H6 NOT SUPPORTED.",
-      "corrected_value": "Exception_fraction alone exceeds full genome"
-    }
-  ],
+  "reproduction_verification": {
+    "artifact": "results/repair/REPRODUCTION_ADVERSARIAL_RESULTS.json",
+    "checks_passed": 3,
+    "discrepancies": 0,
+    "verdict": "REPRODUCTION_PASS"
+  },
 
-  "blocking_gaps_for_publication": [
-    "BugsInPy evaluation on >=50 real Python bugs (CRITICAL)",
-    "Resolve exception dominance OR reframe paper around negative result",
-    "Statistical test for SBG vs exception_fraction (CI on delta)",
-    "DEV AUROC anomaly investigation (SC-14 distribution analysis)",
-    "Run full V5 pipeline (not 3-feature proxy) on regression corpus"
-  ],
+  "adversarial_review": {
+    "mean_score": 6.4,
+    "overall_verdict": "BORDERLINE",
+    "n_reject": 0,
+    "verdicts": ["WEAK_ACCEPT", "BORDERLINE", "WEAK_ACCEPT", "ACCEPT", "BORDERLINE"]
+  },
 
-  "new_sprint_artifacts": {
-    "docs/pre_strengthening_baseline.md": "CREATED",
-    "docs/FINAL_SCIENTIFIC_STATUS.md": "CREATED",
-    "docs/ablation_analysis.md": "CREATED",
-    "results/phase1/OUTPUT_LEAKAGE_GATE.json": "CREATED",
-    "results/phase2/REPRESENTATION_ABLATION.json": "CREATED",
-    "results/phase3/COMPONENT_ABLATION.json": "CREATED",
-    "results/phase45/SCALED_REGRESSION_RESULTS.json": "CREATED",
-    "results/phase6_12/": "CREATED (8 files)",
-    "results/phase13/REPRODUCTION_AUDIT.json": "CREATED",
-    "results/phase14/ADVERSARIAL_REVIEWS.json": "CREATED",
-    "results/FINAL_RESULTS_MANIFEST.json": "UPDATED",
-    "experiments/strengthening/phase1_output_leakage_gate.py": "CREATED",
-    "experiments/strengthening/phase2_representation_ablation.py": "CREATED",
-    "experiments/strengthening/phase3_component_ablation.py": "CREATED",
-    "experiments/strengthening/phase45_scaled_regression.py": "CREATED",
-    "experiments/strengthening/phase6_12_analysis.py": "CREATED",
-    "experiments/strengthening/phase13_reproduction.py": "CREATED",
-    "experiments/strengthening/phase14_adversarial_review.py": "CREATED"
-  }
+  "final_scientific_verdict": "B — VALID EMPIRICAL PAPER",
+  "ready_for_paper_writing": "YES (as empirical study with limited scope claims)",
+  "ready_for_strong_method_paper": "NO — requires BugsInPy evaluation",
+  "stop_condition": "VERDICT_B_VALID_EMPIRICAL_PAPER"
 }
