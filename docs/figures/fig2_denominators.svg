@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="380" viewBox="0 0 1020 380" role="img" aria-label="Where the test split's pairs go">
+<title>Where the test split's pairs go</title>
+<rect width="1020" height="380" fill="#ffffff"/>
+<style>text{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;fill:#1b1b1f} .muted{fill:#6b6b76} .small{font-size:11px} .tiny{font-size:10px} .bold{font-weight:600}</style>
+<text x="20" y="28" class="bold" font-size="15">Every pair in the test split, accounted for</text>
+<text x="20" y="46" class="small muted">The published AUROC was reported against the first bar and computed on the second.</text>
+<text x="238" y="94" text-anchor="end" class="small">nominal pairs in the split</text>
+<rect x="250" y="76" width="640.0" height="26" fill="#7a7a85" opacity="0.75"/>
+<text x="898.0" y="94" class="small bold">744</text>
+<text x="238" y="136" text-anchor="end" class="small">executed under the protocol</text>
+<rect x="250" y="118" width="553.1" height="26" fill="#b8792a" opacity="0.75"/>
+<text x="811.1" y="136" class="small bold">643</text>
+<text x="238" y="178" text-anchor="end" class="small">also statistically valid</text>
+<rect x="250" y="160" width="447.3" height="26" fill="#2f6f9f" opacity="0.75"/>
+<text x="705.3" y="178" class="small bold">520</text>
+<text x="20" y="226" class="small bold">Not executed (101 pairs)</text>
+<text x="34" y="246" class="tiny">base:no_entry_function</text>
+<rect x="300" y="236" width="127.6" height="11" fill="#9a3b3b" opacity="0.6"/>
+<text x="433.6" y="246" class="tiny">58</text>
+<text x="34" y="262" class="tiny">variant:import_error</text>
+<rect x="300" y="252" width="48.4" height="11" fill="#9a3b3b" opacity="0.6"/>
+<text x="354.4" y="262" class="tiny">22</text>
+<text x="34" y="278" class="tiny">variant:no_entry_function</text>
+<rect x="300" y="268" width="6.6" height="11" fill="#9a3b3b" opacity="0.6"/>
+<text x="312.6" y="278" class="tiny">3</text>
+<text x="34" y="294" class="tiny">variant:syntax_error</text>
+<rect x="300" y="284" width="39.6" height="11" fill="#9a3b3b" opacity="0.6"/>
+<text x="345.6" y="294" class="tiny">18</text>
+<text x="20" y="328" class="small bold">Executed but statically invalid (123 pairs)</text>
+<text x="34" y="348" class="tiny">CHANGED, mutation unreachable from the entry function</text>
+<text x="560" y="348" class="tiny bold">135 of 366 CHANGED pairs</text>
+</svg>

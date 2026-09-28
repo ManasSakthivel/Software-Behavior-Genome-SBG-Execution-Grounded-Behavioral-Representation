@@ -667,6 +667,9 @@ def main() -> None:
 
     real_sbg_scores, _ = _load_true_sbg_scores()
     scores_are_real = real_sbg_scores is not None
+    # Every feature other than the one backed by a real per-pair score cache is
+    # reconstructed from its aggregate AUROC, so it must be named as synthetic.
+    synthetic_features = sorted(k for k in feature_dict if k != "sbg_static")
     if scores_are_real:
         print("  [INFO] True per-pair SBG scores loaded from scores_cache.json")
     else:
@@ -776,7 +779,22 @@ def main() -> None:
         "n_pairs":            n_pairs,
         "n_valid":            n_valid,
         "control_features":   control_features,
-        "scores_are_real":    scores_are_real,
+        # INTEGRITY FIX. This flag used to be True whenever *any* real per-pair
+        # score was found, while the note in the same file said "All other
+        # features use AUROC-consistent synthetic reconstruction". A consumer
+        # reading the flag alone would take a mostly synthetic artifact for a
+        # measured one -- and downstream files did: results/phase2/
+        # REPRESENTATION_ABLATION.json cites this artifact as the source of
+        # nine "measured" standalone AUROCs. The flag is now true only when
+        # every feature has real scores, and the synthetic features are named.
+        "scores_are_real":    bool(scores_are_real and not synthetic_features),
+        "scores_partially_real": bool(scores_are_real),
+        "synthetic_features": synthetic_features,
+        "provenance": (
+            "MEASURED" if (scores_are_real and not synthetic_features)
+            else "PARTIALLY_SYNTHETIC" if scores_are_real
+            else "SYNTHETIC"
+        ),
         "reconstruction_note": (
             "Per-pair feature scores were NOT persisted in v4 artifacts. "
             "Scores are synthesised from reported aggregate AUROCs via "

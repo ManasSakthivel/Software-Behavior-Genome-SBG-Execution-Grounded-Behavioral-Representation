@@ -384,13 +384,21 @@ def main():
     print(f"Total: {n_pass}/{len(results)} PASS  |  {n_fail} FAIL")
 
     if n_fail == 0:
-        verdict = "OUTPUT_FREE_GUARANTEE_HOLDS"
+        verdict = "DISTANCE_FUNCTION_IS_OUTPUT_FREE"
     elif all(not r["passed"] and r["test_id"].startswith("FP") for r in results if not r["passed"]):
         verdict = "OL_PASSES_FP_PARTIAL"
     else:
         verdict = "OUTPUT_LEAKAGE_DETECTED"
 
     print(f"\nVerdict: {verdict}")
+    print("\nSCOPE. This audit tests the DISTANCE FUNCTION on hand-written pairs.")
+    print("It does not test what the evaluation protocol chooses to execute, and")
+    print("that is where the constraint is actually broken: entry-point discovery")
+    print("returns the call-graph root, which in this corpus is the program's own")
+    print("test_* self-test driver, so its assert statements are traced and the")
+    print("exception features record whether the program's own tests passed.")
+    print("See experiments/final/output_oracle_leak_audit.py — 47 of 64 programs.")
+    print("A pass here is necessary for the output-free claim, not sufficient.")
 
     failed_tests = [r for r in results if not r["passed"]]
     if failed_tests:
@@ -409,6 +417,14 @@ def main():
         "n_fail": n_fail,
         "leakage_threshold": LEAKAGE_THRESHOLD,
         "verdict": verdict,
+        "scope": (
+            "Tests the distance function on hand-written pairs. Does NOT test the "
+            "execution protocol's choice of entry point, which is where the "
+            "output-free constraint is violated: see "
+            "artifacts/final/OUTPUT_ORACLE_LEAK_AUDIT.json, 47 of 64 programs trace "
+            "a self-test driver whose assert statements land in the exception "
+            "features. A pass here is necessary, not sufficient."
+        ),
         "tests": results,
         "elapsed_s": round(elapsed, 3),
     }

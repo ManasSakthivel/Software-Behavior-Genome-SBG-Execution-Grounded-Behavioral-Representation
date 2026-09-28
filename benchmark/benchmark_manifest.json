@@ -1,0 +1,845 @@
+{
+  "manifest": "SBG_BENCHMARK_MANIFEST",
+  "generated_by": "benchmark/scripts/build_manifest.py",
+  "authority": "This file is the single source for every program and pair count. Any count in a README, manuscript, table or figure must be derived from it; experiments/final/consistency_check.py enforces that.",
+  "split_assignment": {
+    "path": "benchmark/splits/split_assignment.json",
+    "seed": 42,
+    "method": "stratified_by_category",
+    "counts": {
+      "train": 28,
+      "dev": 10,
+      "val": 9,
+      "test": 13
+    },
+    "n_programs_assigned": 60
+  },
+  "corpus": {
+    "n_files_on_disk": 64,
+    "n_assigned_to_splits": 60,
+    "n_unassigned": 4,
+    "unassigned_programs": [
+      "err_assert_guard",
+      "math_fibonacci",
+      "sort_insertion_sort",
+      "str_palindrome"
+    ],
+    "unassigned_reason": "present in benchmark/corpus/base_programs but not listed in benchmark/splits/split_assignment.json; excluded from every experiment and from every reported count",
+    "programs": {
+      "api_event_bus": {
+        "path": "benchmark/corpus/base_programs/api_event_bus.py",
+        "sha256": "6d7f76f4cd5f41e7311bee4bc6cbb02dd7dafbe34e4f7f63ca095df3e4d050ac",
+        "assigned_to_split": true
+      },
+      "api_mock_http_client": {
+        "path": "benchmark/corpus/base_programs/api_mock_http_client.py",
+        "sha256": "deb0001b2dcb3c06a2ef4f8981ad0b11b0ea30675bb5c59058d6b01dd20a8777",
+        "assigned_to_split": true
+      },
+      "api_rate_limiter": {
+        "path": "benchmark/corpus/base_programs/api_rate_limiter.py",
+        "sha256": "73524bdbc48a6f8e3c37a580b2a8a4eb110d7d9e5abcad6148ed7bf08a0153aa",
+        "assigned_to_split": true
+      },
+      "api_rest_crud_mock": {
+        "path": "benchmark/corpus/base_programs/api_rest_crud_mock.py",
+        "sha256": "65fd3df9b1b6b6ba7e44f39e1a9e997f67b569b1df3fe09f58c11a850ddb7e3f",
+        "assigned_to_split": true
+      },
+      "conc_producer_consumer": {
+        "path": "benchmark/corpus/base_programs/conc_producer_consumer.py",
+        "sha256": "5451291bbbc0a5855a619b283a82b0a7c716ec867933a4c6fe8e2cd9f374599f",
+        "assigned_to_split": true
+      },
+      "conc_read_write_lock": {
+        "path": "benchmark/corpus/base_programs/conc_read_write_lock.py",
+        "sha256": "b57b782c085db4424e64de03ec6a158631e8b0e47efd45a60e2450e9d18989c0",
+        "assigned_to_split": true
+      },
+      "conc_thread_safe_counter": {
+        "path": "benchmark/corpus/base_programs/conc_thread_safe_counter.py",
+        "sha256": "af521dbdbf997344ec6e2fe493c8830f221b26f0bf2e9670c7936697789e60a1",
+        "assigned_to_split": true
+      },
+      "ds_binary_search_tree": {
+        "path": "benchmark/corpus/base_programs/ds_binary_search_tree.py",
+        "sha256": "376dad9fd910ccf31579c9e66d168e57b122463371585a87ff75e1ac3680bb7d",
+        "assigned_to_split": true
+      },
+      "ds_hash_table": {
+        "path": "benchmark/corpus/base_programs/ds_hash_table.py",
+        "sha256": "64d51e07677ea9f53f0b57126cd8f46741d82b6f487d8793b86cfea537dd381e",
+        "assigned_to_split": true
+      },
+      "ds_lru_cache": {
+        "path": "benchmark/corpus/base_programs/ds_lru_cache.py",
+        "sha256": "8424bbad81ad101b9b8ad7b45b071413f5f424547bbb15d521e5547724a918ec",
+        "assigned_to_split": true
+      },
+      "ds_min_heap": {
+        "path": "benchmark/corpus/base_programs/ds_min_heap.py",
+        "sha256": "faba9a42651efef56ad33098fd489dba7af5c3e41e9121561e4f932bd468a63f",
+        "assigned_to_split": true
+      },
+      "ds_stack_queue": {
+        "path": "benchmark/corpus/base_programs/ds_stack_queue.py",
+        "sha256": "8f67bf2901dfb279e14479c994a83f3c21e3827409673f8f56d96880531d9977",
+        "assigned_to_split": true
+      },
+      "ds_trie": {
+        "path": "benchmark/corpus/base_programs/ds_trie.py",
+        "sha256": "1b4f201e8445ac732b58505d97d071ba8e6724f618dfaa7f78bc84a17cc1b68c",
+        "assigned_to_split": true
+      },
+      "err_assert_guard": {
+        "path": "benchmark/corpus/base_programs/err_assert_guard.py",
+        "sha256": "234bf35114e312cb8b7d3bbb5a85e10ddb1f44e06de9faaeeb4e1057a3617d9e",
+        "assigned_to_split": false
+      },
+      "err_circuit_breaker": {
+        "path": "benchmark/corpus/base_programs/err_circuit_breaker.py",
+        "sha256": "497aa2e03e0f29015815778e167a7ddb9a13a92b13e40c1584b0ff27dd5f66a6",
+        "assigned_to_split": true
+      },
+      "err_result_type": {
+        "path": "benchmark/corpus/base_programs/err_result_type.py",
+        "sha256": "4d67dad3dd6561bba852c6fab41d96eab00c54eaf98b983252131a1721109dd2",
+        "assigned_to_split": true
+      },
+      "err_retry_backoff": {
+        "path": "benchmark/corpus/base_programs/err_retry_backoff.py",
+        "sha256": "bee2d8a3918a26a79fa9ea79b3f75da2a02b5f5ccfa7e86dbe5d44d3d9d91756",
+        "assigned_to_split": true
+      },
+      "err_validation_chain": {
+        "path": "benchmark/corpus/base_programs/err_validation_chain.py",
+        "sha256": "9307ac3b53d3f3808b6e8e145af8aaa341cf532a823c058262be7c5f9e79ea8c",
+        "assigned_to_split": true
+      },
+      "file_binary_encoder": {
+        "path": "benchmark/corpus/base_programs/file_binary_encoder.py",
+        "sha256": "f0b0d18f231f911d2b87946fd382dc8d1cb28c47bd7549dcf2f3afe2af8e703c",
+        "assigned_to_split": true
+      },
+      "file_config_parser": {
+        "path": "benchmark/corpus/base_programs/file_config_parser.py",
+        "sha256": "5772e409edbc75e90ff0091a28864492bd1d02cfe4f028dc14ad25240b463e11",
+        "assigned_to_split": true
+      },
+      "file_csv_aggregator": {
+        "path": "benchmark/corpus/base_programs/file_csv_aggregator.py",
+        "sha256": "65e91290684c1a0e8416c7b72db912bb01d820c9acf47ec4c77339fe2afef457",
+        "assigned_to_split": true
+      },
+      "file_log_processor": {
+        "path": "benchmark/corpus/base_programs/file_log_processor.py",
+        "sha256": "167770d7c5a048a2b512d8763d9037cb8e6002f3f1ab3c6f83c666f5c3cd4d55",
+        "assigned_to_split": true
+      },
+      "file_word_count_stream": {
+        "path": "benchmark/corpus/base_programs/file_word_count_stream.py",
+        "sha256": "aa4f37d04cf87214e44d7254cde7bb74dffa82066b5410f3991a1bdb1529116f",
+        "assigned_to_split": true
+      },
+      "fsm_connection_pool": {
+        "path": "benchmark/corpus/base_programs/fsm_connection_pool.py",
+        "sha256": "c2c25e8431031fbf590ff491d64381fc712532b08dccfe9bf41f5780da5b4675",
+        "assigned_to_split": true
+      },
+      "fsm_order_lifecycle": {
+        "path": "benchmark/corpus/base_programs/fsm_order_lifecycle.py",
+        "sha256": "733543e6a3bfb278a7f7a40bdc591326a70b7cdc531ee425c82cfe4c63b28e16",
+        "assigned_to_split": true
+      },
+      "fsm_parser_state": {
+        "path": "benchmark/corpus/base_programs/fsm_parser_state.py",
+        "sha256": "0c699f4b3acf9b53d13c36b1d06302e45ebcf5d938aa9b5affc13048475de342",
+        "assigned_to_split": true
+      },
+      "fsm_traffic_light": {
+        "path": "benchmark/corpus/base_programs/fsm_traffic_light.py",
+        "sha256": "932f4f577c3d6f765c303aa24a0f87652e231422870757ce828039a7dcbc5f55",
+        "assigned_to_split": true
+      },
+      "fsm_vending_machine": {
+        "path": "benchmark/corpus/base_programs/fsm_vending_machine.py",
+        "sha256": "5424572cb2458a1c45641aa25e0e65e8f2ea0fa29f5af920a02b5de8d3737088",
+        "assigned_to_split": true
+      },
+      "graph_bellman_ford": {
+        "path": "benchmark/corpus/base_programs/graph_bellman_ford.py",
+        "sha256": "9b343b1e81d65e07b5e2b3b50840a7a455abbd3c366912f6931bee57c0f9cc63",
+        "assigned_to_split": true
+      },
+      "graph_bfs_shortest_path": {
+        "path": "benchmark/corpus/base_programs/graph_bfs_shortest_path.py",
+        "sha256": "bd54a67631558038976d031403ce2b97f895fd3eec1775815d6c32bb12bee28e",
+        "assigned_to_split": true
+      },
+      "graph_connected_components": {
+        "path": "benchmark/corpus/base_programs/graph_connected_components.py",
+        "sha256": "0a8cc1c164cf0b041f7c10899451132880e88716985e0c9d40d3aedc6bd8eaac",
+        "assigned_to_split": true
+      },
+      "graph_cycle_detect_dfs": {
+        "path": "benchmark/corpus/base_programs/graph_cycle_detect_dfs.py",
+        "sha256": "6c8203b269abece7af868e5a462a10eb55905de01fb1d6f85d6991ad95d827b2",
+        "assigned_to_split": true
+      },
+      "graph_dijkstra": {
+        "path": "benchmark/corpus/base_programs/graph_dijkstra.py",
+        "sha256": "8008cbe80aeafb30ad6e5bd05d12ca3039cf488e7fa7f5f656dc044ec64c422d",
+        "assigned_to_split": true
+      },
+      "graph_topological_sort": {
+        "path": "benchmark/corpus/base_programs/graph_topological_sort.py",
+        "sha256": "effd4a944d751acea9650d48352bb1e298eb2bf70bb77084352b40a48e8b99c5",
+        "assigned_to_split": true
+      },
+      "math_dynamic_programming": {
+        "path": "benchmark/corpus/base_programs/math_dynamic_programming.py",
+        "sha256": "b4e81e45df12b616182487db7082ebf210fdf4d67f541bb7d1ddb215a0b732ac",
+        "assigned_to_split": true
+      },
+      "math_fibonacci": {
+        "path": "benchmark/corpus/base_programs/math_fibonacci.py",
+        "sha256": "44e1349a6e5f1cb263fff22640e0f65d3f727eb0a4bd4692405661922c0ac5d9",
+        "assigned_to_split": false
+      },
+      "math_matrix_ops": {
+        "path": "benchmark/corpus/base_programs/math_matrix_ops.py",
+        "sha256": "6a6b8720edf27a34b8d3006c0c4a13c033668a7fefcb140d83168af877c9fbbd",
+        "assigned_to_split": true
+      },
+      "math_numerical_integration": {
+        "path": "benchmark/corpus/base_programs/math_numerical_integration.py",
+        "sha256": "8efd9b9d4e99091ac5b21312e8887a39a1636fdc79e52cd15a68343694716f74",
+        "assigned_to_split": true
+      },
+      "math_polynomial": {
+        "path": "benchmark/corpus/base_programs/math_polynomial.py",
+        "sha256": "49ecf0f24ad2538daabcc2538845d366b534200edc7cafd13975c209e4b7efca",
+        "assigned_to_split": true
+      },
+      "math_prime_sieve": {
+        "path": "benchmark/corpus/base_programs/math_prime_sieve.py",
+        "sha256": "b7d3904e05d410e8c8f9fff37a726d5f860d5cc0dc7e928ae8db4f143f653830",
+        "assigned_to_split": true
+      },
+      "math_statistics": {
+        "path": "benchmark/corpus/base_programs/math_statistics.py",
+        "sha256": "26e557f419f11b1bec3e0f213959956d58aeac3f4c5b38af58bbbaf0c4d03949",
+        "assigned_to_split": true
+      },
+      "parse_ini_config": {
+        "path": "benchmark/corpus/base_programs/parse_ini_config.py",
+        "sha256": "a6e4643e07c5b49ed66564c0e0a5ff8a34db749ce7193cdcd8f9f6ac12388198",
+        "assigned_to_split": true
+      },
+      "parse_json_subset": {
+        "path": "benchmark/corpus/base_programs/parse_json_subset.py",
+        "sha256": "ddb877b5cc16c1bc479ff16314997d8565a75055c0aee9472bbecdc7499e625e",
+        "assigned_to_split": true
+      },
+      "parse_recursive_descent": {
+        "path": "benchmark/corpus/base_programs/parse_recursive_descent.py",
+        "sha256": "d930a393c78859e4b8ea0069b40fe2ba5ceafd76cac3dce030c18d5e984c16c6",
+        "assigned_to_split": true
+      },
+      "res_cache_ttl": {
+        "path": "benchmark/corpus/base_programs/res_cache_ttl.py",
+        "sha256": "aea31649b807bdae5ade5693d4eb38318183cfbc7416416160f14850040ff0b1",
+        "assigned_to_split": true
+      },
+      "res_memory_allocator": {
+        "path": "benchmark/corpus/base_programs/res_memory_allocator.py",
+        "sha256": "fcd61bb3e712d6e5b662c093cfae40f35fd45f73f2577660f64c0088721be6ed",
+        "assigned_to_split": true
+      },
+      "res_object_pool": {
+        "path": "benchmark/corpus/base_programs/res_object_pool.py",
+        "sha256": "cb8be0524b2cc79ea21c14bd06a9d42869971b547b88ab2c0cb0fa23e34e4110",
+        "assigned_to_split": true
+      },
+      "res_task_scheduler": {
+        "path": "benchmark/corpus/base_programs/res_task_scheduler.py",
+        "sha256": "8f3047d557d8591d34db3ac314bab20f8ddf50c5036df0bf08863220495b0710",
+        "assigned_to_split": true
+      },
+      "sort_binary_search": {
+        "path": "benchmark/corpus/base_programs/sort_binary_search.py",
+        "sha256": "5092bcafe50b6cfbb573f3318d398ab115d2a6e975c6f76a8deedc9b378a4546",
+        "assigned_to_split": true
+      },
+      "sort_counting_sort": {
+        "path": "benchmark/corpus/base_programs/sort_counting_sort.py",
+        "sha256": "c323d8c2a900ad2c5a0fb8f03e7241dc7223bfed23d2c79585962732b478efab",
+        "assigned_to_split": true
+      },
+      "sort_heapsort": {
+        "path": "benchmark/corpus/base_programs/sort_heapsort.py",
+        "sha256": "1fb741db72574917d71509b617fde59dedeebed2e0980626b30e32c89c50c1e1",
+        "assigned_to_split": true
+      },
+      "sort_insertion_sort": {
+        "path": "benchmark/corpus/base_programs/sort_insertion_sort.py",
+        "sha256": "4dda41ccafa5f836d0ad47f14e3103d523d5edd39c910cd1761170745cf422b1",
+        "assigned_to_split": false
+      },
+      "sort_mergesort": {
+        "path": "benchmark/corpus/base_programs/sort_mergesort.py",
+        "sha256": "d7c7612ede371292768e710f12ee6fc0e8f83d5f7409dc11107f03a2f057905d",
+        "assigned_to_split": true
+      },
+      "sort_quicksort": {
+        "path": "benchmark/corpus/base_programs/sort_quicksort.py",
+        "sha256": "0beb0864801cc59e7fd94a9fef697861e4ae7328d71c1c1f47d95458fd678951",
+        "assigned_to_split": true
+      },
+      "sort_radix_sort": {
+        "path": "benchmark/corpus/base_programs/sort_radix_sort.py",
+        "sha256": "5b470f6d4caaeb4603a937c4db77f6ff43084f4af6be13187f2d033dfdce46a9",
+        "assigned_to_split": true
+      },
+      "sort_timsort_runs": {
+        "path": "benchmark/corpus/base_programs/sort_timsort_runs.py",
+        "sha256": "fb0312ae9d63aba843a26ef1ec90d8ee63aa66f3873295df412fc7b7e1c73fff",
+        "assigned_to_split": true
+      },
+      "sort_topk_select": {
+        "path": "benchmark/corpus/base_programs/sort_topk_select.py",
+        "sha256": "de8d3d9ad3708545ac54757b6888f9a665b423e11e9364b64e125a89c2d9dd6e",
+        "assigned_to_split": true
+      },
+      "str_anagram_groups": {
+        "path": "benchmark/corpus/base_programs/str_anagram_groups.py",
+        "sha256": "04a652c376561482c9bd238620b7ebc68ec3e2f29e4334eaf98ca6cbb08ad251",
+        "assigned_to_split": true
+      },
+      "str_edit_distance": {
+        "path": "benchmark/corpus/base_programs/str_edit_distance.py",
+        "sha256": "2d0cf13e6a1e54b4c635e7d2fdfe71200110428d5e846fa53e5455c5d0371262",
+        "assigned_to_split": true
+      },
+      "str_kmp_search": {
+        "path": "benchmark/corpus/base_programs/str_kmp_search.py",
+        "sha256": "29990be40c6d6ac0b14a01d79483589d6d0d40e0ada9d74b5623fced99c59d21",
+        "assigned_to_split": true
+      },
+      "str_palindrome": {
+        "path": "benchmark/corpus/base_programs/str_palindrome.py",
+        "sha256": "c96529f3f386953559a8ed2ea01b2bacad19baddc0f890ffdfa869cde14839a1",
+        "assigned_to_split": false
+      },
+      "str_run_length_encode": {
+        "path": "benchmark/corpus/base_programs/str_run_length_encode.py",
+        "sha256": "13f2df1078a09ff594dee18ef95603274ce8c49be19d310e351ea039971794a9",
+        "assigned_to_split": true
+      },
+      "str_tokenizer": {
+        "path": "benchmark/corpus/base_programs/str_tokenizer.py",
+        "sha256": "a9d26afc113e204e030ebc800dd3ddd7493226fe0c2d33b9a63e56cfd40fb8db",
+        "assigned_to_split": true
+      },
+      "str_word_frequency": {
+        "path": "benchmark/corpus/base_programs/str_word_frequency.py",
+        "sha256": "d80bf8d7e8e38ccff2304fafcbf2da9c9a84cfbfb25f218a105d8bab0d00c401",
+        "assigned_to_split": true
+      }
+    }
+  },
+  "datasets": {
+    "v5_published": {
+      "dataset_dir": "benchmark/datasets",
+      "validity_audit": "artifacts/final/BENCHMARK_VALIDITY_AUDIT.json",
+      "splits": {
+        "train": {
+          "n_programs": 28,
+          "programs": [
+            "api_mock_http_client",
+            "api_rest_crud_mock",
+            "conc_thread_safe_counter",
+            "ds_lru_cache",
+            "ds_min_heap",
+            "ds_trie",
+            "err_retry_backoff",
+            "err_validation_chain",
+            "file_binary_encoder",
+            "file_log_processor",
+            "fsm_connection_pool",
+            "fsm_traffic_light",
+            "graph_bellman_ford",
+            "graph_dijkstra",
+            "graph_topological_sort",
+            "math_dynamic_programming",
+            "math_matrix_ops",
+            "math_prime_sieve",
+            "parse_json_subset",
+            "res_memory_allocator",
+            "res_task_scheduler",
+            "sort_binary_search",
+            "sort_mergesort",
+            "sort_radix_sort",
+            "sort_topk_select",
+            "str_edit_distance",
+            "str_kmp_search",
+            "str_word_frequency"
+          ],
+          "nominal_pairs": 1691,
+          "changed_pairs": 864,
+          "equivalent_pairs": 827,
+          "excluded_uncompilable": 50,
+          "excluded_no_entry_function": 0,
+          "excluded_changed_unobservable": 387,
+          "statically_valid_pairs": 1254,
+          "equivalent_noop_pairs": 369,
+          "by_transformation": {
+            "SC-1": 81,
+            "SC-10": 51,
+            "SC-11": 84,
+            "SC-12": 9,
+            "SC-13": 84,
+            "SC-2": 84,
+            "SC-3": 84,
+            "SC-4": 81,
+            "SC-5": 84,
+            "SC-6": 84,
+            "SC-7": 9,
+            "SC-8": 45,
+            "SC-9": 84,
+            "SP-1": 70,
+            "SP-10": 84,
+            "SP-11": 15,
+            "SP-12": 84,
+            "SP-2": 84,
+            "SP-3": 84,
+            "SP-4": 84,
+            "SP-5": 84,
+            "SP-6": 84,
+            "SP-7": 32,
+            "SP-8": 38,
+            "SP-9": 84
+          },
+          "pairs_file": "benchmark/datasets/pairs_train.jsonl",
+          "pairs_file_sha256": "b0a222530609cdb019e6add909d4bf1f16c78404d857c2fbc7d26b8b56a079a6"
+        },
+        "dev": {
+          "n_programs": 10,
+          "programs": [
+            "api_event_bus",
+            "ds_stack_queue",
+            "err_circuit_breaker",
+            "file_csv_aggregator",
+            "fsm_parser_state",
+            "graph_connected_components",
+            "math_numerical_integration",
+            "res_cache_ttl",
+            "sort_quicksort",
+            "str_run_length_encode"
+          ],
+          "nominal_pairs": 615,
+          "changed_pairs": 315,
+          "equivalent_pairs": 300,
+          "excluded_uncompilable": 16,
+          "excluded_no_entry_function": 62,
+          "excluded_changed_unobservable": 141,
+          "statically_valid_pairs": 396,
+          "equivalent_noop_pairs": 128,
+          "by_transformation": {
+            "SC-1": 30,
+            "SC-10": 12,
+            "SC-11": 30,
+            "SC-12": 3,
+            "SC-13": 30,
+            "SC-14": 6,
+            "SC-2": 30,
+            "SC-3": 30,
+            "SC-4": 27,
+            "SC-5": 30,
+            "SC-6": 30,
+            "SC-7": 6,
+            "SC-8": 21,
+            "SC-9": 30,
+            "SP-1": 30,
+            "SP-10": 30,
+            "SP-11": 6,
+            "SP-12": 30,
+            "SP-2": 30,
+            "SP-3": 30,
+            "SP-4": 30,
+            "SP-5": 30,
+            "SP-6": 30,
+            "SP-7": 13,
+            "SP-8": 11,
+            "SP-9": 30
+          },
+          "pairs_file": "benchmark/datasets/pairs_dev.jsonl",
+          "pairs_file_sha256": "2e6b562a5f3c2c6089096601cbcc355faf4084e13f526d33b229278d4c7e507f"
+        },
+        "val": {
+          "n_programs": 9,
+          "programs": [
+            "conc_producer_consumer",
+            "ds_binary_search_tree",
+            "file_word_count_stream",
+            "fsm_order_lifecycle",
+            "graph_cycle_detect_dfs",
+            "math_polynomial",
+            "parse_ini_config",
+            "sort_timsort_runs",
+            "str_anagram_groups"
+          ],
+          "nominal_pairs": 527,
+          "changed_pairs": 258,
+          "equivalent_pairs": 269,
+          "excluded_uncompilable": 17,
+          "excluded_no_entry_function": 0,
+          "excluded_changed_unobservable": 122,
+          "statically_valid_pairs": 388,
+          "equivalent_noop_pairs": 129,
+          "by_transformation": {
+            "SC-1": 21,
+            "SC-10": 9,
+            "SC-11": 27,
+            "SC-12": 3,
+            "SC-13": 27,
+            "SC-14": 3,
+            "SC-2": 27,
+            "SC-3": 27,
+            "SC-4": 21,
+            "SC-5": 27,
+            "SC-6": 27,
+            "SC-8": 12,
+            "SC-9": 27,
+            "SP-1": 22,
+            "SP-10": 27,
+            "SP-11": 3,
+            "SP-12": 27,
+            "SP-2": 27,
+            "SP-3": 27,
+            "SP-4": 27,
+            "SP-5": 27,
+            "SP-6": 27,
+            "SP-7": 13,
+            "SP-8": 15,
+            "SP-9": 27
+          },
+          "pairs_file": "benchmark/datasets/pairs_val.jsonl",
+          "pairs_file_sha256": "cccd50104b40b0e0a8bbe0b5d423fc22e98d91c6ce7ca2a81ccd6c3140d5383b"
+        },
+        "test": {
+          "n_programs": 13,
+          "programs": [
+            "api_rate_limiter",
+            "conc_read_write_lock",
+            "ds_hash_table",
+            "err_result_type",
+            "file_config_parser",
+            "fsm_vending_machine",
+            "graph_bfs_shortest_path",
+            "math_statistics",
+            "parse_recursive_descent",
+            "res_object_pool",
+            "sort_counting_sort",
+            "sort_heapsort",
+            "str_tokenizer"
+          ],
+          "nominal_pairs": 744,
+          "changed_pairs": 366,
+          "equivalent_pairs": 378,
+          "excluded_uncompilable": 20,
+          "excluded_no_entry_function": 56,
+          "excluded_changed_unobservable": 135,
+          "statically_valid_pairs": 533,
+          "equivalent_noop_pairs": 160,
+          "by_transformation": {
+            "SC-1": 33,
+            "SC-10": 6,
+            "SC-11": 39,
+            "SC-12": 9,
+            "SC-13": 39,
+            "SC-2": 39,
+            "SC-3": 39,
+            "SC-4": 33,
+            "SC-5": 39,
+            "SC-6": 36,
+            "SC-7": 6,
+            "SC-8": 9,
+            "SC-9": 39,
+            "SP-1": 22,
+            "SP-10": 39,
+            "SP-11": 12,
+            "SP-12": 39,
+            "SP-2": 39,
+            "SP-3": 39,
+            "SP-4": 39,
+            "SP-5": 39,
+            "SP-6": 39,
+            "SP-7": 15,
+            "SP-8": 17,
+            "SP-9": 39
+          },
+          "pairs_file": "benchmark/datasets/pairs_test.jsonl",
+          "pairs_file_sha256": "74c5cde2e6901ac8811fb0f7a61bd28d0125ef01701b489447211a6c834d6278"
+        }
+      },
+      "totals": {
+        "nominal_pairs": 3577,
+        "changed_pairs": 1803,
+        "equivalent_pairs": 1774,
+        "excluded_uncompilable": 103,
+        "excluded_no_entry_function": 118,
+        "excluded_changed_unobservable": 785,
+        "statically_valid_pairs": 2571,
+        "n_programs": 60
+      },
+      "split_program_intersections": {
+        "train|dev": [],
+        "train|val": [],
+        "train|test": [],
+        "dev|val": [],
+        "dev|test": [],
+        "val|test": []
+      },
+      "all_intersections_empty": true
+    },
+    "v6_corrected": {
+      "dataset_dir": "benchmark/datasets/v6",
+      "validity_audit": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V6.json",
+      "splits": {
+        "train": {
+          "n_programs": 28,
+          "programs": [
+            "api_mock_http_client",
+            "api_rest_crud_mock",
+            "conc_thread_safe_counter",
+            "ds_lru_cache",
+            "ds_min_heap",
+            "ds_trie",
+            "err_retry_backoff",
+            "err_validation_chain",
+            "file_binary_encoder",
+            "file_log_processor",
+            "fsm_connection_pool",
+            "fsm_traffic_light",
+            "graph_bellman_ford",
+            "graph_dijkstra",
+            "graph_topological_sort",
+            "math_dynamic_programming",
+            "math_matrix_ops",
+            "math_prime_sieve",
+            "parse_json_subset",
+            "res_memory_allocator",
+            "res_task_scheduler",
+            "sort_binary_search",
+            "sort_mergesort",
+            "sort_radix_sort",
+            "sort_topk_select",
+            "str_edit_distance",
+            "str_kmp_search",
+            "str_word_frequency"
+          ],
+          "nominal_pairs": 1129,
+          "changed_pairs": 570,
+          "equivalent_pairs": 559,
+          "excluded_uncompilable": 0,
+          "excluded_no_entry_function": 0,
+          "excluded_changed_unobservable": 0,
+          "statically_valid_pairs": 1129,
+          "equivalent_noop_pairs": 101,
+          "by_transformation": {
+            "SC-1": 54,
+            "SC-10": 42,
+            "SC-11": 69,
+            "SC-13": 63,
+            "SC-2": 63,
+            "SC-3": 66,
+            "SC-4": 63,
+            "SC-5": 63,
+            "SC-6": 69,
+            "SC-7": 3,
+            "SC-8": 15,
+            "SP-1": 70,
+            "SP-11": 15,
+            "SP-2": 84,
+            "SP-3": 84,
+            "SP-4": 84,
+            "SP-5": 59,
+            "SP-6": 84,
+            "SP-7": 32,
+            "SP-8": 38,
+            "SP-9": 9
+          },
+          "pairs_file": "benchmark/datasets/v6/pairs_train.jsonl",
+          "pairs_file_sha256": "e5259734572414ea78410662190b0d17b9d67ba3e5c31c75c135187c39c0dff9"
+        },
+        "dev": {
+          "n_programs": 10,
+          "programs": [
+            "api_event_bus",
+            "ds_stack_queue",
+            "err_circuit_breaker",
+            "file_csv_aggregator",
+            "fsm_parser_state",
+            "graph_connected_components",
+            "math_numerical_integration",
+            "res_cache_ttl",
+            "sort_quicksort",
+            "str_run_length_encode"
+          ],
+          "nominal_pairs": 372,
+          "changed_pairs": 159,
+          "equivalent_pairs": 213,
+          "excluded_uncompilable": 0,
+          "excluded_no_entry_function": 19,
+          "excluded_changed_unobservable": 0,
+          "statically_valid_pairs": 353,
+          "equivalent_noop_pairs": 50,
+          "by_transformation": {
+            "SC-1": 12,
+            "SC-10": 9,
+            "SC-11": 21,
+            "SC-12": 3,
+            "SC-13": 21,
+            "SC-2": 15,
+            "SC-3": 18,
+            "SC-4": 15,
+            "SC-5": 21,
+            "SC-6": 21,
+            "SC-8": 3,
+            "SP-1": 30,
+            "SP-11": 6,
+            "SP-2": 30,
+            "SP-3": 30,
+            "SP-4": 30,
+            "SP-5": 27,
+            "SP-6": 30,
+            "SP-7": 13,
+            "SP-8": 11,
+            "SP-9": 6
+          },
+          "pairs_file": "benchmark/datasets/v6/pairs_dev.jsonl",
+          "pairs_file_sha256": "f58b92256d648e6e5e6fe23547b32084cfe89808133d00528d79a9eb538fdbdd"
+        },
+        "val": {
+          "n_programs": 9,
+          "programs": [
+            "conc_producer_consumer",
+            "ds_binary_search_tree",
+            "file_word_count_stream",
+            "fsm_order_lifecycle",
+            "graph_cycle_detect_dfs",
+            "math_polynomial",
+            "parse_ini_config",
+            "sort_timsort_runs",
+            "str_anagram_groups"
+          ],
+          "nominal_pairs": 351,
+          "changed_pairs": 169,
+          "equivalent_pairs": 182,
+          "excluded_uncompilable": 0,
+          "excluded_no_entry_function": 0,
+          "excluded_changed_unobservable": 0,
+          "statically_valid_pairs": 351,
+          "equivalent_noop_pairs": 42,
+          "by_transformation": {
+            "SC-1": 9,
+            "SC-10": 9,
+            "SC-11": 27,
+            "SC-13": 21,
+            "SC-14": 1,
+            "SC-2": 18,
+            "SC-3": 18,
+            "SC-4": 18,
+            "SC-5": 21,
+            "SC-6": 27,
+            "SP-1": 22,
+            "SP-11": 3,
+            "SP-12": 1,
+            "SP-2": 27,
+            "SP-3": 27,
+            "SP-4": 27,
+            "SP-5": 17,
+            "SP-6": 27,
+            "SP-7": 13,
+            "SP-8": 15,
+            "SP-9": 3
+          },
+          "pairs_file": "benchmark/datasets/v6/pairs_val.jsonl",
+          "pairs_file_sha256": "b100e5d109326d5beacfbebfedbd8b13d3f9c59095293ed61b586263708081d3"
+        },
+        "test": {
+          "n_programs": 13,
+          "programs": [
+            "api_rate_limiter",
+            "conc_read_write_lock",
+            "ds_hash_table",
+            "err_result_type",
+            "file_config_parser",
+            "fsm_vending_machine",
+            "graph_bfs_shortest_path",
+            "math_statistics",
+            "parse_recursive_descent",
+            "res_object_pool",
+            "sort_counting_sort",
+            "sort_heapsort",
+            "str_tokenizer"
+          ],
+          "nominal_pairs": 488,
+          "changed_pairs": 246,
+          "equivalent_pairs": 242,
+          "excluded_uncompilable": 0,
+          "excluded_no_entry_function": 19,
+          "excluded_changed_unobservable": 0,
+          "statically_valid_pairs": 469,
+          "equivalent_noop_pairs": 33,
+          "by_transformation": {
+            "SC-1": 12,
+            "SC-10": 6,
+            "SC-11": 33,
+            "SC-13": 33,
+            "SC-2": 27,
+            "SC-3": 33,
+            "SC-4": 30,
+            "SC-5": 33,
+            "SC-6": 30,
+            "SC-7": 6,
+            "SC-8": 3,
+            "SP-1": 22,
+            "SP-11": 12,
+            "SP-12": 2,
+            "SP-2": 39,
+            "SP-3": 39,
+            "SP-4": 39,
+            "SP-5": 12,
+            "SP-6": 39,
+            "SP-7": 15,
+            "SP-8": 17,
+            "SP-9": 6
+          },
+          "pairs_file": "benchmark/datasets/v6/pairs_test.jsonl",
+          "pairs_file_sha256": "ada35810bd783fe194e86ebda29f1bd729ad3a396c772d4a0406b1d532c2b396"
+        }
+      },
+      "totals": {
+        "nominal_pairs": 2340,
+        "changed_pairs": 1144,
+        "equivalent_pairs": 1196,
+        "excluded_uncompilable": 0,
+        "excluded_no_entry_function": 38,
+        "excluded_changed_unobservable": 0,
+        "statically_valid_pairs": 2302,
+        "n_programs": 60
+      },
+      "split_program_intersections": {
+        "train|dev": [],
+        "train|val": [],
+        "train|test": [],
+        "dev|val": [],
+        "dev|test": [],
+        "val|test": []
+      },
+      "all_intersections_empty": true
+    }
+  }
+}
