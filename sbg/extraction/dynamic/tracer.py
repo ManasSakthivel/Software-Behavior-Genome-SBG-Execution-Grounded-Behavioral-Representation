@@ -127,6 +127,8 @@ class Tracer:
         func: Callable,
         inputs: List[Any],
         max_events: int = 10_000,
+        timeout_s: float = None,
+        max_timeouts: int = None,
     ) -> List[ExecutionTrace]:
         """
         Execute ``func`` once for each element in ``inputs`` under sys.settrace.
@@ -149,10 +151,22 @@ class Tracer:
         """
         traces: List[ExecutionTrace] = []
         program_id = getattr(func, "__qualname__", repr(func))
+        budget = _TIMEOUT_SECONDS if timeout_s is None else float(timeout_s)
+        n_timeouts = 0
 
         for inp in inputs:
-            trace = self._trace_one(func, inp, program_id, max_events)
+            trace = self._trace_one(func, inp, program_id, max_events, budget)
             traces.append(trace)
+            # A timed-out trace leaves behind a worker thread that cannot be
+            # killed. If the callable does not terminate, continuing costs one
+            # immortal thread per remaining input, and they compete for the GIL
+            # with every later program. ``max_timeouts`` stops after N of them;
+            # the caller decides what a non-terminating program means.
+            if max_timeouts is not None and (trace.exception or "").startswith(
+                    "TimeoutError"):
+                n_timeouts += 1
+                if n_timeouts >= max_timeouts:
+                    break
 
         return traces
 
@@ -166,6 +180,7 @@ class Tracer:
         inp: Any,
         program_id: str,
         max_events: int,
+        timeout_s: float = None,
     ) -> ExecutionTrace:
         import queue as _queue
 
@@ -173,6 +188,7 @@ class Tracer:
         result_q: "_queue.Queue[ExecutionTrace]" = _queue.Queue(maxsize=1)
         start_ns = time.monotonic_ns()
 
+        budget = _TIMEOUT_SECONDS if timeout_s is None else float(timeout_s)
         worker = _WorkerThread(
             func=func,
             inp=inp,
@@ -180,9 +196,18 @@ class Tracer:
             input_repr=input_repr,
             max_events=max_events,
             result_q=result_q,
+            timeout_s=budget,
         )
+        # The worker replaces sys.stdout to capture the traced program's output,
+        # and sys.stdout is process-global rather than thread-local. A worker
+        # that is abandoned on timeout never reaches its restore, so every later
+        # write by the host -- progress logging included -- disappears into a
+        # dead thread's buffer. The host therefore restores stdout itself.
+        host_stdout = sys.stdout
         worker.start()
-        worker.join(timeout=_TIMEOUT_SECONDS)
+        worker.join(timeout=budget)
+        if sys.stdout is not host_stdout:
+            sys.stdout = host_stdout
 
         elapsed_ms = (time.monotonic_ns() - start_ns) / 1_000_000
 
@@ -203,7 +228,7 @@ class Tracer:
             input_repr=input_repr,
             events=state.events if state is not None else [],
             return_value=None,
-            exception="TimeoutError: execution exceeded 5 s",
+            exception=f"TimeoutError: execution exceeded {timeout_s or _TIMEOUT_SECONDS} s",
             stdout="",
             execution_time_ms=elapsed_ms,
             coverage=state.coverage if state is not None else set(),
@@ -231,6 +256,7 @@ class _WorkerThread(threading.Thread):
         input_repr: str,
         max_events: int,
         result_q: "Any",
+        timeout_s: float = None,
     ) -> None:
         super().__init__(daemon=True)
         self.func = func
@@ -239,11 +265,14 @@ class _WorkerThread(threading.Thread):
         self.input_repr = input_repr
         self.max_events = max_events
         self.result_q = result_q
+        # Per-trace wall-clock budget. None keeps the module default, so every
+        # previously published run behaves exactly as before.
+        self.timeout_s = _TIMEOUT_SECONDS if timeout_s is None else float(timeout_s)
         # Exposed so the host can read partial state on timeout.
         self.state: Optional[_TraceState] = None
 
     def run(self) -> None:
-        state = _TraceState(self.max_events, _TIMEOUT_SECONDS)
+        state = _TraceState(self.max_events, self.timeout_s)
         self.state = state  # make visible to host before tracing begins
 
         return_value: Any = None

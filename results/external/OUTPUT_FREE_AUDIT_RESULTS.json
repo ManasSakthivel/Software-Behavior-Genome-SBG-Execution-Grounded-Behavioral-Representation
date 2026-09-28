@@ -1,11 +1,12 @@
 {
   "experiment": "SBG_OUTPUT_FREE_AUDIT",
-  "timestamp": "2026-08-30T16:02:32Z",
+  "timestamp": "2026-09-28T18:02:57Z",
   "n_tests": 9,
   "n_pass": 9,
   "n_fail": 0,
   "leakage_threshold": 0.05,
-  "verdict": "OUTPUT_FREE_GUARANTEE_HOLDS",
+  "verdict": "DISTANCE_FUNCTION_IS_OUTPUT_FREE",
+  "scope": "Tests the distance function on hand-written pairs. Does NOT test the execution protocol's choice of entry point, which is where the output-free constraint is violated: see artifacts/final/OUTPUT_ORACLE_LEAK_AUDIT.json, 47 of 64 programs trace a self-test driver whose assert statements land in the exception features. A pass here is necessary, not sufficient.",
   "tests": [
     {
       "test_id": "OL-1",
@@ -75,12 +76,12 @@
     {
       "test_id": "FP-3",
       "description": "double list: explicit loop vs list comprehension (style equivalence, d < 0.30 allowed)",
-      "distance": 0.179167,
+      "distance": 0.220833,
       "threshold": 0.3,
       "passed": true,
       "failure_reason": null,
       "note": "List comprehension creates a <listcomp> frame; some trace divergence is expected and acceptable"
     }
   ],
-  "elapsed_s": 0.008
+  "elapsed_s": 0.01
 }

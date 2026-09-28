@@ -1,0 +1,111 @@
+name: CI
+
+# Two jobs. `tests` is ordinary software CI. `scientific-integrity` checks that
+# the repository agrees with its own evidence: that the benchmark manifest adds
+# up, that the splits are disjoint, that no generated table has drifted from the
+# artifact it came from, and that no withdrawn claim has reappeared in a current
+# document.
+#
+# Neither job uses continue-on-error. A scientific check that cannot fail the
+# build is decoration.
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: tests (python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.9 is the documented floor. 3.13 is included because the tracer
+        # reads frame.f_locals on every event, and PEP 667 changed what that
+        # returns in 3.13 -- a difference that can move trace-derived features.
+        python-version: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pytest
+      - name: Unit and integration tests
+        run: python -m pytest sbg/ tests/ -q
+      - name: Quickstart smoke test
+        run: python examples/quickstart.py
+
+  scientific-integrity:
+    name: scientific integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pytest
+
+      - name: Benchmark validity audit (static, deterministic)
+        run: python benchmark/scripts/observability_audit.py
+
+      - name: Output-free protocol audit (static, deterministic)
+        run: python experiments/final/output_oracle_leak_audit.py
+
+      - name: Rebuild the benchmark manifest
+        run: python benchmark/scripts/build_manifest.py
+
+      - name: Rebuild the artifact provenance registry
+        run: python experiments/final/artifact_provenance.py
+
+      - name: Fail if a regenerated artifact differs from the committed one
+        run: |
+          git diff --exit-code -- \
+            benchmark/benchmark_manifest.json \
+            artifacts/final/BENCHMARK_VALIDITY_AUDIT.json \
+            artifacts/final/OUTPUT_ORACLE_LEAK_AUDIT.json
+
+      - name: Consistency gate
+        run: python experiments/final/consistency_check.py
+
+      - name: Integrity tests
+        run: python -m pytest tests/test_integrity.py -q
+
+  fast-experiments:
+    name: fast experiments reproduce (python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip pytest
+
+      # These two experiments run in under a minute, so CI re-runs them rather
+      # than trusting the committed artifact. The main benchmark evaluation
+      # takes ~26 minutes and is run on demand instead; see
+      # docs/current/REPRODUCTION.md.
+      #
+      # The committed artifacts were produced on CPython 3.13, so byte-exact
+      # reproduction is only required there. On 3.9 the tracer sees a different
+      # event stream -- 3.12 inlined comprehensions and PEP 667 changed
+      # frame.f_locals in 3.13 -- which moves individual pair distances without
+      # moving any reported count. The headline check must hold on both.
+      - name: Reproduce (headline values, byte-exact on 3.13)
+        run: |
+          if [ "${{ matrix.python-version }}" = "3.13" ]; then
+            python experiments/final/check_reproduction.py --strict
+          else
+            python experiments/final/check_reproduction.py
+          fi

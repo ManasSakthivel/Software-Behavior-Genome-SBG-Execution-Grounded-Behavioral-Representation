@@ -109,6 +109,9 @@ class SandboxRunner:
         n_runs: int = 5,
         seed: int = 42,
         max_events: int = 10_000,
+        timeout_s: float = None,
+        program_budget_s: float = None,
+        max_timeouts: int = None,
     ) -> SandboxResult:
         """
         Execute func(inp) for each inp in inputs, n_runs times.
@@ -143,10 +146,26 @@ class SandboxRunner:
 
         all_runs: List[List[ExecutionTrace]] = []
         start_wall = time.monotonic()
+        budget_exceeded = False
 
-        for _ in range(max(1, n_runs)):
-            run_traces = self._tracer.trace(func, inputs, max_events=max_events)
+        nonterminating = False
+        for run_index in range(max(1, n_runs)):
+            run_traces = self._tracer.trace(func, inputs, max_events=max_events,
+                                            timeout_s=timeout_s,
+                                            max_timeouts=max_timeouts)
             all_runs.append(run_traces)
+            if max_timeouts is not None and len(run_traces) < len(inputs):
+                nonterminating = True
+                break
+            # Optional per-program wall-clock budget, checked between runs so a
+            # program always completes at least one full run. A program that
+            # exceeds it is reported, never dropped: the caller records
+            # budget_exceeded and the pair is counted in the failure ledger.
+            if (program_budget_s is not None
+                    and (time.monotonic() - start_wall) > program_budget_s
+                    and run_index + 1 < max(1, n_runs)):
+                budget_exceeded = True
+                break
 
         wall_ms = (time.monotonic() - start_wall) * 1000.0
 
@@ -163,7 +182,8 @@ class SandboxRunner:
             noise_floor_stats=noise_stats,
             non_deterministic_flags=flags,
             timeout_fraction=timeout_frac,
-            error=None,
+            error=("NONTERMINATING" if nonterminating
+                   else "PROGRAM_BUDGET_EXCEEDED" if budget_exceeded else None),
         )
 
     # ------------------------------------------------------------------

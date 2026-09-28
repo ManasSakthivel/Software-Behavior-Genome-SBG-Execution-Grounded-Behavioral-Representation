@@ -1,47 +1,100 @@
 # Makefile for SBG — Software Behavior Genome
-# Convenience targets. All commands are just thin wrappers around the underlying scripts.
+#
+# Targets are grouped by what they actually do, because the previous `reproduce`
+# target only compared hashes of committed artifacts and was described as
+# reproducing the result. Verification and reproduction are now separate.
 
-.PHONY: test test-fast reproduce quickstart lint help
+PYTHON ?= python3
 
-# Run the full test suite (516 tests, ~25 seconds)
-test:
-	python3 -m pytest sbg/ -q
-
-# Run tests but stop at first failure (useful during development)
-test-fast:
-	python3 -m pytest sbg/ -q -x
-
-# Verify reproducibility (6 checks, instant)
-reproduce:
-	python3 experiments/v5/reproduction_check.py
-
-# Run the V3 reference result on the test set (~20 min)
-run-v3:
-	python3 baselines/v3/b07_dynamic_v3.py
-
-# Run the V5 integrated pipeline on the test set (~30 min)
-run-v5:
-	python3 baselines/v5/b07_dynamic_v5.py
-
-# Run the hard-negative oracle (instant)
-hard-negatives:
-	python3 benchmark/v5/hard_negatives/oracle.py
-
-# Run the regression detection experiment (instant)
-regression:
-	python3 experiments/v5/regression_evaluator.py
-
-# Run the quickstart example (compares a few program pairs, instant)
-quickstart:
-	python3 examples/quickstart.py
+.PHONY: help test quickstart verify-artifacts audit manifest tables readme \
+        figures check check-reproduction reproduce-fast reproduce-v5 reproduce-output-free reproduce-all \
+        benchmark-v6 clean
 
 help:
-	@echo "Available targets:"
-	@echo "  make test          — run full test suite (516 tests)"
-	@echo "  make test-fast     — run tests, stop on first failure"
-	@echo "  make reproduce     — verify reproducibility (6/6 checks)"
-	@echo "  make run-v3        — reproduce V3 result (AUROC=0.540, ~20 min)"
-	@echo "  make run-v5        — reproduce V5 result (AUROC=0.551, ~30 min)"
-	@echo "  make hard-negatives — run hard-negative oracle (instant)"
-	@echo "  make regression    — run regression detection experiment (instant)"
-	@echo "  make quickstart    — quick smoke test (instant)"
+	@echo "Software Behavior Genome — make targets"
+	@echo ""
+	@echo "  make test             run the full test suite"
+	@echo "  make quickstart       smoke test: compare a few program pairs (instant)"
+	@echo ""
+	@echo "  VERIFY — checks committed artifacts without re-running experiments"
+	@echo "  make audit            static benchmark + output-free audits (~20 s)"
+	@echo "  make manifest         rebuild benchmark/benchmark_manifest.json (~5 s)"
+	@echo "  make tables           regenerate docs/generated/ from the artifacts"
+	@echo "  make figures          regenerate docs/figures/ from the artifacts"
+	@echo "  make readme           splice the generated results into README.md"
+	@echo "  make verify-artifacts audit + manifest + tables + consistency gate"
+	@echo "  make check            verify-artifacts + the integrity tests"
+	@echo ""
+	@echo "  REPRODUCE — re-executes experiments and overwrites the artifacts"
+	@echo "  make reproduce-fast   hard negatives + regression corpus (~1 min)"
+	@echo "  make check-reproduction  re-run those and compare against the artifacts"
+	@echo "  make reproduce-v5     main benchmark, published protocol (~26 min)"
+	@echo "  make reproduce-all    every experiment (~60 min)"
+	@echo "  make benchmark-v6     regenerate the corrected benchmark (~3 min)"
+
+# ---------------------------------------------------------------------------
+# Tests
+# ---------------------------------------------------------------------------
+
+test:
+	$(PYTHON) -m pytest sbg/ tests/ -q
+
+quickstart:
+	$(PYTHON) examples/quickstart.py
+
+# ---------------------------------------------------------------------------
+# Verification — no experiment is executed, nothing is measured
+# ---------------------------------------------------------------------------
+
+audit:
+	$(PYTHON) benchmark/scripts/observability_audit.py
+	$(PYTHON) experiments/final/output_oracle_leak_audit.py
+
+manifest:
+	$(PYTHON) benchmark/scripts/build_manifest.py
+	$(PYTHON) experiments/final/artifact_provenance.py
+
+tables:
+	$(PYTHON) experiments/final/make_tables.py
+
+figures:
+	$(PYTHON) experiments/final/make_figures.py
+
+readme: tables
+	$(PYTHON) experiments/final/assemble_readme.py
+
+verify-artifacts: audit manifest tables figures readme
+	$(PYTHON) experiments/final/consistency_check.py
+
+check: verify-artifacts
+	$(PYTHON) -m pytest tests/test_integrity.py -q
+
+# ---------------------------------------------------------------------------
+# Reproduction — experiments are re-executed and artifacts overwritten
+# ---------------------------------------------------------------------------
+
+reproduce-fast:
+	$(PYTHON) experiments/final/hard_negative_evaluation.py
+	$(PYTHON) experiments/final/regression_evaluation.py
+
+check-reproduction:
+	$(PYTHON) experiments/final/check_reproduction.py
+
+reproduce-v5:
+	$(PYTHON) experiments/final/run_main_evaluation.py --split test --protocol published
+	$(PYTHON) experiments/final/analyse_results.py --split test --protocol published
+
+reproduce-output-free:
+	$(PYTHON) experiments/final/run_main_evaluation.py --split test --protocol output_free_v6
+	$(PYTHON) experiments/final/analyse_results.py --split test --protocol output_free_v6
+
+benchmark-v6:
+	$(PYTHON) benchmark/scripts/generate_benchmark_v6.py
+	$(PYTHON) benchmark/scripts/observability_audit.py benchmark/datasets/v6 \
+		artifacts/final/BENCHMARK_VALIDITY_AUDIT_V6.json
+
+reproduce-all: reproduce-fast reproduce-v5 reproduce-output-free verify-artifacts
+
+clean:
+	find . -name '__pycache__' -type d -prune -exec rm -rf {} +
+	find . -name '*.pyc' -delete

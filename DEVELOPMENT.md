@@ -19,7 +19,7 @@ make test-fast          # stop at first failure
 python3 -m pytest sbg/ -q --tb=short   # with tracebacks
 ```
 
-All 516 tests should pass. If they don't, something in the Python environment is off.
+All the count printed by `make test` should pass. If they don't, something in the Python environment is off.
 
 ## Repository layout
 

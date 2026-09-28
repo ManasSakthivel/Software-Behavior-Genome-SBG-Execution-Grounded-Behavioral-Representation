@@ -9,6 +9,29 @@ Every mutator:
   - Produces syntactically valid Python (compile-checked)
   - Returns the original source unchanged if no applicable site found
   - Produces a MutantRecord with full provenance
+  - Mutates only the program's functional code (see SITE RESTRICTION below)
+
+SITE RESTRICTION
+----------------
+Mutation sites are collected with ``ast.walk`` over the whole module, which
+walks in breadth-first order. Module-level statements are therefore visited
+before anything nested, and site 0 -- the site every generated variant in the
+original benchmark used -- lands on module-level scaffolding: the module
+docstring, or the ``if __name__ == '__main__'`` guard, or a ``test_*`` driver.
+
+The consequences were measured by ``benchmark/scripts/observability_audit.py``
+on the original benchmark: 135 of 336 CHANGED-labelled test pairs (40%) carry a
+mutation that is unreachable from the traced entry function, so the two
+programs are behaviourally identical and the CHANGED label is false. A further
+180 variants across all splits had their ``__main__`` guard inverted from
+``==`` to ``!=``, which makes the file execute its own test driver on import;
+22 of those crash while loading and were silently dropped from the denominator.
+
+``_functional_node_ids`` restricts sites to statements inside non-scaffolding
+definitions. The restriction applies to mutations only. Semantics-preserving
+transformations may still touch scaffolding, because a rename or a reformat
+leaves the EQUIVALENT label true wherever it is applied, whereas a mutation in
+scaffolding leaves the CHANGED label false.
 """
 import ast
 import copy
@@ -67,6 +90,71 @@ def _is_valid_python(source: str) -> bool:
         return False
 
 
+
+# ---------------------------------------------------------------------------
+# Site restriction helpers
+# ---------------------------------------------------------------------------
+
+def is_scaffolding(name: str) -> bool:
+    """True for self-test drivers, demo entry points and private helpers.
+
+    These are not part of the program's behaviour under the evaluation
+    protocol, so mutating them produces a variant labelled CHANGED that is in
+    fact behaviourally identical.
+    """
+    return (name.startswith("test_") or name in ("main", "demo", "demo_main",
+                                                 "benchmark"))
+
+
+def _functional_node_ids(tree) -> set:
+    """ids of every AST node inside a non-scaffolding top-level definition.
+
+    Module-level statements outside any definition -- the docstring, constants
+    and the ``__main__`` guard -- are deliberately excluded. Module constants
+    are excluded too: the benchmark's entry functions read them only through
+    the definitions that are already covered here, and including them would
+    re-admit the docstring, which is the site the original generator picked
+    most often.
+    """
+    allowed = set()
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if is_scaffolding(node.name):
+                continue
+        elif isinstance(node, ast.ClassDef):
+            if is_scaffolding(node.name.lower()):
+                continue
+        else:
+            continue
+        for sub in ast.walk(node):
+            allowed.add(id(sub))
+    return allowed
+
+
+def _docstring_node_ids(tree) -> set:
+    """ids of Constant nodes that are module, class or function docstrings."""
+    out = set()
+    for node in ast.walk(tree):
+        body = getattr(node, "body", None)
+        if not isinstance(node, (ast.Module, ast.ClassDef, ast.FunctionDef,
+                                 ast.AsyncFunctionDef)) or not body:
+            continue
+        first = body[0]
+        if (isinstance(first, ast.Expr) and isinstance(first.value, ast.Constant)
+                and isinstance(first.value.value, str)):
+            out.add(id(first.value))
+    return out
+
+
+def _site_is_allowed(site, allowed: set) -> bool:
+    """A site is allowed when any AST node it carries sits in functional code."""
+    candidates = site if isinstance(site, (tuple, list)) else (site,)
+    nodes = [c for c in candidates if isinstance(c, ast.AST)]
+    if not nodes:
+        return False
+    return any(id(node) in allowed for node in nodes)
+
+
 # ---------------------------------------------------------------------------
 # Base class
 # ---------------------------------------------------------------------------
@@ -76,7 +164,8 @@ class BaseMutator:
     witness_input: str = ""
     hard_negative: bool = False
 
-    def apply(self, source_code: str, seed: int = 0, mutation_site: int = 0) -> str:
+    def apply(self, source_code: str, seed: int = 0, mutation_site: int = 0,
+              restrict_to_functional_code: bool = True) -> str:
         random.seed(seed)
         try:
             tree = ast.parse(source_code)
@@ -84,6 +173,9 @@ class BaseMutator:
             return source_code
         tree = copy.deepcopy(tree)
         sites = self._collect_sites(tree)
+        if restrict_to_functional_code:
+            allowed = _functional_node_ids(tree)
+            sites = [site for site in sites if _site_is_allowed(site, allowed)]
         if not sites:
             return source_code
         site_idx = mutation_site % len(sites)
@@ -190,9 +282,14 @@ class ConstantMutator(BaseMutator):
     hard_negative = False
 
     def _collect_sites(self, tree):
+        # Docstrings are string constants but carry no behaviour: appending a
+        # suffix to one produces a variant labelled CHANGED that executes
+        # identically. They were the most frequently chosen SC-3 site in the
+        # original benchmark, so they are excluded here.
+        docstrings = _docstring_node_ids(tree)
         sites = []
         for node in ast.walk(tree):
-            if isinstance(node, ast.Constant):
+            if isinstance(node, ast.Constant) and id(node) not in docstrings:
                 if isinstance(node.value, int) and node.value not in (0, 1, -1, True, False):
                     sites.append(('int', node))
                 elif isinstance(node.value, str) and len(node.value) > 0:

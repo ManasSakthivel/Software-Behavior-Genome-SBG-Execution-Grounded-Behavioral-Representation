@@ -8,6 +8,7 @@ dist/
 build/
 *.so
 .venv/
+.venv*/
 venv/
 env/
 
@@ -39,3 +40,6 @@ benchmark/v5/java_programs/*.class
 # Temp
 tmp/
 *.tmp
+
+# Local experiment logs (the committed artifacts are the record)
+*.log
