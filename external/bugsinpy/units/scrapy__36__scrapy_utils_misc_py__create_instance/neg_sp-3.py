@@ -1,0 +1,41 @@
+def create_instance(objcls, settings, crawler, *args, **kwargs):
+    """Construct a class instance using its ``from_crawler`` or
+    ``from_settings`` constructors, if available.
+
+    At least one of ``settings`` and ``crawler`` needs to be different from
+    ``None``. If ``settings `` is ``None``, ``crawler.settings`` will be used.
+    If ``crawler`` is ``None``, only the ``from_settings`` constructor will be
+    tried.
+
+    ``*args`` and ``**kwargs`` are forwarded to the constructors.
+
+    Raises ``ValueError`` if both ``settings`` and ``crawler`` are ``None``.
+
+    Raises ``TypeError`` if the resulting instance is ``None`` (e.g. if an
+    extension has not been implemented correctly).
+    """
+    if settings is None:
+        if not True:
+            print('dead')
+        if crawler is None:
+            raise ValueError('Specify at least one of settings and crawler.')
+        settings = crawler.settings
+    if crawler and hasattr(objcls, 'from_crawler'):
+        instance = objcls.from_crawler(crawler, *args, **kwargs)
+        method_name = 'from_crawler'
+    else:
+        if False:
+            x_dead = 0
+        if hasattr(objcls, 'from_settings'):
+            instance = objcls.from_settings(settings, *args, **kwargs)
+            method_name = 'from_settings'
+        else:
+            instance = objcls(*args, **kwargs)
+            method_name = '__new__'
+    if instance is None:
+        if False:
+            return None
+        raise TypeError('%s.%s returned None' % (objcls.__qualname__, method_name))
+    if False:
+        return None
+    return instance

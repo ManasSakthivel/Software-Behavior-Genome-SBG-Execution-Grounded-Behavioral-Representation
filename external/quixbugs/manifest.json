@@ -1,0 +1,3049 @@
+{
+  "corpus": "quixbugs",
+  "source_repository": "https://github.com/jkoppel/QuixBugs",
+  "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+  "license": "MIT",
+  "frozen_at": "2026-09-28T16:21:52+00:00",
+  "preregistration": "docs/current/PHASE2_PREREGISTRATION.md",
+  "eligibility_rules": {
+    "subject": "every python_programs/*.py except *_test.py drivers and node.py",
+    "canonical": "protocol.eligible_candidates non-empty on both fixed and buggy versions (static; identical rule to the main benchmark)",
+    "declared": "json_testcases file exists and both versions define a top-level function named after the program"
+  },
+  "negatives_rule": {
+    "order": [
+      "SP-1",
+      "SP-2",
+      "SP-4",
+      "SP-6",
+      "SP-10",
+      "SP-3",
+      "SP-5",
+      "SP-9"
+    ],
+    "seed": 0,
+    "max_per_program": 3,
+    "accept_if": "compiles and normalised AST differs from fixed"
+  },
+  "declared_entry_mapping": "by name; if an SP-2 variant renamed it, the top-level function at the same ordinal position as in the fixed program",
+  "counts": {
+    "files": 50,
+    "scaffolding_excluded": 10,
+    "subject_programs": 40,
+    "eligible_canonical": 40,
+    "eligible_declared": 31,
+    "negatives": 112
+  },
+  "programs": [
+    {
+      "id": "bitcount",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/bitcount.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/bitcount.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "bitcount"
+        ],
+        "named_entry": {
+          "params": [
+            "n"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/bitcount.json",
+        "n_cases": 9
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "bitcount__sp-1_s0",
+          "path": "external/quixbugs/variants/bitcount__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "bitcount__sp-2_s0",
+          "path": "external/quixbugs/variants/bitcount__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "bitcount__sp-3_s0",
+          "path": "external/quixbugs/variants/bitcount__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "breadth_first_search",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/breadth_first_search.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/breadth_first_search.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "breadth_first_search"
+        ],
+        "named_entry": {
+          "params": [
+            "startnode",
+            "goalnode"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "breadth_first_search__sp-1_s0",
+          "path": "external/quixbugs/variants/breadth_first_search__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "breadth_first_search__sp-2_s0",
+          "path": "external/quixbugs/variants/breadth_first_search__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "breadth_first_search__sp-3_s0",
+          "path": "external/quixbugs/variants/breadth_first_search__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "bucketsort",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/bucketsort.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/bucketsort.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "bucketsort"
+        ],
+        "named_entry": {
+          "params": [
+            "arr",
+            "k"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/bucketsort.json",
+        "n_cases": 7
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "bucketsort__sp-1_s0",
+          "path": "external/quixbugs/variants/bucketsort__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "bucketsort__sp-2_s0",
+          "path": "external/quixbugs/variants/bucketsort__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "bucketsort__sp-3_s0",
+          "path": "external/quixbugs/variants/bucketsort__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "depth_first_search",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/depth_first_search.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/depth_first_search.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "depth_first_search"
+        ],
+        "named_entry": {
+          "params": [
+            "startnode",
+            "goalnode"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "depth_first_search__sp-1_s0",
+          "path": "external/quixbugs/variants/depth_first_search__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "depth_first_search__sp-2_s0",
+          "path": "external/quixbugs/variants/depth_first_search__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "depth_first_search__sp-3_s0",
+          "path": "external/quixbugs/variants/depth_first_search__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "detect_cycle",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/detect_cycle.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/detect_cycle.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "detect_cycle"
+        ],
+        "named_entry": {
+          "params": [
+            "node"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "detect_cycle__sp-1_s0",
+          "path": "external/quixbugs/variants/detect_cycle__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "detect_cycle__sp-2_s0",
+          "path": "external/quixbugs/variants/detect_cycle__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "detect_cycle__sp-3_s0",
+          "path": "external/quixbugs/variants/detect_cycle__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "find_first_in_sorted",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/find_first_in_sorted.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/find_first_in_sorted.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "find_first_in_sorted"
+        ],
+        "named_entry": {
+          "params": [
+            "arr",
+            "x"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/find_first_in_sorted.json",
+        "n_cases": 7
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "find_first_in_sorted__sp-1_s0",
+          "path": "external/quixbugs/variants/find_first_in_sorted__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "find_first_in_sorted__sp-2_s0",
+          "path": "external/quixbugs/variants/find_first_in_sorted__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "find_first_in_sorted__sp-6_s0",
+          "path": "external/quixbugs/variants/find_first_in_sorted__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "find_in_sorted",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/find_in_sorted.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/find_in_sorted.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "find_in_sorted"
+        ],
+        "named_entry": {
+          "params": [
+            "arr",
+            "x"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/find_in_sorted.json",
+        "n_cases": 7
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "find_in_sorted__sp-1_s0",
+          "path": "external/quixbugs/variants/find_in_sorted__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "find_in_sorted__sp-2_s0",
+          "path": "external/quixbugs/variants/find_in_sorted__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "find_in_sorted__sp-6_s0",
+          "path": "external/quixbugs/variants/find_in_sorted__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "flatten",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/flatten.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/flatten.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "flatten"
+        ],
+        "named_entry": {
+          "params": [
+            "arr"
+          ],
+          "n_required": 1,
+          "is_generator": true
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/flatten.json",
+        "n_cases": 7
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "flatten__sp-1_s0",
+          "path": "external/quixbugs/variants/flatten__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "flatten__sp-2_s0",
+          "path": "external/quixbugs/variants/flatten__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-3",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "gcd",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/gcd.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/gcd.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "gcd"
+        ],
+        "named_entry": {
+          "params": [
+            "a",
+            "b"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/gcd.json",
+        "n_cases": 6
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "gcd__sp-2_s0",
+          "path": "external/quixbugs/variants/gcd__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "gcd__sp-3_s0",
+          "path": "external/quixbugs/variants/gcd__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "get_factors",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/get_factors.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/get_factors.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "get_factors"
+        ],
+        "named_entry": {
+          "params": [
+            "n"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/get_factors.json",
+        "n_cases": 11
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "get_factors__sp-1_s0",
+          "path": "external/quixbugs/variants/get_factors__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "get_factors__sp-2_s0",
+          "path": "external/quixbugs/variants/get_factors__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "get_factors__sp-3_s0",
+          "path": "external/quixbugs/variants/get_factors__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "hanoi",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/hanoi.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/hanoi.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "hanoi"
+        ],
+        "named_entry": {
+          "params": [
+            "height",
+            "start",
+            "end"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/hanoi.json",
+        "n_cases": 8
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "hanoi__sp-2_s0",
+          "path": "external/quixbugs/variants/hanoi__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "hanoi__sp-3_s0",
+          "path": "external/quixbugs/variants/hanoi__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "is_valid_parenthesization",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/is_valid_parenthesization.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/is_valid_parenthesization.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "is_valid_parenthesization"
+        ],
+        "named_entry": {
+          "params": [
+            "parens"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/is_valid_parenthesization.json",
+        "n_cases": 3
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "is_valid_parenthesization__sp-2_s0",
+          "path": "external/quixbugs/variants/is_valid_parenthesization__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "is_valid_parenthesization__sp-6_s0",
+          "path": "external/quixbugs/variants/is_valid_parenthesization__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        },
+        {
+          "variant_id": "is_valid_parenthesization__sp-3_s0",
+          "path": "external/quixbugs/variants/is_valid_parenthesization__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "kheapsort",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/kheapsort.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/kheapsort.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "kheapsort"
+        ],
+        "named_entry": {
+          "params": [
+            "arr",
+            "k"
+          ],
+          "n_required": 2,
+          "is_generator": true
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/kheapsort.json",
+        "n_cases": 4
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "kheapsort__sp-1_s0",
+          "path": "external/quixbugs/variants/kheapsort__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "kheapsort__sp-2_s0",
+          "path": "external/quixbugs/variants/kheapsort__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "kheapsort__sp-3_s0",
+          "path": "external/quixbugs/variants/kheapsort__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "knapsack",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/knapsack.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/knapsack.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "knapsack"
+        ],
+        "named_entry": {
+          "params": [
+            "capacity",
+            "items"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/knapsack.json",
+        "n_cases": 10
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "knapsack__sp-1_s0",
+          "path": "external/quixbugs/variants/knapsack__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "knapsack__sp-2_s0",
+          "path": "external/quixbugs/variants/knapsack__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "knapsack__sp-3_s0",
+          "path": "external/quixbugs/variants/knapsack__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "kth",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/kth.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/kth.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "kth"
+        ],
+        "named_entry": {
+          "params": [
+            "arr",
+            "k"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/kth.json",
+        "n_cases": 7
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "kth__sp-1_s0",
+          "path": "external/quixbugs/variants/kth__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "kth__sp-2_s0",
+          "path": "external/quixbugs/variants/kth__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "kth__sp-6_s0",
+          "path": "external/quixbugs/variants/kth__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "lcs_length",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/lcs_length.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/lcs_length.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "lcs_length"
+        ],
+        "named_entry": {
+          "params": [
+            "s",
+            "t"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/lcs_length.json",
+        "n_cases": 9
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "lcs_length__sp-1_s0",
+          "path": "external/quixbugs/variants/lcs_length__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "lcs_length__sp-2_s0",
+          "path": "external/quixbugs/variants/lcs_length__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "lcs_length__sp-3_s0",
+          "path": "external/quixbugs/variants/lcs_length__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "levenshtein",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/levenshtein.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/levenshtein.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "levenshtein"
+        ],
+        "named_entry": {
+          "params": [
+            "source",
+            "target"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/levenshtein.json",
+        "n_cases": 7
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "levenshtein__sp-2_s0",
+          "path": "external/quixbugs/variants/levenshtein__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "levenshtein__sp-6_s0",
+          "path": "external/quixbugs/variants/levenshtein__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        },
+        {
+          "variant_id": "levenshtein__sp-3_s0",
+          "path": "external/quixbugs/variants/levenshtein__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "lis",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/lis.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/lis.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "lis"
+        ],
+        "named_entry": {
+          "params": [
+            "arr"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/lis.json",
+        "n_cases": 12
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "lis__sp-1_s0",
+          "path": "external/quixbugs/variants/lis__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "lis__sp-2_s0",
+          "path": "external/quixbugs/variants/lis__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "lis__sp-6_s0",
+          "path": "external/quixbugs/variants/lis__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "longest_common_subsequence",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/longest_common_subsequence.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/longest_common_subsequence.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "longest_common_subsequence"
+        ],
+        "named_entry": {
+          "params": [
+            "a",
+            "b"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/longest_common_subsequence.json",
+        "n_cases": 10
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "longest_common_subsequence__sp-2_s0",
+          "path": "external/quixbugs/variants/longest_common_subsequence__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "longest_common_subsequence__sp-3_s0",
+          "path": "external/quixbugs/variants/longest_common_subsequence__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "max_sublist_sum",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/max_sublist_sum.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/max_sublist_sum.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "max_sublist_sum"
+        ],
+        "named_entry": {
+          "params": [
+            "arr"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/max_sublist_sum.json",
+        "n_cases": 6
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "max_sublist_sum__sp-1_s0",
+          "path": "external/quixbugs/variants/max_sublist_sum__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "max_sublist_sum__sp-2_s0",
+          "path": "external/quixbugs/variants/max_sublist_sum__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "max_sublist_sum__sp-3_s0",
+          "path": "external/quixbugs/variants/max_sublist_sum__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "mergesort",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/mergesort.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/mergesort.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "mergesort"
+        ],
+        "named_entry": {
+          "params": [
+            "arr"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/mergesort.json",
+        "n_cases": 14
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "mergesort__sp-1_s0",
+          "path": "external/quixbugs/variants/mergesort__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "mergesort__sp-2_s0",
+          "path": "external/quixbugs/variants/mergesort__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "mergesort__sp-6_s0",
+          "path": "external/quixbugs/variants/mergesort__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "minimum_spanning_tree",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/minimum_spanning_tree.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/minimum_spanning_tree.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "minimum_spanning_tree"
+        ],
+        "named_entry": {
+          "params": [
+            "weight_by_edge"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "minimum_spanning_tree__sp-1_s0",
+          "path": "external/quixbugs/variants/minimum_spanning_tree__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "minimum_spanning_tree__sp-2_s0",
+          "path": "external/quixbugs/variants/minimum_spanning_tree__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "minimum_spanning_tree__sp-3_s0",
+          "path": "external/quixbugs/variants/minimum_spanning_tree__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "next_palindrome",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/next_palindrome.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/next_palindrome.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "next_palindrome"
+        ],
+        "named_entry": {
+          "params": [
+            "digit_list"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/next_palindrome.json",
+        "n_cases": 5
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "next_palindrome__sp-2_s0",
+          "path": "external/quixbugs/variants/next_palindrome__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "next_palindrome__sp-6_s0",
+          "path": "external/quixbugs/variants/next_palindrome__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        },
+        {
+          "variant_id": "next_palindrome__sp-3_s0",
+          "path": "external/quixbugs/variants/next_palindrome__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "next_permutation",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/next_permutation.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/next_permutation.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "next_permutation"
+        ],
+        "named_entry": {
+          "params": [
+            "perm"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/next_permutation.json",
+        "n_cases": 8
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "next_permutation__sp-1_s0",
+          "path": "external/quixbugs/variants/next_permutation__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "next_permutation__sp-2_s0",
+          "path": "external/quixbugs/variants/next_permutation__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "next_permutation__sp-3_s0",
+          "path": "external/quixbugs/variants/next_permutation__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "pascal",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/pascal.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/pascal.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "pascal"
+        ],
+        "named_entry": {
+          "params": [
+            "n"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/pascal.json",
+        "n_cases": 5
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "pascal__sp-1_s0",
+          "path": "external/quixbugs/variants/pascal__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "pascal__sp-2_s0",
+          "path": "external/quixbugs/variants/pascal__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "pascal__sp-3_s0",
+          "path": "external/quixbugs/variants/pascal__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "possible_change",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/possible_change.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/possible_change.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "possible_change"
+        ],
+        "named_entry": {
+          "params": [
+            "coins",
+            "total"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/possible_change.json",
+        "n_cases": 10
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "possible_change__sp-2_s0",
+          "path": "external/quixbugs/variants/possible_change__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "possible_change__sp-3_s0",
+          "path": "external/quixbugs/variants/possible_change__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "powerset",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/powerset.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/powerset.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "powerset"
+        ],
+        "named_entry": {
+          "params": [
+            "arr"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/powerset.json",
+        "n_cases": 5
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "powerset__sp-1_s0",
+          "path": "external/quixbugs/variants/powerset__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "powerset__sp-2_s0",
+          "path": "external/quixbugs/variants/powerset__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "powerset__sp-3_s0",
+          "path": "external/quixbugs/variants/powerset__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "quicksort",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/quicksort.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/quicksort.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "quicksort"
+        ],
+        "named_entry": {
+          "params": [
+            "arr"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/quicksort.json",
+        "n_cases": 13
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "quicksort__sp-1_s0",
+          "path": "external/quixbugs/variants/quicksort__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "quicksort__sp-2_s0",
+          "path": "external/quixbugs/variants/quicksort__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "quicksort__sp-3_s0",
+          "path": "external/quixbugs/variants/quicksort__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "reverse_linked_list",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/reverse_linked_list.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/reverse_linked_list.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "reverse_linked_list"
+        ],
+        "named_entry": {
+          "params": [
+            "node"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "reverse_linked_list__sp-1_s0",
+          "path": "external/quixbugs/variants/reverse_linked_list__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "reverse_linked_list__sp-2_s0",
+          "path": "external/quixbugs/variants/reverse_linked_list__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "reverse_linked_list__sp-3_s0",
+          "path": "external/quixbugs/variants/reverse_linked_list__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "rpn_eval",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/rpn_eval.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/rpn_eval.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "rpn_eval"
+        ],
+        "named_entry": {
+          "params": [
+            "tokens"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/rpn_eval.json",
+        "n_cases": 6
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "rpn_eval__sp-2_s0",
+          "path": "external/quixbugs/variants/rpn_eval__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "rpn_eval__sp-3_s0",
+          "path": "external/quixbugs/variants/rpn_eval__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "shortest_path_length",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/shortest_path_length.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/shortest_path_length.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "shortest_path_length",
+          "get",
+          "insert_or_update"
+        ],
+        "named_entry": {
+          "params": [
+            "length_by_edge",
+            "startnode",
+            "goalnode"
+          ],
+          "n_required": 3,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "shortest_path_length__sp-1_s0",
+          "path": "external/quixbugs/variants/shortest_path_length__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "shortest_path_length__sp-2_s0",
+          "path": "external/quixbugs/variants/shortest_path_length__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "shortest_path_length__sp-6_s0",
+          "path": "external/quixbugs/variants/shortest_path_length__sp-6_s0.py",
+          "transformation_type": "SP-6",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "shortest_path_lengths",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/shortest_path_lengths.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/shortest_path_lengths.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "shortest_path_lengths"
+        ],
+        "named_entry": {
+          "params": [
+            "n",
+            "length_by_edge"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "shortest_path_lengths__sp-1_s0",
+          "path": "external/quixbugs/variants/shortest_path_lengths__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "shortest_path_lengths__sp-2_s0",
+          "path": "external/quixbugs/variants/shortest_path_lengths__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "shortest_path_lengths__sp-3_s0",
+          "path": "external/quixbugs/variants/shortest_path_lengths__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "shortest_paths",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/shortest_paths.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/shortest_paths.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "shortest_paths"
+        ],
+        "named_entry": {
+          "params": [
+            "source",
+            "weight_by_edge"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "shortest_paths__sp-1_s0",
+          "path": "external/quixbugs/variants/shortest_paths__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "shortest_paths__sp-2_s0",
+          "path": "external/quixbugs/variants/shortest_paths__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "shortest_paths__sp-3_s0",
+          "path": "external/quixbugs/variants/shortest_paths__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "shunting_yard",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/shunting_yard.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/shunting_yard.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "shunting_yard"
+        ],
+        "named_entry": {
+          "params": [
+            "tokens"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/shunting_yard.json",
+        "n_cases": 6
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "shunting_yard__sp-2_s0",
+          "path": "external/quixbugs/variants/shunting_yard__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "shunting_yard__sp-3_s0",
+          "path": "external/quixbugs/variants/shunting_yard__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "sieve",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/sieve.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/sieve.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "sieve"
+        ],
+        "named_entry": {
+          "params": [
+            "max"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/sieve.json",
+        "n_cases": 6
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "sieve__sp-1_s0",
+          "path": "external/quixbugs/variants/sieve__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "sieve__sp-2_s0",
+          "path": "external/quixbugs/variants/sieve__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "sieve__sp-3_s0",
+          "path": "external/quixbugs/variants/sieve__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "sqrt",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/sqrt.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/sqrt.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "sqrt"
+        ],
+        "named_entry": {
+          "params": [
+            "x",
+            "epsilon"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/sqrt.json",
+        "n_cases": 7
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "sqrt__sp-1_s0",
+          "path": "external/quixbugs/variants/sqrt__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "sqrt__sp-2_s0",
+          "path": "external/quixbugs/variants/sqrt__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "sqrt__sp-3_s0",
+          "path": "external/quixbugs/variants/sqrt__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "subsequences",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/subsequences.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/subsequences.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "subsequences"
+        ],
+        "named_entry": {
+          "params": [
+            "a",
+            "b",
+            "k"
+          ],
+          "n_required": 3,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/subsequences.json",
+        "n_cases": 12
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "subsequences__sp-1_s0",
+          "path": "external/quixbugs/variants/subsequences__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "subsequences__sp-2_s0",
+          "path": "external/quixbugs/variants/subsequences__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "subsequences__sp-3_s0",
+          "path": "external/quixbugs/variants/subsequences__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "to_base",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/to_base.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/to_base.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "to_base"
+        ],
+        "named_entry": {
+          "params": [
+            "num",
+            "b"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/to_base.json",
+        "n_cases": 10
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "to_base__sp-1_s0",
+          "path": "external/quixbugs/variants/to_base__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "to_base__sp-2_s0",
+          "path": "external/quixbugs/variants/to_base__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "to_base__sp-3_s0",
+          "path": "external/quixbugs/variants/to_base__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "topological_ordering",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/topological_ordering.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/topological_ordering.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "topological_ordering"
+        ],
+        "named_entry": {
+          "params": [
+            "nodes"
+          ],
+          "n_required": 1,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": null,
+        "n_cases": 0
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": false
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": "no json_testcases upstream (graph program exercised only by a *_test.py driver)"
+      },
+      "negatives": [
+        {
+          "variant_id": "topological_ordering__sp-1_s0",
+          "path": "external/quixbugs/variants/topological_ordering__sp-1_s0.py",
+          "transformation_type": "SP-1",
+          "seed": 0
+        },
+        {
+          "variant_id": "topological_ordering__sp-2_s0",
+          "path": "external/quixbugs/variants/topological_ordering__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "topological_ordering__sp-3_s0",
+          "path": "external/quixbugs/variants/topological_ordering__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "source_repository": "https://github.com/jkoppel/QuixBugs",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "license": "MIT",
+      "language": "python",
+      "buggy_path": "external/quixbugs/python_programs/wrap.py",
+      "fixed_path": "external/quixbugs/correct_python_programs/wrap.py",
+      "split": "external_test",
+      "written_for_sbg": false,
+      "interface": {
+        "top_level_functions": [
+          "wrap"
+        ],
+        "named_entry": {
+          "params": [
+            "text",
+            "cols"
+          ],
+          "n_required": 2,
+          "is_generator": false
+        },
+        "annotated": false
+      },
+      "declared_inputs": {
+        "file": "external/quixbugs/json_testcases/wrap.json",
+        "n_cases": 5
+      },
+      "eligible": {
+        "canonical": true,
+        "declared": true
+      },
+      "exclusion_reason": {
+        "canonical": null,
+        "declared": null
+      },
+      "negatives": [
+        {
+          "variant_id": "wrap__sp-2_s0",
+          "path": "external/quixbugs/variants/wrap__sp-2_s0.py",
+          "transformation_type": "SP-2",
+          "seed": 0
+        },
+        {
+          "variant_id": "wrap__sp-3_s0",
+          "path": "external/quixbugs/variants/wrap__sp-3_s0.py",
+          "transformation_type": "SP-3",
+          "seed": 0
+        }
+      ],
+      "negatives_rejected": [
+        {
+          "transformation_type": "SP-1",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-4",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-6",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-10",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-5",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        },
+        {
+          "transformation_type": "SP-9",
+          "seed": 0,
+          "reason": "no_op: normalised AST identical"
+        }
+      ]
+    }
+  ],
+  "scaffolding": [
+    {
+      "file": "python_programs/breadth_first_search_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/depth_first_search_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/detect_cycle_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/minimum_spanning_tree_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/node.py",
+      "status": "excluded",
+      "reason": "scaffolding: shared Node helper class, not a subject program"
+    },
+    {
+      "file": "python_programs/reverse_linked_list_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/shortest_path_length_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/shortest_path_lengths_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/shortest_paths_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    },
+    {
+      "file": "python_programs/topological_ordering_test.py",
+      "status": "excluded",
+      "reason": "scaffolding: QuixBugs test driver (constructs graphs, prints results)"
+    }
+  ]
+}

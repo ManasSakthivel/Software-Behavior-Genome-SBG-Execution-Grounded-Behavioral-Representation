@@ -101,6 +101,11 @@ class _TraceState:
 
 _TIMEOUT_SECONDS = 5.0
 
+# Code objects of evaluation-harness frames (e.g. a synthesised class driver)
+# that must not appear in any trace. Their callees are still traced. Empty by
+# default, so no existing trace changes unless a harness registers itself.
+HARNESS_CODE: Set[Any] = set()
+
 
 class Tracer:
     """
@@ -335,6 +340,11 @@ def _make_trace_fn(state: _TraceState):
             sys.settrace(None)
             frame.f_trace = None
             return None
+
+        # Harness frames are invisible: identical for base and variant, and not
+        # part of the program under test. Keep tracing into their callees.
+        if frame.f_code in HARNESS_CODE:
+            return _trace
 
         # Record coverage (line events carry the authoritative line number).
         lineno: int = frame.f_lineno

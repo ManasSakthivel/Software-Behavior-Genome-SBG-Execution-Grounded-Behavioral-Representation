@@ -1,0 +1,214 @@
+{
+  "artifact": "STANFORD_GATE",
+  "rule": "docs/current/PHASE2_PREREGISTRATION.md \u00a77",
+  "categories": {
+    "research_question": {
+      "verdict": "PASS",
+      "evidence": [
+        "C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)"
+      ],
+      "missing": []
+    },
+    "novelty": {
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing": [
+        "FINAL_STANFORD_READINESS_REPORT.md: no section stating the novelty claim and its evidence"
+      ]
+    },
+    "methodological_rigor": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "tau*=0.072905 derived on dev only under output_free_v7"
+      ],
+      "missing": [
+        "WEIGHT_FITTING.json with the dev choice and the single test scoring",
+        "artifacts/final/MAIN_EVALUATION_v6test_output_free_v7.json (frozen test evaluation under output_free_v7)"
+      ]
+    },
+    "oracle_independence": {
+      "verdict": "PASS",
+      "evidence": [
+        "C6 no output-reading result is attributed to SBG",
+        "C7 output-free protocol traces no self-test driver",
+        "OUTPUT_ORACLE_LEAK_AUDIT.json",
+        "declared-input regime has a test that expected outputs never reach tracing"
+      ],
+      "missing": []
+    },
+    "benchmark_quality": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "C2 benchmark manifest is internally consistent",
+        "C3 result denominators agree with the sets"
+      ],
+      "missing": [
+        "artifacts/final/programs_v6test_output_free_v7.json (v7 test program records)",
+        "evaluated programs: main test 0, QuixBugs 0, BugsInPy 39; prereg floor total >= 40 and real >= 20"
+      ]
+    },
+    "real_program_validity": {
+      "verdict": "PASS",
+      "evidence": [
+        "real-program corpus with 39 evaluated programs (QuixBugs 0, BugsInPy 39)"
+      ],
+      "missing": []
+    },
+    "stateful_program_validity": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "driver-synthesis validation 13/13"
+      ],
+      "missing": [
+        "0 test programs evaluated through the class tier; prereg floor 3"
+      ]
+    },
+    "external_validation": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "BUGSINPY_output_free_v7.json under output_free_v7 with frozen manifest hash"
+      ],
+      "missing": [
+        "QUIXBUGS_output_free_v7.json under output_free_v7 with its frozen manifest hash",
+        "QUIXBUGS_JAVA_SBG_RESULTS.json or JAVA_CLAIM_REMOVAL.json"
+      ]
+    },
+    "statistical_rigor": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "BUGSINPY_output_free_v7.json: AUROC, cluster CI and Holm-corrected comparisons"
+      ],
+      "missing": [
+        "MAIN_EVALUATION_v6test_output_free_v7.json: AUROC, cluster CI and Holm-corrected comparisons",
+        "QUIXBUGS_output_free_v7.json: AUROC, cluster CI and Holm-corrected comparisons"
+      ]
+    },
+    "baseline_quality": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "BUGSINPY_output_free_v7.json: static and execution baselines"
+      ],
+      "missing": [
+        "MAIN_EVALUATION_v6test_output_free_v7.json: static and execution baselines",
+        "QUIXBUGS_output_free_v7.json: static and execution baselines"
+      ]
+    },
+    "empirical_validity": {
+      "verdict": "PASS",
+      "evidence": [
+        "no reported value moves across ['3.9.6', '3.13.15']; canonical 3.13"
+      ],
+      "missing": []
+    },
+    "reproducibility": {
+      "verdict": "PASS",
+      "evidence": [
+        "Makefile target setup",
+        "Makefile target reproduce-v7",
+        "Makefile target reproduce-real",
+        "Makefile target reproduce-external",
+        "Makefile target gate",
+        "requirements-lock.txt",
+        ".python-version",
+        "docs/current/REPRODUCTION.md"
+      ],
+      "missing": []
+    },
+    "claim_discipline": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "C5 no retired claim appears in a current document",
+        "C8 README results block matches the generated tables"
+      ],
+      "missing": [
+        "README cites MAIN_EVALUATION_v6test_output_free_v7.json",
+        "README cites QUIXBUGS_output_free_v7.json",
+        "README cites BUGSINPY_output_free_v7.json"
+      ]
+    },
+    "failure_transparency": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "BUGSINPY_output_free_v7.json: exclusion_taxonomy"
+      ],
+      "missing": [
+        "MAIN_EVALUATION_v6test_output_free_v7.json: failure_ledger",
+        "QUIXBUGS_output_free_v7.json: failed_pairs"
+      ]
+    },
+    "internal_consistency": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "C1 generated tables match their artifacts",
+        "C2 benchmark manifest is internally consistent",
+        "C3 result denominators agree with the sets",
+        "C4 documents cite only MEASURED artifacts",
+        "C7 output-free protocol traces no self-test driver",
+        "C8 README results block matches the generated tables"
+      ],
+      "missing": [
+        "C10 gate verdict is recomputed from artifacts and quoted exactly: the evidence-driven gate has not been run; run `make gate`"
+      ]
+    },
+    "engineering_quality": {
+      "verdict": "PASS",
+      "evidence": [
+        "CI steps all fail the build",
+        "tests/test_driver_synthesis.py",
+        "tests/test_external_quixbugs.py",
+        "tests/test_external_bugsinpy.py",
+        "tests/test_statistics.py",
+        "tests/test_integrity.py"
+      ],
+      "missing": []
+    },
+    "scientific_integrity": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)"
+      ],
+      "missing": [
+        "WEIGHT_FITTING.json recording the dev choice before test"
+      ]
+    },
+    "research_maturity": {
+      "verdict": "PASS",
+      "evidence": [
+        "FINAL_STANFORD_READINESS_REPORT.md: negative results section",
+        "FINAL_STANFORD_READINESS_REPORT.md: limitations section"
+      ],
+      "missing": []
+    },
+    "generalization_validity": {
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing": [
+        "report scopes its generalisation claim to QUIXBUGS_output_free_v7.json",
+        "report scopes its generalisation claim to BUGSINPY_output_free_v7.json"
+      ]
+    },
+    "publication_readiness": {
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing": [
+        "novelty is BLOCKED",
+        "methodological_rigor is BLOCKED",
+        "benchmark_quality is BLOCKED",
+        "stateful_program_validity is BLOCKED",
+        "external_validation is BLOCKED",
+        "statistical_rigor is BLOCKED",
+        "baseline_quality is BLOCKED",
+        "claim_discipline is BLOCKED",
+        "failure_transparency is BLOCKED",
+        "internal_consistency is BLOCKED",
+        "scientific_integrity is BLOCKED",
+        "generalization_validity is BLOCKED"
+      ]
+    }
+  },
+  "summary": {
+    "pass": 7,
+    "blocked": 13,
+    "total": 20
+  }
+}

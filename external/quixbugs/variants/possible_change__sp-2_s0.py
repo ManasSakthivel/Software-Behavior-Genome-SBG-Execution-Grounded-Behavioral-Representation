@@ -1,0 +1,8 @@
+def fn_possible_change(coins, total):
+    if total == 0:
+        return 1
+    if total < 0 or not coins:
+        return 0
+    first, *rest = coins
+    return fn_possible_change(coins, total - first) + fn_possible_change(rest, total)
+'\ndef possible_change(coins, total):\n    if total == 0:\n        return 1\n    if not coins or total < 0:\n        return 0\n\n    first, *rest = coins\n    return possible_change(coins, total - first) + possible_change(rest, total)\n\ndef possible_change(coins, total):\n    if total == 0:\n        return 1\n    if total < 0 or len(coins) == 0:\n        return 0\n\n    first, *rest = coins\n    return possible_change(coins, total - first) + possible_change(rest, total)\n\ndef possible_change(coins, total):\n    if total == 0:\n        return 1\n    if len(coins) == 0 or total < 0:\n        return 0\n\n    first, *rest = coins\n    return possible_change(coins, total - first) + possible_change(rest, total)\n\ndef possible_change(coins, total):\n    if total == 0:\n        return 1\n    if not coins: return 0\n    if total < 0:\n        return 0\n\n    first, *rest = coins\n    return possible_change(coins, total - first) + possible_change(rest, total)\n\ndef possible_change(coins, total):\n    if total == 0:\n        return 1\n    if len(coins) == 0: return 0\n    if total < 0:\n        return 0\n\n    first, *rest = coins\n    return possible_change(coins, total - first) + possible_change(rest, total)\n\n'

@@ -33,6 +33,7 @@ Exit code 0 when every check passes, 1 otherwise.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import pathlib
 import re
@@ -80,8 +81,9 @@ ORACLE_MISATTRIBUTION = [
     (r"SBG[^.\n]{0,40}\boutput\s+oracle\b", "names SBG and the output oracle together"),
 ]
 
-DOC_GLOBS = ("README.md", "DEVELOPMENT.md", "FINAL_STANFORD_READINESS_REPORT.md",
-             "docs/*.md", "docs/current/*.md")
+# Every Markdown file at the repository root is current by definition: a stale
+# "final status" document left at the root is exactly what a reader finds first.
+DOC_GLOBS = ("*.md", "CITATION.cff", "docs/*.md", "docs/current/*.md")
 
 # A retired claim may be quoted while it is being withdrawn -- that is how a
 # correction is written. A match is allowed when its line, or the table header
@@ -151,12 +153,8 @@ def check_manifest() -> Tuple[bool, List[str]]:
 
 def check_denominators() -> Tuple[bool, List[str]]:
     problems = []
-    for name in ("MAIN_EVALUATION_test_published.json",
-                 "MAIN_EVALUATION_test_output_free_v6.json",
-                 "MAIN_EVALUATION_v6test_output_free_v6.json"):
-        path = REPO_ROOT / "artifacts" / "final" / name
-        if not path.exists():
-            continue
+    for path in sorted((REPO_ROOT / "artifacts" / "final").glob("MAIN_EVALUATION_*.json")):
+        name = path.name
         payload = json.loads(path.read_text())
         sizes = payload["set_sizes"]
         if not sizes["VALID"] <= sizes["EVALUABLE"] <= sizes["ALL"]:
@@ -268,17 +266,113 @@ def check_readme_block() -> Tuple[bool, List[str]]:
 
 
 def check_output_free_protocol() -> Tuple[bool, List[str]]:
-    path = REPO_ROOT / "artifacts" / "final" / "programs_test_output_free_v6.json"
-    if not path.exists():
+    paths = sorted((REPO_ROOT / "artifacts" / "final").glob("programs_*output_free*.json"))
+    if not paths:
         return True, ["skipped: output-free protocol has not been run"]
-    payload = json.loads(path.read_text())
     problems = []
-    for program_path, record in payload["programs"].items():
+    records = {}
+    for path in paths:
+        records.update(json.loads(path.read_text())["programs"])
+    for program_path, record in records.items():
         discovery = record.get("entry_discovery") or ""
         entry = discovery.split(":")[-1]
         if entry.startswith("test_") or entry in ("main", "demo"):
             problems.append(f"{program_path}: output-free protocol selected the "
                             f"scaffolding entry point {entry!r}")
+    return not problems, problems
+
+
+def _sha256(path: pathlib.Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _hash_claims(node, found):
+    """Every {path-like: ..., sha256: ...} pair anywhere inside a freeze record."""
+    if isinstance(node, dict):
+        digest = node.get("sha256")
+        target = next((node[k] for k in ("path", "file", "relative_path")
+                       if isinstance(node.get(k), str)), None)
+        if isinstance(digest, str) and target:
+            found.append((target, digest))
+        for key, value in node.items():
+            if key.endswith("_sha256") and isinstance(value, str) and len(value) == 64:
+                stem = key[:-len("_sha256")]
+                if isinstance(node.get(stem), str):
+                    found.append((node[stem], value))
+            _hash_claims(value, found)
+    elif isinstance(node, list):
+        for value in node:
+            _hash_claims(value, found)
+    return found
+
+
+def check_frozen_inputs() -> Tuple[bool, List[str]]:
+    """Nothing that was frozen before scoring may have changed since.
+
+    Covers the pre-registration, the benchmark pair files (test-set
+    modification), the threshold (it must come from dev), and every hash a
+    stage recorded in an artifacts/final/freeze_*.json record (corpus manifests,
+    generated negatives, weights).
+    """
+    problems = []
+    final = REPO_ROOT / "artifacts" / "final"
+    freeze = final / "PHASE2_FREEZE.json"
+    if freeze.exists():
+        record = json.loads(freeze.read_text())
+        doc = REPO_ROOT / record["preregistration"]
+        if not doc.exists() or _sha256(doc) != record["preregistration_sha256"]:
+            problems.append(f"{record['preregistration']} changed after it was frozen")
+    manifest = json.loads((REPO_ROOT / "benchmark" / "benchmark_manifest.json").read_text())
+    for name, block in manifest["datasets"].items():
+        for split, s in block["splits"].items():
+            pairs = REPO_ROOT / s["pairs_file"]
+            if not pairs.exists() or _sha256(pairs) != s["pairs_file_sha256"]:
+                problems.append(f"{name}/{split}: {s['pairs_file']} differs from the "
+                                "manifest -- the benchmark changed without a new version")
+    threshold = final / "THRESHOLD_FROZEN.json"
+    if threshold.exists():
+        t = json.loads(threshold.read_text())
+        text = json.dumps(t).lower()
+        if t.get("split", "dev") != "dev" or "pairs_test" in text:
+            problems.append("THRESHOLD_FROZEN.json: threshold must be derived from dev only")
+    for record_path in sorted(final.glob("freeze_*.json")):
+        for target, digest in _hash_claims(json.loads(record_path.read_text()), []):
+            path = pathlib.Path(target)
+            path = path if path.is_absolute() else REPO_ROOT / path
+            if path.is_file() and _sha256(path) != digest:
+                problems.append(f"{record_path.name}: {target} changed after it was frozen")
+            elif not path.exists():
+                problems.append(f"{record_path.name}: frozen file {target} is missing")
+    return not problems, problems
+
+
+def check_gate() -> Tuple[bool, List[str]]:
+    """The gate verdict is recomputed from artifacts, and documents quote it exactly."""
+    gate_script = REPO_ROOT / "experiments" / "final" / "stanford_gate.py"
+    gate_artifact = REPO_ROOT / "artifacts" / "final" / "STANFORD_GATE.json"
+    if not gate_script.exists() or not gate_artifact.exists():
+        return False, ["the evidence-driven gate has not been run; run `make gate`"]
+    result = subprocess.run([sys.executable, str(gate_script), "--check"],
+                            capture_output=True, text=True, cwd=REPO_ROOT)
+    problems = []
+    if result.returncode not in (0, 1):
+        problems.append(f"stanford_gate.py --check crashed: {result.stderr.strip()[-300:]}")
+    recomputed = json.loads(result.stdout) if result.stdout.strip().startswith("{") else None
+    committed = json.loads(gate_artifact.read_text())
+    if recomputed is None or recomputed.get("categories") != committed.get("categories"):
+        problems.append("STANFORD_GATE.json differs from the verdict recomputed from "
+                        "the artifacts on disk; run `make gate`")
+    n_pass = committed.get("summary", {}).get("pass")
+    n_total = committed.get("summary", {}).get("total")
+    for document in current_documents():
+        text = document.read_text()
+        for match in re.finditer(r"\b(\d{1,2})/(\d{1,2})\s+PASS\b", text):
+            quoted = (int(match.group(1)), int(match.group(2)))
+            if quoted[1] == n_total and quoted != (n_pass, n_total):
+                line_no = text.count("\n", 0, match.start()) + 1
+                problems.append(f"{document.relative_to(REPO_ROOT)}:{line_no}: quotes "
+                                f"{match.group(0)!r} but the gate artifact says "
+                                f"{n_pass}/{n_total} PASS")
     return not problems, problems
 
 
@@ -291,6 +385,9 @@ CHECKS = [
     ("C6 no output-reading result is attributed to SBG", check_oracle_attribution),
     ("C7 output-free protocol traces no self-test driver", check_output_free_protocol),
     ("C8 README results block matches the generated tables", check_readme_block),
+    ("C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)",
+     check_frozen_inputs),
+    ("C10 gate verdict is recomputed from artifacts and quoted exactly", check_gate),
 ]
 
 

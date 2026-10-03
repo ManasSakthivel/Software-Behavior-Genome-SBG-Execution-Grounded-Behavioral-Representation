@@ -1,0 +1,51 @@
+{
+  "artifact": "THRESHOLD_FROZEN",
+  "protocol": "output_free_v7",
+  "predictor": "sbg_v5",
+  "tau_star": 0.072905,
+  "rule": "maximise Youden J = TPR - FPR over midpoints of consecutive sorted unique distances; detected iff d > tau; ties -> smaller tau",
+  "preregistration": "docs/current/PHASE2_PREREGISTRATION.md section 3",
+  "derived_on": {
+    "split": "dev",
+    "dataset_pair_file": "benchmark/datasets/v6/pairs_dev.jsonl",
+    "dataset_pair_file_sha256": "f58b92256d648e6e5e6fe23547b32084cfe89808133d00528d79a9eb538fdbdd",
+    "scored_pair_file": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+    "scored_pair_file_sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6",
+    "validity_audit": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+    "n_valid_pairs": 345,
+    "n_changed": 156,
+    "n_equivalent": 189,
+    "n_programs": 9,
+    "programs": [
+      "api_event_bus",
+      "ds_stack_queue",
+      "err_circuit_breaker",
+      "file_csv_aggregator",
+      "fsm_parser_state",
+      "graph_connected_components",
+      "res_cache_ttl",
+      "sort_quicksort",
+      "str_run_length_encode"
+    ]
+  },
+  "dev_operating_point": {
+    "youden_j": 0.377798,
+    "tpr": 0.557692,
+    "fpr": 0.179894
+  },
+  "stability_diagnostic_not_used_for_selection": {
+    "method": "cluster bootstrap over dev programs, 2000 resamples, seed 42",
+    "n_nondegenerate": 2000,
+    "tau_p2_5": 0.031258,
+    "tau_median": 0.072905,
+    "tau_p97_5": 0.089592
+  },
+  "previous_value": {
+    "tau_star": 0.08,
+    "derived_under": "published protocol",
+    "status": "superseded for output_free_v7 results"
+  },
+  "reads_no_test_or_external_labels": true,
+  "frozen_at": "2026-09-28T16:24:11+00:00",
+  "python": "3.13.15"
+}

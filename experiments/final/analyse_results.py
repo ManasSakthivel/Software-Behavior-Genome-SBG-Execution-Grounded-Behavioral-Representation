@@ -62,6 +62,14 @@ REFERENCE_PREDICTORS = ("exception_fraction", "exception_component_v3",
                         "call_count", "combined_shortcut", "sbg_v3",
                         "static_ast")
 
+# PROTOCOL output_free_v7 Holm family, fixed by
+# docs/current/PHASE2_PREREGISTRATION.md §5. The last comparator is the model
+# selected on dev by experiments/final/fit_weights.py (omitted when that is V5
+# itself, since a predictor compared with itself is not a test).
+PREREG_V7_REFERENCES = ("static_ast", "static_token", "exception_fraction",
+                        "call_count", "sbg_v3")
+LEARNED_PREDICTOR = {"M1": "learned_m1", "M2": "learned_m2"}
+
 
 def load_rows(path: pathlib.Path) -> List[dict]:
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
@@ -134,8 +142,32 @@ def evaluate_predictor(rows: List[dict], predictor: str) -> dict:
     }
 
 
+def program_table(rows: List[dict]) -> Dict[str, dict]:
+    """Per base program: entry tier, pairs, evaluated pairs, failure kinds."""
+    table: Dict[str, dict] = {}
+    for row in rows:
+        entry = table.setdefault(row["base_id"], {
+            "entry": row.get("base_entry"), "n_pairs": 0, "n_evaluated": 0,
+            "failures": {}})
+        if entry["entry"] is None and row.get("base_entry"):
+            entry["entry"] = row["base_entry"]
+        entry["n_pairs"] += 1
+        if row["evaluated"]:
+            entry["n_evaluated"] += 1
+        else:
+            key = f"{row['failure_side']}:{row['failure_kind']}"
+            entry["failures"][key] = entry["failures"].get(key, 0) + 1
+    for entry in table.values():
+        discovery = entry["entry"] or ""
+        entry["tier"] = ("class" if discovery.startswith("class:")
+                         else "function" if discovery else "none")
+    return dict(sorted(table.items()))
+
+
 def analyse(split: str, protocol: str, artifact_dir: pathlib.Path,
-            audit_path: pathlib.Path, tag: str = None) -> dict:
+            audit_path: pathlib.Path, tag: str = None,
+            references: tuple = REFERENCE_PREDICTORS,
+            extra_predictors: tuple = (), family_note: str = None) -> dict:
     tag = tag or split
     rows = load_rows(artifact_dir / f"pairs_{tag}_{protocol}.jsonl")
     validity = load_validity(audit_path)
@@ -150,13 +182,13 @@ def analyse(split: str, protocol: str, artifact_dir: pathlib.Path,
     results: Dict[str, dict] = {}
     for set_name, subset in sets.items():
         block = {predictor: evaluate_predictor(subset, predictor)
-                 for predictor in PREDICTORS}
+                 for predictor in tuple(PREDICTORS) + tuple(extra_predictors)}
 
         # Paired comparisons of the primary predictor against each reference.
         comparisons = {}
         if subset and 0 < sum(r["label"] for r in subset) < len(subset):
             primary, labels, clusters = vectors(subset, PRIMARY_PREDICTOR)
-            for reference in REFERENCE_PREDICTORS:
+            for reference in references:
                 other, _, _ = vectors(subset, reference)
                 comparisons[f"{PRIMARY_PREDICTOR}_minus_{reference}"] = (
                     paired_cluster_bootstrap_delta(
@@ -203,6 +235,16 @@ def analyse(split: str, protocol: str, artifact_dir: pathlib.Path,
         "set_sizes": {name: len(subset) for name, subset in sets.items()},
         "failure_ledger": dict(sorted(failure_ledger.items())),
         "primary_predictor": PRIMARY_PREDICTOR,
+        "comparison_family": list(references),
+        **({"comparison_family_note": family_note} if family_note else {}),
+        **({"programs": program_table(rows),
+            "programs_by_tier": {
+                tier: sorted(b for b, e in program_table(rows).items()
+                             if e["tier"] == tier and e["n_evaluated"] > 0)
+                for tier in ("function", "class")},
+            "programs_not_evaluated": sorted(
+                b for b, e in program_table(rows).items() if e["n_evaluated"] == 0)}
+           if extra_predictors or family_note else {}),
         "results": results,
     }
 
@@ -217,11 +259,24 @@ def main() -> int:
     parser.add_argument("--tag", default=None,
                         help="name used in the input and output filenames "
                              "(default: the split)")
+    parser.add_argument("--family", default="default", choices=["default", "prereg_v7"],
+                        help="prereg_v7: the Holm family of PHASE2_PREREGISTRATION.md §5")
+    parser.add_argument("--weights", default=str(REPO_ROOT / "artifacts" / "final"
+                                                 / "WEIGHT_FITTING.json"))
     args = parser.parse_args()
 
     artifact_dir = pathlib.Path(args.artifact_dir)
+    references, extra, note = REFERENCE_PREDICTORS, (), None
+    if args.family == "prereg_v7":
+        chosen = json.loads(pathlib.Path(args.weights).read_text())["chosen_on_dev"]
+        references = PREREG_V7_REFERENCES + (
+            (LEARNED_PREDICTOR[chosen],) if chosen in LEARNED_PREDICTOR else ())
+        extra = tuple(LEARNED_PREDICTOR.values())
+        note = (f"dev-selected model: {chosen}"
+                + ("" if chosen in LEARNED_PREDICTOR
+                   else " (V5 itself, so no sixth comparison)"))
     payload = analyse(args.split, args.protocol, artifact_dir,
-                      pathlib.Path(args.audit), args.tag)
+                      pathlib.Path(args.audit), args.tag, references, extra, note)
     out = artifact_dir / f"MAIN_EVALUATION_{args.tag or args.split}_{args.protocol}.json"
     out.write_text(json.dumps(payload, indent=2) + "\n")
 

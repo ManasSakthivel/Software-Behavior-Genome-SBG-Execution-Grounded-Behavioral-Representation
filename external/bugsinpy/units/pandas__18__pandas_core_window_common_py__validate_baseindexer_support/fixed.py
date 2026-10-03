@@ -1,0 +1,25 @@
+# BugsInPy pandas/18 | https://github.com/pandas-dev/pandas | pandas/core/window/common.py | unit validate_baseindexer_support
+# license: BSD-3-Clause (upstream project); extracted verbatim, closure only, no edits
+# commit cb71376385c33270fa1922aec9eb6c49de4336f4 (fixed)
+from typing import Optional
+
+def validate_baseindexer_support(func_name: Optional[str]) -> None:
+    # GH 32865: These functions work correctly with a BaseIndexer subclass
+    BASEINDEXER_WHITELIST = {
+        "count",
+        "min",
+        "max",
+        "mean",
+        "sum",
+        "median",
+        "std",
+        "var",
+        "skew",
+        "kurt",
+        "quantile",
+    }
+    if isinstance(func_name, str) and func_name not in BASEINDEXER_WHITELIST:
+        raise NotImplementedError(
+            f"{func_name} is not supported with using a BaseIndexer "
+            f"subclasses. You can use .apply() with {func_name}."
+        )

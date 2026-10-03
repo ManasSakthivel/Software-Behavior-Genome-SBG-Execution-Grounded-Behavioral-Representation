@@ -1,0 +1,48 @@
+{
+  "artifact": "freeze_handoff",
+  "recorded_at": "2026-09-29T15:26:16+00:00",
+  "purpose": "Inputs frozen before the Phase 2 runs were handed off (docs/current/PHASE2_HANDOFF.md). Checked by consistency check C9; none may change during execution.",
+  "tau_star": 0.072905,
+  "files": [
+    {
+      "path": "docs/current/PHASE2_PREREGISTRATION.md",
+      "sha256": "905e3d3a9929379486bb2fe1b83938ff5d67df94047662b6548bfdbdd9c67067"
+    },
+    {
+      "path": "artifacts/final/THRESHOLD_FROZEN.json",
+      "sha256": "9dcd74eb97088bdc8fc31df9a33f082893a88afdd6bc8c50a65b95812102173b"
+    },
+    {
+      "path": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+      "sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6"
+    },
+    {
+      "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+      "sha256": "4360b99f942a7f30b3165c4a7197717dbb11c234dc68e7a9a4ad366df49fb347"
+    },
+    {
+      "path": "benchmark/datasets/v6/pairs_train.jsonl",
+      "sha256": "e5259734572414ea78410662190b0d17b9d67ba3e5c31c75c135187c39c0dff9"
+    },
+    {
+      "path": "benchmark/datasets/v6/pairs_dev.jsonl",
+      "sha256": "f58b92256d648e6e5e6fe23547b32084cfe89808133d00528d79a9eb538fdbdd"
+    },
+    {
+      "path": "benchmark/datasets/v6/pairs_test.jsonl",
+      "sha256": "ada35810bd783fe194e86ebda29f1bd729ad3a396c772d4a0406b1d532c2b396"
+    },
+    {
+      "path": "external/quixbugs/manifest.json",
+      "sha256": "49491ccbe1296907a69c4ce93c8b6990d32a025518f72c1ec2eba267c732c056"
+    },
+    {
+      "path": "external/bugsinpy/manifest.json",
+      "sha256": "5953c43b82f6f46a90d489a3d99fe8976a26827ada71bd5e759b418f3fdbf558"
+    },
+    {
+      "path": "external/quixbugs_java/MANIFEST.json",
+      "sha256": "46773144b124678d958f4ca24cd2b56090809df40621c4dd9433790dbf5ec1ba"
+    }
+  ]
+}

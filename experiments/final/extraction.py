@@ -26,6 +26,7 @@ silently the way ``_score_pairs`` did.
 from __future__ import annotations
 
 import ast
+import copy
 import importlib.util
 import inspect
 import io
@@ -50,6 +51,7 @@ from sbg.v5.temporal_genome_v5 import distance as temporal_distance
 from sbg.v5.temporal_genome_v5 import extract as extract_temporal
 
 from experiments.final.protocol import select_entry_output_free
+from experiments.final.class_driver import select_class_entry
 
 SEED = 42
 N_RUNS = 5
@@ -69,14 +71,16 @@ MAX_EVENTS = 5000
 # that hits the program budget is recorded in the failure ledger rather than
 # dropped. The base programs complete in milliseconds; 1 s is three orders of
 # magnitude of headroom.
-TRACE_TIMEOUT_S = {"published": None, "output_free_v6": 1.0}
-PROGRAM_BUDGET_S = {"published": None, "output_free_v6": 60.0}
+TRACE_TIMEOUT_S = {"published": None, "output_free_v6": 1.0, "output_free_v7": 1.0}
+PROGRAM_BUDGET_S = {"published": None, "output_free_v6": 60.0, "output_free_v7": 60.0}
 # A timed-out trace leaves an unkillable worker thread behind. Under
 # output_free_v6 a mutant that loops forever would leave one per input per run;
 # after two of them the program is recorded as nonterminating and its pairs go
 # into the failure ledger. Base programs terminate in milliseconds, so this
 # only ever fires on a mutant.
-MAX_TIMEOUTS = {"published": None, "output_free_v6": 2}
+# output_free_v7 (docs/current/PHASE2_PREREGISTRATION.md §1) uses the v6
+# budgets unchanged.
+MAX_TIMEOUTS = {"published": None, "output_free_v6": 2, "output_free_v7": 2}
 
 # Identical to baselines/v5/b07_dynamic_v5.py::V5_CANONICAL_INPUTS.
 CANONICAL_INPUTS: List[Any] = [
@@ -104,7 +108,7 @@ FAILURE_KINDS = (
     "nonterminating",        # exceeded the per-trace budget on >= 2 inputs
 )
 
-PROTOCOLS = ("published", "output_free_v6")
+PROTOCOLS = ("published", "output_free_v6", "output_free_v7")
 
 _runner = SandboxRunner()
 _extractor_v3 = DynamicGenomeExtractorV3()
@@ -120,6 +124,7 @@ class ProgramRecord:
     failure_detail: Optional[str] = None
     entry_function: Optional[str] = None
     entry_discovery: Optional[str] = None
+    entry_detail: Dict[str, Any] = field(default_factory=dict)
     genome_v3: Optional[DynamicGenomeV3] = None
     temporal: Any = None
     state: Any = None
@@ -133,6 +138,7 @@ class ProgramRecord:
             "failure_detail": self.failure_detail,
             "entry_function": self.entry_function,
             "entry_discovery": self.entry_discovery,
+            **({"entry_detail": self.entry_detail} if self.entry_detail else {}),
             "stats": self.stats,
         }
 
@@ -241,11 +247,23 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
             traced_fn, inputs = entry_fn, CANONICAL_INPUTS
     else:
         entry_fn, discovery, synthesised = select_entry_output_free(module, path.read_text())
+        class_detail: Dict[str, Any] = {}
+        if (entry_fn is None or synthesised is None) and protocol == "output_free_v7":
+            # Class tier: only reached when the v6 function tier found nothing,
+            # so every program v6 covers keeps its v6 entry and inputs.
+            entry_fn, discovery, synthesised, class_detail = select_class_entry(
+                module, path.read_text())
+            if entry_fn is not None and synthesised is not None:
+                return _trace_and_record(source_path, cache, protocol, entry_fn,
+                                         discovery, entry_fn, synthesised,
+                                         entry_detail=class_detail)
         if entry_fn is None or synthesised is None:
+            detail_text = ("no API function synthesisable from the fixed input battery"
+                           + (" and no drivable class" if protocol == "output_free_v7" else ""))
             record = ProgramRecord(path=source_path, ok=False,
                                    failure_kind="unsupported_signature",
-                                   failure_detail="no API function synthesisable "
-                                                  "from the fixed input battery")
+                                   failure_detail=detail_text,
+                                   entry_detail=class_detail)
             cache[source_path] = record
             return record
         inputs = synthesised
@@ -256,6 +274,20 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
         else:
             traced_fn = entry_fn
 
+    return _trace_and_record(source_path, cache, protocol, entry_fn, discovery,
+                             traced_fn, inputs)
+
+
+def _trace_and_record(source_path: str, cache: Dict[str, ProgramRecord], protocol: str,
+                      entry_fn: Optional[Callable], discovery: Optional[str],
+                      traced_fn: Callable, inputs: List[Any],
+                      entry_detail: Optional[Dict[str, Any]] = None) -> ProgramRecord:
+    """Trace ``traced_fn`` over ``inputs`` and build the ProgramRecord.
+
+    Shared by every entry-selection rule, so a program is featurised the same
+    way whether its entry came from a protocol or was declared by a corpus.
+    """
+    path = pathlib.Path(source_path)
     program_id = path.stem
     try:
         sandbox = _runner.run(program_id, traced_fn, inputs,
@@ -267,7 +299,8 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
         record = ProgramRecord(path=source_path, ok=False, failure_kind="trace_error",
                                failure_detail=f"{type(exc).__name__}: {exc}",
                                entry_function=getattr(entry_fn, "__name__", None),
-                               entry_discovery=discovery)
+                               entry_discovery=discovery,
+                               entry_detail=entry_detail or {})
         cache[source_path] = record
         return record
 
@@ -276,7 +309,8 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
                                failure_detail="exceeded the per-trace budget on "
                                               f"{MAX_TIMEOUTS[protocol]} inputs",
                                entry_function=getattr(entry_fn, "__name__", None),
-                               entry_discovery=discovery)
+                               entry_discovery=discovery,
+                               entry_detail=entry_detail or {})
         cache[source_path] = record
         return record
 
@@ -284,7 +318,8 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
         record = ProgramRecord(path=source_path, ok=False, failure_kind="empty_trace",
                                failure_detail=sandbox.error or "no traces produced",
                                entry_function=getattr(entry_fn, "__name__", None),
-                               entry_discovery=discovery)
+                               entry_discovery=discovery,
+                               entry_detail=entry_detail or {})
         cache[source_path] = record
         return record
 
@@ -327,6 +362,7 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
         path=source_path, ok=True,
         entry_function=getattr(entry_fn, "__name__", None),
         entry_discovery=discovery,
+                               entry_detail=entry_detail or {},
         genome_v3=genome, temporal=temporal, state=state,
         stats={
             "n_traces": n_traces,
@@ -345,6 +381,43 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
         },
     )
     cache[source_path] = record
+    return record
+
+
+def extract_with_inputs(source_path: str, cache: Dict[str, ProgramRecord],
+                        entry_name: str, inputs: List[Any],
+                        budgets_from: str = "output_free_v6",
+                        cache_key: Optional[str] = None) -> ProgramRecord:
+    """Trace a *named* function over *declared* inputs.
+
+    For external corpora whose inputs are supplied by the corpus (e.g. the
+    input half of QuixBugs' test cases) rather than synthesised by a protocol.
+    Only the inputs are used; expected outputs must never reach this function.
+    Each element of ``inputs`` is the positional-argument tuple for one call.
+    Budgets (per-trace timeout, program budget, non-termination rule) are taken
+    from ``budgets_from`` so external runs obey the same limits.
+    """
+    key = cache_key or f"{source_path}::{entry_name}::declared"
+    if key in cache:
+        return cache[key]
+    path = pathlib.Path(source_path)
+    module, kind, detail = _load_module(path)
+    if module is None:
+        record = ProgramRecord(path=source_path, ok=False, failure_kind=kind,
+                               failure_detail=detail)
+        cache[key] = record
+        return record
+    entry_fn = getattr(module, entry_name, None)
+    if not callable(entry_fn):
+        record = ProgramRecord(path=source_path, ok=False,
+                               failure_kind="no_entry_function",
+                               failure_detail=f"{entry_name} not defined")
+        cache[key] = record
+        return record
+    traced_fn = lambda args: entry_fn(*copy.deepcopy(args))   # noqa: E731
+    record = _trace_and_record(source_path, {}, budgets_from, entry_fn,
+                               f"declared:{entry_name}", traced_fn, list(inputs))
+    cache[key] = record
     return record
 
 

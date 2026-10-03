@@ -1,0 +1,16 @@
+{
+  "artifact": "PHASE2_FREEZE",
+  "written_at": "2026-09-28T16:16:15+00:00",
+  "preregistration": "docs/current/PHASE2_PREREGISTRATION.md",
+  "preregistration_sha256": "905e3d3a9929379486bb2fe1b83938ff5d67df94047662b6548bfdbdd9c67067",
+  "note": "Hashes of frozen inputs are appended by each stage before it scores anything.",
+  "stages": {
+    "quixbugs_java": {
+      "manifest": "external/quixbugs_java/MANIFEST.json",
+      "manifest_sha256": "46773144b124678d958f4ca24cd2b56090809df40621c4dd9433790dbf5ec1ba",
+      "commit": "4257f44b0ff1181dedaedee6a447e133219fcebf",
+      "recorded_at": "2026-09-28T16:30:35+00:00",
+      "note": "recorded before any Java pair was scored"
+    }
+  }
+}
