@@ -72,6 +72,14 @@ class _FunctionRenamer(ast.NodeTransformer):
             return new_node
         return node
 
+    def visit_Attribute(self, node):
+        self.generic_visit(node)
+        if node.attr in self.rename_map:
+            new_node = copy.copy(node)
+            new_node.attr = self.rename_map[node.attr]
+            return new_node
+        return node
+
 
 class FunctionRenameTransformation:
     """SP-2: Rename helper function names deterministically."""
@@ -79,12 +87,16 @@ class FunctionRenameTransformation:
     id = "SP-2"
     name = "FUNCTION_RENAME"
 
+    def __init__(self):
+        self.last_rename_map: dict[str, str] = {}
+
     def apply(self, source_code: str, seed: int) -> str:
         random.seed(seed)
         tree = ast.parse(source_code)
         func_names = list(dict.fromkeys(_collect_function_names(tree)))  # dedup, preserve order
 
         if not func_names:
+            self.last_rename_map = {}
             return source_code
 
         # Build rename map: try suffix table first, fall back to prefix
@@ -111,16 +123,38 @@ class FunctionRenameTransformation:
                 existing.discard(name)
 
         if not rename_map:
+            self.last_rename_map = {}
             return source_code
 
+        self.last_rename_map = rename_map
         new_tree = _FunctionRenamer(rename_map).visit(copy.deepcopy(tree))
         ast.fix_missing_locations(new_tree)
         return ast.unparse(new_tree)
 
     def validate(self, original: str, transformed: str) -> bool:
         try:
-            ast.parse(original)
-            ast.parse(transformed)
-            return original != transformed
+            orig_tree = ast.parse(original)
+            trans_tree = ast.parse(transformed)
         except SyntaxError:
             return False
+
+        if original == transformed:
+            return False
+
+        orig_funcs = set(_collect_function_names(orig_tree))
+        trans_funcs = set(_collect_function_names(trans_tree))
+
+        rename_map = getattr(self, "last_rename_map", None)
+        if rename_map:
+            for old_name, new_name in rename_map.items():
+                if old_name in trans_funcs:
+                    return False
+                if new_name not in trans_funcs:
+                    return False
+        else:
+            renamed_away = orig_funcs - trans_funcs
+            new_introduced = trans_funcs - orig_funcs
+            if not renamed_away or not new_introduced:
+                return False
+
+        return True
