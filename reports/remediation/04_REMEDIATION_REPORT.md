@@ -22,7 +22,7 @@ headline AUROC (0.60 on 7 programs) is within noise and confounded by edit size.
 | `consistency_check.py` | **10/10 pass**, exit 0, ~0.2 s (baseline: ~28 min, 9/10) | run at end |
 | `audit_recompute.py` | six reference AUROCs reproduce within 1e-5, exit 0 | `results/audit_recompute.json` |
 | `verify_v6_unchanged.py` | 13 programs, 0 violations, no nondeterminism, exit 0 | `logs/verify_v6_unchanged_after_fix.txt` |
-| Clean-checkout reproduction | **not performed** (see "Not done") | n/a |
+| Clean checkout (`git clone` of commit `d9d6380` into a temp dir, py313) | `pytest sbg/ tests/`: **732 passed**, exit 0; `consistency_check.py`: **10/10**, exit 0 | run at commit time |
 | `make check-reproduction`, `make reproduce-*` | **not run** | n/a |
 
 Warnings: 3 (3.13) and 6 (3.9), all pre-existing (a pytest deprecation in
@@ -68,12 +68,10 @@ collection (fixtures under `benchmark/v5/`); the supported invocation is
 
 ## Not done
 
-* No clean-checkout reproduction of the committed artifacts (`make reproduce-*`,
-  `make check-reproduction`): these re-execute the benchmark and were judged out
-  of scope for a single session; the unit-level reproduction above is **not** a
-  substitute. A fresh `git clone` of the final commit running
-  `pytest sbg/ tests/` is the minimum check and is recommended before trusting
-  the committed tree.
+* No re-execution of the committed evaluations (`make reproduce-*`,
+  `make check-reproduction`). The clean-checkout run above checks the code and
+  tests, not that the committed artifacts regenerate bit-for-bit; that remains
+  unverified here (Python-version sensitivity applies, see `PYTHON_VERSIONS.md`).
 * DBLP could not be queried (HTTP 429); Crossref and arXiv were used instead. No
   full text of any cited work was read.
 * No v7 or v8 test evaluation; no v8 AUROC on any split.
