@@ -18,7 +18,7 @@ the same way that attributing the output oracle's 14/15 to SBG overstated it.
 
 This script computes the real V5 distance
 ``0.50*d_v3 + 0.25*d_temporal + 0.25*d_state`` on the same 15 pairs with the
-same pre-fixed threshold tau* = 0.08 and the same pre-declared trigger inputs.
+same inherited threshold tau* = 0.08 (derivation unverified) and the same pre-declared trigger inputs.
 The output oracle is retained and labelled as an output-reading reference.
 
 Output: artifacts/final/REGRESSION_V5_RESULTS.json

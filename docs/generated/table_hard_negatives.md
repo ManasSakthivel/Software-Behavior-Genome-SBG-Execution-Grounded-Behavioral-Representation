@@ -2,7 +2,7 @@
 
 ### Hard-negative benchmark (12 adversarial pairs)
 
-Decision threshold τ* = 0.08, fixed before these pairs were scored and not re-tuned.
+Decision threshold τ* = 0.08. No derivation artifact for this value exists in the repository, so the claim that it was fixed in advance is unverified; it was not re-derived for output-free scoring (see docs/current/THRESHOLD_PROVENANCE.md).
 
 `output_reading_reference` compares program outputs. It is a ceiling, not an SBG result; the README previously reported its score under the heading "Behavioral oracle".
 

@@ -3,6 +3,14 @@
 **Date:** 2025  
 **Scope:** 10 domains, 35 significant prior works
 
+> **Correction notice (remediation audit).** Entries [17], [33] and [39] could
+> not be matched to the primary records as written, and [36] carries the wrong
+> heading. Details, DOIs and the checking method are in
+> `CITATION_VERIFICATION.md`. Descriptions of those entries are unverified.
+> Differential symbolic execution (Person et al., FSE 2008) and dynamic neural
+> program embeddings from execution traces (Wang, Singh, Su, arXiv 1711.07163)
+> are missing from this matrix.
+
 ---
 
 ## Reading Guide
@@ -259,6 +267,7 @@ Each entry follows this schema:
 ---
 
 ### [17] Churchill et al. — Sound Loop Summarization
+**[UNVERIFIED CITATION: no work with this title found; see CITATION_VERIFICATION.md]**  
 **Citation:** Churchill, B., Sharma, R., Bastien, J.-B., Aiken, A. "Sound Loop Summarization and Regression Verification." *PLDI*, 2019.  
 **Year:** 2019  
 **Problem:** Sound regression verification for loops using abstract interpretation.  
@@ -493,6 +502,7 @@ Each entry follows this schema:
 ## Domain 10 — Cross-Language Program Analysis
 
 ### [33] Buch & Trivedi — Code2vec Cross-Language
+**[INCORRECT CITATION: this title is Siow et al., SANER 2022; see CITATION_VERIFICATION.md]**  
 **Citation:** Buch, L., Trivedi, A. "Learning Program Semantics with Code Representations: An Empirical Study." *SANER*, 2019.  
 **Year:** 2019  
 **Problem:** Empirically compare static code representations across languages for semantic tasks.  
@@ -536,7 +546,7 @@ Each entry follows this schema:
 
 ## Additional Cross-Domain Works
 
-### [36] Meng et al. — BinaryDiff via Asm2Vec
+### [36] Ding et al. — Asm2Vec (heading previously read "Meng et al. — BinaryDiff via Asm2Vec"; citation verified, DOI 10.1109/sp.2019.00003)
 **Citation:** Ding, S.H.H., Fung, B.C.M., Charland, P. "Asm2Vec: Boosting Static Representation Robustness for Binary Clone Search against Code Obfuscation and Compiler Optimization." *IEEE S&P*, 2019.  
 **Year:** 2019  
 **Problem:** Robust binary clone detection using assembly-level neural embeddings.  
@@ -579,6 +589,7 @@ Each entry follows this schema:
 ---
 
 ### [39] Defreez et al. — Path-Based Function Embeddings
+**[VENUE/DESCRIPTION UNVERIFIED: ICSE 2018 Companion and ESEC/FSE 2018 records exist; see CITATION_VERIFICATION.md]**  
 **Citation:** DeFreez, D., Thakur, A.V., Rubio-González, C. "Path-Based Function Embeddings." *FSE*, 2018.  
 **Year:** 2018  
 **Problem:** Embed functions as vectors using CFG paths for similarity and API misuse detection.  

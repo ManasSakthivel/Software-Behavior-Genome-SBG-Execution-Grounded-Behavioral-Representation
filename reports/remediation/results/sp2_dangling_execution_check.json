@@ -1,0 +1,1278 @@
+{
+ "summary": {
+  "base_ok / var_attr": 70,
+  "base_ok / var_ok": 2,
+  "base_fail / var_other_fail": 2,
+  "base_fail / var_attr": 1
+ },
+ "pairs": [
+  {
+   "pair_id": "train__api_mock_http_client__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MockServer' object has no attribute 'route'"
+   ],
+   "names": [
+    "dispatch",
+    "route",
+    "stats",
+    "use"
+   ]
+  },
+  {
+   "pair_id": "train__api_mock_http_client__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MockResponse' object has no attribute 'ok'"
+   ],
+   "names": [
+    "ok",
+    "use"
+   ]
+  },
+  {
+   "pair_id": "train__api_mock_http_client__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MockResponse' object has no attribute 'ok'"
+   ],
+   "names": [
+    "ok"
+   ]
+  },
+  {
+   "pair_id": "train__api_rest_crud_mock__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MockRESTAPI' object has no attribute 'create'. Did you mean: 'fn_create'?"
+   ],
+   "names": [
+    "_validate",
+    "create",
+    "list_resources",
+    "patch",
+    "read",
+    "update"
+   ]
+  },
+  {
+   "pair_id": "train__api_rest_crud_mock__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MockRESTAPI' object has no attribute 'read'"
+   ],
+   "names": [
+    "count",
+    "ok",
+    "read"
+   ]
+  },
+  {
+   "pair_id": "train__api_rest_crud_mock__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MockAPIResponse' object has no attribute 'ok'"
+   ],
+   "names": [
+    "ok"
+   ]
+  },
+  {
+   "pair_id": "train__conc_thread_safe_counter__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?"
+   ],
+   "names": [
+    "decrement",
+    "increment",
+    "reset"
+   ]
+  },
+  {
+   "pair_id": "train__conc_thread_safe_counter__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ThreadSafeCounter' object has no attribute 'value'"
+   ],
+   "names": [
+    "value"
+   ]
+  },
+  {
+   "pair_id": "train__ds_min_heap__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MinHeap' object has no attribute 'push'"
+   ],
+   "names": [
+    "_swap",
+    "decrease_key",
+    "is_empty",
+    "peek",
+    "pop",
+    "push"
+   ]
+  },
+  {
+   "pair_id": "train__ds_min_heap__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MinHeap' object has no attribute 'is_empty'. Did you mean: 'fn_is_empty'?"
+   ],
+   "names": [
+    "is_empty",
+    "peek"
+   ]
+  },
+  {
+   "pair_id": "train__ds_min_heap__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MinHeap' object has no attribute 'is_empty'. Did you mean: 'fn_is_empty'?"
+   ],
+   "names": [
+    "is_empty"
+   ]
+  },
+  {
+   "pair_id": "train__ds_trie__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Trie' object has no attribute 'search'. Did you mean: 'fn_search'?"
+   ],
+   "names": [
+    "_count_words",
+    "all_words",
+    "count_with_prefix",
+    "delete",
+    "search",
+    "starts_with"
+   ]
+  },
+  {
+   "pair_id": "train__ds_trie__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Trie' object has no attribute 'insert'. Did you mean: 'fn_insert'?"
+   ],
+   "names": [
+    "autocomplete",
+    "delete",
+    "insert"
+   ]
+  },
+  {
+   "pair_id": "train__ds_trie__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Trie' object has no attribute 'insert'. Did you mean: 'fn_insert'?"
+   ],
+   "names": [
+    "insert"
+   ]
+  },
+  {
+   "pair_id": "train__ds_lru_cache__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'LRUCache' object has no attribute 'put'"
+   ],
+   "names": [
+    "_add_to_front",
+    "_remove_node",
+    "get",
+    "keys_lru_order",
+    "peek",
+    "put"
+   ]
+  },
+  {
+   "pair_id": "train__ds_lru_cache__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'LRUCache' object has no attribute 'get'"
+   ],
+   "names": [
+    "get",
+    "keys_lru_order"
+   ]
+  },
+  {
+   "pair_id": "train__ds_lru_cache__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'LRUCache' object has no attribute 'get'"
+   ],
+   "names": [
+    "get"
+   ]
+  },
+  {
+   "pair_id": "train__fsm_connection_pool__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ConnectionPool' object has no attribute 'acquire'. Did you mean: 'fn_acquire'?"
+   ],
+   "names": [
+    "acquire",
+    "heal",
+    "mark_broken",
+    "release",
+    "stats",
+    "tick"
+   ]
+  },
+  {
+   "pair_id": "train__fsm_connection_pool__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ConnectionPool' object has no attribute 'pool_state'. Did you mean: 'fn_pool_state'?"
+   ],
+   "names": [
+    "_update_pool_state",
+    "mark_broken",
+    "pool_state"
+   ]
+  },
+  {
+   "pair_id": "train__fsm_connection_pool__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ConnectionPool' object has no attribute 'pool_state'. Did you mean: 'fn_pool_state'?"
+   ],
+   "names": [
+    "pool_state"
+   ]
+  },
+  {
+   "pair_id": "train__fsm_traffic_light__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'TrafficLight' object has no attribute 'state'"
+   ],
+   "names": [
+    "_transition",
+    "history",
+    "state",
+    "tick",
+    "trigger_emergency"
+   ]
+  },
+  {
+   "pair_id": "train__fsm_traffic_light__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'TrafficLight' object has no attribute 'state'"
+   ],
+   "names": [
+    "state",
+    "tick"
+   ]
+  },
+  {
+   "pair_id": "train__fsm_traffic_light__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'TrafficLight' object has no attribute 'state'"
+   ],
+   "names": [
+    "state"
+   ]
+  },
+  {
+   "pair_id": "train__parse_json_subset__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'JSONParser' object has no attribute 'parse'"
+   ],
+   "names": [
+    "_array",
+    "_consume",
+    "_object",
+    "_peek",
+    "_value",
+    "parse"
+   ]
+  },
+  {
+   "pair_id": "train__parse_json_subset__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'JSONParser' object has no attribute 'parse'"
+   ],
+   "names": [
+    "_number",
+    "_skip_ws",
+    "parse"
+   ]
+  },
+  {
+   "pair_id": "train__parse_json_subset__sp-2_s2",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'JSONParser' object has no attribute '_skip_ws'. Did you mean: 'fn__skip_ws'?"
+   ],
+   "names": [
+    "_skip_ws"
+   ]
+  },
+  {
+   "pair_id": "train__res_memory_allocator__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MemoryAllocator' object has no attribute 'free'"
+   ],
+   "names": [
+    "coalesce",
+    "fragmentation_ratio",
+    "free"
+   ]
+  },
+  {
+   "pair_id": "train__res_memory_allocator__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'MemoryAllocator' object has no attribute 'stats'"
+   ],
+   "names": [
+    "stats"
+   ]
+  },
+  {
+   "pair_id": "train__res_task_scheduler__sp-2_s0",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'TaskScheduler' object has no attribute 'submit'. Did you mean: 'fn_submit'?"
+   ],
+   "names": [
+    "cancel",
+    "submit",
+    "tick"
+   ]
+  },
+  {
+   "pair_id": "train__res_task_scheduler__sp-2_s1",
+   "split": "train",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    0,
+    ""
+   ],
+   "names": [
+    "stats"
+   ]
+  },
+  {
+   "pair_id": "dev__api_event_bus__sp-2_s0",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'EventBus' object has no attribute 'subscribe'. Did you mean: 'fn_subscribe'?"
+   ],
+   "names": [
+    "publish",
+    "publish_batch",
+    "replay",
+    "subscribe",
+    "topics",
+    "unsubscribe"
+   ]
+  },
+  {
+   "pair_id": "dev__api_event_bus__sp-2_s1",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'EventBus' object has no attribute 'subscribe'. Did you mean: 'fn_subscribe'?"
+   ],
+   "names": [
+    "subscribe",
+    "unsubscribe"
+   ]
+  },
+  {
+   "pair_id": "dev__api_event_bus__sp-2_s2",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'EventBus' object has no attribute 'subscribe'. Did you mean: 'unsubscribe'?"
+   ],
+   "names": [
+    "subscribe"
+   ]
+  },
+  {
+   "pair_id": "dev__ds_stack_queue__sp-2_s0",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Stack' object has no attribute 'is_empty'. Did you mean: 'fn_is_empty'?"
+   ],
+   "names": [
+    "enqueue",
+    "front",
+    "is_empty",
+    "peek",
+    "peek_front",
+    "pop",
+    "pop_back",
+    "pop_front",
+    "push",
+    "push_back"
+   ]
+  },
+  {
+   "pair_id": "dev__ds_stack_queue__sp-2_s1",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Stack' object has no attribute 'is_empty'. Did you mean: 'fn_is_empty'?"
+   ],
+   "names": [
+    "enqueue",
+    "is_empty",
+    "push_back"
+   ]
+  },
+  {
+   "pair_id": "dev__ds_stack_queue__sp-2_s2",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Deque' object has no attribute 'peek_back'. Did you mean: 'fn_peek_back'?"
+   ],
+   "names": [
+    "peek_back"
+   ]
+  },
+  {
+   "pair_id": "dev__err_circuit_breaker__sp-2_s0",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'CircuitBreaker' object has no attribute 'call'"
+   ],
+   "names": [
+    "_on_failure",
+    "call"
+   ]
+  },
+  {
+   "pair_id": "dev__err_circuit_breaker__sp-2_s1",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'CircuitBreaker' object has no attribute '_on_success'. Did you mean: 'fn__on_success'?"
+   ],
+   "names": [
+    "_on_success"
+   ]
+  },
+  {
+   "pair_id": "dev__err_circuit_breaker__sp-2_s2",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'CircuitBreaker' object has no attribute 'call'"
+   ],
+   "names": [
+    "call"
+   ]
+  },
+  {
+   "pair_id": "dev__graph_connected_components__sp-2_s0",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'UnionFind' object has no attribute 'union'"
+   ],
+   "names": [
+    "find",
+    "union"
+   ]
+  },
+  {
+   "pair_id": "dev__res_cache_ttl__sp-2_s0",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'CacheTTL' object has no attribute 'set'"
+   ],
+   "names": [
+    "delete",
+    "expire_all",
+    "get",
+    "keys_alive",
+    "set",
+    "stats"
+   ]
+  },
+  {
+   "pair_id": "dev__res_cache_ttl__sp-2_s1",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'CacheTTL' object has no attribute 'set'"
+   ],
+   "names": [
+    "get",
+    "set"
+   ]
+  },
+  {
+   "pair_id": "dev__res_cache_ttl__sp-2_s2",
+   "split": "dev",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'CacheTTL' object has no attribute 'set'. Did you mean: 'get'?"
+   ],
+   "names": [
+    "set"
+   ]
+  },
+  {
+   "pair_id": "val__ds_binary_search_tree__sp-2_s0",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'BinarySearchTree' object has no attribute '_insert'. Did you mean: 'insert'?"
+   ],
+   "names": [
+    "_inorder",
+    "_insert",
+    "delete",
+    "height",
+    "inorder",
+    "search"
+   ]
+  },
+  {
+   "pair_id": "val__ds_binary_search_tree__sp-2_s1",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'BinarySearchTree' object has no attribute 'insert'. Did you mean: 'fn_insert'?"
+   ],
+   "names": [
+    "_height",
+    "delete",
+    "insert"
+   ]
+  },
+  {
+   "pair_id": "val__ds_binary_search_tree__sp-2_s2",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'BinarySearchTree' object has no attribute 'insert'. Did you mean: 'fn_insert'?"
+   ],
+   "names": [
+    "insert"
+   ]
+  },
+  {
+   "pair_id": "val__file_word_count_stream__sp-2_s0",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'StreamWordCounter' object has no attribute 'feed'"
+   ],
+   "names": [
+    "char_count",
+    "feed",
+    "line_count",
+    "unique_words"
+   ]
+  },
+  {
+   "pair_id": "val__file_word_count_stream__sp-2_s1",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'StreamWordCounter' object has no attribute 'feed'"
+   ],
+   "names": [
+    "feed",
+    "top_n"
+   ]
+  },
+  {
+   "pair_id": "val__fsm_order_lifecycle__sp-2_s0",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Order' object has no attribute 'add_item'. Did you mean: 'fn_add_item'?"
+   ],
+   "names": [
+    "_advance_tick",
+    "add_item",
+    "cancel",
+    "confirm",
+    "deliver",
+    "ship"
+   ]
+  },
+  {
+   "pair_id": "val__fsm_order_lifecycle__sp-2_s1",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Order' object has no attribute 'confirm'. Did you mean: 'fn_confirm'?"
+   ],
+   "names": [
+    "confirm",
+    "return_request",
+    "state"
+   ]
+  },
+  {
+   "pair_id": "val__fsm_order_lifecycle__sp-2_s2",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Order' object has no attribute 'state'"
+   ],
+   "names": [
+    "state"
+   ]
+  },
+  {
+   "pair_id": "val__parse_ini_config__sp-2_s0",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'INIParser' object has no attribute 'parse'"
+   ],
+   "names": [
+    "get",
+    "parse",
+    "sections"
+   ]
+  },
+  {
+   "pair_id": "val__parse_ini_config__sp-2_s1",
+   "split": "val",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    0,
+    ""
+   ],
+   "names": [
+    "items"
+   ]
+  },
+  {
+   "pair_id": "test__api_rate_limiter__sp-2_s0",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'TokenBucket' object has no attribute 'allow'"
+   ],
+   "names": [
+    "allow",
+    "remaining"
+   ]
+  },
+  {
+   "pair_id": "test__api_rate_limiter__sp-2_s1",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'LeakyBucket' object has no attribute '_leak'"
+   ],
+   "names": [
+    "_leak"
+   ]
+  },
+  {
+   "pair_id": "test__conc_read_write_lock__sp-2_s0",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ProtectedDict' object has no attribute 'set'"
+   ],
+   "names": [
+    "acquire_read",
+    "acquire_write",
+    "delete",
+    "get",
+    "release_read",
+    "release_write",
+    "set"
+   ]
+  },
+  {
+   "pair_id": "test__conc_read_write_lock__sp-2_s1",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ProtectedDict' object has no attribute 'get'. Did you mean: 'set'?"
+   ],
+   "names": [
+    "acquire_read",
+    "get",
+    "release_read"
+   ]
+  },
+  {
+   "pair_id": "test__conc_read_write_lock__sp-2_s2",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ReadWriteLock' object has no attribute 'release_read'. Did you mean: 'fn_release_read'?"
+   ],
+   "names": [
+    "release_read"
+   ]
+  },
+  {
+   "pair_id": "test__ds_hash_table__sp-2_s0",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'HashTable' object has no attribute 'put'"
+   ],
+   "names": [
+    "_slot",
+    "delete",
+    "get",
+    "items",
+    "put",
+    "values"
+   ]
+  },
+  {
+   "pair_id": "test__ds_hash_table__sp-2_s1",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'HashTable' object has no attribute '_probe_for_write'. Did you mean: 'fn__probe_for_write'?"
+   ],
+   "names": [
+    "_probe_for_write",
+    "delete",
+    "load_factor"
+   ]
+  },
+  {
+   "pair_id": "test__ds_hash_table__sp-2_s2",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'HashTable' object has no attribute 'load_factor'. Did you mean: 'fn_load_factor'?"
+   ],
+   "names": [
+    "load_factor"
+   ]
+  },
+  {
+   "pair_id": "test__err_result_type__sp-2_s0",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: type object 'Result' has no attribute 'ok'"
+   ],
+   "names": [
+    "err",
+    "ok",
+    "unwrap",
+    "unwrap_err"
+   ]
+  },
+  {
+   "pair_id": "test__err_result_type__sp-2_s1",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Result' object has no attribute 'flat_map'. Did you mean: 'fn_flat_map'?"
+   ],
+   "names": [
+    "flat_map"
+   ]
+  },
+  {
+   "pair_id": "test__file_config_parser__sp-2_s0",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ConfigParser' object has no attribute 'sections'. Did you mean: 'fn_sections'?"
+   ],
+   "names": [
+    "dump",
+    "get",
+    "get_bool",
+    "get_float",
+    "sections"
+   ]
+  },
+  {
+   "pair_id": "test__file_config_parser__sp-2_s1",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ConfigParser' object has no attribute 'load'"
+   ],
+   "names": [
+    "get",
+    "items",
+    "load"
+   ]
+  },
+  {
+   "pair_id": "test__file_config_parser__sp-2_s2",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ConfigParser' object has no attribute 'load'"
+   ],
+   "names": [
+    "load"
+   ]
+  },
+  {
+   "pair_id": "test__fsm_vending_machine__sp-2_s0",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'VendingMachine' object has no attribute 'restock'. Did you mean: 'fn_restock'?"
+   ],
+   "names": [
+    "cancel",
+    "get_balance",
+    "insert_coin",
+    "restock",
+    "select_product",
+    "state"
+   ]
+  },
+  {
+   "pair_id": "test__fsm_vending_machine__sp-2_s1",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'VendingMachine' object has no attribute 'state'"
+   ],
+   "names": [
+    "get_balance",
+    "state"
+   ]
+  },
+  {
+   "pair_id": "test__fsm_vending_machine__sp-2_s2",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'VendingMachine' object has no attribute 'state'"
+   ],
+   "names": [
+    "state"
+   ]
+  },
+  {
+   "pair_id": "test__parse_recursive_descent__sp-2_s0",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Parser' object has no attribute 'parse'"
+   ],
+   "names": [
+    "_expr",
+    "_term",
+    "consume",
+    "parse",
+    "peek",
+    "read_int"
+   ]
+  },
+  {
+   "pair_id": "test__parse_recursive_descent__sp-2_s1",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Lexer' object has no attribute 'peek'"
+   ],
+   "names": [
+    "consume",
+    "peek"
+   ]
+  },
+  {
+   "pair_id": "test__parse_recursive_descent__sp-2_s2",
+   "split": "test",
+   "base": [
+    0,
+    ""
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'Lexer' object has no attribute 'peek'"
+   ],
+   "names": [
+    "peek"
+   ]
+  },
+  {
+   "pair_id": "test__res_object_pool__sp-2_s0",
+   "split": "test",
+   "base": [
+    1,
+    "PoolError: Object was not acquired (double-release)"
+   ],
+   "variant": [
+    1,
+    "NameError: name 'factory' is not defined. Did you mean: 'fn_factory'?"
+   ],
+   "names": [
+    "acquire",
+    "close",
+    "release",
+    "stats"
+   ]
+  },
+  {
+   "pair_id": "test__res_object_pool__sp-2_s1",
+   "split": "test",
+   "base": [
+    1,
+    "PoolError: Object was not acquired (double-release)"
+   ],
+   "variant": [
+    1,
+    "AttributeError: 'ObjectPool' object has no attribute 'stats'"
+   ],
+   "names": [
+    "stats"
+   ]
+  },
+  {
+   "pair_id": "test__res_object_pool__sp-2_s2",
+   "split": "test",
+   "base": [
+    1,
+    "PoolError: Object was not acquired (double-release)"
+   ],
+   "variant": [
+    1,
+    "NameError: name 'factory' is not defined. Did you mean: 'fn_factory'?"
+   ],
+   "names": [
+    "acquire",
+    "close",
+    "release",
+    "stats"
+   ]
+  }
+ ]
+}

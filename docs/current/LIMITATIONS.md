@@ -52,10 +52,13 @@ representation is weak" is not separable from "these weights are wrong".
 
 ## Threshold
 
-τ\* = 0.08 is the median SBG distance of semantics-preserving dev pairs, fixed
-before the hard negatives and the regression corpus were scored. It was chosen
-under the published protocol and has not been re-derived for the output-free
-protocol, whose distance distribution differs. The hard-negative and regression
+τ\* = 0.08 is described in code comments as the median SBG distance of
+semantics-preserving dev pairs, fixed before the hard negatives and the
+regression corpus were scored. No derivation artifact exists in the repository,
+so neither the derivation nor the ordering is verified (see
+`THRESHOLD_PROVENANCE.md`). It was inherited from the published protocol and has
+not been re-derived for the output-free protocol, whose distance distribution
+differs. The hard-negative and regression
 numbers should be read as "at this threshold", not as the best achievable
 operating point — and re-deriving the threshold on test data would be exactly
 the leak the fixed value exists to prevent.

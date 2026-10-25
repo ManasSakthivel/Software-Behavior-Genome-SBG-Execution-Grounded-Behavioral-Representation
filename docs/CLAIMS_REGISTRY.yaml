@@ -10,7 +10,24 @@
 #   INSUFFICIENT_EVIDENCE — claim is plausible but evidence is too weak
 #   NOT_EVALUABLE         — cannot be evaluated with current data
 #
-# Last updated: Phase 4 complete
+# Last updated: IEEE Access remediation (branch remediation/ieee-access-audit)
+#
+# SCOPE NOTE. Claims C001-C015 are the Phase 1-4 record on the original 744-pair
+# benchmark (benchmark/datasets/pairs_test.jsonl). They are kept verbatim as a
+# historical record and describe THAT benchmark and its static/legacy
+# representations only. They do not describe the output-free v6/v7 evaluation.
+# See legacy_claim_annotations at the end of the file for what each one does and
+# does not establish today. Claims C016 onward cover the current output-free
+# protocol and carry an evidence_class:
+#   previously_reported            - number printed in an earlier document
+#   independently_recomputed       - recomputed from committed per-pair records
+#                                    by experiments/final/audit_recompute.py
+#   corrected_implementation       - behaviour of a fix made in this remediation
+#   new_unscored                   - implemented but no result computed
+#   unverified                     - no evidence in the repository
+# split_status for every number on the v6/old test splits is
+# observed_possibly_contaminated: their per-pair scores were committed and
+# analysed before any protocol freeze, so they are NOT held-out evidence.
 
 claims:
 
@@ -287,3 +304,162 @@ claims:
       Static SBG pairwise: 3.75ms (267 pairs/sec).
       AST similarity (B02): 37.90ms/pair (26 pairs/sec) — 10x slower than SBG.
       Cost is not a bottleneck for the benchmark size used.
+
+  # ---------------------------------------------------------------------------
+  # Claims for the current output-free protocol (added in the remediation)
+  # ---------------------------------------------------------------------------
+
+  - claim_id: C016
+    exact_claim: >
+      On the v6 test split under protocol output_free_v6, SBG V5 reaches
+      AUROC 0.601 on the 259 evaluable pairs (7 base programs), versus 0.524
+      when the 229 unevaluable pairs are scored at distance 0 (488 pairs).
+    evidence_class: independently_recomputed
+    evidence_artifact: "artifacts/final/pairs_v6test_output_free_v6.jsonl"
+    reproduced_by: "experiments/final/audit_recompute.py (tests/test_audit_recompute.py)"
+    experiment: "MAIN_EVALUATION_v6test_output_free_v6"
+    metric: "AUROC (tie-aware); 95% cluster-bootstrap CI [0.490, 0.706]"
+    sample_size: 259
+    split_status: observed_possibly_contaminated
+    status: PARTIALLY_SUPPORTED
+    notes: >
+      The arithmetic reproduces to 1e-6. The CI includes 0.5 and the noise-floor
+      p95 under 2000 within-cluster label shuffles is 0.551. 54% of scores are
+      exactly 0. Only 7 of 13 test programs contribute a scored pair; the 6
+      missing programs are the stateful class-based ones. Not held-out.
+    limitations:
+      - "7 clusters; cluster-bootstrap CI is unreliable at this size"
+      - "11 evaluated EQUIVALENT pairs traced a different entry in base and variant (9 genuine after structural matching)"
+      - "22 of the 39 EQUIVALENT SP-2 test variants contain dangling method references (label-validity defect)"
+      - "edit size alone separates the classes (AUROC 0.967 reversed)"
+    required_experiment: "Fresh program split, frozen output_free_v8 protocol, single approved test run (docs/current/EVALUATION_PLAN_V8.md)."
+
+  - claim_id: C017
+    exact_claim: >
+      Output_free_v6 entry selection is not invariant to the SP-2 function
+      rename: it selected a different function for base and variant in 11
+      evaluated EQUIVALENT test pairs (naive name inequality gives 19) and traced
+      a renamed self-test driver in 2.
+    evidence_class: independently_recomputed
+    evidence_artifact: "artifacts/final/pairs_v6test_output_free_v6.jsonl"
+    reproduced_by: "tests/test_entry_policy.py, tests/test_audit_recompute.py"
+    metric: "count of evaluated EQUIVALENT pairs"
+    sample_size: 138
+    split_status: observed_possibly_contaminated
+    status: SUPPORTED
+    notes: >
+      Same defect in the v7 dev record: 9 of the 345 dev pairs used to derive
+      tau* trace a renamed driver. Recomputing the v6-test AUROC after dropping
+      the entry-mismatch pairs gives 0.639-0.641 (descriptive, post hoc).
+    limitations:
+      - "the exclusion rule was chosen after seeing the observed test scores"
+    required_experiment: "Re-extract with output_free_v8 on a fresh split."
+
+  - claim_id: C018
+    exact_claim: >
+      Protocol output_free_v8 (experiments/final/entry_policy.py) selects the
+      same structural entry in base and variant under function renaming, and
+      raises an explicit error instead of guessing when none is unique.
+    evidence_class: corrected_implementation
+    evidence_artifact: "tests/test_entry_policy.py"
+    metric: "37 regression tests"
+    sample_size: 37
+    split_status: not_applicable
+    status: PARTIALLY_SUPPORTED
+    notes: >
+      Verified on synthetic programs and on the committed v6 pair records. No
+      v8 AUROC exists and none may be computed until the plan is frozen. On
+      train/dev/val EQUIVALENT pairs v8 produced 12 DIFFERENT entries (SP-7/SP-8
+      change the call graph) versus 45 for v6, but also 580 explicit failures:
+      many class-based programs have no function-level entry. Coverage is the
+      open cost of the change.
+    limitations:
+      - "coverage on class-based programs is low; class tier is not rename-invariant"
+    required_experiment: "Dev-only coverage/stability study, then fresh-split test."
+
+  - claim_id: C019
+    exact_claim: >
+      tau* = 0.072905 for output_free_v7 is derived on the dev split only and
+      is reproducible; tau = 0.08 used for the hard-negative and regression
+      results has no derivation artifact in the repository.
+    evidence_class: independently_recomputed
+    evidence_artifact: "artifacts/final/THRESHOLD_FROZEN.json"
+    reproduced_by: "tests/test_threshold_provenance.py"
+    status: PARTIALLY_SUPPORTED
+    notes: >
+      Youden J = 0.378 on 345 dev pairs / 9 programs. The statement that 0.08
+      was "fixed in advance" is unverified and was removed from user-facing
+      text (docs/current/THRESHOLD_PROVENANCE.md). 9 of the 345 dev pairs
+      traced a renamed driver, so tau* inherits the entry-point defect.
+    required_experiment: "Re-derive tau* on dev under output_free_v8 before any test scoring."
+
+  - claim_id: C020
+    exact_claim: >
+      The v6 benchmark contains EQUIVALENT-labelled SP-2 variants that are not
+      behaviourally equivalent: 75 flagged statically (train 30, dev 13, val 10,
+      test 22); 70 of them fail with AttributeError while their base passes.
+    evidence_class: independently_recomputed
+    evidence_artifact: "reports/remediation/results/sp2_dangling_execution_check.json"
+    reproduced_by: "experiments/final/data_integrity.py, experiments/final/sp2_execution_check.py, tests/test_data_integrity.py"
+    split_status: not_applicable
+    status: SUPPORTED
+    notes: >
+      Labels were deliberately not changed. The defect is a transformation bug:
+      sp2_function_rename.py renames method definitions but rewrites only
+      ast.Name call sites, leaving self.<method> references.
+    required_experiment: "Fix the transformation, regenerate the benchmark under a new version, rebuild the fresh split."
+
+  - claim_id: C021
+    exact_claim: >
+      SBG V5 detects behavioural change better than static AST similarity on
+      the v6 test split.
+    evidence_class: previously_reported
+    evidence_artifact: "artifacts/final/MAIN_EVALUATION_v6test_output_free_v6.json"
+    status: INSUFFICIENT_EVIDENCE
+    notes: >
+      Reproduced numerically (static_ast AUROC 0.105 on the same 259 pairs), but
+      static_ast is below 0.5 by construction of this benchmark (SP transforms
+      change structure more than SC mutations), and edit size alone reaches
+      0.967 reversed. The comparison does not show that execution evidence adds
+      value beyond cheap shortcuts. Split is observed.
+    required_experiment: "Edit-size-matched pairs; learned execution-trace and edit-size baselines on a fresh split."
+
+  - claim_id: C022
+    exact_claim: >
+      The pipeline is externally valid on real bugs (QuixBugs, BugsInPy).
+    evidence_class: unverified
+    evidence_artifact: "none under output_free_v7"
+    status: NOT_EVALUABLE
+    notes: >
+      QUIXBUGS_output_free_v7.json and the Java and weight-fitting stages are
+      pending (STATUS.md). Earlier external numbers predate the protocol
+      corrections.
+    required_experiment: "Run stages 2a-2f of the preregistration after the protocol freeze."
+
+  - claim_id: C023
+    exact_claim: "The SBG manuscript is publication ready."
+    evidence_class: unverified
+    evidence_artifact: "artifacts/final/STANFORD_GATE.json"
+    status: NOT_SUPPORTED
+    notes: >
+      The evidence-driven gate reports 8/20 PASS, 12 BLOCKED. The earlier
+      an all-categories-PASS "PUBLICATION READY" verdict came from a script that hard-coded every
+      verdict (archived in docs/archive/superseded_gate/).
+
+legacy_claim_annotations:
+  C001: "Unit-test claim. Re-run in the remediation: 657 tests pass on Python 3.13; 2 failed on 3.9 until the stdlib fix. Says nothing about validity of the evaluation."
+  C002: "Old 744-pair benchmark, static representations. Not a statement about output-free SBG V5."
+  C003: "Old benchmark; the embedding baseline is a subword n-gram fallback, not CodeBERT."
+  C004: "Old benchmark. SP-2 rename and the label defect (C020) were not known then."
+  C005: "13 test programs, all observed. Not a generalisation claim."
+  C006: "Static-dimension ablation on the old benchmark."
+  C007: "Regression-detection framing on the old synthetic benchmark; no real regressions."
+  C008: "Not evaluable; no cross-language evidence."
+  C009: "Negative result on the old benchmark; the inversion is partly explained by edit-size confounding."
+  C010: "Leakage audit covers base-program overlap only. It does not show the test split is unseen: per-pair test scores were committed before the freeze."
+  C011: "Determinism of extraction. A cold-start event-count difference for sort_heapsort (8771 vs 8855 events, v6) is documented, not fixed."
+  C012: "Reported arithmetic on the old benchmark; sound there."
+  C013: "Old benchmark; both AUROCs near 0.5."
+  C014: "Old benchmark."
+  C015: "Static extraction timing only; excludes dynamic tracing cost."
+

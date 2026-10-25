@@ -66,7 +66,10 @@ def _consistency(names: Tuple[str, ...]) -> Result:
     import consistency_check as cc               # noqa: E402 - same directory
     evidence, missing = [], []
     for label, check in cc.CHECKS:
-        if not label.startswith(names):
+        # Match the check ID exactly. A prefix match made "C1" select "C10",
+        # and C10 itself runs this gate as a subprocess, so every gate run
+        # spawned another gate without bound (a process fork bomb).
+        if label.split()[0] not in names:
             continue
         ok, problems = check()
         (evidence if ok else missing).append(

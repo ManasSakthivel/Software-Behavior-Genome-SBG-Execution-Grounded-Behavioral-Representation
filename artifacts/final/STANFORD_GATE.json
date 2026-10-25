@@ -137,7 +137,7 @@
       ]
     },
     "internal_consistency": {
-      "verdict": "BLOCKED",
+      "verdict": "PASS",
       "evidence": [
         "C1 generated tables match their artifacts",
         "C2 benchmark manifest is internally consistent",
@@ -146,9 +146,7 @@
         "C7 output-free protocol traces no self-test driver",
         "C8 README results block matches the generated tables"
       ],
-      "missing": [
-        "C10 gate verdict is recomputed from artifacts and quoted exactly: the evidence-driven gate has not been run; run `make gate`"
-      ]
+      "missing": []
     },
     "engineering_quality": {
       "verdict": "PASS",
@@ -200,15 +198,14 @@
         "baseline_quality is BLOCKED",
         "claim_discipline is BLOCKED",
         "failure_transparency is BLOCKED",
-        "internal_consistency is BLOCKED",
         "scientific_integrity is BLOCKED",
         "generalization_validity is BLOCKED"
       ]
     }
   },
   "summary": {
-    "pass": 7,
-    "blocked": 13,
+    "pass": 8,
+    "blocked": 12,
     "total": 20
   }
 }

@@ -52,6 +52,7 @@ from sbg.v5.temporal_genome_v5 import extract as extract_temporal
 
 from experiments.final.protocol import select_entry_output_free
 from experiments.final.class_driver import select_class_entry
+from experiments.final.entry_policy import EntryPointError, select_entry_structural
 
 SEED = 42
 N_RUNS = 5
@@ -71,8 +72,10 @@ MAX_EVENTS = 5000
 # that hits the program budget is recorded in the failure ledger rather than
 # dropped. The base programs complete in milliseconds; 1 s is three orders of
 # magnitude of headroom.
-TRACE_TIMEOUT_S = {"published": None, "output_free_v6": 1.0, "output_free_v7": 1.0}
-PROGRAM_BUDGET_S = {"published": None, "output_free_v6": 60.0, "output_free_v7": 60.0}
+TRACE_TIMEOUT_S = {"published": None, "output_free_v6": 1.0, "output_free_v7": 1.0,
+                   "output_free_v8": 1.0}
+PROGRAM_BUDGET_S = {"published": None, "output_free_v6": 60.0, "output_free_v7": 60.0,
+                    "output_free_v8": 60.0}
 # A timed-out trace leaves an unkillable worker thread behind. Under
 # output_free_v6 a mutant that loops forever would leave one per input per run;
 # after two of them the program is recorded as nonterminating and its pairs go
@@ -80,7 +83,9 @@ PROGRAM_BUDGET_S = {"published": None, "output_free_v6": 60.0, "output_free_v7":
 # only ever fires on a mutant.
 # output_free_v7 (docs/current/PHASE2_PREREGISTRATION.md §1) uses the v6
 # budgets unchanged.
-MAX_TIMEOUTS = {"published": None, "output_free_v6": 2, "output_free_v7": 2}
+# output_free_v8 (docs/current/ENTRY_POINT_POLICY.md) keeps the v6 budgets.
+MAX_TIMEOUTS = {"published": None, "output_free_v6": 2, "output_free_v7": 2,
+                "output_free_v8": 2}
 
 # Identical to baselines/v5/b07_dynamic_v5.py::V5_CANONICAL_INPUTS.
 CANONICAL_INPUTS: List[Any] = [
@@ -103,12 +108,13 @@ FAILURE_KINDS = (
     "import_error",          # module-level code raised while loading
     "no_entry_function",     # no module-level function: outside the protocol's scope
     "unsupported_signature", # output_free_v6: no API function synthesisable from the battery
+    "ambiguous_entry_point", # output_free_v8: structurally distinct candidates tied; no defensible choice
     "trace_error",           # the sandbox itself raised
     "empty_trace",           # executed but produced no usable trace
     "nonterminating",        # exceeded the per-trace budget on >= 2 inputs
 )
 
-PROTOCOLS = ("published", "output_free_v6", "output_free_v7")
+PROTOCOLS = ("published", "output_free_v6", "output_free_v7", "output_free_v8")
 
 _runner = SandboxRunner()
 _extractor_v3 = DynamicGenomeExtractorV3()
@@ -245,6 +251,8 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
             inputs: List[Any] = [None]
         else:
             traced_fn, inputs = entry_fn, CANONICAL_INPUTS
+    elif protocol == "output_free_v8":
+        return _extract_v8(module, source_path, cache)
     else:
         entry_fn, discovery, synthesised = select_entry_output_free(module, path.read_text())
         class_detail: Dict[str, Any] = {}
@@ -276,6 +284,53 @@ def extract_program(source_path: str, cache: Dict[str, ProgramRecord],
 
     return _trace_and_record(source_path, cache, protocol, entry_fn, discovery,
                              traced_fn, inputs)
+
+
+def _extract_v8(module: types.ModuleType, source_path: str,
+                cache: Dict[str, ProgramRecord]) -> ProgramRecord:
+    """PROTOCOL output_free_v8: structural, rename-invariant entry selection.
+
+    Function tier: ``entry_policy.select_entry_structural``; it either names an
+    entry or raises, and a raise becomes a ledger entry rather than an arbitrary
+    pick. Class tier: only when the module defines no function entry at all,
+    exactly as in v7, and flagged in ``entry_detail`` because the class driver
+    still orders classes and methods by name (``entry_policy`` limitations).
+    """
+    path = pathlib.Path(source_path)
+    source = path.read_text()
+    try:
+        decision = select_entry_structural(source)
+    except EntryPointError as exc:
+        if exc.kind == "no_entry_function":
+            entry_fn, discovery, synthesised, class_detail = select_class_entry(module, source)
+            if entry_fn is not None and synthesised is not None:
+                class_detail = dict(class_detail, rename_invariant=False)
+                return _trace_and_record(source_path, cache, "output_free_v8", entry_fn,
+                                         discovery, entry_fn, synthesised,
+                                         entry_detail=class_detail)
+        record = ProgramRecord(path=source_path, ok=False, failure_kind=exc.kind,
+                               failure_detail=str(exc),
+                               entry_detail={"policy": "v8:structural",
+                                             "n_candidates": len(exc.candidates)})
+        cache[source_path] = record
+        return record
+
+    entry_fn = getattr(module, decision.name, None)
+    if not callable(entry_fn):
+        record = ProgramRecord(path=source_path, ok=False, failure_kind="no_entry_function",
+                               failure_detail="selected entry is not defined at import")
+        cache[source_path] = record
+        return record
+    inputs = decision.inputs
+    if inputs == [None]:
+        traced_fn: Callable = lambda _inp: entry_fn()         # noqa: E731
+    elif isinstance(inputs[0], tuple):
+        traced_fn = lambda args: entry_fn(*args)              # noqa: E731
+    else:
+        traced_fn = entry_fn
+    return _trace_and_record(source_path, cache, "output_free_v8", entry_fn,
+                             f"structural:{decision.structural_id}", traced_fn, inputs,
+                             entry_detail=decision.detail())
 
 
 def _trace_and_record(source_path: str, cache: Dict[str, ProgramRecord], protocol: str,

@@ -15,7 +15,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-REPO = Path('/Users/manassakthivel/Desktop/SF Projects/SBG')
+REPO = Path(__file__).resolve().parent.parent.parent   # repository root; was a machine-specific absolute path
 OUT_PATH = REPO / 'results' / 'phase13' / 'REPRODUCTION_AUDIT.json'
 
 results: list[dict] = []

@@ -163,8 +163,10 @@ def table_main(evaluations: Dict[str, dict]) -> str:
 def table_hard_negatives(payload: dict) -> str:
     lines = [BANNER, "", "### Hard-negative benchmark (12 adversarial pairs)", "",
              "Decision threshold \u03c4* = "
-             f"{payload['regimes']['canonical']['threshold_tau_star']}, fixed before "
-             "these pairs were scored and not re-tuned.", "",
+             f"{payload['regimes']['canonical']['threshold_tau_star']}. No derivation "
+             "artifact for this value exists in the repository, so the claim that it "
+             "was fixed in advance is unverified; it was not re-derived for "
+             "output-free scoring (see docs/current/THRESHOLD_PROVENANCE.md).", "",
              "`output_reading_reference` compares program outputs. It is a ceiling, "
              "not an SBG result; the README previously reported its score under the "
              "heading \"Behavioral oracle\".", ""]
@@ -430,7 +432,9 @@ def readme_results(manifest: dict, evaluations: Dict[str, Optional[dict]],
         f"/{silent['output_reading_reference']['n_total']} |",
         "",
         "Decision threshold \u03c4* = "
-        f"{regression['threshold_tau_star']}, fixed in advance and not re-tuned.",
+        f"{regression['threshold_tau_star']}. No derivation artifact for this value "
+        "exists in the repository, so the claim that it was fixed in advance is "
+        "unverified (see docs/current/THRESHOLD_PROVENANCE.md).",
         "",
     ]
 

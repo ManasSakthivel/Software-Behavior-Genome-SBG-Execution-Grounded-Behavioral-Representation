@@ -54,3 +54,11 @@ Fill one row per completed stage.
 | Stage | Date | Wall-clock | Machine | `$PYTHON -V` | Code commit | Result file SHA-256 |
 |---|---|---|---|---|---|---|
 | | | | | | | |
+
+## Remediation (2026-10-25, branch `remediation/ieee-access-audit`)
+
+An external audit was verified against the files and partly fixed. The test split
+is **observed, not held out**; a fresh program-level split is required before any
+confirmatory claim. Details: `reports/remediation/` (`04_REMEDIATION_REPORT.md`
+is the summary) and `docs/current/EVALUATION_PLAN_V8.md`. The gate still reports
+8/20 PASS, 12 BLOCKED. Nothing here makes the paper publication-ready.

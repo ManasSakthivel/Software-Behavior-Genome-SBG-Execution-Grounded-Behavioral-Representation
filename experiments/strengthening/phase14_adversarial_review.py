@@ -1,7 +1,7 @@
 import json, time
 from pathlib import Path
 
-REPO = Path('/Users/manassakthivel/Desktop/SF Projects/SBG')
+REPO = Path(__file__).resolve().parent.parent.parent   # repository root; was a machine-specific absolute path
 (REPO / 'results' / 'phase14').mkdir(parents=True, exist_ok=True)
 
 reviews = [
