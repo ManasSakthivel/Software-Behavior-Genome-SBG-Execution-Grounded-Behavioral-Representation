@@ -14,7 +14,7 @@ Last updated: 2026-09-29, at the handoff.
 
 | Item | Artifact | Notes |
 |---|---|---|
-| Pre-registration, frozen and hashed | `docs/current/PHASE2_PREREGISTRATION.md`, `artifacts/final/PHASE2_FREEZE.json` | Written before any Phase 2 result existed |
+| Pre-registration, frozen and hashed | `docs/current/PHASE2_PREREGISTRATION.md`, `artifacts/final/PHASE2_FREEZE.json` | **Chronology note (2026-10-25):** committed at `ad7b655` (Oct 3), five days after v6 test results at `9a9104f` (Sep 28). The claimed date 2026-09-28 in the document header cannot be verified from git history. All v6 results are therefore exploratory. See `docs/current/TEST_SET_CHRONOLOGY.md`. |
 | Protocol `output_free_v7` (class-driver tier) | `experiments/final/class_driver.py`, `protocol.py`, `extraction.py` | Invariance check: 0 violations on the 13 test programs (`make verify-v7-invariance`) |
 | Driver-synthesis validation suite | `artifacts/final/DRIVER_SYNTHESIS_VALIDATION.json`, `tests/test_driver_synthesis.py` | Toy classes only; never used as evaluation input |
 | Static validity audit under v7 | `artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json` | Executes nothing |

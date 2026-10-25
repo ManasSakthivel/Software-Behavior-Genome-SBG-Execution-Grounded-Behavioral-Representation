@@ -135,7 +135,7 @@ This attack exposes a genuine logical gap. The cross-language claim is either (a
 
 ### Settling Experiment
 
-Take 50 algorithm implementations in Python vs. Java (OJ dataset algorithms, as attributed to Buch & Trivedi 2019 in an earlier draft; that citation could not be verified, see CITATION_VERIFICATION.md), with ground-truth equivalence established by shared test cases. Measure whether `D(C_E(G(P_Python)), C_E(G(P_Java)))` is significantly lower for equivalent vs. non-equivalent pairs. Compare against CLCDSA (static cross-language clone detection) on the same pairs. If SBG detects cross-language equivalence with higher AUC than CLCDSA, the cross-language claim is empirically validated on the available dimensions.
+Take 50 algorithm implementations in Python vs. Java (OJ dataset algorithms, as attributed to Buch & Trivedi 2019 in an earlier draft; that citation could not be verified, see CITATION_VERIFICATION.md — [CITATION CORRECTION 2026-10-25: title and authors are incorrect. The paper with this title is Siow et al., SANER 2022. See docs/current/CITATION_VERIFICATION.md for details.]), with ground-truth equivalence established by shared test cases. Measure whether `D(C_E(G(P_Python)), C_E(G(P_Java)))` is significantly lower for equivalent vs. non-equivalent pairs. Compare against CLCDSA (static cross-language clone detection) on the same pairs. If SBG detects cross-language equivalence with higher AUC than CLCDSA, the cross-language claim is empirically validated on the available dimensions.
 
 ---
 

@@ -267,8 +267,9 @@ Each entry follows this schema:
 ---
 
 ### [17] Churchill et al. — Sound Loop Summarization
-**[UNVERIFIED CITATION: no work with this title found; see CITATION_VERIFICATION.md]**  
-**Citation:** Churchill, B., Sharma, R., Bastien, J.-B., Aiken, A. "Sound Loop Summarization and Regression Verification." *PLDI*, 2019.  
+**[UNVERIFIED CITATION: no work with this title found; see CITATION_VERIFICATION.md]**
+[CITATION CORRECTION 2026-10-25: title not found as cited. Probable match: Churchill, Padon, Sharma, Aiken, 'Semantic program alignment for equivalence checking', PLDI 2019, DOI 10.1145/3314221.3314596. See docs/current/CITATION_VERIFICATION.md.]
+**Citation:** Churchill, B., Sharma, R., Bastien, J.-B., Aiken, A. "Sound Loop Summarization and Regression Verification." *PLDI*, 2019.
 **Year:** 2019  
 **Problem:** Sound regression verification for loops using abstract interpretation.  
 **Representation:** Abstract loop summaries; relational invariants between old/new version.  
@@ -502,8 +503,9 @@ Each entry follows this schema:
 ## Domain 10 — Cross-Language Program Analysis
 
 ### [33] Buch & Trivedi — Code2vec Cross-Language
-**[INCORRECT CITATION: this title is Siow et al., SANER 2022; see CITATION_VERIFICATION.md]**  
-**Citation:** Buch, L., Trivedi, A. "Learning Program Semantics with Code Representations: An Empirical Study." *SANER*, 2019.  
+**[INCORRECT CITATION: this title is Siow et al., SANER 2022; see CITATION_VERIFICATION.md]**
+[CITATION CORRECTION 2026-10-25: title and authors are incorrect. The paper with this title is Siow et al., SANER 2022. See docs/current/CITATION_VERIFICATION.md for details.]
+**Citation:** Buch, L., Trivedi, A. "Learning Program Semantics with Code Representations: An Empirical Study." *SANER*, 2019.
 **Year:** 2019  
 **Problem:** Empirically compare static code representations across languages for semantic tasks.  
 **Representation:** AST paths, CFG, PDG embeddings; cross-language comparison.  
@@ -589,8 +591,9 @@ Each entry follows this schema:
 ---
 
 ### [39] Defreez et al. — Path-Based Function Embeddings
-**[VENUE/DESCRIPTION UNVERIFIED: ICSE 2018 Companion and ESEC/FSE 2018 records exist; see CITATION_VERIFICATION.md]**  
-**Citation:** DeFreez, D., Thakur, A.V., Rubio-González, C. "Path-Based Function Embeddings." *FSE*, 2018.  
+**[VENUE/DESCRIPTION UNVERIFIED: ICSE 2018 Companion and ESEC/FSE 2018 records exist; see CITATION_VERIFICATION.md]**
+[CITATION CORRECTION 2026-10-25: two DeFreez et al. papers exist for 2018: ICSE Companion DOI 10.1145/3183440.3195042 and ESEC/FSE DOI 10.1145/3236024.3236059. Description in matrix may not match either. See docs/current/CITATION_VERIFICATION.md.]
+**Citation:** DeFreez, D., Thakur, A.V., Rubio-González, C. "Path-Based Function Embeddings." *FSE*, 2018.
 **Year:** 2018  
 **Problem:** Embed functions as vectors using CFG paths for similarity and API misuse detection.  
 **Representation:** Random-walk paths over CFG; skip-gram embeddings.  
@@ -714,4 +717,39 @@ No work characterizes how the **same binary's behavior diverges** across operati
 | **Key difference from SBG** | Sumner uses LOSSLESS trace comparison (exact sequence matching with hashing) requiring O(trace_length) space. SBG uses LOSSY compression into an 8-dimensional feature vector with O(1) space per genome. Sumner requires identical execution environments (same OS, same inputs); SBG is designed for cross-language comparison where traces cannot be aligned exactly. Sumner provides exact equivalence/difference verdict (binary); SBG provides a graded distance in [0,1] for ranking. Sumner cannot scale to programs with long traces (memory bound); SBG is constant-space after extraction. The core architectural choice of SBG (lossy but portable compression) is a direct design response to the lossless comparison approach: SBG trades precision for portability and scalability. |
 
 **Why SBG is still novel vs Sumner:** SBG's primary contribution is the multi-language, multi-dimensional, formally-specified LOSSY behavioral representation. Sumner shows that lossless works; SBG investigates whether lossy compression can still preserve enough signal for semantic change detection — the answer (partially) and the conditions under which it works are the novel finding.
+
+
+---
+
+## Missing citations added (2026-10-25 remediation)
+
+### [M1] Person et al. — Differential Symbolic Execution
+
+| Field | Value |
+|-------|-------|
+| **Citation** | Person, S., Dwyer, M.B., Elbaum, S., Pǎsǎreanu, C.S. "Differential symbolic execution." *ESEC/FSE 2008*, DOI 10.1145/1453101.1453131. |
+| **Problem** | Detect behavioral differences between two program versions using symbolic execution on changed code paths only. |
+| **Representation** | Symbolic path conditions; differential path condition captures inputs that exercise diverging behaviors. |
+| **Analysis type** | Static (symbolic) |
+| **Language scope** | Java |
+| **Benchmarks** | Hand-crafted and small open-source Java programs |
+| **Metrics** | Number of diverging behaviors detected; coverage of changed paths |
+| **Limitations** | Restricted to programs with feasible symbolic paths; constraint solver bottleneck; not cross-language. |
+| **SBG delta** | SBG detects behavioral divergence dynamically without symbolic path enumeration; no solver required. SBG operates on programs where symbolic execution is infeasible (complex data structures, dynamic dispatch). |
+
+---
+
+### [M2] Wang, Singh, Su — Dynamic Neural Program Embedding for Program Repair
+
+| Field | Value |
+|-------|-------|
+| **Citation** | Wang, K., Singh, R., Su, Z. "Dynamic Neural Program Embedding for Program Repair." *arXiv 1711.07163*, 2017. |
+| **Problem** | Learn neural embeddings of programs grounded in dynamic execution for automated program repair. |
+| **Representation** | LSTM over execution traces (variable states at runtime steps). |
+| **Analysis type** | Dynamic (execution-grounded) |
+| **Language scope** | Python (student programs) |
+| **Benchmarks** | Student code corpora |
+| **Metrics** | Repair accuracy; embedding quality |
+| **Limitations** | Supervised (requires labeled correct/incorrect programs); embedding trained on a fixed task; does not generalize across program domains without retraining. |
+| **SBG delta** | SBG is unsupervised — no labeled training data. SBG targets cross-version behavioral comparison, not single-program repair. SBG's output-free constraint excludes output values from the representation, whereas Wang et al. use observed output states as a learning signal. |
 

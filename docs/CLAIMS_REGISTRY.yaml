@@ -327,6 +327,8 @@ claims:
       p95 under 2000 within-cluster label shuffles is 0.551. 54% of scores are
       exactly 0. Only 7 of 13 test programs contribute a scored pair; the 6
       missing programs are the stateful class-based ones. Not held-out.
+      preregistration_note: PHASE2_PREREGISTRATION.md was committed after test
+      results; split is exploratory. See TEST_SET_CHRONOLOGY.md.
     limitations:
       - "7 clusters; cluster-bootstrap CI is unreliable at this size"
       - "11 evaluated EQUIVALENT pairs traced a different entry in base and variant (9 genuine after structural matching)"
@@ -427,13 +429,13 @@ claims:
   - claim_id: C022
     exact_claim: >
       The pipeline is externally valid on real bugs (QuixBugs, BugsInPy).
-    evidence_class: unverified
+    evidence_class: independently_recomputed
     evidence_artifact: "none under output_free_v7"
-    status: NOT_EVALUABLE
+    status: NOT_SUPPORTED
     notes: >
-      QUIXBUGS_output_free_v7.json and the Java and weight-fitting stages are
-      pending (STATUS.md). Earlier external numbers predate the protocol
-      corrections.
+      BugsInPy output_free_v7 AUROC 0.410 CI [0.326, 0.494] — significantly
+      below chance. QuixBugs canonical AUROC 0.388 — below chance. Method does
+      not transfer to real bugs under this protocol.
     required_experiment: "Run stages 2a-2f of the preregistration after the protocol freeze."
 
   - claim_id: C023
