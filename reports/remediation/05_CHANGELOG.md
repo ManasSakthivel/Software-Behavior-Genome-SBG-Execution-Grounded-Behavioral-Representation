@@ -1,3 +1,62 @@
+# 05. Changelog
+
+## Changes in `remediation/sbg-v2` (2026-10-25, continuation of `remediation/ieee-access-audit`)
+
+Source branch: `remediation/ieee-access-audit` at `e3038e0`.
+Independent audit: `independent-audit/ieee-access-2026-10` at `5d3dae9`.
+
+### Code
+* `benchmark/transformations/preserving/transformations/sp2_function_rename.py`:
+  Added `visit_Attribute` to `_FunctionRenamer`; `FunctionRenameTransformation.validate()`
+  now verifies old names are absent and new names present in transformed AST.
+  Adds `last_rename_map` instance variable to `FunctionRenameTransformation`.
+* `experiments/final/edit_size_analysis.py` (new): standalone edit-size confound
+  analysis script; reproduces reversed AUROC 0.9667.
+
+### Tests (732 → 738 passed, +6)
+`tests/test_sp2_repair.py` (new, 6 tests): attribute renaming, bare call regression,
+multiple methods, library-attr false-positive guard, runtime AttributeError check,
+data_integrity zero-defect on repaired pairs.
+
+### Artifacts
+* `artifacts/final/PHASE2_FREEZE.json`: added `audit_note_2026_10_25` field;
+  updated `preregistration_sha256` to match corrected document; preserved original
+  SHA in `preregistration_sha256_original`.
+* `artifacts/final/freeze_handoff.json`: updated `sha256` for
+  `docs/current/PHASE2_PREREGISTRATION.md`; preserved original in `sha256_original`.
+* `artifacts/final/STANFORD_GATE.json`: regenerated (still 8/20 PASS).
+* `reports/remediation/results/edit_size_analysis_{test,dev}.json` (new).
+
+### Docs
+* `STATUS.md`: false "Written before any Phase 2 result existed" claim replaced
+  with chronology note documenting actual commit history.
+* `docs/current/PHASE2_PREREGISTRATION.md`: chronology note added to header.
+* `docs/current/BENCHMARK_LABEL_DEFECT_SP2.md`: updated with fix status.
+* `docs/research/PRIOR_ART_MATRIX.md`: correction notes for refs 17, 33, 39;
+  added Person et al. and Wang et al. citations.
+* `docs/research/NOVELTY_ANALYSIS.md`: correction note for Buch & Trivedi ref.
+* `docs/CLAIMS_REGISTRY.yaml`: C022 status NOT_EVALUABLE → NOT_SUPPORTED with
+  adverse AUROC values; C016 preregistration note added.
+* `docs/current/FRESH_PROGRAM_SOURCES.md` (new): 7 sources, 77 candidate programs.
+* `reports/remediation/06_END_TO_END_STATUS.md` (new): current state summary.
+* `reports/remediation/07_DECISIONS_AND_OPEN_QUESTIONS.md` (new): 7 owner decisions.
+* `reports/remediation/08_FINAL_EVALUATION_MANIFEST.md` (new): freeze template.
+* `reports/remediation/09_CLAUDE_HANDOFF.md` (new): next-session handoff.
+* `reports/remediation/agent_[a-g]_*.md` (new): 7 agent reports.
+
+### New benchmark artifacts (not complete dataset)
+* `benchmark/scripts/generate_v7_dataset.py` (new): reproducible v7 generator.
+* `benchmark/datasets/v7/` (new): smoke test — 3 programs, 133 pairs, 0 SP-2 defects.
+
+### Deliberately not done
+No label changed in v6, no pair removed, no v6 historical result re-run or altered,
+no v8 AUROC computed, no v7/v8 test evaluation, no final test scoring. Nothing pushed.
+
+---
+
+## Changes in `remediation/ieee-access-audit` (original remediation)
+
+
 # 05. Changelog (branch `remediation/ieee-access-audit`)
 
 ## Code
