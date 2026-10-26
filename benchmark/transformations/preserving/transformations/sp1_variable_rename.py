@@ -88,12 +88,24 @@ class _Renamer(ast.NodeTransformer):
 
 
 class VariableRenameTransformation:
-    """SP-1: Rename local variables using a deterministic pool-based mapping."""
+    """SP-1: Rename local variables using a deterministic pool-based mapping.
+
+    ``max_names`` controls the maximum number of variables renamed per call.
+    The default ``None`` preserves the original behaviour (rename up to all
+    pool-matching variables). ``max_names=1`` renames exactly one variable
+    (all its occurrences), which limits the edit size to roughly
+    2 × (number of occurrences) lines and creates meaningful overlap with
+    the SC mutation edit-size range. This is the setting used when generating
+    the v7/v8 benchmark to mitigate the edit-size confound.
+
+    See ``docs/current/EDIT_SIZE_REDESIGN.md`` for the full rationale.
+    """
 
     id = "SP-1"
     name = "VARIABLE_RENAME"
 
-    def apply(self, source_code: str, seed: int) -> str:
+    def apply(self, source_code: str, seed: int,
+              max_names: "int | None" = None) -> str:
         random.seed(seed)
         tree = ast.parse(source_code)
 
@@ -106,8 +118,11 @@ class VariableRenameTransformation:
         if not candidates:
             return source_code
 
-        # Randomly pick a subset of candidates to rename (at least 1)
+        # Randomly pick a subset of candidates to rename (at least 1).
+        # max_names caps the count to limit edit size (see class docstring).
         k = random.randint(1, max(1, len(candidates)))
+        if max_names is not None:
+            k = min(k, max(1, max_names))
         chosen = random.sample(candidates, k)
 
         # Ensure no collision: new name must not be an existing name

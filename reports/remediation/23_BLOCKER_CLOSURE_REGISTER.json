@@ -1,19 +1,21 @@
 {
   "register": "23_BLOCKER_CLOSURE_REGISTER",
+  "version": "2",
   "branch": "remediation/sbg-v2",
-  "head_commit": "0d0889c",
-  "created": "2026-10-26",
-  "author": "Bob (principal research-engineer session)",
+  "head_commit": "e479519",
+  "updated": "2026-10-26",
+  "author": "Bob (session 2 — reconciliation and task 1–7 analysis)",
   "independent_audit_basis": {
     "branch": "independent-audit/ieee-access-2026-10",
     "commit": "5d3dae9"
   },
   "summary": {
-    "RESOLVED": 5,
-    "PARTIALLY_RESOLVED": 6,
-    "UNRESOLVED": 9,
-    "BLOCKED": 3,
-    "total": 23
+    "RESOLVED": 6,
+    "PARTIALLY_RESOLVED": 11,
+    "UNRESOLVED": 6,
+    "BLOCKED": 0,
+    "total": 23,
+    "note": "Previous version had incorrect summary counts (said 5/6/9/3; actual JSON statuses were 6/11/6/0). Corrected here. BLOCKED is not a separate status; blockers that depend on owner decisions are UNRESOLVED with a dependency note."
   },
   "overall_verdict": "NOT_RESEARCH_READY",
   "category": "C",
@@ -32,578 +34,492 @@
       "title": "Edit-size confounding",
       "status": "PARTIALLY_RESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": ["(a) confound reproduced and documented"],
-      "acceptance_criteria_pending": [
-        "(b) benchmark redesign decision (D1 unresolved)",
-        "(c) new benchmark has overlapping edit-size distributions",
-        "(d) edit-size baseline included in final evaluation"
-      ],
-      "key_numbers": {
+      "acceptance_criteria": {
+        "(a)": "DONE — edit-size reversed AUROC 0.9667 reproduced and documented",
+        "(b)": "DONE — redesign decision documented with three options in 07_DECISIONS_AND_OPEN_QUESTIONS.md",
+        "(c)": "NOT DONE — new benchmark with overlapping edit-size distributions not yet generated",
+        "(d)": "DONE — edit-size baseline mandated in EVALUATION_PLAN_V8.md §6"
+      },
+      "key_findings": {
         "edit_size_reversed_auroc_test": 0.966703,
         "edit_size_reversed_auroc_dev": 0.956909,
-        "sbg_v5_auroc_test": 0.60127,
-        "n_pairs_test": 259,
-        "bins_with_both_classes": 2,
-        "bins_total": 6
+        "sc_edit_size_range_lines": "2–7 (always 1 mutation site)",
+        "sp_edit_size_median_lines": "14–65 (renames ALL occurrences of ALL selected names)",
+        "sp_small_overlap_fraction": "19% of SP dev pairs fall in 2–5 line bin",
+        "root_cause": "SC mutators target 1 site; SP transformations rename all occurrences of all selected names. Any method correlated with edit size will appear to discriminate.",
+        "redesign_strategy": "max_names=1 cap: SP-1 and SP-2 rename only 1 variable/function (all occurrences of that one name). Edit size becomes 2*(num_occurrences) ~ 2-8 lines, overlapping SC range.",
+        "sp_types_naturally_small": "SP-5 (loop rewrite, median 4), SP-9 (constant fold, median 2) already produce 2-5 line edits"
       },
       "evidence_paths": [
         "reports/remediation/results/edit_size_analysis_test.json",
         "reports/remediation/results/edit_size_analysis_dev.json"
       ],
       "commit": "625ca3f",
-      "blocker_for_submission": true
+      "decision_required": "D1: choose redesign approach (max_names=1 cap on SP-1/SP-2 recommended); implement before generating fresh benchmark",
+      "blocker_for_confirmatory_evaluation": true
     },
     {
       "id": "B02",
       "title": "No genuinely held-out test set",
       "status": "UNRESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "(a) chronology verified and corrected",
-        "(e) v6 results labelled exploratory"
-      ],
-      "acceptance_criteria_pending": [
-        "(b) ≥20 evaluable independent programs created",
-        "(c) protocol freeze committed before test scoring",
-        "(d) dataset manifest and hashes recorded"
-      ],
+      "acceptance_criteria": {
+        "(a)": "DONE — chronology verified; v6 results pre-date preregistration by 5 days",
+        "(b)": "NOT DONE — 0 of ≥36 fresh programs written",
+        "(c)": "NOT DONE — protocol freeze not committed before test scoring",
+        "(d)": "NOT DONE — dataset manifest and hashes not recorded",
+        "(e)": "DONE — all v6 results labelled exploratory in STATUS.md and PHASE2_PREREGISTRATION.md"
+      },
       "key_facts": {
-        "v6_test_results_committed": "2026-09-28 (9a9104f)",
-        "preregistration_committed": "2026-10-03 (ad7b655)",
+        "v6_test_commit": "9a9104f (2026-09-28)",
+        "preregistration_commit": "ad7b655 (2026-10-03)",
         "days_after_results": 5,
         "fresh_programs_written": 0,
-        "fresh_programs_required_min": 36
+        "fresh_programs_required_min": 36,
+        "note": "Cannot be resolved without writing fresh programs (B12)"
       },
       "evidence_paths": [
         "docs/current/PHASE2_PREREGISTRATION.md",
-        "STATUS.md",
-        "artifacts/final/PHASE2_FREEZE.json"
+        "STATUS.md"
       ],
       "commit": "410b3ae",
-      "blocker_for_submission": true
+      "blocker_for_confirmatory_evaluation": true
     },
     {
       "id": "B03",
       "title": "SBG performance against simple baselines",
       "status": "PARTIALLY_RESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "(a) baselines evaluated on same eligible pairs (v6 exploratory)",
-        "(b)-(c) paired statistical comparisons confirmed (all non-significant)"
-      ],
-      "acceptance_criteria_pending": [
-        "Confirmatory comparison on fresh data (blocked on B02)"
-      ],
+      "acceptance_criteria": {
+        "(a)": "DONE (exploratory) — baselines computed on v6 observed split",
+        "(b)": "DONE (exploratory) — paired comparisons: all Holm-corrected tests non-significant",
+        "(c)": "DONE (exploratory) — no baseline removed because it outperforms SBG",
+        "(d_confirmatory)": "NOT DONE — fair comparison on a valid split not yet possible"
+      },
       "key_numbers": {
         "sbg_v5_auroc_v6test": 0.60127,
         "exception_fraction_auroc_v6test": 0.6184,
         "edit_size_reversed_auroc": 0.966703,
         "static_ast_auroc": 0.10474,
-        "split_status": "observed_possibly_contaminated"
+        "split_status": "observed_possibly_contaminated",
+        "statistical_result": "no baseline comparison significant after Holm correction"
       },
       "evidence_paths": [
         "reports/remediation/results/audit_recompute.json",
         "reports/remediation/agent_d_baselines_stats.md"
       ],
       "commit": "0d0889c",
-      "blocker_for_submission": false,
-      "note": "Adverse result documented; confirmatory comparison blocked on B02"
+      "blocker_for_confirmatory_evaluation": false,
+      "note": "Adverse result documented. Confirmatory comparison blocked on B02."
     },
     {
       "id": "B04",
       "title": "Poor external generalization",
       "status": "PARTIALLY_RESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "(a) both AUROCs reproduced",
-        "adverse results recorded in claims registry (C022 NOT_SUPPORTED)"
-      ],
-      "acceptance_criteria_pending": [
-        "(b) root-cause analysis on dev data not yet run",
-        "(c) manuscript placement not yet done"
-      ],
+      "acceptance_criteria": {
+        "(a)": "DONE — both AUROCs reproduced and independently confirmed",
+        "(b)": "NOT DONE — root-cause analysis on dev data not yet run",
+        "(c)": "DONE (research record) — C022 NOT_SUPPORTED; NOT DONE (manuscript) — primary results placement not verified"
+      },
       "key_numbers": {
         "bugsinpy_auroc": 0.409917,
-        "bugsinpy_ci_lower": 0.326232,
-        "bugsinpy_ci_upper": 0.493946,
-        "quixbugs_canonical_auroc": 0.3877,
-        "bugsinpy_pairs_evaluated": 147,
-        "quixbugs_canonical_pairs": 152
+        "bugsinpy_ci": "[0.326, 0.494]",
+        "quixbugs_canonical_auroc": 0.387723,
+        "interpretation": "Both below chance. Method does not transfer to real bugs.",
+        "root_cause_hypothesis": "SBG captures edit-size signal (large SP edits score high); real bug-fix commits have small edits, so they score low. AUROC inverts."
       },
       "evidence_paths": [
         "artifacts/final/BUGSINPY_output_free_v7.json",
-        "artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+        "artifacts/final/QUIXBUGS_output_free_v7.json",
         "docs/CLAIMS_REGISTRY.yaml"
       ],
-      "commit": "410b3ae",
-      "blocker_for_submission": true
+      "commit": "e479519",
+      "blocker_for_confirmatory_evaluation": false,
+      "note": "Adverse results preserved. Root-cause dev analysis needed before manuscript submission."
     },
     {
       "id": "B05",
       "title": "SP-2 transformation defect",
       "status": "RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "(a) visit_Attribute fix implemented",
-        "(b) 6 regression tests added and passing",
-        "(c) v7 smoke dataset shows 0 SP-2 defects",
-        "(d) v6 historical data preserved at 75 defects"
-      ],
-      "acceptance_criteria_pending": [],
-      "key_numbers": {
-        "v6_defects": 75,
-        "v7_smoke_defects": 0,
-        "regression_tests_added": 6,
-        "total_tests": 738
+      "acceptance_criteria": {
+        "(a)": "DONE — visit_Attribute fix in sp2_function_rename.py",
+        "(b)": "DONE — 6 regression tests in tests/test_sp2_repair.py",
+        "(c)": "DONE — v7 smoke dataset: 0 SP-2 defects",
+        "(d)": "DONE — v6 historical data preserved at 75 defects"
       },
+      "verification": "python3 -m pytest tests/test_sp2_repair.py -v → 6/6 PASS; data_integrity.py v7 → 0 defects",
       "evidence_paths": [
         "benchmark/transformations/preserving/transformations/sp2_function_rename.py",
-        "tests/test_sp2_repair.py",
-        "benchmark/datasets/v7/"
+        "tests/test_sp2_repair.py"
       ],
       "commit": "5cf5211",
-      "blocker_for_submission": false
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B06",
       "title": "Deterministic entry-point and driver selection",
       "status": "RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "(a) output_free_v8 implemented and rename-invariant on function programs",
-        "(b) 37 regression tests pass",
-        "(c) selection does not depend on label",
-        "(d) selection failures recorded as NoEntryPoint"
-      ],
-      "acceptance_criteria_pending": [
-        "Class-based programs: see B07"
-      ],
-      "key_numbers": {
-        "regression_tests": 37,
-        "invariance_violations_on_test_programs": 0,
-        "entry_mismatches_v6": 9
+      "acceptance_criteria": {
+        "(a)": "DONE — output_free_v8 rename-invariant on function-only programs",
+        "(b)": "DONE — 37 regression tests pass",
+        "(c)": "DONE — selection does not depend on label",
+        "(d)": "DONE — NoEntryPoint recorded for class programs"
       },
+      "verification": "python3 -m pytest tests/test_entry_policy.py -v → 37/37 PASS",
       "evidence_paths": [
         "experiments/final/entry_policy.py",
         "tests/test_entry_policy.py"
       ],
       "commit": "d9d6380",
-      "blocker_for_submission": false
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B07",
       "title": "Class-based program support",
       "status": "PARTIALLY_RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "(a)-(b) three policy options documented with coverage analysis",
-        "(c) eligibility criterion is label-blind",
-        "(d) exclusion rate measured"
-      ],
-      "acceptance_criteria_pending": [
-        "Policy decision D2 required from experiment owner",
-        "Chosen option validated on dev before freeze"
-      ],
-      "key_numbers": {
-        "evaluable_option1_function_only": 18,
-        "evaluable_option2_class_driver": 34,
-        "total_programs": 47,
-        "noentrypoint_programs": 16
+      "acceptance_criteria": {
+        "(a)": "DONE — three policy options with full coverage analysis in agent_c_v8_coverage.md",
+        "(b)": "DONE — supported/unsupported program types listed; 16 NoEntryPoint programs identified",
+        "(c)": "DONE — eligibility criterion is label-blind",
+        "(d)": "DONE — exclusion rate measured: Option 1: 18/47 (38%), Option 2: 34/47 (72%)"
+      },
+      "key_findings": {
+        "option_1_function_only": {
+          "programs_evaluable": "18/47 (38%)",
+          "rename_invariant": true,
+          "new_code_required": false,
+          "recommendation": "PRIMARY policy for the frozen v8 evaluation"
+        },
+        "option_2_structural_class_driver": {
+          "programs_evaluable": "34/47 (72%)",
+          "rename_invariant": "yes IF using (is_static, param_annotations, return_annotation) key with declaration-order tie-break; NOT if using AST body fingerprint",
+          "new_code_required": "~30–50 lines plus new tests and new protocol id",
+          "recommendation": "PRE-DECLARED SECONDARY STRATUM after dev validation; never mixed into primary number"
+        },
+        "option_3_alphabetical": {
+          "rename_invariant": false,
+          "method_order_differs_in_pairs": "25/48 under repaired SP-2",
+          "recommendation": "REJECTED — contaminates primary result"
+        },
+        "class_driver_ast_fingerprint_rejected": "sha256(normalised AST) changes in 106/293 pairs for body-editing SP transformations (SP-3/5/6/8/11). Must use interface key, not body fingerprint.",
+        "decision_made": "Option 1 as primary; Option 2 as secondary if implemented and dev-validated before freeze"
       },
       "evidence_paths": [
-        "experiments/final/class_driver.py",
         "reports/remediation/agent_c_v8_coverage.md",
-        "reports/remediation/07_DECISIONS_AND_OPEN_QUESTIONS.md"
+        "experiments/final/class_driver.py",
+        "experiments/final/entry_policy.py"
       ],
       "commit": "d9d6380",
-      "blocker_for_submission": false,
-      "note": "Policy decision D2 blocks B02"
+      "blocker_for_confirmatory_evaluation": false,
+      "note": "Decision made: Option 1 primary. Option 2 secondary (not required for primary result). Fresh program count must target ≥50 total to achieve ≥20 evaluable under Option 1 (38% survival rate)."
     },
     {
       "id": "B08",
       "title": "Complete v7 dataset generation and integrity",
       "status": "PARTIALLY_RESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "Generator implemented and smoke-tested (3 programs, 0 defects)",
-        "data_integrity.py --strict passes on smoke dataset"
-      ],
-      "acceptance_criteria_pending": [
-        "Full generation on ≥36 fresh programs (blocked on B02)",
-        "Full integrity report on complete dataset"
-      ],
-      "key_numbers": {
-        "smoke_programs": 3,
-        "smoke_pairs": 133,
-        "smoke_defects": 0
+      "acceptance_criteria": {
+        "(a)": "PARTIALLY DONE — generate_v7_dataset.py implemented; smoke tested on 3 programs (0 defects)",
+        "(b)": "NOT DONE — data_integrity.py --strict on complete dataset requires fresh programs",
+        "(c)": "NOT DONE — complete integrity report on full dataset",
+        "(d)": "NOT DONE — complete manifest with cryptographic hashes"
       },
+      "note": "Full generation blocked on B01 (edit-size redesign must precede benchmark generation) and B12 (fresh programs).",
       "evidence_paths": [
         "benchmark/scripts/generate_v7_dataset.py",
-        "benchmark/datasets/v7/",
-        "benchmark/datasets/v7/manifest.json"
+        "benchmark/datasets/v7/"
       ],
       "commit": "625ca3f",
-      "blocker_for_submission": true
+      "blocker_for_confirmatory_evaluation": true
     },
     {
       "id": "B09",
       "title": "Missing final evaluation artifacts",
       "status": "UNRESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [],
-      "acceptance_criteria_pending": [
-        "MAIN_EVALUATION_v6test_output_free_v7.json or v8 equivalent produced after freeze"
-      ],
+      "acceptance_criteria": {
+        "(a)": "NOT DONE — MAIN_EVALUATION_v7test or v8 equivalent does not exist",
+        "(b)": "DONE — absent artifact documented with required commands"
+      },
       "key_facts": {
         "main_eval_v7_exists": false,
-        "main_eval_v6_exists": true,
+        "v6_eval_exists": true,
         "v6_eval_status": "exploratory/observed",
-        "freeze_v8_exists": false,
-        "commands_documented": true
+        "freeze_v8_complete": false
       },
       "evidence_paths": [
         "reports/remediation/08_FINAL_EVALUATION_MANIFEST.md",
-        "STATUS.md"
+        "reports/remediation/FREEZE_V8.json"
       ],
-      "commit": "0d0889c",
-      "blocker_for_submission": true
+      "commit": "e479519",
+      "blocker_for_confirmatory_evaluation": true
     },
     {
       "id": "B10",
       "title": "Missing weight-fitting artifact",
       "status": "UNRESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "Fitting procedure defined in EVALUATION_PLAN_V8.md",
-        "fit_weights.py script exists"
-      ],
-      "acceptance_criteria_pending": [
-        "WEIGHT_FITTING.json produced on train split before test evaluation"
-      ],
+      "acceptance_criteria": {
+        "(a)": "NOT DONE — WEIGHT_FITTING.json does not exist",
+        "(b)": "DONE — procedure defined in EVALUATION_PLAN_V8.md"
+      },
       "key_facts": {
         "weight_fitting_json_exists": false,
-        "current_weights": "0.50/0.25/0.25 (unjustified)",
-        "fitting_script_exists": true
+        "fit_weights_script_exists": true,
+        "current_weights": "0.50/0.25/0.25 (unjustified)"
       },
       "evidence_paths": [
-        "experiments/final/fit_weights.py",
-        "STATUS.md"
+        "experiments/final/fit_weights.py"
       ],
-      "commit": "0d0889c",
-      "blocker_for_submission": true
+      "commit": "e479519",
+      "blocker_for_confirmatory_evaluation": true
     },
     {
       "id": "B11",
       "title": "Missing QuixBugs evaluation artifact",
-      "status": "UNRESOLVED",
+      "status": "PARTIALLY_RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "Point AUROC 0.388 reproducible from pairs file",
-        "Pairs file exists and verified"
-      ],
-      "acceptance_criteria_pending": [
-        "Structured QUIXBUGS_output_free_v7.json artifact with full provenance"
-      ],
+      "acceptance_criteria": {
+        "(a)": "DONE — QUIXBUGS_output_free_v7.json generated from committed pairs file",
+        "(b)": "DONE — AUROC 0.3877 documented and matches independent audit",
+        "(c)": "PARTIALLY DONE — no confidence interval; limitation documented",
+        "(d)": "DONE — adverse result preserved; marked ADVERSE in artifact"
+      },
       "key_numbers": {
-        "quixbugs_canonical_auroc": 0.3877,
-        "pairs_file_exists": true,
-        "structured_artifact_exists": false,
+        "quixbugs_canonical_auroc": 0.387723,
         "n_pairs": 152,
-        "n_changed": 40,
-        "n_equivalent": 112
+        "independent_audit_match": true
       },
       "evidence_paths": [
+        "artifacts/final/QUIXBUGS_output_free_v7.json",
         "artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl"
       ],
-      "commit": "0d0889c",
-      "blocker_for_submission": false,
-      "note": "Adverse result is already established; generating structured artifact is documentation cleanup"
+      "commit": "e479519",
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B12",
       "title": "Fresh-program count and eligibility",
       "status": "UNRESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "Source families identified (7 families, ~77 candidates)",
-        "Eligibility criteria and Jaccard screen specified",
-        "Power analysis script available"
-      ],
-      "acceptance_criteria_pending": [
-        "≥36 programs written (0 of ≥36 exist)",
-        "Power analysis run on dev data",
-        "Token-overlap screen executed"
-      ],
-      "key_numbers": {
-        "fresh_programs_written": 0,
-        "required_minimum": 36,
-        "required_with_option1_attrition": 50,
-        "candidate_sources": 77
+      "acceptance_criteria": {
+        "(a)": "DONE — target population defined; source families identified (7 families, ~77 candidates)",
+        "(b)": "DONE — eligibility criteria and Jaccard screen (≤0.10) specified",
+        "(c)": "DONE — power analysis script available; must run on dev before freeze",
+        "(d)": "NOT DONE — 0 of ≥36 programs written (≥50 required under Option 1 at 38% eligibility)",
+        "(e)": "DONE — independence unit = program documented"
+      },
+      "key_facts": {
+        "programs_written": 0,
+        "required_minimum_option1": 50,
+        "required_minimum_option2": 36,
+        "policy_decision": "Option 1 (function-only) is primary → write ≥50 programs",
+        "eligibility_attrition_rate": "38% under Option 1 (18/47 observed)",
+        "target_evaluable": 20
       },
       "evidence_paths": [
         "docs/current/FRESH_PROGRAM_SOURCES.md",
         "reports/remediation/agent_e_fresh_dataset.md"
       ],
       "commit": "625ca3f",
-      "blocker_for_submission": true
+      "blocker_for_confirmatory_evaluation": true
     },
     {
       "id": "B13",
       "title": "Statistical analysis plan",
       "status": "PARTIALLY_RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "Primary outcome, comparison, CI, correction method specified",
-        "Cluster bootstrap with Holm-Bonferroni specified",
-        "Success criterion pre-specified",
-        "Exclusion rules, tie handling, failed-execution policy documented"
-      ],
-      "acceptance_criteria_pending": [
-        "Plan frozen (hashed, committed in FREEZE_V8.json) before test scoring"
-      ],
-      "key_facts": {
-        "plan_document": "docs/current/EVALUATION_PLAN_V8.md",
-        "plan_status": "draft - not frozen",
-        "freeze_hash_recorded": false
+      "acceptance_criteria": {
+        "(a)": "DONE — complete plan in EVALUATION_PLAN_V8.md §7",
+        "(b)": "DONE — cluster bootstrap with Holm-Bonferroni specified; LOCO sensitivity specified",
+        "(c)": "DONE — success criterion pre-specified",
+        "(d)": "NOT DONE — plan not yet frozen (must be committed in FREEZE_V8.json before test scoring)"
       },
       "evidence_paths": [
         "docs/current/EVALUATION_PLAN_V8.md"
       ],
       "commit": "d9d6380",
-      "blocker_for_submission": false,
-      "note": "Cannot be frozen until B02 resolved"
+      "blocker_for_confirmatory_evaluation": false,
+      "note": "Plan is complete; freezing it is blocked on B02 (fresh programs must exist before freeze)"
     },
     {
       "id": "B14",
       "title": "Transformation validity and label integrity",
       "status": "PARTIALLY_RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "SP-2 defect identified and fixed",
-        "Static validity audit passes",
-        "data_integrity.py checks SP-2 specifically"
-      ],
-      "acceptance_criteria_pending": [
-        "Execution-based label audit of all SP transformation EQUIVALENT pairs",
-        "Full transformation-integrity report on complete v7 dataset"
-      ],
-      "key_facts": {
-        "sp2_fixed": true,
-        "broader_execution_audit_run": false,
-        "static_audit_passes": true
+      "acceptance_criteria": {
+        "(a)": "DONE — SP-2 fixed; static audit passes",
+        "(b)": "NOT DONE — execution-based audit of all EQUIVALENT SP pairs not yet run on complete v7 dataset",
+        "(c)": "NOT DONE — complete transformation-integrity report pending full v7 dataset"
       },
       "evidence_paths": [
         "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
         "tests/test_sp2_repair.py"
       ],
       "commit": "5cf5211",
-      "blocker_for_submission": false,
-      "note": "Full audit requires complete v7 dataset (B08)"
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B15",
       "title": "Independent reproduction",
       "status": "PARTIALLY_RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "Reproduction commands documented",
-        "Clean-checkout test run successful (738 pass, 10/10 consistency)"
-      ],
-      "acceptance_criteria_pending": [
-        "Final evaluation artifacts do not exist; full reproduction not yet possible"
-      ],
-      "key_facts": {
-        "test_suite_reproduces": true,
-        "reference_aurocs_reproduce": true,
-        "final_eval_artifacts_exist": false
+      "acceptance_criteria": {
+        "(a)": "DONE — reproduction commands documented in CLEAN_CHECKOUT_REPRODUCTION.md",
+        "(b)": "DONE — clean-checkout test run successful: 738 pass, 10/10 consistency",
+        "(c)": "NOT DONE — final evaluation artifacts do not exist; full reproduction not yet possible",
+        "(d)": "DONE — no undocumented local files required for the test suite"
       },
       "evidence_paths": [
-        "reports/remediation/logs/final_pytest_py313.txt",
-        "reports/remediation/logs/final_pytest_py39.txt",
-        "reports/remediation/09_CLAUDE_HANDOFF.md"
+        "reports/remediation/CLEAN_CHECKOUT_REPRODUCTION.md",
+        "reports/remediation/logs/final_pytest_py313.txt"
       ],
-      "commit": "0d0889c",
-      "blocker_for_submission": false
+      "commit": "e479519",
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B16",
       "title": "External validity and generalization claims",
       "status": "PARTIALLY_RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "External AUROCs correctly documented (C022 NOT_SUPPORTED)",
-        "Generalization claims qualified in claims registry"
-      ],
-      "acceptance_criteria_pending": [
-        "Manuscript-facing placement of adverse external results in primary results section",
-        "Root-cause analysis on dev data"
-      ],
+      "acceptance_criteria": {
+        "(a)": "DONE — external AUROCs correctly documented in claims registry (C022 NOT_SUPPORTED)",
+        "(b)": "NOT DONE — root-cause analysis on dev data not yet run",
+        "(c)": "NOT DONE — manuscript primary-results placement not verified (no manuscript in repo)"
+      },
       "evidence_paths": [
         "docs/CLAIMS_REGISTRY.yaml",
-        "reports/remediation/07_DECISIONS_AND_OPEN_QUESTIONS.md"
+        "artifacts/final/QUIXBUGS_output_free_v7.json"
       ],
       "commit": "410b3ae",
-      "blocker_for_submission": true
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B17",
       "title": "Preregistration chronology and provenance",
       "status": "RESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "(a) chronology verified and corrected",
-        "(b) git history documented",
-        "(c) all v6 results labelled exploratory",
-        "(d) new protocol distinguished as confirmatory"
-      ],
-      "acceptance_criteria_pending": [
-        "PHASE2_FREEZE.json written_at field is earlier than git commit — not used for claims, but should be noted"
-      ],
-      "key_facts": {
-        "v6_test_commit": "9a9104f (2026-09-28)",
-        "preregistration_commit": "ad7b655 (2026-10-03)",
-        "false_claim_removed": true,
-        "chronology_note_added": true
+      "acceptance_criteria": {
+        "(a)": "DONE — false date claim removed from STATUS.md",
+        "(b)": "DONE — git history documented; chronology note in PHASE2_PREREGISTRATION.md",
+        "(c)": "DONE — v6 results labelled exploratory",
+        "(d)": "DONE — new protocol (v8) distinguished as the confirmatory protocol"
       },
+      "residual_limitation": "PHASE2_FREEZE.json written_at predates its git commit; audit_note field documents this; field must not be used to support a preregistration claim",
       "evidence_paths": [
         "docs/current/PHASE2_PREREGISTRATION.md",
-        "STATUS.md",
-        "artifacts/final/PHASE2_FREEZE.json"
+        "STATUS.md"
       ],
       "commit": "410b3ae",
-      "blocker_for_submission": false,
-      "note": "Limitation noted; false claims corrected; classification as RESOLVED is justified"
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B18",
       "title": "Citation accuracy and prior-art review",
       "status": "PARTIALLY_RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "(a)-(c) correction notes added to PRIOR_ART_MATRIX.md and NOVELTY_ANALYSIS.md",
-        "Two missing works added"
-      ],
-      "acceptance_criteria_pending": [
-        "Full-text verification of corrected citations by authors",
-        "Manuscript BibTeX not in repository — corrections must be applied at manuscript stage"
-      ],
-      "key_facts": {
-        "citations_flagged": ["ref 17", "ref 33", "ref 39"],
-        "missing_works_added": ["Person et al. mutation testing", "Wang et al. execution-trace embeddings"],
-        "fulltext_verified": false
+      "acceptance_criteria": {
+        "(a)": "DONE — correction notes added to PRIOR_ART_MATRIX.md and NOVELTY_ANALYSIS.md",
+        "(b)": "DONE — two missing works added (Person et al., Wang et al.)",
+        "(c)": "NOT DONE — full-text verification by authors outstanding",
+        "(d)": "NOT DONE — manuscript BibTeX not in repository; corrections not applied"
       },
       "evidence_paths": [
         "docs/research/CITATION_VERIFICATION.md",
-        "docs/research/PRIOR_ART_MATRIX.md",
-        "docs/research/NOVELTY_ANALYSIS.md"
+        "docs/research/PRIOR_ART_MATRIX.md"
       ],
       "commit": "410b3ae",
-      "blocker_for_submission": false,
-      "note": "Manuscript BibTeX outside repository; authors must apply corrections before submission"
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B19",
       "title": "Claims registry and manuscript consistency",
       "status": "RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "(a) all quantitative claims point to authoritative artifacts",
-        "(b) v6 results labelled exploratory",
-        "(c) adverse results reflected (C022 NOT_SUPPORTED)",
-        "(d) no obsolete values in active documents"
-      ],
-      "acceptance_criteria_pending": [
-        "FINAL_STANFORD_READINESS_REPORT.md is a historical document — should be moved to archive"
-      ],
-      "key_facts": {
-        "consistency_checks": "10/10 PASS",
-        "c022_status": "NOT_SUPPORTED",
-        "c023_status": "NOT_SUPPORTED"
+      "acceptance_criteria": {
+        "(a)": "DONE — all active quantitative claims point to authoritative artifacts",
+        "(b)": "DONE — v6 results labelled exploratory",
+        "(c)": "DONE — adverse results reflected (C022 NOT_SUPPORTED, C023 NOT_SUPPORTED)",
+        "(d)": "DONE — 10/10 consistency checks pass"
       },
+      "verification": "python3 experiments/final/consistency_check.py → 10/10 PASS",
       "evidence_paths": [
         "docs/CLAIMS_REGISTRY.yaml",
         "STATUS.md"
       ],
-      "commit": "410b3ae",
-      "blocker_for_submission": false
+      "commit": "e479519",
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B20",
       "title": "Scientific contribution and novelty",
       "status": "PARTIALLY_RESOLVED",
       "severity": 1,
-      "acceptance_criteria_met": [
-        "Contribution stated precisely",
-        "Narrower defensible contribution identified (methodology + audit + negative result)"
-      ],
-      "acceptance_criteria_pending": [
-        "Confirmatory evaluation required for positive empirical contribution",
-        "Manuscript revision to narrower framing"
-      ],
-      "key_facts": {
-        "original_hypothesis_status": "NOT_SUPPORTED by current evidence",
-        "narrower_contribution_defensible": true,
-        "narrower_contribution": "methodology description + measurement audit + quantified negative result"
+      "acceptance_criteria": {
+        "(a)": "DONE — contribution stated; narrower defensible contribution identified",
+        "(b)": "DONE — what evidence supports vs. does not support is documented",
+        "(c)": "NOT DONE — manuscript revision to narrower framing not yet done"
       },
+      "defensible_contributions": [
+        "Description of execution-grounded 8-dimensional genome representation",
+        "Rigorous audit of measurement failures (oracle leak, false labels, CI misattribution, edit-size confound)",
+        "Quantified negative/inconclusive result with honest reporting",
+        "Clear path to a confirmatory experiment"
+      ],
+      "not_supported": [
+        "SBG outperforms simple baselines on any valid benchmark",
+        "Results are confirmatory and pre-registered",
+        "Method generalizes to real bugs"
+      ],
       "evidence_paths": [
         "docs/research/NOVELTY_ANALYSIS.md",
-        "docs/CLAIMS_REGISTRY.yaml",
-        "reports/remediation/agent_f_research_record.md"
+        "docs/CLAIMS_REGISTRY.yaml"
       ],
       "commit": "410b3ae",
-      "blocker_for_submission": true
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B21",
       "title": "Git integration and branch status",
       "status": "RESOLVED",
       "severity": 3,
-      "acceptance_criteria_met": [
-        "Working tree clean",
-        "All changes committed",
-        "Final commit identified (0d0889c)"
-      ],
-      "acceptance_criteria_pending": [],
+      "acceptance_criteria": {
+        "(a)": "DONE — working tree clean",
+        "(b)": "DONE — all changes committed",
+        "(c)": "DONE — HEAD commit e479519 identified"
+      },
       "key_facts": {
         "branch": "remediation/sbg-v2",
-        "head_commit": "0d0889c",
+        "head_commit": "e479519",
         "working_tree_clean": true,
-        "pushed_to_origin": false,
-        "pushing_requires_authorization": true
+        "pushed_to_origin": false
       },
-      "evidence_paths": [],
-      "commit": "0d0889c",
-      "blocker_for_submission": false,
-      "note": "Not pushed per policy — operational task only"
+      "commit": "e479519",
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B22",
       "title": "Independent audit",
       "status": "RESOLVED",
       "severity": 2,
-      "acceptance_criteria_met": [
-        "(a) independent audit completed",
-        "(b) actual code and artifacts inspected (26 claims verified)",
-        "(c) 6 reference AUROCs independently recomputed",
-        "(d) chronology and freeze integrity verified",
-        "(e) disagreements recorded",
-        "(f) NOT READY verdict issued"
-      ],
-      "acceptance_criteria_pending": [
-        "New commits 5cf5211–0d0889c not reviewed by separate agent — supplementary audit recommended"
-      ],
-      "key_facts": {
-        "audit_commit": "5d3dae9",
-        "audit_branch": "independent-audit/ieee-access-2026-10",
-        "audit_verdict": "NOT READY FOR IEEE ACCESS SUBMISSION",
-        "claims_verified": 26,
-        "reference_aurocs_verified": 6
+      "acceptance_criteria": {
+        "(a)": "DONE — primary independent audit at 5d3dae9; supplementary review in INDEPENDENT_AUDIT_REPORT.md",
+        "(b)": "DONE — 26 claims independently verified from artifacts",
+        "(c)": "DONE — 6 reference AUROCs recomputed independently",
+        "(d)": "DONE — chronology and freeze integrity verified",
+        "(e)": "DONE — disagreements recorded in INDEPENDENT_AUDIT_REPORT.md",
+        "(f)": "DONE — NOT READY verdict issued and confirmed in supplementary review"
       },
+      "audit_verdict": "NOT READY FOR IEEE ACCESS SUBMISSION",
       "evidence_paths": [
-        "independent-audit/ieee-access-2026-10:reports/independent_audit/INDEPENDENT_AUDIT_REPORT.md"
+        "reports/remediation/INDEPENDENT_AUDIT_REPORT.md"
       ],
       "commit": "5d3dae9",
-      "blocker_for_submission": false
+      "blocker_for_confirmatory_evaluation": false
     },
     {
       "id": "B23",
@@ -621,14 +537,19 @@
       },
       "final_verdict": "NOT_RESEARCH_READY",
       "category": "C",
-      "blocking_gates": ["G3", "G4"],
-      "partially_passing_gates": ["G2", "G5"],
+      "minimum_required_for_category_b_or_a": [
+        "B01: implement max_names=1 redesign for SP-1/SP-2",
+        "B02: write ≥50 fresh programs; freeze protocol before test scoring",
+        "B08: generate complete v7 dataset; pass data_integrity.py --strict",
+        "B09: run make v7-train v7-fit v7-test (one run after freeze)",
+        "B10: run weight fitting; commit WEIGHT_FITTING.json",
+        "B12: meet ≥20 evaluable-program target"
+      ],
       "evidence_paths": [
         "artifacts/final/STANFORD_GATE.json",
-        "reports/remediation/23_BLOCKER_CLOSURE_REGISTER.md"
+        "reports/remediation/FINAL_RESEARCH_READINESS_REPORT.md"
       ],
-      "commit": "0d0889c",
-      "note": "Category C: further remediation required. See register for minimum required actions."
+      "commit": "e479519"
     }
   ]
 }

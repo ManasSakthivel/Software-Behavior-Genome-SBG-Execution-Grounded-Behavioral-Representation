@@ -82,7 +82,17 @@ class _FunctionRenamer(ast.NodeTransformer):
 
 
 class FunctionRenameTransformation:
-    """SP-2: Rename helper function names deterministically."""
+    """SP-2: Rename helper function names deterministically.
+
+    ``max_names`` controls the maximum number of functions renamed per call.
+    The default ``None`` preserves the original behaviour (rename a random
+    subset of all user-defined functions). ``max_names=1`` renames exactly one
+    function (its definition and all call sites), limiting the edit size to
+    roughly 2 × (1 + number of call sites) lines and creating meaningful
+    overlap with the SC mutation edit-size range.
+
+    See ``docs/current/EDIT_SIZE_REDESIGN.md`` for the full rationale.
+    """
 
     id = "SP-2"
     name = "FUNCTION_RENAME"
@@ -90,7 +100,8 @@ class FunctionRenameTransformation:
     def __init__(self):
         self.last_rename_map: dict[str, str] = {}
 
-    def apply(self, source_code: str, seed: int) -> str:
+    def apply(self, source_code: str, seed: int,
+              max_names: "int | None" = None) -> str:
         random.seed(seed)
         tree = ast.parse(source_code)
         func_names = list(dict.fromkeys(_collect_function_names(tree)))  # dedup, preserve order
@@ -104,7 +115,11 @@ class FunctionRenameTransformation:
         existing = set(func_names)
         rename_map: dict[str, str] = {}
 
-        candidates = random.sample(func_names, k=random.randint(1, max(1, len(func_names))))
+        # max_names caps the number of functions renamed to limit edit size.
+        n_to_rename = random.randint(1, max(1, len(func_names)))
+        if max_names is not None:
+            n_to_rename = min(n_to_rename, max(1, max_names))
+        candidates = random.sample(func_names, k=n_to_rename)
         for name in candidates:
             new_name = None
             # Try suffix substitution
