@@ -179,13 +179,58 @@ def benchmark_quality() -> Result:
 
 
 def real_program_validity() -> Result:
-    q_n = _quixbugs_programs(_load(QUIXBUGS))
-    b_n = _bugsinpy_programs(_load(BUGSINPY))
-    best = max(q_n, b_n)
-    if best >= MIN_REAL_PROGRAMS_ONE_CORPUS:
-        return [f"real-program corpus with {best} evaluated programs (QuixBugs {q_n}, BugsInPy {b_n})"], []
-    return [], [f"no external corpus with >= {MIN_REAL_PROGRAMS_ONE_CORPUS} evaluated programs "
-                f"(QuixBugs {q_n}, BugsInPy {b_n})"]
+    """Require ≥ MIN_REAL_PROGRAMS_ONE_CORPUS evaluated AND AUROC ≥ 0.5 on at least one corpus.
+
+    Previously this category checked only evaluation coverage (programs evaluated),
+    not whether the method achieved above-chance performance.  A coverage-only
+    check conflates "we ran the experiment" with "the method works on real programs".
+    The independent audit (commit 5d3dae9, SF-9) identified this as misleading:
+    BugsInPy AUROC = 0.410 and QuixBugs canonical AUROC = 0.388 are both
+    significantly BELOW chance, so the category must report BLOCKED until the
+    method achieves AUROC ≥ 0.5 on at least one external corpus with adequate
+    program coverage.
+    """
+    q_data = _load(QUIXBUGS)
+    b_data = _load(BUGSINPY)
+    q_n = _quixbugs_programs(q_data)
+    b_n = _bugsinpy_programs(b_data)
+
+    def _auroc(data: Optional[dict], key: str) -> Optional[float]:
+        """Extract the primary AUROC from a result artifact."""
+        if data is None:
+            return None
+        try:
+            return float(data.get("headline", {}).get("sbg_v5_auroc_valid")
+                         or data.get("headline", {}).get("sbg_v5_auroc")
+                         or data.get("regimes", {}).get("canonical", {}).get("auroc")
+                         or -1)
+        except (TypeError, ValueError):
+            return None
+
+    q_auroc = _auroc(q_data, "quixbugs")
+    b_auroc = _auroc(b_data, "bugsinpy")
+
+    MIN_AUROC = 0.5
+    evidence, missing = [], []
+
+    for label, n, auroc_val in (("QuixBugs", q_n, q_auroc), ("BugsInPy", b_n, b_auroc)):
+        if n >= MIN_REAL_PROGRAMS_ONE_CORPUS and auroc_val is not None and auroc_val >= MIN_AUROC:
+            evidence.append(
+                f"{label}: {n} evaluated programs, AUROC {auroc_val:.4f} >= {MIN_AUROC}")
+        else:
+            details = []
+            if n < MIN_REAL_PROGRAMS_ONE_CORPUS:
+                details.append(f"only {n} of >= {MIN_REAL_PROGRAMS_ONE_CORPUS} programs evaluated")
+            if auroc_val is None:
+                details.append("AUROC unknown (artifact absent)")
+            elif auroc_val < MIN_AUROC:
+                details.append(
+                    f"AUROC {auroc_val:.4f} < {MIN_AUROC} (below chance — method does not transfer)")
+            missing.append(f"{label}: " + "; ".join(details))
+
+    if not evidence:
+        return [], missing
+    return evidence, missing
 
 
 def stateful_program_validity() -> Result:

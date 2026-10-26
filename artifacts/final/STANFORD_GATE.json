@@ -48,11 +48,12 @@
       ]
     },
     "real_program_validity": {
-      "verdict": "PASS",
-      "evidence": [
-        "real-program corpus with 39 evaluated programs (QuixBugs 0, BugsInPy 39)"
-      ],
-      "missing": []
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing": [
+        "QuixBugs: only 0 of >= 20 programs evaluated; AUROC 0.3877 < 0.5 (below chance \u2014 method does not transfer)",
+        "BugsInPy: AUROC 0.4099 < 0.5 (below chance \u2014 method does not transfer)"
+      ]
     },
     "stateful_program_validity": {
       "verdict": "BLOCKED",
@@ -66,10 +67,10 @@
     "external_validation": {
       "verdict": "BLOCKED",
       "evidence": [
+        "QUIXBUGS_output_free_v7.json under output_free_v7 with frozen manifest hash",
         "BUGSINPY_output_free_v7.json under output_free_v7 with frozen manifest hash"
       ],
       "missing": [
-        "QUIXBUGS_output_free_v7.json under output_free_v7 with its frozen manifest hash",
         "QUIXBUGS_JAVA_SBG_RESULTS.json or JAVA_CLAIM_REMOVAL.json"
       ]
     },
@@ -192,6 +193,7 @@
         "novelty is BLOCKED",
         "methodological_rigor is BLOCKED",
         "benchmark_quality is BLOCKED",
+        "real_program_validity is BLOCKED",
         "stateful_program_validity is BLOCKED",
         "external_validation is BLOCKED",
         "statistical_rigor is BLOCKED",
@@ -204,8 +206,8 @@
     }
   },
   "summary": {
-    "pass": 8,
-    "blocked": 12,
+    "pass": 7,
+    "blocked": 13,
     "total": 20
   }
 }

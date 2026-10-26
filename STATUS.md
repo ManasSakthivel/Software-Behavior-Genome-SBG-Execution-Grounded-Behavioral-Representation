@@ -60,5 +60,8 @@ Fill one row per completed stage.
 An external audit was verified against the files and partly fixed. The test split
 is **observed, not held out**; a fresh program-level split is required before any
 confirmatory claim. Details: `reports/remediation/` (`04_REMEDIATION_REPORT.md`
-is the summary) and `docs/current/EVALUATION_PLAN_V8.md`. The gate still reports
-8/20 PASS, 12 BLOCKED. Nothing here makes the paper publication-ready.
+is the summary) and `docs/current/EVALUATION_PLAN_V8.md`. The gate reports
+7/20 PASS, 13 BLOCKED. Gate D6 (`real_program_validity`) was corrected to require
+AUROC ≥ 0.5 on external corpora, not just evaluation coverage (BugsInPy AUROC
+0.410 and QuixBugs AUROC 0.388 are both below chance). Nothing here makes the
+paper publication-ready.
