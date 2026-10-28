@@ -167,7 +167,8 @@ def main() -> int:
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({k: v for k, v in report.items() if k != "defects"}, indent=2))
-    return 1 if (args.strict and report["defect_counts"]) else 0
+    has_defects = sum(report["defect_counts"].values()) > 0
+    return 1 if (args.strict and has_defects) else 0
 
 
 if __name__ == "__main__":

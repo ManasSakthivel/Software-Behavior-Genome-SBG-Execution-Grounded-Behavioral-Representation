@@ -1,0 +1,244 @@
+{
+  "generated_at_utc": "2026-10-28T14:53:06+00:00",
+  "repository": "https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation",
+  "branch": "remediation/sbg-v2",
+  "base_commit": "f15cb9a658c73a9f4c44b7b701b9c89d55ac68d6",
+  "uncommitted_tracked_modifications_at_generation": [
+    "M STATUS.md",
+    " M artifacts/final/STANFORD_GATE.json",
+    " M benchmark/transformations/preserving/transformer.py",
+    " M docs/current/FRESH_PROGRAM_PROTOCOL.md",
+    " M experiments/final/consistency_check.py",
+    " M experiments/final/data_integrity.py",
+    " M experiments/final/run_main_evaluation.py",
+    " M experiments/final/stanford_gate.py",
+    " M sbg/extraction/dynamic/tracer.py",
+    " M tests/test_gate_and_stdlib_regression.py",
+    " M tests/test_tracer_isolation.py"
+  ],
+  "python": {
+    "venv": "venvs/py313",
+    "version": "Python 3.13.5",
+    "canonical_declared": ".python-version = 3.13",
+    "requirements_lock_sha256": "c25aba80f1521902486d3e31cd2e664282c0177039377d641c254d36377a883f"
+  },
+  "machine": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "arch": "arm64"
+  },
+  "seeds": {
+    "bootstrap": 42,
+    "permutation": 42,
+    "label_shuffle": 42,
+    "split": 42,
+    "transformations": [
+      0,
+      1,
+      2
+    ],
+    "n_bootstrap": 2000,
+    "n_permutations": 2000,
+    "n_shuffles": 500
+  },
+  "protocols": {
+    "published": "historical, name-based entry",
+    "output_free_v6": "historical, name-based entry (traces test_* drivers for some SP-2 variants)",
+    "output_free_v7": "function tier + alphabetical class-driver tier; frozen tau* and weights belong to this protocol",
+    "output_free_v8": "structural rename-invariant entry policy; NOT frozen (no FREEZE_V8.json)"
+  },
+  "datasets": {
+    "v6": {
+      "dir": "benchmark/datasets/v6",
+      "splits": {
+        "train": {
+          "n_pairs": 1129,
+          "n_programs": 28,
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_train.jsonl",
+            "sha256": "e5259734572414ea78410662190b0d17b9d67ba3e5c31c75c135187c39c0dff9"
+          }
+        },
+        "dev": {
+          "n_pairs": 372,
+          "n_programs": 10,
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_dev.jsonl",
+            "sha256": "f58b92256d648e6e5e6fe23547b32084cfe89808133d00528d79a9eb538fdbdd"
+          }
+        },
+        "val": {
+          "n_pairs": 351,
+          "n_programs": 9,
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_val.jsonl",
+            "sha256": "b100e5d109326d5beacfbebfedbd8b13d3f9c59095293ed61b586263708081d3"
+          }
+        },
+        "test": {
+          "n_pairs": 488,
+          "n_programs": 13,
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_test.jsonl",
+            "sha256": "ada35810bd783fe194e86ebda29f1bd729ad3a396c772d4a0406b1d532c2b396"
+          }
+        }
+      }
+    },
+    "v8": {
+      "dir": "benchmark/datasets/v8",
+      "splits": {
+        "train": {
+          "n_pairs": 2057,
+          "n_programs": 49,
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_train.jsonl",
+            "sha256": "17866e93b0f165d87808bc595a8dde378da8432b32ff672c68fe8f7922c9782c"
+          }
+        },
+        "dev": {
+          "n_pairs": 597,
+          "n_programs": 14,
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_dev.jsonl",
+            "sha256": "8dda7f573765e0c5eaf7a5969212a2e5a500cbd3c7752c662ef209ce35826928"
+          }
+        },
+        "val": {
+          "n_pairs": 461,
+          "n_programs": 11,
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_val.jsonl",
+            "sha256": "aa545bd1a86b6a452a65134769197f2f2c95e2bab26a9d46dcd46cac956e1366"
+          }
+        },
+        "test": {
+          "n_pairs": 1130,
+          "n_programs": 26,
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_test.jsonl",
+            "sha256": "124c870364bc998b3ea3c24f3b23f994006d07619fadea36ee5e82b276813e83"
+          }
+        }
+      }
+    }
+  },
+  "dataset_manifests": {
+    "v8": {
+      "path": "benchmark/datasets/v8/manifest.json",
+      "sha256": "1a3f32d031c160c77e8b2d4fb521fe4634c542aa73bdaf16116ca1517c008b2d"
+    },
+    "v6": {
+      "path": "benchmark/datasets/v6/generation_report.json",
+      "sha256": "e4e23142e826cf94c9d44f5a3d68c8be84f926a73a742ea449c77885d8fb583f"
+    }
+  },
+  "runs": {
+    "v6train_output_free_v7": {
+      "status": "COMPLETE (this session)",
+      "command": "run_main_evaluation.py --split train --protocol output_free_v7 --dataset-dir benchmark/datasets/v6 --tag v6train [--checkpoint-every 5 on resume]",
+      "then": "static_baselines.py --pairs artifacts/final/pairs_v6train_output_free_v7.jsonl --dataset benchmark/datasets/v6; analyse_results.py --split train --protocol output_free_v7 --tag v6train --audit artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+      "logs": [
+        "/tmp/v7_train_eval.log (attempt 1, to 1000/1129, 13558 s)",
+        "/tmp/v7_train_eval_r2.log (attempt 2, PID 36301, to 1000/1129, 7003 s; process found dead, no completion marker)",
+        "/tmp/v7_train_eval_r3.log (resume, PID 50960, 1000 -> 1129, 862.6 s; completed)"
+      ],
+      "outputs": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6train_output_free_v7.jsonl",
+          "sha256": "ebbc7a411180017720ffc6435589e3ae042d78c0865365916a779af5bae4a6f5"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v6train_output_free_v7.json",
+          "sha256": "bcecabe01a9c0eb16ed0ea8d022a961f9b43c71ee5f2edb8ece4e386fcc8f326"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6train_output_free_v7.json",
+          "sha256": "f0d575210d8087501b9facd0e12e52bf1eab70b6d6548cc70fb9754c77c7fc62"
+        }
+      }
+    },
+    "weight_fitting": {
+      "status": "COMPLETE (this session)",
+      "command": "fit_weights.py fit",
+      "output": {
+        "path": "artifacts/final/WEIGHT_FITTING.json",
+        "sha256": "6d1e157a1a317845d0c143de2cb586c69613df3cbfd704cf5870adb4b75553fb"
+      }
+    },
+    "v8dev_output_free_v8_rescore": {
+      "status": "COMPLETE (this session)",
+      "command": "run_main_evaluation.py --split dev --protocol output_free_v8 --dataset-dir benchmark/datasets/v8 --tag v8devrescore; static_baselines.py --pairs artifacts/final/pairs_v8devrescore_output_free_v8.jsonl --dataset benchmark/datasets/v8; observability_audit_v7.py benchmark/datasets/v8 artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json; analyse_results.py --split dev --protocol output_free_v8 --tag v8devrescore --audit artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json",
+      "why_rescored": "pre-existing pairs_dev_/pairs_v8dev_output_free_v8.jsonl were scored 2026-10-27/28 07:39 against an earlier v8 dataset; benchmark/datasets/v8 was regenerated 07:53 on 2026-10-28; 181-186 of 593 scores differ and pairs_v8dev_* has 598 rows vs 597 current pairs. Two identical re-scores matched exactly (deterministic).",
+      "caveat_audit": "BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json applies the v7 observability audit to v8 pairs; all 597 are marked observable/valid. It uses v7 entry logic, not the v8 structural entry policy, so VALID == EVALUABLE here.",
+      "outputs": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+          "sha256": "86ff18771d3563c4fede04d6f437fdd024791f2838ce19579ea7a6b1bae50f81"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v8devrescore_output_free_v8.json",
+          "sha256": "4e862f6336b85da6b2d6a0855c0cddc3e1f86213da26856ca5d5a7c3baa9fbfa"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v8devrescore_output_free_v8.json",
+          "sha256": "95058e7901d6e79adff497fcf867472b855730e667db861a2621f49d4d8ebb7c"
+        }
+      }
+    },
+    "v6dev_output_free_v7": {
+      "status": "REUSED (frozen)",
+      "outputs": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+          "sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6dev_output_free_v7.json",
+          "sha256": "17ceb9a278d2d5bdb545b0294dac2d10fc50cea892ccda04c3556360d170d567"
+        }
+      }
+    },
+    "v6test_output_free_v6": {
+      "status": "REUSED (historical, observed split)",
+      "outputs": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6test_output_free_v6.jsonl",
+          "sha256": "2f811d19e274dab1fd2195de1a2667456912ad4aa4152ff69c55daae26fdcad8"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6test_output_free_v6.json",
+          "sha256": "828cdad5c2a495d3700c5b89abee63ae74b21c8a7faacf5503a12a01945a0bb9"
+        }
+      }
+    },
+    "quixbugs_output_free_v7": {
+      "status": "REUSED (pre-freeze, adverse)",
+      "output": {
+        "path": "artifacts/final/QUIXBUGS_output_free_v7.json",
+        "sha256": "82bbc79a9de2caa8fa9cd849485d22fc5f396e2cb1fc45119982960290009f93"
+      }
+    },
+    "bugsinpy_output_free_v7": {
+      "status": "REUSED (pre-freeze, adverse)",
+      "output": {
+        "path": "artifacts/final/BUGSINPY_output_free_v7.json",
+        "sha256": "9c1d73998d4ce792fe9056997c3adc6fe6905068e2f11134983e70cf829cb493"
+      }
+    },
+    "evidence_builders": [
+      "edit_size_confound_multi.py",
+      "tau_operating_points.py",
+      "build_paper_evidence.py",
+      "build_ablations.py",
+      "build_paper_evidence_meta.py"
+    ]
+  },
+  "not_run": [
+    "make v7-test (v6 TEST under output_free_v7)",
+    "fit_weights.py score/test",
+    "any v8 test/val scoring",
+    "make java",
+    "power_analysis.py on v8",
+    "FREEZE_V8.json / THRESHOLD_V8_FROZEN.json creation"
+  ]
+}

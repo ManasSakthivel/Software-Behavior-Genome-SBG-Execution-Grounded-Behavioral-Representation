@@ -162,13 +162,12 @@
       "missing": []
     },
     "scientific_integrity": {
-      "verdict": "BLOCKED",
+      "verdict": "PASS",
       "evidence": [
-        "C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)"
+        "C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)",
+        "weights chosen before test was scored"
       ],
-      "missing": [
-        "WEIGHT_FITTING.json recording the dev choice before test"
-      ]
+      "missing": []
     },
     "research_maturity": {
       "verdict": "PASS",
@@ -200,14 +199,13 @@
         "baseline_quality is BLOCKED",
         "claim_discipline is BLOCKED",
         "failure_transparency is BLOCKED",
-        "scientific_integrity is BLOCKED",
         "generalization_validity is BLOCKED"
       ]
     }
   },
   "summary": {
-    "pass": 7,
-    "blocked": 13,
+    "pass": 8,
+    "blocked": 12,
     "total": 20
   }
 }

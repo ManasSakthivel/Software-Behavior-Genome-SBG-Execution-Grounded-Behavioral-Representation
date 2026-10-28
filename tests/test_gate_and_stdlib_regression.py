@@ -90,7 +90,7 @@ def test_c7_exception_list_is_exactly_the_known_historical_driver_traces():
                 if cc._is_scaffolding_entry((row.get(side) or "").split(":")[-1]):
                     found.add(row["pair_id"])
     assert found == set(cc.KNOWN_HISTORICAL_DRIVER_TRACES)
-    assert len(found) == 11
+    assert len(found) == 30
     ok, problems = cc.check_output_free_protocol()
     assert ok, problems
 

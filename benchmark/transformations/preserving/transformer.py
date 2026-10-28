@@ -178,6 +178,7 @@ def apply_transformation(
     program_path: str | Path,
     transformation_type: str,
     seed: int,
+    **kwargs,
 ) -> Tuple[str, dict]:
     """
     Apply a single transformation to the source file at `program_path`.
@@ -187,6 +188,8 @@ def apply_transformation(
     program_path     : path to the source .py file
     transformation_type : SP-X id (e.g. "SP-1") or name (e.g. "VARIABLE_RENAME")
     seed             : integer seed for deterministic output
+    **kwargs         : extra keyword arguments forwarded to transformation.apply()
+                       (e.g. max_names=1 for SP-1/SP-2 edit-size control)
 
     Returns
     -------
@@ -211,7 +214,11 @@ def apply_transformation(
     source = program_path.read_text(encoding="utf-8")
 
     random.seed(seed)  # Belt-and-suspenders global seed
-    new_source = transformation.apply(source, seed)
+    try:
+        new_source = transformation.apply(source, seed, **kwargs)
+    except TypeError:
+        # Transformation does not accept extra kwargs; call without them.
+        new_source = transformation.apply(source, seed)
 
     validation_passed = transformation.validate(source, new_source)
 

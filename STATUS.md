@@ -61,7 +61,16 @@ An external audit was verified against the files and partly fixed. The test spli
 is **observed, not held out**; a fresh program-level split is required before any
 confirmatory claim. Details: `reports/remediation/` (`04_REMEDIATION_REPORT.md`
 is the summary) and `docs/current/EVALUATION_PLAN_V8.md`. The gate reports
-7/20 PASS, 13 BLOCKED. Gate D6 (`real_program_validity`) was corrected to require
+8/20 PASS, 12 BLOCKED (2026-10-28, after train + weight fitting). Gate D6 (`real_program_validity`) was corrected to require
 AUROC ≥ 0.5 on external corpora, not just evaluation coverage (BugsInPy AUROC
 0.410 and QuixBugs AUROC 0.388 are both below chance). Nothing here makes the
 paper publication-ready.
+
+## Evidence package (2026-10-28)
+
+`artifacts/paper_evidence/` consolidates the current evidence (start with
+`RESEARCH_STATUS.md`). Completed today: v6 TRAIN scoring under `output_free_v7`
+(resumed from checkpoint), weight fitting (train fit, dev choice M2; never scored on a
+test split), v8 dev re-score under `output_free_v8`. **Not run:** any held-out test
+evaluation, v8 freeze/threshold, Java. Reversed edit size still beats SBG V5 on every
+run; external transfer is below chance. SBG remains NOT research-ready.

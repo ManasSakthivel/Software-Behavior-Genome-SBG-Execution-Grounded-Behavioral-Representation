@@ -286,6 +286,28 @@ KNOWN_HISTORICAL_DRIVER_TRACES = frozenset({
     "dev__res_cache_ttl__sp-2_s0",
     "dev__res_cache_ttl__sp-2_s1",
     "dev__sort_quicksort__sp-2_s1",
+    # train split (pairs_v6train_output_free_v7, scored 2026-10-28): 19 EQUIVALENT SP-2
+    # (rename) variants whose renamed entry is the test_* driver. Same defect as above.
+    # These are inside the 1033 valid train pairs used by fit_weights.py (WEIGHT_FITTING.json).
+    "train__api_mock_http_client__sp-2_s0",
+    "train__api_rest_crud_mock__sp-2_s0",
+    "train__ds_lru_cache__sp-2_s0",
+    "train__ds_lru_cache__sp-2_s1",
+    "train__ds_min_heap__sp-2_s0",
+    "train__ds_min_heap__sp-2_s1",
+    "train__ds_trie__sp-2_s0",
+    "train__fsm_connection_pool__sp-2_s0",
+    "train__fsm_traffic_light__sp-2_s0",
+    "train__fsm_traffic_light__sp-2_s1",
+    "train__res_memory_allocator__sp-2_s0",
+    "train__res_memory_allocator__sp-2_s1",
+    "train__res_memory_allocator__sp-2_s2",
+    "train__res_task_scheduler__sp-2_s0",
+    "train__res_task_scheduler__sp-2_s1",
+    "train__res_task_scheduler__sp-2_s2",
+    "train__sort_binary_search__sp-2_s1",
+    "train__sort_mergesort__sp-2_s1",
+    "train__sort_radix_sort__sp-2_s1",
 })
 
 

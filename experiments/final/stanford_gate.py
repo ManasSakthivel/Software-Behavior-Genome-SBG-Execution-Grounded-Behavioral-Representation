@@ -137,7 +137,7 @@ def methodological_rigor() -> Result:
     else:
         missing.append("THRESHOLD_FROZEN.json derived on dev under output_free_v7")
     w = _load(WEIGHTS)
-    if w and w.get("chosen_on_dev") and "test" in w:
+    if w and w.get("chosen_on_dev") and w.get("test") is not None:
         evidence.append(f"weights fitted on train, chosen on dev ({w['chosen_on_dev']}), test scored")
     else:
         missing.append("WEIGHT_FITTING.json with the dev choice and the single test scoring")

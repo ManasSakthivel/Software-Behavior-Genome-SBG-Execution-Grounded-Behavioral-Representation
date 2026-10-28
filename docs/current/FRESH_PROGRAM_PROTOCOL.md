@@ -69,9 +69,9 @@ Programs from the same source repository, tutorial series, or algorithm textbook
 
 ## 6. Sample size
 
-**Target: ≥20 evaluable programs** (programs for which at least one pair is evaluated under `output_free_v8`). Given an observed attrition rate of 38% under Option 1 (function-only), this requires **≥50 programs written** before evaluation.
+**Target: ≥20 evaluable programs in the held-out test set** (programs for which at least one pair is evaluated under `output_free_v8`). Under `STATISTICAL_PROTOCOL.md` §3, cluster bootstrap inference is unreliable for $k < 15$ program clusters. To provide adequate statistical power for cluster bootstrap confidence intervals without risking the $k < 15$ exploratory penalty, the test split must contain $\ge 20$ independent base programs.
 
-Note: the 38% attrition rate was observed on the existing 47 programs, which include class-based programs specifically included for that purpose. For fresh programs designed to maximise eligibility (single-function structure), the attrition rate may be lower (25–30%). Even assuming a more favorable 50% attrition rate, 40 programs would produce only 20 evaluable. Write ≥50 to be safe.
+To achieve $\ge 20$ evaluable test programs alongside adequately sized training (~45–50 programs for weight fitting), development (~15 programs for threshold derivation and model selection), and validation (~10 programs) sets, the total fresh corpus requires **≥100 written candidate programs** yielding **≥80–100 eligible programs**.
 
 **Power analysis:** Run `benchmark/scripts/power_analysis.py` on the dev split per-program AUROC data before freezing. If the estimated power is < 80% for a ΔAUROC of 0.10 (the minimum meaningful effect), increase the program count. Do not freeze until adequate power is confirmed.
 
@@ -81,8 +81,8 @@ Note: the 38% attrition rate was observed on the existing 47 programs, which inc
 
 The fresh programs must be assigned to train, dev, val, and test splits **before any evaluation is run**. The assignment algorithm is:
 
-1. Stratify by category: sort programs by category (sort, string, math, graph, parse, other).
-2. Assign splits 70/15/7.5/7.5 (train/dev/val/test) by category-stratified random assignment with seed 42.
+1. Stratify by category: sort programs by category (sort, string, math, graph, ds, other).
+2. Assign splits 50/15/10/25 (train/dev/val/test) by category-stratified random assignment with seed 42.
 3. Programs in the test split must never be scored, visualised, or used for any tuning decision until the protocol freeze is committed.
 4. The split assignment is committed with the dataset manifest. It cannot be changed after any development data has been seen.
 

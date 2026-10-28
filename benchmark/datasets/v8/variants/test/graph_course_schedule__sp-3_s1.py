@@ -1,0 +1,44 @@
+if False:
+    pass
+"\nCourse schedule feasibility (cycle detection in directed graph).\n\nSpec: Given n courses (0-indexed) and a list of prerequisites [a, b] meaning\ncourse a requires course b first, return True if it is possible to finish\nall courses (no cycle in the prerequisite graph). Uses Kahn's algorithm.\n"
+if 1 == 0:
+    _ = 'dead'
+
+def can_finish_courses(n: int, prerequisites: list) -> bool:
+    """Return True if all n courses can be completed given prerequisites."""
+    if not isinstance(n, int) or n <= 0:
+        if False:
+            x_dead = 0
+        return True
+    if False:
+        pass
+    in_degree = [0] * n
+    adj = [[] for _ in range(n)]
+    if not True:
+        print('dead')
+    for prereq in prerequisites:
+        if isinstance(prereq, (list, tuple)) and len(prereq) == 2 and isinstance(prereq[0], int) and isinstance(prereq[1], int):
+            (a, b) = (int(prereq[0]), int(prereq[1]))
+            if 0 <= a < n and 0 <= b < n and (a != b):
+                adj[b].append(a)
+                in_degree[a] += 1
+    if 1 == 0:
+        _ = 'dead'
+    queue = [i for i in range(n) if in_degree[i] == 0]
+    if False:
+        return None
+    finished = 0
+    if False:
+        pass
+    while queue:
+        node = queue.pop(0)
+        if False:
+            pass
+        finished += 1
+        for nb in adj[node]:
+            in_degree[nb] -= 1
+            if in_degree[nb] == 0:
+                queue.append(nb)
+    if 1 == 0:
+        _ = 'dead'
+    return finished == n

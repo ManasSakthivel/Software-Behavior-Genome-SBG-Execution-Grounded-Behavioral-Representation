@@ -167,8 +167,15 @@ class Tracer:
             # immortal thread per remaining input, and they compete for the GIL
             # with every later program. ``max_timeouts`` stops after N of them;
             # the caller decides what a non-terminating program means.
-            if max_timeouts is not None and (trace.exception or "").startswith(
-                    "TimeoutError"):
+            #
+            # RecursionError is treated identically to TimeoutError: a variant
+            # whose partition/recursion mutant recurses infinitely hits CPython's
+            # stack limit, but then the same infinite call sequence fires again
+            # on the next input. Counting it here prevents 5 full traced runs
+            # through 5000-event traces, each with expensive repr() snapshots.
+            exc = trace.exception or ""
+            if max_timeouts is not None and (
+                    exc.startswith("TimeoutError") or exc.startswith("RecursionError")):
                 n_timeouts += 1
                 if n_timeouts >= max_timeouts:
                     break
@@ -328,13 +335,17 @@ def _make_trace_fn(state: _TraceState):
 
     def _trace(frame, event, arg):  # noqa: ANN001
         # If the deadline has passed, disable tracing immediately.
+        # Do not snapshot locals here: the repr() calls are expensive and
+        # pathological variants (infinite recursion, tight loops hitting the
+        # event cap) were spending minutes per pair collecting 5000 snapshots
+        # after the budget was already exhausted.
         if time.monotonic_ns() > state.deadline_ns:
             state.timed_out = True
             sys.settrace(None)
             frame.f_trace = None
             return None
 
-        # Hard cap on event count.
+        # Hard cap on event count.  Same rationale: stop immediately, no repr.
         if len(state.events) >= state.max_events:
             state.truncated = True
             sys.settrace(None)
@@ -351,6 +362,9 @@ def _make_trace_fn(state: _TraceState):
         state.coverage.add(lineno)
 
         # Snapshot local variables — repr, capped at 100 chars.
+        # Only collect snapshots while we are under budget; once the event list
+        # is within one event of the cap the next call will terminate tracing
+        # anyway, so the snapshot cost here is bounded.
         snapshot: Dict[str, str] = {}
         try:
             for k, v in frame.f_locals.items():

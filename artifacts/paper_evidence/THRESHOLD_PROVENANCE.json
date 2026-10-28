@@ -1,0 +1,92 @@
+{
+  "tau_star": 0.072905,
+  "status": "VALID and internally consistent; derived on v6 dev under output_free_v7. Applies to protocol output_free_v7 only.",
+  "artifact": {
+    "path": "artifacts/final/THRESHOLD_FROZEN.json",
+    "sha256": "9dcd74eb97088bdc8fc31df9a33f082893a88afdd6bc8c50a65b95812102173b"
+  },
+  "freeze_record": {
+    "path": "artifacts/final/freeze_threshold.json",
+    "sha256": "9b9c41cf74cf5a05795d61d704582e803b5eab2963b74c3094002c85fdcda7e7"
+  },
+  "frozen_at": "2026-09-28T16:24:11+00:00",
+  "git_commit_of_artifact": "ad7b655 (2026-10-03 11:05 +0530) -- the file's claimed frozen_at (2026-09-28) cannot be verified from git; see TEST_SET_CHRONOLOGY.md",
+  "derivation": {
+    "script": "experiments/final/derive_threshold.py (refuses any non-dev input)",
+    "rule": "maximise Youden J = TPR - FPR over midpoints of consecutive sorted unique distances; detected iff d > tau; ties -> smaller tau",
+    "predictor": "sbg_v5",
+    "protocol": "output_free_v7",
+    "dev_pair_file": "benchmark/datasets/v6/pairs_dev.jsonl",
+    "dev_pair_file_sha256_recorded": "f58b92256d648e6e5e6fe23547b32084cfe89808133d00528d79a9eb538fdbdd",
+    "dev_pair_file_sha256_now": "f58b92256d648e6e5e6fe23547b32084cfe89808133d00528d79a9eb538fdbdd",
+    "scored_pair_file": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+    "scored_pair_file_sha256_recorded": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6",
+    "scored_pair_file_sha256_now": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6",
+    "n_valid_pairs": 345,
+    "n_changed": 156,
+    "n_equivalent": 189,
+    "n_programs": 9,
+    "programs": [
+      "api_event_bus",
+      "ds_stack_queue",
+      "err_circuit_breaker",
+      "file_csv_aggregator",
+      "fsm_parser_state",
+      "graph_connected_components",
+      "res_cache_ttl",
+      "sort_quicksort",
+      "str_run_length_encode"
+    ],
+    "dev_operating_point": {
+      "youden_j": 0.377798,
+      "tpr": 0.557692,
+      "fpr": 0.179894
+    },
+    "stability_bootstrap_not_used_for_selection": {
+      "method": "cluster bootstrap over dev programs, 2000 resamples, seed 42",
+      "n_nondegenerate": 2000,
+      "tau_p2_5": 0.031258,
+      "tau_median": 0.072905,
+      "tau_p97_5": 0.089592
+    }
+  },
+  "hash_checks": {
+    "dev_pairs_hash_matches_record": true,
+    "scored_pairs_hash_matches_record": true,
+    "freeze_threshold_hash_matches": true
+  },
+  "tested_in_repo": "tests/test_threshold_provenance.py (re-derives tau* from the dev file)",
+  "operating_points_of_frozen_tau": {
+    "tau_star": 0.072905,
+    "rule": "detected iff sbg_v5 > tau_star",
+    "source": "artifacts/final/THRESHOLD_FROZEN.json",
+    "v6dev_v7": {
+      "n_changed": 156,
+      "n_equivalent": 189,
+      "tpr": 0.557692,
+      "fpr": 0.179894,
+      "youden_j": 0.377798
+    },
+    "v6train_v7": {
+      "n_changed": 474,
+      "n_equivalent": 559,
+      "tpr": 0.5,
+      "fpr": 0.194991,
+      "youden_j": 0.305009
+    },
+    "v8dev_v8_rescore": {
+      "n_changed": 344,
+      "n_equivalent": 249,
+      "tpr": 0.514535,
+      "fpr": 0.104418,
+      "youden_j": 0.410117
+    }
+  },
+  "caveats": [
+    "tau* was derived on 9 dev programs.",
+    "9 of the 345 dev pairs are EQUIVALENT SP-2 pairs whose renamed entry was a test_* driver (KNOWN_HISTORICAL_DRIVER_TRACES in consistency_check.py).",
+    "Re-scoring dev with current code (/tmp/devrepro_head) would give tau 0.072531 (vs 0.072905), same Youden J: negligible but the frozen file is retained unmodified.",
+    "The earlier constant tau = 0.08 has no verifiable provenance (docs/current/THRESHOLD_PROVENANCE.md) and is NOT used here.",
+    "No tau* exists for protocol output_free_v8 (THRESHOLD_V8_FROZEN.json absent); applying 0.072905 to v8 dev is a cross-protocol transfer shown only as an operating-point diagnostic."
+  ]
+}

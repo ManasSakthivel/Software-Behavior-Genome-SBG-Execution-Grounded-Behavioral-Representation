@@ -1,0 +1,1264 @@
+{
+  "generated_at_utc": "2026-10-28T14:53:06+00:00",
+  "generated_by": "experiments/final/build_paper_evidence_meta.py",
+  "code_commit_base": "f15cb9a658c73a9f4c44b7b701b9c89d55ac68d6",
+  "working_tree_dirty_at_generation": true,
+  "headline_reading": {
+    "verdict": "NOT a confirmatory result. No held-out TEST split has been scored under a frozen protocol.",
+    "summary": [
+      "SBG V5 separates CHANGED from EQUIVALENT above chance on v6 train/dev (AUROC 0.665 / 0.667) and v8 dev (0.739), cluster-bootstrap CIs excluding 0.5.",
+      "Reversed edit size alone (a trivial shortcut) beats SBG V5 on every run: 0.954 (v6 train), 0.957 (v6 dev), 0.845 (v8 dev). Paired deltas sbg_v5 - edit_size_reversed are negative with CIs excluding 0 on all three.",
+      "SBG V5 beats exception_fraction and call_count on v8 dev (paired CIs exclude 0) and on v6 train vs exception_fraction; on v6 dev it does not beat exception_fraction (CI includes 0).",
+      "The dev-selected learned model M2 raises AUROC (v6 train 0.724 in-sample, v6 dev 0.713 selection set, v8 dev 0.804 out-of-distribution) but is still below reversed edit size.",
+      "External transfer is negative: BugsInPy 0.410 [0.326, 0.494], QuixBugs 0.388 (both below chance, pre-freeze)."
+    ]
+  },
+  "runs": {
+    "v6train_output_free_v7": {
+      "dataset": "v6",
+      "split": "train",
+      "protocol": "output_free_v7",
+      "status": "complete",
+      "role": "weight-fitting TRAIN split (in-sample for learned weights)",
+      "note": "Completed this session by resuming from checkpoint at 1000/1129; learned weights are IN-SAMPLE here.",
+      "set_sizes": {
+        "ALL": 1129,
+        "EVALUABLE": 1090,
+        "VALID": 1033
+      },
+      "n_programs_valid": 28,
+      "primary_set": "VALID (EVALUABLE minus statically invalid/unobservable pairs)",
+      "sbg_v5": {
+        "auroc": 0.665329,
+        "ci95_cluster_bootstrap": [
+          0.598724,
+          0.730503
+        ],
+        "permutation_p": 0.0005,
+        "n": 1033
+      },
+      "baselines_precomputed": {
+        "exception_fraction": {
+          "auroc": 0.576176,
+          "ci95_cluster_bootstrap": [
+            0.530168,
+            0.625975
+          ],
+          "permutation_p": 0.0005,
+          "n": 1033
+        },
+        "call_count": {
+          "auroc": 0.628773,
+          "ci95_cluster_bootstrap": [
+            0.566327,
+            0.692053
+          ],
+          "permutation_p": 0.0005,
+          "n": 1033
+        },
+        "combined_shortcut": {
+          "auroc": 0.640877,
+          "ci95_cluster_bootstrap": [
+            0.572765,
+            0.712312
+          ],
+          "permutation_p": 0.0005,
+          "n": 1033
+        },
+        "static_ast": {
+          "auroc": 0.126224,
+          "ci95_cluster_bootstrap": [
+            0.092011,
+            0.161552
+          ],
+          "permutation_p": 1.0,
+          "n": 1033
+        },
+        "static_token": {
+          "auroc": 0.192861,
+          "ci95_cluster_bootstrap": [
+            0.154383,
+            0.225466
+          ],
+          "permutation_p": 1.0,
+          "n": 1033
+        },
+        "sbg_state": {
+          "auroc": 0.680044,
+          "ci95_cluster_bootstrap": [
+            0.621275,
+            0.737378
+          ],
+          "permutation_p": 0.0005,
+          "n": 1033
+        },
+        "sbg_v3": {
+          "auroc": 0.659922,
+          "ci95_cluster_bootstrap": [
+            0.596908,
+            0.722574
+          ],
+          "permutation_p": 0.0005,
+          "n": 1033
+        },
+        "sbg_temporal": {
+          "auroc": 0.653418,
+          "ci95_cluster_bootstrap": [
+            0.591273,
+            0.71629
+          ],
+          "permutation_p": 0.0005,
+          "n": 1033
+        }
+      },
+      "recomputed_by_build_paper_evidence": {
+        "set": "VALID",
+        "n": 1033,
+        "n_programs": 28,
+        "n_changed": 474,
+        "n_equivalent": 559,
+        "predictors": {
+          "sbg_v5": {
+            "auroc": 0.665329,
+            "ci95_lo": 0.598724,
+            "ci95_hi": 0.730503,
+            "n_boot": 2000
+          },
+          "edit_size_reversed": {
+            "auroc": 0.954372,
+            "ci95_lo": 0.939295,
+            "ci95_hi": 0.967586,
+            "n_boot": 2000
+          },
+          "exception_fraction": {
+            "auroc": 0.576176,
+            "ci95_lo": 0.530168,
+            "ci95_hi": 0.625975,
+            "n_boot": 2000
+          },
+          "call_count": {
+            "auroc": 0.628773,
+            "ci95_lo": 0.566327,
+            "ci95_hi": 0.692053,
+            "n_boot": 2000
+          },
+          "static_ast": {
+            "auroc": 0.126224,
+            "ci95_lo": 0.092011,
+            "ci95_hi": 0.161552,
+            "n_boot": 2000
+          },
+          "learned_m1": {
+            "auroc": 0.694957,
+            "ci95_lo": 0.638997,
+            "ci95_hi": 0.749873,
+            "n_boot": 2000
+          },
+          "learned_m2": {
+            "auroc": 0.724219,
+            "ci95_lo": 0.672244,
+            "ci95_hi": 0.770953,
+            "n_boot": 2000
+          }
+        },
+        "paired_deltas": {
+          "sbg_v5_minus_edit_size_reversed": {
+            "delta": -0.289043,
+            "ci_lower": -0.357514,
+            "ci_upper": -0.219567,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_exception_fraction": {
+            "delta": 0.089153,
+            "ci_lower": 0.028854,
+            "ci_upper": 0.147829,
+            "p_two_sided": 0.005997,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_call_count": {
+            "delta": 0.036556,
+            "ci_lower": -0.010189,
+            "ci_upper": 0.083739,
+            "p_two_sided": 0.122939,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_learned_m1": {
+            "delta": -0.029628,
+            "ci_lower": -0.077525,
+            "ci_upper": 0.022215,
+            "p_two_sided": 0.230885,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_learned_m2": {
+            "delta": -0.058891,
+            "ci_lower": -0.10666,
+            "ci_upper": -0.016,
+            "p_two_sided": 0.009995,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_edit_size_reversed": {
+            "delta": -0.230152,
+            "ci_lower": -0.287443,
+            "ci_upper": -0.179361,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_exception_fraction": {
+            "delta": 0.148044,
+            "ci_lower": 0.09716,
+            "ci_upper": 0.198042,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_call_count": {
+            "delta": 0.095446,
+            "ci_lower": 0.035524,
+            "ci_upper": 0.158803,
+            "p_two_sided": 0.001999,
+            "n_effective": 2000
+          }
+        },
+        "learned_weights_note": "learned_m1/m2 use weights fitted on v6 TRAIN (WEIGHT_FITTING.json); in-sample on v6train, selection set on v6dev, out-of-distribution on v8dev",
+        "method": "sbg.statistics cluster bootstrap (2000, seed 42) by base program; paired deltas via paired_cluster_bootstrap_delta",
+        "code": "experiments/final/build_paper_evidence.py"
+      },
+      "label_shuffle_noise_floor": {
+        "mean": 0.527015,
+        "std": 0.015281,
+        "p95": 0.554352,
+        "n_shuffles": 500
+      },
+      "paired_comparisons_precomputed": {
+        "sbg_v5_minus_exception_fraction": {
+          "delta": 0.089153,
+          "ci_lower": 0.028854,
+          "ci_upper": 0.147829,
+          "p_two_sided": 0.005997,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_exception_component_v3": {
+          "delta": 0.054871,
+          "ci_lower": 0.000572,
+          "ci_upper": 0.111411,
+          "p_two_sided": 0.049975,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_call_count": {
+          "delta": 0.036556,
+          "ci_lower": -0.010189,
+          "ci_upper": 0.083739,
+          "p_two_sided": 0.122939,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_combined_shortcut": {
+          "delta": 0.024452,
+          "ci_lower": 0.004618,
+          "ci_upper": 0.044922,
+          "p_two_sided": 0.011994,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_sbg_v3": {
+          "delta": 0.005406,
+          "ci_lower": -0.006512,
+          "ci_upper": 0.019887,
+          "p_two_sided": 0.375812,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_static_ast": {
+          "delta": 0.539105,
+          "ci_lower": 0.459645,
+          "ci_upper": 0.615255,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "holm_bonferroni": {
+          "sbg_v5_minus_static_ast": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 1,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_exception_fraction": {
+            "p_raw": 0.005997,
+            "p_adjusted": 0.029985,
+            "reject_at_alpha": true,
+            "rank": 2,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_combined_shortcut": {
+            "p_raw": 0.011994,
+            "p_adjusted": 0.047976,
+            "reject_at_alpha": true,
+            "rank": 3,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_exception_component_v3": {
+            "p_raw": 0.049975,
+            "p_adjusted": 0.149925,
+            "reject_at_alpha": false,
+            "rank": 4,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_call_count": {
+            "p_raw": 0.122939,
+            "p_adjusted": 0.245878,
+            "reject_at_alpha": false,
+            "rank": 5,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_sbg_v3": {
+            "p_raw": 0.375812,
+            "p_adjusted": 0.375812,
+            "reject_at_alpha": false,
+            "rank": 6,
+            "n_comparisons": 6
+          }
+        }
+      },
+      "sources": {
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6train_output_free_v7.json",
+          "sha256": "f0d575210d8087501b9facd0e12e52bf1eab70b6d6548cc70fb9754c77c7fc62"
+        },
+        "pairs": {
+          "path": "artifacts/final/pairs_v6train_output_free_v7.jsonl",
+          "sha256": "ebbc7a411180017720ffc6435589e3ae042d78c0865365916a779af5bae4a6f5"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v6train_output_free_v7.json",
+          "sha256": "bcecabe01a9c0eb16ed0ea8d022a961f9b43c71ee5f2edb8ece4e386fcc8f326"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+          "sha256": "4360b99f942a7f30b3165c4a7197717dbb11c234dc68e7a9a4ad366df49fb347"
+        }
+      }
+    },
+    "v6dev_output_free_v7": {
+      "dataset": "v6",
+      "split": "dev",
+      "protocol": "output_free_v7",
+      "status": "complete (frozen 2026-09-28; not byte-reproducible under current code, see DATA_VALIDATION.md)",
+      "role": "DEV split: tau* derived here, weight model selected here",
+      "note": "Frozen 2026-09-28 artifact; tau* and the M2 choice were made on this split, so its numbers are selection statistics, not generalisation estimates.",
+      "set_sizes": {
+        "ALL": 372,
+        "EVALUABLE": 345,
+        "VALID": 345
+      },
+      "n_programs_valid": 9,
+      "primary_set": "VALID (EVALUABLE minus statically invalid/unobservable pairs)",
+      "sbg_v5": {
+        "auroc": 0.667125,
+        "ci95_cluster_bootstrap": [
+          0.602825,
+          0.744573
+        ],
+        "permutation_p": 0.0005,
+        "n": 345
+      },
+      "baselines_precomputed": {
+        "exception_fraction": {
+          "auroc": 0.613248,
+          "ci95_cluster_bootstrap": [
+            0.531975,
+            0.700068
+          ],
+          "permutation_p": 0.0005,
+          "n": 345
+        },
+        "call_count": {
+          "auroc": 0.58798,
+          "ci95_cluster_bootstrap": [
+            0.495896,
+            0.701878
+          ],
+          "permutation_p": 0.002499,
+          "n": 345
+        },
+        "combined_shortcut": {
+          "auroc": 0.624474,
+          "ci95_cluster_bootstrap": [
+            0.55107,
+            0.719662
+          ],
+          "permutation_p": 0.002999,
+          "n": 345
+        },
+        "static_ast": {
+          "auroc": 0.096018,
+          "ci95_cluster_bootstrap": [
+            0.054423,
+            0.139434
+          ],
+          "permutation_p": 1.0,
+          "n": 345
+        },
+        "static_token": {
+          "auroc": 0.23138,
+          "ci95_cluster_bootstrap": [
+            0.111508,
+            0.307617
+          ],
+          "permutation_p": 1.0,
+          "n": 345
+        },
+        "sbg_state": {
+          "auroc": 0.668447,
+          "ci95_cluster_bootstrap": [
+            0.60587,
+            0.746289
+          ],
+          "permutation_p": 0.0005,
+          "n": 345
+        },
+        "sbg_v3": {
+          "auroc": 0.655915,
+          "ci95_cluster_bootstrap": [
+            0.593153,
+            0.729322
+          ],
+          "permutation_p": 0.0005,
+          "n": 345
+        },
+        "sbg_temporal": {
+          "auroc": 0.635667,
+          "ci95_cluster_bootstrap": [
+            0.571243,
+            0.714066
+          ],
+          "permutation_p": 0.0005,
+          "n": 345
+        }
+      },
+      "recomputed_by_build_paper_evidence": {
+        "set": "VALID",
+        "n": 345,
+        "n_programs": 9,
+        "n_changed": 156,
+        "n_equivalent": 189,
+        "predictors": {
+          "sbg_v5": {
+            "auroc": 0.667125,
+            "ci95_lo": 0.602825,
+            "ci95_hi": 0.744573,
+            "n_boot": 2000
+          },
+          "edit_size_reversed": {
+            "auroc": 0.956909,
+            "ci95_lo": 0.932664,
+            "ci95_hi": 0.981123,
+            "n_boot": 2000
+          },
+          "exception_fraction": {
+            "auroc": 0.613248,
+            "ci95_lo": 0.531975,
+            "ci95_hi": 0.700068,
+            "n_boot": 2000
+          },
+          "call_count": {
+            "auroc": 0.58798,
+            "ci95_lo": 0.495896,
+            "ci95_hi": 0.701878,
+            "n_boot": 2000
+          },
+          "static_ast": {
+            "auroc": 0.096018,
+            "ci95_lo": 0.054423,
+            "ci95_hi": 0.139434,
+            "n_boot": 2000
+          },
+          "learned_m1": {
+            "auroc": 0.665632,
+            "ci95_lo": 0.597072,
+            "ci95_hi": 0.743817,
+            "n_boot": 2000
+          },
+          "learned_m2": {
+            "auroc": 0.71281,
+            "ci95_lo": 0.678306,
+            "ci95_hi": 0.761821,
+            "n_boot": 2000
+          }
+        },
+        "paired_deltas": {
+          "sbg_v5_minus_edit_size_reversed": {
+            "delta": -0.289784,
+            "ci_lower": -0.349106,
+            "ci_upper": -0.220444,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_exception_fraction": {
+            "delta": 0.053877,
+            "ci_lower": -0.050883,
+            "ci_upper": 0.177068,
+            "p_two_sided": 0.330835,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_call_count": {
+            "delta": 0.079145,
+            "ci_lower": 0.008925,
+            "ci_upper": 0.149871,
+            "p_two_sided": 0.017991,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_learned_m1": {
+            "delta": 0.001492,
+            "ci_lower": -0.055585,
+            "ci_upper": 0.049745,
+            "p_two_sided": 0.994503,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_learned_m2": {
+            "delta": -0.045686,
+            "ci_lower": -0.110086,
+            "ci_upper": 0.039667,
+            "p_two_sided": 0.230885,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_edit_size_reversed": {
+            "delta": -0.244098,
+            "ci_lower": -0.284635,
+            "ci_upper": -0.194285,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_exception_fraction": {
+            "delta": 0.099562,
+            "ci_lower": 0.036607,
+            "ci_upper": 0.17932,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_call_count": {
+            "delta": 0.12483,
+            "ci_lower": 0.009528,
+            "ci_upper": 0.229787,
+            "p_two_sided": 0.027986,
+            "n_effective": 2000
+          }
+        },
+        "learned_weights_note": "learned_m1/m2 use weights fitted on v6 TRAIN (WEIGHT_FITTING.json); in-sample on v6train, selection set on v6dev, out-of-distribution on v8dev",
+        "method": "sbg.statistics cluster bootstrap (2000, seed 42) by base program; paired deltas via paired_cluster_bootstrap_delta",
+        "code": "experiments/final/build_paper_evidence.py"
+      },
+      "label_shuffle_noise_floor": {
+        "mean": 0.552763,
+        "std": 0.026251,
+        "p95": 0.595509,
+        "n_shuffles": 500
+      },
+      "paired_comparisons_precomputed": {
+        "sbg_v5_minus_exception_fraction": {
+          "delta": 0.053877,
+          "ci_lower": -0.050883,
+          "ci_upper": 0.177068,
+          "p_two_sided": 0.330835,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_exception_component_v3": {
+          "delta": 0.035748,
+          "ci_lower": -0.055377,
+          "ci_upper": 0.134713,
+          "p_two_sided": 0.465767,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_call_count": {
+          "delta": 0.079145,
+          "ci_lower": 0.008925,
+          "ci_upper": 0.149871,
+          "p_two_sided": 0.017991,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_combined_shortcut": {
+          "delta": 0.04265,
+          "ci_lower": 0.005391,
+          "ci_upper": 0.08556,
+          "p_two_sided": 0.029985,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_sbg_v3": {
+          "delta": 0.011209,
+          "ci_lower": -0.004433,
+          "ci_upper": 0.038365,
+          "p_two_sided": 0.167916,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_static_ast": {
+          "delta": 0.571106,
+          "ci_lower": 0.473975,
+          "ci_upper": 0.667593,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "holm_bonferroni": {
+          "sbg_v5_minus_static_ast": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 1,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_call_count": {
+            "p_raw": 0.017991,
+            "p_adjusted": 0.089955,
+            "reject_at_alpha": false,
+            "rank": 2,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_combined_shortcut": {
+            "p_raw": 0.029985,
+            "p_adjusted": 0.11994,
+            "reject_at_alpha": false,
+            "rank": 3,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_sbg_v3": {
+            "p_raw": 0.167916,
+            "p_adjusted": 0.503748,
+            "reject_at_alpha": false,
+            "rank": 4,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_exception_fraction": {
+            "p_raw": 0.330835,
+            "p_adjusted": 0.66167,
+            "reject_at_alpha": false,
+            "rank": 5,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_exception_component_v3": {
+            "p_raw": 0.465767,
+            "p_adjusted": 0.66167,
+            "reject_at_alpha": false,
+            "rank": 6,
+            "n_comparisons": 6
+          }
+        }
+      },
+      "sources": {
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6dev_output_free_v7.json",
+          "sha256": "17ceb9a278d2d5bdb545b0294dac2d10fc50cea892ccda04c3556360d170d567"
+        },
+        "pairs": {
+          "path": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+          "sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v6dev_output_free_v7.json",
+          "sha256": "0398439cf1fddba0dfa97efb116aa60408c16bae8efc1528a096d6415dca6ef6"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+          "sha256": "4360b99f942a7f30b3165c4a7197717dbb11c234dc68e7a9a4ad366df49fb347"
+        }
+      }
+    },
+    "v8dev_output_free_v8": {
+      "dataset": "v8",
+      "split": "dev",
+      "protocol": "output_free_v8",
+      "status": "complete; exploratory (v8 TEST not evaluated)",
+      "role": "fresh-program DEV split of the CURRENT v8 dataset, re-scored 2026-10-28 (not used for tau*/weights)",
+      "note": "Fresh programs (disjoint from v6), re-scored this session against the CURRENT v8 dataset. v8 dev was not used for tau* or weights. Exploratory: protocol v8 and dataset v8 are not frozen (FREEZE_V8.json absent).",
+      "set_sizes": {
+        "ALL": 597,
+        "EVALUABLE": 593,
+        "VALID": 593
+      },
+      "n_programs_valid": 14,
+      "primary_set": "VALID (EVALUABLE minus statically invalid/unobservable pairs)",
+      "sbg_v5": {
+        "auroc": 0.739259,
+        "ci95_cluster_bootstrap": [
+          0.697581,
+          0.781091
+        ],
+        "permutation_p": 0.0005,
+        "n": 593
+      },
+      "baselines_precomputed": {
+        "exception_fraction": {
+          "auroc": 0.571758,
+          "ci95_cluster_bootstrap": [
+            0.53833,
+            0.612031
+          ],
+          "permutation_p": 0.0005,
+          "n": 593
+        },
+        "call_count": {
+          "auroc": 0.544766,
+          "ci95_cluster_bootstrap": [
+            0.466377,
+            0.625096
+          ],
+          "permutation_p": 0.001999,
+          "n": 593
+        },
+        "combined_shortcut": {
+          "auroc": 0.606426,
+          "ci95_cluster_bootstrap": [
+            0.558215,
+            0.657631
+          ],
+          "permutation_p": 0.0005,
+          "n": 593
+        },
+        "static_ast": {
+          "auroc": 0.317146,
+          "ci95_cluster_bootstrap": [
+            0.263721,
+            0.375774
+          ],
+          "permutation_p": 1.0,
+          "n": 593
+        },
+        "static_token": {
+          "auroc": 0.330426,
+          "ci95_cluster_bootstrap": [
+            0.278623,
+            0.392887
+          ],
+          "permutation_p": 1.0,
+          "n": 593
+        },
+        "sbg_state": {
+          "auroc": 0.789647,
+          "ci95_cluster_bootstrap": [
+            0.753242,
+            0.830176
+          ],
+          "permutation_p": 0.0005,
+          "n": 593
+        },
+        "sbg_v3": {
+          "auroc": 0.674856,
+          "ci95_cluster_bootstrap": [
+            0.628187,
+            0.72413
+          ],
+          "permutation_p": 0.0005,
+          "n": 593
+        },
+        "sbg_temporal": {
+          "auroc": 0.60088,
+          "ci95_cluster_bootstrap": [
+            0.530148,
+            0.671274
+          ],
+          "permutation_p": 0.0005,
+          "n": 593
+        }
+      },
+      "recomputed_by_build_paper_evidence": {
+        "set": "VALID",
+        "n": 593,
+        "n_programs": 14,
+        "n_changed": 344,
+        "n_equivalent": 249,
+        "predictors": {
+          "sbg_v5": {
+            "auroc": 0.739259,
+            "ci95_lo": 0.697581,
+            "ci95_hi": 0.781091,
+            "n_boot": 2000
+          },
+          "edit_size_reversed": {
+            "auroc": 0.845212,
+            "ci95_lo": 0.786108,
+            "ci95_hi": 0.892599,
+            "n_boot": 2000
+          },
+          "exception_fraction": {
+            "auroc": 0.571758,
+            "ci95_lo": 0.53833,
+            "ci95_hi": 0.612031,
+            "n_boot": 2000
+          },
+          "call_count": {
+            "auroc": 0.544766,
+            "ci95_lo": 0.466377,
+            "ci95_hi": 0.625096,
+            "n_boot": 2000
+          },
+          "static_ast": {
+            "auroc": 0.317146,
+            "ci95_lo": 0.263721,
+            "ci95_hi": 0.375774,
+            "n_boot": 2000
+          },
+          "learned_m1": {
+            "auroc": 0.805921,
+            "ci95_lo": 0.767805,
+            "ci95_hi": 0.84916,
+            "n_boot": 2000
+          },
+          "learned_m2": {
+            "auroc": 0.803738,
+            "ci95_lo": 0.767716,
+            "ci95_hi": 0.845714,
+            "n_boot": 2000
+          }
+        },
+        "paired_deltas": {
+          "sbg_v5_minus_edit_size_reversed": {
+            "delta": -0.105953,
+            "ci_lower": -0.180185,
+            "ci_upper": -0.027448,
+            "p_two_sided": 0.009995,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_exception_fraction": {
+            "delta": 0.167501,
+            "ci_lower": 0.12225,
+            "ci_upper": 0.209306,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_call_count": {
+            "delta": 0.194493,
+            "ci_lower": 0.126814,
+            "ci_upper": 0.261762,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_learned_m1": {
+            "delta": -0.066662,
+            "ci_lower": -0.108408,
+            "ci_upper": -0.025045,
+            "p_two_sided": 0.005997,
+            "n_effective": 2000
+          },
+          "sbg_v5_minus_learned_m2": {
+            "delta": -0.064479,
+            "ci_lower": -0.096112,
+            "ci_upper": -0.034073,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_edit_size_reversed": {
+            "delta": -0.041474,
+            "ci_lower": -0.10436,
+            "ci_upper": 0.020672,
+            "p_two_sided": 0.18091,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_exception_fraction": {
+            "delta": 0.23198,
+            "ci_lower": 0.186421,
+            "ci_upper": 0.279701,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          },
+          "learned_m2_minus_call_count": {
+            "delta": 0.258972,
+            "ci_lower": 0.178957,
+            "ci_upper": 0.334962,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "learned_weights_note": "learned_m1/m2 use weights fitted on v6 TRAIN (WEIGHT_FITTING.json); in-sample on v6train, selection set on v6dev, out-of-distribution on v8dev",
+        "method": "sbg.statistics cluster bootstrap (2000, seed 42) by base program; paired deltas via paired_cluster_bootstrap_delta",
+        "code": "experiments/final/build_paper_evidence.py"
+      },
+      "label_shuffle_noise_floor": {
+        "mean": 0.504095,
+        "std": 0.023173,
+        "p95": 0.541661,
+        "n_shuffles": 500
+      },
+      "paired_comparisons_precomputed": {
+        "sbg_v5_minus_exception_fraction": {
+          "delta": 0.167501,
+          "ci_lower": 0.12225,
+          "ci_upper": 0.209306,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_exception_component_v3": {
+          "delta": 0.167501,
+          "ci_lower": 0.12225,
+          "ci_upper": 0.209306,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_call_count": {
+          "delta": 0.194493,
+          "ci_lower": 0.126814,
+          "ci_upper": 0.261762,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_combined_shortcut": {
+          "delta": 0.132834,
+          "ci_lower": 0.1034,
+          "ci_upper": 0.161941,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_sbg_v3": {
+          "delta": 0.064403,
+          "ci_lower": 0.036652,
+          "ci_upper": 0.092732,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_static_ast": {
+          "delta": 0.422113,
+          "ci_lower": 0.351109,
+          "ci_upper": 0.495776,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "holm_bonferroni": {
+          "sbg_v5_minus_exception_fraction": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 1,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_exception_component_v3": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 2,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_call_count": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 3,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_combined_shortcut": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 4,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_sbg_v3": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 5,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_static_ast": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 6,
+            "n_comparisons": 6
+          }
+        }
+      },
+      "sources": {
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v8devrescore_output_free_v8.json",
+          "sha256": "95058e7901d6e79adff497fcf867472b855730e667db861a2621f49d4d8ebb7c"
+        },
+        "pairs": {
+          "path": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+          "sha256": "86ff18771d3563c4fede04d6f437fdd024791f2838ce19579ea7a6b1bae50f81"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v8devrescore_output_free_v8.json",
+          "sha256": "4e862f6336b85da6b2d6a0855c0cddc3e1f86213da26856ca5d5a7c3baa9fbfa"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json",
+          "sha256": "06840ff1c178a86acb0414e8a0abf99839e4208dfcb48c75a1c6ac2eee2792a1"
+        }
+      }
+    },
+    "v6test_output_free_v6": {
+      "dataset": "v6",
+      "split": "test",
+      "protocol": "output_free_v6",
+      "status": "historical; exploratory; NOT rerun",
+      "role": "OBSERVED (not held-out) v6 test, historical protocol v6, committed before this session",
+      "note": "Historical OBSERVED (not held-out) split under the older v6 protocol; not re-run; shown for completeness.",
+      "set_sizes": {
+        "ALL": 488,
+        "EVALUABLE": 259,
+        "VALID": 259
+      },
+      "n_programs_valid": null,
+      "primary_set": "VALID (EVALUABLE minus statically invalid/unobservable pairs)",
+      "sbg_v5": {
+        "auroc": 0.60127,
+        "ci95_cluster_bootstrap": [
+          0.490396,
+          0.705738
+        ],
+        "permutation_p": 0.0005,
+        "n": 259
+      },
+      "baselines_precomputed": {
+        "exception_fraction": {
+          "auroc": 0.618367,
+          "ci95_cluster_bootstrap": [
+            0.520079,
+            0.700337
+          ],
+          "permutation_p": 0.0005,
+          "n": 259
+        },
+        "call_count": {
+          "auroc": 0.565487,
+          "ci95_cluster_bootstrap": [
+            0.462838,
+            0.681713
+          ],
+          "permutation_p": 0.001999,
+          "n": 259
+        },
+        "combined_shortcut": {
+          "auroc": 0.582585,
+          "ci95_cluster_bootstrap": [
+            0.490999,
+            0.670582
+          ],
+          "permutation_p": 0.004498,
+          "n": 259
+        },
+        "static_ast": {
+          "auroc": 0.104743,
+          "ci95_cluster_bootstrap": [
+            0.065573,
+            0.157425
+          ],
+          "permutation_p": 1.0,
+          "n": 259
+        },
+        "static_token": {
+          "auroc": 0.169032,
+          "ci95_cluster_bootstrap": [
+            0.130169,
+            0.224099
+          ],
+          "permutation_p": 1.0,
+          "n": 259
+        },
+        "sbg_state": {
+          "auroc": 0.635166,
+          "ci95_cluster_bootstrap": [
+            0.524643,
+            0.739595
+          ],
+          "permutation_p": 0.0005,
+          "n": 259
+        },
+        "sbg_v3": {
+          "auroc": 0.598694,
+          "ci95_cluster_bootstrap": [
+            0.5003,
+            0.674864
+          ],
+          "permutation_p": 0.001,
+          "n": 259
+        },
+        "sbg_temporal": {
+          "auroc": 0.614145,
+          "ci95_cluster_bootstrap": [
+            0.511924,
+            0.698559
+          ],
+          "permutation_p": 0.0005,
+          "n": 259
+        }
+      },
+      "recomputed_by_build_paper_evidence": null,
+      "label_shuffle_noise_floor": {
+        "mean": 0.506647,
+        "std": 0.027991,
+        "p95": 0.551054,
+        "n_shuffles": 500
+      },
+      "paired_comparisons_precomputed": {
+        "sbg_v5_minus_exception_fraction": {
+          "delta": -0.017098,
+          "ci_lower": -0.056442,
+          "ci_upper": 0.034646,
+          "p_two_sided": 0.550725,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_exception_component_v3": {
+          "delta": -0.057342,
+          "ci_lower": -0.096897,
+          "ci_upper": 0.004192,
+          "p_two_sided": 0.071964,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_call_count": {
+          "delta": 0.035783,
+          "ci_lower": -0.084815,
+          "ci_upper": 0.167965,
+          "p_two_sided": 0.603698,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_combined_shortcut": {
+          "delta": 0.018685,
+          "ci_lower": -0.02151,
+          "ci_upper": 0.068618,
+          "p_two_sided": 0.384808,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_sbg_v3": {
+          "delta": 0.002575,
+          "ci_lower": -0.023348,
+          "ci_upper": 0.045154,
+          "p_two_sided": 0.850575,
+          "n_effective": 2000
+        },
+        "sbg_v5_minus_static_ast": {
+          "delta": 0.496527,
+          "ci_lower": 0.360744,
+          "ci_upper": 0.613938,
+          "p_two_sided": 0.001,
+          "n_effective": 2000
+        },
+        "holm_bonferroni": {
+          "sbg_v5_minus_static_ast": {
+            "p_raw": 0.001,
+            "p_adjusted": 0.006,
+            "reject_at_alpha": true,
+            "rank": 1,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_exception_component_v3": {
+            "p_raw": 0.071964,
+            "p_adjusted": 0.35982,
+            "reject_at_alpha": false,
+            "rank": 2,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_combined_shortcut": {
+            "p_raw": 0.384808,
+            "p_adjusted": 1.0,
+            "reject_at_alpha": false,
+            "rank": 3,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_exception_fraction": {
+            "p_raw": 0.550725,
+            "p_adjusted": 1.0,
+            "reject_at_alpha": false,
+            "rank": 4,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_call_count": {
+            "p_raw": 0.603698,
+            "p_adjusted": 1.0,
+            "reject_at_alpha": false,
+            "rank": 5,
+            "n_comparisons": 6
+          },
+          "sbg_v5_minus_sbg_v3": {
+            "p_raw": 0.850575,
+            "p_adjusted": 1.0,
+            "reject_at_alpha": false,
+            "rank": 6,
+            "n_comparisons": 6
+          }
+        }
+      },
+      "sources": {
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6test_output_free_v6.json",
+          "sha256": "828cdad5c2a495d3700c5b89abee63ae74b21c8a7faacf5503a12a01945a0bb9"
+        },
+        "pairs": {
+          "path": "artifacts/final/pairs_v6test_output_free_v6.jsonl",
+          "sha256": "2f811d19e274dab1fd2195de1a2667456912ad4aa4152ff69c55daae26fdcad8"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v6test_output_free_v6.json",
+          "sha256": "a9ccae22062d6f876f7fa55a5ea8091b56b3027f3732ee4bd38cf0f9afc09868"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V6.json",
+          "sha256": "3cc9595133de4e7dd81fe78fcdb659b79b59326bc7ea633768134c39daa5a992"
+        }
+      }
+    }
+  },
+  "tau_operating_points": {
+    "source": "artifacts/final/THRESHOLD_FROZEN.json",
+    "tau_star": 0.072905,
+    "rule": "detected iff sbg_v5 > tau_star",
+    "v6dev_v7": {
+      "n_changed": 156,
+      "n_equivalent": 189,
+      "tpr": 0.557692,
+      "fpr": 0.179894,
+      "youden_j": 0.377798
+    },
+    "v6train_v7": {
+      "n_changed": 474,
+      "n_equivalent": 559,
+      "tpr": 0.5,
+      "fpr": 0.194991,
+      "youden_j": 0.305009
+    },
+    "v8dev_v8_rescore": {
+      "n_changed": 344,
+      "n_equivalent": 249,
+      "tpr": 0.514535,
+      "fpr": 0.104418,
+      "youden_j": 0.410117
+    }
+  },
+  "external_corpora": {
+    "quixbugs_output_free_v7": {
+      "pairs_total": 152,
+      "pairs_evaluated": 152,
+      "n_changed": 40,
+      "n_equivalent": 112,
+      "sbg_v5_auroc": 0.387723,
+      "ci95": null,
+      "note": "CI not computed in source artifact; produced pre-freeze; BELOW CHANCE",
+      "source": {
+        "path": "artifacts/final/QUIXBUGS_output_free_v7.json",
+        "sha256": "82bbc79a9de2caa8fa9cd849485d22fc5f396e2cb1fc45119982960290009f93"
+      }
+    },
+    "bugsinpy_output_free_v7": {
+      "protocol": "output_free_v7",
+      "bugs_total": 501,
+      "bugs_with_eligible_unit": 51,
+      "units_eligible": 55,
+      "pairs_total": 200,
+      "pairs_evaluable": 147,
+      "pairs_valid": 147,
+      "bugs_evaluated_with_valid_positive": 39,
+      "sbg_v5_auroc_valid": 0.409917,
+      "sbg_v5_ci_valid": [
+        0.326232,
+        0.493946
+      ],
+      "tau_metrics_computed": true,
+      "source": {
+        "path": "artifacts/final/BUGSINPY_output_free_v7.json",
+        "sha256": "9c1d73998d4ce792fe9056997c3adc6fe6905068e2f11134983e70cf829cb493"
+      }
+    }
+  },
+  "not_available": {
+    "v6_test_under_output_free_v7": "NOT RUN (deliberately; split is observed/contaminated, make v7-test not executed)",
+    "v8_test": "NOT RUN (v8 test not scored; FREEZE_V8.json absent; pre-registration for v8 absent)",
+    "weight_fitting_test_score": "WEIGHT_FITTING.json['test'] is null: M1/M2 never scored on a test split",
+    "java_quixbugs": "NOT RUN (QUIXBUGS_JAVA_SBG_RESULTS.json absent)",
+    "quixbugs_ci": "source artifact has no CI",
+    "power_analysis_v8": "power_analysis.py not run on v8 dev"
+  }
+}
