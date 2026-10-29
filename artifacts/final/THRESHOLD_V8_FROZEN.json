@@ -1,0 +1,28 @@
+{
+  "artifact": "THRESHOLD_V8_FROZEN",
+  "protocol": "output_free_v8",
+  "predictor": "sbg_v5",
+  "tau_star": 0.040511,
+  "rule": "maximise Youden J over midpoints of consecutive sorted unique distances; detected iff d > tau; ties -> smaller tau",
+  "derived_on": {
+    "split": "dev",
+    "dataset": "benchmark/datasets/v8",
+    "scored_pair_file": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+    "scored_pair_file_sha256": "86ff18771d3563c4fede04d6f437fdd024791f2838ce19579ea7a6b1bae50f81",
+    "n_valid_pairs": 550,
+    "n_changed": 317,
+    "n_programs": 13,
+    "stale_programs_excluded": [
+      "math_happy_number"
+    ]
+  },
+  "dev_operating_point": {
+    "youden_j": 0.462545,
+    "tpr": 0.574132,
+    "fpr": 0.111588
+  },
+  "reads_no_test_data": true,
+  "frozen_at": "2026-10-29T04:40:47+00:00",
+  "v6_tau_star_for_reference": 0.072905,
+  "note": "tau_v8 is an operating point only; it does not affect any AUROC."
+}

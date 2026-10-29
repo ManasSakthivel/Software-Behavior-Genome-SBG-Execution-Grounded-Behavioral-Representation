@@ -1,0 +1,101 @@
+{
+  "purpose": "detect committed v8 variants that are not reproducible from the current base programs",
+  "method": "regenerate with unchanged generator (PYTHONHASHSEED=0), compare ast.dump of every variant",
+  "interpreter": "3.13.5",
+  "n_programs": 100,
+  "n_programs_stale": 8,
+  "stale_programs": [
+    {
+      "program": "math_count_set_bits",
+      "split": "test",
+      "n_committed": 48,
+      "n_stale": 45,
+      "n_missing_in_regen": 3,
+      "n_only_in_regen": 3
+    },
+    {
+      "program": "math_digital_root",
+      "split": "train",
+      "n_committed": 44,
+      "n_stale": 42,
+      "n_missing_in_regen": 2,
+      "n_only_in_regen": 6
+    },
+    {
+      "program": "math_extended_gcd",
+      "split": "train",
+      "n_committed": 37,
+      "n_stale": 37,
+      "n_missing_in_regen": 0,
+      "n_only_in_regen": 6
+    },
+    {
+      "program": "math_gcd_lcm",
+      "split": "test",
+      "n_committed": 31,
+      "n_stale": 31,
+      "n_missing_in_regen": 0,
+      "n_only_in_regen": 12
+    },
+    {
+      "program": "math_happy_number",
+      "split": "dev",
+      "n_committed": 43,
+      "n_stale": 42,
+      "n_missing_in_regen": 1,
+      "n_only_in_regen": 6
+    },
+    {
+      "program": "math_nthroot_newton",
+      "split": "test",
+      "n_committed": 42,
+      "n_stale": 39,
+      "n_missing_in_regen": 3,
+      "n_only_in_regen": 6
+    },
+    {
+      "program": "math_power_modular",
+      "split": "test",
+      "n_committed": 42,
+      "n_stale": 39,
+      "n_missing_in_regen": 3,
+      "n_only_in_regen": 6
+    },
+    {
+      "program": "math_trailing_zeros",
+      "split": "train",
+      "n_committed": 45,
+      "n_stale": 42,
+      "n_missing_in_regen": 3,
+      "n_only_in_regen": 6
+    }
+  ],
+  "n_pairs_committed": 4245,
+  "n_pairs_regenerated": 4281,
+  "n_pairs_in_stale_programs": {
+    "train": 126,
+    "dev": 43,
+    "val": 0,
+    "test": 163
+  },
+  "n_programs_stale_by_split": {
+    "train": 3,
+    "dev": 1,
+    "val": 0,
+    "test": 4
+  },
+  "remaining_programs_reproduce_exactly": 92,
+  "base_file_sha256_of_stale_programs": {
+    "math_count_set_bits": "8adc61bfaeeed86a76008594b063350eaf3f7e38758c1733e32035bfb79b0e78",
+    "math_digital_root": "6a6e8f0a4d06f726fff17272d7982125d10fa36f84781e6cf3f863e1c5ccd894",
+    "math_extended_gcd": "4b5243f90b9428b3468c367c85d53f00967d1edf654f3d9065ed57caef0a709c",
+    "math_gcd_lcm": "68c3c9dc015ef57e54a394a33ff4062d74b677555f2762c6b839d3ba0455ff8a",
+    "math_happy_number": "9b53606b1dc4b9b57b0342a0360eeaac8552cac103497ac70e6309df1b4367a7",
+    "math_nthroot_newton": "5c13a3abfa720b39d91e2126f2c8a661b8ae3f373740b7c42937ad4edb0825da",
+    "math_power_modular": "d6a98a6afaa21a9bd6afb865fd870e6e1c7cf6ea36828290e280fce043230199",
+    "math_trailing_zeros": "24388dacf722d99b4b6c0d6ad133d490114aeace63cace7875f975af5b24e2bb"
+  },
+  "file_mtime_evidence": "the 8 stale base programs were modified 2026-10-28 07:58-07:59, after their variants were written (07:53); mtimes are not in git",
+  "exclusion_rule": "programs listed in stale_programs are excluded from v8 evaluation (dev dry-run and test); no other exclusion is applied by this audit",
+  "no_scores_read": true
+}
