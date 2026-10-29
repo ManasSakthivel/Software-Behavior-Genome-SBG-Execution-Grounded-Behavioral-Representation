@@ -88,5 +88,32 @@
     "Re-scoring dev with current code (/tmp/devrepro_head) would give tau 0.072531 (vs 0.072905), same Youden J: negligible but the frozen file is retained unmodified.",
     "The earlier constant tau = 0.08 has no verifiable provenance (docs/current/THRESHOLD_PROVENANCE.md) and is NOT used here.",
     "No tau* exists for protocol output_free_v8 (THRESHOLD_V8_FROZEN.json absent); applying 0.072905 to v8 dev is a cross-protocol transfer shown only as an operating-point diagnostic."
-  ]
+  ],
+  "tau_v8": {
+    "value": 0.040511,
+    "rule": "maximise Youden J over midpoints of consecutive sorted unique distances; detected iff d > tau; ties -> smaller tau",
+    "derived_on": {
+      "split": "dev",
+      "dataset": "benchmark/datasets/v8",
+      "scored_pair_file": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+      "scored_pair_file_sha256": "86ff18771d3563c4fede04d6f437fdd024791f2838ce19579ea7a6b1bae50f81",
+      "n_valid_pairs": 550,
+      "n_changed": 317,
+      "n_programs": 13,
+      "stale_programs_excluded": [
+        "math_happy_number"
+      ]
+    },
+    "source": {
+      "path": "artifacts/final/THRESHOLD_V8_FROZEN.json",
+      "sha256": "65a98c5decf2b501d907411e1d911f9fb228cb862a2530c79ec3e50124c011bb"
+    },
+    "frozen_in": "artifacts/final/FREEZE_V8.json (commit ebb8c44), before any v8 test scoring",
+    "test_operating_point": {
+      "tau": 0.040511,
+      "tpr": 0.5046,
+      "fpr": 0.1467
+    },
+    "note": "tau_v8 derived on v8 DEV only (550 valid pairs, 13 programs). tau* = 0.072905 (v6/protocol v7) is unchanged and separate."
+  }
 }

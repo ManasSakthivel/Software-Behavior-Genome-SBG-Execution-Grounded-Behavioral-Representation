@@ -4,13 +4,15 @@
   "code_commit_base": "f15cb9a658c73a9f4c44b7b701b9c89d55ac68d6",
   "working_tree_dirty_at_generation": true,
   "headline_reading": {
-    "verdict": "NOT a confirmatory result. No held-out TEST split has been scored under a frozen protocol.",
+    "verdict": "SBG is NOT demonstrated. The single frozen v8 TEST evaluation (22 programs, 956 pairs) gives sbg_v5 AUROC 0.694 [0.659291, 0.726558] against reversed edit size 0.876 [0.858786, 0.891749]; the pre-declared criterion (beat the best baseline with CI lower bound > 0) is NOT met.",
     "summary": [
-      "SBG V5 separates CHANGED from EQUIVALENT above chance on v6 train/dev (AUROC 0.665 / 0.667) and v8 dev (0.739), cluster-bootstrap CIs excluding 0.5.",
-      "Reversed edit size alone (a trivial shortcut) beats SBG V5 on every run: 0.954 (v6 train), 0.957 (v6 dev), 0.845 (v8 dev). Paired deltas sbg_v5 - edit_size_reversed are negative with CIs excluding 0 on all three.",
-      "SBG V5 beats exception_fraction and call_count on v8 dev (paired CIs exclude 0) and on v6 train vs exception_fraction; on v6 dev it does not beat exception_fraction (CI includes 0).",
-      "The dev-selected learned model M2 raises AUROC (v6 train 0.724 in-sample, v6 dev 0.713 selection set, v8 dev 0.804 out-of-distribution) but is still below reversed edit size.",
-      "External transfer is negative: BugsInPy 0.410 [0.326, 0.494], QuixBugs 0.388 (both below chance, pre-freeze)."
+      "v8 TEST (confirmatory-by-freeze, single run): sbg_v5 0.694, learned_m2 0.771, edit_size_reversed 0.876, coverage_size 0.612, exception_fraction 0.569, call_count 0.494, static_ast 0.259, static_token 0.260.",
+      "sbg_v5 beats exception_fraction, call_count, coverage_size and the static baselines on v8 TEST (paired CIs exclude 0) but loses to reversed edit size (delta -0.182, CI [-0.220, -0.144]).",
+      "Beyond edit size: exact edit-size-stratified AUROC 0.776 [0.722, 0.825] (label-shuffle p95 0.528) -> some signal beyond edit size, on a stratum retaining 19% of cross-label pairs. This is the only evidence of non-shortcut signal.",
+      "Edit-size confound is a genuine benchmark confound (label is a function of transformation family), not an implementation error: DIAGNOSTIC_EDIT_SIZE.json.",
+      "External transfer is not demonstrated: BugsInPy 0.410 / QuixBugs 0.388 headline; after removing the SP-2 entry-rename artifact and the `re`-cache artifact the values are 0.45-0.51 with CIs spanning 0.5 (DIAGNOSTIC_EXTERNAL.json). Pre-freeze, exploratory.",
+      "v6 dev frozen scores differ from current re-score on 46/345 pairs: hash-order nondeterminism (18) + a legitimate input-aliasing fix (28); AUROC 0.667 vs 0.668-0.678 (DIAGNOSTIC_V6DEV_REPRO.json). v6 results stay exploratory.",
+      "Earlier (pre-freeze) summary lines are preserved under `superseded_headline_reading`."
     ]
   },
   "runs": {
@@ -1254,11 +1256,299 @@
     }
   },
   "not_available": {
+    "v6_test_under_output_free_v7": "NOT RUN (observed/contaminated split)",
+    "v8_test": "RUN ONCE (see v8_frozen_runs.v8_test_frozen). Not repeated. 4 programs/163 pairs excluded (stale variants).",
+    "weight_models_M1_M2_on_test": "scored on v8 test by evaluate_v8.py as SECONDARY (weights fit on v6 train, frozen in FREEZE_V8.json); WEIGHT_FITTING.json['test'] remains null (fit_weights.py test was never run)",
+    "java_quixbugs": "NOT RUN",
+    "power_analysis_v8": "NOT RUN",
+    "v8_val_split": "NOT scored",
+    "quixbugs_ci": "now in DIAGNOSTIC_EXTERNAL.json (cluster bootstrap, 40 programs)"
+  },
+  "superseded_headline_reading": {
+    "verdict": "NOT a confirmatory result. No held-out TEST split has been scored under a frozen protocol.",
+    "summary": [
+      "SBG V5 separates CHANGED from EQUIVALENT above chance on v6 train/dev (AUROC 0.665 / 0.667) and v8 dev (0.739), cluster-bootstrap CIs excluding 0.5.",
+      "Reversed edit size alone (a trivial shortcut) beats SBG V5 on every run: 0.954 (v6 train), 0.957 (v6 dev), 0.845 (v8 dev). Paired deltas sbg_v5 - edit_size_reversed are negative with CIs excluding 0 on all three.",
+      "SBG V5 beats exception_fraction and call_count on v8 dev (paired CIs exclude 0) and on v6 train vs exception_fraction; on v6 dev it does not beat exception_fraction (CI includes 0).",
+      "The dev-selected learned model M2 raises AUROC (v6 train 0.724 in-sample, v6 dev 0.713 selection set, v8 dev 0.804 out-of-distribution) but is still below reversed edit size.",
+      "External transfer is negative: BugsInPy 0.410 [0.326, 0.494], QuixBugs 0.388 (both below chance, pre-freeze)."
+    ]
+  },
+  "superseded_not_available": {
     "v6_test_under_output_free_v7": "NOT RUN (deliberately; split is observed/contaminated, make v7-test not executed)",
     "v8_test": "NOT RUN (v8 test not scored; FREEZE_V8.json absent; pre-registration for v8 absent)",
     "weight_fitting_test_score": "WEIGHT_FITTING.json['test'] is null: M1/M2 never scored on a test split",
     "java_quixbugs": "NOT RUN (QUIXBUGS_JAVA_SBG_RESULTS.json absent)",
     "quixbugs_ci": "source artifact has no CI",
     "power_analysis_v8": "power_analysis.py not run on v8 dev"
+  },
+  "v8_frozen_runs": {
+    "v8_test_frozen": {
+      "status": "CONFIRMATORY-BY-FREEZE (single run; amended twice before scoring; 4 stale-variant programs excluded by a content-only rule; see FREEZE_V8*.json)",
+      "source": {
+        "path": "artifacts/paper_evidence/V8_TEST_EVALUATION.json",
+        "sha256": "8b1b04b48e4c23fee2ed6a43e23dafc8d54e49d90bcff765c7a1d68d926907b8"
+      },
+      "n_pairs": 956,
+      "n_changed": 547,
+      "n_equivalent": 409,
+      "n_programs": 22,
+      "predictors": {
+        "sbg_v5": {
+          "auroc": 0.693742,
+          "ci95": [
+            0.659291,
+            0.726558
+          ]
+        },
+        "learned_m1": {
+          "auroc": 0.750844,
+          "ci95": [
+            0.683284,
+            0.80657
+          ]
+        },
+        "learned_m2": {
+          "auroc": 0.771289,
+          "ci95": [
+            0.726634,
+            0.811959
+          ]
+        },
+        "edit_size_reversed": {
+          "auroc": 0.875922,
+          "ci95": [
+            0.858786,
+            0.891749
+          ]
+        },
+        "exception_fraction": {
+          "auroc": 0.569307,
+          "ci95": [
+            0.540844,
+            0.600236
+          ]
+        },
+        "call_count": {
+          "auroc": 0.493818,
+          "ci95": [
+            0.443336,
+            0.548917
+          ]
+        },
+        "coverage_size": {
+          "auroc": 0.611877,
+          "ci95": [
+            0.583502,
+            0.639429
+          ]
+        },
+        "static_ast": {
+          "auroc": 0.259307,
+          "ci95": [
+            0.242428,
+            0.276789
+          ]
+        },
+        "static_token": {
+          "auroc": 0.260362,
+          "ci95": [
+            0.240331,
+            0.281332
+          ]
+        }
+      },
+      "paired_delta_sbg_v5_minus_edit_size_reversed": {
+        "delta": -0.182181,
+        "ci_lower": -0.219937,
+        "ci_upper": -0.14396,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "holm_adjusted_p_vs_edit_size_reversed": 0.006,
+      "edit_size_exact_stratified": {
+        "sbg_v5_auroc": 0.776207,
+        "n_cross_label_comparisons": 43290.0,
+        "fraction_of_all_cross_label_pairs": 0.1935,
+        "ci95_cluster_bootstrap": [
+          0.722233,
+          0.824978,
+          2000
+        ],
+        "note": "compares only CHANGED vs EQUIVALENT pairs with identical canonical edit size (edit size alone = 0.5 by construction)"
+      },
+      "noise_floor": {
+        "mean": 0.500821,
+        "std": 0.016507,
+        "p95": 0.528435,
+        "n_shuffles": 500
+      },
+      "operating_point_tau_v8": {
+        "tau": 0.040511,
+        "tpr": 0.5046,
+        "fpr": 0.1467
+      },
+      "verdict": {
+        "best_baseline": "edit_size_reversed",
+        "best_baseline_auroc": 0.875922,
+        "delta_sbg_v5_minus_best": -0.182181,
+        "delta_ci95": [
+          -0.219937,
+          -0.14396
+        ],
+        "holm_adjusted_p_best": 0.006,
+        "stratified_auroc": 0.776207,
+        "noise_floor_p95": 0.528435,
+        "sbg_beats_best_baseline_with_ci_lb_gt_0": false,
+        "stratified_exceeds_noise_p95": true,
+        "verdict": "NOT DEMONSTRATED"
+      }
+    },
+    "v8_dev_dryrun_frozen_script": {
+      "status": "EXPLORATORY / DEV (tau_v8 derived here; 1 stale program excluded)",
+      "source": {
+        "path": "artifacts/paper_evidence/V8_DEV_DRYRUN_EVALUATION.json",
+        "sha256": "96d861928c684ce43fa34a0aa0b6c55457c040c4e054d2d7a2a62331117fc404"
+      },
+      "n_pairs": 550,
+      "n_changed": 317,
+      "n_equivalent": 233,
+      "n_programs": 13,
+      "predictors": {
+        "sbg_v5": {
+          "auroc": 0.739362,
+          "ci95": [
+            0.693796,
+            0.781501
+          ]
+        },
+        "learned_m1": {
+          "auroc": 0.818646,
+          "ci95": [
+            0.781256,
+            0.856269
+          ]
+        },
+        "learned_m2": {
+          "auroc": 0.811998,
+          "ci95": [
+            0.771892,
+            0.852029
+          ]
+        },
+        "edit_size_reversed": {
+          "auroc": 0.877093,
+          "ci95": [
+            0.853903,
+            0.897788
+          ]
+        },
+        "exception_fraction": {
+          "auroc": 0.575486,
+          "ci95": [
+            0.539634,
+            0.61844
+          ]
+        },
+        "call_count": {
+          "auroc": 0.522075,
+          "ci95": [
+            0.448988,
+            0.597736
+          ]
+        },
+        "coverage_size": {
+          "auroc": 0.590278,
+          "ci95": [
+            0.564747,
+            0.616927
+          ]
+        },
+        "static_ast": {
+          "auroc": 0.286437,
+          "ci95": [
+            0.257831,
+            0.316672
+          ]
+        },
+        "static_token": {
+          "auroc": 0.29875,
+          "ci95": [
+            0.272649,
+            0.327579
+          ]
+        }
+      },
+      "paired_delta_sbg_v5_minus_edit_size_reversed": {
+        "delta": -0.137732,
+        "ci_lower": -0.191564,
+        "ci_upper": -0.084647,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "holm_adjusted_p_vs_edit_size_reversed": 0.006,
+      "edit_size_exact_stratified": {
+        "sbg_v5_auroc": 0.85876,
+        "n_cross_label_comparisons": 14178.0,
+        "fraction_of_all_cross_label_pairs": 0.192,
+        "ci95_cluster_bootstrap": [
+          0.801418,
+          0.902818,
+          2000
+        ],
+        "note": "compares only CHANGED vs EQUIVALENT pairs with identical canonical edit size (edit size alone = 0.5 by construction)"
+      },
+      "noise_floor": {
+        "mean": 0.503313,
+        "std": 0.023139,
+        "p95": 0.539337,
+        "n_shuffles": 500
+      },
+      "operating_point_tau_v8": {
+        "tau": 0.040511,
+        "tpr": 0.5741,
+        "fpr": 0.1116
+      },
+      "verdict": {
+        "best_baseline": "edit_size_reversed",
+        "best_baseline_auroc": 0.877093,
+        "delta_sbg_v5_minus_best": -0.137732,
+        "delta_ci95": [
+          -0.191564,
+          -0.084647
+        ],
+        "holm_adjusted_p_best": 0.006,
+        "stratified_auroc": 0.85876,
+        "noise_floor_p95": 0.539337,
+        "sbg_beats_best_baseline_with_ci_lb_gt_0": false,
+        "stratified_exceeds_noise_p95": true,
+        "verdict": "NOT DEMONSTRATED"
+      }
+    },
+    "component_comparison": {
+      "status": "EXPLORATORY, descriptive, post-test",
+      "source": {
+        "path": "artifacts/paper_evidence/V8_COMPONENT_COMPARISON.json",
+        "sha256": "3921d37e8f4a6ad89a4db950342d69c46419a0a2c3aee63a9436237ad9bbf40e"
+      }
+    }
+  },
+  "diagnostics": {
+    "DIAGNOSTIC_EDIT_SIZE": {
+      "path": "artifacts/paper_evidence/DIAGNOSTIC_EDIT_SIZE.json",
+      "sha256": "3afcb8b5afe89025443535b50abf64bb45229192aa90c484d0a82c49b03250e3"
+    },
+    "DIAGNOSTIC_V6DEV_REPRO": {
+      "path": "artifacts/paper_evidence/DIAGNOSTIC_V6DEV_REPRO.json",
+      "sha256": "0d047576d2a4c0f913d6ba2adb46d8dee02c5fc56e20cb0fed53e3541ea5abe2"
+    },
+    "DIAGNOSTIC_EXTERNAL": {
+      "path": "artifacts/paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+      "sha256": "950dc90d0601b1cc6c686ff34215681265b0396a0ad4ee7a9e02cc3f2857fdc6"
+    },
+    "DIAGNOSTIC_V8_STALE_VARIANTS": {
+      "path": "artifacts/paper_evidence/DIAGNOSTIC_V8_STALE_VARIANTS.json",
+      "sha256": "309e06f4ee7a0b16192893e292865d0eb1eafbf200f0f4ad49e7733e3e333e81"
+    }
   }
 }

@@ -1,0 +1,211 @@
+{
+  "artifact": "DIAGNOSTIC_EXTERNAL",
+  "status": "EXPLORATORY (pre-freeze corpora; committed artifacts unchanged)",
+  "sources": {
+    "qc": {
+      "path": "artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+      "sha256": "69f8efae6ee0d0a4d7e18119196a35d13c2e0fce32918de1e4e90b219b0eaf88"
+    },
+    "qd": {
+      "path": "artifacts/final/pairs_quixbugs_declared_output_free_v7.jsonl",
+      "sha256": "6cbc4a3d61068be0bd1af511879d357c159e051e98290969d15bee095ccdb32e"
+    },
+    "bp": {
+      "path": "artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+      "sha256": "378cb3429d317e534655799cb8eaf4056fbede4d908757d259b24d801cdd6548"
+    }
+  },
+  "checks": {
+    "quixbugs": {
+      "label_role": {
+        "real_bug|label=1": 40,
+        "sp_negative:SP-1|label=0": 30,
+        "sp_negative:SP-2|label=0": 40,
+        "sp_negative:SP-3|label=0": 33,
+        "sp_negative:SP-6|label=0": 9
+      },
+      "positives_base_is_fixed_variant_is_buggy": "pair_kind=real_bug, label=1 (see loader; base=fixed program)",
+      "real_bug_pairs_with_identical_exception_fraction": 38,
+      "real_bug_pairs_with_identical_n_events": 31,
+      "real_bug_pairs_sbg_exactly_zero": 32,
+      "n_real_bug_pairs": 40,
+      "sp2_pairs_with_entry_renamed": 40,
+      "sp2_pairs": 40,
+      "unevaluated_canonical": {}
+    },
+    "bugsinpy": {
+      "label_role": {
+        "positive|label=1": 55,
+        "negative|label=0": 145
+      },
+      "positive_observable_flag": {
+        "True": 41
+      },
+      "sp2_negatives_with_entry_renamed": 40,
+      "sp2_negatives": 40,
+      "mean_sbg_sp2_vs_sp1_sp3": {
+        "SP-1": 0.2795,
+        "SP-2": 0.2753,
+        "SP-3": 0.2034
+      }
+    }
+  },
+  "quixbugs_canonical": [
+    {
+      "subset": "all (published headline)",
+      "n_pairs": 152,
+      "n_pos": 40,
+      "n_neg": 112,
+      "n_clusters": 40,
+      "auroc": 0.3877,
+      "ci95_cluster_bootstrap": [
+        0.2847,
+        0.5034
+      ]
+    },
+    {
+      "subset": "excluding SP-2 (entry-rename) negatives",
+      "n_pairs": 112,
+      "n_pos": 40,
+      "n_neg": 72,
+      "n_clusters": 40,
+      "auroc": 0.4507,
+      "ci95_cluster_bootstrap": [
+        0.3601,
+        0.5473
+      ]
+    },
+    {
+      "within_program_stratified": {
+        "auroc": 0.3884,
+        "n_cross_label_comparisons": 112
+      }
+    }
+  ],
+  "quixbugs_declared_inputs": [
+    {
+      "subset": "all evaluable (declared-input regime)",
+      "n_pairs": 99,
+      "n_pos": 24,
+      "n_neg": 75,
+      "n_clusters": 28,
+      "auroc": 0.7022,
+      "ci95_cluster_bootstrap": [
+        0.5836,
+        0.8166
+      ]
+    },
+    {
+      "subset": "excluding SP-2",
+      "n_pairs": 72,
+      "n_pos": 24,
+      "n_neg": 48,
+      "n_clusters": 28,
+      "auroc": 0.6684,
+      "ci95_cluster_bootstrap": [
+        0.5316,
+        0.7969
+      ]
+    },
+    {
+      "edit_size_reversed_auroc": 0.4778
+    },
+    {
+      "unevaluated_reasons": {
+        "nonterminating": 10,
+        "ineligible": 36,
+        "harness_error": 7
+      }
+    }
+  ],
+  "quixbugs_canonical_on_declared_evaluable_programs": {
+    "subset": "canonical, same programs as declared",
+    "n_pairs": 105,
+    "n_pos": 28,
+    "n_neg": 77,
+    "n_clusters": 28,
+    "auroc": 0.4385,
+    "ci95_cluster_bootstrap": [
+      0.3265,
+      0.5673
+    ]
+  },
+  "bugsinpy": [
+    {
+      "subset": "all (published headline)",
+      "n_pairs": 147,
+      "n_pos": 41,
+      "n_neg": 106,
+      "n_clusters": 39,
+      "auroc": 0.4099,
+      "ci95_cluster_bootstrap": [
+        0.3262,
+        0.4939
+      ]
+    },
+    {
+      "subset": "excluding SP-2 (entry-rename) negatives",
+      "n_pairs": 107,
+      "n_pos": 41,
+      "n_neg": 66,
+      "n_clusters": 39,
+      "auroc": 0.4715,
+      "ci95_cluster_bootstrap": [
+        0.3809,
+        0.5617
+      ]
+    },
+    {
+      "within_unit_stratified": {
+        "auroc": 0.4018,
+        "n_cross_label_comparisons": 112
+      }
+    },
+    {
+      "subset": "units not importing `re`, excluding SP-2",
+      "n_pairs": 60,
+      "n_pos": 24,
+      "n_neg": 36,
+      "n_clusters": 22,
+      "auroc": 0.5104,
+      "ci95_cluster_bootstrap": [
+        0.4111,
+        0.6188
+      ]
+    }
+  ],
+  "bugsinpy_re_cache_rescore": {
+    "purpose": "does process-global (re cache) state explain BugsInPy below-chance AUROC?",
+    "protocol": "output_free_v7",
+    "source_pairs": "artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+    "n_units": 41,
+    "n_pairs": 147,
+    "n_pos": 41,
+    "n_neg": 106,
+    "n_bugs": 39,
+    "committed_auroc_same_pairs": 0.409917,
+    "committed_ci": [
+      0.326232,
+      0.493946
+    ],
+    "purged_auroc": 0.42936,
+    "purged_ci": [
+      0.337868,
+      0.526568
+    ],
+    "self_distance_purged": {
+      "n": 41,
+      "n_nonzero": 3,
+      "max": 0.673460603
+    },
+    "n_pairs_score_changed_by_purge": 41,
+    "status": "EXPLORATORY diagnostic; committed artifact unchanged"
+  },
+  "interpretation": [
+    "Labels, pairing and orientation verified: positives are (fixed -> buggy/real-fix) pairs with label 1, negatives are SP-* rewrites of the same base with label 0; AUROC recomputes exactly from the committed pair files.",
+    "SP-2 (function rename) changes the ENTRY name for 100% of SP-2 pairs, which is scored as a behavioural difference: this inflates negative scores and is a harness artifact, not behaviour change.",
+    "QuixBugs: SBG is exactly 0 for most real bugs under canonical (synthesised) inputs because buggy and fixed traces are identical; the declared-input regime exposes more bugs (0.70) but on a 28-program, 24-positive subset selected by evaluability.",
+    "BugsInPy: process-global `re` regex-cache state makes traces depend on extraction order; purging the cache moves AUROC 0.410 -> 0.429. With SP-2 excluded the values are 0.47-0.51, CIs include 0.5.",
+    "Conclusion: no evidence of positive transfer to real bugs; the below-chance headline is partly measurement artifact, corrected values are indistinguishable from chance. The root cause of the remaining weak signal is not proven. Do not claim real-bug detection."
+  ]
+}

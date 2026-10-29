@@ -236,9 +236,114 @@
   "not_run": [
     "make v7-test (v6 TEST under output_free_v7)",
     "fit_weights.py score/test",
-    "any v8 test/val scoring",
     "make java",
     "power_analysis.py on v8",
-    "FREEZE_V8.json / THRESHOLD_V8_FROZEN.json creation"
-  ]
+    "make v7-test (v6 TEST under output_free_v7)",
+    "fit_weights.py test",
+    "v8 val split scoring",
+    "make java",
+    "power_analysis.py on v8",
+    "re-run of the v8 test (forbidden: single run)"
+  ],
+  "runs_v8_frozen": {
+    "freeze": [
+      {
+        "path": "artifacts/final/FREEZE_V8.json",
+        "sha256": "d42ac74d37272c9a42df1546e3d26d228be7d1f9494e8334fc563338ea7859dc"
+      },
+      {
+        "path": "artifacts/final/FREEZE_V8_AMENDMENT1.json",
+        "sha256": "777fb03a61ed13c0c3e2f3b93eece73adcbaf2c548028fefc2876922719960f9"
+      },
+      {
+        "path": "artifacts/final/FREEZE_V8_AMENDMENT2.json",
+        "sha256": "aa2028ad8cf68c57ead56a1fc93efcfc0487b7887d447eb82eda65f22e95a4af"
+      }
+    ],
+    "freeze_commits": {
+      "FREEZE_V8": "ebb8c44",
+      "AMENDMENT1": "465be1b",
+      "AMENDMENT2": "c0f6c6d"
+    },
+    "threshold": {
+      "path": "artifacts/final/THRESHOLD_V8_FROZEN.json",
+      "sha256": "65a98c5decf2b501d907411e1d911f9fb228cb862a2530c79ec3e50124c011bb"
+    },
+    "weights": {
+      "path": "artifacts/final/WEIGHT_FITTING.json",
+      "sha256": "6d1e157a1a317845d0c143de2cb586c69613df3cbfd704cf5870adb4b75553fb"
+    },
+    "v8_dev_dryrun": {
+      "command": "PYTHONHASHSEED=0 python experiments/final/evaluate_v8.py run --split dev",
+      "output": {
+        "path": "artifacts/paper_evidence/V8_DEV_DRYRUN_EVALUATION.json",
+        "sha256": "96d861928c684ce43fa34a0aa0b6c55457c040c4e054d2d7a2a62331117fc404"
+      }
+    },
+    "v8_test": {
+      "commands": [
+        "python experiments/final/run_chunked.py --split test --pairs-dir artifacts/final/v8_test_nonstale --tag v8test --out-dir artifacts/final   # ~190 s, 22 subprocesses",
+        "python experiments/final/static_baselines.py --pairs artifacts/final/pairs_v8test_output_free_v8.jsonl --dataset benchmark/datasets/v8",
+        "PYTHONHASHSEED=0 python experiments/final/evaluate_v8.py run --split test"
+      ],
+      "scored_pairs": {
+        "path": "artifacts/final/pairs_v8test_output_free_v8.jsonl",
+        "sha256": "33396232b8396730d5cff9c6d4283ef9fb462ae1a12a9c560728ff9caf791f90"
+      },
+      "output": {
+        "path": "artifacts/paper_evidence/V8_TEST_EVALUATION.json",
+        "sha256": "8b1b04b48e4c23fee2ed6a43e23dafc8d54e49d90bcff765c7a1d68d926907b8"
+      },
+      "attempts": [
+        "attempt 1 single-process, 1130 pairs: stalled at ~525 (checkpoint unread, kept as ABORTED_*)",
+        "attempt 2 resume: stalled at same pair",
+        "attempt 3 single-process, 967 non-stale pairs: stalled at ~525 (checkpoint never opened, outside repo)",
+        "attempt 4 chunked harness (dev-equivalence 0/597 diffs): completed -> the reported result. Run exactly once; no re-run."
+      ]
+    },
+    "diagnostics": {
+      "DIAGNOSTIC_EDIT_SIZE": {
+        "script": "experiments/final/diagnose_edit_size.py",
+        "output": {
+          "path": "artifacts/paper_evidence/DIAGNOSTIC_EDIT_SIZE.json",
+          "sha256": "3afcb8b5afe89025443535b50abf64bb45229192aa90c484d0a82c49b03250e3"
+        }
+      },
+      "DIAGNOSTIC_V6DEV_REPRO": {
+        "script": "experiments/final/build_v6dev_repro_diagnostic.py",
+        "output": {
+          "path": "artifacts/paper_evidence/DIAGNOSTIC_V6DEV_REPRO.json",
+          "sha256": "0d047576d2a4c0f913d6ba2adb46d8dee02c5fc56e20cb0fed53e3541ea5abe2"
+        }
+      },
+      "DIAGNOSTIC_EXTERNAL": {
+        "script": "experiments/final/diagnose_external.py",
+        "output": {
+          "path": "artifacts/paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+          "sha256": "950dc90d0601b1cc6c686ff34215681265b0396a0ad4ee7a9e02cc3f2857fdc6"
+        }
+      },
+      "DIAGNOSTIC_V8_STALE_VARIANTS": {
+        "script": "experiments/final/audit_v8_staleness.py",
+        "output": {
+          "path": "artifacts/paper_evidence/DIAGNOSTIC_V8_STALE_VARIANTS.json",
+          "sha256": "309e06f4ee7a0b16192893e292865d0eb1eafbf200f0f4ad49e7733e3e333e81"
+        }
+      }
+    },
+    "supplement": {
+      "script": "experiments/final/supplement_v8.py",
+      "output": {
+        "path": "artifacts/paper_evidence/V8_COMPONENT_COMPARISON.json",
+        "sha256": "3921d37e8f4a6ad89a4db950342d69c46419a0a2c3aee63a9436237ad9bbf40e"
+      }
+    },
+    "environment": {
+      "python": "3.13.5",
+      "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "PYTHONHASHSEED": "0 (pinned for all scoring)"
+    },
+    "git_head_at_generation": "7958a04dccaf5cb9259305c0927abaafbdc6a66c"
+  }
 }

@@ -1,3 +1,12 @@
+# SBG status — UPDATE 2026-10-29 (supersedes the "Last updated 2026-09-29" text below where they conflict)
+
+**SBG is NOT validated.** One frozen v8 TEST evaluation was run (22 programs, 956 pairs): SBG V5 AUROC 0.694 [0.659, 0.727] vs reversed edit size
+0.876 [0.859, 0.892]; pre-declared verdict **NOT DEMONSTRATED**. Edit-size confound diagnosed (benchmark confound, not a bug), v6 dev drift root-caused,
+external real-bug results validated (no label/orientation error; two harness artifacts; no transfer). Full details:
+[`artifacts/paper_evidence/RESEARCH_STATUS.md`](artifacts/paper_evidence/RESEARCH_STATUS.md), [`DIAGNOSTIC_REPORT.md`](artifacts/paper_evidence/DIAGNOSTIC_REPORT.md).
+
+---
+
 # SBG Phase 2 status
 
 **SBG is not complete.** Blockers remain until every stage below is done, the

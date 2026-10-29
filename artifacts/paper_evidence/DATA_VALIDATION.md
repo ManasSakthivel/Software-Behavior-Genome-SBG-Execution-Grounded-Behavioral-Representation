@@ -76,3 +76,22 @@ Frozen v6 dev files were left unmodified, as required. All re-scores were writte
 9. `FINAL_REPRODUCIBILITY_MANIFEST.json` / `ARTIFACT_PROVENANCE.json` in `artifacts/final/` predate v7/v8 (stale); `EXPERIMENT_MANIFEST.json` here supersedes them for this evidence set.
 
 10. The four superseded pre-regeneration v8 dev files (`pairs_dev_output_free_v8.jsonl`, `pairs_v8dev_output_free_v8.jsonl`, `programs_dev_output_free_v8.json`, `programs_v8dev_output_free_v8.json`) remain on the author's disk, **untracked and not committed** (stale vs the current v8 dataset; two embed local absolute paths). No metric in this package uses them.
+
+---
+# Addendum 2026-10-29
+
+## E. v8 committed variants are stale for 8 base programs
+`benchmark/datasets/v8` variants were generated at 07:53 on 2026-10-28; 8 base programs were edited at 07:58–07:59 afterwards. Re-generated ASTs differ for those 8
+programs (test: `math_count_set_bits`, `math_gcd_lcm`, `math_nthroot_newton`, `math_power_modular` = 163 pairs; train: `math_digital_root`, `math_extended_gcd`, `math_trailing_zeros` = 126 pairs; dev: `math_happy_number` = 43 pairs).
+The other 92 programs regenerate with identical ASTs. Source: `DIAGNOSTIC_V8_STALE_VARIANTS.json` (`audit_v8_staleness.py`; content-only, no scores read).
+Handling: programs excluded **by name before test scoring** (frozen in `FREEZE_V8.json`); the committed dataset was **not** modified. Test = 22 programs, 967 pairs (956 evaluated). The `data_integrity.py --strict` check passes but does not test freshness.
+Consequence: weights were fit on **v6** train, so v8 train staleness does not affect any reported number; v8 dev (593-pair original analysis) includes one stale program (`math_happy_number`), the frozen-script dev dry run excludes it (550 pairs).
+
+## F. v6 dev drift (resolved) — see `DIAGNOSTIC_V6DEV_REPRO.json`
+46/345 = 18 (hash-order, original code) + 28 (aliasing fix in `sort_quicksort`). 7 pairs become non-evaluable under later tracer fix. Frozen artifact retained unmodified.
+
+## G. Dev/test scoring harness
+Single-process scoring of ≥ ~525 mutants stalls (accumulated leaked tracer threads). `run_chunked.py` (one subprocess per base program) verified identical on dev (0/597 differences in evaluated flag and all execution scores). Final test scoring used it.
+
+## H. Test-split provenance
+v8 test pair ids = `artifacts/final/v8_test_nonstale/pairs_test.jsonl` (967) = `benchmark/datasets/v8/pairs_test.jsonl` minus 163 stale-program pairs. `evaluate_v8.py:load_scored` asserts scored ids == dataset ids. 11 pairs unevaluated: variant import_error 4, nonterminating 6, unsupported_signature 1.
