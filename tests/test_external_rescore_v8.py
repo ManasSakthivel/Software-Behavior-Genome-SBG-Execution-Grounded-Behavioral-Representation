@@ -87,3 +87,13 @@ def test_v7_entry_identity_is_name_based_but_v8_is_structural(tmp_path):
     a8, b8 = (ex.extract_program(str(p), {}, "output_free_v8") for p in (base, renamed))
     assert a7.entry_discovery != b7.entry_discovery
     assert a8.entry_discovery == b8.entry_discovery
+
+
+def test_negative_audit_flags_partial_nested_rename():
+    """The BugsInPy SP-2 defect: nested def renamed, call site not -> NameError."""
+    sys.path.insert(0, str(REPO_ROOT / "experiments" / "final"))
+    from audit_external_negatives import undefined_names
+    good = "def f(x):\n    def g(y):\n        return y\n    return g(x)\n"
+    bad = "def f(x):\n    def fn_g(y):\n        return y\n    return g(x)\n"
+    assert undefined_names(good) == []
+    assert undefined_names(bad) == ["g"]

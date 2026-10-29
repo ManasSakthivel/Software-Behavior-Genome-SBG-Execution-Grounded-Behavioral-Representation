@@ -83,3 +83,13 @@ paper publication-ready.
 test split), v8 dev re-score under `output_free_v8`. **Not run:** any held-out test
 evaluation, v8 freeze/threshold, Java. Reversed edit size still beats SBG V5 on every
 run; external transfer is below chance. SBG remains NOT research-ready.
+
+---
+## Update: branch `remediation/sbg-v3` (2026-10-29)
+Historical sections above are unchanged. New, read these first: `artifacts/paper_evidence/RESEARCH_STATUS_V3.md`,
+`PHASE7_ACCEPTANCE.md`, `FINAL_METRICS_V3.json`, `BASELINE_COMPARISON_V3.csv`, `ABLATIONS_V3.json`,
+`DATASET_SUMMARY_V3.json`, `EXPERIMENT_MANIFEST_V3.json` (reproduction commands, freezes, hashes).
+Headline: SBG is NOT validated. v8 test stands (0.694 vs reversed edit 0.876). The v8 label/edit-size confound is a dataset-design
+artifact (`LABEL_GENERATION_AUDIT.json`). On the size-decoupled v9 design (frozen, single val run, 11 unseen programs) SBG adds
+information beyond edit size (H2 +0.112) but not beyond edit size + execution shortcuts (H4 +0.021, CI includes 0).
+Real-bug results remain exploratory at/below chance; 7/40 BugsInPy SP-2 negatives are invalid (`EXTERNAL_NEGATIVE_AUDIT.json`).

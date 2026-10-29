@@ -1,0 +1,150 @@
+{
+ "artifact": "EXTERNAL_NEGATIVE_AUDIT",
+ "status": "EXPLORATORY static audit",
+ "method": "module-wide name-binding approximation; flags names loaded but bound nowhere in the variant and not in the base. Over-approximates nothing (a flagged name is bound nowhere in the file), so flagged variants provably contain a reference to an undefined name.",
+ "corpora": {
+  "bugsinpy": {
+   "SP-1": {
+    "n": 17,
+    "broken": 0,
+    "pairs": []
+   },
+   "SP-2": {
+    "n": 40,
+    "broken": 7,
+    "pairs": [
+     {
+      "pair_id": "youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-2",
+      "new_undefined": [
+       "fix_kv"
+      ],
+      "sbg_v5": 0.800453945
+     },
+     {
+      "pair_id": "youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-2",
+      "new_undefined": [
+       "fix_kv"
+      ],
+      "sbg_v5": 0.791271176
+     },
+     {
+      "pair_id": "youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-2",
+      "new_undefined": [
+       "fix_kv"
+      ],
+      "sbg_v5": 0.794344178
+     },
+     {
+      "pair_id": "youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-2",
+      "new_undefined": [
+       "fix_kv"
+      ],
+      "sbg_v5": 0.793993017
+     },
+     {
+      "pair_id": "youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-2",
+      "new_undefined": [
+       "fix_kv"
+      ],
+      "sbg_v5": 0.793993017
+     },
+     {
+      "pair_id": "youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-2",
+      "new_undefined": [
+       "fix_kv"
+      ],
+      "sbg_v5": 0.795009424
+     },
+     {
+      "pair_id": "youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-2",
+      "new_undefined": [
+       "fix_kv"
+      ],
+      "sbg_v5": 0.800453945
+     }
+    ]
+   },
+   "SP-3": {
+    "n": 29,
+    "broken": 0,
+    "pairs": []
+   },
+   "SP-4": {
+    "n": 13,
+    "broken": 0,
+    "pairs": []
+   },
+   "SP-6": {
+    "n": 7,
+    "broken": 0,
+    "pairs": []
+   }
+  },
+  "quixbugs_canonical": {
+   "SP-1": {
+    "n": 30,
+    "broken": 0,
+    "pairs": []
+   },
+   "SP-2": {
+    "n": 40,
+    "broken": 0,
+    "pairs": []
+   },
+   "SP-3": {
+    "n": 33,
+    "broken": 0,
+    "pairs": []
+   },
+   "SP-6": {
+    "n": 9,
+    "broken": 0,
+    "pairs": []
+   }
+  }
+ },
+ "effect_of_excluding_invalid_negatives": {
+  "bugsinpy/all_evaluated": {
+   "n_pairs": 147,
+   "n_pos": 41,
+   "n_neg": 106,
+   "sbg_v5_auroc": 0.4159,
+   "note": "point estimate only; see EXTERNAL_RESCORE_V8.json for cluster CIs on full sets"
+  },
+  "bugsinpy/excluding_invalid_negatives": {
+   "n_pairs": 140,
+   "n_pos": 41,
+   "n_neg": 99,
+   "sbg_v5_auroc": 0.4453,
+   "note": "point estimate only; see EXTERNAL_RESCORE_V8.json for cluster CIs on full sets"
+  },
+  "bugsinpy/excluding_invalid_negatives_and_all_SP2": {
+   "n_pairs": 107,
+   "n_pos": 41,
+   "n_neg": 66,
+   "sbg_v5_auroc": 0.497,
+   "note": "point estimate only; see EXTERNAL_RESCORE_V8.json for cluster CIs on full sets"
+  },
+  "quixbugs_canonical/all_evaluated": {
+   "n_pairs": 151,
+   "n_pos": 39,
+   "n_neg": 112,
+   "sbg_v5_auroc": 0.3842,
+   "note": "point estimate only; see EXTERNAL_RESCORE_V8.json for cluster CIs on full sets"
+  },
+  "quixbugs_canonical/excluding_invalid_negatives": {
+   "n_pairs": 151,
+   "n_pos": 39,
+   "n_neg": 112,
+   "sbg_v5_auroc": 0.3842,
+   "note": "point estimate only; see EXTERNAL_RESCORE_V8.json for cluster CIs on full sets"
+  },
+  "quixbugs_canonical/excluding_invalid_negatives_and_all_SP2": {
+   "n_pairs": 111,
+   "n_pos": 39,
+   "n_neg": 72,
+   "sbg_v5_auroc": 0.4444,
+   "note": "point estimate only; see EXTERNAL_RESCORE_V8.json for cluster CIs on full sets"
+  }
+ }
+}
