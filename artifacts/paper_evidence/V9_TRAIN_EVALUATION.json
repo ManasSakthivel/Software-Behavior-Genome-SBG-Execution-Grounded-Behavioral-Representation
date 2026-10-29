@@ -1,0 +1,778 @@
+{
+  "artifact": "V9_TRAIN_EVALUATION",
+  "split": "train",
+  "status": "IN-SAMPLE (models were fitted here); descriptive only",
+  "evaluation_script": {
+    "path": "experiments/final/evaluate_v9.py",
+    "sha256": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc"
+  },
+  "models_frozen": {
+    "path": "artifacts/final/V9_MODELS_FROZEN.json",
+    "sha256": "010394dadc91c47ac53e9741a0faf5144c1bb33df34c5d21752e97cb22438cc8",
+    "fitted_on": "v9c train, matched-complete"
+  },
+  "stale_programs_excluded": [
+    "math_count_set_bits",
+    "math_digital_root",
+    "math_extended_gcd",
+    "math_gcd_lcm",
+    "math_happy_number",
+    "math_nthroot_newton",
+    "math_power_modular",
+    "math_trailing_zeros"
+  ],
+  "sources": {
+    "v9c_scored": {
+      "path": "artifacts/final/pairs_v9c_train_output_free_v8.jsonl",
+      "sha256": "276f357b11f8dc5f8f5dbb21a6ff14c637061f30a95b4d168eb7e47593596474"
+    },
+    "v8_scored": {
+      "path": "artifacts/final/pairs_v8train_output_free_v8.jsonl",
+      "sha256": "370a88b76871ed7eab7d8ee851a62cc8dc81cce3c84ffa8c4e4949c6d153e6d5"
+    },
+    "v9c_pairs": {
+      "path": "benchmark/datasets/v9_composed/pairs_train.jsonl",
+      "sha256": "61df7eadab02df65d2a22e0ec3867468dc61b48e03b562edc3a822c25192e699"
+    },
+    "v9c_audit": {
+      "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V9C.json",
+      "sha256": "e8f5cda03cea09b6e17d02e25cdfed975243440d9511cf327a9112efdda13ffc"
+    }
+  },
+  "v9c_matched": {
+    "population": "matched-complete v9c sets (both members valid)",
+    "n_pairs": 1650,
+    "n_matched_sets": 825,
+    "n_programs": 46,
+    "n_changed": 825,
+    "n_equivalent": 825,
+    "predictors": {
+      "sbg_v5": {
+        "auroc": 0.734584,
+        "ci95_cluster_bootstrap": [
+          0.713189,
+          0.755906
+        ],
+        "permutation_p_one_sided_vs_0.5": 0.0005
+      },
+      "sbg_v3": {
+        "auroc": 0.709068,
+        "ci95_cluster_bootstrap": [
+          0.685001,
+          0.732476
+        ]
+      },
+      "sbg_temporal": {
+        "auroc": 0.594275,
+        "ci95_cluster_bootstrap": [
+          0.566635,
+          0.622245
+        ]
+      },
+      "sbg_state": {
+        "auroc": 0.754379,
+        "ci95_cluster_bootstrap": [
+          0.729646,
+          0.779815
+        ]
+      },
+      "exception_fraction": {
+        "auroc": 0.594281,
+        "ci95_cluster_bootstrap": [
+          0.573683,
+          0.616169
+        ]
+      },
+      "call_count": {
+        "auroc": 0.518601,
+        "ci95_cluster_bootstrap": [
+          0.492725,
+          0.550162
+        ]
+      },
+      "coverage_size": {
+        "auroc": 0.656081,
+        "ci95_cluster_bootstrap": [
+          0.636037,
+          0.676068
+        ]
+      },
+      "static_ast": {
+        "auroc": 0.592471,
+        "ci95_cluster_bootstrap": [
+          0.586285,
+          0.601023
+        ]
+      },
+      "static_token": {
+        "auroc": 0.579672,
+        "ci95_cluster_bootstrap": [
+          0.567059,
+          0.593356
+        ]
+      },
+      "M_E": {
+        "auroc": 0.610368,
+        "ci95_cluster_bootstrap": [
+          0.604353,
+          0.617516
+        ]
+      },
+      "M_ES": {
+        "auroc": 0.714855,
+        "ci95_cluster_bootstrap": [
+          0.696861,
+          0.734191
+        ]
+      },
+      "M_EX": {
+        "auroc": 0.704957,
+        "ci95_cluster_bootstrap": [
+          0.685457,
+          0.724333
+        ]
+      },
+      "M_ESX": {
+        "auroc": 0.74363,
+        "ci95_cluster_bootstrap": [
+          0.714646,
+          0.770138
+        ]
+      },
+      "M_E+v3": {
+        "auroc": 0.694572,
+        "ci95_cluster_bootstrap": [
+          0.677317,
+          0.712727
+        ]
+      },
+      "M_E+temporal": {
+        "auroc": 0.638445,
+        "ci95_cluster_bootstrap": [
+          0.620593,
+          0.657042
+        ]
+      },
+      "M_E+state": {
+        "auroc": 0.73886,
+        "ci95_cluster_bootstrap": [
+          0.720666,
+          0.758338
+        ]
+      },
+      "edit": {
+        "auroc": 0.610368,
+        "ci95_cluster_bootstrap": [
+          0.604353,
+          0.617516
+        ]
+      },
+      "edit_reversed": {
+        "auroc": 0.389632,
+        "ci95_cluster_bootstrap": [
+          0.382484,
+          0.395647
+        ]
+      }
+    },
+    "pre_declared_tests": {
+      "H1": {
+        "what": "AUROC(sbg_v5) > 0.5 (cluster permutation, one-sided)",
+        "auroc": 0.734584,
+        "p": 0.0005
+      },
+      "H2": {
+        "what": "incremental value of SBG beyond edit size: AUROC(M_ES) - AUROC(M_E)",
+        "delta": 0.104487,
+        "ci_lower": 0.085754,
+        "ci_upper": 0.122728,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "H3": {
+        "what": "sbg_v5 minus edit size (forward orientation, the better-oriented shortcut on this design)",
+        "delta": 0.124216,
+        "ci_lower": 0.10193,
+        "ci_upper": 0.145971,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "H4": {
+        "what": "SBG beyond edit size AND execution shortcuts: AUROC(M_ESX) - AUROC(M_EX)",
+        "delta": 0.038673,
+        "ci_lower": 0.022059,
+        "ci_upper": 0.053072,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "holm": {
+        "H1_sbg_v5_above_chance": {
+          "p_raw": 0.0005,
+          "p_adjusted": 0.002,
+          "reject_at_alpha": true,
+          "rank": 1,
+          "n_comparisons": 4
+        },
+        "H2_edit_plus_sbg_minus_edit": {
+          "p_raw": 0.001,
+          "p_adjusted": 0.003,
+          "reject_at_alpha": true,
+          "rank": 2,
+          "n_comparisons": 4
+        },
+        "H3_sbg_v5_minus_edit_forward": {
+          "p_raw": 0.001,
+          "p_adjusted": 0.003,
+          "reject_at_alpha": true,
+          "rank": 3,
+          "n_comparisons": 4
+        },
+        "H4_edit_exec_plus_sbg_minus_edit_exec": {
+          "p_raw": 0.001,
+          "p_adjusted": 0.003,
+          "reject_at_alpha": true,
+          "rank": 4,
+          "n_comparisons": 4
+        }
+      }
+    },
+    "verdict": {
+      "sbg_above_chance_H1": true,
+      "sbg_adds_information_beyond_edit_size_H2 (Holm reject and CI lower bound > 0)": true,
+      "sbg_adds_beyond_edit_and_execution_shortcuts_H4": true,
+      "sbg_beats_edit_size_alone_H3 (CI lower bound > 0)": true
+    },
+    "paired_deltas_sbg_v5_minus": {
+      "sbg_v3": {
+        "delta": 0.025516,
+        "ci_lower": 0.015509,
+        "ci_upper": 0.036569,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "sbg_temporal": {
+        "delta": 0.140309,
+        "ci_lower": 0.119755,
+        "ci_upper": 0.161777,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "sbg_state": {
+        "delta": -0.019795,
+        "ci_lower": -0.03294,
+        "ci_upper": -0.004546,
+        "p_two_sided": 0.013993,
+        "n_effective": 2000
+      },
+      "exception_fraction": {
+        "delta": 0.140303,
+        "ci_lower": 0.115026,
+        "ci_upper": 0.166498,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "call_count": {
+        "delta": 0.215983,
+        "ci_lower": 0.188763,
+        "ci_upper": 0.241726,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "coverage_size": {
+        "delta": 0.078504,
+        "ci_lower": 0.056431,
+        "ci_upper": 0.101108,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "static_ast": {
+        "delta": 0.142113,
+        "ci_lower": 0.119132,
+        "ci_upper": 0.164836,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "static_token": {
+        "delta": 0.154913,
+        "ci_lower": 0.131394,
+        "ci_upper": 0.178516,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "edit": {
+        "delta": 0.124216,
+        "ci_lower": 0.10193,
+        "ci_upper": 0.145971,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      }
+    },
+    "paired_deltas_holm_over_baselines": {
+      "exception_fraction": {
+        "p_raw": 0.001,
+        "p_adjusted": 0.006,
+        "reject_at_alpha": true,
+        "rank": 1,
+        "n_comparisons": 6
+      },
+      "call_count": {
+        "p_raw": 0.001,
+        "p_adjusted": 0.006,
+        "reject_at_alpha": true,
+        "rank": 2,
+        "n_comparisons": 6
+      },
+      "coverage_size": {
+        "p_raw": 0.001,
+        "p_adjusted": 0.006,
+        "reject_at_alpha": true,
+        "rank": 3,
+        "n_comparisons": 6
+      },
+      "static_ast": {
+        "p_raw": 0.001,
+        "p_adjusted": 0.006,
+        "reject_at_alpha": true,
+        "rank": 4,
+        "n_comparisons": 6
+      },
+      "static_token": {
+        "p_raw": 0.001,
+        "p_adjusted": 0.006,
+        "reject_at_alpha": true,
+        "rank": 5,
+        "n_comparisons": 6
+      },
+      "edit": {
+        "p_raw": 0.001,
+        "p_adjusted": 0.006,
+        "reject_at_alpha": true,
+        "rank": 6,
+        "n_comparisons": 6
+      }
+    },
+    "component_increments_over_edit_only_model": {
+      "E+v3": {
+        "delta": 0.084203,
+        "ci_lower": 0.065721,
+        "ci_upper": 0.101998,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "E+temporal": {
+        "delta": 0.028076,
+        "ci_lower": 0.010666,
+        "ci_upper": 0.045341,
+        "p_two_sided": 0.001999,
+        "n_effective": 2000
+      },
+      "E+state": {
+        "delta": 0.128491,
+        "ci_lower": 0.109507,
+        "ci_upper": 0.146445,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "ES": {
+        "delta": 0.104487,
+        "ci_lower": 0.085754,
+        "ci_upper": 0.122728,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      }
+    },
+    "edit_size_exact_stratified": {
+      "sbg_v5": {
+        "auroc": 0.693009,
+        "n_cross_label_comparisons": 43612.0
+      },
+      "sbg_v3": {
+        "auroc": 0.675456,
+        "n_cross_label_comparisons": 43612.0
+      },
+      "sbg_temporal": {
+        "auroc": 0.59886,
+        "n_cross_label_comparisons": 43612.0
+      },
+      "sbg_state": {
+        "auroc": 0.721373,
+        "n_cross_label_comparisons": 43612.0
+      }
+    },
+    "matched_set_concordance": {
+      "sbg_v5": {
+        "concordance": 0.801212,
+        "n_matched_sets": 825,
+        "ci95_cluster_bootstrap": [
+          0.775287,
+          0.828313
+        ]
+      },
+      "edit": {
+        "concordance": 0.924848,
+        "n_matched_sets": 825,
+        "ci95_cluster_bootstrap": [
+          0.907895,
+          0.941447
+        ]
+      },
+      "sbg_state": {
+        "concordance": 0.815152,
+        "n_matched_sets": 825,
+        "ci95_cluster_bootstrap": [
+          0.783042,
+          0.845886
+        ]
+      },
+      "exception_fraction": {
+        "concordance": 0.597576,
+        "n_matched_sets": 825,
+        "ci95_cluster_bootstrap": [
+          0.575574,
+          0.620222
+        ]
+      }
+    },
+    "mean_edit_size": {
+      "CHANGED": 10.336,
+      "EQUIVALENT": 8.485
+    },
+    "fraction_sbg_v5_exactly_zero": 0.3806,
+    "per_program_auroc": {
+      "ds_interval_merge": {
+        "n": 30,
+        "sbg_v5": 0.6889,
+        "edit": 0.62
+      },
+      "ds_lfu_simulation": {
+        "n": 32,
+        "sbg_v5": 0.9082,
+        "edit": 0.6309
+      },
+      "ds_ring_buffer_stats": {
+        "n": 36,
+        "sbg_v5": 0.7176,
+        "edit": 0.6235
+      },
+      "ds_rle_encode": {
+        "n": 30,
+        "sbg_v5": 0.6422,
+        "edit": 0.6289
+      },
+      "ds_segment_tree_sum": {
+        "n": 38,
+        "sbg_v5": 0.8366,
+        "edit": 0.6371
+      },
+      "ds_skip_list_search": {
+        "n": 42,
+        "sbg_v5": 0.678,
+        "edit": 0.6327
+      },
+      "ds_sparse_table": {
+        "n": 48,
+        "sbg_v5": 0.7691,
+        "edit": 0.6276
+      },
+      "ds_trie_prefix_count": {
+        "n": 26,
+        "sbg_v5": 0.6805,
+        "edit": 0.6834
+      },
+      "graph_center_finder": {
+        "n": 36,
+        "sbg_v5": 0.7917,
+        "edit": 0.6281
+      },
+      "graph_condensation": {
+        "n": 40,
+        "sbg_v5": 0.8137,
+        "edit": 0.5975
+      },
+      "graph_degree_sequence": {
+        "n": 36,
+        "sbg_v5": 0.7083,
+        "edit": 0.6204
+      },
+      "graph_flood_fill": {
+        "n": 38,
+        "sbg_v5": 0.7729,
+        "edit": 0.6302
+      },
+      "graph_min_cost_path": {
+        "n": 42,
+        "sbg_v5": 0.881,
+        "edit": 0.6417
+      },
+      "graph_path_exists": {
+        "n": 34,
+        "sbg_v5": 0.7145,
+        "edit": 0.5761
+      },
+      "graph_phone_combos": {
+        "n": 28,
+        "sbg_v5": 0.7781,
+        "edit": 0.676
+      },
+      "math_catalan_number": {
+        "n": 42,
+        "sbg_v5": 0.7698,
+        "edit": 0.6349
+      },
+      "math_gray_code": {
+        "n": 40,
+        "sbg_v5": 0.735,
+        "edit": 0.64
+      },
+      "math_matrix_chain": {
+        "n": 36,
+        "sbg_v5": 0.8148,
+        "edit": 0.6235
+      },
+      "math_max_product_subarray": {
+        "n": 36,
+        "sbg_v5": 0.7022,
+        "edit": 0.6019
+      },
+      "math_max_subarray": {
+        "n": 38,
+        "sbg_v5": 0.7161,
+        "edit": 0.6177
+      },
+      "math_missing_numbers": {
+        "n": 44,
+        "sbg_v5": 0.7045,
+        "edit": 0.6012
+      },
+      "math_nth_ugly_number": {
+        "n": 42,
+        "sbg_v5": 0.8163,
+        "edit": 0.6077
+      },
+      "math_pascal_row": {
+        "n": 38,
+        "sbg_v5": 0.7535,
+        "edit": 0.5831
+      },
+      "math_power_of_two_list": {
+        "n": 40,
+        "sbg_v5": 0.6625,
+        "edit": 0.6475
+      },
+      "math_rotate_matrix": {
+        "n": 36,
+        "sbg_v5": 0.7284,
+        "edit": 0.625
+      },
+      "math_staircase_ways": {
+        "n": 42,
+        "sbg_v5": 0.8333,
+        "edit": 0.6236
+      },
+      "math_subset_sum_exists": {
+        "n": 30,
+        "sbg_v5": 0.8933,
+        "edit": 0.6044
+      },
+      "math_sum_squares": {
+        "n": 36,
+        "sbg_v5": 0.8302,
+        "edit": 0.6466
+      },
+      "math_unique_paths": {
+        "n": 32,
+        "sbg_v5": 0.8496,
+        "edit": 0.7344
+      },
+      "sort_bucket_sort": {
+        "n": 46,
+        "sbg_v5": 0.5964,
+        "edit": 0.6096
+      },
+      "sort_comb_sort": {
+        "n": 18,
+        "sbg_v5": 0.7593,
+        "edit": 0.6543
+      },
+      "sort_pigeonhole_sort": {
+        "n": 44,
+        "sbg_v5": 0.6684,
+        "edit": 0.6477
+      },
+      "sort_shellsort": {
+        "n": 38,
+        "sbg_v5": 0.7479,
+        "edit": 0.6399
+      },
+      "sort_strand_sort": {
+        "n": 48,
+        "sbg_v5": 0.6102,
+        "edit": 0.599
+      },
+      "str_atoi_manual": {
+        "n": 36,
+        "sbg_v5": 0.7222,
+        "edit": 0.6296
+      },
+      "str_bracket_balance": {
+        "n": 26,
+        "sbg_v5": 0.6893,
+        "edit": 0.716
+      },
+      "str_compress_spaces": {
+        "n": 34,
+        "sbg_v5": 0.7266,
+        "edit": 0.6315
+      },
+      "str_is_number_valid": {
+        "n": 30,
+        "sbg_v5": 0.7489,
+        "edit": 0.6444
+      },
+      "str_justify_text": {
+        "n": 46,
+        "sbg_v5": 0.6805,
+        "edit": 0.6087
+      },
+      "str_levenshtein_distance": {
+        "n": 36,
+        "sbg_v5": 0.7037,
+        "edit": 0.5864
+      },
+      "str_longest_common_prefix": {
+        "n": 26,
+        "sbg_v5": 0.7456,
+        "edit": 0.645
+      },
+      "str_longest_no_repeat": {
+        "n": 30,
+        "sbg_v5": 0.7333,
+        "edit": 0.6244
+      },
+      "str_min_window_substr": {
+        "n": 30,
+        "sbg_v5": 0.8311,
+        "edit": 0.6156
+      },
+      "str_rabin_karp_hash": {
+        "n": 46,
+        "sbg_v5": 0.7202,
+        "edit": 0.5794
+      },
+      "str_vowel_count": {
+        "n": 18,
+        "sbg_v5": 0.7037,
+        "edit": 0.6481
+      },
+      "str_zigzag_encode": {
+        "n": 30,
+        "sbg_v5": 0.6778,
+        "edit": 0.58
+      }
+    },
+    "selection_audit": {
+      "all_pairs_in_file": 1684,
+      "evaluated": 1667,
+      "valid": 1667,
+      "matched_complete": 1650,
+      "dropped_by_matching_rule": 17,
+      "failure_kinds": {
+        "harness_timeout": 4,
+        "import_error": 2,
+        "nonterminating": 11
+      },
+      "mean_edit_all_valid_changed": 10.336,
+      "mean_edit_matched_changed": 10.336
+    }
+  },
+  "v8_design": {
+    "population": "v8 original design (label bound to family), VALID pairs",
+    "n_pairs": 1909,
+    "n_programs": 46,
+    "n_changed": 1067,
+    "n_equivalent": 842,
+    "predictors": {
+      "sbg_v5": {
+        "auroc": 0.667922,
+        "ci95_cluster_bootstrap": [
+          0.641519,
+          0.694315
+        ]
+      },
+      "sbg_v3": {
+        "auroc": 0.647628,
+        "ci95_cluster_bootstrap": [
+          0.620908,
+          0.674207
+        ]
+      },
+      "sbg_temporal": {
+        "auroc": 0.554154,
+        "ci95_cluster_bootstrap": [
+          0.524025,
+          0.585111
+        ]
+      },
+      "sbg_state": {
+        "auroc": 0.728677,
+        "ci95_cluster_bootstrap": [
+          0.699224,
+          0.756797
+        ]
+      },
+      "edit_size_reversed": {
+        "auroc": 0.848967,
+        "ci95_cluster_bootstrap": [
+          0.83314,
+          0.864616
+        ]
+      },
+      "exception_fraction": {
+        "auroc": 0.577248,
+        "ci95_cluster_bootstrap": [
+          0.558173,
+          0.59709
+        ]
+      },
+      "call_count": {
+        "auroc": 0.477648,
+        "ci95_cluster_bootstrap": [
+          0.447592,
+          0.511799
+        ]
+      },
+      "coverage_size": {
+        "auroc": 0.597575,
+        "ci95_cluster_bootstrap": [
+          0.574856,
+          0.621212
+        ]
+      },
+      "static_ast": {
+        "auroc": 0.277404,
+        "ci95_cluster_bootstrap": [
+          0.259492,
+          0.296214
+        ]
+      },
+      "static_token": {
+        "auroc": 0.287388,
+        "ci95_cluster_bootstrap": [
+          0.268145,
+          0.307446
+        ]
+      }
+    },
+    "sbg_v5_minus_edit_size_reversed": {
+      "delta": -0.181045,
+      "ci_lower": -0.206493,
+      "ci_upper": -0.154876,
+      "p_two_sided": 0.001,
+      "n_effective": 2000
+    },
+    "edit_size_exact_stratified_sbg_v5": {
+      "auroc": 0.733548,
+      "n_cross_label_comparisons": 203868.0
+    }
+  }
+}

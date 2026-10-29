@@ -1,0 +1,61 @@
+{
+  "artifact": "FREEZE_V9",
+  "status": "FROZEN",
+  "written_at": "2026-10-29T06:48:00+00:00",
+  "plan": {
+    "path": "docs/current/EVALUATION_PLAN_V9.md",
+    "sha256": "7a6e44469dbf532f484cf28ba1ea90dc89d2fb71c2f0e731fffe4763ed364e1a"
+  },
+  "git_head_at_freeze": "d4d3cbd02c2afa45d63b0319beff16b4a377d9ff",
+  "evaluation_script_sha256": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc",
+  "code_sha256": {
+    "experiments/final/evaluate_v9.py": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc",
+    "experiments/final/fit_weights.py": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34",
+    "experiments/final/extraction.py": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55",
+    "experiments/final/protocol.py": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+    "experiments/final/entry_policy.py": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea",
+    "experiments/final/class_driver.py": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093",
+    "experiments/final/static_baselines.py": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df",
+    "experiments/final/edit_size_analysis.py": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e",
+    "experiments/final/run_chunked.py": "7d8e67ffbb6403128c33885ca201acf2bae5839f87b89f742a954eb96d2bef21",
+    "sbg/statistics.py": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b",
+    "sbg/extraction/dynamic/tracer.py": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f",
+    "benchmark/scripts/generate_v9_composed.py": "b32ff6168ecd093c216fbd544473bc560d89775cbc6d0b2a23a97e637187b712"
+  },
+  "models_sha256": "010394dadc91c47ac53e9741a0faf5144c1bb33df34c5d21752e97cb22438cc8",
+  "models": {
+    "path": "artifacts/final/V9_MODELS_FROZEN.json",
+    "fitted_on": "v9c train (matched-complete), 46 programs"
+  },
+  "scored_v9c_val_sha256": "3851fa752aef7062aa939da390509633814db5802effdb5f440d15e6555010bc",
+  "scored_v8_val_sha256": "f6e1567efc60e8bd9c251511768f64510a169a0f53a1c1c9ffd382fd6b30cd0f",
+  "dataset": {
+    "v9c_pairs_val": "41f764b5ced50c4e7fe77ddf5b89a18878cd6aa5b3418cca9f54a0e1cb947b91",
+    "v9c_manifest": "4ee38527e285ec7da2a5d0de700411b04f8e6f6f939f165b3446d1caa67363f8",
+    "v8_pairs_val": "aa545bd1a86b6a452a65134769197f2f2c95e2bab26a9d46dcd46cac956e1366",
+    "audit_v9c": "e8f5cda03cea09b6e17d02e25cdfed975243440d9511cf327a9112efdda13ffc"
+  },
+  "val_programs": [
+    "ds_stack_min",
+    "ds_two_sum",
+    "graph_scc_tarjan",
+    "graph_word_ladder",
+    "math_largest_rect_hist",
+    "math_lis_length",
+    "math_perfect_numbers",
+    "math_ways_to_change",
+    "sort_patience_sort",
+    "str_interleave_check",
+    "str_string_multiply"
+  ],
+  "val_scores_opened_before_freeze": false,
+  "statement": "The val score files were produced by the scorer and had static_baselines.py merged in (reads source files only). No val score value from either file was printed, aggregated or inspected before this freeze; only evaluate_v9.py `run --split val` will open them. Dev and train were inspected. The v8 test split is not used.",
+  "predictors_and_models": "see plan sections 5-6",
+  "tests": "H1-H4 Holm, plan section 6",
+  "deviations": [
+    "harness: run_chunked.py gained a mechanical RSS/time watchdog + per-pair fallback after a v8-train program (math_gray_code) made a mutant allocate >18 GB; affected pairs are recorded unevaluated with failure_kind=harness_timeout (train: 6 v8 + 4 v9c pairs). Val and dev needed no fallback (see logs).",
+    "v8 val and v8 train were scored for the first time in this work with the chunked harness (equivalence to single-process scoring verified on dev: 0/597 differences).",
+    "the EQUIVALENT members of v9c matched sets are the v8 EQUIVALENT pairs, scored in the v8 scored files and reused verbatim."
+  ],
+  "run_command": "PYTHONHASHSEED=0 python experiments/final/evaluate_v9.py run --split val"
+}

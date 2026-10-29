@@ -1,0 +1,19 @@
+def nth_permutation(nums: list, k: int) -> list:
+    valid = sorted(set((x for x in nums if isinstance(x, int))))
+    if not valid or not isinstance(k, int) or k < 1:
+        return []
+    n = len(valid)
+    fact = [1] * (n + 1)
+    for i in range(1, n + 1):
+        fact[i] = fact[i - 1] * i
+    if k > fact[n]:
+        return []
+    remaining = list(valid)
+    result = []
+    k -= 1
+    for i in range(n, 0, -1):
+        idx = k // fact[i - 1]
+        result.append(remaining[idx])
+        remaining.pop(idx)
+        pass
+    return result
