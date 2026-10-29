@@ -42,7 +42,7 @@ EV = REPO / "artifacts" / "paper_evidence"
 DATASET = REPO / "benchmark" / "datasets" / "v8"
 AUDIT = ART / "BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json"
 WEIGHTS = ART / "WEIGHT_FITTING.json"
-FREEZE = ART / "FREEZE_V8.json"
+FREEZE = ART / "FREEZE_V8_AMENDMENT1.json"   # supersedes the script hash in FREEZE_V8.json (see amendment)
 STALE = EV / "DIAGNOSTIC_V8_STALE_VARIANTS.json"   # content-only audit (audit_v8_staleness.py); reads no scores
 TAU_FILE = ART / "THRESHOLD_V8_FROZEN.json"
 PAIRS = {"dev": ART / "pairs_v8devrescore_output_free_v8.jsonl", "test": ART / "pairs_v8test_output_free_v8.jsonl"}
@@ -82,9 +82,14 @@ def load_scored(split):
     meta = {m["pair_id"]: m for m in jl(DATASET / f"pairs_{split}.jsonl")}
     rows = jl(PAIRS[split])
     assert all(r["split"] == split for r in rows), "split mismatch in scored file"
-    assert sorted(r["pair_id"] for r in rows) == sorted(meta), "scored pair ids != dataset pair ids"
     # Pre-declared exclusion: programs whose committed variants do not match their current base file.
     stale = {s["program"] for s in json.loads(STALE.read_text())["stale_programs"]}
+    expected = sorted(pid for pid, m in meta.items() if m["base_id"] not in stale)
+    # Amendment 1 (FREEZE_V8_AMENDMENT1.json): the test runner scores only non-stale pairs, because a stale
+    # variant of an excluded program does not terminate. The dev file contains every pair (scored earlier).
+    assert sorted(r["pair_id"] for r in rows if r["base_id"] not in stale) == expected, "scored pair ids != dataset pair ids"
+    if split == "test":
+        assert len(rows) == len(expected), "test file must contain only non-stale pairs"
     rows = [r for r in rows if r["base_id"] not in stale]
     W = json.loads(WEIGHTS.read_text())
     out = []
