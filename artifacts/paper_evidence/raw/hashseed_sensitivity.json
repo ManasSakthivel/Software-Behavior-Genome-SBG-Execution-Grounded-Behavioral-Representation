@@ -1,0 +1,34 @@
+{
+ "program": "benchmark/corpus/base_programs/graph_connected_components.py",
+ "protocol": "output_free_v7",
+ "n_events_by_seed_two_runs": {
+  "0": [
+   2065,
+   2065
+  ],
+  "1": [
+   2065,
+   2065
+  ],
+  "5": [
+   2075,
+   2075
+  ],
+  "21": [
+   2095,
+   2095
+  ],
+  "38": [
+   2095,
+   2095
+  ]
+ },
+ "deterministic_within_seed": true,
+ "distinct_values_across_seeds": [
+  2065,
+  2075,
+  2095
+ ],
+ "conclusion": "event count depends on PYTHONHASHSEED (set-of-strings iteration order); same seed reproduces exactly",
+ "status": "EXPLORATORY diagnostic"
+}
