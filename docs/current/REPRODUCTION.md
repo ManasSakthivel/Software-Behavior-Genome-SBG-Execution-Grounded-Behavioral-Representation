@@ -100,8 +100,11 @@ After `make check` on an unmodified checkout:
 [PASS] C5 no retired claim appears in a current document
 [PASS] C6 no output-reading result is attributed to SBG
 [PASS] C7 output-free protocol traces no self-test driver
+[PASS] C8 README results block matches the generated tables
+[PASS] C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)
+[PASS] C10 gate verdict is recomputed from artifacts and quoted exactly
 
-7/7 checks passed
+10/10 checks passed
 ```
 
 If any check fails, the message names the file, the line and the correct value.
