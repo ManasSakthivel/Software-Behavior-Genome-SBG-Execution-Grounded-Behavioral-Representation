@@ -133,7 +133,7 @@ COBOL/other-language results; output-differential superiority (matrix B1–B12).
 |---|---|
 | Branch | `remediation/sbg-v4` |
 | Base commit (start of sprint) | `9bed2f0` |
-| Commits made in this sprint | see git log after push (analysis code + JSON: `7039568`; documentation: next commit) |
+| Commits made in this sprint | `7039568` (analysis scripts + JSON), `0c08641` (deliverables, DOI correction, doc updates), plus the commit that records this push result |
 | Interpreter | CPython 3.13.5 (`../venvs/py313`), `PYTHONHASHSEED=0` |
 | Full test suite (**run by me, twice**: before and after the new scripts were added) | `PYTHONHASHSEED=0 python -m pytest sbg/ tests/ -q` → **807 passed, 3 warnings** (340.9 s before; 353.9 s after). The 3 warnings are SyntaxWarnings from benchmark variant files, pre-existing |
 | Consistency checks | `experiments/final/consistency_check.py` → **10/10 passed** (run after all documentation edits) |
@@ -148,4 +148,9 @@ COBOL/other-language results; output-differential superiority (matrix B1–B12).
 | Remote sync (before push) | `HEAD == origin/remediation/sbg-v4 == 9bed2f0` (0 ahead, 0 behind) |
 | Deviations from the brief | (i) the COBOL directory held 1 file, not ≈ 70; (ii) BugsInPy/QuixBugs not recomputed; (iii) no leave-one-component-out ablation; (iv) no systematic literature search; (v) the practical-use triage was computed on frozen scores only |
 
-Push outcome is recorded at the end of this file after the push.
+## Push outcome
+
+`git push origin remediation/sbg-v4` succeeded (`9bed2f0..0c08641`; secret scan clean). After `git fetch`, `HEAD` and
+`origin/remediation/sbg-v4` were both `0c086414804fce26b620f97692232d1870ae055e` (0 ahead, 0 behind); the working tree
+had only the four pre-existing untracked stale V8-dev files. This report was then amended with this section in one
+further documentation-only commit.
