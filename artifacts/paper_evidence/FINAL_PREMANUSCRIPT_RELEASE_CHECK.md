@@ -200,3 +200,12 @@ The only action that should be taken before manuscript submission is:
 | Are the real-bug limitations preserved and disclosed? | **Yes** — documented in REAL_BUG_GENERALISATION_AUDIT.md and the checklist. |
 
 **The repository is ready for manuscript drafting. No further experiments or algorithm changes are required or authorised.**
+
+---
+
+## 8. Addendum — final research-strengthening sprint (2026-10-30; the text above is unchanged)
+
+* **REPRODUCTION.md C1–C7 gap:** resolved before the sprint (commit `9bed2f0`); `docs/current/REPRODUCTION.md` shows C1–C10 / `10/10 checks passed`. Verified again in the sprint (`python experiments/final/consistency_check.py`).
+* **Kessel & Atkinson DOI:** the DOI in §"Novelty table" above (`10.1109/SCAM.2019.00019`) is wrong; the correct DOI is `10.1109/SCAM.2019.00030`. The full text remains closed access and is still the one required pre-submission verification.
+* **Verdict update:** see [`FINAL_SPRINT_REPORT.md`](FINAL_SPRINT_REPORT.md). New deliverables: `INCREMENTAL_CONTRIBUTION_ANALYSIS.md`, `RELATED_WORK_COMPARISON.md`, `FINAL_NOVELTY_POSITION.md`, `CLAIM_TO_EVIDENCE_MATRIX.md`, `REPRESENTATION_CASE_STUDIES.md`, `PRACTICAL_SIGNIFICANCE_ASSESSMENT.md`, `COBOL_CORPUS_INVENTORY.md`, `COBOL_EVALUATION_REPORT.md`, `FINAL_MANUSCRIPT_BLUEPRINT.md`.
+* The statement above, "No further experiments … are required or authorised", was written before the sprint; the sprint added only labelled exploratory analyses over frozen scores. No frozen artefact, label, metric, hypothesis or code path in the primary evaluation was changed.

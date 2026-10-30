@@ -205,3 +205,12 @@ The following claims must not appear in the manuscript under any formulation:
 | The zero-score rate has been fixed | Representation limitation remains |
 | The H4 non-significance proves equivalence | CI too wide; test underpowered |
 | AUROC 0.897 generalises to new populations | CIs are sample-level, not population-level |
+
+---
+
+## Addendum — final sprint (2026-10-30; original checklist unchanged)
+
+1. Authoritative claim table (may / must-not, with CIs, tests, sources, sections): [`CLAIM_TO_EVIDENCE_MATRIX.md`](CLAIM_TO_EVIDENCE_MATRIX.md).
+2. **Additional claims that must NOT be made:** SBG alone "beats execution statistics" without the refit caveat (V10 LOPO: +0.012 [−0.013, +0.033], n.s.); "the H4 null shows equivalence"; any COBOL/cross-language result; any precision/recall at realistic prevalence; superiority over output-based differential testing; novelty relative to Kessel & Atkinson beyond the verified abstract-level distinctions.
+3. **Corrections:** Kessel & Atkinson DOI is `10.1109/SCAM.2019.00030` (not `…00019`); BugsInPy 0.497 and QuixBugs 0.444 are the SP-2-excluded subsets (all-pairs: 0.416 and 0.384); EquiBench is arXiv:2502.12466 (venue unverified).
+4. **Numbers to re-check before submission:** the 42 values re-derived by `experiments/final/sprint_incremental.py main` (all matched on 2026-10-30), plus every number in `FINAL_MANUSCRIPT_BLUEPRINT.md` §10.

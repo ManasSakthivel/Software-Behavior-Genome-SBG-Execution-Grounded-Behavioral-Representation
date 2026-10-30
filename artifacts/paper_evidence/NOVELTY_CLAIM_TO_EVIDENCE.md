@@ -4,6 +4,16 @@
 **Date:** 2026-10-30  
 **Auditor:** Bob (research engineering agent)
 
+> **CORRECTION (final sprint, 2026-10-30).** The DOI cited for Kessel & Atkinson below, `10.1109/SCAM.2019.00019`, is wrong: it resolves to
+> Harrand, Soto-Valero, Monperrus, Baudry, *The Strengths and Behavioral Quirks of Java Bytecode Decompilers* (SCAM 2019, pp. 92–102).
+> The correct DOI is **10.1109/SCAM.2019.00030** (Kessel & Atkinson, *On the Efficacy of Dynamic Behavior Comparison for Judging Functional
+> Equivalence*, SCAM 2019, pp. 193–203; verified by DOI content negotiation). Full text is closed access and remains unread. The original text is kept
+> unchanged for the record. See `FINAL_NOVELTY_POSITION.md` and `RELATED_WORK_COMPARISON.md`.
+
+> **CORRECTION (final sprint).** The arXiv record for EquiBench (arXiv:2502.12466, first posted 2025-02-18) is titled *"EquiBench: Benchmarking Large Language
+> Models' Reasoning about Program Semantics via Equivalence Checking"* (11 authors, A. Wei … A. Aiken). The title and the "NeurIPS 2025 Workshop"
+> venue given below could not be re-verified; cite it as arXiv until a venue is confirmed.
+
 ---
 
 ## Purpose and Scope

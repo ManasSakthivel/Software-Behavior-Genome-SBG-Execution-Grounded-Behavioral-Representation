@@ -21,6 +21,28 @@ withdrawn claims are listed below rather than quietly removed.
 
 ---
 
+## Update — 2026-10-30 (size-aware evaluation, branch `remediation/sbg-v4`)
+
+The sections below describe the V6-era correction and are retained as the historical record. Since then the project
+adopted a **size-aware evaluation design** (composed pairs, dynamic-oracle labels, preregistered Holm-corrected tests;
+`docs/current/EVALUATION_PLAN_V9.md`) and ran frozen evaluations on V9c-validation and V10. The current, authoritative
+summary is [`artifacts/paper_evidence/FINAL_SPRINT_REPORT.md`](artifacts/paper_evidence/FINAL_SPRINT_REPORT.md).
+
+- **Supported:** SBG V5 separates behaviour-changing from behaviour-preserving transformations far better than edit size
+  (V10, 19 held-out programs, 638 pairs: AUROC 0.897 [0.863, 0.922] vs 0.616; V9c validation: 0.751 [0.706, 0.794];
+  +0.254 AUROC when added to edit size; 0.875 with edit size exactly matched). V10 comes from the *same author and
+  generation procedure* as development; it is **not** independently authored software.
+- **Not supported:** any gain from adding SBG to edit size **plus execution statistics** (H4: +0.006, 95 % CI
+  [−0.069, +0.068], Holm p = 1.0 on V10; +0.021 [−0.005, +0.048] on V9c validation). This is a null, not evidence of equivalence.
+  SBG V6 is not shown to improve on V5 (Holm p = 0.090).
+- **Not supported / negative:** real-bug transfer (BugsInPy 0.497, QuixBugs 0.444 after excluding SP-2 negatives);
+  value-only mutations (SC-6) are invisible by design; the COBOL corpus tried in this sprint contains Db2 precompiler
+  test snippets and cannot support an evaluation (`artifacts/paper_evidence/COBOL_EVALUATION_REPORT.md`).
+- Novelty and claim boundaries: [`FINAL_NOVELTY_POSITION.md`](artifacts/paper_evidence/FINAL_NOVELTY_POSITION.md),
+  [`CLAIM_TO_EVIDENCE_MATRIX.md`](artifacts/paper_evidence/CLAIM_TO_EVIDENCE_MATRIX.md).
+
+---
+
 ## The short version
 
 - **One claim is strongly supported: execution beats structure.** On the
