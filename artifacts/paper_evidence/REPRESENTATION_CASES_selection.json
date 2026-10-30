@@ -1,0 +1,245 @@
+{
+ "C1_correct_detection": {
+  "rule_pool_size": 45,
+  "group": "test__sort_pancake__sp3_s1",
+  "changed": "test__sort_pancake__sc10+sp3_s1",
+  "equivalent": "test__sort_pancake__sp3_s1",
+  "changed_scores": {
+   "sbg_v5": 0.131743312,
+   "sbg_v3": 0.084217051,
+   "sbg_temporal": 0.05672828,
+   "sbg_state": 0.301810865,
+   "sbg_v6": 0.108136415,
+   "exception_fraction": 0.0,
+   "call_count": 0.952380952,
+   "coverage_size": 0.875,
+   "edit": 28.0,
+   "M_E": 0.839674383,
+   "M_EX": 0.218050498,
+   "M_EX+V5": -1.491815883
+  },
+  "changed_meta": {
+   "base_id": "sort_pancake",
+   "transformation_type": "SC-10+SP-3",
+   "edit_size": 28,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/sort_pancake__sc10+sp3_s1.py",
+   "base_path": "benchmark/corpus/fresh_programs/sort_pancake.py"
+  },
+  "equivalent_scores": {
+   "sbg_v5": 0.028128277,
+   "sbg_v3": 0.056256554,
+   "sbg_temporal": 0.0,
+   "sbg_state": 0.0,
+   "sbg_v6": 0.028128277,
+   "exception_fraction": 0.0,
+   "call_count": 0.0,
+   "coverage_size": 0.875,
+   "edit": 26.0,
+   "M_E": 0.749606452,
+   "M_EX": 0.563292027,
+   "M_EX+V5": 0.309845062
+  },
+  "equivalent_meta": {
+   "base_id": "sort_pancake",
+   "transformation_type": "SP-3",
+   "edit_size": 26,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/sort_pancake__sp3_s1.py",
+   "base_path": "benchmark/corpus/fresh_programs/sort_pancake.py"
+  }
+ },
+ "C2_correct_equivalence": {
+  "rule_pool_size": 10,
+  "equivalent": "test__graph_cycle_detection_dfs__sp1_s1",
+  "changed": "test__graph_cycle_detection_dfs__sc2+sp1_s1",
+  "changed_scores": {
+   "sbg_v5": 0.524244196,
+   "sbg_v3": 0.447818203,
+   "sbg_temporal": 0.64134038,
+   "sbg_state": 0.56,
+   "sbg_v6": 0.52451569,
+   "exception_fraction": 0.0,
+   "call_count": 0.992063492,
+   "coverage_size": 0.923076923,
+   "edit": 14.0,
+   "M_E": 0.209198869,
+   "M_EX": 0.256871236,
+   "M_EX+V5": 0.717603925
+  },
+  "changed_meta": {
+   "base_id": "graph_cycle_detection_dfs",
+   "transformation_type": "SC-2+SP-1",
+   "edit_size": 14,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/graph_cycle_detection_dfs__sc2+sp1_s1.py",
+   "base_path": "benchmark/corpus/fresh_programs/graph_cycle_detection_dfs.py"
+  },
+  "equivalent_scores": {
+   "sbg_v5": 0.0,
+   "sbg_v3": 0.0,
+   "sbg_temporal": 0.0,
+   "sbg_state": 0.0,
+   "sbg_v6": 0.0,
+   "exception_fraction": 0.0,
+   "call_count": 0.0,
+   "coverage_size": 0.0,
+   "edit": 14.0,
+   "M_E": 0.209198869,
+   "M_EX": -0.533831187,
+   "M_EX+V5": -0.487952401
+  },
+  "equivalent_meta": {
+   "base_id": "graph_cycle_detection_dfs",
+   "transformation_type": "SP-1",
+   "edit_size": 14,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/graph_cycle_detection_dfs__sp1_s1.py",
+   "base_path": "benchmark/corpus/fresh_programs/graph_cycle_detection_dfs.py"
+  }
+ },
+ "C3_failure_to_detect": {
+  "rule_pool_size": 18,
+  "pool_by_sc_family": {
+   "SC-6": 17,
+   "SC-2": 1
+  },
+  "selected_family": "SC-6",
+  "changed": "test__ds_ranked_set__sc6+sp2_s2",
+  "equivalent": "test__ds_ranked_set__sp2_s2",
+  "changed_scores": {
+   "sbg_v5": 0.0,
+   "sbg_v3": 0.0,
+   "sbg_temporal": 0.0,
+   "sbg_state": 0.0,
+   "sbg_v6": 0.0,
+   "exception_fraction": 0.0,
+   "call_count": 0.0,
+   "coverage_size": 0.0,
+   "edit": 4.0,
+   "M_E": -0.241140784,
+   "M_EX": -0.538630651,
+   "M_EX+V5": -0.655424544
+  },
+  "changed_meta": {
+   "base_id": "ds_ranked_set",
+   "transformation_type": "SC-6+SP-2",
+   "edit_size": 4,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/ds_ranked_set__sc6+sp2_s2.py",
+   "base_path": "benchmark/corpus/fresh_programs/ds_ranked_set.py"
+  },
+  "equivalent_scores": {
+   "sbg_v5": 0.0,
+   "sbg_v3": 0.0,
+   "sbg_temporal": 0.0,
+   "sbg_state": 0.0,
+   "sbg_v6": 0.0,
+   "exception_fraction": 0.0,
+   "call_count": 0.0,
+   "coverage_size": 0.0,
+   "edit": 2.0,
+   "M_E": -0.331208714,
+   "M_EX": -0.539590544,
+   "M_EX+V5": -0.688918973
+  },
+  "equivalent_meta": {
+   "base_id": "ds_ranked_set",
+   "transformation_type": "SP-2",
+   "edit_size": 2,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/ds_ranked_set__sp2_s2.py",
+   "base_path": "benchmark/corpus/fresh_programs/ds_ranked_set.py"
+  }
+ },
+ "C4a_adding_sbg_hurts": {
+  "rule_pool_size": 11,
+  "group": "test__ds_ranked_set__sp2_s1",
+  "changed": "test__ds_ranked_set__sc5+sp2_s1",
+  "equivalent": "test__ds_ranked_set__sp2_s1",
+  "changed_scores": {
+   "sbg_v5": 0.312809265,
+   "sbg_v3": 0.229517113,
+   "sbg_temporal": 0.4026446,
+   "sbg_state": 0.389558233,
+   "sbg_v6": 0.346641426,
+   "exception_fraction": 0.388888889,
+   "call_count": 0.952380952,
+   "coverage_size": 0.5,
+   "edit": 4.0,
+   "M_E": -0.241140784,
+   "M_EX": 0.889668597,
+   "M_EX+V5": -1.062395057
+  },
+  "changed_meta": {
+   "base_id": "ds_ranked_set",
+   "transformation_type": "SC-5+SP-2",
+   "edit_size": 4,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/ds_ranked_set__sc5+sp2_s1.py",
+   "base_path": "benchmark/corpus/fresh_programs/ds_ranked_set.py"
+  },
+  "equivalent_scores": {
+   "sbg_v5": 0.0,
+   "sbg_v3": 0.0,
+   "sbg_temporal": 0.0,
+   "sbg_state": 0.0,
+   "sbg_v6": 0.0,
+   "exception_fraction": 0.0,
+   "call_count": 0.0,
+   "coverage_size": 0.0,
+   "edit": 2.0,
+   "M_E": -0.331208714,
+   "M_EX": -0.539590544,
+   "M_EX+V5": -0.688918973
+  },
+  "equivalent_meta": {
+   "base_id": "ds_ranked_set",
+   "transformation_type": "SP-2",
+   "edit_size": 2,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/ds_ranked_set__sp2_s1.py",
+   "base_path": "benchmark/corpus/fresh_programs/ds_ranked_set.py"
+  }
+ },
+ "C4b_adding_sbg_helps": {
+  "rule_pool_size": 11,
+  "group": "test__ds_min_heap_array__sp3_s2",
+  "changed": "test__ds_min_heap_array__sc11+sp3_s2",
+  "equivalent": "test__ds_min_heap_array__sp3_s2",
+  "changed_scores": {
+   "sbg_v5": 0.70143736,
+   "sbg_v3": 0.596745545,
+   "sbg_temporal": 0.61225835,
+   "sbg_state": 1.0,
+   "sbg_v6": 0.70143736,
+   "exception_fraction": 0.0,
+   "call_count": 0.998402556,
+   "coverage_size": 0.956521739,
+   "edit": 26.0,
+   "M_E": 0.749606452,
+   "M_EX": 0.302041085,
+   "M_EX+V5": 2.057839414
+  },
+  "changed_meta": {
+   "base_id": "ds_min_heap_array",
+   "transformation_type": "SC-11+SP-3",
+   "edit_size": 26,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/ds_min_heap_array__sc11+sp3_s2.py",
+   "base_path": "benchmark/corpus/fresh_programs/ds_min_heap_array.py"
+  },
+  "equivalent_scores": {
+   "sbg_v5": 0.030964925,
+   "sbg_v3": 0.06192985,
+   "sbg_temporal": 0.0,
+   "sbg_state": 0.0,
+   "sbg_v6": 0.030964925,
+   "exception_fraction": 0.0,
+   "call_count": 0.0,
+   "coverage_size": 0.923076923,
+   "edit": 24.0,
+   "M_E": 0.659538522,
+   "M_EX": 0.622297181,
+   "M_EX+V5": 0.317450467
+  },
+  "equivalent_meta": {
+   "base_id": "ds_min_heap_array",
+   "transformation_type": "SP-3",
+   "edit_size": 24,
+   "variant_path": "benchmark/datasets/v10_independent/variants/test/ds_min_heap_array__sp3_s2.py",
+   "base_path": "benchmark/corpus/fresh_programs/ds_min_heap_array.py"
+  }
+ }
+}

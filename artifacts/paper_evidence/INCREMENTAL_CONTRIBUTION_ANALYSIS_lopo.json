@@ -1,0 +1,107 @@
+{
+ "artifact": "INCREMENTAL_CONTRIBUTION_ANALYSIS_lopo",
+ "status": "EXPLORATORY / POST-HOC. Specified before running: LOPO refit of exactly two models (EX, EX+V5) on each of V10 and V9c-val; no other feature sets tried; V10 / V9c-val had already been opened, so this is a sensitivity analysis, not confirmation. Out-of-fold scoring: no held-out program is used in its own fit.",
+ "optimiser": "evaluate_v9.fit_logistic (L2=1.0, lr=0.5, 5000 its, standardised) -- identical to the frozen models",
+ "V10": {
+  "n_pairs": 638,
+  "n_programs": 19,
+  "auroc_LOPO_EX": {
+   "auroc": 0.885,
+   "ci95": [
+    0.849716,
+    0.916863
+   ]
+  },
+  "auroc_LOPO_EX+V5": {
+   "auroc": 0.8953,
+   "ci95": [
+    0.863953,
+    0.921225
+   ]
+  },
+  "auroc_sbg_v5": {
+   "auroc": 0.8968,
+   "ci95": [
+    0.862918,
+    0.921553
+   ]
+  },
+  "delta_LOPO_EX+V5_minus_LOPO_EX": {
+   "delta": 0.010279,
+   "ci_lower": -0.001725,
+   "ci_upper": 0.021961,
+   "p_two_sided": 0.089955,
+   "n_effective": 2000
+  },
+  "delta_sbg_v5_minus_LOPO_EX": {
+   "delta": 0.011753,
+   "ci_lower": -0.012898,
+   "ci_upper": 0.032732,
+   "p_two_sided": 0.31984,
+   "n_effective": 2000
+  },
+  "delta_sbg_v5_minus_LOPO_EX+V5": {
+   "delta": 0.001474,
+   "ci_lower": -0.01869,
+   "ci_upper": 0.018723,
+   "p_two_sided": 0.863568,
+   "n_effective": 2000
+  },
+  "exact_edit_stratified": {
+   "LOPO_EX": 0.848,
+   "LOPO_EX+V5": 0.8681,
+   "sbg_v5": 0.8749
+  }
+ },
+ "V9c_val": {
+  "n_pairs": 432,
+  "n_programs": 11,
+  "auroc_LOPO_EX": {
+   "auroc": 0.6578,
+   "ci95": [
+    0.613206,
+    0.707221
+   ]
+  },
+  "auroc_LOPO_EX+V5": {
+   "auroc": 0.673,
+   "ci95": [
+    0.617336,
+    0.729
+   ]
+  },
+  "auroc_sbg_v5": {
+   "auroc": 0.7514,
+   "ci95": [
+    0.706258,
+    0.79356
+   ]
+  },
+  "delta_LOPO_EX+V5_minus_LOPO_EX": {
+   "delta": 0.015186,
+   "ci_lower": -0.03064,
+   "ci_upper": 0.058294,
+   "p_two_sided": 0.467766,
+   "n_effective": 2000
+  },
+  "delta_sbg_v5_minus_LOPO_EX": {
+   "delta": 0.093589,
+   "ci_lower": 0.050692,
+   "ci_upper": 0.131444,
+   "p_two_sided": 0.001,
+   "n_effective": 2000
+  },
+  "delta_sbg_v5_minus_LOPO_EX+V5": {
+   "delta": 0.078404,
+   "ci_lower": 0.017014,
+   "ci_upper": 0.15176,
+   "p_two_sided": 0.005997,
+   "n_effective": 2000
+  },
+  "exact_edit_stratified": {
+   "LOPO_EX": 0.6184,
+   "LOPO_EX+V5": 0.6196,
+   "sbg_v5": 0.7355
+  }
+ }
+}
