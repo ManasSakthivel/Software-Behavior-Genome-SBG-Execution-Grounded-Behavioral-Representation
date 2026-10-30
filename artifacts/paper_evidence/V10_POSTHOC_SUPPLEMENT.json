@@ -1,0 +1,65 @@
+{
+ "artifact": "V10_POSTHOC_SUPPLEMENT",
+ "status": "POST-HOC / DESCRIPTIVE (computed after the frozen single run; exploratory)",
+ "n_pairs": 638,
+ "deltas": {
+  "V5_minus_coverage_size": {
+   "delta": 0.117761,
+   "ci_lower": 0.061794,
+   "ci_upper": 0.174926,
+   "p_two_sided": 0.001,
+   "n_effective": 2000
+  },
+  "V5_minus_M_X": {
+   "delta": 0.103861,
+   "ci_lower": 0.030787,
+   "ci_upper": 0.182568,
+   "p_two_sided": 0.003998,
+   "n_effective": 2000
+  },
+  "V5_minus_M_EX": {
+   "delta": 0.105979,
+   "ci_lower": 0.032722,
+   "ci_upper": 0.185882,
+   "p_two_sided": 0.002999,
+   "n_effective": 2000
+  },
+  "V5_minus_M_EX+V5": {
+   "delta": 0.09968,
+   "ci_lower": -0.008673,
+   "ci_upper": 0.235492,
+   "p_two_sided": 0.082959,
+   "n_effective": 2000
+  }
+ },
+ "matched_concordance_edit_minus_sbg_v5": {
+  "delta": 0.023511,
+  "ci95": [
+   -0.010526,
+   0.062139
+  ]
+ },
+ "fraction_sets_changed_edit_gt_equivalent_edit": 0.9154,
+ "fraction_sets_sbg_v5_changed_gt_equivalent": 0.8903,
+ "rewrite_only_equivalents_SP3_SP5_SP8_SP11": {
+  "n_pairs": 220,
+  "n_sets": 110,
+  "auroc_sbg_v5": 0.8348,
+  "ci95": [
+   0.759811,
+   0.899089
+  ],
+  "auroc_edit_forward": 0.5822,
+  "auroc_coverage_size": 0.6638
+ },
+ "rename_style_equivalents_SP1_SP2_SP4_SP6_SP12": {
+  "n_pairs": 418,
+  "n_sets": 209,
+  "auroc_sbg_v5": 0.952,
+  "ci95": [
+   0.93478,
+   0.965386
+  ],
+  "auroc_edit_forward": 0.6574
+ }
+}

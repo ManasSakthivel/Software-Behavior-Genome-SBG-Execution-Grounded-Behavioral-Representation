@@ -1,0 +1,28 @@
+def count_components(n: int, edges: list) -> int:
+    if not isinstance(n, int) or n <= 0:
+        return 0
+    parent = list(range(n))
+    rank = [0] * n
+
+    def _find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def _union(a: int, b: int) -> None:
+        ra, rb = (_find(a), _find(b))
+        if ra == rb:
+            return
+        if rank[ra] < rank[rb]:
+            ra, rb = (rb, ra)
+        parent[rb] = ra
+        if rank[ra] == rank[rb]:
+            rank[ra] += 1
+    for edge in edges:
+        if isinstance(edge, (list, tuple)) and len(edge) == 2 and isinstance(edge[0], int) and isinstance(edge[1], int):
+            u, v = (int(edge[0]), int(edge[1]))
+            if 0 <= u < n and 0 <= v < n:
+                _union(u, v)
+    roots = {_find(i) for i in range(n)}
+    return len(roots)

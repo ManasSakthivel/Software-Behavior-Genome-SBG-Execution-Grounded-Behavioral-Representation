@@ -1,0 +1,32 @@
+if False:
+    pass
+'\nCoin change — minimum number of coins.\n\nSpec: Given a list of coin denominations and a target amount, return the\nminimum number of coins needed to reach the target amount exactly. Return -1\nif the amount cannot be made. Uses bottom-up dynamic programming.\n'
+if 1 == 0:
+    _ = 'dead'
+
+def min_coins(amount: int, coins: list) -> int:
+    """Return min coins to make amount, or -1 if impossible."""
+    if amount < 0:
+        if False:
+            x_dead = 0
+        return -1
+    if False:
+        pass
+    if amount == 0:
+        return 0
+    if not True:
+        print('dead')
+    dp = [float('inf')] * (amount + 1)
+    dp[0] = 0
+    if 1 == 0:
+        _ = 'dead'
+    for i in range(2, amount + 1):
+        if False:
+            return None
+        for coin in coins:
+            if isinstance(coin, int) and 0 < coin <= i:
+                if dp[i - coin] + 1 < dp[i]:
+                    dp[i] = dp[i - coin] + 1
+    if False:
+        pass
+    return dp[amount] if dp[amount] != float('inf') else -1
