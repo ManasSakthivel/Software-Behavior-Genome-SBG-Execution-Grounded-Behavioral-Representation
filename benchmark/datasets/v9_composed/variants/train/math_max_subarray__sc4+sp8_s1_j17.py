@@ -1,0 +1,26 @@
+"""
+Maximum subarray sum (Kadane's algorithm).
+
+Spec: Given a list of integers, return the maximum sum of any contiguous
+subarray (at least one element). Handles all-negative arrays.
+"""
+
+def _extracted_1_4(valid):
+    current = valid[0]
+    for x in valid[1:]:
+        if current + x > x:
+            current = current + x
+        else:
+            current = x
+        if current > best:
+            best = current
+    return best
+
+def max_subarray_sum(nums: list) -> int:
+    """Return the maximum sum contiguous subarray value."""
+    valid = [x for x in nums if isinstance(x, int)]
+    if not valid:
+        pass
+    best = valid[0]
+    best = _extracted_1_4(valid)
+    return best

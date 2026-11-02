@@ -1,3 +1,12 @@
+# SBG status — UPDATE 2026-10-29 (supersedes the "Last updated 2026-09-29" text below where they conflict)
+
+**SBG is NOT validated.** One frozen v8 TEST evaluation was run (22 programs, 956 pairs): SBG V5 AUROC 0.694 [0.659, 0.727] vs reversed edit size
+0.876 [0.859, 0.892]; pre-declared verdict **NOT DEMONSTRATED**. Edit-size confound diagnosed (benchmark confound, not a bug), v6 dev drift root-caused,
+external real-bug results validated (no label/orientation error; two harness artifacts; no transfer). Full details:
+[`artifacts/paper_evidence/RESEARCH_STATUS.md`](artifacts/paper_evidence/RESEARCH_STATUS.md), [`DIAGNOSTIC_REPORT.md`](artifacts/paper_evidence/DIAGNOSTIC_REPORT.md).
+
+---
+
 # SBG Phase 2 status
 
 **SBG is not complete.** Blockers remain until every stage below is done, the
@@ -14,7 +23,7 @@ Last updated: 2026-09-29, at the handoff.
 
 | Item | Artifact | Notes |
 |---|---|---|
-| Pre-registration, frozen and hashed | `docs/current/PHASE2_PREREGISTRATION.md`, `artifacts/final/PHASE2_FREEZE.json` | Written before any Phase 2 result existed |
+| Pre-registration, frozen and hashed | `docs/current/PHASE2_PREREGISTRATION.md`, `artifacts/final/PHASE2_FREEZE.json` | **Chronology note (2026-10-25):** committed at `ad7b655` (Oct 3), five days after v6 test results at `9a9104f` (Sep 28). The claimed date 2026-09-28 in the document header cannot be verified from git history. All v6 results are therefore exploratory. See `docs/current/TEST_SET_CHRONOLOGY.md`. |
 | Protocol `output_free_v7` (class-driver tier) | `experiments/final/class_driver.py`, `protocol.py`, `extraction.py` | Invariance check: 0 violations on the 13 test programs (`make verify-v7-invariance`) |
 | Driver-synthesis validation suite | `artifacts/final/DRIVER_SYNTHESIS_VALIDATION.json`, `tests/test_driver_synthesis.py` | Toy classes only; never used as evaluation input |
 | Static validity audit under v7 | `artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json` | Executes nothing |
@@ -54,3 +63,33 @@ Fill one row per completed stage.
 | Stage | Date | Wall-clock | Machine | `$PYTHON -V` | Code commit | Result file SHA-256 |
 |---|---|---|---|---|---|---|
 | | | | | | | |
+
+## Remediation (2026-10-25, branch `remediation/ieee-access-audit`)
+
+An external audit was verified against the files and partly fixed. The test split
+is **observed, not held out**; a fresh program-level split is required before any
+confirmatory claim. Details: `reports/remediation/` (`04_REMEDIATION_REPORT.md`
+is the summary) and `docs/current/EVALUATION_PLAN_V8.md`. The gate reports
+8/20 PASS, 12 BLOCKED (2026-10-28, after train + weight fitting). Gate D6 (`real_program_validity`) was corrected to require
+AUROC ≥ 0.5 on external corpora, not just evaluation coverage (BugsInPy AUROC
+0.410 and QuixBugs AUROC 0.388 are both below chance). Nothing here makes the
+paper publication-ready.
+
+## Evidence package (2026-10-28)
+
+`artifacts/paper_evidence/` consolidates the current evidence (start with
+`RESEARCH_STATUS.md`). Completed today: v6 TRAIN scoring under `output_free_v7`
+(resumed from checkpoint), weight fitting (train fit, dev choice M2; never scored on a
+test split), v8 dev re-score under `output_free_v8`. **Not run:** any held-out test
+evaluation, v8 freeze/threshold, Java. Reversed edit size still beats SBG V5 on every
+run; external transfer is below chance. SBG remains NOT research-ready.
+
+---
+## Update: branch `remediation/sbg-v3` (2026-10-29)
+Historical sections above are unchanged. New, read these first: `artifacts/paper_evidence/RESEARCH_STATUS_V3.md`,
+`PHASE7_ACCEPTANCE.md`, `FINAL_METRICS_V3.json`, `BASELINE_COMPARISON_V3.csv`, `ABLATIONS_V3.json`,
+`DATASET_SUMMARY_V3.json`, `EXPERIMENT_MANIFEST_V3.json` (reproduction commands, freezes, hashes).
+Headline: SBG is NOT validated. v8 test stands (0.694 vs reversed edit 0.876). The v8 label/edit-size confound is a dataset-design
+artifact (`LABEL_GENERATION_AUDIT.json`). On the size-decoupled v9 design (frozen, single val run, 11 unseen programs) SBG adds
+information beyond edit size (H2 +0.112) but not beyond edit size + execution shortcuts (H4 +0.021, CI includes 0).
+Real-bug results remain exploratory at/below chance; 7/40 BugsInPy SP-2 negatives are invalid (`EXTERNAL_NEGATIVE_AUDIT.json`).

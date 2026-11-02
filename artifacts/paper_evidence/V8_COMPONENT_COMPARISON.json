@@ -1,0 +1,240 @@
+{
+  "artifact": "V8_COMPONENT_COMPARISON",
+  "status": "EXPLORATORY / DESCRIPTIVE (computed after the single frozen test run; no selection, no tuning; sbg_v5 remains the pre-declared primary)",
+  "set": "VALID",
+  "ci": "cluster bootstrap by base program, 2000 resamples, seed 42",
+  "splits": {
+    "dev": {
+      "n_pairs": 550,
+      "n_programs": 13,
+      "n_changed": 317,
+      "scored_pairs": {
+        "path": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+        "sha256": "86ff18771d3563c4fede04d6f437fdd024791f2838ce19579ea7a6b1bae50f81"
+      },
+      "predictors": {
+        "sbg_v5": {
+          "auroc": 0.739362,
+          "ci95": [
+            0.693796,
+            0.781501
+          ]
+        },
+        "sbg_v3": {
+          "auroc": 0.672892,
+          "ci95": [
+            0.624164,
+            0.720488
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.066469,
+            "ci_lower": 0.036081,
+            "ci_upper": 0.099213,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "sbg_temporal": {
+          "auroc": 0.584652,
+          "ci95": [
+            0.517295,
+            0.654709
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.15471,
+            "ci_lower": 0.109631,
+            "ci_upper": 0.199955,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "sbg_state": {
+          "auroc": 0.798933,
+          "ci95": [
+            0.761047,
+            0.837412
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": -0.059571,
+            "ci_lower": -0.081801,
+            "ci_upper": -0.039734,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "exception_component_v3": {
+          "auroc": 0.575486,
+          "ci95": [
+            0.539634,
+            0.61844
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.163875,
+            "ci_lower": 0.111363,
+            "ci_upper": 0.209163,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "exception_type_jaccard": {
+          "auroc": 0.574884,
+          "ci95": [
+            0.539327,
+            0.618912
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.164478,
+            "ci_lower": 0.110453,
+            "ci_upper": 0.210065,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "n_functions": {
+          "auroc": 0.489507,
+          "ci95": [
+            0.44298,
+            0.538874
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.249854,
+            "ci_lower": 0.21718,
+            "ci_upper": 0.287125,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "combined_shortcut": {
+          "auroc": 0.598388,
+          "ci95": [
+            0.551053,
+            0.645176
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.140974,
+            "ci_lower": 0.119185,
+            "ci_upper": 0.167194,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        }
+      }
+    },
+    "test": {
+      "n_pairs": 956,
+      "n_programs": 22,
+      "n_changed": 547,
+      "scored_pairs": {
+        "path": "artifacts/final/pairs_v8test_output_free_v8.jsonl",
+        "sha256": "33396232b8396730d5cff9c6d4283ef9fb462ae1a12a9c560728ff9caf791f90"
+      },
+      "predictors": {
+        "sbg_v5": {
+          "auroc": 0.693742,
+          "ci95": [
+            0.659291,
+            0.726558
+          ]
+        },
+        "sbg_v3": {
+          "auroc": 0.657118,
+          "ci95": [
+            0.623694,
+            0.687959
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.036623,
+            "ci_lower": 0.018068,
+            "ci_upper": 0.057699,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "sbg_temporal": {
+          "auroc": 0.555587,
+          "ci95": [
+            0.512378,
+            0.601548
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.138155,
+            "ci_lower": 0.097144,
+            "ci_upper": 0.181644,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "sbg_state": {
+          "auroc": 0.751188,
+          "ci95": [
+            0.714998,
+            0.786838
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": -0.057446,
+            "ci_lower": -0.074964,
+            "ci_upper": -0.035711,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "exception_component_v3": {
+          "auroc": 0.569307,
+          "ci95": [
+            0.540844,
+            0.600236
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.124435,
+            "ci_lower": 0.081474,
+            "ci_upper": 0.16822,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "exception_type_jaccard": {
+          "auroc": 0.570636,
+          "ci95": [
+            0.541696,
+            0.602095
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.123105,
+            "ci_lower": 0.07832,
+            "ci_upper": 0.167518,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "n_functions": {
+          "auroc": 0.476958,
+          "ci95": [
+            0.439898,
+            0.517622
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.216784,
+            "ci_lower": 0.181183,
+            "ci_upper": 0.253914,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        },
+        "combined_shortcut": {
+          "auroc": 0.590284,
+          "ci95": [
+            0.553006,
+            0.629919
+          ],
+          "delta_sbg_v5_minus_this": {
+            "delta": 0.103458,
+            "ci_lower": 0.071605,
+            "ci_upper": 0.136723,
+            "p_two_sided": 0.001,
+            "n_effective": 2000
+          }
+        }
+      }
+    }
+  }
+}

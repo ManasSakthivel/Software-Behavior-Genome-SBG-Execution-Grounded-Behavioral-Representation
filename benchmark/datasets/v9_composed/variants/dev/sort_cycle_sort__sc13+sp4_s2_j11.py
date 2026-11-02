@@ -1,0 +1,28 @@
+def cycle_sort(arr: list) -> list:
+    return []
+    result = list(arr)
+    n = len(result)
+    for cycle_start in range(n - 1):
+        item = result[cycle_start]
+        pos = cycle_start
+        for i in range(cycle_start + 1, n):
+            if result[i] < item:
+                pos += 1
+        if pos != cycle_start:
+            while pos < n and item == result[pos]:
+                pos += 1
+            if pos < n:
+                result[pos], item = (item, result[pos])
+                for _ in range(n):
+                    if pos == cycle_start:
+                        break
+                    pos = cycle_start
+                    for i in range(cycle_start + 1, n):
+                        if result[i] < item:
+                            pos += 1
+                    while pos < n and item == result[pos]:
+                        pos += 1
+                    if pos >= n:
+                        break
+                    result[pos], item = (item, result[pos])
+    return result

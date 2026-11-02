@@ -1,0 +1,3022 @@
+{
+ "artifact": "COBOL_CORPUS_INVENTORY",
+ "summary": {
+  "root": "/Users/manassakthivel/Desktop/COBOLSRC",
+  "cobc": "cobc (GnuCOBOL) 3.2.0",
+  "n_files": 95,
+  "n_cbl": 85,
+  "n_unique_cbl_sha256": 84,
+  "n_cpy": 10,
+  "files_per_directory": {
+   "COBBACK": 84,
+   "cobol": 1,
+   "cpyback": 10
+  },
+  "duplicate_groups": [
+   [
+    "COBBACK/cosql31.cbl",
+    "cobol/cosql31.cbl"
+   ]
+  ],
+  "n_cbl_with_procedure_division": 85,
+  "n_cbl_with_exec_sql": 85,
+  "n_cbl_with_any_non_sql_procedure_verb": 20,
+  "non_sql_verbs_total": {
+   "MOVE": 27,
+   "IF": 4,
+   "PERFORM": 4,
+   "DISPLAY": 41,
+   "EVALUATE": 22,
+   "CLOSE": 2
+  },
+  "n_cbl_with_file_io": 0,
+  "n_cbl_with_copy_stmt": 2,
+  "n_cbl_with_cbl_directive": 85,
+  "cobc_as_is_syntax_ok_free": 0,
+  "cobc_as_is_syntax_ok_fixed": 0,
+  "cobc_after_stub_syntax_ok_fixed": 72,
+  "total_lines_cbl": 5143,
+  "max_lines_cbl": 432,
+  "min_lines_cbl": 27,
+  "n_test_or_fixture_files": 0,
+  "license_or_provenance_files_found": [],
+  "first_error_histogram_as_is_fixed": {
+   "syntax error, unexpected Word or Literal, expecting .": 85
+  }
+ },
+ "files": [
+  {
+   "path": "COBBACK/cosql01.cbl",
+   "sha256": "0b9d44e0c23b225861c7129ae82b0f07d3f65a45a44b3ea76402cd66437776ed",
+   "bytes": 1235,
+   "lines": 50,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 7,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "MOVE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql02.cbl",
+   "sha256": "9840dc091f517b651c77e94e8cb1e597071c0fe7ed1974076944a37b84ab30c7",
+   "bytes": 1327,
+   "lines": 52,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql03.cbl",
+   "sha256": "eb10af828b91ab7fbe3266dd61468d522e3b9eaa34676601299ca97fd1c11325",
+   "bytes": 722,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql04.cbl",
+   "sha256": "f326e0da619cb38c01e77fc896b14224b509c5024047ccce44f9a5532e71429f",
+   "bytes": 723,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql05.cbl",
+   "sha256": "37af9fc94fecbe5304e73a7ee26b26bf4b9db62af59cd5c89b2e6aa1856da1f2",
+   "bytes": 723,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql06.cbl",
+   "sha256": "d029de35fd23b17586719b0819a22f41cc4d9aad2c0c0c46aa880b5b2d5123af",
+   "bytes": 728,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql07.cbl",
+   "sha256": "80457cfe4474bf7fb0c1e57f0d0a8995b78e01d32742cd7e73ff6bf9788f8a31",
+   "bytes": 875,
+   "lines": 43,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql08.cbl",
+   "sha256": "17a49fbee80389bbdd81bd591198d3317031ea39b0eee4456bab763e30dcdcb6",
+   "bytes": 1261,
+   "lines": 50,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql09.cbl",
+   "sha256": "3c2f5377cbd0f234cdfbcd2ed0161ec28b4dafe46ce307c49c30768332700d2c",
+   "bytes": 1126,
+   "lines": 45,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql10.cbl",
+   "sha256": "8a90e7875edeba7104e9d0385d2ac9f3407ce210c4890d89c2295a0563bd0d10",
+   "bytes": 1528,
+   "lines": 58,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql11.cbl",
+   "sha256": "5e653fa12a5b4efa51e67841c5036f34216d15f683ae49e40c7476ed5f137d0a",
+   "bytes": 1104,
+   "lines": 45,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql12.cbl",
+   "sha256": "50c5acdc7ed6e7c4032bab744db9c77c305c97ec3e145b476773b85923ad7f8d",
+   "bytes": 1377,
+   "lines": 50,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql13.cbl",
+   "sha256": "f8729b98c45da838ebfad8c5481b23637d712abdf409f08c975f089e99361138",
+   "bytes": 1129,
+   "lines": 42,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql14.cbl",
+   "sha256": "36f4436de869da72203077f9246c1bc74c239a029904ec8017a8f1693876abb4",
+   "bytes": 2037,
+   "lines": 62,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql15.cbl",
+   "sha256": "95cd9670e1c8d8fca336cc05b862c8a6157a50ab23d6e01ad948b97699f532c9",
+   "bytes": 737,
+   "lines": 34,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql16.cbl",
+   "sha256": "abc1a947314ae43e08202ce724862efb05758b43e074afa2c8a0462f7a27ee82",
+   "bytes": 743,
+   "lines": 34,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql17.cbl",
+   "sha256": "5fba269550a535fff3413ccdb605a6df3a773a0f2df6778c8769b00b54b903f2",
+   "bytes": 1049,
+   "lines": 39,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql18.cbl",
+   "sha256": "54c9198b6bd1ea8ef884fa7a4f88fffceba9612f0442b42be978a69bb3bc5c15",
+   "bytes": 1255,
+   "lines": 47,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql19.cbl",
+   "sha256": "8e9293b51babc6b4c9bedc2956a6d6dbac196289e14a0f75b08a5b43e9edd8e5",
+   "bytes": 1039,
+   "lines": 43,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql20.cbl",
+   "sha256": "bde7556ca622ad44fa6a64a69852299aad8439b4435bfd44e0967dd5213eeb94",
+   "bytes": 1627,
+   "lines": 53,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql21.cbl",
+   "sha256": "d4c1f794612772c1a56e971d75ac79b39f38b6ca9e6ae5a532aad430d5d43cfd",
+   "bytes": 1812,
+   "lines": 67,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql22.cbl",
+   "sha256": "740ead7c1e695150b698a8abdb2eaba0214299fd4229585c6c10f5b2fcbd34ec",
+   "bytes": 1281,
+   "lines": 50,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql23.cbl",
+   "sha256": "b3cccc9d1e17f216c3cd2a5f6ca0fabe03f51fcc23ceb3a66d07d6faab046c9c",
+   "bytes": 1560,
+   "lines": 57,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql24.cbl",
+   "sha256": "4cee88d50cef0448757046ef7c322fef61aa712355f2dc10a58394e216745ecc",
+   "bytes": 1048,
+   "lines": 39,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql25.cbl",
+   "sha256": "d3159c5d7e5345114e8e882403f759d932b60f524e2c017dc236ad5a41839a1a",
+   "bytes": 1041,
+   "lines": 40,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql26.cbl",
+   "sha256": "e480c5bdc347404d3b8d470755b3a29bfdcf3a021b8153c26de142ba251a3ff7",
+   "bytes": 835,
+   "lines": 36,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql27.cbl",
+   "sha256": "3632e73ff8967d35915c8fd5d2ae2e52df4b63e169b2f62d24baa046e8c7bbd9",
+   "bytes": 1448,
+   "lines": 61,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 7,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "MOVE": 1
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql28.cbl",
+   "sha256": "169a02970cbc002b5fcd19f3668dd5849a662676bf27040883d777c87aa9f108",
+   "bytes": 1947,
+   "lines": 76,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 10,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "MOVE": 3,
+    "IF": 2,
+    "PERFORM": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql29.cbl",
+   "sha256": "0fe4d20a756beb1002c550956d7809d639763e853a481f7e0dae0a73a8d84788",
+   "bytes": 848,
+   "lines": 34,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql30.cbl",
+   "sha256": "2d609f6d539f0f989c0c9b7f239df57ef9277dc01c86e678fba532128ae98d26",
+   "bytes": 2910,
+   "lines": 72,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql31.cbl",
+   "sha256": "a2e49b10258380f97f1d387735350f4ea02a5e4954e32a29292d8f35ec0034f2",
+   "bytes": 981,
+   "lines": 34,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql32.cbl",
+   "sha256": "2b392d3989f4525e868cd8496c00c8f4d57f228c58a6b08dbe50117db0d89811",
+   "bytes": 802,
+   "lines": 34,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql33.cbl",
+   "sha256": "d1312ecb91cd41154431468f6125cc0d861b1e32831195036a41daa66c5bacf2",
+   "bytes": 657,
+   "lines": 27,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql34.cbl",
+   "sha256": "1dc5c835fdeb1fa2170c52a70cbdf3463b08dcd41754e7d1591f5fb025c7458d",
+   "bytes": 740,
+   "lines": 30,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql35.cbl",
+   "sha256": "51aa661c14d3135a1890dee2fb0adb354a95f88744c3c75b71ffae47c9d155b2",
+   "bytes": 728,
+   "lines": 30,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql36.cbl",
+   "sha256": "f962b48cc227cd9bdd2c0d72d1021c6ffd4ed3c91028a7349299cd98d8cc910b",
+   "bytes": 1692,
+   "lines": 53,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql37.cbl",
+   "sha256": "767c99e2a1c7cf4a27cd76b6a79d7412f14c0fea02453bb249fdca5bfe03b27e",
+   "bytes": 729,
+   "lines": 29,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql38.cbl",
+   "sha256": "96770140faf92c9524dba90ff225ce7aebf7fd35029637d6bf6b828543b2b2d0",
+   "bytes": 901,
+   "lines": 41,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql39.cbl",
+   "sha256": "4f5255faf654353cdfdfe9a2b6ddbc85312b19179d015a4d34057f6f9dcccada",
+   "bytes": 988,
+   "lines": 45,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql40.cbl",
+   "sha256": "e08c1178462897b88bc4104f91a6fb73dad7ee1df0a94dfbe7babd6c404832b0",
+   "bytes": 700,
+   "lines": 31,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql41.cbl",
+   "sha256": "244e859495361d772b83db37311fb5b09f633eed6857c299679de97e964f8a43",
+   "bytes": 3943,
+   "lines": 165,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 33,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql42.cbl",
+   "sha256": "a94d678243c41fabb7dadadc5950bd5a218a8f5048e92abf1150188405ca986f",
+   "bytes": 1494,
+   "lines": 49,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql43.cbl",
+   "sha256": "c59c84f95c708e10d6e2c10a87c035292516d3281dc160f5142826123f715a9e",
+   "bytes": 892,
+   "lines": 31,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql44.cbl",
+   "sha256": "858545d1869535033020c838cb6ecb3522e3e28469bf94a6ea9d9b64a660f77b",
+   "bytes": 868,
+   "lines": 30,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql45.cbl",
+   "sha256": "03d0b7b724b441cc155c481d2c1c22facb8e4e67b16f9dc8c7a43f29300f6f51",
+   "bytes": 830,
+   "lines": 31,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql46.cbl",
+   "sha256": "e293cc11a8b919fcfd5c50fccc8a5ff944543e8a13a223f19cb833322a5efdb1",
+   "bytes": 787,
+   "lines": 29,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql47.cbl",
+   "sha256": "63258f6b5111086e145347d00b1a55923f873a6e2d8744dce22e55799c47d21a",
+   "bytes": 2847,
+   "lines": 89,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 12,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql48.cbl",
+   "sha256": "2bec12b8fd0b8b385fa2aeaf99d987290d0c8834f2052a169f90c6b863814352",
+   "bytes": 1009,
+   "lines": 36,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql49.cbl",
+   "sha256": "9c5c0bea152068ab1013e3bf23fa19b7b9ffc7809abc51b869f7bbcaf413520b",
+   "bytes": 867,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql50.cbl",
+   "sha256": "257eb360286dbbef416bd8f0d92c3cf0db4d8133a6239f80353fa0a2834cdd13",
+   "bytes": 873,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql51.cbl",
+   "sha256": "30c9961a1ad3b27f7d2bae6249bdbaecee6f4be4c5e445b393c6c253d628d59d",
+   "bytes": 874,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql52.cbl",
+   "sha256": "a67ffc223193827300e7a4dee3c8e8b61d7d5e80c4ee871c3e9467d8403a7208",
+   "bytes": 680,
+   "lines": 28,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql53.cbl",
+   "sha256": "4c9b9bf371af692bb488b9f9ab3d0a7b92a588ee6348ad3af01bef481bf3e207",
+   "bytes": 870,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql54.cbl",
+   "sha256": "d77e35f302bfb34937af6cb16bf8d7c5ab9c199d3a8e0032456340fabb6a3e22",
+   "bytes": 899,
+   "lines": 33,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql55.cbl",
+   "sha256": "d38487d7b551341d897a99a808d6fb4182990056169cc6d5f425cb327a74010e",
+   "bytes": 1416,
+   "lines": 55,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql56.cbl",
+   "sha256": "604b00666a36462a6e56f7e4d8f5a821ed6d9deb7d1febd222a1db21aa2dbe78",
+   "bytes": 3160,
+   "lines": 121,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 9,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql57.cbl",
+   "sha256": "fd4a704687a59fab452d664e2d79ef70176440a195fcee0900c1512c3aa6f5bf",
+   "bytes": 4294,
+   "lines": 180,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 14,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql58.cbl",
+   "sha256": "3e5aeefd94748dc0e48d29192bb101dca4a7713f6f3e149cc2559f36625f7415",
+   "bytes": 1093,
+   "lines": 46,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql59.cbl",
+   "sha256": "b3ce5b3afc0ef68b71201e41f7e53de0e1d8bacccd44477f49ae2b775adec504",
+   "bytes": 924,
+   "lines": 40,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql60.cbl",
+   "sha256": "5919ce0df99c89141fa9c6fa1796e0c16040617d7d2b2b8a65bc718f6c9f97f7",
+   "bytes": 4888,
+   "lines": 189,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 29,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 2,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql61.cbl",
+   "sha256": "38bde00117fd240c3bd794896413a5b58fe08e1fa62164044cccfa254db717ee",
+   "bytes": 14682,
+   "lines": 432,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 39,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 2,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql62.cbl",
+   "sha256": "92946a2ed16280543b912a1198124693175a6ce47fd5229621a5ec0640ba9fe6",
+   "bytes": 1595,
+   "lines": 69,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 12,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql63.cbl",
+   "sha256": "e13dd6824f25a3a93d3f809695bf20620d9d577b82d534a169957ecf1c3e58f3",
+   "bytes": 1544,
+   "lines": 61,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 9,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql64.cbl",
+   "sha256": "b7eb512da30cd55b4f89e7f8ba76c0477b7fca1c73bb290179ab2d2fb174d105",
+   "bytes": 1473,
+   "lines": 57,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 9,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql65.cbl",
+   "sha256": "f1ef1b7bd1cfd8365c79a75b70db7075298fc50c5aaa1164df46e3aa8c8b5a48",
+   "bytes": 778,
+   "lines": 31,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql66.cbl",
+   "sha256": "091515d3c5c25d2b3e32e537dec2c1b5d4af04c88ff01fc3aadf0f4848da8d03",
+   "bytes": 2036,
+   "lines": 84,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 7,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 3,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:44: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql67.cbl",
+   "sha256": "8edc8e2b5ba7b5b89719dc12736aeb3f6d6d7781b0003d849952d2e2883ead60",
+   "bytes": 1596,
+   "lines": 66,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:34: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql68.cbl",
+   "sha256": "f03e63277e2c67a9c2128702aa926c9fe7d0a0bd5c1169a3da573d56e7eb137d",
+   "bytes": 2561,
+   "lines": 90,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:34: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql69.cbl",
+   "sha256": "21a6655ec5118a96ea013f602890ac00d8aa25b5cb69af5ef0efbfb4f92c1d58",
+   "bytes": 1588,
+   "lines": 64,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:34: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql70.cbl",
+   "sha256": "ff4e3c4b7df42943c17f3256942259e2ba4e149f17b6c3b5ccd70175cecee43f",
+   "bytes": 1739,
+   "lines": 75,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:34: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql71.cbl",
+   "sha256": "3bfb57d94a50553cfa2c277a9168cc191c684a618efb7a09f8466ed5d07d8af3",
+   "bytes": 2072,
+   "lines": 80,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:31: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql72.cbl",
+   "sha256": "0ac6e5faf3a6f04c340aeb840aa41ee59d9d983f15eb8a5a2803c976c9d758ed",
+   "bytes": 2671,
+   "lines": 103,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 7,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:33: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql73.cbl",
+   "sha256": "e86c0378dec3e91d1627ce50661cc2a9747a3284fd9338450eb34b6feb726d94",
+   "bytes": 2145,
+   "lines": 85,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:35: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql74.cbl",
+   "sha256": "502b92a9bc688fc7f45fb00935c593c808b89fe50689309106b514ded373e05d",
+   "bytes": 2114,
+   "lines": 85,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 5,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:35: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql75.cbl",
+   "sha256": "68051c16b8b4c3d677e95d7f64bf6ab3188e9a29be9ad680ca3b1138357bedf8",
+   "bytes": 2707,
+   "lines": 107,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 1,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:32: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql76.cbl",
+   "sha256": "36976d9fc197df6c8c19be3915dae6c58d935df7a598764c8d05bb2c6da97f70",
+   "bytes": 2743,
+   "lines": 107,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 14,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 3,
+    "MOVE": 7,
+    "EVALUATE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": false,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:39: error: syntax error, unexpected Identifier, expecting SECTION or ."
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql77.cbl",
+   "sha256": "b32add3b1ca5b67293d25150af5bdef4725159a9f39a2f7a2daabec9a58d2e2e",
+   "bytes": 2178,
+   "lines": 71,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql78.cbl",
+   "sha256": "3c2279a21367ff2528bfb18b24233c8b856add30225f610a0d65ccd658be622f",
+   "bytes": 1698,
+   "lines": 57,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 4,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql79.cbl",
+   "sha256": "51f7598afed89befa39f91a5ba5bf6a9825fc3aa050ad538aca3828fa566f931",
+   "bytes": 1476,
+   "lines": 57,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "DISPLAY": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql80.cbl",
+   "sha256": "6cd6e28471d578c5d118b1dd612e2d348ced73518d90d653160e098214782a0b",
+   "bytes": 751,
+   "lines": 35,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 3,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": 1,
+     "first_error": "p.cbl:17: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:17: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql81.cbl",
+   "sha256": "54055cefe44e2f2823c4e57001a49820e9a873a3a5398bae34871e41d9ffb6be",
+   "bytes": 1041,
+   "lines": 52,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "MOVE": 1,
+    "PERFORM": 1
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:18: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:18: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:36: error: 'PAYRATE' is not defined"
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql82.cbl",
+   "sha256": "ac584abe9506c47014c85b835696659c33b09a6a328c1321ee2c749c2b354553",
+   "bytes": 1319,
+   "lines": 65,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 7,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {
+    "MOVE": 1,
+    "IF": 2,
+    "PERFORM": 1,
+    "CLOSE": 2
+   },
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:18: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:18: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 1,
+     "first_error": "s.cbl:35: error: 'PAYRATE' is not defined"
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql83.cbl",
+   "sha256": "301a060555e91fe85c7d7d5f390bc3683f02272bc67e167fb2b160f68f46e3f3",
+   "bytes": 1011,
+   "lines": 45,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 6,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "COBBACK/cosql84.cbl",
+   "sha256": "f869a1a80515affef3ac28ed457846e0a52210e206779faea08781de63cbcc43",
+   "bytes": 2064,
+   "lines": 82,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 14,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "cobol/cosql31.cbl",
+   "sha256": "a2e49b10258380f97f1d387735350f4ea02a5e4954e32a29292d8f35ec0034f2",
+   "bytes": 981,
+   "lines": 34,
+   "ext": ".cbl",
+   "kind": "program",
+   "program_id": "bigint",
+   "has_procedure_division": true,
+   "n_exec_sql_blocks": 2,
+   "has_cbl_compiler_directive": true,
+   "sql_include_sqlca": true,
+   "n_copy_statements": 0,
+   "non_sql_procedure_verbs": {},
+   "has_file_io": false,
+   "has_stop_run": true,
+   "cobc_as_is": {
+    "free": {
+     "rc": -11,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    },
+    "fixed": {
+     "rc": 1,
+     "first_error": "p.cbl:13: error: syntax error, unexpected Word or Literal, expecting ."
+    }
+   },
+   "cobc_after_mechanical_sql_stub": {
+    "fixed": {
+     "rc": 0,
+     "first_error": ""
+    }
+   }
+  },
+  {
+   "path": "cpyback/close1.cpy",
+   "sha256": "8711034e46e9aeb2f38c7a9ae728e1a08ce0e8371c3a8642521072629d0822b4",
+   "bytes": 86,
+   "lines": 3,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 1,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/close2.cpy",
+   "sha256": "1eff6e21b997cbd95491d77d3624256e86fad68e5dd20bdc8846bd4a6b1bb0d7",
+   "bytes": 76,
+   "lines": 2,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 1,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/declare1.cpy",
+   "sha256": "41fd93dab2b62489da6b7598a3c2f84595b2566307a19ac95d27abf688752e7f",
+   "bytes": 370,
+   "lines": 13,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 2,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/declare2.cpy",
+   "sha256": "028834bde08bf82daa7e2193b97930be29c9e27e63288c641faad338c8625575",
+   "bytes": 340,
+   "lines": 11,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 4,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/declgen1.cpy",
+   "sha256": "a1f32ad3a10ecd9e4f12bd7dd1e03cb9838231a140f3cb7b9214c3e265d2349d",
+   "bytes": 476,
+   "lines": 12,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 1,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/emprec.cpy",
+   "sha256": "8fbb15ad4eda4bf97653ddccfde02ab33fd8070bea0b10b4807f9926a69f078d",
+   "bytes": 358,
+   "lines": 11,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 0,
+   "defines_data": true
+  },
+  {
+   "path": "cpyback/execute2.cpy",
+   "sha256": "348832c021cbdd997f9d2e0a8b78817c68f454f2c7764f10d130f7014088edb8",
+   "bytes": 230,
+   "lines": 9,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 3,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/fetch1.cpy",
+   "sha256": "7cbc82fa86e692798faf8f8ad28341ee5ef1ccc354bc0185afe573f64d6a875d",
+   "bytes": 187,
+   "lines": 5,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 1,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/insert2.cpy",
+   "sha256": "81d8a6d1562417a2559488ec8a2eb0292cdb51434357a85984e47cea66b9e8cf",
+   "bytes": 182,
+   "lines": 4,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 0,
+   "defines_data": false
+  },
+  {
+   "path": "cpyback/select2.cpy",
+   "sha256": "396afd14e73e19b5e5073dca78e2965799e77f2521fc19cc2a02795af21a37d0",
+   "bytes": 227,
+   "lines": 4,
+   "ext": ".cpy",
+   "kind": "copybook",
+   "n_exec_sql_blocks": 0,
+   "defines_data": false
+  }
+ ]
+}

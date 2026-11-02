@@ -1,6 +1,8 @@
 # Phase 2 pre-registration
 
-Written 2026-09-28, before any Phase 2 result existed. Every rule below is fixed
+**Chronology note added 2026-10-25:** This document was committed at `ad7b655` (Oct 3 2026), five days after the v6 test results were committed at `9a9104f` (Sep 28 2026). The original date 2026-09-28 in this header cannot be verified from git history. All v6 results evaluated against this document are therefore **exploratory**. See `docs/current/TEST_SET_CHRONOLOGY.md`.
+
+Every rule below is fixed
 before the data it governs is scored. Its SHA-256 is recorded in
 `artifacts/final/PHASE2_FREEZE.json`. Where an artifact later departs from this
 document, the artifact must say so and why.

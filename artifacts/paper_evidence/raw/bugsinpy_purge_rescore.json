@@ -1,0 +1,1786 @@
+{
+ "purpose": "does process-global (re cache) state explain BugsInPy below-chance AUROC?",
+ "protocol": "output_free_v7",
+ "source_pairs": "artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+ "n_units": 41,
+ "n_pairs": 147,
+ "n_pos": 41,
+ "n_neg": 106,
+ "n_bugs": 39,
+ "committed_auroc_same_pairs": 0.409917,
+ "committed_ci": [
+  0.326232,
+  0.493946
+ ],
+ "purged_auroc": 0.42936,
+ "purged_ci": [
+  0.337868,
+  0.526568
+ ],
+ "self_distance_purged": {
+  "n": 41,
+  "n_nonzero": 3,
+  "max": 0.673460603
+ },
+ "n_pairs_score_changed_by_purge": 41,
+ "status": "EXPLORATORY diagnostic; committed artifact unchanged",
+ "units": [
+  {
+   "unit": "external/bugsinpy/units/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::real_fix",
+     "label": 1,
+     "bug_id": "ansible/11",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 500,
+     "variant_events": 500
+    },
+    {
+     "pair_id": "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-2",
+     "label": 0,
+     "bug_id": "ansible/11",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 500,
+     "variant_events": 500
+    },
+    {
+     "pair_id": "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-6",
+     "label": 0,
+     "bug_id": "ansible/11",
+     "transformation": "SP-6",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 500,
+     "variant_events": 500
+    },
+    {
+     "pair_id": "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-3",
+     "label": 0,
+     "bug_id": "ansible/11",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.017307692,
+     "purged_sbg_v5": 0.017307692,
+     "base_events": 500,
+     "variant_events": 505
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_params_to_obj/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_params_to_obj::real_fix",
+     "label": 1,
+     "bug_id": "ansible/11",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    },
+    {
+     "pair_id": "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_params_to_obj::SP-2",
+     "label": 0,
+     "bug_id": "ansible/11",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 220,
+     "variant_events": 220
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/ansible__15__lib_ansible_modules_network_eos_eos_eapi_py__map_obj_to_commands/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::real_fix",
+     "label": 1,
+     "bug_id": "ansible/15",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 530,
+     "variant_events": 530
+    },
+    {
+     "pair_id": "ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-1",
+     "label": 0,
+     "bug_id": "ansible/15",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 530,
+     "variant_events": 530
+    },
+    {
+     "pair_id": "ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-2",
+     "label": 0,
+     "bug_id": "ansible/15",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.016666667,
+     "purged_sbg_v5": 0.016666667,
+     "base_events": 530,
+     "variant_events": 530
+    },
+    {
+     "pair_id": "ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-6",
+     "label": 0,
+     "bug_id": "ansible/15",
+     "transformation": "SP-6",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 530,
+     "variant_events": 530
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::real_fix",
+     "label": 1,
+     "bug_id": "ansible/7",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.066305333,
+     "purged_sbg_v5": 0.066305333,
+     "base_events": 605,
+     "variant_events": 550
+    },
+    {
+     "pair_id": "ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::SP-2",
+     "label": 0,
+     "bug_id": "ansible/7",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 605,
+     "variant_events": 605
+    },
+    {
+     "pair_id": "ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::SP-3",
+     "label": 0,
+     "bug_id": "ansible/7",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.022428247,
+     "purged_sbg_v5": 0.022428247,
+     "base_events": 605,
+     "variant_events": 665
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/black__21__black_py__dump_to_file/fixed.py",
+   "self_distance_purged": 0.673460603,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "black/21::black.py::dump_to_file::real_fix",
+     "label": 1,
+     "bug_id": "black/21",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.320404882,
+     "purged_sbg_v5": 0.673730227,
+     "base_events": 2304,
+     "variant_events": 945
+    },
+    {
+     "pair_id": "black/21::black.py::dump_to_file::SP-2",
+     "label": 0,
+     "bug_id": "black/21",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.31891412,
+     "purged_sbg_v5": 0.673937868,
+     "base_events": 2304,
+     "variant_events": 930
+    },
+    {
+     "pair_id": "black/21::black.py::dump_to_file::SP-4",
+     "label": 0,
+     "bug_id": "black/21",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.31891412,
+     "purged_sbg_v5": 0.673937868,
+     "base_events": 2304,
+     "variant_events": 930
+    },
+    {
+     "pair_id": "black/21::black.py::dump_to_file::SP-3",
+     "label": 0,
+     "bug_id": "black/21",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.318339408,
+     "purged_sbg_v5": 0.673773934,
+     "base_events": 2304,
+     "variant_events": 935
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/black__23__black_py__assert_equivalent/fixed.py",
+   "self_distance_purged": 0.668537319,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "black/23::black.py::assert_equivalent::real_fix",
+     "label": 1,
+     "bug_id": "black/23",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.674161229,
+     "purged_sbg_v5": 0.674161229,
+     "base_events": 17561,
+     "variant_events": 17350
+    },
+    {
+     "pair_id": "black/23::black.py::assert_equivalent::SP-1",
+     "label": 0,
+     "bug_id": "black/23",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.669990173,
+     "purged_sbg_v5": 0.669990173,
+     "base_events": 17561,
+     "variant_events": 17365
+    },
+    {
+     "pair_id": "black/23::black.py::assert_equivalent::SP-2",
+     "label": 0,
+     "bug_id": "black/23",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.669990173,
+     "purged_sbg_v5": 0.669990173,
+     "base_events": 17561,
+     "variant_events": 17365
+    },
+    {
+     "pair_id": "black/23::black.py::assert_equivalent::SP-4",
+     "label": 0,
+     "bug_id": "black/23",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.669093469,
+     "purged_sbg_v5": 0.669093469,
+     "base_events": 17561,
+     "variant_events": 17365
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/httpie__1__httpie_downloads_py__get_unique_filename/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "httpie/1::httpie/downloads.py::get_unique_filename::real_fix",
+     "label": 1,
+     "bug_id": "httpie/1",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.17,
+     "purged_sbg_v5": 0.17,
+     "base_events": 330,
+     "variant_events": 385
+    },
+    {
+     "pair_id": "httpie/1::httpie/downloads.py::get_unique_filename::SP-2",
+     "label": 0,
+     "bug_id": "httpie/1",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 330,
+     "variant_events": 330
+    },
+    {
+     "pair_id": "httpie/1::httpie/downloads.py::get_unique_filename::SP-6",
+     "label": 0,
+     "bug_id": "httpie/1",
+     "transformation": "SP-6",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 330,
+     "variant_events": 330
+    },
+    {
+     "pair_id": "httpie/1::httpie/downloads.py::get_unique_filename::SP-3",
+     "label": 0,
+     "bug_id": "httpie/1",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.033333333,
+     "purged_sbg_v5": 0.033333333,
+     "base_events": 330,
+     "variant_events": 440
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/keras__20__keras_utils_conv_utils_py__deconv_length/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "keras/20::keras/utils/conv_utils.py::deconv_length::real_fix",
+     "label": 1,
+     "bug_id": "keras/20",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "keras/20::keras/utils/conv_utils.py::deconv_length::SP-2",
+     "label": 0,
+     "bug_id": "keras/20",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "keras/20::keras/utils/conv_utils.py::deconv_length::SP-4",
+     "label": 0,
+     "bug_id": "keras/20",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "keras/20::keras/utils/conv_utils.py::deconv_length::SP-6",
+     "label": 0,
+     "bug_id": "keras/20",
+     "transformation": "SP-6",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/keras__9__docs_autogen_py__process_list_block/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "keras/9::docs/autogen.py::process_list_block::real_fix",
+     "label": 1,
+     "bug_id": "keras/9",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "keras/9::docs/autogen.py::process_list_block::SP-1",
+     "label": 0,
+     "bug_id": "keras/9",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "keras/9::docs/autogen.py::process_list_block::SP-2",
+     "label": 0,
+     "bug_id": "keras/9",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "keras/9::docs/autogen.py::process_list_block::SP-6",
+     "label": 0,
+     "bug_id": "keras/9",
+     "transformation": "SP-6",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/luigi__14__luigi_scheduler_py__Task/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "luigi/14::luigi/scheduler.py::Task::real_fix",
+     "label": 1,
+     "bug_id": "luigi/14",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.140151002,
+     "purged_sbg_v5": 0.140151002,
+     "base_events": 3640,
+     "variant_events": 3830
+    },
+    {
+     "pair_id": "luigi/14::luigi/scheduler.py::Task::SP-1",
+     "label": 0,
+     "bug_id": "luigi/14",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.002141666,
+     "purged_sbg_v5": 0.002141666,
+     "base_events": 3640,
+     "variant_events": 3580
+    },
+    {
+     "pair_id": "luigi/14::luigi/scheduler.py::Task::SP-2",
+     "label": 0,
+     "bug_id": "luigi/14",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.794921849,
+     "purged_sbg_v5": 0.794921849,
+     "base_events": 3640,
+     "variant_events": 385
+    },
+    {
+     "pair_id": "luigi/14::luigi/scheduler.py::Task::SP-4",
+     "label": 0,
+     "bug_id": "luigi/14",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.002141666,
+     "purged_sbg_v5": 0.002141666,
+     "base_events": 3640,
+     "variant_events": 3580
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/pandas__167__pandas_core_indexing_py__convert_to_index_sliceable/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::real_fix",
+     "label": 1,
+     "bug_id": "pandas/167",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-2",
+     "label": 0,
+     "bug_id": "pandas/167",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-4",
+     "label": 0,
+     "bug_id": "pandas/167",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-3",
+     "label": 0,
+     "bug_id": "pandas/167",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.014285714,
+     "purged_sbg_v5": 0.014285714,
+     "base_events": 495,
+     "variant_events": 550
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/pandas__18__pandas_core_window_common_py__validate_baseindexer_support/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "pandas/18::pandas/core/window/common.py::validate_baseindexer_support::real_fix",
+     "label": 1,
+     "bug_id": "pandas/18",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 550,
+     "variant_events": 550
+    },
+    {
+     "pair_id": "pandas/18::pandas/core/window/common.py::validate_baseindexer_support::SP-2",
+     "label": 0,
+     "bug_id": "pandas/18",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.058333333,
+     "purged_sbg_v5": 0.058333333,
+     "base_events": 550,
+     "variant_events": 330
+    },
+    {
+     "pair_id": "pandas/18::pandas/core/window/common.py::validate_baseindexer_support::SP-3",
+     "label": 0,
+     "bug_id": "pandas/18",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.016666667,
+     "purged_sbg_v5": 0.016666667,
+     "base_events": 550,
+     "variant_events": 385
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/pandas__22__pandas_core_window_common_py__validate_baseindexer_support/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "pandas/22::pandas/core/window/common.py::validate_baseindexer_support::real_fix",
+     "label": 1,
+     "bug_id": "pandas/22",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 550,
+     "variant_events": 550
+    },
+    {
+     "pair_id": "pandas/22::pandas/core/window/common.py::validate_baseindexer_support::SP-2",
+     "label": 0,
+     "bug_id": "pandas/22",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.058333333,
+     "purged_sbg_v5": 0.058333333,
+     "base_events": 550,
+     "variant_events": 330
+    },
+    {
+     "pair_id": "pandas/22::pandas/core/window/common.py::validate_baseindexer_support::SP-3",
+     "label": 0,
+     "bug_id": "pandas/22",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.016666667,
+     "purged_sbg_v5": 0.016666667,
+     "base_events": 550,
+     "variant_events": 385
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/scrapy__2__scrapy_utils_datatypes_py__LocalCache/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "scrapy/2::scrapy/utils/datatypes.py::LocalCache::real_fix",
+     "label": 1,
+     "bug_id": "scrapy/2",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    },
+    {
+     "pair_id": "scrapy/2::scrapy/utils/datatypes.py::LocalCache::SP-4",
+     "label": 0,
+     "bug_id": "scrapy/2",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    },
+    {
+     "pair_id": "scrapy/2::scrapy/utils/datatypes.py::LocalCache::SP-3",
+     "label": 0,
+     "bug_id": "scrapy/2",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/scrapy__36__scrapy_utils_misc_py__create_instance/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "scrapy/36::scrapy/utils/misc.py::create_instance::real_fix",
+     "label": 1,
+     "bug_id": "scrapy/36",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 605,
+     "variant_events": 605
+    },
+    {
+     "pair_id": "scrapy/36::scrapy/utils/misc.py::create_instance::SP-2",
+     "label": 0,
+     "bug_id": "scrapy/36",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 605,
+     "variant_events": 605
+    },
+    {
+     "pair_id": "scrapy/36::scrapy/utils/misc.py::create_instance::SP-4",
+     "label": 0,
+     "bug_id": "scrapy/36",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 605,
+     "variant_events": 605
+    },
+    {
+     "pair_id": "scrapy/36::scrapy/utils/misc.py::create_instance::SP-3",
+     "label": 0,
+     "bug_id": "scrapy/36",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.014285714,
+     "purged_sbg_v5": 0.014285714,
+     "base_events": 605,
+     "variant_events": 660
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/spacy__1__spacy_errors_py__add_codes/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "spacy/1::spacy/errors.py::add_codes::real_fix",
+     "label": 1,
+     "bug_id": "spacy/1",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.033333333,
+     "purged_sbg_v5": 0.033333333,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "spacy/1::spacy/errors.py::add_codes::SP-2",
+     "label": 0,
+     "bug_id": "spacy/1",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "spacy/1::spacy/errors.py::add_codes::SP-4",
+     "label": 0,
+     "bug_id": "spacy/1",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "spacy/1::spacy/errors.py::add_codes::SP-3",
+     "label": 0,
+     "bug_id": "spacy/1",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.02,
+     "purged_sbg_v5": 0.02,
+     "base_events": 440,
+     "variant_events": 495
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/spacy__4__spacy_cli_converters_conllu2json_py__read_conllx/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::real_fix",
+     "label": 1,
+     "bug_id": "spacy/4",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 0,
+     "variant_events": 0
+    },
+    {
+     "pair_id": "spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-1",
+     "label": 0,
+     "bug_id": "spacy/4",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 0,
+     "variant_events": 0
+    },
+    {
+     "pair_id": "spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-2",
+     "label": 0,
+     "bug_id": "spacy/4",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 0,
+     "variant_events": 0
+    },
+    {
+     "pair_id": "spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-6",
+     "label": 0,
+     "bug_id": "spacy/4",
+     "transformation": "SP-6",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 0,
+     "variant_events": 0
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/spacy__7__examples_information_extraction_entity_relations_py__filter_spans/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "spacy/7::examples/information_extraction/entity_relations.py::filter_spans::real_fix",
+     "label": 1,
+     "bug_id": "spacy/7",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0127318,
+     "purged_sbg_v5": 0.0127318,
+     "base_events": 495,
+     "variant_events": 490
+    },
+    {
+     "pair_id": "spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-1",
+     "label": 0,
+     "bug_id": "spacy/7",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-2",
+     "label": 0,
+     "bug_id": "spacy/7",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.02,
+     "purged_sbg_v5": 0.02,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-3",
+     "label": 0,
+     "bug_id": "spacy/7",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.020108175,
+     "purged_sbg_v5": 0.020108175,
+     "base_events": 495,
+     "variant_events": 555
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/spacy__7__spacy_util_py__filter_spans/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "spacy/7::spacy/util.py::filter_spans::real_fix",
+     "label": 1,
+     "bug_id": "spacy/7",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "spacy/7::spacy/util.py::filter_spans::SP-1",
+     "label": 0,
+     "bug_id": "spacy/7",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "spacy/7::spacy/util.py::filter_spans::SP-2",
+     "label": 0,
+     "bug_id": "spacy/7",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.02,
+     "purged_sbg_v5": 0.02,
+     "base_events": 495,
+     "variant_events": 495
+    },
+    {
+     "pair_id": "spacy/7::spacy/util.py::filter_spans::SP-4",
+     "label": 0,
+     "bug_id": "spacy/7",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 495,
+     "variant_events": 495
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/thefuck__10__thefuck_rules_man_py__get_new_command/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "thefuck/10::thefuck/rules/man.py::get_new_command::real_fix",
+     "label": 1,
+     "bug_id": "thefuck/10",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    },
+    {
+     "pair_id": "thefuck/10::thefuck/rules/man.py::get_new_command::SP-2",
+     "label": 0,
+     "bug_id": "thefuck/10",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 220,
+     "variant_events": 220
+    },
+    {
+     "pair_id": "thefuck/10::thefuck/rules/man.py::get_new_command::SP-3",
+     "label": 0,
+     "bug_id": "thefuck/10",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/thefuck__18__thefuck_rules_sudo_py__match/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "thefuck/18::thefuck/rules/sudo.py::match::real_fix",
+     "label": 1,
+     "bug_id": "thefuck/18",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.116666667,
+     "purged_sbg_v5": 0.116666667,
+     "base_events": 220,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "thefuck/18::thefuck/rules/sudo.py::match::SP-2",
+     "label": 0,
+     "bug_id": "thefuck/18",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 220,
+     "variant_events": 220
+    },
+    {
+     "pair_id": "thefuck/18::thefuck/rules/sudo.py::match::SP-3",
+     "label": 0,
+     "bug_id": "thefuck/18",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/thefuck__27__thefuck_rules_open_py__get_new_command/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "thefuck/27::thefuck/rules/open.py::get_new_command::real_fix",
+     "label": 1,
+     "bug_id": "thefuck/27",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "thefuck/27::thefuck/rules/open.py::get_new_command::SP-2",
+     "label": 0,
+     "bug_id": "thefuck/27",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 440,
+     "variant_events": 440
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/thefuck__32__thefuck_rules_ls_lah_py__match/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "thefuck/32::thefuck/rules/ls_lah.py::match::real_fix",
+     "label": 1,
+     "bug_id": "thefuck/32",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "thefuck/32::thefuck/rules/ls_lah.py::match::SP-2",
+     "label": 0,
+     "bug_id": "thefuck/32",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 440,
+     "variant_events": 440
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/tqdm__9__tqdm__tqdm_py__format_sizeof/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "tqdm/9::tqdm/_tqdm.py::format_sizeof::real_fix",
+     "label": 1,
+     "bug_id": "tqdm/9",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 275,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-2",
+     "label": 0,
+     "bug_id": "tqdm/9",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 275,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-4",
+     "label": 0,
+     "bug_id": "tqdm/9",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 275,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-6",
+     "label": 0,
+     "bug_id": "tqdm/9",
+     "transformation": "SP-6",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 275,
+     "variant_events": 275
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__10__youtube_dl_utils_py__js_to_json/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/10::youtube_dl/utils.py::js_to_json::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/10",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.680434905,
+     "purged_sbg_v5": 0.117159025,
+     "base_events": 5918,
+     "variant_events": 5918
+    },
+    {
+     "pair_id": "youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/10",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.009090909,
+     "purged_sbg_v5": 1.4395e-05,
+     "base_events": 5918,
+     "variant_events": 5810
+    },
+    {
+     "pair_id": "youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/10",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.712196091,
+     "purged_sbg_v5": 0.800453945,
+     "base_events": 5918,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/10",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.000257782,
+     "base_events": 5918,
+     "variant_events": 5864
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__15__youtube_dl_utils_py__js_to_json/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/15::youtube_dl/utils.py::js_to_json::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/15",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 6188,
+     "variant_events": 6188
+    },
+    {
+     "pair_id": "youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/15",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.669620431,
+     "purged_sbg_v5": 0.001346081,
+     "base_events": 6188,
+     "variant_events": 5972
+    },
+    {
+     "pair_id": "youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/15",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.791271176,
+     "purged_sbg_v5": 0.791271176,
+     "base_events": 6188,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/15",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.668911211,
+     "purged_sbg_v5": 0.000633586,
+     "base_events": 6188,
+     "variant_events": 6080
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__17__youtube_dl_utils_py__cli_bool_option/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": false,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/17::youtube_dl/utils.py::cli_bool_option::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/17",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "youtube-dl/17::youtube_dl/utils.py::cli_bool_option::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/17",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.0125,
+     "purged_sbg_v5": 0.0125,
+     "base_events": 440,
+     "variant_events": 440
+    },
+    {
+     "pair_id": "youtube-dl/17::youtube_dl/utils.py::cli_bool_option::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/17",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 440,
+     "variant_events": 440
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__23__youtube_dl_utils_py__js_to_json/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/23::youtube_dl/utils.py::js_to_json::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/23",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.015870916,
+     "purged_sbg_v5": 0.015870916,
+     "base_events": 5918,
+     "variant_events": 5918
+    },
+    {
+     "pair_id": "youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/23",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.675936625,
+     "purged_sbg_v5": 0.000353738,
+     "base_events": 5918,
+     "variant_events": 5810
+    },
+    {
+     "pair_id": "youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/23",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.794344178,
+     "purged_sbg_v5": 0.794344178,
+     "base_events": 5918,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/23",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.6752324,
+     "purged_sbg_v5": 0.000352502,
+     "base_events": 5918,
+     "variant_events": 5918
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__25__youtube_dl_utils_py__js_to_json/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/25",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 5918,
+     "variant_events": 5918
+    },
+    {
+     "pair_id": "youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/25",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.009090909,
+     "purged_sbg_v5": 0.000350032,
+     "base_events": 5918,
+     "variant_events": 5810
+    },
+    {
+     "pair_id": "youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/25",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.712196091,
+     "purged_sbg_v5": 0.793993017,
+     "base_events": 5918,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/25",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.008333333,
+     "purged_sbg_v5": 0.000348847,
+     "base_events": 5918,
+     "variant_events": 5918
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__26__youtube_dl_utils_py__js_to_json/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/26",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.675109534,
+     "purged_sbg_v5": 0.0,
+     "base_events": 5918,
+     "variant_events": 5918
+    },
+    {
+     "pair_id": "youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/26",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.009090909,
+     "purged_sbg_v5": 0.000350032,
+     "base_events": 5918,
+     "variant_events": 5810
+    },
+    {
+     "pair_id": "youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/26",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.712196091,
+     "purged_sbg_v5": 0.793993017,
+     "base_events": 5918,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/26",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.008333333,
+     "purged_sbg_v5": 0.000348847,
+     "base_events": 5918,
+     "variant_events": 5918
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__27__youtube_dl_utils_py__parse_dfxp_time_expr/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/27",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 2540,
+     "variant_events": 2540
+    },
+    {
+     "pair_id": "youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/27",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.02,
+     "purged_sbg_v5": 0.011538463,
+     "base_events": 2540,
+     "variant_events": 2540
+    },
+    {
+     "pair_id": "youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/27",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.009405609,
+     "purged_sbg_v5": 0.000556625,
+     "base_events": 2540,
+     "variant_events": 2595
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__31__youtube_dl_utils_py__parse_duration/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/31::youtube_dl/utils.py::parse_duration::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/31",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.108333333,
+     "purged_sbg_v5": 0.108333333,
+     "base_events": 220,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/31",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 220,
+     "variant_events": 220
+    },
+    {
+     "pair_id": "youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/31",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.108333333,
+     "purged_sbg_v5": 0.108333333,
+     "base_events": 220,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/31",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.033333333,
+     "purged_sbg_v5": 0.033333333,
+     "base_events": 220,
+     "variant_events": 275
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__32__youtube_dl_utils_py__strip_jsonp/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/32::youtube_dl/utils.py::strip_jsonp::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/32",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.134961863,
+     "purged_sbg_v5": 0.134961863,
+     "base_events": 4159,
+     "variant_events": 3641
+    },
+    {
+     "pair_id": "youtube-dl/32::youtube_dl/utils.py::strip_jsonp::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/32",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.668752014,
+     "purged_sbg_v5": 0.00958697,
+     "base_events": 4159,
+     "variant_events": 4049
+    },
+    {
+     "pair_id": "youtube-dl/32::youtube_dl/utils.py::strip_jsonp::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/32",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.664438479,
+     "purged_sbg_v5": 0.0,
+     "base_events": 4159,
+     "variant_events": 4104
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__33__youtube_dl_utils_py__parse_iso8601/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/33::youtube_dl/utils.py::parse_iso8601::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/33",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.322548807,
+     "purged_sbg_v5": 0.322556718,
+     "base_events": 4968,
+     "variant_events": 4068
+    },
+    {
+     "pair_id": "youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/33",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.683031284,
+     "purged_sbg_v5": 0.000422168,
+     "base_events": 4968,
+     "variant_events": 4803
+    },
+    {
+     "pair_id": "youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/33",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.688447952,
+     "purged_sbg_v5": 0.011960631,
+     "base_events": 4968,
+     "variant_events": 4803
+    },
+    {
+     "pair_id": "youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-4",
+     "label": 0,
+     "bug_id": "youtube-dl/33",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.683031284,
+     "purged_sbg_v5": 0.000422168,
+     "base_events": 4968,
+     "variant_events": 4803
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__34__youtube_dl_utils_py__js_to_json/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/34::youtube_dl/utils.py::js_to_json::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/34",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.029777089,
+     "purged_sbg_v5": 0.029777089,
+     "base_events": 5918,
+     "variant_events": 5918
+    },
+    {
+     "pair_id": "youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/34",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.667917671,
+     "purged_sbg_v5": 0.0003741,
+     "base_events": 5918,
+     "variant_events": 5810
+    },
+    {
+     "pair_id": "youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/34",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.795009424,
+     "purged_sbg_v5": 0.795009424,
+     "base_events": 5918,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/34",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.667588723,
+     "purged_sbg_v5": 0.0,
+     "base_events": 5918,
+     "variant_events": 5864
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__35__youtube_dl_utils_py__unified_strdate/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/35::youtube_dl/utils.py::unified_strdate::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/35",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 330,
+     "variant_events": 330
+    },
+    {
+     "pair_id": "youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/35",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 330,
+     "variant_events": 330
+    },
+    {
+     "pair_id": "youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-4",
+     "label": 0,
+     "bug_id": "youtube-dl/35",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 330,
+     "variant_events": 330
+    },
+    {
+     "pair_id": "youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/35",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.02,
+     "purged_sbg_v5": 0.02,
+     "base_events": 330,
+     "variant_events": 385
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__37__youtube_dl_utils_py__uppercase_escape/fixed.py",
+   "self_distance_purged": 0.596575067,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/37::youtube_dl/utils.py::uppercase_escape::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/37",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.692229411,
+     "purged_sbg_v5": 0.603987798,
+     "base_events": 2934,
+     "variant_events": 1849
+    },
+    {
+     "pair_id": "youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/37",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.680301687,
+     "purged_sbg_v5": 0.597013469,
+     "base_events": 2934,
+     "variant_events": 1904
+    },
+    {
+     "pair_id": "youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/37",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.680154194,
+     "purged_sbg_v5": 0.596867352,
+     "base_events": 2934,
+     "variant_events": 1959
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__41__youtube_dl_utils_py__unified_strdate/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/41::youtube_dl/utils.py::unified_strdate::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/41",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 275,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/41",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.025,
+     "purged_sbg_v5": 0.025,
+     "base_events": 275,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-4",
+     "label": 0,
+     "bug_id": "youtube-dl/41",
+     "transformation": "SP-4",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 275,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/41",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.0,
+     "purged_sbg_v5": 0.0,
+     "base_events": 275,
+     "variant_events": 275
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__43__youtube_dl_utils_py__url_basename/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/43::youtube_dl/utils.py::url_basename::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/43",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.016082898,
+     "purged_sbg_v5": 0.016082898,
+     "base_events": 4310,
+     "variant_events": 4361
+    },
+    {
+     "pair_id": "youtube-dl/43::youtube_dl/utils.py::url_basename::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/43",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.675144928,
+     "purged_sbg_v5": 0.0,
+     "base_events": 4310,
+     "variant_events": 4310
+    },
+    {
+     "pair_id": "youtube-dl/43::youtube_dl/utils.py::url_basename::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/43",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.679247491,
+     "purged_sbg_v5": 0.009375,
+     "base_events": 4310,
+     "variant_events": 4310
+    },
+    {
+     "pair_id": "youtube-dl/43::youtube_dl/utils.py::url_basename::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/43",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.675144928,
+     "purged_sbg_v5": 0.0,
+     "base_events": 4310,
+     "variant_events": 4310
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__6__youtube_dl_utils_py__parse_dfxp_time_expr/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/6",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.612315605,
+     "purged_sbg_v5": 0.0,
+     "base_events": 2540,
+     "variant_events": 2540
+    },
+    {
+     "pair_id": "youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/6",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.617732273,
+     "purged_sbg_v5": 0.011538463,
+     "base_events": 2540,
+     "variant_events": 2540
+    },
+    {
+     "pair_id": "youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/6",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.612383391,
+     "purged_sbg_v5": 0.000556625,
+     "base_events": 2540,
+     "variant_events": 2595
+    }
+   ]
+  },
+  {
+   "unit": "external/bugsinpy/units/youtube_dl__7__youtube_dl_utils_py__js_to_json/fixed.py",
+   "self_distance_purged": 0.0,
+   "imports_re": true,
+   "pairs": [
+    {
+     "pair_id": "youtube-dl/7::youtube_dl/utils.py::js_to_json::real_fix",
+     "label": 1,
+     "bug_id": "youtube-dl/7",
+     "transformation": "real_fix",
+     "committed_sbg_v5": 0.680984602,
+     "purged_sbg_v5": 0.0,
+     "base_events": 5918,
+     "variant_events": 5918
+    },
+    {
+     "pair_id": "youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-1",
+     "label": 0,
+     "bug_id": "youtube-dl/7",
+     "transformation": "SP-1",
+     "committed_sbg_v5": 0.681243,
+     "purged_sbg_v5": 1.4395e-05,
+     "base_events": 5918,
+     "variant_events": 5810
+    },
+    {
+     "pair_id": "youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-2",
+     "label": 0,
+     "bug_id": "youtube-dl/7",
+     "transformation": "SP-2",
+     "committed_sbg_v5": 0.800453945,
+     "purged_sbg_v5": 0.800453945,
+     "base_events": 5918,
+     "variant_events": 275
+    },
+    {
+     "pair_id": "youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-3",
+     "label": 0,
+     "bug_id": "youtube-dl/7",
+     "transformation": "SP-3",
+     "committed_sbg_v5": 0.680726204,
+     "purged_sbg_v5": 0.000258932,
+     "base_events": 5918,
+     "variant_events": 5918
+    }
+   ]
+  }
+ ]
+}

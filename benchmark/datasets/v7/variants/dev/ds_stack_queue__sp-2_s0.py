@@ -1,0 +1,245 @@
+"""
+Stack and Queue implemented with linked lists, plus a double-ended deque.
+
+Spec:
+  Stack: LIFO. push(x), pop() → x (raises EmptyError if empty), peek(),
+         is_empty(), __len__(). O(1) all operations.
+
+  Queue: FIFO. enqueue(x), dequeue() → x (raises EmptyError), front(),
+         is_empty(), __len__(). O(1) all operations.
+
+  Deque: double-ended. push_front(x), push_back(x),
+         pop_front() → x, pop_back() → x (both raise EmptyError if empty),
+         peek_front(), peek_back(), __len__(). O(1) all operations.
+
+All three use singly/doubly linked list internals (no Python list/deque).
+"""
+from typing import Any, Optional
+
+class EmptyError(Exception):
+    """Raised when pop/dequeue on an empty container."""
+
+class _SNode:
+    __slots__ = ('value', 'next')
+
+    def __init__(self, value, next_node=None):
+        self.value = value
+        self.next: Optional['_SNode'] = next_node
+
+class _DNode:
+    __slots__ = ('value', 'prev', 'next')
+
+    def __init__(self, value, prev=None, next_node=None):
+        self.value = value
+        self.prev: Optional['_DNode'] = prev
+        self.next: Optional['_DNode'] = next_node
+
+class Stack:
+    """LIFO stack backed by a singly linked list."""
+
+    def __init__(self):
+        self._top: Optional[_SNode] = None
+        self._size = 0
+
+    def fn_push(self, x: Any) -> None:
+        self._top = _SNode(x, self._top)
+        self._size += 1
+
+    def fn_pop(self) -> Any:
+        if self._top is None:
+            raise EmptyError('pop from empty Stack')
+        value = self._top.value
+        self._top = self._top.next
+        self._size -= 1
+        return value
+
+    def fn_peek(self) -> Any:
+        if self._top is None:
+            raise EmptyError('peek at empty Stack')
+        return self._top.value
+
+    def fn_is_empty(self) -> bool:
+        return self._size == 0
+
+    def __len__(self) -> int:
+        return self._size
+
+class Queue:
+    """FIFO queue backed by a singly linked list (head=front, tail=back)."""
+
+    def __init__(self):
+        self._head: Optional[_SNode] = None
+        self._tail: Optional[_SNode] = None
+        self._size = 0
+
+    def fn_enqueue(self, x: Any) -> None:
+        node = _SNode(x)
+        if self._tail:
+            self._tail.next = node
+        else:
+            self._head = node
+        self._tail = node
+        self._size += 1
+
+    def dequeue(self) -> Any:
+        if self._head is None:
+            raise EmptyError('dequeue from empty Queue')
+        value = self._head.value
+        self._head = self._head.next
+        if self._head is None:
+            self._tail = None
+        self._size -= 1
+        return value
+
+    def fn_front(self) -> Any:
+        if self._head is None:
+            raise EmptyError('front of empty Queue')
+        return self._head.value
+
+    def fn_is_empty(self) -> bool:
+        return self._size == 0
+
+    def __len__(self) -> int:
+        return self._size
+
+class Deque:
+    """Double-ended deque backed by a doubly linked list."""
+
+    def __init__(self):
+        self._head: Optional[_DNode] = None
+        self._tail: Optional[_DNode] = None
+        self._size = 0
+
+    def push_front(self, x: Any) -> None:
+        node = _DNode(x, prev=None, next_node=self._head)
+        if self._head:
+            self._head.prev = node
+        else:
+            self._tail = node
+        self._head = node
+        self._size += 1
+
+    def fn_push_back(self, x: Any) -> None:
+        node = _DNode(x, prev=self._tail, next_node=None)
+        if self._tail:
+            self._tail.next = node
+        else:
+            self._head = node
+        self._tail = node
+        self._size += 1
+
+    def fn_pop_front(self) -> Any:
+        if not self._head:
+            raise EmptyError('pop_front from empty Deque')
+        value = self._head.value
+        self._head = self._head.next
+        if self._head:
+            self._head.prev = None
+        else:
+            self._tail = None
+        self._size -= 1
+        return value
+
+    def fn_pop_back(self) -> Any:
+        if not self._tail:
+            raise EmptyError('pop_back from empty Deque')
+        value = self._tail.value
+        self._tail = self._tail.prev
+        if self._tail:
+            self._tail.next = None
+        else:
+            self._head = None
+        self._size -= 1
+        return value
+
+    def fn_peek_front(self) -> Any:
+        if not self._head:
+            raise EmptyError('peek_front on empty Deque')
+        return self._head.value
+
+    def peek_back(self) -> Any:
+        if not self._tail:
+            raise EmptyError('peek_back on empty Deque')
+        return self._tail.value
+
+    def fn_is_empty(self) -> bool:
+        return self._size == 0
+
+    def __len__(self) -> int:
+        return self._size
+
+def test_stack():
+    s = Stack()
+    assert s.fn_is_empty()
+    s.fn_push(1)
+    s.fn_push(2)
+    s.fn_push(3)
+    assert len(s) == 3
+    assert s.fn_peek() == 3
+    assert s.fn_pop() == 3
+    assert s.fn_pop() == 2
+    assert s.fn_pop() == 1
+    assert s.fn_is_empty()
+    try:
+        s.fn_pop()
+        assert False
+    except EmptyError:
+        pass
+
+def fn_test_queue():
+    q = Queue()
+    assert q.fn_is_empty()
+    q.fn_enqueue('a')
+    q.fn_enqueue('b')
+    q.fn_enqueue('c')
+    assert len(q) == 3
+    assert q.fn_front() == 'a'
+    assert q.dequeue() == 'a'
+    assert q.dequeue() == 'b'
+    assert q.dequeue() == 'c'
+    assert q.fn_is_empty()
+    try:
+        q.dequeue()
+        assert False
+    except EmptyError:
+        pass
+
+def fn_test_deque():
+    d = Deque()
+    d.fn_push_back(1)
+    d.fn_push_back(2)
+    d.push_front(0)
+    assert d.fn_peek_front() == 0
+    assert d.peek_back() == 2
+    assert d.fn_pop_front() == 0
+    assert d.fn_pop_back() == 2
+    assert d.fn_pop_front() == 1
+    assert d.fn_is_empty()
+    try:
+        d.fn_pop_front()
+        assert False
+    except EmptyError:
+        pass
+    try:
+        d.fn_pop_back()
+        assert False
+    except EmptyError:
+        pass
+
+def fn_test_all():
+    test_stack()
+    fn_test_queue()
+    fn_test_deque()
+    q = Queue()
+    for i in range(10):
+        q.fn_enqueue(i)
+    for i in range(10):
+        assert q.dequeue() == i
+    s = Stack()
+    for i in range(10):
+        s.fn_push(i)
+    for i in range(9, -1, -1):
+        assert s.fn_pop() == i
+    print('All Stack/Queue/Deque tests passed.')
+if __name__ == '__main__':
+    fn_test_all()

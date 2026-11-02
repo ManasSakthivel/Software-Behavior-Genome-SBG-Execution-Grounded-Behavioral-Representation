@@ -1,0 +1,78 @@
+{
+ "artifact": "ABLATIONS_V3",
+ "scope": "Component comparison on v9c (size-decoupled). No component selection is based on val.",
+ "val_confirmatory_component_increments_over_edit_only": {
+  "E+v3": {
+   "delta": 0.0962,
+   "ci_lower": 0.0574,
+   "ci_upper": 0.1384,
+   "p_two_sided": 0.001
+  },
+  "E+temporal": {
+   "delta": 0.0417,
+   "ci_lower": 0.0013,
+   "ci_upper": 0.0861,
+   "p_two_sided": 0.044
+  },
+  "E+state": {
+   "delta": 0.1303,
+   "ci_lower": 0.0906,
+   "ci_upper": 0.164,
+   "p_two_sided": 0.001
+  },
+  "ES": {
+   "delta": 0.1122,
+   "ci_lower": 0.0748,
+   "ci_upper": 0.1478,
+   "p_two_sided": 0.001
+  }
+ },
+ "val_single_component_auroc": {
+  "sbg_v5": 0.7514,
+  "sbg_v3": 0.7399,
+  "sbg_temporal": 0.6188,
+  "sbg_state": 0.7624
+ },
+ "val_v5_minus_components": {
+  "sbg_v3": {
+   "delta": 0.0115,
+   "ci_lower": -0.0002,
+   "ci_upper": 0.0219,
+   "p_two_sided": 0.056
+  },
+  "sbg_temporal": {
+   "delta": 0.1325,
+   "ci_lower": 0.0802,
+   "ci_upper": 0.1766,
+   "p_two_sided": 0.001
+  },
+  "sbg_state": {
+   "delta": -0.011,
+   "ci_lower": -0.0404,
+   "ci_upper": 0.024,
+   "p_two_sided": 0.4928
+  }
+ },
+ "dev_component_increments": {
+  "E+v3": 0.1078,
+  "E+temporal": 0.0435,
+  "E+state": 0.1751,
+  "ES": 0.1359
+ },
+ "train_component_increments": {
+  "E+v3": 0.0842,
+  "E+temporal": 0.0281,
+  "E+state": 0.1285,
+  "ES": 0.1045
+ },
+ "notes": [
+  "sbg_state-only was identified as strongest on dev (exploratory); its val advantage over sbg_v5 is not significant (CI includes 0).",
+  "Temporal component is weakest and contributes least.",
+  "Frozen model weights: artifacts/final/V9_MODELS_FROZEN.json (fitted on v9c train only)."
+ ],
+ "sources": {
+  "train": "artifacts/paper_evidence/V9_TRAIN_EVALUATION.json",
+  "dev": "artifacts/paper_evidence/V9_DEV_EVALUATION.json",
+  "val": "artifacts/paper_evidence/V9_VAL_EVALUATION.json"
+ }
+}

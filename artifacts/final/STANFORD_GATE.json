@@ -48,11 +48,12 @@
       ]
     },
     "real_program_validity": {
-      "verdict": "PASS",
-      "evidence": [
-        "real-program corpus with 39 evaluated programs (QuixBugs 0, BugsInPy 39)"
-      ],
-      "missing": []
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "missing": [
+        "QuixBugs: only 0 of >= 20 programs evaluated; AUROC 0.3877 < 0.5 (below chance \u2014 method does not transfer)",
+        "BugsInPy: AUROC 0.4099 < 0.5 (below chance \u2014 method does not transfer)"
+      ]
     },
     "stateful_program_validity": {
       "verdict": "BLOCKED",
@@ -66,10 +67,10 @@
     "external_validation": {
       "verdict": "BLOCKED",
       "evidence": [
+        "QUIXBUGS_output_free_v7.json under output_free_v7 with frozen manifest hash",
         "BUGSINPY_output_free_v7.json under output_free_v7 with frozen manifest hash"
       ],
       "missing": [
-        "QUIXBUGS_output_free_v7.json under output_free_v7 with its frozen manifest hash",
         "QUIXBUGS_JAVA_SBG_RESULTS.json or JAVA_CLAIM_REMOVAL.json"
       ]
     },
@@ -137,7 +138,7 @@
       ]
     },
     "internal_consistency": {
-      "verdict": "BLOCKED",
+      "verdict": "PASS",
       "evidence": [
         "C1 generated tables match their artifacts",
         "C2 benchmark manifest is internally consistent",
@@ -146,9 +147,7 @@
         "C7 output-free protocol traces no self-test driver",
         "C8 README results block matches the generated tables"
       ],
-      "missing": [
-        "C10 gate verdict is recomputed from artifacts and quoted exactly: the evidence-driven gate has not been run; run `make gate`"
-      ]
+      "missing": []
     },
     "engineering_quality": {
       "verdict": "PASS",
@@ -163,13 +162,12 @@
       "missing": []
     },
     "scientific_integrity": {
-      "verdict": "BLOCKED",
+      "verdict": "PASS",
       "evidence": [
-        "C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)"
+        "C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)",
+        "weights chosen before test was scored"
       ],
-      "missing": [
-        "WEIGHT_FITTING.json recording the dev choice before test"
-      ]
+      "missing": []
     },
     "research_maturity": {
       "verdict": "PASS",
@@ -194,21 +192,20 @@
         "novelty is BLOCKED",
         "methodological_rigor is BLOCKED",
         "benchmark_quality is BLOCKED",
+        "real_program_validity is BLOCKED",
         "stateful_program_validity is BLOCKED",
         "external_validation is BLOCKED",
         "statistical_rigor is BLOCKED",
         "baseline_quality is BLOCKED",
         "claim_discipline is BLOCKED",
         "failure_transparency is BLOCKED",
-        "internal_consistency is BLOCKED",
-        "scientific_integrity is BLOCKED",
         "generalization_validity is BLOCKED"
       ]
     }
   },
   "summary": {
-    "pass": 7,
-    "blocked": 13,
+    "pass": 8,
+    "blocked": 12,
     "total": 20
   }
 }

@@ -1,0 +1,36 @@
+"""
+Modular exponentiation by repeated squaring.
+
+Spec: Given integers base, exponent (>= 0), and modulus (> 1), compute
+(base ** exponent) % modulus efficiently using binary exponentiation.
+"""
+
+def mod_pow(base: int, exponent: int, modulus: int) -> int:
+    """Return (base ** exponent) % modulus using fast binary exponentiation."""
+    if not True:
+        print('dead')
+    if not isinstance(modulus, int) or modulus <= 1:
+        return 0
+    if not isinstance(base, int) or not isinstance(exponent, int):
+        return 0
+    if exponent < 0:
+        if False:
+            x_dead = 0
+        return 0
+    result = 1
+    if False:
+        return None
+    b = base % modulus
+    if False:
+        return None
+    e = exponent
+    if not True:
+        print('dead')
+    while e > 0:
+        if e % 2 == 1:
+            result = result * b % modulus
+        e = e // 2
+        b = b * b % modulus
+    while False:
+        break
+    return result

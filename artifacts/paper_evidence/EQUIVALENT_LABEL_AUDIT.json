@@ -1,0 +1,1862 @@
+{
+ "artifact": "EQUIVALENT_LABEL_AUDIT",
+ "status": "EXPLORATORY audit; outputs used only as label ground truth; the burned v8 TEST split is deliberately NOT audited",
+ "splits": {
+  "train": {
+   "n_equivalent_nonstale": 842,
+   "n_output_differs": 73,
+   "by_transformation": {
+    "SP-1": {
+     "n": 94,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 94
+    },
+    "SP-2": {
+     "n": 138,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 138
+    },
+    "SP-3": {
+     "n": 138,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 138
+    },
+    "SP-4": {
+     "n": 138,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 138
+    },
+    "SP-6": {
+     "n": 113,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 113
+    },
+    "SP-8": {
+     "n": 83,
+     "static_undefined": 4,
+     "output_differs": 37,
+     "exception_in_variant_only": 37,
+     "type_change_only": 0,
+     "checked": 83
+    },
+    "SP-11": {
+     "n": 42,
+     "static_undefined": 0,
+     "output_differs": 36,
+     "exception_in_variant_only": 3,
+     "type_change_only": 27,
+     "checked": 42
+    },
+    "SP-5": {
+     "n": 93,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 93
+    },
+    "SP-9": {
+     "n": 3,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 3
+    }
+   },
+   "output_differs_pairs": [
+    {
+     "pair_id": "train__ds_ring_buffer_stats__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1.0]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_ring_buffer_stats__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1.0]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_ring_buffer_stats__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_ring_buffer_stats__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_ring_buffer_stats__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_segment_tree_sum__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[0, 1, 1]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_lfu_simulation__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 2,
+     "first": [
+      "(2, [3, 1, 4, 1, 5, 9, 2, 6])",
+      [
+       "ok",
+       "[3, 4, 5, 9, 2]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_lfu_simulation__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 8,
+     "first": [
+      "(1, [1])",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_lfu_simulation__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 8,
+     "first": [
+      "(1, [1])",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_lfu_simulation__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 8,
+     "first": [
+      "(1, [1])",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_skip_list_search__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[3]"
+      ],
+      [
+       "ok",
+       "deque([3])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_skip_list_search__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[3]"
+      ],
+      [
+       "ok",
+       "deque([3])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_skip_list_search__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[3]"
+      ],
+      [
+       "ok",
+       "deque([3])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_sparse_table__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_sparse_table__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_sparse_table__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_sparse_table__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_sparse_table__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_sparse_table__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_rle_encode__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[[1, 1]]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_rle_encode__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[[1, 1]]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_rle_encode__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[[1, 1]]"
+      ],
+      [
+       "ok",
+       "deque([[1, 1]])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_rle_encode__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[[1, 1]]"
+      ],
+      [
+       "ok",
+       "deque([[1, 1]])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__ds_rle_encode__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[[1, 1]]"
+      ],
+      [
+       "ok",
+       "deque([[1, 1]])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__graph_condensation__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "{'a': []}",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__graph_condensation__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "{'a': []}",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_max_product_subarray__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_max_product_subarray__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "0"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_gray_code__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 6,
+     "first": [
+      "1",
+      [
+       "ok",
+       "[0, 1]"
+      ],
+      [
+       "ok",
+       "deque([0, 1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_gray_code__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 6,
+     "first": [
+      "1",
+      [
+       "ok",
+       "[0, 1]"
+      ],
+      [
+       "ok",
+       "deque([0, 1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_gray_code__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 6,
+     "first": [
+      "1",
+      [
+       "ok",
+       "[0, 1]"
+      ],
+      [
+       "ok",
+       "deque([0, 1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_catalan_number__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 8,
+     "first": [
+      "1",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_catalan_number__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 8,
+     "first": [
+      "1",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_missing_numbers__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_missing_numbers__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_missing_numbers__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_missing_numbers__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_max_subarray__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_max_subarray__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "0"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_staircase_ways__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 6,
+     "first": [
+      "(1, [1])",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_staircase_ways__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 6,
+     "first": [
+      "(1, [1])",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_nth_ugly_number__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 8,
+     "first": [
+      "1",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_nth_ugly_number__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 8,
+     "first": [
+      "1",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_power_of_two_list__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_power_of_two_list__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__math_power_of_two_list__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_comb_sort__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_comb_sort__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_bucket_sort__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_bucket_sort__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_bucket_sort__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_pigeonhole_sort__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_pigeonhole_sort__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_pigeonhole_sort__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_shellsort__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_shellsort__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_strand_sort__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_strand_sort__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__sort_strand_sort__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_levenshtein_distance__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "'a'",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_levenshtein_distance__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "'a'",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_levenshtein_distance__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "'a'",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_longest_no_repeat__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "'a'",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_longest_no_repeat__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "'a'",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_longest_no_repeat__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "'a'",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_rabin_karp_hash__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 9,
+     "first": [
+      "'abc'",
+      [
+       "ok",
+       "[0]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_rabin_karp_hash__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 9,
+     "first": [
+      "'abc'",
+      [
+       "ok",
+       "[0]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_rabin_karp_hash__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 9,
+     "first": [
+      "'abc'",
+      [
+       "ok",
+       "[0]"
+      ],
+      [
+       "ok",
+       "deque([0])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_rabin_karp_hash__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 9,
+     "first": [
+      "'abc'",
+      [
+       "ok",
+       "[0]"
+      ],
+      [
+       "ok",
+       "deque([0])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_rabin_karp_hash__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 9,
+     "first": [
+      "'abc'",
+      [
+       "ok",
+       "[0]"
+      ],
+      [
+       "ok",
+       "deque([0])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_compress_spaces__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 1,
+     "first": [
+      "'  padded  '",
+      [
+       "ok",
+       "'padded'"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_zigzag_encode__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 4,
+     "first": [
+      "('abc', 2)",
+      [
+       "ok",
+       "'acb'"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "train__str_zigzag_encode__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 4,
+     "first": [
+      "('abc', 2)",
+      [
+       "ok",
+       "'acb'"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    }
+   ]
+  },
+  "dev": {
+   "n_equivalent_nonstale": 233,
+   "n_output_differs": 13,
+   "by_transformation": {
+    "SP-1": {
+     "n": 31,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 31
+    },
+    "SP-2": {
+     "n": 39,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 39
+    },
+    "SP-3": {
+     "n": 39,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 39
+    },
+    "SP-4": {
+     "n": 39,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 39
+    },
+    "SP-6": {
+     "n": 32,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 32
+    },
+    "SP-8": {
+     "n": 23,
+     "static_undefined": 1,
+     "output_differs": 7,
+     "exception_in_variant_only": 7,
+     "type_change_only": 0,
+     "checked": 23
+    },
+    "SP-5": {
+     "n": 24,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 24
+    },
+    "SP-11": {
+     "n": 6,
+     "static_undefined": 0,
+     "output_differs": 6,
+     "exception_in_variant_only": 0,
+     "type_change_only": 6,
+     "checked": 6
+    }
+   },
+   "output_differs_pairs": [
+    {
+     "pair_id": "dev__ds_deque_ops__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 3,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__ds_deque_ops__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 3,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__ds_deque_ops__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 3,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_matrix_determinant__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 1,
+     "first": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]",
+      [
+       "ok",
+       "0"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_matrix_determinant__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 5,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_nth_permutation__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 4,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_nth_permutation__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 4,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_nth_permutation__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 4,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_nth_permutation__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 4,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_nth_permutation__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 4,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__math_nth_permutation__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 4,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__str_count_subseq__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "('a', 'a')",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "dev__str_count_subseq__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "('a', 'a')",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    }
+   ]
+  },
+  "val": {
+   "n_equivalent_nonstale": 218,
+   "n_output_differs": 16,
+   "by_transformation": {
+    "SP-2": {
+     "n": 33,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 33
+    },
+    "SP-3": {
+     "n": 33,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 33
+    },
+    "SP-4": {
+     "n": 33,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 33
+    },
+    "SP-6": {
+     "n": 30,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 30
+    },
+    "SP-8": {
+     "n": 23,
+     "static_undefined": 1,
+     "output_differs": 10,
+     "exception_in_variant_only": 10,
+     "type_change_only": 0,
+     "checked": 23
+    },
+    "SP-11": {
+     "n": 12,
+     "static_undefined": 0,
+     "output_differs": 6,
+     "exception_in_variant_only": 0,
+     "type_change_only": 6,
+     "checked": 12
+    },
+    "SP-1": {
+     "n": 30,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 30
+    },
+    "SP-5": {
+     "n": 24,
+     "static_undefined": 0,
+     "output_differs": 0,
+     "exception_in_variant_only": 0,
+     "type_change_only": 0,
+     "checked": 24
+    }
+   },
+   "output_differs_pairs": [
+    {
+     "pair_id": "val__ds_two_sum__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__ds_two_sum__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__ds_two_sum__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 10,
+     "first": [
+      "([1], 1)",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__graph_scc_tarjan__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 8,
+     "first": [
+      "(1, {'a': []})",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__math_perfect_numbers__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "0",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__math_perfect_numbers__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "0",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__math_perfect_numbers__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 11,
+     "first": [
+      "0",
+      [
+       "ok",
+       "[]"
+      ],
+      [
+       "ok",
+       "deque([])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__math_largest_rect_hist__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "0"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__math_ways_to_change__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 7,
+     "first": [
+      "(1, [1])",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__math_ways_to_change__sp-8_s1",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 7,
+     "first": [
+      "(1, [1])",
+      [
+       "ok",
+       "1"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__math_lis_length__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 11,
+     "first": [
+      "[]",
+      [
+       "ok",
+       "0"
+      ],
+      [
+       "exc",
+       "UnboundLocalError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__sort_patience_sort__sp-11_s0",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__sort_patience_sort__sp-11_s1",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__sort_patience_sort__sp-11_s2",
+     "transformation_type": "SP-11",
+     "n_inputs_differ": 10,
+     "first": [
+      "[1]",
+      [
+       "ok",
+       "[1]"
+      ],
+      [
+       "ok",
+       "deque([1])"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__str_interleave_check__sp-8_s0",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 1,
+     "first": [
+      "('', '', '')",
+      [
+       "ok",
+       "True"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    },
+    {
+     "pair_id": "val__str_interleave_check__sp-8_s2",
+     "transformation_type": "SP-8",
+     "n_inputs_differ": 1,
+     "first": [
+      "('', '', '')",
+      [
+       "ok",
+       "True"
+      ],
+      [
+       "exc",
+       "NameError"
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}

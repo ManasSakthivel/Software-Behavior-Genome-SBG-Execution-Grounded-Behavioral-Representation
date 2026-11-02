@@ -1,0 +1,16 @@
+Timeout (0:00:40)!
+Thread 0x00000001f20aa180 (most recent call first):
+  File "/Users/manassakthivel/.pyenv/versions/3.13.5/lib/python3.13/selectors.py", line 398 in select
+  File "/Users/manassakthivel/.pyenv/versions/3.13.5/lib/python3.13/subprocess.py", line 2128 in _communicate
+  File "/Users/manassakthivel/.pyenv/versions/3.13.5/lib/python3.13/subprocess.py", line 1222 in communicate
+  File "/Users/manassakthivel/.pyenv/versions/3.13.5/lib/python3.13/subprocess.py", line 556 in run
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/experiments/final/consistency_check.py", line 355 in check_gate
+  File "experiments/final/stanford_gate.py", line 71 in _consistency
+  File "experiments/final/stanford_gate.py", line 294 in internal_consistency
+  File "experiments/final/stanford_gate.py", line 363 in evaluate
+  File "experiments/final/stanford_gate.py", line 383 in main
+  File "experiments/final/stanford_gate.py", line 396 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 287 in run_path
+  File "<string>", line 5 in <module>

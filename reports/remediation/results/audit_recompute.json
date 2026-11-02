@@ -1,0 +1,421 @@
+{
+  "reproduction": {
+    "published_evaluable_sbg_v5": {
+      "expected": 0.545743,
+      "match": true,
+      "n": 643,
+      "recomputed": 0.545743
+    },
+    "published_valid_sbg_v5": {
+      "expected": 0.640032,
+      "match": true,
+      "n": 520,
+      "recomputed": 0.640032
+    },
+    "v6test_all_sbg_v5": {
+      "expected": 0.523592,
+      "match": true,
+      "n": 488,
+      "recomputed": 0.523592
+    },
+    "v6test_all_static_ast": {
+      "expected": 0.350996,
+      "match": true,
+      "n": 488,
+      "recomputed": 0.350996
+    },
+    "v6test_evaluable_sbg_v5": {
+      "expected": 0.60127,
+      "match": true,
+      "n": 259,
+      "recomputed": 0.60127
+    },
+    "v6test_evaluable_static_ast": {
+      "expected": 0.104743,
+      "match": true,
+      "n": 259,
+      "recomputed": 0.104743
+    }
+  },
+  "revision": "dc09fe40b9622f2b85888c12fe90f776e7a18250",
+  "seed": 42,
+  "v6test": {
+    "comparable_sample": {
+      "auroc": {
+        "exception_fraction": 0.618367,
+        "sbg_v5": 0.60127,
+        "static_ast": 0.104743
+      },
+      "n": 259
+    },
+    "denominators": {
+      "ALL": 488,
+      "EVALUABLE": 259,
+      "VALID": 259
+    },
+    "edit_size": {
+      "bins": {
+        "0": {
+          "auroc": 0.646238,
+          "n": 111,
+          "n_changed": 103,
+          "n_equivalent": 8,
+          "range": [
+            0,
+            2
+          ]
+        },
+        "1": {
+          "auroc": 0.597222,
+          "n": 24,
+          "n_changed": 18,
+          "n_equivalent": 6,
+          "range": [
+            3,
+            5
+          ]
+        },
+        "2": {
+          "auroc": null,
+          "n": 31,
+          "n_changed": 0,
+          "n_equivalent": 31,
+          "range": [
+            6,
+            10
+          ]
+        },
+        "3": {
+          "auroc": null,
+          "n": 42,
+          "n_changed": 0,
+          "n_equivalent": 42,
+          "range": [
+            11,
+            20
+          ]
+        },
+        "4": {
+          "auroc": null,
+          "n": 33,
+          "n_changed": 0,
+          "n_equivalent": 33,
+          "range": [
+            21,
+            40
+          ]
+        },
+        "5": {
+          "auroc": null,
+          "n": 18,
+          "n_changed": 0,
+          "n_equivalent": 18,
+          "range": [
+            41,
+            null
+          ]
+        }
+      },
+      "edit_size_alone_auroc": 0.033297,
+      "edit_size_reversed_auroc": 0.966703,
+      "n": 259,
+      "stratified_auroc": 0.640558,
+      "stratified_weight_pairs": 932.0
+    },
+    "entry_correspondence": {
+      "driver_traced": [
+        {
+          "entry": "fn_test_heapsort",
+          "pair_id": "test__sort_heapsort__sp-2_s1",
+          "side": "variant"
+        },
+        {
+          "entry": "fn_test_tokenizer",
+          "pair_id": "test__str_tokenizer__sp-2_s1",
+          "side": "variant"
+        }
+      ],
+      "mismatches": [
+        {
+          "base_entry": "mean",
+          "pair_id": "test__math_statistics__sp-2_s0",
+          "variant_entry": "fn__check_nonempty"
+        },
+        {
+          "base_entry": "mean",
+          "pair_id": "test__math_statistics__sp-2_s1",
+          "variant_entry": "fn__check_nonempty"
+        },
+        {
+          "base_entry": "mean",
+          "pair_id": "test__math_statistics__sp-7_s2",
+          "variant_entry": "median"
+        },
+        {
+          "base_entry": "heapsort",
+          "pair_id": "test__sort_heapsort__sp-2_s0",
+          "variant_entry": "fn__sift_down"
+        },
+        {
+          "base_entry": "heapsort",
+          "pair_id": "test__sort_heapsort__sp-2_s1",
+          "variant_entry": "fn_test_heapsort"
+        },
+        {
+          "base_entry": "counting_sort",
+          "pair_id": "test__sort_counting_sort__sp-2_s2",
+          "variant_entry": "counting_sort_with_freq"
+        },
+        {
+          "base_entry": "token_stream_repr",
+          "pair_id": "test__str_tokenizer__sp-2_s1",
+          "variant_entry": "fn_test_tokenizer"
+        },
+        {
+          "base_entry": "token_stream_repr",
+          "pair_id": "test__str_tokenizer__sp-2_s2",
+          "variant_entry": "fn_tokenize"
+        },
+        {
+          "base_entry": "token_stream_repr",
+          "pair_id": "test__str_tokenizer__sp-7_s0",
+          "variant_entry": "tokenize"
+        }
+      ],
+      "n_evaluated_equivalent": 138,
+      "n_name_inequality_naive": 19,
+      "n_structural_mismatch": 9
+    },
+    "exception_fraction": {
+      "auroc_evaluable": 0.618367,
+      "ci95_cluster_bootstrap": [
+        0.520079,
+        0.700337
+      ],
+      "leave_one_cluster_out": {
+        "err_result_type": 0.626233,
+        "graph_bfs_shortest_path": 0.635814,
+        "math_statistics": 0.609081,
+        "parse_recursive_descent": 0.606687,
+        "sort_counting_sort": 0.591568,
+        "sort_heapsort": 0.599137,
+        "str_tokenizer": 0.657648
+      },
+      "n_clusters": 7,
+      "per_cluster": {
+        "err_result_type": {
+          "auroc": 0.473684,
+          "n": 25,
+          "n_changed": 6
+        },
+        "graph_bfs_shortest_path": {
+          "auroc": 0.5,
+          "n": 35,
+          "n_changed": 16
+        },
+        "math_statistics": {
+          "auroc": 0.666667,
+          "n": 37,
+          "n_changed": 18
+        },
+        "parse_recursive_descent": {
+          "auroc": 0.613043,
+          "n": 38,
+          "n_changed": 23
+        },
+        "sort_counting_sort": {
+          "auroc": 0.73913,
+          "n": 47,
+          "n_changed": 23
+        },
+        "sort_heapsort": {
+          "auroc": 0.766667,
+          "n": 35,
+          "n_changed": 15
+        },
+        "str_tokenizer": {
+          "auroc": 0.431818,
+          "n": 42,
+          "n_changed": 20
+        }
+      },
+      "ties": {
+        "frac_zero": 0.8224,
+        "n": 259,
+        "n_distinct": 6,
+        "n_zero": 213
+      }
+    },
+    "label_balance": {
+      "ALL": {
+        "changed": 246,
+        "equivalent": 242
+      },
+      "EVALUABLE": {
+        "changed": 121,
+        "equivalent": 138
+      },
+      "VALID": {
+        "changed": 121,
+        "equivalent": 138
+      }
+    },
+    "missingness": {
+      "by_kind": {
+        "base:unsupported_signature": 218,
+        "variant:import_error": 4,
+        "variant:nonterminating": 3,
+        "variant:unsupported_signature": 4
+      },
+      "n_unevaluated": 229,
+      "programs_without_any_evaluated_pair": [
+        "api_rate_limiter",
+        "conc_read_write_lock",
+        "ds_hash_table",
+        "file_config_parser",
+        "fsm_vending_machine",
+        "res_object_pool"
+      ]
+    },
+    "n_clusters": {
+      "ALL": 13,
+      "EVALUABLE": 7,
+      "VALID": 7
+    },
+    "n_clusters_with_both_classes": 7,
+    "noise_floor_sbg_v5_evaluable": {
+      "n_shuffles": 2000,
+      "result": {
+        "mean": 0.504593,
+        "n_shuffles": 2000,
+        "p95": 0.551054,
+        "std": 0.028592
+      }
+    },
+    "sbg_v5": {
+      "auroc_evaluable": 0.60127,
+      "ci95_cluster_bootstrap": [
+        0.490396,
+        0.705738
+      ],
+      "leave_one_cluster_out": {
+        "err_result_type": 0.592547,
+        "graph_bfs_shortest_path": 0.614206,
+        "math_statistics": 0.591132,
+        "parse_recursive_descent": 0.592417,
+        "sort_counting_sort": 0.569101,
+        "sort_heapsort": 0.59386,
+        "str_tokenizer": 0.659483
+      },
+      "n_clusters": 7,
+      "per_cluster": {
+        "err_result_type": {
+          "auroc": 0.644737,
+          "n": 25,
+          "n_changed": 6
+        },
+        "graph_bfs_shortest_path": {
+          "auroc": 0.524671,
+          "n": 35,
+          "n_changed": 16
+        },
+        "math_statistics": {
+          "auroc": 0.669591,
+          "n": 37,
+          "n_changed": 18
+        },
+        "parse_recursive_descent": {
+          "auroc": 0.613043,
+          "n": 38,
+          "n_changed": 23
+        },
+        "sort_counting_sort": {
+          "auroc": 0.73913,
+          "n": 47,
+          "n_changed": 23
+        },
+        "sort_heapsort": {
+          "auroc": 0.803333,
+          "n": 35,
+          "n_changed": 15
+        },
+        "str_tokenizer": {
+          "auroc": 0.363636,
+          "n": 42,
+          "n_changed": 20
+        }
+      },
+      "ties": {
+        "frac_zero": 0.5367,
+        "n": 259,
+        "n_distinct": 67,
+        "n_zero": 139
+      }
+    },
+    "sbg_v5_excluding_entry_mismatch": {
+      "auroc": 0.63899,
+      "caveat": "post-hoc exclusion on the observed test split; descriptive sensitivity analysis, not a corrected result",
+      "n": 250
+    },
+    "static_ast": {
+      "auroc_evaluable": 0.104743,
+      "ci95_cluster_bootstrap": [
+        0.065573,
+        0.157425
+      ],
+      "leave_one_cluster_out": {
+        "err_result_type": 0.092948,
+        "graph_bfs_shortest_path": 0.095918,
+        "math_statistics": 0.124908,
+        "parse_recursive_descent": 0.108844,
+        "sort_counting_sort": 0.112782,
+        "sort_heapsort": 0.099496,
+        "str_tokenizer": 0.101144
+      },
+      "n_clusters": 7,
+      "per_cluster": {
+        "err_result_type": {
+          "auroc": 0.342105,
+          "n": 25,
+          "n_changed": 6
+        },
+        "graph_bfs_shortest_path": {
+          "auroc": 0.139803,
+          "n": 35,
+          "n_changed": 16
+        },
+        "math_statistics": {
+          "auroc": 0.017544,
+          "n": 37,
+          "n_changed": 18
+        },
+        "parse_recursive_descent": {
+          "auroc": 0.110145,
+          "n": 38,
+          "n_changed": 23
+        },
+        "sort_counting_sort": {
+          "auroc": 0.061594,
+          "n": 47,
+          "n_changed": 23
+        },
+        "sort_heapsort": {
+          "auroc": 0.155,
+          "n": 35,
+          "n_changed": 15
+        },
+        "str_tokenizer": {
+          "auroc": 0.118182,
+          "n": 42,
+          "n_changed": 20
+        }
+      },
+      "ties": {
+        "frac_zero": 0.0039,
+        "n": 259,
+        "n_distinct": 118,
+        "n_zero": 1
+      }
+    }
+  }
+}

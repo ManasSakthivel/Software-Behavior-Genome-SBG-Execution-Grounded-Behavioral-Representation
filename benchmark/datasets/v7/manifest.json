@@ -1,0 +1,76 @@
+{
+  "benchmark_version": "v7",
+  "generator": "benchmark/scripts/generate_v7_dataset.py",
+  "generated_at": "2026-10-25T16:54:55.440460+00:00",
+  "source_dataset": "benchmark/datasets/v6",
+  "sp2_fix_applied": true,
+  "is_smoke_test": true,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "splits": {
+    "train": {
+      "n_programs": 1,
+      "programs": [
+        "api_rest_crud_mock"
+      ],
+      "n_pairs": 45,
+      "n_equivalent": 21,
+      "n_changed": 24,
+      "n_rejected": 33,
+      "rejected_by_reason": {
+        "no_op": 33
+      }
+    },
+    "dev": {
+      "n_programs": 1,
+      "programs": [
+        "api_event_bus"
+      ],
+      "n_pairs": 47,
+      "n_equivalent": 23,
+      "n_changed": 24,
+      "n_rejected": 31,
+      "rejected_by_reason": {
+        "generator raised": 3,
+        "no_op": 28
+      }
+    },
+    "val": {
+      "n_programs": 0,
+      "programs": [],
+      "n_pairs": 0,
+      "n_equivalent": 0,
+      "n_changed": 0,
+      "n_rejected": 0,
+      "rejected_by_reason": {}
+    },
+    "test": {
+      "n_programs": 1,
+      "programs": [
+        "api_rate_limiter"
+      ],
+      "n_pairs": 41,
+      "n_equivalent": 17,
+      "n_changed": 24,
+      "n_rejected": 37,
+      "rejected_by_reason": {
+        "no_op": 37
+      }
+    }
+  },
+  "total_programs": 3,
+  "total_pairs": 133,
+  "elapsed_seconds": 2.73,
+  "estimated_full_runtime_seconds": 54.6,
+  "data_integrity": {
+    "passed": true,
+    "defect_counts": {
+      "sp2_dangling_method_reference": 0
+    },
+    "active_defect_counts": {},
+    "sp2_dangling_by_split": {}
+  }
+}

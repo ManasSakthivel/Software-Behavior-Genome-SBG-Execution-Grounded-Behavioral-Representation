@@ -1,0 +1,116 @@
+{
+  "_comment": "FREEZE_V8.json TEMPLATE — NOT YET FROZEN. All fields marked <PENDING> must be filled before any test evaluation is run. This template documents the required structure. Committing a completed version of this file constitutes the protocol freeze.",
+  "artifact": "FREEZE_V8",
+  "status": "TEMPLATE_NOT_FROZEN",
+  "written_at": "<ISO-8601 timestamp — must predate first extraction on the test split>",
+  "freeze_commit": "<git SHA — must be the HEAD commit at the time this file is written and committed>",
+  "protocol_id": "output_free_v8",
+  "entry_policy_id": "v8:structural",
+  "entry_policy_class_driver": "<PENDING: owner decision D2 — Option 1 (function-only) or Option 2 (function + structural class driver)>",
+  "protocol_version": "v8",
+  "prerequisites": {
+    "sp2_fix_committed": "5cf5211",
+    "edit_size_redesign_D1": "<PENDING: must be decided and implemented before generation>",
+    "class_driver_policy_D2": "<PENDING: owner decision>",
+    "fresh_programs_source_D3": "<PENDING: provenance record for each program>",
+    "fresh_programs_count": "<PENDING: >= 36 minimum, >= 50 if using Option 1 with 38% eligibility>",
+    "data_integrity_strict_exit_0": "<PENDING: must pass on complete dataset>",
+    "power_analysis_run_on_dev": "<PENDING: must confirm adequate power>",
+    "tau_star_derived_on_new_dev": "<PENDING: re-derive after fresh programs assigned to splits>"
+  },
+  "dataset_version": "v7",
+  "dataset_sha256": {
+    "pairs_train": "<PENDING: sha256 of complete pairs_train.jsonl>",
+    "pairs_dev": "<PENDING: sha256 of complete pairs_dev.jsonl>",
+    "pairs_val": "<PENDING: sha256 of complete pairs_val.jsonl>",
+    "pairs_test": "<PENDING: sha256 of complete pairs_test.jsonl>",
+    "variants_tree_hash": "<PENDING: sha256 of sorted file list + contents of variants/>"
+  },
+  "programs": {
+    "train_count": "<PENDING>",
+    "dev_count": "<PENDING>",
+    "val_count": "<PENDING>",
+    "test_count": "<PENDING: must be genuinely fresh, never scored before freeze>"
+  },
+  "threshold": {
+    "tau_star": "<PENDING: derive on new dev split under output_free_v8>",
+    "artifact": "artifacts/final/THRESHOLD_V8_FROZEN.json",
+    "artifact_sha256": "<PENDING>",
+    "derived_on": "dev",
+    "method": "maximize_youden_j",
+    "note": "Must NOT use test data. Must use output_free_v8 protocol, not v6/v7."
+  },
+  "weight_fitting": {
+    "artifact": "artifacts/final/WEIGHT_FITTING.json",
+    "artifact_sha256": "<PENDING>",
+    "trained_on": "train",
+    "selected_on": "dev",
+    "objective": "maximize_auroc_dev",
+    "note": "fit_weights.py must be run on train split only; dev AUROC used for model selection"
+  },
+  "evaluation_plan": {
+    "path": "docs/current/EVALUATION_PLAN_V8.md",
+    "sha256": "<PENDING: sha256 of EVALUATION_PLAN_V8.md at freeze time>",
+    "owner_approved": "<PENDING: owner approval recorded>"
+  },
+  "baseline_list": [
+    "edit_size_reversed",
+    "exception_fraction",
+    "call_count",
+    "static_ast",
+    "static_token",
+    "sbg_v5"
+  ],
+  "seeds": {
+    "global": 42,
+    "bootstrap": 42,
+    "permutation": 42,
+    "noise_floor": 42,
+    "note": "No other seeds may be tried after freeze"
+  },
+  "python_version": "3.13",
+  "requirements_lock_sha256": "<PENDING: sha256 of requirements-lock.txt at freeze time>",
+  "power_analysis": {
+    "n_programs_total": "<PENDING>",
+    "n_programs_evaluable_estimated": "<PENDING: must be >= 20>",
+    "min_detectable_delta_auroc": "<PENDING: from power_analysis.py on dev>",
+    "power_at_delta": "<PENDING: target >= 0.80>",
+    "method": "clustered bootstrap, per-program unit"
+  },
+  "statistical_analysis_plan": {
+    "primary_metric": "tie_aware_auroc_evaluable_pairs",
+    "secondary_metric": "tie_aware_auroc_all_pairs",
+    "primary_comparison": "paired_cluster_bootstrap_delta_auroc_sbgv5_minus_each_baseline",
+    "multiple_comparison_correction": "holm_bonferroni",
+    "confidence_interval_method": "percentile_cluster_bootstrap_2000_resamples",
+    "sensitivity_check": "leave_one_cluster_out_auroc_range",
+    "noise_floor": "within_cluster_label_shuffle_p95",
+    "success_criterion": "SBG_v5_beats_best_baseline_holm_corrected_lower_CI_delta_auroc_gt_0_AND_within_bin_auroc_exceeds_noise_floor_p95",
+    "stopping_rules": [
+      "If < 15 programs yield evaluated pairs on test: report exploratory",
+      "If data_integrity.py --strict nonzero: stop and fix before scoring",
+      "Exactly one test run: do not re-run after artifact exists"
+    ]
+  },
+  "single_run_policy": {
+    "commands_in_order": [
+      "make v7-train",
+      "make v7-fit",
+      "make v7-test"
+    ],
+    "note": "make v7-test must not be re-run after MAIN_EVALUATION_v7test.json exists. If it fails midway, complete missing pairs with the frozen code revision and log the failure."
+  },
+  "planned_outputs": [
+    "artifacts/final/MAIN_EVALUATION_v7test.json",
+    "artifacts/final/pairs_v7test_output_free_v8.jsonl",
+    "artifacts/final/programs_v7test_output_free_v8.json",
+    "artifacts/final/WEIGHT_FITTING.json",
+    "artifacts/final/THRESHOLD_V8_FROZEN.json"
+  ],
+  "exclusion_rules": {
+    "pair_level": "evaluated=false if base and variant structural interfaces do not correspond, if either side raises entry error, or if data_integrity.py flags it",
+    "program_level": "excluded if no eligible pairs exist under the frozen entry policy",
+    "post_hoc_exclusion_prohibited": true
+  },
+  "provenance_chain": "fresh_programs -> generate_v7_dataset.py (fixed SP-2) -> data_integrity.py --strict (exit 0) -> FREEZE_V8.json committed -> make v7-train -> WEIGHT_FITTING.json committed -> make v7-fit -> make v7-test (single run) -> MAIN_EVALUATION_v7test.json"
+}

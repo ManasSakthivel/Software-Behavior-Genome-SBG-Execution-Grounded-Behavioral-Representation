@@ -14,13 +14,14 @@ That is an output comparison. It never computes an SBG distance. The README
 nevertheless reported its 12/12 score under the heading "Behavioral oracle",
 attributing an output-reading result to the output-free representation.
 
-This script computes the actual SBG V5 distance and applies the pre-fixed
-decision threshold tau* = 0.08 (the median SBG distance of semantics-preserving
-dev pairs, fixed before the hard negatives were scored and not re-tuned here).
+This script computes the actual SBG V5 distance and applies the inherited
+decision threshold tau* = 0.08 (described historically as the median SBG distance
+of semantics-preserving dev pairs; no derivation artifact exists, so "fixed
+before scoring" is unverified. See docs/current/THRESHOLD_PROVENANCE.md).
 The output comparison is retained, relabelled as what it is: an output-reading
 reference that bounds what any output-free method could achieve on this set.
 
-Two input regimes are reported, both fixed in advance:
+Two input regimes are reported (declared in this file before running):
 
   canonical  the 11 protocol inputs, so the numbers are comparable with the
              main benchmark
@@ -54,7 +55,7 @@ from sbg.v5.temporal_genome_v5 import extract as extract_temporal    # noqa: E40
 from experiments.final.extraction import CANONICAL_INPUTS, W_STATE, W_TEMPORAL, W_V3  # noqa: E402
 
 PAIRS_DIR = REPO_ROOT / "benchmark" / "v5" / "hard_negatives"
-TAU_STAR = 0.08          # pre-fixed; see docstring. Never re-tuned in this file.
+TAU_STAR = 0.08          # inherited constant, not tuned in this file; derivation unverified
 SEED = 42
 
 _runner = SandboxRunner()
@@ -206,8 +207,8 @@ def evaluate(regime: str) -> Dict[str, Any]:
         "n_pairs": len(rows),
         "threshold_tau_star": TAU_STAR,
         "threshold_provenance": (
-            "median SBG distance of semantics-preserving dev pairs; fixed before "
-            "these pairs were scored and not re-tuned here"
+            "inherited constant, not re-tuned in this script; no derivation "
+            "artifact exists (docs/current/THRESHOLD_PROVENANCE.md)"
         ),
         "metrics": {
             "sbg_v5_output_free": confusion("sbg_v5_predicted"),

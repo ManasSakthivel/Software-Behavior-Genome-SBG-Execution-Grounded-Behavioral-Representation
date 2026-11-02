@@ -1,0 +1,143 @@
+{
+  "status": "FIT COMPLETE on train, selected on dev. NOT scored on any test split (WEIGHT_FITTING.json['test'] is null).",
+  "artifact": {
+    "path": "artifacts/final/WEIGHT_FITTING.json",
+    "sha256": "6d1e157a1a317845d0c143de2cb586c69613df3cbfd704cf5870adb4b75553fb"
+  },
+  "script": "experiments/final/fit_weights.py (stage `fit`)",
+  "command": "../venvs/py313/bin/python experiments/final/fit_weights.py fit",
+  "preregistration": "docs/current/PHASE2_PREREGISTRATION.md section 4",
+  "fitted_at_utc": "2026-10-28T14:40:37+00:00",
+  "data_boundaries": {
+    "fit_on": "v6 TRAIN VALID pairs only (pairs_v6train_output_free_v7.jsonl)",
+    "selected_on": "v6 DEV AUROC (pairs_v6dev_output_free_v7.jsonl)",
+    "test_split_opened": false,
+    "enforcement": "fit_weights.py FILES['test'] is only read to refuse refit if learned scores already present; pairs_v6test_output_free_v7.jsonl does not exist",
+    "program_counts": {
+      "train": 28,
+      "dev": 9
+    },
+    "pair_counts_valid": {
+      "train": 1033,
+      "dev": 345
+    },
+    "train_dev_program_overlap": []
+  },
+  "inputs": {
+    "train_pairs": "artifacts/final/pairs_v6train_output_free_v7.jsonl",
+    "train_pairs_sha256": "ebbc7a411180017720ffc6435589e3ae042d78c0865365916a779af5bae4a6f5",
+    "dev_pairs": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+    "dev_pairs_sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6",
+    "n_train_valid": 1033,
+    "n_train_programs": 28,
+    "n_dev_valid": 345,
+    "n_dev_programs": 9
+  },
+  "procedure": {
+    "fit_on": "train split, statistically valid pairs (BENCHMARK_VALIDITY_AUDIT_V7)",
+    "select_on": "dev split AUROC; ties -> simpler model (M0 < M1 < M2)",
+    "optimiser": "full-batch gradient descent, lr 0.5, 5000 iterations, zero initialisation",
+    "loss": "mean log-loss + 1.0 * ||w||^2 / n_train (bias unpenalised)",
+    "standardisation": "train mean / population std; std 0 -> 1",
+    "score": "linear logit of the fitted model"
+  },
+  "models": {
+    "M0": {
+      "features": [
+        "sbg_v5 (0.50 v3 + 0.25 temporal + 0.25 state)"
+      ],
+      "train_auroc": 0.665329,
+      "dev_auroc": 0.667125
+    },
+    "M1": {
+      "features": [
+        "sbg_v3",
+        "sbg_temporal",
+        "sbg_state"
+      ],
+      "weights_standardised": [
+        -0.269543545,
+        -0.288363661,
+        1.119138078
+      ],
+      "bias": -0.152794982,
+      "feature_means": [
+        0.13360158357,
+        0.149979432362,
+        0.229181434401
+      ],
+      "feature_stds": [
+        0.207218928806,
+        0.252570999545,
+        0.346328833148
+      ],
+      "final_mean_logloss": 0.639068817,
+      "train_auroc": 0.694957,
+      "dev_auroc": 0.665632
+    },
+    "M2": {
+      "features": [
+        "sbg_v3",
+        "sbg_temporal",
+        "sbg_state",
+        "exception_fraction",
+        "exception_component_v3",
+        "exception_type_jaccard",
+        "call_count",
+        "n_functions",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        -0.366439254,
+        -0.469118492,
+        0.835671723,
+        0.09952815,
+        0.085248013,
+        0.125549044,
+        0.683771806,
+        -0.261417191,
+        0.024203659
+      ],
+      "bias": -0.145837007,
+      "feature_means": [
+        0.13360158357,
+        0.149979432362,
+        0.229181434401,
+        0.042018626845,
+        0.107234000805,
+        0.143433365603,
+        0.302929712229,
+        0.150759754986,
+        0.449932374228
+      ],
+      "feature_stds": [
+        0.207218928806,
+        0.252570999545,
+        0.346328833148,
+        0.119921379114,
+        0.252178382625,
+        0.334357350445,
+        0.450761100524,
+        0.301122355757,
+        0.4246744966
+      ],
+      "final_mean_logloss": 0.621745216,
+      "train_auroc": 0.724219,
+      "dev_auroc": 0.71281
+    }
+  },
+  "chosen_on_dev": "M2",
+  "stale_input_warnings": [
+    "pairs_v6dev_output_free_v7.jsonl (frozen 2026-09-28) does NOT reproduce byte-for-byte under current code (46 of 345 pair scores differ, max |dSBG|=0.0167 at HEAD f15cb9a; 7 pairs additionally become non-evaluable under the uncommitted tracer edits). The fit used the frozen file, as the protocol requires.",
+    "train file was produced with the working-tree tracer/runner edits (RecursionError early-exit, no snapshot after deadline); the first 1000 pairs came from checkpoint written by the interrupted run /tmp/v7_train_eval_r2.log (same code), the last 129 from the resumed run /tmp/v7_train_eval_r3.log."
+  ],
+  "caveats": [
+    "Dev AUROC for M2 (0.7128) vs M0 (0.6671) is a model-selection statistic on 9 programs.",
+    "Paired delta sbg_v5 - learned_m2 on dev: -0.0457 CI [-0.110, 0.040] (includes 0): the dev gain is not statistically distinguishable from M0.",
+    "On v8 dev (out-of-distribution, unused in fitting) M2 = 0.804 vs M0 = 0.739; paired delta -0.064 CI [-0.096, -0.034]."
+  ],
+  "recomputed_comparisons": {
+    "path": "artifacts/paper_evidence/raw/recomputed_comparisons.json",
+    "sha256": "66f6ef6d0a6148d6742fec459fa291377442e888568aa543828c8e43b8f76bb6"
+  }
+}

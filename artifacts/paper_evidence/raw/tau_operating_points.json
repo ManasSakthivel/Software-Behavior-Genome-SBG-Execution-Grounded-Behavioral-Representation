@@ -1,0 +1,26 @@
+{
+  "tau_star": 0.072905,
+  "rule": "detected iff sbg_v5 > tau_star",
+  "source": "artifacts/final/THRESHOLD_FROZEN.json",
+  "v6dev_v7": {
+    "n_changed": 156,
+    "n_equivalent": 189,
+    "tpr": 0.557692,
+    "fpr": 0.179894,
+    "youden_j": 0.377798
+  },
+  "v6train_v7": {
+    "n_changed": 474,
+    "n_equivalent": 559,
+    "tpr": 0.5,
+    "fpr": 0.194991,
+    "youden_j": 0.305009
+  },
+  "v8dev_v8_rescore": {
+    "n_changed": 344,
+    "n_equivalent": 249,
+    "tpr": 0.514535,
+    "fpr": 0.104418,
+    "youden_j": 0.410117
+  }
+}

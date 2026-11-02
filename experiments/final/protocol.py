@@ -39,6 +39,7 @@ Neither depends on any label or any method's score.
 from __future__ import annotations
 
 import ast
+import copy
 import types
 from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
@@ -158,7 +159,12 @@ def synthesise_inputs(annotations: Sequence[Optional[str]]) -> Optional[List[Any
     for index in range(BATTERY_SIZE):
         values = tuple(column[index % len(column)] for column in columns)
         inputs.append(values[0] if len(values) == 1 else values)
-    return inputs
+    # The batteries are module-level lists. An in-place sorter (heapsort,
+    # counting sort, ...) mutates its argument, so without a copy every
+    # extraction after the first in a process saw already-sorted inputs and
+    # recorded a different event count (sort_heapsort: 8771 cold, 8855 warm).
+    # Copy per call so the result does not depend on extraction order.
+    return copy.deepcopy(inputs)
 
 
 def eligible_candidates(tree: ast.Module) -> List[Tuple[str, List[Any], bool]]:

@@ -1,0 +1,37 @@
+{
+  "pairs_file": "/tmp/devrepro_head/pairs_v6dev_output_free_v7.jsonl",
+  "dataset_dir": "benchmark/datasets/v6",
+  "n_evaluated": 345,
+  "n_changed": 156,
+  "n_equivalent": 189,
+  "n_programs": 9,
+  "edit_size_forward_auroc": 0.043091,
+  "edit_size_reversed_auroc": 0.956909,
+  "edit_size_forward_ci95": [
+    0.018877,
+    0.067336,
+    2000
+  ],
+  "sbg_v5_auroc": 0.678317,
+  "sbg_v5_ci95": [
+    0.608659,
+    0.753886,
+    2000
+  ],
+  "edit_size_stats": {
+    "mean_changed": 2.212,
+    "mean_equivalent": 23.831
+  },
+  "M1_auroc_with_train_fit_weights": 0.677571,
+  "M1_ci95": [
+    0.59787,
+    0.762375,
+    2000
+  ],
+  "M2_auroc_with_train_fit_weights": 0.744115,
+  "M2_ci95": [
+    0.700341,
+    0.810914,
+    2000
+  ]
+}

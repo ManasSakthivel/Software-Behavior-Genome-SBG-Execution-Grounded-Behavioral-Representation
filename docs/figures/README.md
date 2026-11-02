@@ -37,7 +37,8 @@ shown separately. Nothing is dropped without a name.
 **Figure 3 — SBG against an output-reading reference.** The reference compares
 program outputs, which makes it a ceiling rather than a competitor. Earlier
 releases reported its scores — 12/12 and 14/15 — under headings that read as SBG
-results. The threshold τ\* = 0.08 was fixed before these pairs were scored.
+results. The threshold τ\* = 0.08 has no derivation artifact in the repository, so
+that it was fixed before these pairs were scored is unverified.
 
 **Figure 4 — What the published protocol traces.** Static analysis of all 64
 corpus programs; nothing is executed. Entry-point discovery returns the

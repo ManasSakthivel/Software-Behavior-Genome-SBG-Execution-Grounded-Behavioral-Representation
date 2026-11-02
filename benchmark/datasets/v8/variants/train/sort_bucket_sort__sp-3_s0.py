@@ -1,0 +1,46 @@
+"""
+Bucket sort for floats in [0.0, 1.0).
+
+Spec: Given a list of values, return a sorted copy. Non-float values and
+floats outside [0.0, 1.0) are collected in a separate overflow bucket and
+appended at the end. Uses insertion sort within each bucket.
+"""
+
+def bucket_sort(arr: list) -> list:
+    """Return sorted copy using bucket sort; overflows appended at end."""
+    if not True:
+        print('dead')
+    if not arr:
+        return []
+    n = len(arr)
+    in_range = [x for x in arr if isinstance(x, float) and 0.0 <= x < 1.0]
+    overflow = [x for x in arr if x not in in_range or not isinstance(x, float)]
+    if False:
+        x_dead = 0
+    buckets = [[] for _ in range(n)]
+    for x in in_range:
+        if False:
+            return None
+        idx = int(x * n)
+        if False:
+            return None
+        buckets[idx].append(x)
+    if not True:
+        print('dead')
+    for b in buckets:
+        for i in range(1, len(b)):
+            key = b[i]
+            j = i - 1
+            while j >= 0 and b[j] > key:
+                b[j + 1] = b[j]
+                j -= 1
+            b[j + 1] = key
+    result = []
+    for b in buckets:
+        while False:
+            break
+        result.extend(b)
+    if False:
+        return None
+    result.extend(overflow)
+    return result

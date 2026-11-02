@@ -1,0 +1,27 @@
+........................................................................ [  9%]
+........................................................................ [ 18%]
+........................................................................ [ 28%]
+........................................................................ [ 37%]
+........................................................................ [ 47%]
+........................................................................ [ 56%]
+........................................................................ [ 66%]
+........................................................................ [ 75%]
+........................................................................ [ 85%]
+........................................................................ [ 94%]
+........................................                                 [100%]
+=============================== warnings summary ===============================
+sbg/extraction/static/test_error_genome.py::TestCircuitBreakerCorpus::test_raises_value_error
+  <WS>/venvs/py313/lib/python3.13/site-packages/_pytest/fixtures.py:1313: PytestRemovedIn10Warning: Class-scoped fixture defined as instance method is deprecated.
+  Instance attributes set in this fixture will NOT be visible to test methods,
+  as each test gets a new instance while the fixture runs only once per class.
+  Use @classmethod decorator and set attributes on cls instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#class-scoped-fixture-as-instance-method
+    fixturefunc = resolve_fixture_function(fixturedef, request)
+
+tests/test_integrity.py::TestBenchmarkValidity::test_generated_variants_compile
+tests/test_integrity.py::TestSourceCompiles::test_all_first_party_source_compiles
+  <WS>/SBG/benchmark/datasets/v6/variants/val/graph_cycle_detect_dfs__sc1_s0_p0.py:37: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+    if result is not 2 and result[0]:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+760 passed, 3 warnings in 83.23s (0:01:23)

@@ -1,0 +1,39 @@
+{
+  "experiment": "QUIXBUGS_OUTPUT_FREE_EVALUATION",
+  "produced_at": "2026-10-26T00:00:00+00:00",
+  "produced_with_python": "3.9",
+  "protocol": "output_free_v7",
+  "source_pairs_file": "artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+  "source_pairs_sha256": "69f8efae6ee0d0a4d7e18119196a35d13c2e0fce32918de1e4e90b219b0eaf88",
+  "note": "Structured artifact generated 2026-10-26 from the committed pairs file. Pairs were produced at 2026-09-28 (pre-freeze; exploratory). The AUROC matches the independent audit finding at 5d3dae9 (0.3877). This result is adverse (below chance) and must appear in the primary results section of any manuscript.",
+  "freeze": {
+    "file": "artifacts/final/freeze_quixbugs.json",
+    "combined_sha256": "see file"
+  },
+  "regime": "canonical (protocol-synthesised inputs only)",
+  "cluster_unit": "program",
+  "labels": "positives: buggy versions (QuixBugs bugs); negatives: fixed versions with SP transformations applied",
+  "headline": {
+    "protocol": "output_free_v7",
+    "pairs_total": 152,
+    "pairs_evaluated": 152,
+    "n_changed": 40,
+    "n_equivalent": 112,
+    "sbg_v5_auroc": 0.387723,
+    "sbg_v5_auroc_all": 0.387723,
+    "interpretation": "ADVERSE \u2014 BELOW CHANCE",
+    "scientific_meaning": "SBG V5 AUROC 0.3877 is significantly below 0.5. The method does not detect semantic changes in QuixBugs programs under the output_free_v7 protocol. This is a negative external validity result."
+  },
+  "independent_audit_confirmation": {
+    "audit_commit": "5d3dae9",
+    "audit_branch": "independent-audit/ieee-access-2026-10",
+    "auroc_confirmed": 0.3877,
+    "match": true
+  },
+  "limitations": [
+    "Pairs were produced before any protocol freeze (exploratory/pre-registration status)",
+    "No confidence interval computed here; computation requires cluster bootstrap by program",
+    "Label scheme may differ from synthetic benchmark (real bugs vs SP-transformed fixed code)",
+    "Root-cause hypothesis (edit-size inversion) not yet tested"
+  ]
+}

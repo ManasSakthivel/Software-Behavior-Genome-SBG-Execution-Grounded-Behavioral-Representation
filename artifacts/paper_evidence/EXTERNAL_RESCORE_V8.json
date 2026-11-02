@@ -1,0 +1,126 @@
+{
+ "artifact": "EXTERNAL_RESCORE_V8",
+ "status": "EXPLORATORY: corrected harness (re.purge per extraction, structural rename-invariant entry policy), same pairs/labels as the committed v7 artifacts; no tuning; committed artifacts unchanged",
+ "protocol": "output_free_v8",
+ "sources": {
+  "bugsinpy": "artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+  "quixbugs_canonical": "artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl"
+ },
+ "corpora": {
+  "bugsinpy": {
+   "corpus": "bugsinpy",
+   "protocol": "output_free_v8",
+   "n_pairs_total": 147,
+   "n_evaluated": 147,
+   "unevaluated": {},
+   "rescored_all": {
+    "n_pairs": 147,
+    "n_pos": 41,
+    "n_neg": 106,
+    "n_clusters": 39,
+    "auroc": 0.4159,
+    "ci95_cluster_bootstrap": [
+     0.3223,
+     0.5144
+    ]
+   },
+   "rescored_excluding_SP2": {
+    "n_pairs": 107,
+    "n_pos": 41,
+    "n_neg": 66,
+    "n_clusters": 39,
+    "auroc": 0.497,
+    "ci95_cluster_bootstrap": [
+     0.4023,
+     0.5956
+    ]
+   },
+   "committed_v7_same_pairs": {
+    "n_pairs": 147,
+    "n_pos": 41,
+    "n_neg": 106,
+    "n_clusters": 39,
+    "auroc": 0.4099,
+    "ci95_cluster_bootstrap": [
+     0.3262,
+     0.4939
+    ]
+   },
+   "mean_sbg_v5_by_negative_transformation": {
+    "SP-1": 0.0396,
+    "SP-2": 0.2008,
+    "SP-3": 0.0503,
+    "SP-4": 0.1033,
+    "SP-6": 0.0
+   },
+   "sp2_pairs": 40,
+   "sp2_pairs_with_nonzero_sbg_v5": 36,
+   "sp2_pairs_with_entry_renamed": 40,
+   "self_distance_v5": {
+    "n_bases": 41,
+    "n_nonzero": 3,
+    "max": 0.673460603
+   },
+   "real_bug_pairs_sbg_v5_exactly_zero": 26,
+   "real_bug_pairs_evaluated": 41
+  },
+  "quixbugs_canonical": {
+   "corpus": "quixbugs_canonical",
+   "protocol": "output_free_v8",
+   "n_pairs_total": 152,
+   "n_evaluated": 151,
+   "unevaluated": {
+    "nonterminating": 1
+   },
+   "rescored_all": {
+    "n_pairs": 151,
+    "n_pos": 39,
+    "n_neg": 112,
+    "n_clusters": 40,
+    "auroc": 0.3842,
+    "ci95_cluster_bootstrap": [
+     0.2847,
+     0.4899
+    ]
+   },
+   "rescored_excluding_SP2": {
+    "n_pairs": 111,
+    "n_pos": 39,
+    "n_neg": 72,
+    "n_clusters": 40,
+    "auroc": 0.4444,
+    "ci95_cluster_bootstrap": [
+     0.3553,
+     0.5385
+    ]
+   },
+   "committed_v7_same_pairs": {
+    "n_pairs": 151,
+    "n_pos": 39,
+    "n_neg": 112,
+    "n_clusters": 40,
+    "auroc": 0.372,
+    "ci95_cluster_bootstrap": [
+     0.2743,
+     0.4799
+    ]
+   },
+   "mean_sbg_v5_by_negative_transformation": {
+    "SP-1": 0.0007,
+    "SP-2": 0.0137,
+    "SP-3": 0.0111,
+    "SP-6": 0.0
+   },
+   "sp2_pairs": 40,
+   "sp2_pairs_with_nonzero_sbg_v5": 29,
+   "sp2_pairs_with_entry_renamed": 40,
+   "self_distance_v5": {
+    "n_bases": 40,
+    "n_nonzero": 1,
+    "max": 0.026238675
+   },
+   "real_bug_pairs_sbg_v5_exactly_zero": 32,
+   "real_bug_pairs_evaluated": 39
+  }
+ }
+}

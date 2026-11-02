@@ -1,0 +1,170 @@
+{
+  "artifact": "V9_MODELS_FROZEN",
+  "fitted_on": {
+    "design": "v9c",
+    "split": "train",
+    "population": "matched-complete",
+    "n_pairs": 1650,
+    "n_programs": 46,
+    "scored_pairs_sha256": "276f357b11f8dc5f8f5dbb21a6ff14c637061f30a95b4d168eb7e47593596474"
+  },
+  "fit": "experiments/final/fit_weights.fit_logistic (L2=1.0, lr=0.5, 5000 its, standardised features); logit scores",
+  "models": {
+    "E": {
+      "features": [
+        "edit"
+      ],
+      "weights_standardised": [
+        0.292613103
+      ],
+      "bias": 0.002506615,
+      "feature_means": [
+        9.410303030303
+      ],
+      "feature_stds": [
+        6.497609110326
+      ],
+      "final_mean_logloss": 0.682840389
+    },
+    "ES": {
+      "features": [
+        "edit",
+        "sbg_v5"
+      ],
+      "weights_standardised": [
+        0.223325573,
+        0.612090429
+      ],
+      "bias": 0.02861252,
+      "feature_means": [
+        9.410303030303,
+        0.126723406784
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.195639889919
+      ],
+      "final_mean_logloss": 0.644907754
+    },
+    "EX": {
+      "features": [
+        "edit",
+        "exception_fraction",
+        "call_count",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        0.003118504,
+        0.40361919,
+        -0.122182388,
+        0.503135926
+      ],
+      "bias": 0.024480303,
+      "feature_means": [
+        9.410303030303,
+        0.04989277196,
+        0.133810236394,
+        0.370011168333
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.136387091645,
+        0.336116987428,
+        0.403388780223
+      ],
+      "final_mean_logloss": 0.640856156
+    },
+    "ESX": {
+      "features": [
+        "edit",
+        "sbg_v5",
+        "exception_fraction",
+        "call_count",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        0.108816852,
+        1.258708239,
+        -0.054487343,
+        -0.882940219,
+        0.191717612
+      ],
+      "bias": 0.054914193,
+      "feature_means": [
+        9.410303030303,
+        0.126723406784,
+        0.04989277196,
+        0.133810236394,
+        0.370011168333
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.195639889919,
+        0.136387091645,
+        0.336116987428,
+        0.403388780223
+      ],
+      "final_mean_logloss": 0.609838317
+    },
+    "E+v3": {
+      "features": [
+        "edit",
+        "sbg_v3"
+      ],
+      "weights_standardised": [
+        0.21017372,
+        0.535214025
+      ],
+      "bias": 0.022591853,
+      "feature_means": [
+        9.410303030303,
+        0.091601942939
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.144168573864
+      ],
+      "final_mean_logloss": 0.654326839
+    },
+    "E+temporal": {
+      "features": [
+        "edit",
+        "sbg_temporal"
+      ],
+      "weights_standardised": [
+        0.274139823,
+        0.23398149
+      ],
+      "bias": 0.004934963,
+      "feature_means": [
+        9.410303030303,
+        0.100237545036
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.215865914397
+      ],
+      "final_mean_logloss": 0.676463575
+    },
+    "E+state": {
+      "features": [
+        "edit",
+        "sbg_state"
+      ],
+      "weights_standardised": [
+        0.224693054,
+        0.805184576
+      ],
+      "bias": 0.052780873,
+      "feature_means": [
+        9.410303030303,
+        0.223452196265
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.345574701388
+      ],
+      "final_mean_logloss": 0.620055515
+    }
+  }
+}

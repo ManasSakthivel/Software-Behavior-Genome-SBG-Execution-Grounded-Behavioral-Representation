@@ -1,0 +1,1050 @@
+{
+  "purpose": "Decompose why reversed edit size (AUROC ~0.85-0.96) outperforms SBG V5 (~0.67-0.74).",
+  "scope": "v6 train, v6 dev, v8 dev only; no test split read",
+  "runs": {
+    "v6train_v7": {
+      "run": "v6train_v7",
+      "n": 1033,
+      "sources": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6train_output_free_v7.jsonl",
+          "sha256": "ebbc7a411180017720ffc6435589e3ae042d78c0865365916a779af5bae4a6f5"
+        },
+        "audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+          "sha256": "4360b99f942a7f30b3165c4a7197717dbb11c234dc68e7a9a4ad366df49fb347"
+        }
+      },
+      "D1_metric_check": {
+        "sbg_v5": {
+          "library": 0.665329,
+          "brute_force": 0.665329
+        },
+        "neg_ast_size": {
+          "library": 0.954372,
+          "brute_force": 0.954372
+        }
+      },
+      "D2_edit_size_measures": {
+        "canonical_ast_lines": {
+          "forward_auroc_size_predicts_changed": 0.045628,
+          "reversed_auroc": 0.954372,
+          "mean_changed": 2.291,
+          "mean_equivalent": 24.689
+        },
+        "raw_text_lines": {
+          "forward_auroc_size_predicts_changed": 0.306039,
+          "reversed_auroc": 0.693961,
+          "mean_changed": 84.378,
+          "mean_equivalent": 111.564
+        },
+        "raw_char_edit": {
+          "forward_auroc_size_predicts_changed": 0.28771,
+          "reversed_auroc": 0.71229,
+          "mean_changed": 656.485,
+          "mean_equivalent": 1053.44
+        }
+      },
+      "D3_by_family": {
+        "SC-1": {
+          "label": [
+            1
+          ],
+          "n": 44,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.1032,
+          "detect_rate_at_tau": 0.341
+        },
+        "SC-10": {
+          "label": [
+            1
+          ],
+          "n": 24,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0457,
+          "detect_rate_at_tau": 0.125
+        },
+        "SC-11": {
+          "label": [
+            1
+          ],
+          "n": 54,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.2849,
+          "detect_rate_at_tau": 0.537
+        },
+        "SC-13": {
+          "label": [
+            1
+          ],
+          "n": 57,
+          "edit_size_median": 3,
+          "edit_size_mean": 3.63,
+          "edit_size_max": 15,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.445,
+          "detect_rate_at_tau": 0.737
+        },
+        "SC-2": {
+          "label": [
+            1
+          ],
+          "n": 57,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.2608,
+          "detect_rate_at_tau": 0.632
+        },
+        "SC-3": {
+          "label": [
+            1
+          ],
+          "n": 61,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.1587,
+          "detect_rate_at_tau": 0.311
+        },
+        "SC-4": {
+          "label": [
+            1
+          ],
+          "n": 54,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.67,
+          "edit_size_max": 14,
+          "frac_size_le2": 0.944,
+          "sbg_mean": 0.1603,
+          "detect_rate_at_tau": 0.444
+        },
+        "SC-5": {
+          "label": [
+            1
+          ],
+          "n": 54,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.407,
+          "detect_rate_at_tau": 0.889
+        },
+        "SC-6": {
+          "label": [
+            1
+          ],
+          "n": 54,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.1148,
+          "detect_rate_at_tau": 0.333
+        },
+        "SC-7": {
+          "label": [
+            1
+          ],
+          "n": 3,
+          "edit_size_median": 5,
+          "edit_size_mean": 5.0,
+          "edit_size_max": 5,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0323,
+          "detect_rate_at_tau": 0.0
+        },
+        "SC-8": {
+          "label": [
+            1
+          ],
+          "n": 12,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0424,
+          "detect_rate_at_tau": 0.25
+        },
+        "SP-1": {
+          "label": [
+            0
+          ],
+          "n": 70,
+          "edit_size_median": 14,
+          "edit_size_mean": 24.94,
+          "edit_size_max": 106,
+          "frac_size_le2": 0.043,
+          "sbg_mean": 0.0227,
+          "detect_rate_at_tau": 0.043
+        },
+        "SP-11": {
+          "label": [
+            0
+          ],
+          "n": 15,
+          "edit_size_median": 18,
+          "edit_size_mean": 16.2,
+          "edit_size_max": 23,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0742,
+          "detect_rate_at_tau": 0.2
+        },
+        "SP-2": {
+          "label": [
+            0
+          ],
+          "n": 84,
+          "edit_size_median": 14,
+          "edit_size_mean": 17.5,
+          "edit_size_max": 62,
+          "frac_size_le2": 0.131,
+          "sbg_mean": 0.3241,
+          "detect_rate_at_tau": 0.536
+        },
+        "SP-3": {
+          "label": [
+            0
+          ],
+          "n": 84,
+          "edit_size_median": 69,
+          "edit_size_mean": 65.94,
+          "edit_size_max": 115,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0381,
+          "detect_rate_at_tau": 0.036
+        },
+        "SP-4": {
+          "label": [
+            0
+          ],
+          "n": 84,
+          "edit_size_median": 24,
+          "edit_size_mean": 22.86,
+          "edit_size_max": 39,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.02,
+          "detect_rate_at_tau": 0.036
+        },
+        "SP-5": {
+          "label": [
+            0
+          ],
+          "n": 59,
+          "edit_size_median": 4,
+          "edit_size_mean": 7.8,
+          "edit_size_max": 48,
+          "frac_size_le2": 0.22,
+          "sbg_mean": 0.0606,
+          "detect_rate_at_tau": 0.169
+        },
+        "SP-6": {
+          "label": [
+            0
+          ],
+          "n": 84,
+          "edit_size_median": 18,
+          "edit_size_mean": 19.5,
+          "edit_size_max": 46,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0452,
+          "detect_rate_at_tau": 0.083
+        },
+        "SP-7": {
+          "label": [
+            0
+          ],
+          "n": 32,
+          "edit_size_median": 12,
+          "edit_size_mean": 13.12,
+          "edit_size_max": 30,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.2633,
+          "detect_rate_at_tau": 0.5
+        },
+        "SP-8": {
+          "label": [
+            0
+          ],
+          "n": 38,
+          "edit_size_median": 8,
+          "edit_size_mean": 9.13,
+          "edit_size_max": 24,
+          "frac_size_le2": 0.053,
+          "sbg_mean": 0.1711,
+          "detect_rate_at_tau": 0.421
+        },
+        "SP-9": {
+          "label": [
+            0
+          ],
+          "n": 9,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.16,
+          "detect_rate_at_tau": 0.333
+        }
+      },
+      "D3_label_is_function_of_family": true,
+      "D3_families_with_label": {
+        "CHANGED": [
+          "SC-1",
+          "SC-2",
+          "SC-3",
+          "SC-4",
+          "SC-5",
+          "SC-6",
+          "SC-13",
+          "SC-8",
+          "SC-11",
+          "SC-10",
+          "SC-7"
+        ],
+        "EQUIVALENT": [
+          "SP-2",
+          "SP-3",
+          "SP-4",
+          "SP-5",
+          "SP-6",
+          "SP-1",
+          "SP-8",
+          "SP-11",
+          "SP-7",
+          "SP-9"
+        ]
+      },
+      "D4_size_controlled": {
+        "stratified_exact_size_auroc_sbg_v5": 0.650033,
+        "n_cross_label_comparisons": 15030.0,
+        "ci95_cluster_bootstrap_1000": [
+          0.522227,
+          0.779557,
+          1000
+        ],
+        "fraction_of_all_cross_label_pairs_retained": 0.0567,
+        "note": "compares only CHANGED vs EQUIVALENT pairs with identical canonical edit size; edit size alone gives AUROC 0.5 by construction in this estimator",
+        "subset_size_1_to_5": {
+          "n": 551,
+          "n_changed": 468,
+          "n_equivalent": 83,
+          "sbg_auroc": 0.635954,
+          "edit_size_reversed_auroc": 0.727062
+        }
+      },
+      "D5_spearman_sbg_vs_edit_size": {
+        "within_changed": 0.288,
+        "within_equivalent": 0.0709,
+        "all": -0.1995
+      },
+      "D6_equivalent_pairs_with_size_le2": {
+        "n": 38,
+        "of_equivalent": 559,
+        "families": [
+          "SP-1",
+          "SP-2",
+          "SP-5",
+          "SP-8",
+          "SP-9"
+        ],
+        "sbg_mean_these": 0.1367,
+        "sbg_mean_all_changed": 0.2286
+      }
+    },
+    "v6dev_v7": {
+      "run": "v6dev_v7",
+      "n": 345,
+      "sources": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+          "sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6"
+        },
+        "audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+          "sha256": "4360b99f942a7f30b3165c4a7197717dbb11c234dc68e7a9a4ad366df49fb347"
+        }
+      },
+      "D1_metric_check": {
+        "sbg_v5": {
+          "library": 0.667125,
+          "brute_force": 0.667125
+        },
+        "neg_ast_size": {
+          "library": 0.956909,
+          "brute_force": 0.956909
+        }
+      },
+      "D2_edit_size_measures": {
+        "canonical_ast_lines": {
+          "forward_auroc_size_predicts_changed": 0.043091,
+          "reversed_auroc": 0.956909,
+          "mean_changed": 2.212,
+          "mean_equivalent": 23.831
+        },
+        "raw_text_lines": {
+          "forward_auroc_size_predicts_changed": 0.399081,
+          "reversed_auroc": 0.600919,
+          "mean_changed": 102.929,
+          "mean_equivalent": 116.905
+        },
+        "raw_char_edit": {
+          "forward_auroc_size_predicts_changed": 0.397385,
+          "reversed_auroc": 0.602615,
+          "mean_changed": 768.885,
+          "mean_equivalent": 1024.984
+        }
+      },
+      "D3_by_family": {
+        "SC-1": {
+          "label": [
+            1
+          ],
+          "n": 12,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.2432,
+          "detect_rate_at_tau": 0.75
+        },
+        "SC-10": {
+          "label": [
+            1
+          ],
+          "n": 9,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0668,
+          "detect_rate_at_tau": 0.333
+        },
+        "SC-11": {
+          "label": [
+            1
+          ],
+          "n": 21,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.2553,
+          "detect_rate_at_tau": 0.571
+        },
+        "SC-12": {
+          "label": [
+            1
+          ],
+          "n": 3,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0176,
+          "detect_rate_at_tau": 0.0
+        },
+        "SC-13": {
+          "label": [
+            1
+          ],
+          "n": 21,
+          "edit_size_median": 3,
+          "edit_size_mean": 3.57,
+          "edit_size_max": 7,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.33,
+          "detect_rate_at_tau": 1.0
+        },
+        "SC-2": {
+          "label": [
+            1
+          ],
+          "n": 15,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.3243,
+          "detect_rate_at_tau": 0.6
+        },
+        "SC-3": {
+          "label": [
+            1
+          ],
+          "n": 15,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0559,
+          "detect_rate_at_tau": 0.2
+        },
+        "SC-4": {
+          "label": [
+            1
+          ],
+          "n": 15,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.1225,
+          "detect_rate_at_tau": 0.4
+        },
+        "SC-5": {
+          "label": [
+            1
+          ],
+          "n": 21,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.4192,
+          "detect_rate_at_tau": 1.0
+        },
+        "SC-6": {
+          "label": [
+            1
+          ],
+          "n": 21,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.064,
+          "detect_rate_at_tau": 0.143
+        },
+        "SC-8": {
+          "label": [
+            1
+          ],
+          "n": 3,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0153,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-1": {
+          "label": [
+            0
+          ],
+          "n": 27,
+          "edit_size_median": 14,
+          "edit_size_mean": 18.59,
+          "edit_size_max": 64,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0099,
+          "detect_rate_at_tau": 0.037
+        },
+        "SP-11": {
+          "label": [
+            0
+          ],
+          "n": 6,
+          "edit_size_median": 21,
+          "edit_size_mean": 19.83,
+          "edit_size_max": 23,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0377,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-2": {
+          "label": [
+            0
+          ],
+          "n": 27,
+          "edit_size_median": 16,
+          "edit_size_mean": 17.93,
+          "edit_size_max": 48,
+          "frac_size_le2": 0.148,
+          "sbg_mean": 0.4482,
+          "detect_rate_at_tau": 0.741
+        },
+        "SP-3": {
+          "label": [
+            0
+          ],
+          "n": 27,
+          "edit_size_median": 65,
+          "edit_size_mean": 71.96,
+          "edit_size_max": 152,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0235,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-4": {
+          "label": [
+            0
+          ],
+          "n": 27,
+          "edit_size_median": 21,
+          "edit_size_mean": 23.22,
+          "edit_size_max": 37,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0035,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-5": {
+          "label": [
+            0
+          ],
+          "n": 24,
+          "edit_size_median": 4,
+          "edit_size_mean": 5.17,
+          "edit_size_max": 16,
+          "frac_size_le2": 0.25,
+          "sbg_mean": 0.0904,
+          "detect_rate_at_tau": 0.25
+        },
+        "SP-6": {
+          "label": [
+            0
+          ],
+          "n": 27,
+          "edit_size_median": 20,
+          "edit_size_mean": 18.67,
+          "edit_size_max": 30,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0035,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-7": {
+          "label": [
+            0
+          ],
+          "n": 11,
+          "edit_size_median": 12,
+          "edit_size_mean": 10.91,
+          "edit_size_max": 12,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.1919,
+          "detect_rate_at_tau": 0.273
+        },
+        "SP-8": {
+          "label": [
+            0
+          ],
+          "n": 10,
+          "edit_size_median": 8,
+          "edit_size_mean": 7.5,
+          "edit_size_max": 16,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.24,
+          "detect_rate_at_tau": 0.4
+        },
+        "SP-9": {
+          "label": [
+            0
+          ],
+          "n": 3,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0,
+          "detect_rate_at_tau": 0.0
+        }
+      },
+      "D3_label_is_function_of_family": true,
+      "D3_families_with_label": {
+        "CHANGED": [
+          "SC-2",
+          "SC-3",
+          "SC-4",
+          "SC-5",
+          "SC-6",
+          "SC-10",
+          "SC-11",
+          "SC-13",
+          "SC-1",
+          "SC-12",
+          "SC-8"
+        ],
+        "EQUIVALENT": [
+          "SP-1",
+          "SP-2",
+          "SP-3",
+          "SP-4",
+          "SP-5",
+          "SP-6",
+          "SP-8",
+          "SP-11",
+          "SP-7",
+          "SP-9"
+        ]
+      },
+      "D4_size_controlled": {
+        "stratified_exact_size_auroc_sbg_v5": 0.49696,
+        "n_cross_label_comparisons": 1809.0,
+        "ci95_cluster_bootstrap_1000": [
+          0.273858,
+          0.756757,
+          1000
+        ],
+        "fraction_of_all_cross_label_pairs_retained": 0.0614,
+        "note": "compares only CHANGED vs EQUIVALENT pairs with identical canonical edit size; edit size alone gives AUROC 0.5 by construction in this estimator",
+        "subset_size_1_to_5": {
+          "n": 189,
+          "n_changed": 153,
+          "n_equivalent": 36,
+          "sbg_auroc": 0.605846,
+          "edit_size_reversed_auroc": 0.793301
+        }
+      },
+      "D5_spearman_sbg_vs_edit_size": {
+        "within_changed": 0.2341,
+        "within_equivalent": 0.0593,
+        "all": -0.219
+      },
+      "D6_equivalent_pairs_with_size_le2": {
+        "n": 13,
+        "of_equivalent": 189,
+        "families": [
+          "SP-2",
+          "SP-5",
+          "SP-9"
+        ],
+        "sbg_mean_these": 0.1953,
+        "sbg_mean_all_changed": 0.2154
+      }
+    },
+    "v8dev_v8_rescore": {
+      "run": "v8dev_v8_rescore",
+      "n": 593,
+      "sources": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+          "sha256": "86ff18771d3563c4fede04d6f437fdd024791f2838ce19579ea7a6b1bae50f81"
+        },
+        "audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json",
+          "sha256": "06840ff1c178a86acb0414e8a0abf99839e4208dfcb48c75a1c6ac2eee2792a1"
+        }
+      },
+      "D1_metric_check": {
+        "sbg_v5": {
+          "library": 0.739259,
+          "brute_force": 0.739259
+        },
+        "neg_ast_size": {
+          "library": 0.845212,
+          "brute_force": 0.845212
+        }
+      },
+      "D2_edit_size_measures": {
+        "canonical_ast_lines": {
+          "forward_auroc_size_predicts_changed": 0.154788,
+          "reversed_auroc": 0.845212,
+          "mean_changed": 2.738,
+          "mean_equivalent": 9.169
+        },
+        "raw_text_lines": {
+          "forward_auroc_size_predicts_changed": 0.203062,
+          "reversed_auroc": 0.796938,
+          "mean_changed": 13.779,
+          "mean_equivalent": 19.847
+        },
+        "raw_char_edit": {
+          "forward_auroc_size_predicts_changed": 0.225022,
+          "reversed_auroc": 0.774978,
+          "mean_changed": 167.445,
+          "mean_equivalent": 289.45
+        }
+      },
+      "D3_by_family": {
+        "SC-1": {
+          "label": [
+            1
+          ],
+          "n": 33,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.73,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.909,
+          "sbg_mean": 0.033,
+          "detect_rate_at_tau": 0.061
+        },
+        "SC-10": {
+          "label": [
+            1
+          ],
+          "n": 27,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.89,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.889,
+          "sbg_mean": 0.0966,
+          "detect_rate_at_tau": 0.444
+        },
+        "SC-11": {
+          "label": [
+            1
+          ],
+          "n": 38,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.53,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.921,
+          "sbg_mean": 0.3988,
+          "detect_rate_at_tau": 0.868
+        },
+        "SC-13": {
+          "label": [
+            1
+          ],
+          "n": 42,
+          "edit_size_median": 3,
+          "edit_size_mean": 3.57,
+          "edit_size_max": 11,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.4124,
+          "detect_rate_at_tau": 1.0
+        },
+        "SC-2": {
+          "label": [
+            1
+          ],
+          "n": 39,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.62,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.923,
+          "sbg_mean": 0.2156,
+          "detect_rate_at_tau": 0.692
+        },
+        "SC-3": {
+          "label": [
+            1
+          ],
+          "n": 18,
+          "edit_size_median": 2,
+          "edit_size_mean": 3.33,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.833,
+          "sbg_mean": 0.0442,
+          "detect_rate_at_tau": 0.222
+        },
+        "SC-4": {
+          "label": [
+            1
+          ],
+          "n": 42,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.57,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.929,
+          "sbg_mean": 0.0355,
+          "detect_rate_at_tau": 0.214
+        },
+        "SC-5": {
+          "label": [
+            1
+          ],
+          "n": 42,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.57,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.929,
+          "sbg_mean": 0.3613,
+          "detect_rate_at_tau": 0.929
+        },
+        "SC-6": {
+          "label": [
+            1
+          ],
+          "n": 42,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.57,
+          "edit_size_max": 10,
+          "frac_size_le2": 0.929,
+          "sbg_mean": 0.0056,
+          "detect_rate_at_tau": 0.0
+        },
+        "SC-8": {
+          "label": [
+            1
+          ],
+          "n": 21,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.0,
+          "edit_size_max": 2,
+          "frac_size_le2": 1.0,
+          "sbg_mean": 0.0614,
+          "detect_rate_at_tau": 0.429
+        },
+        "SP-1": {
+          "label": [
+            0
+          ],
+          "n": 34,
+          "edit_size_median": 10,
+          "edit_size_mean": 8.88,
+          "edit_size_max": 18,
+          "frac_size_le2": 0.088,
+          "sbg_mean": 0.0068,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-11": {
+          "label": [
+            0
+          ],
+          "n": 6,
+          "edit_size_median": 11,
+          "edit_size_mean": 10.5,
+          "edit_size_max": 11,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0233,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-2": {
+          "label": [
+            0
+          ],
+          "n": 42,
+          "edit_size_median": 2,
+          "edit_size_mean": 2.76,
+          "edit_size_max": 12,
+          "frac_size_le2": 0.881,
+          "sbg_mean": 0.0056,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-3": {
+          "label": [
+            0
+          ],
+          "n": 42,
+          "edit_size_median": 16,
+          "edit_size_mean": 16.9,
+          "edit_size_max": 35,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0284,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-4": {
+          "label": [
+            0
+          ],
+          "n": 42,
+          "edit_size_median": 8,
+          "edit_size_mean": 9.43,
+          "edit_size_max": 18,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.0056,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-5": {
+          "label": [
+            0
+          ],
+          "n": 24,
+          "edit_size_median": 8,
+          "edit_size_mean": 7.67,
+          "edit_size_max": 16,
+          "frac_size_le2": 0.042,
+          "sbg_mean": 0.0571,
+          "detect_rate_at_tau": 0.083
+        },
+        "SP-6": {
+          "label": [
+            0
+          ],
+          "n": 35,
+          "edit_size_median": 4,
+          "edit_size_mean": 4.97,
+          "edit_size_max": 12,
+          "frac_size_le2": 0.286,
+          "sbg_mean": 0.0067,
+          "detect_rate_at_tau": 0.0
+        },
+        "SP-8": {
+          "label": [
+            0
+          ],
+          "n": 24,
+          "edit_size_median": 16,
+          "edit_size_mean": 14.08,
+          "edit_size_max": 20,
+          "frac_size_le2": 0.0,
+          "sbg_mean": 0.3961,
+          "detect_rate_at_tau": 1.0
+        }
+      },
+      "D3_label_is_function_of_family": true,
+      "D3_families_with_label": {
+        "CHANGED": [
+          "SC-1",
+          "SC-2",
+          "SC-4",
+          "SC-5",
+          "SC-6",
+          "SC-11",
+          "SC-13",
+          "SC-8",
+          "SC-3",
+          "SC-10"
+        ],
+        "EQUIVALENT": [
+          "SP-1",
+          "SP-2",
+          "SP-3",
+          "SP-4",
+          "SP-6",
+          "SP-8",
+          "SP-5",
+          "SP-11"
+        ]
+      },
+      "D4_size_controlled": {
+        "stratified_exact_size_auroc_sbg_v5": 0.857525,
+        "n_cross_label_comparisons": 14971.0,
+        "ci95_cluster_bootstrap_1000": [
+          0.80476,
+          0.901189,
+          1000
+        ],
+        "fraction_of_all_cross_label_pairs_retained": 0.1748,
+        "note": "compares only CHANGED vs EQUIVALENT pairs with identical canonical edit size; edit size alone gives AUROC 0.5 by construction in this estimator",
+        "subset_size_1_to_5": {
+          "n": 391,
+          "n_changed": 317,
+          "n_equivalent": 74,
+          "sbg_auroc": 0.843167,
+          "edit_size_reversed_auroc": 0.61301
+        }
+      },
+      "D5_spearman_sbg_vs_edit_size": {
+        "within_changed": 0.4058,
+        "within_equivalent": 0.6144,
+        "all": 0.0297
+      },
+      "D6_equivalent_pairs_with_size_le2": {
+        "n": 51,
+        "of_equivalent": 249,
+        "families": [
+          "SP-1",
+          "SP-2",
+          "SP-5",
+          "SP-6"
+        ],
+        "sbg_mean_these": 0.0097,
+        "sbg_mean_all_changed": 0.1848
+      }
+    }
+  }
+}

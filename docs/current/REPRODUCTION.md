@@ -100,8 +100,29 @@ After `make check` on an unmodified checkout:
 [PASS] C5 no retired claim appears in a current document
 [PASS] C6 no output-reading result is attributed to SBG
 [PASS] C7 output-free protocol traces no self-test driver
+[PASS] C8 README results block matches the generated tables
+[PASS] C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)
+[PASS] C10 gate verdict is recomputed from artifacts and quoted exactly
 
-7/7 checks passed
+10/10 checks passed
 ```
 
 If any check fails, the message names the file, the line and the correct value.
+
+## Final research-strengthening sprint (2026-10-30)
+
+All sprint analyses are **exploratory and read-only over frozen scores**; none overwrites a frozen artifact. Run from
+`experiments/final/` with `PYTHONHASHSEED=0` and the CPython 3.13 interpreter (`PY`):
+
+```bash
+cd experiments/final
+PYTHONHASHSEED=0 $PY sprint_incremental.py main    # 42 frozen-number checks + diagnostics A-D -> artifacts/paper_evidence/INCREMENTAL_CONTRIBUTION_ANALYSIS_main.json   (~4 min)
+PYTHONHASHSEED=0 $PY sprint_incremental.py lopo    # leave-one-program-out refit sensitivity     -> ..._lopo.json
+PYTHONHASHSEED=0 $PY sprint_case_studies.py select # deterministic case selection                -> REPRESENTATION_CASES_selection.json
+PYTHONHASHSEED=0 $PY sprint_case_studies.py trace  # re-traces 10 pairs, asserts == frozen scores -> REPRESENTATION_CASES_traces.json
+PYTHONHASHSEED=0 $PY sprint_practical.py           # review-budget triage metrics                -> PRACTICAL_SIGNIFICANCE_ANALYSIS.json
+python3 cobol_inventory.py                         # read-only corpus audit (needs cobc, local COBOLSRC) -> COBOL_CORPUS_INVENTORY.json
+```
+
+The COBOL corpus (`/Users/manassakthivel/Desktop/COBOLSRC`) is not redistributed; the audit records its path and SHA-256 digests only.
+Index of the sprint deliverables: `artifacts/paper_evidence/FINAL_SPRINT_REPORT.md`.

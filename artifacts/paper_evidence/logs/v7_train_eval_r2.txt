@@ -1,0 +1,1240 @@
+  [output_free_v7/train] 25/1129 pairs     0.4s  60.08 pairs/s
+  [output_free_v7/train] 50/1129 pairs    74.6s   0.67 pairs/s
+  [output_free_v7/train] 75/1129 pairs   323.0s   0.23 pairs/s
+Exception in thread Thread-11782 (<lambda>):
+Exception in thread Thread-11783 (<lambda>):
+Exception in thread Thread-11784 (<lambda>):
+Exception in thread Thread-11785 (<lambda>):
+Exception in thread Thread-11786 (<lambda>):
+Exception in thread Thread-11787 (<lambda>):
+Exception in thread Thread-11788 (<lambda>):
+Exception in thread Thread-11789 (<lambda>):
+Exception in thread Thread-11790 (<lambda>):
+Exception in thread Thread-11791 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11793 (<lambda>):
+Exception in thread Thread-11794 (<lambda>):
+Exception in thread Thread-11795 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-11796 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-11798 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-11800 (<lambda>):
+Exception in thread Thread-11801 (<lambda>):
+Exception in thread Thread-11799 (<lambda>):
+Exception in thread Thread-11802 (<lambda>):
+Exception in thread Thread-11797 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11804 (<lambda>):
+Exception in thread Thread-11805 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11806 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11807 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11808 (<lambda>):
+Exception in thread Thread-11809 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-11810 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Exception in thread Thread-11812 (<lambda>):
+Exception in thread Thread-11813 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Exception in thread Thread-11811 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11815 (<lambda>):
+Exception in thread Thread-11816 (<lambda>):
+Exception in thread Thread-11817 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11818 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Exception in thread Thread-11819 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-11820 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception in thread Thread-11821 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-11824 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Exception in thread Thread-11823 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-11822 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Exception in thread Thread-11826 (<lambda>):
+Exception in thread Thread-11827 (<lambda>):
+Exception in thread Thread-11828 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+Traceback (most recent call last):
+Exception in thread Thread-11830 (<lambda>):
+Exception in thread Thread-11831 (<lambda>):
+Exception in thread Thread-11832 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Exception in thread Thread-11834 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-11829 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-11835 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Exception in thread Thread-11833 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sp-2_s0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [counter.increment() for _ in range(n_increments)])
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+AttributeError: 'ThreadSafeCounter' object has no attribute 'increment'. Did you mean: 'fn_increment'?
+  [output_free_v7/train] 100/1129 pairs   434.3s   0.23 pairs/s
+Exception in thread Thread-13447 (<lambda>):
+Exception in thread Thread-13448 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-13449 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception in thread Thread-13452 (<lambda>):
+Exception in thread Thread-13451 (<lambda>):
+Exception in thread Thread-13453 (<lambda>):
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Exception in thread Thread-13454 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-13450 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-13455 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Traceback (most recent call last):
+Traceback (most recent call last):
+Exception in thread Thread-13456 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Exception in thread Thread-13458 (<lambda>):
+Exception in thread Thread-13459 (<lambda>):
+Exception in thread Thread-13460 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Traceback (most recent call last):
+Exception in thread Thread-13461 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-13462 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-13463 (<lambda>):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Exception in thread Thread-13464 (<lambda>):
+Exception in thread Thread-13466 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Exception in thread Thread-13467 (<lambda>):
+Exception in thread Thread-13465 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Exception in thread Thread-13469 (<lambda>):
+Exception in thread Thread-13470 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Exception in thread Thread-13471 (<lambda>):
+Exception in thread Thread-13472 (<lambda>):
+Exception in thread Thread-13473 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-13474 (<lambda>):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Exception in thread Thread-13475 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Exception in thread Thread-13477 (<lambda>):
+Exception in thread Thread-13478 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Exception in thread Thread-13476 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Exception in thread Thread-13480 (<lambda>):
+Exception in thread Thread-13481 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Exception in thread Thread-13482 (<lambda>):
+Exception in thread Thread-13484 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception in thread Thread-13485 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Exception in thread Thread-13483 (<lambda>):
+Exception in thread Thread-13486 (<lambda>):
+Exception in thread Thread-13487 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Exception in thread Thread-13489 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception in thread Thread-13488 (<lambda>):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+Exception in thread Thread-13491 (<lambda>):
+Exception in thread Thread-13492 (<lambda>):
+Exception in thread Thread-13493 (<lambda>):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Exception in thread Thread-13494 (<lambda>):
+Traceback (most recent call last):
+Exception in thread Thread-13495 (<lambda>):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Exception in thread Thread-13497 (<lambda>):
+Exception in thread Thread-13498 (<lambda>):
+Exception in thread Thread-13499 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Exception in thread Thread-13500 (<lambda>):
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception in thread Thread-13496 (<lambda>):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+Traceback (most recent call last):
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "~/.pyenv/versions/3.13.5/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "benchmark/datasets/v6/variants/train/conc_thread_safe_counter__sc11_s0_p0.py", line 46, in <lambda>
+    t = threading.Thread(target=lambda: [ThreadSafeCounter.increment() for _ in range(n_increments)])
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+TypeError: ThreadSafeCounter.increment() missing 1 required positional argument: 'self'
+  [output_free_v7/train] 125/1129 pairs   523.0s   0.24 pairs/s
+  [output_free_v7/train] 150/1129 pairs   523.5s   0.29 pairs/s
+  [output_free_v7/train] 175/1129 pairs   525.6s   0.33 pairs/s
+  [output_free_v7/train] 200/1129 pairs   534.1s   0.37 pairs/s
+  [output_free_v7/train] 225/1129 pairs   537.1s   0.42 pairs/s
+  [output_free_v7/train] 250/1129 pairs   537.5s   0.47 pairs/s
+  [output_free_v7/train] 275/1129 pairs   718.5s   0.38 pairs/s
+  [output_free_v7/train] 300/1129 pairs   848.2s   0.35 pairs/s
+  [output_free_v7/train] 325/1129 pairs   848.4s   0.38 pairs/s
+  [output_free_v7/train] 350/1129 pairs   848.6s   0.41 pairs/s
+  [output_free_v7/train] 375/1129 pairs   848.9s   0.44 pairs/s
+  [output_free_v7/train] 400/1129 pairs   904.6s   0.44 pairs/s
+  [output_free_v7/train] 425/1129 pairs  1007.4s   0.42 pairs/s
+  [output_free_v7/train] 450/1129 pairs  1040.4s   0.43 pairs/s
+  [output_free_v7/train] 475/1129 pairs  1048.1s   0.45 pairs/s
+  [output_free_v7/train] 500/1129 pairs  1048.9s   0.48 pairs/s
+  [output_free_v7/train] 525/1129 pairs  1049.4s   0.50 pairs/s
+  [output_free_v7/train] 550/1129 pairs  1049.7s   0.52 pairs/s
+  [output_free_v7/train] 575/1129 pairs  1049.9s   0.55 pairs/s
+  [output_free_v7/train] 600/1129 pairs  1050.3s   0.57 pairs/s
+  [output_free_v7/train] 625/1129 pairs  1050.6s   0.59 pairs/s
+  [output_free_v7/train] 650/1129 pairs  1087.2s   0.60 pairs/s
+  [output_free_v7/train] 675/1129 pairs  1262.7s   0.53 pairs/s
+  [output_free_v7/train] 700/1129 pairs  1455.1s   0.48 pairs/s
+  [output_free_v7/train] 725/1129 pairs  1638.0s   0.44 pairs/s
+  [output_free_v7/train] 750/1129 pairs  1896.6s   0.40 pairs/s
+  [output_free_v7/train] 775/1129 pairs  2229.9s   0.35 pairs/s
+  [output_free_v7/train] 800/1129 pairs  2645.8s   0.30 pairs/s
+  [output_free_v7/train] 825/1129 pairs  3272.4s   0.25 pairs/s
+  [output_free_v7/train] 850/1129 pairs  3722.5s   0.23 pairs/s
+  [output_free_v7/train] 875/1129 pairs  3908.3s   0.22 pairs/s
+  [output_free_v7/train] 900/1129 pairs  4481.2s   0.20 pairs/s
+  [output_free_v7/train] 925/1129 pairs  5036.6s   0.18 pairs/s
+  [output_free_v7/train] 950/1129 pairs  5543.1s   0.17 pairs/s
+  [output_free_v7/train] 975/1129 pairs  6082.0s   0.16 pairs/s
+  [output_free_v7/train] 1000/1129 pairs  7003.6s   0.14 pairs/s

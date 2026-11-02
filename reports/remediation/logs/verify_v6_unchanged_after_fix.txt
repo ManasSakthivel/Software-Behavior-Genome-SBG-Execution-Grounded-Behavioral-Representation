@@ -1,0 +1,16 @@
+ok  api_rate_limiter             v6=unsupported_signature v7=class:LeakyBucket,SlidingWindowCounter,TokenBucket
+ok  conc_read_write_lock         v6=unsupported_signature v7=class:ProtectedDict,ReadWriteLock
+ok  ds_hash_table                v6=unsupported_signature v7=class:HashTable
+ok  err_result_type              v6=annotated:parse_int v7=annotated:parse_int
+ok  file_config_parser           v6=unsupported_signature v7=class:ConfigParser
+ok  fsm_vending_machine          v6=unsupported_signature v7=class:VendingMachine
+ok  graph_bfs_shortest_path      v6=annotated:bfs v7=annotated:bfs
+ok  math_statistics              v6=annotated:mean v7=annotated:mean
+ok  parse_recursive_descent      v6=priority:evaluate v7=priority:evaluate
+ok  res_object_pool              v6=unsupported_signature v7=unsupported_signature
+ok  sort_counting_sort           v6=annotated:counting_sort v7=annotated:counting_sort
+ok  sort_heapsort                v6=annotated:heapsort v7=annotated:heapsort
+ok  str_tokenizer                v6=annotated:token_stream_repr v7=annotated:token_stream_repr
+
+13 programs, 0 violations, nondeterministic: none
+EXIT=0

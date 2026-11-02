@@ -18,6 +18,15 @@ Output
 ------
     artifacts/final/pairs_<split>_<protocol>.jsonl     one row per pair
     artifacts/final/programs_<split>_<protocol>.json   one row per program
+
+Checkpointing
+-------------
+A checkpoint file ``<out_dir>/checkpoint_<tag>_<protocol>.jsonl`` is written
+after every ``--checkpoint-every`` pairs (default 50).  On restart the script
+reads the checkpoint, skips already-completed pairs, and resumes from where
+it left off.  The checkpoint is deleted on successful completion.  The
+programs cache is rebuilt from the checkpoint rows on resume so extraction
+results are not repeated for base programs already seen.
 """
 from __future__ import annotations
 
@@ -41,17 +50,47 @@ def load_pairs(split: str, dataset_dir: pathlib.Path) -> list:
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
 
 
+def _checkpoint_path(out_dir: pathlib.Path, tag: str, protocol: str) -> pathlib.Path:
+    return out_dir / f"checkpoint_{tag}_{protocol}.jsonl"
+
+
+def _load_checkpoint(ckpt_path: pathlib.Path) -> tuple[list, set]:
+    """Return (completed_rows, completed_pair_ids). Empty if no checkpoint."""
+    if not ckpt_path.exists():
+        return [], set()
+    rows = []
+    ids: set = set()
+    for line in ckpt_path.read_text().splitlines():
+        if line.strip():
+            r = json.loads(line)
+            rows.append(r)
+            ids.add(r["pair_id"])
+    print(f"  [checkpoint] resuming from {len(rows)} completed pairs", flush=True)
+    return rows, ids
+
+
+def _write_checkpoint(ckpt_path: pathlib.Path, rows: list) -> None:
+    ckpt_path.write_text("".join(json.dumps(r) + "\n" for r in rows))
+
+
 def run(split: str, protocol: str, out_dir: pathlib.Path,
         dataset_dir: pathlib.Path = None, tag: str = None,
-        progress_every: int = 25) -> dict:
+        progress_every: int = 25, checkpoint_every: int = 50) -> dict:
     dataset_dir = (dataset_dir or (REPO_ROOT / "benchmark" / "datasets")).resolve()
     tag = tag or split
     pairs = load_pairs(split, dataset_dir)
     cache: dict = {}
-    rows = []
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    ckpt_path = _checkpoint_path(out_dir, tag, protocol)
+    rows, completed_ids = _load_checkpoint(ckpt_path)
     started = time.time()
 
     for index, pair in enumerate(pairs, start=1):
+        if pair["pair_id"] in completed_ids:
+            # Already completed in a prior run; skip extraction but keep row.
+            continue
+
         base = extract_program(str(REPO_ROOT / pair["base_path"]), cache, protocol)
         variant = extract_program(str(REPO_ROOT / pair["variant_path"]), cache, protocol)
         scores = score_pair(base, variant)
@@ -86,14 +125,21 @@ def run(split: str, protocol: str, out_dir: pathlib.Path,
             row["scores"] = scores
         rows.append(row)
 
+        n_done = len(rows)
+        if n_done % checkpoint_every == 0:
+            _write_checkpoint(ckpt_path, rows)
+
         if index % progress_every == 0 or index == len(pairs):
             elapsed = time.time() - started
-            rate = index / elapsed if elapsed else 0.0
+            rate = n_done / elapsed if elapsed else 0.0
             print(f"  [{protocol}/{split}] {index}/{len(pairs)} pairs  "
                   f"{elapsed:6.1f}s  {rate:5.2f} pairs/s", flush=True)
 
-    out_dir.mkdir(parents=True, exist_ok=True)
     pairs_path = out_dir / f"pairs_{tag}_{protocol}.jsonl"
+    # Re-order rows to match the original pair order (checkpoint rows may be
+    # interleaved with resumed rows in a different order on restart).
+    pair_order = {p["pair_id"]: i for i, p in enumerate(pairs)}
+    rows.sort(key=lambda r: pair_order.get(r["pair_id"], len(pairs)))
     pairs_path.write_text("".join(json.dumps(r) + "\n" for r in rows))
 
     programs = {path: record.summary() for path, record in cache.items()}
@@ -107,6 +153,10 @@ def run(split: str, protocol: str, out_dir: pathlib.Path,
         "wall_time_s": round(time.time() - started, 1),
         "programs": programs,
     }, indent=2) + "\n")
+
+    # Remove checkpoint now that the final artifacts are written.
+    if ckpt_path.exists():
+        ckpt_path.unlink()
 
     n_eval = sum(1 for r in rows if r["evaluated"])
     print(f"[{protocol}/{split}] {n_eval}/{len(rows)} pairs evaluated; "
@@ -125,9 +175,12 @@ def main() -> int:
                              "benchmark/datasets/v6 for the corrected benchmark")
     parser.add_argument("--tag", default=None,
                         help="name used in the output filenames (default: the split)")
+    parser.add_argument("--checkpoint-every", type=int, default=50,
+                        help="write a resume checkpoint every N completed pairs (default 50)")
     args = parser.parse_args()
     run(args.split, args.protocol, pathlib.Path(args.out_dir),
-        pathlib.Path(args.dataset_dir) if args.dataset_dir else None, args.tag)
+        pathlib.Path(args.dataset_dir) if args.dataset_dir else None, args.tag,
+        checkpoint_every=args.checkpoint_every)
     return 0
 
 

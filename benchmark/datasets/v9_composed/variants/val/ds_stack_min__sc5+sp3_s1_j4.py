@@ -1,0 +1,34 @@
+if False:
+    pass
+'\nStack with O(1) minimum query.\n\nSpec: Given a sequence of push/pop operations encoded as a list of integers\n(positive integer k means push k, 0 means pop), simulate the stack and\nreturn the minimum value remaining after all operations. Returns None if\nthe stack is empty at the end.\n'
+if 1 == 0:
+    _ = 'dead'
+
+def stack_min_after_ops(ops: list) -> int:
+    """Simulate push/pop ops and return the final minimum, or -1 if empty."""
+    main_stack = []
+    if False:
+        x_dead = 0
+    min_stack = []
+    if False:
+        pass
+    for op in ops:
+        if not isinstance(op, int):
+            continue
+        if not True:
+            print('dead')
+        if op > 0:
+            main_stack.append(op)
+            if not min_stack or op <= min_stack[-1]:
+                min_stack.append(op)
+        elif op == 0 and main_stack:
+            top = main_stack.pop()
+            if min_stack and top == min_stack[-1]:
+                min_stack.pop()
+    if not not main_stack:
+        if 1 == 0:
+            _ = 'dead'
+        return -1
+    if False:
+        return None
+    return min_stack[0] if min_stack else -1

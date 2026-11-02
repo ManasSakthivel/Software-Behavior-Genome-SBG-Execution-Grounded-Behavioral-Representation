@@ -1,0 +1,144 @@
+{
+  "purpose": "isolate why re-scoring v6 dev differs from the frozen artifact on 46/345 pairs",
+  "split": "dev only",
+  "frozen_artifact": {
+    "path": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+    "sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6",
+    "sbg_v5_valid_auroc_and_n": [
+      0.667125,
+      345
+    ]
+  },
+  "comparisons": {
+    "ad7b655_hs0": {
+      "rescore_file_sha256": "ff3ecadde3a5943f0bb7ea7343f5004466335c3f2e8bc7abd9786901b74d9210",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 18,
+      "differs_by_base_program": {
+        "graph_connected_components": 18
+      },
+      "max_abs_delta_sbg_v5": 0.036412,
+      "sbg_v5_valid_auroc_and_n": [
+        0.666989,
+        345
+      ]
+    },
+    "ad7b655_hs1": {
+      "rescore_file_sha256": "349d59262f13e34674500077e02968a60c760c72865e3c627a3d7fd56162df41",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 18,
+      "differs_by_base_program": {
+        "graph_connected_components": 18
+      },
+      "max_abs_delta_sbg_v5": 0.03673,
+      "sbg_v5_valid_auroc_and_n": [
+        0.666989,
+        345
+      ]
+    },
+    "ad7b655_hs5": {
+      "rescore_file_sha256": "9ae9304a93b0adc59240fb2650389c6e005f14dd4a6ec7b572f5c5469022af0d",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 18,
+      "differs_by_base_program": {
+        "graph_connected_components": 18
+      },
+      "max_abs_delta_sbg_v5": 0.020418,
+      "sbg_v5_valid_auroc_and_n": [
+        0.667023,
+        345
+      ]
+    },
+    "ad7b655_hs21": {
+      "rescore_file_sha256": "612a4e22c64953cc55fc70b0acc7449f4fd7e66720f07398b738c29d7b8205d1",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 18,
+      "differs_by_base_program": {
+        "graph_connected_components": 18
+      },
+      "max_abs_delta_sbg_v5": 0.013395,
+      "sbg_v5_valid_auroc_and_n": [
+        0.667226,
+        345
+      ]
+    },
+    "ad7b655_hs38": {
+      "rescore_file_sha256": "ac54b1e9938a4f63de1e8dffde1941f6b9f9c0b0ac8cc2daa8da474a5bf71bf0",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 0,
+      "differs_by_base_program": {},
+      "max_abs_delta_sbg_v5": 0,
+      "sbg_v5_valid_auroc_and_n": [
+        0.667125,
+        345
+      ]
+    },
+    "ad7b655_plus_deepcopy_only_hs38": {
+      "rescore_file_sha256": "6d5c64b7172c8e6be8b91f60e918b636f0f26610a72f7dff5a76c9363b8a8048",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 28,
+      "differs_by_base_program": {
+        "sort_quicksort": 28
+      },
+      "max_abs_delta_sbg_v5": 0.010523,
+      "sbg_v5_valid_auroc_and_n": [
+        0.678317,
+        345
+      ]
+    },
+    "d9d6380_hs0": {
+      "rescore_file_sha256": "97f25a4434770f6da4f8e20a663b114855cde5ee1d005a54cb7081c224684f61",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 46,
+      "differs_by_base_program": {
+        "graph_connected_components": 18,
+        "sort_quicksort": 28
+      },
+      "max_abs_delta_sbg_v5": 0.036412,
+      "sbg_v5_valid_auroc_and_n": [
+        0.678283,
+        345
+      ]
+    },
+    "d9d6380_hs38": {
+      "rescore_file_sha256": "6d5c64b7172c8e6be8b91f60e918b636f0f26610a72f7dff5a76c9363b8a8048",
+      "n_evaluated_status_differs": 0,
+      "n_score_differs_among_commonly_evaluated": 28,
+      "differs_by_base_program": {
+        "sort_quicksort": 28
+      },
+      "max_abs_delta_sbg_v5": 0.010523,
+      "sbg_v5_valid_auroc_and_n": [
+        0.678317,
+        345
+      ]
+    },
+    "b54ea99_hs0": {
+      "rescore_file_sha256": "85c4b803070aa6dbaa5ff506064a3842cb070957855e8fe6d00a6b8a60a437ac",
+      "n_evaluated_status_differs": 7,
+      "n_score_differs_among_commonly_evaluated": 39,
+      "differs_by_base_program": {
+        "graph_connected_components": 17,
+        "sort_quicksort": 22
+      },
+      "max_abs_delta_sbg_v5": 0.036412,
+      "sbg_v5_valid_auroc_and_n": [
+        0.66814,
+        338
+      ]
+    },
+    "b54ea99_hs38": {
+      "rescore_file_sha256": "ee20adc59c8b6067e4950469f184a07f1d237a1e14f18939ad8f50135181e9e3",
+      "n_evaluated_status_differs": 7,
+      "n_score_differs_among_commonly_evaluated": 22,
+      "differs_by_base_program": {
+        "sort_quicksort": 22
+      },
+      "max_abs_delta_sbg_v5": 0.010523,
+      "sbg_v5_valid_auroc_and_n": [
+        0.668176,
+        338
+      ]
+    }
+  }
+}

@@ -1,0 +1,579 @@
+{
+ "artifact": "FINAL_METRICS_V3",
+ "generated_by": "experiments/final/build_remediation_evidence.py (reads artifacts only)",
+ "git_base_commit": "1b41e208241c76e347acddbe5c951849a35c2a5a",
+ "evidence_classes": {
+  "CONFIRMATORY-BY-FREEZE": [
+   "v8 test (V8_TEST_EVALUATION.json) -- NOT DEMONSTRATED",
+   "v9c val (V9_VAL_EVALUATION.json)"
+  ],
+  "EXPLORATORY": [
+   "v9c dev",
+   "v8 dev/val/train scoring",
+   "external corpora rescore",
+   "all diagnostics",
+   "sbg_state-only (identified post hoc on dev)"
+  ],
+  "IN-SAMPLE": [
+   "v9c train"
+  ]
+ },
+ "no_pooling_note": "v6, v8 and v9c results are never pooled: different dataset designs, protocols (v6/v7 vs output_free_v8) and label-generation logic.",
+ "v8_test_single_run": {
+  "source": {
+   "path": "artifacts/paper_evidence/V8_TEST_EVALUATION.json",
+   "sha256": "8b1b04b48e4c23fee2ed6a43e23dafc8d54e49d90bcff765c7a1d68d926907b8"
+  },
+  "status": "CONFIRMATORY-BY-FREEZE (single run; see FREEZE_V8.json caveats)",
+  "VALID": {
+   "n_pairs": 956,
+   "n_programs": 22,
+   "sbg_v5": {
+    "auroc": 0.6937,
+    "ci95": [
+     0.6593,
+     0.7266
+    ]
+   },
+   "learned_m1": {
+    "auroc": 0.7508,
+    "ci95": [
+     0.6833,
+     0.8066
+    ]
+   },
+   "learned_m2": {
+    "auroc": 0.7713,
+    "ci95": [
+     0.7266,
+     0.812
+    ]
+   },
+   "edit_size_reversed": {
+    "auroc": 0.8759,
+    "ci95": [
+     0.8588,
+     0.8917
+    ]
+   },
+   "exception_fraction": {
+    "auroc": 0.5693,
+    "ci95": [
+     0.5408,
+     0.6002
+    ]
+   },
+   "sbg_v5_minus_edit_size_reversed": {
+    "delta": -0.1822,
+    "ci_lower": -0.2199,
+    "ci_upper": -0.144
+   }
+  }
+ },
+ "v9c_val_confirmatory": {
+  "source": {
+   "path": "artifacts/paper_evidence/V9_VAL_EVALUATION.json",
+   "sha256": "7030d3a9063fa7dcdf562eb71e973a4f1ec12b2e64a29378b9dc43c1065d2f93"
+  },
+  "status": "CONFIRMATORY-BY-FREEZE (single run; never scored before FREEZE_V9)",
+  "population": {
+   "n_pairs": 432,
+   "n_matched_sets": 216,
+   "n_programs": 11,
+   "n_changed": 216,
+   "n_equivalent": 216
+  },
+  "selection_audit": {
+   "all_pairs_in_file": 436,
+   "evaluated": 434,
+   "valid": 434,
+   "matched_complete": 432,
+   "dropped_by_matching_rule": 2,
+   "failure_kinds": {
+    "nonterminating": 1,
+    "import_error": 1
+   },
+   "mean_edit_all_valid_changed": 10.125,
+   "mean_edit_matched_changed": 10.125
+  },
+  "tests": {
+   "H1": {
+    "auroc": 0.7514,
+    "p": 0.0005
+   },
+   "H2": {
+    "delta": 0.1122,
+    "ci_lower": 0.0748,
+    "ci_upper": 0.1478,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   },
+   "H3": {
+    "delta": 0.1402,
+    "ci_lower": 0.0922,
+    "ci_upper": 0.1802,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   },
+   "H4": {
+    "delta": 0.021,
+    "ci_lower": -0.0054,
+    "ci_upper": 0.0481,
+    "p_two_sided": 0.1169,
+    "n_effective": 2000
+   }
+  },
+  "holm": {
+   "H1_sbg_v5_above_chance": {
+    "p_raw": 0.0005,
+    "p_adjusted": 0.002,
+    "reject_at_alpha": true
+   },
+   "H2_edit_plus_sbg_minus_edit": {
+    "p_raw": 0.001,
+    "p_adjusted": 0.003,
+    "reject_at_alpha": true
+   },
+   "H3_sbg_v5_minus_edit_forward": {
+    "p_raw": 0.001,
+    "p_adjusted": 0.003,
+    "reject_at_alpha": true
+   },
+   "H4_edit_exec_plus_sbg_minus_edit_exec": {
+    "p_raw": 0.116942,
+    "p_adjusted": 0.116942,
+    "reject_at_alpha": false
+   }
+  },
+  "verdict": {
+   "sbg_above_chance_H1": true,
+   "sbg_adds_information_beyond_edit_size_H2 (Holm reject and CI lower bound > 0)": true,
+   "sbg_adds_beyond_edit_and_execution_shortcuts_H4": false,
+   "sbg_beats_edit_size_alone_H3 (CI lower bound > 0)": true
+  },
+  "matched_set_concordance": {
+   "sbg_v5": {
+    "concordance": 0.8056,
+    "ci95": [
+     0.7382,
+     0.8606
+    ]
+   },
+   "edit": {
+    "concordance": 0.9236,
+    "ci95": [
+     0.9071,
+     0.9425
+    ]
+   },
+   "sbg_state": {
+    "concordance": 0.8032,
+    "ci95": [
+     0.7284,
+     0.8604
+    ]
+   },
+   "exception_fraction": {
+    "concordance": 0.5833,
+    "ci95": [
+     0.5533,
+     0.6146
+    ]
+   }
+  },
+  "edit_size_exact_stratified": {
+   "sbg_v5": 0.7355,
+   "sbg_v3": 0.7176,
+   "sbg_temporal": 0.6114,
+   "sbg_state": 0.7259
+  },
+  "fraction_sbg_v5_exactly_zero": 0.3704
+ },
+ "v9c_dev_exploratory": {
+  "source": {
+   "path": "artifacts/paper_evidence/V9_DEV_EVALUATION.json",
+   "sha256": "f88c78b5b63016d087218bdaf1b6793b3ebbe894bcabb719fe966b963e8cfb08"
+  },
+  "status": "EXPLORATORY (used for design observations before the freeze)",
+  "tests": {
+   "H1": {
+    "auroc": 0.7854,
+    "p": 0.0005
+   },
+   "H2": {
+    "delta": 0.1359,
+    "ci_lower": 0.105,
+    "ci_upper": 0.1655,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   },
+   "H3": {
+    "delta": 0.1812,
+    "ci_lower": 0.1375,
+    "ci_upper": 0.223,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   },
+   "H4": {
+    "delta": 0.0188,
+    "ci_lower": -0.0181,
+    "ci_upper": 0.0498,
+    "p_two_sided": 0.2489,
+    "n_effective": 2000
+   }
+  }
+ },
+ "v9c_train_in_sample": {
+  "source": {
+   "path": "artifacts/paper_evidence/V9_TRAIN_EVALUATION.json",
+   "sha256": "491172b99e6168fc4989f6ac16c42afd6ae3b16f4bbe968cd50bdb421bb0cc9d"
+  },
+  "status": "IN-SAMPLE (weights fitted here)",
+  "tests": {
+   "H1": {
+    "auroc": 0.7346,
+    "p": 0.0005
+   },
+   "H2": {
+    "delta": 0.1045,
+    "ci_lower": 0.0858,
+    "ci_upper": 0.1227,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   },
+   "H3": {
+    "delta": 0.1242,
+    "ci_lower": 0.1019,
+    "ci_upper": 0.146,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   },
+   "H4": {
+    "delta": 0.0387,
+    "ci_lower": 0.0221,
+    "ci_upper": 0.0531,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   }
+  }
+ },
+ "v8_design_confounded": {
+  "train": {
+   "sbg_v5": 0.6679,
+   "edit_size_reversed": 0.849,
+   "n_pairs": 1909,
+   "n_programs": 46,
+   "source": "artifacts/paper_evidence/V9_TRAIN_EVALUATION.json"
+  },
+  "dev": {
+   "sbg_v5": 0.7394,
+   "edit_size_reversed": 0.8771,
+   "n_pairs": 550,
+   "n_programs": 13,
+   "source": "artifacts/paper_evidence/V9_DEV_EVALUATION.json"
+  },
+  "val": {
+   "sbg_v5": 0.6848,
+   "edit_size_reversed": 0.885,
+   "n_pairs": 459,
+   "n_programs": 11,
+   "source": "artifacts/paper_evidence/V9_VAL_EVALUATION.json"
+  }
+ },
+ "edit_size_confound_audit": {
+  "source": {
+   "path": "artifacts/paper_evidence/LABEL_GENERATION_AUDIT.json",
+   "sha256": "5f7bee63580b5d78a1268f02328ad77fa19a940a275ee8d0a7fdff43228a6cae"
+  },
+  "independent_reversed_edit_size_auroc": {
+   "train": {
+    "edit_canon": {
+     "forward_larger_edit_means_CHANGED": 0.1506,
+     "reversed_larger_edit_means_EQUIVALENT": 0.8494,
+     "reversed_ci95_cluster": [
+      0.8339,
+      0.8631
+     ],
+     "sum_check": 1.0
+    },
+    "edit_raw": {
+     "forward_larger_edit_means_CHANGED": 0.2388,
+     "reversed_larger_edit_means_EQUIVALENT": 0.7612,
+     "reversed_ci95_cluster": [
+      0.7323,
+      0.7923
+     ],
+     "sum_check": 1.0
+    },
+    "edit_tok": {
+     "forward_larger_edit_means_CHANGED": 0.2745,
+     "reversed_larger_edit_means_EQUIVALENT": 0.7255,
+     "reversed_ci95_cluster": [
+      0.7043,
+      0.7465
+     ],
+     "sum_check": 1.0
+    }
+   },
+   "dev": {
+    "edit_canon": {
+     "forward_larger_edit_means_CHANGED": 0.1227,
+     "reversed_larger_edit_means_EQUIVALENT": 0.8773,
+     "reversed_ci95_cluster": [
+      0.8539,
+      0.8972
+     ],
+     "sum_check": 1.0
+    },
+    "edit_raw": {
+     "forward_larger_edit_means_CHANGED": 0.1965,
+     "reversed_larger_edit_means_EQUIVALENT": 0.8035,
+     "reversed_ci95_cluster": [
+      0.7252,
+      0.8706
+     ],
+     "sum_check": 1.0
+    },
+    "edit_tok": {
+     "forward_larger_edit_means_CHANGED": 0.2496,
+     "reversed_larger_edit_means_EQUIVALENT": 0.7504,
+     "reversed_ci95_cluster": [
+      0.7313,
+      0.7688
+     ],
+     "sum_check": 1.0
+    }
+   },
+   "val": {
+    "edit_canon": {
+     "forward_larger_edit_means_CHANGED": 0.1149,
+     "reversed_larger_edit_means_EQUIVALENT": 0.8851,
+     "reversed_ci95_cluster": [
+      0.8527,
+      0.9115
+     ],
+     "sum_check": 1.0
+    },
+    "edit_raw": {
+     "forward_larger_edit_means_CHANGED": 0.2283,
+     "reversed_larger_edit_means_EQUIVALENT": 0.7717,
+     "reversed_ci95_cluster": [
+      0.6903,
+      0.8578
+     ],
+     "sum_check": 1.0
+    },
+    "edit_tok": {
+     "forward_larger_edit_means_CHANGED": 0.2589,
+     "reversed_larger_edit_means_EQUIVALENT": 0.7411,
+     "reversed_ci95_cluster": [
+      0.6871,
+      0.792
+     ],
+     "sum_check": 1.0
+    }
+   },
+   "test": {
+    "edit_canon": {
+     "forward_larger_edit_means_CHANGED": 0.1238,
+     "reversed_larger_edit_means_EQUIVALENT": 0.8762,
+     "reversed_ci95_cluster": [
+      0.8589,
+      0.8927
+     ],
+     "sum_check": 1.0
+    },
+    "edit_raw": {
+     "forward_larger_edit_means_CHANGED": 0.2465,
+     "reversed_larger_edit_means_EQUIVALENT": 0.7535,
+     "reversed_ci95_cluster": [
+      0.7164,
+      0.8042
+     ],
+     "sum_check": 1.0
+    },
+    "edit_tok": {
+     "forward_larger_edit_means_CHANGED": 0.2524,
+     "reversed_larger_edit_means_EQUIVALENT": 0.7476,
+     "reversed_ci95_cluster": [
+      0.7303,
+      0.7671
+     ],
+     "sum_check": 1.0
+    }
+   }
+  },
+  "fraction_cross_label_pairs_identical_edit_size": {
+   "train": 0.2276,
+   "dev": 0.1923,
+   "val": 0.175,
+   "test": 0.194
+  },
+  "label_by_edit_bucket_train": {
+   "0-1": {
+    "n_changed": 0,
+    "n_equivalent": 0,
+    "frac_changed": 0.0
+   },
+   "2-2": {
+    "n_changed": 951,
+    "n_equivalent": 219,
+    "frac_changed": 0.813
+   },
+   "3-5": {
+    "n_changed": 129,
+    "n_equivalent": 89,
+    "frac_changed": 0.592
+   },
+   "6-10": {
+    "n_changed": 6,
+    "n_equivalent": 306,
+    "frac_changed": 0.019
+   },
+   "11-20": {
+    "n_changed": 3,
+    "n_equivalent": 177,
+    "frac_changed": 0.017
+   },
+   "21-inf": {
+    "n_changed": 0,
+    "n_equivalent": 51,
+    "frac_changed": 0.0
+   }
+  }
+ },
+ "external_rescore_exploratory": {
+  "source": {
+   "path": "artifacts/paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "sha256": "708a22a55b2c6fb76704af8115b40b65f4016ead6c08e0733911f4522e5839a6"
+  },
+  "corpora": {
+   "bugsinpy": {
+    "n_pairs_total": 147,
+    "n_evaluated": 147,
+    "unevaluated": {},
+    "rescored_all": {
+     "n_pairs": 147,
+     "n_pos": 41,
+     "n_neg": 106,
+     "n_clusters": 39,
+     "auroc": 0.4159,
+     "ci95_cluster_bootstrap": [
+      0.3223,
+      0.5144
+     ]
+    },
+    "rescored_excluding_SP2": {
+     "n_pairs": 107,
+     "n_pos": 41,
+     "n_neg": 66,
+     "n_clusters": 39,
+     "auroc": 0.497,
+     "ci95_cluster_bootstrap": [
+      0.4023,
+      0.5956
+     ]
+    },
+    "committed_v7_same_pairs": {
+     "n_pairs": 147,
+     "n_pos": 41,
+     "n_neg": 106,
+     "n_clusters": 39,
+     "auroc": 0.4099,
+     "ci95_cluster_bootstrap": [
+      0.3262,
+      0.4939
+     ]
+    },
+    "sp2_pairs": 40,
+    "sp2_pairs_with_entry_renamed": 40,
+    "real_bug_pairs_evaluated": 41,
+    "real_bug_pairs_sbg_v5_exactly_zero": 26,
+    "self_distance_v5": {
+     "n_bases": 41,
+     "n_nonzero": 3,
+     "max": 0.673460603
+    }
+   },
+   "quixbugs_canonical": {
+    "n_pairs_total": 152,
+    "n_evaluated": 151,
+    "unevaluated": {
+     "nonterminating": 1
+    },
+    "rescored_all": {
+     "n_pairs": 151,
+     "n_pos": 39,
+     "n_neg": 112,
+     "n_clusters": 40,
+     "auroc": 0.3842,
+     "ci95_cluster_bootstrap": [
+      0.2847,
+      0.4899
+     ]
+    },
+    "rescored_excluding_SP2": {
+     "n_pairs": 111,
+     "n_pos": 39,
+     "n_neg": 72,
+     "n_clusters": 40,
+     "auroc": 0.4444,
+     "ci95_cluster_bootstrap": [
+      0.3553,
+      0.5385
+     ]
+    },
+    "committed_v7_same_pairs": {
+     "n_pairs": 151,
+     "n_pos": 39,
+     "n_neg": 112,
+     "n_clusters": 40,
+     "auroc": 0.372,
+     "ci95_cluster_bootstrap": [
+      0.2743,
+      0.4799
+     ]
+    },
+    "sp2_pairs": 40,
+    "sp2_pairs_with_entry_renamed": 40,
+    "real_bug_pairs_evaluated": 39,
+    "real_bug_pairs_sbg_v5_exactly_zero": 32,
+    "self_distance_v5": {
+     "n_bases": 40,
+     "n_nonzero": 1,
+     "max": 0.026238675
+    }
+   }
+  }
+ },
+ "external_original_v7_for_reference": {
+  "source": {
+   "path": "artifacts/paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+   "sha256": "950dc90d0601b1cc6c686ff34215681265b0396a0ad4ee7a9e02cc3f2857fdc6"
+  },
+  "quixbugs_canonical": {
+   "subset": "all (published headline)",
+   "n_pairs": 152,
+   "n_pos": 40,
+   "n_neg": 112,
+   "n_clusters": 40,
+   "auroc": 0.3877,
+   "ci95_cluster_bootstrap": [
+    0.2847,
+    0.5034
+   ]
+  },
+  "bugsinpy": {
+   "subset": "all (published headline)",
+   "n_pairs": 147,
+   "n_pos": 41,
+   "n_neg": 106,
+   "n_clusters": 39,
+   "auroc": 0.4099,
+   "ci95_cluster_bootstrap": [
+    0.3262,
+    0.4939
+   ]
+  }
+ }
+}

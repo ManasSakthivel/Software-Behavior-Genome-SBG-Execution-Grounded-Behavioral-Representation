@@ -1,0 +1,644 @@
+{
+  "artifact": "LABEL_GENERATION_AUDIT",
+  "dataset": "benchmark/datasets/v8",
+  "uses_sbg_scores": false,
+  "stale_programs_excluded_from_all_numbers": [
+    "math_count_set_bits",
+    "math_digital_root",
+    "math_extended_gcd",
+    "math_gcd_lcm",
+    "math_happy_number",
+    "math_nthroot_newton",
+    "math_power_modular",
+    "math_trailing_zeros"
+  ],
+  "code_trace": {
+    "label_assignment": "generate_split(): relation is bound to the CALL SITE, not computed from the variant: (\"EQUIVALENT\", SP_TYPES, apply_transformation) and (\"CHANGED\", SC_TYPES, apply_mutation); semantic_relation = expected_label = relation.",
+    "label_is_function_of_family_asserted": true,
+    "label_verification_in_generator": "check_candidate(): CHANGED must pass a STATIC observability analysis (analyse_pair; mutation inside entry-reachable code); EQUIVALENT is accepted with NO execution-based equivalence check (only compile + non-identical normalised AST).",
+    "edit_size_not_controlled_in_generator": "only SP-1/SP-2 are capped (max_names=1); SP-3 inserts dead code with p=0.4 per statement to depth 2; SP-5/8/11/12 rewrite constructs; SC-* each edit one site (site=0).",
+    "variants_per_program": "SP-1..12 x seeds{0,1,2} and SC-1..14 x seeds{0,1,2}; no_op variants (identical normalised AST) rejected -> the number of surviving EQUIVALENT variants per program depends on whether the program has constructs the SP family can rewrite."
+  },
+  "splits": {
+    "train": {
+      "n_pairs": 1931,
+      "n_programs": 46,
+      "n_changed": 1089,
+      "n_equivalent": 842,
+      "status_note": "usable for design decisions",
+      "independent_edit_size_auroc": {
+        "edit_canon": {
+          "forward_larger_edit_means_CHANGED": 0.1506,
+          "reversed_larger_edit_means_EQUIVALENT": 0.8494,
+          "reversed_ci95_cluster": [
+            0.8339,
+            0.8631
+          ],
+          "sum_check": 1.0
+        },
+        "edit_raw": {
+          "forward_larger_edit_means_CHANGED": 0.2388,
+          "reversed_larger_edit_means_EQUIVALENT": 0.7612,
+          "reversed_ci95_cluster": [
+            0.7323,
+            0.7923
+          ],
+          "sum_check": 1.0
+        },
+        "edit_tok": {
+          "forward_larger_edit_means_CHANGED": 0.2745,
+          "reversed_larger_edit_means_EQUIVALENT": 0.7255,
+          "reversed_ci95_cluster": [
+            0.7043,
+            0.7465
+          ],
+          "sum_check": 1.0
+        }
+      },
+      "edit_canon_distribution": {
+        "CHANGED": {
+          "n": 1089,
+          "mean": 2.2,
+          "median": 2,
+          "p10": 2,
+          "p90": 3,
+          "max": 15
+        },
+        "EQUIVALENT": {
+          "n": 842,
+          "mean": 8.48,
+          "median": 8.0,
+          "p10": 2,
+          "p90": 16,
+          "max": 35
+        }
+      },
+      "label_by_edit_bucket": {
+        "0-1": {
+          "n_changed": 0,
+          "n_equivalent": 0,
+          "frac_changed": 0.0
+        },
+        "2-2": {
+          "n_changed": 951,
+          "n_equivalent": 219,
+          "frac_changed": 0.813
+        },
+        "3-5": {
+          "n_changed": 129,
+          "n_equivalent": 89,
+          "frac_changed": 0.592
+        },
+        "6-10": {
+          "n_changed": 6,
+          "n_equivalent": 306,
+          "frac_changed": 0.019
+        },
+        "11-20": {
+          "n_changed": 3,
+          "n_equivalent": 177,
+          "frac_changed": 0.017
+        },
+        "21-inf": {
+          "n_changed": 0,
+          "n_equivalent": 51,
+          "frac_changed": 0.0
+        }
+      },
+      "cross_label_pairs": 916938,
+      "cross_label_pairs_with_identical_edit_size": 208686,
+      "fraction_identical_edit_size": 0.2276,
+      "equivalent_with_edit_leq_max_changed_edit": 0.8705,
+      "changed_with_edit_leq_5": 0.9917,
+      "per_program_reversed_edit_auroc": {
+        "min": 0.6923,
+        "median": 0.851,
+        "max": 0.9275,
+        "n_programs": 46
+      }
+    },
+    "dev": {
+      "n_pairs": 554,
+      "n_programs": 13,
+      "n_changed": 321,
+      "n_equivalent": 233,
+      "status_note": "usable for design decisions",
+      "independent_edit_size_auroc": {
+        "edit_canon": {
+          "forward_larger_edit_means_CHANGED": 0.1227,
+          "reversed_larger_edit_means_EQUIVALENT": 0.8773,
+          "reversed_ci95_cluster": [
+            0.8539,
+            0.8972
+          ],
+          "sum_check": 1.0
+        },
+        "edit_raw": {
+          "forward_larger_edit_means_CHANGED": 0.1965,
+          "reversed_larger_edit_means_EQUIVALENT": 0.8035,
+          "reversed_ci95_cluster": [
+            0.7252,
+            0.8706
+          ],
+          "sum_check": 1.0
+        },
+        "edit_tok": {
+          "forward_larger_edit_means_CHANGED": 0.2496,
+          "reversed_larger_edit_means_EQUIVALENT": 0.7504,
+          "reversed_ci95_cluster": [
+            0.7313,
+            0.7688
+          ],
+          "sum_check": 1.0
+        }
+      },
+      "edit_canon_distribution": {
+        "CHANGED": {
+          "n": 321,
+          "mean": 2.12,
+          "median": 2,
+          "p10": 2,
+          "p90": 3,
+          "max": 3
+        },
+        "EQUIVALENT": {
+          "n": 233,
+          "mean": 8.7,
+          "median": 8,
+          "p10": 2,
+          "p90": 16,
+          "max": 29
+        }
+      },
+      "label_by_edit_bucket": {
+        "0-1": {
+          "n_changed": 0,
+          "n_equivalent": 0,
+          "frac_changed": 0.0
+        },
+        "2-2": {
+          "n_changed": 282,
+          "n_equivalent": 51,
+          "frac_changed": 0.847
+        },
+        "3-5": {
+          "n_changed": 39,
+          "n_equivalent": 23,
+          "frac_changed": 0.629
+        },
+        "6-10": {
+          "n_changed": 0,
+          "n_equivalent": 94,
+          "frac_changed": 0.0
+        },
+        "11-20": {
+          "n_changed": 0,
+          "n_equivalent": 53,
+          "frac_changed": 0.0
+        },
+        "21-inf": {
+          "n_changed": 0,
+          "n_equivalent": 12,
+          "frac_changed": 0.0
+        }
+      },
+      "cross_label_pairs": 74793,
+      "cross_label_pairs_with_identical_edit_size": 14382,
+      "fraction_identical_edit_size": 0.1923,
+      "equivalent_with_edit_leq_max_changed_edit": 0.2189,
+      "changed_with_edit_leq_5": 1.0,
+      "per_program_reversed_edit_auroc": {
+        "min": 0.7714,
+        "median": 0.8889,
+        "max": 0.9266,
+        "n_programs": 13
+      }
+    },
+    "val": {
+      "n_pairs": 461,
+      "n_programs": 11,
+      "n_changed": 243,
+      "n_equivalent": 218,
+      "status_note": "usable for design decisions",
+      "independent_edit_size_auroc": {
+        "edit_canon": {
+          "forward_larger_edit_means_CHANGED": 0.1149,
+          "reversed_larger_edit_means_EQUIVALENT": 0.8851,
+          "reversed_ci95_cluster": [
+            0.8527,
+            0.9115
+          ],
+          "sum_check": 1.0
+        },
+        "edit_raw": {
+          "forward_larger_edit_means_CHANGED": 0.2283,
+          "reversed_larger_edit_means_EQUIVALENT": 0.7717,
+          "reversed_ci95_cluster": [
+            0.6903,
+            0.8578
+          ],
+          "sum_check": 1.0
+        },
+        "edit_tok": {
+          "forward_larger_edit_means_CHANGED": 0.2589,
+          "reversed_larger_edit_means_EQUIVALENT": 0.7411,
+          "reversed_ci95_cluster": [
+            0.6871,
+            0.792
+          ],
+          "sum_check": 1.0
+        }
+      },
+      "edit_canon_distribution": {
+        "CHANGED": {
+          "n": 243,
+          "mean": 2.14,
+          "median": 2,
+          "p10": 2,
+          "p90": 3,
+          "max": 3
+        },
+        "EQUIVALENT": {
+          "n": 218,
+          "mean": 8.32,
+          "median": 8.0,
+          "p10": 2,
+          "p90": 18,
+          "max": 28
+        }
+      },
+      "label_by_edit_bucket": {
+        "0-1": {
+          "n_changed": 0,
+          "n_equivalent": 0,
+          "frac_changed": 0.0
+        },
+        "2-2": {
+          "n_changed": 210,
+          "n_equivalent": 44,
+          "frac_changed": 0.827
+        },
+        "3-5": {
+          "n_changed": 33,
+          "n_equivalent": 41,
+          "frac_changed": 0.446
+        },
+        "6-10": {
+          "n_changed": 0,
+          "n_equivalent": 81,
+          "frac_changed": 0.0
+        },
+        "11-20": {
+          "n_changed": 0,
+          "n_equivalent": 39,
+          "frac_changed": 0.0
+        },
+        "21-inf": {
+          "n_changed": 0,
+          "n_equivalent": 13,
+          "frac_changed": 0.0
+        }
+      },
+      "cross_label_pairs": 52974,
+      "cross_label_pairs_with_identical_edit_size": 9273,
+      "fraction_identical_edit_size": 0.175,
+      "equivalent_with_edit_leq_max_changed_edit": 0.2064,
+      "changed_with_edit_leq_5": 1.0,
+      "per_program_reversed_edit_auroc": {
+        "min": 0.7551,
+        "median": 0.8857,
+        "max": 0.946,
+        "n_programs": 11
+      }
+    },
+    "test": {
+      "n_pairs": 967,
+      "n_programs": 22,
+      "n_changed": 558,
+      "n_equivalent": 409,
+      "status_note": "test split was already examined in the EOD session: descriptive only, never used to choose anything",
+      "independent_edit_size_auroc": {
+        "edit_canon": {
+          "forward_larger_edit_means_CHANGED": 0.1238,
+          "reversed_larger_edit_means_EQUIVALENT": 0.8762,
+          "reversed_ci95_cluster": [
+            0.8589,
+            0.8927
+          ],
+          "sum_check": 1.0
+        },
+        "edit_raw": {
+          "forward_larger_edit_means_CHANGED": 0.2465,
+          "reversed_larger_edit_means_EQUIVALENT": 0.7535,
+          "reversed_ci95_cluster": [
+            0.7164,
+            0.8042
+          ],
+          "sum_check": 1.0
+        },
+        "edit_tok": {
+          "forward_larger_edit_means_CHANGED": 0.2524,
+          "reversed_larger_edit_means_EQUIVALENT": 0.7476,
+          "reversed_ci95_cluster": [
+            0.7303,
+            0.7671
+          ],
+          "sum_check": 1.0
+        }
+      },
+      "edit_canon_distribution": {
+        "CHANGED": {
+          "n": 558,
+          "mean": 2.13,
+          "median": 2.0,
+          "p10": 2,
+          "p90": 3,
+          "max": 5
+        },
+        "EQUIVALENT": {
+          "n": 409,
+          "mean": 8.61,
+          "median": 8,
+          "p10": 2,
+          "p90": 16,
+          "max": 32
+        }
+      },
+      "label_by_edit_bucket": {
+        "0-1": {
+          "n_changed": 0,
+          "n_equivalent": 0,
+          "frac_changed": 0.0
+        },
+        "2-2": {
+          "n_changed": 492,
+          "n_equivalent": 90,
+          "frac_changed": 0.845
+        },
+        "3-5": {
+          "n_changed": 66,
+          "n_equivalent": 58,
+          "frac_changed": 0.532
+        },
+        "6-10": {
+          "n_changed": 0,
+          "n_equivalent": 154,
+          "frac_changed": 0.0
+        },
+        "11-20": {
+          "n_changed": 0,
+          "n_equivalent": 82,
+          "frac_changed": 0.0
+        },
+        "21-inf": {
+          "n_changed": 0,
+          "n_equivalent": 25,
+          "frac_changed": 0.0
+        }
+      },
+      "cross_label_pairs": 228222,
+      "cross_label_pairs_with_identical_edit_size": 44280,
+      "fraction_identical_edit_size": 0.194,
+      "equivalent_with_edit_leq_max_changed_edit": 0.3619,
+      "changed_with_edit_leq_5": 1.0,
+      "per_program_reversed_edit_auroc": {
+        "min": 0.7812,
+        "median": 0.8842,
+        "max": 0.9653,
+        "n_programs": 22
+      }
+    }
+  },
+  "family_label_map": {
+    "SC-1": [
+      "CHANGED"
+    ],
+    "SC-10": [
+      "CHANGED"
+    ],
+    "SC-11": [
+      "CHANGED"
+    ],
+    "SC-12": [
+      "CHANGED"
+    ],
+    "SC-13": [
+      "CHANGED"
+    ],
+    "SC-2": [
+      "CHANGED"
+    ],
+    "SC-3": [
+      "CHANGED"
+    ],
+    "SC-4": [
+      "CHANGED"
+    ],
+    "SC-5": [
+      "CHANGED"
+    ],
+    "SC-6": [
+      "CHANGED"
+    ],
+    "SC-8": [
+      "CHANGED"
+    ],
+    "SP-1": [
+      "EQUIVALENT"
+    ],
+    "SP-11": [
+      "EQUIVALENT"
+    ],
+    "SP-2": [
+      "EQUIVALENT"
+    ],
+    "SP-3": [
+      "EQUIVALENT"
+    ],
+    "SP-4": [
+      "EQUIVALENT"
+    ],
+    "SP-5": [
+      "EQUIVALENT"
+    ],
+    "SP-6": [
+      "EQUIVALENT"
+    ],
+    "SP-8": [
+      "EQUIVALENT"
+    ],
+    "SP-9": [
+      "EQUIVALENT"
+    ]
+  },
+  "every_family_has_exactly_one_label": true,
+  "label_matches_family_prefix": true,
+  "expected_label_equals_semantic_relation": true,
+  "per_family_edit_size_train_dev_val": {
+    "SC-1": {
+      "label": "CHANGED",
+      "n": 129,
+      "median_edit": 2,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-2": {
+      "label": "CHANGED",
+      "n": 201,
+      "median_edit": 2,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-3": {
+      "label": "CHANGED",
+      "n": 90,
+      "median_edit": 2.0,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-4": {
+      "label": "CHANGED",
+      "n": 198,
+      "median_edit": 2.0,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-5": {
+      "label": "CHANGED",
+      "n": 210,
+      "median_edit": 2.0,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-6": {
+      "label": "CHANGED",
+      "n": 210,
+      "median_edit": 2.0,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-8": {
+      "label": "CHANGED",
+      "n": 99,
+      "median_edit": 2,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-10": {
+      "label": "CHANGED",
+      "n": 93,
+      "median_edit": 2,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-11": {
+      "label": "CHANGED",
+      "n": 210,
+      "median_edit": 2.0,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-12": {
+      "label": "CHANGED",
+      "n": 3,
+      "median_edit": 2,
+      "mean_edit": 2,
+      "p90": 2,
+      "frac_edit_leq_2": 1.0
+    },
+    "SC-13": {
+      "label": "CHANGED",
+      "n": 210,
+      "median_edit": 3.0,
+      "mean_edit": 3.39,
+      "p90": 3,
+      "frac_edit_leq_2": 0.0
+    },
+    "SP-1": {
+      "label": "EQUIVALENT",
+      "n": 155,
+      "median_edit": 8,
+      "mean_edit": 7.66,
+      "p90": 12,
+      "frac_edit_leq_2": 0.052
+    },
+    "SP-2": {
+      "label": "EQUIVALENT",
+      "n": 210,
+      "median_edit": 2.0,
+      "mean_edit": 2.1,
+      "p90": 2,
+      "frac_edit_leq_2": 0.962
+    },
+    "SP-3": {
+      "label": "EQUIVALENT",
+      "n": 210,
+      "median_edit": 16.0,
+      "mean_edit": 16.92,
+      "p90": 28,
+      "frac_edit_leq_2": 0.005
+    },
+    "SP-4": {
+      "label": "EQUIVALENT",
+      "n": 210,
+      "median_edit": 9.0,
+      "mean_edit": 8.84,
+      "p90": 10,
+      "frac_edit_leq_2": 0.0
+    },
+    "SP-5": {
+      "label": "EQUIVALENT",
+      "n": 141,
+      "median_edit": 4,
+      "mean_edit": 5.76,
+      "p90": 12,
+      "frac_edit_leq_2": 0.291
+    },
+    "SP-6": {
+      "label": "EQUIVALENT",
+      "n": 175,
+      "median_edit": 4,
+      "mean_edit": 4.22,
+      "p90": 8,
+      "frac_edit_leq_2": 0.354
+    },
+    "SP-8": {
+      "label": "EQUIVALENT",
+      "n": 129,
+      "median_edit": 12,
+      "mean_edit": 13.35,
+      "p90": 20,
+      "frac_edit_leq_2": 0.0
+    },
+    "SP-9": {
+      "label": "EQUIVALENT",
+      "n": 3,
+      "median_edit": 4,
+      "mean_edit": 4,
+      "p90": 4,
+      "frac_edit_leq_2": 0.0
+    },
+    "SP-11": {
+      "label": "EQUIVALENT",
+      "n": 60,
+      "median_edit": 11.0,
+      "mean_edit": 10.9,
+      "p90": 12,
+      "frac_edit_leq_2": 0.0
+    }
+  },
+  "interpretation": [
+    "Labels are bound to the transformation family at the generator call site; edit size is therefore predictive iff the SP families and SC families differ in edit size, which they do by construction (SC edits one site; several SP families rewrite many sites).",
+    "No evidence of an implementation or orientation defect: three independently computed edit-size measures agree, forward + reversed AUROC sum to 1 (ties handled by midrank), and the result holds per split.",
+    "The generator verifies CHANGED variants statically (observability) but never verifies EQUIVALENT variants dynamically; the equivalence labels rest on the transformations being semantics-preserving by design (tested separately)."
+  ]
+}

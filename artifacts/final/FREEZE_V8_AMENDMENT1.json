@@ -1,0 +1,48 @@
+{
+  "artifact": "FREEZE_V8_AMENDMENT1",
+  "status": "FROZEN",
+  "written_at": "2026-10-29T04:57:18+00:00",
+  "amends": {
+    "file": "artifacts/final/FREEZE_V8.json",
+    "sha256": "d42ac74d37272c9a42df1546e3d26d228be7d1f9494e8334fc563338ea7859dc",
+    "freeze_commit": "ebb8c44e161b00b95e039fe0cf45e0a7690d9eee"
+  },
+  "reason": "First test scoring attempt (full 1130-pair file, PYTHONHASHSEED=0) stalled at pair 526 (test__math_gcd_lcm__sp-1_s0) at 100% CPU for >8 min; a second attempt that resumed from the checkpoint stalled at the same pair. math_gcd_lcm is one of the 8 stale-variant programs already EXCLUDED by the pre-declared rule in FREEZE_V8.json. Each of those pairs run in isolation completes, so the stall depends on accumulated tracer state (leaked non-terminating worker threads, as documented in extraction.py), not on the pair itself.",
+  "aborted_runs": {
+    "checkpoint_moved_aside_unread": "artifacts/final/ABORTED_v8test_attempt1_checkpoint_500rows_NOT_USED.jsonl",
+    "checkpoint_sha256": "7f6389ea5852836266a61350766069fb8713d0fd55b96dfd6203976654152b42",
+    "statement": "The 500-row checkpoint written by the aborted attempt was moved aside without being opened; no score from it was inspected, aggregated or used. It is not an input to any reported number. Row count was read from the file size via line count only; pair ids of the next pairs were read from the DATASET pair file, not from scores.",
+    "logs": [
+      "artifacts/paper_evidence/logs/v8test_attempt1_aborted.txt",
+      "artifacts/paper_evidence/logs/v8test_attempt2_aborted.txt"
+    ]
+  },
+  "disclosure": "While diagnosing the stall, one tool call printed rows[-1]['pair_id'] and the count of the checkpoint, and a probe script re-extracted three math_power_modular and two math_gcd_lcm pairs in isolation printing only ok/failure_kind. No SBG score of a test pair was printed or computed.",
+  "change": [
+    "Test scoring runs on artifacts/final/v8_test_nonstale/pairs_test.jsonl = benchmark/datasets/v8/pairs_test.jsonl minus the pairs of the 4 pre-declared stale test programs (967 pairs, 22 programs). The filter is by program name from DIAGNOSTIC_V8_STALE_VARIANTS.json; no score was read.",
+    "evaluate_v8.py: FREEZE path now FREEZE_V8_AMENDMENT1.json; the pair-id completeness assertion applies to non-stale pairs only. Dev numbers are unchanged (dev dry-run re-run is identical)."
+  ],
+  "effect_on_estimand": "None. The evaluated set is exactly the set the freeze defined after the pre-declared exclusion; only the 163 excluded pairs are no longer traced.",
+  "evaluation_script_sha256": "34f303afc2423838d2cdb44c513248dbdb6b5c91eb1cc3791774183f3dc7996d",
+  "test_pair_file": {
+    "path": "artifacts/final/v8_test_nonstale/pairs_test.jsonl",
+    "sha256": "1484a46ad2ef199572ac9d222f535f5b0c27d65b354197c477e903c2fe4f4c96"
+  },
+  "code_sha256_now": {
+    "experiments/final/evaluate_v8.py": "34f303afc2423838d2cdb44c513248dbdb6b5c91eb1cc3791774183f3dc7996d",
+    "experiments/final/run_main_evaluation.py": "ad809342d7acee33d019534d610c4c0ea64f6d7e760aebb1cb60c695f5b4ed51",
+    "experiments/final/extraction.py": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55",
+    "experiments/final/protocol.py": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+    "experiments/final/entry_policy.py": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea",
+    "experiments/final/class_driver.py": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093",
+    "experiments/final/static_baselines.py": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df",
+    "experiments/final/edit_size_analysis.py": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e",
+    "experiments/final/fit_weights.py": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34",
+    "sbg/statistics.py": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b",
+    "sbg/extraction/dynamic/tracer.py": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f"
+  },
+  "run_command": "PYTHONHASHSEED=0 venvs/py313/bin/python experiments/final/run_main_evaluation.py --split test --protocol output_free_v8 --dataset-dir artifacts/final/v8_test_nonstale --tag v8test --out-dir artifacts/final --checkpoint-every 25",
+  "frozen_code_files_changed_since_freeze": [
+    "experiments/final/evaluate_v8.py"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "artifact": "FREEZE_V8_AMENDMENT2",
+  "status": "FROZEN",
+  "written_at": "2026-10-29T05:03:57+00:00",
+  "amends": {
+    "file": "artifacts/final/FREEZE_V8_AMENDMENT1.json",
+    "sha256": "777fb03a61ed13c0c3e2f3b93eece73adcbaf2c548028fefc2876922719960f9"
+  },
+  "reason": "A THIRD single-process test scoring attempt (967 non-stale pairs, Amendment 1) also stalled at ~525 pairs at 100% CPU, this time at test__math_median_two_sorted__sc13_s1_p0, a NON-stale program. Amendment 1's attribution of the stall to the stale programs was therefore only partly right; the stall is cumulative tracer state (leaked non-terminating worker threads) in one long process, and moves between pairs. Every stalling pair completes when run alone.",
+  "attempt3_checkpoint": "/tmp/v8test_final/checkpoint_v8test_output_free_v8.jsonl (525 rows) was NEVER opened and is not an input to anything reported; it lives outside the repository.",
+  "change": "Scoring harness only: experiments/final/run_chunked.py runs run_main_evaluation.py in a fresh subprocess per base program (PYTHONHASHSEED=0) and merges rows in dataset order. No extraction, protocol, scoring, weight, threshold, metric or evaluation code is changed; evaluate_v8.py is byte-identical to the Amendment 1 hash.",
+  "equivalence_check_on_dev": {
+    "command": "python experiments/final/run_chunked.py --split dev --pairs-dir benchmark/datasets/v8 --tag v8dev_chunked --verify-against artifacts/final/pairs_v8devrescore_output_free_v8.jsonl --out-dir /tmp/chunk_dev",
+    "result": "597 pairs, 593 evaluated, 0 differ in evaluated flag or any execution score vs the single-process dev re-score",
+    "note": "Dev only. Done before test was scored."
+  },
+  "evaluation_script_sha256": "34f303afc2423838d2cdb44c513248dbdb6b5c91eb1cc3791774183f3dc7996d",
+  "run_chunked_sha256": "32a9eb05b928db93a80b610af97ef71b87ae5f906b6612b19181636dc9f8804d",
+  "test_pair_file": {
+    "path": "artifacts/final/v8_test_nonstale/pairs_test.jsonl",
+    "sha256": "1484a46ad2ef199572ac9d222f535f5b0c27d65b354197c477e903c2fe4f4c96"
+  },
+  "run_command": "venvs/py313/bin/python experiments/final/run_chunked.py --split test --pairs-dir artifacts/final/v8_test_nonstale --tag v8test --out-dir artifacts/final   # then: evaluate_v8.py run --split test",
+  "rule": "Single run. If it fails to finish, report the blocker; do not re-run after seeing scores."
+}

@@ -265,9 +265,62 @@ def check_readme_block() -> Tuple[bool, List[str]]:
     return True, []
 
 
+# Known historical defect (IEEE Access audit, finding A): under output_free_v6
+# and v7, SP-2 renamed the self-test driver ``test_*`` to ``fn_test_*`` and the
+# name-based rule then traced it. These committed, observed artifacts must not
+# be altered, so the evaluated pairs affected are listed explicitly. The
+# pair-level check below stays strict for every other pair and every future
+# artifact; output_free_v8 (experiments/final/entry_policy.py) removes the cause.
+KNOWN_HISTORICAL_DRIVER_TRACES = frozenset({
+    # test split (pairs_test_output_free_v6, pairs_v6test_output_free_v6)
+    "test__sort_heapsort__sp-2_s1",
+    "test__str_tokenizer__sp-2_s1",
+    # dev split (pairs_v6dev_output_free_v7): these 9 EQUIVALENT pairs are among
+    # the 345 used to derive tau* = 0.072905 (THRESHOLD_FROZEN.json).
+    "dev__api_event_bus__sp-2_s0",
+    "dev__api_event_bus__sp-2_s1",
+    "dev__ds_stack_queue__sp-2_s0",
+    "dev__ds_stack_queue__sp-2_s1",
+    "dev__ds_stack_queue__sp-2_s2",
+    "dev__fsm_parser_state__sp-2_s1",
+    "dev__res_cache_ttl__sp-2_s0",
+    "dev__res_cache_ttl__sp-2_s1",
+    "dev__sort_quicksort__sp-2_s1",
+    # train split (pairs_v6train_output_free_v7, scored 2026-10-28): 19 EQUIVALENT SP-2
+    # (rename) variants whose renamed entry is the test_* driver. Same defect as above.
+    # These are inside the 1033 valid train pairs used by fit_weights.py (WEIGHT_FITTING.json).
+    "train__api_mock_http_client__sp-2_s0",
+    "train__api_rest_crud_mock__sp-2_s0",
+    "train__ds_lru_cache__sp-2_s0",
+    "train__ds_lru_cache__sp-2_s1",
+    "train__ds_min_heap__sp-2_s0",
+    "train__ds_min_heap__sp-2_s1",
+    "train__ds_trie__sp-2_s0",
+    "train__fsm_connection_pool__sp-2_s0",
+    "train__fsm_traffic_light__sp-2_s0",
+    "train__fsm_traffic_light__sp-2_s1",
+    "train__res_memory_allocator__sp-2_s0",
+    "train__res_memory_allocator__sp-2_s1",
+    "train__res_memory_allocator__sp-2_s2",
+    "train__res_task_scheduler__sp-2_s0",
+    "train__res_task_scheduler__sp-2_s1",
+    "train__res_task_scheduler__sp-2_s2",
+    "train__sort_binary_search__sp-2_s1",
+    "train__sort_mergesort__sp-2_s1",
+    "train__sort_radix_sort__sp-2_s1",
+})
+
+
+def _is_scaffolding_entry(entry: str) -> bool:
+    bare = entry[3:] if entry.startswith("fn_") else entry
+    return bare.startswith("test_") or bare in ("main", "demo")
+
+
 def check_output_free_protocol() -> Tuple[bool, List[str]]:
-    paths = sorted((REPO_ROOT / "artifacts" / "final").glob("programs_*output_free*.json"))
-    if not paths:
+    final = REPO_ROOT / "artifacts" / "final"
+    paths = sorted(final.glob("programs_*output_free*.json"))
+    pair_paths = sorted(final.glob("pairs_*output_free*.jsonl"))
+    if not paths and not pair_paths:
         return True, ["skipped: output-free protocol has not been run"]
     problems = []
     records = {}
@@ -279,6 +332,19 @@ def check_output_free_protocol() -> Tuple[bool, List[str]]:
         if entry.startswith("test_") or entry in ("main", "demo"):
             problems.append(f"{program_path}: output-free protocol selected the "
                             f"scaffolding entry point {entry!r}")
+    for path in pair_paths:
+        for line in path.read_text().splitlines():
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            if not row.get("evaluated"):
+                continue
+            for side in ("base_entry", "variant_entry"):
+                entry = (row.get(side) or "").split(":")[-1]
+                if (_is_scaffolding_entry(entry)
+                        and row["pair_id"] not in KNOWN_HISTORICAL_DRIVER_TRACES):
+                    problems.append(f"{path.name}:{row['pair_id']}: {side} traced "
+                                    f"the scaffolding entry point {entry!r}")
     return not problems, problems
 
 

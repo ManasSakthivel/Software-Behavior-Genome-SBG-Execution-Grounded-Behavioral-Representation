@@ -115,10 +115,36 @@ _MODULE_DUNDERS = frozenset({
 })
 _BUILTIN_NAMES = frozenset(dir(builtins))
 
-# sys.stdlib_module_names exists from 3.10. Eligibility is decided once, at build
-# time, and frozen in the manifest; the fallback only lets the scoring stage be
-# imported on 3.9.
-_STDLIB = frozenset(getattr(sys, "stdlib_module_names", ())) | {"__future__"}
+def _stdlib_module_names() -> frozenset:
+    """Top-level standard-library module names.
+
+    ``sys.stdlib_module_names`` exists from 3.10. On 3.9 the previous fallback
+    was the empty set, so every stdlib import (``re``, ``os``, ...) was
+    classified ``third_party_import`` and unit eligibility silently depended on
+    the interpreter version. The 3.9 fallback lists the interpreter's own stdlib
+    directory (excluding site-packages) plus its built-in modules.
+    """
+    names = getattr(sys, "stdlib_module_names", None)
+    if names is not None:
+        return frozenset(names) | {"__future__"}
+    import sysconfig
+    found = set(sys.builtin_module_names) | {"__future__"}
+    stdlib_dir = pathlib.Path(sysconfig.get_paths()["stdlib"])
+    for directory in (stdlib_dir, stdlib_dir / "lib-dynload"):
+        if not directory.is_dir():
+            continue
+        for entry in directory.iterdir():
+            if entry.name in ("site-packages", "dist-packages", "__pycache__", "lib-dynload"):
+                continue
+            if entry.is_dir():
+                found.add(entry.name)
+            elif entry.suffix in (".py", ".so", ".pyd"):
+                found.add(entry.name.split(".")[0])      # math.cpython-39-darwin.so -> math
+    return frozenset(found)
+
+
+# Eligibility is decided once, at build time, and frozen in the manifest.
+_STDLIB = _stdlib_module_names()
 
 _HUNK = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@")
 _ADDRESS = re.compile(r"0x[0-9a-fA-F]+")

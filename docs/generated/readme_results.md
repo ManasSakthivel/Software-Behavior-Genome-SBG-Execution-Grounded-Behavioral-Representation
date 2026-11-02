@@ -98,7 +98,7 @@ Both rows below were reported in an earlier README as SBG results. They are outp
 | Regression corpus, 15 bug/fix pairs | **7/15** | 13/15 |
 | Silent bugs (invisible to exception and volume shortcuts) | **3/9** | 9/9 |
 
-Decision threshold τ* = 0.08, fixed in advance and not re-tuned.
+Decision threshold τ* = 0.08. No derivation artifact for this value exists in the repository, so the claim that it was fixed in advance is unverified (see docs/current/THRESHOLD_PROVENANCE.md).
 
 ### Why the published comparison does not mean what it said
 
