@@ -71,7 +71,7 @@ non-empty.
 |---|---|
 | 643 of 744 test pairs evaluable under the published protocol | reproduces exactly |
 | Main-benchmark AUROC under the published protocol | reproduces to ±0.006 of the published 0.551; the residual is attributable to Python version (see above) |
-| Hard-negative and regression experiments | reproduce bit for bit **on CPython 3.13**, the interpreter that produced the artifacts. On 3.9 every reported count comes back identical but individual pair distances move, because the tracer sees a different event stream. `make check-reproduction` checks the counts on any interpreter; CI adds `--strict` on 3.13 |
+| Hard-negative and regression experiments | reproduce bit for bit **on CPython 3.13**, the interpreter that produced the artifacts. On 3.9 every reported count comes back identical but individual pair distances move, because the tracer sees a different event stream. `make check-reproduction` checks the counts on any interpreter; CI adds `--strict` on 3.13. `--strict` tolerates exactly one difference: the free-text `threshold_provenance` line of `HARD_NEGATIVE_V5_RESULTS.json`, which the generator rewords in commit d9d6380 while the frozen artifact keeps the older wording; every other byte (all counts, distances, pairs) must match |
 | Static audits and the manifest | deterministic; byte-identical |
 | `artifacts/v5/REGRESSION_EVALUATION_RESULTS.json` | **does not reproduce.** Re-running its own generator gives volume 11/15 where the artifact says 7, and 4 silent bugs where it says 8. Its volume feature is a wall-clock ratio, so the partition it derives is timing dependent. Superseded by `artifacts/final/REGRESSION_V5_RESULTS.json` |
 

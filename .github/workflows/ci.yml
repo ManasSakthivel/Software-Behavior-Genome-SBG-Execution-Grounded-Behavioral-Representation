@@ -22,14 +22,20 @@ concurrency:
 jobs:
   tests:
     name: tests (python ${{ matrix.python-version }})
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         # 3.9 is the documented floor. 3.13 is included because the tracer
         # reads frame.f_locals on every event, and PEP 667 changed what that
         # returns in 3.13 -- a difference that can move trace-derived features.
-        python-version: ["3.9", "3.13"]
+        # setup-python publishes no 3.9 build for ubuntu-latest (26.04), so 3.9
+        # is pinned to ubuntu-22.04; 3.13 stays on ubuntu-latest.
+        include:
+          - python-version: "3.9"
+            os: ubuntu-22.04
+          - python-version: "3.13"
+            os: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -80,11 +86,15 @@ jobs:
 
   fast-experiments:
     name: fast experiments reproduce (python ${{ matrix.python-version }})
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.13"]
+        include:
+          - python-version: "3.9"
+            os: ubuntu-22.04
+          - python-version: "3.13"
+            os: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

@@ -40,6 +40,35 @@ from typing import Any, Dict, List, Tuple
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 ARTIFACTS = REPO_ROOT / "artifacts" / "final"
 
+# Free-text provenance strings that are allowed to differ under --strict. The
+# committed HARD_NEGATIVE artifact predates commit d9d6380, which reworded this
+# string in the generator (the old wording claimed a derivation that no artifact
+# supports; see docs/current/THRESHOLD_PROVENANCE.md). The artifact was frozen
+# and is deliberately not regenerated. Only lines containing one of these JSON
+# keys may differ; every other byte must match, so any numeric or structural
+# change still fails.
+STRICT_IGNORED_KEYS = {
+    "HARD_NEGATIVE_V5_RESULTS.json": ('"threshold_provenance"',),
+}
+
+
+def strict_differences(artifact: str, old: bytes, new: bytes) -> Tuple[List[int], List[int]]:
+    """Return (disallowed differing line numbers, allowed differing line numbers)."""
+    if old == new:
+        return [], []
+    old_lines, new_lines = old.split(b"\n"), new.split(b"\n")
+    if len(old_lines) != len(new_lines):
+        return [-1], []
+    keys = tuple(k.encode() for k in STRICT_IGNORED_KEYS.get(artifact, ()))
+    bad: List[int] = []
+    ok: List[int] = []
+    for i, (a, b) in enumerate(zip(old_lines, new_lines), start=1):
+        if a == b:
+            continue
+        (ok if keys and any(k in a for k in keys) and any(k in b for k in keys) else bad).append(i)
+    return bad, ok
+
+
 # (artifact, generator, [(label, dotted path into the JSON)])
 EXPERIMENTS: List[Tuple[str, str, List[Tuple[str, str]]]] = [
     (
@@ -113,11 +142,16 @@ def main() -> int:
             if expected != actual:
                 failures.append(f"{artifact}: {label} was {expected}, re-ran as {actual}")
 
-        if args.strict and path.read_bytes() != before_bytes:
-            failures.append(f"{artifact}: not byte-identical after re-running "
-                            f"(expected under --strict on the interpreter that "
-                            f"produced it; this is "
-                            f"{sys.version_info.major}.{sys.version_info.minor})")
+        if args.strict:
+            bad, ok = strict_differences(artifact, before_bytes, path.read_bytes())
+            if bad:
+                failures.append(f"{artifact}: not byte-identical after re-running "
+                                f"(differing lines: {bad[:10]}; expected under --strict "
+                                f"on the interpreter that produced it; this is "
+                                f"{sys.version_info.major}.{sys.version_info.minor})")
+            elif ok:
+                print(f"[note] {artifact}: {len(ok)} line(s) differ only in the "
+                      f"allowed provenance string (lines {ok}); all other bytes identical")
 
         print(f"[{'ok' if not failures else '..'}] {artifact}: "
               f"{len(headline)} headline values checked"
