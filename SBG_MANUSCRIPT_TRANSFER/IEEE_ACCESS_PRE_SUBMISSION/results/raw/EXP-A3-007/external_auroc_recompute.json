@@ -1,0 +1,212 @@
+[
+ {
+  "slice": "bugsinpy v7 committed, evaluated only (all)",
+  "n_pairs": 147,
+  "n_pos": 41,
+  "n_neg": 106,
+  "n_clusters": 39,
+  "auroc": 0.4099,
+  "ci95_cluster_bootstrap": [
+   0.3262,
+   0.4939
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "bugsinpy v7 committed, evaluated only, SP-2 excluded",
+  "n_pairs": 107,
+  "n_pos": 41,
+  "n_neg": 66,
+  "n_clusters": 39,
+  "auroc": 0.4715,
+  "ci95_cluster_bootstrap": [
+   0.3809,
+   0.5617
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "bugsinpy v7 committed, SENSITIVITY unevaluated scored 0.0 (NOT the reported analysis)",
+  "n_pairs": 200,
+  "n_pos": 55,
+  "n_neg": 145,
+  "n_clusters": 51,
+  "auroc": 0.434,
+  "ci95_cluster_bootstrap": [
+   0.3741,
+   0.4899
+  ],
+  "seed": 42,
+  "note": "53 unevaluated rows of 200"
+ },
+ {
+  "slice": "bugsinpy v7 committed, evaluated only (all), seed 7",
+  "n_pairs": 147,
+  "n_pos": 41,
+  "n_neg": 106,
+  "n_clusters": 39,
+  "auroc": 0.4099,
+  "ci95_cluster_bootstrap": [
+   0.3297,
+   0.4892
+  ],
+  "seed": 7
+ },
+ {
+  "slice": "quixbugs_canonical v7 committed, evaluated only (all)",
+  "n_pairs": 152,
+  "n_pos": 40,
+  "n_neg": 112,
+  "n_clusters": 40,
+  "auroc": 0.3877,
+  "ci95_cluster_bootstrap": [
+   0.2847,
+   0.5034
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "quixbugs_canonical v7 committed, evaluated only, SP-2 excluded",
+  "n_pairs": 112,
+  "n_pos": 40,
+  "n_neg": 72,
+  "n_clusters": 40,
+  "auroc": 0.4507,
+  "ci95_cluster_bootstrap": [
+   0.3601,
+   0.5473
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "quixbugs_canonical v7 committed, SENSITIVITY unevaluated scored 0.0 (NOT the reported analysis)",
+  "n_pairs": 152,
+  "n_pos": 40,
+  "n_neg": 112,
+  "n_clusters": 40,
+  "auroc": 0.3877,
+  "ci95_cluster_bootstrap": [
+   0.2847,
+   0.5034
+  ],
+  "seed": 42,
+  "note": "0 unevaluated rows of 152"
+ },
+ {
+  "slice": "quixbugs_canonical v7 committed, evaluated only (all), seed 7",
+  "n_pairs": 152,
+  "n_pos": 40,
+  "n_neg": 112,
+  "n_clusters": 40,
+  "auroc": 0.3877,
+  "ci95_cluster_bootstrap": [
+   0.2858,
+   0.4946
+  ],
+  "seed": 7
+ },
+ {
+  "slice": "bugsinpy v8 rescore (all)",
+  "n_pairs": 147,
+  "n_pos": 41,
+  "n_neg": 106,
+  "n_clusters": 39,
+  "auroc": 0.4159,
+  "ci95_cluster_bootstrap": [
+   0.3223,
+   0.5144
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "bugsinpy v8 rescore, SP-2 excluded",
+  "n_pairs": 107,
+  "n_pos": 41,
+  "n_neg": 66,
+  "n_clusters": 39,
+  "auroc": 0.497,
+  "ci95_cluster_bootstrap": [
+   0.4023,
+   0.5956
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "bugsinpy v8 rescore, SP-2 excluded, seed 7",
+  "n_pairs": 107,
+  "n_pos": 41,
+  "n_neg": 66,
+  "n_clusters": 39,
+  "auroc": 0.497,
+  "ci95_cluster_bootstrap": [
+   0.4026,
+   0.602
+  ],
+  "seed": 7
+ },
+ {
+  "slice": "bugsinpy committed_v7 scores on the rescored pair set",
+  "n_pairs": 147,
+  "n_pos": 41,
+  "n_neg": 106,
+  "n_clusters": 39,
+  "auroc": 0.4099,
+  "ci95_cluster_bootstrap": [
+   0.3262,
+   0.4939
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "quixbugs_canonical v8 rescore (all)",
+  "n_pairs": 151,
+  "n_pos": 39,
+  "n_neg": 112,
+  "n_clusters": 40,
+  "auroc": 0.3842,
+  "ci95_cluster_bootstrap": [
+   0.2847,
+   0.4899
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "quixbugs_canonical v8 rescore, SP-2 excluded",
+  "n_pairs": 111,
+  "n_pos": 39,
+  "n_neg": 72,
+  "n_clusters": 40,
+  "auroc": 0.4444,
+  "ci95_cluster_bootstrap": [
+   0.3553,
+   0.5385
+  ],
+  "seed": 42
+ },
+ {
+  "slice": "quixbugs_canonical v8 rescore, SP-2 excluded, seed 7",
+  "n_pairs": 111,
+  "n_pos": 39,
+  "n_neg": 72,
+  "n_clusters": 40,
+  "auroc": 0.4444,
+  "ci95_cluster_bootstrap": [
+   0.3538,
+   0.5351
+  ],
+  "seed": 7
+ },
+ {
+  "slice": "quixbugs_canonical committed_v7 scores on the rescored pair set",
+  "n_pairs": 151,
+  "n_pos": 39,
+  "n_neg": 112,
+  "n_clusters": 40,
+  "auroc": 0.372,
+  "ci95_cluster_bootstrap": [
+   0.2743,
+   0.4799
+  ],
+  "seed": 42
+ }
+]

@@ -1,0 +1,200 @@
+{
+ "inc_names": {
+  "INC|EX+output_indep|frac40": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "output_indep|frac40"
+  ],
+  "INC|EX+pathspectra|shape|covset|max": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "pathspectra|shape|covset|max"
+  ],
+  "INC|EX+sbg_state": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "sbg_state"
+  ],
+  "INC|EX+sbg_temporal": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "sbg_temporal"
+  ],
+  "INC|EX+sbg_v3": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "sbg_v3"
+  ],
+  "INC|EX+sbg_v5": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "sbg_v5"
+  ],
+  "INC|EX+traceseq|cre|full|kgram4|max": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "traceseq|cre|full|kgram4|max"
+  ],
+  "INC|EX+valuespectra|entry_exit|full|raw|max": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "valuespectra|entry_exit|full|raw|max"
+  ],
+  "INC|EXx+output_indep|frac40": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "output_indep|frac40"
+  ],
+  "INC|EXx+pathspectra|shape|covset|max": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "pathspectra|shape|covset|max"
+  ],
+  "INC|EXx+sbg_state": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "sbg_state"
+  ],
+  "INC|EXx+sbg_temporal": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "sbg_temporal"
+  ],
+  "INC|EXx+sbg_v3": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "sbg_v3"
+  ],
+  "INC|EXx+sbg_v5": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "sbg_v5"
+  ],
+  "INC|EXx+traceseq|cre|full|kgram4|max": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "traceseq|cre|full|kgram4|max"
+  ],
+  "INC|EXx+valuespectra|entry_exit|full|raw|max": [
+   "edit",
+   "exception_fraction",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "n_events",
+   "trace_len_mean",
+   "valuespectra|entry_exit|full|raw|max"
+  ]
+ },
+ "representatives": {
+  "LR_EX": "LR_EX",
+  "LR_EXx*": "LR_EXx",
+  "LR_X": "LR_X",
+  "birthmark_k*": "traceseq|cre|full|kgram4|max",
+  "edit_fwd": "edit",
+  "execstat_single*": "trace_len_mean",
+  "forest_nonlinear*": "forest|RF_d4|EXx",
+  "output_indep_frac40": "output_indep|frac40",
+  "pathspectra*": "pathspectra|shape|covset|max",
+  "sbg_state": "sbg_state",
+  "sbg_temporal": "sbg_temporal",
+  "sbg_v3": "sbg_v3",
+  "static_ast": "static_ast",
+  "static_own*": "static|tfidf2",
+  "static_token": "static_token",
+  "tce_analogue*": "static|tce_ast",
+  "traceseq_naive*": "traceseq|cre|raw|kgram4|max",
+  "traceseq_rename_robust*": "traceseq|cre|full|kgram4|max",
+  "valuespectra*": "valuespectra|entry_exit|full|raw|max"
+ },
+ "thresholds_train_youden": {
+  "INC|EX+output_indep|frac40": 0.07132539146573968,
+  "INC|EX+pathspectra|shape|covset|max": 0.07771847031323846,
+  "INC|EX+sbg_state": -0.5973723991918504,
+  "INC|EX+sbg_temporal": -0.5431285120441203,
+  "INC|EX+sbg_v3": -0.5147181651922885,
+  "INC|EX+sbg_v5": -0.5616542342733498,
+  "INC|EX+traceseq|cre|full|kgram4|max": -0.640875466175986,
+  "INC|EX+valuespectra|entry_exit|full|raw|max": -0.08661862449100265,
+  "INC|EXx+output_indep|frac40": 0.5355102064298332,
+  "INC|EXx+pathspectra|shape|covset|max": 0.2169652303963428,
+  "INC|EXx+sbg_state": 0.3521895347406814,
+  "INC|EXx+sbg_temporal": 0.6832705710226432,
+  "INC|EXx+sbg_v3": 0.683277845362336,
+  "INC|EXx+sbg_v5": 0.2869029359742716,
+  "INC|EXx+traceseq|cre|full|kgram4|max": 0.2871611270406689,
+  "INC|EXx+valuespectra|entry_exit|full|raw|max": -0.2821261115891794,
+  "LR_EX": -0.30152665051148886,
+  "LR_EXx": 0.63045400780141,
+  "LR_X": -0.2990680384181361,
+  "edit": 3.0,
+  "edit_rev": -37.0,
+  "forest|RF_d4|EXx": 0.5971925572213843,
+  "output_indep|frac40": 0.025,
+  "pathspectra|shape|covset|max": 0.44999999999999996,
+  "sbg_state": 0.001113173,
+  "sbg_temporal": 0.0118884,
+  "sbg_v3": 2.405e-05,
+  "sbg_v5": 7.955e-05,
+  "static_ast": 0.04255319148936165,
+  "static_token": 0.02777777777777779,
+  "static|tce_ast": 1.0,
+  "static|tfidf2": 0.0012521121267788926,
+  "trace_len_mean": 0.0017825311942959,
+  "traceseq|cre|full|kgram4|max": 0.5,
+  "traceseq|cre|raw|kgram4|max": 0.5,
+  "valuespectra|entry_exit|full|raw|max": 1.0
+ },
+ "train_pop_sha": "3f252a9ad96bd620d81434f8aec94f4538124ecd76b92167a4a835ade54ce83a"
+}

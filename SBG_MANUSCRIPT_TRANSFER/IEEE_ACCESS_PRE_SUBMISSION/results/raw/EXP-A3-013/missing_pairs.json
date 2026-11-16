@@ -1,0 +1,226 @@
+{
+ "summary": {
+  "v10_test": {
+   "n_meta_pairs": 644,
+   "n_unevaluated_in_file": 3,
+   "unevaluated_ids": [
+    "test__math_fib_matrix__sc4+sp2_s0",
+    "test__math_fib_matrix__sc5+sp2_s1",
+    "test__sort_stooge_sort__sc3+sp1_s2"
+   ],
+   "unevaluated_labels": [
+    1,
+    1,
+    1
+   ],
+   "unevaluated_rows_carrying_a_score": [],
+   "n_primary": 638,
+   "dropped_evaluated_partners": [
+    "test__math_fib_matrix__sp2_s0",
+    "test__math_fib_matrix__sp2_s1",
+    "test__sort_stooge_sort__sp1_s2"
+   ],
+   "primary_mean_edit_by_label": {
+    "0": 8.361,
+    "1": 10.288
+   },
+   "unevaluated_edit_sizes": [
+    8.0,
+    10.0,
+    8.0
+   ],
+   "worst_best_case_auroc_with_unevaluated_CH_reinserted": {
+    "sbg_v5": {
+     "primary_auroc": 0.8968,
+     "reinserted_worst": 0.8887,
+     "reinserted_best": 0.898
+    },
+    "sbg_state": {
+     "primary_auroc": 0.9171,
+     "reinserted_worst": 0.909,
+     "reinserted_best": 0.9183
+    },
+    "edit": {
+     "primary_auroc": 0.616,
+     "reinserted_worst": 0.6163,
+     "reinserted_best": 0.6163
+    },
+    "coverage_size": {
+     "primary_auroc": 0.779,
+     "reinserted_worst": 0.7708,
+     "reinserted_best": 0.7801
+    }
+   }
+  },
+  "v9c_val": {
+   "n_meta_pairs": 679,
+   "n_unevaluated_in_file": 2,
+   "unevaluated_ids": [
+    "val__math_lis_length__sc3+sp6_s1_j16",
+    "val__str_interleave_check__sc11+sp4_s0_j9"
+   ],
+   "unevaluated_labels": [
+    1,
+    1
+   ],
+   "unevaluated_rows_carrying_a_score": [],
+   "n_primary": 432,
+   "dropped_evaluated_partners": [
+    "val__math_lis_length__sp-6_s1",
+    "val__str_interleave_check__sp-4_s0"
+   ],
+   "primary_mean_edit_by_label": {
+    "0": 8.366,
+    "1": 10.125
+   },
+   "unevaluated_edit_sizes": [
+    4.0,
+    11.0
+   ],
+   "worst_best_case_auroc_with_unevaluated_CH_reinserted": {
+    "sbg_v5": {
+     "primary_auroc": 0.7514,
+     "reinserted_worst": 0.746,
+     "reinserted_best": 0.7552
+    },
+    "sbg_state": {
+     "primary_auroc": 0.7624,
+     "reinserted_worst": 0.7564,
+     "reinserted_best": 0.7656
+    },
+    "edit": {
+     "primary_auroc": 0.6111,
+     "reinserted_worst": 0.6117,
+     "reinserted_best": 0.6117
+    },
+    "coverage_size": {
+     "primary_auroc": 0.6781,
+     "reinserted_worst": 0.6732,
+     "reinserted_best": 0.6824
+    }
+   }
+  }
+ },
+ "rows": [
+  {
+   "design": "v10_test",
+   "pair_id": "test__math_fib_matrix__sc4+sp2_s0",
+   "label": 1,
+   "role": "unevaluated",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 8.0,
+   "base_id": "math_fib_matrix",
+   "type": "SP-2",
+   "sc": "SC-4"
+  },
+  {
+   "design": "v10_test",
+   "pair_id": "test__math_fib_matrix__sc5+sp2_s1",
+   "label": 1,
+   "role": "unevaluated",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 10.0,
+   "base_id": "math_fib_matrix",
+   "type": "SP-2",
+   "sc": "SC-5"
+  },
+  {
+   "design": "v10_test",
+   "pair_id": "test__sort_stooge_sort__sc3+sp1_s2",
+   "label": 1,
+   "role": "unevaluated",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 8.0,
+   "base_id": "sort_stooge_sort",
+   "type": "SP-1",
+   "sc": "SC-3"
+  },
+  {
+   "design": "v10_test",
+   "pair_id": "test__math_fib_matrix__sp2_s0",
+   "label": 0,
+   "role": "evaluated-partner-dropped-by-matched-rule",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 6.0,
+   "base_id": "math_fib_matrix",
+   "type": "SP-2",
+   "sc": null
+  },
+  {
+   "design": "v10_test",
+   "pair_id": "test__math_fib_matrix__sp2_s1",
+   "label": 0,
+   "role": "evaluated-partner-dropped-by-matched-rule",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 8.0,
+   "base_id": "math_fib_matrix",
+   "type": "SP-2",
+   "sc": null
+  },
+  {
+   "design": "v10_test",
+   "pair_id": "test__sort_stooge_sort__sp1_s2",
+   "label": 0,
+   "role": "evaluated-partner-dropped-by-matched-rule",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 6.0,
+   "base_id": "sort_stooge_sort",
+   "type": "SP-1",
+   "sc": null
+  },
+  {
+   "design": "v9c_val",
+   "pair_id": "val__math_lis_length__sc3+sp6_s1_j16",
+   "label": 1,
+   "role": "unevaluated",
+   "failure_kind": "nonterminating",
+   "failure_detail": "exceeded the per-trace budget on 2 inputs",
+   "edit_size": 4.0,
+   "base_id": "math_lis_length",
+   "type": "SP-6",
+   "sc": "SC-3"
+  },
+  {
+   "design": "v9c_val",
+   "pair_id": "val__str_interleave_check__sc11+sp4_s0_j9",
+   "label": 1,
+   "role": "unevaluated",
+   "failure_kind": "import_error",
+   "failure_detail": "NameError: name 'j' is not defined",
+   "edit_size": 11.0,
+   "base_id": "str_interleave_check",
+   "type": "SP-4",
+   "sc": "SC-11"
+  },
+  {
+   "design": "v9c_val",
+   "pair_id": "val__math_lis_length__sp-6_s1",
+   "label": 0,
+   "role": "evaluated-partner-dropped-by-matched-rule",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 2.0,
+   "base_id": "math_lis_length",
+   "type": "SP-6",
+   "sc": null
+  },
+  {
+   "design": "v9c_val",
+   "pair_id": "val__str_interleave_check__sp-4_s0",
+   "label": 0,
+   "role": "evaluated-partner-dropped-by-matched-rule",
+   "failure_kind": null,
+   "failure_detail": "None",
+   "edit_size": 9.0,
+   "base_id": "str_interleave_check",
+   "type": "SP-4",
+   "sc": null
+  }
+ ]
+}

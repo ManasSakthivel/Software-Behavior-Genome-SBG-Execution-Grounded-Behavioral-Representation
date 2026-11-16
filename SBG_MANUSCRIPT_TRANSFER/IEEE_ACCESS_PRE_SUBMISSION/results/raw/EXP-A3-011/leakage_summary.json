@@ -1,0 +1,216 @@
+{
+ "overlap": {
+  "V9c": {
+   "n_reference_programs": 70,
+   "base_id_overlap_with_V10": [],
+   "file_sha256_overlap": [],
+   "normalised_AST_hash_overlap": []
+  },
+  "V8": {
+   "n_reference_programs": 100,
+   "base_id_overlap_with_V10": [],
+   "file_sha256_overlap": [],
+   "normalised_AST_hash_overlap": []
+  },
+  "variant_AST_hash_overlap_V10_vs_V8V9": 0
+ },
+ "similarity_summary_V10_vs_V8V9c": {
+  "repo": {
+   "min": 0.0714,
+   "median": 0.1316,
+   "max": 0.225,
+   "n_gt_0.10": 16,
+   "n_gt_0.15": 7,
+   "n_gt_0.5": 0
+  },
+  "ident": {
+   "min": 0.2469,
+   "median": 0.3077,
+   "max": 0.4082,
+   "n_gt_0.10": 19,
+   "n_gt_0.15": 19,
+   "n_gt_0.5": 0
+  },
+  "g5": {
+   "min": 0.1782,
+   "median": 0.244,
+   "max": 0.3949,
+   "n_gt_0.10": 19,
+   "n_gt_0.15": 19,
+   "n_gt_0.5": 0
+  },
+  "a3": {
+   "min": 0.3379,
+   "median": 0.4583,
+   "max": 0.6067,
+   "n_gt_0.10": 19,
+   "n_gt_0.15": 19,
+   "n_gt_0.5": 2
+  },
+  "V9c_internal_baseline_repoJ": {
+   "pairs": 2415,
+   "median": 0.019230769230769232,
+   "p95": 0.08571428571428572,
+   "max": 0.3548387096774194,
+   "g5_median": 0.09813084112149532,
+   "g5_p95": 0.17757009345794392,
+   "g5_max": 0.6888888888888889
+  }
+ },
+ "n_reference_programs": 446,
+ "n_v10": 19,
+ "novelty_claim_rows": [
+  {
+   "v10_program": "ds_min_heap_array",
+   "repo_report_max_jaccard": 0.1039,
+   "repo_report_against": "sort_heapsort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.0889,
+   "own_argmax": "V9c-train:ds_sparse_table"
+  },
+  {
+   "v10_program": "ds_ranked_set",
+   "repo_report_max_jaccard": 0.1053,
+   "repo_report_against": "sort_topk_select",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1316,
+   "own_argmax": "V9c-train:math_max_subarray"
+  },
+  {
+   "v10_program": "ds_union_find",
+   "repo_report_max_jaccard": 0.1188,
+   "repo_report_against": "graph_connected_components",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1951,
+   "own_argmax": "V8-test:graph_mst_kruskal"
+  },
+  {
+   "v10_program": "graph_alien_dict",
+   "repo_report_max_jaccard": 0.1066,
+   "repo_report_against": "graph_topological_sort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1186,
+   "own_argmax": "V8-test:graph_course_schedule"
+  },
+  {
+   "v10_program": "graph_cycle_detection_dfs",
+   "repo_report_max_jaccard": 0.1413,
+   "repo_report_against": "graph_cycle_detect_dfs",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.122,
+   "own_argmax": "V9c-train:graph_center_finder"
+  },
+  {
+   "v10_program": "graph_network_delay",
+   "repo_report_max_jaccard": 0.12,
+   "repo_report_against": "graph_dijkstra",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1591,
+   "own_argmax": "V9c-train:graph_path_exists"
+  },
+  {
+   "v10_program": "graph_topological_kahn",
+   "repo_report_max_jaccard": 0.1351,
+   "repo_report_against": "graph_topological_sort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1111,
+   "own_argmax": "V8-train:graph_degree_sequence"
+  },
+  {
+   "v10_program": "math_coin_change",
+   "repo_report_max_jaccard": 0.1293,
+   "repo_report_against": "math_dynamic_programming",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.225,
+   "own_argmax": "V9c-val:math_ways_to_change"
+  },
+  {
+   "v10_program": "math_fib_matrix",
+   "repo_report_max_jaccard": 0.1429,
+   "repo_report_against": "math_fibonacci",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1143,
+   "own_argmax": "V9c-train:math_nth_ugly_number"
+  },
+  {
+   "v10_program": "math_knapsack_01",
+   "repo_report_max_jaccard": 0.1053,
+   "repo_report_against": "math_dynamic_programming",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1053,
+   "own_argmax": "V9c-train:math_max_product_subarray"
+  },
+  {
+   "v10_program": "sort_bitonic_sort",
+   "repo_report_max_jaccard": 0.1212,
+   "repo_report_against": "sort_insertion_sort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1282,
+   "own_argmax": "V8-train:sort_strand_sort"
+  },
+  {
+   "v10_program": "sort_gnome_sort",
+   "repo_report_max_jaccard": 0.1034,
+   "repo_report_against": "sort_insertion_sort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.2,
+   "own_argmax": "V9c-train:sort_shellsort"
+  },
+  {
+   "v10_program": "sort_gravity_bead",
+   "repo_report_max_jaccard": 0.1026,
+   "repo_report_against": "sort_insertion_sort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.0714,
+   "own_argmax": "V8-dev:sort_cycle_sort"
+  },
+  {
+   "v10_program": "sort_pancake",
+   "repo_report_max_jaccard": 0.1184,
+   "repo_report_against": "sort_heapsort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1515,
+   "own_argmax": "V8-dev:sort_cycle_sort"
+  },
+  {
+   "v10_program": "sort_radix_sort_lsd",
+   "repo_report_max_jaccard": 0.1463,
+   "repo_report_against": "sort_radix_sort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1389,
+   "own_argmax": "V8-test:sort_counting_sort_keys"
+  },
+  {
+   "v10_program": "sort_stooge_sort",
+   "repo_report_max_jaccard": 0.1014,
+   "repo_report_against": "sort_quicksort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.15,
+   "own_argmax": "V9c-val:sort_patience_sort"
+  },
+  {
+   "v10_program": "sort_tree_sort",
+   "repo_report_max_jaccard": 0.1111,
+   "repo_report_against": "sort_insertion_sort",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.1628,
+   "own_argmax": "V9c-val:sort_patience_sort"
+  },
+  {
+   "v10_program": "str_decode_run_length",
+   "repo_report_max_jaccard": 0.1414,
+   "repo_report_against": "str_run_length_encode",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.186,
+   "own_argmax": "V8-test:str_decode_ways"
+  },
+  {
+   "v10_program": "str_group_anagrams",
+   "repo_report_max_jaccard": 0.1207,
+   "repo_report_against": "str_anagram_groups",
+   "repo_report_eligible": false,
+   "own_repo_style_max_V8V9c": 0.0732,
+   "own_argmax": "V8-test:ds_frequency_sort"
+  }
+ ]
+}
