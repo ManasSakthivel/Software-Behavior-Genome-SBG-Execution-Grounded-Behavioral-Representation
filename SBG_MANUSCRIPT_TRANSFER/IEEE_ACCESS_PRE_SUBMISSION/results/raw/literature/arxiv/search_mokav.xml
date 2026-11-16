@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/yncK4yAbJMLNjk5Smy+i2Nac58I</id>
+  <title>arXiv Query: search_query=all:Mokav OR all:execution-driven OR all:differential OR all:testing OR all:LLMs&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:25:36Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:Mokav+OR+(all:execution-driven+OR+(all:differential+OR+(all:testing+OR+all:LLMs)))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>490409</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2406.10375v2</id>
+    <title>Mokav: Execution-driven Differential Testing with LLMs</title>
+    <updated>2025-07-31T10:44:12Z</updated>
+    <link href="https://arxiv.org/abs/2406.10375v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2406.10375v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>It is essential to detect functional differences between programs in various software engineering tasks, such as automated program repair, mutation testing, and code refactoring. The problem of detecting functional differences between two programs can be reduced to searching for a difference exposing test (DET): a test input that results in different outputs on the subject programs. In this paper, we propose Mokav, a novel execution-driven tool that leverages LLMs to generate DETs. Mokav takes two versions of a program (P and Q) and an example test input. When successful, Mokav generates a valid DET, a test input that leads to provably different outputs on P and Q. Mokav iteratively prompts an LLM with a specialized prompt to generate new test inputs. At each iteration, Mokav provides execution-based feedback from previously generated tests until the LLM produces a DET. We evaluate Mokav on 1535 pairs of Python programs collected from the Codeforces competition platform and 32 pairs of programs from the QuixBugs dataset. Our experiments show that Mokav outperforms the state-of-the-art, Pynguin and Differential Prompting, by a large margin. Mokav can generate DETs for 81.7% (1,255/1535) of the program pairs in our benchmark (versus 4.9% for Pynguin and 37.3% for Differential Prompting). We demonstrate that the iterative and execution-driven feedback components of the system contribute to its high effectiveness.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-06-14T19:07:03Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>Journal of Systems and Software, 2025</arxiv:journal_ref>
+    <author>
+      <name>Khashayar Etemadi</name>
+    </author>
+    <author>
+      <name>Bardia Mohammadi</name>
+    </author>
+    <author>
+      <name>Zhendong Su</name>
+    </author>
+    <author>
+      <name>Martin Monperrus</name>
+    </author>
+    <arxiv:doi>10.1016/j.jss.2025.112571</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1016/j.jss.2025.112571" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2202.12139v1</id>
+    <title>Testing Deep Learning Models: A First Comparative Study of Multiple Testing Techniques</title>
+    <updated>2022-02-24T15:05:19Z</updated>
+    <link href="https://arxiv.org/abs/2202.12139v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2202.12139v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Deep Learning (DL) has revolutionized the capabilities of vision-based systems (VBS) in critical applications such as autonomous driving, robotic surgery, critical infrastructure surveillance, air and maritime traffic control, etc. By analyzing images, voice, videos, or any type of complex signals, DL has considerably increased the situation awareness of these systems. At the same time, while relying more and more on trained DL models, the reliability and robustness of VBS have been challenged and it has become crucial to test thoroughly these models to assess their capabilities and potential errors. To discover faults in DL models, existing software testing methods have been adapted and refined accordingly. In this article, we provide an overview of these software testing methods, namely differential, metamorphic, mutation, and combinatorial testing, as well as adversarial perturbation testing and review some challenges in their deployment for boosting perception systems used in VBS. We also provide a first experimental comparative study on a classical benchmark used in VBS and discuss its results.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-02-24T15:05:19Z</published>
+    <arxiv:comment>Artificial Intelligence in Software Testing 2022 workshop @ ICST 2022</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>Artificial Intelligence in Software Testing @ 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)</arxiv:journal_ref>
+    <author>
+      <name>Mohit Kumar Ahuja</name>
+    </author>
+    <author>
+      <name>Arnaud Gotlieb</name>
+    </author>
+    <author>
+      <name>Helge Spieker</name>
+    </author>
+    <arxiv:doi>10.1109/ICSTW55395.2022.00035</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICSTW55395.2022.00035" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2405.13786v1</id>
+    <title>Towards Explainable Test Case Prioritisation with Learning-to-Rank Models</title>
+    <updated>2024-05-22T16:11:45Z</updated>
+    <link href="https://arxiv.org/abs/2405.13786v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2405.13786v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Test case prioritisation (TCP) is a critical task in regression testing to ensure quality as software evolves. Machine learning has become a common way to achieve it. In particular, learning-to-rank (LTR) algorithms provide an effective method of ordering and prioritising test cases. However, their use poses a challenge in terms of explainability, both globally at the model level and locally for particular results. Here, we present and discuss scenarios that require different explanations and how the particularities of TCP (multiple builds over time, test case and test suite variations, etc.) could influence them. We include a preliminary experiment to analyse the similarity of explanations, showing that they do not only vary depending on test case-specific predictions, but also on the relative ranks.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-05-22T16:11:45Z</published>
+    <arxiv:comment>3rd International Workshop on Artificial Intelligence in Software Testing (AIST) - International Conference on Software Testing and Validation (ICST)</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>Proc. 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW), pp. 66-69</arxiv:journal_ref>
+    <author>
+      <name>Aurora Ramírez</name>
+    </author>
+    <author>
+      <name>Mario Berrios</name>
+    </author>
+    <author>
+      <name>José Raúl Romero</name>
+    </author>
+    <author>
+      <name>Robert Feldt</name>
+    </author>
+    <arxiv:doi>10.1109/ICSTW58534.2023.00023</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICSTW58534.2023.00023" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.01727v1</id>
+    <title>Are LLMs More Skeptical of Entertainment News?</title>
+    <updated>2026-05-03T05:55:00Z</updated>
+    <link href="https://arxiv.org/abs/2605.01727v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.01727v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) are increasingly used for automated news credibility assessment, yet it remains unclear whether they apply even-handed standards across journalistic genres. We examine whether zero-shot LLMs are more likely to misclassify legitimate entertainment news as fake than legitimate hard news, using a within-dataset design on GossipCop from FakeNewsNet. Across four frontier models, we find a clear but model-specific genre asymmetry: DeepSeek-V3.2 and GPT-5.2 show false-positive-rate gaps of 10.1 and 8.8 percentage points, respectively (both $p &lt; .001$), whereas Claude Opus 4.6 and Gemini 3 Flash show no comparable difference. A style-swap experiment yields only limited and inconsistent changes, suggesting that the asymmetry is not reducible to stylistic register alone. Prompt-based mitigation is likewise possible but not generic: framing the model as an entertainment-news fact-checker reduces false positives for DeepSeek-V3.2 by about 50\% without detectable recall loss, but offers little improvement for GPT-5.2. Exploratory qualitative coding further suggests two recurring error patterns in sampled false positives: treating private-life claims as inherently unverifiable and discounting entertainment journalism as an epistemically weaker genre. Taken together, these findings show that aggregate performance metrics can obscure structured false positives within legitimate journalism. We argue that LLM-based credibility assessment may not only evaluate truth claims but also differentially recognize the legitimacy of journalistic genres, and that evaluation should therefore include genre-stratified false-positive analysis alongside overall accuracy.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-03T05:55:00Z</published>
+    <arxiv:comment>Accepted at the 2nd Workshop on Misinformation Detection in the Era of LLMs (MisD), co-located with ICWSM 2026, May 26, 2026, Los Angeles, CA, USA</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <arxiv:journal_ref>Proceedings of the ICWSM Workshops, MisD 2026: The 2nd Workshop on Misinformation Detection in the Era of LLMs, 2026</arxiv:journal_ref>
+    <author>
+      <name>Huiqian Lai</name>
+    </author>
+    <arxiv:doi>10.36190/2026.32</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.36190/2026.32" title="doi"/>
+  </entry>
+</feed>

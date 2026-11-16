@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/CDo9DzrUPlbviRvp1EagXADU4cU</id>
+  <title>arXiv Query: search_query=all:"LASSO" AND all:observatorium&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-11-14T13:17:51Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:%22LASSO%22+AND+all:observatorium&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2409.14071v2</id>
+    <title>N-Version Assessment and Enhancement of Generative AI</title>
+    <updated>2024-09-30T07:35:40Z</updated>
+    <link href="https://arxiv.org/abs/2409.14071v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2409.14071v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative AI (GAI) holds great potential to improve software engineering productivity, but its untrustworthy outputs, particularly in code synthesis, pose significant challenges. The need for extensive verification and validation (V&amp;V) of GAI-generated artifacts may undermine the potential productivity gains. This paper proposes a way of mitigating these risks by exploiting GAI's ability to generate multiple versions of code and tests to facilitate comparative analysis across versions. Rather than relying on the quality of a single test or code module, this "differential GAI" (D-GAI) approach promotes more reliable quality evaluation through version diversity. We introduce the Large-Scale Software Observatorium (LASSO), a platform that supports D-GAI by executing and analyzing large sets of code versions and tests. We discuss how LASSO enables rigorous evaluation of GAI-generated artifacts and propose its application in both software development and GAI research.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-09-21T09:00:16Z</published>
+    <arxiv:comment>This work has been accepted for publication in an upcoming issue of IEEE Software. This work has been submitted to the IEEE for possible publication</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>IEEE Software September 2024</arxiv:journal_ref>
+    <author>
+      <name>Marcus Kessel</name>
+    </author>
+    <author>
+      <name>Colin Atkinson</name>
+    </author>
+    <arxiv:doi>10.1109/MS.2024.3469388</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/MS.2024.3469388" title="doi"/>
+  </entry>
+</feed>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/k3FCqVr4EIQK7+62zqgWTaZ9eVA</id>
+  <title>arXiv Query: search_query=&amp;id_list=1907.02136&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:27:46Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=1907.02136" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/1907.02136v2</id>
+    <title>Learning Blended, Precise Semantic Program Embeddings</title>
+    <updated>2019-07-11T12:27:55Z</updated>
+    <link href="https://arxiv.org/abs/1907.02136v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1907.02136v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Learning neural program embeddings is key to utilizing deep neural networks in program languages research --- precise and efficient program representations enable the application of deep models to a wide range of program analysis tasks. Existing approaches predominately learn to embed programs from their source code, and, as a result, they do not capture deep, precise program semantics. On the other hand, models learned from runtime information critically depend on the quality of program executions, thus leading to trained models with highly variant quality. This paper tackles these inherent weaknesses of prior approaches by introducing a new deep neural network, \liger, which learns program representations from a mixture of symbolic and concrete execution traces. We have evaluated \liger on \coset, a recently proposed benchmark suite for evaluating neural program embeddings. Results show \liger (1) is significantly more accurate than the state-of-the-art syntax-based models Gated Graph Neural Network and code2vec in classifying program semantics, and (2) requires on average 10x fewer executions covering 74\% fewer paths than the state-of-the-art dynamic model \dypro. Furthermore, we extend \liger to predict the name for a method from its body's vector representation. Learning on the same set of functions (more than 170K in total), \liger significantly outperforms code2seq, the previous state-of-the-art for method name prediction.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-07-03T21:15:04Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Ke Wang</name>
+    </author>
+    <author>
+      <name>Zhendong Su</name>
+    </author>
+  </entry>
+</feed>

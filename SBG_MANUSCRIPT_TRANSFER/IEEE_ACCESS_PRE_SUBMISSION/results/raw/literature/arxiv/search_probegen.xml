@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/C543/MPMpt1hkDnrH8P58yDAU8c</id>
+  <title>arXiv Query: search_query=all:Disproving OR all:Program OR all:Equivalence OR all:with OR all:LLMs&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:25:40Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:Disproving+OR+(all:Program+OR+(all:Equivalence+OR+(all:with+OR+all:LLMs)))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>274801</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2502.18473v1</id>
+    <title>Disproving Program Equivalence with LLMs</title>
+    <updated>2025-02-05T12:54:17Z</updated>
+    <link href="https://arxiv.org/abs/2502.18473v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.18473v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>To evaluate large language models (LLMs) for code, research has used manually created unit test-based benchmarks. However, these tests are often inadequate, missing corner cases and other implementation-specific oddities. This work introduces ProbeGen, a whitebox method that takes two or more executable pieces of code and searches for counterexamples to their equivalence. Comparing code semantics requires a deep understanding of code. We demonstrate that LLMs with execution feedback perform well at this task. In a common code synthesis benchmark, ProbeGen disproves 18% of samples considered equivalent to the ground truth by the benchmark-provided unit tests. Additionally, using ProbeGen, we can semantically cluster LLM samples for semantic self-consistency, improving pass@1 by 10% by unifying syntactically distinct but semantically similar samples.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-05T12:54:17Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Miltiadis Allamanis</name>
+    </author>
+    <author>
+      <name>Pengcheng Yin</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2601.22050v2</id>
+    <title>MasalBench: A Benchmark for Contextual and Cross-Cultural Understanding of Persian Proverbs in LLMs</title>
+    <updated>2026-10-14T08:32:20Z</updated>
+    <link href="https://arxiv.org/abs/2601.22050v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.22050v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In recent years, multilingual Large Language Models (LLMs) have become an inseparable part of daily life, making it crucial for them to master the rules of conversational language in order to communicate effectively with users. While previous work has evaluated LLMs' understanding of figurative language in high-resource languages, their performance in low-resource languages remains underexplored. In this paper, we introduce MasalBench, a comprehensive benchmark for assessing LLMs' contextual and cross-cultural understanding of Persian proverbs, which are a key component of conversation in this low-resource language. We evaluate eight state-of-the-art LLMs on MasalBench and find that they perform well in identifying Persian proverbs in context, achieving accuracies above 0.90. However, their performance drops considerably when tasked with identifying equivalent English proverbs, with the best model achieving 0.79 accuracy. Our findings highlight the limitations of current LLMs in cultural knowledge and analogical reasoning, and they provide a framework for assessing cross-cultural understanding in other low-resource languages. MasalBench is available at https://github.com/kalhorghazal/MasalBench.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-29T17:49:44Z</published>
+    <arxiv:comment>Accepted and forthcoming at the First Workshop on Pluralistic Value Alignment of LLMs (PlurVA-LLM 2026) at AACL-IJCNLP 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <arxiv:journal_ref>Proceedings of the First Workshop on Pluralistic Value Alignment of LLMs (PlurVA-LLM), AACL-IJCNLP 2026, pp. 17-23, 2026</arxiv:journal_ref>
+    <author>
+      <name>Ghazal Kalhor</name>
+    </author>
+    <author>
+      <name>Behnam Bahrak</name>
+    </author>
+    <arxiv:doi>10.18653/2026.plurvallm-1.2</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.18653/2026.plurvallm-1.2" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.01727v1</id>
+    <title>Are LLMs More Skeptical of Entertainment News?</title>
+    <updated>2026-05-03T05:55:00Z</updated>
+    <link href="https://arxiv.org/abs/2605.01727v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.01727v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) are increasingly used for automated news credibility assessment, yet it remains unclear whether they apply even-handed standards across journalistic genres. We examine whether zero-shot LLMs are more likely to misclassify legitimate entertainment news as fake than legitimate hard news, using a within-dataset design on GossipCop from FakeNewsNet. Across four frontier models, we find a clear but model-specific genre asymmetry: DeepSeek-V3.2 and GPT-5.2 show false-positive-rate gaps of 10.1 and 8.8 percentage points, respectively (both $p &lt; .001$), whereas Claude Opus 4.6 and Gemini 3 Flash show no comparable difference. A style-swap experiment yields only limited and inconsistent changes, suggesting that the asymmetry is not reducible to stylistic register alone. Prompt-based mitigation is likewise possible but not generic: framing the model as an entertainment-news fact-checker reduces false positives for DeepSeek-V3.2 by about 50\% without detectable recall loss, but offers little improvement for GPT-5.2. Exploratory qualitative coding further suggests two recurring error patterns in sampled false positives: treating private-life claims as inherently unverifiable and discounting entertainment journalism as an epistemically weaker genre. Taken together, these findings show that aggregate performance metrics can obscure structured false positives within legitimate journalism. We argue that LLM-based credibility assessment may not only evaluate truth claims but also differentially recognize the legitimacy of journalistic genres, and that evaluation should therefore include genre-stratified false-positive analysis alongside overall accuracy.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-03T05:55:00Z</published>
+    <arxiv:comment>Accepted at the 2nd Workshop on Misinformation Detection in the Era of LLMs (MisD), co-located with ICWSM 2026, May 26, 2026, Los Angeles, CA, USA</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <arxiv:journal_ref>Proceedings of the ICWSM Workshops, MisD 2026: The 2nd Workshop on Misinformation Detection in the Era of LLMs, 2026</arxiv:journal_ref>
+    <author>
+      <name>Huiqian Lai</name>
+    </author>
+    <arxiv:doi>10.36190/2026.32</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.36190/2026.32" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2101.00458v2</id>
+    <title>Gravity at Finite Temperature, Equivalence Principle,and Local Lorentz Invariance</title>
+    <updated>2021-01-16T15:12:18Z</updated>
+    <link href="https://arxiv.org/abs/2101.00458v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2101.00458v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this Chapter we illustrate the close connection between the violation of the weak equivalence principle typical of gravitational interactions at finite temperature, and similar violations induced by a breaking of the local Lorentz symmetry. We also discuss the physical implications of the effective repulsive forces possibly arising in such a generalized gravitational context, by considering, for an illustrative purpose, a quasi-Riemannian model of gravity with rotational symmetry as the local gauge group in tangent space.</summary>
+    <category term="gr-qc" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="hep-th" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-01-02T14:43:00Z</published>
+    <arxiv:comment>21 pages, 3 figures. To appear in the book "Breakdown of the Einstein's Equivalence Principle", ed. by A. G. Lebed (World Scientific, 2021). A few typos corrected, two references added</arxiv:comment>
+    <arxiv:primary_category term="gr-qc"/>
+    <arxiv:journal_ref>"Breakdown of the Einstein's Equivalence Principle'', ed. by A. G. Lebed (World Scientific, 2023), Cap. 3, p. 77</arxiv:journal_ref>
+    <author>
+      <name>M. Gasperini</name>
+    </author>
+    <arxiv:doi>10.1142/9789811253591_fmatter</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1142/9789811253591_fmatter" title="doi"/>
+  </entry>
+</feed>

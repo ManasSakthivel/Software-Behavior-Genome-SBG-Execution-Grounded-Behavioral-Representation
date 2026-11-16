@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/7n5wRlsTNj8vd12s2Eo5zdpbdCc</id>
+  <title>arXiv Query: search_query=all:Learning OR all:Executable OR all:Semantics OR all:for OR all:Software OR all:Engineering&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:41:13Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:Learning+OR+(all:Executable+OR+(all:Semantics+OR+(all:for+OR+(all:Software+OR+all:Engineering))))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>781709</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2406.04710v2</id>
+    <title>Morescient GAI for Software Engineering (Extended Version)</title>
+    <updated>2024-12-03T09:51:23Z</updated>
+    <link href="https://arxiv.org/abs/2406.04710v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2406.04710v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The ability of Generative AI (GAI) technology to automatically check, synthesize and modify software engineering artifacts promises to revolutionize all aspects of software engineering. Using GAI for software engineering tasks is consequently one of the most rapidly expanding fields of software engineering research, with over a hundred LLM-based code models having been published since 2021. However, the overwhelming majority of existing code models share a major weakness - they are exclusively trained on the syntactic facet of software, significantly lowering their trustworthiness in tasks dependent on software semantics. To address this problem, a new class of "Morescient" GAI is needed that is "aware" of (i.e., trained on) both the semantic and static facets of software. This, in turn, will require a new generation of software observation platforms capable of generating large quantities of execution observations in a structured and readily analyzable way. In this paper, we present a vision and roadmap for how such "Morescient" GAI models can be engineered, evolved and disseminated according to the principles of open science.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-06-07T07:38:33Z</published>
+    <arxiv:comment>To appear in ACM Transactions on Software Engineering and Methodology, Special Issue "2030 Roadmap Software Engineering"</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>ACM Transactions on Software Engineering and Methodology, Special Issue "2030 Roadmap Software Engineering"</arxiv:journal_ref>
+    <author>
+      <name>Marcus Kessel</name>
+    </author>
+    <author>
+      <name>Colin Atkinson</name>
+    </author>
+    <arxiv:doi>10.1145/3709354</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3709354" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1707.03869v3</id>
+    <title>Cognitive Biases in Software Engineering: A Systematic Mapping Study</title>
+    <updated>2018-10-23T16:32:46Z</updated>
+    <link href="https://arxiv.org/abs/1707.03869v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1707.03869v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>One source of software project challenges and failures is the systematic errors introduced by human cognitive biases. Although extensively explored in cognitive psychology, investigations concerning cognitive biases have only recently gained popularity in software engineering (SE) research. This paper therefore systematically maps, aggregates and synthesizes the literature on cognitive biases in software engineering to generate a comprehensive body of knowledge, understand state of the art research and provide guidelines for future research and practise. Focusing on bias antecedents, effects and mitigation techniques, we identified 65 articles, which investigate 37 cognitive biases, published between 1990 and 2016. Despite strong and increasing interest, the results reveal a scarcity of research on mitigation techniques and poor theoretical foundations in understanding and interpreting cognitive biases. Although bias-related research has generated many new insights in the software engineering community, specific bias mitigation techniques are still needed for software professionals to overcome the deleterious effects of cognitive biases on their work.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2017-07-12T19:05:19Z</published>
+    <arxiv:comment>Pre-print submitted to IEEE Transactions on Software Engineering</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>IEEE Transactions on Software Engineering, 46(12), 1318-1339 (2018)</arxiv:journal_ref>
+    <author>
+      <name>Rahul Mohanani</name>
+    </author>
+    <author>
+      <name>Iflaah Salman</name>
+    </author>
+    <author>
+      <name>Burak Turhan</name>
+    </author>
+    <author>
+      <name>Pilar Rodriguez</name>
+    </author>
+    <author>
+      <name>Paul Ralph</name>
+    </author>
+    <arxiv:doi>10.1109/TSE.2018.2877759</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/TSE.2018.2877759" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.04104v1</id>
+    <title>Software Engineering in Civic Tech: A Case Study about Code for Ireland</title>
+    <updated>2019-04-08T14:53:37Z</updated>
+    <link href="https://arxiv.org/abs/1904.04104v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1904.04104v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Civic grassroots have proven their ability to create useful and scalable software that addresses pressing social needs. Although software engineering plays a fundamental role in the process of creating civic technology, academic literature that analyses the software development processes of civic tech grassroots is scarce. This paper aims to advance the understanding of how civic grassroots tackle the different activities in their software development processes. In this study, we followed the formation of two projects in a civic tech group (Code for Ireland) seeking to understand how their development processes evolved over time, and how the group carried out their work in creating new technology. Our preliminary findings show that such groups are capable of setting up systematic software engineering processes that address software specification, development, validation, and evolution. While they were able to deliver software according to self-specified quality standards, the group has challenges in requirements specification, stakeholder engagement, and reorienting from development to product delivery. Software engineering methods and tools can effectively support the future of civic technologies and potentially improve their management, quality, and durability.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-04-08T14:53:37Z</published>
+    <arxiv:comment>In Proceedings of the 41st International Conference on Software Engineering, IEEE</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>2019. In Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Society (ICSE-SEIS '19). IEEE Press, 41-50</arxiv:journal_ref>
+    <author>
+      <name>Antti Knutas</name>
+    </author>
+    <author>
+      <name>Victoria Palacin</name>
+    </author>
+    <author>
+      <name>Giovanni Maccani</name>
+    </author>
+    <author>
+      <name>Markus Helfert</name>
+    </author>
+    <arxiv:doi>10.1109/ICSE-SEIS.2019.00013</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICSE-SEIS.2019.00013" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2406.07737v2</id>
+    <title>The Future of AI-Driven Software Engineering</title>
+    <updated>2026-03-26T00:24:30Z</updated>
+    <link href="https://arxiv.org/abs/2406.07737v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2406.07737v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A paradigm shift is underway in Software Engineering, with AI systems such as LLMs playing an increasingly important role in boosting software development productivity. This trend is anticipated to persist. In the next years, we expect a growing symbiotic partnership between human software developers and AI. The Software Engineering research community cannot afford to overlook this trend; we must address the key research challenges posed by the integration of AI into the software development process. In this paper, we present our vision of the future of software development in an AI-driven world and explore the key challenges that our research community should address to realize this vision.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-06-11T21:46:19Z</published>
+    <arxiv:comment>**Note** Published in ACM Transactions on Software Engineering and Methodology (TOSEM)</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>ACM Transactions on Software Engineering and Methodology, Volume 34, Issue 5, Article 120 (May 2025)</arxiv:journal_ref>
+    <author>
+      <name>Valerio Terragni</name>
+    </author>
+    <author>
+      <name>Annie Vella</name>
+    </author>
+    <author>
+      <name>Partha Roop</name>
+    </author>
+    <author>
+      <name>Kelly Blincoe</name>
+    </author>
+    <arxiv:doi>10.1145/3715003</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3715003" title="doi"/>
+  </entry>
+</feed>

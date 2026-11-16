@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/+bGwalutfYj+Bp6F2IFd3A0GkoY</id>
+  <title>arXiv Query: search_query=&amp;id_list=2105.12655&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:37:58Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2105.12655" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2105.12655v2</id>
+    <title>CodeNet: A Large-Scale AI for Code Dataset for Learning a Diversity of Coding Tasks</title>
+    <updated>2021-08-29T19:43:43Z</updated>
+    <link href="https://arxiv.org/abs/2105.12655v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2105.12655v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Over the last several decades, software has been woven into the fabric of every aspect of our society. As software development surges and code infrastructure of enterprise applications ages, it is now more critical than ever to increase software development productivity and modernize legacy applications. Advances in deep learning and machine learning algorithms have enabled numerous breakthroughs, motivating researchers to leverage AI techniques to improve software development efficiency. Thus, the fast-emerging research area of AI for Code has garnered new interest and gathered momentum. In this paper, we present a large-scale dataset CodeNet, consisting of over 14 million code samples and about 500 million lines of code in 55 different programming languages, which is aimed at teaching AI to code. In addition to its large scale, CodeNet has a rich set of high-quality annotations to benchmark and help accelerate research in AI techniques for a variety of critical coding tasks, including code similarity and classification, code translation between a large variety of programming languages, and code performance (runtime and memory) improvement techniques. Additionally, CodeNet provides sample input and output test sets for 98.5% of the code samples, which can be used as an oracle for determining code correctness and potentially guide reinforcement learning for code quality improvements. As a usability feature, we provide several pre-processing tools in CodeNet to transform source code into representations that can be readily used as inputs into machine learning models. Results of code classification and code similarity experiments using the CodeNet dataset are provided as a reference. We hope that the scale, diversity and rich, high-quality annotations of CodeNet will offer unprecedented research opportunities at the intersection of AI and Software Engineering.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-05-25T00:13:29Z</published>
+    <arxiv:comment>22 pages including references</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Ruchir Puri</name>
+    </author>
+    <author>
+      <name>David S. Kung</name>
+    </author>
+    <author>
+      <name>Geert Janssen</name>
+    </author>
+    <author>
+      <name>Wei Zhang</name>
+    </author>
+    <author>
+      <name>Giacomo Domeniconi</name>
+    </author>
+    <author>
+      <name>Vladimir Zolotov</name>
+    </author>
+    <author>
+      <name>Julian Dolby</name>
+    </author>
+    <author>
+      <name>Jie Chen</name>
+    </author>
+    <author>
+      <name>Mihir Choudhury</name>
+    </author>
+    <author>
+      <name>Lindsey Decker</name>
+    </author>
+    <author>
+      <name>Veronika Thost</name>
+    </author>
+    <author>
+      <name>Luca Buratti</name>
+    </author>
+    <author>
+      <name>Saurabh Pujar</name>
+    </author>
+    <author>
+      <name>Shyam Ramji</name>
+    </author>
+    <author>
+      <name>Ulrich Finkler</name>
+    </author>
+    <author>
+      <name>Susan Malaika</name>
+    </author>
+    <author>
+      <name>Frederick Reiss</name>
+    </author>
+  </entry>
+</feed>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/5LA3Jupp4PC2mwFhqVbvgZy30pg</id>
+  <title>arXiv Query: search_query=&amp;id_list=2611.11213&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:37:32Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2611.11213" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2611.11213v1</id>
+    <title>NumericalDiff: Numerical Program Differencing via Value-Based Trace Alignment and Intervention</title>
+    <updated>2026-11-08T08:01:12Z</updated>
+    <link href="https://arxiv.org/abs/2611.11213v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2611.11213v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Numerical programs implementing the same computational task can exhibit different numerical behavior because of their execution stacks, program representations, or program logic. Source text and final outputs alone provide limited diagnostic information: numerical differences can propagate through corresponding computations, while distinct executions can produce equal outputs. We present NumericalDiff, an execution-based method that records assignment-level numerical events, aligns traces using a tolerance-aware longest common subsequence independent of variable names and source locations, and optionally reexecutes after replacing one intermediate value with its counterpart. Among the original and all single-intervention executions, it lexicographically maximizes matched events and minimizes unmatched events. NumericalDiff supports code comparison across language and framework front ends, currently including NumPy, PyTorch, JAX, C, C++, Fortran, and Octave. We evaluate NumericalDiff on 36 controlled cases comprising 675 pair/input instances: 36 execution-stack, 588 program-representation, and 51 program-logic instances. All 24 operator-injection instances expose trace differences, including three with tolerance-equal final outputs, while complete trace alignment is achieved for all 441 canonical cross-representation instances. Within the 51 program-logic instances, intervention improves 24 alignments and raises macro-average matching coverage from 0.4210 to 0.6513. The results show that value-based trace alignment and reexecution can delimit propagated numerical differences across heterogeneous implementations.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-11-08T08:01:12Z</published>
+    <arxiv:comment>The arXiv v1 version corresponds to Project version 0.0.1</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Xiang Chen</name>
+    </author>
+    <author>
+      <name>Huanhuan Xia</name>
+    </author>
+  </entry>
+</feed>

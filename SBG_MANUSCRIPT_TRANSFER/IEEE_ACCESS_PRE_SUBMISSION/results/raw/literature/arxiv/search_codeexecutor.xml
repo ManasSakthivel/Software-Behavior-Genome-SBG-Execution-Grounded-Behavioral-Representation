@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/OsUCsI1aYKTvmzTdnUynPYWPgf4</id>
+  <title>arXiv Query: search_query=all:CodeExecutor OR all:Code OR all:Execution OR all:with OR all:Pre-trained OR all:Language OR all:Models&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:26:13Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:CodeExecutor+OR+(all:Code+OR+(all:Execution+OR+(all:with+OR+(all:Pre-trained+OR+(all:Language+OR+all:Models)))))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>1411245</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2305.05383v1</id>
+    <title>Code Execution with Pre-trained Language Models</title>
+    <updated>2023-05-08T10:00:05Z</updated>
+    <link href="https://arxiv.org/abs/2305.05383v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2305.05383v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Code execution is a fundamental aspect of programming language semantics that reflects the exact behavior of the code. However, most pre-trained models for code intelligence ignore the execution trace and only rely on source code and syntactic structures. In this paper, we investigate how well pre-trained models can understand and perform code execution. We develop a mutation-based data augmentation technique to create a large-scale and realistic Python dataset and task for code execution, which challenges existing models such as Codex. We then present CodeExecutor, a Transformer model that leverages code execution pre-training and curriculum learning to enhance its semantic comprehension. We evaluate CodeExecutor on code execution and show its promising performance and limitations. We also demonstrate its potential benefits for code intelligence tasks such as zero-shot code-to-code search and text-to-code generation. Our analysis provides insights into the learning and generalization abilities of pre-trained models for code execution.</summary>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-05-08T10:00:05Z</published>
+    <arxiv:comment>Accepted to the Findings of ACL 2023</arxiv:comment>
+    <arxiv:primary_category term="cs.PL"/>
+    <author>
+      <name>Chenxiao Liu</name>
+    </author>
+    <author>
+      <name>Shuai Lu</name>
+    </author>
+    <author>
+      <name>Weizhu Chen</name>
+    </author>
+    <author>
+      <name>Daxin Jiang</name>
+    </author>
+    <author>
+      <name>Alexey Svyatkovskiy</name>
+    </author>
+    <author>
+      <name>Shengyu Fu</name>
+    </author>
+    <author>
+      <name>Neel Sundaresan</name>
+    </author>
+    <author>
+      <name>Nan Duan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.03197v3</id>
+    <title>Unified Language Model Pre-training for Natural Language Understanding and Generation</title>
+    <updated>2019-10-15T11:25:06Z</updated>
+    <link href="https://arxiv.org/abs/1905.03197v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1905.03197v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents a new Unified pre-trained Language Model (UniLM) that can be fine-tuned for both natural language understanding and generation tasks. The model is pre-trained using three types of language modeling tasks: unidirectional, bidirectional, and sequence-to-sequence prediction. The unified modeling is achieved by employing a shared Transformer network and utilizing specific self-attention masks to control what context the prediction conditions on. UniLM compares favorably with BERT on the GLUE benchmark, and the SQuAD 2.0 and CoQA question answering tasks. Moreover, UniLM achieves new state-of-the-art results on five natural language generation datasets, including improving the CNN/DailyMail abstractive summarization ROUGE-L to 40.51 (2.04 absolute improvement), the Gigaword abstractive summarization ROUGE-L to 35.75 (0.86 absolute improvement), the CoQA generative question answering F1 score to 82.5 (37.1 absolute improvement), the SQuAD question generation BLEU-4 to 22.12 (3.75 absolute improvement), and the DSTC7 document-grounded dialog response generation NIST-4 to 2.67 (human performance is 2.65). The code and pre-trained models are available at https://github.com/microsoft/unilm.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-05-08T16:33:51Z</published>
+    <arxiv:comment>Accepted by NeurIPS-19. Code and pre-trained models: https://github.com/microsoft/unilm</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Li Dong</name>
+    </author>
+    <author>
+      <name>Nan Yang</name>
+    </author>
+    <author>
+      <name>Wenhui Wang</name>
+    </author>
+    <author>
+      <name>Furu Wei</name>
+    </author>
+    <author>
+      <name>Xiaodong Liu</name>
+    </author>
+    <author>
+      <name>Yu Wang</name>
+    </author>
+    <author>
+      <name>Jianfeng Gao</name>
+    </author>
+    <author>
+      <name>Ming Zhou</name>
+    </author>
+    <author>
+      <name>Hsiao-Wuen Hon</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2109.13006v1</id>
+    <title>RuleBert: Teaching Soft Rules to Pre-trained Language Models</title>
+    <updated>2021-09-24T16:19:25Z</updated>
+    <link href="https://arxiv.org/abs/2109.13006v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2109.13006v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While pre-trained language models (PLMs) are the go-to solution to tackle many natural language processing problems, they are still very limited in their ability to capture and to use common-sense knowledge. In fact, even if information is available in the form of approximate (soft) logical rules, it is not clear how to transfer it to a PLM in order to improve its performance for deductive reasoning tasks. Here, we aim to bridge this gap by teaching PLMs how to reason with soft Horn rules. We introduce a classification task where, given facts and soft rules, the PLM should return a prediction with a probability for a given hypothesis. We release the first dataset for this task, and we propose a revised loss function that enables the PLM to learn how to predict precise probabilities for the task. Our evaluation results show that the resulting fine-tuned models achieve very high performance, even on logical rules that were unseen at training. Moreover, we demonstrate that logical notions expressed by the rules are transferred to the fine-tuned model, yielding state-of-the-art results on external datasets.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-09-24T16:19:25Z</published>
+    <arxiv:comment>Logical reasoning, soft Horn rules, Transformers, pre-trained language models, combining symbolic and probabilistic methods, BERT</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <arxiv:journal_ref>EMNLP-2021</arxiv:journal_ref>
+    <author>
+      <name>Mohammed Saeed</name>
+    </author>
+    <author>
+      <name>Naser Ahmadi</name>
+    </author>
+    <author>
+      <name>Preslav Nakov</name>
+    </author>
+    <author>
+      <name>Paolo Papotti</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2302.07142v2</id>
+    <title>Semantic Importance-Aware Communications Using Pre-trained Language Models</title>
+    <updated>2023-07-07T09:03:32Z</updated>
+    <link href="https://arxiv.org/abs/2302.07142v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2302.07142v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This letter proposes a semantic importance-aware communication (SIAC) scheme using pre-trained language models (e.g., ChatGPT, BERT, etc.). Specifically, we propose a cross-layer design with a pre-trained language model embedded in/connected by the cross-layer manager. The pre-trained language model is utilized to quantify the semantic importance of data frames. Based on the quantified semantic importance, we investigate semantic importance-aware power allocation. Unlike existing deep joint source-channel coding (Deep-JSCC)-based semantic communication schemes, SIAC can be directly embedded into current communication systems by only introducing a cross-layer manager. Our experimental results show that the proposed SIAC scheme can achieve lower semantic loss than existing equal-priority communications.</summary>
+    <category term="eess.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-02-12T07:48:04Z</published>
+    <arxiv:comment>Accepted by IEEE Communications Letters, Semantic communications, pre-trained language model, ChatGPT, BERT, data importance</arxiv:comment>
+    <arxiv:primary_category term="eess.SP"/>
+    <author>
+      <name>Shuaishuai Guo</name>
+    </author>
+    <author>
+      <name>Yanhu Wang</name>
+    </author>
+    <author>
+      <name>Shujing Li</name>
+    </author>
+    <author>
+      <name>Nasir Saeed</name>
+    </author>
+  </entry>
+</feed>

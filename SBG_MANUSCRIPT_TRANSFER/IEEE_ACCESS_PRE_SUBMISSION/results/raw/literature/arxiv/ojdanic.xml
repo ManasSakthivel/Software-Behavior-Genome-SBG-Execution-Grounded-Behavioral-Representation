@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/3CAXL4jYZ1i3/kGT59rNblR4ImQ</id>
+  <title>arXiv Query: search_query=&amp;id_list=2112.14566&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:44:14Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2112.14566" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2112.14566v1</id>
+    <title>Mutation Testing in Evolving Systems: Studying the relevance of mutants to code evolution</title>
+    <updated>2021-12-29T14:19:46Z</updated>
+    <link href="https://arxiv.org/abs/2112.14566v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2112.14566v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>When software evolves, opportunities for introducing faults appear. Therefore, it is important to test the evolved program behaviors during each evolution cycle. We conduct an exploratory study to investigate the properties of commit-relevant mutants, i.e., the test elements of commit-aware mutation testing, by offering a general definition and an experimental approach to identify them. We thus, aim at investigating the prevalence, location, comparative advantages of commit-aware mutation testing over time (i.e., the program evolution) and the predictive power of several commit-related features to understand the essential properties for its best-effort application case. Our approach utilizes the impact of mutants and the effects of one mutant on another in capturing and analyzing the implicit interactions between the changed and unchanged code parts. The study analyses millions of mutants (over 10 million), 288 commits, five (5) different open-source software projects involving over 68,213 CPU days of computation and sets a ground truth where we perform our analysis. Our analysis shows that commit-relevant mutants are located mainly outside of program commit change (81%), while an effective selection of commit-relevant mutants can reduce the number of mutants by up to 93%. In addition, we demonstrate that commit relevant mutation testing is significantly more effective and efficient than state-of-the-art baselines. Our analysis of the predictive power of mutants and commit-related features in predicting commit-relevant mutants found that most proxy features do not reliably predict commit-relevant mutants. This empirical study highlights the properties of commit-relevant mutants and demonstrates the importance of identifying and selecting commit-relevant mutants when testing evolving software systems.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-12-29T14:19:46Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Milos Ojdanic</name>
+    </author>
+    <author>
+      <name>Ezekiel Soremekun</name>
+    </author>
+    <author>
+      <name>Renzo Degiovanni</name>
+    </author>
+    <author>
+      <name>Mike Papadakis</name>
+    </author>
+    <author>
+      <name>Yves Le Traon</name>
+    </author>
+  </entry>
+</feed>

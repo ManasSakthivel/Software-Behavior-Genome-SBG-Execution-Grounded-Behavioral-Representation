@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/xANadEHunMeBveHjQ1BGxZ6VJEw</id>
+  <title>arXiv Query: search_query=&amp;id_list=2503.18597&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:27:08Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2503.18597" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2503.18597v3</id>
+    <title>Testora: Using Natural Language Intent to Detect Behavioral Regressions</title>
+    <updated>2025-11-06T16:22:17Z</updated>
+    <link href="https://arxiv.org/abs/2503.18597v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2503.18597v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As software is evolving, code changes can introduce regression bugs or affect the behavior in other unintended ways. Traditional regression test generation is impractical for detecting unintended behavioral changes, because it reports all behavioral differences as potential regressions. However, most code changes are intended to change the behavior in some way, e.g., to fix a bug or to add a new feature. This paper presents Testora, the first automated approach that detects regressions by comparing the intentions of a code change against behavioral differences caused by the code change. Given a pull request (PR), Testora queries an LLM to generate tests that exercise the modified code, compares the behavior of the original and modified code, and classifies any behavioral differences as intended or unintended. For the classification, we present an LLM-based technique that leverages the natural language information associated with the PR, such as the title, description, and commit messages -- effectively using the natural language intent to detect behavioral regressions. Applying Testora to PRs of complex and popular Python projects, we find 19 regression bugs and 11 PRs that, despite having another intention, coincidentally fix a bug. Out of 13 regressions reported to the developers, 11 have been confirmed and 9 have already been fixed. The costs of using Testora are acceptable for real-world deployment, with 12.3 minutes to check a PR and LLM costs of only $0.003 per PR. We envision our approach to be used before or shortly after a code change gets merged into a code base, providing a way to early on detect regressions that are not caught by traditional approaches.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-03-24T11:55:35Z</published>
+    <arxiv:comment>Accepted at IEEE/ACM International Conference on Software Engineering (ICSE) 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Michael Pradel</name>
+    </author>
+  </entry>
+</feed>

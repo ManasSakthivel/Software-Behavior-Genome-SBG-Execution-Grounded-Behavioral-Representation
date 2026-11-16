@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api//g+mM4IYbo/xkDZJ679Yn3IGjZE</id>
+  <title>arXiv Query: search_query=&amp;id_list=2505.04311&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:37:53Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2505.04311" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2505.04311v2</id>
+    <title>How the Misuse of a Dataset Harmed Semantic Clone Detection</title>
+    <updated>2026-11-04T10:15:52Z</updated>
+    <link href="https://arxiv.org/abs/2505.04311v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2505.04311v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>BigCloneBench is widely used to evaluate traditional clone detection and, more recently, machine learning approaches to semantic clone detection and functional similarity.
+  This paper demonstrates that BigCloneBench's Weakly Type-3/Type-4 (WT3/T4) subset is problematic as ground truth for learning or evaluating functional similarity. Its tagged-tagged WT3/T4 clone pairs combine two methods labelled as true positives for the same functionality and do not contain exemplar functions. A population-weighted analysis of a stratified probability sample of 406 such pairs estimated that 93.9% of pairs in the eligible tagged-tagged WT3/T4 population are not functionally similar under our operational definition and are therefore mislabelled (conservative 95% confidence interval: 91.5%-96.2%).
+  From a literature review of 179 papers, we estimate that 128 used BigCloneBench to evaluate semantic clone detection in a way that their results could be affected by the mislabelling. High F1 scores on BigCloneBench do not establish whether an approach has learned functional similarity or relied on dataset-specific shortcuts.
+  Our study does not assess BigCloneBench's validity for evaluating syntactic or textual clone detection of Type-1, Type-2, and Type-3 clones. We acknowledge its important contributions to traditional clone detection research. However, using its WT3/T4 subset as ground truth for same-main-function similarity without validating its labels for that task constitutes misuse. By threatening the validity of a substantial body of reported results, this practice has harmed the evidence base of semantic clone detection. We encourage more critical and responsible use of benchmarks and datasets and more rigorous validation during dataset creation and use.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-05-07T10:52:28Z</published>
+    <arxiv:comment>60 pages. Accepted for publication in Empirical Software Engineering</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Jens Krinke</name>
+    </author>
+    <author>
+      <name>Chaiyong Ragkhitwetsagul</name>
+    </author>
+  </entry>
+</feed>

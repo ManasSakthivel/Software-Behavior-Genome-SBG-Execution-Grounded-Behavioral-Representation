@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/BdoqXYOytSaTlYDfAWw1pyT+LkI</id>
+  <title>arXiv Query: search_query=&amp;id_list=2306.07487&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:27:30Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2306.07487" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2306.07487v1</id>
+    <title>TRACED: Execution-aware Pre-training for Source Code</title>
+    <updated>2023-06-13T01:30:14Z</updated>
+    <link href="https://arxiv.org/abs/2306.07487v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2306.07487v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Most existing pre-trained language models for source code focus on learning the static code text, typically augmented with static code structures (abstract syntax tree, dependency graphs, etc.). However, program semantics will not be fully exposed before the real execution. Without an understanding of the program execution, statically pre-trained models fail to comprehensively capture the dynamic code properties, such as the branch coverage and the runtime variable values, and they are consequently less effective at code understanding tasks, such as retrieving semantic clones and detecting software vulnerabilities.
+  To close the gap between the static nature of language models and the dynamic characteristics of programs, we introduce TRACED, an execution-aware pre-training strategy for source code. Specifically, we pre-train code language models with a combination of source code, executable inputs, and corresponding execution traces. Our goal is to teach code models the complicated execution logic during the pre-training, enabling the model to statically estimate the dynamic code properties without repeatedly executing code during task-specific fine-tuning.
+  To illustrate the effectiveness of our proposed approach, we fine-tune and evaluate TRACED on three downstream tasks: static execution estimation, clone retrieval, and vulnerability detection. The empirical results show that TRACED relatively improves the statically pre-trained code models by 12.4% for complete execution path prediction and by 25.2% for runtime variable value predictions. TRACED also significantly outperforms statically pre-trained models in clone retrieval and vulnerability detection across four public benchmarks.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-06-13T01:30:14Z</published>
+    <arxiv:comment>Accepted by ICSE 2024 (Early Cycle). Camera-ready is in preparation</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Yangruibo Ding</name>
+    </author>
+    <author>
+      <name>Ben Steenhoek</name>
+    </author>
+    <author>
+      <name>Kexin Pei</name>
+    </author>
+    <author>
+      <name>Gail Kaiser</name>
+    </author>
+    <author>
+      <name>Wei Le</name>
+    </author>
+    <author>
+      <name>Baishakhi Ray</name>
+    </author>
+  </entry>
+</feed>

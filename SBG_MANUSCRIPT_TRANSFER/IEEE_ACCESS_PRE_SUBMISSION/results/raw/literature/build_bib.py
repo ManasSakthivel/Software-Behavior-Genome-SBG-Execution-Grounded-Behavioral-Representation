@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+"""Builds the verified-bibliography table from crossref_verified.jsonl + arxiv/*.xml + hand-entered DBLP/MADOC records.
+Only entries whose metadata is present in a primary-source record appear. Output: bibliography_verified.json, bibliography_table.md"""
+import json,re,os
+H=os.path.dirname(os.path.abspath(__file__))
+CR={}
+for l in open(os.path.join(H,'crossref_verified.jsonl')):
+    r=json.loads(l)
+    if r.get('mode')=='query': CR[r['key']]=('q',r['candidates'])
+    else: CR[r['key']]=('d',r.get('record') or {})
+def cr(key,i=0):
+    k,v=CR[key]
+    c=v[i] if k=='q' else v
+    assert c.get('doi'),key
+    return dict(doi=c['doi'],title=c['title'],authors=c['authors'],venue=c['container'],year=c['year'],src='Crossref')
+def ax(name,venue=None,doi=None):
+    t=open(os.path.join(H,f'arxiv/{name}.xml')).read(); e=re.search(r'<entry>(.*?)</entry>',t,re.S).group(1)
+    aid=re.search(r'<id>http://arxiv.org/abs/(.*?)v\d+</id>',e).group(1)
+    return dict(doi=doi or ('arXiv:'+aid),title=re.sub(r'\s+',' ',re.search(r'<title>(.*?)</title>',e,re.S).group(1)),authors=re.findall(r'<name>(.*?)</name>',e),venue=venue or 'arXiv preprint',year=int(re.search(r'<published>(\d{4})',e).group(1)),src='arXiv API',aid='arXiv:'+aid)
+def manual(**k): return k
+FT='FULL-TEXT-READ'; FTP='FULL-TEXT-READ (partial)'; AB='ABSTRACT-ONLY'; MD='METADATA-ONLY'
+S=[]  # (id, group, meta, access, note)
+def add(g,meta,acc,note): S.append((g,meta,acc,note))
+# --- A. dynamic behaviour comparison / equivalence judgement (closest) ---
+add('A',cr('kessel_atkinson_2019'),AB,'Abstract via OpenAlex/S2/MADOC record; IEEE paywalled; MADOC record 53324 has NO PDF; S2/OpenAlex closed-access. 36 reference list resolved via OpenAlex. K&A protocol details NOT read.')
+add('A',cr('podgurski_pierce_1992'),AB,'Behaviour sampling origin (ICSE 1992). OpenAlex abstract.')
+add('A',cr('podgurski_pierce_1993'),AB,'TOSEM 1993. OpenAlex abstract.')
+add('A',cr('xie_notkin_2005_valuespectra'),AB,'Value spectra; OpenAlex abstract. Paywalled.')
+add('A',cr('jin_orso_xie_bert_2010'),AB,'BERT; abstract only; method described secondhand in DCI §7.2 (text read).')
+add('A',cr('evans_savoia_2007'),AB,'ESEC/FSE 2007 Companion; DBLP title "Differential testing: a new approach to change detection". Abstract only.')
+add('A',cr('sumner_zhang_comparative_causality_2013'),AB,'Execution comparison/ causality; abstract only.')
+add('A',cr('sumner_peers'),MD,'The ONLY Sumner 2011 execution-comparison paper found (ISSTA 2011); verified Crossref + DBLP (conf/issta/SumnerBZ11). Repo\'s "Sumner ICST 2011 Comparative analysis of software behavioral traces" NOT FOUND (DBLP+Crossref). No abstract retrieved.')
+add('A',cr('person_dse_2008'),AB,'Differential symbolic execution FSE 2008; abstract only.')
+add('A',cr('reps_y2k',0),AB,'Path-profile spectra / Y2K (ESEC/FSE 1997 per SIGSOFT SEN record); abstract only.')
+add('A',cr('harrold_spectra',0),AB,'Spectra differences vs regression faults (STVR 2000); abstract only.')
+add('A',cr('harrold_spectra',1),MD,'"An empirical investigation of program spectra" (PASTE 1998); no abstract retrieved.')
+add('A',cr('daikon_tse2001'),AB,'Daikon invariants for evolution (TSE 2001); abstract only. (ICSE-1999 conference version 10.1145/302405.302467 also Crossref-verified.)')
+add('A',cr('adabu',0),AB,'ADABU object-behaviour models (WODA 2006); abstract only.')
+add('A',manual(doi='(no DOI; DBLP journals/dtj/McKeeman98)',title='Differential Testing for Software',authors=['William M. McKeeman'],venue='Digital Technical Journal',year=1998,src='DBLP (browser session)'),MD,'Primary source: DBLP record only; paper not located/read.')
+add('A',cr('orso_gamma',1),AB,'Gamma system (ISSTA 2002, field-data deployment); abstract only. Peripheral.')
+# --- B. change / regression detection with execution, test amplification, diffs ---
+add('B',ax('danglot_dci',venue='Empirical Software Engineering 25 (2020)',doi='10.1007/s10664-019-09794-7'),FT,'arXiv v3 full text read (§§1-7). Crossref DOI verified separately.')
+add('B',cr('augdiffs_tse2023'),AB,'Collector-Sahab: runtime-state diff augmentation of code diffs (Java, Defects4J). OpenAlex abstract; arXiv 2212.11077 exists but not read.')
+add('B',cr('revealing_regress_2026'),AB,'State-capture strategies for regression oracles; abstract only.')
+add('B',cr('resp_context_icse2023'),AB,'Slicing for semantic regression analysis; abstract only.')
+add('B',cr('tracejit_saner2024'),AB,'Behavioural code change impact on JIT defect prediction; abstract only.')
+add('B',cr('semconflicts_jss2024'),AB,'Semantic conflict detection via unit tests; abstract only.')
+add('B',cr('bcallm_2026'),AB,'Python breaking-change detection via call graph + LLM (PyBCEval); abstract only.')
+add('B',cr('changeguard_2025'),FT,'Closest contemporary task-level competitor; full text read (arXiv 2410.16092v2) and repo metadata (github.com/sola-st/ChangeGuard).')
+add('B',cr('testora_icse2026'),FT,'arXiv 2503.18597v3 read; code github.com/michaelpradel/testora (MIT).')
+add('B',cr('mokav_jss2025'),FT,'arXiv 2406.10375v2 read.')
+add('B',ax('allamanis_probegen'),FT,'arXiv 2502.18473 read ("ProbeGen"-style differential testing with LLM probes).')
+add('B',ax('semadiff'),FTP,'arXiv 2607.13111 (2026; unreviewed preprint): abstract/intro/eval read.')
+add('B',ax('patchguru'),AB,'arXiv 2602.05270 (2026): abstract read; PDF downloaded, not read in full.')
+add('B',ax('impact_not_invalidation'),AB,'arXiv 2609.25130 (single-author, unreviewed): abstract read.')
+add('B',ax('gdse_equiv',venue='arXiv preprint (stated accepted: NeurIPS 2026 workshop)'),AB,'arXiv 2610.04371 FEAgent: LLM-"surrogate" differential execution; abstract read.')
+add('B',ax('numericaldiff'),AB,'arXiv 2611.11213 (2026-11-08): value-based trace alignment for numerical programs; abstract read. Unreviewed.')
+add('B',cr('testweaver_2026'),AB,'Execution-aware regression test generation with LLMs; abstract only.')
+# --- C. neural execution/trace models & embeddings ---
+add('C',cr('traced_2024'),FTP,'Ding et al. ICSE 2024; arXiv 2306.07487 read (method + evaluation).')
+add('C',cr('codeexecutor_acl'),FTP,'Liu et al. Findings ACL 2023; arXiv 2305.05383 text extracted; method/eval skimmed.')
+add('C',ax('next_ni',venue='arXiv preprint (venue not stated in arXiv record)'),FTP,'Ni et al. 2024; text extracted; skimmed.')
+add('C',ax('wang_singh_su_dynamic_embedding',venue='arXiv preprint (v4); arXiv record gives no venue'),FT,'Wang, Singh, Su; code github.com/keowang/dynamic-program-embedding. Text read.')
+add('C',cr('wang_su_blended_2020'),FTP,'PLDI 2020; arXiv 1907.02136 text extracted, skimmed.')
+add('C',ax('piech_embed',venue='ICML 2015 (PMLR v37; arXiv comment + PMLR page title verified)'),AB,'Abstract: linear map embedded-precondition→embedded-postcondition; NOT an LSTM (contradicts repo PRIOR_ART_MATRIX [41]).')
+add('C',cr('trex_pei',0),AB,'Trex (TSE 2023): micro-trace execution semantics for BINARY similarity; abstract only. Peripheral.')
+add('C',cr('neuralprogmodel_tosem2026'),AB,'Neural program modeling (predict traces/coverage); abstract only. Peripheral.')
+# --- D. dynamic clone / functional-equivalence detection, birthmarks ---
+add('D',cr('jiang_su_2009'),AB,'Random-test I/O functional equivalence mining (ISSTA 2009); abstract only.')
+add('D',cr('elva_leavens',0),AB,'IOE-behaviour semantic clones (IWSC 2012); abstract only.')
+add('D',cr('code_relatives_fse2016'),AB,'Code relatives (FSE 2016); abstract only.')
+add('D',cr('dyclink',0),AB,'Challenges in behavioral code clone detection (SANER 2016); abstract only.')
+add('D',cr('slacc_icse2020'),AB,'SLACC (ICSE 2020); arXiv 2002.03039 exists (not read); abstract read.')
+add('D',cr('suzuki_functional_redundancy_2017'),AB,'Functional redundancy study (SCAM 2017); abstract only.')
+add('D',cr('myles_collberg_2004'),MD,'WPP birthmarks (LNCS 2004): no abstract retrieved.')
+add('D',cr('myles_collberg_2005_kgram'),AB,'K-gram birthmarks (SAC 2005); abstract only.')
+add('D',cr('wang_birthmark_acsac_2009'),AB,'System-call birthmarks (ACSAC 2009); abstract only.')
+add('D',cr('schuler_birthmark',0),AB,'Dynamic birthmark for Java (ASE 2007); abstract only.')
+# --- E. symbolic / verification-based equivalence ---
+add('E',cr('ardiff_fse2020') if 'ardiff_fse2020' in CR else cr('badihi_ardiff_2020',0),AB,'ARDiff is ESEC/FSE 2020 (NOT ICSE 2020 as stated in task prompt); abstract only.')
+add('E',cr('symdiff_cav2012'),MD,'SymDiff (CAV 2012); no abstract retrieved.')
+add('E',cr('godlin_strichman',0),AB,'Regression verification (STVR 2012 journal version; DAC 2009 version 10.1145/1629911.1630034 not separately verified).')
+add('E',cr('lahiri_dac',0),AB,'Differential assertion checking (ESEC/FSE 2013); abstract only.')
+add('E',cr('dise_person',1),AB,'Directed incremental symbolic execution (PLDI 2011, SIGPLAN Notices 46); abstract only.')
+add('E',cr('shadow_tosem2018'),AB,'Shadow symbolic execution (TOSEM 2018); abstract only.')
+add('E',cr('partush_yahav_oopsla2014'),AB,'Abstract semantic differencing (OOPSLA 2014); abstract only.')
+add('E',cr('churchill_alignment_2019'),AB,'Semantic program alignment (PLDI 2019); abstract only.')
+add('E',cr('hybrid_equiv_icst2025'),AB,'Hybrid equivalence/non-equivalence testing (ICST 2025); abstract only.')
+add('E',cr('unified_split_se_tosem2025'),AB,'Unified/split symbolic execution (TOSEM 2025); abstract only.')
+# --- F. LLM equivalence benchmarks ---
+add('F',cr('equibench_emnlp'),FT,'EMNLP 2025 main (DOI 10.18653/v1/2025.emnlp-main.1718); arXiv 2502.12466v3 read; code github.com/Anjiang-Wei/EquiBench.')
+add('F',ax('cetbench',venue='Findings of ACL 2026',doi='10.18653/v1/2026.findings-acl.2070'),AB,'CETBench; arXiv abstract; venue per arXiv journal_ref.')
+add('F',cr('reeval_equivmut_2026'),AB,'LLM equivalent-mutant detection re-evaluation (PACMSE 2026); abstract only.')
+# --- G. benchmark validity / shortcut / baseline literature ---
+add('G',cr('yu_tosem_2022'),AB,'Yu et al. TOSEM 2022 (BigCloneBench label quality); abstract only.')
+add('G',ax('krinke_2025',venue='Empirical Software Engineering (accepted per arXiv comment)'),AB,'Krinke & Ragkhitwetsagul: BigCloneBench WT3/T4 mislabelled (93.9%); arXiv abstract read.')
+add('G',cr('just_mutants_2014'),AB,'Mutants vs real faults (FSE 2014); abstract only.')
+add('G',cr('ojdanic_2023'),FTP,'Commit-relevant mutants (TOSEM 2023); arXiv 2112.14566 text extracted; abstract+design excerpt read.')
+add('G',cr('papadakis_tce_2015'),AB,'Trivial Compiler Equivalence (ICSE 2015); abstract only.')
+add('G',cr('kintis_tce',0),AB,'Detecting trivial mutant equivalences via compiler optimisations (TSE 2018); abstract only.')
+add('G',cr('chekam_mutation',0),AB,'Chekam et al. ICSE 2017; abstract only.')
+add('G',cr('fu_menzies_easy_2017'),FTP,'Easy over Hard (FSE 2017); arXiv 1703.00133 abstract + intro read; a "simpler baseline vs DL" precedent only (not an edit-size-confound study).')
+add('G',cr('chakraborty_vuln',0),AB,'DL vulnerability detection "are we there yet" (TSE 2022); abstract only (dataset realism).')
+add('G',cr('croft_dataquality',0),AB,'Data quality for vulnerability datasets (ICSE 2023); abstract only.')
+add('G',cr('allamanis_dup',0),AB,'Adverse effects of code duplication (Onward! 2019); abstract only.')
+add('G',cr('geirhos_shortcut'),MD,'Shortcut learning in DNNs (Nat. Mach. Intell. 2020); no abstract retrieved.')
+add('G',cr('rabin_semantic',0),MD,'Generalizability of neural program models under semantic-preserving transformations (IST 2021); no abstract retrieved.')
+add('G',cr('kamei_jit',0),AB,'JIT quality assurance (TSE 2013): change-level defect prediction from change metrics; abstract (first ~900 chars) read; that change SIZE is a strong predictor is NOT verified from the retrieved text (needs full-text check).')
+add('G',cr('nagappan_ball',1),MD,'Relative code churn measures vs defect density (ICSE 2005; title-level only; finding not verified here).')
+# --- H. benchmarks ---
+add('H',cr('widyasari_bugsinpy_2020'),AB,'BugsInPy (ESEC/FSE 2020); arXiv 2401.15481 text extracted (not read in depth).')
+add('H',cr('lin_quixbugs_2017'),AB,'QuixBugs = Lin, Koppel, Chen, Solar-Lezama (SPLASH-Companion 2017) -- repo had wrong authors/venue.')
+add('H',cr('just_defects4j_2014'),AB,'Defects4J (ISSTA 2014).')
+add('H',cr('bigclonebench',0),AB,'BigCloneBench (ICSME 2014).')
+add('H',ax('codenet',venue='NeurIPS 2021 Datasets & Benchmarks (venue not in arXiv record; UNVERIFIED here)'),AB,'CodeNet; arXiv abstract.')
+add('H',cr('alphacode_science2022'),AB,'AlphaCode / CodeContests (Science 2022).')
+# --- I. Kessel/Atkinson family (MADOC open copies) ---
+add('I',manual(doi='MADOC 64107 (no DOI); URL madoc.bib.uni-mannheim.de',title='LASSO – an observatorium for the dynamic selection, analysis and comparison of software',authors=['Marcus Kessel'],venue='PhD thesis, University of Mannheim',year=2023,src='MADOC record (browser session)'),FTP,'Open PDF downloaded; §§3.4.1, 9.1-9.2, 11.2, 16.1-16.2 read. Thesis-level (NOT the SCAM 2019 protocol).')
+add('I',cr('kessel_jss2024_codesearch'),FTP,'CC-BY MADOC copy; read for equivalence/behaviour-comparison passages.')
+add('I',cr('kessel_jss2024_openscience'),FTP,'CC-BY MADOC copy; skimmed.')
+add('I',cr('kessel_fse2026'),FT,'FSE Companion 2026 (5 pp.) vision paper: co-versioning run-time behaviour; read in full.')
+add('I',cr('kessel_jss2022_diversity'),MD,'Diversity-driven unit test generation (JSS 2022); metadata only.')
+add('I',cr('kessel_curated',0),AB,'Automatically Curated Data Sets (SCAM 2019); abstract only.')
+add('I',cr('kessel_morescient',0),AB,'Morescient GAI (TOSEM 2025; arXiv 2406.04710); abstract only.')
+add('I',cr('harrand_2019_decompilers'),AB,'DOI-collision witness: 10.1109/SCAM.2019.00019 is Harrand et al., NOT Kessel & Atkinson (repo error).')
+add('I',cr('onespace_jss2023'),MD,'Citer of K&A (OpenAlex forward-citation list); metadata only.')
+add('I',cr('iwsc2022_leone',0),MD,'Leone & Takada IWSC 2022; citer of K&A; metadata only.')
+add('I',cr('su_icpc2016'),MD,'Identifying functionally similar code in complex codebases (ICPC 2016); metadata only.')
+
+rows=[];out=[]
+for i,(g,m,acc,note) in enumerate(S,1):
+    au=m['authors']; a=(au[0].split()[-1]+(' et al.' if len(au)>1 else '')) if au else ''
+    out.append(dict(id=f'B{i:02d}',group=g,authors=au,title=m['title'],venue=m['venue'],year=m['year'],identifier=m['doi'],primary_source=m['src'],access=acc,note=note))
+    rows.append(f"| B{i:02d} | {a} ({m['year']}) | {m['title'].replace('|','/')[:110]} | {m['venue'][:55].replace('|','/')} | `{m['doi']}` | {m['src']} | **{acc}** | {note} |")
+json.dump(out,open(os.path.join(H,'bibliography_verified.json'),'w'),indent=1,ensure_ascii=False)
+open(os.path.join(H,'bibliography_table.md'),'w').write("\n".join(rows)+"\n")
+print(len(out),'entries')

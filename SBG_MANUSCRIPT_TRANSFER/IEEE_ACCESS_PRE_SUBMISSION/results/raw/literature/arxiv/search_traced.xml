@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Vvvn6mpbNbym/GieeoPttawGMao</id>
+  <title>arXiv Query: search_query=all:TRACED OR all:execution-aware OR all:pre-training OR all:source OR all:code&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:26:08Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:TRACED+OR+(all:execution-aware+OR+(all:pre-training+OR+(all:source+OR+all:code)))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>485015</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2306.07487v1</id>
+    <title>TRACED: Execution-aware Pre-training for Source Code</title>
+    <updated>2023-06-13T01:30:14Z</updated>
+    <link href="https://arxiv.org/abs/2306.07487v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2306.07487v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Most existing pre-trained language models for source code focus on learning the static code text, typically augmented with static code structures (abstract syntax tree, dependency graphs, etc.). However, program semantics will not be fully exposed before the real execution. Without an understanding of the program execution, statically pre-trained models fail to comprehensively capture the dynamic code properties, such as the branch coverage and the runtime variable values, and they are consequently less effective at code understanding tasks, such as retrieving semantic clones and detecting software vulnerabilities.
+  To close the gap between the static nature of language models and the dynamic characteristics of programs, we introduce TRACED, an execution-aware pre-training strategy for source code. Specifically, we pre-train code language models with a combination of source code, executable inputs, and corresponding execution traces. Our goal is to teach code models the complicated execution logic during the pre-training, enabling the model to statically estimate the dynamic code properties without repeatedly executing code during task-specific fine-tuning.
+  To illustrate the effectiveness of our proposed approach, we fine-tune and evaluate TRACED on three downstream tasks: static execution estimation, clone retrieval, and vulnerability detection. The empirical results show that TRACED relatively improves the statically pre-trained code models by 12.4% for complete execution path prediction and by 25.2% for runtime variable value predictions. TRACED also significantly outperforms statically pre-trained models in clone retrieval and vulnerability detection across four public benchmarks.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-06-13T01:30:14Z</published>
+    <arxiv:comment>Accepted by ICSE 2024 (Early Cycle). Camera-ready is in preparation</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Yangruibo Ding</name>
+    </author>
+    <author>
+      <name>Ben Steenhoek</name>
+    </author>
+    <author>
+      <name>Kexin Pei</name>
+    </author>
+    <author>
+      <name>Gail Kaiser</name>
+    </author>
+    <author>
+      <name>Wei Le</name>
+    </author>
+    <author>
+      <name>Baishakhi Ray</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2202.09061v4</id>
+    <title>VLP: A Survey on Vision-Language Pre-training</title>
+    <updated>2022-07-30T14:38:11Z</updated>
+    <link href="https://arxiv.org/abs/2202.09061v4" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2202.09061v4" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In the past few years, the emergence of pre-training models has brought uni-modal fields such as computer vision (CV) and natural language processing (NLP) to a new era. Substantial works have shown they are beneficial for downstream uni-modal tasks and avoid training a new model from scratch. So can such pre-trained models be applied to multi-modal tasks? Researchers have explored this problem and made significant progress. This paper surveys recent advances and new frontiers in vision-language pre-training (VLP), including image-text and video-text pre-training. To give readers a better overall grasp of VLP, we first review its recent advances from five aspects: feature extraction, model architecture, pre-training objectives, pre-training datasets, and downstream tasks. Then, we summarize the specific VLP models in detail. Finally, we discuss the new frontiers in VLP. To the best of our knowledge, this is the first survey focused on VLP. We hope that this survey can shed light on future research in the VLP field.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-02-18T07:54:02Z</published>
+    <arxiv:comment>A Survey on Vision-Language Pre-training</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <arxiv:journal_ref>Machine Intelligence Research. 20(1), February 2023, 38-56</arxiv:journal_ref>
+    <author>
+      <name>Feilong Chen</name>
+    </author>
+    <author>
+      <name>Duzhen Zhang</name>
+    </author>
+    <author>
+      <name>Minglun Han</name>
+    </author>
+    <author>
+      <name>Xiuyi Chen</name>
+    </author>
+    <author>
+      <name>Jing Shi</name>
+    </author>
+    <author>
+      <name>Shuang Xu</name>
+    </author>
+    <author>
+      <name>Bo Xu</name>
+    </author>
+    <arxiv:doi>10.1007/s11633-022-1369-5</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/s11633-022-1369-5" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.15845v3</id>
+    <title>Pre-training Music Classification Models via Music Source Separation</title>
+    <updated>2024-04-23T13:08:53Z</updated>
+    <link href="https://arxiv.org/abs/2310.15845v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.15845v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we study whether music source separation can be used as a pre-training strategy for music representation learning, targeted at music classification tasks. To this end, we first pre-train U-Net networks under various music source separation objectives, such as the isolation of vocal or instrumental sources from a musical piece; afterwards, we attach a classification network to the pre-trained U-Net and jointly finetune the whole network. The features learned by the separation network are also propagated to the tail network through a convolutional feature adaptation module. Experimental results in two widely used and publicly available datasets indicate that pre-training the U-Nets with a music source separation objective can improve performance compared to both training the whole network from scratch and using the tail network as a standalone in two music classification tasks, music auto-tagging and music genre classification. We also show that our proposed framework can be successfully integrated into both convolutional and Transformer-based backends, highlighting its modularity.</summary>
+    <category term="eess.AS" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-24T13:57:55Z</published>
+    <arxiv:comment>5 pages, 2 figures/2 tables. EUSIPCO-24 submission (changes from v1: experiments with AST - classification backbone pre-training - correct FMA subset)</arxiv:comment>
+    <arxiv:primary_category term="eess.AS"/>
+    <author>
+      <name>Christos Garoufis</name>
+    </author>
+    <author>
+      <name>Athanasia Zlatintsi</name>
+    </author>
+    <author>
+      <name>Petros Maragos</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.09960v5</id>
+    <title>Using Pre-Training Can Improve Model Robustness and Uncertainty</title>
+    <updated>2019-10-20T20:09:20Z</updated>
+    <link href="https://arxiv.org/abs/1901.09960v5" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1901.09960v5" rel="related" type="application/pdf" title="pdf"/>
+    <summary>He et al. (2018) have called into question the utility of pre-training by showing that training from scratch can often yield similar performance to pre-training. We show that although pre-training may not improve performance on traditional classification metrics, it improves model robustness and uncertainty estimates. Through extensive experiments on adversarial examples, label corruption, class imbalance, out-of-distribution detection, and confidence calibration, we demonstrate large gains from pre-training and complementary effects with task-specific methods. We introduce adversarial pre-training and show approximately a 10% absolute improvement over the previous state-of-the-art in adversarial robustness. In some cases, using pre-training without task-specific methods also surpasses the state-of-the-art, highlighting the need for pre-training when evaluating future methods on robustness and uncertainty tasks.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-01-28T19:37:07Z</published>
+    <arxiv:comment>ICML 2019. PyTorch code here: https://github.com/hendrycks/pre-training Figure 3 updated</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Dan Hendrycks</name>
+    </author>
+    <author>
+      <name>Kimin Lee</name>
+    </author>
+    <author>
+      <name>Mantas Mazeika</name>
+    </author>
+  </entry>
+</feed>

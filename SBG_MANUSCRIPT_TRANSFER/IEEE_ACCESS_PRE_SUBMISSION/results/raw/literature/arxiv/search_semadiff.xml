@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/hkLQPD0TYkOsUywsAFBa55dv9W8</id>
+  <title>arXiv Query: search_query=all:SemaDiff OR all:semantic-changing OR all:commits OR all:generated OR all:code OR all:tests&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:25:44Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:SemaDiff+OR+(all:semantic-changing+OR+(all:commits+OR+(all:generated+OR+(all:code+OR+all:tests))))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>1243915</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2607.13111v1</id>
+    <title>SemaDiff: Identifying Semantic-Changing Commits with Generated Code and Tests</title>
+    <updated>2026-07-14T12:23:22Z</updated>
+    <link href="https://arxiv.org/abs/2607.13111v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.13111v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Distinguishing semantic-preserving commits from changing ones remains an open challenge in software repository mining. While existing approaches detect refactoring commits accurately, they cannot ensure that a commit is purely semantic-preserving, without any interleaving behaviour-changing modification. This limitation can impact several tasks, such as debugging, fault localisation, bug dataset construction, rollback analysis, and bug fixes backporting. To fill this gap, we propose SemaDiff, a novel approach for identifying semantic-preserving commits through behaviour-based analysis; comparison of similar test execution on pre- and post-commit versions. As code impacted by the refactoring is often hard to test and different accross both versions, we propose generating additional calling methods to that code, which serve as testing target. Given a commit, SemaDiff analyses the diff to identify modified code and extracts unchanged dependent code that calls it. It then generates an additional dependent class using a large language model to exercise the changed code in both versions, and automatically generates tests for the dependent code. This way, we obtain the same tests for the different code versions, enabling the behavioural-difference detection. The commit is classified as semantic-preserving only if all generated tests produce identical outcomes across the two versions. To evaluate SemaDiff, we construct and annotate manually a dataset of 183 commits, gathered from well-known open-source Java projects. The obtained results show that SemaDiff distinguishes accurately semantic-preserving from -- changing commits in about 76% of the cases, with a 100% precision in semantic-changing commit detection.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-14T12:23:22Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Maha Ayub</name>
+    </author>
+    <author>
+      <name>Michael Konstantinou</name>
+    </author>
+    <author>
+      <name>Ahmed Khanfir</name>
+    </author>
+    <author>
+      <name>Nikolaos Tsantalis</name>
+    </author>
+    <author>
+      <name>Mike Papadakis</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2303.17185v2</id>
+    <title>Tests of Classical Gravity with Radio Pulsars</title>
+    <updated>2023-12-17T12:44:41Z</updated>
+    <link href="https://arxiv.org/abs/2303.17185v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2303.17185v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Tests of gravity are important to the development of our understanding of gravitation and spacetime. Binary pulsars provide a superb playground for testing gravity theories. In this chapter we pedagogically review the basics behind pulsar observations and pulsar timing. We illustrate various recent strong-field tests of the general relativity (GR) from the Hulse-Taylor pulsar PSR B1913+16, the double pulsar PSR J0737$-$3039, and the triple pulsar PSR J0337+1715. We also overview the inner structure of neutron stars (NSs) that may influence some gravity tests, and have used the scalar-tensor gravity and massive gravity theories as examples to demonstrate the usefulness of pulsar timing in constraining specific modified gravity theories. Outlooks to new radio telescopes for pulsar timing and synergies with other strong-field gravity tests are also presented.</summary>
+    <category term="astro-ph.HE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="gr-qc" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-03-30T06:47:42Z</published>
+    <arxiv:comment>40 pages, 8 figures; Invited chapter to the forthcoming book "Recent Progress on Gravity Tests", Springer Singapore, (Eds) Cosimo Bambi and Alejandro Cardenas-Avendano</arxiv:comment>
+    <arxiv:primary_category term="astro-ph.HE"/>
+    <arxiv:journal_ref>Recent Progress on Gravity Tests (Springer, Singapore, 2024), p. 61</arxiv:journal_ref>
+    <author>
+      <name>Zexin Hu</name>
+    </author>
+    <author>
+      <name>Xueli Miao</name>
+    </author>
+    <author>
+      <name>Lijing Shao</name>
+    </author>
+    <arxiv:doi>10.1007/978-981-97-2871-8_3</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/978-981-97-2871-8_3" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1709.09029v1</id>
+    <title>The Co-Evolution of Test Maintenance and Code Maintenance through the lens of Fine-Grained Semantic Changes</title>
+    <updated>2017-09-26T14:13:33Z</updated>
+    <link href="https://arxiv.org/abs/1709.09029v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1709.09029v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Automatic testing is a widely adopted technique for improving software quality. Software developers add, remove and update test methods and test classes as part of the software development process as well as during the evolution phase, following the initial release. In this work we conduct a large scale study of 61 popular open source projects and report the relationships we have established between test maintenance, production code maintenance, and semantic changes (e.g, statement added, method removed, etc.). performed in developers' commits.
+  We build predictive models, and show that the number of tests in a software project can be well predicted by employing code maintenance profiles (i.e., how many commits were performed in each of the maintenance activities: corrective, perfective, adaptive). Our findings also reveal that more often than not, developers perform code fixes without performing complementary test maintenance in the same commit (e.g., update an existing test or add a new one). When developers do perform test maintenance, it is likely to be affected by the semantic changes they perform as part of their commit.
+  Our work is based on studying 61 popular open source projects, comprised of over 240,000 commits consisting of over 16,000,000 semantic change type instances, performed by over 4,000 software engineers.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2017-09-26T14:13:33Z</published>
+    <arxiv:comment>postprint, ICSME 2017</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Stanislav Levin</name>
+    </author>
+    <author>
+      <name>Amiram Yehudai</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2401.08085v2</id>
+    <title>Testing gravity with Extreme-Mass-Ratio Inspirals</title>
+    <updated>2024-05-13T17:58:26Z</updated>
+    <link href="https://arxiv.org/abs/2401.08085v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2401.08085v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Extreme-mass-ratio inspirals consist of binary systems of compact objects, with orders of magnitude differences in their masses, in the regime where the dynamics are driven by gravitational wave emission. The unique nature of extreme-mass-ratio inspirals facilitates the exploration of diverse and stimulating tests related to various aspects of black holes and General Relativity. These tests encompass investigations into the spacetime geometry, the dissipation of the binary system energy and angular momentum, and the impact of the intrinsic non-linear effects of the gravitational interaction. This review accounts for the manifold opportunities for testing General Relativity, ranging from examinations of black hole properties to cosmological and multimessenger tests.</summary>
+    <category term="gr-qc" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="astro-ph.HE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="hep-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="hep-th" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-01-16T03:25:01Z</published>
+    <arxiv:comment>V2. Updated to match published version. V1: 67+19 pages, 2 figures. Review Chapter for the book "Recent Progress on Gravity Tests" (Eds. C. Bambi and A. Cárdenas-Avendaño, Springer Singapore)</arxiv:comment>
+    <arxiv:primary_category term="gr-qc"/>
+    <arxiv:journal_ref>In Recent Progress on Gravity Tests. Springer Series in Astrophysics and Cosmology. Springer, Singapore, 2024</arxiv:journal_ref>
+    <author>
+      <name>Alejandro Cárdenas-Avendaño</name>
+    </author>
+    <author>
+      <name>Carlos F. Sopuerta</name>
+    </author>
+    <arxiv:doi>10.1007/978-981-97-2871-8_8</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/978-981-97-2871-8_8" title="doi"/>
+  </entry>
+</feed>

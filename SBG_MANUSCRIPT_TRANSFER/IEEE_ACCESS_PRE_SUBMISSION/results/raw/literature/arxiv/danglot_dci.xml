@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Ca0YvEAOlfa59ZdcBqD44FBoKrU</id>
+  <title>arXiv Query: search_query=&amp;id_list=1902.08482&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:21:55Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=1902.08482" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/1902.08482v3</id>
+    <title>An Approach and Benchmark to Detect Behavioral Changes of Commits in Continuous Integration</title>
+    <updated>2019-12-16T14:36:50Z</updated>
+    <link href="https://arxiv.org/abs/1902.08482v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1902.08482v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>When a developer pushes a change to an application's codebase, a good practice is to have a test case specifying this behavioral change. Thanks to continuous integration (CI), the test is run on subsequent commits to check that they do no introduce a regression for that behavior. In this paper, we propose an approach that detects behavioral changes in commits. As input, it takes a program, its test suite, and a commit. Its output is a set of test methods that capture the behavioral difference between the pre-commit and post-commit versions of the program. We call our approach DCI (Detecting behavioral changes in CI). It works by generating variations of the existing test cases through (i) assertion amplification and (ii) a search-based exploration of the input space. We evaluate our approach on a curated set of 60 commits from 6 open source Java projects. To our knowledge, this is the first ever curated dataset of real-world behavioral changes. Our evaluation shows that DCI is able to generate test methods that detect behavioral changes. Our approach is fully automated and can be integrated into current development processes. The main limitations are that it targets unit tests and works on a relatively small fraction of commits. More specifically, DCI works on commits that have a unit test that already executes the modified code. In practice, from our benchmark projects, we found 15.29% of commits to meet the conditions required by DCI.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-02-22T13:19:36Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>Empirical Software Engineering, Springer Verlag, 2019</arxiv:journal_ref>
+    <author>
+      <name>Benjamin Danglot</name>
+    </author>
+    <author>
+      <name>Martin Monperrus</name>
+    </author>
+    <author>
+      <name>Walter Rudametkin</name>
+    </author>
+    <author>
+      <name>Benoit Baudry</name>
+    </author>
+    <arxiv:doi>10.1007/s10664-019-09794-7</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/s10664-019-09794-7" title="doi"/>
+  </entry>
+</feed>

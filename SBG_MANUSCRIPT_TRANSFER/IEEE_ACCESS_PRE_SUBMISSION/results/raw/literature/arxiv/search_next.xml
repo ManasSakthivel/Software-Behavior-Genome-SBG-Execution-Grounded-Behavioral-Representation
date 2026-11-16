@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/dG5u+U35Y5pl90eqDFtxCvz/uV0</id>
+  <title>arXiv Query: search_query=all:NExT OR all:teaching OR all:large OR all:language OR all:models OR all:to OR all:reason OR all:about OR all:code OR all:execution&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:26:19Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:NExT+OR+(all:teaching+OR+(all:large+OR+(all:language+OR+(all:models+OR+(all:to+OR+(all:reason+OR+(all:about+OR+(all:code+OR+all:execution))))))))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>1791888</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2404.14662v1</id>
+    <title>NExT: Teaching Large Language Models to Reason about Code Execution</title>
+    <updated>2024-04-23T01:46:32Z</updated>
+    <link href="https://arxiv.org/abs/2404.14662v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2404.14662v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A fundamental skill among human developers is the ability to understand and reason about program execution. As an example, a programmer can mentally simulate code execution in natural language to debug and repair code (aka. rubber duck debugging). However, large language models (LLMs) of code are typically trained on the surface textual form of programs, thus may lack a semantic understanding of how programs execute at run-time. To address this issue, we propose NExT, a method to teach LLMs to inspect the execution traces of programs (variable states of executed lines) and reason about their run-time behavior through chain-of-thought (CoT) rationales. Specifically, NExT uses self-training to bootstrap a synthetic training set of execution-aware rationales that lead to correct task solutions (e.g., fixed programs) without laborious manual annotation. Experiments on program repair tasks based on MBPP and HumanEval demonstrate that NExT improves the fix rate of a PaLM 2 model, by 26.1% and 14.3% absolute, respectively, with significantly improved rationale quality as verified by automated metrics and human raters. Our model can also generalize to scenarios where program traces are absent at test-time.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-04-23T01:46:32Z</published>
+    <arxiv:comment>35 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Ansong Ni</name>
+    </author>
+    <author>
+      <name>Miltiadis Allamanis</name>
+    </author>
+    <author>
+      <name>Arman Cohan</name>
+    </author>
+    <author>
+      <name>Yinlin Deng</name>
+    </author>
+    <author>
+      <name>Kensen Shi</name>
+    </author>
+    <author>
+      <name>Charles Sutton</name>
+    </author>
+    <author>
+      <name>Pengcheng Yin</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.00223v1</id>
+    <title>A Holistic Assessment of the Carbon Footprint of Noor, a Very Large Arabic Language Model</title>
+    <updated>2026-09-22T11:25:39Z</updated>
+    <link href="https://arxiv.org/abs/2610.00223v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.00223v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As ever larger language models grow more ubiquitous, it is crucial to consider their environmental impact. Characterised by extreme size and resource use, recent generations of models have been criticised for their voracious appetite for compute, and thus significant carbon footprint. Although reporting of carbon impact has grown more common in machine learning papers, this reporting is usually limited to compute resources used strictly for training. In this work, we propose a holistic assessment of the footprint of an extreme-scale language model, Noor. Noor is an ongoing project aiming to develop the largest multi-task Arabic language models -- with up to 13B parameters -- leveraging zero-shot generalisation to enable a wide range of downstream tasks via natural language instructions. We assess the total carbon bill of the entire project: starting with data collection and storage costs, including research and development budgets, pretraining costs, future serving estimates, and other exogenous costs necessary for this international cooperation. Notably, we find that inference costs and exogenous factors can have a significant impact on total budget. Finally, we discuss pathways to reduce the carbon footprint of extreme-scale models.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-22T11:25:39Z</published>
+    <arxiv:comment>11 pages, 3 figures, 2 tables. Published in Proceedings of BigScience Episode #5 -- Workshop on Challenges &amp; Perspectives in Creating Large Language Models (ACL 2022)</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <arxiv:journal_ref>Proceedings of BigScience Episode #5 -- Workshop on Challenges &amp; Perspectives in Creating Large Language Models, pages 84-94, Association for Computational Linguistics, 2022</arxiv:journal_ref>
+    <author>
+      <name>Imad Lakim</name>
+    </author>
+    <author>
+      <name>Ebtesam Almazrouei</name>
+    </author>
+    <author>
+      <name>Ibrahim Abu Alhaol</name>
+    </author>
+    <author>
+      <name>Merouane Debbah</name>
+    </author>
+    <author>
+      <name>Julien Launay</name>
+    </author>
+    <arxiv:doi>10.18653/v1/2022.bigscience-1.8</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.18653/v1/2022.bigscience-1.8" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2309.02144v1</id>
+    <title>Making Large Language Models Better Reasoners with Alignment</title>
+    <updated>2023-09-05T11:32:48Z</updated>
+    <link href="https://arxiv.org/abs/2309.02144v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2309.02144v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reasoning is a cognitive process of using evidence to reach a sound conclusion. The reasoning capability is essential for large language models (LLMs) to serve as the brain of the artificial general intelligence agent. Recent studies reveal that fine-tuning LLMs on data with the chain of thought (COT) reasoning process can significantly enhance their reasoning capabilities. However, we find that the fine-tuned LLMs suffer from an \textit{Assessment Misalignment} problem, i.e., they frequently assign higher scores to subpar COTs, leading to potential limitations in their reasoning abilities. To address this problem, we introduce an \textit{Alignment Fine-Tuning (AFT)} paradigm, which involves three steps: 1) fine-tuning LLMs with COT training data; 2) generating multiple COT responses for each question, and categorizing them into positive and negative ones based on whether they achieve the correct answer; 3) calibrating the scores of positive and negative responses given by LLMs with a novel constraint alignment loss. Specifically, the constraint alignment loss has two objectives: a) Alignment, which guarantees that positive scores surpass negative scores to encourage answers with high-quality COTs; b) Constraint, which keeps the negative scores confined to a reasonable range to prevent the model degradation. Beyond just the binary positive and negative feedback, the constraint alignment loss can be seamlessly adapted to the ranking situations when ranking feedback is accessible. Furthermore, we also delve deeply into recent ranking-based alignment methods, such as DPO, RRHF, and PRO, and discover that the constraint, which has been overlooked by these approaches, is also crucial for their performance. Extensive experiments on four reasoning benchmarks with both binary and ranking feedback demonstrate the effectiveness of AFT.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-09-05T11:32:48Z</published>
+    <arxiv:comment>Large Language Models; Reasoning; Alignment</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Peiyi Wang</name>
+    </author>
+    <author>
+      <name>Lei Li</name>
+    </author>
+    <author>
+      <name>Liang Chen</name>
+    </author>
+    <author>
+      <name>Feifan Song</name>
+    </author>
+    <author>
+      <name>Binghuai Lin</name>
+    </author>
+    <author>
+      <name>Yunbo Cao</name>
+    </author>
+    <author>
+      <name>Tianyu Liu</name>
+    </author>
+    <author>
+      <name>Zhifang Sui</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2407.08029v1</id>
+    <title>A Critical Review of Causal Reasoning Benchmarks for Large Language Models</title>
+    <updated>2024-07-10T20:11:51Z</updated>
+    <link href="https://arxiv.org/abs/2407.08029v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2407.08029v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Numerous benchmarks aim to evaluate the capabilities of Large Language Models (LLMs) for causal inference and reasoning. However, many of them can likely be solved through the retrieval of domain knowledge, questioning whether they achieve their purpose. In this review, we present a comprehensive overview of LLM benchmarks for causality. We highlight how recent benchmarks move towards a more thorough definition of causal reasoning by incorporating interventional or counterfactual reasoning. We derive a set of criteria that a useful benchmark or set of benchmarks should aim to satisfy. We hope this work will pave the way towards a general framework for the assessment of causal understanding in LLMs and the design of novel benchmarks.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-07-10T20:11:51Z</published>
+    <arxiv:comment>AAAI 2024 Workshop on ''Are Large Language Models Simply Causal Parrots?''</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Linying Yang</name>
+    </author>
+    <author>
+      <name>Vik Shirvaikar</name>
+    </author>
+    <author>
+      <name>Oscar Clivio</name>
+    </author>
+    <author>
+      <name>Fabian Falck</name>
+    </author>
+  </entry>
+</feed>

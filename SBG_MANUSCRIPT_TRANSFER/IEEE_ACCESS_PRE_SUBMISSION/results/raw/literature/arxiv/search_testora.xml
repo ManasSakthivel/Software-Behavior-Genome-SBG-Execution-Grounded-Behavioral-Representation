@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/DY3+WJTInI1iNExcwbD+FF8kYkA</id>
+  <title>arXiv Query: search_query=all:Testora OR all:Natural OR all:Language OR all:Intent OR all:Detect OR all:Behavioral OR all:Regressions&amp;id_list=&amp;start=0&amp;max_results=4</title>
+  <updated>2026-11-14T13:25:33Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:Testora+OR+(all:Natural+OR+(all:Language+OR+(all:Intent+OR+(all:Detect+OR+(all:Behavioral+OR+all:Regressions)))))&amp;start=0&amp;max_results=4&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>4</opensearch:itemsPerPage>
+  <opensearch:totalResults>898043</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2503.18597v3</id>
+    <title>Testora: Using Natural Language Intent to Detect Behavioral Regressions</title>
+    <updated>2025-11-06T16:22:17Z</updated>
+    <link href="https://arxiv.org/abs/2503.18597v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2503.18597v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As software is evolving, code changes can introduce regression bugs or affect the behavior in other unintended ways. Traditional regression test generation is impractical for detecting unintended behavioral changes, because it reports all behavioral differences as potential regressions. However, most code changes are intended to change the behavior in some way, e.g., to fix a bug or to add a new feature. This paper presents Testora, the first automated approach that detects regressions by comparing the intentions of a code change against behavioral differences caused by the code change. Given a pull request (PR), Testora queries an LLM to generate tests that exercise the modified code, compares the behavior of the original and modified code, and classifies any behavioral differences as intended or unintended. For the classification, we present an LLM-based technique that leverages the natural language information associated with the PR, such as the title, description, and commit messages -- effectively using the natural language intent to detect behavioral regressions. Applying Testora to PRs of complex and popular Python projects, we find 19 regression bugs and 11 PRs that, despite having another intention, coincidentally fix a bug. Out of 13 regressions reported to the developers, 11 have been confirmed and 9 have already been fixed. The costs of using Testora are acceptable for real-world deployment, with 12.3 minutes to check a PR and LLM costs of only $0.003 per PR. We envision our approach to be used before or shortly after a code change gets merged into a code base, providing a way to early on detect regressions that are not caught by traditional approaches.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-03-24T11:55:35Z</published>
+    <arxiv:comment>Accepted at IEEE/ACM International Conference on Software Engineering (ICSE) 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Michael Pradel</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2306.06371v1</id>
+    <title>A Comprehensive Review of State-of-The-Art Methods for Java Code Generation from Natural Language Text</title>
+    <updated>2023-06-10T07:27:51Z</updated>
+    <link href="https://arxiv.org/abs/2306.06371v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2306.06371v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Java Code Generation consists in generating automatically Java code from a Natural Language Text. This NLP task helps in increasing programmers' productivity by providing them with immediate solutions to the simplest and most repetitive tasks. Code generation is a challenging task because of the hard syntactic rules and the necessity of a deep understanding of the semantic aspect of the programming language. Many works tried to tackle this task using either RNN-based, or Transformer-based models. The latter achieved remarkable advancement in the domain and they can be divided into three groups: (1) encoder-only models, (2) decoder-only models, and (3) encoder-decoder models. In this paper, we provide a comprehensive review of the evolution and progress of deep learning models in Java code generation task. We focus on the most important methods and present their merits and limitations, as well as the objective functions used by the community. In addition, we provide a detailed description of datasets and evaluation metrics used in the literature. Finally, we discuss results of different models on CONCODE dataset, then propose some future directions.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-06-10T07:27:51Z</published>
+    <arxiv:comment>Published at Elsevier's Natural Language Processing Journal</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <arxiv:journal_ref>Natural Language Processing Journal, Volume 3, 2023, 100013, ISSN 2949-7191</arxiv:journal_ref>
+    <author>
+      <name>Jessica López Espejel</name>
+    </author>
+    <author>
+      <name>Mahaman Sanoussi Yahaya Alassan</name>
+    </author>
+    <author>
+      <name>El Mehdi Chouham</name>
+    </author>
+    <author>
+      <name>Walid Dahhane</name>
+    </author>
+    <author>
+      <name>El Hassane Ettifouri</name>
+    </author>
+    <arxiv:doi>10.1016/j.nlp.2023.100013</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1016/j.nlp.2023.100013" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/cmp-lg/9803002v1</id>
+    <title>Time, Tense and Aspect in Natural Language Database Interfaces</title>
+    <updated>1998-03-22T15:05:40Z</updated>
+    <link href="https://arxiv.org/abs/cmp-lg/9803002v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/cmp-lg/9803002v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>  Most existing natural language database interfaces (NLDBs) were designed to be used with database systems that provide very limited facilities for manipulating time-dependent data, and they do not support adequately temporal linguistic mechanisms (verb tenses, temporal adverbials, temporal subordinate clauses, etc.). The database community is becoming increasingly interested in temporal database systems, that are intended to store and manipulate in a principled manner information not only about the present, but also about the past and future. When interfacing to temporal databases, supporting temporal linguistic mechanisms becomes crucial.
+  We present a framework for constructing natural language interfaces for temporal databases (NLTDBs), that draws on research in tense and aspect theories, temporal logics, and temporal databases. The framework consists of a temporal intermediate representation language, called TOP, an HPSG grammar that maps a wide range of questions involving temporal mechanisms to appropriate TOP expressions, and a provably correct method for translating from TOP to TSQL2, TSQL2 being a recently proposed temporal extension of the SQL database language. This framework was employed to implement a prototype NLTDB using ALE and Prolog.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>1998-03-22T15:05:40Z</published>
+    <arxiv:comment>50 pages. LaTeX2e. Uses: amstex, a4, a4wide, xspace, avm, examples. EPS figures included. To appear in the Journal of Natural Language Engineering</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <arxiv:journal_ref>Natural Language Engineering, 4(3), pp. 229-276, Sept. 1998, Cambridge Univ. Press.</arxiv:journal_ref>
+    <author>
+      <name>I. Androutsopoulos</name>
+      <arxiv:affiliation>Microsoft Research Institute, Macquarie University, Sydney</arxiv:affiliation>
+    </author>
+    <author>
+      <name>G. D. Ritchie</name>
+      <arxiv:affiliation>Dept. of Artificial Intelligence, Univ. of Edinburgh</arxiv:affiliation>
+    </author>
+    <author>
+      <name>P. Thanisch</name>
+      <arxiv:affiliation>Dept. of Computer Science, Univ. of Edinburgh</arxiv:affiliation>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2110.10780v3</id>
+    <title>An Open Natural Language Processing Development Framework for EHR-based Clinical Research: A case demonstration using the National COVID Cohort Collaborative (N3C)</title>
+    <updated>2022-03-21T19:54:10Z</updated>
+    <link href="https://arxiv.org/abs/2110.10780v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2110.10780v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While we pay attention to the latest advances in clinical natural language processing (NLP), we can notice some resistance in the clinical and translational research community to adopt NLP models due to limited transparency, interpretability, and usability. In this study, we proposed an open natural language processing development framework. We evaluated it through the implementation of NLP algorithms for the National COVID Cohort Collaborative (N3C). Based on the interests in information extraction from COVID-19 related clinical notes, our work includes 1) an open data annotation process using COVID-19 signs and symptoms as the use case, 2) a community-driven ruleset composing platform, and 3) a synthetic text data generation workflow to generate texts for information extraction tasks without involving human subjects. The corpora were derived from texts from three different institutions (Mayo Clinic, University of Kentucky, University of Minnesota). The gold standard annotations were tested with a single institution's (Mayo) ruleset. This resulted in performances of 0.876, 0.706, and 0.694 in F-scores for Mayo, Minnesota, and Kentucky test datasets, respectively. The study as a consortium effort of the N3C NLP subgroup demonstrates the feasibility of creating a federated NLP algorithm development and benchmarking platform to enhance multi-institution clinical NLP study and adoption. Although we use COVID-19 as a use case in this effort, our framework is general enough to be applied to other domains of interest in clinical NLP.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-10-20T21:09:41Z</published>
+    <arxiv:comment>update on contents</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Sijia Liu</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Andrew Wen</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Liwei Wang</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Huan He</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Sunyang Fu</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Robert Miller</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Andrew Williams</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Daniel Harris</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Ramakanth Kavuluru</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Mei Liu</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Noor Abu-el-rub</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Dalton Schutte</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Rui Zhang</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Masoud Rouhizadeh</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>John D. Osborne</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Yongqun He</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Umit Topaloglu</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Stephanie S Hong</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Joel H Saltz</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Thomas Schaffter</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Emily Pfaff</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Christopher G. Chute</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Tim Duong</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Melissa A. Haendel</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Rafael Fuentes</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Peter Szolovits</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Hua Xu</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Hongfang Liu</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>National COVID Cohort Collaborative</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Natural Language Processing</name>
+      <arxiv:affiliation>NLP</arxiv:affiliation>
+    </author>
+    <author>
+      <name> Subgroup</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+    <author>
+      <name>National COVID Cohort Collaborative</name>
+      <arxiv:affiliation>N3C</arxiv:affiliation>
+    </author>
+  </entry>
+</feed>

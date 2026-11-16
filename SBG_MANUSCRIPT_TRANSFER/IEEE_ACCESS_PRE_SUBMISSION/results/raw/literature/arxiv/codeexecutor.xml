@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/rb6pe1wm4JVcIcSFKdiq8PDyCuw</id>
+  <title>arXiv Query: search_query=&amp;id_list=2305.05383&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:27:36Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2305.05383" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2305.05383v1</id>
+    <title>Code Execution with Pre-trained Language Models</title>
+    <updated>2023-05-08T10:00:05Z</updated>
+    <link href="https://arxiv.org/abs/2305.05383v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2305.05383v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Code execution is a fundamental aspect of programming language semantics that reflects the exact behavior of the code. However, most pre-trained models for code intelligence ignore the execution trace and only rely on source code and syntactic structures. In this paper, we investigate how well pre-trained models can understand and perform code execution. We develop a mutation-based data augmentation technique to create a large-scale and realistic Python dataset and task for code execution, which challenges existing models such as Codex. We then present CodeExecutor, a Transformer model that leverages code execution pre-training and curriculum learning to enhance its semantic comprehension. We evaluate CodeExecutor on code execution and show its promising performance and limitations. We also demonstrate its potential benefits for code intelligence tasks such as zero-shot code-to-code search and text-to-code generation. Our analysis provides insights into the learning and generalization abilities of pre-trained models for code execution.</summary>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-05-08T10:00:05Z</published>
+    <arxiv:comment>Accepted to the Findings of ACL 2023</arxiv:comment>
+    <arxiv:primary_category term="cs.PL"/>
+    <author>
+      <name>Chenxiao Liu</name>
+    </author>
+    <author>
+      <name>Shuai Lu</name>
+    </author>
+    <author>
+      <name>Weizhu Chen</name>
+    </author>
+    <author>
+      <name>Daxin Jiang</name>
+    </author>
+    <author>
+      <name>Alexey Svyatkovskiy</name>
+    </author>
+    <author>
+      <name>Shengyu Fu</name>
+    </author>
+    <author>
+      <name>Neel Sundaresan</name>
+    </author>
+    <author>
+      <name>Nan Duan</name>
+    </author>
+  </entry>
+</feed>

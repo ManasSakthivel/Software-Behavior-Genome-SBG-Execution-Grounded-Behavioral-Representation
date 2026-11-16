@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Irvba02F+2g9z/bkrl+Ah/Re/Gg</id>
+  <title>arXiv Query: search_query=&amp;id_list=2502.18473&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:27:20Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2502.18473" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2502.18473v1</id>
+    <title>Disproving Program Equivalence with LLMs</title>
+    <updated>2025-02-05T12:54:17Z</updated>
+    <link href="https://arxiv.org/abs/2502.18473v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.18473v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>To evaluate large language models (LLMs) for code, research has used manually created unit test-based benchmarks. However, these tests are often inadequate, missing corner cases and other implementation-specific oddities. This work introduces ProbeGen, a whitebox method that takes two or more executable pieces of code and searches for counterexamples to their equivalence. Comparing code semantics requires a deep understanding of code. We demonstrate that LLMs with execution feedback perform well at this task. In a common code synthesis benchmark, ProbeGen disproves 18% of samples considered equivalent to the ground truth by the benchmark-provided unit tests. Additionally, using ProbeGen, we can semantically cluster LLM samples for semantic self-consistency, improving pass@1 by 10% by unifying syntactically distinct but semantically similar samples.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-05T12:54:17Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Miltiadis Allamanis</name>
+    </author>
+    <author>
+      <name>Pengcheng Yin</name>
+    </author>
+  </entry>
+</feed>

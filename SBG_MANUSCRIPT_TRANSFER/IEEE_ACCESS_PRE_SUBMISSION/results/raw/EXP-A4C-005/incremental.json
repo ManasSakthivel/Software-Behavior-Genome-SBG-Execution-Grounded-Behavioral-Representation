@@ -1,0 +1,664 @@
+{
+ "v10_test": {
+  "base_auroc": {
+   "EX": {
+    "auroc": 0.7953292518744902,
+    "ci95": [
+     0.7254931640625,
+     0.8538402441135734
+    ]
+   },
+   "EXx": {
+    "auroc": 0.8913287015654328,
+    "ci95": [
+     0.8613533879197817,
+     0.9234606549254538
+    ]
+   }
+  },
+  "deltas": {
+   "INC__EX_plus_output_indep__frac40": {
+    "X": "output_indep|frac40",
+    "ci95": [
+     0.037218194699197404,
+     0.19508477096966093
+    ],
+    "combo_auroc": 0.9096903528856831,
+    "combo_ci95": [
+     0.8577926289603534,
+     0.9515167269679254
+    ],
+    "delta": 0.1143611010111929,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.002
+   },
+   "INC__EX_plus_pathspectra__shape__covset__max": {
+    "X": "pathspectra|shape|covset|max",
+    "ci95": [
+     0.04490568536771122,
+     0.14178270951450178
+    ],
+    "combo_auroc": 0.884783954560195,
+    "combo_ci95": [
+     0.8313521846728062,
+     0.9328046335486745
+    ],
+    "delta": 0.08945470268570477,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_sbg_state": {
+    "X": "sbg_state",
+    "ci95": [
+     -0.019073047497036644,
+     0.06025555555555562
+    ],
+    "combo_auroc": 0.8202503906211613,
+    "combo_ci95": [
+     0.732165460227048,
+     0.891538549022446
+    ],
+    "delta": 0.024921138746671123,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.219
+   },
+   "INC__EX_plus_sbg_temporal": {
+    "X": "sbg_temporal",
+    "ci95": [
+     -0.012657727146869191,
+     0.0029429938940732647
+    ],
+    "combo_auroc": 0.7896787570876859,
+    "combo_ci95": [
+     0.7144485608435451,
+     0.8514210463066816
+    ],
+    "delta": -0.00565049478680435,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.191
+   },
+   "INC__EX_plus_sbg_v3": {
+    "X": "sbg_v3",
+    "ci95": [
+     -0.07419278148086195,
+     0.060855978798307064
+    ],
+    "combo_auroc": 0.7947887697644481,
+    "combo_ci95": [
+     0.667711942458664,
+     0.8943384014684506
+    ],
+    "delta": -0.0005404821100420953,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.968
+   },
+   "INC__EX_plus_sbg_v5": {
+    "X": "sbg_v5",
+    "ci95": [
+     -0.0741883859167809,
+     0.06312899408284023
+    ],
+    "combo_auroc": 0.7967345053605999,
+    "combo_ci95": [
+     0.6684268010922075,
+     0.8978605477242801
+    ],
+    "delta": 0.0014052534861096477,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.914
+   },
+   "INC__EX_plus_traceseq__cre__full__kgram4__max": {
+    "X": "traceseq|cre|full|kgram4|max",
+    "ci95": [
+     -0.03875926494451998,
+     0.09956721003582769
+    ],
+    "combo_auroc": 0.8221715588486749,
+    "combo_ci95": [
+     0.7633963214915596,
+     0.8744542140682583
+    ],
+    "delta": 0.02684230697418466,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.442
+   },
+   "INC__EX_plus_valuespectra__entry_exit__full__raw__max": {
+    "X": "valuespectra|entry_exit|full|raw|max",
+    "ci95": [
+     0.05219027143241062,
+     0.15800400980173757
+    ],
+    "combo_auroc": 0.8942276510647498,
+    "combo_ci95": [
+     0.8663195266272189,
+     0.9229613001470279
+    ],
+    "delta": 0.09889839919025956,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EXx_plus_output_indep__frac40": {
+    "X": "output_indep|frac40",
+    "ci95": [
+     0.03634528784129176,
+     0.09473446497798188
+    ],
+    "combo_auroc": 0.9572822594117589,
+    "combo_ci95": [
+     0.9346993203236175,
+     0.9767710929156284
+    ],
+    "delta": 0.06595355784632617,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EXx_plus_pathspectra__shape__covset__max": {
+    "X": "pathspectra|shape|covset|max",
+    "ci95": [
+     0.0033447265625000666,
+     0.03478402753055654
+    ],
+    "combo_auroc": 0.9101276520474445,
+    "combo_ci95": [
+     0.8807497854654108,
+     0.9420767350409183
+    ],
+    "delta": 0.018798950482011745,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.02
+   },
+   "INC__EXx_plus_sbg_state": {
+    "X": "sbg_state",
+    "ci95": [
+     -0.004772100449992767,
+     0.023282280776204645
+    ],
+    "combo_auroc": 0.8992000864771376,
+    "combo_ci95": [
+     0.8680780569728279,
+     0.9293254437869822
+    ],
+    "delta": 0.007871384911704804,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.316
+   },
+   "INC__EXx_plus_sbg_temporal": {
+    "X": "sbg_temporal",
+    "ci95": [
+     -0.003674626750511223,
+     0.0027723095202040193
+    ],
+    "combo_auroc": 0.8910240661943181,
+    "combo_ci95": [
+     0.8599218370364243,
+     0.9242865636147444
+    ],
+    "delta": -0.0003046353711146921,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.957
+   },
+   "INC__EXx_plus_sbg_v3": {
+    "X": "sbg_v3",
+    "ci95": [
+     0.0013663741820345576,
+     0.021181640624999942
+    ],
+    "combo_auroc": 0.9006446477530685,
+    "combo_ci95": [
+     0.8698788878969059,
+     0.9313757440404873
+    ],
+    "delta": 0.00931594618763576,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.016
+   },
+   "INC__EXx_plus_sbg_v5": {
+    "X": "sbg_v5",
+    "ci95": [
+     -0.004601226993865004,
+     0.025592554893121955
+    ],
+    "combo_auroc": 0.9001139925904816,
+    "combo_ci95": [
+     0.8690338762052671,
+     0.9307023933402706
+    ],
+    "delta": 0.00878529102504888,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.262
+   },
+   "INC__EXx_plus_traceseq__cre__full__kgram4__max": {
+    "X": "traceseq|cre|full|kgram4|max",
+    "ci95": [
+     -0.03204826199367994,
+     0.031379052717137035
+    ],
+    "combo_auroc": 0.8898644863945913,
+    "combo_ci95": [
+     0.8560407668151776,
+     0.9205786106661688
+    ],
+    "delta": -0.0014642151708414985,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.89
+   },
+   "INC__EXx_plus_valuespectra__entry_exit__full__raw__max": {
+    "X": "valuespectra|entry_exit|full|raw|max",
+    "ci95": [
+     0.002348601716704257,
+     0.05922366863905326
+    ],
+    "combo_auroc": 0.9212812374092235,
+    "combo_ci95": [
+     0.9047384615384615,
+     0.938932613899144
+    ],
+    "delta": 0.029952535843790762,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.029
+   }
+  },
+  "holm": {
+   "EX": {
+    "INC__EX_plus_output_indep__frac40": 0.012,
+    "INC__EX_plus_pathspectra__shape__covset__max": 0.004,
+    "INC__EX_plus_sbg_state": 0.9550000000000001,
+    "INC__EX_plus_sbg_temporal": 0.9550000000000001,
+    "INC__EX_plus_sbg_v3": 1.0,
+    "INC__EX_plus_sbg_v5": 1.0,
+    "INC__EX_plus_traceseq__cre__full__kgram4__max": 1.0,
+    "INC__EX_plus_valuespectra__entry_exit__full__raw__max": 0.004
+   },
+   "EXx": {
+    "INC__EXx_plus_output_indep__frac40": 0.004,
+    "INC__EXx_plus_pathspectra__shape__covset__max": 0.12,
+    "INC__EXx_plus_sbg_state": 1.0,
+    "INC__EXx_plus_sbg_temporal": 1.0,
+    "INC__EXx_plus_sbg_v3": 0.112,
+    "INC__EXx_plus_sbg_v5": 1.0,
+    "INC__EXx_plus_traceseq__cre__full__kgram4__max": 1.0,
+    "INC__EXx_plus_valuespectra__entry_exit__full__raw__max": 0.14500000000000002
+   }
+  },
+  "lopo_exploratory": {
+   "EX+sbg_state": {
+    "ci95": [
+     0.0071571980963711646,
+     0.04721318779238137
+    ],
+    "combo_auroc": 0.9140928253456628,
+    "delta": 0.027083067186839727,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.005
+   },
+   "EX+sbg_v5": {
+    "ci95": [
+     -0.002338367248838402,
+     0.020907383632717602
+    ],
+    "combo_auroc": 0.8968661864565011,
+    "delta": 0.009856428297677966,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.119
+   },
+   "EX+traceseq|cre|full|kgram4|max": {
+    "ci95": [
+     -0.0125651991956639,
+     0.0009097741386812075
+    ],
+    "combo_auroc": 0.8823419581175499,
+    "delta": -0.004667800041273207,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.143
+   },
+   "EX+valuespectra|entry_exit|full|raw|max": {
+    "ci95": [
+     0.01699642504930965,
+     0.0670508711374096
+    ],
+    "combo_auroc": 0.9266074429300026,
+    "delta": 0.03959768477117953,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "EX_auroc": 0.8870097581588231,
+   "EX_ci95": [
+    0.8537903901844232,
+    0.9177113771326233
+   ],
+   "V5alone_auroc": 0.8939524965360011,
+   "note": "EXPLORATORY: refit (IRLS, same L2 objective) leaving one program out WITHIN the held-out population; pooled out-of-fold scores"
+  }
+ },
+ "v9c_val": {
+  "base_auroc": {
+   "EX": {
+    "auroc": 0.6443758573388203,
+    "ci95": [
+     0.5862716049382716,
+     0.6993478260869566
+    ]
+   },
+   "EXx": {
+    "auroc": 0.78727280521262,
+    "ci95": [
+     0.7152201151011913,
+     0.8499918837756676
+    ]
+   }
+  },
+  "deltas": {
+   "INC__EX_plus_output_indep__frac40": {
+    "X": "output_indep|frac40",
+    "ci95": [
+     0.05051842292630837,
+     0.15356226934384187
+    ],
+    "combo_auroc": 0.7431841563786008,
+    "combo_ci95": [
+     0.6798805351671846,
+     0.8029744199881024
+    ],
+    "delta": 0.0988082990397805,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_pathspectra__shape__covset__max": {
+    "X": "pathspectra|shape|covset|max",
+    "ci95": [
+     0.08956229781393976,
+     0.2561937040652803
+    ],
+    "combo_auroc": 0.8162937242798354,
+    "combo_ci95": [
+     0.7377156454491374,
+     0.8803440844369946
+    ],
+    "delta": 0.17191786694101507,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_sbg_state": {
+    "X": "sbg_state",
+    "ci95": [
+     0.0349026868566642,
+     0.10326434349445657
+    ],
+    "combo_auroc": 0.7131129972565158,
+    "combo_ci95": [
+     0.63720703125,
+     0.7744860270558918
+    ],
+    "delta": 0.06873713991769548,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_sbg_temporal": {
+    "X": "sbg_temporal",
+    "ci95": [
+     0.026630423241096657,
+     0.06628229946974151
+    ],
+    "combo_auroc": 0.6892146776406035,
+    "combo_ci95": [
+     0.6342345642270094,
+     0.7413177353998306
+    ],
+    "delta": 0.04483882030178321,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_sbg_v3": {
+    "X": "sbg_v3",
+    "ci95": [
+     0.03283702677746991,
+     0.09385716735253768
+    ],
+    "combo_auroc": 0.7071223422496571,
+    "combo_ci95": [
+     0.6467335390946503,
+     0.7621679247132634
+    ],
+    "delta": 0.06274648491083679,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_sbg_v5": {
+    "X": "sbg_v5",
+    "ci95": [
+     0.03560131188262916,
+     0.09992435030259872
+    ],
+    "combo_auroc": 0.7113233024691358,
+    "combo_ci95": [
+     0.6401698127229488,
+     0.7715764425936942
+    ],
+    "delta": 0.06694744513031547,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_traceseq__cre__full__kgram4__max": {
+    "X": "traceseq|cre|full|kgram4|max",
+    "ci95": [
+     0.03279351317355861,
+     0.1643851851851852
+    ],
+    "combo_auroc": 0.7322959533607681,
+    "combo_ci95": [
+     0.6965152228660347,
+     0.7706009070294785
+    ],
+    "delta": 0.08792009602194784,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EX_plus_valuespectra__entry_exit__full__raw__max": {
+    "X": "valuespectra|entry_exit|full|raw|max",
+    "ci95": [
+     0.0957781978575929,
+     0.20259508590116593
+    ],
+    "combo_auroc": 0.7891482338820301,
+    "combo_ci95": [
+     0.7412471655328798,
+     0.836077386671325
+    ],
+    "delta": 0.14477237654320985,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "INC__EXx_plus_output_indep__frac40": {
+    "X": "output_indep|frac40",
+    "ci95": [
+     -0.0075929752066116185,
+     0.06559843447521252
+    ],
+    "combo_auroc": 0.8198945473251029,
+    "combo_ci95": [
+     0.7191671173607356,
+     0.9015096177258339
+    ],
+    "delta": 0.03262174211248292,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.123
+   },
+   "INC__EXx_plus_pathspectra__shape__covset__max": {
+    "X": "pathspectra|shape|covset|max",
+    "ci95": [
+     0.011878687933211451,
+     0.07447300295857995
+    ],
+    "combo_auroc": 0.8337620027434842,
+    "combo_ci95": [
+     0.7606631162220756,
+     0.8881923010973937
+    ],
+    "delta": 0.046489197530864224,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.01
+   },
+   "INC__EXx_plus_sbg_state": {
+    "X": "sbg_state",
+    "ci95": [
+     -0.006296587313385227,
+     0.0343696707333071
+    ],
+    "combo_auroc": 0.7992648319615913,
+    "combo_ci95": [
+     0.7217201368343196,
+     0.8658206365248565
+    ],
+    "delta": 0.011992026748971263,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.246
+   },
+   "INC__EXx_plus_sbg_temporal": {
+    "X": "sbg_temporal",
+    "ci95": [
+     -0.0044021415823914944,
+     0.010657707369170488
+    ],
+    "combo_auroc": 0.7901663237311386,
+    "combo_ci95": [
+     0.7209970050246282,
+     0.8513695987654321
+    ],
+    "delta": 0.0028935185185186008,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.404
+   },
+   "INC__EXx_plus_sbg_v3": {
+    "X": "sbg_v3",
+    "ci95": [
+     -0.00297499999999995,
+     0.028971560778853767
+    ],
+    "combo_auroc": 0.7987932956104252,
+    "combo_ci95": [
+     0.7389075175770687,
+     0.855575
+    ],
+    "delta": 0.011520490397805228,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.161
+   },
+   "INC__EXx_plus_sbg_v5": {
+    "X": "sbg_v5",
+    "ci95": [
+     -0.0077688461915498275,
+     0.030627160493827188
+    ],
+    "combo_auroc": 0.7971214849108368,
+    "combo_ci95": [
+     0.7244339702045283,
+     0.8622833279304362
+    ],
+    "delta": 0.009848679698216789,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.293
+   },
+   "INC__EXx_plus_traceseq__cre__full__kgram4__max": {
+    "X": "traceseq|cre|full|kgram4|max",
+    "ci95": [
+     0.003879300844188749,
+     0.03764403064610189
+    ],
+    "combo_auroc": 0.8070558984910837,
+    "combo_ci95": [
+     0.7415152399991015,
+     0.8666187971821693
+    ],
+    "delta": 0.019783093278463726,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.007
+   },
+   "INC__EXx_plus_valuespectra__entry_exit__full__raw__max": {
+    "X": "valuespectra|entry_exit|full|raw|max",
+    "ci95": [
+     -0.006700078574613966,
+     0.08299692425990002
+    ],
+    "combo_auroc": 0.8208054698216736,
+    "combo_ci95": [
+     0.7670879316482734,
+     0.8710696457845972
+    ],
+    "delta": 0.033532664609053575,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.108
+   }
+  },
+  "holm": {
+   "EX": {
+    "INC__EX_plus_output_indep__frac40": 0.004,
+    "INC__EX_plus_pathspectra__shape__covset__max": 0.004,
+    "INC__EX_plus_sbg_state": 0.004,
+    "INC__EX_plus_sbg_temporal": 0.004,
+    "INC__EX_plus_sbg_v3": 0.004,
+    "INC__EX_plus_sbg_v5": 0.004,
+    "INC__EX_plus_traceseq__cre__full__kgram4__max": 0.004,
+    "INC__EX_plus_valuespectra__entry_exit__full__raw__max": 0.004
+   },
+   "EXx": {
+    "INC__EXx_plus_output_indep__frac40": 0.648,
+    "INC__EXx_plus_pathspectra__shape__covset__max": 0.07,
+    "INC__EXx_plus_sbg_state": 0.738,
+    "INC__EXx_plus_sbg_temporal": 0.738,
+    "INC__EXx_plus_sbg_v3": 0.648,
+    "INC__EXx_plus_sbg_v5": 0.738,
+    "INC__EXx_plus_traceseq__cre__full__kgram4__max": 0.056,
+    "INC__EXx_plus_valuespectra__entry_exit__full__raw__max": 0.648
+   }
+  },
+  "lopo_exploratory": {
+   "EX+sbg_state": {
+    "ci95": [
+     -0.013476786235708915,
+     0.08619847522776025
+    ],
+    "combo_auroc": 0.6934370713305898,
+    "delta": 0.03979123799725648,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.124
+   },
+   "EX+sbg_v5": {
+    "ci95": [
+     -0.027801203125878415,
+     0.06353361094586552
+    ],
+    "combo_auroc": 0.6725180041152263,
+    "delta": 0.01887217078189296,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.371
+   },
+   "EX+traceseq|cre|full|kgram4|max": {
+    "ci95": [
+     -0.0010731419914148388,
+     0.04700429517823779
+    ],
+    "combo_auroc": 0.6728287894375857,
+    "delta": 0.019182956104252358,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.065
+   },
+   "EX+valuespectra|entry_exit|full|raw|max": {
+    "ci95": [
+     0.05388690517865058,
+     0.14629180045422507
+    ],
+    "combo_auroc": 0.7502250514403292,
+    "delta": 0.09657921810699588,
+    "n_valid_resamples": 2000,
+    "p_two_sided": 0.0005
+   },
+   "EX_auroc": 0.6536458333333334,
+   "EX_ci95": [
+    0.6080190362879239,
+    0.7005415320115294
+   ],
+   "V5alone_auroc": 0.7219221536351166,
+   "note": "EXPLORATORY: refit (IRLS, same L2 objective) leaving one program out WITHIN the held-out population; pooled out-of-fold scores"
+  }
+ }
+}

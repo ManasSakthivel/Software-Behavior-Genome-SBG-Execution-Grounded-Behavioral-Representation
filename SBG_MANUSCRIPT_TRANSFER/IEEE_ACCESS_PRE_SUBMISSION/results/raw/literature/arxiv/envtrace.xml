@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/dfJ5NcI6aoq5cypZzZtCdO1GscU</id>
+  <title>arXiv Query: search_query=&amp;id_list=2511.09964&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:39:05Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2511.09964" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2511.09964v1</id>
+    <title>EnvTrace: Simulation-Based Semantic Evaluation of LLM Code via Execution Trace Alignment -- Demonstrated at Synchrotron Beamlines</title>
+    <updated>2025-11-13T04:52:01Z</updated>
+    <link href="https://arxiv.org/abs/2511.09964v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.09964v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Evaluating large language models (LLMs) for instrument control requires methods that go beyond standard, stateless algorithmic benchmarks, since the behavior of physical systems cannot be fully captured by unit tests alone. Here we introduce EnvTrace, a simulation-based method that evaluates execution traces to assess semantic code equivalence. EnvTrace is demonstrated with a beamline control-logic digital twin to facilitate the evaluation of instrument control code, with the digital twin itself also enabling the pre-execution validation of live experiments. Over 30 LLMs were evaluated using trace alignment to generate a multi-faceted score for functional correctness across key behavioral dimensions, showing that many top-tier models can approach human-level performance in rapid control-code generation. This is a first step toward a broader vision where LLMs and digital twins work symbiotically: LLMs providing intuitive control and agentic orchestration, and digital twins offering safe and high-fidelity environments, paving the way towards autonomous embodied AI.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-13T04:52:01Z</published>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Noah van der Vleuten</name>
+    </author>
+    <author>
+      <name>Anthony Flores</name>
+    </author>
+    <author>
+      <name>Shray Mathur</name>
+    </author>
+    <author>
+      <name>Max Rakitin</name>
+    </author>
+    <author>
+      <name>Thomas Hopkins</name>
+    </author>
+    <author>
+      <name>Kevin G. Yager</name>
+    </author>
+    <author>
+      <name>Esther H. R. Tsai</name>
+    </author>
+  </entry>
+</feed>

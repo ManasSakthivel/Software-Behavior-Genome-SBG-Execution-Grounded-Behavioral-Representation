@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/E1yUGUfSlHgRVPdzVAvXfl2uGC8</id>
+  <title>arXiv Query: search_query=&amp;id_list=2506.04019&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:37:40Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2506.04019" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2506.04019v2</id>
+    <title>LLMs are Brittle to Simple Code Transformations: Introducing CETBench - A Benchmark for Code-Equivalence Checking</title>
+    <updated>2026-10-20T16:57:53Z</updated>
+    <link href="https://arxiv.org/abs/2506.04019v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.04019v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study how well LLMs can determine whether two programs are functionally equivalent. This is an important problem because benchmarking code equivalence helps assess LLM capability in tasks such as code rewriting and translation. To this end, we introduce CETBench - Code Equivalence with Transformations Benchmark - built from a repository of programs that may solve the same or different tasks. Each dataset instance is created by sampling a program pair and applying a random sequence of predefined code transformations, yielding either equivalent or non-equivalent pairs. Our analysis shows that even simple transformations cause a significant performance drop in state-of-the-art LLMs on code-equivalence checking. These challenges are further amplified in the cross-lingual setting when comparing programs written in different languages. To remedy this, we present a simple fine-tuning-based approach to boost LLM performance on the transformed pairs of programs. Our approach for dataset generation is generic, supporting cross-lingual equivalence checking, the generation of program pairs with varying difficulty levels, and the application of diverse transformations. In our experiments, we perform ablations over the difficulty level of original programs, as well as the kind of transformations used in generating pairs for equivalence checking. Our analysis presents deep insights into the working of LLMs for the task of code-equivalence, and points to the fact that they may still be far from what could be termed as a semantic understanding of the underlying code.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.PL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-04T14:47:14Z</published>
+    <arxiv:comment>Published in ACL Findings 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>Findings of the Association for Computational Linguistics: ACL 2026</arxiv:journal_ref>
+    <author>
+      <name>Neeva Oza</name>
+    </author>
+    <author>
+      <name>Ishaan Govil</name>
+    </author>
+    <author>
+      <name>Parul Gupta</name>
+    </author>
+    <author>
+      <name>Dinesh Khandelwal</name>
+    </author>
+    <author>
+      <name>Dinesh Garg</name>
+    </author>
+    <author>
+      <name>Parag Singla</name>
+    </author>
+    <arxiv:doi>10.18653/v1/2026.findings-acl.2070</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.18653/v1/2026.findings-acl.2070" title="doi"/>
+  </entry>
+</feed>

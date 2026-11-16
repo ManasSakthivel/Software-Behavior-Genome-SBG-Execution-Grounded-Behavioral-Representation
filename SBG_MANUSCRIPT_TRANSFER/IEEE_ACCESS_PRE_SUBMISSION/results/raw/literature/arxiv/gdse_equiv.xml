@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/qLtXwoKxwoIyJX9L5/BSM9rK728</id>
+  <title>arXiv Query: search_query=&amp;id_list=2610.04371&amp;start=0&amp;max_results=10</title>
+  <updated>2026-11-14T13:37:29Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2610.04371" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2610.04371v1</id>
+    <title>Functionally Equivalent or Not? Graph-Grounded Differential Surrogate Execution for Code Equivalence</title>
+    <updated>2026-10-03T08:19:45Z</updated>
+    <link href="https://arxiv.org/abs/2610.04371v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.04371v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Determining whether two programs are functionally equivalent is central to code modernization, patch validation, refactoring, and code-generation evaluation. Yet the usual signals are incomplete: tests cover only finite inputs, textual similarity confuses implementation with behavior, and unconstrained LLM judgments are difficult to audit. Direct execution is often impossible when a program depends on an obsolete, licensed, unavailable, or unsafe environment. We introduce FEAgent, a selective equivalence assessor agent that combines typed program-graph evidence with differential surrogate execution. FEAgent first aligns public interfaces and behaviorally relevant graph anchors, then issues bounded queries over call-flow, control-flow, data-flow, type, import, and effect relations. Next, a branch-aware generator agent proposes discriminating inputs, and two blinded LLM surrogates independently predict source and target observables. Every claim and predicted divergence is recorded in an evidence ledger. A deterministic reconciler then returns EQUIVALENT, INEQUIVALENT, or UNCLEAR rather than forcing a verdict when paths are uncovered or evidence conflicts. We evaluate FEAgent on function-level equivalence and repository-level bug patches, where the existing oracle is a benchmark label or a passing test suite. Every disagreement with that oracle is adjudicated by direct execution, revealing errors in benchmark labels and behavioral divergences missed by unit-test-only scoring. On EquiBench, execution confirms FEAgent's disagreements with published labels on 216 of 1,200 evaluated pairs (18.0%); on SWE-bench Verified, 94 of 331 test-passing agent patches (28.4%) diverge from the reference patch. FEAgent thus serves as an audit layer between testing and formal verification, keeping its evidence reviewable and its uncertainty explicit without claiming a proof of equivalence.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-03T08:19:45Z</published>
+    <arxiv:comment>14 pages, 5 figures, 4 tables, accepted by NeurIPS 2026 Workshop on AI for Verifiable Coding</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Amit Kachroo</name>
+    </author>
+    <author>
+      <name>Like Hui</name>
+    </author>
+    <author>
+      <name>Haitao Mao</name>
+    </author>
+    <author>
+      <name>Yuhao Zhang</name>
+    </author>
+    <author>
+      <name>Nguyen Vo</name>
+    </author>
+  </entry>
+</feed>
