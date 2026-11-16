@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2026-11-14T21:40:00Z",
+  "experiment_id": "EXP-A4R-001",
+  "frozen_config_sha256": "f52bfaee96f501fc19198de2a585dcfc500e0ae21e13f2dec0d3d670251e7bdb",
+  "frozen_config_path": "results/raw/EXP-A4C-002/frozen_config.json",
+  "use_fixed_modules": false,
+  "summary": {
+    "total_modules_audited": 9,
+    "verified_complete": 9,
+    "module_hash_mismatches": 0,
+    "wave1_methods_count": 212,
+    "wave2_status": "DEVELOPMENT_ONLY_NOT_SCORED_ON_HELDOUT"
+  },
+  "modules": {
+    "bl_common": {
+      "path": "experiments/competitor_baselines/bl_common.py",
+      "sha256": "469036c1e34ff6dfb54b0fc2dd028bc23ea0cce9e6db54a1be99f4bf884cb402",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor baseline common utilities",
+      "limitations": "Provides shared scoring utilities, normalization, and Jaccard helpers."
+    },
+    "b02_static": {
+      "path": "experiments/competitor_baselines/b02_static.py",
+      "sha256": "b4737d995c76082ecb12e3e571d491c120894fe9b0b457e5b5ff5dc4c2787e9e",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor static baseline extractors (AST sequence, token Levenshtein, bytecode Levenshtein, TF-IDF)",
+      "limitations": "Measures lexical and syntactic surface similarity; blind to runtime semantics."
+    },
+    "b03_execstats": {
+      "path": "experiments/competitor_baselines/b03_execstats.py",
+      "sha256": "5bb44155d3cf23769fc03f267a149129e001859942a7837ae5534cf640f1a268",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor execution statistics (call count, coverage size, exception fraction, event count, function count)",
+      "limitations": "Scalar summary features; serves as volume-control and execution-statistic baselines."
+    },
+    "b04_valuespectra": {
+      "path": "experiments/competitor_baselines/b04_valuespectra.py",
+      "sha256": "9b1ca2e0524497e28a50fbb46dbdbd50ffea8933fe5f98cfad07122822a101b4",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor value spectra adaptations (entry, exit, entry+exit variable values)",
+      "limitations": "Adapted from Xie & Notkin (2005) concepts into Python multiset distance; operates on internal execution values."
+    },
+    "b05_pathspectra": {
+      "path": "experiments/competitor_baselines/b05_pathspectra.py",
+      "sha256": "a358cc10ca7d5c7f8a7e0ebce8f918e98f06f7b9f3957864f7b6058097b6cf84",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor path spectra adaptations (coverage sets, hit multi-sets, inverse path distances)",
+      "limitations": "Adapted from Reps et al. (1997) and Harrold et al. (1998/2000) line/branch spectra."
+    },
+    "b05_traceseq": {
+      "path": "experiments/competitor_baselines/b05_traceseq.py",
+      "sha256": "a32490d16beffcc92cf6d62886fdb4c1bcfa5aa985f4fa6e0a97c9bcae9fa99b",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor trace sequence alignment and k-grams (call/cre sequences, LCS, first-divergence, TF-IDF n-grams)",
+      "limitations": "Sequence alignment over executed event logs; sensitive to loop unrolling."
+    },
+    "b06_indep_inputs": {
+      "path": "experiments/competitor_baselines/b06_indep_inputs.py",
+      "sha256": "37c768e7ec89309cbffc163ec400f91d2d3856ea45da85292a49d79a2f1c8413",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor independent input generator and differential executor (40 independent inputs)",
+      "limitations": "Generates independent input battery disjoint from protocol 11 inputs to prevent label tautology."
+    },
+    "features": {
+      "path": "experiments/competitor_baselines/features.py",
+      "sha256": "82ffb16df825b2eb305c45091a1a7f0581ea3c24237d04f1338df3531bcfbb42",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor master baseline feature extractor",
+      "limitations": "Coordinates extraction across b02-b06 modules."
+    },
+    "models": {
+      "path": "experiments/competitor_baselines/models.py",
+      "sha256": "b068a7d30773ea614399b6f1ea124e414c5e3d7cf38ab5993aa163b9ce9b8eec",
+      "status": "VERIFIED_COMPLETE",
+      "provenance": "Wave-1 predecessor supervised combiners and incremental regression models (LR, DecisionTree, RandomForest, Incremental)",
+      "limitations": "Fitted strictly on v9c_train, selected on v9c_dev. Weights and trees frozen in EXP-A4C-002/models.pkl."
+    }
+  },
+  "method_categories_and_privilege_disclosure": {
+    "oracle_and_privileged_output_reading": {
+      "methods": [
+        "oracle__any11",
+        "oracle__frac11",
+        "oracle__frac11_excmsg",
+        "changeguard_cmp__any11",
+        "changeguard_cmp__frac11"
+      ],
+      "disclosure": "PRIVILEGED_LABEL_ORACLE. These methods evaluate black-box outputs on the exact 11 protocol inputs used to define the ground-truth benchmark labels. They reproduce the label by construction and serve ONLY as a label-oracle ceiling, not as fair blind competitors."
+    },
+    "independent_input_output_differencing": {
+      "methods": [
+        "output_indep__frac40",
+        "output_indep__any40",
+        "output_indep__frac_k1..k32",
+        "output_indep__any_k1..k32"
+      ],
+      "disclosure": "FAIR_OUTPUT_READING. Evaluates output differencing on an independently synthesised 40-input battery that does not have access to protocol inputs or labels."
+    },
+    "internal_execution_spectra": {
+      "methods": [
+        "pathspectra__*",
+        "valuespectra__*",
+        "traceseq__*"
+      ],
+      "disclosure": "WHITE_BOX_EXECUTION_SPECTRA. Evaluates internal path coverage, value spectra, and execution trace sequences without reading program return values."
+    },
+    "static_lexical_and_syntactic": {
+      "methods": [
+        "static_ast",
+        "static_token",
+        "static__astseq_lev_*",
+        "static__tok_lev_*",
+        "static__bytecode_lev",
+        "static__tce_*",
+        "static__tfidf*"
+      ],
+      "disclosure": "STATIC_SURFACE. Evaluates source code and bytecode string/tree distance without dynamic execution."
+    },
+    "supervised_and_incremental_models": {
+      "methods": [
+        "LR_*",
+        "forest__DT_*",
+        "forest__RF_*",
+        "INC__EX_plus_*",
+        "INC__EXx_plus_*"
+      ],
+      "disclosure": "SUPERVISED_FROZEN. Trained strictly on v9c_train, selected on v9c_dev. Model parameters and thresholds are frozen and immutable."
+    }
+  },
+  "wave2_competitors_policy": {
+    "modules": [
+      "static_tce.py",
+      "static_ted.py",
+      "static_tfidf.py",
+      "static_srclev.py",
+      "trace_align.py",
+      "birthmark_kgram.py",
+      "obs_points_outfree.py",
+      "obs_points_outreading.py",
+      "diffexec_same_input.py",
+      "indep_exec.py"
+    ],
+    "policy": "EXPLORATORY_DEVELOPMENT_ONLY. Wave-2 competitor modules were implemented during wave-2 after the wave-1 freeze. Per pre-registration integrity rules, they are restricted to exploratory analysis on v9c_train / v9c_dev and MUST NOT be scored on held-out datasets (v10_test, v9c_val)."
+  }
+}

@@ -1,0 +1,199 @@
+{
+ "checks": {
+  "A4C-003_meta": {
+   "code_sha_values": [
+    "2c15b0648733cdd856fd78fab21a9a35d05ab6627e39020ae41035ea0a7714db"
+   ],
+   "frozen_sha_values": [
+    "f52bfaee96f501fc19198de2a585dcfc500e0ae21e13f2dec0d3d670251e7bdb"
+   ],
+   "keys": [
+    "experiment",
+    "frozen_config",
+    "train_excluded_programs"
+   ],
+   "n_methods": 212
+  },
+  "A4C-003_meta_vs_files": {
+   "v9c_dev": {
+    "files": 213,
+    "files_not_in_meta": 1,
+    "in_meta_not_files": 0
+   },
+   "v9c_train": {
+    "files": 213,
+    "files_not_in_meta": 1,
+    "in_meta_not_files": 0
+   }
+  },
+  "A4C-003_prediction_files_per_population": {
+   "v9c_dev": 213,
+   "v9c_train": 213
+  },
+  "code_sha256": {
+   "a4c_001_manifest_code_sha": "522f7c8ca5ffd93287e6f6ef37a2cf64e34868baa10e73a7fecc418df1621a32",
+   "a4c_common_sha": "576b144f9c767c4f0045c9b82bc3e2bd4b6cb75ee7398d7e9bd5138ebe26f78e",
+   "frozen": "2c15b0648733cdd856fd78fab21a9a35d05ab6627e39020ae41035ea0a7714db",
+   "match": false,
+   "note": "if mismatch: run_all.py / a4c_common.py changed after the freeze; the 9 predecessor module files are what scores depend on",
+   "recomputed_from_current_files": "f2ce06acccabca43d295169021efaa0a217220136bd3725651300b71174b449c",
+   "run_all_sha": "e1bd8f94ad03377b533ba601bcd077c1e9a24b8d572132da7e4a5863456d9b01"
+  },
+  "experiment_dirs": {
+   "EXP-A4-002": {
+    "bytes": 20773367,
+    "latest_mtime": "2026-11-14 20:00:00",
+    "n_files": 9
+   },
+   "EXP-A4-003": {
+    "bytes": 17236729,
+    "latest_mtime": "2026-11-14 20:01:48",
+    "n_files": 3328
+   },
+   "EXP-A4-004": {
+    "bytes": 1071888,
+    "latest_mtime": "2026-11-14 20:02:54",
+    "n_files": 4
+   },
+   "EXP-A4B-001": {
+    "bytes": 10771,
+    "latest_mtime": "2026-11-14 20:24:22",
+    "n_files": 17
+   },
+   "EXP-A4C-001": {
+    "bytes": 25631422,
+    "latest_mtime": "2026-11-14 20:18:04",
+    "n_files": 2315
+   },
+   "EXP-A4C-002": {
+    "bytes": 2093796,
+    "latest_mtime": "2026-11-14 20:19:17",
+    "n_files": 37
+   },
+   "EXP-A4C-003": {
+    "bytes": 73155022,
+    "latest_mtime": "2026-11-14 20:20:39",
+    "n_files": 427
+   },
+   "EXP-A4C-004": {
+    "bytes": 350889,
+    "latest_mtime": "2026-11-14 20:21:18",
+    "n_files": 1
+   },
+   "EXP-A4C-005": {
+    "bytes": 35546,
+    "latest_mtime": "2026-11-14 20:22:21",
+    "n_files": 2
+   },
+   "EXP-A4D-002": {
+    "bytes": 76795,
+    "latest_mtime": "2026-11-14 20:22:11",
+    "n_files": 2
+   },
+   "EXP-A4D-003": {
+    "bytes": 2167,
+    "latest_mtime": "2026-11-14 20:21:42",
+    "n_files": 1
+   },
+   "EXP-A4D-004": {
+    "bytes": 234900,
+    "latest_mtime": "2026-11-14 20:23:06",
+    "n_files": 2
+   },
+   "EXP-A4D-005": {
+    "bytes": 942174,
+    "latest_mtime": "2026-11-14 20:26:29",
+    "n_files": 2
+   }
+  },
+  "frozen_config_sha256": {
+   "actual": "f52bfaee96f501fc19198de2a585dcfc500e0ae21e13f2dec0d3d670251e7bdb",
+   "expected": "f52bfaee96f501fc19198de2a585dcfc500e0ae21e13f2dec0d3d670251e7bdb",
+   "match": true,
+   "mtime": "2026-11-14 20:19:17"
+  },
+  "heldout_predictions_present": {
+   "READY_files": [],
+   "VERIFIED_BASELINES_exists": false,
+   "registry_A4C_jsonl_exists": false,
+   "v10_test": 0,
+   "v9c_val": 0
+  },
+  "module_hashes_vs_frozen_config": {
+   "b02_static": {
+    "current": "3a2bc875928aace61550fed5e38c812bb44bdd38ae573afdac208e312655ccfb",
+    "frozen": "3a2bc875928aace61550fed5e38c812bb44bdd38ae573afdac208e312655ccfb",
+    "match": true,
+    "mtime": "2026-11-14 19:51:00"
+   },
+   "b03_execstats": {
+    "current": "75b5f612c1e2e45fb862122ea3136297ed602355b2000cc9059af524b890e749",
+    "frozen": "75b5f612c1e2e45fb862122ea3136297ed602355b2000cc9059af524b890e749",
+    "match": true,
+    "mtime": "2026-11-14 19:52:35"
+   },
+   "b04_valuespectra": {
+    "current": "e3e9b4d8eff55fb7359660fad404015993235c7d5c4ae8b61aecbb18c7230606",
+    "frozen": "e3e9b4d8eff55fb7359660fad404015993235c7d5c4ae8b61aecbb18c7230606",
+    "match": true,
+    "mtime": "2026-11-14 19:52:23"
+   },
+   "b05_pathspectra": {
+    "current": "5a98d24f8b890a427c0018b4b3bfe2ce3fce687efce1675a01903b22a4688f34",
+    "frozen": "5a98d24f8b890a427c0018b4b3bfe2ce3fce687efce1675a01903b22a4688f34",
+    "match": true,
+    "mtime": "2026-11-14 19:52:23"
+   },
+   "b05_traceseq": {
+    "current": "0eeb05b4980bf5e3f3dbc3e217a84ddf1b1c69f0d0f1d32508af2b8c7a07f314",
+    "frozen": "0eeb05b4980bf5e3f3dbc3e217a84ddf1b1c69f0d0f1d32508af2b8c7a07f314",
+    "match": true,
+    "mtime": "2026-11-14 19:52:23"
+   },
+   "b06_indep_inputs": {
+    "current": "2cbe55f1a0bc49c133e8267ab3b1be3d37840840cd721b30440b2fe2fe31ce23",
+    "frozen": "2cbe55f1a0bc49c133e8267ab3b1be3d37840840cd721b30440b2fe2fe31ce23",
+    "match": true,
+    "mtime": "2026-11-14 19:53:52"
+   },
+   "bl_common": {
+    "current": "a1a1948eb9486ef70a3058361c35fe5fc002ab28d3fa40f5ba7f70374c5ac2d4",
+    "frozen": "a1a1948eb9486ef70a3058361c35fe5fc002ab28d3fa40f5ba7f70374c5ac2d4",
+    "match": true,
+    "mtime": "2026-11-14 19:59:52"
+   },
+   "features": {
+    "current": "39279d2ed00ef869c90217dce271fe43458c4f8c984de9886512300220d566f4",
+    "frozen": "39279d2ed00ef869c90217dce271fe43458c4f8c984de9886512300220d566f4",
+    "match": true,
+    "mtime": "2026-11-14 19:52:46"
+   },
+   "models": {
+    "current": "34e679a4ff75c1168a62b672abf0bd94a2b9a1020b3abc911e6702ee67bd50c9",
+    "frozen": "34e679a4ff75c1168a62b672abf0bd94a2b9a1020b3abc911e6702ee67bd50c9",
+    "match": true,
+    "mtime": "2026-11-14 19:54:59"
+   }
+  },
+  "population_sha256": {
+   "SUMMARY": "0206038346410af210b2757780c054884c80d05fdaa71facc567177a821c1116",
+   "v10_test": "ba307a2f2f865dd048315a4f5bf874a15d7ad610422ad71d4b81b4737101c35d",
+   "v9c_dev": "4b8ff238566567b97824074472fa94e19189cbb55c3d56109d013809ff1c6fe4",
+   "v9c_train": "3f252a9ad96bd620d81434f8aec94f4538124ecd76b92167a4a835ade54ce83a",
+   "v9c_val": "5e2e2e1ab3546a7271cf0f9bdeba1779ff090ca217f3e5764a862656b1310a8e"
+  },
+  "population_sha256_in_frozen_config": {
+   "v10_test": "ba307a2f2f865dd048315a4f5bf874a15d7ad610422ad71d4b81b4737101c35d",
+   "v9c_dev": "4b8ff238566567b97824074472fa94e19189cbb55c3d56109d013809ff1c6fe4",
+   "v9c_train": "3f252a9ad96bd620d81434f8aec94f4538124ecd76b92167a4a835ade54ce83a",
+   "v9c_val": "5e2e2e1ab3546a7271cf0f9bdeba1779ff090ca217f3e5764a862656b1310a8e"
+  },
+  "run_all_mtime_vs_freeze": {
+   "a4c_common.py": "2026-11-14 20:17:06",
+   "frozen_config": "2026-11-14 20:19:17",
+   "run_all.py": "2026-11-14 20:21:32",
+   "stages_eval.py(not in SRC_MODULES)": "2026-11-14 20:04:50"
+  }
+ },
+ "generated": "2026-11-14T21:42:42+0530"
+}

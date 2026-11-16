@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/../venvs/py31
+rootdir: /Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION
+collecting ... collected 12 items
+
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Primitives::test_cosine PASSED [  8%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Primitives::test_first_div PASSED [ 16%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Primitives::test_lev_lcs_bruteforce PASSED [ 25%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Primitives::test_lev_long_sequences PASSED [ 33%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Primitives::test_norms_bounded PASSED [ 41%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Primitives::test_set_distances PASSED [ 50%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Primitives::test_string_inputs_and_symmetry PASSED [ 58%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::Anonymisation::test_full_canon_first_appearance PASSED [ 66%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::StaticChecks::test_heldout_guards_present PASSED [ 75%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::StaticChecks::test_new_modules_do_not_read_labels PASSED [ 83%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::StaticChecks::test_predecessor_feature_modules_do_not_read_labels PASSED [ 91%]
+WP_A_B_COMPARATIVE_BENCHMARK/tests/test_ab_primitives.py::StaticChecks::test_sanity_labels_refuses_heldout PASSED [100%]
+
+============================== 12 passed in 1.56s ==============================

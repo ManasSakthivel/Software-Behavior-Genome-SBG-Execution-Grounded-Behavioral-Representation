@@ -1,0 +1,380 @@
+{
+ "v9c_dev": {
+  "edit_changed_gt_equiv": 196,
+  "equal": 34,
+  "lt": 2,
+  "mean_edit_diff": 1.771551724137931,
+  "methods": {
+   "LR_EX": {
+    "ci95": [
+     0.5548250265111346,
+     0.6563952066519931
+    ],
+    "exact_edit_auroc": 0.5957169900615239,
+    "matched_n": 232,
+    "matched_strict": 0.4224137931034483,
+    "matched_ties_half": 0.46551724137931033,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.6696733799048752
+   },
+   "LR_EXx": {
+    "ci95": [
+     0.6849300986842105,
+     0.8111976630963973
+    ],
+    "exact_edit_auroc": 0.7528395646000946,
+    "matched_n": 232,
+    "matched_strict": 0.8663793103448276,
+    "matched_ties_half": 0.8900862068965517,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.8059880350772889
+   },
+   "edit": {
+    "ci95": [
+     0.5,
+     0.5
+    ],
+    "exact_edit_auroc": 0.5,
+    "matched_n": 232,
+    "matched_strict": 0.8448275862068966,
+    "matched_ties_half": 0.9181034482758621,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.604247175980975
+   },
+   "forest|RF_d4|EXx": {
+    "ci95": [
+     0.6887862796833774,
+     0.8372772828507795
+    ],
+    "exact_edit_auroc": 0.7705868433506863,
+    "matched_n": 232,
+    "matched_strict": 0.7586206896551724,
+    "matched_ties_half": 0.8362068965517241,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.8446975326991677
+   },
+   "oracle|frac11": {
+    "ci95": [
+     0.7651053215077606,
+     0.9042594013814275
+    ],
+    "exact_edit_auroc": 0.8419309039280644,
+    "matched_n": 232,
+    "matched_strict": 0.7198275862068966,
+    "matched_ties_half": 0.8599137931034483,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.8561979785969085
+   },
+   "output_indep|frac40": {
+    "ci95": [
+     0.7489376770538244,
+     0.9020896165445929
+    ],
+    "exact_edit_auroc": 0.8369616658778988,
+    "matched_n": 232,
+    "matched_strict": 0.7241379310344828,
+    "matched_ties_half": 0.8599137931034483,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.8635274227110583
+   },
+   "pathspectra|shape|covset|max": {
+    "ci95": [
+     0.62847533632287,
+     0.8479849861714738
+    ],
+    "exact_edit_auroc": 0.7502366303833412,
+    "matched_n": 232,
+    "matched_strict": 0.7370689655172413,
+    "matched_ties_half": 0.8469827586206896,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.8136147443519619
+   },
+   "sbg_state": {
+    "ci95": [
+     0.7132216014897579,
+     0.8341619318181818
+    ],
+    "exact_edit_auroc": 0.7716516800757217,
+    "matched_n": 232,
+    "matched_strict": 0.7241379310344828,
+    "matched_ties_half": 0.8512931034482759,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.8161322086801427
+   },
+   "sbg_temporal": {
+    "ci95": [
+     0.5467506631299734,
+     0.6725786163522013
+    ],
+    "exact_edit_auroc": 0.6018693800283956,
+    "matched_n": 232,
+    "matched_strict": 0.3017241379310345,
+    "matched_ties_half": 0.6379310344827587,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.6156082788347206
+   },
+   "sbg_v3": {
+    "ci95": [
+     0.6110723017813482,
+     0.7098468271334792
+    ],
+    "exact_edit_auroc": 0.6559394226218647,
+    "matched_n": 232,
+    "matched_strict": 0.6336206896551724,
+    "matched_ties_half": 0.7780172413793104,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.7344864744351962
+   },
+   "sbg_v5": {
+    "ci95": [
+     0.6829149402875945,
+     0.7943368107302533
+    ],
+    "exact_edit_auroc": 0.731779460482726,
+    "matched_n": 232,
+    "matched_strict": 0.7370689655172413,
+    "matched_ties_half": 0.8448275862068966,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.7854024227110583
+   },
+   "static|tce_ast": {
+    "ci95": [
+     0.6399688958009331,
+     0.7127737226277372
+    ],
+    "exact_edit_auroc": 0.6817321344060577,
+    "matched_n": 232,
+    "matched_strict": 0.46120689655172414,
+    "matched_ties_half": 0.7306034482758621,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.7306034482758621
+   },
+   "trace_len_mean": {
+    "ci95": [
+     0.6082960169691256,
+     0.7596356663470757
+    ],
+    "exact_edit_auroc": 0.6903691433980123,
+    "matched_n": 232,
+    "matched_strict": 0.6594827586206896,
+    "matched_ties_half": 0.7887931034482759,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.7661730826397146
+   },
+   "traceseq|cre|full|kgram4|max": {
+    "ci95": [
+     0.5597844680123161,
+     0.6836452899662473
+    ],
+    "exact_edit_auroc": 0.6125177472787506,
+    "matched_n": 232,
+    "matched_strict": 0.2672413793103448,
+    "matched_ties_half": 0.625,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.6198535969084423
+   },
+   "valuespectra|entry_exit|full|raw|max": {
+    "ci95": [
+     0.684895205974464,
+     0.8081081081081081
+    ],
+    "exact_edit_auroc": 0.7485802176999526,
+    "matched_n": 232,
+    "matched_strict": 0.625,
+    "matched_ties_half": 0.8125,
+    "n_cross_pairs_equal_edit": 4226.0,
+    "pooled_auroc": 0.8052077140309156
+   }
+  },
+  "n_sets": 232
+ },
+ "v9c_train": {
+  "edit_changed_gt_equiv": 697,
+  "equal": 96,
+  "lt": 12,
+  "mean_edit_diff": 1.8546583850931677,
+  "methods": {
+   "LR_EX": {
+    "ci95": [
+     0.567864792853038,
+     0.6519256469444782
+    ],
+    "exact_edit_auroc": 0.6116620145928211,
+    "matched_n": 805,
+    "matched_strict": 0.43850931677018634,
+    "matched_ties_half": 0.48012422360248447,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.6507765904093207
+   },
+   "LR_EXx": {
+    "ci95": [
+     0.7191270404542228,
+     0.7969318381375279
+    ],
+    "exact_edit_auroc": 0.7591082708976054,
+    "matched_n": 805,
+    "matched_strict": 0.8807453416149068,
+    "matched_ties_half": 0.908695652173913,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.8030238030940164
+   },
+   "edit": {
+    "ci95": [
+     0.5,
+     0.5
+    ],
+    "exact_edit_auroc": 0.5,
+    "matched_n": 805,
+    "matched_strict": 0.8658385093167702,
+    "matched_ties_half": 0.9254658385093167,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.6104625593148413
+   },
+   "forest|RF_d4|EXx": {
+    "ci95": [
+     0.7051056767706351,
+     0.8009310445155658
+    ],
+    "exact_edit_auroc": 0.7528524558052985,
+    "matched_n": 805,
+    "matched_strict": 0.8136645962732919,
+    "matched_ties_half": 0.8136645962732919,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.8448624667258208
+   },
+   "oracle|frac11": {
+    "ci95": [
+     0.7235827827252705,
+     0.8074604687675228
+    ],
+    "exact_edit_auroc": 0.765731354977719,
+    "matched_n": 805,
+    "matched_strict": 0.6198757763975156,
+    "matched_ties_half": 0.8080745341614907,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7920936692257243
+   },
+   "output_indep|frac40": {
+    "ci95": [
+     0.7437863251901904,
+     0.8227823214847436
+    ],
+    "exact_edit_auroc": 0.7848660692424465,
+    "matched_n": 805,
+    "matched_strict": 0.6546583850931676,
+    "matched_ties_half": 0.824223602484472,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.8147748929439451
+   },
+   "pathspectra|shape|covset|max": {
+    "ci95": [
+     0.6977061315930453,
+     0.7881898797714941
+    ],
+    "exact_edit_auroc": 0.7455682875471329,
+    "matched_n": 805,
+    "matched_strict": 0.6869565217391305,
+    "matched_ties_half": 0.824223602484472,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7718490798966089
+   },
+   "sbg_state": {
+    "ci95": [
+     0.6689513365318711,
+     0.7647184139953382
+    ],
+    "exact_edit_auroc": 0.72007981979335,
+    "matched_n": 805,
+    "matched_strict": 0.639751552795031,
+    "matched_ties_half": 0.8149068322981367,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7534354384475908
+   },
+   "sbg_temporal": {
+    "ci95": [
+     0.5699639219984473,
+     0.6338344011828487
+    ],
+    "exact_edit_auroc": 0.6005949757602468,
+    "matched_n": 805,
+    "matched_strict": 0.25590062111801243,
+    "matched_ties_half": 0.6111801242236025,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.5943806180317117
+   },
+   "sbg_v3": {
+    "ci95": [
+     0.6401474309605018,
+     0.7148136621800358
+    ],
+    "exact_edit_auroc": 0.6784070319768866,
+    "matched_n": 805,
+    "matched_strict": 0.5888198757763975,
+    "matched_ties_half": 0.7633540372670807,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7097164461247637
+   },
+   "sbg_v5": {
+    "ci95": [
+     0.6516794315770047,
+     0.7372342627361699
+    ],
+    "exact_edit_auroc": 0.696109397189168,
+    "matched_n": 805,
+    "matched_strict": 0.6447204968944099,
+    "matched_ties_half": 0.8006211180124223,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7351614521044713
+   },
+   "static|tce_ast": {
+    "ci95": [
+     0.6226504651604329,
+     0.6851476652444402
+    ],
+    "exact_edit_auroc": 0.6525390529357035,
+    "matched_n": 805,
+    "matched_strict": 0.4322981366459627,
+    "matched_ties_half": 0.7161490683229814,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7161490683229814
+   },
+   "trace_len_mean": {
+    "ci95": [
+     0.659138122614619,
+     0.7396228225922549
+    ],
+    "exact_edit_auroc": 0.702059154791636,
+    "matched_n": 805,
+    "matched_strict": 0.6086956521739131,
+    "matched_ties_half": 0.7745341614906832,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7405678793256433
+   },
+   "traceseq|cre|full|kgram4|max": {
+    "ci95": [
+     0.5816468200993218,
+     0.6511951700344998
+    ],
+    "exact_edit_auroc": 0.6154326428676362,
+    "matched_n": 805,
+    "matched_strict": 0.24472049689440994,
+    "matched_ties_half": 0.6118012422360248,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.6096470043593997
+   },
+   "valuespectra|entry_exit|full|raw|max": {
+    "ci95": [
+     0.6864192048482315,
+     0.7772359567551221
+    ],
+    "exact_edit_auroc": 0.7324812692816218,
+    "matched_n": 805,
+    "matched_strict": 0.6099378881987577,
+    "matched_ties_half": 0.8049689440993789,
+    "n_cross_pairs_equal_edit": 40842.0,
+    "pooled_auroc": 0.7960140426681069
+   }
+  },
+  "n_sets": 805
+ }
+}

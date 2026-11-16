@@ -1,0 +1,32 @@
+{
+  "id": "EXP-WPC-006",
+  "status": "EXPLORATORY modified representations -- NEVER original-SBG evidence; V10 is burned for these variants (designed after V10 results were seen)",
+  "declared_before_scoring": true,
+  "populations_allowed": ["v9c_dev (primary, as assigned)", "v9c_train (replication; nothing is fitted so train is not 'in-sample' for these fixed-weight variants)"],
+  "populations_forbidden": ["v10_test", "v9c_val"],
+  "return_value_sources": {
+    "rv_abs100": "multiset of (func_idx | _repr_to_abstract(repr(retval)[:100])) over every 'return' event; same abstraction domain + 100-char cap as the frozen state genome",
+    "rv_abs_full": "same, abstraction applied to repr capped at 1500 chars (more accurate collection-size classes)",
+    "rv_type_abs": "multiset of (func_idx | python-type-bucket | abstract value) -- distinguishes bool/int/list/str/... classes",
+    "rv_hash": "CEILING ONLY: multiset of (func_idx | md5(repr(retval))[:10]) -- concrete values; equals an output comparison on the protocol inputs",
+    "rv_entry_hash": "CEILING ONLY: as rv_hash restricted to the entry function -- label-oracle ceiling (label tautology), not a competitor"
+  },
+  "distance": "frequency-weighted Jaccard on the multiset (identical formula to StateTransitionGenome.distance)",
+  "variants_scored": {
+    "RV_abs100": "d_rv_abs100",
+    "RV_abs_full": "d_rv_abs_full",
+    "RV_type_abs": "d_rv_type_abs",
+    "V5+RV_abs100": "0.8*V5 + 0.2*d_rv_abs100",
+    "V5+RV_abs_full": "0.8*V5 + 0.2*d_rv_abs_full",
+    "V5+RV_type_abs": "0.8*V5 + 0.2*d_rv_type_abs",
+    "S+RV_abs_full": "0.8*State + 0.2*d_rv_abs_full",
+    "ceiling_rv_hash": "d_rv_hash",
+    "ceiling_rv_entry_hash": "d_rv_entry_hash"
+  },
+  "weights_rationale": "fixed a priori (0.2 return-value share); NOT tuned; no weight sweep on RV is run",
+  "holm_family": ["V5+RV_abs100", "V5+RV_abs_full", "V5+RV_type_abs", "S+RV_abs_full"],
+  "family_comparison": "paired delta AUROC vs frozen V5 (S+RV_abs_full vs frozen State is reported as an additional descriptive comparison)",
+  "metrics": ["AUROC + program-cluster bootstrap CI (B=2000, seed 42)", "paired delta vs V5", "SC-6 changed zero-score rate", "SC-6 AUROC vs all equivalent pairs", "SC-6 matched-set concordance", "EQUIVALENT zero-score rate (false-positive side effect)"],
+  "pass_criterion_none": "no pass/fail criterion is claimed; results are descriptive feasibility evidence only",
+  "confirmatory_requirement": "any claim about the RV variant requires a FRESH withheld set, a new freeze (config + code sha256 before scoring), scored once"
+}

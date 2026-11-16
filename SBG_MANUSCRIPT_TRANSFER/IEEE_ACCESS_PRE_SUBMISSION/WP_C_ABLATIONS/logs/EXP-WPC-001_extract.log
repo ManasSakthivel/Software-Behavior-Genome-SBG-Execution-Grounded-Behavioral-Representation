@@ -1,0 +1,91 @@
+Sat Nov 14 15:16:25 UTC 2026
+ds_circular_buffer                       FAILED rc=1 dir)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/scripts/wpc_extract.py", line 245, in worker
+    paths = sorted({p for r in rows if r["base_id"] == prog for p in (r["base_path"], r["variant_path"])})
+                                                                      ~^^^^^^^^^^^^^
+KeyError: 'base_path'
+ 0.1s
+ds_deque_ops                             ok 3.1s
+graph_has_eulerian_path                  ok 4.4s
+graph_num_provinces                      ok 23.0s
+math_collatz_length                      ok 2.3s
+math_matrix_determinant                  ok 3.8s
+math_nth_permutation                     ok 8.9s
+math_tribonacci                          ok 2.4s
+sort_cocktail_shaker_sort                ok 3.9s
+sort_cycle_sort                          ok 11.1s
+str_count_subseq                         ok 31.8s
+str_first_unique_char                    ok 1.2s
+str_reverse_words                        ok 0.7s
+ds_interval_merge                        ok 1.3s
+ds_lfu_simulation                        ok 10.5s
+ds_ring_buffer_stats                     ok 6.4s
+ds_rle_encode                            ok 2.3s
+ds_segment_tree_sum                      ok 10.0s
+ds_skip_list_search                      ok 66.2s
+ds_sparse_table                          ok 61.5s
+ds_trie_prefix_count                     ok 8.9s
+graph_center_finder                      ok 6.3s
+graph_condensation                       ok 19.7s
+graph_degree_sequence                    ok 3.8s
+graph_flood_fill                         ok 1.5s
+graph_min_cost_path                      ok 1.0s
+graph_path_exists                        ok 1.2s
+graph_phone_combos                       ok 21.8s
+math_catalan_number                      ok 57.1s
+math_gray_code                           SKIPPED(by --skip; no trace cache / known rc=-9) 0.0s
+math_matrix_chain                        ok 50.1s
+math_max_product_subarray                ok 4.1s
+math_max_subarray                        ok 3.1s
+math_missing_numbers                     ok 4.5s
+math_nth_ugly_number                     ok 20.0s
+math_pascal_row                          ok 49.0s
+math_power_of_two_list                   ok 2.3s
+math_rotate_matrix                       ok 0.7s
+math_staircase_ways                      ok 88.4s
+math_subset_sum_exists                   ok 6.8s
+math_sum_squares                         ok 0.9s
+math_unique_paths                        FAILED rc=1 dir)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/scripts/wpc_extract.py", line 245, in worker
+    paths = sorted({p for r in rows if r["base_id"] == prog for p in (r["base_path"], r["variant_path"])})
+                                                                      ~^^^^^^^^^^^^^
+KeyError: 'base_path'
+ 0.1s
+sort_bucket_sort                         ok 7.5s
+sort_comb_sort                           FAILED rc=1 dir)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/scripts/wpc_extract.py", line 245, in worker
+    paths = sorted({p for r in rows if r["base_id"] == prog for p in (r["base_path"], r["variant_path"])})
+                                                                      ~^^^^^^^^^^^^^
+KeyError: 'base_path'
+ 0.1s
+sort_pigeonhole_sort                     ok 10.0s
+sort_shellsort                           FAILED rc=1 dir)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/scripts/wpc_extract.py", line 245, in worker
+    paths = sorted({p for r in rows if r["base_id"] == prog for p in (r["base_path"], r["variant_path"])})
+                                                                      ~^^^^^^^^^^^^^
+KeyError: 'base_path'
+ 0.1s
+sort_strand_sort                         ok 9.4s
+str_atoi_manual                          ok 3.8s
+str_bracket_balance                      ok 2.1s
+str_compress_spaces                      ok 2.8s
+str_is_number_valid                      ok 1.0s
+str_justify_text                         ok 1.8s
+str_levenshtein_distance                 FAILED rc=1 dir)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/scripts/wpc_extract.py", line 245, in worker
+    paths = sorted({p for r in rows if r["base_id"] == prog for p in (r["base_path"], r["variant_path"])})
+                                                                      ~^^^^^^^^^^^^^
+KeyError: 'base_path'
+ 0.1s
+str_longest_common_prefix                ok 0.6s
+str_longest_no_repeat                    ok 2.4s
+str_min_window_substr                    ok 8.8s
+str_rabin_karp_hash                      ok 6.9s
+str_vowel_count                          ok 1.6s
+str_zigzag_encode                        ok 2.0s
+Sat Nov 14 15:20:10 UTC 2026

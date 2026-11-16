@@ -1,0 +1,32 @@
+v9c_dev {'n_sets': 232, 'edit_changed_gt_equiv': 196, 'equal': 34, 'lt': 2, 'mean_edit_diff': 1.771551724137931}
+  sbg_v5                               pooled=0.785 exactEdit=0.732 [0.683,0.794] n=4226 matched=0.737/0.845
+  sbg_state                            pooled=0.816 exactEdit=0.772 [0.713,0.834] n=4226 matched=0.724/0.851
+  sbg_v3                               pooled=0.734 exactEdit=0.656 [0.611,0.710] n=4226 matched=0.634/0.778
+  sbg_temporal                         pooled=0.616 exactEdit=0.602 [0.547,0.673] n=4226 matched=0.302/0.638
+  edit                                 pooled=0.604 exactEdit=0.500 [0.500,0.500] n=4226 matched=0.845/0.918
+  LR_EX                                pooled=0.670 exactEdit=0.596 [0.555,0.656] n=4226 matched=0.422/0.466
+  LR_EXx                               pooled=0.806 exactEdit=0.753 [0.685,0.811] n=4226 matched=0.866/0.890
+  forest|RF_d4|EXx                     pooled=0.845 exactEdit=0.771 [0.689,0.837] n=4226 matched=0.759/0.836
+  pathspectra|shape|covset|max         pooled=0.814 exactEdit=0.750 [0.628,0.848] n=4226 matched=0.737/0.847
+  trace_len_mean                       pooled=0.766 exactEdit=0.690 [0.608,0.760] n=4226 matched=0.659/0.789
+  traceseq|cre|full|kgram4|max         pooled=0.620 exactEdit=0.613 [0.560,0.684] n=4226 matched=0.267/0.625
+  static|tce_ast                       pooled=0.731 exactEdit=0.682 [0.640,0.713] n=4226 matched=0.461/0.731
+  valuespectra|entry_exit|full|raw|max pooled=0.805 exactEdit=0.749 [0.685,0.808] n=4226 matched=0.625/0.812
+  output_indep|frac40                  pooled=0.864 exactEdit=0.837 [0.749,0.902] n=4226 matched=0.724/0.860
+  oracle|frac11                        pooled=0.856 exactEdit=0.842 [0.765,0.904] n=4226 matched=0.720/0.860
+v9c_train {'n_sets': 805, 'edit_changed_gt_equiv': 697, 'equal': 96, 'lt': 12, 'mean_edit_diff': 1.8546583850931677}
+  sbg_v5                               pooled=0.735 exactEdit=0.696 [0.652,0.737] n=40842 matched=0.645/0.801
+  sbg_state                            pooled=0.753 exactEdit=0.720 [0.669,0.765] n=40842 matched=0.640/0.815
+  sbg_v3                               pooled=0.710 exactEdit=0.678 [0.640,0.715] n=40842 matched=0.589/0.763
+  sbg_temporal                         pooled=0.594 exactEdit=0.601 [0.570,0.634] n=40842 matched=0.256/0.611
+  edit                                 pooled=0.610 exactEdit=0.500 [0.500,0.500] n=40842 matched=0.866/0.925
+  LR_EX                                pooled=0.651 exactEdit=0.612 [0.568,0.652] n=40842 matched=0.439/0.480
+  LR_EXx                               pooled=0.803 exactEdit=0.759 [0.719,0.797] n=40842 matched=0.881/0.909
+  forest|RF_d4|EXx                     pooled=0.845 exactEdit=0.753 [0.705,0.801] n=40842 matched=0.814/0.814
+  pathspectra|shape|covset|max         pooled=0.772 exactEdit=0.746 [0.698,0.788] n=40842 matched=0.687/0.824
+  trace_len_mean                       pooled=0.741 exactEdit=0.702 [0.659,0.740] n=40842 matched=0.609/0.775
+  traceseq|cre|full|kgram4|max         pooled=0.610 exactEdit=0.615 [0.582,0.651] n=40842 matched=0.245/0.612
+  static|tce_ast                       pooled=0.716 exactEdit=0.653 [0.623,0.685] n=40842 matched=0.432/0.716
+  valuespectra|entry_exit|full|raw|max pooled=0.796 exactEdit=0.732 [0.686,0.777] n=40842 matched=0.610/0.805
+  output_indep|frac40                  pooled=0.815 exactEdit=0.785 [0.744,0.823] n=40842 matched=0.655/0.824
+  oracle|frac11                        pooled=0.792 exactEdit=0.766 [0.724,0.807] n=40842 matched=0.620/0.808
