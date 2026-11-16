@@ -1,0 +1,3111 @@
+{
+ "n": 0,
+ "status": {
+  "('ok', 'ok')": 164
+ },
+ "tasks": [
+  {
+   "task": "0",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:has_close_elements",
+   "n_diff_inputs": 3,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "1",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:separate_paren_groups",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "2",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:truncate_number",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 5,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "3",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:below_zero",
+   "n_diff_inputs": 5,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "4",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:mean_absolute_deviation",
+   "n_diff_inputs": 9,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": [
+    "ZeroDivisionError"
+   ]
+  },
+  {
+   "task": "5",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:intersperse",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "6",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:parse_nested_parens",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 4,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "7",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:filter_by_substring",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "8",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:sum_product",
+   "n_diff_inputs": 5,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "9",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:rolling_max",
+   "n_diff_inputs": 5,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "10",
+   "bug_type": "missing logic",
+   "symptom": "stackoverflow",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:is_palindrome",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "11",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:string_xor",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "12",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:longest",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "13",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:greatest_common_divisor",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "14",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:all_prefixes",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "15",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:string_sequence",
+   "n_diff_inputs": 9,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 10,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "16",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:count_distinct_characters",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 8,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "17",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:parse_music",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "KeyError"
+   ]
+  },
+  {
+   "task": "18",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:how_many_times",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "19",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:sort_numbers",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": true,
+   "exc_types": [
+    "KeyError"
+   ]
+  },
+  {
+   "task": "20",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:find_closest_elements",
+   "n_diff_inputs": 6,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "21",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:rescale_to_unit",
+   "n_diff_inputs": 5,
+   "canon_all_exc": false,
+   "canon_n_exc": 4,
+   "canon_n_distinct_ret": 6,
+   "observable": true,
+   "exc_types": [
+    "ValueError",
+    "ZeroDivisionError"
+   ]
+  },
+  {
+   "task": "22",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:filter_integers",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "23",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:strlen",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "24",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:largest_divisor",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 6,
+   "observable": true,
+   "exc_types": [
+    "ZeroDivisionError"
+   ]
+  },
+  {
+   "task": "25",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:factorize",
+   "n_diff_inputs": 9,
+   "canon_all_exc": false,
+   "canon_n_exc": 2,
+   "canon_n_distinct_ret": 8,
+   "observable": true,
+   "exc_types": [
+    "ValueError"
+   ]
+  },
+  {
+   "task": "26",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:remove_duplicates",
+   "n_diff_inputs": 9,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 10,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "27",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:flip_case",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "28",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:concatenate",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "29",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:filter_by_prefix",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "30",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:get_positive",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "31",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_prime",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "32",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:find_zero",
+   "n_diff_inputs": 4,
+   "canon_all_exc": false,
+   "canon_n_exc": 2,
+   "canon_n_distinct_ret": 5,
+   "observable": true,
+   "exc_types": [
+    "OverflowError"
+   ]
+  },
+  {
+   "task": "33",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:sort_third",
+   "n_diff_inputs": 2,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "34",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:unique",
+   "n_diff_inputs": 2,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 10,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "35",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:max_element",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 8,
+   "observable": true,
+   "exc_types": [
+    "IndexError"
+   ]
+  },
+  {
+   "task": "36",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:fizz_buzz",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "37",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:sort_even",
+   "n_diff_inputs": 2,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "38",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:decode_cyclic",
+   "n_diff_inputs": 9,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "39",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:prime_fib",
+   "n_diff_inputs": 3,
+   "canon_all_exc": false,
+   "canon_n_exc": 4,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "40",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:triples_sum_to_zero",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "41",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:car_race_collision",
+   "n_diff_inputs": 9,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "42",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:incr_list",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "43",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:pairs_sum_to_zero",
+   "n_diff_inputs": 4,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "44",
+   "bug_type": "operator misuse",
+   "symptom": "infinite loop",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:change_base",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "45",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:triangle_area",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "46",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:fib4",
+   "n_diff_inputs": 5,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": [
+    "IndexError"
+   ]
+  },
+  {
+   "task": "47",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:median",
+   "n_diff_inputs": 6,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 6,
+   "observable": true,
+   "exc_types": [
+    "IndexError"
+   ]
+  },
+  {
+   "task": "48",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:is_palindrome",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "49",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:modp",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 5,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "50",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:decode_shift",
+   "n_diff_inputs": 9,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "51",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:remove_vowels",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "52",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:below_threshold",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "53",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "priority:add",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "54",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:same_chars",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "55",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:fib",
+   "n_diff_inputs": 6,
+   "canon_all_exc": false,
+   "canon_n_exc": 3,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": [
+    "RecursionError"
+   ]
+  },
+  {
+   "task": "56",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:correct_bracketing",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "57",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:monotonic",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "58",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:common",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 10,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "59",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:largest_prime_factor",
+   "n_diff_inputs": 4,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 4,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "60",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:sum_to_n",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "61",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:correct_bracketing",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "62",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:derivative",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "63",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "annotated:fibfib",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 3,
+   "canon_n_distinct_ret": 6,
+   "observable": true,
+   "exc_types": [
+    "RecursionError"
+   ]
+  },
+  {
+   "task": "64",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:vowels_count",
+   "n_diff_inputs": 1,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": true,
+   "exc_types": [
+    "IndexError",
+    "TypeError"
+   ]
+  },
+  {
+   "task": "65",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:circular_shift",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "66",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:digitSum",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "67",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:fruit_distribution",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "68",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:pluck",
+   "n_diff_inputs": 4,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 6,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "69",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "priority:search",
+   "n_diff_inputs": 3,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": [
+    "ValueError"
+   ]
+  },
+  {
+   "task": "70",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:strange_sort_list",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "71",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:triangle_area",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "72",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:will_it_fly",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "73",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:smallest_change",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 5,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "74",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:total_match",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "75",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_multiply_prime",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "76",
+   "bug_type": "variable misuse",
+   "symptom": "infinite loop",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_simple_power",
+   "n_diff_inputs": 11,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": true,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "77",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:iscube",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "78",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:hex_key",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "79",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:decimal_to_binary",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "80",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_happy",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "81",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:numerical_letter_grade",
+   "n_diff_inputs": 6,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "82",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:prime_length",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "83",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:starts_one_ends",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "84",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "priority:solve",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "ValueError"
+   ]
+  },
+  {
+   "task": "85",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "priority:add",
+   "n_diff_inputs": 5,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "86",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:anti_shuffle",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "87",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:get_row",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "88",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:sort_array",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "89",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:encrypt",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "90",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:next_smallest",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 5,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "91",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_bored",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "92",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:any_int",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "93",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "priority:encode",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "94",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:skjkasdkd",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "95",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:check_dict_case",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "96",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:count_up_to",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "97",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:multiply",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "98",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:count_upper",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "99",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:closest_integer",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "100",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:make_a_pile",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "101",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:words_string",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "102",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:choose_num",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "103",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:rounded_avg",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "104",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:unique_digits",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 6,
+   "observable": true,
+   "exc_types": [
+    "ValueError"
+   ]
+  },
+  {
+   "task": "105",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:by_length",
+   "n_diff_inputs": 6,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 8,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "106",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:f",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "107",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:even_odd_palindrome",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "108",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:count_nums",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "109",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:move_one_ball",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "110",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:exchange",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "111",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:histogram",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "112",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:reverse_delete",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "113",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:odd_count",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "114",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:minSubArraySum",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 1,
+   "canon_n_distinct_ret": 4,
+   "observable": true,
+   "exc_types": [
+    "ValueError"
+   ]
+  },
+  {
+   "task": "115",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:max_fill",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "116",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:sort_array",
+   "n_diff_inputs": 5,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "117",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:select_words",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "118",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:get_closest_vowel",
+   "n_diff_inputs": 11,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "119",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:match_parens",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "IndexError",
+    "TypeError"
+   ]
+  },
+  {
+   "task": "120",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:maximum",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "121",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:solution",
+   "n_diff_inputs": 7,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 3,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "122",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:add_elements",
+   "n_diff_inputs": 11,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": true,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "123",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:get_odd_collatz",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "124",
+   "bug_type": "variable misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:valid_date",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "125",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:split_words",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "126",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_sorted",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "127",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:intersection",
+   "n_diff_inputs": 3,
+   "canon_all_exc": false,
+   "canon_n_exc": 3,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": [
+    "IndexError"
+   ]
+  },
+  {
+   "task": "128",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:prod_signs",
+   "n_diff_inputs": 4,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 6,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "129",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:minPath",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "130",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:tri",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "131",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:digits",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "ValueError"
+   ]
+  },
+  {
+   "task": "132",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_nested",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "133",
+   "bug_type": "operator misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:sum_squares",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 8,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "134",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:check_if_last_char_is_a_letter",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "135",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:can_arrange",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 4,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "136",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:largest_smallest_integers",
+   "n_diff_inputs": 8,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 4,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "137",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:compare_one",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "138",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:is_equal_to_sum_even",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "139",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:special_factorial",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "140",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:fix_spaces",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "141",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:file_name_check",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "142",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:sum_squares",
+   "n_diff_inputs": 6,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 9,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "143",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:words_in_sentence",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "144",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:simplify",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "145",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:order_by_points",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 11,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "146",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:specialFilter",
+   "n_diff_inputs": 1,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 2,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "147",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:get_max_triples",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "148",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:bf",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "149",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:sorted_list_sum",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "150",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:x_or_y",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "151",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:double_the_difference",
+   "n_diff_inputs": 6,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 7,
+   "observable": true,
+   "exc_types": []
+  },
+  {
+   "task": "152",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:compare",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 8,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "153",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:Strongest_Extension",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "IndexError",
+    "TypeError"
+   ]
+  },
+  {
+   "task": "154",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:cycpattern_check",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 0,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": []
+  },
+  {
+   "task": "155",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:even_odd_count",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "156",
+   "bug_type": "missing logic",
+   "symptom": "infinite loop",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:int_to_mini_roman",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "157",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:right_angle_triangle",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "158",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:find_max",
+   "n_diff_inputs": 10,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": true,
+   "exc_types": [
+    "IndexError",
+    "TypeError"
+   ]
+  },
+  {
+   "task": "159",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:eat",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  },
+  {
+   "task": "160",
+   "bug_type": "excess logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:do_algebra",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 9,
+   "canon_n_distinct_ret": 2,
+   "observable": false,
+   "exc_types": [
+    "IndexError",
+    "TypeError"
+   ]
+  },
+  {
+   "task": "161",
+   "bug_type": "missing logic",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "priority:solve",
+   "n_diff_inputs": 0,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": false,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "162",
+   "bug_type": "function misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:string_to_md5",
+   "n_diff_inputs": 10,
+   "canon_all_exc": false,
+   "canon_n_exc": 10,
+   "canon_n_distinct_ret": 1,
+   "observable": true,
+   "exc_types": [
+    "AttributeError"
+   ]
+  },
+  {
+   "task": "163",
+   "bug_type": "value misuse",
+   "symptom": "incorrect output",
+   "canon_status": "ok",
+   "buggy_status": "ok",
+   "entry": "unannotated:generate_integers",
+   "n_diff_inputs": 0,
+   "canon_all_exc": true,
+   "canon_n_exc": 11,
+   "canon_n_distinct_ret": 0,
+   "observable": false,
+   "exc_types": [
+    "TypeError"
+   ]
+  }
+ ],
+ "n_tasks": 164,
+ "n_both_ok": 164,
+ "n_observable": 86,
+ "n_canon_all_exc": 47,
+ "n_canon_ge1_exc": 86,
+ "n_canon_ge3_distinct_ret": 61,
+ "observable_by_bug_type": {
+  "excess logic": [
+   12,
+   31
+  ],
+  "function misuse": [
+   3,
+   8
+  ],
+  "missing logic": [
+   15,
+   33
+  ],
+  "operator misuse": [
+   18,
+   25
+  ],
+  "value misuse": [
+   25,
+   44
+  ],
+  "variable misuse": [
+   13,
+   23
+  ]
+ },
+ "unobservable_tasks": [
+  [
+   "1",
+   "operator misuse",
+   0,
+   []
+  ],
+  [
+   "7",
+   "variable misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "10",
+   "missing logic",
+   0,
+   []
+  ],
+  [
+   "12",
+   "operator misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "17",
+   "value misuse",
+   10,
+   [
+    "KeyError"
+   ]
+  ],
+  [
+   "22",
+   "variable misuse",
+   0,
+   []
+  ],
+  [
+   "28",
+   "excess logic",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "29",
+   "function misuse",
+   10,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "31",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "45",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "51",
+   "excess logic",
+   10,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "54",
+   "missing logic",
+   0,
+   []
+  ],
+  [
+   "56",
+   "operator misuse",
+   0,
+   []
+  ],
+  [
+   "58",
+   "missing logic",
+   0,
+   []
+  ],
+  [
+   "65",
+   "variable misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "66",
+   "function misuse",
+   10,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "67",
+   "value misuse",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "71",
+   "missing logic",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "72",
+   "operator misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "73",
+   "variable misuse",
+   0,
+   []
+  ],
+  [
+   "74",
+   "variable misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "77",
+   "missing logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "79",
+   "missing logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "83",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "84",
+   "operator misuse",
+   11,
+   [
+    "ValueError"
+   ]
+  ],
+  [
+   "86",
+   "missing logic",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "87",
+   "variable misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "89",
+   "value misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "91",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "92",
+   "missing logic",
+   0,
+   []
+  ],
+  [
+   "93",
+   "missing logic",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "95",
+   "operator misuse",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "96",
+   "variable misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "97",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "98",
+   "value misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "99",
+   "function misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "100",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "101",
+   "value misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "102",
+   "variable misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "103",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "106",
+   "variable misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "107",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "111",
+   "value misuse",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "113",
+   "excess logic",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "115",
+   "function misuse",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "117",
+   "operator misuse",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "119",
+   "value misuse",
+   11,
+   [
+    "IndexError",
+    "TypeError"
+   ]
+  ],
+  [
+   "120",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "123",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "124",
+   "variable misuse",
+   0,
+   []
+  ],
+  [
+   "125",
+   "value misuse",
+   10,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "129",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "130",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "131",
+   "excess logic",
+   11,
+   [
+    "ValueError"
+   ]
+  ],
+  [
+   "132",
+   "value misuse",
+   0,
+   []
+  ],
+  [
+   "134",
+   "function misuse",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "137",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "138",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "139",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "140",
+   "excess logic",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "141",
+   "missing logic",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "143",
+   "missing logic",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "144",
+   "excess logic",
+   11,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "145",
+   "excess logic",
+   0,
+   []
+  ],
+  [
+   "147",
+   "missing logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "148",
+   "value misuse",
+   0,
+   []
+  ],
+  [
+   "149",
+   "missing logic",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "150",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "152",
+   "excess logic",
+   0,
+   []
+  ],
+  [
+   "153",
+   "missing logic",
+   11,
+   [
+    "IndexError",
+    "TypeError"
+   ]
+  ],
+  [
+   "154",
+   "value misuse",
+   0,
+   []
+  ],
+  [
+   "155",
+   "missing logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "156",
+   "missing logic",
+   10,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "157",
+   "missing logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "159",
+   "excess logic",
+   11,
+   [
+    "TypeError"
+   ]
+  ],
+  [
+   "160",
+   "excess logic",
+   9,
+   [
+    "IndexError",
+    "TypeError"
+   ]
+  ],
+  [
+   "161",
+   "missing logic",
+   10,
+   [
+    "AttributeError"
+   ]
+  ],
+  [
+   "163",
+   "value misuse",
+   11,
+   [
+    "TypeError"
+   ]
+  ]
+ ]
+}

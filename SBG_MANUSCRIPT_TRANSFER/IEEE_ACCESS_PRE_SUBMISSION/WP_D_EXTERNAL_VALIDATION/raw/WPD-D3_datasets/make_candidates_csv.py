@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""Generates candidates.csv (WPD-D3). Each row's `evidence` column says what the row is based on:
+  EXEC-PROBE:<id>  = we executed a lightweight offline/online probe (see PROBE_LOG.md)
+  READ:<src>       = we read the public page/abstract/API (see PROBE_LOG.md P01/P02) - no execution
+  PRIOR-REPO       = statement from in-repo prior work (SBG/paper, SBG/reports): NOT independently reproduced here
+  UNVERIFIED       = could not verify in this session
+"""
+import csv, os
+
+COLS = ["dataset", "language", "size", "source_independence_from_SBG", "pair_type", "label_source_and_reliability", "single_file_standalone",
+        "stdlib_only", "licence", "availability", "compat_with_SBG_task", "label_observability_on_SBG_11_inputs", "effort_to_run", "key_blocker_for_output_free_tracer",
+        "risks", "classification", "evidence"]
+V, W, X, N = "Valid independent evaluation", "Valid with documented adaptation", "Exploratory only", "Not methodologically suitable"
+
+R = [
+ ["BugsInPy (reference; owned by D1/D2)", "Python", "501 bugs / 12 projects in SBG manifest; 51 bugs (55 units, 145 SP negatives) pass SBG's static unit rule (10.2%)",
+  "Positives independent (upstream projects). Negatives are made by SBG's own SP transformers -> NOT independent.", "real bug-fix (buggy vs fixed function unit) + SBG-made SP negatives",
+  "Developer fix commits + project tests (reliable as 'fix', but a changed function need not change behaviour on SBG's battery)", "Unit extracted with same-file closure; yes after extraction",
+  "Required by eligibility rule (builtins+stdlib only); 428 units rejected for project-internal imports, 110 third-party", "Per project (MIT/BSD/Apache/GPL-3.0/Unlicense/NOASSERTION)",
+  "Vendored in SBG/external/bugsinpy (offline); upstream online (GitHub)", "Partly: positives yes; negatives are SBG-generated so 'independent source' holds for positives only",
+  "UNVERIFIED here (D1/D2 own the observability audit of existing pairs)", "Already built (SBG); no new effort", "Project-internal / third-party imports; domain inputs; I/O; classes",
+  "Small n (51 bugs), negatives not independent, battery inputs not domain inputs, 10% yield", X + " (provisional; final classification belongs to D1/D2)", "READ:SBG/external/bugsinpy/{README,manifest.json}; EXEC-PROBE:none by D3"],
+ ["QuixBugs (reference; owned by D1/D2)", "Python (+Java vendored)", "40 Python subject programs (manifest: 40 canonical-eligible, 31 declared-eligible, 112 SP negatives)",
+  "Positives: independent authoring (Quixey Challenge, MIT). Negatives: SBG SP transformers -> not independent.", "real(ish) single-line bug vs correct + SBG-made SP negatives",
+  "Curated by dataset authors; one bug per program; json_testcases give expected outputs (SBG discards them)", "yes (single file per program)", "yes (typically; not audited by D3)", "MIT",
+  "Vendored in SBG/external/quixbugs (offline); upstream GitHub", "Yes for positives", "UNVERIFIED here (D1/D2)", "Already built", "Unannotated params -> list battery; some programs need non-list inputs",
+  "n=40 clusters -> wide CIs; negatives not independent; programs are textbook algorithms close to SBG's own corpus style", X + " (provisional; D1/D2 own it)", "READ:SBG/external/quixbugs/{README,manifest.json}"],
+ ["Defects4J", "Java", "854 active bugs (+10 deprecated) per README", "Independent", "real bug-fix", "Developer fixes + test suites (high)", "No: project-scale Maven/Ant builds",
+  "n/a", "MIT (GitHub licence field); upstream project licences vary", "Online (GitHub, ~150 MB repo + per-project checkouts); not offline", "None: language differs from Python tracer", "n/a",
+  "Very high (JVM tracer would be a new system)", "Non-Python language", "Cross-language claim already withdrawn in SBG prereg §6 unless Java SBG schema exists", N, "READ:GitHub README+API (P01)"],
+ ["ManySStuBs4J", "Java", "153,652 single-statement bug-fix changes mined from 1,000 projects (abstract; mini/large subsets not verified)", "Independent", "real single-statement bug fix, template-annotated",
+  "Mined commits, heuristic 'bug' label (reliability not assessed)", "No (project files)", "n/a", "UNVERIFIED (GitHub repo name used in our probe returned 404; dataset hosting not checked)", "Online; not fetched", "None (Java)", "n/a", "Very high", "Non-Python language", "Heuristic labels", N, "READ:arXiv 1905.13334 abstract (P02)"],
+ ["PyPIBugs", "Python", "2,374 real bugs (BugLab abstract, test set)", "Independent", "real bug-fix commits from PyPI packages",
+  "Mined commits (single-statement bug types); label = 'is a fix commit' not 'behaviour differs on inputs'", "No: functions inside packages", "No: package-internal and third-party deps",
+  "Repo MIT (archived); dataset licence UNVERIFIED", "Online only: distributed as git URLs + SHAs (README) requiring cloning from GitHub; not offline", "Same as BugsInPy: needs closure extraction",
+  "UNVERIFIED (would need BugsInPy-style audit)", "High: re-implement unit extraction + clone thousands of repos", "Project-internal/third-party imports (BugsInPy analogue: 10% eligible - analogy only, not measured for PyPIBugs)",
+  "Cannot be done offline in <=2 h; yield unknown", X, "READ:arXiv 2105.12787 abstract (P02); repo README (P01 region)"],
+ ["HumanEvalFix / HumanEvalPack-Python (buggy vs canonical)", "Python", "164 tasks (bigcode/humanevalpack python/test); 6 bug types", "Independent of SBG (OpenAI HumanEval + BigCode human-written bugs)",
+  "synthetic human-inserted single bugs vs canonical (CHANGED only; no equivalent pairs in dataset)", "'subtle human-written bug causing unit tests to fail' (dataset card). Reliable as fail-test, but only 86/164 (52.4%) bugs change outcomes on SBG's battery",
+  "yes (declaration+solution)", "yes (typing imports only; 0 non-stdlib)", "MIT", "HF datasets-server JSON (0.47 MB downloaded); needs network once, then offline",
+  "Good for positives: 164/164 pass SBG static eligibility, entry==target 163/164 (typed signatures)", "86/164 observable; 47/164 canonical raise on all 11 inputs (type mismatch of battery vs e.g. List[str])", "Low (<1 h)",
+  "Battery uses ints for List[...] params -> many canonical solutions raise (47/164 all-11-exception)", "Negatives must be created: independent tool (python-minifier) gives edit-size confound: edit-size AUROC reversed = 0.765 (CH median edit 2 vs EQ median 8); matched e<=2 EQ only 46/164 and 28/164 are AST-identical",
+  X + " (positives usable; paired design confounded)", "EXEC-PROBE:P03,P04,P05,P06,P07,P07b,P11"],
+ ["EvalPlus HumanEval+/MBPP+ canonical solutions as EQ candidates", "Python", "HumanEval+ 164 tasks; MBPP+ count UNVERIFIED", "Independent", "OpenAI canonical vs EvalPlus canonical = 'equivalent-solution' candidates", "Both pass tests, behaviours not guaranteed equal on SBG's battery",
+  "yes", "yes", "Apache-2.0 (HF cards)", "Online (HF)", "Partial: EQ only; needs CH side from elsewhere", "UNVERIFIED by D3", "Medium", "Edit-size mismatch: PRIOR-REPO reports EQ edit median 9 vs CH median 2 (not reproduced by D3)", "Edit-size confound; mutual dependence on same task",
+  X, "PRIOR-REPO: SBG/paper/final_empirical_readiness_2026-11-05/agent_3 (feas4/feas15); READ: HF cards (P01)"],
+ ["MBPP (+ sanitized)", "Python", "~974 problems (sanitized subset hand-verified); 0.4 MB", "Independent", "single reference solution + 3 tests: NO pairs", "Crowd-sourced; sanitized subset hand-verified", "yes", "mostly", "CC-BY-4.0 (HF card)",
+  "Online/offline after 0.4 MB download", "None alone (no change pairs)", "n/a", "n/a as pairs", "No pair structure", "Becomes useful only as the base of SeqCoBench", N + " (as standalone)", "READ:google-research mbpp README, HF card (P01)"],
+ ["SeqCoBench (nickil/seqcobench; MBPP-derived)", "Python", "14,572 rows / 1,134 unique MBPP originals (train 565 / valid 229 / test 341; 1 original shared valid/test); 7.1 MB CSV",
+  "Different authors (Maveli, Vergari, Cohen 2024) and implementation; BUT transformation families (rename, dead code, for->while, operand swap, operator/constant flips) overlap SBG's SP/SC families -> implementation-independent, not class-independent",
+  "synthetic: semantic-preserving (label 1) vs semantic-altering single-token mutation / dissimilar-code injection (label 0)",
+  "By construction; D3 re-checked by differential execution on SBG's battery: SP rows that nonetheless differ = 13/2,462 (0.53%); altered rows unobservable = 391/1,020 (38.3%)",
+  "yes (single MBPP function)", "mostly (some `from array import array` etc.; 290 transformed programs fail import on D3's run)", "No licence stated on HF card/README (UNVERIFIED); paper arXiv 2408.11081",
+  "HF CSV (7.1 MB downloaded)", "HIGH after adaptation: polarity flip, same-entry rule, observability filter, edit-size stratum",
+  "Usable rows: 3,078 / 14,572 (2,449 SP + 629 CH) after filters; in 31.0% of rows (4,512) the original raises on all 11 inputs; dissimilar injection (5,650 rows) changes entry function -> excluded by rule; e<=2 stratum: 735 SP + 629 CH from 486 programs (260 with both)",
+  "Low-medium (<=2 h incl. tracing ~1,700 programs)", "MBPP functions are unannotated -> list battery of ints; 31% degenerate",
+  "STATIC SHORTCUT: token-multiset distance (reversed) separates classes: AUROC 0.947 pooled, 0.824 in e<=2 stratum; same-family generator; synthetic not real bugs; no licence stated",
+  W + " (as 'independent-generator replication', not real-bug validation)", "EXEC-PROBE:P10,P10b,P13,P14,P15; READ:arXiv 2408.11081 (P02b); PRIOR-REPO counts agree (565/229/341)"],
+ ["Refactory student programs (githubhuyang/refactory data.zip)", "Python", "2,442 correct + 1,783 buggy attempts, 5 assignments, 361 students; 1.9 MB", "Independent (NUS course)", "student-correct vs reference (EQUIV-ish), student-wrong vs reference (CHANGED)",
+  "Test suite pass/fail (reliable on tested domain). On SBG's battery: 'correct' programs differ from reference in 648/2,442 (26.5%) -> EQUIV label NOT reproduced by battery", "yes", "yes", "LGPL-3.0 (repo)", "GitHub data.zip (1.9 MB downloaded)",
+  "Task-compatible only if inputs are replaced by the assignment's declared inputs (adaptation)", "Only Q3 (list of ints) is natural: wrong 308/308 observable, correct 37/546 differ. Q1,Q2,Q4,Q5 references raise TypeError on 10, 10, 8 and 11 of 11 inputs respectively",
+  "Medium", "Unannotated multi-parameter functions get list battery for every parameter (Q1 search(x, seq), Q5 top_k(lst,k)); pairs-of-tuples input (Q4) unavailable",
+  "Only 5 clusters (assignments); programs from the same student/assignment dependent; 'fail' subfolder undocumented", X + " (needs input adaptation; unsuitable under SBG's fixed battery)", "EXEC-PROBE:P03,P04,P05,P09"],
+ ["BugSwarm", "Java and Python", "Thousands of artifacts (README); count UNVERIFIED", "Independent", "real CI failing->passing builds", "CI build outcome (reliable as CI fix; not input-level behaviour)", "No: Docker images of whole repos", "No", "Repo licence NOASSERTION; per-artifact UNVERIFIED",
+  "Online (DockerHub)", "Poor: repository-level", "UNVERIFIED", "Very high", "Repo-scale build/test; project deps", "Same extraction problem as BugsInPy but with Docker", N, "READ:BugSwarm README, arXiv 1903.06725 (P01/P02)"],
+ ["Codeflaws", "C", "3,902 defects (README)", "Independent (Codeforces)", "buggy vs accepted submission", "Codeforces verdict + tests", "yes", "n/a", "MIT (repo)", "Online (GitHub, 167 MB)", "None (C; stdin/stdout)", "n/a", "Very high", "Non-Python; I/O programs", "-", N, "READ:README+API (P01)"],
+ ["TypeBugs / Defects4Py", "Python (claimed)", "UNVERIFIED", "UNVERIFIED", "type-error bugs (claimed)", "UNVERIFIED", "UNVERIFIED", "UNVERIFIED", "UNVERIFIED", "GitHub URLs we tried returned 404 (TypeBugs/TypeBugs, ExpertiseModel/Defects4Py) - real locations not established", "UNVERIFIED", "UNVERIFIED", "n/a", "n/a",
+  "Existence/URL not verified; do NOT cite", N + " (provisional: UNVERIFIED -> treat as unavailable)", "UNVERIFIED (P01 404s; P02 title search only returned related papers 2306.01394, 2507.02318)"],
+ ["GitBug-Java", "Java", "199 bugs, 55 repos, 2023 commits (abstract)", "Independent", "real bug-fix", "reproducible CI/tests (high)", "No", "n/a", "MIT (repo)", "Online (GitHub/HF/Docker)", "None (Java)", "n/a", "Very high", "Non-Python", "-", N, "READ:arXiv 2402.02961 abstract; GitHub API (P01/P02)"],
+ ["Project CodeNet (Python subset)", "Python (+55 languages)", "~14 M submissions; 7.8 GB tarball; Python800 benchmark inside", "Independent", "accepted vs rejected submissions per problem; accepted-accepted = natural equivalent-solution pairs",
+  "Judge verdict on hidden tests (reliable per-problem but equivalence only on judge's tests)", "yes (single script)", "mostly", "Repo Apache-2.0 (GitHub field); data licence UNVERIFIED", "Online only; 7.8 GB > 50 MB cap -> NOT downloaded", "Poor: scripts read sys.stdin at module level (see EquiBench probe)",
+  "UNVERIFIED for CodeNet itself; EquiBench OJ (derived from AtCoder/Codeforces-like submissions) shows 97-99% read stdin", "High", "stdin/stdout scripts without entry functions", "Entry-function and input-synthesis incompatible; 7.8 GB", N, "READ:CodeNet README (P01 region); EXEC-PROBE:P12 (EquiBench proxy)"],
+ ["CodeContests / Codeforces (DeepMind)", "Python/C++/Java", "HF dataset 7.6 GB (tree size)", "Independent", "correct vs incorrect human solutions per problem", "Judge tests (+generated tests)", "yes (scripts)", "mostly", "CC-BY-4.0 (HF card); repo Apache-2.0", "Online; 7.6 GB > 50 MB cap -> NOT downloaded", "Poor: stdin/stdout scripts", "UNVERIFIED (proxy: EquiBench OJ)", "High", "stdin/stdout programs, no function entry", "Same as CodeNet", N, "READ:HF API sizes/cards, README (P01)"],
+ ["EquiBench OJ_A / OJ_V / OJ_VA", "Python", "400 pairs per category (50% equivalent); 1.8-2.1 MB each", "Independent", "equivalent / inequivalent pairs of competitive-programming submissions", "Dataset truth_label (verification method UNVERIFIED by D3)",
+  "yes", "mostly", "Apache-2.0 (repo)", "HF (6.1 MB downloaded for P12)", "No", "Pairs where both programs have an SBG-eligible entry AND do not read stdin: OJ_A 2/400, OJ_V 4/400, OJ_VA 2/400; 0 without module-level executable statements", "n/a", "Module-level stdin scripts", "-", N, "EXEC-PROBE:P12 (static); PRIOR-REPO agrees (low yield)"],
+ ["CodeXGLUE: Devign / BigCloneBench / POJ-104", "C (Devign, per card: other-programming-languages; Devign paper = C - UNVERIFIED here) / Java / C++", "n/a", "Independent", "defect classification / clone pairs", "Mixed", "yes", "n/a", "c-uda (HF cards)", "Online", "None (non-Python)", "n/a", "n/a", "Non-Python", "-", N, "READ:HF cards for BCB (Java) and POJ-104 (C++) (P01 region)"],
+ ["Refactoring oracles (RefactoringMiner, Python refactoring datasets)", "Java (RefactoringMiner, MIT); Python datasets UNVERIFIED", "n/a", "Independent", "refactoring commits (behaviour-preserving by intent)", "Tool-detected refactorings; behavioural equivalence not guaranteed", "No (commits in repos)", "n/a", "MIT (RefactoringMiner)", "Online", "None for Java; no Python refactoring-pair oracle verified", "n/a", "Very high", "Non-Python / repo-level", "No verified Python equivalent-pair oracle", N, "READ:GitHub API (P01); P02 found ActRef 2505.06553 (not assessed)"],
+ ["CrossCodeEval-style / repo-level completion benchmarks", "multi", "not assessed", "Independent", "code completion (no change pairs)", "n/a", "No", "No", "UNVERIFIED", "not fetched", "None: not a program-change dataset by definition", "n/a", "n/a", "Not a pair dataset", "Low confidence: page not read (judged from benchmark type)", N, "UNVERIFIED (not fetched)"],
+ ["CPython stdlib git history (bug-fix commits)", "Python", "Repo 916 MB (not cloned); local 3.11 Lib has 150 public modules, 968 public top-level functions", "Independent", "real bug-fix commits; unit = single function",
+  "Commit messages / issue links (heuristic)", "Function-level only if self-contained", "yes", "PSF (GitHub: NOASSERTION)", "Local 3.11 Lib offline; history needs clone (>50 MB cap)", "Poor: only 167/968 public funcs are self-contained (no module globals/imports); 0 fully annotated; 50 are trivial `operator` wrappers",
+  "UNVERIFIED", "High (clone, commit mining, closure extraction)", "Module globals, classes, C-accelerated parts, I/O", "Yield of bug-fix commits touching self-contained functions unknown", X, "EXEC-PROBE:P08 (static); READ:GitHub API (P01)"],
+ ["Stdlib + independent mutation tool (cosmic-ray MIT / mutmut BSD-3 / mutatest MIT / MutPy NOASSERTION)", "Python", "Population = 167 self-contained public stdlib functions (P08); tools not installed by D3", "Tool code independent of SBG; mutation genre overlaps SBG's own SC mutators",
+  "synthetic mutants vs original; EQUIV from tool-independent transformation needed separately", "Battery differential execution (CH = outcome differs); survivors = unobservable", "yes", "yes", "per tool (PyPI metadata P01)",
+  "pip (online once); mutmut needs Python>=3.10 and pytest harness (its mutants are generated inside a trampoline layout); cosmic-ray >=3.9, MutPy 'Python 3.3+' (maintenance state UNVERIFIED)", "Possible", "Many stdlib funcs unobservable on int-list battery (not measured)",
+  "Medium-high (tool integration)", "Tool outputs are in-place/trampolined, need extraction; stdlib functions mostly unannotated", "Same genre as SBG training mutations; no real-world semantics", X, "READ:PyPI/GitHub metadata (P01); EXEC-PROBE:P08"],
+ ["DebugBench (Python subset)", "Python (+C++/Java)", "4,253 instances over three languages (abstract)", "Independent (LeetCode snippets)", "LLM(GPT-4)-implanted bugs vs correct LeetCode solutions", "Implanted by GPT-4 and test-verified per abstract; synthetic", "Class `Solution` methods (not inspected by D3)", "UNVERIFIED", "Apache-2.0 (HF card)", "Online", "UNVERIFIED (class API)", "UNVERIFIED", "Medium", "class-based LeetCode API; LLM-made bugs", "Not inspected beyond card", X + " (provisional; not inspected)", "READ:arXiv 2401.04621, HF card (P01/P02)"],
+ ["CanItEdit", "Python", "n<1K rows (card); exact count UNVERIFIED", "Independent", "before/after code with hidden tests (instruction-driven edits)", "Expert-written tests; edits are intended behaviour changes", "Often programs/classes (not inspected)", "UNVERIFIED", "MIT (HF card)", "Online", "UNVERIFIED", "UNVERIFIED", "Medium", "Whole-program edits", "Not inspected beyond card", X + " (provisional; not inspected)", "READ:HF card (P01)"],
+]
+
+here = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(here, "candidates.csv"), "w", newline="") as f:
+    w = csv.writer(f); w.writerow(COLS)
+    for r in R:
+        assert len(r) == len(COLS), (r[0], len(r), len(COLS))
+        w.writerow(r)
+print("wrote", len(R), "rows")

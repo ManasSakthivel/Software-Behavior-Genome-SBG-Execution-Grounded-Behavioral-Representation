@@ -1,0 +1,5051 @@
+{
+ "protocol_sha256": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+ "n_rows": 164,
+ "tasks": [
+  {
+   "task_id": "Python/0",
+   "entry_point": "has_close_elements",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "has_close_elements",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "float"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "has_close_elements",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "float"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/1",
+   "entry_point": "separate_paren_groups",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "separate_paren_groups",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "separate_paren_groups",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/2",
+   "entry_point": "truncate_number",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "truncate_number",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "float"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "truncate_number",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "float"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/3",
+   "entry_point": "below_zero",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "below_zero",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "below_zero",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/4",
+   "entry_point": "mean_absolute_deviation",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "mean_absolute_deviation",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "mean_absolute_deviation",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/5",
+   "entry_point": "intersperse",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "intersperse",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "intersperse",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/6",
+   "entry_point": "parse_nested_parens",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "parse_nested_parens",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "parse_nested_parens",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/7",
+   "entry_point": "filter_by_substring",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "filter_by_substring",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "filter_by_substring",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/8",
+   "entry_point": "sum_product",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sum_product",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sum_product",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/9",
+   "entry_point": "rolling_max",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "rolling_max",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "rolling_max",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/10",
+   "entry_point": "make_palindrome",
+   "bug_type": "missing logic",
+   "failure_symptoms": "stackoverflow",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_palindrome",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_palindrome",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": false
+  },
+  {
+   "task_id": "Python/11",
+   "entry_point": "string_xor",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "string_xor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str",
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "string_xor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str",
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/12",
+   "entry_point": "longest",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "longest",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "longest",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/13",
+   "entry_point": "greatest_common_divisor",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "greatest_common_divisor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "greatest_common_divisor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/14",
+   "entry_point": "all_prefixes",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "all_prefixes",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "all_prefixes",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/15",
+   "entry_point": "string_sequence",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "string_sequence",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "string_sequence",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/16",
+   "entry_point": "count_distinct_characters",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "count_distinct_characters",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "count_distinct_characters",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/17",
+   "entry_point": "parse_music",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "parse_music",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "parse_music",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/18",
+   "entry_point": "how_many_times",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "how_many_times",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str",
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "how_many_times",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str",
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/19",
+   "entry_point": "sort_numbers",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sort_numbers",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sort_numbers",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/20",
+   "entry_point": "find_closest_elements",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "find_closest_elements",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "find_closest_elements",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/21",
+   "entry_point": "rescale_to_unit",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "rescale_to_unit",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "rescale_to_unit",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/22",
+   "entry_point": "filter_integers",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "filter_integers",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "filter_integers",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/23",
+   "entry_point": "strlen",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "strlen",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "strlen",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/24",
+   "entry_point": "largest_divisor",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "largest_divisor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "largest_divisor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/25",
+   "entry_point": "factorize",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "factorize",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "factorize",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/26",
+   "entry_point": "remove_duplicates",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "remove_duplicates",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "remove_duplicates",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/27",
+   "entry_point": "flip_case",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "flip_case",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "flip_case",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/28",
+   "entry_point": "concatenate",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "concatenate",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "concatenate",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/29",
+   "entry_point": "filter_by_prefix",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "filter_by_prefix",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "filter_by_prefix",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/30",
+   "entry_point": "get_positive",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "get_positive",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "get_positive",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/31",
+   "entry_point": "is_prime",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_prime",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_prime",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/32",
+   "entry_point": "find_zero",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "find_zero",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "find_zero",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/33",
+   "entry_point": "sort_third",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sort_third",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sort_third",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/34",
+   "entry_point": "unique",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "unique",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "unique",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/35",
+   "entry_point": "max_element",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "max_element",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "max_element",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/36",
+   "entry_point": "fizz_buzz",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "fizz_buzz",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "fizz_buzz",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/37",
+   "entry_point": "sort_even",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sort_even",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sort_even",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/38",
+   "entry_point": "decode_cyclic",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "decode_cyclic",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "decode_cyclic",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/39",
+   "entry_point": "prime_fib",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "prime_fib",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "prime_fib",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/40",
+   "entry_point": "triples_sum_to_zero",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "triples_sum_to_zero",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "triples_sum_to_zero",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/41",
+   "entry_point": "car_race_collision",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "car_race_collision",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "car_race_collision",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/42",
+   "entry_point": "incr_list",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "incr_list",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "incr_list",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/43",
+   "entry_point": "pairs_sum_to_zero",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "pairs_sum_to_zero",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "pairs_sum_to_zero",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/44",
+   "entry_point": "change_base",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "infinite loop",
+   "canonical": {
+    "status": "eligible",
+    "entry": "change_base",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "change_base",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/45",
+   "entry_point": "triangle_area",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "triangle_area",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "triangle_area",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/46",
+   "entry_point": "fib4",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "fib4",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "fib4",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/47",
+   "entry_point": "median",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "median",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "median",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/48",
+   "entry_point": "is_palindrome",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_palindrome",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_palindrome",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/49",
+   "entry_point": "modp",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "modp",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "modp",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/50",
+   "entry_point": "decode_shift",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "decode_shift",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "decode_shift",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 2,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/51",
+   "entry_point": "remove_vowels",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "remove_vowels",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "remove_vowels",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/52",
+   "entry_point": "below_threshold",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "below_threshold",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "below_threshold",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/53",
+   "entry_point": "add",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "add",
+    "tier": "priority",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "add",
+    "tier": "priority",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int",
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/54",
+   "entry_point": "same_chars",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "same_chars",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str",
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "same_chars",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str",
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/55",
+   "entry_point": "fib",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "fib",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "fib",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/56",
+   "entry_point": "correct_bracketing",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "correct_bracketing",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "correct_bracketing",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/57",
+   "entry_point": "monotonic",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "monotonic",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "monotonic",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/58",
+   "entry_point": "common",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "common",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "common",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/59",
+   "entry_point": "largest_prime_factor",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "largest_prime_factor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "largest_prime_factor",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/60",
+   "entry_point": "sum_to_n",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sum_to_n",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sum_to_n",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/61",
+   "entry_point": "correct_bracketing",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "correct_bracketing",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "correct_bracketing",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "str"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/62",
+   "entry_point": "derivative",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "derivative",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "derivative",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/63",
+   "entry_point": "fibfib",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "fibfib",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "fibfib",
+    "tier": "annotated",
+    "annotated": true,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "int"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/64",
+   "entry_point": "vowels_count",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "vowels_count",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "vowels_count",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/65",
+   "entry_point": "circular_shift",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "circular_shift",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "circular_shift",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/66",
+   "entry_point": "digitSum",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "digitSum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "digitSum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/67",
+   "entry_point": "fruit_distribution",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "fruit_distribution",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "fruit_distribution",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/68",
+   "entry_point": "pluck",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "pluck",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "pluck",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/69",
+   "entry_point": "search",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "search",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "search",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/70",
+   "entry_point": "strange_sort_list",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "strange_sort_list",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "strange_sort_list",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/71",
+   "entry_point": "triangle_area",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "triangle_area",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "triangle_area",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/72",
+   "entry_point": "will_it_fly",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "will_it_fly",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "will_it_fly",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/73",
+   "entry_point": "smallest_change",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "smallest_change",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "smallest_change",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/74",
+   "entry_point": "total_match",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "total_match",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "total_match",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/75",
+   "entry_point": "is_multiply_prime",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_multiply_prime",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_multiply_prime",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/76",
+   "entry_point": "is_simple_power",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "infinite loop",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_simple_power",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_simple_power",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/77",
+   "entry_point": "iscube",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "iscube",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "iscube",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/78",
+   "entry_point": "hex_key",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "hex_key",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "hex_key",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/79",
+   "entry_point": "decimal_to_binary",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "decimal_to_binary",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "decimal_to_binary",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/80",
+   "entry_point": "is_happy",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_happy",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_happy",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/81",
+   "entry_point": "numerical_letter_grade",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "numerical_letter_grade",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "numerical_letter_grade",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/82",
+   "entry_point": "prime_length",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "prime_length",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "prime_length",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/83",
+   "entry_point": "starts_one_ends",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "starts_one_ends",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "starts_one_ends",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/84",
+   "entry_point": "solve",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "solve",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "solve",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/85",
+   "entry_point": "add",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "add",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "add",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/86",
+   "entry_point": "anti_shuffle",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "anti_shuffle",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "anti_shuffle",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/87",
+   "entry_point": "get_row",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "get_row",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "get_row",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/88",
+   "entry_point": "sort_array",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sort_array",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sort_array",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/89",
+   "entry_point": "encrypt",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "encrypt",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "encrypt",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/90",
+   "entry_point": "next_smallest",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "next_smallest",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "next_smallest",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/91",
+   "entry_point": "is_bored",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_bored",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_bored",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/92",
+   "entry_point": "any_int",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "any_int",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "any_int",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/93",
+   "entry_point": "encode",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "encode",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "encode",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/94",
+   "entry_point": "skjkasdkd",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "skjkasdkd",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "skjkasdkd",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/95",
+   "entry_point": "check_dict_case",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "check_dict_case",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "check_dict_case",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/96",
+   "entry_point": "count_up_to",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "count_up_to",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "count_up_to",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/97",
+   "entry_point": "multiply",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "multiply",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "multiply",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/98",
+   "entry_point": "count_upper",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "count_upper",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "count_upper",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/99",
+   "entry_point": "closest_integer",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "closest_integer",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "closest_integer",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/100",
+   "entry_point": "make_a_pile",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "make_a_pile",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "make_a_pile",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/101",
+   "entry_point": "words_string",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "words_string",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "words_string",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/102",
+   "entry_point": "choose_num",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "choose_num",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "choose_num",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/103",
+   "entry_point": "rounded_avg",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "rounded_avg",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "rounded_avg",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/104",
+   "entry_point": "unique_digits",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "unique_digits",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "unique_digits",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/105",
+   "entry_point": "by_length",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "by_length",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "by_length",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/106",
+   "entry_point": "f",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "f",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "f",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/107",
+   "entry_point": "even_odd_palindrome",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "even_odd_palindrome",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "even_odd_palindrome",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/108",
+   "entry_point": "count_nums",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "count_nums",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "count_nums",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/109",
+   "entry_point": "move_one_ball",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "move_one_ball",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "move_one_ball",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/110",
+   "entry_point": "exchange",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "exchange",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "exchange",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/111",
+   "entry_point": "histogram",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "histogram",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "histogram",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/112",
+   "entry_point": "reverse_delete",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "reverse_delete",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "reverse_delete",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/113",
+   "entry_point": "odd_count",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "odd_count",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "odd_count",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/114",
+   "entry_point": "minSubArraySum",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "minSubArraySum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "minSubArraySum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/115",
+   "entry_point": "max_fill",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "max_fill",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "max_fill",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/116",
+   "entry_point": "sort_array",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sort_array",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sort_array",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/117",
+   "entry_point": "select_words",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "select_words",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "select_words",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/118",
+   "entry_point": "get_closest_vowel",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "get_closest_vowel",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "get_closest_vowel",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/119",
+   "entry_point": "match_parens",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "match_parens",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "match_parens",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/120",
+   "entry_point": "maximum",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "maximum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "maximum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/121",
+   "entry_point": "solution",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "solution",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "solution",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/122",
+   "entry_point": "add_elements",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "add_elements",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "add_elements",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/123",
+   "entry_point": "get_odd_collatz",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "get_odd_collatz",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "get_odd_collatz",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/124",
+   "entry_point": "valid_date",
+   "bug_type": "variable misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "valid_date",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "valid_date",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/125",
+   "entry_point": "split_words",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "split_words",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "split_words",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/126",
+   "entry_point": "is_sorted",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_sorted",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_sorted",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/127",
+   "entry_point": "intersection",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "intersection",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "intersection",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/128",
+   "entry_point": "prod_signs",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "prod_signs",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "prod_signs",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/129",
+   "entry_point": "minPath",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "minPath",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "minPath",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/130",
+   "entry_point": "tri",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "tri",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "tri",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/131",
+   "entry_point": "digits",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "digits",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "digits",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/132",
+   "entry_point": "is_nested",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_nested",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_nested",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/133",
+   "entry_point": "sum_squares",
+   "bug_type": "operator misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sum_squares",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sum_squares",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/134",
+   "entry_point": "check_if_last_char_is_a_letter",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "check_if_last_char_is_a_letter",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "check_if_last_char_is_a_letter",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/135",
+   "entry_point": "can_arrange",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "can_arrange",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "can_arrange",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/136",
+   "entry_point": "largest_smallest_integers",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "largest_smallest_integers",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "largest_smallest_integers",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/137",
+   "entry_point": "compare_one",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "compare_one",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "compare_one",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/138",
+   "entry_point": "is_equal_to_sum_even",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "is_equal_to_sum_even",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "is_equal_to_sum_even",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/139",
+   "entry_point": "special_factorial",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "special_factorial",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "special_factorial",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/140",
+   "entry_point": "fix_spaces",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "fix_spaces",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "fix_spaces",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/141",
+   "entry_point": "file_name_check",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "file_name_check",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "file_name_check",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/142",
+   "entry_point": "sum_squares",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sum_squares",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sum_squares",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/143",
+   "entry_point": "words_in_sentence",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "words_in_sentence",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "words_in_sentence",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/144",
+   "entry_point": "simplify",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "simplify",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "simplify",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/145",
+   "entry_point": "order_by_points",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "order_by_points",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "order_by_points",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/146",
+   "entry_point": "specialFilter",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "specialFilter",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "specialFilter",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/147",
+   "entry_point": "get_max_triples",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "get_max_triples",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "get_max_triples",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/148",
+   "entry_point": "bf",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "bf",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "bf",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/149",
+   "entry_point": "sorted_list_sum",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "sorted_list_sum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "sorted_list_sum",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/150",
+   "entry_point": "x_or_y",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "x_or_y",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "x_or_y",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/151",
+   "entry_point": "double_the_difference",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "double_the_difference",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "double_the_difference",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/152",
+   "entry_point": "compare",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "compare",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "compare",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/153",
+   "entry_point": "Strongest_Extension",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "Strongest_Extension",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "Strongest_Extension",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/154",
+   "entry_point": "cycpattern_check",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "cycpattern_check",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "cycpattern_check",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/155",
+   "entry_point": "even_odd_count",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "even_odd_count",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "even_odd_count",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/156",
+   "entry_point": "int_to_mini_roman",
+   "bug_type": "missing logic",
+   "failure_symptoms": "infinite loop",
+   "canonical": {
+    "status": "eligible",
+    "entry": "int_to_mini_roman",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "int_to_mini_roman",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/157",
+   "entry_point": "right_angle_triangle",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "right_angle_triangle",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "right_angle_triangle",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/158",
+   "entry_point": "find_max",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "find_max",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "find_max",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/159",
+   "entry_point": "eat",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "eat",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "eat",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/160",
+   "entry_point": "do_algebra",
+   "bug_type": "excess logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "do_algebra",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "do_algebra",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/161",
+   "entry_point": "solve",
+   "bug_type": "missing logic",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "solve",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "solve",
+    "tier": "priority",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/162",
+   "entry_point": "string_to_md5",
+   "bug_type": "function misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "string_to_md5",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "string_to_md5",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  },
+  {
+   "task_id": "Python/163",
+   "entry_point": "generate_integers",
+   "bug_type": "value misuse",
+   "failure_symptoms": "incorrect output",
+   "canonical": {
+    "status": "eligible",
+    "entry": "generate_integers",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "buggy": {
+    "status": "eligible",
+    "entry": "generate_integers",
+    "tier": "unannotated",
+    "annotated": false,
+    "nonstd_imports": [],
+    "n_toplevel_funcs": 1,
+    "entry_families": [
+     "list",
+     "list"
+    ]
+   },
+   "same_entry": true,
+   "selected_is_target": true
+  }
+ ],
+ "status_pairs": {
+  "('eligible', 'eligible')": 164
+ },
+ "families_selected_entry": {
+  "[\"list\"]": 94,
+  "[\"list\", \"list\"]": 27,
+  "[\"str\"]": 14,
+  "[\"int\"]": 11,
+  "[\"list\", \"list\", \"list\"]": 5,
+  "[\"int\", \"int\"]": 4,
+  "[\"str\", \"str\"]": 3,
+  "[\"list\", \"int\"]": 2,
+  "[\"list\", \"str\"]": 2,
+  "[\"list\", \"float\"]": 1,
+  "[\"float\"]": 1
+ },
+ "nonstd": {},
+ "n_selected_is_target": 163,
+ "n_same_entry": 164,
+ "bug_types": {
+  "missing logic": 33,
+  "operator misuse": 25,
+  "excess logic": 31,
+  "variable misuse": 23,
+  "value misuse": 44,
+  "function misuse": 8
+ }
+}

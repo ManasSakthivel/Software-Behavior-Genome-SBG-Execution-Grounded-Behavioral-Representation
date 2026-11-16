@@ -1,0 +1,290 @@
+{
+ "protocol_sha256": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+ "questions": {
+  "question_1": {
+   "reference": {
+    "n": 1,
+    "status": {
+     "eligible": 1
+    },
+    "entries": {
+     "search": 1
+    },
+    "families": {
+     "[\"list\", \"list\"]": 1
+    },
+    "annotated": {
+     "False": 1
+    },
+    "median_loc": 5
+   },
+   "correct": {
+    "n": 768,
+    "status": {
+     "eligible": 768
+    },
+    "entries": {
+     "search": 768
+    },
+    "families": {
+     "[\"list\", \"list\"]": 768
+    },
+    "annotated": {
+     "False": 768
+    },
+    "median_loc": 9
+   },
+   "wrong": {
+    "n": 575,
+    "status": {
+     "eligible": 575
+    },
+    "entries": {
+     "search": 574,
+     "search2": 1
+    },
+    "families": {
+     "[\"list\", \"list\"]": 575
+    },
+    "annotated": {
+     "False": 575
+    },
+    "median_loc": 10
+   },
+   "reference_src_head": "def search(x, seq):\n    for i in range(len(seq)):\n        if x <= seq[i]:\n            return i\n    return len(seq)",
+   "n_ans_files": 22
+  },
+  "question_2": {
+   "reference": {
+    "n": 1,
+    "status": {
+     "eligible": 1
+    },
+    "entries": {
+     "contains_unique_day": 1
+    },
+    "families": {
+     "[\"list\", \"list\"]": 1
+    },
+    "annotated": {
+     "False": 1
+    },
+    "median_loc": 19
+   },
+   "correct": {
+    "n": 291,
+    "status": {
+     "eligible": 291
+    },
+    "entries": {
+     "contains_unique_day": 291
+    },
+    "families": {
+     "[\"list\", \"list\"]": 291
+    },
+    "annotated": {
+     "False": 291
+    },
+    "median_loc": 29
+   },
+   "wrong": {
+    "n": 435,
+    "status": {
+     "eligible": 435
+    },
+    "entries": {
+     "contains_unique_day": 425,
+     "unique_day": 5,
+     "statement1": 5
+    },
+    "families": {
+     "[\"list\", \"list\"]": 435
+    },
+    "annotated": {
+     "False": 435
+    },
+    "median_loc": 27
+   },
+   "reference_src_head": "def unique_day(day, possible_birthdays):\n    count = 0\n    for birthday in possible_birthdays:\n        if birthday[1] == day:\n            count += 1\n    return count == 1\n\ndef unique_month(month, possible_birthdays):\n    count = 0\n    for birthday in possible_birthdays:\n        if birthday[0] == month:\n            count += 1\n    return count == 1\n\ndef contains_unique_day(month, possible_birthdays)",
+   "n_ans_files": 34
+  },
+  "question_3": {
+   "reference": {
+    "n": 1,
+    "status": {
+     "eligible": 1
+    },
+    "entries": {
+     "remove_extras": 1
+    },
+    "families": {
+     "[\"list\"]": 1
+    },
+    "annotated": {
+     "False": 1
+    },
+    "median_loc": 6
+   },
+   "correct": {
+    "n": 546,
+    "status": {
+     "eligible": 546
+    },
+    "entries": {
+     "remove_extras": 545,
+     "is_same": 1
+    },
+    "families": {
+     "[\"list\"]": 545,
+     "[\"list\", \"list\"]": 1
+    },
+    "annotated": {
+     "False": 546
+    },
+    "median_loc": 7
+   },
+   "wrong": {
+    "n": 308,
+    "status": {
+     "eligible": 308
+    },
+    "entries": {
+     "remove_extras": 307,
+     "is_same": 1
+    },
+    "families": {
+     "[\"list\"]": 307,
+     "[\"list\", \"list\"]": 1
+    },
+    "annotated": {
+     "False": 308
+    },
+    "median_loc": 7
+   },
+   "reference_src_head": "def remove_extras(lst):\n    newlist = []\n    for i in lst:\n        if i not in newlist:\n            newlist.append(i)\n    return newlist\n",
+   "n_ans_files": 12
+  },
+  "question_4": {
+   "reference": {
+    "n": 1,
+    "status": {
+     "eligible": 1
+    },
+    "entries": {
+     "sort_age": 1
+    },
+    "families": {
+     "[\"list\"]": 1
+    },
+    "annotated": {
+     "False": 1
+    },
+    "median_loc": 8
+   },
+   "correct": {
+    "n": 419,
+    "status": {
+     "eligible": 419
+    },
+    "entries": {
+     "sort_age": 402,
+     "merge": 4,
+     "sort": 4,
+     "age_list": 2,
+     "max_age": 2
+    },
+    "families": {
+     "[\"list\"]": 412,
+     "[\"list\", \"list\"]": 7
+    },
+    "annotated": {
+     "False": 419
+    },
+    "median_loc": 11
+   },
+   "wrong": {
+    "n": 357,
+    "status": {
+     "eligible": 357
+    },
+    "entries": {
+     "sort_age": 351,
+     "merge": 5,
+     "sort": 1
+    },
+    "families": {
+     "[\"list\"]": 352,
+     "[\"list\", \"list\"]": 5
+    },
+    "annotated": {
+     "False": 357
+    },
+    "median_loc": 10
+   },
+   "reference_src_head": "def sort_age(lst):\n    for i in range(0, len(lst)-1):\n        for j in range(i+1, len(lst)):\n            if lst[i][1] < lst[j][1]:\n                tmp = lst[i]\n                lst[i] = lst[j]\n                lst[j] = tmp\n    return lst",
+   "n_ans_files": 12
+  },
+  "question_5": {
+   "reference": {
+    "n": 1,
+    "status": {
+     "eligible": 1
+    },
+    "entries": {
+     "top_k": 1
+    },
+    "families": {
+     "[\"list\", \"list\"]": 1
+    },
+    "annotated": {
+     "False": 1
+    },
+    "median_loc": 6
+   },
+   "correct": {
+    "n": 418,
+    "status": {
+     "eligible": 418
+    },
+    "entries": {
+     "top_k": 376,
+     "sort": 8,
+     "sort_descending": 6,
+     "merge": 4,
+     "sort_list": 4
+    },
+    "families": {
+     "[\"list\", \"list\"]": 380,
+     "[\"list\"]": 37,
+     "[\"list\", \"list\", \"list\"]": 1
+    },
+    "annotated": {
+     "False": 418
+    },
+    "median_loc": 11
+   },
+   "wrong": {
+    "n": 108,
+    "status": {
+     "eligible": 108
+    },
+    "entries": {
+     "top_k": 105,
+     "sort_age": 1,
+     "sort_descending": 1,
+     "sort": 1
+    },
+    "families": {
+     "[\"list\", \"list\"]": 105,
+     "[\"list\"]": 3
+    },
+    "annotated": {
+     "False": 108
+    },
+    "median_loc": 10
+   },
+   "reference_src_head": "def top_k(lst, k):\n    ls = []\n    for i in range(k):\n        ls.append(max(lst))\n        lst.remove(max(lst))\n    return ls",
+   "n_ans_files": 10
+  }
+ }
+}
