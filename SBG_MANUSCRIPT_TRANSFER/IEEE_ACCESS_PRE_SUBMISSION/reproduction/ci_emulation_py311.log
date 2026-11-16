@@ -1,0 +1,32 @@
+== python: Python 3.11.15
+step benchmark/scripts/observability_audit.py rc=0
+user 14.95
+sys 0.21
+step experiments/final/output_oracle_leak_audit.py rc=0
+user 0.20
+sys 0.01
+step benchmark/scripts/build_manifest.py rc=0
+user 0.03
+sys 0.00
+step experiments/final/artifact_provenance.py rc=0
+user 0.01
+sys 0.00
+== git diff --exit-code equivalent (CI tracked-artifact drift check)
+UNCHANGED benchmark/benchmark_manifest.json
+UNCHANGED artifacts/final/BENCHMARK_VALIDITY_AUDIT.json
+UNCHANGED artifacts/final/OUTPUT_ORACLE_LEAK_AUDIT.json
+== all files changed vs pristine archive:
+== consistency_check
+[PASS] C10 gate verdict is recomputed from artifacts and quoted exactly
+
+10/10 checks passed
+rc=0
+== integrity tests
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+25 passed, 6 warnings in 3.04s
+== quickstart
+
+Distances near 0.0 = similar execution behavior.
+Distances near 1.0 = different execution behavior.
+The representation doesn't catch all mutations (see README for full results).

@@ -1,0 +1,384 @@
+{
+ "v10_test": {
+  "info": {
+   "n_primary": 638,
+   "ch_identical_AST_to_own_EQ_partner": 0,
+   "ch_identical_AST_to_any_EQ_variant_same_program": 0,
+   "rows_in_dup_AST_groups(label,program)": 210,
+   "distinct_(program,label,AST)": 511,
+   "ch_conflict_by_sc": {},
+   "ch_conflict_by_sp": {},
+   "conflict_pairs_v5_scores": [],
+   "conflict_by_program": {}
+  },
+  "variants": [
+   {
+    "tag": "A_primary_as_reported",
+    "n": 638,
+    "n_programs": 19,
+    "n_changed": 319,
+    "sbg_v5": 0.8968,
+    "sbg_v5_ci": [
+     0.862918,
+     0.921553
+    ],
+    "sbg_state": 0.9171,
+    "sbg_state_ci": [
+     0.893309,
+     0.937922
+    ],
+    "edit": 0.616,
+    "edit_ci": [
+     0.606281,
+     0.627539
+    ],
+    "coverage_size": 0.779,
+    "coverage_size_ci": [
+     0.720997,
+     0.838774
+    ],
+    "M_EX": 0.7908,
+    "M_EX_ci": [
+     0.717595,
+     0.850563
+    ],
+    "M_EX+V5": 0.7971,
+    "M_EX+V5_ci": [
+     0.668922,
+     0.89815
+    ],
+    "M_E+V5": 0.8705,
+    "M_E+V5_ci": [
+     0.836119,
+     0.898227
+    ]
+   },
+   {
+    "tag": "B_drop_label_conflicting_sets(CH==some EQ AST)",
+    "n": 638,
+    "n_programs": 19,
+    "n_changed": 319,
+    "sbg_v5": 0.8968,
+    "sbg_v5_ci": [
+     0.862918,
+     0.921553
+    ],
+    "sbg_state": 0.9171,
+    "sbg_state_ci": [
+     0.893309,
+     0.937922
+    ],
+    "edit": 0.616,
+    "edit_ci": [
+     0.606281,
+     0.627539
+    ],
+    "coverage_size": 0.779,
+    "coverage_size_ci": [
+     0.720997,
+     0.838774
+    ],
+    "M_EX": 0.7908,
+    "M_EX_ci": [
+     0.717595,
+     0.850563
+    ],
+    "M_EX+V5": 0.7971,
+    "M_EX+V5_ci": [
+     0.668922,
+     0.89815
+    ],
+    "M_E+V5": 0.8705,
+    "M_E+V5_ci": [
+     0.836119,
+     0.898227
+    ]
+   },
+   {
+    "tag": "C_dedup_rows_(program,label,AST)",
+    "n": 511,
+    "n_programs": 19,
+    "n_changed": 291,
+    "sbg_v5": 0.8843,
+    "sbg_v5_ci": [
+     0.846266,
+     0.911771
+    ],
+    "sbg_state": 0.9124,
+    "sbg_state_ci": [
+     0.883798,
+     0.93411
+    ],
+    "edit": 0.5798,
+    "edit_ci": [
+     0.559257,
+     0.599422
+    ],
+    "coverage_size": 0.7564,
+    "coverage_size_ci": [
+     0.697508,
+     0.817469
+    ],
+    "M_EX": 0.7612,
+    "M_EX_ci": [
+     0.688375,
+     0.823752
+    ],
+    "M_EX+V5": 0.7861,
+    "M_EX+V5_ci": [
+     0.658285,
+     0.886088
+    ],
+    "M_E+V5": 0.8548,
+    "M_E+V5_ci": [
+     0.815893,
+     0.886119
+    ]
+   },
+   {
+    "tag": "D_B_then_dedup",
+    "n": 511,
+    "n_programs": 19,
+    "n_changed": 291,
+    "sbg_v5": 0.8843,
+    "sbg_v5_ci": [
+     0.846266,
+     0.911771
+    ],
+    "sbg_state": 0.9124,
+    "sbg_state_ci": [
+     0.883798,
+     0.93411
+    ],
+    "edit": 0.5798,
+    "edit_ci": [
+     0.559257,
+     0.599422
+    ],
+    "coverage_size": 0.7564,
+    "coverage_size_ci": [
+     0.697508,
+     0.817469
+    ],
+    "M_EX": 0.7612,
+    "M_EX_ci": [
+     0.688375,
+     0.823752
+    ],
+    "M_EX+V5": 0.7861,
+    "M_EX+V5_ci": [
+     0.658285,
+     0.886088
+    ],
+    "M_E+V5": 0.8548,
+    "M_E+V5_ci": [
+     0.815893,
+     0.886119
+    ]
+   }
+  ]
+ },
+ "v9c_val": {
+  "info": {
+   "n_primary": 432,
+   "ch_identical_AST_to_own_EQ_partner": 18,
+   "ch_identical_AST_to_any_EQ_variant_same_program": 18,
+   "rows_in_dup_AST_groups(label,program)": 157,
+   "distinct_(program,label,AST)": 337,
+   "ch_conflict_by_sc": {
+    "SC-1": 15,
+    "SC-8": 3
+   },
+   "ch_conflict_by_sp": {
+    "SP-1": 5,
+    "SP-5": 10,
+    "SP-3": 2,
+    "SP-8": 1
+   },
+   "conflict_pairs_v5_scores": [
+    0.0,
+    0.0107,
+    0.0118,
+    0.0251,
+    0.0265,
+    0.0327,
+    0.0513,
+    0.1167
+   ],
+   "conflict_by_program": {
+    "graph_word_ladder": 3,
+    "math_perfect_numbers": 3,
+    "math_largest_rect_hist": 3,
+    "math_ways_to_change": 3,
+    "sort_patience_sort": 3,
+    "str_interleave_check": 3
+   }
+  },
+  "variants": [
+   {
+    "tag": "A_primary_as_reported",
+    "n": 432,
+    "n_programs": 11,
+    "n_changed": 216,
+    "sbg_v5": 0.7514,
+    "sbg_v5_ci": [
+     0.706258,
+     0.79356
+    ],
+    "sbg_state": 0.7624,
+    "sbg_state_ci": [
+     0.697686,
+     0.807897
+    ],
+    "edit": 0.6111,
+    "edit_ci": [
+     0.602435,
+     0.624392
+    ],
+    "coverage_size": 0.6781,
+    "coverage_size_ci": [
+     0.638115,
+     0.719352
+    ],
+    "M_EX": 0.6903,
+    "M_EX_ci": [
+     0.635588,
+     0.741476
+    ],
+    "M_ESX": 0.7113,
+    "M_ESX_ci": [
+     0.640116,
+     0.771338
+    ],
+    "M_ES": 0.7233,
+    "M_ES_ci": [
+     0.68948,
+     0.76017
+    ]
+   },
+   {
+    "tag": "B_drop_label_conflicting_sets(CH==some EQ AST)",
+    "n": 396,
+    "n_programs": 11,
+    "n_changed": 198,
+    "sbg_v5": 0.7684,
+    "sbg_v5_ci": [
+     0.726167,
+     0.805903
+    ],
+    "sbg_state": 0.781,
+    "sbg_state_ci": [
+     0.717493,
+     0.82536
+    ],
+    "edit": 0.6206,
+    "edit_ci": [
+     0.611047,
+     0.636284
+    ],
+    "coverage_size": 0.6919,
+    "coverage_size_ci": [
+     0.654102,
+     0.729804
+    ],
+    "M_EX": 0.7058,
+    "M_EX_ci": [
+     0.646671,
+     0.758048
+    ],
+    "M_ESX": 0.7266,
+    "M_ESX_ci": [
+     0.649365,
+     0.787534
+    ],
+    "M_ES": 0.739,
+    "M_ES_ci": [
+     0.707324,
+     0.7722
+    ]
+   },
+   {
+    "tag": "C_dedup_rows_(program,label,AST)",
+    "n": 337,
+    "n_programs": 11,
+    "n_changed": 203,
+    "sbg_v5": 0.6945,
+    "sbg_v5_ci": [
+     0.642424,
+     0.744399
+    ],
+    "sbg_state": 0.7367,
+    "sbg_state_ci": [
+     0.673908,
+     0.78425
+    ],
+    "edit": 0.5462,
+    "edit_ci": [
+     0.521412,
+     0.573779
+    ],
+    "coverage_size": 0.6131,
+    "coverage_size_ci": [
+     0.567772,
+     0.655465
+    ],
+    "M_EX": 0.6243,
+    "M_EX_ci": [
+     0.568073,
+     0.677516
+    ],
+    "M_ESX": 0.6798,
+    "M_ESX_ci": [
+     0.624139,
+     0.733453
+    ],
+    "M_ES": 0.664,
+    "M_ES_ci": [
+     0.622866,
+     0.707462
+    ]
+   },
+   {
+    "tag": "D_B_then_dedup",
+    "n": 314,
+    "n_programs": 11,
+    "n_changed": 190,
+    "sbg_v5": 0.7048,
+    "sbg_v5_ci": [
+     0.65473,
+     0.753589
+    ],
+    "sbg_state": 0.7487,
+    "sbg_state_ci": [
+     0.688197,
+     0.794957
+    ],
+    "edit": 0.5529,
+    "edit_ci": [
+     0.527202,
+     0.58274
+    ],
+    "coverage_size": 0.6224,
+    "coverage_size_ci": [
+     0.58117,
+     0.661352
+    ],
+    "M_EX": 0.6356,
+    "M_EX_ci": [
+     0.581569,
+     0.689453
+    ],
+    "M_ESX": 0.693,
+    "M_ESX_ci": [
+     0.637933,
+     0.744069
+    ],
+    "M_ES": 0.6744,
+    "M_ES_ci": [
+     0.636111,
+     0.717402
+    ]
+   }
+  ]
+ }
+}

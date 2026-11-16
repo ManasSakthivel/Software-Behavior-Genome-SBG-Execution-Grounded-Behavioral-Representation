@@ -1,0 +1,42 @@
+train 1610 dev 464 dropped 40 0
+   fitted lr edit
+   fitted lr exception_fraction+call_count+coverage_size
+   fitted lr edit+exception_fraction+call_count+coverage_size
+   fitted tree forest|DT_d2|EXx
+   fitted tree forest|DT_d3|EXx
+   fitted tree forest|DT_d4|EXx
+   fitted tree forest|RF_d3|EXx
+   fitted tree forest|RF_d4|EXx
+   fitted tree forest|RF_d6|EXx
+   fitted tree forest|DT_d2|Xx
+   fitted tree forest|DT_d3|Xx
+   fitted tree forest|DT_d4|Xx
+   fitted tree forest|RF_d3|Xx
+   fitted tree forest|RF_d4|Xx
+   fitted tree forest|RF_d6|Xx
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean
+   fitted lr exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean
+   fitted lr edit+exception_fraction+call_count+coverage_size+sbg_v3
+   fitted lr edit+exception_fraction+call_count+coverage_size+sbg_state
+   fitted lr edit+exception_fraction+call_count+coverage_size+sbg_v5
+   fitted lr edit+exception_fraction+call_count+coverage_size+sbg_temporal
+   fitted lr edit+exception_fraction+call_count+coverage_size+traceseq|cre|full|kgram4|max
+   fitted lr edit+exception_fraction+call_count+coverage_size+valuespectra|entry_exit|full|raw|max
+   fitted lr edit+exception_fraction+call_count+coverage_size+pathspectra|shape|covset|max
+   fitted lr edit+exception_fraction+call_count+coverage_size+output_indep|frac40
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+sbg_v5
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+sbg_v3
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+sbg_state
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+sbg_temporal
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+traceseq|cre|full|kgram4|max
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+valuespectra|entry_exit|full|raw|max
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+pathspectra|shape|covset|max
+   fitted lr edit+exception_fraction+call_count+coverage_size+n_functions+n_events+trace_len_mean+output_indep|frac40
+Traceback (most recent call last):
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/experiments/competitor_baselines/run/run_all.py", line 422, in <module>
+    stage_fit()
+    ~~~~~~~~~^^
+  File "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/experiments/competitor_baselines/run/run_all.py", line 311, in stage_fit
+    assert thr[k] == eval_lib.youden_threshold(C.col(tr, k), ytr), k
+           ~~~^^^
+KeyError: 'sbg_v5'

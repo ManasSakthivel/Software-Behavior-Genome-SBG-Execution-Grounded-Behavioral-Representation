@@ -1,0 +1,39 @@
+<class 'dict'> ['name', 'n_rows', 'n_primary', 'n_programs', 'rows']
+{'pair_id': 'test__ds_min_heap_array__sp1_s0', 'evaluated': True, 'base_id': 'ds_min_heap_array', 'label': 0, 'group': 'test__ds_min_heap_array__sp1_s0', 'transformation_type': 'SP-1', 'sc_type': None, 'sp_type': None, 'base_path': 'benchmark/corpus/fresh_programs/ds_min_heap_array.py', 'variant_path': 'benchmark/datasets/v10_independent/variants/test/ds_min_heap_array__sp1_s0.py', 'edit': 6.0, 'scores': '...', 'in_primary_population': True}
+644 638
+SC-6 CH 23 zero V5 17 programs 18
+Counter({'sort_gnome_sort': 4, 'graph_topological_kahn': 2, 'math_knapsack_01': 2, 'ds_min_heap_array': 1, 'ds_ranked_set': 1, 'ds_union_find': 1, 'graph_cycle_detection_dfs': 1, 'graph_network_delay': 1, 'math_coin_change': 1, 'math_fib_matrix': 1, 'sort_bitonic_sort': 1, 'sort_gravity_bead': 1, 'sort_pancake': 1, 'sort_radix_sort_lsd': 1, 'sort_stooge_sort': 1, 'sort_tree_sort': 1, 'str_decode_run_length': 1, 'str_group_anagrams': 1})
+Counter({'sort_gnome_sort': 4, 'ds_ranked_set': 1, 'ds_union_find': 1, 'graph_cycle_detection_dfs': 1, 'graph_network_delay': 1, 'math_coin_change': 1, 'math_knapsack_01': 1, 'sort_bitonic_sort': 1, 'sort_gravity_bead': 1, 'sort_pancake': 1, 'sort_stooge_sort': 1, 'sort_tree_sort': 1, 'str_decode_run_length': 1, 'str_group_anagrams': 1})
+all CH zero 18 of 319
+[14, 26, 28, 30, 30, 30, 32, 32, 34, 36, 36, 36, 36, 38, 38, 38, 38, 38, 48]
+wilson (0.5352999499700668, 0.8745138402805501)
+CP (0.5159480295975618, 0.8977138660846415)
+drop ds_min_heap_array 17 22
+drop ds_ranked_set 16 22
+drop ds_union_find 16 22
+drop graph_cycle_detection_dfs 16 22
+drop graph_network_delay 16 22
+drop graph_topological_kahn 17 21
+drop math_coin_change 16 22
+drop math_fib_matrix 17 22
+drop math_knapsack_01 16 21
+drop sort_bitonic_sort 16 22
+drop sort_gnome_sort 13 19
+drop sort_gravity_bead 16 22
+drop sort_pancake 16 22
+drop sort_radix_sort_lsd 17 22
+drop sort_stooge_sort 16 22
+drop sort_tree_sort 16 22
+drop str_decode_run_length 16 22
+drop str_group_anagrams 16 22
+292 of 294 non-tie sign p 2.7249631643660955e-84
+V5 AUROC DE vs pair-iid 1.32 ESS pairs 483 DE vs set 1.62
+H4 delta DE vs pair-iid 4.97 ESS pairs 128 DE vs set 6.58
+M_EX DE vs pair-iid 3.49 ESS pairs 183 DE vs set 4.6
+state-V5 DE vs pair-iid 2.29 ESS pairs 279 DE vs set 2.69
+BIP v7 all (0.0428, -2.11, 0.035)
+BIP v8 all (0.049, -1.72, 0.086)
+BIP v8 exSP2 (0.0493, -0.06, 0.951)
+QB v7 all (0.0558, -2.01, 0.044)
+QB v8 all (0.0523, -2.21, 0.027)
+QB v8 exSP2 (0.0467, -1.19, 0.234)
