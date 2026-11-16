@@ -1,0 +1,81 @@
+{
+ "n_pairs": 3078,
+ "n_SP": 2449,
+ "n_CH": 629,
+ "pooled": {
+  "n": 3078,
+  "n_progs": 531,
+  "tok_bag": {
+   "AUROC": 0.0529,
+   "CI95_cluster": [
+    0.0465,
+    0.0594
+   ]
+  },
+  "ast_bag": {
+   "AUROC": 0.6514,
+   "CI95_cluster": [
+    0.6381,
+    0.6657
+   ]
+  },
+  "edit": {
+   "AUROC": 0.1501,
+   "CI95_cluster": [
+    0.1397,
+    0.1612
+   ]
+  }
+ },
+ "e_le_2": {
+  "n": 1364,
+  "n_progs": 486,
+  "tok_bag": {
+   "AUROC": 0.1764,
+   "CI95_cluster": [
+    0.154,
+    0.2018
+   ]
+  },
+  "ast_bag": {
+   "AUROC": 0.5552,
+   "CI95_cluster": [
+    0.5238,
+    0.5862
+   ]
+  },
+  "edit": {
+   "AUROC": 0.5,
+   "CI95_cluster": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "e_le_2_composition": {
+  "SP": {
+   "transformation_dead_code_insert": 243,
+   "transformation_operand_swap": 257,
+   "transformation_rename_variable_cb": 77,
+   "transformation_rename_variable_rn": 78,
+   "transformation_rename_variable_naive": 77,
+   "transformation_for_while_loop": 3
+  },
+  "CH": {
+   "transformation_add_sub_variable": 116,
+   "transformation_equalto_exclamation_variable": 125,
+   "transformation_mul_div_variable": 40,
+   "transformation_exclamation_equalto_variable": 34,
+   "transformation_sub_add_variable": 76,
+   "transformation_or_and_variable": 12,
+   "transformation_is_isnot_variable": 5,
+   "transformation_div_mul_variable": 17,
+   "transformation_greater_lesser_variable": 45,
+   "transformation_true_false_variable": 41,
+   "transformation_lesser_greater_variable": 48,
+   "transformation_and_or_variable": 26,
+   "transformation_false_true_variable": 43,
+   "transformation_isnot_is_variable": 1
+  }
+ }
+}

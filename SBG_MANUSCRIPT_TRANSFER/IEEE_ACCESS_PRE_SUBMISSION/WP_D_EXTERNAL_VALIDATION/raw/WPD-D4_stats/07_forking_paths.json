@@ -1,0 +1,529 @@
+{
+ "input_manifest": {
+  "EXTERNAL_NEGATIVE_AUDIT": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_NEGATIVE_AUDIT.json",
+   "sha256": "61c9244cab2b999f034a6d87236c3d71eb71a461f943f470357c9cc000017303"
+  },
+  "EXTERNAL_RESCORE_V8": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "sha256": "708a22a55b2c6fb76704af8115b40b65f4016ead6c08e0733911f4522e5839a6"
+  },
+  "bugsinpy_purge_rescore": {
+   "path": "SBG/artifacts/paper_evidence/raw/bugsinpy_purge_rescore.json",
+   "sha256": "f9ca922c07833f5bbd0201da2e9bfeab9e9c09430422ec0e7fdfbb5ba69e7db3"
+  },
+  "bugsinpy_v6": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v6.jsonl",
+   "sha256": "ef3d205ba52d7c35fa952239fa0f7328883be028b17f43b0f8c96ebe10105482"
+  },
+  "bugsinpy_v7": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+   "sha256": "378cb3429d317e534655799cb8eaf4056fbede4d908757d259b24d801cdd6548"
+  },
+  "external_rescore_v8_pairs": {
+   "path": "SBG/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+   "sha256": "e09c35ed393d1a726058989534fd11090744749d3d9d7f2cd407b767c66b9ebe"
+  },
+  "quixbugs_canonical_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+   "sha256": "69f8efae6ee0d0a4d7e18119196a35d13c2e0fce32918de1e4e90b219b0eaf88"
+  },
+  "quixbugs_declared_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_declared_output_free_v7.jsonl",
+   "sha256": "6cbc4a3d61068be0bd1af511879d357c159e051e98290969d15bee095ccdb32e"
+  }
+ },
+ "notes": [
+  "The prereg inferential claim set is: sbg_v5 AUROC with cluster bootstrap on ALL and EVALUABLE(=VALID) sets, within-cluster permutation H0: AUROC=0.5 (one-sided, testing > 0.5), Holm over 5 comparators.",
+  "The headline numbers 0.497 (BugsInPy) and 0.444 (QuixBugs) are POST-HOC: they require the v8 harness rescore (EXTERNAL_RESCORE_V8, produced after the v7 pre-registered numbers 0.410/0.388 were seen) AND exclusion of all SP-2 negatives.",
+  "Point-estimate shifts (D4 recomputation): excluding SP-2 raises AUROC by +0.062 (BP v7), +0.081 (BP v8), +0.063 (QC v7), +0.060 (QC v8); the v7->v8 harness change moves the full-set AUROC by +0.006 (BP) / -0.004 (QC) and the ex-SP-2 AUROC by +0.026 (BP) / -0.006 (QC)."
+ ],
+ "script": "scripts/d4_07_forking_paths.py",
+ "summary": {
+  "BugsInPy": {
+   "all_variants": {
+    "k": 11,
+    "max": 0.5115,
+    "min": 0.3922,
+    "n_ge_0.5": 2,
+    "n_lt_0.5": 9
+   },
+   "n_post_hoc": 8,
+   "n_pre_registered": 3,
+   "n_repo_reported_ci_including_0.5": 5,
+   "n_variants_total": 11,
+   "n_with_ci": 8,
+   "post_hoc": {
+    "k": 8,
+    "max": 0.5115,
+    "min": 0.3922,
+    "n_ge_0.5": 2,
+    "n_lt_0.5": 6
+   },
+   "pre_registered": {
+    "k": 3,
+    "max": 0.434,
+    "min": 0.4057,
+    "n_ge_0.5": 0,
+    "n_lt_0.5": 3
+   }
+  },
+  "QuixBugs canonical": {
+   "all_variants": {
+    "k": 7,
+    "max": 0.4507,
+    "min": 0.372,
+    "n_ge_0.5": 0,
+    "n_lt_0.5": 7
+   },
+   "n_post_hoc": 6,
+   "n_pre_registered": 1,
+   "n_repo_reported_ci_including_0.5": 4,
+   "n_variants_total": 7,
+   "n_with_ci": 6,
+   "post_hoc": {
+    "k": 6,
+    "max": 0.4507,
+    "min": 0.372,
+    "n_ge_0.5": 0,
+    "n_lt_0.5": 6
+   },
+   "pre_registered": {
+    "k": 1,
+    "max": 0.3877,
+    "min": 0.3877,
+    "n_ge_0.5": 0,
+    "n_lt_0.5": 1
+   }
+  },
+  "QuixBugs declared": {
+   "all_variants": {
+    "k": 3,
+    "max": 0.7022,
+    "min": 0.5955,
+    "n_ge_0.5": 3,
+    "n_lt_0.5": 0
+   },
+   "n_post_hoc": 1,
+   "n_pre_registered": 2,
+   "n_repo_reported_ci_including_0.5": 0,
+   "n_variants_total": 3,
+   "n_with_ci": 2,
+   "post_hoc": {
+    "k": 1,
+    "max": 0.6684,
+    "min": 0.6684,
+    "n_ge_0.5": 1,
+    "n_lt_0.5": 0
+   },
+   "pre_registered": {
+    "k": 2,
+    "max": 0.7022,
+    "min": 0.5955,
+    "n_ge_0.5": 2,
+    "n_lt_0.5": 0
+   }
+  }
+ },
+ "variants": [
+  {
+   "auroc": 0.4057,
+   "corpus": "BugsInPy",
+   "date": "2026-09-28",
+   "description": "v6 protocol, VALID=EVALUABLE (140)",
+   "how": "recomputed",
+   "id": "BP-01",
+   "n_pairs": 140,
+   "note": "",
+   "repo_reported_ci": [
+    0.3223,
+    0.4901
+   ],
+   "source": "artifacts/final/BUGSINPY_output_free_v6.json",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "auroc": 0.434,
+   "corpus": "BugsInPy",
+   "date": "2026-09-28",
+   "description": "v7 ALL 200, unevaluated=0",
+   "how": "recomputed",
+   "id": "BP-02",
+   "n_pairs": 200,
+   "note": "",
+   "repo_reported_ci": [
+    0.3741,
+    0.4899
+   ],
+   "source": "artifacts/final/BUGSINPY_output_free_v7.json",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "auroc": 0.4099,
+   "corpus": "BugsInPy",
+   "date": "2026-09-28",
+   "description": "v7 EVALUABLE=VALID 147 (headline/primary)",
+   "how": "recomputed",
+   "id": "BP-03",
+   "n_pairs": 147,
+   "note": "",
+   "repo_reported_ci": [
+    0.3262,
+    0.4939
+   ],
+   "source": "artifacts/final/BUGSINPY_output_free_v7.json",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "auroc": 0.4715,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "v7 excluding SP-2 negatives",
+   "how": "recomputed",
+   "id": "BP-04",
+   "n_pairs": 107,
+   "note": "",
+   "repo_reported_ci": [
+    0.3809,
+    0.5617
+   ],
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.3922,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "v7 within-unit stratified",
+   "how": "recomputed (pooled within-BUG stratified AUROC; n=#cross-label pairs)",
+   "id": "BP-05",
+   "n_pairs": 116,
+   "note": "repo value 0.4018 NOT reproduced exactly: D4 pooled-pair weighting gives 0.3922 (within-bug) / 0.3618 (within-unit-family); weighting scheme of the repo value is undocumented",
+   "repo_reported_ci": null,
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json (0.4018)",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.5104,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "v7, units not importing `re`, excl. SP-2",
+   "how": "artifact",
+   "id": "BP-06",
+   "n_pairs": 60,
+   "note": "",
+   "repo_reported_ci": [
+    0.4111,
+    0.6188
+   ],
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.4294,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "re.purge rescore (purged scores), all 147",
+   "how": "recomputed",
+   "id": "BP-07",
+   "n_pairs": 147,
+   "note": "",
+   "repo_reported_ci": [
+    0.3379,
+    0.5266
+   ],
+   "source": "paper_evidence/raw/bugsinpy_purge_rescore.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.5115,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "re.purge rescore, excl. SP-2",
+   "how": "recomputed",
+   "id": "BP-08",
+   "n_pairs": 107,
+   "note": "not reported in repo; D4 computed from purged scores",
+   "repo_reported_ci": null,
+   "source": "paper_evidence/raw/bugsinpy_purge_rescore.json (not separately reported)",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.4159,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "v8 corrected-harness rescore, all 147",
+   "how": "recomputed",
+   "id": "BP-09",
+   "n_pairs": 147,
+   "note": "",
+   "repo_reported_ci": [
+    0.3223,
+    0.5144
+   ],
+   "source": "paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.497,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "v8 rescore, excl. SP-2 (107)  <- the '0.497'",
+   "how": "recomputed",
+   "id": "BP-10",
+   "n_pairs": 107,
+   "note": "",
+   "repo_reported_ci": [
+    0.4023,
+    0.5956
+   ],
+   "source": "paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.4453,
+   "corpus": "BugsInPy",
+   "date": "2026-10-29",
+   "description": "v8 rescore, excl. 7 invalid SP-2 negatives (140)",
+   "how": "recomputed",
+   "id": "BP-11",
+   "n_pairs": 140,
+   "note": "point estimate only in repo",
+   "repo_reported_ci": null,
+   "source": "paper_evidence/EXTERNAL_NEGATIVE_AUDIT.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.3877,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-10-26",
+   "description": "v7 all 152 (headline)",
+   "how": "recomputed",
+   "id": "QC-01",
+   "n_pairs": 152,
+   "note": "CI from DIAGNOSTIC_EXTERNAL; QUIXBUGS_output_free_v7.json itself has no CI",
+   "repo_reported_ci": [
+    0.2847,
+    0.5034
+   ],
+   "source": "artifacts/final/QUIXBUGS_output_free_v7.json",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "auroc": 0.4507,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-10-29",
+   "description": "v7 excluding SP-2 (112)",
+   "how": "recomputed",
+   "id": "QC-02",
+   "n_pairs": 112,
+   "note": "",
+   "repo_reported_ci": [
+    0.3601,
+    0.5473
+   ],
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.3884,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-10-29",
+   "description": "v7 within-program stratified",
+   "how": "recomputed (exact_stratified; n=#cross-label pairs)",
+   "id": "QC-03",
+   "n_pairs": 112,
+   "note": "",
+   "repo_reported_ci": null,
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json (0.3884)",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.3842,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-10-29",
+   "description": "v8 rescore, all 151",
+   "how": "recomputed",
+   "id": "QC-04",
+   "n_pairs": 151,
+   "note": "",
+   "repo_reported_ci": [
+    0.2847,
+    0.4899
+   ],
+   "source": "paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.4444,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-10-29",
+   "description": "v8 rescore, excl. SP-2 (111)  <- the '0.444'",
+   "how": "recomputed",
+   "id": "QC-05",
+   "n_pairs": 111,
+   "note": "",
+   "repo_reported_ci": [
+    0.3553,
+    0.5385
+   ],
+   "source": "paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.372,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-10-29",
+   "description": "v7 committed scores on the v8 151-pair set",
+   "how": "artifact",
+   "id": "QC-06",
+   "n_pairs": 151,
+   "note": "",
+   "repo_reported_ci": [
+    0.2743,
+    0.4799
+   ],
+   "source": "paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.4385,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-10-29",
+   "description": "canonical regime restricted to the 28 programs evaluable under declared inputs",
+   "how": "recomputed",
+   "id": "QC-07",
+   "n_pairs": 105,
+   "note": "",
+   "repo_reported_ci": [
+    0.3265,
+    0.5673
+   ],
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json (0.4385)",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": 0.7022,
+   "corpus": "QuixBugs declared",
+   "date": "2026-10-29",
+   "description": "declared regime EVALUABLE (99) (pre-registered secondary regime)",
+   "how": "recomputed",
+   "id": "QD-01",
+   "n_pairs": 99,
+   "note": "regime is prereg; the result was first reported only in an exploratory diagnostic",
+   "repo_reported_ci": [
+    0.5836,
+    0.8166
+   ],
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json (no dedicated artifact in artifacts/final)",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "auroc": 0.5955,
+   "corpus": "QuixBugs declared",
+   "date": "-",
+   "description": "declared regime ALL 152, unevaluated=0",
+   "how": "recomputed",
+   "id": "QD-02",
+   "n_pairs": 152,
+   "note": "prereg ALL denominator; D4 computed",
+   "repo_reported_ci": null,
+   "source": "(not reported anywhere in the repo)",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "auroc": 0.6684,
+   "corpus": "QuixBugs declared",
+   "date": "2026-10-29",
+   "description": "declared evaluable, excluding SP-2 (72)",
+   "how": "recomputed",
+   "id": "QD-03",
+   "n_pairs": 72,
+   "note": "",
+   "repo_reported_ci": [
+    0.5316,
+    0.7969
+   ],
+   "source": "paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+   "status": "POST-HOC"
+  },
+  {
+   "auroc": null,
+   "corpus": "QuixBugs (legacy)",
+   "date": "2026-08-30",
+   "description": "positive-only detection rate at tau*=0.08, 17/28 (60.7%), output-aware 'EEP' protocol",
+   "how": "artifact",
+   "id": "LEG-01",
+   "n_pairs": null,
+   "note": "different protocol (output-aware), no negative class: not an AUROC and not comparable",
+   "repo_reported_ci": null,
+   "source": "results/external/FINAL_MULTI_CORPUS_ANALYSIS_RESULTS.json",
+   "status": "POST-HOC (superseded; no negatives, no AUROC)"
+  },
+  {
+   "auroc": null,
+   "corpus": "BugsInPy (legacy)",
+   "date": "2026-08-30",
+   "description": "positive-only detection rate 6/7 (85.7%), 5 projects, output-aware 'EEP' protocol",
+   "how": "artifact",
+   "id": "LEG-02",
+   "n_pairs": null,
+   "note": "different protocol (output-aware), no negative class: not an AUROC and not comparable",
+   "repo_reported_ci": null,
+   "source": "results/external/BUGSINPY_EXTENDED_EVALUATION_RESULTS.json",
+   "status": "POST-HOC (superseded; no negatives, no AUROC)"
+  },
+  {
+   "auroc": 0.4059,
+   "corpus": "BugsInPy",
+   "date": "2026-11",
+   "description": "v8 rescore excluding 3 contaminated base units",
+   "how": "recomputed",
+   "id": "D4-01",
+   "n_pairs": 136,
+   "note": "",
+   "repo_reported_ci": null,
+   "source": "D4 scripts",
+   "status": "POST-HOC (D4 sensitivity; not in repo history)"
+  },
+  {
+   "auroc": 0.4953,
+   "corpus": "BugsInPy",
+   "date": "2026-11",
+   "description": "v8 ex-SP-2 & ex-contaminated",
+   "how": "recomputed",
+   "id": "D4-02",
+   "n_pairs": 99,
+   "note": "",
+   "repo_reported_ci": null,
+   "source": "D4 scripts",
+   "status": "POST-HOC (D4 sensitivity; not in repo history)"
+  },
+  {
+   "auroc": 0.3704,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-11",
+   "description": "v8 ex-contaminated base",
+   "how": "recomputed",
+   "id": "D4-03",
+   "n_pairs": 147,
+   "note": "",
+   "repo_reported_ci": null,
+   "source": "D4 scripts",
+   "status": "POST-HOC (D4 sensitivity; not in repo history)"
+  },
+  {
+   "auroc": 0.4316,
+   "corpus": "QuixBugs canonical",
+   "date": "2026-11",
+   "description": "v8 ex-SP-2 & ex-contaminated",
+   "how": "recomputed",
+   "id": "D4-04",
+   "n_pairs": 108,
+   "note": "",
+   "repo_reported_ci": null,
+   "source": "D4 scripts",
+   "status": "POST-HOC (D4 sensitivity; not in repo history)"
+  }
+ ]
+}

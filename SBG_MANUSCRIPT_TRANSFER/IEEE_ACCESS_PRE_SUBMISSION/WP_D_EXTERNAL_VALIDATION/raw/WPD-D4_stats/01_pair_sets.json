@@ -1,0 +1,714 @@
+{
+ "analysis_sets": [
+  {
+   "by_kind": {
+    "SP-1": 16,
+    "SP-2": 39,
+    "SP-3": 28,
+    "SP-4": 11,
+    "SP-6": 7,
+    "real": 39
+   },
+   "corpus": "bugsinpy",
+   "description": "BugsInPy v6 protocol, evaluable (committed BUGSINPY_output_free_v6.json VALID: 140)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 37,
+   "n_neg": 101,
+   "n_pairs": 140,
+   "n_pos": 39,
+   "n_project_clusters": 10,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 30,
+   "score_source": "s6",
+   "set_id": "BP-v6-EVAL",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "by_kind": {
+    "SP-1": 21,
+    "SP-2": 50,
+    "SP-3": 38,
+    "SP-4": 25,
+    "SP-6": 11,
+    "real": 55
+   },
+   "corpus": "bugsinpy",
+   "description": "BugsInPy v7, ALL 200 pairs, unevaluable scored 0 (prereg ALL set)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 51,
+   "n_neg": 145,
+   "n_pairs": 200,
+   "n_pos": 55,
+   "n_project_clusters": 12,
+   "n_unevaluated_scored_as_impute": 53,
+   "n_unit_family_clusters": 44,
+   "score_source": "s7",
+   "set_id": "BP-v7-ALL",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "by_kind": {
+    "SP-1": 17,
+    "SP-2": 40,
+    "SP-3": 29,
+    "SP-4": 13,
+    "SP-6": 7,
+    "real": 41
+   },
+   "corpus": "bugsinpy",
+   "description": "BugsInPy v7 EVALUABLE=VALID (147), prereg primary set (committed 0.409917)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 39,
+   "n_neg": 106,
+   "n_pairs": 147,
+   "n_pos": 41,
+   "n_project_clusters": 11,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 32,
+   "score_source": "s7",
+   "set_id": "BP-v7-EVAL",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "by_kind": {
+    "SP-1": 17,
+    "SP-2": 40,
+    "SP-3": 29,
+    "SP-4": 13,
+    "SP-6": 7,
+    "real": 41
+   },
+   "corpus": "bugsinpy",
+   "description": "BugsInPy v8 corrected-harness rescore, same 147 pairs (EXTERNAL_RESCORE_V8, 0.4159)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 39,
+   "n_neg": 106,
+   "n_pairs": 147,
+   "n_pos": 41,
+   "n_project_clusters": 11,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 32,
+   "score_source": "s8",
+   "set_id": "BP-v8-EVAL",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 17,
+    "SP-3": 29,
+    "SP-4": 13,
+    "SP-6": 7,
+    "real": 41
+   },
+   "corpus": "bugsinpy",
+   "description": "v8 rescore excluding all SP-2 negatives (107 pairs) = reported 0.497",
+   "impute_value": 0.0,
+   "n_bug_clusters": 39,
+   "n_neg": 66,
+   "n_pairs": 107,
+   "n_pos": 41,
+   "n_project_clusters": 11,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 32,
+   "score_source": "s8",
+   "set_id": "BP-v8-exSP2",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 17,
+    "SP-3": 29,
+    "SP-4": 13,
+    "SP-6": 7,
+    "real": 41
+   },
+   "corpus": "bugsinpy",
+   "description": "v7 committed scores excluding SP-2 (107 pairs; A3 0.4715)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 39,
+   "n_neg": 66,
+   "n_pairs": 107,
+   "n_pos": 41,
+   "n_project_clusters": 11,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 32,
+   "score_source": "s7",
+   "set_id": "BP-v7-exSP2",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 17,
+    "SP-2": 33,
+    "SP-3": 29,
+    "SP-4": 13,
+    "SP-6": 7,
+    "real": 41
+   },
+   "corpus": "bugsinpy",
+   "description": "v8 rescore excluding the 7 statically invalid SP-2 negatives (140 pairs)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 39,
+   "n_neg": 99,
+   "n_pairs": 140,
+   "n_pos": 41,
+   "n_project_clusters": 11,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 32,
+   "score_source": "s8",
+   "set_id": "BP-v8-exInvalidSP2",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 16,
+    "SP-2": 37,
+    "SP-3": 27,
+    "SP-4": 11,
+    "SP-6": 7,
+    "real": 38
+   },
+   "corpus": "bugsinpy",
+   "description": "v8 rescore excluding all pairs of the 3 cold-start-contaminated base units",
+   "impute_value": 0.0,
+   "n_bug_clusters": 36,
+   "n_neg": 98,
+   "n_pairs": 136,
+   "n_pos": 38,
+   "n_project_clusters": 10,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 29,
+   "score_source": "s8",
+   "set_id": "BP-v8-exContam",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 16,
+    "SP-3": 27,
+    "SP-4": 11,
+    "SP-6": 7,
+    "real": 38
+   },
+   "corpus": "bugsinpy",
+   "description": "v8 ex-SP-2 and ex contaminated bases",
+   "impute_value": 0.0,
+   "n_bug_clusters": 36,
+   "n_neg": 61,
+   "n_pairs": 99,
+   "n_pos": 38,
+   "n_project_clusters": 10,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 29,
+   "score_source": "s8",
+   "set_id": "BP-v8-exSP2-exContam",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 30,
+    "SP-2": 40,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 40
+   },
+   "corpus": "quixbugs_canonical",
+   "description": "QuixBugs canonical v7 (all 152 evaluated; committed 0.387723)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 40,
+   "n_neg": 112,
+   "n_pairs": 152,
+   "n_pos": 40,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 40,
+   "score_source": "s7",
+   "set_id": "QC-v7-ALL",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "by_kind": {
+    "SP-1": 30,
+    "SP-2": 40,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 39
+   },
+   "corpus": "quixbugs_canonical",
+   "description": "QuixBugs canonical v8 rescore (151 evaluated; 0.3842)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 40,
+   "n_neg": 112,
+   "n_pairs": 151,
+   "n_pos": 39,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 40,
+   "score_source": "s8",
+   "set_id": "QC-v8-EVAL",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 30,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 39
+   },
+   "corpus": "quixbugs_canonical",
+   "description": "v8 rescore excluding SP-2 (111 pairs) = reported 0.444",
+   "impute_value": 0.0,
+   "n_bug_clusters": 40,
+   "n_neg": 72,
+   "n_pairs": 111,
+   "n_pos": 39,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 40,
+   "score_source": "s8",
+   "set_id": "QC-v8-exSP2",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 30,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 40
+   },
+   "corpus": "quixbugs_canonical",
+   "description": "v7 committed scores excluding SP-2 (112 pairs; 0.4507)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 40,
+   "n_neg": 72,
+   "n_pairs": 112,
+   "n_pos": 40,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 40,
+   "score_source": "s7",
+   "set_id": "QC-v7-exSP2",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 29,
+    "SP-2": 39,
+    "SP-3": 32,
+    "SP-6": 9,
+    "real": 38
+   },
+   "corpus": "quixbugs_canonical",
+   "description": "v8 rescore excluding pairs of the 1 contaminated base",
+   "impute_value": 0.0,
+   "n_bug_clusters": 39,
+   "n_neg": 109,
+   "n_pairs": 147,
+   "n_pos": 38,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 39,
+   "score_source": "s8",
+   "set_id": "QC-v8-exContam",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 29,
+    "SP-3": 32,
+    "SP-6": 9,
+    "real": 38
+   },
+   "corpus": "quixbugs_canonical",
+   "description": "v8 ex-SP-2 and ex contaminated base",
+   "impute_value": 0.0,
+   "n_bug_clusters": 39,
+   "n_neg": 70,
+   "n_pairs": 108,
+   "n_pos": 38,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 39,
+   "score_source": "s8",
+   "set_id": "QC-v8-exSP2-exContam",
+   "status": "POST-HOC EXPLORATORY"
+  },
+  {
+   "by_kind": {
+    "SP-1": 30,
+    "SP-2": 40,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 40
+   },
+   "corpus": "quixbugs_declared",
+   "description": "QuixBugs declared-input regime (secondary prereg), ALL 152, unevaluable scored 0",
+   "impute_value": 0.0,
+   "n_bug_clusters": 40,
+   "n_neg": 112,
+   "n_pairs": 152,
+   "n_pos": 40,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 53,
+   "n_unit_family_clusters": 40,
+   "score_source": "s7",
+   "set_id": "QD-v7-ALL",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "by_kind": {
+    "SP-1": 19,
+    "SP-2": 27,
+    "SP-3": 23,
+    "SP-6": 6,
+    "real": 24
+   },
+   "corpus": "quixbugs_declared",
+   "description": "QuixBugs declared-input regime, EVALUABLE (99)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 28,
+   "n_neg": 75,
+   "n_pairs": 99,
+   "n_pos": 24,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 28,
+   "score_source": "s7",
+   "set_id": "QD-v7-EVAL",
+   "status": "PRE-REGISTERED"
+  },
+  {
+   "by_kind": {
+    "SP-1": 19,
+    "SP-3": 23,
+    "SP-6": 6,
+    "real": 24
+   },
+   "corpus": "quixbugs_declared",
+   "description": "declared regime evaluable excluding SP-2 (72)",
+   "impute_value": 0.0,
+   "n_bug_clusters": 28,
+   "n_neg": 48,
+   "n_pairs": 72,
+   "n_pos": 24,
+   "n_project_clusters": null,
+   "n_unevaluated_scored_as_impute": 0,
+   "n_unit_family_clusters": 28,
+   "score_source": "s7",
+   "set_id": "QD-v7-exSP2",
+   "status": "POST-HOC EXPLORATORY"
+  }
+ ],
+ "contaminated_bases_v8_self_distance_gt0": {
+  "bugsinpy": {
+   "external/bugsinpy/units/black__21__black_py__dump_to_file/fixed.py": {
+    "pairs": [
+     [
+      "black/21::black.py::dump_to_file::real_fix",
+      1,
+      "real"
+     ],
+     [
+      "black/21::black.py::dump_to_file::SP-2",
+      0,
+      "SP-2"
+     ],
+     [
+      "black/21::black.py::dump_to_file::SP-4",
+      0,
+      "SP-4"
+     ],
+     [
+      "black/21::black.py::dump_to_file::SP-3",
+      0,
+      "SP-3"
+     ]
+    ],
+    "self_dist_v5": 0.673460603
+   },
+   "external/bugsinpy/units/black__23__black_py__assert_equivalent/fixed.py": {
+    "pairs": [
+     [
+      "black/23::black.py::assert_equivalent::real_fix",
+      1,
+      "real"
+     ],
+     [
+      "black/23::black.py::assert_equivalent::SP-1",
+      0,
+      "SP-1"
+     ],
+     [
+      "black/23::black.py::assert_equivalent::SP-2",
+      0,
+      "SP-2"
+     ],
+     [
+      "black/23::black.py::assert_equivalent::SP-4",
+      0,
+      "SP-4"
+     ]
+    ],
+    "self_dist_v5": 0.668537319
+   },
+   "external/bugsinpy/units/youtube_dl__37__youtube_dl_utils_py__uppercase_escape/fixed.py": {
+    "pairs": [
+     [
+      "youtube-dl/37::youtube_dl/utils.py::uppercase_escape::real_fix",
+      1,
+      "real"
+     ],
+     [
+      "youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-2",
+      0,
+      "SP-2"
+     ],
+     [
+      "youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-3",
+      0,
+      "SP-3"
+     ]
+    ],
+    "self_dist_v5": 0.596575067
+   }
+  },
+  "quixbugs_canonical": {
+   "external/quixbugs/correct_python_programs/powerset.py": {
+    "pairs": [
+     [
+      "quixbugs__powerset__bug__canonical",
+      1,
+      "real"
+     ],
+     [
+      "quixbugs__powerset__sp-1_s0__canonical",
+      0,
+      "SP-1"
+     ],
+     [
+      "quixbugs__powerset__sp-2_s0__canonical",
+      0,
+      "SP-2"
+     ],
+     [
+      "quixbugs__powerset__sp-3_s0__canonical",
+      0,
+      "SP-3"
+     ]
+    ],
+    "self_dist_v5": 0.026238675
+   }
+  }
+ },
+ "corpus_inventory": {
+  "bugsinpy": {
+   "bugs_partially_evaluated": [],
+   "bugs_with_eval_negative_but_no_eval_positive": [],
+   "by_kind_all": {
+    "SP-1": 21,
+    "SP-2": 50,
+    "SP-3": 38,
+    "SP-4": 25,
+    "SP-6": 11,
+    "real": 55
+   },
+   "by_kind_evaluated_v7": {
+    "SP-1": 17,
+    "SP-2": 40,
+    "SP-3": 29,
+    "SP-4": 13,
+    "SP-6": 7,
+    "real": 41
+   },
+   "by_kind_unevaluated_v7": {
+    "SP-1": 4,
+    "SP-2": 10,
+    "SP-3": 9,
+    "SP-4": 12,
+    "SP-6": 4,
+    "real": 14
+   },
+   "by_label": {
+    "0": 145,
+    "1": 55
+   },
+   "evaluated_v7_but_not_v8": [],
+   "evaluated_v8_but_not_v7": [],
+   "n_bug_clusters_all": 51,
+   "n_bug_clusters_evaluated_v7": 39,
+   "n_bug_clusters_with_evaluated_positive": 39,
+   "n_bug_clusters_with_unevaluated_positive": 12,
+   "n_evaluated_v7": 147,
+   "n_projects_evaluated_v7": 11,
+   "n_rows": 200,
+   "n_unevaluated_v7": 53,
+   "n_unit_families_evaluated_v7": 32,
+   "pairs_per_project_evaluated_v7": {
+    "ansible": 13,
+    "black": 8,
+    "httpie": 4,
+    "keras": 8,
+    "luigi": 4,
+    "pandas": 10,
+    "scrapy": 7,
+    "spacy": 16,
+    "thefuck": 10,
+    "tqdm": 4,
+    "youtube-dl": 63
+   },
+   "unevaluated_by_failure": {
+    "fixed:import_error": 4,
+    "fixed:unsupported_signature": 49
+   },
+   "unevaluated_by_label": {
+    "0": 39,
+    "1": 14
+   }
+  },
+  "quixbugs_canonical": {
+   "bugs_partially_evaluated": [],
+   "bugs_with_eval_negative_but_no_eval_positive": [],
+   "by_kind_all": {
+    "SP-1": 30,
+    "SP-2": 40,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 40
+   },
+   "by_kind_evaluated_v7": {
+    "SP-1": 30,
+    "SP-2": 40,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 40
+   },
+   "by_kind_unevaluated_v7": {},
+   "by_label": {
+    "0": 112,
+    "1": 40
+   },
+   "evaluated_v7_but_not_v8": [
+    "quixbugs__mergesort__bug__canonical"
+   ],
+   "evaluated_v8_but_not_v7": [],
+   "n_bug_clusters_all": 40,
+   "n_bug_clusters_evaluated_v7": 40,
+   "n_bug_clusters_with_evaluated_positive": 40,
+   "n_bug_clusters_with_unevaluated_positive": 0,
+   "n_evaluated_v7": 152,
+   "n_projects_evaluated_v7": null,
+   "n_rows": 152,
+   "n_unevaluated_v7": 0,
+   "n_unit_families_evaluated_v7": 40,
+   "pairs_per_project_evaluated_v7": null,
+   "unevaluated_by_failure": {},
+   "unevaluated_by_label": {}
+  },
+  "quixbugs_declared": {
+   "bugs_partially_evaluated": [
+    "bitcount",
+    "find_first_in_sorted",
+    "knapsack",
+    "sqrt"
+   ],
+   "bugs_with_eval_negative_but_no_eval_positive": [
+    "bitcount",
+    "find_first_in_sorted",
+    "knapsack",
+    "sqrt"
+   ],
+   "by_kind_all": {
+    "SP-1": 30,
+    "SP-2": 40,
+    "SP-3": 33,
+    "SP-6": 9,
+    "real": 40
+   },
+   "by_kind_evaluated_v7": {
+    "SP-1": 19,
+    "SP-2": 27,
+    "SP-3": 23,
+    "SP-6": 6,
+    "real": 24
+   },
+   "by_kind_unevaluated_v7": {
+    "SP-1": 11,
+    "SP-2": 13,
+    "SP-3": 10,
+    "SP-6": 3,
+    "real": 16
+   },
+   "by_label": {
+    "0": 112,
+    "1": 40
+   },
+   "evaluated_v7_but_not_v8": [],
+   "evaluated_v8_but_not_v7": [],
+   "n_bug_clusters_all": 40,
+   "n_bug_clusters_evaluated_v7": 28,
+   "n_bug_clusters_with_evaluated_positive": 24,
+   "n_bug_clusters_with_unevaluated_positive": 16,
+   "n_evaluated_v7": 99,
+   "n_projects_evaluated_v7": null,
+   "n_rows": 152,
+   "n_unevaluated_v7": 53,
+   "n_unit_families_evaluated_v7": 28,
+   "pairs_per_project_evaluated_v7": null,
+   "unevaluated_by_failure": {
+    "base:harness_error": 7,
+    "base:ineligible": 36,
+    "base:nonterminating": 4,
+    "variant:nonterminating": 6
+   },
+   "unevaluated_by_label": {
+    "0": 37,
+    "1": 16
+   }
+  }
+ },
+ "input_manifest": {
+  "EXTERNAL_NEGATIVE_AUDIT": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_NEGATIVE_AUDIT.json",
+   "sha256": "61c9244cab2b999f034a6d87236c3d71eb71a461f943f470357c9cc000017303"
+  },
+  "EXTERNAL_RESCORE_V8": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "sha256": "708a22a55b2c6fb76704af8115b40b65f4016ead6c08e0733911f4522e5839a6"
+  },
+  "bugsinpy_purge_rescore": {
+   "path": "SBG/artifacts/paper_evidence/raw/bugsinpy_purge_rescore.json",
+   "sha256": "f9ca922c07833f5bbd0201da2e9bfeab9e9c09430422ec0e7fdfbb5ba69e7db3"
+  },
+  "bugsinpy_v6": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v6.jsonl",
+   "sha256": "ef3d205ba52d7c35fa952239fa0f7328883be028b17f43b0f8c96ebe10105482"
+  },
+  "bugsinpy_v7": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+   "sha256": "378cb3429d317e534655799cb8eaf4056fbede4d908757d259b24d801cdd6548"
+  },
+  "external_rescore_v8_pairs": {
+   "path": "SBG/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+   "sha256": "e09c35ed393d1a726058989534fd11090744749d3d9d7f2cd407b767c66b9ebe"
+  },
+  "quixbugs_canonical_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+   "sha256": "69f8efae6ee0d0a4d7e18119196a35d13c2e0fce32918de1e4e90b219b0eaf88"
+  },
+  "quixbugs_declared_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_declared_output_free_v7.jsonl",
+   "sha256": "6cbc4a3d61068be0bd1af511879d357c159e051e98290969d15bee095ccdb32e"
+  }
+ },
+ "invalid_sp2_negatives_EXTERNAL_NEGATIVE_AUDIT": [
+  "youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-2",
+  "youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-2",
+  "youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-2",
+  "youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-2",
+  "youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-2",
+  "youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-2",
+  "youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-2"
+ ],
+ "script": "scripts/d4_01_sets.py",
+ "status": "DESCRIPTIVE"
+}

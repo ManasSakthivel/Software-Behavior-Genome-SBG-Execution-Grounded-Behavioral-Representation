@@ -1,0 +1,97 @@
+{
+ "checks": {
+  "auroc_vs_bruteforce_500_random_tieheavy": {
+   "mismatches": 0
+  },
+  "exact_stratified_vs_enumeration": {
+   "enumeration_p_lower": 0.3333333333333333,
+   "exact_p_lower": 0.3333333333333333,
+   "match": true
+  },
+  "fisher_tea_tasting": {
+   "expected": 0.4857,
+   "p_two_sided": 0.4857
+  },
+  "point_estimate_reproduction": {
+   "bugsinpy v7 ALL, unevaluated->0 (committed ALL 0.433981)": {
+    "auroc": 0.433981,
+    "n": 200
+   },
+   "bugsinpy v7 evaluated (committed headline 0.409917)": {
+    "auroc": 0.409917,
+    "n": 147
+   },
+   "bugsinpy v7 ex-SP-2 (A3: 0.4715)": {
+    "auroc": 0.471545,
+    "n": 107
+   },
+   "bugsinpy v8 evaluated (EXTERNAL_RESCORE_V8 0.4159)": {
+    "auroc": 0.4159,
+    "n": 147
+   },
+   "bugsinpy v8 ex-SP-2 (0.497)": {
+    "auroc": 0.497044,
+    "n": 107
+   },
+   "quixbugs canonical v7 evaluated (committed 0.387723)": {
+    "auroc": 0.387723,
+    "n": 152
+   },
+   "quixbugs canonical v7 ex-SP-2 (0.4507)": {
+    "auroc": 0.450694,
+    "n": 112
+   },
+   "quixbugs canonical v8 evaluated (0.3842)": {
+    "auroc": 0.384158,
+    "n": 151
+   },
+   "quixbugs canonical v8 ex-SP-2 (0.4444)": {
+    "auroc": 0.444444,
+    "n": 111
+   },
+   "quixbugs declared v7 evaluated (DIAGNOSTIC_EXTERNAL 0.7022)": {
+    "auroc": 0.702222,
+    "n": 99
+   },
+   "quixbugs declared v7 ex-SP-2 (0.6684)": {
+    "auroc": 0.668403,
+    "n": 72
+   }
+  }
+ },
+ "input_manifest": {
+  "EXTERNAL_NEGATIVE_AUDIT": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_NEGATIVE_AUDIT.json",
+   "sha256": "61c9244cab2b999f034a6d87236c3d71eb71a461f943f470357c9cc000017303"
+  },
+  "EXTERNAL_RESCORE_V8": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "sha256": "708a22a55b2c6fb76704af8115b40b65f4016ead6c08e0733911f4522e5839a6"
+  },
+  "bugsinpy_purge_rescore": {
+   "path": "SBG/artifacts/paper_evidence/raw/bugsinpy_purge_rescore.json",
+   "sha256": "f9ca922c07833f5bbd0201da2e9bfeab9e9c09430422ec0e7fdfbb5ba69e7db3"
+  },
+  "bugsinpy_v6": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v6.jsonl",
+   "sha256": "ef3d205ba52d7c35fa952239fa0f7328883be028b17f43b0f8c96ebe10105482"
+  },
+  "bugsinpy_v7": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+   "sha256": "378cb3429d317e534655799cb8eaf4056fbede4d908757d259b24d801cdd6548"
+  },
+  "external_rescore_v8_pairs": {
+   "path": "SBG/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+   "sha256": "e09c35ed393d1a726058989534fd11090744749d3d9d7f2cd407b767c66b9ebe"
+  },
+  "quixbugs_canonical_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+   "sha256": "69f8efae6ee0d0a4d7e18119196a35d13c2e0fce32918de1e4e90b219b0eaf88"
+  },
+  "quixbugs_declared_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_declared_output_free_v7.jsonl",
+   "sha256": "6cbc4a3d61068be0bd1af511879d357c159e051e98290969d15bee095ccdb32e"
+  }
+ },
+ "script": "scripts/d4_00_selftest.py"
+}

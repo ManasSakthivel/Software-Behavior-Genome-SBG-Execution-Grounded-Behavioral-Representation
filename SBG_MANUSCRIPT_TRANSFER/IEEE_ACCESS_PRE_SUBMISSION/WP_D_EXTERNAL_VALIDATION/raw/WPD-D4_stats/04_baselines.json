@@ -1,0 +1,8595 @@
+{
+ "B": 5000,
+ "input_manifest": {
+  "EXTERNAL_NEGATIVE_AUDIT": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_NEGATIVE_AUDIT.json",
+   "sha256": "61c9244cab2b999f034a6d87236c3d71eb71a461f943f470357c9cc000017303"
+  },
+  "EXTERNAL_RESCORE_V8": {
+   "path": "SBG/artifacts/paper_evidence/EXTERNAL_RESCORE_V8.json",
+   "sha256": "708a22a55b2c6fb76704af8115b40b65f4016ead6c08e0733911f4522e5839a6"
+  },
+  "bugsinpy_purge_rescore": {
+   "path": "SBG/artifacts/paper_evidence/raw/bugsinpy_purge_rescore.json",
+   "sha256": "f9ca922c07833f5bbd0201da2e9bfeab9e9c09430422ec0e7fdfbb5ba69e7db3"
+  },
+  "bugsinpy_v6": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v6.jsonl",
+   "sha256": "ef3d205ba52d7c35fa952239fa0f7328883be028b17f43b0f8c96ebe10105482"
+  },
+  "bugsinpy_v7": {
+   "path": "SBG/artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+   "sha256": "378cb3429d317e534655799cb8eaf4056fbede4d908757d259b24d801cdd6548"
+  },
+  "external_rescore_v8_pairs": {
+   "path": "SBG/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+   "sha256": "e09c35ed393d1a726058989534fd11090744749d3d9d7f2cd407b767c66b9ebe"
+  },
+  "quixbugs_canonical_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+   "sha256": "69f8efae6ee0d0a4d7e18119196a35d13c2e0fce32918de1e4e90b219b0eaf88"
+  },
+  "quixbugs_declared_v7": {
+   "path": "SBG/artifacts/final/pairs_quixbugs_declared_output_free_v7.jsonl",
+   "sha256": "6cbc4a3d61068be0bd1af511879d357c159e051e98290969d15bee095ccdb32e"
+  }
+ },
+ "note": "static baselines are taken from the pair files for every row (BugsInPy keeps them for unevaluated rows; QuixBugs-declared unevaluated rows have none -> 0). Dynamic predictors of unevaluated rows are imputed 0 (prereg ALL set). Features F:* are computed from the vendored files and exist for every pair.",
+ "script": "scripts/d4_04_baselines.py",
+ "sets": {
+  "BP-v6-EVAL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 37,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.1109,
+        0.3029
+       ],
+       "delta": 0.2073,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0327,
+        0.2505
+       ],
+       "delta": 0.1423,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.014
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.034,
+        0.1333
+       ],
+       "delta": 0.0472,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2464
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.4899,
+        -0.3193
+       ],
+       "delta": -0.4057,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4063,
+        -0.2354
+       ],
+       "delta": -0.3215,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0891,
+        0.1277
+       ],
+       "delta": 0.0213,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6759
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0631,
+        0.1716
+       ],
+       "delta": 0.0555,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3559
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.4899,
+        -0.3193
+       ],
+       "delta": -0.4057,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0015,
+        0.1297
+       ],
+       "delta": 0.0644,
+       "holm_adj_p_over_prereg_family": 0.1368,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0456
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.0105,
+        0.0862
+       ],
+       "delta": 0.0386,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.11
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0193,
+        0.0801
+       ],
+       "delta": 0.0301,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2148
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0132,
+        0.1502
+       ],
+       "delta": 0.0675,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1096
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0101,
+        0.1807
+       ],
+       "delta": 0.0943,
+       "holm_adj_p_over_prereg_family": 0.1072,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0268
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0132,
+        0.1502
+       ],
+       "delta": 0.0675,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1096
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0371,
+        0.1035
+       ],
+       "delta": 0.0305,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3703
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0574,
+        0.1575
+       ],
+       "delta": 0.1028,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0731,
+        0.0323
+       ],
+       "delta": -0.0169,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5247
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0147,
+        0.0782
+       ],
+       "delta": 0.0322,
+       "holm_adj_p_over_prereg_family": 0.3624,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1812
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1269,
+        0.3345
+       ],
+       "delta": 0.2275,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.088,
+        0.1535
+       ],
+       "delta": 0.0336,
+       "holm_adj_p_over_prereg_family": 0.5791,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5791
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.613,
+       "ci95_percentile": [
+        0.5339,
+        0.6891
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.548,
+       "ci95_percentile": [
+        0.4435,
+        0.6436
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4529,
+       "ci95_percentile": [
+        0.43,
+        0.4753
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0842,
+       "ci95_percentile": [
+        0.0297,
+        0.1511
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.427,
+       "ci95_percentile": [
+        0.3078,
+        0.5414
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4612,
+       "ci95_percentile": [
+        0.3415,
+        0.5778
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.47,
+       "ci95_percentile": [
+        0.4087,
+        0.5228
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4443,
+       "ci95_percentile": [
+        0.3752,
+        0.5068
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4358,
+       "ci95_percentile": [
+        0.3601,
+        0.5059
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.4732,
+       "ci95_percentile": [
+        0.4459,
+        0.5026
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.4732,
+       "ci95_percentile": [
+        0.4459,
+        0.5026
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4362,
+       "ci95_percentile": [
+        0.3631,
+        0.5019
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5085,
+       "ci95_percentile": [
+        0.43,
+        0.5833
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.3888,
+       "ci95_percentile": [
+        0.3196,
+        0.4531
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4379,
+       "ci95_percentile": [
+        0.3584,
+        0.512
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4057,
+       "ci95_percentile": [
+        0.3193,
+        0.4899
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6332,
+       "ci95_percentile": [
+        0.5544,
+        0.708
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4393,
+       "ci95_percentile": [
+        0.316,
+        0.5574
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 10,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.1431,
+        0.3466
+       ],
+       "delta": 0.2073,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0524,
+        0.3223
+       ],
+       "delta": 0.1423,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0639,
+        0.1035
+       ],
+       "delta": 0.0472,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3859
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.52,
+        -0.348
+       ],
+       "delta": -0.4057,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.3839,
+        -0.2196
+       ],
+       "delta": -0.3215,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0766,
+        0.258
+       ],
+       "delta": 0.0213,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7167
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0484,
+        0.3022
+       ],
+       "delta": 0.0555,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4007
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.52,
+        -0.348
+       ],
+       "delta": -0.4057,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0279,
+        0.1299
+       ],
+       "delta": 0.0644,
+       "holm_adj_p_over_prereg_family": 0.432,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1292
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.0228,
+        0.0928
+       ],
+       "delta": 0.0386,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1512
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0232,
+        0.0924
+       ],
+       "delta": 0.0301,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1728
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0203,
+        0.1356
+       ],
+       "delta": 0.0675,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1112
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.02,
+        0.152
+       ],
+       "delta": 0.0943,
+       "holm_adj_p_over_prereg_family": 0.432,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.108
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0203,
+        0.1356
+       ],
+       "delta": 0.0675,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1112
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0299,
+        0.1255
+       ],
+       "delta": 0.0305,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2388
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0538,
+        0.2224
+       ],
+       "delta": 0.1028,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.1309,
+        0.0287
+       ],
+       "delta": -0.0169,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4403
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0211,
+        0.105
+       ],
+       "delta": 0.0322,
+       "holm_adj_p_over_prereg_family": 0.432,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1584
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1453,
+        0.3985
+       ],
+       "delta": 0.2275,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.0751,
+        0.2902
+       ],
+       "delta": 0.0336,
+       "holm_adj_p_over_prereg_family": 0.6451,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6451
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.613,
+       "ci95_percentile": [
+        0.5203,
+        0.7887
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.548,
+       "ci95_percentile": [
+        0.4324,
+        0.7644
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4529,
+       "ci95_percentile": [
+        0.4171,
+        0.4803
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0842,
+       "ci95_percentile": [
+        0.0415,
+        0.2215
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.427,
+       "ci95_percentile": [
+        0.2934,
+        0.7065
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4612,
+       "ci95_percentile": [
+        0.3254,
+        0.7466
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.47,
+       "ci95_percentile": [
+        0.4352,
+        0.5
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4443,
+       "ci95_percentile": [
+        0.3955,
+        0.5397
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4358,
+       "ci95_percentile": [
+        0.3887,
+        0.5397
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.4732,
+       "ci95_percentile": [
+        0.4539,
+        0.5
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.4732,
+       "ci95_percentile": [
+        0.4539,
+        0.5
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4362,
+       "ci95_percentile": [
+        0.3978,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5085,
+       "ci95_percentile": [
+        0.4334,
+        0.65
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.3888,
+       "ci95_percentile": [
+        0.3138,
+        0.442
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4379,
+       "ci95_percentile": [
+        0.3808,
+        0.5463
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4057,
+       "ci95_percentile": [
+        0.348,
+        0.52
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6332,
+       "ci95_percentile": [
+        0.5432,
+        0.8296
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4393,
+       "ci95_percentile": [
+        0.3017,
+        0.737
+       ]
+      }
+     }
+    }
+   },
+   "n": 140,
+   "status": "PRE-REGISTERED"
+  },
+  "BP-v7-ALL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 51,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0921,
+        0.2509
+       ],
+       "delta": 0.1698,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0253,
+        0.2068
+       ],
+       "delta": 0.1167,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0156
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0327,
+        0.078
+       ],
+       "delta": 0.0219,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4163
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.4911,
+        -0.3762
+       ],
+       "delta": -0.434,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.3993,
+        -0.267
+       ],
+       "delta": -0.3342,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0751,
+        0.1172
+       ],
+       "delta": 0.0215,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6755
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0534,
+        0.158
+       ],
+       "delta": 0.0561,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3183
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.4911,
+        -0.3762
+       ],
+       "delta": -0.434,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0115,
+        0.1004
+       ],
+       "delta": 0.0551,
+       "holm_adj_p_over_prereg_family": 0.0576,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0144
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.002,
+        0.064
+       ],
+       "delta": 0.0308,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0708
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0128,
+        0.0589
+       ],
+       "delta": 0.0242,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.168
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0107,
+        0.1016
+       ],
+       "delta": 0.044,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1124
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0051,
+        0.1211
+       ],
+       "delta": 0.0626,
+       "holm_adj_p_over_prereg_family": 0.108,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.036
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0106,
+        0.1017
+       ],
+       "delta": 0.0441,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1104
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0218,
+        0.0809
+       ],
+       "delta": 0.0273,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2935
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0532,
+        0.1241
+       ],
+       "delta": 0.0865,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0441,
+        0.0341
+       ],
+       "delta": -0.0014,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9234
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0053,
+        0.0603
+       ],
+       "delta": 0.028,
+       "holm_adj_p_over_prereg_family": 0.196,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.098
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1099,
+        0.2727
+       ],
+       "delta": 0.1894,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.096,
+        0.1085
+       ],
+       "delta": 0.006,
+       "holm_adj_p_over_prereg_family": 0.9098,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9098
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6038,
+       "ci95_percentile": [
+        0.5338,
+        0.6747
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5507,
+       "ci95_percentile": [
+        0.462,
+        0.638
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4559,
+       "ci95_percentile": [
+        0.4371,
+        0.4748
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0998,
+       "ci95_percentile": [
+        0.0496,
+        0.1614
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4555,
+       "ci95_percentile": [
+        0.3574,
+        0.5529
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4901,
+       "ci95_percentile": [
+        0.381,
+        0.5941
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.4891,
+       "ci95_percentile": [
+        0.447,
+        0.525
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4648,
+       "ci95_percentile": [
+        0.4165,
+        0.5101
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4582,
+       "ci95_percentile": [
+        0.4047,
+        0.5074
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.478,
+       "ci95_percentile": [
+        0.4567,
+        0.4997
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.4966,
+       "ci95_percentile": [
+        0.4891,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.4781,
+       "ci95_percentile": [
+        0.4567,
+        0.4998
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4613,
+       "ci95_percentile": [
+        0.406,
+        0.5095
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5204,
+       "ci95_percentile": [
+        0.4675,
+        0.5724
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4325,
+       "ci95_percentile": [
+        0.3828,
+        0.479
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.462,
+       "ci95_percentile": [
+        0.4079,
+        0.5127
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.434,
+       "ci95_percentile": [
+        0.3762,
+        0.4911
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6234,
+       "ci95_percentile": [
+        0.5558,
+        0.6887
+       ]
+      },
+      "static_token": {
+       "auroc": 0.44,
+       "ci95_percentile": [
+        0.3405,
+        0.5406
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 12,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.1119,
+        0.2451
+       ],
+       "delta": 0.1698,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.038,
+        0.2199
+       ],
+       "delta": 0.1167,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0044
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0492,
+        0.0741
+       ],
+       "delta": 0.0219,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5631
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5089,
+        -0.3833
+       ],
+       "delta": -0.434,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.3887,
+        -0.2637
+       ],
+       "delta": -0.3342,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0782,
+        0.1634
+       ],
+       "delta": 0.0215,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6671
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0604,
+        0.2146
+       ],
+       "delta": 0.0561,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3835
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5089,
+        -0.3833
+       ],
+       "delta": -0.434,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0043,
+        0.0961
+       ],
+       "delta": 0.0551,
+       "holm_adj_p_over_prereg_family": 0.256,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.064
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.0065,
+        0.0635
+       ],
+       "delta": 0.0308,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0087,
+        0.062
+       ],
+       "delta": 0.0242,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.124
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0163,
+        0.0906
+       ],
+       "delta": 0.044,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1496
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.016,
+        0.1159
+       ],
+       "delta": 0.0626,
+       "holm_adj_p_over_prereg_family": 0.3192,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1276
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0163,
+        0.0906
+       ],
+       "delta": 0.0441,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1488
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0118,
+        0.0882
+       ],
+       "delta": 0.0273,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.146
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0523,
+        0.1438
+       ],
+       "delta": 0.0865,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0683,
+        0.0335
+       ],
+       "delta": -0.0014,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.8458
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0071,
+        0.0662
+       ],
+       "delta": 0.028,
+       "holm_adj_p_over_prereg_family": 0.3192,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1064
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1101,
+        0.2927
+       ],
+       "delta": 0.1894,
+       "holm_adj_p_over_prereg_family": 0.006,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.0908,
+        0.144
+       ],
+       "delta": 0.006,
+       "holm_adj_p_over_prereg_family": 0.835,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.835
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6038,
+       "ci95_percentile": [
+        0.5207,
+        0.7292
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5507,
+       "ci95_percentile": [
+        0.4441,
+        0.7005
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4559,
+       "ci95_percentile": [
+        0.429,
+        0.4843
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0998,
+       "ci95_percentile": [
+        0.053,
+        0.1938
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4555,
+       "ci95_percentile": [
+        0.32,
+        0.6342
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4901,
+       "ci95_percentile": [
+        0.3467,
+        0.6785
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.4891,
+       "ci95_percentile": [
+        0.4562,
+        0.52
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4648,
+       "ci95_percentile": [
+        0.4215,
+        0.5263
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4582,
+       "ci95_percentile": [
+        0.4143,
+        0.5259
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.478,
+       "ci95_percentile": [
+        0.4597,
+        0.5
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.4966,
+       "ci95_percentile": [
+        0.487,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.4781,
+       "ci95_percentile": [
+        0.4597,
+        0.5
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4613,
+       "ci95_percentile": [
+        0.4174,
+        0.5182
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5204,
+       "ci95_percentile": [
+        0.4584,
+        0.5994
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4325,
+       "ci95_percentile": [
+        0.3915,
+        0.4821
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.462,
+       "ci95_percentile": [
+        0.4086,
+        0.5294
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.434,
+       "ci95_percentile": [
+        0.3833,
+        0.5089
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6234,
+       "ci95_percentile": [
+        0.5359,
+        0.7567
+       ]
+      },
+      "static_token": {
+       "auroc": 0.44,
+       "ci95_percentile": [
+        0.3149,
+        0.6194
+       ]
+      }
+     }
+    }
+   },
+   "n": 200,
+   "status": "PRE-REGISTERED"
+  },
+  "BP-v7-EVAL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 39,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.1186,
+        0.3
+       ],
+       "delta": 0.2103,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.05,
+        0.2568
+       ],
+       "delta": 0.1539,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0068
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0339,
+        0.121
+       ],
+       "delta": 0.043,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2719
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.4908,
+        -0.3307
+       ],
+       "delta": -0.4099,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4082,
+        -0.2462
+       ],
+       "delta": -0.3262,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0762,
+        0.1327
+       ],
+       "delta": 0.0293,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5647
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0538,
+        0.1694
+       ],
+       "delta": 0.0601,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2931
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.4908,
+        -0.3307
+       ],
+       "delta": -0.4099,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0086,
+        0.1255
+       ],
+       "delta": 0.0665,
+       "holm_adj_p_over_prereg_family": 0.1184,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0296
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.0114,
+        0.0786
+       ],
+       "delta": 0.0349,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1308
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0217,
+        0.0735
+       ],
+       "delta": 0.0273,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2591
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0195,
+        0.1373
+       ],
+       "delta": 0.0597,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.136
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0017,
+        0.1666
+       ],
+       "delta": 0.0854,
+       "holm_adj_p_over_prereg_family": 0.1272,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0424
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0194,
+        0.1374
+       ],
+       "delta": 0.0598,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1356
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0302,
+        0.1013
+       ],
+       "delta": 0.0335,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3027
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0577,
+        0.1536
+       ],
+       "delta": 0.1016,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0655,
+        0.0355
+       ],
+       "delta": -0.0108,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6691
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0141,
+        0.0727
+       ],
+       "delta": 0.0298,
+       "holm_adj_p_over_prereg_family": 0.344,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.172
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1292,
+        0.3247
+       ],
+       "delta": 0.2262,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.0736,
+        0.154
+       ],
+       "delta": 0.0412,
+       "holm_adj_p_over_prereg_family": 0.4535,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4535
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6202,
+       "ci95_percentile": [
+        0.543,
+        0.6934
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5639,
+       "ci95_percentile": [
+        0.46,
+        0.658
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4529,
+       "ci95_percentile": [
+        0.4311,
+        0.4747
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0838,
+       "ci95_percentile": [
+        0.0325,
+        0.1478
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4393,
+       "ci95_percentile": [
+        0.3283,
+        0.5492
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.47,
+       "ci95_percentile": [
+        0.3567,
+        0.5794
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.4764,
+       "ci95_percentile": [
+        0.4172,
+        0.5299
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4448,
+       "ci95_percentile": [
+        0.3791,
+        0.5042
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4372,
+       "ci95_percentile": [
+        0.3646,
+        0.5036
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.4696,
+       "ci95_percentile": [
+        0.4423,
+        0.4975
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.4953,
+       "ci95_percentile": [
+        0.4851,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.4697,
+       "ci95_percentile": [
+        0.4423,
+        0.4975
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4434,
+       "ci95_percentile": [
+        0.3729,
+        0.5097
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5115,
+       "ci95_percentile": [
+        0.4386,
+        0.5835
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.3991,
+       "ci95_percentile": [
+        0.3316,
+        0.4621
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4397,
+       "ci95_percentile": [
+        0.3658,
+        0.5115
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4099,
+       "ci95_percentile": [
+        0.3307,
+        0.4908
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6361,
+       "ci95_percentile": [
+        0.5609,
+        0.7097
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4511,
+       "ci95_percentile": [
+        0.3357,
+        0.5661
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 11,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.148,
+        0.3298
+       ],
+       "delta": 0.2103,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0626,
+        0.3212
+       ],
+       "delta": 0.1539,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0728,
+        0.0988
+       ],
+       "delta": 0.043,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4279
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.53,
+        -0.356
+       ],
+       "delta": -0.4099,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.3958,
+        -0.2433
+       ],
+       "delta": -0.3262,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0709,
+        0.2438
+       ],
+       "delta": 0.0293,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6259
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0439,
+        0.2851
+       ],
+       "delta": 0.0601,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3547
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.53,
+        -0.356
+       ],
+       "delta": -0.4099,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0196,
+        0.1301
+       ],
+       "delta": 0.0665,
+       "holm_adj_p_over_prereg_family": 0.4048,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1012
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.0282,
+        0.0821
+       ],
+       "delta": 0.0349,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1924
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0295,
+        0.08
+       ],
+       "delta": 0.0273,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2308
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0434,
+        0.1195
+       ],
+       "delta": 0.0597,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.186
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0434,
+        0.1404
+       ],
+       "delta": 0.0854,
+       "holm_adj_p_over_prereg_family": 0.522,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.174
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0434,
+        0.1195
+       ],
+       "delta": 0.0598,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.186
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0238,
+        0.1269
+       ],
+       "delta": 0.0335,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.192
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0555,
+        0.2121
+       ],
+       "delta": 0.1016,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.116,
+        0.0331
+       ],
+       "delta": -0.0108,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5867
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0238,
+        0.0936
+       ],
+       "delta": 0.0298,
+       "holm_adj_p_over_prereg_family": 0.522,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1892
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1474,
+        0.3817
+       ],
+       "delta": 0.2262,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.0677,
+        0.2726
+       ],
+       "delta": 0.0412,
+       "holm_adj_p_over_prereg_family": 0.5795,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5795
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6202,
+       "ci95_percentile": [
+        0.5287,
+        0.7942
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5639,
+       "ci95_percentile": [
+        0.442,
+        0.7793
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4529,
+       "ci95_percentile": [
+        0.4188,
+        0.4798
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0838,
+       "ci95_percentile": [
+        0.0421,
+        0.2044
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4393,
+       "ci95_percentile": [
+        0.3022,
+        0.7077
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.47,
+       "ci95_percentile": [
+        0.333,
+        0.7442
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.4764,
+       "ci95_percentile": [
+        0.4395,
+        0.5314
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4448,
+       "ci95_percentile": [
+        0.4009,
+        0.5343
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4372,
+       "ci95_percentile": [
+        0.3935,
+        0.5336
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.4696,
+       "ci95_percentile": [
+        0.4501,
+        0.5
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.4953,
+       "ci95_percentile": [
+        0.4769,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.4697,
+       "ci95_percentile": [
+        0.4503,
+        0.5
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4434,
+       "ci95_percentile": [
+        0.4018,
+        0.5258
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5115,
+       "ci95_percentile": [
+        0.4361,
+        0.6515
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.3991,
+       "ci95_percentile": [
+        0.3392,
+        0.4676
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4397,
+       "ci95_percentile": [
+        0.3844,
+        0.5439
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4099,
+       "ci95_percentile": [
+        0.356,
+        0.53
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6361,
+       "ci95_percentile": [
+        0.5474,
+        0.8231
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4511,
+       "ci95_percentile": [
+        0.3116,
+        0.7326
+       ]
+      }
+     }
+    }
+   },
+   "n": 147,
+   "status": "PRE-REGISTERED"
+  },
+  "BP-v7-exSP2": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 39,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1065,
+        0.0973
+       ],
+       "delta": -0.0002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9814
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1329,
+        0.0914
+       ],
+       "delta": -0.0172,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7447
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.1296,
+        0.0434
+       ],
+       "delta": -0.0442,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3339
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5605,
+        -0.3855
+       ],
+       "delta": -0.4715,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4949,
+        -0.3138
+       ],
+       "delta": -0.4026,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.2142,
+        -0.001
+       ],
+       "delta": -0.1074,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.048
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.1705,
+        0.068
+       ],
+       "delta": -0.0519,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3895
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5605,
+        -0.3855
+       ],
+       "delta": -0.4715,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0346,
+        0.0804
+       ],
+       "delta": 0.0235,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4571
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.0764,
+        0.0009
+       ],
+       "delta": -0.032,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0636
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0916,
+        -0.0065
+       ],
+       "delta": -0.0443,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0172
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0467,
+        0.1268
+       ],
+       "delta": 0.0407,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3631
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0605,
+        0.1145
+       ],
+       "delta": 0.0285,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5331
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0467,
+        0.1268
+       ],
+       "delta": 0.0407,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3631
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0727,
+        0.0512
+       ],
+       "delta": -0.0127,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6587
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0278,
+        0.1119
+       ],
+       "delta": 0.0661,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0174,
+        0.0915
+       ],
+       "delta": 0.0382,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1788
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0785,
+        -0.004
+       ],
+       "delta": -0.0366,
+       "holm_adj_p_over_prereg_family": 0.116,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0232
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.1446,
+        0.0876
+       ],
+       "delta": -0.0285,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6095
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.1741,
+        0.0719
+       ],
+       "delta": -0.0506,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4143
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4714,
+       "ci95_percentile": [
+        0.378,
+        0.5618
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.4544,
+       "ci95_percentile": [
+        0.3491,
+        0.5548
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4274,
+       "ci95_percentile": [
+        0.3872,
+        0.4652
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0689,
+       "ci95_percentile": [
+        0.0222,
+        0.1281
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3642,
+       "ci95_percentile": [
+        0.2571,
+        0.476
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4196,
+       "ci95_percentile": [
+        0.3081,
+        0.5307
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.495,
+       "ci95_percentile": [
+        0.4228,
+        0.5648
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4396,
+       "ci95_percentile": [
+        0.3677,
+        0.5094
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4272,
+       "ci95_percentile": [
+        0.3475,
+        0.5022
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.5122,
+       "ci95_percentile": [
+        0.5,
+        0.5375
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.5122,
+       "ci95_percentile": [
+        0.5,
+        0.5375
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4588,
+       "ci95_percentile": [
+        0.3769,
+        0.5394
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5377,
+       "ci95_percentile": [
+        0.4512,
+        0.6254
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5098,
+       "ci95_percentile": [
+        0.4333,
+        0.5837
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.435,
+       "ci95_percentile": [
+        0.3507,
+        0.518
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4715,
+       "ci95_percentile": [
+        0.3855,
+        0.5605
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4431,
+       "ci95_percentile": [
+        0.3368,
+        0.5467
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4209,
+       "ci95_percentile": [
+        0.3026,
+        0.5343
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 11,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.0675,
+        0.1248
+       ],
+       "delta": -0.0002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.999
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1111,
+        0.1545
+       ],
+       "delta": -0.0172,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.8714
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.1845,
+        0.0131
+       ],
+       "delta": -0.0442,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.162
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5952,
+        -0.4119
+       ],
+       "delta": -0.4715,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4911,
+        -0.3235
+       ],
+       "delta": -0.4026,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.2079,
+        0.0968
+       ],
+       "delta": -0.1074,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4591
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.1714,
+        0.173
+       ],
+       "delta": -0.0519,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7243
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5952,
+        -0.4119
+       ],
+       "delta": -0.4715,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0804,
+        0.0816
+       ],
+       "delta": 0.0235,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5811
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.1048,
+        -0.0061
+       ],
+       "delta": -0.032,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0044
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.1073,
+        -0.0213
+       ],
+       "delta": -0.0443,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0952,
+        0.1006
+       ],
+       "delta": 0.0407,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5483
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0952,
+        0.0881
+       ],
+       "delta": 0.0285,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6235
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0952,
+        0.1006
+       ],
+       "delta": 0.0407,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5483
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0829,
+        0.0695
+       ],
+       "delta": -0.0127,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5831
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0312,
+        0.1428
+       ],
+       "delta": 0.0661,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.059,
+        0.0952
+       ],
+       "delta": 0.0382,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3775
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0997,
+        -0.0138
+       ],
+       "delta": -0.0366,
+       "holm_adj_p_over_prereg_family": 0.016,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0032
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.1341,
+        0.1795
+       ],
+       "delta": -0.0285,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7978
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.173,
+        0.1685
+       ],
+       "delta": -0.0506,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7383
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4714,
+       "ci95_percentile": [
+        0.373,
+        0.6799
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.4544,
+       "ci95_percentile": [
+        0.3349,
+        0.6953
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4274,
+       "ci95_percentile": [
+        0.3632,
+        0.4737
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0689,
+       "ci95_percentile": [
+        0.0323,
+        0.1837
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3642,
+       "ci95_percentile": [
+        0.2354,
+        0.6419
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4196,
+       "ci95_percentile": [
+        0.2789,
+        0.7064
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.495,
+       "ci95_percentile": [
+        0.46,
+        0.5556
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4396,
+       "ci95_percentile": [
+        0.3881,
+        0.499
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4272,
+       "ci95_percentile": [
+        0.3817,
+        0.4969
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.5122,
+       "ci95_percentile": [
+        0.5,
+        0.5221
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.5122,
+       "ci95_percentile": [
+        0.5,
+        0.5221
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.4588,
+       "ci95_percentile": [
+        0.422,
+        0.547
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5377,
+       "ci95_percentile": [
+        0.4812,
+        0.6667
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5098,
+       "ci95_percentile": [
+        0.4691,
+        0.5833
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.435,
+       "ci95_percentile": [
+        0.3855,
+        0.5133
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4715,
+       "ci95_percentile": [
+        0.4119,
+        0.5952
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4431,
+       "ci95_percentile": [
+        0.3118,
+        0.7103
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4209,
+       "ci95_percentile": [
+        0.2759,
+        0.7072
+       ]
+      }
+     }
+    }
+   },
+   "n": 107,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "BP-v8-EVAL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 39,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0887,
+        0.3154
+       ],
+       "delta": 0.2043,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0016
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0275,
+        0.2613
+       ],
+       "delta": 0.148,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0184
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0551,
+        0.1245
+       ],
+       "delta": 0.037,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4023
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5115,
+        -0.3228
+       ],
+       "delta": -0.4159,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4274,
+        -0.2399
+       ],
+       "delta": -0.3321,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0984,
+        0.1387
+       ],
+       "delta": 0.0234,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7043
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0756,
+        0.1796
+       ],
+       "delta": 0.0541,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4319
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5115,
+        -0.3228
+       ],
+       "delta": -0.4159,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0517,
+        0.1946
+       ],
+       "delta": 0.1254,
+       "holm_adj_p_over_prereg_family": 0.0064,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0016
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.023,
+        0.0927
+       ],
+       "delta": 0.0373,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2068
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0115,
+        0.1772
+       ],
+       "delta": 0.0841,
+       "holm_adj_p_over_prereg_family": 0.276,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.092
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1032,
+        0.2035
+       ],
+       "delta": 0.1504,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0648,
+        0.0749
+       ],
+       "delta": 0.0092,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7762
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0173,
+        0.0938
+       ],
+       "delta": 0.0411,
+       "holm_adj_p_over_prereg_family": 0.3064,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1532
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1039,
+        0.3332
+       ],
+       "delta": 0.2202,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.1036,
+        0.1709
+       ],
+       "delta": 0.0352,
+       "holm_adj_p_over_prereg_family": 0.6163,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6163
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6202,
+       "ci95_percentile": [
+        0.544,
+        0.6961
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5639,
+       "ci95_percentile": [
+        0.4594,
+        0.6592
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4529,
+       "ci95_percentile": [
+        0.4314,
+        0.4753
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0838,
+       "ci95_percentile": [
+        0.0317,
+        0.1433
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4393,
+       "ci95_percentile": [
+        0.3285,
+        0.5459
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.47,
+       "ci95_percentile": [
+        0.3536,
+        0.5791
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5413,
+       "ci95_percentile": [
+        0.4913,
+        0.5993
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4532,
+       "ci95_percentile": [
+        0.3839,
+        0.522
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5663,
+       "ci95_percentile": [
+        0.4997,
+        0.6425
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4251,
+       "ci95_percentile": [
+        0.3679,
+        0.4872
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.457,
+       "ci95_percentile": [
+        0.3792,
+        0.5364
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4159,
+       "ci95_percentile": [
+        0.3228,
+        0.5115
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6361,
+       "ci95_percentile": [
+        0.5588,
+        0.7093
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4511,
+       "ci95_percentile": [
+        0.335,
+        0.5661
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 11,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.1272,
+        0.3357
+       ],
+       "delta": 0.2043,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0409,
+        0.3203
+       ],
+       "delta": 0.148,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0723,
+        0.0974
+       ],
+       "delta": 0.037,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4831
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5313,
+        -0.3522
+       ],
+       "delta": -0.4159,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4004,
+        -0.2399
+       ],
+       "delta": -0.3321,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.0906,
+        0.247
+       ],
+       "delta": 0.0234,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7367
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0629,
+        0.2912
+       ],
+       "delta": 0.0541,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4623
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5313,
+        -0.3522
+       ],
+       "delta": -0.4159,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0034,
+        0.1889
+       ],
+       "delta": 0.1254,
+       "holm_adj_p_over_prereg_family": 0.2368,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0592
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0205,
+        0.0959
+       ],
+       "delta": 0.0373,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1664
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0313,
+        0.1478
+       ],
+       "delta": 0.0841,
+       "holm_adj_p_over_prereg_family": 0.39,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.13
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0808,
+        0.2128
+       ],
+       "delta": 0.1504,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.1228,
+        0.0751
+       ],
+       "delta": 0.0092,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9478
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0195,
+        0.1057
+       ],
+       "delta": 0.0411,
+       "holm_adj_p_over_prereg_family": 0.39,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1552
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.133,
+        0.3844
+       ],
+       "delta": 0.2202,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.087,
+        0.2745
+       ],
+       "delta": 0.0352,
+       "holm_adj_p_over_prereg_family": 0.6611,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6611
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6202,
+       "ci95_percentile": [
+        0.5258,
+        0.7938
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5639,
+       "ci95_percentile": [
+        0.4419,
+        0.7781
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4529,
+       "ci95_percentile": [
+        0.4198,
+        0.4781
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0838,
+       "ci95_percentile": [
+        0.0416,
+        0.2097
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4393,
+       "ci95_percentile": [
+        0.303,
+        0.7045
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.47,
+       "ci95_percentile": [
+        0.3343,
+        0.7392
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5413,
+       "ci95_percentile": [
+        0.4858,
+        0.5792
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4532,
+       "ci95_percentile": [
+        0.4035,
+        0.5433
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5663,
+       "ci95_percentile": [
+        0.5293,
+        0.6429
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4251,
+       "ci95_percentile": [
+        0.3286,
+        0.4816
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.457,
+       "ci95_percentile": [
+        0.4012,
+        0.549
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4159,
+       "ci95_percentile": [
+        0.3522,
+        0.5313
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6361,
+       "ci95_percentile": [
+        0.5479,
+        0.8192
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4511,
+       "ci95_percentile": [
+        0.3097,
+        0.7303
+       ]
+      }
+     }
+    }
+   },
+   "n": 147,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "BP-v8-exContam": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 36,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0719,
+        0.3238
+       ],
+       "delta": 0.1998,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.0007,
+        0.2634
+       ],
+       "delta": 0.1318,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.052
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0595,
+        0.1442
+       ],
+       "delta": 0.0454,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3699
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5171,
+        -0.2996
+       ],
+       "delta": -0.4059,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4315,
+        -0.2201
+       ],
+       "delta": -0.3226,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.1176,
+        0.1441
+       ],
+       "delta": 0.014,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.8038
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.092,
+        0.1914
+       ],
+       "delta": 0.0473,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4955
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5171,
+        -0.2996
+       ],
+       "delta": -0.4059,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0593,
+        0.2219
+       ],
+       "delta": 0.1439,
+       "holm_adj_p_over_prereg_family": 0.004,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0291,
+        0.1051
+       ],
+       "delta": 0.0431,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.216
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0171,
+        0.2004
+       ],
+       "delta": 0.0941,
+       "holm_adj_p_over_prereg_family": 0.2832,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0944
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1263,
+        0.2286
+       ],
+       "delta": 0.1747,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0749,
+        0.0885
+       ],
+       "delta": 0.0118,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7423
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0155,
+        0.109
+       ],
+       "delta": 0.0509,
+       "holm_adj_p_over_prereg_family": 0.2832,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1336
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.0976,
+        0.3512
+       ],
+       "delta": 0.2219,
+       "holm_adj_p_over_prereg_family": 0.004,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.1239,
+        0.1804
+       ],
+       "delta": 0.0297,
+       "holm_adj_p_over_prereg_family": 0.6815,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6815
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6057,
+       "ci95_percentile": [
+        0.5284,
+        0.6825
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5377,
+       "ci95_percentile": [
+        0.436,
+        0.6377
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4513,
+       "ci95_percentile": [
+        0.428,
+        0.4744
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0832,
+       "ci95_percentile": [
+        0.0299,
+        0.151
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4198,
+       "ci95_percentile": [
+        0.308,
+        0.5333
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4531,
+       "ci95_percentile": [
+        0.3373,
+        0.57
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5498,
+       "ci95_percentile": [
+        0.4974,
+        0.6093
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.449,
+       "ci95_percentile": [
+        0.3687,
+        0.5247
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5806,
+       "ci95_percentile": [
+        0.5046,
+        0.6635
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4177,
+       "ci95_percentile": [
+        0.3562,
+        0.4873
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4568,
+       "ci95_percentile": [
+        0.3683,
+        0.5462
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4059,
+       "ci95_percentile": [
+        0.2996,
+        0.5171
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6278,
+       "ci95_percentile": [
+        0.5501,
+        0.7047
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4356,
+       "ci95_percentile": [
+        0.3122,
+        0.5568
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 10,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.1203,
+        0.3374
+       ],
+       "delta": 0.1998,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0231,
+        0.3188
+       ],
+       "delta": 0.1318,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.01
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.078,
+        0.116
+       ],
+       "delta": 0.0454,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4087
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5268,
+        -0.3336
+       ],
+       "delta": -0.4059,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.3907,
+        -0.214
+       ],
+       "delta": -0.3226,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.1075,
+        0.2532
+       ],
+       "delta": 0.014,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.8194
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.0829,
+        0.3074
+       ],
+       "delta": 0.0473,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5655
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5268,
+        -0.3336
+       ],
+       "delta": -0.4059,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0064,
+        0.2095
+       ],
+       "delta": 0.1439,
+       "holm_adj_p_over_prereg_family": 0.1696,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0424
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0115,
+        0.1078
+       ],
+       "delta": 0.0431,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1024
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0268,
+        0.1664
+       ],
+       "delta": 0.0941,
+       "holm_adj_p_over_prereg_family": 0.2688,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.112
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1138,
+        0.2343
+       ],
+       "delta": 0.1747,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.1389,
+        0.0886
+       ],
+       "delta": 0.0118,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.8998
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0101,
+        0.1197
+       ],
+       "delta": 0.0509,
+       "holm_adj_p_over_prereg_family": 0.2688,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0896
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.1241,
+        0.3942
+       ],
+       "delta": 0.2219,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.109,
+        0.2945
+       ],
+       "delta": 0.0297,
+       "holm_adj_p_over_prereg_family": 0.7255,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7255
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6057,
+       "ci95_percentile": [
+        0.5108,
+        0.7853
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5377,
+       "ci95_percentile": [
+        0.4146,
+        0.7568
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4513,
+       "ci95_percentile": [
+        0.4156,
+        0.4775
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0832,
+       "ci95_percentile": [
+        0.0389,
+        0.2186
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4198,
+       "ci95_percentile": [
+        0.2753,
+        0.7089
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4531,
+       "ci95_percentile": [
+        0.3034,
+        0.7477
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5498,
+       "ci95_percentile": [
+        0.5,
+        0.5862
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.449,
+       "ci95_percentile": [
+        0.3909,
+        0.5592
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5806,
+       "ci95_percentile": [
+        0.5455,
+        0.6579
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4177,
+       "ci95_percentile": [
+        0.3203,
+        0.4754
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4568,
+       "ci95_percentile": [
+        0.3912,
+        0.5663
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4059,
+       "ci95_percentile": [
+        0.3336,
+        0.5268
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6278,
+       "ci95_percentile": [
+        0.528,
+        0.8188
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4356,
+       "ci95_percentile": [
+        0.2788,
+        0.7404
+       ]
+      }
+     }
+    }
+   },
+   "n": 136,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "BP-v8-exInvalidSP2": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 39,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0316,
+        0.274
+       ],
+       "delta": 0.1576,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0144
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.0195,
+        0.2369
+       ],
+       "delta": 0.1133,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0984
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0737,
+        0.1111
+       ],
+       "delta": 0.0198,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6763
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5451,
+        -0.3528
+       ],
+       "delta": -0.4453,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4588,
+        -0.2611
+       ],
+       "delta": -0.358,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.1412,
+        0.1202
+       ],
+       "delta": -0.007,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.925
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.1196,
+        0.1568
+       ],
+       "delta": 0.0207,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7794
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5451,
+        -0.3528
+       ],
+       "delta": -0.4453,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0566,
+        0.213
+       ],
+       "delta": 0.1343,
+       "holm_adj_p_over_prereg_family": 0.008,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0016
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0289,
+        0.0951
+       ],
+       "delta": 0.037,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2515
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0451,
+        0.1472
+       ],
+       "delta": 0.0547,
+       "holm_adj_p_over_prereg_family": 0.5638,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2819
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1126,
+        0.2159
+       ],
+       "delta": 0.161,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.069,
+        0.0822
+       ],
+       "delta": 0.0099,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7906
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0182,
+        0.0975
+       ],
+       "delta": 0.044,
+       "holm_adj_p_over_prereg_family": 0.4956,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1652
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.0383,
+        0.289
+       ],
+       "delta": 0.1659,
+       "holm_adj_p_over_prereg_family": 0.0512,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0128
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.146,
+        0.1448
+       ],
+       "delta": 0.0007,
+       "holm_adj_p_over_prereg_family": 0.9886,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9886
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6029,
+       "ci95_percentile": [
+        0.5176,
+        0.6839
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5586,
+       "ci95_percentile": [
+        0.4546,
+        0.655
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4651,
+       "ci95_percentile": [
+        0.4416,
+        0.4898
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0873,
+       "ci95_percentile": [
+        0.0358,
+        0.1508
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4383,
+       "ci95_percentile": [
+        0.3274,
+        0.5472
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.466,
+       "ci95_percentile": [
+        0.3516,
+        0.5781
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5796,
+       "ci95_percentile": [
+        0.5265,
+        0.6414
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4823,
+       "ci95_percentile": [
+        0.4147,
+        0.549
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.6063,
+       "ci95_percentile": [
+        0.5417,
+        0.6806
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4552,
+       "ci95_percentile": [
+        0.391,
+        0.5236
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4893,
+       "ci95_percentile": [
+        0.4133,
+        0.5677
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4453,
+       "ci95_percentile": [
+        0.3528,
+        0.5451
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6112,
+       "ci95_percentile": [
+        0.5218,
+        0.6939
+       ]
+      },
+      "static_token": {
+       "auroc": 0.446,
+       "ci95_percentile": [
+        0.3261,
+        0.5628
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 11,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0446,
+        0.3331
+       ],
+       "delta": 0.1576,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.0202,
+        0.32
+       ],
+       "delta": 0.1133,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.118
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0757,
+        0.0873
+       ],
+       "delta": 0.0198,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7015
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.535,
+        -0.3691
+       ],
+       "delta": -0.4453,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.4232,
+        -0.2377
+       ],
+       "delta": -0.358,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.1443,
+        0.2451
+       ],
+       "delta": -0.007,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9882
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.1228,
+        0.288
+       ],
+       "delta": 0.0207,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7702
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.535,
+        -0.3691
+       ],
+       "delta": -0.4453,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.005,
+        0.205
+       ],
+       "delta": 0.1343,
+       "holm_adj_p_over_prereg_family": 0.264,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.066
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0241,
+        0.0942
+       ],
+       "delta": 0.037,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1948
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.035,
+        0.1309
+       ],
+       "delta": 0.0547,
+       "holm_adj_p_over_prereg_family": 0.4908,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2076
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0798,
+        0.217
+       ],
+       "delta": 0.161,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.1217,
+        0.0834
+       ],
+       "delta": 0.0099,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.975
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0231,
+        0.1064
+       ],
+       "delta": 0.044,
+       "holm_adj_p_over_prereg_family": 0.4908,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1636
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        0.0398,
+        0.3839
+       ],
+       "delta": 0.1659,
+       "holm_adj_p_over_prereg_family": 0.004,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.1486,
+        0.275
+       ],
+       "delta": 0.0007,
+       "holm_adj_p_over_prereg_family": 0.9354,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9354
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.6029,
+       "ci95_percentile": [
+        0.5004,
+        0.7918
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5586,
+       "ci95_percentile": [
+        0.437,
+        0.7768
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4651,
+       "ci95_percentile": [
+        0.4193,
+        0.4899
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0873,
+       "ci95_percentile": [
+        0.0446,
+        0.2093
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.4383,
+       "ci95_percentile": [
+        0.3052,
+        0.7083
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.466,
+       "ci95_percentile": [
+        0.3285,
+        0.7455
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5796,
+       "ci95_percentile": [
+        0.4881,
+        0.6436
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4823,
+       "ci95_percentile": [
+        0.419,
+        0.5436
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.6063,
+       "ci95_percentile": [
+        0.5515,
+        0.6552
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4552,
+       "ci95_percentile": [
+        0.3309,
+        0.5309
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4893,
+       "ci95_percentile": [
+        0.4205,
+        0.5515
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4453,
+       "ci95_percentile": [
+        0.3691,
+        0.535
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.6112,
+       "ci95_percentile": [
+        0.4969,
+        0.818
+       ]
+      },
+      "static_token": {
+       "auroc": 0.446,
+       "ci95_percentile": [
+        0.3044,
+        0.7299
+       ]
+      }
+     }
+    }
+   },
+   "n": 140,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "BP-v8-exSP2": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 39,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1486,
+        0.0846
+       ],
+       "delta": -0.0257,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6727
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1733,
+        0.0741
+       ],
+       "delta": -0.0427,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5119
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.1603,
+        0.0234
+       ],
+       "delta": -0.0697,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1348
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5923,
+        -0.3979
+       ],
+       "delta": -0.497,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.5291,
+        -0.3331
+       ],
+       "delta": -0.4281,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.2588,
+        -0.0143
+       ],
+       "delta": -0.1329,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.028
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.2193,
+        0.0566
+       ],
+       "delta": -0.0774,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2719
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5923,
+        -0.3979
+       ],
+       "delta": -0.497,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.007,
+        0.1648
+       ],
+       "delta": 0.0852,
+       "holm_adj_p_over_prereg_family": 0.152,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.038
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.1014,
+        0.004
+       ],
+       "delta": -0.0445,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0784
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0923,
+        0.1021
+       ],
+       "delta": 0.003,
+       "holm_adj_p_over_prereg_family": 0.9666,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9666
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0569,
+        0.1609
+       ],
+       "delta": 0.1038,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        0.0044,
+        0.1631
+       ],
+       "delta": 0.0822,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0432
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0916,
+        -0.0039
+       ],
+       "delta": -0.0403,
+       "holm_adj_p_over_prereg_family": 0.016,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0032
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.1889,
+        0.0726
+       ],
+       "delta": -0.054,
+       "holm_adj_p_over_prereg_family": 0.9333,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4279
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.2277,
+        0.0631
+       ],
+       "delta": -0.0761,
+       "holm_adj_p_over_prereg_family": 0.9333,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3111
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4714,
+       "ci95_percentile": [
+        0.3768,
+        0.5629
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.4544,
+       "ci95_percentile": [
+        0.3495,
+        0.5576
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4274,
+       "ci95_percentile": [
+        0.3858,
+        0.4629
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0689,
+       "ci95_percentile": [
+        0.0228,
+        0.1291
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3642,
+       "ci95_percentile": [
+        0.2557,
+        0.4771
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4196,
+       "ci95_percentile": [
+        0.3038,
+        0.5344
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5822,
+       "ci95_percentile": [
+        0.529,
+        0.6467
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4525,
+       "ci95_percentile": [
+        0.374,
+        0.5305
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.6009,
+       "ci95_percentile": [
+        0.5304,
+        0.6821
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5793,
+       "ci95_percentile": [
+        0.5264,
+        0.6427
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4568,
+       "ci95_percentile": [
+        0.3688,
+        0.5459
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.497,
+       "ci95_percentile": [
+        0.3979,
+        0.5923
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4431,
+       "ci95_percentile": [
+        0.3363,
+        0.5482
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4209,
+       "ci95_percentile": [
+        0.3008,
+        0.5365
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 11,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1106,
+        0.1296
+       ],
+       "delta": -0.0257,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7471
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1598,
+        0.1599
+       ],
+       "delta": -0.0427,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7187
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.1828,
+        0.0013
+       ],
+       "delta": -0.0697,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.052
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.5933,
+        -0.425
+       ],
+       "delta": -0.497,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.494,
+        -0.3265
+       ],
+       "delta": -0.4281,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.2566,
+        0.097
+       ],
+       "delta": -0.1329,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4543
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.2154,
+        0.1734
+       ],
+       "delta": -0.0774,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6595
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5933,
+        -0.425
+       ],
+       "delta": -0.497,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0683,
+        0.1685
+       ],
+       "delta": 0.0852,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4059
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0985,
+        -0.0114
+       ],
+       "delta": -0.0445,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0016
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0933,
+        0.075
+       ],
+       "delta": 0.003,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9754
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.026,
+        0.1525
+       ],
+       "delta": 0.1038,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0032
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0683,
+        0.1652
+       ],
+       "delta": 0.0822,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4059
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0985,
+        -0.0067
+       ],
+       "delta": -0.0403,
+       "holm_adj_p_over_prereg_family": 0.052,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0104
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.1774,
+        0.1783
+       ],
+       "delta": -0.054,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6823
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.2199,
+        0.1708
+       ],
+       "delta": -0.0761,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6723
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4714,
+       "ci95_percentile": [
+        0.3745,
+        0.6789
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.4544,
+       "ci95_percentile": [
+        0.334,
+        0.6957
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4274,
+       "ci95_percentile": [
+        0.3615,
+        0.4742
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0689,
+       "ci95_percentile": [
+        0.0312,
+        0.1815
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3642,
+       "ci95_percentile": [
+        0.2329,
+        0.645
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4196,
+       "ci95_percentile": [
+        0.2771,
+        0.7091
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5822,
+       "ci95_percentile": [
+        0.4769,
+        0.6497
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4525,
+       "ci95_percentile": [
+        0.3958,
+        0.5085
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.6009,
+       "ci95_percentile": [
+        0.5408,
+        0.6484
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5793,
+       "ci95_percentile": [
+        0.4769,
+        0.6456
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4568,
+       "ci95_percentile": [
+        0.3949,
+        0.516
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.497,
+       "ci95_percentile": [
+        0.425,
+        0.5933
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4431,
+       "ci95_percentile": [
+        0.312,
+        0.7156
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4209,
+       "ci95_percentile": [
+        0.277,
+        0.7079
+       ]
+      }
+     }
+    }
+   },
+   "n": 107,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "BP-v8-exSP2-exContam": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 36,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1652,
+        0.0795
+       ],
+       "delta": -0.041,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5055
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1973,
+        0.0582
+       ],
+       "delta": -0.0654,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3175
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.1727,
+        0.0326
+       ],
+       "delta": -0.0699,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.186
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.6033,
+        -0.3871
+       ],
+       "delta": -0.4953,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.5348,
+        -0.3237
+       ],
+       "delta": -0.4264,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.2825,
+        -0.031
+       ],
+       "delta": -0.1523,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0136
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.2384,
+        0.0496
+       ],
+       "delta": -0.093,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2112
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.6033,
+        -0.3871
+       ],
+       "delta": -0.4953,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0046,
+        0.1852
+       ],
+       "delta": 0.0969,
+       "holm_adj_p_over_prereg_family": 0.1648,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0412
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.1164,
+        0.0044
+       ],
+       "delta": -0.0494,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0772
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.1033,
+        0.1129
+       ],
+       "delta": 0.0047,
+       "holm_adj_p_over_prereg_family": 0.9586,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9586
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0661,
+        0.1833
+       ],
+       "delta": 0.1204,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        0.0046,
+        0.1852
+       ],
+       "delta": 0.0969,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0412
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.1017,
+        -0.0017
+       ],
+       "delta": -0.044,
+       "holm_adj_p_over_prereg_family": 0.092,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0184
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.2102,
+        0.0701
+       ],
+       "delta": -0.0679,
+       "holm_adj_p_over_prereg_family": 0.8505,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3347
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.2441,
+        0.0649
+       ],
+       "delta": -0.0856,
+       "holm_adj_p_over_prereg_family": 0.8505,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2835
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4543,
+       "ci95_percentile": [
+        0.3613,
+        0.5445
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.4299,
+       "ci95_percentile": [
+        0.3253,
+        0.5298
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4254,
+       "ci95_percentile": [
+        0.3818,
+        0.4647
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0688,
+       "ci95_percentile": [
+        0.0193,
+        0.1337
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.343,
+       "ci95_percentile": [
+        0.2311,
+        0.4523
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4023,
+       "ci95_percentile": [
+        0.2839,
+        0.5194
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5921,
+       "ci95_percentile": [
+        0.5375,
+        0.6579
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4459,
+       "ci95_percentile": [
+        0.3548,
+        0.5338
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.6156,
+       "ci95_percentile": [
+        0.5355,
+        0.7032
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5921,
+       "ci95_percentile": [
+        0.5375,
+        0.6579
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4513,
+       "ci95_percentile": [
+        0.3512,
+        0.5506
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4953,
+       "ci95_percentile": [
+        0.3871,
+        0.6033
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4273,
+       "ci95_percentile": [
+        0.3184,
+        0.5336
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4096,
+       "ci95_percentile": [
+        0.2874,
+        0.5278
+       ]
+      }
+     }
+    },
+    "project": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 10,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1176,
+        0.111
+       ],
+       "delta": -0.041,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6355
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1751,
+        0.1362
+       ],
+       "delta": -0.0654,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6479
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.2162,
+        0.0123
+       ],
+       "delta": -0.0699,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0908
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.6127,
+        -0.4153
+       ],
+       "delta": -0.4953,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.5071,
+        -0.3083
+       ],
+       "delta": -0.4264,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.2749,
+        0.0877
+       ],
+       "delta": -0.1523,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3963
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.2427,
+        0.18
+       ],
+       "delta": -0.093,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6347
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.6127,
+        -0.4153
+       ],
+       "delta": -0.4953,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0768,
+        0.1876
+       ],
+       "delta": 0.0969,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3923
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.1103,
+        -0.0099
+       ],
+       "delta": -0.0494,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0036
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.1127,
+        0.0847
+       ],
+       "delta": 0.0047,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.997
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0365,
+        0.1707
+       ],
+       "delta": 0.1204,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0768,
+        0.1876
+       ],
+       "delta": 0.0969,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3923
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.1087,
+        0.0
+       ],
+       "delta": -0.044,
+       "holm_adj_p_over_prereg_family": 0.304,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0608
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.201,
+        0.1755
+       ],
+       "delta": -0.0679,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6327
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.2436,
+        0.186
+       ],
+       "delta": -0.0856,
+       "holm_adj_p_over_prereg_family": 1.0,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6983
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4543,
+       "ci95_percentile": [
+        0.354,
+        0.6727
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.4299,
+       "ci95_percentile": [
+        0.3088,
+        0.6752
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4254,
+       "ci95_percentile": [
+        0.348,
+        0.4744
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.0688,
+       "ci95_percentile": [
+        0.0299,
+        0.2064
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.343,
+       "ci95_percentile": [
+        0.2041,
+        0.6524
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.4023,
+       "ci95_percentile": [
+        0.2383,
+        0.7328
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5921,
+       "ci95_percentile": [
+        0.5,
+        0.6557
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4459,
+       "ci95_percentile": [
+        0.3866,
+        0.5234
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.6156,
+       "ci95_percentile": [
+        0.5714,
+        0.6646
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5921,
+       "ci95_percentile": [
+        0.5,
+        0.6557
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4513,
+       "ci95_percentile": [
+        0.3845,
+        0.5359
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4953,
+       "ci95_percentile": [
+        0.4153,
+        0.6127
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4273,
+       "ci95_percentile": [
+        0.2774,
+        0.7281
+       ]
+      },
+      "static_token": {
+       "auroc": 0.4096,
+       "ci95_percentile": [
+        0.2393,
+        0.7356
+       ]
+      }
+     }
+    }
+   },
+   "n": 99,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "QC-v7-ALL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 40,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0663,
+        0.3053
+       ],
+       "delta": 0.1916,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0144,
+        0.2735
+       ],
+       "delta": 0.1497,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0284
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        0.0028,
+        0.2085
+       ],
+       "delta": 0.1112,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0448
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.0415,
+        0.1795
+       ],
+       "delta": 0.0746,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2016
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        0.1576,
+        0.484
+       ],
+       "delta": 0.3234,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.2029,
+        0.0689
+       ],
+       "delta": -0.0629,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3667
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.1753,
+        0.0935
+       ],
+       "delta": -0.0371,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5983
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.4949,
+        -0.2907
+       ],
+       "delta": -0.3877,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0741,
+        0.239
+       ],
+       "delta": 0.1623,
+       "holm_adj_p_over_prereg_family": 0.006,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.0058,
+        0.1238
+       ],
+       "delta": 0.065,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0668
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.05,
+        0.1075
+       ],
+       "delta": 0.0347,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3955
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        0.0274,
+        0.2164
+       ],
+       "delta": 0.1283,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0132
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0287,
+        0.2165
+       ],
+       "delta": 0.1288,
+       "holm_adj_p_over_prereg_family": 0.0348,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0116
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        0.0268,
+        0.2164
+       ],
+       "delta": 0.1281,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0136
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        0.0242,
+        0.2138
+       ],
+       "delta": 0.1248,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0172
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1422,
+        0.2467
+       ],
+       "delta": 0.194,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0118,
+        0.1111
+       ],
+       "delta": 0.0529,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1068
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        0.0011,
+        0.1181
+       ],
+       "delta": 0.0647,
+       "holm_adj_p_over_prereg_family": 0.0912,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0456
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.0346,
+        0.2263
+       ],
+       "delta": 0.1026,
+       "holm_adj_p_over_prereg_family": 0.1316,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1316
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.3042,
+        -0.0622
+       ],
+       "delta": -0.1782,
+       "holm_adj_p_over_prereg_family": 0.016,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.004
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.5794,
+       "ci95_percentile": [
+        0.5287,
+        0.6299
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5374,
+       "ci95_percentile": [
+        0.4648,
+        0.6076
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4989,
+       "ci95_percentile": [
+        0.4855,
+        0.513
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4623,
+       "ci95_percentile": [
+        0.4141,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.7112,
+       "ci95_percentile": [
+        0.6066,
+        0.8185
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3248,
+       "ci95_percentile": [
+        0.2603,
+        0.3911
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.3507,
+       "ci95_percentile": [
+        0.2853,
+        0.4165
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.55,
+       "ci95_percentile": [
+        0.5125,
+        0.6
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4527,
+       "ci95_percentile": [
+        0.3829,
+        0.5297
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4224,
+       "ci95_percentile": [
+        0.3639,
+        0.4878
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.5161,
+       "ci95_percentile": [
+        0.4818,
+        0.5554
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5165,
+       "ci95_percentile": [
+        0.4818,
+        0.5594
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.5158,
+       "ci95_percentile": [
+        0.4818,
+        0.5549
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.5125,
+       "ci95_percentile": [
+        0.5,
+        0.5375
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5817,
+       "ci95_percentile": [
+        0.5219,
+        0.6482
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4406,
+       "ci95_percentile": [
+        0.381,
+        0.5119
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4525,
+       "ci95_percentile": [
+        0.3784,
+        0.5304
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.3877,
+       "ci95_percentile": [
+        0.2907,
+        0.4949
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4903,
+       "ci95_percentile": [
+        0.4305,
+        0.5492
+       ]
+      },
+      "static_token": {
+       "auroc": 0.2095,
+       "ci95_percentile": [
+        0.1519,
+        0.2718
+       ]
+      }
+     }
+    }
+   },
+   "n": 152,
+   "status": "PRE-REGISTERED"
+  },
+  "QC-v7-exSP2": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 40,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.152,
+        0.058
+       ],
+       "delta": -0.0425,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4187
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1843,
+        0.0384
+       ],
+       "delta": -0.0682,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2188
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0495,
+        0.1389
+       ],
+       "delta": 0.0476,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3331
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.0912,
+        0.1057
+       ],
+       "delta": 0.0111,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.8254
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        0.0786,
+        0.403
+       ],
+       "delta": 0.2424,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0036
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.4533,
+        -0.225
+       ],
+       "delta": -0.3361,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.3885,
+        -0.1386
+       ],
+       "delta": -0.2611,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.545,
+        -0.3634
+       ],
+       "delta": -0.4507,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0219,
+        0.1689
+       ],
+       "delta": 0.0993,
+       "holm_adj_p_over_prereg_family": 0.0336,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0112
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.1079,
+        0.0
+       ],
+       "delta": -0.0465,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0616
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.1469,
+        -0.0231
+       ],
+       "delta": -0.0785,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0024
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.0277,
+        0.142
+       ],
+       "delta": 0.0604,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1824
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.0252,
+        0.142
+       ],
+       "delta": 0.0611,
+       "holm_adj_p_over_prereg_family": 0.1696,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1696
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.0293,
+        0.142
+       ],
+       "delta": 0.0601,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1864
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.0248,
+        0.1435
+       ],
+       "delta": 0.0618,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1604
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0877,
+        0.1808
+       ],
+       "delta": 0.1323,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        0.0453,
+        0.1743
+       ],
+       "delta": 0.1118,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.002
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.103,
+        -0.0074
+       ],
+       "delta": -0.0472,
+       "holm_adj_p_over_prereg_family": 0.0632,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0316
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.3139,
+        -0.0526
+       ],
+       "delta": -0.1823,
+       "holm_adj_p_over_prereg_family": 0.0224,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0056
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.4396,
+        -0.2286
+       ],
+       "delta": -0.3333,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4082,
+       "ci95_percentile": [
+        0.3511,
+        0.4663
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.3825,
+       "ci95_percentile": [
+        0.3153,
+        0.4517
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4983,
+       "ci95_percentile": [
+        0.4772,
+        0.5193
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4618,
+       "ci95_percentile": [
+        0.4135,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.6931,
+       "ci95_percentile": [
+        0.5832,
+        0.8017
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.1146,
+       "ci95_percentile": [
+        0.065,
+        0.1688
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.1896,
+       "ci95_percentile": [
+        0.1229,
+        0.2574
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.55,
+       "ci95_percentile": [
+        0.5125,
+        0.6
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.4042,
+       "ci95_percentile": [
+        0.3221,
+        0.4914
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.3722,
+       "ci95_percentile": [
+        0.304,
+        0.4455
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.5111,
+       "ci95_percentile": [
+        0.4701,
+        0.5625
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5118,
+       "ci95_percentile": [
+        0.471,
+        0.5625
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.5108,
+       "ci95_percentile": [
+        0.4696,
+        0.5608
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.5125,
+       "ci95_percentile": [
+        0.5,
+        0.5375
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.583,
+       "ci95_percentile": [
+        0.5245,
+        0.6486
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5625,
+       "ci95_percentile": [
+        0.5125,
+        0.6125
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4035,
+       "ci95_percentile": [
+        0.3203,
+        0.4906
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4507,
+       "ci95_percentile": [
+        0.3634,
+        0.545
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.2684,
+       "ci95_percentile": [
+        0.1912,
+        0.3514
+       ]
+      },
+      "static_token": {
+       "auroc": 0.1174,
+       "ci95_percentile": [
+        0.0712,
+        0.1696
+       ]
+      }
+     }
+    }
+   },
+   "n": 112,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "QC-v8-EVAL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 40,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0817,
+        0.3087
+       ],
+       "delta": 0.202,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.002
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0273,
+        0.2777
+       ],
+       "delta": 0.1603,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0196
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0068,
+        0.1999
+       ],
+       "delta": 0.1029,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0644
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.0377,
+        0.1814
+       ],
+       "delta": 0.0775,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1868
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        0.1483,
+        0.4834
+       ],
+       "delta": 0.321,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.1881,
+        0.0663
+       ],
+       "delta": -0.0578,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3739
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.1591,
+        0.0961
+       ],
+       "delta": -0.0272,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6787
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.4867,
+        -0.2934
+       ],
+       "delta": -0.3842,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0658,
+        0.2327
+       ],
+       "delta": 0.1543,
+       "holm_adj_p_over_prereg_family": 0.012,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0024
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0639,
+        0.1001
+       ],
+       "delta": 0.0235,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5727
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0453,
+        0.2191
+       ],
+       "delta": 0.1371,
+       "holm_adj_p_over_prereg_family": 0.0128,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.004
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1577,
+        0.2536
+       ],
+       "delta": 0.2056,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0209,
+        0.105
+       ],
+       "delta": 0.0466,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.158
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        0.0202,
+        0.1207
+       ],
+       "delta": 0.0738,
+       "holm_adj_p_over_prereg_family": 0.0288,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0144
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.0128,
+        0.2272
+       ],
+       "delta": 0.1115,
+       "holm_adj_p_over_prereg_family": 0.0732,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0732
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.2902,
+        -0.0596
+       ],
+       "delta": -0.1725,
+       "holm_adj_p_over_prereg_family": 0.0128,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0032
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.5862,
+       "ci95_percentile": [
+        0.5367,
+        0.637
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5444,
+       "ci95_percentile": [
+        0.4713,
+        0.6136
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4871,
+       "ci95_percentile": [
+        0.4544,
+        0.5098
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4617,
+       "ci95_percentile": [
+        0.4188,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.7051,
+       "ci95_percentile": [
+        0.5931,
+        0.8162
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3264,
+       "ci95_percentile": [
+        0.2608,
+        0.3928
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.3569,
+       "ci95_percentile": [
+        0.2886,
+        0.4222
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5385,
+       "ci95_percentile": [
+        0.5,
+        0.5875
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4076,
+       "ci95_percentile": [
+        0.3577,
+        0.4641
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5213,
+       "ci95_percentile": [
+        0.5,
+        0.5576
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5897,
+       "ci95_percentile": [
+        0.5375,
+        0.6538
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4307,
+       "ci95_percentile": [
+        0.3783,
+        0.4959
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.458,
+       "ci95_percentile": [
+        0.3916,
+        0.5316
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.3842,
+       "ci95_percentile": [
+        0.2934,
+        0.4867
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4957,
+       "ci95_percentile": [
+        0.4364,
+        0.5547
+       ]
+      },
+      "static_token": {
+       "auroc": 0.2117,
+       "ci95_percentile": [
+        0.1547,
+        0.2751
+       ]
+      }
+     }
+    }
+   },
+   "n": 151,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "QC-v8-exContam": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 39,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        0.0917,
+        0.3251
+       ],
+       "delta": 0.2134,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        0.0344,
+        0.2926
+       ],
+       "delta": 0.1707,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0176
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        0.0098,
+        0.2192
+       ],
+       "delta": 0.1159,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0368
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        0.0045,
+        0.2034
+       ],
+       "delta": 0.1031,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.04
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        0.1684,
+        0.4979
+       ],
+       "delta": 0.3324,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.1725,
+        0.0831
+       ],
+       "delta": -0.043,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5451
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.1409,
+        0.1132
+       ],
+       "delta": -0.0109,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9042
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.4671,
+        -0.2746
+       ],
+       "delta": -0.3704,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0871,
+        0.2485
+       ],
+       "delta": 0.1691,
+       "holm_adj_p_over_prereg_family": 0.004,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.0452,
+        0.1152
+       ],
+       "delta": 0.0392,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3199
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0517,
+        0.2308
+       ],
+       "delta": 0.1428,
+       "holm_adj_p_over_prereg_family": 0.0208,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0052
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1602,
+        0.2609
+       ],
+       "delta": 0.2086,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0038,
+        0.1171
+       ],
+       "delta": 0.0584,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0676
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        0.0231,
+        0.1274
+       ],
+       "delta": 0.0793,
+       "holm_adj_p_over_prereg_family": 0.0228,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0076
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.0027,
+        0.2428
+       ],
+       "delta": 0.1226,
+       "holm_adj_p_over_prereg_family": 0.0552,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0552
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.2735,
+        -0.0404
+       ],
+       "delta": -0.1551,
+       "holm_adj_p_over_prereg_family": 0.0228,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.008
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.5838,
+       "ci95_percentile": [
+        0.5319,
+        0.6336
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.541,
+       "ci95_percentile": [
+        0.4622,
+        0.6117
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4862,
+       "ci95_percentile": [
+        0.4539,
+        0.5104
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4734,
+       "ci95_percentile": [
+        0.4342,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.7028,
+       "ci95_percentile": [
+        0.5896,
+        0.8139
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3274,
+       "ci95_percentile": [
+        0.2604,
+        0.3926
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.3595,
+       "ci95_percentile": [
+        0.2896,
+        0.4277
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5395,
+       "ci95_percentile": [
+        0.5,
+        0.5833
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4096,
+       "ci95_percentile": [
+        0.3559,
+        0.4653
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5132,
+       "ci95_percentile": [
+        0.5,
+        0.5405
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5789,
+       "ci95_percentile": [
+        0.5263,
+        0.641
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.4288,
+       "ci95_percentile": [
+        0.3742,
+        0.492
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4497,
+       "ci95_percentile": [
+        0.3814,
+        0.5189
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.3704,
+       "ci95_percentile": [
+        0.2746,
+        0.4671
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.493,
+       "ci95_percentile": [
+        0.4302,
+        0.5552
+       ]
+      },
+      "static_token": {
+       "auroc": 0.2152,
+       "ci95_percentile": [
+        0.1541,
+        0.2805
+       ]
+      }
+     }
+    }
+   },
+   "n": 147,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "QC-v8-exSP2": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 40,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1365,
+        0.0677
+       ],
+       "delta": -0.0312,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5431
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1683,
+        0.0477
+       ],
+       "delta": -0.0566,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3091
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0558,
+        0.136
+       ],
+       "delta": 0.042,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3871
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.0884,
+        0.1143
+       ],
+       "delta": 0.0167,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7451
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        0.0812,
+        0.3998
+       ],
+       "delta": 0.2422,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0052
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.4409,
+        -0.2179
+       ],
+       "delta": -0.3287,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.375,
+        -0.1304
+       ],
+       "delta": -0.2504,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5359,
+        -0.3587
+       ],
+       "delta": -0.4444,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0149,
+        0.1667
+       ],
+       "delta": 0.094,
+       "holm_adj_p_over_prereg_family": 0.0684,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0228
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.1657,
+        -0.0239
+       ],
+       "delta": -0.0883,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0017,
+        0.1543
+       ],
+       "delta": 0.0812,
+       "holm_adj_p_over_prereg_family": 0.0936,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0468
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1028,
+        0.1912
+       ],
+       "delta": 0.1453,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        0.0364,
+        0.1719
+       ],
+       "delta": 0.1068,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.004
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0757,
+        0.0
+       ],
+       "delta": -0.0322,
+       "holm_adj_p_over_prereg_family": 0.0936,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0828
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.2958,
+        -0.0473
+       ],
+       "delta": -0.1702,
+       "holm_adj_p_over_prereg_family": 0.0336,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0084
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.4295,
+        -0.2213
+       ],
+       "delta": -0.3255,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4133,
+       "ci95_percentile": [
+        0.3555,
+        0.4737
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.3878,
+       "ci95_percentile": [
+        0.3169,
+        0.4603
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4865,
+       "ci95_percentile": [
+        0.4508,
+        0.5161
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4612,
+       "ci95_percentile": [
+        0.4142,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.6866,
+       "ci95_percentile": [
+        0.5709,
+        0.7961
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.1157,
+       "ci95_percentile": [
+        0.0658,
+        0.1715
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.1941,
+       "ci95_percentile": [
+        0.1253,
+        0.2629
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5385,
+       "ci95_percentile": [
+        0.5,
+        0.5875
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.3561,
+       "ci95_percentile": [
+        0.2988,
+        0.4187
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5256,
+       "ci95_percentile": [
+        0.5,
+        0.5641
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5897,
+       "ci95_percentile": [
+        0.5375,
+        0.6538
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5513,
+       "ci95_percentile": [
+        0.5125,
+        0.6026
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.4122,
+       "ci95_percentile": [
+        0.336,
+        0.4939
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4444,
+       "ci95_percentile": [
+        0.3587,
+        0.5359
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.2742,
+       "ci95_percentile": [
+        0.1929,
+        0.3553
+       ]
+      },
+      "static_token": {
+       "auroc": 0.1189,
+       "ci95_percentile": [
+        0.0713,
+        0.1715
+       ]
+      }
+     }
+    }
+   },
+   "n": 111,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "QC-v8-exSP2-exContam": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 39,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1283,
+        0.0768
+       ],
+       "delta": -0.0211,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7219
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.1633,
+        0.0595
+       ],
+       "delta": -0.047,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4223
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.0453,
+        0.1452
+       ],
+       "delta": 0.0538,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2727
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.053,
+        0.1288
+       ],
+       "delta": 0.0414,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3739
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        0.09,
+        0.4196
+       ],
+       "delta": 0.2524,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.004
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.4281,
+        -0.2027
+       ],
+       "delta": -0.3175,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.3613,
+        -0.1142
+       ],
+       "delta": -0.2348,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.5223,
+        -0.3484
+       ],
+       "delta": -0.4316,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        0.0281,
+        0.1801
+       ],
+       "delta": 0.1079,
+       "holm_adj_p_over_prereg_family": 0.0448,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0112
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.1418,
+        -0.0178
+       ],
+       "delta": -0.0726,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0036
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        0.0008,
+        0.1562
+       ],
+       "delta": 0.0816,
+       "holm_adj_p_over_prereg_family": 0.0992,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0496
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.1042,
+        0.1974
+       ],
+       "delta": 0.1474,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        0.0546,
+        0.1839
+       ],
+       "delta": 0.1211,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0776,
+        0.0
+       ],
+       "delta": -0.0327,
+       "holm_adj_p_over_prereg_family": 0.0992,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0744
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.2925,
+        -0.0287
+       ],
+       "delta": -0.1617,
+       "holm_adj_p_over_prereg_family": 0.0456,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0152
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.4139,
+        -0.2037
+       ],
+       "delta": -0.3098,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.4105,
+       "ci95_percentile": [
+        0.3499,
+        0.4684
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.3846,
+       "ci95_percentile": [
+        0.3114,
+        0.4573
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4853,
+       "ci95_percentile": [
+        0.4489,
+        0.5161
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4729,
+       "ci95_percentile": [
+        0.4324,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.684,
+       "ci95_percentile": [
+        0.57,
+        0.8004
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.1141,
+       "ci95_percentile": [
+        0.0639,
+        0.1755
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.1968,
+       "ci95_percentile": [
+        0.126,
+        0.2702
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5395,
+       "ci95_percentile": [
+        0.5,
+        0.5897
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.359,
+       "ci95_percentile": [
+        0.2982,
+        0.4244
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5132,
+       "ci95_percentile": [
+        0.5,
+        0.5405
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.5789,
+       "ci95_percentile": [
+        0.5263,
+        0.641
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.5526,
+       "ci95_percentile": [
+        0.5128,
+        0.6053
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.3989,
+       "ci95_percentile": [
+        0.3253,
+        0.4797
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.4316,
+       "ci95_percentile": [
+        0.3484,
+        0.5223
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.2699,
+       "ci95_percentile": [
+        0.1883,
+        0.3575
+       ]
+      },
+      "static_token": {
+       "auroc": 0.1218,
+       "ci95_percentile": [
+        0.0726,
+        0.1793
+       ]
+      }
+     }
+    }
+   },
+   "n": 108,
+   "status": "POST-HOC EXPLORATORY"
+  },
+  "QD-v7-ALL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 40,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.1181,
+        0.0763
+       ],
+       "delta": -0.0162,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.7566
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.177,
+        0.049
+       ],
+       "delta": -0.0581,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.3047
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.1856,
+        -0.0096
+       ],
+       "delta": -0.0967,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0284
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.2316,
+        -0.0412
+       ],
+       "delta": -0.1333,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0024
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.0135,
+        0.2469
+       ],
+       "delta": 0.1156,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0812
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.383,
+        -0.163
+       ],
+       "delta": -0.2708,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.3585,
+        -0.1357
+       ],
+       "delta": -0.2449,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.6814,
+        -0.5159
+       ],
+       "delta": -0.5955,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.0814,
+        0.0558
+       ],
+       "delta": -0.0096,
+       "holm_adj_p_over_prereg_family": 0.795,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.795
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.1178,
+        -0.0036
+       ],
+       "delta": -0.055,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0392
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.2593,
+        -0.0891
+       ],
+       "delta": -0.1694,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.123,
+        0.0185
+       ],
+       "delta": -0.0496,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1588
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.123,
+        0.0185
+       ],
+       "delta": -0.0496,
+       "holm_adj_p_over_prereg_family": 0.3176,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1588
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.1199,
+        0.0225
+       ],
+       "delta": -0.0455,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2028
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.1814,
+        -0.0159
+       ],
+       "delta": -0.0955,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0216
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0117,
+        0.0696
+       ],
+       "delta": 0.0425,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0052
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.0611,
+        0.0666
+       ],
+       "delta": 0.0059,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.837
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.0825,
+        0.003
+       ],
+       "delta": -0.0348,
+       "holm_adj_p_over_prereg_family": 0.2304,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0768
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.2167,
+        0.0003
+       ],
+       "delta": -0.1052,
+       "holm_adj_p_over_prereg_family": 0.208,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.052
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.4947,
+        -0.2772
+       ],
+       "delta": -0.386,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.5794,
+       "ci95_percentile": [
+        0.5296,
+        0.6281
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5374,
+       "ci95_percentile": [
+        0.4637,
+        0.606
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.4989,
+       "ci95_percentile": [
+        0.4852,
+        0.5127
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4623,
+       "ci95_percentile": [
+        0.4143,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.7112,
+       "ci95_percentile": [
+        0.6055,
+        0.8177
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3248,
+       "ci95_percentile": [
+        0.2588,
+        0.39
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.3507,
+       "ci95_percentile": [
+        0.2836,
+        0.4156
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.5859,
+       "ci95_percentile": [
+        0.531,
+        0.65
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.5405,
+       "ci95_percentile": [
+        0.4718,
+        0.6135
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.4261,
+       "ci95_percentile": [
+        0.3802,
+        0.4701
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.546,
+       "ci95_percentile": [
+        0.5038,
+        0.5966
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.546,
+       "ci95_percentile": [
+        0.5038,
+        0.5966
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.55,
+       "ci95_percentile": [
+        0.5125,
+        0.6
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.6381,
+       "ci95_percentile": [
+        0.5607,
+        0.7178
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.6015,
+       "ci95_percentile": [
+        0.5421,
+        0.6702
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.5607,
+       "ci95_percentile": [
+        0.4873,
+        0.6375
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.5955,
+       "ci95_percentile": [
+        0.5159,
+        0.6814
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4903,
+       "ci95_percentile": [
+        0.4312,
+        0.549
+       ]
+      },
+      "static_token": {
+       "auroc": 0.2095,
+       "ci95_percentile": [
+        0.1508,
+        0.2723
+       ]
+      }
+     }
+    }
+   },
+   "n": 152,
+   "status": "PRE-REGISTERED"
+  },
+  "QD-v7-EVAL": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 28,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.2851,
+        -0.0278
+       ],
+       "delta": -0.1575,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0152
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.3439,
+        -0.0351
+       ],
+       "delta": -0.1878,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0148
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.3082,
+        -0.0333
+       ],
+       "delta": -0.1728,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0144
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.3582,
+        -0.0922
+       ],
+       "delta": -0.2231,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0008
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.1142,
+        0.2272
+       ],
+       "delta": 0.0617,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4607
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.5282,
+        -0.213
+       ],
+       "delta": -0.3678,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.5233,
+        -0.2036
+       ],
+       "delta": -0.3617,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.8257,
+        -0.5792
+       ],
+       "delta": -0.7022,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.1654,
+        0.0411
+       ],
+       "delta": -0.0572,
+       "holm_adj_p_over_prereg_family": 0.2651,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.2651
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.1994,
+        -0.0244
+       ],
+       "delta": -0.1033,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0076
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.4252,
+        -0.191
+       ],
+       "delta": -0.3058,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.2303,
+        -0.0182
+       ],
+       "delta": -0.1244,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0212
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.2303,
+        -0.0182
+       ],
+       "delta": -0.1244,
+       "holm_adj_p_over_prereg_family": 0.0424,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0212
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.2259,
+        -0.0118
+       ],
+       "delta": -0.1189,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0308
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.3257,
+        -0.0792
+       ],
+       "delta": -0.2022,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0012
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        -0.0127,
+        0.0802
+       ],
+       "delta": 0.0361,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1456
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.1323,
+        0.0587
+       ],
+       "delta": -0.0289,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.5747
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.1404,
+        -0.0139
+       ],
+       "delta": -0.0692,
+       "holm_adj_p_over_prereg_family": 0.0312,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0104
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.3819,
+        -0.0927
+       ],
+       "delta": -0.24,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.6677,
+        -0.363
+       ],
+       "delta": -0.5203,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.5447,
+       "ci95_percentile": [
+        0.4741,
+        0.6151
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.5144,
+       "ci95_percentile": [
+        0.412,
+        0.6081
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.5294,
+       "ci95_percentile": [
+        0.4788,
+        0.5904
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4792,
+       "ci95_percentile": [
+        0.4348,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.7639,
+       "ci95_percentile": [
+        0.653,
+        0.8763
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.3344,
+       "ci95_percentile": [
+        0.248,
+        0.4119
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.3406,
+       "ci95_percentile": [
+        0.2492,
+        0.4233
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.645,
+       "ci95_percentile": [
+        0.5579,
+        0.7336
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.5989,
+       "ci95_percentile": [
+        0.4834,
+        0.7122
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.3964,
+       "ci95_percentile": [
+        0.3265,
+        0.4689
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.5778,
+       "ci95_percentile": [
+        0.5082,
+        0.66
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5778,
+       "ci95_percentile": [
+        0.5082,
+        0.66
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.5833,
+       "ci95_percentile": [
+        0.52,
+        0.6667
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.7383,
+       "ci95_percentile": [
+        0.6312,
+        0.8437
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.6733,
+       "ci95_percentile": [
+        0.5786,
+        0.7708
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.6331,
+       "ci95_percentile": [
+        0.512,
+        0.7494
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.7022,
+       "ci95_percentile": [
+        0.5792,
+        0.8257
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.4622,
+       "ci95_percentile": [
+        0.3937,
+        0.5342
+       ]
+      },
+      "static_token": {
+       "auroc": 0.1819,
+       "ci95_percentile": [
+        0.1076,
+        0.2654
+       ]
+      }
+     }
+    }
+   },
+   "n": 99,
+   "status": "PRE-REGISTERED"
+  },
+  "QD-v7-exSP2": {
+   "levels": {
+    "bug": {
+     "holm_family": [
+      "static_ast",
+      "static_token",
+      "exception_fraction",
+      "call_count",
+      "sbg_v3"
+     ],
+     "n_clusters": 28,
+     "paired_vs_sbg_v5": {
+      "F:abs_dnodes": {
+       "ci95_percentile": [
+        -0.4331,
+        -0.1596
+       ],
+       "delta": -0.2977,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:abs_dtok": {
+       "ci95_percentile": [
+        -0.4696,
+        -0.1557
+       ],
+       "delta": -0.3116,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:base_ntok": {
+       "ci95_percentile": [
+        -0.2877,
+        0.0238
+       ],
+       "delta": -0.1393,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0896
+      },
+      "F:comment_loss": {
+       "ci95_percentile": [
+        -0.3374,
+        -0.0368
+       ],
+       "delta": -0.1892,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0152
+      },
+      "F:edit_lines": {
+       "ci95_percentile": [
+        -0.1092,
+        0.2505
+       ],
+       "delta": 0.0703,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.4463
+      },
+      "F:edit_tokens": {
+       "ci95_percentile": [
+        -0.7047,
+        -0.4162
+       ],
+       "delta": -0.5616,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:rel_edit_tok": {
+       "ci95_percentile": [
+        -0.6544,
+        -0.335
+       ],
+       "delta": -0.497,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "F:variant_is_unparse_canonical": {
+       "ci95_percentile": [
+        -0.8006,
+        -0.5278
+       ],
+       "delta": -0.6684,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "call_count": {
+       "ci95_percentile": [
+        -0.1404,
+        0.0857
+       ],
+       "delta": -0.0226,
+       "holm_adj_p_over_prereg_family": 0.6943,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.6943
+      },
+      "combined_shortcut": {
+       "ci95_percentile": [
+        -0.2164,
+        -0.0133
+       ],
+       "delta": -0.1042,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0188
+      },
+      "coverage_size": {
+       "ci95_percentile": [
+        -0.4591,
+        -0.1904
+       ],
+       "delta": -0.3207,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "exception_component_v3": {
+       "ci95_percentile": [
+        -0.2117,
+        0.027
+       ],
+       "delta": -0.0938,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1264
+      },
+      "exception_fraction": {
+       "ci95_percentile": [
+        -0.2117,
+        0.027
+       ],
+       "delta": -0.0938,
+       "holm_adj_p_over_prereg_family": 0.2528,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.1264
+      },
+      "exception_type_jaccard": {
+       "ci95_percentile": [
+        -0.2046,
+        0.0362
+       ],
+       "delta": -0.0851,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.174
+      },
+      "n_functions": {
+       "ci95_percentile": [
+        -0.3006,
+        -0.0278
+       ],
+       "delta": -0.1684,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.024
+      },
+      "sbg_state": {
+       "ci95_percentile": [
+        0.0046,
+        0.1226
+       ],
+       "delta": 0.0634,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0356
+      },
+      "sbg_temporal": {
+       "ci95_percentile": [
+        -0.1043,
+        0.1018
+       ],
+       "delta": 0.0043,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.9266
+      },
+      "sbg_v3": {
+       "ci95_percentile": [
+        -0.1595,
+        -0.0056
+       ],
+       "delta": -0.0738,
+       "holm_adj_p_over_prereg_family": 0.1008,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0336
+      },
+      "static_ast": {
+       "ci95_percentile": [
+        -0.6182,
+        -0.2808
+       ],
+       "delta": -0.4488,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      },
+      "static_token": {
+       "ci95_percentile": [
+        -0.7165,
+        -0.4064
+       ],
+       "delta": -0.5638,
+       "holm_adj_p_over_prereg_family": 0.002,
+       "n_effective": 5000,
+       "p_two_sided_boot": 0.0004
+      }
+     },
+     "predictors": {
+      "F:abs_dnodes": {
+       "auroc": 0.3707,
+       "ci95_percentile": [
+        0.2981,
+        0.4438
+       ]
+      },
+      "F:abs_dtok": {
+       "auroc": 0.3568,
+       "ci95_percentile": [
+        0.264,
+        0.4473
+       ]
+      },
+      "F:base_ntok": {
+       "auroc": 0.5291,
+       "ci95_percentile": [
+        0.4685,
+        0.5971
+       ]
+      },
+      "F:comment_loss": {
+       "auroc": 0.4792,
+       "ci95_percentile": [
+        0.4348,
+        0.5
+       ]
+      },
+      "F:edit_lines": {
+       "auroc": 0.7387,
+       "ci95_percentile": [
+        0.6263,
+        0.8544
+       ]
+      },
+      "F:edit_tokens": {
+       "auroc": 0.1068,
+       "ci95_percentile": [
+        0.0499,
+        0.1692
+       ]
+      },
+      "F:rel_edit_tok": {
+       "auroc": 0.1714,
+       "ci95_percentile": [
+        0.0848,
+        0.2585
+       ]
+      },
+      "F:variant_is_unparse_canonical": {
+       "auroc": 0.0,
+       "ci95_percentile": [
+        0.0,
+        0.0
+       ]
+      },
+      "call_count": {
+       "auroc": 0.6458,
+       "ci95_percentile": [
+        0.5575,
+        0.74
+       ]
+      },
+      "combined_shortcut": {
+       "auroc": 0.5642,
+       "ci95_percentile": [
+        0.4348,
+        0.6943
+       ]
+      },
+      "coverage_size": {
+       "auroc": 0.3477,
+       "ci95_percentile": [
+        0.2742,
+        0.4238
+       ]
+      },
+      "exception_component_v3": {
+       "auroc": 0.5747,
+       "ci95_percentile": [
+        0.5005,
+        0.6596
+       ]
+      },
+      "exception_fraction": {
+       "auroc": 0.5747,
+       "ci95_percentile": [
+        0.5005,
+        0.6596
+       ]
+      },
+      "exception_type_jaccard": {
+       "auroc": 0.5833,
+       "ci95_percentile": [
+        0.52,
+        0.6667
+       ]
+      },
+      "n_functions": {
+       "auroc": 0.5,
+       "ci95_percentile": [
+        0.5,
+        0.5
+       ]
+      },
+      "sbg_state": {
+       "auroc": 0.7318,
+       "ci95_percentile": [
+        0.6186,
+        0.8394
+       ]
+      },
+      "sbg_temporal": {
+       "auroc": 0.6727,
+       "ci95_percentile": [
+        0.578,
+        0.7724
+       ]
+      },
+      "sbg_v3": {
+       "auroc": 0.5946,
+       "ci95_percentile": [
+        0.4595,
+        0.7259
+       ]
+      },
+      "sbg_v5": {
+       "auroc": 0.6684,
+       "ci95_percentile": [
+        0.5278,
+        0.8006
+       ]
+      },
+      "static_ast": {
+       "auroc": 0.2196,
+       "ci95_percentile": [
+        0.1263,
+        0.3157
+       ]
+      },
+      "static_token": {
+       "auroc": 0.1046,
+       "ci95_percentile": [
+        0.0482,
+        0.1643
+       ]
+      }
+     }
+    }
+   },
+   "n": 72,
+   "status": "POST-HOC EXPLORATORY"
+  }
+ }
+}

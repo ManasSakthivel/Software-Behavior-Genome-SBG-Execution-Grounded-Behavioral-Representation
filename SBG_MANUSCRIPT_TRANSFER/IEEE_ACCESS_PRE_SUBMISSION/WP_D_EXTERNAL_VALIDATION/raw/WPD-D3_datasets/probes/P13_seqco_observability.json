@@ -1,0 +1,200 @@
+{
+ "n_rows": 14572,
+ "classes": {
+  "SP_ok": 2449,
+  "ast_identical": 588,
+  "entry_differs": 5650,
+  "orig_all_exc": 4512,
+  "CH_ok": 629,
+  "var_import_fail": 290,
+  "CH_unobservable": 391,
+  "orig_no_entry": 50,
+  "SP_but_differs": 13
+ },
+ "per_transformation": {
+  "transformation_add_sub_variable": {
+   "orig_all_exc": 322,
+   "CH_ok": 116,
+   "CH_unobservable": 89,
+   "orig_not_ok": 1
+  },
+  "transformation_and_or_variable": {
+   "orig_all_exc": 53,
+   "CH_unobservable": 29,
+   "CH_ok": 26
+  },
+  "transformation_dead_code_insert": {
+   "SP_ok": 493,
+   "orig_all_exc": 514,
+   "var_not_ok": 56,
+   "orig_not_ok": 4,
+   "SP_but_differs": 1,
+   "ast_identical": 15
+  },
+  "transformation_dissimilar_code_injection_0": {
+   "entry_differs": 1130,
+   "orig_not_ok": 4
+  },
+  "transformation_dissimilar_code_injection_1": {
+   "entry_differs": 1130,
+   "orig_not_ok": 4
+  },
+  "transformation_dissimilar_code_injection_2": {
+   "entry_differs": 1130,
+   "orig_not_ok": 4
+  },
+  "transformation_dissimilar_code_injection_3": {
+   "entry_differs": 1130,
+   "orig_not_ok": 4
+  },
+  "transformation_dissimilar_code_injection_4": {
+   "entry_differs": 1130,
+   "orig_not_ok": 4
+  },
+  "transformation_div_mul_variable": {
+   "orig_all_exc": 76,
+   "var_not_ok": 61,
+   "CH_ok": 17,
+   "CH_unobservable": 5
+  },
+  "transformation_equalto_exclamation_variable": {
+   "CH_ok": 125,
+   "CH_unobservable": 45,
+   "orig_all_exc": 180,
+   "orig_not_ok": 2
+  },
+  "transformation_exclamation_equalto_variable": {
+   "CH_ok": 34,
+   "orig_all_exc": 46,
+   "CH_unobservable": 8,
+   "orig_not_ok": 1
+  },
+  "transformation_false_true_variable": {
+   "orig_all_exc": 47,
+   "CH_unobservable": 23,
+   "CH_ok": 43
+  },
+  "transformation_for_while_loop": {
+   "ast_identical": 318,
+   "orig_all_exc": 514,
+   "SP_ok": 190,
+   "orig_not_ok": 4,
+   "var_not_ok": 13,
+   "SP_but_differs": 6
+  },
+  "transformation_greater_lesser_variable": {
+   "CH_unobservable": 46,
+   "orig_all_exc": 99,
+   "CH_ok": 45,
+   "var_not_ok": 39
+  },
+  "transformation_is_isnot_variable": {
+   "CH_ok": 5,
+   "orig_all_exc": 10,
+   "CH_unobservable": 7,
+   "var_not_ok": 1
+  },
+  "transformation_isnot_is_variable": {
+   "CH_ok": 1,
+   "orig_all_exc": 1
+  },
+  "transformation_lesser_greater_variable": {
+   "var_not_ok": 12,
+   "orig_all_exc": 105,
+   "CH_ok": 48,
+   "CH_unobservable": 27
+  },
+  "transformation_mul_div_variable": {
+   "orig_all_exc": 196,
+   "CH_ok": 40,
+   "CH_unobservable": 16,
+   "var_not_ok": 27
+  },
+  "transformation_operand_swap": {
+   "ast_identical": 252,
+   "orig_all_exc": 512,
+   "SP_ok": 258,
+   "orig_not_ok": 4,
+   "var_not_ok": 13,
+   "SP_but_differs": 1
+  },
+  "transformation_or_and_variable": {
+   "CH_ok": 12,
+   "orig_all_exc": 33,
+   "CH_unobservable": 20
+  },
+  "transformation_rename_variable_cb": {
+   "orig_all_exc": 474,
+   "SP_ok": 484,
+   "orig_not_ok": 4,
+   "var_not_ok": 12,
+   "ast_identical": 1,
+   "SP_but_differs": 3
+  },
+  "transformation_rename_variable_naive": {
+   "SP_ok": 512,
+   "orig_all_exc": 514,
+   "orig_not_ok": 4,
+   "var_not_ok": 13,
+   "ast_identical": 1,
+   "SP_but_differs": 1
+  },
+  "transformation_rename_variable_rn": {
+   "SP_ok": 512,
+   "orig_all_exc": 514,
+   "orig_not_ok": 4,
+   "var_not_ok": 13,
+   "ast_identical": 1,
+   "SP_but_differs": 1
+  },
+  "transformation_sub_add_variable": {
+   "orig_all_exc": 256,
+   "CH_ok": 76,
+   "CH_unobservable": 54,
+   "orig_not_ok": 1,
+   "var_not_ok": 30
+  },
+  "transformation_true_false_variable": {
+   "orig_all_exc": 46,
+   "orig_not_ok": 1,
+   "CH_ok": 41,
+   "CH_unobservable": 22
+  }
+ },
+ "stratum_e_eq_2": {
+  "pairs_SP": 735,
+  "pairs_CH": 629,
+  "programs_with_any": 486,
+  "programs_with_both_classes": 260,
+  "by_split_programs_with_both": {
+   "train": 121,
+   "valid": 54,
+   "test": 85
+  }
+ },
+ "stratum_0_lt_e_le_2": {
+  "pairs_SP": 735,
+  "pairs_CH": 629,
+  "programs_with_any": 486,
+  "programs_with_both_classes": 260,
+  "by_split_programs_with_both": {
+   "train": 121,
+   "valid": 54,
+   "test": 85
+  }
+ },
+ "all_observable_validated": {
+  "pairs_SP": 2449,
+  "pairs_CH": 629,
+  "programs_with_any": 531,
+  "programs_with_both_classes": 295,
+  "by_split_programs_with_both": {
+   "train": 142,
+   "valid": 62,
+   "test": 91
+  }
+ },
+ "SP_label_noise_rate": 0.0053,
+ "CH_unobservable_rate": 0.3833,
+ "eligible_frac_rows": 0.2793
+}

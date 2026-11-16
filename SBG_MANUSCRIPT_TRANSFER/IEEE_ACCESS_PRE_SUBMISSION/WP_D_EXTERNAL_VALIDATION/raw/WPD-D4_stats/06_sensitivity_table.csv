@@ -1,0 +1,111 @@
+config,kind,variant,n,n_pos,auroc_or_range
+BP-v7,pair-set,as-is,147,41,0.4099
+BP-v7,pair-set,ex-SP-2,107,41,0.4715
+BP-v7,pair-set,ex-invalid-SP-2(7),140,41,0.4389
+BP-v7,pair-set,ex-contaminated-bases,136,38,0.4013
+BP-v7,pair-set,ex-SP-2 & ex-contaminated,99,38,0.4685
+BP-v7,pair-set,ex-invalid-SP-2 & ex-contaminated,129,38,0.4322
+BP-v7,pair-set,ex-youtube-dl,84,24,0.449
+BP-v7,pair-set,ex-SP-2 & ex-youtube-dl,61,24,0.5152
+BP-v7,pair-set,one-bug-per-unit-family,113,32,0.4556
+BP-v7,pair-set,one-bug-per-unit-family & ex-SP-2,82,32,0.5169
+BP-v7,pos-vs-single-negative-type,SP-1,17,,0.4103
+BP-v7,pos-vs-single-negative-type,SP-2,40,,0.3082
+BP-v7,pos-vs-single-negative-type,SP-3,29,,0.3936
+BP-v7,pos-vs-single-negative-type,SP-4,13,,0.5788
+BP-v7,pos-vs-single-negative-type,SP-6,7,,0.7439
+BP-v7,unevaluated-imputation(all-negative-types),zero,53,,0.434
+BP-v7,unevaluated-imputation(all-negative-types),half,53,,0.4186
+BP-v7,unevaluated-imputation(all-negative-types),neutral,53,,0.4509
+BP-v7,unevaluated-imputation(all-negative-types),worst,53,,0.2234
+BP-v7,unevaluated-imputation(all-negative-types),best,53,,0.6784
+BP-v7,unevaluated-imputation(ex-SP-2),zero,43,,0.4899
+BP-v7,unevaluated-imputation(ex-SP-2),half,43,,0.4477
+BP-v7,unevaluated-imputation(ex-SP-2),neutral,43,,0.4853
+BP-v7,unevaluated-imputation(ex-SP-2),worst,43,,0.2442
+BP-v7,unevaluated-imputation(ex-SP-2),best,43,,0.7263
+BP-v7,LOCO bug,as-is,39,,0.3977..0.4262
+BP-v7,LOCO project,as-is,11,,0.3886..0.4490
+BP-v7,LOCO unit_family,as-is,32,,0.3977..0.4325
+BP-v7,LOCO bug,ex-SP-2,39,,0.4553..0.4891
+BP-v7,LOCO project,ex-SP-2,11,,0.4515..0.5152
+BP-v7,LOCO unit_family,ex-SP-2,32,,0.4578..0.4929
+BP-v8,pair-set,as-is,147,41,0.4159
+BP-v8,pair-set,ex-SP-2,107,41,0.497
+BP-v8,pair-set,ex-invalid-SP-2(7),140,41,0.4453
+BP-v8,pair-set,ex-contaminated-bases,136,38,0.4059
+BP-v8,pair-set,ex-SP-2 & ex-contaminated,99,38,0.4953
+BP-v8,pair-set,ex-invalid-SP-2 & ex-contaminated,129,38,0.4371
+BP-v8,pair-set,ex-youtube-dl,84,24,0.4486
+BP-v8,pair-set,ex-SP-2 & ex-youtube-dl,61,24,0.5146
+BP-v8,pair-set,one-bug-per-unit-family,113,32,0.4817
+BP-v8,pair-set,one-bug-per-unit-family & ex-SP-2,82,32,0.5484
+BP-v8,pos-vs-single-negative-type,SP-1,17,,0.4978
+BP-v8,pos-vs-single-negative-type,SP-2,40,,0.282
+BP-v8,pos-vs-single-negative-type,SP-3,29,,0.4222
+BP-v8,pos-vs-single-negative-type,SP-4,13,,0.5629
+BP-v8,pos-vs-single-negative-type,SP-6,7,,0.6829
+BP-v8,unevaluated-imputation(all-negative-types),zero,53,,0.4312
+BP-v8,unevaluated-imputation(all-negative-types),half,53,,0.4402
+BP-v8,unevaluated-imputation(all-negative-types),neutral,53,,0.4542
+BP-v8,unevaluated-imputation(all-negative-types),worst,53,,0.2266
+BP-v8,unevaluated-imputation(all-negative-types),best,53,,0.6817
+BP-v8,unevaluated-imputation(ex-SP-2),zero,43,,0.4972
+BP-v8,unevaluated-imputation(ex-SP-2),half,43,,0.4819
+BP-v8,unevaluated-imputation(ex-SP-2),neutral,43,,0.4985
+BP-v8,unevaluated-imputation(ex-SP-2),worst,43,,0.2574
+BP-v8,unevaluated-imputation(ex-SP-2),best,43,,0.7395
+BP-v8,LOCO bug,as-is,39,,0.4013..0.4284
+BP-v8,LOCO project,as-is,11,,0.3935..0.4486
+BP-v8,LOCO unit_family,as-is,32,,0.4013..0.4507
+BP-v8,LOCO bug,ex-SP-2,39,,0.4805..0.5096
+BP-v8,LOCO project,ex-SP-2,11,,0.4786..0.5219
+BP-v8,LOCO unit_family,ex-SP-2,32,,0.4805..0.5221
+QC-v7,pair-set,as-is,152,40,0.3877
+QC-v7,pair-set,ex-SP-2,112,40,0.4507
+QC-v7,pair-set,ex-contaminated-bases,148,39,0.3783
+QC-v7,pair-set,ex-SP-2 & ex-contaminated,109,39,0.4454
+QC-v7,pair-set,one-bug-per-unit-family,152,40,0.3877
+QC-v7,pair-set,one-bug-per-unit-family & ex-SP-2,112,40,0.4507
+QC-v7,pos-vs-single-negative-type,SP-1,30,,0.5708
+QC-v7,pos-vs-single-negative-type,SP-2,40,,0.2744
+QC-v7,pos-vs-single-negative-type,SP-3,33,,0.3008
+QC-v7,pos-vs-single-negative-type,SP-6,9,,0.6
+QC-v7,unevaluated-imputation(all-negative-types),zero,0,,0.3877
+QC-v7,unevaluated-imputation(all-negative-types),half,0,,0.3877
+QC-v7,unevaluated-imputation(all-negative-types),neutral,0,,0.3877
+QC-v7,unevaluated-imputation(all-negative-types),worst,0,,0.3877
+QC-v7,unevaluated-imputation(all-negative-types),best,0,,0.3877
+QC-v7,unevaluated-imputation(ex-SP-2),zero,0,,0.4507
+QC-v7,unevaluated-imputation(ex-SP-2),half,0,,0.4507
+QC-v7,unevaluated-imputation(ex-SP-2),neutral,0,,0.4507
+QC-v7,unevaluated-imputation(ex-SP-2),worst,0,,0.4507
+QC-v7,unevaluated-imputation(ex-SP-2),best,0,,0.4507
+QC-v7,LOCO bug,as-is,40,,0.3660..0.3974
+QC-v7,LOCO unit_family,as-is,40,,0.3660..0.3974
+QC-v7,LOCO bug,ex-SP-2,40,,0.4322..0.4619
+QC-v7,LOCO unit_family,ex-SP-2,40,,0.4322..0.4619
+QC-v8,pair-set,as-is,151,39,0.3842
+QC-v8,pair-set,ex-SP-2,111,39,0.4444
+QC-v8,pair-set,ex-contaminated-bases,147,38,0.3704
+QC-v8,pair-set,ex-SP-2 & ex-contaminated,108,38,0.4316
+QC-v8,pair-set,one-bug-per-unit-family,151,39,0.3842
+QC-v8,pair-set,one-bug-per-unit-family & ex-SP-2,111,39,0.4444
+QC-v8,pos-vs-single-negative-type,SP-1,30,,0.5752
+QC-v8,pos-vs-single-negative-type,SP-2,40,,0.2756
+QC-v8,pos-vs-single-negative-type,SP-3,33,,0.2859
+QC-v8,pos-vs-single-negative-type,SP-6,9,,0.5897
+QC-v8,unevaluated-imputation(all-negative-types),zero,1,,0.381
+QC-v8,unevaluated-imputation(all-negative-types),half,1,,0.3996
+QC-v8,unevaluated-imputation(all-negative-types),neutral,1,,0.3871
+QC-v8,unevaluated-imputation(all-negative-types),worst,1,,0.3746
+QC-v8,unevaluated-imputation(all-negative-types),best,1,,0.3996
+QC-v8,unevaluated-imputation(ex-SP-2),zero,1,,0.4415
+QC-v8,unevaluated-imputation(ex-SP-2),half,1,,0.4583
+QC-v8,unevaluated-imputation(ex-SP-2),neutral,1,,0.4458
+QC-v8,unevaluated-imputation(ex-SP-2),worst,1,,0.4333
+QC-v8,unevaluated-imputation(ex-SP-2),best,1,,0.4583
+QC-v8,LOCO bug,as-is,40,,0.3621..0.3940
+QC-v8,LOCO unit_family,as-is,40,,0.3621..0.3940
+QC-v8,LOCO bug,ex-SP-2,40,,0.4256..0.4558
+QC-v8,LOCO unit_family,ex-SP-2,40,,0.4256..0.4558

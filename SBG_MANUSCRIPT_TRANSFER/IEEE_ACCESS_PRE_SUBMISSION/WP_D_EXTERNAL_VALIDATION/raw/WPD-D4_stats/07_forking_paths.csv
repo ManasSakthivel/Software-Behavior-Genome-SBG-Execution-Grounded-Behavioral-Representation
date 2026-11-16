@@ -1,0 +1,28 @@
+id,corpus,description,status,auroc,n_pairs,repo_reported_ci,source,date,how,note
+BP-01,BugsInPy,"v6 protocol, VALID=EVALUABLE (140)",PRE-REGISTERED,0.4057,140,"[0.3223, 0.4901]",artifacts/final/BUGSINPY_output_free_v6.json,2026-09-28,recomputed,
+BP-02,BugsInPy,"v7 ALL 200, unevaluated=0",PRE-REGISTERED,0.434,200,"[0.3741, 0.4899]",artifacts/final/BUGSINPY_output_free_v7.json,2026-09-28,recomputed,
+BP-03,BugsInPy,v7 EVALUABLE=VALID 147 (headline/primary),PRE-REGISTERED,0.4099,147,"[0.3262, 0.4939]",artifacts/final/BUGSINPY_output_free_v7.json,2026-09-28,recomputed,
+BP-04,BugsInPy,v7 excluding SP-2 negatives,POST-HOC,0.4715,107,"[0.3809, 0.5617]",paper_evidence/DIAGNOSTIC_EXTERNAL.json,2026-10-29,recomputed,
+BP-05,BugsInPy,v7 within-unit stratified,POST-HOC,0.3922,116,,paper_evidence/DIAGNOSTIC_EXTERNAL.json (0.4018),2026-10-29,recomputed (pooled within-BUG stratified AUROC; n=#cross-label pairs),repo value 0.4018 NOT reproduced exactly: D4 pooled-pair weighting gives 0.3922 (within-bug) / 0.3618 (within-unit-family); weighting scheme of the repo value is undocumented
+BP-06,BugsInPy,"v7, units not importing `re`, excl. SP-2",POST-HOC,0.5104,60,"[0.4111, 0.6188]",paper_evidence/DIAGNOSTIC_EXTERNAL.json,2026-10-29,artifact,
+BP-07,BugsInPy,"re.purge rescore (purged scores), all 147",POST-HOC,0.4294,147,"[0.3379, 0.5266]",paper_evidence/raw/bugsinpy_purge_rescore.json,2026-10-29,recomputed,
+BP-08,BugsInPy,"re.purge rescore, excl. SP-2",POST-HOC,0.5115,107,,paper_evidence/raw/bugsinpy_purge_rescore.json (not separately reported),2026-10-29,recomputed,not reported in repo; D4 computed from purged scores
+BP-09,BugsInPy,"v8 corrected-harness rescore, all 147",POST-HOC,0.4159,147,"[0.3223, 0.5144]",paper_evidence/EXTERNAL_RESCORE_V8.json,2026-10-29,recomputed,
+BP-10,BugsInPy,"v8 rescore, excl. SP-2 (107)  <- the '0.497'",POST-HOC,0.497,107,"[0.4023, 0.5956]",paper_evidence/EXTERNAL_RESCORE_V8.json,2026-10-29,recomputed,
+BP-11,BugsInPy,"v8 rescore, excl. 7 invalid SP-2 negatives (140)",POST-HOC,0.4453,140,,paper_evidence/EXTERNAL_NEGATIVE_AUDIT.json,2026-10-29,recomputed,point estimate only in repo
+QC-01,QuixBugs canonical,v7 all 152 (headline),PRE-REGISTERED,0.3877,152,"[0.2847, 0.5034]",artifacts/final/QUIXBUGS_output_free_v7.json,2026-10-26,recomputed,CI from DIAGNOSTIC_EXTERNAL; QUIXBUGS_output_free_v7.json itself has no CI
+QC-02,QuixBugs canonical,v7 excluding SP-2 (112),POST-HOC,0.4507,112,"[0.3601, 0.5473]",paper_evidence/DIAGNOSTIC_EXTERNAL.json,2026-10-29,recomputed,
+QC-03,QuixBugs canonical,v7 within-program stratified,POST-HOC,0.3884,112,,paper_evidence/DIAGNOSTIC_EXTERNAL.json (0.3884),2026-10-29,recomputed (exact_stratified; n=#cross-label pairs),
+QC-04,QuixBugs canonical,"v8 rescore, all 151",POST-HOC,0.3842,151,"[0.2847, 0.4899]",paper_evidence/EXTERNAL_RESCORE_V8.json,2026-10-29,recomputed,
+QC-05,QuixBugs canonical,"v8 rescore, excl. SP-2 (111)  <- the '0.444'",POST-HOC,0.4444,111,"[0.3553, 0.5385]",paper_evidence/EXTERNAL_RESCORE_V8.json,2026-10-29,recomputed,
+QC-06,QuixBugs canonical,v7 committed scores on the v8 151-pair set,POST-HOC,0.372,151,"[0.2743, 0.4799]",paper_evidence/EXTERNAL_RESCORE_V8.json,2026-10-29,artifact,
+QC-07,QuixBugs canonical,canonical regime restricted to the 28 programs evaluable under declared inputs,POST-HOC,0.4385,105,"[0.3265, 0.5673]",paper_evidence/DIAGNOSTIC_EXTERNAL.json (0.4385),2026-10-29,recomputed,
+QD-01,QuixBugs declared,declared regime EVALUABLE (99) (pre-registered secondary regime),PRE-REGISTERED,0.7022,99,"[0.5836, 0.8166]",paper_evidence/DIAGNOSTIC_EXTERNAL.json (no dedicated artifact in artifacts/final),2026-10-29,recomputed,regime is prereg; the result was first reported only in an exploratory diagnostic
+QD-02,QuixBugs declared,"declared regime ALL 152, unevaluated=0",PRE-REGISTERED,0.5955,152,,(not reported anywhere in the repo),-,recomputed,prereg ALL denominator; D4 computed
+QD-03,QuixBugs declared,"declared evaluable, excluding SP-2 (72)",POST-HOC,0.6684,72,"[0.5316, 0.7969]",paper_evidence/DIAGNOSTIC_EXTERNAL.json,2026-10-29,recomputed,
+LEG-01,QuixBugs (legacy),"positive-only detection rate at tau*=0.08, 17/28 (60.7%), output-aware 'EEP' protocol","POST-HOC (superseded; no negatives, no AUROC)",,,,results/external/FINAL_MULTI_CORPUS_ANALYSIS_RESULTS.json,2026-08-30,artifact,"different protocol (output-aware), no negative class: not an AUROC and not comparable"
+LEG-02,BugsInPy (legacy),"positive-only detection rate 6/7 (85.7%), 5 projects, output-aware 'EEP' protocol","POST-HOC (superseded; no negatives, no AUROC)",,,,results/external/BUGSINPY_EXTENDED_EVALUATION_RESULTS.json,2026-08-30,artifact,"different protocol (output-aware), no negative class: not an AUROC and not comparable"
+D4-01,BugsInPy,v8 rescore excluding 3 contaminated base units,POST-HOC (D4 sensitivity; not in repo history),0.4059,136,,D4 scripts,2026-11,recomputed,
+D4-02,BugsInPy,v8 ex-SP-2 & ex-contaminated,POST-HOC (D4 sensitivity; not in repo history),0.4953,99,,D4 scripts,2026-11,recomputed,
+D4-03,QuixBugs canonical,v8 ex-contaminated base,POST-HOC (D4 sensitivity; not in repo history),0.3704,147,,D4 scripts,2026-11,recomputed,
+D4-04,QuixBugs canonical,v8 ex-SP-2 & ex-contaminated,POST-HOC (D4 sensitivity; not in repo history),0.4316,108,,D4 scripts,2026-11,recomputed,

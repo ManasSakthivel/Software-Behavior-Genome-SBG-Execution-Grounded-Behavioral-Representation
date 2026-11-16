@@ -1,0 +1,32 @@
+BP-v7 {"as-is": 0.4099, "ex-SP-2": 0.4715, "ex-invalid-SP-2(7)": 0.4389, "ex-contaminated-bases": 0.4013, "ex-SP-2 & ex-contaminated": 0.4685, "ex-invalid-SP-2 & ex-contaminated": 0.4322, "ex-youtube-dl": 0.449, "ex-SP-2 & ex-youtube-dl": 0.5152, "one-bug-per-unit-family": 0.4556, "one-bug-per-unit-family & ex-SP-2": 0.5169}
+   imputation {"all-negative-types": {"zero": 0.434, "half": 0.4186, "neutral": 0.4509, "worst": 0.2234, "best": 0.6784, "n_unevaluated_rows": 53}, "ex-SP-2": {"zero": 0.4899, "half": 0.4477, "neutral": 0.4853, "worst": 0.2442, "best": 0.7263, "n_unevaluated_rows": 43}}
+   single-type {"SP-1": 0.4103, "SP-2": 0.3082, "SP-3": 0.3936, "SP-4": 0.5788, "SP-6": 0.7439}
+   LOCO as-is|bug 0.3977 0.4262 [('youtube-dl/15', 0.4262), ('spacy/1', 0.3977)]
+   LOCO as-is|project 0.3886 0.449 [('youtube-dl', 0.449), ('spacy', 0.3886)]
+   LOCO as-is|unit_family 0.3977 0.4325 [('youtube-dl::youtube_dl/utils.py::js_to_json', 0.4325), ('pandas::pandas/core/window/common.py::validate_baseindexer_support', 0.4245)]
+   LOCO ex-SP-2|bug 0.4553 0.4891 [('youtube-dl/15', 0.4891), ('youtube-dl/10', 0.4553)]
+   LOCO ex-SP-2|project 0.4515 0.5152 [('youtube-dl', 0.5152), ('spacy', 0.4515)]
+   LOCO ex-SP-2|unit_family 0.4578 0.4929 [('youtube-dl::youtube_dl/utils.py::js_to_json', 0.4929), ('pandas::pandas/core/window/common.py::validate_baseindexer_support', 0.4864)]
+BP-v8 {"as-is": 0.4159, "ex-SP-2": 0.497, "ex-invalid-SP-2(7)": 0.4453, "ex-contaminated-bases": 0.4059, "ex-SP-2 & ex-contaminated": 0.4953, "ex-invalid-SP-2 & ex-contaminated": 0.4371, "ex-youtube-dl": 0.4486, "ex-SP-2 & ex-youtube-dl": 0.5146, "one-bug-per-unit-family": 0.4817, "one-bug-per-unit-family & ex-SP-2": 0.5484}
+   imputation {"all-negative-types": {"zero": 0.4312, "half": 0.4402, "neutral": 0.4542, "worst": 0.2266, "best": 0.6817, "n_unevaluated_rows": 53}, "ex-SP-2": {"zero": 0.4972, "half": 0.4819, "neutral": 0.4985, "worst": 0.2574, "best": 0.7395, "n_unevaluated_rows": 43}}
+   single-type {"SP-1": 0.4978, "SP-2": 0.282, "SP-3": 0.4222, "SP-4": 0.5629, "SP-6": 0.6829}
+   LOCO as-is|bug 0.4013 0.4284 [('spacy/1', 0.4013), ('keras/20', 0.4015)]
+   LOCO as-is|project 0.3935 0.4486 [('youtube-dl', 0.4486), ('spacy', 0.3935)]
+   LOCO as-is|unit_family 0.4013 0.4507 [('youtube-dl::youtube_dl/utils.py::js_to_json', 0.4507), ('pandas::pandas/core/window/common.py::validate_baseindexer_support', 0.4343)]
+   LOCO ex-SP-2|bug 0.4805 0.5096 [('keras/20', 0.4805), ('thefuck/18', 0.4835)]
+   LOCO ex-SP-2|project 0.4786 0.5219 [('pandas', 0.5219), ('spacy', 0.4786)]
+   LOCO ex-SP-2|unit_family 0.4805 0.5221 [('youtube-dl::youtube_dl/utils.py::js_to_json', 0.5221), ('pandas::pandas/core/window/common.py::validate_baseindexer_support', 0.5156)]
+QC-v7 {"as-is": 0.3877, "ex-SP-2": 0.4507, "ex-contaminated-bases": 0.3783, "ex-SP-2 & ex-contaminated": 0.4454, "one-bug-per-unit-family": 0.3877, "one-bug-per-unit-family & ex-SP-2": 0.4507}
+   imputation {"all-negative-types": {"zero": 0.3877, "half": 0.3877, "neutral": 0.3877, "worst": 0.3877, "best": 0.3877, "n_unevaluated_rows": 0}, "ex-SP-2": {"zero": 0.4507, "half": 0.4507, "neutral": 0.4507, "worst": 0.4507, "best": 0.4507, "n_unevaluated_rows": 0}}
+   single-type {"SP-1": 0.5708, "SP-2": 0.2744, "SP-3": 0.3008, "SP-6": 0.6}
+   LOCO as-is|bug 0.366 0.3974 [('mergesort', 0.366), ('next_permutation', 0.366)]
+   LOCO as-is|unit_family 0.366 0.3974 [('mergesort', 0.366), ('next_permutation', 0.366)]
+   LOCO ex-SP-2|bug 0.4322 0.4619 [('find_first_in_sorted', 0.4322), ('mergesort', 0.4322)]
+   LOCO ex-SP-2|unit_family 0.4322 0.4619 [('find_first_in_sorted', 0.4322), ('mergesort', 0.4322)]
+QC-v8 {"as-is": 0.3842, "ex-SP-2": 0.4444, "ex-contaminated-bases": 0.3704, "ex-SP-2 & ex-contaminated": 0.4316, "one-bug-per-unit-family": 0.3842, "one-bug-per-unit-family & ex-SP-2": 0.4444}
+   imputation {"all-negative-types": {"zero": 0.381, "half": 0.3996, "neutral": 0.3871, "worst": 0.3746, "best": 0.3996, "n_unevaluated_rows": 1}, "ex-SP-2": {"zero": 0.4415, "half": 0.4583, "neutral": 0.4458, "worst": 0.4333, "best": 0.4583, "n_unevaluated_rows": 1}}
+   single-type {"SP-1": 0.5752, "SP-2": 0.2756, "SP-3": 0.2859, "SP-6": 0.5897}
+   LOCO as-is|bug 0.3621 0.394 [('next_permutation', 0.3621), ('find_first_in_sorted', 0.366)]
+   LOCO as-is|unit_family 0.3621 0.394 [('next_permutation', 0.3621), ('find_first_in_sorted', 0.366)]
+   LOCO ex-SP-2|bug 0.4256 0.4558 [('find_first_in_sorted', 0.4256), ('next_permutation', 0.4256)]
+   LOCO ex-SP-2|unit_family 0.4256 0.4558 [('find_first_in_sorted', 0.4256), ('next_permutation', 0.4256)]
