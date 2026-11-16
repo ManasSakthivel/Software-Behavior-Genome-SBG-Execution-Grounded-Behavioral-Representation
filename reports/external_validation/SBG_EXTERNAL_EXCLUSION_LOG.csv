@@ -1,0 +1,7 @@
+dataset,excluded_scope,reason_code,technical_rationale
+Defects4J,All 835 Java bugs,EXC-LANG-JVM,Requires Java runtime environment and JVM bytecode instrumentation agent (JavaAgent / ASM). SBG sys.settrace engine is Python-specific.
+Bears,All 251 Java bugs,EXC-LANG-JVM,Requires Maven/Ant build systems and JVM bytecode instrumentation.
+ManyBugs,All 185 C bugs,EXC-LANG-C,Requires GCC -finstrument-functions compiler wrapper and POSIX shared memory trace collector.
+EquiBench OJ,395 / 400 pairs,EXC-HARNESS-STDIN,Competitive programming scripts reading sys.stdin at top level without callable function entry points.
+Refactory,"Q1, Q2, Q4, Q5 assignments",EXC-TYPE-MISMATCH,Unannotated multi-parameter functions fail on generic integer-list battery (TypeError on 8–11 of 11 inputs).
+BugsInPy (Ineligible Units),428 / 479 candidate units,EXC-DEPS-IMPORT,"Internal package imports, C extensions (numpy/pandas), or unmocked I/O dependencies not isolatable in pure stdlib sandbox."
