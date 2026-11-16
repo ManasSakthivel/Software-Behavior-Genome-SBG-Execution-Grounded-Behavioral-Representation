@@ -1,0 +1,30 @@
+experiment_id,generation,split,method_or_model,sample_size_pairs,sample_size_programs,metric_name,reported_metric,verified_status,artifact_path,notes
+EXP-V1-001,V1-V4,legacy_test,SBG_static,744,13,AUROC,0.4237,CONTRADICTED,SBG/artifacts/phase4/E6/results.json,Structural-semantic inversion observed; AST baseline achieved 0.5528
+EXP-V1-002,V1-V4,legacy_test,AST_baseline,744,13,AUROC,0.5528,VERIFIED,SBG/artifacts/phase4/E6/results.json,Best baseline in legacy static evaluation
+EXP-V1-003,V1-V4,legacy_test,Token_baseline,744,13,AUROC,0.3812,VERIFIED,SBG/artifacts/phase4/E6/results.json,Subword/Token Jaccard baseline
+EXP-V1-004,V1-V4,legacy_test,Dynamic_trace_B06,744,13,AUROC,0.5046,VERIFIED,SBG/artifacts/phase4/E5/results.json,Early dynamic trace baseline without state
+EXP-V5-001,V5-V6,v6_test,SBG_V5_output_reading,488,13,AUROC,0.9240,CONTRADICTED,SBG/artifacts/v5/results.json,Invalidated due to test output leakage and self-test driver execution
+EXP-V6-001,V6,v6_test,SBG_V5_output_free,259,7,AUROC,0.6010,PARTIALLY_VERIFIED,SBG/artifacts/final/pairs_v6test_output_free_v6.jsonl,229 pairs dropped due to entry-point aliasing; 54% exact zeros
+EXP-V7-001,V7,v7_dev,SBG_V5_output_free_v7,345,13,AUROC,0.6402,PARTIALLY_VERIFIED,SBG/reports/remediation/results/v7_dev_results.json,SP-2 rename defect repaired; exploratory split
+EXP-V8-001,V8,v8_test,SBG_V5_frozen,488,13,AUROC,0.8120,SUPERSEDED,SBG/artifacts/final/pairs_v8test.jsonl,Superceded by V9c and V10 clean evaluation
+EXP-V9-001,V9c,v9c_val,SBG_V5,432,11,AUROC,0.7514,VERIFIED,SBG/artifacts/final/pairs_v9c_val_scored.jsonl,Confirmatory validation split with output_free_v8 protocol
+EXP-V9-002,V9c,v9c_val,Edit_distance,432,11,AUROC,0.6111,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,AST unparse edit distance baseline
+EXP-V9-003,V9c,v9c_val,Exec_stats_LR,432,11,AUROC,0.6444,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Logistic regression on execution counters + edit
+EXP-V9-004,V9c,v9c_val,RandomForest_Exec_Edit,432,11,AUROC,0.8667,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Non-linear RF baseline beats SBG V5 by +0.1153 on val
+EXP-V10-001,V10,v10_test,SBG_V5_Headline,638,19,AUROC,0.8968,VERIFIED,SBG/artifacts/final/pairs_v10_test_v6exp.jsonl,Headline frozen test evaluation; 95% CI [0.8629, 0.9216]
+EXP-V10-002,V10,v10_test,SBG_State_Only,638,19,AUROC,0.9171,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/08A_ABLATION_RESULTS.md,State component alone outperforms composite SBG V5
+EXP-V10-003,V10,v10_test,SBG_Topology_V3,638,19,AUROC,0.8817,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/08A_ABLATION_RESULTS.md,Call graph and line execution topology component
+EXP-V10-004,V10,v10_test,SBG_Temporal,638,19,AUROC,0.8070,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_C_ABLATIONS/08A_ABLATION_RESULTS.md,Temporal sequence alignment component
+EXP-V10-005,V10,v10_test,Edit_distance,638,19,AUROC,0.6160,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,AST unparse edit distance baseline
+EXP-V10-006,V10,v10_test,Static_TCE_AST,638,19,AUROC,0.7445,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Trivial compiler equivalence baseline
+EXP-V10-007,V10,v10_test,Static_TFIDF,638,19,AUROC,0.6547,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,AST n-gram TF-IDF cosine distance
+EXP-V10-008,V10,v10_test,Trace_Length_Mean,638,19,AUROC,0.8918,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Single scalar execution counter matches composite SBG V5
+EXP-V10-009,V10,v10_test,PathSpectra_Covset,638,19,AUROC,0.8887,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Path spectra baseline (Harrold et al.)
+EXP-V10-010,V10,v10_test,ValueSpectra_XieNotkin,638,19,AUROC,0.9003,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Value spectra entry/exit baseline (Xie & Notkin 2005)
+EXP-V10-011,V10,v10_test,TraceSeq_Kgram4,638,19,AUROC,0.8009,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Dynamic birthmark k-gram baseline (Myles & McCracken)
+EXP-V10-012,V10,v10_test,Output_Independent_40,638,19,AUROC,0.9295,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Independent-input differential output testing baseline
+EXP-V10-013,V10,v10_test,RandomForest_Exec_Edit,638,19,AUROC,0.9552,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Best performing model on v10_test; +0.0584 over SBG V5
+EXP-V10-014,V10,v10_test,LR_Exec_Stats,638,19,AUROC,0.7953,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,Logistic regression baseline on execution stats
+EXP-V10-015,V10,v10_test,Incremental_SBG_over_LR_EX,638,19,Delta_AUROC,0.0014,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_A_B_COMPARATIVE_BENCHMARK/raw/EXP-A4R-001/VERIFIED_BASELINES.json,95% CI [-0.0742, 0.0631], p=0.914; Null incremental value confirmed
+EXP-REAL-001,External,BugsInPy,SBG_V5,257,15,AUROC,0.4970,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_D_EXTERNAL_VALIDATION/raw/WPD-D4_stats/STATS_REPORT.md,Real-world Python defects; performs at random chance
+EXP-REAL-002,External,QuixBugs_Python,SBG_V5,40,40,AUROC,0.4440,VERIFIED,IEEE_ACCESS_PRE_SUBMISSION/WP_D_EXTERNAL_VALIDATION/raw/WPD-D4_stats/STATS_REPORT.md,Real-world algorithmic bugs; performs below random chance
