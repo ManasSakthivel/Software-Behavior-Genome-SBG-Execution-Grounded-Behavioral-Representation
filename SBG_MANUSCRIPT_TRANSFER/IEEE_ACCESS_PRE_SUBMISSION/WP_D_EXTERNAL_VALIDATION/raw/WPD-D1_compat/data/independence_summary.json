@@ -1,0 +1,202 @@
+{
+ "quixbugs_non_subject_helper_files_skipped": [
+  "breadth_first_search_test",
+  "depth_first_search_test",
+  "detect_cycle_test",
+  "minimum_spanning_tree_test",
+  "node",
+  "reverse_linked_list_test",
+  "shortest_path_length_test",
+  "shortest_path_lengths_test",
+  "shortest_paths_test",
+  "topological_ordering_test"
+ ],
+ "reference_set": {
+  "dirs": [
+   "benchmark/corpus/base_programs",
+   "benchmark/corpus/fresh_programs",
+   "benchmark/v5/corpus/base_programs"
+  ],
+  "n_programs": 210,
+  "excluded_by_rule": [
+   "benchmark/datasets/v10_independent (V10 test)",
+   "V9c validation",
+   "val/test variant trees"
+  ]
+ },
+ "measures": "id_jaccard = Jaccard of NAME-token sets; shingle_raw/struct = Jaccard of 5-gram token shingles",
+ "per_corpus": {
+  "quixbugs": {
+   "max_id_jaccard": {
+    "n": 40,
+    "max": 0.4444,
+    "p95": 0.3571,
+    "median": 0.1923,
+    "mean": 0.1871
+   },
+   "max_shingle_raw": {
+    "n": 40,
+    "max": 0.2009,
+    "p95": 0.053,
+    "median": 0.0122,
+    "mean": 0.0229
+   },
+   "max_shingle_struct": {
+    "n": 40,
+    "max": 0.2979,
+    "p95": 0.1835,
+    "median": 0.1034,
+    "mean": 0.1087
+   },
+   "n_programs": 40,
+   "top5_by_id_jaccard": [
+    {
+     "program": "get_factors",
+     "max_id_jaccard": 0.4444,
+     "vs": "benchmark/corpus/fresh_programs/math_catalan_number.py"
+    },
+    {
+     "program": "lcs_length",
+     "max_id_jaccard": 0.3684,
+     "vs": "benchmark/corpus/fresh_programs/str_count_subseq.py"
+    },
+    {
+     "program": "next_permutation",
+     "max_id_jaccard": 0.3571,
+     "vs": "benchmark/corpus/base_programs/sort_insertion_sort.py"
+    },
+    {
+     "program": "mergesort",
+     "max_id_jaccard": 0.3448,
+     "vs": "benchmark/corpus/base_programs/sort_mergesort.py"
+    },
+    {
+     "program": "find_first_in_sorted",
+     "max_id_jaccard": 0.3333,
+     "vs": "benchmark/corpus/fresh_programs/math_lis_length.py"
+    }
+   ],
+   "top5_by_shingle_struct": [
+    {
+     "program": "mergesort",
+     "max_shingle_struct": 0.2979,
+     "vs": "benchmark/corpus/fresh_programs/math_median_two_sorted.py"
+    },
+    {
+     "program": "bucketsort",
+     "max_shingle_struct": 0.2595,
+     "vs": "benchmark/corpus/fresh_programs/sort_pigeonhole_sort.py"
+    },
+    {
+     "program": "sieve",
+     "max_shingle_struct": 0.1835,
+     "vs": "benchmark/corpus/fresh_programs/math_missing_numbers.py"
+    },
+    {
+     "program": "quicksort",
+     "max_shingle_struct": 0.1748,
+     "vs": "benchmark/corpus/fresh_programs/ds_rle_encode.py"
+    },
+    {
+     "program": "kth",
+     "max_shingle_struct": 0.1575,
+     "vs": "benchmark/corpus/fresh_programs/math_max_product_subarray.py"
+    }
+   ],
+   "n_programs_with_file_stem_collision": 0,
+   "file_stem_collisions": [],
+   "n_programs_with_def_name_collision": 5,
+   "n_programs_ge_0.17_id_jaccard": 20
+  },
+  "bugsinpy": {
+   "max_id_jaccard": {
+    "n": 55,
+    "max": 0.1471,
+    "p95": 0.1429,
+    "median": 0.0976,
+    "mean": 0.0918
+   },
+   "max_shingle_raw": {
+    "n": 55,
+    "max": 0.0216,
+    "p95": 0.0094,
+    "median": 0.0031,
+    "mean": 0.0041
+   },
+   "max_shingle_struct": {
+    "n": 55,
+    "max": 0.1259,
+    "p95": 0.12,
+    "median": 0.0753,
+    "mean": 0.0782
+   },
+   "n_programs": 55,
+   "top5_by_id_jaccard": [
+    {
+     "program": "spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+     "max_id_jaccard": 0.1471,
+     "vs": "benchmark/corpus/fresh_programs/math_nth_permutation.py"
+    },
+    {
+     "program": "spacy__7__spacy_util_py__filter_spans",
+     "max_id_jaccard": 0.1471,
+     "vs": "benchmark/corpus/fresh_programs/math_nth_permutation.py"
+    },
+    {
+     "program": "spacy__4__spacy_cli_converters_conllu2json_py__read_conllx",
+     "max_id_jaccard": 0.1463,
+     "vs": "benchmark/corpus/fresh_programs/ds_deque_ops.py"
+    },
+    {
+     "program": "ansible__15__lib_ansible_modules_network_eos_eos_eapi_py__map_obj_to_commands",
+     "max_id_jaccard": 0.1429,
+     "vs": "benchmark/corpus/fresh_programs/math_missing_numbers.py"
+    },
+    {
+     "program": "keras__34__keras_utils_data_utils_py__Sequence",
+     "max_id_jaccard": 0.1429,
+     "vs": "benchmark/corpus/fresh_programs/sort_cycle_sort.py"
+    }
+   ],
+   "top5_by_shingle_struct": [
+    {
+     "program": "luigi__14__luigi_scheduler_py__Task",
+     "max_shingle_struct": 0.1259,
+     "vs": "benchmark/corpus/base_programs/ds_stack_queue.py"
+    },
+    {
+     "program": "thefuck__20__thefuck_rules_dirty_unzip_py__zip_file",
+     "max_shingle_struct": 0.1235,
+     "vs": "benchmark/corpus/fresh_programs/str_reverse_words.py"
+    },
+    {
+     "program": "scrapy__34__scrapy_item_py__ItemMeta",
+     "max_shingle_struct": 0.1212,
+     "vs": "benchmark/corpus/fresh_programs/ds_frequency_sort.py"
+    },
+    {
+     "program": "black__21__black_py__dump_to_file",
+     "max_shingle_struct": 0.12,
+     "vs": "benchmark/corpus/fresh_programs/str_compress_spaces.py"
+    },
+    {
+     "program": "thefuck__29__thefuck_types_py__Settings",
+     "max_shingle_struct": 0.119,
+     "vs": "benchmark/corpus/fresh_programs/str_reverse_words.py"
+    }
+   ],
+   "n_programs_with_file_stem_collision": 0,
+   "file_stem_collisions": [],
+   "n_programs_with_def_name_collision": 7,
+   "n_programs_ge_0.17_id_jaccard": 0
+  }
+ },
+ "quixbugs_entry_names_also_defined_in_sbg_reference": [
+  "gcd",
+  "get",
+  "merge",
+  "mergesort",
+  "quicksort",
+  "sieve"
+ ]
+}

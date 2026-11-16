@@ -1,0 +1,1221 @@
+##### test__ds_min_heap_array__sc6+sp3_s1  sp=SP-3 edit=33.0 v5=0.024585424 partner=test__ds_min_heap_array__sp3_s1
+auto-description (partner->variant): L57: return-expression mutation `return extracted` -> `return not extracted`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/ds_min_heap_array__sp3_s1.py
++++ benchmark/datasets/v10_independent/variants/test/ds_min_heap_array__sc6+sp3_s1.py
+@@ -55,3 +55,3 @@
+         if curr_size > 0:
+             _sift_down(heap, 0, curr_size)
+-    return extracted
++    return not extracted
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_min_heap_array.py
++++ benchmark/datasets/v10_independent/variants/test/ds_min_heap_array__sc6+sp3_s1.py
+@@ -1,40 +1,46 @@
+-# program_id: ds_min_heap_array
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+-"""
+-Binary min-heap simulation using array.
+-
+-Spec: Given a list of integers, construct a min-heap in-place and extract
+-elements one-by-one to return the sorted stream.
+-"""
+-
++if False:
++    pass
++'\nBinary min-heap simulation using array.\n\nSpec: Given a list of integers, construct a min-heap in-place and extract\nelements one-by-one to return the sorted stream.\n'
++if 1 == 0:
++    _ = 'dead'
+ 
+ def min_heap_drain(arr: list) -> list:
+     """Build min-heap and extract minimum elements in order."""
+     if not isinstance(arr, list):
++        if False:
++            x_dead = 0
+         return []
+-    heap = [x for x in arr if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    if False:
++        pass
++    heap = [x for x in arr if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     n = len(heap)
++    if not True:
++        print('dead')
+     if n <= 1:
+         return list(heap)
++    if 1 == 0:
++        _ = 'dead'
+ 
+     def _sift_down(h: list, idx: int, size: int) -> None:
++        if False:
++            return None
+         smallest = idx
++        if False:
++            pass
+         left = 2 * idx + 1
+         right = 2 * idx + 2
++        if False:
++            pass
+         if left < size and h[left] < h[smallest]:
+             smallest = left
+         if right < size and h[right] < h[smallest]:
+             smallest = right
++        if 1 == 0:
++            _ = 'dead'
+         if smallest != idx:
+-            h[idx], h[smallest] = h[smallest], h[idx]
++            h[idx], h[smallest] = (h[smallest], h[idx])
+             _sift_down(h, smallest, size)
+-
+     for i in range(n // 2 - 1, -1, -1):
+         _sift_down(heap, i, n)
+-
+     extracted = []
+     curr_size = n
+@@ -42,6 +48,10 @@
+         extracted.append(heap[0])
+         heap[0] = heap[curr_size - 1]
++        while False:
++            break
+         curr_size -= 1
++        if 1 == 0:
++            _ = 'dead'
+         if curr_size > 0:
+             _sift_down(heap, 0, curr_size)
+-    return extracted
++    return not extracted
+
+##### test__ds_ranked_set__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__ds_ranked_set__sp2_s2
+auto-description (partner->variant): L34: return-expression mutation `return work[target]` -> `return not work[target]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/ds_ranked_set__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/ds_ranked_set__sc6+sp2_s2.py
+@@ -32,3 +32,3 @@
+         else:
+             hi = pivot_pos - 1
+-    return work[target]
++    return not work[target]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_ranked_set.py
++++ benchmark/datasets/v10_independent/variants/test/ds_ranked_set__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_ranked_set
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Order-statistics operations — kth smallest element.
+@@ -12,9 +6,8 @@
+ """
+ 
+-
+-def kth_smallest(nums: list, k: int) -> int:
++def fn_kth_smallest(nums: list, k: int) -> int:
+     """Return the k-th smallest element (1-indexed) using quickselect."""
+     valid = [x for x in nums if isinstance(x, int)]
+-    if not valid or not isinstance(k, int) or not (1 <= k <= len(valid)):
++    if not valid or not isinstance(k, int) or (not 1 <= k <= len(valid)):
+         return -1
+     work = list(valid)
+@@ -25,11 +18,10 @@
+         for scan in range(lo, hi):
+             if work[scan] <= pivot:
+-                work[scan], work[boundary] = work[boundary], work[scan]
++                work[scan], work[boundary] = (work[boundary], work[scan])
+                 boundary += 1
+-        work[boundary], work[hi] = work[hi], work[boundary]
++        work[boundary], work[hi] = (work[hi], work[boundary])
+         return boundary
+-
+     target = k - 1
+-    lo, hi = 0, len(work) - 1
++    lo, hi = (0, len(work) - 1)
+     while lo < hi:
+         pivot_pos = _partition(lo, hi)
+@@ -40,3 +32,3 @@
+         else:
+             hi = pivot_pos - 1
+-    return work[target]
++    return not work[target]
+
+##### test__ds_union_find__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__ds_union_find__sp2_s2
+auto-description (partner->variant): L37: return-expression mutation `return len(roots)` -> `return not len(roots)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/ds_union_find__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/ds_union_find__sc6+sp2_s2.py
+@@ -35,3 +35,3 @@
+                 _union(u, v)
+     roots = {_find(i) for i in range(n)}
+-    return len(roots)
++    return not len(roots)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_union_find.py
++++ benchmark/datasets/v10_independent/variants/test/ds_union_find__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_union_find
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Union-Find (Disjoint Set Union) — number of components.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def count_components(n: int, edges: list) -> int:
++def fn_count_components(n: int, edges: list) -> int:
+     """Return the number of connected components in an undirected graph."""
+     if not isinstance(n, int) or n <= 0:
+@@ -23,25 +16,22 @@
+     def _find(x: int) -> int:
+         while parent[x] != x:
+-            parent[x] = parent[parent[x]]  # path compression
++            parent[x] = parent[parent[x]]
+             x = parent[x]
+         return x
+ 
+     def _union(a: int, b: int) -> None:
+-        ra, rb = _find(a), _find(b)
++        ra, rb = (_find(a), _find(b))
+         if ra == rb:
+             return
+         if rank[ra] < rank[rb]:
+-            ra, rb = rb, ra
++            ra, rb = (rb, ra)
+         parent[rb] = ra
+         if rank[ra] == rank[rb]:
+             rank[ra] += 1
+-
+     for edge in edges:
+-        if (isinstance(edge, (list, tuple)) and len(edge) == 2
+-                and isinstance(edge[0], int) and isinstance(edge[1], int)):
+-            u, v = int(edge[0]), int(edge[1])
++        if isinstance(edge, (list, tuple)) and len(edge) == 2 and isinstance(edge[0], int) and isinstance(edge[1], int):
++            u, v = (int(edge[0]), int(edge[1]))
+             if 0 <= u < n and 0 <= v < n:
+                 _union(u, v)
+-
+     roots = {_find(i) for i in range(n)}
+-    return len(roots)
++    return not len(roots)
+
+##### test__graph_cycle_detection_dfs__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__graph_cycle_detection_dfs__sp2_s2
+auto-description (partner->variant): L34: return-expression mutation `return False` -> `return False + 1`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/graph_cycle_detection_dfs__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/graph_cycle_detection_dfs__sc6+sp2_s2.py
+@@ -32,3 +32,3 @@
+             if _dfs(node):
+                 return True
+-    return False
++    return False + 1
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_cycle_detection_dfs.py
++++ benchmark/datasets/v10_independent/variants/test/graph_cycle_detection_dfs__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_cycle_detection_dfs
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Cycle detection in directed graph using 3-color DFS.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def has_directed_cycle_dfs(adj: dict) -> bool:
++def fn_has_directed_cycle_dfs(adj: dict) -> bool:
+     """Return True if graph represented by adj dictionary contains a cycle."""
+     if not isinstance(adj, dict) or not adj:
+@@ -35,8 +28,7 @@
+         color[node] = 2
+         return False
+-
+     for node in sorted(all_nodes, key=str):
+         if color[node] == 0:
+             if _dfs(node):
+                 return True
+-    return False
++    return False + 1
+
+##### test__graph_network_delay__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__graph_network_delay__sp2_s2
+auto-description (partner->variant): L37: return-expression mutation `return int(max_dist) if max_dist != INF else -1` -> `return not (int(max_dist) if max_dist != INF else -1)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/graph_network_delay__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/graph_network_delay__sc6+sp2_s2.py
+@@ -35,3 +35,3 @@
+                 dist[v] = dist[u] + w
+     max_dist = max(dist[1:])
+-    return int(max_dist) if max_dist != INF else -1
++    return not (int(max_dist) if max_dist != INF else -1)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_network_delay.py
++++ benchmark/datasets/v10_independent/variants/test/graph_network_delay__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_network_delay
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Network delay time (Dijkstra on weighted directed graph).
+@@ -13,26 +7,21 @@
+ """
+ 
+-
+-def network_delay_time(n: int, edges: list, k: int) -> int:
++def fn_network_delay_time(n: int, edges: list, k: int) -> int:
+     """Return max shortest-path time from k to all nodes, or -1 if unreachable."""
+     if not isinstance(n, int) or n <= 0:
+         return -1
+-    if not isinstance(k, int) or not (1 <= k <= n):
++    if not isinstance(k, int) or not 1 <= k <= n:
+         return -1
+-
+-    INF = float("inf")
++    INF = float('inf')
+     dist = [INF] * (n + 1)
+     dist[k] = 0
+     adj = {i: [] for i in range(1, n + 1)}
+     for e in edges:
+-        if (isinstance(e, (list, tuple)) and len(e) == 3
+-                and all(isinstance(x, (int, float)) for x in e)):
+-            u, v, w = int(e[0]), int(e[1]), e[2]
++        if isinstance(e, (list, tuple)) and len(e) == 3 and all((isinstance(x, (int, float)) for x in e)):
++            u, v, w = (int(e[0]), int(e[1]), e[2])
+             if 1 <= u <= n and 1 <= v <= n:
+                 adj[u].append((v, w))
+-
+     visited = set()
+     for _ in range(n):
+-        # find unvisited node with minimum distance
+         u = -1
+         for node in range(1, n + 1):
+@@ -45,5 +34,4 @@
+             if dist[u] + w < dist[v]:
+                 dist[v] = dist[u] + w
+-
+     max_dist = max(dist[1:])
+-    return int(max_dist) if max_dist != INF else -1
++    return not (int(max_dist) if max_dist != INF else -1)
+
+##### test__graph_topological_kahn__sc6+sp3_s2  sp=SP-3 edit=18.0 v5=0.023732918 partner=test__graph_topological_kahn__sp3_s2
+auto-description (partner->variant): L49: return-expression mutation `return order` -> `return not order`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/graph_topological_kahn__sp3_s2.py
++++ benchmark/datasets/v10_independent/variants/test/graph_topological_kahn__sc6+sp3_s2.py
+@@ -47,3 +47,3 @@
+             raise RuntimeError('unreachable')
+         return []
+-    return order
++    return not order
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_topological_kahn.py
++++ benchmark/datasets/v10_independent/variants/test/graph_topological_kahn__sc6+sp3_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_topological_kahn
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Kahn's topological sort with in-degree tracker.
+@@ -12,15 +6,24 @@
+ """
+ 
+-
+ def topological_kahn_sort(adj: dict) -> list:
+-    """Return topological ordering of vertices in graph adj."""
++    if False:
++        pass
++    'Return topological ordering of vertices in graph adj.'
++    if False:
++        x_dead = 0
+     if not isinstance(adj, dict) or not adj:
+         return []
+     all_nodes = set(adj.keys())
++    if not True:
++        print('dead')
+     for neighbors in adj.values():
++        if False:
++            pass
+         if isinstance(neighbors, (list, set, tuple)):
+             for v in neighbors:
+                 all_nodes.add(v)
+     in_degree = {u: 0 for u in all_nodes}
++    if 1 == 0:
++        _ = 'dead'
+     for u, neighbors in adj.items():
+         if isinstance(neighbors, (list, set, tuple)):
+@@ -31,4 +34,6 @@
+     order = []
+     while zero_in:
++        if 1 == 0:
++            _ = 'dead'
+         curr = zero_in.pop(0)
+         order.append(curr)
+@@ -39,4 +44,6 @@
+                     zero_in.append(v)
+     if len(order) != len(all_nodes):
++        if False:
++            raise RuntimeError('unreachable')
+         return []
+-    return order
++    return not order
+
+##### test__graph_topological_kahn__sc6+sp8_s2  sp=SP-8 edit=26.0 v5=0.461585235 partner=test__graph_topological_kahn__sp8_s2
+auto-description (partner->variant): L39: return-expression mutation `return order` -> `return not order`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/graph_topological_kahn__sp8_s2.py
++++ benchmark/datasets/v10_independent/variants/test/graph_topological_kahn__sc6+sp8_s2.py
+@@ -37,3 +37,3 @@
+     if len(order) != len(all_nodes):
+         return []
+-    return order
++    return not order
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_topological_kahn.py
++++ benchmark/datasets/v10_independent/variants/test/graph_topological_kahn__sc6+sp8_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_topological_kahn
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Kahn's topological sort with in-degree tracker.
+@@ -12,4 +6,16 @@
+ """
+ 
++def _extracted_2_6(adj, all_nodes, in_degree, u):
++    zero_in = [u for u in sorted(all_nodes, key=str) if in_degree[u] == 0]
++    order = []
++    while zero_in:
++        curr = zero_in.pop(0)
++        order.append(curr)
++        for v in adj.get(curr, []):
++            if v in in_degree:
++                in_degree[v] -= 1
++                if in_degree[v] == 0:
++                    zero_in.append(v)
++    return order
+ 
+ def topological_kahn_sort(adj: dict) -> list:
+@@ -28,15 +34,6 @@
+                 if v in in_degree:
+                     in_degree[v] += 1
+-    zero_in = [u for u in sorted(all_nodes, key=str) if in_degree[u] == 0]
+-    order = []
+-    while zero_in:
+-        curr = zero_in.pop(0)
+-        order.append(curr)
+-        for v in adj.get(curr, []):
+-            if v in in_degree:
+-                in_degree[v] -= 1
+-                if in_degree[v] == 0:
+-                    zero_in.append(v)
++    order = _extracted_2_6(adj, all_nodes, in_degree, u)
+     if len(order) != len(all_nodes):
+         return []
+-    return order
++    return not order
+
+##### test__math_coin_change__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__math_coin_change__sp2_s2
+auto-description (partner->variant): L22: return-expression mutation `return dp[amount] if dp[amount] != float('inf') else -1` -> `return not (dp[amount] if dp[amount] != float('inf') else -1)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/math_coin_change__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/math_coin_change__sc6+sp2_s2.py
+@@ -20,3 +20,3 @@
+                 if dp[i - coin] + 1 < dp[i]:
+                     dp[i] = dp[i - coin] + 1
+-    return dp[amount] if dp[amount] != float('inf') else -1
++    return not (dp[amount] if dp[amount] != float('inf') else -1)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_coin_change.py
++++ benchmark/datasets/v10_independent/variants/test/math_coin_change__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: math_coin_change
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Coin change — minimum number of coins.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def min_coins(amount: int, coins: list) -> int:
++def fn_min_coins(amount: int, coins: list) -> int:
+     """Return min coins to make amount, or -1 if impossible."""
+     if amount < 0:
+@@ -20,5 +13,5 @@
+     if amount == 0:
+         return 0
+-    dp = [float("inf")] * (amount + 1)
++    dp = [float('inf')] * (amount + 1)
+     dp[0] = 0
+     for i in range(1, amount + 1):
+@@ -27,3 +20,3 @@
+                 if dp[i - coin] + 1 < dp[i]:
+                     dp[i] = dp[i - coin] + 1
+-    return dp[amount] if dp[amount] != float("inf") else -1
++    return not (dp[amount] if dp[amount] != float('inf') else -1)
+
+##### test__math_fib_matrix__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.019735444 partner=test__math_fib_matrix__sp2_s2
+auto-description (partner->variant): L28: return-expression mutation `return result[0][1]` -> `return not result[0][1]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/math_fib_matrix__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/math_fib_matrix__sc6+sp2_s2.py
+@@ -26,3 +26,3 @@
+     base = [[1, 1], [1, 0]]
+     result = _mat_pow(base, n)
+-    return result[0][1]
++    return not result[0][1]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_fib_matrix.py
++++ benchmark/datasets/v10_independent/variants/test/math_fib_matrix__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: math_fibonacci_matrix
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Fast Fibonacci via matrix exponentiation.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def fib_matrix(n: int) -> int:
++def fn_fib_matrix(n: int) -> int:
+     """Return n-th Fibonacci number via matrix exponentiation."""
+     if not isinstance(n, int) or n < 0:
+@@ -22,10 +15,5 @@
+ 
+     def _mat_mul(A: list, B: list) -> list:
+-        return [
+-            [A[0][0] * B[0][0] + A[0][1] * B[1][0],
+-             A[0][0] * B[0][1] + A[0][1] * B[1][1]],
+-            [A[1][0] * B[0][0] + A[1][1] * B[1][0],
+-             A[1][0] * B[0][1] + A[1][1] * B[1][1]],
+-        ]
++        return [[A[0][0] * B[0][0] + A[0][1] * B[1][0], A[0][0] * B[0][1] + A[0][1] * B[1][1]], [A[1][0] * B[0][0] + A[1][1] * B[1][0], A[1][0] * B[0][1] + A[1][1] * B[1][1]]]
+ 
+     def _mat_pow(M: list, p: int) -> list:
+@@ -36,6 +24,5 @@
+             return _mat_mul(half, half)
+         return _mat_mul(M, _mat_pow(M, p - 1))
+-
+     base = [[1, 1], [1, 0]]
+     result = _mat_pow(base, n)
+-    return result[0][1]
++    return not result[0][1]
+
+##### test__math_knapsack_01__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__math_knapsack_01__sp2_s2
+auto-description (partner->variant): L23: return-expression mutation `return dp[capacity]` -> `return not dp[capacity]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/math_knapsack_01__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/math_knapsack_01__sc6+sp2_s2.py
+@@ -21,3 +21,3 @@
+             if dp[j - w] + v > dp[j]:
+                 dp[j] = dp[j - w] + v
+-    return dp[capacity]
++    return not dp[capacity]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_knapsack_01.py
++++ benchmark/datasets/v10_independent/variants/test/math_knapsack_01__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: math_knapsack_01
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ 0/1 Knapsack — maximum value.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def knapsack_max_value(items: list, capacity: int) -> int:
++def fn_knapsack_max_value(items: list, capacity: int) -> int:
+     """Return max value for 0/1 knapsack with given capacity."""
+     if not isinstance(capacity, int) or capacity < 0:
+@@ -20,9 +13,6 @@
+     valid = []
+     for item in items:
+-        if (isinstance(item, (list, tuple)) and len(item) == 2
+-                and isinstance(item[0], int) and isinstance(item[1], int)
+-                and item[0] > 0 and item[1] >= 0):
++        if isinstance(item, (list, tuple)) and len(item) == 2 and isinstance(item[0], int) and isinstance(item[1], int) and (item[0] > 0) and (item[1] >= 0):
+             valid.append((int(item[0]), int(item[1])))
+-
+     n = len(valid)
+     dp = [0] * (capacity + 1)
+@@ -31,3 +21,3 @@
+             if dp[j - w] + v > dp[j]:
+                 dp[j] = dp[j - w] + v
+-    return dp[capacity]
++    return not dp[capacity]
+
+##### test__math_knapsack_01__sc6+sp8_s1  sp=SP-8 edit=10.0 v5=0.277070534 partner=test__math_knapsack_01__sp8_s1
+auto-description (partner->variant): L27: return-expression mutation `return dp[capacity]` -> `return not dp[capacity]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/math_knapsack_01__sp8_s1.py
++++ benchmark/datasets/v10_independent/variants/test/math_knapsack_01__sc6+sp8_s1.py
+@@ -25,3 +25,3 @@
+             if dp[j - w] + v > dp[j]:
+                 dp[j] = dp[j - w] + v
+-    return dp[capacity]
++    return not dp[capacity]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_knapsack_01.py
++++ benchmark/datasets/v10_independent/variants/test/math_knapsack_01__sc6+sp8_s1.py
+@@ -1,8 +1,2 @@
+-# program_id: math_knapsack_01
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ 0/1 Knapsack — maximum value.
+@@ -13,4 +7,8 @@
+ """
+ 
++def _extracted_1_4(capacity, valid):
++    n = len(valid)
++    dp = [0] * (capacity + 1)
++    return dp
+ 
+ def knapsack_max_value(items: list, capacity: int) -> int:
+@@ -20,14 +18,10 @@
+     valid = []
+     for item in items:
+-        if (isinstance(item, (list, tuple)) and len(item) == 2
+-                and isinstance(item[0], int) and isinstance(item[1], int)
+-                and item[0] > 0 and item[1] >= 0):
++        if isinstance(item, (list, tuple)) and len(item) == 2 and isinstance(item[0], int) and isinstance(item[1], int) and (item[0] > 0) and (item[1] >= 0):
+             valid.append((int(item[0]), int(item[1])))
+-
+-    n = len(valid)
+-    dp = [0] * (capacity + 1)
++    dp = _extracted_1_4(capacity, valid)
+     for w, v in valid:
+         for j in range(capacity, w - 1, -1):
+             if dp[j - w] + v > dp[j]:
+                 dp[j] = dp[j - w] + v
+-    return dp[capacity]
++    return not dp[capacity]
+
+##### test__sort_bitonic_sort__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_bitonic_sort__sp2_s2
+auto-description (partner->variant): L32: return-expression mutation `return items` -> `return not items`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_bitonic_sort__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/sort_bitonic_sort__sc6+sp2_s2.py
+@@ -30,3 +30,3 @@
+             items.sort()
+             break
+-    return items
++    return not items
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_bitonic_sort.py
++++ benchmark/datasets/v10_independent/variants/test/sort_bitonic_sort__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_bitonic_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Bitonic sequence sorter.
+@@ -12,10 +6,9 @@
+ """
+ 
+-
+-def bitonic_sort(arr: list) -> list:
++def fn_bitonic_sort(arr: list) -> list:
+     """Return a sorted copy of arr using bitonic sort."""
+     if not isinstance(arr, list):
+         return []
+-    items = [x for x in arr if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    items = [x for x in arr if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     n = len(items)
+     if n <= 1:
+@@ -28,7 +21,7 @@
+                 ij = i ^ j
+                 if ij > i and ij < n:
+-                    ascending = (i & k) == 0
+-                    if (ascending and items[i] > items[ij]) or (not ascending and items[i] < items[ij]):
+-                        items[i], items[ij] = items[ij], items[i]
++                    ascending = i & k == 0
++                    if ascending and items[i] > items[ij] or (not ascending and items[i] < items[ij]):
++                        items[i], items[ij] = (items[ij], items[i])
+             j //= 2
+         k *= 2
+@@ -37,3 +30,3 @@
+             items.sort()
+             break
+-    return items
++    return not items
+
+##### test__sort_gnome_sort__sc6+sp1_s2  sp=SP-1 edit=6.0 v5=0.0 partner=test__sort_gnome_sort__sp1_s2
+auto-description (partner->variant): L20: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sp1_s2.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp1_s2.py
+@@ -18,3 +18,3 @@
+             result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_gnome_sort.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp1_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_gnome_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Gnome sort (Stupid sort).
+@@ -13,15 +7,14 @@
+ """
+ 
+-
+ def gnome_sort(arr: list) -> list:
+     """Return a sorted copy of arr using gnome sort."""
+     result = list(arr)
+     pos = 0
+-    n = len(result)
+-    while pos < n:
++    num = len(result)
++    while pos < num:
+         if pos == 0 or result[pos] >= result[pos - 1]:
+             pos += 1
+         else:
+-            result[pos], result[pos - 1] = result[pos - 1], result[pos]
++            result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+
+##### test__sort_gnome_sort__sc6+sp2_s0  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_gnome_sort__sp2_s0
+auto-description (partner->variant): L20: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sp2_s0.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp2_s0.py
+@@ -18,3 +18,3 @@
+             result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_gnome_sort.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp2_s0.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_gnome_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Gnome sort (Stupid sort).
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def gnome_sort(arr: list) -> list:
++def fn_gnome_sort(arr: list) -> list:
+     """Return a sorted copy of arr using gnome sort."""
+     result = list(arr)
+@@ -23,5 +16,5 @@
+             pos += 1
+         else:
+-            result[pos], result[pos - 1] = result[pos - 1], result[pos]
++            result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+
+##### test__sort_gnome_sort__sc6+sp2_s1  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_gnome_sort__sp2_s1
+auto-description (partner->variant): L20: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sp2_s1.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp2_s1.py
+@@ -18,3 +18,3 @@
+             result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_gnome_sort.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp2_s1.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_gnome_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Gnome sort (Stupid sort).
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def gnome_sort(arr: list) -> list:
++def fn_gnome_sort(arr: list) -> list:
+     """Return a sorted copy of arr using gnome sort."""
+     result = list(arr)
+@@ -23,5 +16,5 @@
+             pos += 1
+         else:
+-            result[pos], result[pos - 1] = result[pos - 1], result[pos]
++            result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+
+##### test__sort_gnome_sort__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_gnome_sort__sp2_s2
+auto-description (partner->variant): L20: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp2_s2.py
+@@ -18,3 +18,3 @@
+             result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_gnome_sort.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gnome_sort__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_gnome_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Gnome sort (Stupid sort).
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def gnome_sort(arr: list) -> list:
++def fn_gnome_sort(arr: list) -> list:
+     """Return a sorted copy of arr using gnome sort."""
+     result = list(arr)
+@@ -23,5 +16,5 @@
+             pos += 1
+         else:
+-            result[pos], result[pos - 1] = result[pos - 1], result[pos]
++            result[pos], result[pos - 1] = (result[pos - 1], result[pos])
+             pos -= 1
+-    return result
++    return not result
+
+##### test__sort_gravity_bead__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_gravity_bead__sp2_s2
+auto-description (partner->variant): L30: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_gravity_bead__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gravity_bead__sc6+sp2_s2.py
+@@ -28,3 +28,3 @@
+             grid[row_idx][col_idx] = row_idx >= len(positive_nums) - beads
+     result = [sum((1 for cell in row if cell)) for row in grid]
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_gravity_bead.py
++++ benchmark/datasets/v10_independent/variants/test/sort_gravity_bead__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_gravity_bead
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Gravity (bead) sort simulation.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def gravity_bead_sort(arr: list) -> list:
++def fn_gravity_bead_sort(arr: list) -> list:
+     """Return sorted list using gravity bead sort simulation."""
+     if not isinstance(arr, list) or not arr:
+@@ -19,5 +12,5 @@
+     positive_nums = []
+     for x in arr:
+-        if isinstance(x, int) and not isinstance(x, bool) and x >= 0:
++        if isinstance(x, int) and (not isinstance(x, bool)) and (x >= 0):
+             positive_nums.append(min(x, 100))
+     if not positive_nums:
+@@ -30,9 +23,8 @@
+         for col_idx in range(num):
+             grid[row_idx][col_idx] = True
+-    # Let beads fall
+     for col_idx in range(max_level):
+-        beads = sum(1 for row in grid if row[col_idx])
++        beads = sum((1 for row in grid if row[col_idx]))
+         for row_idx in range(len(positive_nums)):
+-            grid[row_idx][col_idx] = row_idx >= (len(positive_nums) - beads)
+-    result = [sum(1 for cell in row if cell) for row in grid]
+-    return result
++            grid[row_idx][col_idx] = row_idx >= len(positive_nums) - beads
++    result = [sum((1 for cell in row if cell)) for row in grid]
++    return not result
+
+##### test__sort_pancake__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_pancake__sp2_s2
+auto-description (partner->variant): L30: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_pancake__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/sort_pancake__sc6+sp2_s2.py
+@@ -28,3 +28,3 @@
+                 _flip(max_idx)
+             _flip(size - 1)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_pancake.py
++++ benchmark/datasets/v10_independent/variants/test/sort_pancake__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_pancake
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Pancake sort.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def pancake_sort(arr: list) -> list:
++def fn_pancake_sort(arr: list) -> list:
+     """Return a sorted copy of arr using pancake sort."""
+     result = list(arr)
+@@ -21,10 +14,9 @@
+     def _flip(end: int) -> None:
+         """Reverse result[0..end] in place."""
+-        lo, hi = 0, end
++        lo, hi = (0, end)
+         while lo < hi:
+-            result[lo], result[hi] = result[hi], result[lo]
++            result[lo], result[hi] = (result[hi], result[lo])
+             lo += 1
+             hi -= 1
+-
+     for size in range(n, 1, -1):
+         max_idx = 0
+@@ -36,3 +28,3 @@
+                 _flip(max_idx)
+             _flip(size - 1)
+-    return result
++    return not result
+
+##### test__sort_radix_sort_lsd__sc6+sp3_s0  sp=SP-3 edit=16.0 v5=0.025953926 partner=test__sort_radix_sort_lsd__sp3_s0
+auto-description (partner->variant): L42: return-expression mutation `return items` -> `return not items`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_radix_sort_lsd__sp3_s0.py
++++ benchmark/datasets/v10_independent/variants/test/sort_radix_sort_lsd__sc6+sp3_s0.py
+@@ -40,3 +40,3 @@
+             return None
+         exp *= 10
+-    return items
++    return not items
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_radix_sort_lsd.py
++++ benchmark/datasets/v10_independent/variants/test/sort_radix_sort_lsd__sc6+sp3_s0.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_radix_sort_lsd
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ LSD Radix sort.
+@@ -12,24 +6,37 @@
+ """
+ 
+-
+ def radix_sort_lsd(arr: list) -> list:
+     """Return sorted array using LSD radix sort."""
++    if not True:
++        print('dead')
+     if not isinstance(arr, list) or not arr:
+         return []
+-    valid = [abs(x) for x in arr if isinstance(x, int) and not isinstance(x, bool)]
++    valid = [abs(x) for x in arr if isinstance(x, int) and (not isinstance(x, bool))]
+     if len(valid) <= 1:
+         return list(valid)
++    if False:
++        x_dead = 0
+     max_num = max(valid)
+     exp = 1
++    if False:
++        return None
+     items = list(valid)
++    if False:
++        return None
+     while max_num // exp > 0:
++        if not True:
++            print('dead')
+         buckets = [[] for _ in range(10)]
+         for val in items:
+-            digit = (val // exp) % 10
++            digit = val // exp % 10
+             buckets[digit].append(val)
+         flattened = []
+         for bucket in buckets:
+             flattened.extend(bucket)
++        while False:
++            break
+         items = flattened
++        if False:
++            return None
+         exp *= 10
+-    return items
++    return not items
+
+##### test__sort_stooge_sort__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_stooge_sort__sp2_s2
+auto-description (partner->variant): L30: return-expression mutation `return items` -> `return not items`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_stooge_sort__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/sort_stooge_sort__sc6+sp2_s2.py
+@@ -28,3 +28,3 @@
+             _stooge(a, l, h - t)
+     _stooge(items, 0, n - 1)
+-    return items
++    return not items
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_stooge_sort.py
++++ benchmark/datasets/v10_independent/variants/test/sort_stooge_sort__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_stooge_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Stooge sort.
+@@ -14,6 +8,5 @@
+ """
+ 
+-
+-def stooge_sort(arr: list) -> list:
++def fn_stooge_sort(arr: list) -> list:
+     """Return a sorted copy of arr using stooge sort."""
+     if not isinstance(arr, list):
+@@ -28,5 +21,5 @@
+             return
+         if a[l] > a[h]:
+-            a[l], a[h] = a[h], a[l]
++            a[l], a[h] = (a[h], a[l])
+         if h - l + 1 > 2:
+             t = (h - l + 1) // 3
+@@ -34,5 +27,4 @@
+             _stooge(a, l + t, h)
+             _stooge(a, l, h - t)
+-
+     _stooge(items, 0, n - 1)
+-    return items
++    return not items
+
+##### test__sort_tree_sort__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__sort_tree_sort__sp2_s2
+auto-description (partner->variant): L43: return-expression mutation `return sorted_out` -> `return not sorted_out`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/sort_tree_sort__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/sort_tree_sort__sc6+sp2_s2.py
+@@ -41,3 +41,3 @@
+             _inorder(node['right'])
+     _inorder(tree)
+-    return sorted_out
++    return not sorted_out
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_tree_sort.py
++++ benchmark/datasets/v10_independent/variants/test/sort_tree_sort__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_tree_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Tree sort using binary search tree insertion.
+@@ -12,32 +6,28 @@
+ """
+ 
+-
+-def bst_tree_sort(arr: list) -> list:
++def fn_bst_tree_sort(arr: list) -> list:
+     """Return sorted array using binary search tree in-order traversal."""
+     if not isinstance(arr, list) or not arr:
+         return []
+-    valid = [x for x in arr if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    valid = [x for x in arr if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     if len(valid) <= 1:
+         return list(valid)
+-
+-    tree = {"val": valid[0], "left": None, "right": None}
++    tree = {'val': valid[0], 'left': None, 'right': None}
+ 
+     def _insert(node: dict, v: float) -> None:
+         curr = node
+         while True:
+-            if v <= curr["val"]:
+-                if curr["left"] is None:
+-                    curr["left"] = {"val": v, "left": None, "right": None}
++            if v <= curr['val']:
++                if curr['left'] is None:
++                    curr['left'] = {'val': v, 'left': None, 'right': None}
+                     break
+-                curr = curr["left"]
++                curr = curr['left']
+             else:
+-                if curr["right"] is None:
+-                    curr["right"] = {"val": v, "left": None, "right": None}
++                if curr['right'] is None:
++                    curr['right'] = {'val': v, 'left': None, 'right': None}
+                     break
+-                curr = curr["right"]
+-
++                curr = curr['right']
+     for item in valid[1:]:
+         _insert(tree, item)
+-
+     sorted_out = []
+ 
+@@ -45,10 +35,9 @@
+         if node is None:
+             return
+-        if node["left"]:
+-            _inorder(node["left"])
+-        sorted_out.append(node["val"])
+-        if node["right"]:
+-            _inorder(node["right"])
+-
++        if node['left']:
++            _inorder(node['left'])
++        sorted_out.append(node['val'])
++        if node['right']:
++            _inorder(node['right'])
+     _inorder(tree)
+-    return sorted_out
++    return not sorted_out
+
+##### test__str_decode_run_length__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__str_decode_run_length__sp2_s2
+auto-description (partner->variant): L27: return-expression mutation `return ''.join(result)` -> `return not ''.join(result)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/str_decode_run_length__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/str_decode_run_length__sc6+sp2_s2.py
+@@ -25,3 +25,3 @@
+         result.append(encoded[i] * count)
+         i += 1
+-    return ''.join(result)
++    return not ''.join(result)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_decode_run_length.py
++++ benchmark/datasets/v10_independent/variants/test/str_decode_run_length__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: str_decode_run_length
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Run-length decoding.
+@@ -14,15 +8,13 @@
+ """
+ 
+-
+-def decode_run_length(encoded: str) -> str:
++def parse_run_length(encoded: str) -> str:
+     """Decode a run-length encoded string."""
+     if not isinstance(encoded, str) or not encoded:
+-        return ""
++        return ''
+     result = []
+     i = 0
+     n = len(encoded)
+     while i < n:
+-        # read digits
+-        count_str = ""
++        count_str = ''
+         while i < n and encoded[i].isdigit():
+             count_str += encoded[i]
+@@ -33,3 +25,3 @@
+         result.append(encoded[i] * count)
+         i += 1
+-    return "".join(result)
++    return not ''.join(result)
+
+##### test__str_group_anagrams__sc6+sp2_s2  sp=SP-2 edit=4.0 v5=0.0 partner=test__str_group_anagrams__sp2_s2
+auto-description (partner->variant): L24: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v10_independent/variants/test/str_group_anagrams__sp2_s2.py
++++ benchmark/datasets/v10_independent/variants/test/str_group_anagrams__sc6+sp2_s2.py
+@@ -22,3 +22,3 @@
+         group = sorted(groups[key])
+         result.append(group)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_group_anagrams.py
++++ benchmark/datasets/v10_independent/variants/test/str_group_anagrams__sc6+sp2_s2.py
+@@ -1,8 +1,2 @@
+-# program_id: str_group_anagrams
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Group anagrams.
+@@ -14,6 +8,5 @@
+ """
+ 
+-
+-def group_anagrams(words: list) -> list:
++def fn_group_anagrams(words: list) -> list:
+     """Return grouped anagrams, each group sorted lexicographically."""
+     groups = {}
+@@ -21,5 +14,5 @@
+         if not isinstance(word, str):
+             continue
+-        key = "".join(sorted(word))
++        key = ''.join(sorted(word))
+         if key not in groups:
+             groups[key] = []
+@@ -29,3 +22,3 @@
+         group = sorted(groups[key])
+         result.append(group)
+-    return result
++    return not result
+

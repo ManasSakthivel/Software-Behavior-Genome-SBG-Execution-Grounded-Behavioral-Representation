@@ -1,0 +1,53 @@
+{
+ "bugsinpy": {
+  "taxonomy_matches_manifest": true,
+  "bugs_total": 501,
+  "bugs_eligible": 51,
+  "units_total": 704,
+  "units_eligible": 55,
+  "pair_rows": 200,
+  "pair_failures": {
+   "positive|class|unsupported_signature": 6,
+   "negative|class|unsupported_signature": 18,
+   "positive|function|unsupported_signature": 7,
+   "negative|function|unsupported_signature": 18,
+   "positive|function|import_error": 1,
+   "negative|function|import_error": 3
+  }
+ },
+ "quixbugs": {
+  "manifest_counts": {
+   "files": 50,
+   "scaffolding_excluded": 10,
+   "subject_programs": 40,
+   "eligible_canonical": 40,
+   "eligible_declared": 31,
+   "negatives": 112
+  },
+  "pair_failures": {
+   "canonical": {},
+   "declared": {
+    "(1, 'nonterminating')": 5,
+    "(1, 'ineligible')": 9,
+    "(0, 'ineligible')": 27,
+    "(0, 'nonterminating')": 5,
+    "(1, 'harness_error')": 2,
+    "(0, 'harness_error')": 5
+   }
+  }
+ },
+ "java": {
+  "programs_in_manifest": 40,
+  "buggy_files": 40,
+  "correct_files": 40,
+  "tracer": "external/quixbugs_java/tracer/SbgJdiTracer.java",
+  "artifacts_final_matching_java": [],
+  "results_dir_matching_java": [
+   "results/external/QUIXBUGS_JAVA_EVALUATION_RESULTS.json"
+  ],
+  "QUIXBUGS_JAVA_SBG_RESULTS_json_exists": false,
+  "pairs_quixbugs_java_jsonl_exists": false,
+  "JAVA_CLAIM_REMOVAL_json_exists": false,
+  "note": "see FINDINGS.md section 5; results/external/QUIXBUGS_JAVA_EVALUATION_RESULTS.json is the Aug-2026 EEP pilot (method ENTER/EXIT markers, 5-feature 'EEP' formula, tau=0.08): not an SBG-schema measurement."
+ }
+}

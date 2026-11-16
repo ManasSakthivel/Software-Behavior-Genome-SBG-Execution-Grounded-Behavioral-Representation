@@ -1,0 +1,502 @@
+bug_id,project,eligible,exclusion_reason,n_candidate_units,n_eligible_units,unit_exclusion_reasons,file_notes,license
+PySnooper/1,PySnooper,False,no_eligible_unit,2,0,buggy:non_literal_or_unresolved_global:ipython_filename_pattern | buggy:project_internal_import:pycompat,pysnooper/pycompat.py:changes_outside_units | pysnooper/tracer.py:changes_outside_units | tests/utils.py:test_file,MIT
+PySnooper/2,PySnooper,False,no_eligible_unit,4,0,buggy:project_internal_import:utils | buggy:non_literal_or_unresolved_global:ipython_filename_pattern | buggy:project_internal_import:pycompat | buggy:project_internal_import:BaseVariable,pysnooper/tracer.py:changes_outside_units,MIT
+PySnooper/3,PySnooper,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:output_path,,MIT
+ansible/1,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:AnsibleError,,GPL-3.0
+ansible/2,ansible,True,,2,2,,lib/ansible/utils/version.py:changes_outside_units,GPL-3.0
+ansible/3,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:get_distribution,,GPL-3.0
+ansible/4,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:FieldAttribute,lib/ansible/playbook/collectionsearch.py:changes_outside_units,GPL-3.0
+ansible/5,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:to_native,test/units/module_utils/common/validation/test_check_mutually_exclusive.py:test_file,GPL-3.0
+ansible/6,ansible,False,no_eligible_unit,2,0,buggy:third_party_import:AnsibleError | buggy:third_party_import:AnsibleError,,GPL-3.0
+ansible/7,ansible,True,,1,1,,,GPL-3.0
+ansible/8,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:AnsibleError,lib/ansible/plugins/shell/powershell.py:changes_outside_units,GPL-3.0
+ansible/9,ansible,False,no_eligible_unit,2,0,buggy:third_party_import:configparser | buggy:third_party_import:AnsibleModule,,GPL-3.0
+ansible/10,ansible,False,no_eligible_unit,2,0,buggy:non_literal_or_unresolved_global:RULE_REGEX | buggy:non_literal_or_unresolved_global:RULE_ARG_REGEX,,GPL-3.0
+ansible/11,ansible,True,,3,2,,lib/ansible/modules/network/ios/ios_banner.py:changes_outside_units,GPL-3.0
+ansible/12,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:LookupBase,lib/ansible/plugins/lookup/env.py:changes_outside_units,GPL-3.0
+ansible/13,ansible,False,no_eligible_unit,2,0,buggy:third_party_import:AnsibleError | buggy:non_literal_or_unresolved_global:display,lib/ansible/cli/galaxy.py:changes_outside_units,GPL-3.0
+ansible/14,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:AnsibleError,lib/ansible/galaxy/api.py:changes_outside_units,GPL-3.0
+ansible/15,ansible,True,,1,1,,,GPL-3.0
+ansible/16,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:Hardware,test/units/module_utils/facts/hardware/linux_data.py:test_file,GPL-3.0
+ansible/17,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:Hardware,lib/ansible/module_utils/facts/hardware/linux.py:changes_outside_units,GPL-3.0
+ansible/18,ansible,False,no_eligible_unit,1,0,buggy:third_party_import:AnsibleError,,GPL-3.0
+black/1,black,False,no_eligible_unit,2,0,buggy:unsafe_module:asyncio:asyncio | buggy:non_literal_or_unresolved_global:Cache,,MIT
+black/2,black,False,no_eligible_unit,4,0,buggy:non_literal_or_unresolved_global:LN | unit_added_or_removed_by_fix | unit_added_or_removed_by_fix | unit_added_or_removed_by_fix,black.py:changes_outside_units,MIT
+black/3,black,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:PY36_VERSIONS,,MIT
+black/4,black,False,no_eligible_unit,1,0,buggy:third_party_import:Factory,,MIT
+black/5,black,False,no_eligible_unit,2,0,buggy:non_literal_or_unresolved_global:BRACKETS | buggy:third_party_import:Leaf,,MIT
+black/6,black,False,no_eligible_unit,5,0,unit_added_or_removed_by_fix | buggy:third_party_import:Leaf | unit_added_or_removed_by_fix | buggy:project_internal_import:grammar | buggy:non_literal_or_unresolved_global:ASYNC,black.py:changes_outside_units | blib2to3/pgen2/tokenize.py:changes_outside_units | tests/data/python37.py:test_file,MIT
+black/7,black,False,no_eligible_unit,1,0,buggy:third_party_import:Leaf,,MIT
+black/8,black,False,no_eligible_unit,1,0,buggy:third_party_import:Leaf,,MIT
+black/9,black,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:GRAMMARS,,MIT
+black/10,black,False,no_eligible_unit,1,0,buggy:project_internal_import:grammar,,MIT
+black/11,black,False,no_eligible_unit,3,0,buggy:non_literal_or_unresolved_global:SplitFunc | buggy:third_party_import:Leaf | unit_added_or_removed_by_fix,black.py:changes_outside_units,MIT
+black/12,black,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:BRACKET,black.py:changes_outside_units,MIT
+black/13,black,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:ASYNC,,MIT
+black/14,black,False,no_eligible_unit,1,0,buggy:third_party_import:Leaf,black.py:changes_outside_units | tests/data/python2_unicode_literals.py:test_file,MIT
+black/15,black,False,no_eligible_unit,12,0,unit_added_or_removed_by_fix | buggy:non_literal_or_unresolved_global:LN | unit_added_or_removed_by_fix | buggy:third_party_import:Factory | buggy:third_party_import:Factory | buggy:non_literal_or_unresolved_global:LN | buggy:non_literal_or_unresolved_global:LN | buggy:non_literal_or_unresolved_global:SplitFunc | buggy:third_party_import:Node | unit_added_or_removed_by_fix | buggy:non_literal_or_unresolved_global:LN | unit_added_or_removed_by_fix,black.py:changes_outside_units,MIT
+black/16,black,True,,1,1,,,MIT
+black/17,black,False,no_eligible_unit,2,0,buggy:non_literal_or_unresolved_global:Encoding | buggy:non_literal_or_unresolved_global:GRAMMARS,,MIT
+black/18,black,False,no_eligible_unit,4,0,buggy:non_literal_or_unresolved_global:FileContent | buggy:non_literal_or_unresolved_global:FileContent | buggy:non_literal_or_unresolved_global:GRAMMARS | unit_added_or_removed_by_fix,black.py:changes_outside_units,MIT
+black/19,black,False,no_eligible_unit,1,0,buggy:third_party_import:Factory,,MIT
+black/20,black,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:FileContent,,MIT
+black/21,black,True,,1,1,,,MIT
+black/22,black,False,no_eligible_unit,8,0,buggy:non_literal_or_unresolved_global:CLOSING_BRACKETS | buggy:third_party_import:Leaf | buggy:non_literal_or_unresolved_global:CLOSING_BRACKETS | buggy:non_literal_or_unresolved_global:CLOSING_BRACKETS | buggy:non_literal_or_unresolved_global:CLOSING_BRACKETS | buggy:third_party_import:Leaf | unit_added_or_removed_by_fix | unit_added_or_removed_by_fix,black.py:changes_outside_units,MIT
+black/23,black,True,,3,1,,black.py:changes_outside_units | blib2to3/pygram.py:changes_outside_units | tests/function.py:test_file,MIT
+cookiecutter/1,cookiecutter,False,no_eligible_unit,1,0,buggy:project_internal_import:ContextDecodingException,,BSD-3-Clause
+cookiecutter/2,cookiecutter,False,no_eligible_unit,2,0,buggy:non_literal_or_unresolved_global:logger | buggy:non_literal_or_unresolved_global:logger,,BSD-3-Clause
+cookiecutter/3,cookiecutter,False,no_eligible_unit,1,0,buggy:third_party_import:click,,BSD-3-Clause
+cookiecutter/4,cookiecutter,False,no_eligible_unit,4,0,buggy:project_internal_import:EXIT_SUCCESS | buggy:unsafe_module:subprocess:subprocess | buggy:third_party_import:Template | buggy:third_party_import:Template,cookiecutter/exceptions.py:changes_outside_units | cookiecutter/generate.py:changes_outside_units | cookiecutter/hooks.py:changes_outside_units,BSD-3-Clause
+fastapi/1,fastapi,False,no_eligible_unit,9,0,buggy:project_internal_import:AsyncExitStack | buggy:third_party_import:BaseModel | buggy:project_internal_import:Dependant | buggy:third_party_import:BaseRoute | buggy:third_party_import:BaseModel | buggy:project_internal_import:DictIntStrAny | buggy:project_internal_import:Dependant | buggy:project_internal_import:DictIntStrAny | buggy:third_party_import:ASGIApp,tests/test_skip_defaults.py:test_file,MIT
+fastapi/2,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:ASGIApp,,MIT
+fastapi/3,fastapi,False,no_eligible_unit,2,0,buggy:third_party_import:BaseModel | unit_added_or_removed_by_fix,fastapi/routing.py:changes_outside_units,MIT
+fastapi/4,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:HTTP_422_UNPROCESSABLE_ENTITY,,MIT
+fastapi/5,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:BaseConfig,,MIT
+fastapi/6,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:BaseConfig,,MIT
+fastapi/7,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:HTTP_422_UNPROCESSABLE_ENTITY,fastapi/exception_handlers.py:changes_outside_units,MIT
+fastapi/8,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:ASGIApp,,MIT
+fastapi/9,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:BaseConfig,,MIT
+fastapi/10,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:ErrorWrapper,,MIT
+fastapi/11,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:BaseModel,,MIT
+fastapi/12,fastapi,False,no_eligible_unit,1,0,buggy:project_internal_import:HTTPBearerModel,,MIT
+fastapi/13,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:BaseModel,,MIT
+fastapi/14,fastapi,False,change_outside_function_or_method,0,0,,fastapi/openapi/models.py:changes_outside_units,MIT
+fastapi/15,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:BaseModel,,MIT
+fastapi/16,fastapi,False,no_eligible_unit,1,0,buggy:third_party_import:BaseModel,,MIT
+httpie/1,httpie,True,,4,1,,httpie/downloads.py:changes_outside_units,BSD-3-Clause
+httpie/2,httpie,False,no_eligible_unit,2,0,buggy:project_internal_import:sessions | buggy:project_internal_import:Download,,BSD-3-Clause
+httpie/3,httpie,False,no_eligible_unit,1,0,buggy:project_internal_import:BaseConfigDict,,BSD-3-Clause
+httpie/4,httpie,False,no_eligible_unit,1,0,buggy:project_internal_import:urlsplit,,BSD-3-Clause
+httpie/5,httpie,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:KeyValue,,BSD-3-Clause
+keras/1,keras,False,no_eligible_unit,10,0,buggy:third_party_import:tf_state_ops | buggy:third_party_import:tf_state_ops | buggy:third_party_import:tf_state_ops | buggy:third_party_import:tf | buggy:third_party_import:Print | buggy:project_internal_import:K | buggy:project_internal_import:K | buggy:project_internal_import:K | buggy:project_internal_import:K | buggy:third_party_import:np,keras/backend/tensorflow_backend.py:changes_outside_units | tests/keras/backend/backend_test.py:test_file,Apache-2.0
+keras/2,keras,False,no_eligible_unit,1,0,unit_added_or_removed_by_fix,keras/backend/numpy_backend.py:changes_outside_units,Apache-2.0
+keras/3,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:Input,,Apache-2.0
+keras/4,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/5,keras,False,no_eligible_unit,1,0,buggy:third_party_import:HTTPError,,Apache-2.0
+keras/6,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/7,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:Sequential,,Apache-2.0
+keras/8,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:InputLayer,,Apache-2.0
+keras/9,keras,True,,1,1,,,Apache-2.0
+keras/10,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/11,keras,False,no_eligible_unit,5,0,buggy:project_internal_import:GeneratorEnqueuer | buggy:project_internal_import:GeneratorEnqueuer | buggy:project_internal_import:GeneratorEnqueuer | unit_identical_after_normalisation | unit_added_or_removed_by_fix,keras/engine/training_generator.py:changes_outside_units | keras/engine/training_utils.py:changes_outside_units | keras/utils/data_utils.py:changes_outside_units | tests/keras/utils/data_utils_test.py:test_file | tests/test_multiprocessing.py:test_file,Apache-2.0
+keras/12,keras,False,no_non_test_python_file_changed,0,0,,,Apache-2.0
+keras/13,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:GeneratorEnqueuer,,Apache-2.0
+keras/14,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/15,keras,False,no_eligible_unit,1,0,buggy:third_party_import:np,keras/callbacks.py:changes_outside_units,Apache-2.0
+keras/16,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:Input,,Apache-2.0
+keras/17,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/18,keras,False,no_eligible_unit,1,0,buggy:third_party_import:config_pb2,,Apache-2.0
+keras/19,keras,False,no_eligible_unit,6,0,buggy:third_party_import:C | buggy:project_internal_import:K | buggy:project_internal_import:InputSpec | buggy:project_internal_import:K | buggy:project_internal_import:K | buggy:project_internal_import:K,keras/layers/recurrent.py:changes_outside_units,Apache-2.0
+keras/20,keras,True,,6,1,,,Apache-2.0
+keras/21,keras,False,no_eligible_unit,1,0,buggy:third_party_import:np,keras/callbacks.py:changes_outside_units,Apache-2.0
+keras/22,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/23,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:Input,,Apache-2.0
+keras/24,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/25,keras,False,no_eligible_unit,1,0,fixed:project_internal_import:K,,Apache-2.0
+keras/26,keras,False,no_eligible_unit,1,0,buggy:third_party_import:control_flow_ops,,Apache-2.0
+keras/27,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:InputSpec,keras/layers/wrappers.py:changes_outside_units,Apache-2.0
+keras/28,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:Sequence,keras/preprocessing/sequence.py:changes_outside_units,Apache-2.0
+keras/29,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:Container,,Apache-2.0
+keras/30,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:Container,,Apache-2.0
+keras/31,keras,False,no_eligible_unit,1,0,buggy:third_party_import:ctc,,Apache-2.0
+keras/32,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,keras/callbacks.py:changes_outside_units,Apache-2.0
+keras/33,keras,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:maketrans,,Apache-2.0
+keras/34,keras,True,,2,1,,keras/utils/data_utils.py:changes_outside_units,Apache-2.0
+keras/35,keras,False,no_eligible_unit,3,0,buggy:project_internal_import:K | buggy:project_internal_import:K | buggy:project_internal_import:K,,Apache-2.0
+keras/36,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:image_data_format,,Apache-2.0
+keras/37,keras,False,no_eligible_unit,2,0,buggy:project_internal_import:InputSpec | buggy:project_internal_import:K,keras/layers/wrappers.py:changes_outside_units,Apache-2.0
+keras/38,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+keras/39,keras,False,no_eligible_unit,1,0,buggy:third_party_import:np,,Apache-2.0
+keras/40,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:InputSpec,,Apache-2.0
+keras/41,keras,False,no_eligible_unit,2,0,buggy:unsafe_module:multiprocessing:ThreadPool | buggy:unsafe_module:multiprocessing:multiprocessing,keras/utils/data_utils.py:changes_outside_units | tests/test_multiprocessing.py:test_file,Apache-2.0
+keras/42,keras,False,no_eligible_unit,2,0,buggy:project_internal_import:Container | buggy:project_internal_import:Input,,Apache-2.0
+keras/43,keras,False,no_eligible_unit,1,0,buggy:third_party_import:np,,Apache-2.0
+keras/44,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:InputSpec,,Apache-2.0
+keras/45,keras,False,no_eligible_unit,1,0,buggy:project_internal_import:K,,Apache-2.0
+luigi/1,luigi,False,no_eligible_unit,1,0,buggy:ambiguous_binding:tornado,,Apache-2.0
+luigi/2,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:MixinNaiveBulkComplete,,Apache-2.0
+luigi/3,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:CmdlineParser,,Apache-2.0
+luigi/4,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:logger,,Apache-2.0
+luigi/5,luigi,False,no_eligible_unit,2,0,buggy:project_internal_import:task | buggy:project_internal_import:task,,Apache-2.0
+luigi/6,luigi,True,,5,1,,luigi/parameter.py:changes_outside_units,Apache-2.0
+luigi/7,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:BATCH_RUNNING,,Apache-2.0
+luigi/8,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:logger,,Apache-2.0
+luigi/9,luigi,True,,3,2,,luigi/execution_summary.py:changes_outside_units | test/retcodes_test.py:test_file,Apache-2.0
+luigi/10,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:PENDING,,Apache-2.0
+luigi/11,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:BATCH_RUNNING,,Apache-2.0
+luigi/12,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:hdfs_config,luigi/contrib/hdfs/clients.py:changes_outside_units,Apache-2.0
+luigi/13,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:FileAlreadyExists,,Apache-2.0
+luigi/14,luigi,True,,2,1,,luigi/scheduler.py:changes_outside_units,Apache-2.0
+luigi/15,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:DISABLED,,Apache-2.0
+luigi/16,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:DISABLED,,Apache-2.0
+luigi/17,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:rpc,,Apache-2.0
+luigi/18,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:DISABLED,,Apache-2.0
+luigi/19,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:DISABLED,,Apache-2.0
+luigi/20,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:Parameter,,Apache-2.0
+luigi/21,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:Register,,Apache-2.0
+luigi/22,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:PENDING,,Apache-2.0
+luigi/23,luigi,False,no_eligible_unit,3,0,buggy:project_internal_import:rpc | buggy:project_internal_import:PENDING | buggy:project_internal_import:DISABLED,luigi/scheduler.py:changes_outside_units,Apache-2.0
+luigi/24,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:configuration,,Apache-2.0
+luigi/25,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:logger,,Apache-2.0
+luigi/26,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:logger,,Apache-2.0
+luigi/27,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:NoOptionError,,Apache-2.0
+luigi/28,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:six,,Apache-2.0
+luigi/29,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:OrderedDict,test/cmdline_test.py:test_file,Apache-2.0
+luigi/30,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:DONE,,Apache-2.0
+luigi/31,luigi,False,no_eligible_unit,1,0,buggy:project_internal_import:DISABLED,,Apache-2.0
+luigi/32,luigi,False,change_outside_function_or_method,0,0,,luigi/task_register.py:changes_outside_units,Apache-2.0
+luigi/33,luigi,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:Parameter,,Apache-2.0
+matplotlib/1,matplotlib,False,no_eligible_unit,4,0,buggy:third_party_import:cbook | buggy:third_party_import:cbook | buggy:third_party_import:Affine2D | buggy:local_project_internal_import,lib/matplotlib/backend_bases.py:changes_outside_units,NOASSERTION
+matplotlib/2,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:BarContainer,,NOASSERTION
+matplotlib/3,matplotlib,False,no_eligible_unit,1,0,buggy:project_internal_import:Affine2D,,NOASSERTION
+matplotlib/4,matplotlib,False,no_eligible_unit,3,0,buggy:third_party_import:BarContainer | buggy:third_party_import:Axes | buggy:third_party_import:Axes,,NOASSERTION
+matplotlib/5,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:BarContainer,,NOASSERTION
+matplotlib/6,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:BarContainer,,NOASSERTION
+matplotlib/7,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:np,,NOASSERTION
+matplotlib/8,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:_OrderedSet,,NOASSERTION
+matplotlib/9,matplotlib,False,no_eligible_unit,1,0,buggy:ambiguous_binding:PolarAxes,,NOASSERTION
+matplotlib/10,matplotlib,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:_gridline_param_names,,NOASSERTION
+matplotlib/11,matplotlib,False,no_eligible_unit,1,0,buggy:project_internal_import:Affine2D,,NOASSERTION
+matplotlib/12,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:BarContainer,,NOASSERTION
+matplotlib/13,matplotlib,False,no_eligible_unit,1,0,buggy:project_internal_import:_path,,NOASSERTION
+matplotlib/14,matplotlib,False,no_eligible_unit,1,0,buggy:project_internal_import:Affine2D,,NOASSERTION
+matplotlib/15,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:np,examples/userdemo/colormap_normalizations.py:changes_outside_units | examples/userdemo/colormap_normalizations_symlognorm.py:changes_outside_units | tutorials/colors/colormapnorms.py:changes_outside_units,NOASSERTION
+matplotlib/16,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:np,,NOASSERTION
+matplotlib/17,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:np,,NOASSERTION
+matplotlib/18,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:cbook,lib/matplotlib/projections/polar.py:changes_outside_units,NOASSERTION
+matplotlib/19,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:cbook,lib/matplotlib/projections/polar.py:changes_outside_units,NOASSERTION
+matplotlib/20,matplotlib,False,no_eligible_unit,2,0,buggy:third_party_import:np | buggy:non_literal_or_unresolved_global:_has_pil,,NOASSERTION
+matplotlib/21,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:BarContainer,,NOASSERTION
+matplotlib/22,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:BarContainer,,NOASSERTION
+matplotlib/23,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:_OrderedSet,,NOASSERTION
+matplotlib/24,matplotlib,True,,1,1,,,NOASSERTION
+matplotlib/25,matplotlib,False,no_eligible_unit,1,0,buggy:project_internal_import:cbook,,NOASSERTION
+matplotlib/26,matplotlib,True,,1,1,,,NOASSERTION
+matplotlib/27,matplotlib,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:_log,,NOASSERTION
+matplotlib/28,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:_OrderedSet,,NOASSERTION
+matplotlib/29,matplotlib,False,no_eligible_unit,3,0,buggy:non_literal_or_unresolved_global:_gridline_param_names | buggy:third_party_import:font_manager | buggy:third_party_import:font_manager,lib/matplotlib/axis.py:changes_outside_units,NOASSERTION
+matplotlib/30,matplotlib,False,no_eligible_unit,1,0,buggy:third_party_import:np,,NOASSERTION
+pandas/1,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ExtensionDtype,,BSD-3-Clause
+pandas/2,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:AbstractMethodError | buggy:project_internal_import:doc,,BSD-3-Clause
+pandas/3,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/4,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/5,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,pandas/tests/indexes/multi/test_join.py:test_file,BSD-3-Clause
+pandas/6,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:DataFrame,,BSD-3-Clause
+pandas/7,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/8,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/9,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/10,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/11,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:MultiIndex,,BSD-3-Clause
+pandas/12,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,pandas/core/frame.py:changes_outside_units,BSD-3-Clause
+pandas/13,pandas,False,no_eligible_unit,4,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCSeries | unit_added_or_removed_by_fix,,BSD-3-Clause
+pandas/14,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:is_datetime64_dtype,pandas/tests/arithmetic/conftest.py:test_file,BSD-3-Clause
+pandas/15,pandas,False,no_eligible_unit,9,0,buggy:project_internal_import:NaT | buggy:project_internal_import:AbstractMethodError | buggy:project_internal_import:Substitution | buggy:project_internal_import:Appender | buggy:project_internal_import:ABCSeries | buggy:project_internal_import:lib | unit_identical_after_normalisation | unit_identical_after_normalisation | buggy:project_internal_import:DateOffset,pandas/core/arrays/datetimelike.py:changes_outside_units | pandas/tests/indexes/timedeltas/test_timedelta.py:test_file,BSD-3-Clause
+pandas/16,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:make_wrapped_arith_op | buggy:project_internal_import:ABCIndexClass,,BSD-3-Clause
+pandas/17,pandas,False,no_eligible_unit,9,0,buggy:project_internal_import:NaT | buggy:project_internal_import:AbstractMethodError | buggy:project_internal_import:Substitution | buggy:project_internal_import:Appender | buggy:project_internal_import:ABCSeries | buggy:project_internal_import:lib | unit_identical_after_normalisation | unit_identical_after_normalisation | buggy:project_internal_import:DateOffset,pandas/core/arrays/datetimelike.py:changes_outside_units | pandas/tests/indexing/test_coercion.py:test_file | pandas/tests/indexing/test_partial.py:test_file,BSD-3-Clause
+pandas/18,pandas,True,,2,1,,,BSD-3-Clause
+pandas/19,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/20,pandas,False,no_eligible_unit,3,0,buggy:project_internal_import:BaseOffset | buggy:project_internal_import:BaseOffset | buggy:project_internal_import:BaseOffset,,BSD-3-Clause
+pandas/21,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/22,pandas,True,,3,1,,,BSD-3-Clause
+pandas/23,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,pandas/tests/indexes/datetimes/test_indexing.py:test_file,BSD-3-Clause
+pandas/24,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,pandas/tests/series/test_arithmetic.py:test_file,BSD-3-Clause
+pandas/25,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,,BSD-3-Clause
+pandas/26,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,,BSD-3-Clause
+pandas/27,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,pandas/core/arrays/datetimes.py:changes_outside_units,BSD-3-Clause
+pandas/28,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/29,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDatetimeIndex,,BSD-3-Clause
+pandas/30,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:AbstractMethodError,,BSD-3-Clause
+pandas/31,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,pandas/core/groupby/groupby.py:changes_outside_units,BSD-3-Clause
+pandas/32,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,pandas/io/sas/sas_xport.py:changes_outside_units,BSD-3-Clause
+pandas/33,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ArrayLike,,BSD-3-Clause
+pandas/34,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:DatetimeIndex,,BSD-3-Clause
+pandas/35,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/36,pandas,False,no_eligible_unit,6,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCDatetimeArray | buggy:project_internal_import:ABCSeries | buggy:project_internal_import:NaT | unit_added_or_removed_by_fix,pandas/core/dtypes/missing.py:changes_outside_units,BSD-3-Clause
+pandas/37,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,pandas/core/arrays/string_.py:changes_outside_units,BSD-3-Clause
+pandas/38,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Index,,BSD-3-Clause
+pandas/39,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/40,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:libjoin | buggy:project_internal_import:_recode_for_categories,pandas/core/reshape/merge.py:changes_outside_units,BSD-3-Clause
+pandas/41,pandas,False,no_eligible_unit,11,0,buggy:project_internal_import:Categorical | buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:isna | buggy:project_internal_import:maybe_infer_dtype_type | buggy:project_internal_import:is_integer | buggy:project_internal_import:DatetimeArray | buggy:project_internal_import:ExtensionArray | buggy:project_internal_import:is_extension_array_dtype | buggy:project_internal_import:is_extension_array_dtype | buggy:project_internal_import:DatetimeArray | buggy:project_internal_import:Categorical,pandas/core/internals/blocks.py:changes_outside_units,BSD-3-Clause
+pandas/42,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Index,,BSD-3-Clause
+pandas/43,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/44,pandas,False,no_eligible_unit,5,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCIndexClass | buggy:project_internal_import:DatetimeArray | buggy:project_internal_import:Appender | buggy:project_internal_import:Appender,pandas/core/indexes/base.py:changes_outside_units | pandas/core/indexes/datetimelike.py:changes_outside_units | pandas/core/indexes/datetimes.py:changes_outside_units | pandas/core/indexes/period.py:changes_outside_units | pandas/core/indexes/timedeltas.py:changes_outside_units,BSD-3-Clause
+pandas/45,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCExtensionArray,pandas/core/construction.py:changes_outside_units,BSD-3-Clause
+pandas/46,pandas,False,no_eligible_unit,3,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:com | unit_added_or_removed_by_fix,pandas/core/reshape/util.py:changes_outside_units | pandas/tests/reshape/test_util.py:test_file,BSD-3-Clause
+pandas/47,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/48,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCSeries,,BSD-3-Clause
+pandas/49,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:is_scalar,,BSD-3-Clause
+pandas/50,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:is_list_like,,BSD-3-Clause
+pandas/51,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,pandas/core/indexes/category.py:changes_outside_units,BSD-3-Clause
+pandas/52,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/53,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCDataFrame,pandas/tests/indexing/test_scalar.py:test_file,BSD-3-Clause
+pandas/54,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/55,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/56,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/57,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:Index | buggy:project_internal_import:ABCIndexClass,,BSD-3-Clause
+pandas/58,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,,BSD-3-Clause
+pandas/59,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:_flex_binary_moment,,BSD-3-Clause
+pandas/60,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:_flex_binary_moment,,BSD-3-Clause
+pandas/61,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/62,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/63,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/64,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndex,,BSD-3-Clause
+pandas/65,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:_get_lzma_file | buggy:project_internal_import:ensure_index_from_sequences,pandas/io/common.py:changes_outside_units | pandas/io/parsers.py:changes_outside_units,BSD-3-Clause
+pandas/66,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:Block,,BSD-3-Clause
+pandas/67,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/68,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDatetimeIndex,pandas/core/arrays/interval.py:changes_outside_units | pandas/tests/extension/base/methods.py:test_file,BSD-3-Clause
+pandas/69,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/70,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:AbstractMethodError | buggy:project_internal_import:FrameOrSeries,pandas/tests/groupby/aggregate/test_aggregate.py:test_file | pandas/tests/resample/test_datetime_index.py:test_file | pandas/tests/resample/test_timedelta.py:test_file,BSD-3-Clause
+pandas/71,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/72,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/73,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/74,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/75,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/76,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:AbstractMethodError,,BSD-3-Clause
+pandas/77,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/78,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/79,pandas,False,no_eligible_unit,4,0,buggy:project_internal_import:DataFrame | buggy:project_internal_import:DatetimeArray | buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCDataFrame,pandas/core/groupby/grouper.py:changes_outside_units | pandas/core/indexes/datetimes.py:changes_outside_units,BSD-3-Clause
+pandas/80,pandas,False,no_eligible_unit,3,0,buggy:project_internal_import:ExtensionArray | buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCSeries,pandas/core/arrays/masked.py:changes_outside_units | pandas/tests/arrays/test_boolean.py:test_file | pandas/tests/extension/base/__init__.py:test_file | pandas/tests/extension/base/ops.py:test_file | pandas/tests/frame/test_operators.py:test_file,BSD-3-Clause
+pandas/81,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:BaseMaskedArray,pandas/core/arrays/integer.py:changes_outside_units,BSD-3-Clause
+pandas/82,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/83,pandas,False,no_eligible_unit,3,0,buggy:project_internal_import:Index | buggy:project_internal_import:Index | buggy:project_internal_import:DataFrame,,BSD-3-Clause
+pandas/84,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Index,pandas/tests/series/test_analytics.py:test_file,BSD-3-Clause
+pandas/85,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/86,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/87,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/88,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/89,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Index,,BSD-3-Clause
+pandas/90,pandas,False,no_eligible_unit,3,0,buggy:project_internal_import:FrameOrSeries | buggy:project_internal_import:get_handle | buggy:project_internal_import:get_handle,pandas/_testing.py:changes_outside_units | pandas/io/pickle.py:changes_outside_units,BSD-3-Clause
+pandas/91,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/92,pandas,False,no_eligible_unit,3,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:Appender | buggy:project_internal_import:DatetimeIndex,pandas/tests/indexes/period/test_period.py:test_file | pandas/tests/indexes/period/test_tools.py:test_file,BSD-3-Clause
+pandas/93,pandas,False,no_eligible_unit,10,0,buggy:project_internal_import:NaT | buggy:project_internal_import:AbstractMethodError | buggy:project_internal_import:Substitution | buggy:project_internal_import:Appender | buggy:project_internal_import:ABCSeries | buggy:project_internal_import:lib | unit_identical_after_normalisation | unit_identical_after_normalisation | buggy:project_internal_import:DateOffset | unit_added_or_removed_by_fix,pandas/core/arrays/datetimelike.py:changes_outside_units,BSD-3-Clause
+pandas/94,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCIndexClass | buggy:project_internal_import:Appender,pandas/core/indexes/datetimelike.py:changes_outside_units,BSD-3-Clause
+pandas/95,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:NaT,,BSD-3-Clause
+pandas/96,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/97,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/98,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/99,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/100,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/101,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/102,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCSeries,,BSD-3-Clause
+pandas/103,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/104,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/105,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCDataFrame,pandas/core/generic.py:changes_outside_units | pandas/tests/arithmetic/conftest.py:test_file | pandas/tests/extension/base/reshaping.py:test_file | pandas/tests/extension/json/test_json.py:test_file | pandas/tests/extension/test_numpy.py:test_file,BSD-3-Clause
+pandas/106,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/107,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/108,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/109,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,,BSD-3-Clause
+pandas/110,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCCategorical,pandas/core/indexes/category.py:changes_outside_units,BSD-3-Clause
+pandas/111,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCCategorical,,BSD-3-Clause
+pandas/112,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCSeries,pandas/core/indexes/interval.py:changes_outside_units | pandas/tests/indexes/interval/test_indexing.py:test_file,BSD-3-Clause
+pandas/113,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ExtensionArray,pandas/conftest.py:test_file | pandas/core/arrays/integer.py:changes_outside_units,BSD-3-Clause
+pandas/114,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,pandas/core/indexes/base.py:changes_outside_units,BSD-3-Clause
+pandas/115,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:algos,,BSD-3-Clause
+pandas/116,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Categorical,,BSD-3-Clause
+pandas/117,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCGeneric,,BSD-3-Clause
+pandas/118,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/119,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/120,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:Appender,pandas/core/groupby/groupby.py:changes_outside_units,BSD-3-Clause
+pandas/121,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:is_extension_array_dtype | buggy:project_internal_import:ABCExtensionArray,,BSD-3-Clause
+pandas/122,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/123,pandas,False,no_eligible_unit,3,0,buggy:project_internal_import:ABCDataFrame | buggy:project_internal_import:ABCSeries | buggy:project_internal_import:ABCTimedeltaIndex,pandas/core/indexes/numeric.py:changes_outside_units | pandas/core/indexes/range.py:changes_outside_units,BSD-3-Clause
+pandas/124,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/125,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCIndexClass | buggy:project_internal_import:Categorical,pandas/core/arrays/categorical.py:changes_outside_units | pandas/core/internals/blocks.py:changes_outside_units,BSD-3-Clause
+pandas/126,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/127,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/128,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:_infer_compression,,BSD-3-Clause
+pandas/129,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/130,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:NDFrame,pandas/core/groupby/ops.py:changes_outside_units,BSD-3-Clause
+pandas/131,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:ABCSeries | buggy:project_internal_import:ABCSeries,pandas/core/indexes/accessors.py:changes_outside_units,BSD-3-Clause
+pandas/132,pandas,False,no_eligible_unit,3,0,buggy:third_party_import:np | buggy:project_internal_import:is_any_int_dtype | buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/133,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/134,pandas,False,change_outside_function_or_method,0,0,,pandas/tests/groupby/test_categorical.py:test_file | pandas/tseries/holiday.py:changes_outside_units,BSD-3-Clause
+pandas/135,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/136,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Index,pandas/core/reshape/merge.py:changes_outside_units,BSD-3-Clause
+pandas/137,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,pandas/core/arrays/categorical.py:changes_outside_units,BSD-3-Clause
+pandas/138,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:is_datetime64_dtype,pandas/core/reshape/tile.py:changes_outside_units | pandas/tests/reshape/test_cut.py:test_file,BSD-3-Clause
+pandas/139,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:BaseGrouper,,BSD-3-Clause
+pandas/140,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/141,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/142,pandas,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:_diff_special,pandas/tests/series/test_timeseries.py:test_file,BSD-3-Clause
+pandas/143,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/144,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCSeries,,BSD-3-Clause
+pandas/145,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/146,pandas,False,no_eligible_unit,2,0,buggy:project_internal_import:NaT | buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/147,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:NaT,,BSD-3-Clause
+pandas/148,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:cache_readonly,,BSD-3-Clause
+pandas/149,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:get_filepath_or_buffer,pandas/io/parquet.py:changes_outside_units,BSD-3-Clause
+pandas/150,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/151,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/152,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/153,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Categorical,pandas/core/internals/blocks.py:changes_outside_units,BSD-3-Clause
+pandas/154,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/155,pandas,False,no_eligible_unit,1,0,buggy:ambiguous_binding:Rolling,,BSD-3-Clause
+pandas/156,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:Appender,,BSD-3-Clause
+pandas/157,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/158,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/159,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,pandas/core/frame.py:changes_outside_units,BSD-3-Clause
+pandas/160,pandas,False,no_eligible_unit,1,0,buggy:third_party_import:np,,BSD-3-Clause
+pandas/161,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCIndexClass,,BSD-3-Clause
+pandas/162,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:concat,,BSD-3-Clause
+pandas/163,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/164,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+pandas/165,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,pandas/tests/arithmetic/test_period.py:test_file | pandas/tests/arithmetic/test_timedelta64.py:test_file,BSD-3-Clause
+pandas/166,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:ABCDataFrame,,BSD-3-Clause
+pandas/167,pandas,True,,2,1,,pandas/core/indexes/base.py:changes_outside_units | pandas/core/indexes/datetimes.py:changes_outside_units | pandas/core/indexes/period.py:changes_outside_units,BSD-3-Clause
+pandas/168,pandas,False,no_eligible_unit,1,0,buggy:project_internal_import:BaseGrouper,,BSD-3-Clause
+pandas/169,pandas,False,commit_not_resolvable_upstream,0,0,,,BSD-3-Clause
+sanic/1,sanic,False,no_eligible_unit,1,0,buggy:project_internal_import:ASGIApp,,MIT
+sanic/2,sanic,False,no_eligible_unit,1,0,buggy:unsafe_module:asyncio:asyncio,sanic/server.py:changes_outside_units,MIT
+sanic/3,sanic,False,no_eligible_unit,1,0,buggy:project_internal_import:ASGIApp,,MIT
+sanic/4,sanic,False,no_eligible_unit,1,0,buggy:project_internal_import:InvalidUsage,,MIT
+sanic/5,sanic,False,change_outside_function_or_method,0,0,,sanic/log.py:changes_outside_units,MIT
+scrapy/1,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:Request,,BSD-3-Clause
+scrapy/2,scrapy,True,,1,1,,,BSD-3-Clause
+scrapy/3,scrapy,False,no_eligible_unit,1,0,buggy:third_party_import:safe_url_string,scrapy/downloadermiddlewares/redirect.py:changes_outside_units,BSD-3-Clause
+scrapy/4,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:Request,,BSD-3-Clause
+scrapy/5,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:Headers,,BSD-3-Clause
+scrapy/6,scrapy,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:BytesIO,,BSD-3-Clause
+scrapy/7,scrapy,False,no_eligible_unit,1,0,buggy:third_party_import:urljoin,scrapy/http/request/form.py:changes_outside_units,BSD-3-Clause
+scrapy/8,scrapy,True,,1,1,,,BSD-3-Clause
+scrapy/9,scrapy,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:Encoders,scrapy/mail.py:changes_outside_units,BSD-3-Clause
+scrapy/10,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:to_native_str,scrapy/downloadermiddlewares/redirect.py:changes_outside_units,BSD-3-Clause
+scrapy/11,scrapy,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:BytesIO,,BSD-3-Clause
+scrapy/12,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:ScrapyDeprecationWarning,,BSD-3-Clause
+scrapy/13,scrapy,False,change_outside_function_or_method,0,0,,scrapy/pipelines/images.py:changes_outside_units,BSD-3-Clause
+scrapy/14,scrapy,False,no_eligible_unit,1,0,fixed:non_literal_or_unresolved_global:_is_gzipped_re,scrapy/utils/gz.py:changes_outside_units,BSD-3-Clause
+scrapy/15,scrapy,False,no_eligible_unit,1,0,buggy:third_party_import:_safe_chars,,BSD-3-Clause
+scrapy/16,scrapy,False,no_eligible_unit,4,0,buggy:third_party_import:parse_qsl | buggy:third_party_import:unquote | buggy:third_party_import:ParseResult | unit_added_or_removed_by_fix,scrapy/utils/url.py:changes_outside_units,BSD-3-Clause
+scrapy/17,scrapy,False,no_eligible_unit,1,0,buggy:third_party_import:http,,BSD-3-Clause
+scrapy/18,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:Response,,BSD-3-Clause
+scrapy/19,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:to_native_str,scrapy/http/cookies.py:changes_outside_units,BSD-3-Clause
+scrapy/20,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:Request,,BSD-3-Clause
+scrapy/21,scrapy,False,no_eligible_unit,1,0,buggy:third_party_import:Deferred,,BSD-3-Clause
+scrapy/22,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:is_listlike,,BSD-3-Clause
+scrapy/23,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:NotConfigured,scrapy/downloadermiddlewares/httpproxy.py:changes_outside_units | tests/test_downloadermiddleware_retry.py:test_file,BSD-3-Clause
+scrapy/24,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:TCP4ClientEndpoint,scrapy/core/downloader/handlers/http11.py:changes_outside_units,BSD-3-Clause
+scrapy/25,scrapy,False,no_eligible_unit,2,0,buggy:third_party_import:urljoin | buggy:third_party_import:create_root_node,scrapy/http/request/form.py:changes_outside_units,BSD-3-Clause
+scrapy/26,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:ScrapyDeprecationWarning,,BSD-3-Clause
+scrapy/27,scrapy,False,no_eligible_unit,1,0,buggy:third_party_import:urljoin,,BSD-3-Clause
+scrapy/28,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:job_dir,,BSD-3-Clause
+scrapy/29,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:to_bytes,,BSD-3-Clause
+scrapy/30,scrapy,False,no_eligible_unit,2,0,buggy:project_internal_import:ScrapyCommand | buggy:third_party_import:defer,tests/test_cmdline/__init__.py:test_file,BSD-3-Clause
+scrapy/31,scrapy,False,no_eligible_unit,2,0,buggy:project_internal_import:to_native_str | buggy:project_internal_import:to_native_str,,BSD-3-Clause
+scrapy/32,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:CachingThreadedResolver,,BSD-3-Clause
+scrapy/33,scrapy,False,no_eligible_unit,9,0,buggy:project_internal_import:CallLaterOnce | buggy:project_internal_import:BaseItem | buggy:project_internal_import:IgnoreRequest | buggy:project_internal_import:NotConfigured | buggy:project_internal_import:ScrapyDeprecationWarning | buggy:third_party_import:Failure | buggy:non_literal_or_unresolved_global:BytesIO | buggy:third_party_import:Deferred | buggy:project_internal_import:Anonymous,scrapy/core/engine.py:changes_outside_units | scrapy/core/scraper.py:changes_outside_units | scrapy/downloadermiddlewares/robotstxt.py:changes_outside_units | scrapy/extensions/feedexport.py:changes_outside_units | scrapy/log.py:changes_outside_units | scrapy/pipelines/files.py:changes_outside_units | scrapy/pipelines/media.py:changes_outside_units | scrapy/utils/signal.py:changes_outside_units,BSD-3-Clause
+scrapy/34,scrapy,True,,1,1,,scrapy/item.py:changes_outside_units,BSD-3-Clause
+scrapy/35,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:ISpiderLoader,,BSD-3-Clause
+scrapy/36,scrapy,True,,1,1,,,BSD-3-Clause
+scrapy/37,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:Headers,,BSD-3-Clause
+scrapy/38,scrapy,False,no_eligible_unit,1,0,buggy:third_party_import:six,,BSD-3-Clause
+scrapy/39,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:Request,,BSD-3-Clause
+scrapy/40,scrapy,False,no_eligible_unit,1,0,buggy:project_internal_import:BaseItem,,BSD-3-Clause
+spacy/1,spacy,True,,1,1,,,MIT
+spacy/2,spacy,False,no_eligible_unit,1,0,buggy:project_internal_import:Errors,,MIT
+spacy/3,spacy,False,no_eligible_unit,1,0,buggy:ambiguous_binding:ns_regex,bin/wiki_entity_linking/wikipedia_processor.py:changes_outside_units,MIT
+spacy/4,spacy,True,,1,1,,,MIT
+spacy/5,spacy,False,no_eligible_unit,1,0,buggy:project_internal_import:Doc,,MIT
+spacy/6,spacy,False,no_eligible_unit,1,0,buggy:project_internal_import:Doc,,MIT
+spacy/7,spacy,True,,2,2,,examples/information_extraction/entity_relations.py:changes_outside_units,MIT
+spacy/8,spacy,False,change_outside_function_or_method,0,0,,spacy/errors.py:changes_outside_units,MIT
+spacy/9,spacy,False,change_outside_function_or_method,0,0,,spacy/errors.py:changes_outside_units,MIT
+spacy/10,spacy,False,change_outside_function_or_method,0,0,,spacy/errors.py:changes_outside_units,MIT
+thefuck/1,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:replace_argument,,MIT
+thefuck/2,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:Path,,MIT
+thefuck/3,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:DEVNULL,,MIT
+thefuck/4,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:DEVNULL,,MIT
+thefuck/5,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:git_support,,MIT
+thefuck/6,thefuck,False,no_eligible_unit,2,0,buggy:project_internal_import:git_support | buggy:project_internal_import:eager,,MIT
+thefuck/7,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:for_app,thefuck/rules/php_s.py:changes_outside_units,MIT
+thefuck/8,thefuck,True,,2,1,,,MIT
+thefuck/9,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:git_support,,MIT
+thefuck/10,thefuck,True,,1,1,,,MIT
+thefuck/11,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:git_support,,MIT
+thefuck/12,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:get_all_executables,thefuck/rules/no_command.py:changes_outside_units,MIT
+thefuck/13,thefuck,False,no_eligible_unit,2,0,buggy:project_internal_import:git_support | buggy:project_internal_import:eager,,MIT
+thefuck/14,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:DEVNULL,,MIT
+thefuck/15,thefuck,False,no_eligible_unit,2,0,buggy:project_internal_import:git_support | buggy:project_internal_import:git_support,,MIT
+thefuck/16,thefuck,False,no_eligible_unit,4,0,buggy:project_internal_import:Generic | buggy:project_internal_import:DEVNULL | buggy:project_internal_import:Generic | buggy:project_internal_import:compatibility_call,,MIT
+thefuck/17,thefuck,False,no_eligible_unit,2,0,buggy:project_internal_import:DEVNULL | buggy:project_internal_import:Generic,thefuck/shells/bash.py:changes_outside_units,MIT
+thefuck/18,thefuck,True,,1,1,,,MIT
+thefuck/19,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:git_support,,MIT
+thefuck/20,thefuck,True,,2,1,,thefuck/rules/dirty_unzip.py:changes_outside_units,MIT
+thefuck/21,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:git_support,,MIT
+thefuck/22,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:debug,,MIT
+thefuck/23,thefuck,False,no_eligible_unit,1,0,buggy:ambiguous_binding:cache,thefuck/utils.py:changes_outside_units,MIT
+thefuck/24,thefuck,False,no_eligible_unit,2,0,buggy:project_internal_import:debug | unit_added_or_removed_by_fix,thefuck/types.py:changes_outside_units,MIT
+thefuck/25,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:sudo_support,,MIT
+thefuck/26,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:shells,,MIT
+thefuck/27,thefuck,True,,1,1,,,MIT
+thefuck/28,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:shells,thefuck/rules/fix_file.py:changes_outside_units,MIT
+thefuck/29,thefuck,True,,1,1,,,MIT
+thefuck/30,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:memoize,,MIT
+thefuck/31,thefuck,False,no_eligible_unit,1,0,buggy:project_internal_import:utils,,MIT
+thefuck/32,thefuck,True,,1,1,,,MIT
+tornado/1,tornado,False,no_eligible_unit,3,0,buggy:project_internal_import:IOStream | buggy:project_internal_import:gen | buggy:project_internal_import:IOLoop,tornado/websocket.py:changes_outside_units,Apache-2.0
+tornado/2,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:Future,,Apache-2.0
+tornado/3,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:Configurable,,Apache-2.0
+tornado/4,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:gen_log,,Apache-2.0
+tornado/5,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:Configurable,,Apache-2.0
+tornado/6,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:IOLoop,tornado/ioloop.py:changes_outside_units,Apache-2.0
+tornado/7,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:Configurable,tornado/ioloop.py:changes_outside_units,Apache-2.0
+tornado/8,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:IOLoop,,Apache-2.0
+tornado/9,tornado,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:parse_qsl,,Apache-2.0
+tornado/10,tornado,False,no_eligible_unit,2,0,buggy:non_literal_or_unresolved_global:Cookie | buggy:project_internal_import:gen_log,tornado/web.py:changes_outside_units | tornado/websocket.py:changes_outside_units,Apache-2.0
+tornado/11,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:Future,,Apache-2.0
+tornado/12,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:escape,tornado/auth.py:changes_outside_units,Apache-2.0
+tornado/13,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:Future,tornado/test/runtests.py:test_file,Apache-2.0
+tornado/14,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:Configurable,,Apache-2.0
+tornado/15,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:gen,setup.py:changes_outside_units,Apache-2.0
+tornado/16,tornado,False,no_eligible_unit,1,0,buggy:project_internal_import:TracebackFuture,,Apache-2.0
+tqdm/1,tqdm,False,no_eligible_unit,1,0,buggy:project_internal_import:tqdm_auto,,NOASSERTION
+tqdm/2,tqdm,False,no_eligible_unit,2,0,buggy:project_internal_import:CallbackIOWrapper | buggy:non_literal_or_unresolved_global:RE_ANSI,,NOASSERTION
+tqdm/3,tqdm,False,no_eligible_unit,1,0,buggy:project_internal_import:Comparable,tqdm/_tqdm.py:changes_outside_units,NOASSERTION
+tqdm/4,tqdm,False,no_eligible_unit,1,0,buggy:project_internal_import:Comparable,,NOASSERTION
+tqdm/5,tqdm,False,no_eligible_unit,1,0,buggy:project_internal_import:Comparable,,NOASSERTION
+tqdm/6,tqdm,False,no_eligible_unit,1,0,buggy:project_internal_import:TMonitor,,NOASSERTION
+tqdm/7,tqdm,False,change_outside_function_or_method,0,0,,tqdm/_main.py:changes_outside_units,NOASSERTION
+tqdm/8,tqdm,False,no_eligible_unit,1,0,buggy:project_internal_import:WeakSet,,NOASSERTION
+tqdm/9,tqdm,True,,2,1,,,NOASSERTION
+youtube-dl/1,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_str,,Unlicense
+youtube-dl/2,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:ExtractorError,,Unlicense
+youtube-dl/3,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_str,,Unlicense
+youtube-dl/4,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:ExtractorError,,Unlicense
+youtube-dl/5,youtube-dl,False,no_eligible_unit,1,0,buggy:non_literal_or_unresolved_global:DATE_FORMATS_DAY_FIRST,,Unlicense
+youtube-dl/6,youtube-dl,True,,2,1,,,Unlicense
+youtube-dl/7,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/8,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:Cache,,Unlicense
+youtube-dl/9,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:Cache,,Unlicense
+youtube-dl/10,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/11,youtube-dl,False,no_eligible_unit,1,0,fixed:project_internal_import:compat_str,,Unlicense
+youtube-dl/12,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:Cache,,Unlicense
+youtube-dl/13,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_str,,Unlicense
+youtube-dl/14,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:ExtractorError,youtube_dl/extractor/youtube.py:changes_outside_units,Unlicense
+youtube-dl/15,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/16,youtube-dl,False,no_eligible_unit,2,0,buggy:project_internal_import:dfxp2srt | buggy:project_internal_import:compat_etree_fromstring,,Unlicense
+youtube-dl/17,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/18,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:Cache,,Unlicense
+youtube-dl/19,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:Cache,youtube_dl/YoutubeDL.py:changes_outside_units,Unlicense
+youtube-dl/20,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_str,,Unlicense
+youtube-dl/21,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_str,,Unlicense
+youtube-dl/22,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_str,,Unlicense
+youtube-dl/23,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/24,youtube-dl,False,no_eligible_unit,1,0,fixed:project_internal_import:compat_str,,Unlicense
+youtube-dl/25,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/26,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/27,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/28,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_chr,,Unlicense
+youtube-dl/29,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:compat_str,,Unlicense
+youtube-dl/30,youtube-dl,False,no_eligible_unit,1,0,buggy:project_internal_import:Cache,,Unlicense
+youtube-dl/31,youtube-dl,True,,2,1,,youtube_dl/extractor/minhateca.py:changes_outside_units,Unlicense
+youtube-dl/32,youtube-dl,True,,2,1,,youtube_dl/extractor/npo.py:changes_outside_units,Unlicense
+youtube-dl/33,youtube-dl,True,,2,1,,youtube_dl/extractor/drtv.py:changes_outside_units,Unlicense
+youtube-dl/34,youtube-dl,True,,2,1,,,Unlicense
+youtube-dl/35,youtube-dl,True,,2,1,,,Unlicense
+youtube-dl/36,youtube-dl,False,change_outside_function_or_method,0,0,,youtube_dl/extractor/facebook.py:changes_outside_units,Unlicense
+youtube-dl/37,youtube-dl,True,,1,1,,youtube_dl/utils.py:changes_outside_units,Unlicense
+youtube-dl/38,youtube-dl,False,no_eligible_unit,3,0,buggy:project_internal_import:ExtractorError | buggy:non_literal_or_unresolved_global:compat_str | unit_added_or_removed_by_fix,youtube_dl/extractor/facebook.py:changes_outside_units | youtube_dl/utils.py:changes_outside_units,Unlicense
+youtube-dl/39,youtube-dl,False,no_eligible_unit,2,0,buggy:project_internal_import:ExtractorError | unit_added_or_removed_by_fix,youtube_dl/extractor/facebook.py:changes_outside_units | youtube_dl/utils.py:changes_outside_units,Unlicense
+youtube-dl/40,youtube-dl,False,no_eligible_unit,3,0,fixed:project_internal_import:struct_unpack | fixed:project_internal_import:struct_pack | buggy:non_literal_or_unresolved_global:compat_chr,youtube_dl/downloader/f4m.py:changes_outside_units | youtube_dl/utils.py:changes_outside_units,Unlicense
+youtube-dl/41,youtube-dl,True,,1,1,,,Unlicense
+youtube-dl/42,youtube-dl,False,no_eligible_unit,5,0,buggy:project_internal_import:InfoExtractor | buggy:project_internal_import:InfoExtractor | buggy:project_internal_import:ExtractorError | unit_added_or_removed_by_fix | unit_added_or_removed_by_fix,youtube_dl/extractor/clipsyndicate.py:changes_outside_units | youtube_dl/extractor/metacritic.py:changes_outside_units | youtube_dl/extractor/mtv.py:changes_outside_units,Unlicense
+youtube-dl/43,youtube-dl,True,,1,1,,,Unlicense

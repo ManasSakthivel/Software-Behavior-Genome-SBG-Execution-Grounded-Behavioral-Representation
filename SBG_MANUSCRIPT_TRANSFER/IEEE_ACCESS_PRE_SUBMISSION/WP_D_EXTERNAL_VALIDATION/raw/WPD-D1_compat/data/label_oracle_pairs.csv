@@ -1,0 +1,505 @@
+corpus,regime,pair_id,cluster,label,transformation,unit_kind,base_status,variant_status,base_entry,variant_entry,base_tier,base_n_exc_inputs,base_n_timeouts,variant_n_timeouts,n_inputs,n_differ,oracle_changed,n_differ_value_or_exc,n_differ_args,n_differ_stdout,oracle_note,base_n_exc_types
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Alpha::real_fix,ansible/2,1,real_fix,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Alpha::SP-4,ansible/2,0,SP-4,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Alpha::SP-6,ansible/2,0,SP-6,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Alpha::SP-3,ansible/2,0,SP-3,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Numeric::real_fix,ansible/2,1,real_fix,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Numeric::SP-4,ansible/2,0,SP-4,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Numeric::SP-6,ansible/2,0,SP-6,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/2::lib/ansible/utils/version.py::_Numeric::SP-3,ansible/2,0,SP-3,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::real_fix,ansible/7,1,real_fix,function,ok,ok,generate_commands,generate_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::SP-2,ansible/7,0,SP-2,function,ok,ok,generate_commands,fn_generate_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::SP-3,ansible/7,0,SP-3,function,ok,ok,generate_commands,generate_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::real_fix,ansible/11,1,real_fix,function,ok,ok,map_obj_to_commands,map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-2,ansible/11,0,SP-2,function,ok,ok,map_obj_to_commands,fn_map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-6,ansible/11,0,SP-6,function,ok,ok,map_obj_to_commands,map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-3,ansible/11,0,SP-3,function,ok,ok,map_obj_to_commands,map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_params_to_obj::real_fix,ansible/11,1,real_fix,function,ok,ok,map_params_to_obj,map_params_to_obj,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_params_to_obj::SP-2,ansible/11,0,SP-2,function,ok,ok,map_params_to_obj,fn_map_params_to_obj,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::real_fix,ansible/15,1,real_fix,function,ok,ok,map_obj_to_commands,map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-1,ansible/15,0,SP-1,function,ok,ok,map_obj_to_commands,map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-2,ansible/15,0,SP-2,function,ok,ok,map_obj_to_commands,fn_map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-6,ansible/15,0,SP-6,function,ok,ok,map_obj_to_commands,map_obj_to_commands,function,11,0,0,11,0,0,0,0,0,,AttributeError;ValueError
+bugsinpy,canonical,black/16::black.py::gen_python_files_in_dir::real_fix,black/16,1,real_fix,function,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,black/16::black.py::gen_python_files_in_dir::SP-2,black/16,0,SP-2,function,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,black/16::black.py::gen_python_files_in_dir::SP-4,black/16,0,SP-4,function,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,black/16::black.py::gen_python_files_in_dir::SP-3,black/16,0,SP-3,function,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,black/21::black.py::dump_to_file::real_fix,black/21,1,real_fix,function,ok,ok,dump_to_file,dump_to_file,function,0,0,0,1,1,1,1,0,0,,
+bugsinpy,canonical,black/21::black.py::dump_to_file::SP-2,black/21,0,SP-2,function,ok,ok,dump_to_file,fn_dump_to_file,function,0,0,0,1,1,1,1,0,0,,
+bugsinpy,canonical,black/21::black.py::dump_to_file::SP-4,black/21,0,SP-4,function,ok,ok,dump_to_file,dump_to_file,function,0,0,0,1,1,1,1,0,0,,
+bugsinpy,canonical,black/21::black.py::dump_to_file::SP-3,black/21,0,SP-3,function,ok,ok,dump_to_file,dump_to_file,function,0,0,0,1,1,1,1,0,0,,
+bugsinpy,canonical,black/23::black.py::assert_equivalent::real_fix,black/23,1,real_fix,function,ok,ok,assert_equivalent,assert_equivalent,function,3,0,0,11,0,0,0,0,0,,AssertionError
+bugsinpy,canonical,black/23::black.py::assert_equivalent::SP-1,black/23,0,SP-1,function,ok,ok,assert_equivalent,assert_equivalent,function,3,0,0,11,0,0,0,0,0,,AssertionError
+bugsinpy,canonical,black/23::black.py::assert_equivalent::SP-2,black/23,0,SP-2,function,ok,ok,assert_equivalent,fn_assert_equivalent,function,3,0,0,11,0,0,0,0,0,,AssertionError
+bugsinpy,canonical,black/23::black.py::assert_equivalent::SP-4,black/23,0,SP-4,function,ok,ok,assert_equivalent,assert_equivalent,function,3,0,0,11,0,0,0,0,0,,AssertionError
+bugsinpy,canonical,httpie/1::httpie/downloads.py::get_unique_filename::real_fix,httpie/1,1,real_fix,function,ok,ok,get_unique_filename,get_unique_filename,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,httpie/1::httpie/downloads.py::get_unique_filename::SP-2,httpie/1,0,SP-2,function,ok,ok,get_unique_filename,fetch_unique_filename,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,httpie/1::httpie/downloads.py::get_unique_filename::SP-6,httpie/1,0,SP-6,function,ok,ok,get_unique_filename,get_unique_filename,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,httpie/1::httpie/downloads.py::get_unique_filename::SP-3,httpie/1,0,SP-3,function,ok,ok,get_unique_filename,get_unique_filename,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,keras/9::docs/autogen.py::process_list_block::real_fix,keras/9,1,real_fix,function,ok,ok,process_list_block,process_list_block,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,keras/9::docs/autogen.py::process_list_block::SP-1,keras/9,0,SP-1,function,ok,ok,process_list_block,process_list_block,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,keras/9::docs/autogen.py::process_list_block::SP-2,keras/9,0,SP-2,function,ok,ok,process_list_block,handle_list_block,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,keras/9::docs/autogen.py::process_list_block::SP-6,keras/9,0,SP-6,function,ok,ok,process_list_block,process_list_block,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,keras/20::keras/utils/conv_utils.py::deconv_length::real_fix,keras/20,1,real_fix,function,ok,ok,deconv_length,deconv_length,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,keras/20::keras/utils/conv_utils.py::deconv_length::SP-2,keras/20,0,SP-2,function,ok,ok,deconv_length,fn_deconv_length,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,keras/20::keras/utils/conv_utils.py::deconv_length::SP-4,keras/20,0,SP-4,function,ok,ok,deconv_length,deconv_length,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,keras/20::keras/utils/conv_utils.py::deconv_length::SP-6,keras/20,0,SP-6,function,ok,ok,deconv_length,deconv_length,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,keras/34::keras/utils/data_utils.py::Sequence::real_fix,keras/34,1,real_fix,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,keras/34::keras/utils/data_utils.py::Sequence::SP-1,keras/34,0,SP-1,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,keras/34::keras/utils/data_utils.py::Sequence::SP-2,keras/34,0,SP-2,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,keras/34::keras/utils/data_utils.py::Sequence::SP-4,keras/34,0,SP-4,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,luigi/6::luigi/parameter.py::_recursively_freeze::real_fix,luigi/6,1,real_fix,function,import_error,import_error,,,,,,,,,,,,,not comparable: base=import_error variant=import_error; entry_base=None entry_var=None,
+bugsinpy,canonical,luigi/6::luigi/parameter.py::_recursively_freeze::SP-1,luigi/6,0,SP-1,function,import_error,import_error,,,,,,,,,,,,,not comparable: base=import_error variant=import_error; entry_base=None entry_var=None,
+bugsinpy,canonical,luigi/6::luigi/parameter.py::_recursively_freeze::SP-2,luigi/6,0,SP-2,function,import_error,import_error,,,,,,,,,,,,,not comparable: base=import_error variant=import_error; entry_base=None entry_var=None,
+bugsinpy,canonical,luigi/6::luigi/parameter.py::_recursively_freeze::SP-4,luigi/6,0,SP-4,function,import_error,import_error,,,,,,,,,,,,,not comparable: base=import_error variant=import_error; entry_base=None entry_var=None,
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_partition_tasks::real_fix,luigi/9,1,real_fix,function,ok,ok,_partition_tasks,_partition_tasks,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_partition_tasks::SP-2,luigi/9,0,SP-2,function,ok,ok,_partition_tasks,fn__partition_tasks,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_partition_tasks::SP-4,luigi/9,0,SP-4,function,ok,ok,_partition_tasks,_partition_tasks,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_partition_tasks::SP-6,luigi/9,0,SP-6,function,ok,ok,_partition_tasks,_partition_tasks,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_depth_first_search::real_fix,luigi/9,1,real_fix,function,ok,ok,_depth_first_search,_depth_first_search,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_depth_first_search::SP-2,luigi/9,0,SP-2,function,ok,ok,_depth_first_search,fn__depth_first_search,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_depth_first_search::SP-4,luigi/9,0,SP-4,function,ok,ok,_depth_first_search,_depth_first_search,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/9::luigi/execution_summary.py::_depth_first_search::SP-6,luigi/9,0,SP-6,function,ok,ok,_depth_first_search,_depth_first_search,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,luigi/14::luigi/scheduler.py::Task::real_fix,luigi/14,1,real_fix,class,ok,ok,_get_default,_get_default,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,luigi/14::luigi/scheduler.py::Task::SP-1,luigi/14,0,SP-1,class,ok,ok,_get_default,_get_default,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,luigi/14::luigi/scheduler.py::Task::SP-2,luigi/14,0,SP-2,class,ok,ok,_get_default,fn__get_default,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,luigi/14::luigi/scheduler.py::Task::SP-4,luigi/14,0,SP-4,class,ok,ok,_get_default,_get_default,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::real_fix,matplotlib/24,1,real_fix,function,ok,ok,_make_getset_interval,_make_getset_interval,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::SP-2,matplotlib/24,0,SP-2,function,ok,ok,_make_getset_interval,fn__make_getset_interval,function,0,0,0,11,11,1,11,0,0,,
+bugsinpy,canonical,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::SP-4,matplotlib/24,0,SP-4,function,ok,ok,_make_getset_interval,_make_getset_interval,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::SP-3,matplotlib/24,0,SP-3,function,ok,ok,_make_getset_interval,_make_getset_interval,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::real_fix,matplotlib/26,1,real_fix,function,ok,ok,_make_getset_interval,_make_getset_interval,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::SP-2,matplotlib/26,0,SP-2,function,ok,ok,_make_getset_interval,fn__make_getset_interval,function,0,0,0,11,11,1,11,0,0,,
+bugsinpy,canonical,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::SP-4,matplotlib/26,0,SP-4,function,ok,ok,_make_getset_interval,_make_getset_interval,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::SP-3,matplotlib/26,0,SP-3,function,ok,ok,_make_getset_interval,_make_getset_interval,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,pandas/18::pandas/core/window/common.py::validate_baseindexer_support::real_fix,pandas/18,1,real_fix,function,ok,ok,validate_baseindexer_support,validate_baseindexer_support,function,11,0,0,11,0,0,0,0,0,,NotImplementedError
+bugsinpy,canonical,pandas/18::pandas/core/window/common.py::validate_baseindexer_support::SP-2,pandas/18,0,SP-2,function,ok,ok,validate_baseindexer_support,fn_validate_baseindexer_support,function,11,0,0,11,0,0,0,0,0,,NotImplementedError
+bugsinpy,canonical,pandas/18::pandas/core/window/common.py::validate_baseindexer_support::SP-3,pandas/18,0,SP-3,function,ok,ok,validate_baseindexer_support,validate_baseindexer_support,function,11,0,0,11,0,0,0,0,0,,NotImplementedError
+bugsinpy,canonical,pandas/22::pandas/core/window/common.py::validate_baseindexer_support::real_fix,pandas/22,1,real_fix,function,ok,ok,validate_baseindexer_support,validate_baseindexer_support,function,11,0,0,11,0,0,0,0,0,,NotImplementedError
+bugsinpy,canonical,pandas/22::pandas/core/window/common.py::validate_baseindexer_support::SP-2,pandas/22,0,SP-2,function,ok,ok,validate_baseindexer_support,fn_validate_baseindexer_support,function,11,0,0,11,0,0,0,0,0,,NotImplementedError
+bugsinpy,canonical,pandas/22::pandas/core/window/common.py::validate_baseindexer_support::SP-3,pandas/22,0,SP-3,function,ok,ok,validate_baseindexer_support,validate_baseindexer_support,function,11,0,0,11,0,0,0,0,0,,NotImplementedError
+bugsinpy,canonical,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::real_fix,pandas/167,1,real_fix,function,ok,ok,convert_to_index_sliceable,convert_to_index_sliceable,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-2,pandas/167,0,SP-2,function,ok,ok,convert_to_index_sliceable,fn_convert_to_index_sliceable,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-4,pandas/167,0,SP-4,function,ok,ok,convert_to_index_sliceable,convert_to_index_sliceable,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-3,pandas/167,0,SP-3,function,ok,ok,convert_to_index_sliceable,convert_to_index_sliceable,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,scrapy/2::scrapy/utils/datatypes.py::LocalCache::real_fix,scrapy/2,1,real_fix,class,ok,ok,class:LocalCache,class:LocalCache,class,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,scrapy/2::scrapy/utils/datatypes.py::LocalCache::SP-4,scrapy/2,0,SP-4,class,ok,ok,class:LocalCache,class:LocalCache,class,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,scrapy/2::scrapy/utils/datatypes.py::LocalCache::SP-3,scrapy/2,0,SP-3,class,ok,ok,class:LocalCache,class:LocalCache,class,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,scrapy/8::scrapy/item.py::ItemMeta::real_fix,scrapy/8,1,real_fix,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/8::scrapy/item.py::ItemMeta::SP-1,scrapy/8,0,SP-1,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/8::scrapy/item.py::ItemMeta::SP-4,scrapy/8,0,SP-4,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/8::scrapy/item.py::ItemMeta::SP-3,scrapy/8,0,SP-3,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/34::scrapy/item.py::ItemMeta::real_fix,scrapy/34,1,real_fix,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/34::scrapy/item.py::ItemMeta::SP-1,scrapy/34,0,SP-1,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/34::scrapy/item.py::ItemMeta::SP-4,scrapy/34,0,SP-4,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/34::scrapy/item.py::ItemMeta::SP-3,scrapy/34,0,SP-3,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,scrapy/36::scrapy/utils/misc.py::create_instance::real_fix,scrapy/36,1,real_fix,function,ok,ok,create_instance,create_instance,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,scrapy/36::scrapy/utils/misc.py::create_instance::SP-2,scrapy/36,0,SP-2,function,ok,ok,create_instance,fn_create_instance,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,scrapy/36::scrapy/utils/misc.py::create_instance::SP-4,scrapy/36,0,SP-4,function,ok,ok,create_instance,create_instance,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,scrapy/36::scrapy/utils/misc.py::create_instance::SP-3,scrapy/36,0,SP-3,function,ok,ok,create_instance,create_instance,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,spacy/1::spacy/errors.py::add_codes::real_fix,spacy/1,1,real_fix,function,ok,ok,add_codes,add_codes,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,spacy/1::spacy/errors.py::add_codes::SP-2,spacy/1,0,SP-2,function,ok,ok,add_codes,fn_add_codes,function,0,0,0,11,11,1,11,0,0,,
+bugsinpy,canonical,spacy/1::spacy/errors.py::add_codes::SP-4,spacy/1,0,SP-4,function,ok,ok,add_codes,add_codes,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,spacy/1::spacy/errors.py::add_codes::SP-3,spacy/1,0,SP-3,function,ok,ok,add_codes,add_codes,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::real_fix,spacy/4,1,real_fix,function,ok,ok,read_conllx,read_conllx,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-1,spacy/4,0,SP-1,function,ok,ok,read_conllx,read_conllx,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-2,spacy/4,0,SP-2,function,ok,ok,read_conllx,fn_read_conllx,function,0,0,0,11,11,1,11,0,0,,
+bugsinpy,canonical,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-6,spacy/4,0,SP-6,function,ok,ok,read_conllx,read_conllx,function,0,0,0,11,0,0,0,0,0,,
+bugsinpy,canonical,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::real_fix,spacy/7,1,real_fix,function,ok,ok,filter_spans,filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-1,spacy/7,0,SP-1,function,ok,ok,filter_spans,filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-2,spacy/7,0,SP-2,function,ok,ok,filter_spans,fn_filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-3,spacy/7,0,SP-3,function,ok,ok,filter_spans,filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,spacy/7::spacy/util.py::filter_spans::real_fix,spacy/7,1,real_fix,function,ok,ok,filter_spans,filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,spacy/7::spacy/util.py::filter_spans::SP-1,spacy/7,0,SP-1,function,ok,ok,filter_spans,filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,spacy/7::spacy/util.py::filter_spans::SP-2,spacy/7,0,SP-2,function,ok,ok,filter_spans,fn_filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,spacy/7::spacy/util.py::filter_spans::SP-4,spacy/7,0,SP-4,function,ok,ok,filter_spans,filter_spans,function,10,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/8::thefuck/rules/dnf_no_such_command.py::_parse_operations::real_fix,thefuck/8,1,real_fix,function,ok,ok,_parse_operations,_parse_operations,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,thefuck/8::thefuck/rules/dnf_no_such_command.py::_parse_operations::SP-2,thefuck/8,0,SP-2,function,ok,ok,_parse_operations,fn__parse_operations,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,thefuck/8::thefuck/rules/dnf_no_such_command.py::_parse_operations::SP-3,thefuck/8,0,SP-3,function,ok,ok,_parse_operations,_parse_operations,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,thefuck/10::thefuck/rules/man.py::get_new_command::real_fix,thefuck/10,1,real_fix,function,ok,ok,get_new_command,get_new_command,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/10::thefuck/rules/man.py::get_new_command::SP-2,thefuck/10,0,SP-2,function,ok,ok,get_new_command,fetch_new_command,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/10::thefuck/rules/man.py::get_new_command::SP-3,thefuck/10,0,SP-3,function,ok,ok,get_new_command,get_new_command,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/18::thefuck/rules/sudo.py::match::real_fix,thefuck/18,1,real_fix,function,ok,ok,match,match,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/18::thefuck/rules/sudo.py::match::SP-2,thefuck/18,0,SP-2,function,ok,ok,match,fn_match,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/18::thefuck/rules/sudo.py::match::SP-3,thefuck/18,0,SP-3,function,ok,ok,match,match,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/20::thefuck/rules/dirty_unzip.py::_zip_file::real_fix,thefuck/20,1,real_fix,function,ok,ok,_zip_file,_zip_file,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/20::thefuck/rules/dirty_unzip.py::_zip_file::SP-2,thefuck/20,0,SP-2,function,ok,ok,_zip_file,fn__zip_file,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/27::thefuck/rules/open.py::get_new_command::real_fix,thefuck/27,1,real_fix,function,ok,ok,get_new_command,get_new_command,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/27::thefuck/rules/open.py::get_new_command::SP-2,thefuck/27,0,SP-2,function,ok,ok,get_new_command,fetch_new_command,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/29::thefuck/types.py::Settings::real_fix,thefuck/29,1,real_fix,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,thefuck/29::thefuck/types.py::Settings::SP-2,thefuck/29,0,SP-2,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,thefuck/29::thefuck/types.py::Settings::SP-4,thefuck/29,0,SP-4,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,thefuck/29::thefuck/types.py::Settings::SP-3,thefuck/29,0,SP-3,class,unsupported_signature,unsupported_signature,,,,,,,,,,,,,not comparable: base=unsupported_signature variant=unsupported_signature; entry_base=None entry_var=None,
+bugsinpy,canonical,thefuck/32::thefuck/rules/ls_lah.py::match::real_fix,thefuck/32,1,real_fix,function,ok,ok,match,match,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,thefuck/32::thefuck/rules/ls_lah.py::match::SP-2,thefuck/32,0,SP-2,function,ok,ok,match,fn_match,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,tqdm/9::tqdm/_tqdm.py::format_sizeof::real_fix,tqdm/9,1,real_fix,function,ok,ok,format_sizeof,format_sizeof,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-2,tqdm/9,0,SP-2,function,ok,ok,format_sizeof,fn_format_sizeof,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-4,tqdm/9,0,SP-4,function,ok,ok,format_sizeof,format_sizeof,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-6,tqdm/9,0,SP-6,function,ok,ok,format_sizeof,format_sizeof,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix,youtube-dl/6,1,real_fix,function,ok,ok,parse_dfxp_time_expr,parse_dfxp_time_expr,function,10,0,0,11,1,1,1,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::SP-2,youtube-dl/6,0,SP-2,function,ok,ok,parse_dfxp_time_expr,decode_dfxp_time_expr,function,10,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::SP-3,youtube-dl/6,0,SP-3,function,ok,ok,parse_dfxp_time_expr,parse_dfxp_time_expr,function,10,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/7::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/7,1,real_fix,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/7,0,SP-1,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/7,0,SP-2,function,ok,ok,js_to_json,fn_js_to_json,function,11,0,0,11,11,1,11,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/7,0,SP-3,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/10::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/10,1,real_fix,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/10,0,SP-1,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/10,0,SP-2,function,ok,ok,js_to_json,fn_js_to_json,function,11,0,0,11,11,1,11,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/10,0,SP-3,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/15::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/15,1,real_fix,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/15,0,SP-1,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/15,0,SP-2,function,ok,ok,js_to_json,fn_js_to_json,function,11,0,0,11,11,1,11,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/15,0,SP-3,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/17::youtube_dl/utils.py::cli_bool_option::real_fix,youtube-dl/17,1,real_fix,function,ok,ok,cli_bool_option,cli_bool_option,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/17::youtube_dl/utils.py::cli_bool_option::SP-2,youtube-dl/17,0,SP-2,function,ok,ok,cli_bool_option,fn_cli_bool_option,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/17::youtube_dl/utils.py::cli_bool_option::SP-3,youtube-dl/17,0,SP-3,function,ok,ok,cli_bool_option,cli_bool_option,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/23::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/23,1,real_fix,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/23,0,SP-1,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/23,0,SP-2,function,ok,ok,js_to_json,fn_js_to_json,function,11,0,0,11,11,1,11,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/23,0,SP-3,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/25,1,real_fix,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/25,0,SP-1,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/25,0,SP-2,function,ok,ok,js_to_json,fn_js_to_json,function,11,0,0,11,11,1,11,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/25,0,SP-3,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/26,1,real_fix,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/26,0,SP-1,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/26,0,SP-2,function,ok,ok,js_to_json,fn_js_to_json,function,11,0,0,11,11,1,11,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/26,0,SP-3,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix,youtube-dl/27,1,real_fix,function,ok,ok,parse_dfxp_time_expr,parse_dfxp_time_expr,function,10,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::SP-2,youtube-dl/27,0,SP-2,function,ok,ok,parse_dfxp_time_expr,decode_dfxp_time_expr,function,10,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::SP-3,youtube-dl/27,0,SP-3,function,ok,ok,parse_dfxp_time_expr,parse_dfxp_time_expr,function,10,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/31::youtube_dl/utils.py::parse_duration::real_fix,youtube-dl/31,1,real_fix,function,ok,ok,parse_duration,parse_duration,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-1,youtube-dl/31,0,SP-1,function,ok,ok,parse_duration,parse_duration,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-2,youtube-dl/31,0,SP-2,function,ok,ok,parse_duration,decode_duration,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-3,youtube-dl/31,0,SP-3,function,ok,ok,parse_duration,parse_duration,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/32::youtube_dl/utils.py::strip_jsonp::real_fix,youtube-dl/32,1,real_fix,function,ok,ok,strip_jsonp,strip_jsonp,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/32::youtube_dl/utils.py::strip_jsonp::SP-2,youtube-dl/32,0,SP-2,function,ok,ok,strip_jsonp,fn_strip_jsonp,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/32::youtube_dl/utils.py::strip_jsonp::SP-3,youtube-dl/32,0,SP-3,function,ok,ok,strip_jsonp,strip_jsonp,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::real_fix,youtube-dl/33,1,real_fix,function,ok,ok,parse_iso8601,parse_iso8601,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-1,youtube-dl/33,0,SP-1,function,ok,ok,parse_iso8601,parse_iso8601,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-2,youtube-dl/33,0,SP-2,function,ok,ok,parse_iso8601,decode_iso8601,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-4,youtube-dl/33,0,SP-4,function,ok,ok,parse_iso8601,parse_iso8601,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/34::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/34,1,real_fix,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/34,0,SP-1,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/34,0,SP-2,function,ok,ok,js_to_json,fn_js_to_json,function,11,0,0,11,11,1,11,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/34,0,SP-3,function,ok,ok,js_to_json,js_to_json,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/35::youtube_dl/utils.py::unified_strdate::real_fix,youtube-dl/35,1,real_fix,function,ok,ok,unified_strdate,unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-2,youtube-dl/35,0,SP-2,function,ok,ok,unified_strdate,fn_unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-4,youtube-dl/35,0,SP-4,function,ok,ok,unified_strdate,unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-3,youtube-dl/35,0,SP-3,function,ok,ok,unified_strdate,unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/37::youtube_dl/utils.py::uppercase_escape::real_fix,youtube-dl/37,1,real_fix,function,ok,ok,uppercase_escape,uppercase_escape,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-2,youtube-dl/37,0,SP-2,function,ok,ok,uppercase_escape,fn_uppercase_escape,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-3,youtube-dl/37,0,SP-3,function,ok,ok,uppercase_escape,uppercase_escape,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/41::youtube_dl/utils.py::unified_strdate::real_fix,youtube-dl/41,1,real_fix,function,ok,ok,unified_strdate,unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-2,youtube-dl/41,0,SP-2,function,ok,ok,unified_strdate,fn_unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-4,youtube-dl/41,0,SP-4,function,ok,ok,unified_strdate,unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-3,youtube-dl/41,0,SP-3,function,ok,ok,unified_strdate,unified_strdate,function,11,0,0,11,0,0,0,0,0,,AttributeError
+bugsinpy,canonical,youtube-dl/43::youtube_dl/utils.py::url_basename::real_fix,youtube-dl/43,1,real_fix,function,ok,ok,url_basename,url_basename,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/43::youtube_dl/utils.py::url_basename::SP-1,youtube-dl/43,0,SP-1,function,ok,ok,url_basename,url_basename,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/43::youtube_dl/utils.py::url_basename::SP-2,youtube-dl/43,0,SP-2,function,ok,ok,url_basename,fn_url_basename,function,11,0,0,11,0,0,0,0,0,,TypeError
+bugsinpy,canonical,youtube-dl/43::youtube_dl/utils.py::url_basename::SP-3,youtube-dl/43,0,SP-3,function,ok,ok,url_basename,url_basename,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bitcount__bug__canonical,bitcount,1,real_bug,function,ok,ok,bitcount,bitcount,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bitcount__sp-1_s0__canonical,bitcount,0,SP-1,function,ok,ok,bitcount,bitcount,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bitcount__sp-2_s0__canonical,bitcount,0,SP-2,function,ok,ok,bitcount,fn_bitcount,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bitcount__sp-3_s0__canonical,bitcount,0,SP-3,function,ok,ok,bitcount,bitcount,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__breadth_first_search__bug__canonical,breadth_first_search,1,real_bug,function,ok,ok,breadth_first_search,breadth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__breadth_first_search__sp-1_s0__canonical,breadth_first_search,0,SP-1,function,ok,ok,breadth_first_search,breadth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__breadth_first_search__sp-2_s0__canonical,breadth_first_search,0,SP-2,function,ok,ok,breadth_first_search,fn_breadth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__breadth_first_search__sp-3_s0__canonical,breadth_first_search,0,SP-3,function,ok,ok,breadth_first_search,breadth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bucketsort__bug__canonical,bucketsort,1,real_bug,function,ok,ok,bucketsort,bucketsort,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bucketsort__sp-1_s0__canonical,bucketsort,0,SP-1,function,ok,ok,bucketsort,bucketsort,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bucketsort__sp-2_s0__canonical,bucketsort,0,SP-2,function,ok,ok,bucketsort,fn_bucketsort,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__bucketsort__sp-3_s0__canonical,bucketsort,0,SP-3,function,ok,ok,bucketsort,bucketsort,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__depth_first_search__bug__canonical,depth_first_search,1,real_bug,function,ok,ok,depth_first_search,depth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__depth_first_search__sp-1_s0__canonical,depth_first_search,0,SP-1,function,ok,ok,depth_first_search,depth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__depth_first_search__sp-2_s0__canonical,depth_first_search,0,SP-2,function,ok,ok,depth_first_search,fn_depth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__depth_first_search__sp-3_s0__canonical,depth_first_search,0,SP-3,function,ok,ok,depth_first_search,depth_first_search,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__detect_cycle__bug__canonical,detect_cycle,1,real_bug,function,ok,ok,detect_cycle,detect_cycle,function,11,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__detect_cycle__sp-1_s0__canonical,detect_cycle,0,SP-1,function,ok,ok,detect_cycle,detect_cycle,function,11,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__detect_cycle__sp-2_s0__canonical,detect_cycle,0,SP-2,function,ok,ok,detect_cycle,fn_detect_cycle,function,11,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__detect_cycle__sp-3_s0__canonical,detect_cycle,0,SP-3,function,ok,ok,detect_cycle,detect_cycle,function,11,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__find_first_in_sorted__bug__canonical,find_first_in_sorted,1,real_bug,function,ok,ok,find_first_in_sorted,find_first_in_sorted,function,10,0,0,11,1,1,1,0,0,,TypeError
+quixbugs,canonical,quixbugs__find_first_in_sorted__sp-1_s0__canonical,find_first_in_sorted,0,SP-1,function,ok,ok,find_first_in_sorted,find_first_in_sorted,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__find_first_in_sorted__sp-2_s0__canonical,find_first_in_sorted,0,SP-2,function,ok,ok,find_first_in_sorted,locate_first_in_sorted,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__find_first_in_sorted__sp-6_s0__canonical,find_first_in_sorted,0,SP-6,function,ok,ok,find_first_in_sorted,find_first_in_sorted,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__find_in_sorted__bug__canonical,find_in_sorted,1,real_bug,function,ok,ok,find_in_sorted,find_in_sorted,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__find_in_sorted__sp-1_s0__canonical,find_in_sorted,0,SP-1,function,ok,ok,find_in_sorted,find_in_sorted,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__find_in_sorted__sp-2_s0__canonical,find_in_sorted,0,SP-2,function,ok,ok,find_in_sorted,locate_in_sorted,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__find_in_sorted__sp-6_s0__canonical,find_in_sorted,0,SP-6,function,ok,ok,find_in_sorted,find_in_sorted,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__flatten__bug__canonical,flatten,1,real_bug,function,ok,ok,flatten,flatten,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__flatten__sp-1_s0__canonical,flatten,0,SP-1,function,ok,ok,flatten,flatten,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__flatten__sp-2_s0__canonical,flatten,0,SP-2,function,ok,ok,flatten,fn_flatten,function,0,0,0,11,11,1,11,0,0,,
+quixbugs,canonical,quixbugs__gcd__bug__canonical,gcd,1,real_bug,function,ok,ok,gcd,gcd,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__gcd__sp-2_s0__canonical,gcd,0,SP-2,function,ok,ok,gcd,fn_gcd,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__gcd__sp-3_s0__canonical,gcd,0,SP-3,function,ok,ok,gcd,gcd,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__get_factors__bug__canonical,get_factors,1,real_bug,function,ok,ok,get_factors,get_factors,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__get_factors__sp-1_s0__canonical,get_factors,0,SP-1,function,ok,ok,get_factors,get_factors,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__get_factors__sp-2_s0__canonical,get_factors,0,SP-2,function,ok,ok,get_factors,fetch_factors,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__get_factors__sp-3_s0__canonical,get_factors,0,SP-3,function,ok,ok,get_factors,get_factors,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__hanoi__bug__canonical,hanoi,1,real_bug,function,ok,ok,hanoi,hanoi,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__hanoi__sp-2_s0__canonical,hanoi,0,SP-2,function,ok,ok,hanoi,fn_hanoi,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__hanoi__sp-3_s0__canonical,hanoi,0,SP-3,function,ok,ok,hanoi,hanoi,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__is_valid_parenthesization__bug__canonical,is_valid_parenthesization,1,real_bug,function,ok,ok,is_valid_parenthesization,is_valid_parenthesization,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__is_valid_parenthesization__sp-2_s0__canonical,is_valid_parenthesization,0,SP-2,function,ok,ok,is_valid_parenthesization,fn_is_valid_parenthesization,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__is_valid_parenthesization__sp-3_s0__canonical,is_valid_parenthesization,0,SP-3,function,ok,ok,is_valid_parenthesization,is_valid_parenthesization,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__is_valid_parenthesization__sp-6_s0__canonical,is_valid_parenthesization,0,SP-6,function,ok,ok,is_valid_parenthesization,is_valid_parenthesization,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__kheapsort__bug__canonical,kheapsort,1,real_bug,function,ok,ok,kheapsort,kheapsort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__kheapsort__sp-1_s0__canonical,kheapsort,0,SP-1,function,ok,ok,kheapsort,kheapsort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__kheapsort__sp-2_s0__canonical,kheapsort,0,SP-2,function,ok,ok,kheapsort,fn_kheapsort,function,0,0,0,11,11,1,11,0,0,,
+quixbugs,canonical,quixbugs__kheapsort__sp-3_s0__canonical,kheapsort,0,SP-3,function,ok,ok,kheapsort,kheapsort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__knapsack__bug__canonical,knapsack,1,real_bug,function,ok,ok,knapsack,knapsack,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__knapsack__sp-1_s0__canonical,knapsack,0,SP-1,function,ok,ok,knapsack,knapsack,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__knapsack__sp-2_s0__canonical,knapsack,0,SP-2,function,ok,ok,knapsack,fn_knapsack,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__knapsack__sp-3_s0__canonical,knapsack,0,SP-3,function,ok,ok,knapsack,knapsack,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__kth__bug__canonical,kth,1,real_bug,function,ok,ok,kth,kth,function,11,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__kth__sp-1_s0__canonical,kth,0,SP-1,function,ok,ok,kth,kth,function,11,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__kth__sp-2_s0__canonical,kth,0,SP-2,function,ok,ok,kth,fn_kth,function,11,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__kth__sp-6_s0__canonical,kth,0,SP-6,function,ok,ok,kth,kth,function,11,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__lcs_length__bug__canonical,lcs_length,1,real_bug,function,ok,ok,lcs_length,lcs_length,function,0,0,0,11,7,1,7,0,0,,
+quixbugs,canonical,quixbugs__lcs_length__sp-1_s0__canonical,lcs_length,0,SP-1,function,ok,ok,lcs_length,lcs_length,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__lcs_length__sp-2_s0__canonical,lcs_length,0,SP-2,function,ok,ok,lcs_length,fn_lcs_length,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__lcs_length__sp-3_s0__canonical,lcs_length,0,SP-3,function,ok,ok,lcs_length,lcs_length,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__levenshtein__bug__canonical,levenshtein,1,real_bug,function,ok,ok,levenshtein,levenshtein,function,11,0,0,11,0,0,0,0,0,,IndexError
+quixbugs,canonical,quixbugs__levenshtein__sp-2_s0__canonical,levenshtein,0,SP-2,function,ok,ok,levenshtein,fn_levenshtein,function,11,0,0,11,0,0,0,0,0,,IndexError
+quixbugs,canonical,quixbugs__levenshtein__sp-3_s0__canonical,levenshtein,0,SP-3,function,ok,ok,levenshtein,levenshtein,function,11,0,0,11,0,0,0,0,0,,IndexError
+quixbugs,canonical,quixbugs__levenshtein__sp-6_s0__canonical,levenshtein,0,SP-6,function,ok,ok,levenshtein,levenshtein,function,11,0,0,11,0,0,0,0,0,,IndexError
+quixbugs,canonical,quixbugs__lis__bug__canonical,lis,1,real_bug,function,ok,ok,lis,lis,function,0,0,0,11,1,1,1,0,0,,
+quixbugs,canonical,quixbugs__lis__sp-1_s0__canonical,lis,0,SP-1,function,ok,ok,lis,lis,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__lis__sp-2_s0__canonical,lis,0,SP-2,function,ok,ok,lis,fn_lis,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__lis__sp-6_s0__canonical,lis,0,SP-6,function,ok,ok,lis,lis,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__longest_common_subsequence__bug__canonical,longest_common_subsequence,1,real_bug,function,ok,ok,longest_common_subsequence,longest_common_subsequence,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__longest_common_subsequence__sp-2_s0__canonical,longest_common_subsequence,0,SP-2,function,ok,ok,longest_common_subsequence,fn_longest_common_subsequence,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__longest_common_subsequence__sp-3_s0__canonical,longest_common_subsequence,0,SP-3,function,ok,ok,longest_common_subsequence,longest_common_subsequence,function,10,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__max_sublist_sum__bug__canonical,max_sublist_sum,1,real_bug,function,ok,ok,max_sublist_sum,max_sublist_sum,function,0,0,0,11,1,1,1,0,0,,
+quixbugs,canonical,quixbugs__max_sublist_sum__sp-1_s0__canonical,max_sublist_sum,0,SP-1,function,ok,ok,max_sublist_sum,max_sublist_sum,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__max_sublist_sum__sp-2_s0__canonical,max_sublist_sum,0,SP-2,function,ok,ok,max_sublist_sum,fn_max_sublist_sum,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__max_sublist_sum__sp-3_s0__canonical,max_sublist_sum,0,SP-3,function,ok,ok,max_sublist_sum,max_sublist_sum,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__mergesort__bug__canonical,mergesort,1,real_bug,function,ok,ok,mergesort,mergesort,function,0,0,0,11,10,1,10,0,0,,
+quixbugs,canonical,quixbugs__mergesort__sp-1_s0__canonical,mergesort,0,SP-1,function,ok,ok,mergesort,mergesort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__mergesort__sp-2_s0__canonical,mergesort,0,SP-2,function,ok,ok,mergesort,fn_mergesort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__mergesort__sp-6_s0__canonical,mergesort,0,SP-6,function,ok,ok,mergesort,mergesort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__minimum_spanning_tree__bug__canonical,minimum_spanning_tree,1,real_bug,function,ok,ok,minimum_spanning_tree,minimum_spanning_tree,function,10,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__minimum_spanning_tree__sp-1_s0__canonical,minimum_spanning_tree,0,SP-1,function,ok,ok,minimum_spanning_tree,minimum_spanning_tree,function,10,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__minimum_spanning_tree__sp-2_s0__canonical,minimum_spanning_tree,0,SP-2,function,ok,ok,minimum_spanning_tree,fn_minimum_spanning_tree,function,10,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__minimum_spanning_tree__sp-3_s0__canonical,minimum_spanning_tree,0,SP-3,function,ok,ok,minimum_spanning_tree,minimum_spanning_tree,function,10,0,0,11,0,0,0,0,0,,IndexError;TypeError
+quixbugs,canonical,quixbugs__next_palindrome__bug__canonical,next_palindrome,1,real_bug,function,ok,ok,next_palindrome,next_palindrome,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__next_palindrome__sp-2_s0__canonical,next_palindrome,0,SP-2,function,ok,ok,next_palindrome,fn_next_palindrome,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__next_palindrome__sp-3_s0__canonical,next_palindrome,0,SP-3,function,ok,ok,next_palindrome,next_palindrome,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__next_palindrome__sp-6_s0__canonical,next_palindrome,0,SP-6,function,ok,ok,next_palindrome,next_palindrome,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__next_permutation__bug__canonical,next_permutation,1,real_bug,function,ok,ok,next_permutation,next_permutation,function,0,0,0,11,5,1,5,0,0,,
+quixbugs,canonical,quixbugs__next_permutation__sp-1_s0__canonical,next_permutation,0,SP-1,function,ok,ok,next_permutation,next_permutation,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__next_permutation__sp-2_s0__canonical,next_permutation,0,SP-2,function,ok,ok,next_permutation,fn_next_permutation,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__next_permutation__sp-3_s0__canonical,next_permutation,0,SP-3,function,ok,ok,next_permutation,next_permutation,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__pascal__bug__canonical,pascal,1,real_bug,function,ok,ok,pascal,pascal,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__pascal__sp-1_s0__canonical,pascal,0,SP-1,function,ok,ok,pascal,pascal,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__pascal__sp-2_s0__canonical,pascal,0,SP-2,function,ok,ok,pascal,fn_pascal,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__pascal__sp-3_s0__canonical,pascal,0,SP-3,function,ok,ok,pascal,pascal,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__possible_change__bug__canonical,possible_change,1,real_bug,function,ok,ok,possible_change,possible_change,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__possible_change__sp-2_s0__canonical,possible_change,0,SP-2,function,ok,ok,possible_change,fn_possible_change,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__possible_change__sp-3_s0__canonical,possible_change,0,SP-3,function,ok,ok,possible_change,possible_change,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__powerset__bug__canonical,powerset,1,real_bug,function,ok,ok,powerset,powerset,function,0,0,0,11,10,1,10,0,0,,
+quixbugs,canonical,quixbugs__powerset__sp-1_s0__canonical,powerset,0,SP-1,function,ok,ok,powerset,powerset,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__powerset__sp-2_s0__canonical,powerset,0,SP-2,function,ok,ok,powerset,fn_powerset,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__powerset__sp-3_s0__canonical,powerset,0,SP-3,function,ok,ok,powerset,powerset,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__quicksort__bug__canonical,quicksort,1,real_bug,function,ok,ok,quicksort,quicksort,function,0,0,0,11,2,1,2,0,0,,
+quixbugs,canonical,quixbugs__quicksort__sp-1_s0__canonical,quicksort,0,SP-1,function,ok,ok,quicksort,quicksort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__quicksort__sp-2_s0__canonical,quicksort,0,SP-2,function,ok,ok,quicksort,fn_quicksort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__quicksort__sp-3_s0__canonical,quicksort,0,SP-3,function,ok,ok,quicksort,quicksort,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__reverse_linked_list__bug__canonical,reverse_linked_list,1,real_bug,function,ok,ok,reverse_linked_list,reverse_linked_list,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__reverse_linked_list__sp-1_s0__canonical,reverse_linked_list,0,SP-1,function,ok,ok,reverse_linked_list,reverse_linked_list,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__reverse_linked_list__sp-2_s0__canonical,reverse_linked_list,0,SP-2,function,ok,ok,reverse_linked_list,fn_reverse_linked_list,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__reverse_linked_list__sp-3_s0__canonical,reverse_linked_list,0,SP-3,function,ok,ok,reverse_linked_list,reverse_linked_list,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__rpn_eval__bug__canonical,rpn_eval,1,real_bug,function,ok,ok,rpn_eval,rpn_eval,function,11,0,0,11,0,0,0,0,0,,IndexError
+quixbugs,canonical,quixbugs__rpn_eval__sp-2_s0__canonical,rpn_eval,0,SP-2,function,ok,ok,rpn_eval,fn_rpn_eval,function,11,0,0,11,0,0,0,0,0,,IndexError
+quixbugs,canonical,quixbugs__rpn_eval__sp-3_s0__canonical,rpn_eval,0,SP-3,function,ok,ok,rpn_eval,rpn_eval,function,11,0,0,11,0,0,0,0,0,,IndexError
+quixbugs,canonical,quixbugs__shortest_path_length__bug__canonical,shortest_path_length,1,real_bug,function,ok,ok,shortest_path_length,shortest_path_length,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__shortest_path_length__sp-1_s0__canonical,shortest_path_length,0,SP-1,function,ok,ok,shortest_path_length,shortest_path_length,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__shortest_path_length__sp-2_s0__canonical,shortest_path_length,0,SP-2,function,ok,ok,shortest_path_length,fn_shortest_path_length,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__shortest_path_length__sp-6_s0__canonical,shortest_path_length,0,SP-6,function,ok,ok,shortest_path_length,shortest_path_length,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__shortest_path_lengths__bug__canonical,shortest_path_lengths,1,real_bug,function,ok,ok,shortest_path_lengths,shortest_path_lengths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shortest_path_lengths__sp-1_s0__canonical,shortest_path_lengths,0,SP-1,function,ok,ok,shortest_path_lengths,shortest_path_lengths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shortest_path_lengths__sp-2_s0__canonical,shortest_path_lengths,0,SP-2,function,ok,ok,shortest_path_lengths,fn_shortest_path_lengths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shortest_path_lengths__sp-3_s0__canonical,shortest_path_lengths,0,SP-3,function,ok,ok,shortest_path_lengths,shortest_path_lengths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shortest_paths__bug__canonical,shortest_paths,1,real_bug,function,ok,ok,shortest_paths,shortest_paths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shortest_paths__sp-1_s0__canonical,shortest_paths,0,SP-1,function,ok,ok,shortest_paths,shortest_paths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shortest_paths__sp-2_s0__canonical,shortest_paths,0,SP-2,function,ok,ok,shortest_paths,fn_shortest_paths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shortest_paths__sp-3_s0__canonical,shortest_paths,0,SP-3,function,ok,ok,shortest_paths,shortest_paths,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__shunting_yard__bug__canonical,shunting_yard,1,real_bug,function,ok,ok,shunting_yard,shunting_yard,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__shunting_yard__sp-2_s0__canonical,shunting_yard,0,SP-2,function,ok,ok,shunting_yard,fn_shunting_yard,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__shunting_yard__sp-3_s0__canonical,shunting_yard,0,SP-3,function,ok,ok,shunting_yard,shunting_yard,function,0,0,0,11,0,0,0,0,0,,
+quixbugs,canonical,quixbugs__sieve__bug__canonical,sieve,1,real_bug,function,ok,ok,sieve,sieve,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__sieve__sp-1_s0__canonical,sieve,0,SP-1,function,ok,ok,sieve,sieve,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__sieve__sp-2_s0__canonical,sieve,0,SP-2,function,ok,ok,sieve,fn_sieve,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__sieve__sp-3_s0__canonical,sieve,0,SP-3,function,ok,ok,sieve,sieve,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__sqrt__bug__canonical,sqrt,1,real_bug,function,ok,ok,sqrt,sqrt,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__sqrt__sp-1_s0__canonical,sqrt,0,SP-1,function,ok,ok,sqrt,sqrt,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__sqrt__sp-2_s0__canonical,sqrt,0,SP-2,function,ok,ok,sqrt,fn_sqrt,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__sqrt__sp-3_s0__canonical,sqrt,0,SP-3,function,ok,ok,sqrt,sqrt,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__subsequences__bug__canonical,subsequences,1,real_bug,function,ok,ok,subsequences,subsequences,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__subsequences__sp-1_s0__canonical,subsequences,0,SP-1,function,ok,ok,subsequences,subsequences,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__subsequences__sp-2_s0__canonical,subsequences,0,SP-2,function,ok,ok,subsequences,fn_subsequences,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__subsequences__sp-3_s0__canonical,subsequences,0,SP-3,function,ok,ok,subsequences,subsequences,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__to_base__bug__canonical,to_base,1,real_bug,function,ok,ok,to_base,to_base,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__to_base__sp-1_s0__canonical,to_base,0,SP-1,function,ok,ok,to_base,to_base,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__to_base__sp-2_s0__canonical,to_base,0,SP-2,function,ok,ok,to_base,fn_to_base,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__to_base__sp-3_s0__canonical,to_base,0,SP-3,function,ok,ok,to_base,to_base,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__topological_ordering__bug__canonical,topological_ordering,1,real_bug,function,ok,ok,topological_ordering,topological_ordering,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__topological_ordering__sp-1_s0__canonical,topological_ordering,0,SP-1,function,ok,ok,topological_ordering,topological_ordering,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__topological_ordering__sp-2_s0__canonical,topological_ordering,0,SP-2,function,ok,ok,topological_ordering,fn_topological_ordering,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__topological_ordering__sp-3_s0__canonical,topological_ordering,0,SP-3,function,ok,ok,topological_ordering,topological_ordering,function,10,0,0,11,0,0,0,0,0,,AttributeError
+quixbugs,canonical,quixbugs__wrap__bug__canonical,wrap,1,real_bug,function,ok,ok,wrap,wrap,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__wrap__sp-2_s0__canonical,wrap,0,SP-2,function,ok,ok,wrap,fn_wrap,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,canonical,quixbugs__wrap__sp-3_s0__canonical,wrap,0,SP-3,function,ok,ok,wrap,wrap,function,11,0,0,11,0,0,0,0,0,,TypeError
+quixbugs,declared,quixbugs__bitcount__bug__declared,bitcount,1,real_bug,function,ok,ok,bitcount,bitcount,declared,0,0,9,9,9,1,9,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__bitcount__sp-1_s0__declared,bitcount,0,SP-1,function,ok,ok,bitcount,bitcount,declared,0,0,0,9,0,0,0,0,0,,
+quixbugs,declared,quixbugs__bitcount__sp-2_s0__declared,bitcount,0,SP-2,function,ok,ok,bitcount,fn_bitcount,declared,0,0,0,9,0,0,0,0,0,,
+quixbugs,declared,quixbugs__bitcount__sp-3_s0__declared,bitcount,0,SP-3,function,ok,ok,bitcount,bitcount,declared,0,0,0,9,0,0,0,0,0,,
+quixbugs,declared,quixbugs__breadth_first_search__bug__declared,breadth_first_search,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__breadth_first_search__sp-1_s0__declared,breadth_first_search,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__breadth_first_search__sp-2_s0__declared,breadth_first_search,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__breadth_first_search__sp-3_s0__declared,breadth_first_search,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__bucketsort__bug__declared,bucketsort,1,real_bug,function,ok,ok,bucketsort,bucketsort,declared,0,0,0,7,6,1,6,0,0,,
+quixbugs,declared,quixbugs__bucketsort__sp-1_s0__declared,bucketsort,0,SP-1,function,ok,ok,bucketsort,bucketsort,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__bucketsort__sp-2_s0__declared,bucketsort,0,SP-2,function,ok,ok,bucketsort,fn_bucketsort,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__bucketsort__sp-3_s0__declared,bucketsort,0,SP-3,function,ok,ok,bucketsort,bucketsort,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__depth_first_search__bug__declared,depth_first_search,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__depth_first_search__sp-1_s0__declared,depth_first_search,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__depth_first_search__sp-2_s0__declared,depth_first_search,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__depth_first_search__sp-3_s0__declared,depth_first_search,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__detect_cycle__bug__declared,detect_cycle,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__detect_cycle__sp-1_s0__declared,detect_cycle,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__detect_cycle__sp-2_s0__declared,detect_cycle,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__detect_cycle__sp-3_s0__declared,detect_cycle,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__find_first_in_sorted__bug__declared,find_first_in_sorted,1,real_bug,function,ok,ok,find_first_in_sorted,find_first_in_sorted,declared,0,0,2,7,3,1,3,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__find_first_in_sorted__sp-1_s0__declared,find_first_in_sorted,0,SP-1,function,ok,ok,find_first_in_sorted,find_first_in_sorted,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__find_first_in_sorted__sp-2_s0__declared,find_first_in_sorted,0,SP-2,function,ok,ok,find_first_in_sorted,locate_first_in_sorted,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__find_first_in_sorted__sp-6_s0__declared,find_first_in_sorted,0,SP-6,function,ok,ok,find_first_in_sorted,find_first_in_sorted,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__find_in_sorted__bug__declared,find_in_sorted,1,real_bug,function,ok,ok,find_in_sorted,find_in_sorted,declared,0,0,0,7,2,1,2,0,0,,
+quixbugs,declared,quixbugs__find_in_sorted__sp-1_s0__declared,find_in_sorted,0,SP-1,function,ok,ok,find_in_sorted,find_in_sorted,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__find_in_sorted__sp-2_s0__declared,find_in_sorted,0,SP-2,function,ok,ok,find_in_sorted,locate_in_sorted,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__find_in_sorted__sp-6_s0__declared,find_in_sorted,0,SP-6,function,ok,ok,find_in_sorted,find_in_sorted,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__flatten__bug__declared,flatten,1,real_bug,function,ok,ok,flatten,flatten,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__flatten__sp-1_s0__declared,flatten,0,SP-1,function,ok,ok,flatten,flatten,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__flatten__sp-2_s0__declared,flatten,0,SP-2,function,ok,ok,flatten,fn_flatten,declared,0,0,0,7,7,1,7,0,0,,
+quixbugs,declared,quixbugs__gcd__bug__declared,gcd,1,real_bug,function,ok,ok,gcd,gcd,declared,0,0,0,6,5,1,5,0,0,,
+quixbugs,declared,quixbugs__gcd__sp-2_s0__declared,gcd,0,SP-2,function,ok,ok,gcd,fn_gcd,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__gcd__sp-3_s0__declared,gcd,0,SP-3,function,ok,ok,gcd,gcd,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__get_factors__bug__declared,get_factors,1,real_bug,function,ok,ok,get_factors,get_factors,declared,0,0,0,11,10,1,10,0,0,,
+quixbugs,declared,quixbugs__get_factors__sp-1_s0__declared,get_factors,0,SP-1,function,ok,ok,get_factors,get_factors,declared,0,0,0,11,0,0,0,0,0,,
+quixbugs,declared,quixbugs__get_factors__sp-2_s0__declared,get_factors,0,SP-2,function,ok,ok,get_factors,fetch_factors,declared,0,0,0,11,0,0,0,0,0,,
+quixbugs,declared,quixbugs__get_factors__sp-3_s0__declared,get_factors,0,SP-3,function,ok,ok,get_factors,get_factors,declared,0,0,0,11,0,0,0,0,0,,
+quixbugs,declared,quixbugs__hanoi__bug__declared,hanoi,1,real_bug,function,ok,ok,hanoi,hanoi,declared,0,0,0,8,7,1,7,0,0,,
+quixbugs,declared,quixbugs__hanoi__sp-2_s0__declared,hanoi,0,SP-2,function,ok,ok,hanoi,fn_hanoi,declared,0,0,0,8,0,0,0,0,0,,
+quixbugs,declared,quixbugs__hanoi__sp-3_s0__declared,hanoi,0,SP-3,function,ok,ok,hanoi,hanoi,declared,0,0,0,8,0,0,0,0,0,,
+quixbugs,declared,quixbugs__is_valid_parenthesization__bug__declared,is_valid_parenthesization,1,real_bug,function,ok,ok,is_valid_parenthesization,is_valid_parenthesization,declared,0,0,0,3,1,1,1,0,0,,
+quixbugs,declared,quixbugs__is_valid_parenthesization__sp-2_s0__declared,is_valid_parenthesization,0,SP-2,function,ok,ok,is_valid_parenthesization,fn_is_valid_parenthesization,declared,0,0,0,3,0,0,0,0,0,,
+quixbugs,declared,quixbugs__is_valid_parenthesization__sp-3_s0__declared,is_valid_parenthesization,0,SP-3,function,ok,ok,is_valid_parenthesization,is_valid_parenthesization,declared,0,0,0,3,0,0,0,0,0,,
+quixbugs,declared,quixbugs__is_valid_parenthesization__sp-6_s0__declared,is_valid_parenthesization,0,SP-6,function,ok,ok,is_valid_parenthesization,is_valid_parenthesization,declared,0,0,0,3,0,0,0,0,0,,
+quixbugs,declared,quixbugs__kheapsort__bug__declared,kheapsort,1,real_bug,function,ok,ok,kheapsort,kheapsort,declared,0,0,0,4,0,0,0,0,0,,
+quixbugs,declared,quixbugs__kheapsort__sp-1_s0__declared,kheapsort,0,SP-1,function,ok,ok,kheapsort,kheapsort,declared,0,0,0,4,0,0,0,0,0,,
+quixbugs,declared,quixbugs__kheapsort__sp-2_s0__declared,kheapsort,0,SP-2,function,ok,ok,kheapsort,fn_kheapsort,declared,0,0,0,4,4,1,4,0,0,,
+quixbugs,declared,quixbugs__kheapsort__sp-3_s0__declared,kheapsort,0,SP-3,function,ok,ok,kheapsort,kheapsort,declared,0,0,0,4,0,0,0,0,0,,
+quixbugs,declared,quixbugs__knapsack__bug__declared,knapsack,1,real_bug,function,ok,ok,knapsack,knapsack,declared,0,1,1,10,6,1,6,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__knapsack__sp-1_s0__declared,knapsack,0,SP-1,function,ok,ok,knapsack,knapsack,declared,0,1,1,10,0,0,0,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__knapsack__sp-2_s0__declared,knapsack,0,SP-2,function,ok,ok,knapsack,fn_knapsack,declared,0,1,1,10,0,0,0,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__knapsack__sp-3_s0__declared,knapsack,0,SP-3,function,ok,ok,knapsack,knapsack,declared,0,1,1,10,0,0,0,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__kth__bug__declared,kth,1,real_bug,function,ok,ok,kth,kth,declared,0,0,0,7,4,1,4,0,0,,
+quixbugs,declared,quixbugs__kth__sp-1_s0__declared,kth,0,SP-1,function,ok,ok,kth,kth,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__kth__sp-2_s0__declared,kth,0,SP-2,function,ok,ok,kth,fn_kth,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__kth__sp-6_s0__declared,kth,0,SP-6,function,ok,ok,kth,kth,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__lcs_length__bug__declared,lcs_length,1,real_bug,function,ok,ok,lcs_length,lcs_length,declared,0,0,0,9,8,1,8,0,0,,
+quixbugs,declared,quixbugs__lcs_length__sp-1_s0__declared,lcs_length,0,SP-1,function,ok,ok,lcs_length,lcs_length,declared,0,0,0,9,0,0,0,0,0,,
+quixbugs,declared,quixbugs__lcs_length__sp-2_s0__declared,lcs_length,0,SP-2,function,ok,ok,lcs_length,fn_lcs_length,declared,0,0,0,9,0,0,0,0,0,,
+quixbugs,declared,quixbugs__lcs_length__sp-3_s0__declared,lcs_length,0,SP-3,function,ok,ok,lcs_length,lcs_length,declared,0,0,0,9,0,0,0,0,0,,
+quixbugs,declared,quixbugs__levenshtein__bug__declared,levenshtein,1,real_bug,function,ok,ok,levenshtein,levenshtein,declared,0,1,1,7,5,1,5,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__levenshtein__sp-2_s0__declared,levenshtein,0,SP-2,function,ok,ok,levenshtein,fn_levenshtein,declared,0,1,1,7,0,0,0,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__levenshtein__sp-3_s0__declared,levenshtein,0,SP-3,function,ok,ok,levenshtein,levenshtein,declared,0,1,1,7,0,0,0,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__levenshtein__sp-6_s0__declared,levenshtein,0,SP-6,function,ok,ok,levenshtein,levenshtein,declared,0,1,1,7,1,1,1,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__lis__bug__declared,lis,1,real_bug,function,ok,ok,lis,lis,declared,0,0,0,12,4,1,4,0,0,,
+quixbugs,declared,quixbugs__lis__sp-1_s0__declared,lis,0,SP-1,function,ok,ok,lis,lis,declared,0,0,0,12,0,0,0,0,0,,
+quixbugs,declared,quixbugs__lis__sp-2_s0__declared,lis,0,SP-2,function,ok,ok,lis,fn_lis,declared,0,0,0,12,0,0,0,0,0,,
+quixbugs,declared,quixbugs__lis__sp-6_s0__declared,lis,0,SP-6,function,ok,ok,lis,lis,declared,0,0,0,12,0,0,0,0,0,,
+quixbugs,declared,quixbugs__longest_common_subsequence__bug__declared,longest_common_subsequence,1,real_bug,function,ok,ok,longest_common_subsequence,longest_common_subsequence,declared,0,0,0,10,4,1,4,0,0,,
+quixbugs,declared,quixbugs__longest_common_subsequence__sp-2_s0__declared,longest_common_subsequence,0,SP-2,function,ok,ok,longest_common_subsequence,fn_longest_common_subsequence,declared,0,0,0,10,0,0,0,0,0,,
+quixbugs,declared,quixbugs__longest_common_subsequence__sp-3_s0__declared,longest_common_subsequence,0,SP-3,function,ok,ok,longest_common_subsequence,longest_common_subsequence,declared,0,0,0,10,0,0,0,0,0,,
+quixbugs,declared,quixbugs__max_sublist_sum__bug__declared,max_sublist_sum,1,real_bug,function,ok,ok,max_sublist_sum,max_sublist_sum,declared,0,0,0,6,4,1,4,0,0,,
+quixbugs,declared,quixbugs__max_sublist_sum__sp-1_s0__declared,max_sublist_sum,0,SP-1,function,ok,ok,max_sublist_sum,max_sublist_sum,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__max_sublist_sum__sp-2_s0__declared,max_sublist_sum,0,SP-2,function,ok,ok,max_sublist_sum,fn_max_sublist_sum,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__max_sublist_sum__sp-3_s0__declared,max_sublist_sum,0,SP-3,function,ok,ok,max_sublist_sum,max_sublist_sum,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__mergesort__bug__declared,mergesort,1,real_bug,function,ok,ok,mergesort,mergesort,declared,0,0,0,14,13,1,13,0,0,,
+quixbugs,declared,quixbugs__mergesort__sp-1_s0__declared,mergesort,0,SP-1,function,ok,ok,mergesort,mergesort,declared,0,0,0,14,0,0,0,0,0,,
+quixbugs,declared,quixbugs__mergesort__sp-2_s0__declared,mergesort,0,SP-2,function,ok,ok,mergesort,fn_mergesort,declared,0,0,0,14,0,0,0,0,0,,
+quixbugs,declared,quixbugs__mergesort__sp-6_s0__declared,mergesort,0,SP-6,function,ok,ok,mergesort,mergesort,declared,0,0,0,14,0,0,0,0,0,,
+quixbugs,declared,quixbugs__minimum_spanning_tree__bug__declared,minimum_spanning_tree,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__minimum_spanning_tree__sp-1_s0__declared,minimum_spanning_tree,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__minimum_spanning_tree__sp-2_s0__declared,minimum_spanning_tree,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__minimum_spanning_tree__sp-3_s0__declared,minimum_spanning_tree,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__next_palindrome__bug__declared,next_palindrome,1,real_bug,function,ok,ok,next_palindrome,next_palindrome,declared,0,0,0,5,1,1,1,0,0,,
+quixbugs,declared,quixbugs__next_palindrome__sp-2_s0__declared,next_palindrome,0,SP-2,function,ok,ok,next_palindrome,fn_next_palindrome,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__next_palindrome__sp-3_s0__declared,next_palindrome,0,SP-3,function,ok,ok,next_palindrome,next_palindrome,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__next_palindrome__sp-6_s0__declared,next_palindrome,0,SP-6,function,ok,ok,next_palindrome,next_palindrome,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__next_permutation__bug__declared,next_permutation,1,real_bug,function,ok,ok,next_permutation,next_permutation,declared,0,0,0,8,8,1,8,0,0,,
+quixbugs,declared,quixbugs__next_permutation__sp-1_s0__declared,next_permutation,0,SP-1,function,ok,ok,next_permutation,next_permutation,declared,0,0,0,8,0,0,0,0,0,,
+quixbugs,declared,quixbugs__next_permutation__sp-2_s0__declared,next_permutation,0,SP-2,function,ok,ok,next_permutation,fn_next_permutation,declared,0,0,0,8,0,0,0,0,0,,
+quixbugs,declared,quixbugs__next_permutation__sp-3_s0__declared,next_permutation,0,SP-3,function,ok,ok,next_permutation,next_permutation,declared,0,0,0,8,0,0,0,0,0,,
+quixbugs,declared,quixbugs__pascal__bug__declared,pascal,1,real_bug,function,ok,ok,pascal,pascal,declared,0,0,0,5,4,1,4,0,0,,
+quixbugs,declared,quixbugs__pascal__sp-1_s0__declared,pascal,0,SP-1,function,ok,ok,pascal,pascal,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__pascal__sp-2_s0__declared,pascal,0,SP-2,function,ok,ok,pascal,fn_pascal,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__pascal__sp-3_s0__declared,pascal,0,SP-3,function,ok,ok,pascal,pascal,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__possible_change__bug__declared,possible_change,1,real_bug,function,ok,ok,possible_change,possible_change,declared,0,0,0,10,9,1,9,0,0,,
+quixbugs,declared,quixbugs__possible_change__sp-2_s0__declared,possible_change,0,SP-2,function,ok,ok,possible_change,fn_possible_change,declared,0,0,0,10,0,0,0,0,0,,
+quixbugs,declared,quixbugs__possible_change__sp-3_s0__declared,possible_change,0,SP-3,function,ok,ok,possible_change,possible_change,declared,0,0,0,10,0,0,0,0,0,,
+quixbugs,declared,quixbugs__powerset__bug__declared,powerset,1,real_bug,function,ok,ok,powerset,powerset,declared,0,0,0,5,4,1,4,0,0,,
+quixbugs,declared,quixbugs__powerset__sp-1_s0__declared,powerset,0,SP-1,function,ok,ok,powerset,powerset,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__powerset__sp-2_s0__declared,powerset,0,SP-2,function,ok,ok,powerset,fn_powerset,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__powerset__sp-3_s0__declared,powerset,0,SP-3,function,ok,ok,powerset,powerset,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__quicksort__bug__declared,quicksort,1,real_bug,function,ok,ok,quicksort,quicksort,declared,0,0,0,13,1,1,1,0,0,,
+quixbugs,declared,quixbugs__quicksort__sp-1_s0__declared,quicksort,0,SP-1,function,ok,ok,quicksort,quicksort,declared,0,0,0,13,0,0,0,0,0,,
+quixbugs,declared,quixbugs__quicksort__sp-2_s0__declared,quicksort,0,SP-2,function,ok,ok,quicksort,fn_quicksort,declared,0,0,0,13,0,0,0,0,0,,
+quixbugs,declared,quixbugs__quicksort__sp-3_s0__declared,quicksort,0,SP-3,function,ok,ok,quicksort,quicksort,declared,0,0,0,13,0,0,0,0,0,,
+quixbugs,declared,quixbugs__reverse_linked_list__bug__declared,reverse_linked_list,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__reverse_linked_list__sp-1_s0__declared,reverse_linked_list,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__reverse_linked_list__sp-2_s0__declared,reverse_linked_list,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__reverse_linked_list__sp-3_s0__declared,reverse_linked_list,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__rpn_eval__bug__declared,rpn_eval,1,real_bug,function,ok,ok,rpn_eval,rpn_eval,declared,0,0,0,6,3,1,3,0,0,,
+quixbugs,declared,quixbugs__rpn_eval__sp-2_s0__declared,rpn_eval,0,SP-2,function,ok,ok,rpn_eval,fn_rpn_eval,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__rpn_eval__sp-3_s0__declared,rpn_eval,0,SP-3,function,ok,ok,rpn_eval,rpn_eval,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__shortest_path_length__bug__declared,shortest_path_length,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_path_length__sp-1_s0__declared,shortest_path_length,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_path_length__sp-2_s0__declared,shortest_path_length,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_path_length__sp-6_s0__declared,shortest_path_length,0,SP-6,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_path_lengths__bug__declared,shortest_path_lengths,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_path_lengths__sp-1_s0__declared,shortest_path_lengths,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_path_lengths__sp-2_s0__declared,shortest_path_lengths,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_path_lengths__sp-3_s0__declared,shortest_path_lengths,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_paths__bug__declared,shortest_paths,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_paths__sp-1_s0__declared,shortest_paths,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_paths__sp-2_s0__declared,shortest_paths,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shortest_paths__sp-3_s0__declared,shortest_paths,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__shunting_yard__bug__declared,shunting_yard,1,real_bug,function,ok,ok,shunting_yard,shunting_yard,declared,0,0,0,6,4,1,4,0,0,,
+quixbugs,declared,quixbugs__shunting_yard__sp-2_s0__declared,shunting_yard,0,SP-2,function,ok,ok,shunting_yard,fn_shunting_yard,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__shunting_yard__sp-3_s0__declared,shunting_yard,0,SP-3,function,ok,ok,shunting_yard,shunting_yard,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__sieve__bug__declared,sieve,1,real_bug,function,ok,ok,sieve,sieve,declared,0,0,0,6,5,1,5,0,0,,
+quixbugs,declared,quixbugs__sieve__sp-1_s0__declared,sieve,0,SP-1,function,ok,ok,sieve,sieve,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__sieve__sp-2_s0__declared,sieve,0,SP-2,function,ok,ok,sieve,fn_sieve,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__sieve__sp-3_s0__declared,sieve,0,SP-3,function,ok,ok,sieve,sieve,declared,0,0,0,6,0,0,0,0,0,,
+quixbugs,declared,quixbugs__sqrt__bug__declared,sqrt,1,real_bug,function,ok,ok,sqrt,sqrt,declared,0,0,6,7,6,1,6,0,0,timeouts present (timeout vs timeout counted as equal),
+quixbugs,declared,quixbugs__sqrt__sp-1_s0__declared,sqrt,0,SP-1,function,ok,ok,sqrt,sqrt,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__sqrt__sp-2_s0__declared,sqrt,0,SP-2,function,ok,ok,sqrt,fn_sqrt,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__sqrt__sp-3_s0__declared,sqrt,0,SP-3,function,ok,ok,sqrt,sqrt,declared,0,0,0,7,0,0,0,0,0,,
+quixbugs,declared,quixbugs__subsequences__bug__declared,subsequences,1,real_bug,function,ok,ok,subsequences,subsequences,declared,0,0,0,12,10,1,10,0,0,,
+quixbugs,declared,quixbugs__subsequences__sp-1_s0__declared,subsequences,0,SP-1,function,ok,ok,subsequences,subsequences,declared,0,0,0,12,0,0,0,0,0,,
+quixbugs,declared,quixbugs__subsequences__sp-2_s0__declared,subsequences,0,SP-2,function,ok,ok,subsequences,fn_subsequences,declared,0,0,0,12,0,0,0,0,0,,
+quixbugs,declared,quixbugs__subsequences__sp-3_s0__declared,subsequences,0,SP-3,function,ok,ok,subsequences,subsequences,declared,0,0,0,12,0,0,0,0,0,,
+quixbugs,declared,quixbugs__to_base__bug__declared,to_base,1,real_bug,function,ok,ok,to_base,to_base,declared,0,0,0,10,7,1,7,0,0,,
+quixbugs,declared,quixbugs__to_base__sp-1_s0__declared,to_base,0,SP-1,function,ok,ok,to_base,to_base,declared,0,0,0,10,0,0,0,0,0,,
+quixbugs,declared,quixbugs__to_base__sp-2_s0__declared,to_base,0,SP-2,function,ok,ok,to_base,fn_to_base,declared,0,0,0,10,0,0,0,0,0,,
+quixbugs,declared,quixbugs__to_base__sp-3_s0__declared,to_base,0,SP-3,function,ok,ok,to_base,to_base,declared,0,0,0,10,0,0,0,0,0,,
+quixbugs,declared,quixbugs__topological_ordering__bug__declared,topological_ordering,1,real_bug,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__topological_ordering__sp-1_s0__declared,topological_ordering,0,SP-1,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__topological_ordering__sp-2_s0__declared,topological_ordering,0,SP-2,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__topological_ordering__sp-3_s0__declared,topological_ordering,0,SP-3,function,,,,,,,,,,,,,,,not comparable: base=None variant=None; entry_base=None entry_var=None,
+quixbugs,declared,quixbugs__wrap__bug__declared,wrap,1,real_bug,function,ok,ok,wrap,wrap,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__wrap__sp-2_s0__declared,wrap,0,SP-2,function,ok,ok,wrap,fn_wrap,declared,0,0,0,5,0,0,0,0,0,,
+quixbugs,declared,quixbugs__wrap__sp-3_s0__declared,wrap,0,SP-3,function,ok,ok,wrap,wrap,declared,0,0,0,5,0,0,0,0,0,,

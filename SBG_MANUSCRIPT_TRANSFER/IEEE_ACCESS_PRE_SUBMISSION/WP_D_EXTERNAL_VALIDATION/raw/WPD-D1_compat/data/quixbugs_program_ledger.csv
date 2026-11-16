@@ -1,0 +1,51 @@
+program,kind,eligible_canonical,eligible_declared,reason_canonical,reason_declared,n_declared_cases,n_negatives,negatives,rejected_negatives
+bitcount,subject,True,True,,,9,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+breadth_first_search,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+bucketsort,subject,True,True,,,7,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+depth_first_search,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+detect_cycle,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+find_first_in_sorted,subject,True,True,,,7,3,SP-1;SP-2;SP-6,SP-4:no_op: normalised AST identical
+find_in_sorted,subject,True,True,,,7,3,SP-1;SP-2;SP-6,SP-4:no_op: normalised AST identical
+flatten,subject,True,True,,,7,2,SP-1;SP-2,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-3:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+gcd,subject,True,True,,,6,2,SP-2;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+get_factors,subject,True,True,,,11,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+hanoi,subject,True,True,,,8,2,SP-2;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+is_valid_parenthesization,subject,True,True,,,3,3,SP-2;SP-6;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+kheapsort,subject,True,True,,,4,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+knapsack,subject,True,True,,,10,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+kth,subject,True,True,,,7,3,SP-1;SP-2;SP-6,SP-4:no_op: normalised AST identical
+lcs_length,subject,True,True,,,9,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+levenshtein,subject,True,True,,,7,3,SP-2;SP-6;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+lis,subject,True,True,,,12,3,SP-1;SP-2;SP-6,SP-4:no_op: normalised AST identical
+longest_common_subsequence,subject,True,True,,,10,2,SP-2;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+max_sublist_sum,subject,True,True,,,6,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+mergesort,subject,True,True,,,14,3,SP-1;SP-2;SP-6,SP-4:no_op: normalised AST identical
+minimum_spanning_tree,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+next_palindrome,subject,True,True,,,5,3,SP-2;SP-6;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+next_permutation,subject,True,True,,,8,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+pascal,subject,True,True,,,5,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+possible_change,subject,True,True,,,10,2,SP-2;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+powerset,subject,True,True,,,5,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+quicksort,subject,True,True,,,13,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+reverse_linked_list,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+rpn_eval,subject,True,True,,,6,2,SP-2;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+shortest_path_length,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-6,SP-4:no_op: normalised AST identical
+shortest_path_lengths,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+shortest_paths,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+shunting_yard,subject,True,True,,,6,2,SP-2;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+sieve,subject,True,True,,,6,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+sqrt,subject,True,True,,,7,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+subsequences,subject,True,True,,,12,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+to_base,subject,True,True,,,10,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+topological_ordering,subject,True,False,,no json_testcases upstream (graph program exercised only by a *_test.py driver),0,3,SP-1;SP-2;SP-3,SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical
+wrap,subject,True,True,,,5,2,SP-2;SP-3,SP-1:no_op: normalised AST identical;SP-4:no_op: normalised AST identical;SP-6:no_op: normalised AST identical;SP-10:no_op: normalised AST identical;SP-5:no_op: normalised AST identical;SP-9:no_op: normalised AST identical
+python_programs/breadth_first_search_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/depth_first_search_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/detect_cycle_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/minimum_spanning_tree_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/node.py,scaffolding_excluded,False,False,"scaffolding: shared Node helper class, not a subject program","scaffolding: shared Node helper class, not a subject program",,,,
+python_programs/reverse_linked_list_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/shortest_path_length_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/shortest_path_lengths_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/shortest_paths_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,
+python_programs/topological_ordering_test.py,scaffolding_excluded,False,False,"scaffolding: QuixBugs test driver (constructs graphs, prints results)","scaffolding: QuixBugs test driver (constructs graphs, prints results)",,,,

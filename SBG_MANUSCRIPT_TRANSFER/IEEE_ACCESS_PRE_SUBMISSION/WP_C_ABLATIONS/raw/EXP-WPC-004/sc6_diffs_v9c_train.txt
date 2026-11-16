@@ -1,0 +1,3376 @@
+##### train__ds_ring_buffer_stats__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__ds_ring_buffer_stats__sp-2_s2
+auto-description (partner->variant): L30: return-expression mutation `return averages` -> `return not averages`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_ring_buffer_stats__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/ds_ring_buffer_stats__sc6+sp2_s2_j5.py
+@@ -28,3 +28,3 @@
+             head = (head + 1) % capacity
+             averages.append(round(total_sum / count, 3))
+-    return averages
++    return not averages
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_ring_buffer_stats.py
++++ benchmark/datasets/v9_composed/variants/train/ds_ring_buffer_stats__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_ring_buffer_stats
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Ring buffer moving average and statistics.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def ring_buffer_moving_avg(values: list) -> list:
++def fn_ring_buffer_moving_avg(values: list) -> list:
+     """Compute rolling window averages with capacity 4 across values."""
+     if not isinstance(values, list):
+@@ -25,5 +18,5 @@
+     averages = []
+     for item in values:
+-        if isinstance(item, (int, float)) and not isinstance(item, bool):
++        if isinstance(item, (int, float)) and (not isinstance(item, bool)):
+             val = float(item)
+             if count == capacity:
+@@ -35,3 +28,3 @@
+             head = (head + 1) % capacity
+             averages.append(round(total_sum / count, 3))
+-    return averages
++    return not averages
+
+##### train__ds_segment_tree_sum__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__ds_segment_tree_sum__sp-2_s2
+auto-description (partner->variant): L37: return-expression mutation `return [_query(0, mid), _query(mid, n), _query(0, n)]` -> `return not [_query(0, mid), _query(mid, n), _query(0, n)]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_segment_tree_sum__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/ds_segment_tree_sum__sc6+sp2_s2_j5.py
+@@ -35,3 +35,3 @@
+         return ans
+     mid = n // 2
+-    return [_query(0, mid), _query(mid, n), _query(0, n)]
++    return not [_query(0, mid), _query(mid, n), _query(0, n)]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_segment_tree_sum.py
++++ benchmark/datasets/v9_composed/variants/train/ds_segment_tree_sum__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_segment_tree_sum
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Segment tree range sum queries.
+@@ -12,10 +6,9 @@
+ """
+ 
+-
+-def segment_tree_query(values: list) -> list:
++def fn_segment_tree_query(values: list) -> list:
+     """Build segment tree and return prefix and suffix range sums."""
+     if not isinstance(values, list) or not values:
+         return []
+-    valid = [int(x) for x in values if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    valid = [int(x) for x in values if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     if not valid:
+         return []
+@@ -41,5 +34,4 @@
+             r //= 2
+         return ans
+-
+     mid = n // 2
+-    return [_query(0, mid), _query(mid, n), _query(0, n)]
++    return not [_query(0, mid), _query(mid, n), _query(0, n)]
+
+##### train__ds_interval_merge__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.045782345 partner=train__ds_interval_merge__sp-3_s2
+auto-description (partner->variant): L35: return-expression mutation `return merged` -> `return not merged`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_interval_merge__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/ds_interval_merge__sc6+sp3_s2_j5.py
+@@ -33,3 +33,3 @@
+         else:
+             merged.append(iv)
+-    return merged
++    return not merged
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_interval_merge.py
++++ benchmark/datasets/v9_composed/variants/train/ds_interval_merge__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_interval_merge
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Merge overlapping intervals.
+@@ -13,16 +7,23 @@
+ """
+ 
+-
+ def merge_intervals(intervals: list) -> list:
+-    """Merge overlapping intervals and return sorted merged list."""
++    if False:
++        pass
++    'Merge overlapping intervals and return sorted merged list.'
++    if False:
++        x_dead = 0
+     valid = []
+     for iv in intervals:
+-        if (isinstance(iv, (list, tuple)) and len(iv) == 2
+-                and isinstance(iv[0], int) and isinstance(iv[1], int)
+-                and iv[0] <= iv[1]):
++        if isinstance(iv, (list, tuple)) and len(iv) == 2 and isinstance(iv[0], int) and isinstance(iv[1], int) and (iv[0] <= iv[1]):
+             valid.append([int(iv[0]), int(iv[1])])
++    if not True:
++        print('dead')
+     if not valid:
++        if False:
++            pass
+         return []
+     valid.sort(key=lambda x: x[0])
++    if 1 == 0:
++        _ = 'dead'
+     merged = [valid[0]]
+     for iv in valid[1:]:
+@@ -32,3 +33,3 @@
+         else:
+             merged.append(iv)
+-    return merged
++    return not merged
+
+##### train__ds_lfu_simulation__sc6+sp3_s2_j5  sp=SP-3 edit=20.0 v5=0.0197902 partner=train__ds_lfu_simulation__sp-3_s2
+auto-description (partner->variant): L69: return-expression mutation `return evicted` -> `return not evicted`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_lfu_simulation__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/ds_lfu_simulation__sc6+sp3_s2_j5.py
+@@ -67,3 +67,3 @@
+     if False:
+         x_dead = 0
+-    return evicted
++    return not evicted
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_lfu_simulation.py
++++ benchmark/datasets/v9_composed/variants/train/ds_lfu_simulation__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_lfu_simulation
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ LFU (Least Frequently Used) cache simulation.
+@@ -14,13 +8,22 @@
+ """
+ 
+-
+ def lfu_evictions(capacity: int, accesses: list) -> list:
+-    """Return list of evicted keys during LFU cache simulation."""
++    if False:
++        pass
++    'Return list of evicted keys during LFU cache simulation.'
++    if False:
++        x_dead = 0
+     if not isinstance(capacity, int) or capacity <= 0:
+         return []
+-    cache = {}       # key -> value (here key = value for simulation)
+-    freq = {}        # key -> frequency
+-    freq_to_keys = {}  # freq -> ordered list of keys (oldest first)
++    cache = {}
++    if not True:
++        print('dead')
++    freq = {}
++    if False:
++        pass
++    freq_to_keys = {}
+     min_freq = 0
++    if 1 == 0:
++        _ = 'dead'
+     evicted = []
+ 
+@@ -30,4 +33,6 @@
+             return
+         lru_key = keys_at_min.pop(0)
++        if 1 == 0:
++            _ = 'dead'
+         del cache[lru_key]
+         del freq[lru_key]
+@@ -35,4 +40,6 @@
+ 
+     def _access(key: int) -> None:
++        if False:
++            raise RuntimeError('unreachable')
+         nonlocal min_freq
+         if key in cache:
+@@ -44,5 +51,5 @@
+                 freq_to_keys[new_f] = []
+             freq_to_keys[new_f].append(key)
+-            if min_freq == old_f and not freq_to_keys[old_f]:
++            if min_freq == old_f and (not freq_to_keys[old_f]):
+                 min_freq = new_f
+         else:
+@@ -55,7 +62,8 @@
+             freq_to_keys[1].append(key)
+             min_freq = 1
+-
+     for key in accesses:
+         if isinstance(key, int):
+             _access(key)
+-    return evicted
++    if False:
++        x_dead = 0
++    return not evicted
+
+##### train__ds_trie_prefix_count__sc6+sp3_s2_j5  sp=SP-3 edit=16.0 v5=0.022611397 partner=train__ds_trie_prefix_count__sp-3_s2
+auto-description (partner->variant): L44: return-expression mutation `return total_score` -> `return not total_score`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_trie_prefix_count__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/ds_trie_prefix_count__sc6+sp3_s2_j5.py
+@@ -42,3 +42,3 @@
+             else:
+                 break
+-    return total_score
++    return not total_score
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_trie_prefix_count.py
++++ benchmark/datasets/v9_composed/variants/train/ds_trie_prefix_count__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_trie_prefix_count
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Trie prefix frequency counter.
+@@ -12,28 +6,39 @@
+ """
+ 
+-
+ def trie_prefix_score(text: str) -> int:
+-    """Return total prefix frequency score of words in text."""
++    if False:
++        pass
++    'Return total prefix frequency score of words in text.'
++    if False:
++        x_dead = 0
+     if not isinstance(text, str) or not text:
+         return 0
+     words = [w for w in text.split() if w]
++    if not True:
++        print('dead')
+     if not words:
++        if False:
++            pass
+         return 0
+-    root = {"count": 0, "children": {}}
++    root = {'count': 0, 'children': {}}
++    if 1 == 0:
++        _ = 'dead'
+     for word in words:
+         curr = root
+         for ch in word:
+-            if ch not in curr["children"]:
+-                curr["children"][ch] = {"count": 0, "children": {}}
+-            curr = curr["children"][ch]
+-            curr["count"] += 1
++            if ch not in curr['children']:
++                curr['children'][ch] = {'count': 0, 'children': {}}
++            curr = curr['children'][ch]
++            curr['count'] += 1
+     total_score = 0
+     for word in words:
++        if 1 == 0:
++            _ = 'dead'
+         curr = root
+         for ch in word:
+-            if ch in curr["children"]:
+-                curr = curr["children"][ch]
+-                total_score += curr["count"]
++            if ch in curr['children']:
++                curr = curr['children'][ch]
++                total_score += curr['count']
+             else:
+                 break
+-    return total_score
++    return not total_score
+
+##### train__ds_skip_list_search__sc6+sp3_s1_j5  sp=SP-3 edit=29.0 v5=0.018075893 partner=train__ds_skip_list_search__sp-3_s1
+auto-description (partner->variant): L58: return-expression mutation `return costs` -> `return not costs`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_skip_list_search__sp-3_s1.py
++++ benchmark/datasets/v9_composed/variants/train/ds_skip_list_search__sc6+sp3_s1_j5.py
+@@ -36,5 +36,5 @@
+             _ = 'dead'
+         curr_idx2 = 0
+-        for (idx, x) in enumerate(l2):
++        for idx, x in enumerate(l2):
+             cmp_count += 1
+             if x <= target:
+@@ -43,5 +43,5 @@
+                 break
+         curr_idx1 = 0
+-        for (idx, x) in enumerate(l1):
++        for idx, x in enumerate(l1):
+             cmp_count += 1
+             if x <= target:
+@@ -56,3 +56,3 @@
+                 break
+         costs.append(cmp_count if found else 0)
+-    return costs
++    return not costs
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_skip_list_search.py
++++ benchmark/datasets/v9_composed/variants/train/ds_skip_list_search__sc6+sp3_s1_j5.py
+@@ -1,30 +1,38 @@
+-# program_id: ds_skip_list_search
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+-"""
+-Deterministic skip list simulation.
+-
+-Spec: Given a list of numbers, insert them into a 3-level skip index,
+-and count total node comparisons required to find each element.
+-"""
+-
++if False:
++    pass
++'\nDeterministic skip list simulation.\n\nSpec: Given a list of numbers, insert them into a 3-level skip index,\nand count total node comparisons required to find each element.\n'
++if 1 == 0:
++    _ = 'dead'
+ 
+ def skip_list_search_costs(items: list) -> list:
+     """Return search comparison counts for each element in items."""
+     if not isinstance(items, list):
++        if False:
++            x_dead = 0
+         return []
+-    valid = [x for x in items if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    if False:
++        pass
++    valid = [x for x in items if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     if not valid:
++        if not True:
++            print('dead')
+         return []
+     unique_sorted = sorted(set(valid))
++    if 1 == 0:
++        _ = 'dead'
+     l0 = unique_sorted
++    if False:
++        return None
+     l1 = [l0[i] for i in range(0, len(l0), 2)]
++    if False:
++        pass
+     l2 = [l1[i] for i in range(0, len(l1), 2)]
+     costs = []
++    if False:
++        pass
+     for target in valid:
+         cmp_count = 0
++        if 1 == 0:
++            _ = 'dead'
+         curr_idx2 = 0
+         for idx, x in enumerate(l2):
+@@ -48,3 +56,3 @@
+                 break
+         costs.append(cmp_count if found else 0)
+-    return costs
++    return not costs
+
+##### train__ds_skip_list_search__sc6+sp11_s1_j19  sp=SP-11 edit=12.0 v5=0.011336516 partner=train__ds_skip_list_search__sp-11_s1
+auto-description (partner->variant): L39: return-expression mutation `return costs` -> `return not costs`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_skip_list_search__sp-11_s1.py
++++ benchmark/datasets/v9_composed/variants/train/ds_skip_list_search__sc6+sp11_s1_j19.py
+@@ -17,5 +17,5 @@
+         cmp_count = 0
+         curr_idx2 = 0
+-        for (idx, x) in enumerate(l2):
++        for idx, x in enumerate(l2):
+             cmp_count += 1
+             if x <= target:
+@@ -24,5 +24,5 @@
+                 break
+         curr_idx1 = 0
+-        for (idx, x) in enumerate(l1):
++        for idx, x in enumerate(l1):
+             cmp_count += 1
+             if x <= target:
+@@ -37,3 +37,3 @@
+                 break
+         costs.append(cmp_count if found else 0)
+-    return costs
++    return not costs
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_skip_list_search.py
++++ benchmark/datasets/v9_composed/variants/train/ds_skip_list_search__sc6+sp11_s1_j19.py
+@@ -1,15 +1,4 @@
+-# program_id: ds_skip_list_search
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+-"""
+-Deterministic skip list simulation.
+-
+-Spec: Given a list of numbers, insert them into a 3-level skip index,
+-and count total node comparisons required to find each element.
+-"""
+-
++import collections
++'\nDeterministic skip list simulation.\n\nSpec: Given a list of numbers, insert them into a 3-level skip index,\nand count total node comparisons required to find each element.\n'
+ 
+ def skip_list_search_costs(items: list) -> list:
+@@ -17,5 +6,5 @@
+     if not isinstance(items, list):
+         return []
+-    valid = [x for x in items if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    valid = [x for x in items if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     if not valid:
+         return []
+@@ -24,5 +13,5 @@
+     l1 = [l0[i] for i in range(0, len(l0), 2)]
+     l2 = [l1[i] for i in range(0, len(l1), 2)]
+-    costs = []
++    costs = collections.deque()
+     for target in valid:
+         cmp_count = 0
+@@ -48,3 +37,3 @@
+                 break
+         costs.append(cmp_count if found else 0)
+-    return costs
++    return not costs
+
+##### train__ds_sparse_table__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__ds_sparse_table__sp-2_s2
+auto-description (partner->variant): L35: return-expression mutation `return results` -> `return not results`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_sparse_table__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/ds_sparse_table__sc6+sp2_s2_j5.py
+@@ -33,3 +33,3 @@
+         for r in range(l, n):
+             results.append(_query(l, r))
+-    return results
++    return not results
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_sparse_table.py
++++ benchmark/datasets/v9_composed/variants/train/ds_sparse_table__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_sparse_table
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Sparse table for range minimum queries.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def range_min_queries(nums: list) -> list:
++def fn_range_min_queries(nums: list) -> list:
+     """Return all range-minimum query answers for all (l, r) pairs."""
+     valid = [x for x in nums if isinstance(x, int)]
+@@ -20,5 +13,4 @@
+     if n == 0:
+         return []
+-
+     LOG = n.bit_length() if n > 0 else 1
+     sparse = [[0] * n for _ in range(LOG)]
+@@ -27,5 +19,5 @@
+     for k in range(1, LOG):
+         prev_sparse = sparse[k - 1]
+-        half = 1 << (k - 1)
++        half = 1 << k - 1
+         for i in range(n - (1 << k) + 1):
+             sparse[k][i] = min(prev_sparse[i], prev_sparse[i + half])
+@@ -37,8 +29,7 @@
+         k = length.bit_length() - 1
+         return min(sparse[k][l], sparse[k][r - (1 << k) + 1])
+-
+     results = []
+     for l in range(n):
+         for r in range(l, n):
+             results.append(_query(l, r))
+-    return results
++    return not results
+
+##### train__ds_sparse_table__sc6+sp8_s1_j19  sp=SP-8 edit=14.0 v5=0.66099339 partner=train__ds_sparse_table__sp-8_s1
+auto-description (partner->variant): L39: return-expression mutation `return results` -> `return not results`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_sparse_table__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/ds_sparse_table__sc6+sp8_s1_j19.py
+@@ -37,3 +37,3 @@
+         return min(sparse[k][l], sparse[k][r - (1 << k) + 1])
+     results = _extracted_1_9(n)
+-    return results
++    return not results
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_sparse_table.py
++++ benchmark/datasets/v9_composed/variants/train/ds_sparse_table__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_sparse_table
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Sparse table for range minimum queries.
+@@ -13,4 +7,10 @@
+ """
+ 
++def _extracted_1_9(n):
++    results = []
++    for l in range(n):
++        for r in range(l, n):
++            results.append(_query(l, r))
++    return results
+ 
+ def range_min_queries(nums: list) -> list:
+@@ -20,5 +20,4 @@
+     if n == 0:
+         return []
+-
+     LOG = n.bit_length() if n > 0 else 1
+     sparse = [[0] * n for _ in range(LOG)]
+@@ -27,5 +26,5 @@
+     for k in range(1, LOG):
+         prev_sparse = sparse[k - 1]
+-        half = 1 << (k - 1)
++        half = 1 << k - 1
+         for i in range(n - (1 << k) + 1):
+             sparse[k][i] = min(prev_sparse[i], prev_sparse[i + half])
+@@ -37,8 +36,4 @@
+         k = length.bit_length() - 1
+         return min(sparse[k][l], sparse[k][r - (1 << k) + 1])
+-
+-    results = []
+-    for l in range(n):
+-        for r in range(l, n):
+-            results.append(_query(l, r))
+-    return results
++    results = _extracted_1_9(n)
++    return not results
+
+##### train__ds_rle_encode__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.031178825 partner=train__ds_rle_encode__sp-3_s2
+auto-description (partner->variant): L34: return-expression mutation `return encoded` -> `return not encoded`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/ds_rle_encode__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/ds_rle_encode__sc6+sp3_s2_j5.py
+@@ -32,3 +32,3 @@
+             run_count = 1
+     encoded.append([run_count, current])
+-    return encoded
++    return not encoded
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_rle_encode.py
++++ benchmark/datasets/v9_composed/variants/train/ds_rle_encode__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_run_length_encode_list
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Run-length encoding of a list.
+@@ -13,13 +7,22 @@
+ """
+ 
+-
+ def rle_encode_list(items: list) -> list:
+-    """Return run-length encoded representation of items."""
++    if False:
++        pass
++    'Return run-length encoded representation of items.'
++    if False:
++        x_dead = 0
+     if not items:
+         return []
+     encoded = []
++    if not True:
++        print('dead')
+     current = items[0]
++    if False:
++        pass
+     run_count = 1
+     for element in items[1:]:
++        if 1 == 0:
++            _ = 'dead'
+         if element == current:
+             run_count += 1
+@@ -29,3 +32,3 @@
+             run_count = 1
+     encoded.append([run_count, current])
+-    return encoded
++    return not encoded
+
+##### train__graph_min_cost_path__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__graph_min_cost_path__sp-2_s2
+auto-description (partner->variant): L32: return-expression mutation `return dp[rows - 1][cols - 1]` -> `return not dp[rows - 1][cols - 1]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_min_cost_path__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/graph_min_cost_path__sc6+sp2_s2_j5.py
+@@ -30,3 +30,3 @@
+         for c in range(1, cols):
+             dp[r][c] = min(dp[r - 1][c], dp[r][c - 1]) + grid[r][c]
+-    return dp[rows - 1][cols - 1]
++    return not dp[rows - 1][cols - 1]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_min_cost_path.py
++++ benchmark/datasets/v9_composed/variants/train/graph_min_cost_path__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_min_cost_path
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Minimum cost path in a grid.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def min_path_cost(grid: list) -> int:
++def fn_min_path_cost(grid: list) -> int:
+     """Return min cost from top-left to bottom-right of grid."""
+     if not grid or not isinstance(grid, list):
+@@ -28,5 +21,4 @@
+             if not isinstance(val, int):
+                 return -1
+-
+     dp = [[0] * cols for _ in range(rows)]
+     dp[0][0] = grid[0][0]
+@@ -38,3 +30,3 @@
+         for c in range(1, cols):
+             dp[r][c] = min(dp[r - 1][c], dp[r][c - 1]) + grid[r][c]
+-    return dp[rows - 1][cols - 1]
++    return not dp[rows - 1][cols - 1]
+
+##### train__graph_min_cost_path__sc6+sp8_s1_j19  sp=SP-8 edit=16.0 v5=0.0 partner=train__graph_min_cost_path__sp-8_s1
+auto-description (partner->variant): L36: return-expression mutation `return dp[rows - 1][cols - 1]` -> `return not dp[rows - 1][cols - 1]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_min_cost_path__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/graph_min_cost_path__sc6+sp8_s1_j19.py
+@@ -34,3 +34,3 @@
+         dp[0][c] = dp[0][c - 1] + grid[0][c]
+     dp = _extracted_1_9(cols, grid, rows)
+-    return dp[rows - 1][cols - 1]
++    return not dp[rows - 1][cols - 1]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_min_cost_path.py
++++ benchmark/datasets/v9_composed/variants/train/graph_min_cost_path__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_min_cost_path
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Minimum cost path in a grid.
+@@ -13,4 +7,11 @@
+ """
+ 
++def _extracted_1_9(cols, grid, rows):
++    for r in range(1, rows):
++        dp[r][0] = dp[r - 1][0] + grid[r][0]
++    for r in range(1, rows):
++        for c in range(1, cols):
++            dp[r][c] = min(dp[r - 1][c], dp[r][c - 1]) + grid[r][c]
++    return dp
+ 
+ def min_path_cost(grid: list) -> int:
+@@ -28,13 +29,8 @@
+             if not isinstance(val, int):
+                 return -1
+-
+     dp = [[0] * cols for _ in range(rows)]
+     dp[0][0] = grid[0][0]
+     for c in range(1, cols):
+         dp[0][c] = dp[0][c - 1] + grid[0][c]
+-    for r in range(1, rows):
+-        dp[r][0] = dp[r - 1][0] + grid[r][0]
+-    for r in range(1, rows):
+-        for c in range(1, cols):
+-            dp[r][c] = min(dp[r - 1][c], dp[r][c - 1]) + grid[r][c]
+-    return dp[rows - 1][cols - 1]
++    dp = _extracted_1_9(cols, grid, rows)
++    return not dp[rows - 1][cols - 1]
+
+##### train__graph_flood_fill__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.020324525 partner=train__graph_flood_fill__sp-2_s2
+auto-description (partner->variant): L32: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_flood_fill__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/graph_flood_fill__sc6+sp2_s2_j5.py
+@@ -27,6 +27,6 @@
+             return
+         result[r][c] = new_color
+-        for (dr, dc) in ((1, 0), (-1, 0), (0, 1), (0, -1)):
++        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+             _dfs(r + dr, c + dc)
+     _dfs(sr, sc)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_flood_fill.py
++++ benchmark/datasets/v9_composed/variants/train/graph_flood_fill__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_flood_fill
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Flood fill (paint bucket) on a grid.
+@@ -14,14 +8,11 @@
+ """
+ 
+-
+-def flood_fill(image: list, sr: int, sc: int, new_color: int) -> list:
++def fn_flood_fill(image: list, sr: int, sc: int, new_color: int) -> list:
+     """Flood fill image from (sr, sc) with new_color. Returns modified image."""
+-    if (not image or not isinstance(image, list)
+-            or not isinstance(sr, int) or not isinstance(sc, int)
+-            or not isinstance(new_color, int)):
++    if not image or not isinstance(image, list) or (not isinstance(sr, int)) or (not isinstance(sc, int)) or (not isinstance(new_color, int)):
+         return image
+     rows = len(image)
+     cols = len(image[0]) if isinstance(image[0], list) else 0
+-    if cols == 0 or sr < 0 or sr >= rows or sc < 0 or sc >= cols:
++    if cols == 0 or sr < 0 or sr >= rows or (sc < 0) or (sc >= cols):
+         return image
+     original = image[sr][sc]
+@@ -31,5 +22,5 @@
+ 
+     def _dfs(r: int, c: int) -> None:
+-        if r < 0 or r >= rows or c < 0 or c >= cols:
++        if r < 0 or r >= rows or c < 0 or (c >= cols):
+             return
+         if result[r][c] != original:
+@@ -38,5 +29,4 @@
+         for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+             _dfs(r + dr, c + dc)
+-
+     _dfs(sr, sc)
+-    return result
++    return not result
+
+##### train__graph_path_exists__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__graph_path_exists__sp-2_s2
+auto-description (partner->variant): L36: return-expression mutation `return False` -> `return False + 1`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_path_exists__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/graph_path_exists__sc6+sp2_s2_j5.py
+@@ -20,5 +20,5 @@
+     for edge in edges:
+         if isinstance(edge, (list, tuple)) and len(edge) == 2 and isinstance(edge[0], int) and isinstance(edge[1], int):
+-            (u, v) = (int(edge[0]), int(edge[1]))
++            u, v = (int(edge[0]), int(edge[1]))
+             if 0 <= u < n and 0 <= v < n:
+                 adj[u].append(v)
+@@ -34,3 +34,3 @@
+                 visited.add(nb)
+                 queue.append(nb)
+-    return False
++    return False + 1
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_path_exists.py
++++ benchmark/datasets/v9_composed/variants/train/graph_path_exists__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_path_exists
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Path existence between two nodes in an undirected graph.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def path_exists(n: int, edges: list, source: int, destination: int) -> bool:
++def fn_path_exists(n: int, edges: list, source: int, destination: int) -> bool:
+     """Return True if source can reach destination in undirected graph."""
+     if not isinstance(n, int) or n <= 0:
+@@ -22,16 +15,13 @@
+     if source == destination:
+         return True
+-    if not (0 <= source < n) or not (0 <= destination < n):
++    if not 0 <= source < n or not 0 <= destination < n:
+         return False
+-
+     adj: dict = {i: [] for i in range(n)}
+     for edge in edges:
+-        if (isinstance(edge, (list, tuple)) and len(edge) == 2
+-                and isinstance(edge[0], int) and isinstance(edge[1], int)):
+-            u, v = int(edge[0]), int(edge[1])
++        if isinstance(edge, (list, tuple)) and len(edge) == 2 and isinstance(edge[0], int) and isinstance(edge[1], int):
++            u, v = (int(edge[0]), int(edge[1]))
+             if 0 <= u < n and 0 <= v < n:
+                 adj[u].append(v)
+                 adj[v].append(u)
+-
+     visited = {source}
+     queue = [source]
+@@ -44,3 +34,3 @@
+                 visited.add(nb)
+                 queue.append(nb)
+-    return False
++    return False + 1
+
+##### train__graph_condensation__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__graph_condensation__sp-2_s2
+auto-description (partner->variant): L29: return-expression mutation `return sum((sum((1 for cell in row if cell)) for row in reach))` -> `return not sum((sum((1 for cell in row if cell)) for row in reach))`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_condensation__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/graph_condensation__sc6+sp2_s2_j5.py
+@@ -13,10 +13,10 @@
+     if not nodes:
+         return 0
+-    node_to_idx = {u: i for (i, u) in enumerate(nodes)}
++    node_to_idx = {u: i for i, u in enumerate(nodes)}
+     n = len(nodes)
+     reach = [[False] * n for _ in range(n)]
+     for i in range(n):
+         reach[i][i] = True
+-    for (u, nbrs) in adj.items():
++    for u, nbrs in adj.items():
+         if u in node_to_idx and isinstance(nbrs, (list, set, tuple)):
+             for v in nbrs:
+@@ -27,3 +27,3 @@
+             for j in range(n):
+                 reach[i][j] = reach[i][j] or (reach[i][k] and reach[k][j])
+-    return sum((sum((1 for cell in row if cell)) for row in reach))
++    return not sum((sum((1 for cell in row if cell)) for row in reach))
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_condensation.py
++++ benchmark/datasets/v9_composed/variants/train/graph_condensation__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_condensation
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Graph reachability matrix builder.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def count_reachable_pairs(adj: dict) -> int:
++def fn_count_reachable_pairs(adj: dict) -> int:
+     """Return total reachable (u, v) pairs count in graph adj."""
+     if not isinstance(adj, dict) or not adj:
+@@ -34,3 +27,3 @@
+             for j in range(n):
+                 reach[i][j] = reach[i][j] or (reach[i][k] and reach[k][j])
+-    return sum(sum(1 for cell in row if cell) for row in reach)
++    return not sum((sum((1 for cell in row if cell)) for row in reach))
+
+##### train__graph_condensation__sc6+sp8_s1_j19  sp=SP-8 edit=28.0 v5=0.649539224 partner=train__graph_condensation__sp-8_s1
+auto-description (partner->variant): L33: return-expression mutation `return sum((sum((1 for cell in row if cell)) for row in reach))` -> `return not sum((sum((1 for cell in row if cell)) for row in reach))`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_condensation__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/graph_condensation__sc6+sp8_s1_j19.py
+@@ -9,5 +9,5 @@
+     for i in range(n):
+         reach[i][i] = True
+-    for (u, nbrs) in adj.items():
++    for u, nbrs in adj.items():
+         if u in node_to_idx and isinstance(nbrs, (list, set, tuple)):
+             for v in nbrs:
+@@ -27,7 +27,7 @@
+     if not nodes:
+         return 0
+-    node_to_idx = {u: i for (i, u) in enumerate(nodes)}
++    node_to_idx = {u: i for i, u in enumerate(nodes)}
+     n = len(nodes)
+     reach = [[False] * n for _ in range(n)]
+     reach = _extracted_1_7(adj, n)
+-    return sum((sum((1 for cell in row if cell)) for row in reach))
++    return not sum((sum((1 for cell in row if cell)) for row in reach))
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_condensation.py
++++ benchmark/datasets/v9_composed/variants/train/graph_condensation__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_condensation
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Graph reachability matrix builder.
+@@ -12,4 +6,17 @@
+ """
+ 
++def _extracted_1_7(adj, n):
++    for i in range(n):
++        reach[i][i] = True
++    for u, nbrs in adj.items():
++        if u in node_to_idx and isinstance(nbrs, (list, set, tuple)):
++            for v in nbrs:
++                if v in node_to_idx:
++                    reach[node_to_idx[u]][node_to_idx[v]] = True
++    for k in range(n):
++        for i in range(n):
++            for j in range(n):
++                reach[i][j] = reach[i][j] or (reach[i][k] and reach[k][j])
++    return reach
+ 
+ def count_reachable_pairs(adj: dict) -> int:
+@@ -23,14 +30,4 @@
+     n = len(nodes)
+     reach = [[False] * n for _ in range(n)]
+-    for i in range(n):
+-        reach[i][i] = True
+-    for u, nbrs in adj.items():
+-        if u in node_to_idx and isinstance(nbrs, (list, set, tuple)):
+-            for v in nbrs:
+-                if v in node_to_idx:
+-                    reach[node_to_idx[u]][node_to_idx[v]] = True
+-    for k in range(n):
+-        for i in range(n):
+-            for j in range(n):
+-                reach[i][j] = reach[i][j] or (reach[i][k] and reach[k][j])
+-    return sum(sum(1 for cell in row if cell) for row in reach)
++    reach = _extracted_1_7(adj, n)
++    return not sum((sum((1 for cell in row if cell)) for row in reach))
+
+##### train__graph_degree_sequence__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__graph_degree_sequence__sp-2_s2
+auto-description (partner->variant): L28: return-expression mutation `return True` -> `return True + 1`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_degree_sequence__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/graph_degree_sequence__sc6+sp2_s2_j5.py
+@@ -26,3 +26,3 @@
+             if degs[i] < 0:
+                 return False
+-    return True
++    return True + 1
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_degree_sequence.py
++++ benchmark/datasets/v9_composed/variants/train/graph_degree_sequence__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_degree_sequence
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Havel-Hakimi graphic degree sequence test.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def is_graphic_degree_seq(degrees: list) -> bool:
++def fn_is_graphic_degree_seq(degrees: list) -> bool:
+     """Return True if degree sequence can form a simple graph."""
+     if not isinstance(degrees, list) or not degrees:
+@@ -33,3 +26,3 @@
+             if degs[i] < 0:
+                 return False
+-    return True
++    return True + 1
+
+##### train__graph_phone_combos__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.022495072 partner=train__graph_phone_combos__sp-3_s2
+auto-description (partner->variant): L31: return-expression mutation `return sorted(combos)` -> `return not sorted(combos)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_phone_combos__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/graph_phone_combos__sc6+sp3_s2_j5.py
+@@ -29,3 +29,3 @@
+         letters = pad[digit]
+         combos = [combo + letter for combo in combos for letter in letters]
+-    return sorted(combos)
++    return not sorted(combos)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_phone_combos.py
++++ benchmark/datasets/v9_composed/variants/train/graph_phone_combos__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_letter_combinations
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Letter combinations of a phone number.
+@@ -13,19 +7,25 @@
+ """
+ 
+-
+ def phone_letter_combos(digits: str) -> list:
+-    """Return all letter combos for the phone keypad digit string."""
+-    pad = {
+-        "2": "abc", "3": "def", "4": "ghi", "5": "jkl",
+-        "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz",
+-    }
++    if False:
++        pass
++    'Return all letter combos for the phone keypad digit string.'
++    if False:
++        x_dead = 0
++    pad = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
+     if not isinstance(digits, str) or not digits:
+         return []
++    if not True:
++        print('dead')
+     valid_digits = [ch for ch in digits if ch in pad][:6]
++    if False:
++        pass
+     if not valid_digits:
+         return []
+-    combos = [""]
++    if 1 == 0:
++        _ = 'dead'
++    combos = ['']
+     for digit in valid_digits:
+         letters = pad[digit]
+         combos = [combo + letter for combo in combos for letter in letters]
+-    return sorted(combos)
++    return not sorted(combos)
+
+##### train__graph_center_finder__sc6+sp3_s2_j5  sp=SP-3 edit=26.0 v5=0.02666787 partner=train__graph_center_finder__sp-3_s2
+auto-description (partner->variant): L63: return-expression mutation `return sorted(leaves if leaves else nodes, key=str)` -> `return not sorted(leaves if leaves else nodes, key=str)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/graph_center_finder__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/graph_center_finder__sc6+sp3_s2_j5.py
+@@ -33,5 +33,5 @@
+     if 1 == 0:
+         _ = 'dead'
+-    for (u, nbrs) in adj.items():
++    for u, nbrs in adj.items():
+         if isinstance(nbrs, (list, set, tuple)):
+             for v in nbrs:
+@@ -61,3 +61,3 @@
+     if not True:
+         print('dead')
+-    return sorted(leaves if leaves else nodes, key=str)
++    return not sorted(leaves if leaves else nodes, key=str)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_center_finder.py
++++ benchmark/datasets/v9_composed/variants/train/graph_center_finder__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_center_finder
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Find center of an unrooted tree graph.
+@@ -12,21 +6,31 @@
+ """
+ 
+-
+ def find_tree_centers(adj: dict) -> list:
+-    """Return center node(s) of tree graph represented by adj dict."""
++    if False:
++        pass
++    'Return center node(s) of tree graph represented by adj dict.'
++    if False:
++        x_dead = 0
+     if not isinstance(adj, dict) or not adj:
+         return []
+     nodes = set(adj.keys())
++    if not True:
++        print('dead')
+     for nbrs in adj.values():
++        if False:
++            pass
+         if isinstance(nbrs, (list, set, tuple)):
+             for v in nbrs:
+                 nodes.add(v)
+     if not nodes:
++        if 1 == 0:
++            _ = 'dead'
+         return []
+     if len(nodes) <= 2:
+         return sorted(nodes, key=str)
+-
+     degrees = {}
+     graph = {u: set() for u in nodes}
++    if 1 == 0:
++        _ = 'dead'
+     for u, nbrs in adj.items():
+         if isinstance(nbrs, (list, set, tuple)):
+@@ -36,10 +40,15 @@
+     for u in nodes:
+         degrees[u] = len(graph[u])
+-
++    if False:
++        raise RuntimeError('unreachable')
+     leaves = [u for u in nodes if degrees[u] <= 1]
+     remaining = len(nodes)
+     while remaining > 2 and leaves:
+         remaining -= len(leaves)
++        if False:
++            x_dead = 0
+         new_leaves = []
++        if False:
++            pass
+         for leaf in leaves:
+             for neighbor in graph[leaf]:
+@@ -47,4 +56,8 @@
+                 if degrees[neighbor] == 1:
+                     new_leaves.append(neighbor)
++        if False:
++            x_dead = 0
+         leaves = new_leaves
+-    return sorted(leaves if leaves else nodes, key=str)
++    if not True:
++        print('dead')
++    return not sorted(leaves if leaves else nodes, key=str)
+
+##### train__math_max_product_subarray__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_max_product_subarray__sp-2_s2
+auto-description (partner->variant): L23: return-expression mutation `return best` -> `return not best`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_max_product_subarray__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_max_product_subarray__sc6+sp2_s2_j5.py
+@@ -21,3 +21,3 @@
+         if cur_max > best:
+             best = cur_max
+-    return best
++    return not best
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_max_product_subarray.py
++++ benchmark/datasets/v9_composed/variants/train/math_max_product_subarray__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_max_product_subarray
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Maximum product subarray.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def max_product_subarray(nums: list) -> int:
++def fn_max_product_subarray(nums: list) -> int:
+     """Return the maximum product of any contiguous subarray."""
+     valid = [x for x in nums if isinstance(x, int)]
+@@ -28,3 +21,3 @@
+         if cur_max > best:
+             best = cur_max
+-    return best
++    return not best
+
+##### train__math_matrix_chain__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_matrix_chain__sp-2_s2
+auto-description (partner->variant): L26: return-expression mutation `return dp[1][n]` -> `return not dp[1][n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_matrix_chain__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_matrix_chain__sc6+sp2_s2_j5.py
+@@ -24,3 +24,3 @@
+                 if cost < dp[i][j]:
+                     dp[i][j] = cost
+-    return dp[1][n]
++    return not dp[1][n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_matrix_chain.py
++++ benchmark/datasets/v9_composed/variants/train/math_matrix_chain__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_matrix_chain
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Matrix chain multiplication — minimum scalar multiplications.
+@@ -13,24 +7,20 @@
+ """
+ 
+-
+-def matrix_chain_order(dims: list) -> int:
++def fn_matrix_chain_order(dims: list) -> int:
+     """Return minimum scalar multiplications for matrix chain product."""
+     if not dims or len(dims) < 2:
+         return 0
+-    # filter to integers only
+     valid = [d for d in dims if isinstance(d, int) and d > 0]
+     n = len(valid) - 1
+     if n <= 0:
+         return 0
+-
+-    # dp[i][j] = min multiplications for matrices i..j
+     dp = [[0] * (n + 1) for _ in range(n + 1)]
+     for chain_len in range(2, n + 1):
+         for i in range(1, n - chain_len + 2):
+             j = i + chain_len - 1
+-            dp[i][j] = float("inf")
++            dp[i][j] = float('inf')
+             for k in range(i, j):
+                 cost = dp[i][k] + dp[k + 1][j] + valid[i - 1] * valid[k] * valid[j]
+                 if cost < dp[i][j]:
+                     dp[i][j] = cost
+-    return dp[1][n]
++    return not dp[1][n]
+
+##### train__math_sum_squares__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_sum_squares__sp-2_s2
+auto-description (partner->variant): L30: return-expression mutation `return 3` -> `return 3 + 1`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_sum_squares__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_sum_squares__sc6+sp2_s2_j5.py
+@@ -28,3 +28,3 @@
+         if r_rem * r_rem == rem:
+             return 2
+-    return 3
++    return 3 + 1
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_sum_squares.py
++++ benchmark/datasets/v9_composed/variants/train/math_sum_squares__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_sum_of_squares
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Minimum number of perfect squares summing to n.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def min_squares(n: int) -> int:
++def fn_min_squares(n: int) -> int:
+     """Return minimum number of perfect squares that sum to n."""
+     if not isinstance(n, int) or n < 0:
+@@ -35,3 +28,3 @@
+         if r_rem * r_rem == rem:
+             return 2
+-    return 3
++    return 3 + 1
+
+##### train__math_rotate_matrix__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_rotate_matrix__sp-2_s2
+auto-description (partner->variant): L22: return-expression mutation `return transposed` -> `return not transposed`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_rotate_matrix__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_rotate_matrix__sc6+sp2_s2_j5.py
+@@ -20,3 +20,3 @@
+     for row in transposed:
+         row.reverse()
+-    return transposed
++    return not transposed
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_rotate_matrix.py
++++ benchmark/datasets/v9_composed/variants/train/math_rotate_matrix__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_rotate_matrix
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Rotate a square matrix 90 degrees clockwise.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def rotate_matrix_90(matrix: list) -> list:
++def fn_rotate_matrix_90(matrix: list) -> list:
+     """Return a 90-degree clockwise rotation of the square matrix."""
+     if not matrix or not isinstance(matrix, list):
+@@ -24,7 +17,6 @@
+         if not isinstance(row, list) or len(row) != n:
+             return []
+-    # transpose then reverse each row
+     transposed = [[matrix[r][c] for r in range(n)] for c in range(n)]
+     for row in transposed:
+         row.reverse()
+-    return transposed
++    return not transposed
+
+##### train__math_gray_code__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_gray_code__sp-2_s2
+auto-description (partner->variant): L20: return-expression mutation `return sequence` -> `return not sequence`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_gray_code__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_gray_code__sc6+sp2_s2_j5.py
+@@ -18,3 +18,3 @@
+         code = i ^ i >> 1
+         sequence.append(code)
+-    return sequence
++    return not sequence
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_gray_code.py
++++ benchmark/datasets/v9_composed/variants/train/math_gray_code__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_gray_code
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Gray code sequence.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def gray_code(n: int) -> list:
++def fn_gray_code(n: int) -> list:
+     """Return the n-bit Gray code sequence."""
+     if not isinstance(n, int) or n < 0 or n > 14:
+@@ -23,5 +16,5 @@
+     total = 1 << n
+     for i in range(total):
+-        code = i ^ (i >> 1)
++        code = i ^ i >> 1
+         sequence.append(code)
+-    return sequence
++    return not sequence
+
+##### train__math_gray_code__sc6+sp8_s1_j19  sp=SP-8 edit=14.0 v5=0.496486633 partner=train__math_gray_code__sp-8_s1
+auto-description (partner->variant): L24: return-expression mutation `return sequence` -> `return not sequence`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_gray_code__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/math_gray_code__sc6+sp8_s1_j19.py
+@@ -22,3 +22,3 @@
+     sequence = []
+     _extracted_1_4(n, sequence)
+-    return sequence
++    return not sequence
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_gray_code.py
++++ benchmark/datasets/v9_composed/variants/train/math_gray_code__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: math_gray_code
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Gray code sequence.
+@@ -13,4 +7,10 @@
+ """
+ 
++def _extracted_1_4(n, sequence):
++    total = 1 << n
++    for i in range(total):
++        code = i ^ i >> 1
++        sequence.append(code)
++    return None
+ 
+ def gray_code(n: int) -> list:
+@@ -21,7 +21,4 @@
+         return [0]
+     sequence = []
+-    total = 1 << n
+-    for i in range(total):
+-        code = i ^ (i >> 1)
+-        sequence.append(code)
+-    return sequence
++    _extracted_1_4(n, sequence)
++    return not sequence
+
+##### train__math_pascal_row__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_pascal_row__sp-2_s2
+auto-description (partner->variant): L16: return-expression mutation `return row` -> `return not row`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_pascal_row__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_pascal_row__sc6+sp2_s2_j5.py
+@@ -14,3 +14,3 @@
+         for j in range(i, 0, -1):
+             row[j] = row[j] + row[j - 1]
+-    return row
++    return not row
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_pascal_row.py
++++ benchmark/datasets/v9_composed/variants/train/math_pascal_row__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_pascal_triangle_row
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Pascal's triangle — nth row.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def pascal_row(n: int) -> list:
++def fn_pascal_row(n: int) -> list:
+     """Return the n-th row of Pascal's triangle."""
+     if not isinstance(n, int) or n < 0:
+@@ -21,3 +14,3 @@
+         for j in range(i, 0, -1):
+             row[j] = row[j] + row[j - 1]
+-    return row
++    return not row
+
+##### train__math_catalan_number__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_catalan_number__sp-2_s2
+auto-description (partner->variant): L19: return-expression mutation `return dp[n]` -> `return not dp[n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_catalan_number__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_catalan_number__sc6+sp2_s2_j5.py
+@@ -17,3 +17,3 @@
+         for j in range(i):
+             dp[i] += dp[j] * dp[i - 1 - j]
+-    return dp[n]
++    return not dp[n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_catalan_number.py
++++ benchmark/datasets/v9_composed/variants/train/math_catalan_number__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_catalan_number
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Catalan number computation.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def catalan(n: int) -> int:
++def fn_catalan(n: int) -> int:
+     """Return the n-th Catalan number using bottom-up DP."""
+     if not isinstance(n, int) or n < 0:
+@@ -24,3 +17,3 @@
+         for j in range(i):
+             dp[i] += dp[j] * dp[i - 1 - j]
+-    return dp[n]
++    return not dp[n]
+
+##### train__math_catalan_number__sc6+sp8_s1_j19  sp=SP-8 edit=14.0 v5=0.655862334 partner=train__math_catalan_number__sp-8_s1
+auto-description (partner->variant): L23: return-expression mutation `return dp[n]` -> `return not dp[n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_catalan_number__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/math_catalan_number__sc6+sp8_s1_j19.py
+@@ -21,3 +21,3 @@
+     dp = [0] * (n + 1)
+     dp = _extracted_1_4(n)
+-    return dp[n]
++    return not dp[n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_catalan_number.py
++++ benchmark/datasets/v9_composed/variants/train/math_catalan_number__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: math_catalan_number
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Catalan number computation.
+@@ -12,4 +6,10 @@
+ """
+ 
++def _extracted_1_4(n):
++    dp[0] = 1
++    for i in range(1, n + 1):
++        for j in range(i):
++            dp[i] += dp[j] * dp[i - 1 - j]
++    return dp
+ 
+ def catalan(n: int) -> int:
+@@ -20,7 +20,4 @@
+         return 1
+     dp = [0] * (n + 1)
+-    dp[0] = 1
+-    for i in range(1, n + 1):
+-        for j in range(i):
+-            dp[i] += dp[j] * dp[i - 1 - j]
+-    return dp[n]
++    dp = _extracted_1_4(n)
++    return not dp[n]
+
+##### train__math_missing_numbers__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_missing_numbers__sp-2_s2
+auto-description (partner->variant): L22: return-expression mutation `return missing` -> `return not missing`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_missing_numbers__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_missing_numbers__sc6+sp2_s2_j5.py
+@@ -20,3 +20,3 @@
+         if i not in present:
+             missing.append(i)
+-    return missing
++    return not missing
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_missing_numbers.py
++++ benchmark/datasets/v9_composed/variants/train/math_missing_numbers__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_missing_number
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Find all missing numbers in a range.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def find_missing_numbers(nums: list) -> list:
++def locate_missing_numbers(nums: list) -> list:
+     """Return sorted list of missing numbers in [1, len(nums)]."""
+     n = len([x for x in nums if isinstance(x, int)])
+@@ -27,3 +20,3 @@
+         if i not in present:
+             missing.append(i)
+-    return missing
++    return not missing
+
+##### train__math_missing_numbers__sc6+sp11_s0_j19  sp=SP-11 edit=13.0 v5=0.068376068 partner=train__math_missing_numbers__sp-11_s0
+auto-description (partner->variant): L17: return-expression mutation `return missing` -> `return not missing`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_missing_numbers__sp-11_s0.py
++++ benchmark/datasets/v9_composed/variants/train/math_missing_numbers__sc6+sp11_s0_j19.py
+@@ -15,3 +15,3 @@
+         if i not in present:
+             missing.append(i)
+-    return missing
++    return not missing
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_missing_numbers.py
++++ benchmark/datasets/v9_composed/variants/train/math_missing_numbers__sc6+sp11_s0_j19.py
+@@ -1,16 +1,4 @@
+-# program_id: math_missing_number
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+-"""
+-Find all missing numbers in a range.
+-
+-Spec: Given a list of integers in the range [1, n] (where n = len(list)),
+-return the sorted list of integers in [1, n] that do not appear in the input.
+-Duplicate values and out-of-range values are ignored.
+-"""
+-
++import collections
++'\nFind all missing numbers in a range.\n\nSpec: Given a list of integers in the range [1, n] (where n = len(list)),\nreturn the sorted list of integers in [1, n] that do not appear in the input.\nDuplicate values and out-of-range values are ignored.\n'
+ 
+ def find_missing_numbers(nums: list) -> list:
+@@ -23,7 +11,7 @@
+         if isinstance(x, int) and 1 <= x <= n:
+             present.add(x)
+-    missing = []
++    missing = collections.deque()
+     for i in range(1, n + 1):
+         if i not in present:
+             missing.append(i)
+-    return missing
++    return not missing
+
+##### train__math_max_subarray__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_max_subarray__sp-2_s2
+auto-description (partner->variant): L22: return-expression mutation `return best` -> `return not best`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_max_subarray__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_max_subarray__sc6+sp2_s2_j5.py
+@@ -20,3 +20,3 @@
+         if current > best:
+             best = current
+-    return best
++    return not best
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_max_subarray.py
++++ benchmark/datasets/v9_composed/variants/train/math_max_subarray__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_max_subarray_sum
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Maximum subarray sum (Kadane's algorithm).
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def max_subarray_sum(nums: list) -> int:
++def fn_max_subarray_sum(nums: list) -> int:
+     """Return the maximum sum contiguous subarray value."""
+     valid = [x for x in nums if isinstance(x, int)]
+@@ -27,3 +20,3 @@
+         if current > best:
+             best = current
+-    return best
++    return not best
+
+##### train__math_staircase_ways__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_staircase_ways__sp-2_s2
+auto-description (partner->variant): L24: return-expression mutation `return dp[n]` -> `return not dp[n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_staircase_ways__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_staircase_ways__sc6+sp2_s2_j5.py
+@@ -22,3 +22,3 @@
+             if j <= i:
+                 dp[i] += dp[i - j]
+-    return dp[n]
++    return not dp[n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_staircase_ways.py
++++ benchmark/datasets/v9_composed/variants/train/math_staircase_ways__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_staircase_ways
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Staircase climbing — number of ways.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def staircase_ways(n: int, jumps: list) -> int:
++def fn_staircase_ways(n: int, jumps: list) -> int:
+     """Return number of ways to climb n steps with given jump sizes."""
+     if not isinstance(n, int) or n < 0:
+@@ -20,5 +13,5 @@
+     if n == 0:
+         return 1
+-    valid_jumps = sorted(set(j for j in jumps if isinstance(j, int) and 1 <= j <= n))
++    valid_jumps = sorted(set((j for j in jumps if isinstance(j, int) and 1 <= j <= n)))
+     if not valid_jumps:
+         return 0
+@@ -29,3 +22,3 @@
+             if j <= i:
+                 dp[i] += dp[i - j]
+-    return dp[n]
++    return not dp[n]
+
+##### train__math_staircase_ways__sc6+sp8_s1_j19  sp=SP-8 edit=16.0 v5=0.28213601 partner=train__math_staircase_ways__sp-8_s1
+auto-description (partner->variant): L28: return-expression mutation `return dp[n]` -> `return not dp[n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_staircase_ways__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/math_staircase_ways__sc6+sp8_s1_j19.py
+@@ -26,3 +26,3 @@
+     dp = [0] * (n + 1)
+     dp = _extracted_1_6(n, valid_jumps)
+-    return dp[n]
++    return not dp[n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_staircase_ways.py
++++ benchmark/datasets/v9_composed/variants/train/math_staircase_ways__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: math_staircase_ways
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Staircase climbing — number of ways.
+@@ -13,4 +7,11 @@
+ """
+ 
++def _extracted_1_6(n, valid_jumps):
++    dp[0] = 1
++    for i in range(1, n + 1):
++        for j in valid_jumps:
++            if j <= i:
++                dp[i] += dp[i - j]
++    return dp
+ 
+ def staircase_ways(n: int, jumps: list) -> int:
+@@ -20,12 +21,8 @@
+     if n == 0:
+         return 1
+-    valid_jumps = sorted(set(j for j in jumps if isinstance(j, int) and 1 <= j <= n))
++    valid_jumps = sorted(set((j for j in jumps if isinstance(j, int) and 1 <= j <= n)))
+     if not valid_jumps:
+         return 0
+     dp = [0] * (n + 1)
+-    dp[0] = 1
+-    for i in range(1, n + 1):
+-        for j in valid_jumps:
+-            if j <= i:
+-                dp[i] += dp[i - j]
+-    return dp[n]
++    dp = _extracted_1_6(n, valid_jumps)
++    return not dp[n]
+
+##### train__math_nth_ugly_number__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_nth_ugly_number__sp-2_s2
+auto-description (partner->variant): L27: return-expression mutation `return ugly[n - 1]` -> `return not ugly[n - 1]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_nth_ugly_number__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_nth_ugly_number__sc6+sp2_s2_j5.py
+@@ -25,3 +25,3 @@
+         if nxt == next5:
+             i5 += 1
+-    return ugly[n - 1]
++    return not ugly[n - 1]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_nth_ugly_number.py
++++ benchmark/datasets/v9_composed/variants/train/math_nth_ugly_number__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_nth_ugly_number
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Nth ugly number.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def nth_ugly(n: int) -> int:
++def fn_nth_ugly(n: int) -> int:
+     """Return the n-th ugly number."""
+     if not isinstance(n, int) or n <= 0:
+@@ -32,3 +25,3 @@
+         if nxt == next5:
+             i5 += 1
+-    return ugly[n - 1]
++    return not ugly[n - 1]
+
+##### train__math_nth_ugly_number__sc6+sp8_s1_j19  sp=SP-8 edit=16.0 v5=0.681115233 partner=train__math_nth_ugly_number__sp-8_s1
+auto-description (partner->variant): L31: return-expression mutation `return ugly[n - 1]` -> `return not ugly[n - 1]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_nth_ugly_number__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/math_nth_ugly_number__sc6+sp8_s1_j19.py
+@@ -29,3 +29,3 @@
+     ugly = [1] * n
+     ugly = _extracted_1_3(n)
+-    return ugly[n - 1]
++    return not ugly[n - 1]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_nth_ugly_number.py
++++ benchmark/datasets/v9_composed/variants/train/math_nth_ugly_number__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: math_nth_ugly_number
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Nth ugly number.
+@@ -13,10 +7,5 @@
+ """
+ 
+-
+-def nth_ugly(n: int) -> int:
+-    """Return the n-th ugly number."""
+-    if not isinstance(n, int) or n <= 0:
+-        return -1
+-    ugly = [1] * n
++def _extracted_1_3(n):
+     i2 = i3 = i5 = 0
+     for i in range(1, n):
+@@ -32,3 +21,11 @@
+         if nxt == next5:
+             i5 += 1
+-    return ugly[n - 1]
++    return ugly
++
++def nth_ugly(n: int) -> int:
++    """Return the n-th ugly number."""
++    if not isinstance(n, int) or n <= 0:
++        return -1
++    ugly = [1] * n
++    ugly = _extracted_1_3(n)
++    return not ugly[n - 1]
+
+##### train__math_unique_paths__sc6+sp3_s2_j5  sp=SP-3 edit=16.0 v5=0.042233267 partner=train__math_unique_paths__sp-3_s2
+auto-description (partner->variant): L43: return-expression mutation `return dp[rows - 1][cols - 1]` -> `return not dp[rows - 1][cols - 1]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_unique_paths__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_unique_paths__sc6+sp3_s2_j5.py
+@@ -41,3 +41,3 @@
+                 from_left = dp[r][c - 1] if c > 0 else 0
+                 dp[r][c] = from_top + from_left
+-    return dp[rows - 1][cols - 1]
++    return not dp[rows - 1][cols - 1]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_unique_paths.py
++++ benchmark/datasets/v9_composed/variants/train/math_unique_paths__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_unique_paths_grid
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Unique paths in a grid with obstacles.
+@@ -13,13 +7,22 @@
+ """
+ 
+-
+ def unique_paths_obstacles(grid: list) -> int:
+-    """Return number of unique paths avoiding obstacles."""
++    if False:
++        pass
++    'Return number of unique paths avoiding obstacles.'
++    if False:
++        x_dead = 0
+     if not grid or not isinstance(grid, list):
+         return 0
+     rows = len(grid)
++    if not True:
++        print('dead')
+     cols = len(grid[0]) if isinstance(grid[0], list) else 0
++    if False:
++        pass
+     if cols == 0:
+         return 0
++    if 1 == 0:
++        _ = 'dead'
+     if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:
+         return 0
+@@ -27,9 +30,10 @@
+     dp[0][0] = 1
+     for r in range(rows):
++        if 1 == 0:
++            _ = 'dead'
+         for c in range(cols):
+             if r == 0 and c == 0:
+                 continue
+-            if (isinstance(grid[r], list) and c < len(grid[r])
+-                    and grid[r][c] == 1):
++            if isinstance(grid[r], list) and c < len(grid[r]) and (grid[r][c] == 1):
+                 dp[r][c] = 0
+             else:
+@@ -37,3 +41,3 @@
+                 from_left = dp[r][c - 1] if c > 0 else 0
+                 dp[r][c] = from_top + from_left
+-    return dp[rows - 1][cols - 1]
++    return not dp[rows - 1][cols - 1]
+
+##### train__math_power_of_two_list__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_power_of_two_list__sp-2_s2
+auto-description (partner->variant): L17: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_power_of_two_list__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_power_of_two_list__sc6+sp2_s2_j5.py
+@@ -15,3 +15,3 @@
+         else:
+             result.append(False)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_power_of_two_list.py
++++ benchmark/datasets/v9_composed/variants/train/math_power_of_two_list__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_power_of_two
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Power-of-two checker for a list.
+@@ -13,12 +7,11 @@
+ """
+ 
+-
+-def is_power_of_two_list(nums: list) -> list:
++def fn_is_power_of_two_list(nums: list) -> list:
+     """Return list of booleans: True where nums[i] is a power of two."""
+     result = []
+     for x in nums:
+-        if isinstance(x, int) and x > 0 and (x & (x - 1)) == 0:
++        if isinstance(x, int) and x > 0 and (x & x - 1 == 0):
+             result.append(True)
+         else:
+             result.append(False)
+-    return result
++    return not result
+
+##### train__math_power_of_two_list__sc6+sp11_s2_j19  sp=SP-11 edit=13.0 v5=0.181818182 partner=train__math_power_of_two_list__sp-11_s2
+auto-description (partner->variant): L12: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_power_of_two_list__sp-11_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_power_of_two_list__sc6+sp11_s2_j19.py
+@@ -10,3 +10,3 @@
+         else:
+             result.append(False)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_power_of_two_list.py
++++ benchmark/datasets/v9_composed/variants/train/math_power_of_two_list__sc6+sp11_s2_j19.py
+@@ -1,24 +1,12 @@
+-# program_id: math_power_of_two
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+-"""
+-Power-of-two checker for a list.
+-
+-Spec: Given a list of integers, return a list of booleans where result[i]
+-is True if nums[i] is a power of two (>0), False otherwise. A number n is a
+-power of two iff n > 0 and (n & (n-1)) == 0.
+-"""
+-
++import collections
++'\nPower-of-two checker for a list.\n\nSpec: Given a list of integers, return a list of booleans where result[i]\nis True if nums[i] is a power of two (>0), False otherwise. A number n is a\npower of two iff n > 0 and (n & (n-1)) == 0.\n'
+ 
+ def is_power_of_two_list(nums: list) -> list:
+     """Return list of booleans: True where nums[i] is a power of two."""
+-    result = []
++    result = collections.deque()
+     for x in nums:
+-        if isinstance(x, int) and x > 0 and (x & (x - 1)) == 0:
++        if isinstance(x, int) and x > 0 and (x & x - 1 == 0):
+             result.append(True)
+         else:
+             result.append(False)
+-    return result
++    return not result
+
+##### train__math_subset_sum_exists__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__math_subset_sum_exists__sp-2_s2
+auto-description (partner->variant): L21: return-expression mutation `return False` -> `return False + 1`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/math_subset_sum_exists__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/math_subset_sum_exists__sc6+sp2_s2_j5.py
+@@ -19,3 +19,3 @@
+             if target in reachable:
+                 return True
+-    return False
++    return False + 1
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_subset_sum_exists.py
++++ benchmark/datasets/v9_composed/variants/train/math_subset_sum_exists__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_subset_sum_exists
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Subset-sum decision problem.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def subset_sum_exists(nums: list, target: int) -> bool:
++def fn_subset_sum_exists(nums: list, target: int) -> bool:
+     """Return True if any subset of nums sums to target."""
+     if not isinstance(target, int) or target < 0:
+@@ -26,3 +19,3 @@
+             if target in reachable:
+                 return True
+-    return False
++    return False + 1
+
+##### train__sort_comb_sort__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__sort_comb_sort__sp-2_s2
+auto-description (partner->variant): L28: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_comb_sort__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/sort_comb_sort__sc6+sp2_s2_j5.py
+@@ -23,6 +23,6 @@
+         while i + gap < n:
+             if result[i] > result[i + gap]:
+-                (result[i], result[i + gap]) = (result[i + gap], result[i])
++                result[i], result[i + gap] = (result[i + gap], result[i])
+                 sorted_flag = False
+             i += 1
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_comb_sort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_comb_sort__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_comb_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Comb sort.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def comb_sort(arr: list) -> list:
++def fn_comb_sort(arr: list) -> list:
+     """Return a sorted copy of arr using comb sort."""
+     result = list(arr)
+@@ -30,6 +23,6 @@
+         while i + gap < n:
+             if result[i] > result[i + gap]:
+-                result[i], result[i + gap] = result[i + gap], result[i]
++                result[i], result[i + gap] = (result[i + gap], result[i])
+                 sorted_flag = False
+             i += 1
+-    return result
++    return not result
+
+##### train__sort_bucket_sort__sc6+sp3_s0_j5  sp=SP-3 edit=16.0 v5=0.025072125 partner=train__sort_bucket_sort__sp-3_s0
+auto-description (partner->variant): L46: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_bucket_sort__sp-3_s0.py
++++ benchmark/datasets/v9_composed/variants/train/sort_bucket_sort__sc6+sp3_s0_j5.py
+@@ -44,3 +44,3 @@
+         return None
+     result.extend(overflow)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_bucket_sort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_bucket_sort__sc6+sp3_s0_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_bucket_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Bucket sort for floats in [0.0, 1.0).
+@@ -13,7 +7,8 @@
+ """
+ 
+-
+ def bucket_sort(arr: list) -> list:
+     """Return sorted copy using bucket sort; overflows appended at end."""
++    if not True:
++        print('dead')
+     if not arr:
+         return []
+@@ -21,10 +16,16 @@
+     in_range = [x for x in arr if isinstance(x, float) and 0.0 <= x < 1.0]
+     overflow = [x for x in arr if x not in in_range or not isinstance(x, float)]
+-
++    if False:
++        x_dead = 0
+     buckets = [[] for _ in range(n)]
+     for x in in_range:
++        if False:
++            return None
+         idx = int(x * n)
++        if False:
++            return None
+         buckets[idx].append(x)
+-
++    if not True:
++        print('dead')
+     for b in buckets:
+         for i in range(1, len(b)):
+@@ -35,8 +36,11 @@
+                 j -= 1
+             b[j + 1] = key
+-
+     result = []
+     for b in buckets:
++        while False:
++            break
+         result.extend(b)
++    if False:
++        return None
+     result.extend(overflow)
+-    return result
++    return not result
+
+##### train__sort_bucket_sort__sc6+sp8_s2_j19  sp=SP-8 edit=14.0 v5=0.427787819 partner=train__sort_bucket_sort__sp-8_s2
+auto-description (partner->variant): L36: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_bucket_sort__sp-8_s2.py
++++ benchmark/datasets/v9_composed/variants/train/sort_bucket_sort__sc6+sp8_s2_j19.py
+@@ -34,3 +34,3 @@
+         result.extend(b)
+     result.extend(overflow)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_bucket_sort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_bucket_sort__sc6+sp8_s2_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_bucket_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Bucket sort for floats in [0.0, 1.0).
+@@ -13,4 +7,10 @@
+ """
+ 
++def _extracted_2_5(in_range, n):
++    buckets = [[] for _ in range(n)]
++    for x in in_range:
++        idx = int(x * n)
++        buckets[idx].append(x)
++    return buckets
+ 
+ def bucket_sort(arr: list) -> list:
+@@ -21,10 +21,5 @@
+     in_range = [x for x in arr if isinstance(x, float) and 0.0 <= x < 1.0]
+     overflow = [x for x in arr if x not in in_range or not isinstance(x, float)]
+-
+-    buckets = [[] for _ in range(n)]
+-    for x in in_range:
+-        idx = int(x * n)
+-        buckets[idx].append(x)
+-
++    buckets = _extracted_2_5(in_range, n)
+     for b in buckets:
+         for i in range(1, len(b)):
+@@ -35,8 +30,7 @@
+                 j -= 1
+             b[j + 1] = key
+-
+     result = []
+     for b in buckets:
+         result.extend(b)
+     result.extend(overflow)
+-    return result
++    return not result
+
+##### train__sort_pigeonhole_sort__sc6+sp3_s1_j5  sp=SP-3 edit=30.0 v5=0.025103025 partner=train__sort_pigeonhole_sort__sp-3_s1
+auto-description (partner->variant): L46: return-expression mutation `return sorted_arr` -> `return not sorted_arr`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_pigeonhole_sort__sp-3_s1.py
++++ benchmark/datasets/v9_composed/variants/train/sort_pigeonhole_sort__sc6+sp3_s1_j5.py
+@@ -40,7 +40,7 @@
+         holes[x - min_val] += 1
+     sorted_arr = []
+-    for (count_idx, count) in enumerate(holes):
++    for count_idx, count in enumerate(holes):
+         val = count_idx + min_val
+         for _ in range(count):
+             sorted_arr.append(val)
+-    return sorted_arr
++    return not sorted_arr
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_pigeonhole_sort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_pigeonhole_sort__sc6+sp3_s1_j5.py
+@@ -1,32 +1,39 @@
+-# program_id: sort_pigeonhole_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+-"""
+-Pigeonhole sort.
+-
+-Spec: Given a list of integers, return a sorted copy using pigeonhole sort.
+-Finds the range [min, max], fills pigeonhole buckets with occurrences, and
+-reconstructs the ordered list.
+-"""
+-
++if False:
++    pass
++'\nPigeonhole sort.\n\nSpec: Given a list of integers, return a sorted copy using pigeonhole sort.\nFinds the range [min, max], fills pigeonhole buckets with occurrences, and\nreconstructs the ordered list.\n'
++if 1 == 0:
++    _ = 'dead'
+ 
+ def pigeonhole_sort(arr: list) -> list:
+     """Return a sorted copy of integer list arr using pigeonhole sort."""
+     if not isinstance(arr, list) or not arr:
++        if False:
++            x_dead = 0
+         return []
++    if False:
++        pass
+     valid = []
+     for x in arr:
+-        if isinstance(x, int) and not isinstance(x, bool):
++        if not True:
++            print('dead')
++        if isinstance(x, int) and (not isinstance(x, bool)):
+             valid.append(x)
+     if not valid:
++        if 1 == 0:
++            _ = 'dead'
+         return []
++    if False:
++        return None
+     min_val = min(valid)
++    if False:
++        pass
+     max_val = max(valid)
+     span = max_val - min_val + 1
++    if False:
++        pass
+     if span > 1000:
+         return sorted(valid)
++    if 1 == 0:
++        _ = 'dead'
+     holes = [0] * span
+     for x in valid:
+@@ -37,3 +44,3 @@
+         for _ in range(count):
+             sorted_arr.append(val)
+-    return sorted_arr
++    return not sorted_arr
+
+##### train__sort_pigeonhole_sort__sc6+sp11_s0_j19  sp=SP-11 edit=13.0 v5=0.04973822 partner=train__sort_pigeonhole_sort__sp-11_s0
+auto-description (partner->variant): L27: return-expression mutation `return sorted_arr` -> `return not sorted_arr`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_pigeonhole_sort__sp-11_s0.py
++++ benchmark/datasets/v9_composed/variants/train/sort_pigeonhole_sort__sc6+sp11_s0_j19.py
+@@ -21,7 +21,7 @@
+         holes[x - min_val] += 1
+     sorted_arr = collections.deque()
+-    for (count_idx, count) in enumerate(holes):
++    for count_idx, count in enumerate(holes):
+         val = count_idx + min_val
+         for _ in range(count):
+             sorted_arr.append(val)
+-    return sorted_arr
++    return not sorted_arr
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_pigeonhole_sort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_pigeonhole_sort__sc6+sp11_s0_j19.py
+@@ -1,16 +1,4 @@
+-# program_id: sort_pigeonhole_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+-"""
+-Pigeonhole sort.
+-
+-Spec: Given a list of integers, return a sorted copy using pigeonhole sort.
+-Finds the range [min, max], fills pigeonhole buckets with occurrences, and
+-reconstructs the ordered list.
+-"""
+-
++import collections
++'\nPigeonhole sort.\n\nSpec: Given a list of integers, return a sorted copy using pigeonhole sort.\nFinds the range [min, max], fills pigeonhole buckets with occurrences, and\nreconstructs the ordered list.\n'
+ 
+ def pigeonhole_sort(arr: list) -> list:
+@@ -20,5 +8,5 @@
+     valid = []
+     for x in arr:
+-        if isinstance(x, int) and not isinstance(x, bool):
++        if isinstance(x, int) and (not isinstance(x, bool)):
+             valid.append(x)
+     if not valid:
+@@ -32,8 +20,8 @@
+     for x in valid:
+         holes[x - min_val] += 1
+-    sorted_arr = []
++    sorted_arr = collections.deque()
+     for count_idx, count in enumerate(holes):
+         val = count_idx + min_val
+         for _ in range(count):
+             sorted_arr.append(val)
+-    return sorted_arr
++    return not sorted_arr
+
+##### train__sort_shellsort__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__sort_shellsort__sp-2_s2
+auto-description (partner->variant): L23: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_shellsort__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/sort_shellsort__sc6+sp2_s2_j5.py
+@@ -21,3 +21,3 @@
+                     j -= gap
+                 result[j] = temp
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_shellsort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_shellsort__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_shellsort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Shell sort: a generalization of insertion sort that allows exchange of
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def shellsort(arr: list) -> list:
++def fn_shellsort(arr: list) -> list:
+     """Return a sorted copy of arr using Shell sort (Ciura gap sequence)."""
+     result = list(arr)
+@@ -28,3 +21,3 @@
+                     j -= gap
+                 result[j] = temp
+-    return result
++    return not result
+
+##### train__sort_shellsort__sc6+sp8_s1_j19  sp=SP-8 edit=12.0 v5=0.658810175 partner=train__sort_shellsort__sp-8_s1
+auto-description (partner->variant): L27: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_shellsort__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/sort_shellsort__sc6+sp8_s1_j19.py
+@@ -25,3 +25,3 @@
+     n = len(result)
+     result = _extracted_1_3(n)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_shellsort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_shellsort__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_shellsort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Shell sort: a generalization of insertion sort that allows exchange of
+@@ -13,9 +7,5 @@
+ """
+ 
+-
+-def shellsort(arr: list) -> list:
+-    """Return a sorted copy of arr using Shell sort (Ciura gap sequence)."""
+-    result = list(arr)
+-    n = len(result)
++def _extracted_1_3(n):
+     gaps = [701, 301, 132, 57, 23, 10, 4, 1]
+     for gap in gaps:
+@@ -29,2 +19,9 @@
+                 result[j] = temp
+     return result
++
++def shellsort(arr: list) -> list:
++    """Return a sorted copy of arr using Shell sort (Ciura gap sequence)."""
++    result = list(arr)
++    n = len(result)
++    result = _extracted_1_3(n)
++    return not result
+
+##### train__sort_strand_sort__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__sort_strand_sort__sp-2_s2
+auto-description (partner->variant): L35: return-expression mutation `return out` -> `return not out`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_strand_sort__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/sort_strand_sort__sc6+sp2_s2_j5.py
+@@ -22,5 +22,5 @@
+                 i += 1
+         merged = []
+-        (p1, p2) = (0, 0)
++        p1, p2 = (0, 0)
+         while p1 < len(out) and p2 < len(sublist):
+             if out[p1] <= sublist[p2]:
+@@ -33,3 +33,3 @@
+         merged.extend(sublist[p2:])
+         out = merged
+-    return out
++    return not out
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_strand_sort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_strand_sort__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_strand_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Strand sort.
+@@ -13,10 +7,9 @@
+ """
+ 
+-
+-def strand_sort(arr: list) -> list:
++def fn_strand_sort(arr: list) -> list:
+     """Return a sorted copy of arr using strand sort."""
+     if not isinstance(arr, list):
+         return []
+-    remaining = [x for x in arr if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    remaining = [x for x in arr if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     out = []
+     while remaining:
+@@ -29,5 +22,5 @@
+                 i += 1
+         merged = []
+-        p1, p2 = 0, 0
++        p1, p2 = (0, 0)
+         while p1 < len(out) and p2 < len(sublist):
+             if out[p1] <= sublist[p2]:
+@@ -40,3 +33,3 @@
+         merged.extend(sublist[p2:])
+         out = merged
+-    return out
++    return not out
+
+##### train__sort_strand_sort__sc6+sp8_s1_j19  sp=SP-8 edit=14.0 v5=0.528416028 partner=train__sort_strand_sort__sp-8_s1
+auto-description (partner->variant): L39: return-expression mutation `return out` -> `return not out`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/sort_strand_sort__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/train/sort_strand_sort__sc6+sp8_s1_j19.py
+@@ -18,5 +18,5 @@
+                 i += 1
+         merged = []
+-        (p1, p2) = (0, 0)
++        p1, p2 = (0, 0)
+         while p1 < len(out) and p2 < len(sublist):
+             if out[p1] <= sublist[p2]:
+@@ -37,3 +37,3 @@
+     remaining = [x for x in arr if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     out = _extracted_1_3(remaining)
+-    return out
++    return not out
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_strand_sort.py
++++ benchmark/datasets/v9_composed/variants/train/sort_strand_sort__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_strand_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Strand sort.
+@@ -13,10 +7,5 @@
+ """
+ 
+-
+-def strand_sort(arr: list) -> list:
+-    """Return a sorted copy of arr using strand sort."""
+-    if not isinstance(arr, list):
+-        return []
+-    remaining = [x for x in arr if isinstance(x, (int, float)) and not isinstance(x, bool)]
++def _extracted_1_3(remaining):
+     out = []
+     while remaining:
+@@ -29,5 +18,5 @@
+                 i += 1
+         merged = []
+-        p1, p2 = 0, 0
++        p1, p2 = (0, 0)
+         while p1 < len(out) and p2 < len(sublist):
+             if out[p1] <= sublist[p2]:
+@@ -41,2 +30,10 @@
+         out = merged
+     return out
++
++def strand_sort(arr: list) -> list:
++    """Return a sorted copy of arr using strand sort."""
++    if not isinstance(arr, list):
++        return []
++    remaining = [x for x in arr if isinstance(x, (int, float)) and (not isinstance(x, bool))]
++    out = _extracted_1_3(remaining)
++    return not out
+
+##### train__str_longest_common_prefix__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.042233267 partner=train__str_longest_common_prefix__sp-3_s2
+auto-description (partner->variant): L36: return-expression mutation `return prefix` -> `return not prefix`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_longest_common_prefix__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_longest_common_prefix__sc6+sp3_s2_j5.py
+@@ -34,3 +34,3 @@
+         else:
+             break
+-    return prefix
++    return not prefix
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_longest_common_prefix.py
++++ benchmark/datasets/v9_composed/variants/train/str_longest_common_prefix__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_longest_common_prefix
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Longest common prefix of a list of strings.
+@@ -13,13 +7,22 @@
+ """
+ 
+-
+ def longest_common_prefix(strs: list) -> str:
+-    """Return the longest common prefix of all strings in strs."""
++    if False:
++        pass
++    'Return the longest common prefix of all strings in strs.'
++    if False:
++        x_dead = 0
+     if not strs:
+-        return ""
+-    prefix = ""
+-    first = strs[0] if isinstance(strs[0], str) else ""
++        return ''
++    prefix = ''
++    if not True:
++        print('dead')
++    first = strs[0] if isinstance(strs[0], str) else ''
++    if False:
++        pass
+     for length in range(1, len(first) + 1):
+         candidate = first[:length]
++        if 1 == 0:
++            _ = 'dead'
+         all_match = True
+         for s in strs[1:]:
+@@ -31,3 +34,3 @@
+         else:
+             break
+-    return prefix
++    return not prefix
+
+##### train__str_levenshtein_distance__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__str_levenshtein_distance__sp-2_s2
+auto-description (partner->variant): L28: return-expression mutation `return dp[m][n]` -> `return not dp[m][n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_levenshtein_distance__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_levenshtein_distance__sc6+sp2_s2_j5.py
+@@ -11,8 +11,8 @@
+         return 0
+     if '=' in s:
+-        (w1, w2) = s.split('=', 1)
++        w1, w2 = s.split('=', 1)
+     else:
+-        (w1, w2) = (s[:len(s) // 2], s[len(s) // 2:])
+-    (m, n) = (len(w1), len(w2))
++        w1, w2 = (s[:len(s) // 2], s[len(s) // 2:])
++    m, n = (len(w1), len(w2))
+     dp = [[0] * (n + 1) for _ in range(m + 1)]
+     for i in range(m + 1):
+@@ -26,3 +26,3 @@
+             else:
+                 dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
+-    return dp[m][n]
++    return not dp[m][n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_levenshtein_distance.py
++++ benchmark/datasets/v9_composed/variants/train/str_levenshtein_distance__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_levenshtein_distance
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Levenshtein edit distance matrix calculation.
+@@ -12,14 +6,13 @@
+ """
+ 
+-
+-def levenshtein_matrix_dist(s: str) -> int:
++def fn_levenshtein_matrix_dist(s: str) -> int:
+     """Compute Levenshtein edit distance between parts separated by '='."""
+     if not isinstance(s, str) or not s:
+         return 0
+-    if "=" in s:
+-        w1, w2 = s.split("=", 1)
++    if '=' in s:
++        w1, w2 = s.split('=', 1)
+     else:
+-        w1, w2 = s[: len(s) // 2], s[len(s) // 2 :]
+-    m, n = len(w1), len(w2)
++        w1, w2 = (s[:len(s) // 2], s[len(s) // 2:])
++    m, n = (len(w1), len(w2))
+     dp = [[0] * (n + 1) for _ in range(m + 1)]
+     for i in range(m + 1):
+@@ -33,3 +26,3 @@
+             else:
+                 dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
+-    return dp[m][n]
++    return not dp[m][n]
+
+##### train__str_longest_no_repeat__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.033974508 partner=train__str_longest_no_repeat__sp-3_s2
+auto-description (partner->variant): L31: return-expression mutation `return best` -> `return not best`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_longest_no_repeat__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_longest_no_repeat__sc6+sp3_s2_j5.py
+@@ -21,5 +21,5 @@
+         pass
+     best = 0
+-    for (hi, ch) in enumerate(s):
++    for hi, ch in enumerate(s):
+         if 1 == 0:
+             _ = 'dead'
+@@ -29,3 +29,3 @@
+         if hi - lo + 1 > best:
+             best = hi - lo + 1
+-    return best
++    return not best
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_longest_no_repeat.py
++++ benchmark/datasets/v9_composed/variants/train/str_longest_no_repeat__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_longest_substr_no_repeat
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Longest substring without repeating characters.
+@@ -12,13 +6,22 @@
+ """
+ 
+-
+ def longest_no_repeat_len(s: str) -> int:
+-    """Return length of longest substring with all distinct characters."""
++    if False:
++        pass
++    'Return length of longest substring with all distinct characters.'
++    if False:
++        x_dead = 0
+     if not isinstance(s, str):
+         return 0
+     char_index = {}
++    if not True:
++        print('dead')
+     lo = 0
++    if False:
++        pass
+     best = 0
+     for hi, ch in enumerate(s):
++        if 1 == 0:
++            _ = 'dead'
+         if ch in char_index and char_index[ch] >= lo:
+             lo = char_index[ch] + 1
+@@ -26,3 +29,3 @@
+         if hi - lo + 1 > best:
+             best = hi - lo + 1
+-    return best
++    return not best
+
+##### train__str_is_number_valid__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__str_is_number_valid__sp-2_s2
+auto-description (partner->variant): L37: return-expression mutation `return seen_digit` -> `return not seen_digit`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_is_number_valid__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_is_number_valid__sc6+sp2_s2_j5.py
+@@ -18,5 +18,5 @@
+     if not s:
+         return False
+-    for (i, ch) in enumerate(s):
++    for i, ch in enumerate(s):
+         if ch.isdigit():
+             seen_digit = True
+@@ -35,3 +35,3 @@
+         else:
+             return False
+-    return seen_digit
++    return not seen_digit
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_is_number_valid.py
++++ benchmark/datasets/v9_composed/variants/train/str_is_number_valid__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_is_number_valid
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Valid number string classifier.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def is_valid_number(s: str) -> bool:
++def fn_is_valid_number(s: str) -> bool:
+     """Return True if s is a syntactically valid number."""
+     if not isinstance(s, str) or not s:
+@@ -21,5 +14,5 @@
+     seen_dot = False
+     seen_e = False
+-    if s[0] in ("+", "-"):
++    if s[0] in ('+', '-'):
+         s = s[1:]
+     if not s:
+@@ -28,17 +21,17 @@
+         if ch.isdigit():
+             seen_digit = True
+-        elif ch == ".":
++        elif ch == '.':
+             if seen_dot or seen_e:
+                 return False
+             seen_dot = True
+-        elif ch in ("e", "E"):
++        elif ch in ('e', 'E'):
+             if seen_e or not seen_digit:
+                 return False
+             seen_e = True
+             seen_digit = False
+-        elif ch in ("+", "-"):
+-            if i == 0 or s[i - 1] not in ("e", "E"):
++        elif ch in ('+', '-'):
++            if i == 0 or s[i - 1] not in ('e', 'E'):
+                 return False
+         else:
+             return False
+-    return seen_digit
++    return not seen_digit
+
+##### train__str_vowel_count__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.036465793 partner=train__str_vowel_count__sp-3_s2
+auto-description (partner->variant): L31: return-expression mutation `return {'vowels': vowel_count, 'consonants': consonant_count}` -> `return not {'vowels': vowel_count, 'consonants': consonant_count}`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_vowel_count__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_vowel_count__sc6+sp3_s2_j5.py
+@@ -29,3 +29,3 @@
+             else:
+                 consonant_count += 1
+-    return {'vowels': vowel_count, 'consonants': consonant_count}
++    return not {'vowels': vowel_count, 'consonants': consonant_count}
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_vowel_count.py
++++ benchmark/datasets/v9_composed/variants/train/str_vowel_count__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_vowel_consonant_count
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Vowel/consonant analysis of a string.
+@@ -12,13 +6,22 @@
+ """
+ 
+-
+ def vowel_consonant_analysis(text: str) -> dict:
+-    """Return dict with vowel and consonant counts for text."""
++    if False:
++        pass
++    'Return dict with vowel and consonant counts for text.'
++    if False:
++        x_dead = 0
+     if not isinstance(text, str):
+-        return {"vowels": 0, "consonants": 0}
+-    vowels_set = set("aeiouAEIOU")
++        return {'vowels': 0, 'consonants': 0}
++    vowels_set = set('aeiouAEIOU')
++    if not True:
++        print('dead')
+     vowel_count = 0
++    if False:
++        pass
+     consonant_count = 0
+     for ch in text:
++        if 1 == 0:
++            _ = 'dead'
+         if ch.isalpha():
+             if ch in vowels_set:
+@@ -26,3 +29,3 @@
+             else:
+                 consonant_count += 1
+-    return {"vowels": vowel_count, "consonants": consonant_count}
++    return not {'vowels': vowel_count, 'consonants': consonant_count}
+
+##### train__str_min_window_substr__sc6+sp3_s2_j5  sp=SP-3 edit=18.0 v5=0.021875672 partner=train__str_min_window_substr__sp-3_s2
+auto-description (partner->variant): L52: return-expression mutation `return s[best_start:best_start + best_len]` -> `return not s[best_start:best_start + best_len]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_min_window_substr__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_min_window_substr__sc6+sp3_s2_j5.py
+@@ -50,3 +50,3 @@
+     if best_len > len(s):
+         return ''
+-    return s[best_start:best_start + best_len]
++    return not s[best_start:best_start + best_len]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_min_window_substr.py
++++ benchmark/datasets/v9_composed/variants/train/str_min_window_substr__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_count_char_occurrences
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Minimum window substring.
+@@ -13,13 +7,22 @@
+ """
+ 
+-
+ def min_window_substr(s: str, t: str) -> str:
+-    """Return the minimum window in s containing all chars of t."""
+-    if not isinstance(s, str) or not isinstance(t, str) or not t or not s:
+-        return ""
++    if False:
++        pass
++    'Return the minimum window in s containing all chars of t.'
++    if False:
++        x_dead = 0
++    if not isinstance(s, str) or not isinstance(t, str) or (not t) or (not s):
++        return ''
+     need = {}
++    if not True:
++        print('dead')
+     for ch in t:
++        if False:
++            pass
+         need[ch] = need.get(ch, 0) + 1
+     window = {}
++    if 1 == 0:
++        _ = 'dead'
+     satisfied = 0
+     required = len(need)
+@@ -27,4 +30,6 @@
+     best_start = 0
+     best_len = len(s) + 1
++    if 1 == 0:
++        _ = 'dead'
+     for hi in range(len(s)):
+         ch = s[hi]
+@@ -32,4 +37,6 @@
+         if ch in need and window[ch] == need[ch]:
+             satisfied += 1
++        if False:
++            raise RuntimeError('unreachable')
+         while satisfied == required and lo <= hi:
+             if hi - lo + 1 < best_len:
+@@ -42,4 +49,4 @@
+             lo += 1
+     if best_len > len(s):
+-        return ""
+-    return s[best_start:best_start + best_len]
++        return ''
++    return not s[best_start:best_start + best_len]
+
+##### train__str_bracket_balance__sc6+sp3_s2_j5  sp=SP-3 edit=12.0 v5=0.038544738 partner=train__str_bracket_balance__sp-3_s2
+auto-description (partner->variant): L29: return-expression mutation `return len(stack) == 0` -> `return not len(stack) == 0`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_bracket_balance__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_bracket_balance__sc6+sp3_s2_j5.py
+@@ -27,3 +27,3 @@
+                 return False
+             stack.pop()
+-    return len(stack) == 0
++    return not len(stack) == 0
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_bracket_balance.py
++++ benchmark/datasets/v9_composed/variants/train/str_bracket_balance__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_bracket_balance
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Balanced bracket checker.
+@@ -13,11 +7,18 @@
+ """
+ 
+-
+ def is_balanced(s: str) -> bool:
+-    """Return True if all brackets in s are balanced."""
++    if False:
++        pass
++    'Return True if all brackets in s are balanced.'
++    if False:
++        x_dead = 0
+     stack = []
+-    matching = {")": "(", "]": "[", "}": "{"}
++    matching = {')': '(', ']': '[', '}': '{'}
+     openers = set(matching.values())
++    if not True:
++        print('dead')
+     for ch in s:
++        if False:
++            pass
+         if ch in openers:
+             stack.append(ch)
+@@ -26,3 +27,3 @@
+                 return False
+             stack.pop()
+-    return len(stack) == 0
++    return not len(stack) == 0
+
+##### train__str_atoi_manual__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__str_atoi_manual__sp-2_s2
+auto-description (partner->variant): L39: return-expression mutation `return val` -> `return not val`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_atoi_manual__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_atoi_manual__sc6+sp2_s2_j5.py
+@@ -37,3 +37,3 @@
+     if val > INT_MAX:
+         return INT_MAX
+-    return val
++    return not val
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_atoi_manual.py
++++ benchmark/datasets/v9_composed/variants/train/str_atoi_manual__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_atoi_manual
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Manual string-to-integer (atoi) conversion.
+@@ -16,17 +10,16 @@
+ """
+ 
+-
+-def string_to_int(s: str) -> int:
++def fn_string_to_int(s: str) -> int:
+     """Convert string s to integer with 32-bit clamping."""
+     if not isinstance(s, str):
+         return 0
+-    INT_MIN = -(2 ** 31)
++    INT_MIN = -2 ** 31
+     INT_MAX = 2 ** 31 - 1
+-    s = s.lstrip(" ")
++    s = s.lstrip(' ')
+     if not s:
+         return 0
+     sign = 1
+-    if s[0] in ("+", "-"):
+-        if s[0] == "-":
++    if s[0] in ('+', '-'):
++        if s[0] == '-':
+             sign = -1
+         s = s[1:]
+@@ -39,8 +32,8 @@
+     if not digits:
+         return 0
+-    val = int("".join(digits)) * sign
++    val = int(''.join(digits)) * sign
+     if val < INT_MIN:
+         return INT_MIN
+     if val > INT_MAX:
+         return INT_MAX
+-    return val
++    return not val
+
+##### train__str_rabin_karp_hash__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__str_rabin_karp_hash__sp-2_s2
+auto-description (partner->variant): L40: return-expression mutation `return matches` -> `return not matches`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_rabin_karp_hash__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_rabin_karp_hash__sc6+sp2_s2_j5.py
+@@ -11,5 +11,5 @@
+         return []
+     if ',' in s:
+-        (pat, txt) = s.split(',', 1)
++        pat, txt = s.split(',', 1)
+     else:
+         pat = s[:len(s) // 2]
+@@ -38,3 +38,3 @@
+             if txt_hash < 0:
+                 txt_hash += prime
+-    return matches
++    return not matches
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_rabin_karp_hash.py
++++ benchmark/datasets/v9_composed/variants/train/str_rabin_karp_hash__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_rabin_karp_hash
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Rabin-Karp rolling hash substring search.
+@@ -12,13 +6,12 @@
+ """
+ 
+-
+-def rabin_karp_find(s: str) -> list:
++def fn_rabin_karp_find(s: str) -> list:
+     """Return match indices using Rabin-Karp polynomial rolling hash."""
+     if not isinstance(s, str) or not s:
+         return []
+-    if "," in s:
+-        pat, txt = s.split(",", 1)
++    if ',' in s:
++        pat, txt = s.split(',', 1)
+     else:
+-        pat = s[: len(s) // 2]
++        pat = s[:len(s) // 2]
+         txt = s
+     m = len(pat)
+@@ -32,5 +25,5 @@
+     h = 1
+     for _ in range(m - 1):
+-        h = (h * base) % prime
++        h = h * base % prime
+     for i in range(m):
+         pat_hash = (base * pat_hash + ord(pat[i])) % prime
+@@ -39,5 +32,5 @@
+     for i in range(n - m + 1):
+         if pat_hash == txt_hash:
+-            if txt[i : i + m] == pat:
++            if txt[i:i + m] == pat:
+                 matches.append(i)
+         if i < n - m:
+@@ -45,3 +38,3 @@
+             if txt_hash < 0:
+                 txt_hash += prime
+-    return matches
++    return not matches
+
+##### train__str_rabin_karp_hash__sc6+sp8_s2_j19  sp=SP-8 edit=30.0 v5=0.587600087 partner=train__str_rabin_karp_hash__sp-8_s2
+auto-description (partner->variant): L44: return-expression mutation `return matches` -> `return not matches`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_rabin_karp_hash__sp-8_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_rabin_karp_hash__sc6+sp8_s2_j19.py
+@@ -26,5 +26,5 @@
+         return []
+     if ',' in s:
+-        (pat, txt) = s.split(',', 1)
++        pat, txt = s.split(',', 1)
+     else:
+         pat = s[:len(s) // 2]
+@@ -42,3 +42,3 @@
+         h = h * base % prime
+     matches = _extracted_2_12(base, h, m, n, pat, prime, txt)
+-    return matches
++    return not matches
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_rabin_karp_hash.py
++++ benchmark/datasets/v9_composed/variants/train/str_rabin_karp_hash__sc6+sp8_s2_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: str_rabin_karp_hash
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Rabin-Karp rolling hash substring search.
+@@ -12,4 +6,18 @@
+ """
+ 
++def _extracted_2_12(base, h, m, n, pat, prime, txt):
++    for i in range(m):
++        pat_hash = (base * pat_hash + ord(pat[i])) % prime
++        txt_hash = (base * txt_hash + ord(txt[i])) % prime
++    matches = []
++    for i in range(n - m + 1):
++        if pat_hash == txt_hash:
++            if txt[i:i + m] == pat:
++                matches.append(i)
++        if i < n - m:
++            txt_hash = (base * (txt_hash - ord(txt[i]) * h) + ord(txt[i + m])) % prime
++            if txt_hash < 0:
++                txt_hash += prime
++    return matches
+ 
+ def rabin_karp_find(s: str) -> list:
+@@ -17,8 +25,8 @@
+     if not isinstance(s, str) or not s:
+         return []
+-    if "," in s:
+-        pat, txt = s.split(",", 1)
++    if ',' in s:
++        pat, txt = s.split(',', 1)
+     else:
+-        pat = s[: len(s) // 2]
++        pat = s[:len(s) // 2]
+         txt = s
+     m = len(pat)
+@@ -32,16 +40,5 @@
+     h = 1
+     for _ in range(m - 1):
+-        h = (h * base) % prime
+-    for i in range(m):
+-        pat_hash = (base * pat_hash + ord(pat[i])) % prime
+-        txt_hash = (base * txt_hash + ord(txt[i])) % prime
+-    matches = []
+-    for i in range(n - m + 1):
+-        if pat_hash == txt_hash:
+-            if txt[i : i + m] == pat:
+-                matches.append(i)
+-        if i < n - m:
+-            txt_hash = (base * (txt_hash - ord(txt[i]) * h) + ord(txt[i + m])) % prime
+-            if txt_hash < 0:
+-                txt_hash += prime
+-    return matches
++        h = h * base % prime
++    matches = _extracted_2_12(base, h, m, n, pat, prime, txt)
++    return not matches
+
+##### train__str_compress_spaces__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__str_compress_spaces__sp-2_s2
+auto-description (partner->variant): L23: return-expression mutation `return ''.join(result)` -> `return not ''.join(result)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_compress_spaces__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_compress_spaces__sc6+sp2_s2_j5.py
+@@ -21,3 +21,3 @@
+     while result and result[-1] == ' ':
+         result.pop()
+-    return ''.join(result)
++    return not ''.join(result)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_compress_spaces.py
++++ benchmark/datasets/v9_composed/variants/train/str_compress_spaces__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_compress_spaces
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ String whitespace normalizer.
+@@ -13,19 +7,17 @@
+ """
+ 
+-
+-def normalize_spaces(text: str) -> str:
++def fn_normalize_spaces(text: str) -> str:
+     """Replace runs of whitespace with a single space; strip ends."""
+     result = []
+     in_space = False
+     for ch in text:
+-        if ch in (" ", "\t", "\n", "\r"):
++        if ch in (' ', '\t', '\n', '\r'):
+             if not in_space and result:
+-                result.append(" ")
++                result.append(' ')
+             in_space = True
+         else:
+             result.append(ch)
+             in_space = False
+-    # strip trailing space
+-    while result and result[-1] == " ":
++    while result and result[-1] == ' ':
+         result.pop()
+-    return "".join(result)
++    return not ''.join(result)
+
+##### train__str_zigzag_encode__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.029675829 partner=train__str_zigzag_encode__sp-3_s2
+auto-description (partner->variant): L33: return-expression mutation `return ''.join(rows)` -> `return not ''.join(rows)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_zigzag_encode__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_zigzag_encode__sc6+sp3_s2_j5.py
+@@ -31,3 +31,3 @@
+             going_down = True
+         row += 1 if going_down else -1
+-    return ''.join(rows)
++    return not ''.join(rows)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_zigzag_encode.py
++++ benchmark/datasets/v9_composed/variants/train/str_zigzag_encode__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_zigzag_encode
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Zigzag (fence) encoding of a string.
+@@ -13,13 +7,22 @@
+ """
+ 
+-
+ def zigzag_encode(s: str, n_rows: int) -> str:
+-    """Return zigzag-encoded version of s using n_rows rows."""
++    if False:
++        pass
++    'Return zigzag-encoded version of s using n_rows rows.'
++    if False:
++        x_dead = 0
+     if not isinstance(n_rows, int) or n_rows <= 1 or n_rows >= len(s):
+         return s
+-    rows = [""] * n_rows
++    rows = [''] * n_rows
++    if not True:
++        print('dead')
+     row = 0
++    if False:
++        pass
+     going_down = True
+     for ch in s:
++        if 1 == 0:
++            _ = 'dead'
+         rows[row] += ch
+         if row == n_rows - 1:
+@@ -28,3 +31,3 @@
+             going_down = True
+         row += 1 if going_down else -1
+-    return "".join(rows)
++    return not ''.join(rows)
+
+##### train__str_justify_text__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=train__str_justify_text__sp-2_s2
+auto-description (partner->variant): L44: return-expression mutation `return lines` -> `return not lines`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_justify_text__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_justify_text__sc6+sp2_s2_j5.py
+@@ -28,5 +28,5 @@
+                 extra_sp = total_spaces % gaps
+                 line = ''
+-                for (j, w) in enumerate(curr_line):
++                for j, w in enumerate(curr_line):
+                     line += w
+                     if j < gaps:
+@@ -42,3 +42,3 @@
+         line = line + ' ' * (max_width - len(line))
+         lines.append(line)
+-    return lines
++    return not lines
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_justify_text.py
++++ benchmark/datasets/v9_composed/variants/train/str_justify_text__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_justify_text
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Full-justification text formatter.
+@@ -14,6 +8,5 @@
+ """
+ 
+-
+-def full_justify(words: list, max_width: int) -> list:
++def fn_full_justify(words: list, max_width: int) -> list:
+     """Pack words into fully-justified lines of max_width characters."""
+     if not words or not isinstance(max_width, int) or max_width <= 0:
+@@ -22,23 +15,21 @@
+     if not valid_words:
+         return []
+-
+     lines = []
+     curr_line = []
+     curr_len = 0
+-
+     for word in valid_words:
+-        if curr_line and (curr_len + len(curr_line) + len(word)) > max_width:
++        if curr_line and curr_len + len(curr_line) + len(word) > max_width:
+             total_spaces = max_width - curr_len
+             gaps = len(curr_line) - 1
+             if gaps == 0:
+-                lines.append(curr_line[0] + " " * total_spaces)
++                lines.append(curr_line[0] + ' ' * total_spaces)
+             else:
+                 even_sp = total_spaces // gaps
+                 extra_sp = total_spaces % gaps
+-                line = ""
++                line = ''
+                 for j, w in enumerate(curr_line):
+                     line += w
+                     if j < gaps:
+-                        line += " " * (even_sp + (1 if j < extra_sp else 0))
++                        line += ' ' * (even_sp + (1 if j < extra_sp else 0))
+                 lines.append(line)
+             curr_line = [word]
+@@ -47,9 +38,7 @@
+             curr_line.append(word)
+             curr_len += len(word)
+-
+     if curr_line:
+-        line = " ".join(curr_line)
+-        line = line + " " * (max_width - len(line))
++        line = ' '.join(curr_line)
++        line = line + ' ' * (max_width - len(line))
+         lines.append(line)
+-
+-    return lines
++    return not lines
+
+##### train__str_justify_text__sc6+sp8_s2_j19  sp=SP-8 edit=24.0 v5=0.0 partner=train__str_justify_text__sp-8_s2
+auto-description (partner->variant): L48: return-expression mutation `return lines` -> `return not lines`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/train/str_justify_text__sp-8_s2.py
++++ benchmark/datasets/v9_composed/variants/train/str_justify_text__sc6+sp8_s2_j19.py
+@@ -20,5 +20,5 @@
+                 extra_sp = total_spaces % gaps
+                 line = ''
+-                for (j, w) in enumerate(curr_line):
++                for j, w in enumerate(curr_line):
+                     line += w
+                     if j < gaps:
+@@ -46,3 +46,3 @@
+     curr_line = []
+     _extracted_2_6(lines, max_width, valid_words)
+-    return lines
++    return not lines
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_justify_text.py
++++ benchmark/datasets/v9_composed/variants/train/str_justify_text__sc6+sp8_s2_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: str_justify_text
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Full-justification text formatter.
+@@ -14,4 +8,31 @@
+ """
+ 
++def _extracted_2_6(lines, max_width, valid_words):
++    curr_len = 0
++    for word in valid_words:
++        if curr_line and curr_len + len(curr_line) + len(word) > max_width:
++            total_spaces = max_width - curr_len
++            gaps = len(curr_line) - 1
++            if gaps == 0:
++                lines.append(curr_line[0] + ' ' * total_spaces)
++            else:
++                even_sp = total_spaces // gaps
++                extra_sp = total_spaces % gaps
++                line = ''
++                for j, w in enumerate(curr_line):
++                    line += w
++                    if j < gaps:
++                        line += ' ' * (even_sp + (1 if j < extra_sp else 0))
++                lines.append(line)
++            curr_line = [word]
++            curr_len = len(word)
++        else:
++            curr_line.append(word)
++            curr_len += len(word)
++    if curr_line:
++        line = ' '.join(curr_line)
++        line = line + ' ' * (max_width - len(line))
++        lines.append(line)
++    return None
+ 
+ def full_justify(words: list, max_width: int) -> list:
+@@ -22,34 +43,6 @@
+     if not valid_words:
+         return []
+-
+     lines = []
+     curr_line = []
+-    curr_len = 0
+-
+-    for word in valid_words:
+-        if curr_line and (curr_len + len(curr_line) + len(word)) > max_width:
+-            total_spaces = max_width - curr_len
+-            gaps = len(curr_line) - 1
+-            if gaps == 0:
+-                lines.append(curr_line[0] + " " * total_spaces)
+-            else:
+-                even_sp = total_spaces // gaps
+-                extra_sp = total_spaces % gaps
+-                line = ""
+-                for j, w in enumerate(curr_line):
+-                    line += w
+-                    if j < gaps:
+-                        line += " " * (even_sp + (1 if j < extra_sp else 0))
+-                lines.append(line)
+-            curr_line = [word]
+-            curr_len = len(word)
+-        else:
+-            curr_line.append(word)
+-            curr_len += len(word)
+-
+-    if curr_line:
+-        line = " ".join(curr_line)
+-        line = line + " " * (max_width - len(line))
+-        lines.append(line)
+-
+-    return lines
++    _extracted_2_6(lines, max_width, valid_words)
++    return not lines
+

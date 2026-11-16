@@ -1,0 +1,304 @@
+{
+ "recomputed": {
+  "bugs_total": 501,
+  "bugs_eligible": 51,
+  "units_total": 704,
+  "units_eligible": 55,
+  "bug_exclusion_taxonomy": {
+   "no_eligible_unit": 408,
+   "commit_not_resolvable_upstream": 31,
+   "change_outside_function_or_method": 10,
+   "no_non_test_python_file_changed": 1
+  },
+  "unit_exclusion_family_taxonomy": {
+   "project_internal_import": 428,
+   "third_party_import": 110,
+   "non_literal_or_unresolved_global": 61,
+   "unit_added_or_removed_by_fix": 30,
+   "unit_identical_after_normalisation": 7,
+   "unsafe_module": 6,
+   "ambiguous_binding": 6,
+   "local_project_internal_import": 1
+  },
+  "units_by_kind_eligible": {
+   "class": 8,
+   "function": 47
+  },
+  "per_project": {
+   "PySnooper": {
+    "bugs": 3,
+    "bugs_eligible": 0,
+    "units_eligible": 0
+   },
+   "ansible": {
+    "bugs": 18,
+    "bugs_eligible": 4,
+    "units_eligible": 6
+   },
+   "black": {
+    "bugs": 23,
+    "bugs_eligible": 3,
+    "units_eligible": 3
+   },
+   "cookiecutter": {
+    "bugs": 4,
+    "bugs_eligible": 0,
+    "units_eligible": 0
+   },
+   "fastapi": {
+    "bugs": 16,
+    "bugs_eligible": 0,
+    "units_eligible": 0
+   },
+   "httpie": {
+    "bugs": 5,
+    "bugs_eligible": 1,
+    "units_eligible": 1
+   },
+   "keras": {
+    "bugs": 45,
+    "bugs_eligible": 3,
+    "units_eligible": 3
+   },
+   "luigi": {
+    "bugs": 33,
+    "bugs_eligible": 3,
+    "units_eligible": 4
+   },
+   "matplotlib": {
+    "bugs": 30,
+    "bugs_eligible": 2,
+    "units_eligible": 2
+   },
+   "pandas": {
+    "bugs": 169,
+    "bugs_eligible": 3,
+    "units_eligible": 3
+   },
+   "sanic": {
+    "bugs": 5,
+    "bugs_eligible": 0,
+    "units_eligible": 0
+   },
+   "scrapy": {
+    "bugs": 40,
+    "bugs_eligible": 4,
+    "units_eligible": 4
+   },
+   "spacy": {
+    "bugs": 10,
+    "bugs_eligible": 3,
+    "units_eligible": 4
+   },
+   "thefuck": {
+    "bugs": 32,
+    "bugs_eligible": 7,
+    "units_eligible": 7
+   },
+   "tornado": {
+    "bugs": 16,
+    "bugs_eligible": 0,
+    "units_eligible": 0
+   },
+   "tqdm": {
+    "bugs": 9,
+    "bugs_eligible": 1,
+    "units_eligible": 1
+   },
+   "youtube-dl": {
+    "bugs": 43,
+    "bugs_eligible": 17,
+    "units_eligible": 17
+   }
+  }
+ },
+ "manifest_declared": {
+  "counts": {
+   "bugs_total": 501,
+   "bugs_eligible": 51,
+   "units_total": 704,
+   "units_eligible": 55,
+   "negatives_total": 145
+  },
+  "bug_exclusion_taxonomy": {
+   "no_eligible_unit": 408,
+   "commit_not_resolvable_upstream": 31,
+   "change_outside_function_or_method": 10,
+   "no_non_test_python_file_changed": 1
+  },
+  "unit_exclusion_taxonomy": {
+   "project_internal_import": 428,
+   "third_party_import": 110,
+   "non_literal_or_unresolved_global": 61,
+   "unit_added_or_removed_by_fix": 30,
+   "unit_identical_after_normalisation": 7,
+   "unsafe_module": 6,
+   "ambiguous_binding": 6,
+   "local_project_internal_import": 1
+  }
+ },
+ "matches_manifest": true,
+ "unit_exclusion_reason_detail_top40": [
+  [
+   "buggy:project_internal_import:ABCDataFrame",
+   61
+  ],
+  [
+   "unit_added_or_removed_by_fix",
+   30
+  ],
+  [
+   "buggy:project_internal_import:K",
+   22
+  ],
+  [
+   "buggy:project_internal_import:Appender",
+   22
+  ],
+  [
+   "buggy:third_party_import:np",
+   13
+  ],
+  [
+   "buggy:project_internal_import:ABCSeries",
+   13
+  ],
+  [
+   "buggy:project_internal_import:ABCIndexClass",
+   13
+  ],
+  [
+   "buggy:third_party_import:Leaf",
+   9
+  ],
+  [
+   "buggy:project_internal_import:git_support",
+   9
+  ],
+  [
+   "buggy:project_internal_import:Index",
+   8
+  ],
+  [
+   "buggy:project_internal_import:ExtractorError",
+   8
+  ],
+  [
+   "buggy:third_party_import:AnsibleError",
+   7
+  ],
+  [
+   "buggy:third_party_import:BaseModel",
+   7
+  ],
+  [
+   "unit_identical_after_normalisation",
+   7
+  ],
+  [
+   "buggy:project_internal_import:DISABLED",
+   7
+  ],
+  [
+   "buggy:third_party_import:BarContainer",
+   7
+  ],
+  [
+   "buggy:project_internal_import:AbstractMethodError",
+   7
+  ],
+  [
+   "buggy:project_internal_import:NaT",
+   7
+  ],
+  [
+   "buggy:project_internal_import:compat_str",
+   7
+  ],
+  [
+   "buggy:non_literal_or_unresolved_global:logger",
+   6
+  ],
+  [
+   "buggy:project_internal_import:InputSpec",
+   6
+  ],
+  [
+   "buggy:project_internal_import:Cache",
+   6
+  ],
+  [
+   "buggy:non_literal_or_unresolved_global:LN",
+   5
+  ],
+  [
+   "buggy:project_internal_import:Categorical",
+   5
+  ],
+  [
+   "buggy:project_internal_import:DEVNULL",
+   5
+  ],
+  [
+   "buggy:third_party_import:Factory",
+   4
+  ],
+  [
+   "buggy:non_literal_or_unresolved_global:CLOSING_BRACKETS",
+   4
+  ],
+  [
+   "buggy:project_internal_import:Input",
+   4
+  ],
+  [
+   "buggy:project_internal_import:GeneratorEnqueuer",
+   4
+  ],
+  [
+   "buggy:project_internal_import:Container",
+   4
+  ],
+  [
+   "buggy:project_internal_import:CmdlineParser",
+   4
+  ],
+  [
+   "buggy:third_party_import:cbook",
+   4
+  ],
+  [
+   "buggy:project_internal_import:DatetimeArray",
+   4
+  ],
+  [
+   "buggy:project_internal_import:Request",
+   4
+  ],
+  [
+   "buggy:project_internal_import:to_native_str",
+   4
+  ],
+  [
+   "buggy:project_internal_import:Configurable",
+   4
+  ],
+  [
+   "buggy:project_internal_import:InfoExtractor",
+   4
+  ],
+  [
+   "buggy:non_literal_or_unresolved_global:GRAMMARS",
+   3
+  ],
+  [
+   "buggy:non_literal_or_unresolved_global:FileContent",
+   3
+  ],
+  [
+   "buggy:third_party_import:ASGIApp",
+   3
+  ]
+ ],
+ "n_unit_exclusion_distinct_reason_strings": 253
+}

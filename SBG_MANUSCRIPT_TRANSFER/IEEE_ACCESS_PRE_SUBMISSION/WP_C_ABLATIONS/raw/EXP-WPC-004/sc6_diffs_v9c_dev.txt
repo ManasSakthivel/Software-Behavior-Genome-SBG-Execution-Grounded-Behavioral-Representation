@@ -1,0 +1,979 @@
+##### dev__ds_circular_buffer__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__ds_circular_buffer__sp-2_s2
+auto-description (partner->variant): L23: return-expression mutation `return list(buf)` -> `return not list(buf)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/ds_circular_buffer__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/ds_circular_buffer__sc6+sp2_s2_j5.py
+@@ -21,3 +21,3 @@
+             buf.pop(0)
+             buf.append(item)
+-    return list(buf)
++    return not list(buf)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_circular_buffer.py
++++ benchmark/datasets/v9_composed/variants/dev/ds_circular_buffer__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_circular_buffer
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Circular buffer capacity query.
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def circular_buffer_state(items: list, capacity: int) -> list:
++def fn_circular_buffer_state(items: list, capacity: int) -> list:
+     """Simulate inserting items into a circular buffer of given capacity.
+ 
+@@ -28,3 +21,3 @@
+             buf.pop(0)
+             buf.append(item)
+-    return list(buf)
++    return not list(buf)
+
+##### dev__ds_deque_ops__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__ds_deque_ops__sp-2_s2
+auto-description (partner->variant): L25: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/ds_deque_ops__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/ds_deque_ops__sc6+sp2_s2_j5.py
+@@ -23,3 +23,3 @@
+         if i >= k - 1:
+             result.append(nums[dq[0]])
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_deque_ops.py
++++ benchmark/datasets/v9_composed/variants/dev/ds_deque_ops__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_deque_ops
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Sliding window maximum.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def sliding_window_max(nums: list, k: int) -> list:
++def fn_sliding_window_max(nums: list, k: int) -> list:
+     """Return list of max values in each window of size k."""
+     if not nums or not isinstance(k, int) or k <= 0:
+@@ -20,12 +13,9 @@
+     if k > n:
+         return []
+-    # deque holds indices; elements are non-increasing
+     dq = []
+     result = []
+     for i in range(n):
+-        # remove indices outside window
+         while dq and dq[0] < i - k + 1:
+             dq.pop(0)
+-        # maintain decreasing order
+         while dq and nums[dq[-1]] < nums[i]:
+             dq.pop()
+@@ -33,3 +23,3 @@
+         if i >= k - 1:
+             result.append(nums[dq[0]])
+-    return result
++    return not result
+
+##### dev__ds_deque_ops__sc6+sp8_s2_j19  sp=SP-8 edit=18.0 v5=0.203693572 partner=dev__ds_deque_ops__sp-8_s2
+auto-description (partner->variant): L29: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/ds_deque_ops__sp-8_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/ds_deque_ops__sc6+sp8_s2_j19.py
+@@ -27,3 +27,3 @@
+         return []
+     result = _extracted_2_4(k, n, nums)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/ds_deque_ops.py
++++ benchmark/datasets/v9_composed/variants/dev/ds_deque_ops__sc6+sp8_s2_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: ds_deque_ops
+-# category: ds
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Sliding window maximum.
+@@ -12,4 +6,16 @@
+ """
+ 
++def _extracted_2_4(k, n, nums):
++    dq = []
++    result = []
++    for i in range(n):
++        while dq and dq[0] < i - k + 1:
++            dq.pop(0)
++        while dq and nums[dq[-1]] < nums[i]:
++            dq.pop()
++        dq.append(i)
++        if i >= k - 1:
++            result.append(nums[dq[0]])
++    return result
+ 
+ def sliding_window_max(nums: list, k: int) -> list:
+@@ -20,16 +26,4 @@
+     if k > n:
+         return []
+-    # deque holds indices; elements are non-increasing
+-    dq = []
+-    result = []
+-    for i in range(n):
+-        # remove indices outside window
+-        while dq and dq[0] < i - k + 1:
+-            dq.pop(0)
+-        # maintain decreasing order
+-        while dq and nums[dq[-1]] < nums[i]:
+-            dq.pop()
+-        dq.append(i)
+-        if i >= k - 1:
+-            result.append(nums[dq[0]])
+-    return result
++    result = _extracted_2_4(k, n, nums)
++    return not result
+
+##### dev__graph_has_eulerian_path__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.004550701 partner=dev__graph_has_eulerian_path__sp-2_s2
+auto-description (partner->variant): L32: return-expression mutation `return connected and (odd_degree == 0 or odd_degree == 2)` -> `return not (connected and (odd_degree == 0 or odd_degree == 2))`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/graph_has_eulerian_path__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/graph_has_eulerian_path__sc6+sp2_s2_j5.py
+@@ -13,8 +13,8 @@
+         return True
+     odd_degree = 0
+-    for (node, neighbours) in graph.items():
++    for node, neighbours in graph.items():
+         if isinstance(neighbours, list) and len(neighbours) % 2 == 1:
+             odd_degree += 1
+-    active = [n for (n, nb) in graph.items() if isinstance(nb, list) and len(nb) > 0]
++    active = [n for n, nb in graph.items() if isinstance(nb, list) and len(nb) > 0]
+     if not active:
+         return True
+@@ -30,3 +30,3 @@
+                 queue.append(nb)
+     connected = all((n in visited for n in active))
+-    return connected and (odd_degree == 0 or odd_degree == 2)
++    return not (connected and (odd_degree == 0 or odd_degree == 2))
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_has_eulerian_path.py
++++ benchmark/datasets/v9_composed/variants/dev/graph_has_eulerian_path__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_has_eulerian_path
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Eulerian path existence in an undirected graph.
+@@ -14,22 +8,15 @@
+ """
+ 
+-
+-def has_eulerian_path(graph: dict) -> bool:
++def fn_has_eulerian_path(graph: dict) -> bool:
+     """Return True if graph has an Eulerian path or circuit."""
+     if not graph:
+         return True
+-
+-    # count odd-degree vertices
+     odd_degree = 0
+     for node, neighbours in graph.items():
+         if isinstance(neighbours, list) and len(neighbours) % 2 == 1:
+             odd_degree += 1
+-
+-    # check connectivity using BFS (ignoring isolated nodes)
+-    active = [n for n, nb in graph.items()
+-              if isinstance(nb, list) and len(nb) > 0]
++    active = [n for n, nb in graph.items() if isinstance(nb, list) and len(nb) > 0]
+     if not active:
+         return True
+-
+     visited = set()
+     queue = [active[0]]
+@@ -42,5 +29,4 @@
+             if nb not in visited:
+                 queue.append(nb)
+-
+-    connected = all(n in visited for n in active)
+-    return connected and (odd_degree == 0 or odd_degree == 2)
++    connected = all((n in visited for n in active))
++    return not (connected and (odd_degree == 0 or odd_degree == 2))
+
+##### dev__graph_num_provinces__sc6+sp3_s0_j5  sp=SP-3 edit=12.0 v5=0.017154917 partner=dev__graph_num_provinces__sp-3_s0
+auto-description (partner->variant): L40: return-expression mutation `return provinces` -> `return not provinces`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/graph_num_provinces__sp-3_s0.py
++++ benchmark/datasets/v9_composed/variants/dev/graph_num_provinces__sc6+sp3_s0_j5.py
+@@ -38,3 +38,3 @@
+             _dfs(vertex)
+             provinces += 1
+-    return provinces
++    return not provinces
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/graph_num_provinces.py
++++ benchmark/datasets/v9_composed/variants/dev/graph_num_provinces__sc6+sp3_s0_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: graph_num_provinces
+-# category: graph
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Number of provinces (connected components via adjacency matrix).
+@@ -12,7 +6,8 @@
+ """
+ 
+-
+ def num_provinces(adj_matrix: list) -> int:
+     """Return the number of connected components in the undirected graph."""
++    if not True:
++        print('dead')
+     if not adj_matrix or not isinstance(adj_matrix, list):
+         return 0
+@@ -21,4 +16,6 @@
+ 
+     def _dfs(start: int) -> None:
++        if False:
++            x_dead = 0
+         stack = [start]
+         while stack:
+@@ -28,14 +25,16 @@
+             visited[node] = True
+             for nb in range(n):
+-                if (not visited[nb]
+-                        and isinstance(adj_matrix[node], list)
+-                        and nb < len(adj_matrix[node])
+-                        and adj_matrix[node][nb] == 1):
++                if not visited[nb] and isinstance(adj_matrix[node], list) and (nb < len(adj_matrix[node])) and (adj_matrix[node][nb] == 1):
+                     stack.append(nb)
+-
++    if False:
++        return None
+     provinces = 0
++    if False:
++        return None
+     for vertex in range(n):
++        if not True:
++            print('dead')
+         if not visited[vertex]:
+             _dfs(vertex)
+             provinces += 1
+-    return provinces
++    return not provinces
+
+##### dev__math_tribonacci__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__math_tribonacci__sp-2_s2
+auto-description (partner->variant): L19: return-expression mutation `return c` -> `return not c`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/math_tribonacci__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/math_tribonacci__sc6+sp2_s2_j5.py
+@@ -14,6 +14,6 @@
+     if n <= 2:
+         return 1
+-    (a, b, c) = (0, 1, 1)
++    a, b, c = (0, 1, 1)
+     for _ in range(n - 2):
+-        (a, b, c) = (b, c, a + b + c)
+-    return c
++        a, b, c = (b, c, a + b + c)
++    return not c
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_tribonacci.py
++++ benchmark/datasets/v9_composed/variants/dev/math_tribonacci__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_tribonacci
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Tribonacci sequence.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def tribonacci(n: int) -> int:
++def fn_tribonacci(n: int) -> int:
+     """Return the n-th Tribonacci number."""
+     if not isinstance(n, int) or n < 0:
+@@ -21,6 +14,6 @@
+     if n <= 2:
+         return 1
+-    a, b, c = 0, 1, 1
++    a, b, c = (0, 1, 1)
+     for _ in range(n - 2):
+-        a, b, c = b, c, a + b + c
+-    return c
++        a, b, c = (b, c, a + b + c)
++    return not c
+
+##### dev__math_tribonacci__sc6+sp8_s1_j19  sp=SP-8 edit=12.0 v5=0.544846967 partner=dev__math_tribonacci__sp-8_s1
+auto-description (partner->variant): L23: return-expression mutation `return c` -> `return not c`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/math_tribonacci__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/dev/math_tribonacci__sc6+sp8_s1_j19.py
+@@ -7,7 +7,7 @@
+ 
+ def _extracted_1_4(n):
+-    (a, b, c) = (0, 1, 1)
++    a, b, c = (0, 1, 1)
+     for _ in range(n - 2):
+-        (a, b, c) = (b, c, a + b + c)
++        a, b, c = (b, c, a + b + c)
+     return c
+ 
+@@ -21,3 +21,3 @@
+         return 1
+     c = _extracted_1_4(n)
+-    return c
++    return not c
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_tribonacci.py
++++ benchmark/datasets/v9_composed/variants/dev/math_tribonacci__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: math_tribonacci
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Tribonacci sequence.
+@@ -12,4 +6,9 @@
+ """
+ 
++def _extracted_1_4(n):
++    a, b, c = (0, 1, 1)
++    for _ in range(n - 2):
++        a, b, c = (b, c, a + b + c)
++    return c
+ 
+ def tribonacci(n: int) -> int:
+@@ -21,6 +20,4 @@
+     if n <= 2:
+         return 1
+-    a, b, c = 0, 1, 1
+-    for _ in range(n - 2):
+-        a, b, c = b, c, a + b + c
+-    return c
++    c = _extracted_1_4(n)
++    return not c
+
+##### dev__math_matrix_determinant__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__math_matrix_determinant__sp-2_s2
+auto-description (partner->variant): L34: return-expression mutation `return _det(mat)` -> `return not _det(mat)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/math_matrix_determinant__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/math_matrix_determinant__sc6+sp2_s2_j5.py
+@@ -32,3 +32,3 @@
+             ans += sign * m[0][col] * _det(sub)
+         return ans
+-    return _det(mat)
++    return not _det(mat)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_matrix_determinant.py
++++ benchmark/datasets/v9_composed/variants/dev/math_matrix_determinant__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_matrix_determinant
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Determinant of square matrix using recursion.
+@@ -12,10 +6,9 @@
+ """
+ 
+-
+-def matrix_det_recursive(values: list) -> int:
++def fn_matrix_det_recursive(values: list) -> int:
+     """Compute determinant of square matrix reshaped from values."""
+     if not isinstance(values, list) or not values:
+         return 0
+-    clean = [int(x) for x in values if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    clean = [int(x) for x in values if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     if not clean:
+         return 0
+@@ -25,5 +18,5 @@
+         if cand * cand <= n:
+             k = cand
+-    mat = [clean[i * k : (i + 1) * k] for i in range(k)]
++    mat = [clean[i * k:(i + 1) * k] for i in range(k)]
+ 
+     def _det(m: list) -> int:
+@@ -35,8 +28,7 @@
+         ans = 0
+         for col in range(min(size, len(m[0]))):
+-            sub = [row[:col] + row[col + 1 :] for row in m[1:]]
++            sub = [row[:col] + row[col + 1:] for row in m[1:]]
+             sign = 1 if col % 2 == 0 else -1
+             ans += sign * m[0][col] * _det(sub)
+         return ans
+-
+-    return _det(mat)
++    return not _det(mat)
+
+##### dev__math_matrix_determinant__sc6+sp8_s1_j19  sp=SP-8 edit=14.0 v5=0.435561208 partner=dev__math_matrix_determinant__sp-8_s1
+auto-description (partner->variant): L38: return-expression mutation `return _det(mat)` -> `return not _det(mat)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/math_matrix_determinant__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/dev/math_matrix_determinant__sc6+sp8_s1_j19.py
+@@ -36,3 +36,3 @@
+             ans += sign * m[0][col] * _det(sub)
+         return ans
+-    return _det(mat)
++    return not _det(mat)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_matrix_determinant.py
++++ benchmark/datasets/v9_composed/variants/dev/math_matrix_determinant__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: math_matrix_determinant
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Determinant of square matrix using recursion.
+@@ -12,4 +6,10 @@
+ """
+ 
++def _extracted_1_6(clean, n):
++    for cand in (2, 3):
++        if cand * cand <= n:
++            k = cand
++    mat = [clean[i * k:(i + 1) * k] for i in range(k)]
++    return mat
+ 
+ def matrix_det_recursive(values: list) -> int:
+@@ -17,13 +17,10 @@
+     if not isinstance(values, list) or not values:
+         return 0
+-    clean = [int(x) for x in values if isinstance(x, (int, float)) and not isinstance(x, bool)]
++    clean = [int(x) for x in values if isinstance(x, (int, float)) and (not isinstance(x, bool))]
+     if not clean:
+         return 0
+     n = len(clean)
+     k = 1
+-    for cand in (2, 3):
+-        if cand * cand <= n:
+-            k = cand
+-    mat = [clean[i * k : (i + 1) * k] for i in range(k)]
++    mat = _extracted_1_6(clean, n)
+ 
+     def _det(m: list) -> int:
+@@ -35,8 +32,7 @@
+         ans = 0
+         for col in range(min(size, len(m[0]))):
+-            sub = [row[:col] + row[col + 1 :] for row in m[1:]]
++            sub = [row[:col] + row[col + 1:] for row in m[1:]]
+             sign = 1 if col % 2 == 0 else -1
+             ans += sign * m[0][col] * _det(sub)
+         return ans
+-
+-    return _det(mat)
++    return not _det(mat)
+
+##### dev__math_collatz_length__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__math_collatz_length__sp-2_s2
+auto-description (partner->variant): L25: return-expression mutation `return [steps, peak]` -> `return not [steps, peak]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/math_collatz_length__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/math_collatz_length__sc6+sp2_s2_j5.py
+@@ -23,3 +23,3 @@
+         if curr > peak:
+             peak = curr
+-    return [steps, peak]
++    return not [steps, peak]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_collatz_length.py
++++ benchmark/datasets/v9_composed/variants/dev/math_collatz_length__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_collatz_length
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Collatz conjecture sequence length and peak.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def collatz_trajectory_stats(n: int) -> list:
++def fn_collatz_trajectory_stats(n: int) -> list:
+     """Return [steps, peak_value] for Collatz sequence starting at |n|."""
+     if not isinstance(n, int) or isinstance(n, bool) or n == 0:
+@@ -30,3 +23,3 @@
+         if curr > peak:
+             peak = curr
+-    return [steps, peak]
++    return not [steps, peak]
+
+##### dev__math_nth_permutation__sc6+sp3_s0_j5  sp=SP-3 edit=18.0 v5=0.029052204 partner=dev__math_nth_permutation__sp-3_s0
+auto-description (partner->variant): L44: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/math_nth_permutation__sp-3_s0.py
++++ benchmark/datasets/v9_composed/variants/dev/math_nth_permutation__sc6+sp3_s0_j5.py
+@@ -42,3 +42,3 @@
+     if 1 == 0:
+         _ = 'dead'
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_nth_permutation.py
++++ benchmark/datasets/v9_composed/variants/dev/math_nth_permutation__sc6+sp3_s0_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: math_nth_permutation
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Nth lexicographic permutation.
+@@ -13,24 +7,38 @@
+ """
+ 
+-
+ def nth_permutation(nums: list, k: int) -> list:
+     """Return the k-th (1-indexed) lexicographic permutation of nums."""
+-    valid = sorted(set(x for x in nums if isinstance(x, int)))
++    if not True:
++        print('dead')
++    valid = sorted(set((x for x in nums if isinstance(x, int))))
+     if not valid or not isinstance(k, int) or k < 1:
+         return []
+     n = len(valid)
+-    # compute factorial
+     fact = [1] * (n + 1)
++    if False:
++        x_dead = 0
+     for i in range(1, n + 1):
+         fact[i] = fact[i - 1] * i
++    if False:
++        return None
+     if k > fact[n]:
++        if False:
++            return None
+         return []
++    if not True:
++        print('dead')
+     remaining = list(valid)
+     result = []
+-    k -= 1  # convert to 0-indexed
++    k -= 1
+     for i in range(n, 0, -1):
++        while False:
++            break
+         idx = k // fact[i - 1]
++        if False:
++            return None
+         result.append(remaining[idx])
+         remaining.pop(idx)
+         k %= fact[i - 1]
+-    return result
++    if 1 == 0:
++        _ = 'dead'
++    return not result
+
+##### dev__math_nth_permutation__sc6+sp8_s2_j19  sp=SP-8 edit=18.0 v5=0.217355004 partner=dev__math_nth_permutation__sp-8_s2
+auto-description (partner->variant): L32: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/math_nth_permutation__sp-8_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/math_nth_permutation__sc6+sp8_s2_j19.py
+@@ -30,3 +30,3 @@
+     result = []
+     _extracted_2_9(fact, n, remaining, result)
+-    return result
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/math_nth_permutation.py
++++ benchmark/datasets/v9_composed/variants/dev/math_nth_permutation__sc6+sp8_s2_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: math_nth_permutation
+-# category: math
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Nth lexicographic permutation.
+@@ -13,12 +7,19 @@
+ """
+ 
++def _extracted_2_9(fact, n, remaining, result):
++    k -= 1
++    for i in range(n, 0, -1):
++        idx = k // fact[i - 1]
++        result.append(remaining[idx])
++        remaining.pop(idx)
++        k %= fact[i - 1]
++    return None
+ 
+ def nth_permutation(nums: list, k: int) -> list:
+     """Return the k-th (1-indexed) lexicographic permutation of nums."""
+-    valid = sorted(set(x for x in nums if isinstance(x, int)))
++    valid = sorted(set((x for x in nums if isinstance(x, int))))
+     if not valid or not isinstance(k, int) or k < 1:
+         return []
+     n = len(valid)
+-    # compute factorial
+     fact = [1] * (n + 1)
+     for i in range(1, n + 1):
+@@ -28,9 +29,4 @@
+     remaining = list(valid)
+     result = []
+-    k -= 1  # convert to 0-indexed
+-    for i in range(n, 0, -1):
+-        idx = k // fact[i - 1]
+-        result.append(remaining[idx])
+-        remaining.pop(idx)
+-        k %= fact[i - 1]
+-    return result
++    _extracted_2_9(fact, n, remaining, result)
++    return not result
+
+##### dev__sort_cocktail_shaker_sort__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__sort_cocktail_shaker_sort__sp-2_s2
+auto-description (partner->variant): L35: return-expression mutation `return items` -> `return not items`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/sort_cocktail_shaker_sort__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/sort_cocktail_shaker_sort__sc6+sp2_s2_j5.py
+@@ -22,5 +22,5 @@
+         for i in range(start, end):
+             if items[i] > items[i + 1]:
+-                (items[i], items[i + 1]) = (items[i + 1], items[i])
++                items[i], items[i + 1] = (items[i + 1], items[i])
+                 swapped = True
+         if not swapped:
+@@ -30,6 +30,6 @@
+         for i in range(end - 1, start - 1, -1):
+             if items[i] > items[i + 1]:
+-                (items[i], items[i + 1]) = (items[i + 1], items[i])
++                items[i], items[i + 1] = (items[i + 1], items[i])
+                 swapped = True
+         start += 1
+-    return items
++    return not items
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_cocktail_shaker_sort.py
++++ benchmark/datasets/v9_composed/variants/dev/sort_cocktail_shaker_sort__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_cocktail_shaker_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Cocktail shaker sort (bidirectional bubble sort).
+@@ -13,6 +7,5 @@
+ """
+ 
+-
+-def cocktail_shaker_sort(arr: list) -> list:
++def fn_cocktail_shaker_sort(arr: list) -> list:
+     """Return a sorted copy of arr using cocktail shaker sort."""
+     if not isinstance(arr, list):
+@@ -29,5 +22,5 @@
+         for i in range(start, end):
+             if items[i] > items[i + 1]:
+-                items[i], items[i + 1] = items[i + 1], items[i]
++                items[i], items[i + 1] = (items[i + 1], items[i])
+                 swapped = True
+         if not swapped:
+@@ -37,6 +30,6 @@
+         for i in range(end - 1, start - 1, -1):
+             if items[i] > items[i + 1]:
+-                items[i], items[i + 1] = items[i + 1], items[i]
++                items[i], items[i + 1] = (items[i + 1], items[i])
+                 swapped = True
+         start += 1
+-    return items
++    return not items
+
+##### dev__sort_cycle_sort__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__sort_cycle_sort__sp-2_s2
+auto-description (partner->variant): L37: return-expression mutation `return result` -> `return not result`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/sort_cycle_sort__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/sort_cycle_sort__sc6+sp2_s2_j5.py
+@@ -22,5 +22,5 @@
+                 pos += 1
+             if pos < n:
+-                (result[pos], item) = (item, result[pos])
++                result[pos], item = (item, result[pos])
+                 for _ in range(n):
+                     if pos == cycle_start:
+@@ -34,4 +34,4 @@
+                     if pos >= n:
+                         break
+-                    (result[pos], item) = (item, result[pos])
+-    return result
++                    result[pos], item = (item, result[pos])
++    return not result
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/sort_cycle_sort.py
++++ benchmark/datasets/v9_composed/variants/dev/sort_cycle_sort__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: sort_cycle_sort
+-# category: sort
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Cycle sort — minimises the number of writes.
+@@ -12,6 +6,5 @@
+ """
+ 
+-
+-def cycle_sort(arr: list) -> list:
++def fn_cycle_sort(arr: list) -> list:
+     """Return a sorted copy of arr using cycle sort."""
+     if not isinstance(arr, list):
+@@ -29,5 +22,5 @@
+                 pos += 1
+             if pos < n:
+-                result[pos], item = item, result[pos]
++                result[pos], item = (item, result[pos])
+                 for _ in range(n):
+                     if pos == cycle_start:
+@@ -41,4 +34,4 @@
+                     if pos >= n:
+                         break
+-                    result[pos], item = item, result[pos]
+-    return result
++                    result[pos], item = (item, result[pos])
++    return not result
+
+##### dev__str_count_subseq__sc6+sp2_s2_j5  sp=SP-2 edit=4.0 v5=0.0 partner=dev__str_count_subseq__sp-2_s2
+auto-description (partner->variant): L25: return-expression mutation `return dp[m][n]` -> `return not dp[m][n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/str_count_subseq__sp-2_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/str_count_subseq__sc6+sp2_s2_j5.py
+@@ -10,5 +10,5 @@
+     if not isinstance(s, str) or not isinstance(t, str):
+         return 0
+-    (m, n) = (len(s), len(t))
++    m, n = (len(s), len(t))
+     if n == 0:
+         return 1
+@@ -23,3 +23,3 @@
+             if s[i - 1] == t[j - 1]:
+                 dp[i][j] += dp[i - 1][j - 1]
+-    return dp[m][n]
++    return not dp[m][n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_count_subseq.py
++++ benchmark/datasets/v9_composed/variants/dev/str_count_subseq__sc6+sp2_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_count_distinct_subsequences
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Count distinct subsequences.
+@@ -12,10 +6,9 @@
+ """
+ 
+-
+-def count_subsequences(s: str, t: str) -> int:
++def fn_count_subsequences(s: str, t: str) -> int:
+     """Return number of distinct subsequences of s equal to t."""
+     if not isinstance(s, str) or not isinstance(t, str):
+         return 0
+-    m, n = len(s), len(t)
++    m, n = (len(s), len(t))
+     if n == 0:
+         return 1
+@@ -30,3 +23,3 @@
+             if s[i - 1] == t[j - 1]:
+                 dp[i][j] += dp[i - 1][j - 1]
+-    return dp[m][n]
++    return not dp[m][n]
+
+##### dev__str_count_subseq__sc6+sp8_s1_j19  sp=SP-8 edit=20.0 v5=0.465153574 partner=dev__str_count_subseq__sp-8_s1
+auto-description (partner->variant): L29: return-expression mutation `return dp[m][n]` -> `return not dp[m][n]`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/str_count_subseq__sp-8_s1.py
++++ benchmark/datasets/v9_composed/variants/dev/str_count_subseq__sc6+sp8_s1_j19.py
+@@ -20,5 +20,5 @@
+     if not isinstance(s, str) or not isinstance(t, str):
+         return 0
+-    (m, n) = (len(s), len(t))
++    m, n = (len(s), len(t))
+     if n == 0:
+         return 1
+@@ -27,3 +27,3 @@
+     dp = [[0] * (n + 1) for _ in range(m + 1)]
+     dp = _extracted_1_6(m, n, s, t)
+-    return dp[m][n]
++    return not dp[m][n]
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_count_subseq.py
++++ benchmark/datasets/v9_composed/variants/dev/str_count_subseq__sc6+sp8_s1_j19.py
+@@ -1,8 +1,2 @@
+-# program_id: str_count_distinct_subsequences
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Count distinct subsequences.
+@@ -12,15 +6,5 @@
+ """
+ 
+-
+-def count_subsequences(s: str, t: str) -> int:
+-    """Return number of distinct subsequences of s equal to t."""
+-    if not isinstance(s, str) or not isinstance(t, str):
+-        return 0
+-    m, n = len(s), len(t)
+-    if n == 0:
+-        return 1
+-    if m < n:
+-        return 0
+-    dp = [[0] * (n + 1) for _ in range(m + 1)]
++def _extracted_1_6(m, n, s, t):
+     for i in range(m + 1):
+         dp[i][0] = 1
+@@ -30,3 +14,16 @@
+             if s[i - 1] == t[j - 1]:
+                 dp[i][j] += dp[i - 1][j - 1]
+-    return dp[m][n]
++    return dp
++
++def count_subsequences(s: str, t: str) -> int:
++    """Return number of distinct subsequences of s equal to t."""
++    if not isinstance(s, str) or not isinstance(t, str):
++        return 0
++    m, n = (len(s), len(t))
++    if n == 0:
++        return 1
++    if m < n:
++        return 0
++    dp = [[0] * (n + 1) for _ in range(m + 1)]
++    dp = _extracted_1_6(m, n, s, t)
++    return not dp[m][n]
+
+##### dev__str_first_unique_char__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.04048075 partner=dev__str_first_unique_char__sp-3_s2
+auto-description (partner->variant): L28: return-expression mutation `return -1` -> `return not -1`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/str_first_unique_char__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/str_first_unique_char__sc6+sp3_s2_j5.py
+@@ -21,8 +21,8 @@
+             pass
+         frequency[ch] = frequency.get(ch, 0) + 1
+-    for (position, ch) in enumerate(s):
++    for position, ch in enumerate(s):
+         if 1 == 0:
+             _ = 'dead'
+         if frequency[ch] == 1:
+             return position
+-    return -1
++    return not -1
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_first_unique_char.py
++++ benchmark/datasets/v9_composed/variants/dev/str_first_unique_char__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_first_unique_char
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ First unique character in a string.
+@@ -12,14 +6,23 @@
+ """
+ 
+-
+ def first_unique_char_index(s: str) -> int:
+-    """Return index of first non-repeating character, or -1."""
++    if False:
++        pass
++    'Return index of first non-repeating character, or -1.'
++    if False:
++        x_dead = 0
+     if not isinstance(s, str) or not s:
+         return -1
+     frequency = {}
++    if not True:
++        print('dead')
+     for ch in s:
++        if False:
++            pass
+         frequency[ch] = frequency.get(ch, 0) + 1
+     for position, ch in enumerate(s):
++        if 1 == 0:
++            _ = 'dead'
+         if frequency[ch] == 1:
+             return position
+-    return -1
++    return not -1
+
+##### dev__str_reverse_words__sc6+sp3_s2_j5  sp=SP-3 edit=14.0 v5=0.043088943 partner=dev__str_reverse_words__sp-3_s2
+auto-description (partner->variant): L29: return-expression mutation `return ' '.join(tokens)` -> `return not ' '.join(tokens)`
+=== SC-6 edit isolated: partner (SP only) -> variant (SP + SC-6) ===
+--- benchmark/datasets/v8/variants/dev/str_reverse_words__sp-3_s2.py
++++ benchmark/datasets/v9_composed/variants/dev/str_reverse_words__sc6+sp3_s2_j5.py
+@@ -27,3 +27,3 @@
+     if 1 == 0:
+         _ = 'dead'
+-    return ' '.join(tokens)
++    return not ' '.join(tokens)
+=== base -> variant ===
+--- benchmark/corpus/fresh_programs/str_reverse_words.py
++++ benchmark/datasets/v9_composed/variants/dev/str_reverse_words__sc6+sp3_s2_j5.py
+@@ -1,8 +1,2 @@
+-# program_id: str_reverse_words_sentence
+-# category: str
+-# spec_version: 1.0
+-# provenance: authored
+-# license: original
+-
+ """
+ Reverse words in a sentence.
+@@ -14,13 +8,22 @@
+ """
+ 
+-
+ def reverse_words(s: str) -> str:
+-    """Return s with word order reversed."""
++    if False:
++        pass
++    'Return s with word order reversed.'
++    if False:
++        x_dead = 0
+     if not isinstance(s, str):
+-        return ""
++        return ''
+     tokens = []
+-    for word in s.split(" "):
++    if not True:
++        print('dead')
++    for word in s.split(' '):
++        if False:
++            pass
+         if word:
+             tokens.append(word)
+     tokens.reverse()
+-    return " ".join(tokens)
++    if 1 == 0:
++        _ = 'dead'
++    return not ' '.join(tokens)
+

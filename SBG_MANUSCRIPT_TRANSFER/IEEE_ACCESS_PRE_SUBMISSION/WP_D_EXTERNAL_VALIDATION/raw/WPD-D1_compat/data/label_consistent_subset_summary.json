@@ -1,0 +1,274 @@
+{
+ "status": "EXPLORATORY post-hoc label audit view; pairs filtered by the SBG label definition via the oracle, never by SBG score; no tuning; unfiltered numbers are in confound_summary.json",
+ "definition": "keep positive iff oracle_CHANGED; keep negative iff oracle_UNCHANGED; both must be comparable; pairs must be in the v8 evaluated set (BugsInPy 147 / QuixBugs 151)",
+ "bugsinpy": {
+  "n_v8_evaluated_comparable": 147,
+  "n_kept": 96,
+  "kept_pos": 2,
+  "kept_neg": 94,
+  "dropped_pos_unobservable": 39,
+  "dropped_neg_invalid": 12,
+  "sbg_v5_v8": {
+   "n": 96,
+   "n_pos": 2,
+   "n_neg": 94,
+   "n_clusters": 39,
+   "auroc": 0.5957,
+   "ci95_cluster_bootstrap": [
+    0.1515,
+    1.0
+   ],
+   "boot_effective": 1741,
+   "within_cluster_auroc": 0.0,
+   "n_within_cluster_comparisons": 2,
+   "n_exact_zero_score": 37
+  },
+  "static_token": {
+   "n": 96,
+   "n_pos": 2,
+   "n_neg": 94,
+   "n_clusters": 39,
+   "auroc": 0.2447,
+   "ci95_cluster_bootstrap": [
+    0.0729,
+    0.4468
+   ],
+   "boot_effective": 1741,
+   "within_cluster_auroc": 0.0,
+   "n_within_cluster_comparisons": 2,
+   "n_exact_zero_score": 8
+  },
+  "static_ast": {
+   "n": 96,
+   "n_pos": 2,
+   "n_neg": 94,
+   "n_clusters": 39,
+   "auroc": 0.4468,
+   "ci95_cluster_bootstrap": [
+    0.3196,
+    0.5895
+   ],
+   "boot_effective": 1741,
+   "within_cluster_auroc": 0.5,
+   "n_within_cluster_comparisons": 2,
+   "n_exact_zero_score": 25
+  },
+  "norm_line_edit": {
+   "n": 96,
+   "n_pos": 2,
+   "n_neg": 94,
+   "n_clusters": 39,
+   "auroc": 0.3191,
+   "ci95_cluster_bootstrap": [
+    0.2469,
+    0.3871
+   ],
+   "boot_effective": 1741,
+   "within_cluster_auroc": 0.25,
+   "n_within_cluster_comparisons": 2,
+   "n_exact_zero_score": 12
+  },
+  "excl_SP2": {
+   "sbg_v5_v8": {
+    "n": 66,
+    "n_pos": 2,
+    "n_neg": 64,
+    "n_clusters": 37,
+    "auroc": 0.6328,
+    "ci95_cluster_bootstrap": [
+     0.2154,
+     1.0
+    ],
+    "boot_effective": 1747,
+    "within_cluster_auroc": 0.0,
+    "n_within_cluster_comparisons": 1,
+    "n_exact_zero_score": 35
+   },
+   "static_token": {
+    "n": 66,
+    "n_pos": 2,
+    "n_neg": 64,
+    "n_clusters": 37,
+    "auroc": 0.2188,
+    "ci95_cluster_bootstrap": [
+     0.1014,
+     0.3651
+    ],
+    "boot_effective": 1747,
+    "within_cluster_auroc": 0.0,
+    "n_within_cluster_comparisons": 1,
+    "n_exact_zero_score": 8
+   },
+   "static_ast": {
+    "n": 66,
+    "n_pos": 2,
+    "n_neg": 64,
+    "n_clusters": 37,
+    "auroc": 0.2188,
+    "ci95_cluster_bootstrap": [
+     0.0758,
+     0.4
+    ],
+    "boot_effective": 1747,
+    "within_cluster_auroc": 0.0,
+    "n_within_cluster_comparisons": 1,
+    "n_exact_zero_score": 0
+   },
+   "norm_line_edit": {
+    "n": 66,
+    "n_pos": 2,
+    "n_neg": 64,
+    "n_clusters": 37,
+    "auroc": 0.2734,
+    "ci95_cluster_bootstrap": [
+     0.1833,
+     0.3594
+    ],
+    "boot_effective": 1747,
+    "within_cluster_auroc": 0.0,
+    "n_within_cluster_comparisons": 1,
+    "n_exact_zero_score": 12
+   },
+   "n": 66
+  },
+  "oracle_CHANGED_positives_sbg_v5_exact_zero": 1,
+  "oracle_CHANGED_positives_n": 2,
+  "oracle_UNCHANGED_positives_sbg_v5_exact_zero": 25,
+  "oracle_UNCHANGED_positives_n": 39
+ },
+ "quixbugs_canonical": {
+  "n_v8_evaluated_comparable": 151,
+  "n_kept": 117,
+  "kept_pos": 7,
+  "kept_neg": 110,
+  "dropped_pos_unobservable": 32,
+  "dropped_neg_invalid": 2,
+  "sbg_v5_v8": {
+   "n": 117,
+   "n_pos": 7,
+   "n_neg": 110,
+   "n_clusters": 40,
+   "auroc": 0.8494,
+   "ci95_cluster_bootstrap": [
+    0.6022,
+    1.0
+   ],
+   "boot_effective": 2000,
+   "within_cluster_auroc": 0.9286,
+   "n_within_cluster_comparisons": 21,
+   "n_exact_zero_score": 57
+  },
+  "static_token": {
+   "n": 117,
+   "n_pos": 7,
+   "n_neg": 110,
+   "n_clusters": 40,
+   "auroc": 0.2136,
+   "ci95_cluster_bootstrap": [
+    0.0787,
+    0.3874
+   ],
+   "boot_effective": 2000,
+   "within_cluster_auroc": 0.2143,
+   "n_within_cluster_comparisons": 21,
+   "n_exact_zero_score": 1
+  },
+  "static_ast": {
+   "n": 117,
+   "n_pos": 7,
+   "n_neg": 110,
+   "n_clusters": 40,
+   "auroc": 0.4435,
+   "ci95_cluster_bootstrap": [
+    0.3136,
+    0.5862
+   ],
+   "boot_effective": 2000,
+   "within_cluster_auroc": 0.4524,
+   "n_within_cluster_comparisons": 21,
+   "n_exact_zero_score": 23
+  },
+  "norm_line_edit": {
+   "n": 117,
+   "n_pos": 7,
+   "n_neg": 110,
+   "n_clusters": 40,
+   "auroc": 0.2409,
+   "ci95_cluster_bootstrap": [
+    0.1981,
+    0.2798
+   ],
+   "boot_effective": 2000,
+   "within_cluster_auroc": 0.2857,
+   "n_within_cluster_comparisons": 21,
+   "n_exact_zero_score": 0
+  },
+  "excl_SP2": {
+   "sbg_v5_v8": {
+    "n": 79,
+    "n_pos": 7,
+    "n_neg": 72,
+    "n_clusters": 40,
+    "auroc": 0.8879,
+    "ci95_cluster_bootstrap": [
+     0.6597,
+     1.0
+    ],
+    "boot_effective": 2000,
+    "within_cluster_auroc": 0.9286,
+    "n_within_cluster_comparisons": 14,
+    "n_exact_zero_score": 48
+   },
+   "static_token": {
+    "n": 79,
+    "n_pos": 7,
+    "n_neg": 72,
+    "n_clusters": 40,
+    "auroc": 0.127,
+    "ci95_cluster_bootstrap": [
+     0.0286,
+     0.2703
+    ],
+    "boot_effective": 2000,
+    "within_cluster_auroc": 0.0714,
+    "n_within_cluster_comparisons": 14,
+    "n_exact_zero_score": 1
+   },
+   "static_ast": {
+    "n": 79,
+    "n_pos": 7,
+    "n_neg": 72,
+    "n_clusters": 40,
+    "auroc": 0.2262,
+    "ci95_cluster_bootstrap": [
+     0.08,
+     0.3986
+    ],
+    "boot_effective": 2000,
+    "within_cluster_auroc": 0.2143,
+    "n_within_cluster_comparisons": 14,
+    "n_exact_zero_score": 0
+   },
+   "norm_line_edit": {
+    "n": 79,
+    "n_pos": 7,
+    "n_neg": 72,
+    "n_clusters": 40,
+    "auroc": 0.2083,
+    "ci95_cluster_bootstrap": [
+     0.1644,
+     0.2535
+    ],
+    "boot_effective": 2000,
+    "within_cluster_auroc": 0.25,
+    "n_within_cluster_comparisons": 14,
+    "n_exact_zero_score": 0
+   },
+   "n": 79
+  },
+  "oracle_CHANGED_positives_sbg_v5_exact_zero": 1,
+  "oracle_CHANGED_positives_n": 7,
+  "oracle_UNCHANGED_positives_sbg_v5_exact_zero": 31,
+  "oracle_UNCHANGED_positives_n": 32
+ }
+}

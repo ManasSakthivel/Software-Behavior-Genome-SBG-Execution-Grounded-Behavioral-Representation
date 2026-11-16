@@ -1,0 +1,482 @@
+{
+ "bugsinpy_lineage": {
+  "n_bug_clusters_all_pairs": 51,
+  "n_distinct_project|file|unit_lineages": 44,
+  "n_lineages_spanning_multiple_bugs": 6,
+  "lineages_spanning_multiple_bugs": {
+   "matplotlib|lib/matplotlib/axis.py|_make_getset_interval": [
+    "matplotlib/24",
+    "matplotlib/26"
+   ],
+   "pandas|pandas/core/window/common.py|validate_baseindexer_support": [
+    "pandas/18",
+    "pandas/22"
+   ],
+   "scrapy|scrapy/item.py|ItemMeta": [
+    "scrapy/34",
+    "scrapy/8"
+   ],
+   "youtube-dl|youtube_dl/utils.py|parse_dfxp_time_expr": [
+    "youtube-dl/27",
+    "youtube-dl/6"
+   ],
+   "youtube-dl|youtube_dl/utils.py|js_to_json": [
+    "youtube-dl/10",
+    "youtube-dl/15",
+    "youtube-dl/23",
+    "youtube-dl/25",
+    "youtube-dl/26",
+    "youtube-dl/34",
+    "youtube-dl/7"
+   ],
+   "youtube-dl|youtube_dl/utils.py|unified_strdate": [
+    "youtube-dl/35",
+    "youtube-dl/41"
+   ]
+  }
+ },
+ "bugsinpy_content_clusters_fixed_units_jaccard>=0.5": {
+  "n_positive_units": 55,
+  "n_content_clusters": 44,
+  "multi_member_clusters": [
+   [
+    "ansible/2::lib/ansible/utils/version.py::_Alpha::real_fix",
+    "ansible/2::lib/ansible/utils/version.py::_Numeric::real_fix"
+   ],
+   [
+    "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::real_fix",
+    "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::real_fix"
+   ],
+   [
+    "pandas/18::pandas/core/window/common.py::validate_baseindexer_support::real_fix",
+    "pandas/22::pandas/core/window/common.py::validate_baseindexer_support::real_fix"
+   ],
+   [
+    "scrapy/34::scrapy/item.py::ItemMeta::real_fix",
+    "scrapy/8::scrapy/item.py::ItemMeta::real_fix"
+   ],
+   [
+    "spacy/7::examples/information_extraction/entity_relations.py::filter_spans::real_fix",
+    "spacy/7::spacy/util.py::filter_spans::real_fix"
+   ],
+   [
+    "youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix",
+    "youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix"
+   ],
+   [
+    "youtube-dl/10::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/7::youtube_dl/utils.py::js_to_json::real_fix"
+   ],
+   [
+    "youtube-dl/15::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/23::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix"
+   ],
+   [
+    "youtube-dl/35::youtube_dl/utils.py::unified_strdate::real_fix",
+    "youtube-dl/41::youtube_dl/utils.py::unified_strdate::real_fix"
+   ]
+  ],
+  "top_pairwise_jaccard_between_distinct_positive_units": [
+   [
+    1.0,
+    "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::real_fix",
+    "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::real_fix"
+   ],
+   [
+    1.0,
+    "ansible/2::lib/ansible/utils/version.py::_Alpha::real_fix",
+    "ansible/2::lib/ansible/utils/version.py::_Numeric::real_fix"
+   ],
+   [
+    0.922,
+    "spacy/7::examples/information_extraction/entity_relations.py::filter_spans::real_fix",
+    "spacy/7::spacy/util.py::filter_spans::real_fix"
+   ],
+   [
+    0.907,
+    "youtube-dl/23::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix"
+   ],
+   [
+    0.889,
+    "pandas/18::pandas/core/window/common.py::validate_baseindexer_support::real_fix",
+    "pandas/22::pandas/core/window/common.py::validate_baseindexer_support::real_fix"
+   ],
+   [
+    0.863,
+    "youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix"
+   ],
+   [
+    0.799,
+    "youtube-dl/7::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/10::youtube_dl/utils.py::js_to_json::real_fix"
+   ],
+   [
+    0.783,
+    "youtube-dl/23::youtube_dl/utils.py::js_to_json::real_fix",
+    "youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix"
+   ]
+  ]
+ },
+ "bugsinpy_cluster_definitions_vs_headline_AUROC": {
+  "v8_all": {
+   "cluster": {
+    "n_clusters": 39,
+    "auroc": 0.4159,
+    "ci95": [
+     0.3223,
+     0.5144
+    ]
+   },
+   "content_cluster": {
+    "n_clusters": 33,
+    "auroc": 0.4159,
+    "ci95": [
+     0.3145,
+     0.5352
+    ]
+   },
+   "lineage": {
+    "n_clusters": 32,
+    "auroc": 0.4159,
+    "ci95": [
+     0.3277,
+     0.5437
+    ]
+   },
+   "project": {
+    "n_clusters": 11,
+    "auroc": 0.4159,
+    "ci95": [
+     0.3566,
+     0.5344
+    ]
+   }
+  },
+  "v8_exclSP2": {
+   "cluster": {
+    "n_clusters": 39,
+    "auroc": 0.497,
+    "ci95": [
+     0.4023,
+     0.5956
+    ]
+   },
+   "content_cluster": {
+    "n_clusters": 33,
+    "auroc": 0.497,
+    "ci95": [
+     0.397,
+     0.6067
+    ]
+   },
+   "lineage": {
+    "n_clusters": 32,
+    "auroc": 0.497,
+    "ci95": [
+     0.4127,
+     0.6074
+    ]
+   },
+   "project": {
+    "n_clusters": 11,
+    "auroc": 0.497,
+    "ci95": [
+     0.4322,
+     0.5968
+    ]
+   }
+  }
+ },
+ "bugsinpy_same_AST_in_multiple_units": {
+  "n_ast_hashes_shared_by_>1_unit": 16,
+  "examples": [
+   [
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Alpha",
+     "base",
+     0
+    ],
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Alpha",
+     "base",
+     1
+    ],
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Numeric",
+     "base",
+     0
+    ],
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Numeric",
+     "base",
+     1
+    ]
+   ],
+   [
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Alpha",
+     "variant",
+     1
+    ],
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Numeric",
+     "variant",
+     1
+    ]
+   ],
+   [
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Alpha",
+     "variant",
+     0
+    ],
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Numeric",
+     "variant",
+     0
+    ]
+   ],
+   [
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Alpha",
+     "variant",
+     0
+    ],
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Numeric",
+     "variant",
+     0
+    ]
+   ],
+   [
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Alpha",
+     "variant",
+     0
+    ],
+    [
+     "ansible/2::lib/ansible/utils/version.py::_Numeric",
+     "variant",
+     0
+    ]
+   ],
+   [
+    [
+     "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval",
+     "base",
+     0
+    ],
+    [
+     "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval",
+     "base",
+     1
+    ],
+    [
+     "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval",
+     "base",
+     0
+    ],
+    [
+     "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval",
+     "base",
+     1
+    ]
+   ],
+   [
+    [
+     "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     1
+    ],
+    [
+     "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     1
+    ]
+   ],
+   [
+    [
+     "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     0
+    ],
+    [
+     "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     0
+    ]
+   ],
+   [
+    [
+     "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     0
+    ],
+    [
+     "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     0
+    ]
+   ],
+   [
+    [
+     "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     0
+    ],
+    [
+     "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval",
+     "variant",
+     0
+    ]
+   ]
+  ]
+ },
+ "bugsinpy_fixed_of_one_bug_is_buggy_of_another": {
+  "n": 5,
+  "examples": [
+   [
+    [
+     "pandas/22::pandas/core/window/common.py::validate_baseindexer_support::real_fix"
+    ],
+    [
+     "pandas/18::pandas/core/window/common.py::validate_baseindexer_support::real_fix"
+    ]
+   ],
+   [
+    [
+     "scrapy/34::scrapy/item.py::ItemMeta::real_fix"
+    ],
+    [
+     "scrapy/8::scrapy/item.py::ItemMeta::real_fix"
+    ]
+   ],
+   [
+    [
+     "youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix"
+    ],
+    [
+     "youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix"
+    ]
+   ],
+   [
+    [
+     "youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix"
+    ],
+    [
+     "youtube-dl/23::youtube_dl/utils.py::js_to_json::real_fix"
+    ]
+   ],
+   [
+    [
+     "youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix"
+    ],
+    [
+     "youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix"
+    ]
+   ]
+  ]
+ },
+ "quixbugs_cluster_label_balance_all_pairs": {
+  "neg=3,pos=1": 32,
+  "neg=2,pos=1": 8
+ },
+ "quixbugs_note": "each QuixBugs base program yields exactly 1 positive and <=3 negatives that share ITS fixed program as base: any base-specific property is shared across labels within the cluster (good for pair-level bias) but the cluster is not independent from a base-level shortcut; the within-cluster AUROC is reported in confound_summary.json",
+ "bugsinpy_positive_edit_kind": {
+  "all_55": {
+   "structural_or_name_change": 42,
+   "constant_only_(structure_and_names_identical)": 12,
+   "rename_only_(alpha-equivalent)": 1
+  },
+  "evaluated_v8_41": {
+   "structural_or_name_change": 30,
+   "rename_only_(alpha-equivalent)": 1,
+   "constant_only_(structure_and_names_identical)": 10
+  }
+ },
+ "format_shortcut": {
+  "definition": "variant_fmt_nonunparse_frac = share of the variant's code lines (docstrings/comments/blank removed) that are not a verbatim line of ast.unparse(variant w/o docstrings). Negatives are ast.unparse products => 0 by construction. Pairs: v8-evaluated.",
+  "tables": {
+   "bugsinpy": {
+    "n_pos": 41,
+    "n_neg": 106,
+    "mean_pos": 0.3314,
+    "mean_neg": 0.0,
+    "neg_all_zero": 106,
+    "pos_all_zero": 7,
+    "auroc_label_from_variant_format": {
+     "n": 147,
+     "n_pos": 41,
+     "n_neg": 106,
+     "n_clusters": 39,
+     "auroc": 0.9146,
+     "ci95_cluster_bootstrap": [
+      0.8452,
+      0.9744
+     ],
+     "boot_effective": 2000,
+     "within_cluster_auroc": 0.9009,
+     "n_within_cluster_comparisons": 116,
+     "n_exact_zero_score": 113
+    },
+    "auroc_label_from_variant_format_exclSP2": {
+     "n": 107,
+     "n_pos": 41,
+     "n_neg": 66,
+     "n_clusters": 39,
+     "auroc": 0.9146,
+     "ci95_cluster_bootstrap": [
+      0.8452,
+      0.9744
+     ],
+     "boot_effective": 2000,
+     "within_cluster_auroc": 0.8958,
+     "n_within_cluster_comparisons": 72,
+     "n_exact_zero_score": 73
+    }
+   },
+   "quixbugs_canonical": {
+    "n_pos": 39,
+    "n_neg": 112,
+    "mean_pos": 0.624,
+    "mean_neg": 0.0,
+    "neg_all_zero": 112,
+    "pos_all_zero": 0,
+    "auroc_label_from_variant_format": {
+     "n": 151,
+     "n_pos": 39,
+     "n_neg": 112,
+     "n_clusters": 40,
+     "auroc": 1.0,
+     "ci95_cluster_bootstrap": [
+      1.0,
+      1.0
+     ],
+     "boot_effective": 2000,
+     "within_cluster_auroc": 1.0,
+     "n_within_cluster_comparisons": 109,
+     "n_exact_zero_score": 112
+    },
+    "auroc_label_from_variant_format_exclSP2": {
+     "n": 111,
+     "n_pos": 39,
+     "n_neg": 72,
+     "n_clusters": 40,
+     "auroc": 1.0,
+     "ci95_cluster_bootstrap": [
+      1.0,
+      1.0
+     ],
+     "boot_effective": 2000,
+     "within_cluster_auroc": 1.0,
+     "n_within_cluster_comparisons": 70,
+     "n_exact_zero_score": 72
+    }
+   }
+  }
+ }
+}

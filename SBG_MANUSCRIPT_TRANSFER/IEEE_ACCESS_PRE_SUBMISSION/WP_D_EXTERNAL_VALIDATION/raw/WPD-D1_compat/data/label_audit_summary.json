@@ -1,0 +1,429 @@
+{
+ "method": "d1_03_label_oracle.py: V10-style oracle (value|exception type|args-after-call|stdout per input) of the structurally selected entry on SBG's 11 protocol inputs, 1.0 s/input, single run, on sha256-verified copies",
+ "tables": {
+  "positives/bugsinpy/canonical": {
+   "n_positive_pairs_in_manifest": 55,
+   "status_counts": {
+    "not_comparable:unsupported_signature/unsupported_signature": 7,
+    "comparable": 47,
+    "not_comparable:import_error/import_error": 1
+   },
+   "n_comparable": 47,
+   "n_oracle_CHANGED": 2,
+   "n_oracle_UNCHANGED": 45,
+   "fraction_CHANGED_of_comparable": 0.0426,
+   "n_differ_distribution_(inputs_differing_of_n)": {
+    "0": 45,
+    "1": 2
+   },
+   "restricted_to_v8_evaluated_pairs": {
+    "n": 41,
+    "n_CHANGED": 2
+   },
+   "unit_kind_of_comparable": {
+    "function": 45,
+    "class": 2
+   },
+   "CHANGED_by_unit_kind": {
+    "function": 2
+   }
+  },
+  "positives/quixbugs/canonical": {
+   "n_positive_pairs_in_manifest": 40,
+   "status_counts": {
+    "comparable": 40
+   },
+   "n_comparable": 40,
+   "n_oracle_CHANGED": 8,
+   "n_oracle_UNCHANGED": 32,
+   "fraction_CHANGED_of_comparable": 0.2,
+   "n_differ_distribution_(inputs_differing_of_n)": {
+    "0": 32,
+    "1": 3,
+    "2": 1,
+    "5": 1,
+    "7": 1,
+    "10": 2
+   },
+   "base_programs_with_>=10_of_11_inputs_raising": 27,
+   "base_exception_inputs_distribution": {
+    "0": 13,
+    "10": 7,
+    "11": 20
+   },
+   "base_exception_types": {
+    "TypeError": 22,
+    "AttributeError": 3,
+    "IndexError": 4
+   }
+  },
+  "positives/quixbugs/declared": {
+   "n_positive_pairs_in_manifest": 40,
+   "status_counts": {
+    "comparable": 31,
+    "not_comparable:NA/NA": 9
+   },
+   "n_comparable": 31,
+   "n_oracle_CHANGED": 28,
+   "n_oracle_UNCHANGED": 3,
+   "fraction_CHANGED_of_comparable": 0.9032,
+   "n_differ_distribution_(inputs_differing_of_n)": {
+    "0": 3,
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 7,
+    "5": 3,
+    "6": 3,
+    "7": 2,
+    "8": 2,
+    "9": 2,
+    "10": 2,
+    "13": 1
+   }
+  },
+  "negatives/bugsinpy/canonical": {
+   "n_negative_pairs_in_manifest": 145,
+   "status_counts": {
+    "not_comparable:unsupported_signature/unsupported_signature": 21,
+    "comparable": 121,
+    "not_comparable:import_error/import_error": 3
+   },
+   "n_comparable": 121,
+   "n_oracle_CHANGED_(invalid_negative)": 14,
+   "by_transformation_[n_comparable,n_oracle_CHANGED]": {
+    "SP-1": [
+     17,
+     0
+    ],
+    "SP-2": [
+     46,
+     12
+    ],
+    "SP-3": [
+     32,
+     1
+    ],
+    "SP-4": [
+     17,
+     1
+    ],
+    "SP-6": [
+     9,
+     0
+    ]
+   }
+  },
+  "negatives/quixbugs/canonical": {
+   "n_negative_pairs_in_manifest": 112,
+   "status_counts": {
+    "comparable": 112
+   },
+   "n_comparable": 112,
+   "n_oracle_CHANGED_(invalid_negative)": 2,
+   "by_transformation_[n_comparable,n_oracle_CHANGED]": {
+    "SP-1": [
+     30,
+     0
+    ],
+    "SP-2": [
+     40,
+     2
+    ],
+    "SP-3": [
+     33,
+     0
+    ],
+    "SP-6": [
+     9,
+     0
+    ]
+   }
+  },
+  "negatives/quixbugs/declared": {
+   "n_negative_pairs_in_manifest": 112,
+   "status_counts": {
+    "comparable": 85,
+    "not_comparable:NA/NA": 27
+   },
+   "n_comparable": 85,
+   "n_oracle_CHANGED_(invalid_negative)": 3,
+   "by_transformation_[n_comparable,n_oracle_CHANGED]": {
+    "SP-1": [
+     21,
+     0
+    ],
+    "SP-2": [
+     31,
+     2
+    ],
+    "SP-3": [
+     25,
+     0
+    ],
+    "SP-6": [
+     8,
+     1
+    ]
+   }
+  }
+ },
+ "invalid_negative_first_difference": [
+  {
+   "pair_id": "black/21::black.py::dump_to_file::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "'/tmp/blk_iuuoggl3.log'"
+    ],
+    "variant_obs": [
+     "ok",
+     "'/tmp/blk_1k0sf2hn.log'"
+    ]
+   }
+  },
+  {
+   "pair_id": "black/21::black.py::dump_to_file::SP-4",
+   "transformation": "SP-4",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "'/tmp/blk_iuuoggl3.log'"
+    ],
+    "variant_obs": [
+     "ok",
+     "'/tmp/blk_7sqj5ipv.log'"
+    ]
+   }
+  },
+  {
+   "pair_id": "black/21::black.py::dump_to_file::SP-3",
+   "transformation": "SP-3",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "'/tmp/blk_iuuoggl3.log'"
+    ],
+    "variant_obs": [
+     "ok",
+     "'/tmp/blk_lf_vlo7b.log'"
+    ]
+   }
+  },
+  {
+   "pair_id": "matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "(<function _make_getset_interval.<locals>.getter at 0x?>, <function _make_getset_interval.<locals>.setter at 0x?>)"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "(<function _make_getset_interval.<locals>.getter at 0x?>, <function _make_getset_interval.<locals>.setter at 0x?>)"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "spacy/1::spacy/errors.py::add_codes::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "<_d1_prog.add_codes.<locals>.ErrorsWithCodes object at 0x?>"
+    ],
+    "variant_obs": [
+     "ok",
+     "<_d1_prog.fn_add_codes.<locals>.ErrorsWithCodes object at 0x?>"
+    ]
+   }
+  },
+  {
+   "pair_id": "spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "<generator object read_conllx at 0x?>"
+    ],
+    "variant_obs": [
+     "ok",
+     "<generator object fn_read_conllx at 0x?>"
+    ]
+   }
+  },
+  {
+   "pair_id": "youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "exc",
+     "TypeError"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "exc",
+     "TypeError"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "exc",
+     "TypeError"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "exc",
+     "TypeError"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "exc",
+     "TypeError"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "exc",
+     "TypeError"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-2",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "exc",
+     "TypeError"
+    ],
+    "variant_obs": [
+     "exc",
+     "NameError"
+    ]
+   }
+  },
+  {
+   "pair_id": "quixbugs__flatten__sp-2_s0__canonical",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "<generator object flatten at 0x?>"
+    ],
+    "variant_obs": [
+     "ok",
+     "<generator object fn_flatten at 0x?>"
+    ]
+   }
+  },
+  {
+   "pair_id": "quixbugs__kheapsort__sp-2_s0__canonical",
+   "transformation": "SP-2",
+   "first_differing_input": {
+    "input_index": 0,
+    "base_obs": [
+     "ok",
+     "<generator object kheapsort at 0x?>"
+    ],
+    "variant_obs": [
+     "ok",
+     "<generator object fn_kheapsort at 0x?>"
+    ]
+   }
+  }
+ ],
+ "invalid_negative_first_difference_summary": {
+  "SP-2|ok|'/tmp/blk_1k0sf2hn.log'": 1,
+  "SP-4|ok|'/tmp/blk_7sqj5ipv.log'": 1,
+  "SP-3|ok|'/tmp/blk_lf_vlo7b.log'": 1,
+  "SP-2|exc|NameError": 9,
+  "SP-2|ok|<_d1_prog.fn_add_codes.<locals>.ErrorsWi": 1,
+  "SP-2|ok|<generator object fn_read_conllx at 0x?>": 1,
+  "SP-2|ok|<generator object fn_flatten at 0x?>": 1,
+  "SP-2|ok|<generator object fn_kheapsort at 0x?>": 1
+ },
+ "bugsinpy_static_observable_flag_vs_oracle": {
+  "|not_comparable": 8,
+  "True|oracle_UNCHANGED": 39,
+  "True|oracle_CHANGED": 2,
+  "|oracle_UNCHANGED": 6
+ }
+}
