@@ -1,0 +1,23 @@
+[score] protocol=output_free_v7 units=55 freeze=4946b1131304
+[score] 10/55 units
+[score] 20/55 units
+[score] 30/55 units
+[score] 40/55 units
+[score] 50/55 units
+[score] wrote artifacts/final/pairs_bugsinpy_output_free_v7.jsonl and artifacts/final/BUGSINPY_output_free_v7.json
+{
+ "protocol": "output_free_v7",
+ "bugs_total": 501,
+ "bugs_with_eligible_unit": 51,
+ "units_eligible": 55,
+ "pairs_total": 200,
+ "pairs_evaluable": 147,
+ "pairs_valid": 147,
+ "bugs_evaluated_with_valid_positive": 39,
+ "sbg_v5_auroc_valid": 0.409917,
+ "sbg_v5_ci_valid": [
+  0.326232,
+  0.493946
+ ],
+ "tau_metrics_computed": true
+}

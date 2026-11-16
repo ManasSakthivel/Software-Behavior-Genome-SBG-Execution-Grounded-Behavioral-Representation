@@ -1,0 +1,135 @@
+| variant | n | pos/neg | clusters | AUROC | 95% CI (cluster bootstrap) | P(pos>neg) / P(tie) |
+|---|---|---|---|---|---|---|
+| bugsinpy ; v7 committed ; all pairs ; evaluated only | 147 | 41/106 | 39 | 0.409917 | [0.326232, 0.493946] (repo) | 0.33387 / 0.152094 |
+| bugsinpy ; v7 committed ; all pairs ; unevaluated=0 | 200 | 55/145 | 51 | 0.433981 | [0.374132, 0.489897] (repo) | 0.279749 / 0.308464 |
+| bugsinpy ; v7 committed ; SP-2 excluded ; evaluated only | 107 | 41/66 | 39 | 0.471545 | [0.380863, 0.561661] (repo) | 0.362528 / 0.218034 |
+| bugsinpy ; v7 committed ; SP-2 excluded ; unevaluated=0 | 150 | 55/95 | 51 | 0.489856 | [0.427821, 0.548678] (repo) | 0.298756 / 0.382201 |
+| quixbugs_canonical ; v7 committed ; all pairs ; evaluated only | 152 | 40/112 | 40 | 0.387723 | [0.284659, 0.503378] (repo) | 0.191295 / 0.392857 |
+| quixbugs_canonical ; v7 committed ; all pairs ; unevaluated=0 | 152 | 40/112 | 40 | 0.387723 | [0.284659, 0.503378] (repo) | 0.191295 / 0.392857 |
+| quixbugs_canonical ; v7 committed ; SP-2 excluded ; evaluated only | 112 | 40/72 | 40 | 0.450694 | [0.360069, 0.547297] (repo) | 0.195139 / 0.511111 |
+| quixbugs_canonical ; v7 committed ; SP-2 excluded ; unevaluated=0 | 112 | 40/72 | 40 | 0.450694 | [0.360069, 0.547297] (repo) | 0.195139 / 0.511111 |
+| quixbugs_declared ; v7 committed ; all pairs ; evaluated only | 99 | 24/75 | 28 | 0.702222 | [0.583636, 0.816576] (repo) | 0.6 / 0.204444 |
+| quixbugs_declared ; v7 committed ; all pairs ; unevaluated=0 | 152 | 40/112 | 40 | 0.595536 | [0.513938, 0.681364] (repo) | 0.373214 / 0.444643 |
+| quixbugs_declared ; v7 committed ; SP-2 excluded ; evaluated only | 72 | 24/48 | 28 | 0.668403 | [0.531556, 0.796875] (repo) | 0.588542 / 0.159722 |
+| quixbugs_declared ; v7 committed ; SP-2 excluded ; unevaluated=0 | 112 | 40/72 | 40 | 0.564583 | [0.477113, 0.655921] (repo) | 0.36875 / 0.391667 |
+| bugsinpy ; v8 rescore ; all pairs ; evaluated only | 147 | 41/106 | 39 | 0.4159 | [0.3223, 0.5144] (rescore) | 0.301427 / 0.228946 |
+| bugsinpy ; v8 rescore ; all pairs ; unevaluated=0 (v8 dump rows only) | 147 | 41/106 | 39 | 0.4159 | [0.3223, 0.5144] (rescore) | 0.301427 / 0.228946 |
+| bugsinpy ; v7 committed scores on the v8-dump pair set ; all pairs ; evaluated only | 147 | 41/106 | 39 | 0.409917 | [0.3262, 0.4939] (rescore) | 0.33387 / 0.152094 |
+| bugsinpy ; v8 rescore ; SP-2 excluded ; evaluated only | 107 | 41/66 | 39 | 0.497044 | [0.4023, 0.5956] (rescore) | 0.333703 / 0.326681 |
+| bugsinpy ; v8 rescore ; SP-2 excluded ; unevaluated=0 (v8 dump rows only) | 107 | 41/66 | 39 | 0.497044 | [0.4023, 0.5956] (rescore) | 0.333703 / 0.326681 |
+| bugsinpy ; v7 committed scores on the v8-dump pair set ; SP-2 excluded ; evaluated only | 107 | 41/66 | 39 | 0.471545 | [0.3809, 0.5617] (rescore) | 0.362528 / 0.218034 |
+| quixbugs_canonical ; v8 rescore ; all pairs ; evaluated only | 151 | 39/112 | 40 | 0.384158 | [0.2847, 0.4899] (rescore) | 0.171703 / 0.424908 |
+| quixbugs_canonical ; v8 rescore ; all pairs ; unevaluated=0 (v8 dump rows only) | 152 | 40/112 | 40 | 0.381027 | [0.2846, 0.4832] (rescore) | 0.167411 / 0.427232 |
+| quixbugs_canonical ; v7 committed scores on the v8-dump pair set ; all pairs ; evaluated only | 151 | 39/112 | 40 | 0.372024 | [0.2743, 0.4799] (rescore) | 0.170559 / 0.40293 |
+| quixbugs_canonical ; v8 rescore ; SP-2 excluded ; evaluated only | 111 | 39/72 | 40 | 0.444444 | [0.3553, 0.5385] (rescore) | 0.176638 / 0.535613 |
+| quixbugs_canonical ; v8 rescore ; SP-2 excluded ; unevaluated=0 (v8 dump rows only) | 112 | 40/72 | 40 | 0.441493 | [0.3549, 0.5329] (rescore) | 0.172222 / 0.538542 |
+| quixbugs_canonical ; v7 committed scores on the v8-dump pair set ; SP-2 excluded ; evaluated only | 111 | 39/72 | 40 | 0.43661 | [0.3496, 0.528] (rescore) | 0.174501 / 0.524217 |
+| bugsinpy ; v8 rescore + 53 v7-unevaluated rows scored 0 (200-pair population) ; all pairs ; unevaluated=0 | 200 | 55/145 | 51 | 0.43116 | [0.3629, 0.502] (rescore) | 0.237618 / 0.387085 |
+| bugsinpy ; v8 rescore + 53 v7-unevaluated rows scored 0 (200-pair population) ; SP-2 excluded ; unevaluated=0 | 150 | 55/95 | 51 | 0.497225 | [0.4294, 0.5672] (rescore) | 0.256077 / 0.482297 |
+{
+ "bugsinpy": {
+  "v8_rows": 147,
+  "joined_to_v7_by_pair_id": 147,
+  "not_in_v7_file": 0,
+  "embedded_committed_equals_v7_file_exactly": 147,
+  "embedded_committed_vs_v7_file_max_abs_diff": 0.0,
+  "evaluated_status_disagreements": 0,
+  "v8_minus_v7_score": {
+   "n": 147,
+   "n_identical": 96,
+   "n_changed": 51,
+   "max_abs": 0.794921849,
+   "mean": -0.094031
+  }
+ },
+ "quixbugs_canonical": {
+  "v8_rows": 152,
+  "joined_to_v7_by_pair_id": 152,
+  "not_in_v7_file": 0,
+  "embedded_committed_equals_v7_file_exactly": 152,
+  "embedded_committed_vs_v7_file_max_abs_diff": 0.0,
+  "evaluated_status_disagreements": 0,
+  "v8_minus_v7_score": {
+   "n": 151,
+   "n_identical": 144,
+   "n_changed": 7,
+   "max_abs": 0.027032326,
+   "mean": -0.000333
+  }
+ }
+}
+{
+ "bugsinpy": {
+  "v7_pairs_total": 200,
+  "v7_pos": 55,
+  "v7_clusters(bugs with an eligible unit)": 51,
+  "v7_unevaluated": 53,
+  "v7_unevaluated_by_reason": {
+   "fixed:unsupported_signature": 49,
+   "fixed:import_error": 4
+  },
+  "v7_unevaluated_positives": 14,
+  "v7_unevaluated_negatives": 39,
+  "v7_unevaluated_clusters": 12,
+  "v7_evaluated": 147,
+  "v7_evaluated_pos": 41,
+  "v7_evaluated_clusters": 39,
+  "v8_file_rows": 147,
+  "v7_evaluated_by_transformation": {
+   "real_fix": 41,
+   "SP-2": 40,
+   "SP-3": 29,
+   "SP-6": 7,
+   "SP-1": 17,
+   "SP-4": 13
+  },
+  "v7_unevaluated_by_transformation": {
+   "real_fix": 14,
+   "SP-4": 12,
+   "SP-6": 4,
+   "SP-3": 9,
+   "SP-2": 10,
+   "SP-1": 4
+  }
+ },
+ "quixbugs_canonical": {
+  "v7_pairs_total": 152,
+  "v7_pos": 40,
+  "v7_unevaluated": 0,
+  "v7_unevaluated_by_reason": {},
+  "v7_unevaluated_positives": 0,
+  "v7_evaluated_by_transformation": {
+   "real_bug": 40,
+   "SP-1": 30,
+   "SP-2": 40,
+   "SP-3": 33,
+   "SP-6": 9
+  },
+  "v8_file_rows": 152,
+  "v8_unevaluated": [
+   [
+    "quixbugs__mergesort__bug__canonical",
+    "nonterminating"
+   ]
+  ]
+ },
+ "quixbugs_declared": {
+  "v7_pairs_total": 152,
+  "v7_pos": 40,
+  "v7_unevaluated": 53,
+  "v7_unevaluated_by_reason": {
+   "variant:nonterminating": 6,
+   "base:ineligible": 36,
+   "base:nonterminating": 4,
+   "base:harness_error": 7
+  },
+  "v7_unevaluated_positives": 16,
+  "v7_evaluated_by_transformation": {
+   "SP-1": 19,
+   "SP-2": 27,
+   "SP-3": 23,
+   "real_bug": 24,
+   "SP-6": 6
+  }
+ }
+}

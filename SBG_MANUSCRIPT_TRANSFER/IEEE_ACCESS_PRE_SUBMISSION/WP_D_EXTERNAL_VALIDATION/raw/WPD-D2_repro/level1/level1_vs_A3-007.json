@@ -1,0 +1,273 @@
+{
+ "all_compared_slices_match": true,
+ "rows": [
+  {
+   "a3_slice": "bugsinpy v7 committed, evaluated only (all)",
+   "d2_variant": "bugsinpy | v7 committed | all pairs | evaluated only",
+   "n": [
+    147,
+    41,
+    39
+   ],
+   "a3_auroc": 0.4099,
+   "d2_auroc": 0.4099,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.3262,
+    0.4939
+   ],
+   "d2_ci": [
+    0.3262,
+    0.4939
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "bugsinpy v7 committed, evaluated only, SP-2 excluded",
+   "d2_variant": "bugsinpy | v7 committed | SP-2 excluded | evaluated only",
+   "n": [
+    107,
+    41,
+    39
+   ],
+   "a3_auroc": 0.4715,
+   "d2_auroc": 0.4715,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.3809,
+    0.5617
+   ],
+   "d2_ci": [
+    0.3809,
+    0.5617
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "bugsinpy v7 committed, SENSITIVITY unevaluated scored 0.0 (NOT the reported analysis)",
+   "d2_variant": "bugsinpy | v7 committed | all pairs | unevaluated=0",
+   "n": [
+    200,
+    55,
+    51
+   ],
+   "a3_auroc": 0.434,
+   "d2_auroc": 0.434,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.3741,
+    0.4899
+   ],
+   "d2_ci": [
+    0.3741,
+    0.4899
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "bugsinpy v7 committed, evaluated only (all), seed 7",
+   "status": "NOT_COMPARED (seed 7 variant; D2 uses seed 42 only)"
+  },
+  {
+   "a3_slice": "quixbugs_canonical v7 committed, evaluated only (all)",
+   "d2_variant": "quixbugs_canonical | v7 committed | all pairs | evaluated only",
+   "n": [
+    152,
+    40,
+    40
+   ],
+   "a3_auroc": 0.3877,
+   "d2_auroc": 0.3877,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.2847,
+    0.5034
+   ],
+   "d2_ci": [
+    0.2847,
+    0.5034
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "quixbugs_canonical v7 committed, evaluated only, SP-2 excluded",
+   "d2_variant": "quixbugs_canonical | v7 committed | SP-2 excluded | evaluated only",
+   "n": [
+    112,
+    40,
+    40
+   ],
+   "a3_auroc": 0.4507,
+   "d2_auroc": 0.4507,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.3601,
+    0.5473
+   ],
+   "d2_ci": [
+    0.3601,
+    0.5473
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "quixbugs_canonical v7 committed, SENSITIVITY unevaluated scored 0.0 (NOT the reported analysis)",
+   "d2_variant": "quixbugs_canonical | v7 committed | all pairs | unevaluated=0",
+   "n": [
+    152,
+    40,
+    40
+   ],
+   "a3_auroc": 0.3877,
+   "d2_auroc": 0.3877,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.2847,
+    0.5034
+   ],
+   "d2_ci": [
+    0.2847,
+    0.5034
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "quixbugs_canonical v7 committed, evaluated only (all), seed 7",
+   "status": "NOT_COMPARED (seed 7 variant; D2 uses seed 42 only)"
+  },
+  {
+   "a3_slice": "bugsinpy v8 rescore (all)",
+   "d2_variant": "bugsinpy | v8 rescore | all pairs | evaluated only",
+   "n": [
+    147,
+    41,
+    39
+   ],
+   "a3_auroc": 0.4159,
+   "d2_auroc": 0.4159,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.3223,
+    0.5144
+   ],
+   "d2_ci": [
+    0.3223,
+    0.5144
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "bugsinpy v8 rescore, SP-2 excluded",
+   "d2_variant": "bugsinpy | v8 rescore | SP-2 excluded | evaluated only",
+   "n": [
+    107,
+    41,
+    39
+   ],
+   "a3_auroc": 0.497,
+   "d2_auroc": 0.497,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.4023,
+    0.5956
+   ],
+   "d2_ci": [
+    0.4023,
+    0.5956
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "bugsinpy v8 rescore, SP-2 excluded, seed 7",
+   "status": "NOT_COMPARED (seed 7 variant; D2 uses seed 42 only)"
+  },
+  {
+   "a3_slice": "bugsinpy committed_v7 scores on the rescored pair set",
+   "d2_variant": "bugsinpy | v7 committed scores on the v8-dump pair set | all pairs | evaluated only",
+   "n": [
+    147,
+    41,
+    39
+   ],
+   "a3_auroc": 0.4099,
+   "d2_auroc": 0.4099,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.3262,
+    0.4939
+   ],
+   "d2_ci": [
+    0.3262,
+    0.4939
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "quixbugs_canonical v8 rescore (all)",
+   "d2_variant": "quixbugs_canonical | v8 rescore | all pairs | evaluated only",
+   "n": [
+    151,
+    39,
+    40
+   ],
+   "a3_auroc": 0.3842,
+   "d2_auroc": 0.3842,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.2847,
+    0.4899
+   ],
+   "d2_ci": [
+    0.2847,
+    0.4899
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "quixbugs_canonical v8 rescore, SP-2 excluded",
+   "d2_variant": "quixbugs_canonical | v8 rescore | SP-2 excluded | evaluated only",
+   "n": [
+    111,
+    39,
+    40
+   ],
+   "a3_auroc": 0.4444,
+   "d2_auroc": 0.4444,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.3553,
+    0.5385
+   ],
+   "d2_ci": [
+    0.3553,
+    0.5385
+   ],
+   "ci_match_4dp": true
+  },
+  {
+   "a3_slice": "quixbugs_canonical v8 rescore, SP-2 excluded, seed 7",
+   "status": "NOT_COMPARED (seed 7 variant; D2 uses seed 42 only)"
+  },
+  {
+   "a3_slice": "quixbugs_canonical committed_v7 scores on the rescored pair set",
+   "d2_variant": "quixbugs_canonical | v7 committed scores on the v8-dump pair set | all pairs | evaluated only",
+   "n": [
+    151,
+    39,
+    40
+   ],
+   "a3_auroc": 0.372,
+   "d2_auroc": 0.372,
+   "auroc_match_4dp": true,
+   "a3_ci": [
+    0.2743,
+    0.4799
+   ],
+   "d2_ci": [
+    0.2743,
+    0.4799
+   ],
+   "ci_match_4dp": true
+  }
+ ]
+}

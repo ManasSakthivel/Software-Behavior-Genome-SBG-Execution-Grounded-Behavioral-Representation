@@ -1,0 +1,186 @@
+{
+ "kind": "quixbugs",
+ "corpus": null,
+ "committed": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/artifacts/final/pairs_quixbugs_declared_output_free_v7.jsonl",
+ "new": "runs/B2_quix_score_py313/artifacts/final/pairs_quixbugs_declared_output_free_v7.jsonl",
+ "tol": 0.001,
+ "n_committed": 152,
+ "n_new": 152,
+ "n_common": 152,
+ "only_in_committed": [],
+ "only_in_new": [],
+ "n_both_evaluated": 97,
+ "evaluated_flag_disagreements": [
+  {
+   "pair_id": "quixbugs__gcd__bug__declared",
+   "committed_evaluated": true,
+   "new_evaluated": false,
+   "committed_failure": null,
+   "new_failure": "nonterminating"
+  },
+  {
+   "pair_id": "quixbugs__knapsack__sp-3_s0__declared",
+   "committed_evaluated": true,
+   "new_evaluated": false,
+   "committed_failure": null,
+   "new_failure": "nonterminating"
+  },
+  {
+   "pair_id": "quixbugs__mergesort__sp-1_s0__declared",
+   "committed_evaluated": false,
+   "new_evaluated": true,
+   "committed_failure": "harness_error",
+   "new_failure": null
+  },
+  {
+   "pair_id": "quixbugs__mergesort__sp-2_s0__declared",
+   "committed_evaluated": false,
+   "new_evaluated": true,
+   "committed_failure": "harness_error",
+   "new_failure": null
+  },
+  {
+   "pair_id": "quixbugs__mergesort__sp-6_s0__declared",
+   "committed_evaluated": false,
+   "new_evaluated": true,
+   "committed_failure": "harness_error",
+   "new_failure": null
+  }
+ ],
+ "n_pairs_all_predictors_exact": 96,
+ "n_pairs_differing_but_within_tol": 0,
+ "n_pairs_beyond_tol": 1,
+ "sbg_v5": {
+  "n": 97,
+  "exact": 96,
+  "max_abs": 0.03979998399999998,
+  "n_diff_gt_tol": 1
+ },
+ "per_predictor": {
+  "call_count": {
+   "n": 97,
+   "exact": 96,
+   "max_abs": 0.0003009780000000628,
+   "n_diff_gt_tol": 0
+  },
+  "combined_shortcut": {
+   "n": 97,
+   "exact": 96,
+   "max_abs": 9.029300000001905e-05,
+   "n_diff_gt_tol": 0
+  },
+  "coverage_size": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_component_v3": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_fraction": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_type_jaccard": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "n_functions": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_state": {
+   "n": 97,
+   "exact": 96,
+   "max_abs": 0.04609744399999999,
+   "n_diff_gt_tol": 1
+  },
+  "sbg_temporal": {
+   "n": 97,
+   "exact": 96,
+   "max_abs": 0.09485404000000003,
+   "n_diff_gt_tol": 1
+  },
+  "sbg_v3": {
+   "n": 97,
+   "exact": 96,
+   "max_abs": 0.009124225,
+   "n_diff_gt_tol": 1
+  },
+  "sbg_v5": {
+   "n": 97,
+   "exact": 96,
+   "max_abs": 0.03979998399999998,
+   "n_diff_gt_tol": 1
+  },
+  "static_ast": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "static_token": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "v5_full": {
+   "n": 97,
+   "exact": 97,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  }
+ },
+ "auroc_own_evaluated_rows": {
+  "committed": {
+   "n": 99,
+   "n_pos": 24,
+   "auroc": 0.702222,
+   "ci95": [
+    0.583636,
+    0.816576
+   ]
+  },
+  "committed_exSP2": {
+   "n": 72,
+   "n_pos": 24,
+   "auroc": 0.668403,
+   "ci95": [
+    0.531556,
+    0.796875
+   ]
+  },
+  "new": {
+   "n": 100,
+   "n_pos": 23,
+   "auroc": 0.700734,
+   "ci95": [
+    0.581665,
+    0.816181
+   ]
+  },
+  "new_exSP2": {
+   "n": 72,
+   "n_pos": 23,
+   "auroc": 0.66992,
+   "ci95": [
+    0.535953,
+    0.799745
+   ]
+  }
+ },
+ "auroc_delta_new_minus_committed": -0.001488,
+ "auroc_delta_exSP2_new_minus_committed": 0.001517,
+ "classification": "NOT-REPRODUCED"
+}

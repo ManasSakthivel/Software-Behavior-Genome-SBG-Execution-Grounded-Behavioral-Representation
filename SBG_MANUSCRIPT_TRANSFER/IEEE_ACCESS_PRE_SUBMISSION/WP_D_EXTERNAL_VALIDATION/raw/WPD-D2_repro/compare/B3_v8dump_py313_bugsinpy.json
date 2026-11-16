@@ -1,0 +1,111 @@
+{
+ "kind": "v8dump",
+ "corpus": "bugsinpy",
+ "committed": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+ "new": "runs/B3_v8rescore_py313/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+ "tol": 0.001,
+ "n_committed": 147,
+ "n_new": 147,
+ "n_common": 147,
+ "only_in_committed": [],
+ "only_in_new": [],
+ "n_both_evaluated": 147,
+ "evaluated_flag_disagreements": [],
+ "n_pairs_all_predictors_exact": 143,
+ "n_pairs_differing_but_within_tol": 4,
+ "n_pairs_beyond_tol": 0,
+ "sbg_v5": {
+  "n": 147,
+  "exact": 143,
+  "max_abs": 0.0002938450000000703,
+  "n_diff_gt_tol": 0
+ },
+ "per_predictor": {
+  "call_count": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "coverage_size": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_fraction": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_state": {
+   "n": 147,
+   "exact": 143,
+   "max_abs": 0.0011753809999999199,
+   "n_diff_gt_tol": 4
+  },
+  "sbg_temporal": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_v3": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_v5": {
+   "n": 147,
+   "exact": 143,
+   "max_abs": 0.0002938450000000703,
+   "n_diff_gt_tol": 0
+  }
+ },
+ "self_distance_pairs_equal": 143,
+ "self_distance_pairs_total": 147,
+ "entry_fn_equal": 147,
+ "auroc_own_evaluated_rows": {
+  "committed": {
+   "n": 147,
+   "n_pos": 41,
+   "auroc": 0.4159,
+   "ci95": [
+    0.322302,
+    0.514433
+   ]
+  },
+  "committed_exSP2": {
+   "n": 107,
+   "n_pos": 41,
+   "auroc": 0.497044,
+   "ci95": [
+    0.402291,
+    0.595645
+   ]
+  },
+  "new": {
+   "n": 147,
+   "n_pos": 41,
+   "auroc": 0.415439,
+   "ci95": [
+    0.322302,
+    0.514433
+   ]
+  },
+  "new_exSP2": {
+   "n": 107,
+   "n_pos": 41,
+   "auroc": 0.496674,
+   "ci95": [
+    0.402198,
+    0.593607
+   ]
+  }
+ },
+ "auroc_delta_new_minus_committed": -0.000461,
+ "auroc_delta_exSP2_new_minus_committed": -0.00037,
+ "classification": "REPRODUCED-WITHIN-TOLERANCE"
+}

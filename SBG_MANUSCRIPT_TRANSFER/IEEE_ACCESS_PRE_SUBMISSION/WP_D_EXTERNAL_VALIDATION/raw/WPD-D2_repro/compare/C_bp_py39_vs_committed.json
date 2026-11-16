@@ -1,0 +1,150 @@
+{
+ "kind": "bugsinpy",
+ "corpus": null,
+ "committed": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+ "new": "runs/C_py39/artifacts/final/pairs_bugsinpy_output_free_v7.jsonl",
+ "tol": 0.001,
+ "n_committed": 200,
+ "n_new": 200,
+ "n_common": 200,
+ "only_in_committed": [],
+ "only_in_new": [],
+ "n_both_evaluated": 147,
+ "evaluated_flag_disagreements": [],
+ "n_pairs_all_predictors_exact": 78,
+ "n_pairs_differing_but_within_tol": 18,
+ "n_pairs_beyond_tol": 51,
+ "sbg_v5": {
+  "n": 147,
+  "exact": 82,
+  "max_abs": 0.080491184,
+  "n_diff_gt_tol": 51
+ },
+ "per_predictor": {
+  "call_count": {
+   "n": 147,
+   "exact": 106,
+   "max_abs": 0.333333333,
+   "n_diff_gt_tol": 10
+  },
+  "combined_shortcut": {
+   "n": 147,
+   "exact": 88,
+   "max_abs": 0.2,
+   "n_diff_gt_tol": 30
+  },
+  "coverage_size": {
+   "n": 147,
+   "exact": 90,
+   "max_abs": 0.666666667,
+   "n_diff_gt_tol": 28
+  },
+  "exception_component_v3": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_fraction": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_type_jaccard": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "n_functions": {
+   "n": 147,
+   "exact": 116,
+   "max_abs": 0.08333333300000001,
+   "n_diff_gt_tol": 31
+  },
+  "sbg_state": {
+   "n": 147,
+   "exact": 101,
+   "max_abs": 0.13239945699999997,
+   "n_diff_gt_tol": 34
+  },
+  "sbg_temporal": {
+   "n": 147,
+   "exact": 105,
+   "max_abs": 0.04936354999999998,
+   "n_diff_gt_tol": 36
+  },
+  "sbg_v3": {
+   "n": 147,
+   "exact": 83,
+   "max_abs": 0.079443777,
+   "n_diff_gt_tol": 53
+  },
+  "sbg_v5": {
+   "n": 147,
+   "exact": 82,
+   "max_abs": 0.080491184,
+   "n_diff_gt_tol": 51
+  },
+  "static_ast": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "static_token": {
+   "n": 147,
+   "exact": 137,
+   "max_abs": 0.123390895,
+   "n_diff_gt_tol": 10
+  },
+  "v5_full": {
+   "n": 147,
+   "exact": 147,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  }
+ },
+ "auroc_own_evaluated_rows": {
+  "committed": {
+   "n": 147,
+   "n_pos": 41,
+   "auroc": 0.409917,
+   "ci95": [
+    0.326232,
+    0.493946
+   ]
+  },
+  "committed_exSP2": {
+   "n": 107,
+   "n_pos": 41,
+   "auroc": 0.471545,
+   "ci95": [
+    0.380863,
+    0.561661
+   ]
+  },
+  "new": {
+   "n": 147,
+   "n_pos": 41,
+   "auroc": 0.437759,
+   "ci95": [
+    0.35335,
+    0.520403
+   ]
+  },
+  "new_exSP2": {
+   "n": 107,
+   "n_pos": 41,
+   "auroc": 0.515521,
+   "ci95": [
+    0.422538,
+    0.604553
+   ]
+  }
+ },
+ "auroc_delta_new_minus_committed": 0.027842,
+ "auroc_delta_exSP2_new_minus_committed": 0.043976,
+ "classification": "NOT-REPRODUCED"
+}

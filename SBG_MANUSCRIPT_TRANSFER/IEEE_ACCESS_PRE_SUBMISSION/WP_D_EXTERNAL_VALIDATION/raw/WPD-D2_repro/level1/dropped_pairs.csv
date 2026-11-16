@@ -1,0 +1,505 @@
+corpus_regime,pair_id,cluster,label,transformation,v7_evaluated,v7_sbg_v5,v8_in_dump,v8_evaluated,v8_sbg_v5,in_v7_evaluated_all,in_v7_evaluated_exSP2,in_v8_evaluated_all,in_v8_evaluated_exSP2,drop_reasons,failure_detail
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Alpha::real_fix,ansible/2,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Alpha::SP-4,ansible/2,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Alpha::SP-6,ansible/2,0,SP-6,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Alpha::SP-3,ansible/2,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Numeric::real_fix,ansible/2,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Numeric::SP-4,ansible/2,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Numeric::SP-6,ansible/2,0,SP-6,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/2::lib/ansible/utils/version.py::_Numeric::SP-3,ansible/2,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::real_fix,ansible/7,1,real_fix,True,0.066305333,True,True,0.066305333,True,True,True,True,,
+bugsinpy,ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::SP-2,ansible/7,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,ansible/7::lib/ansible/module_utils/network/eos/config/vlans/vlans.py::generate_commands::SP-3,ansible/7,0,SP-3,True,0.022428247,True,True,0.022428247,True,True,True,True,,
+bugsinpy,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::real_fix,ansible/11,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-2,ansible/11,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-6,ansible/11,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::SP-3,ansible/11,0,SP-3,True,0.017307692,True,True,0.017307692,True,True,True,True,,
+bugsinpy,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_params_to_obj::real_fix,ansible/11,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_params_to_obj::SP-2,ansible/11,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::real_fix,ansible/15,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-1,ansible/15,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-2,ansible/15,0,SP-2,True,0.016666667,True,True,0.016666667,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::SP-6,ansible/15,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,black/16::black.py::gen_python_files_in_dir::real_fix,black/16,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,black/16::black.py::gen_python_files_in_dir::SP-2,black/16,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,black/16::black.py::gen_python_files_in_dir::SP-4,black/16,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,black/16::black.py::gen_python_files_in_dir::SP-3,black/16,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,black/21::black.py::dump_to_file::real_fix,black/21,1,real_fix,True,0.320404882,True,True,0.673730227,True,True,True,True,,
+bugsinpy,black/21::black.py::dump_to_file::SP-2,black/21,0,SP-2,True,0.31891412,True,True,0.673937868,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,black/21::black.py::dump_to_file::SP-4,black/21,0,SP-4,True,0.31891412,True,True,0.673937868,True,True,True,True,,
+bugsinpy,black/21::black.py::dump_to_file::SP-3,black/21,0,SP-3,True,0.318339408,True,True,0.673773934,True,True,True,True,,
+bugsinpy,black/23::black.py::assert_equivalent::real_fix,black/23,1,real_fix,True,0.674161229,True,True,0.674161229,True,True,True,True,,
+bugsinpy,black/23::black.py::assert_equivalent::SP-1,black/23,0,SP-1,True,0.669990173,True,True,0.669990173,True,True,True,True,,
+bugsinpy,black/23::black.py::assert_equivalent::SP-2,black/23,0,SP-2,True,0.669990173,True,True,0.669990173,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,black/23::black.py::assert_equivalent::SP-4,black/23,0,SP-4,True,0.669093469,True,True,0.669093469,True,True,True,True,,
+bugsinpy,httpie/1::httpie/downloads.py::get_unique_filename::real_fix,httpie/1,1,real_fix,True,0.17,True,True,0.691085192,True,True,True,True,,
+bugsinpy,httpie/1::httpie/downloads.py::get_unique_filename::SP-2,httpie/1,0,SP-2,True,0.025,True,True,0.02,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,httpie/1::httpie/downloads.py::get_unique_filename::SP-6,httpie/1,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,httpie/1::httpie/downloads.py::get_unique_filename::SP-3,httpie/1,0,SP-3,True,0.033333333,True,True,0.02173913,True,True,True,True,,
+bugsinpy,keras/9::docs/autogen.py::process_list_block::real_fix,keras/9,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,keras/9::docs/autogen.py::process_list_block::SP-1,keras/9,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,keras/9::docs/autogen.py::process_list_block::SP-2,keras/9,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,keras/9::docs/autogen.py::process_list_block::SP-6,keras/9,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,keras/20::keras/utils/conv_utils.py::deconv_length::real_fix,keras/20,1,real_fix,True,0.025,True,True,0.025,True,True,True,True,,
+bugsinpy,keras/20::keras/utils/conv_utils.py::deconv_length::SP-2,keras/20,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,keras/20::keras/utils/conv_utils.py::deconv_length::SP-4,keras/20,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,keras/20::keras/utils/conv_utils.py::deconv_length::SP-6,keras/20,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,keras/34::keras/utils/data_utils.py::Sequence::real_fix,keras/34,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,keras/34::keras/utils/data_utils.py::Sequence::SP-1,keras/34,0,SP-1,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,keras/34::keras/utils/data_utils.py::Sequence::SP-2,keras/34,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,keras/34::keras/utils/data_utils.py::Sequence::SP-4,keras/34,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/6::luigi/parameter.py::_recursively_freeze::real_fix,luigi/6,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:import_error); absent_from_v8_rescore(loader skipped v7-unevaluated row),ImportError: cannot import name 'Mapping' from 'collections' (/Users/manassakthivel/.local/share/uv/python/cpython-3.13.15-macos-aarch64-none/lib/python3.13/col
+bugsinpy,luigi/6::luigi/parameter.py::_recursively_freeze::SP-1,luigi/6,0,SP-1,False,,False,,,False,False,False,False,v7_unevaluated(fixed:import_error); absent_from_v8_rescore(loader skipped v7-unevaluated row),ImportError: cannot import name 'Mapping' from 'collections' (/Users/manassakthivel/.local/share/uv/python/cpython-3.13.15-macos-aarch64-none/lib/python3.13/col
+bugsinpy,luigi/6::luigi/parameter.py::_recursively_freeze::SP-2,luigi/6,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:import_error); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",ImportError: cannot import name 'Mapping' from 'collections' (/Users/manassakthivel/.local/share/uv/python/cpython-3.13.15-macos-aarch64-none/lib/python3.13/col
+bugsinpy,luigi/6::luigi/parameter.py::_recursively_freeze::SP-4,luigi/6,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:import_error); absent_from_v8_rescore(loader skipped v7-unevaluated row),ImportError: cannot import name 'Mapping' from 'collections' (/Users/manassakthivel/.local/share/uv/python/cpython-3.13.15-macos-aarch64-none/lib/python3.13/col
+bugsinpy,luigi/9::luigi/execution_summary.py::_partition_tasks::real_fix,luigi/9,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/9::luigi/execution_summary.py::_partition_tasks::SP-2,luigi/9,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/9::luigi/execution_summary.py::_partition_tasks::SP-4,luigi/9,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/9::luigi/execution_summary.py::_partition_tasks::SP-6,luigi/9,0,SP-6,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/9::luigi/execution_summary.py::_depth_first_search::real_fix,luigi/9,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/9::luigi/execution_summary.py::_depth_first_search::SP-2,luigi/9,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/9::luigi/execution_summary.py::_depth_first_search::SP-4,luigi/9,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/9::luigi/execution_summary.py::_depth_first_search::SP-6,luigi/9,0,SP-6,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,luigi/14::luigi/scheduler.py::Task::real_fix,luigi/14,1,real_fix,True,0.140151002,True,True,0.0,True,True,True,True,,
+bugsinpy,luigi/14::luigi/scheduler.py::Task::SP-1,luigi/14,0,SP-1,True,0.002141666,True,True,0.0,True,True,True,True,,
+bugsinpy,luigi/14::luigi/scheduler.py::Task::SP-2,luigi/14,0,SP-2,True,0.794921849,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,luigi/14::luigi/scheduler.py::Task::SP-4,luigi/14,0,SP-4,True,0.002141666,True,True,0.0,True,True,True,True,,
+bugsinpy,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::real_fix,matplotlib/24,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::SP-2,matplotlib/24,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::SP-4,matplotlib/24,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,matplotlib/24::lib/matplotlib/axis.py::_make_getset_interval::SP-3,matplotlib/24,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::real_fix,matplotlib/26,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::SP-2,matplotlib/26,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::SP-4,matplotlib/26,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,matplotlib/26::lib/matplotlib/axis.py::_make_getset_interval::SP-3,matplotlib/26,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,pandas/18::pandas/core/window/common.py::validate_baseindexer_support::real_fix,pandas/18,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,pandas/18::pandas/core/window/common.py::validate_baseindexer_support::SP-2,pandas/18,0,SP-2,True,0.058333333,True,True,0.058333333,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,pandas/18::pandas/core/window/common.py::validate_baseindexer_support::SP-3,pandas/18,0,SP-3,True,0.016666667,True,True,0.016666667,True,True,True,True,,
+bugsinpy,pandas/22::pandas/core/window/common.py::validate_baseindexer_support::real_fix,pandas/22,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,pandas/22::pandas/core/window/common.py::validate_baseindexer_support::SP-2,pandas/22,0,SP-2,True,0.058333333,True,True,0.058333333,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,pandas/22::pandas/core/window/common.py::validate_baseindexer_support::SP-3,pandas/22,0,SP-3,True,0.016666667,True,True,0.016666667,True,True,True,True,,
+bugsinpy,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::real_fix,pandas/167,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-2,pandas/167,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-4,pandas/167,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::SP-3,pandas/167,0,SP-3,True,0.014285714,True,True,0.014285714,True,True,True,True,,
+bugsinpy,scrapy/2::scrapy/utils/datatypes.py::LocalCache::real_fix,scrapy/2,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,scrapy/2::scrapy/utils/datatypes.py::LocalCache::SP-4,scrapy/2,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,scrapy/2::scrapy/utils/datatypes.py::LocalCache::SP-3,scrapy/2,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,scrapy/8::scrapy/item.py::ItemMeta::real_fix,scrapy/8,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/8::scrapy/item.py::ItemMeta::SP-1,scrapy/8,0,SP-1,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/8::scrapy/item.py::ItemMeta::SP-4,scrapy/8,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/8::scrapy/item.py::ItemMeta::SP-3,scrapy/8,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/34::scrapy/item.py::ItemMeta::real_fix,scrapy/34,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/34::scrapy/item.py::ItemMeta::SP-1,scrapy/34,0,SP-1,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/34::scrapy/item.py::ItemMeta::SP-4,scrapy/34,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/34::scrapy/item.py::ItemMeta::SP-3,scrapy/34,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,scrapy/36::scrapy/utils/misc.py::create_instance::real_fix,scrapy/36,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,scrapy/36::scrapy/utils/misc.py::create_instance::SP-2,scrapy/36,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,scrapy/36::scrapy/utils/misc.py::create_instance::SP-4,scrapy/36,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,scrapy/36::scrapy/utils/misc.py::create_instance::SP-3,scrapy/36,0,SP-3,True,0.014285714,True,True,0.014285714,True,True,True,True,,
+bugsinpy,spacy/1::spacy/errors.py::add_codes::real_fix,spacy/1,1,real_fix,True,0.033333333,True,True,0.033333333,True,True,True,True,,
+bugsinpy,spacy/1::spacy/errors.py::add_codes::SP-2,spacy/1,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,spacy/1::spacy/errors.py::add_codes::SP-4,spacy/1,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,spacy/1::spacy/errors.py::add_codes::SP-3,spacy/1,0,SP-3,True,0.02,True,True,0.02,True,True,True,True,,
+bugsinpy,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::real_fix,spacy/4,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-1,spacy/4,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-2,spacy/4,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::SP-6,spacy/4,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::real_fix,spacy/7,1,real_fix,True,0.0127318,True,True,0.0127318,True,True,True,True,,
+bugsinpy,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-1,spacy/7,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-2,spacy/7,0,SP-2,True,0.02,True,True,0.02,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,spacy/7::examples/information_extraction/entity_relations.py::filter_spans::SP-3,spacy/7,0,SP-3,True,0.020108175,True,True,0.020108175,True,True,True,True,,
+bugsinpy,spacy/7::spacy/util.py::filter_spans::real_fix,spacy/7,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,spacy/7::spacy/util.py::filter_spans::SP-1,spacy/7,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,spacy/7::spacy/util.py::filter_spans::SP-2,spacy/7,0,SP-2,True,0.02,True,True,0.02,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,spacy/7::spacy/util.py::filter_spans::SP-4,spacy/7,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,thefuck/8::thefuck/rules/dnf_no_such_command.py::_parse_operations::real_fix,thefuck/8,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/8::thefuck/rules/dnf_no_such_command.py::_parse_operations::SP-2,thefuck/8,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/8::thefuck/rules/dnf_no_such_command.py::_parse_operations::SP-3,thefuck/8,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/10::thefuck/rules/man.py::get_new_command::real_fix,thefuck/10,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,thefuck/10::thefuck/rules/man.py::get_new_command::SP-2,thefuck/10,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,thefuck/10::thefuck/rules/man.py::get_new_command::SP-3,thefuck/10,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,thefuck/18::thefuck/rules/sudo.py::match::real_fix,thefuck/18,1,real_fix,True,0.116666667,True,True,0.116666667,True,True,True,True,,
+bugsinpy,thefuck/18::thefuck/rules/sudo.py::match::SP-2,thefuck/18,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,thefuck/18::thefuck/rules/sudo.py::match::SP-3,thefuck/18,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,thefuck/20::thefuck/rules/dirty_unzip.py::_zip_file::real_fix,thefuck/20,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/20::thefuck/rules/dirty_unzip.py::_zip_file::SP-2,thefuck/20,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/27::thefuck/rules/open.py::get_new_command::real_fix,thefuck/27,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,thefuck/27::thefuck/rules/open.py::get_new_command::SP-2,thefuck/27,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,thefuck/29::thefuck/types.py::Settings::real_fix,thefuck/29,1,real_fix,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/29::thefuck/types.py::Settings::SP-2,thefuck/29,0,SP-2,False,,False,,,False,False,False,False,"v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row); excluded_SP-2(post-hoc, decided after v7 results)",no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/29::thefuck/types.py::Settings::SP-4,thefuck/29,0,SP-4,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/29::thefuck/types.py::Settings::SP-3,thefuck/29,0,SP-3,False,,False,,,False,False,False,False,v7_unevaluated(fixed:unsupported_signature); absent_from_v8_rescore(loader skipped v7-unevaluated row),no API function synthesisable from the fixed input battery and no drivable class
+bugsinpy,thefuck/32::thefuck/rules/ls_lah.py::match::real_fix,thefuck/32,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,thefuck/32::thefuck/rules/ls_lah.py::match::SP-2,thefuck/32,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,tqdm/9::tqdm/_tqdm.py::format_sizeof::real_fix,tqdm/9,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-2,tqdm/9,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-4,tqdm/9,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,tqdm/9::tqdm/_tqdm.py::format_sizeof::SP-6,tqdm/9,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix,youtube-dl/6,1,real_fix,True,0.612315605,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::SP-2,youtube-dl/6,0,SP-2,True,0.617732273,True,True,0.011538463,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::SP-3,youtube-dl/6,0,SP-3,True,0.612383391,True,True,0.000556625,True,True,True,True,,
+bugsinpy,youtube-dl/7::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/7,1,real_fix,True,0.680984602,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/7,0,SP-1,True,0.681243,True,True,1.4395e-05,True,True,True,True,,
+bugsinpy,youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/7,0,SP-2,True,0.800453945,True,True,0.800453945,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/7::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/7,0,SP-3,True,0.680726204,True,True,0.000258932,True,True,True,True,,
+bugsinpy,youtube-dl/10::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/10,1,real_fix,True,0.680434905,True,True,0.117159025,True,True,True,True,,
+bugsinpy,youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/10,0,SP-1,True,0.009090909,True,True,1.4395e-05,True,True,True,True,,
+bugsinpy,youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/10,0,SP-2,True,0.712196091,True,True,0.800453945,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/10::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/10,0,SP-3,True,0.0,True,True,0.000257782,True,True,True,True,,
+bugsinpy,youtube-dl/15::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/15,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/15,0,SP-1,True,0.669620431,True,True,0.001346081,True,True,True,True,,
+bugsinpy,youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/15,0,SP-2,True,0.791271176,True,True,0.791271176,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/15::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/15,0,SP-3,True,0.668911211,True,True,0.000633586,True,True,True,True,,
+bugsinpy,youtube-dl/17::youtube_dl/utils.py::cli_bool_option::real_fix,youtube-dl/17,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/17::youtube_dl/utils.py::cli_bool_option::SP-2,youtube-dl/17,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/17::youtube_dl/utils.py::cli_bool_option::SP-3,youtube-dl/17,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/23::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/23,1,real_fix,True,0.015870916,True,True,0.015870916,True,True,True,True,,
+bugsinpy,youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/23,0,SP-1,True,0.675936625,True,True,0.000353738,True,True,True,True,,
+bugsinpy,youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/23,0,SP-2,True,0.794344178,True,True,0.794344178,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/23::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/23,0,SP-3,True,0.6752324,True,True,0.000352502,True,True,True,True,,
+bugsinpy,youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/25,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/25,0,SP-1,True,0.009090909,True,True,0.000350032,True,True,True,True,,
+bugsinpy,youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/25,0,SP-2,True,0.712196091,True,True,0.793993017,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/25::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/25,0,SP-3,True,0.008333333,True,True,0.000348847,True,True,True,True,,
+bugsinpy,youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/26,1,real_fix,True,0.675109534,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/26,0,SP-1,True,0.009090909,True,True,0.000350032,True,True,True,True,,
+bugsinpy,youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/26,0,SP-2,True,0.712196091,True,True,0.793993017,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/26::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/26,0,SP-3,True,0.008333333,True,True,0.000348847,True,True,True,True,,
+bugsinpy,youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix,youtube-dl/27,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::SP-2,youtube-dl/27,0,SP-2,True,0.02,True,True,0.011538463,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::SP-3,youtube-dl/27,0,SP-3,True,0.009405609,True,True,0.000556625,True,True,True,True,,
+bugsinpy,youtube-dl/31::youtube_dl/utils.py::parse_duration::real_fix,youtube-dl/31,1,real_fix,True,0.108333333,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-1,youtube-dl/31,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-2,youtube-dl/31,0,SP-2,True,0.108333333,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/31::youtube_dl/utils.py::parse_duration::SP-3,youtube-dl/31,0,SP-3,True,0.033333333,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/32::youtube_dl/utils.py::strip_jsonp::real_fix,youtube-dl/32,1,real_fix,True,0.134961863,True,True,0.134961863,True,True,True,True,,
+bugsinpy,youtube-dl/32::youtube_dl/utils.py::strip_jsonp::SP-2,youtube-dl/32,0,SP-2,True,0.668752014,True,True,0.00958697,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/32::youtube_dl/utils.py::strip_jsonp::SP-3,youtube-dl/32,0,SP-3,True,0.664438479,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::real_fix,youtube-dl/33,1,real_fix,True,0.322548807,True,True,0.322556718,True,True,True,True,,
+bugsinpy,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-1,youtube-dl/33,0,SP-1,True,0.683031284,True,True,0.000422168,True,True,True,True,,
+bugsinpy,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-2,youtube-dl/33,0,SP-2,True,0.688447952,True,True,0.011960631,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/33::youtube_dl/utils.py::parse_iso8601::SP-4,youtube-dl/33,0,SP-4,True,0.683031284,True,True,0.000422168,True,True,True,True,,
+bugsinpy,youtube-dl/34::youtube_dl/utils.py::js_to_json::real_fix,youtube-dl/34,1,real_fix,True,0.029777089,True,True,0.029777089,True,True,True,True,,
+bugsinpy,youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-1,youtube-dl/34,0,SP-1,True,0.667917671,True,True,0.0003741,True,True,True,True,,
+bugsinpy,youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-2,youtube-dl/34,0,SP-2,True,0.795009424,True,True,0.795009424,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/34::youtube_dl/utils.py::js_to_json::SP-3,youtube-dl/34,0,SP-3,True,0.667588723,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/35::youtube_dl/utils.py::unified_strdate::real_fix,youtube-dl/35,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-2,youtube-dl/35,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-4,youtube-dl/35,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/35::youtube_dl/utils.py::unified_strdate::SP-3,youtube-dl/35,0,SP-3,True,0.02,True,True,0.02,True,True,True,True,,
+bugsinpy,youtube-dl/37::youtube_dl/utils.py::uppercase_escape::real_fix,youtube-dl/37,1,real_fix,True,0.692229411,True,True,0.603987798,True,True,True,True,,
+bugsinpy,youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-2,youtube-dl/37,0,SP-2,True,0.680301687,True,True,0.597013469,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/37::youtube_dl/utils.py::uppercase_escape::SP-3,youtube-dl/37,0,SP-3,True,0.680154194,True,True,0.596867352,True,True,True,True,,
+bugsinpy,youtube-dl/41::youtube_dl/utils.py::unified_strdate::real_fix,youtube-dl/41,1,real_fix,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-2,youtube-dl/41,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-4,youtube-dl/41,0,SP-4,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/41::youtube_dl/utils.py::unified_strdate::SP-3,youtube-dl/41,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/43::youtube_dl/utils.py::url_basename::real_fix,youtube-dl/43,1,real_fix,True,0.016082898,True,True,0.016082898,True,True,True,True,,
+bugsinpy,youtube-dl/43::youtube_dl/utils.py::url_basename::SP-1,youtube-dl/43,0,SP-1,True,0.675144928,True,True,0.0,True,True,True,True,,
+bugsinpy,youtube-dl/43::youtube_dl/utils.py::url_basename::SP-2,youtube-dl/43,0,SP-2,True,0.679247491,True,True,0.009375,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+bugsinpy,youtube-dl/43::youtube_dl/utils.py::url_basename::SP-3,youtube-dl/43,0,SP-3,True,0.675144928,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__bitcount__bug__canonical,bitcount,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__bitcount__sp-1_s0__canonical,bitcount,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__bitcount__sp-2_s0__canonical,bitcount,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__bitcount__sp-3_s0__canonical,bitcount,0,SP-3,True,0.017099342,True,True,0.017099342,True,True,True,True,,
+quixbugs_canonical,quixbugs__breadth_first_search__bug__canonical,breadth_first_search,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__breadth_first_search__sp-1_s0__canonical,breadth_first_search,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__breadth_first_search__sp-2_s0__canonical,breadth_first_search,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__breadth_first_search__sp-3_s0__canonical,breadth_first_search,0,SP-3,True,0.014285714,True,True,0.014285714,True,True,True,True,,
+quixbugs_canonical,quixbugs__bucketsort__bug__canonical,bucketsort,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__bucketsort__sp-1_s0__canonical,bucketsort,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__bucketsort__sp-2_s0__canonical,bucketsort,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__bucketsort__sp-3_s0__canonical,bucketsort,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__depth_first_search__bug__canonical,depth_first_search,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__depth_first_search__sp-1_s0__canonical,depth_first_search,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__depth_first_search__sp-2_s0__canonical,depth_first_search,0,SP-2,True,0.016666667,True,True,0.016666667,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__depth_first_search__sp-3_s0__canonical,depth_first_search,0,SP-3,True,0.014285714,True,True,0.014285714,True,True,True,True,,
+quixbugs_canonical,quixbugs__detect_cycle__bug__canonical,detect_cycle,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__detect_cycle__sp-1_s0__canonical,detect_cycle,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__detect_cycle__sp-2_s0__canonical,detect_cycle,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__detect_cycle__sp-3_s0__canonical,detect_cycle,0,SP-3,True,0.02,True,True,0.02,True,True,True,True,,
+quixbugs_canonical,quixbugs__find_first_in_sorted__bug__canonical,find_first_in_sorted,1,real_bug,True,0.064800124,True,True,0.064800124,True,True,True,True,,
+quixbugs_canonical,quixbugs__find_first_in_sorted__sp-1_s0__canonical,find_first_in_sorted,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__find_first_in_sorted__sp-2_s0__canonical,find_first_in_sorted,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__find_first_in_sorted__sp-6_s0__canonical,find_first_in_sorted,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__find_in_sorted__bug__canonical,find_in_sorted,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__find_in_sorted__sp-1_s0__canonical,find_in_sorted,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__find_in_sorted__sp-2_s0__canonical,find_in_sorted,0,SP-2,True,0.016666667,True,True,0.016666667,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__find_in_sorted__sp-6_s0__canonical,find_in_sorted,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__flatten__bug__canonical,flatten,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__flatten__sp-1_s0__canonical,flatten,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__flatten__sp-2_s0__canonical,flatten,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__gcd__bug__canonical,gcd,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__gcd__sp-2_s0__canonical,gcd,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__gcd__sp-3_s0__canonical,gcd,0,SP-3,True,0.02,True,True,0.02,True,True,True,True,,
+quixbugs_canonical,quixbugs__get_factors__bug__canonical,get_factors,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__get_factors__sp-1_s0__canonical,get_factors,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__get_factors__sp-2_s0__canonical,get_factors,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__get_factors__sp-3_s0__canonical,get_factors,0,SP-3,True,0.025,True,True,0.025,True,True,True,True,,
+quixbugs_canonical,quixbugs__hanoi__bug__canonical,hanoi,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__hanoi__sp-2_s0__canonical,hanoi,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__hanoi__sp-3_s0__canonical,hanoi,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__is_valid_parenthesization__bug__canonical,is_valid_parenthesization,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__is_valid_parenthesization__sp-2_s0__canonical,is_valid_parenthesization,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__is_valid_parenthesization__sp-3_s0__canonical,is_valid_parenthesization,0,SP-3,True,0.011291411,True,True,0.011291411,True,True,True,True,,
+quixbugs_canonical,quixbugs__is_valid_parenthesization__sp-6_s0__canonical,is_valid_parenthesization,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__kheapsort__bug__canonical,kheapsort,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__kheapsort__sp-1_s0__canonical,kheapsort,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__kheapsort__sp-2_s0__canonical,kheapsort,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__kheapsort__sp-3_s0__canonical,kheapsort,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__knapsack__bug__canonical,knapsack,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__knapsack__sp-1_s0__canonical,knapsack,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__knapsack__sp-2_s0__canonical,knapsack,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__knapsack__sp-3_s0__canonical,knapsack,0,SP-3,True,0.007190407,True,True,0.007190407,True,True,True,True,,
+quixbugs_canonical,quixbugs__kth__bug__canonical,kth,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__kth__sp-1_s0__canonical,kth,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__kth__sp-2_s0__canonical,kth,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__kth__sp-6_s0__canonical,kth,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__lcs_length__bug__canonical,lcs_length,1,real_bug,True,0.220330997,True,True,0.220330997,True,True,True,True,,
+quixbugs_canonical,quixbugs__lcs_length__sp-1_s0__canonical,lcs_length,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__lcs_length__sp-2_s0__canonical,lcs_length,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__lcs_length__sp-3_s0__canonical,lcs_length,0,SP-3,True,0.004205842,True,True,0.004205842,True,True,True,True,,
+quixbugs_canonical,quixbugs__levenshtein__bug__canonical,levenshtein,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__levenshtein__sp-2_s0__canonical,levenshtein,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__levenshtein__sp-3_s0__canonical,levenshtein,0,SP-3,True,0.016810892,True,True,0.016810892,True,True,True,True,,
+quixbugs_canonical,quixbugs__levenshtein__sp-6_s0__canonical,levenshtein,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__lis__bug__canonical,lis,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__lis__sp-1_s0__canonical,lis,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__lis__sp-2_s0__canonical,lis,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__lis__sp-6_s0__canonical,lis,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__longest_common_subsequence__bug__canonical,longest_common_subsequence,1,real_bug,True,0.181924445,True,True,0.181924445,True,True,True,True,,
+quixbugs_canonical,quixbugs__longest_common_subsequence__sp-2_s0__canonical,longest_common_subsequence,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__longest_common_subsequence__sp-3_s0__canonical,longest_common_subsequence,0,SP-3,True,0.014697814,True,True,0.014697814,True,True,True,True,,
+quixbugs_canonical,quixbugs__max_sublist_sum__bug__canonical,max_sublist_sum,1,real_bug,True,0.018181818,True,True,0.018181818,True,True,True,True,,
+quixbugs_canonical,quixbugs__max_sublist_sum__sp-1_s0__canonical,max_sublist_sum,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__max_sublist_sum__sp-2_s0__canonical,max_sublist_sum,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__max_sublist_sum__sp-3_s0__canonical,max_sublist_sum,0,SP-3,True,0.01265455,True,True,0.01265455,True,True,True,True,,
+quixbugs_canonical,quixbugs__mergesort__bug__canonical,mergesort,1,real_bug,True,0.659325504,True,False,,True,True,False,False,v8_unevaluated(nonterminating),
+quixbugs_canonical,quixbugs__mergesort__sp-1_s0__canonical,mergesort,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__mergesort__sp-2_s0__canonical,mergesort,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__mergesort__sp-6_s0__canonical,mergesort,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__minimum_spanning_tree__bug__canonical,minimum_spanning_tree,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__minimum_spanning_tree__sp-1_s0__canonical,minimum_spanning_tree,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__minimum_spanning_tree__sp-2_s0__canonical,minimum_spanning_tree,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__minimum_spanning_tree__sp-3_s0__canonical,minimum_spanning_tree,0,SP-3,True,0.014830564,True,True,0.014830564,True,True,True,True,,
+quixbugs_canonical,quixbugs__next_palindrome__bug__canonical,next_palindrome,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__next_palindrome__sp-2_s0__canonical,next_palindrome,0,SP-2,True,0.018320728,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__next_palindrome__sp-3_s0__canonical,next_palindrome,0,SP-3,True,0.024502694,True,True,0.007071542,True,True,True,True,,
+quixbugs_canonical,quixbugs__next_palindrome__sp-6_s0__canonical,next_palindrome,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__next_permutation__bug__canonical,next_permutation,1,real_bug,True,0.085868883,True,True,0.085868883,True,True,True,True,,
+quixbugs_canonical,quixbugs__next_permutation__sp-1_s0__canonical,next_permutation,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__next_permutation__sp-2_s0__canonical,next_permutation,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__next_permutation__sp-3_s0__canonical,next_permutation,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__pascal__bug__canonical,pascal,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__pascal__sp-1_s0__canonical,pascal,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__pascal__sp-2_s0__canonical,pascal,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__pascal__sp-3_s0__canonical,pascal,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__possible_change__bug__canonical,possible_change,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__possible_change__sp-2_s0__canonical,possible_change,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__possible_change__sp-3_s0__canonical,possible_change,0,SP-3,True,0.02,True,True,0.02,True,True,True,True,,
+quixbugs_canonical,quixbugs__powerset__bug__canonical,powerset,1,real_bug,True,0.120832104,True,True,0.146800805,True,True,True,True,,
+quixbugs_canonical,quixbugs__powerset__sp-1_s0__canonical,powerset,0,SP-1,True,0.027032326,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__powerset__sp-2_s0__canonical,powerset,0,SP-2,True,0.000793651,True,True,0.026238675,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__powerset__sp-3_s0__canonical,powerset,0,SP-3,True,0.040992194,True,True,0.014594789,True,True,True,True,,
+quixbugs_canonical,quixbugs__quicksort__bug__canonical,quicksort,1,real_bug,True,0.022366091,True,True,0.022366091,True,True,True,True,,
+quixbugs_canonical,quixbugs__quicksort__sp-1_s0__canonical,quicksort,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__quicksort__sp-2_s0__canonical,quicksort,0,SP-2,True,0.0,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__quicksort__sp-3_s0__canonical,quicksort,0,SP-3,True,0.0127318,True,True,0.0127318,True,True,True,True,,
+quixbugs_canonical,quixbugs__reverse_linked_list__bug__canonical,reverse_linked_list,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__reverse_linked_list__sp-1_s0__canonical,reverse_linked_list,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__reverse_linked_list__sp-2_s0__canonical,reverse_linked_list,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__reverse_linked_list__sp-3_s0__canonical,reverse_linked_list,0,SP-3,True,0.017099342,True,True,0.017099342,True,True,True,True,,
+quixbugs_canonical,quixbugs__rpn_eval__bug__canonical,rpn_eval,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__rpn_eval__sp-2_s0__canonical,rpn_eval,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__rpn_eval__sp-3_s0__canonical,rpn_eval,0,SP-3,True,0.0127318,True,True,0.0127318,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_path_length__bug__canonical,shortest_path_length,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_path_length__sp-1_s0__canonical,shortest_path_length,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_path_length__sp-2_s0__canonical,shortest_path_length,0,SP-2,True,0.0125,True,True,0.0,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__shortest_path_length__sp-6_s0__canonical,shortest_path_length,0,SP-6,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_path_lengths__bug__canonical,shortest_path_lengths,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_path_lengths__sp-1_s0__canonical,shortest_path_lengths,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_path_lengths__sp-2_s0__canonical,shortest_path_lengths,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__shortest_path_lengths__sp-3_s0__canonical,shortest_path_lengths,0,SP-3,True,0.02,True,True,0.02,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_paths__bug__canonical,shortest_paths,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_paths__sp-1_s0__canonical,shortest_paths,0,SP-1,True,0.02021635,True,True,0.02021635,True,True,True,True,,
+quixbugs_canonical,quixbugs__shortest_paths__sp-2_s0__canonical,shortest_paths,0,SP-2,True,0.03271635,True,True,0.03271635,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__shortest_paths__sp-3_s0__canonical,shortest_paths,0,SP-3,True,0.02021635,True,True,0.02021635,True,True,True,True,,
+quixbugs_canonical,quixbugs__shunting_yard__bug__canonical,shunting_yard,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__shunting_yard__sp-2_s0__canonical,shunting_yard,0,SP-2,True,0.031065106,True,True,0.031065106,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__shunting_yard__sp-3_s0__canonical,shunting_yard,0,SP-3,True,0.015505665,True,True,0.015505665,True,True,True,True,,
+quixbugs_canonical,quixbugs__sieve__bug__canonical,sieve,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__sieve__sp-1_s0__canonical,sieve,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__sieve__sp-2_s0__canonical,sieve,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__sieve__sp-3_s0__canonical,sieve,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__sqrt__bug__canonical,sqrt,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__sqrt__sp-1_s0__canonical,sqrt,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__sqrt__sp-2_s0__canonical,sqrt,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__sqrt__sp-3_s0__canonical,sqrt,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__subsequences__bug__canonical,subsequences,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__subsequences__sp-1_s0__canonical,subsequences,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__subsequences__sp-2_s0__canonical,subsequences,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__subsequences__sp-3_s0__canonical,subsequences,0,SP-3,True,0.016666667,True,True,0.016666667,True,True,True,True,,
+quixbugs_canonical,quixbugs__to_base__bug__canonical,to_base,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__to_base__sp-1_s0__canonical,to_base,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__to_base__sp-2_s0__canonical,to_base,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__to_base__sp-3_s0__canonical,to_base,0,SP-3,True,0.016666667,True,True,0.016666667,True,True,True,True,,
+quixbugs_canonical,quixbugs__topological_ordering__bug__canonical,topological_ordering,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__topological_ordering__sp-1_s0__canonical,topological_ordering,0,SP-1,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__topological_ordering__sp-2_s0__canonical,topological_ordering,0,SP-2,True,0.025,True,True,0.025,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__topological_ordering__sp-3_s0__canonical,topological_ordering,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__wrap__bug__canonical,wrap,1,real_bug,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_canonical,quixbugs__wrap__sp-2_s0__canonical,wrap,0,SP-2,True,0.0125,True,True,0.0125,True,False,True,False,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_canonical,quixbugs__wrap__sp-3_s0__canonical,wrap,0,SP-3,True,0.0,True,True,0.0,True,True,True,True,,
+quixbugs_declared,quixbugs__bitcount__bug__declared,bitcount,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(variant:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__bitcount__sp-1_s0__declared,bitcount,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__bitcount__sp-2_s0__declared,bitcount,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__bitcount__sp-3_s0__declared,bitcount,0,SP-3,True,0.003125,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__breadth_first_search__bug__declared,breadth_first_search,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__breadth_first_search__sp-1_s0__declared,breadth_first_search,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__breadth_first_search__sp-2_s0__declared,breadth_first_search,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__breadth_first_search__sp-3_s0__declared,breadth_first_search,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__bucketsort__bug__declared,bucketsort,1,real_bug,True,0.003873308,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__bucketsort__sp-1_s0__declared,bucketsort,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__bucketsort__sp-2_s0__declared,bucketsort,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__bucketsort__sp-3_s0__declared,bucketsort,0,SP-3,True,0.002178316,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__depth_first_search__bug__declared,depth_first_search,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__depth_first_search__sp-1_s0__declared,depth_first_search,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__depth_first_search__sp-2_s0__declared,depth_first_search,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__depth_first_search__sp-3_s0__declared,depth_first_search,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__detect_cycle__bug__declared,detect_cycle,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__detect_cycle__sp-1_s0__declared,detect_cycle,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__detect_cycle__sp-2_s0__declared,detect_cycle,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__detect_cycle__sp-3_s0__declared,detect_cycle,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__find_first_in_sorted__bug__declared,find_first_in_sorted,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(variant:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__find_first_in_sorted__sp-1_s0__declared,find_first_in_sorted,0,SP-1,True,0.002160494,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__find_first_in_sorted__sp-2_s0__declared,find_first_in_sorted,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__find_first_in_sorted__sp-6_s0__declared,find_first_in_sorted,0,SP-6,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__find_in_sorted__bug__declared,find_in_sorted,1,real_bug,True,0.543978937,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__find_in_sorted__sp-1_s0__declared,find_in_sorted,0,SP-1,True,0.001969981,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__find_in_sorted__sp-2_s0__declared,find_in_sorted,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__find_in_sorted__sp-6_s0__declared,find_in_sorted,0,SP-6,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__flatten__bug__declared,flatten,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__flatten__sp-1_s0__declared,flatten,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__flatten__sp-2_s0__declared,flatten,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__gcd__bug__declared,gcd,1,real_bug,True,0.41112299,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__gcd__sp-2_s0__declared,gcd,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__gcd__sp-3_s0__declared,gcd,0,SP-3,True,0.003601533,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__get_factors__bug__declared,get_factors,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__get_factors__sp-1_s0__declared,get_factors,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__get_factors__sp-2_s0__declared,get_factors,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__get_factors__sp-3_s0__declared,get_factors,0,SP-3,True,0.003126828,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__hanoi__bug__declared,hanoi,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__hanoi__sp-2_s0__declared,hanoi,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__hanoi__sp-3_s0__declared,hanoi,0,SP-3,True,0.003098351,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__is_valid_parenthesization__bug__declared,is_valid_parenthesization,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__is_valid_parenthesization__sp-2_s0__declared,is_valid_parenthesization,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__is_valid_parenthesization__sp-3_s0__declared,is_valid_parenthesization,0,SP-3,True,0.002913843,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__is_valid_parenthesization__sp-6_s0__declared,is_valid_parenthesization,0,SP-6,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__kheapsort__bug__declared,kheapsort,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__kheapsort__sp-1_s0__declared,kheapsort,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__kheapsort__sp-2_s0__declared,kheapsort,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__kheapsort__sp-3_s0__declared,kheapsort,0,SP-3,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__knapsack__bug__declared,knapsack,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(variant:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__knapsack__sp-1_s0__declared,knapsack,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(variant:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__knapsack__sp-2_s0__declared,knapsack,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(variant:nonterminating); excluded_SP-2(post-hoc, decided after v7 results)",exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__knapsack__sp-3_s0__declared,knapsack,0,SP-3,True,0.114411016,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__kth__bug__declared,kth,1,real_bug,True,0.153268059,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__kth__sp-1_s0__declared,kth,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__kth__sp-2_s0__declared,kth,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__kth__sp-6_s0__declared,kth,0,SP-6,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__lcs_length__bug__declared,lcs_length,1,real_bug,True,0.095379427,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__lcs_length__sp-1_s0__declared,lcs_length,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__lcs_length__sp-2_s0__declared,lcs_length,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__lcs_length__sp-3_s0__declared,lcs_length,0,SP-3,True,0.002093258,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__levenshtein__bug__declared,levenshtein,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__levenshtein__sp-2_s0__declared,levenshtein,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:nonterminating); excluded_SP-2(post-hoc, decided after v7 results)",exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__levenshtein__sp-3_s0__declared,levenshtein,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__levenshtein__sp-6_s0__declared,levenshtein,0,SP-6,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__lis__bug__declared,lis,1,real_bug,True,0.000513699,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__lis__sp-1_s0__declared,lis,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__lis__sp-2_s0__declared,lis,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__lis__sp-6_s0__declared,lis,0,SP-6,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__longest_common_subsequence__bug__declared,longest_common_subsequence,1,real_bug,True,0.06401025,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__longest_common_subsequence__sp-2_s0__declared,longest_common_subsequence,0,SP-2,True,0.073039762,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__longest_common_subsequence__sp-3_s0__declared,longest_common_subsequence,0,SP-3,True,0.051398269,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__max_sublist_sum__bug__declared,max_sublist_sum,1,real_bug,True,0.00297282,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__max_sublist_sum__sp-1_s0__declared,max_sublist_sum,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__max_sublist_sum__sp-2_s0__declared,max_sublist_sum,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__max_sublist_sum__sp-3_s0__declared,max_sublist_sum,0,SP-3,True,0.002083333,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__mergesort__bug__declared,mergesort,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:harness_error),harness_timeout: worker exceeded 900s
+quixbugs_declared,quixbugs__mergesort__sp-1_s0__declared,mergesort,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:harness_error),harness_timeout: worker exceeded 900s
+quixbugs_declared,quixbugs__mergesort__sp-2_s0__declared,mergesort,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:harness_error); excluded_SP-2(post-hoc, decided after v7 results)",harness_timeout: worker exceeded 900s
+quixbugs_declared,quixbugs__mergesort__sp-6_s0__declared,mergesort,0,SP-6,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:harness_error),harness_timeout: worker exceeded 900s
+quixbugs_declared,quixbugs__minimum_spanning_tree__bug__declared,minimum_spanning_tree,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__minimum_spanning_tree__sp-1_s0__declared,minimum_spanning_tree,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__minimum_spanning_tree__sp-2_s0__declared,minimum_spanning_tree,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__minimum_spanning_tree__sp-3_s0__declared,minimum_spanning_tree,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__next_palindrome__bug__declared,next_palindrome,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__next_palindrome__sp-2_s0__declared,next_palindrome,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__next_palindrome__sp-3_s0__declared,next_palindrome,0,SP-3,True,0.001850932,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__next_palindrome__sp-6_s0__declared,next_palindrome,0,SP-6,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__next_permutation__bug__declared,next_permutation,1,real_bug,True,0.004054433,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__next_permutation__sp-1_s0__declared,next_permutation,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__next_permutation__sp-2_s0__declared,next_permutation,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__next_permutation__sp-3_s0__declared,next_permutation,0,SP-3,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__pascal__bug__declared,pascal,1,real_bug,True,0.151217466,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__pascal__sp-1_s0__declared,pascal,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__pascal__sp-2_s0__declared,pascal,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__pascal__sp-3_s0__declared,pascal,0,SP-3,True,0.002966078,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__possible_change__bug__declared,possible_change,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:harness_error),harness_timeout: worker exceeded 900s
+quixbugs_declared,quixbugs__possible_change__sp-2_s0__declared,possible_change,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:harness_error); excluded_SP-2(post-hoc, decided after v7 results)",harness_timeout: worker exceeded 900s
+quixbugs_declared,quixbugs__possible_change__sp-3_s0__declared,possible_change,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:harness_error),harness_timeout: worker exceeded 900s
+quixbugs_declared,quixbugs__powerset__bug__declared,powerset,1,real_bug,True,0.009111617,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__powerset__sp-1_s0__declared,powerset,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__powerset__sp-2_s0__declared,powerset,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__powerset__sp-3_s0__declared,powerset,0,SP-3,True,0.002279035,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__quicksort__bug__declared,quicksort,1,real_bug,True,0.007242031,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__quicksort__sp-1_s0__declared,quicksort,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__quicksort__sp-2_s0__declared,quicksort,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__quicksort__sp-3_s0__declared,quicksort,0,SP-3,True,0.002083333,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__reverse_linked_list__bug__declared,reverse_linked_list,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__reverse_linked_list__sp-1_s0__declared,reverse_linked_list,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__reverse_linked_list__sp-2_s0__declared,reverse_linked_list,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__reverse_linked_list__sp-3_s0__declared,reverse_linked_list,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__rpn_eval__bug__declared,rpn_eval,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__rpn_eval__sp-2_s0__declared,rpn_eval,0,SP-2,True,0.015076637,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__rpn_eval__sp-3_s0__declared,rpn_eval,0,SP-3,True,0.013322251,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__shortest_path_length__bug__declared,shortest_path_length,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_path_length__sp-1_s0__declared,shortest_path_length,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_path_length__sp-2_s0__declared,shortest_path_length,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_path_length__sp-6_s0__declared,shortest_path_length,0,SP-6,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_path_lengths__bug__declared,shortest_path_lengths,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_path_lengths__sp-1_s0__declared,shortest_path_lengths,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_path_lengths__sp-2_s0__declared,shortest_path_lengths,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_path_lengths__sp-3_s0__declared,shortest_path_lengths,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_paths__bug__declared,shortest_paths,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_paths__sp-1_s0__declared,shortest_paths,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_paths__sp-2_s0__declared,shortest_paths,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shortest_paths__sp-3_s0__declared,shortest_paths,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__shunting_yard__bug__declared,shunting_yard,1,real_bug,True,0.010160989,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__shunting_yard__sp-2_s0__declared,shunting_yard,0,SP-2,True,0.007148244,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__shunting_yard__sp-3_s0__declared,shunting_yard,0,SP-3,True,0.003571722,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__sieve__bug__declared,sieve,1,real_bug,True,0.227539735,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__sieve__sp-1_s0__declared,sieve,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__sieve__sp-2_s0__declared,sieve,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__sieve__sp-3_s0__declared,sieve,0,SP-3,True,0.003368625,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__sqrt__bug__declared,sqrt,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(variant:nonterminating),exceeded the per-trace budget on 2 inputs
+quixbugs_declared,quixbugs__sqrt__sp-1_s0__declared,sqrt,0,SP-1,True,0.007978723,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__sqrt__sp-2_s0__declared,sqrt,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__sqrt__sp-3_s0__declared,sqrt,0,SP-3,True,0.003449931,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__subsequences__bug__declared,subsequences,1,real_bug,True,0.196065307,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__subsequences__sp-1_s0__declared,subsequences,0,SP-1,True,0.041682658,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__subsequences__sp-2_s0__declared,subsequences,0,SP-2,True,0.041682658,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__subsequences__sp-3_s0__declared,subsequences,0,SP-3,True,0.038474105,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__to_base__bug__declared,to_base,1,real_bug,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__to_base__sp-1_s0__declared,to_base,0,SP-1,True,0.0,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__to_base__sp-2_s0__declared,to_base,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__to_base__sp-3_s0__declared,to_base,0,SP-3,True,0.005714286,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__topological_ordering__bug__declared,topological_ordering,1,real_bug,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__topological_ordering__sp-1_s0__declared,topological_ordering,0,SP-1,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__topological_ordering__sp-2_s0__declared,topological_ordering,0,SP-2,False,,False,,,False,False,n/a,n/a,"v7_unevaluated(base:ineligible); excluded_SP-2(post-hoc, decided after v7 results)",no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__topological_ordering__sp-3_s0__declared,topological_ordering,0,SP-3,False,,False,,,False,False,n/a,n/a,v7_unevaluated(base:ineligible),no json_testcases upstream (graph program exercised only by a *_test.py driver)
+quixbugs_declared,quixbugs__wrap__bug__declared,wrap,1,real_bug,True,0.002941176,False,,,True,True,n/a,n/a,,
+quixbugs_declared,quixbugs__wrap__sp-2_s0__declared,wrap,0,SP-2,True,0.0,False,,,True,False,n/a,n/a,"excluded_SP-2(post-hoc, decided after v7 results)",
+quixbugs_declared,quixbugs__wrap__sp-3_s0__declared,wrap,0,SP-3,True,0.005555556,False,,,True,True,n/a,n/a,,

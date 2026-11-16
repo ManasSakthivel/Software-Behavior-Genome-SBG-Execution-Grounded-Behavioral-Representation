@@ -1,0 +1,158 @@
+{
+ "kind": "quixbugs",
+ "corpus": null,
+ "committed": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/artifacts/final/pairs_quixbugs_canonical_output_free_v7.jsonl",
+ "new": "runs/B2_quix_score_py313/quix_canonical_rows_py313_seed1.jsonl",
+ "tol": 0.001,
+ "n_committed": 152,
+ "n_new": 152,
+ "n_common": 152,
+ "only_in_committed": [],
+ "only_in_new": [],
+ "n_both_evaluated": 151,
+ "evaluated_flag_disagreements": [
+  {
+   "pair_id": "quixbugs__mergesort__bug__canonical",
+   "committed_evaluated": true,
+   "new_evaluated": false,
+   "committed_failure": null,
+   "new_failure": "nonterminating"
+  }
+ ],
+ "n_pairs_all_predictors_exact": 145,
+ "n_pairs_differing_but_within_tol": 3,
+ "n_pairs_beyond_tol": 3,
+ "sbg_v5": {
+  "n": 151,
+  "exact": 145,
+  "max_abs": 0.02596870100000001,
+  "n_diff_gt_tol": 3
+ },
+ "per_predictor": {
+  "call_count": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "combined_shortcut": {
+   "n": 151,
+   "exact": 150,
+   "max_abs": 0.002678571,
+   "n_diff_gt_tol": 1
+  },
+  "coverage_size": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_component_v3": {
+   "n": 151,
+   "exact": 150,
+   "max_abs": 0.509091,
+   "n_diff_gt_tol": 1
+  },
+  "exception_fraction": {
+   "n": 151,
+   "exact": 150,
+   "max_abs": 0.017857143,
+   "n_diff_gt_tol": 1
+  },
+  "exception_type_jaccard": {
+   "n": 151,
+   "exact": 150,
+   "max_abs": 1.0,
+   "n_diff_gt_tol": 1
+  },
+  "n_functions": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_state": {
+   "n": 151,
+   "exact": 145,
+   "max_abs": 0.06779661,
+   "n_diff_gt_tol": 5
+  },
+  "sbg_temporal": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_v3": {
+   "n": 151,
+   "exact": 148,
+   "max_abs": 0.05247735,
+   "n_diff_gt_tol": 2
+  },
+  "sbg_v5": {
+   "n": 151,
+   "exact": 145,
+   "max_abs": 0.02596870100000001,
+   "n_diff_gt_tol": 3
+  },
+  "static_ast": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "static_token": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "v5_full": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  }
+ },
+ "auroc_own_evaluated_rows": {
+  "committed": {
+   "n": 152,
+   "n_pos": 40,
+   "auroc": 0.387723,
+   "ci95": [
+    0.284659,
+    0.503378
+   ]
+  },
+  "committed_exSP2": {
+   "n": 112,
+   "n_pos": 40,
+   "auroc": 0.450694,
+   "ci95": [
+    0.360069,
+    0.547297
+   ]
+  },
+  "new": {
+   "n": 151,
+   "n_pos": 39,
+   "auroc": 0.380037,
+   "ci95": [
+    0.28125,
+    0.488295
+   ]
+  },
+  "new_exSP2": {
+   "n": 111,
+   "n_pos": 39,
+   "auroc": 0.437322,
+   "ci95": [
+    0.349662,
+    0.52803
+   ]
+  }
+ },
+ "auroc_delta_new_minus_committed": -0.007686,
+ "auroc_delta_exSP2_new_minus_committed": -0.013372,
+ "classification": "NOT-REPRODUCED"
+}

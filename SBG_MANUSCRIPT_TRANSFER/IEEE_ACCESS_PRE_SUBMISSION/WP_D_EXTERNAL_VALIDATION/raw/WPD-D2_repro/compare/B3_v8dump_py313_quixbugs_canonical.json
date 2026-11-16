@@ -1,0 +1,111 @@
+{
+ "kind": "v8dump",
+ "corpus": "quixbugs_canonical",
+ "committed": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+ "new": "runs/B3_v8rescore_py313/artifacts/paper_evidence/raw/external_rescore_v8_pairs.json",
+ "tol": 0.001,
+ "n_committed": 152,
+ "n_new": 152,
+ "n_common": 152,
+ "only_in_committed": [],
+ "only_in_new": [],
+ "n_both_evaluated": 151,
+ "evaluated_flag_disagreements": [],
+ "n_pairs_all_predictors_exact": 151,
+ "n_pairs_differing_but_within_tol": 0,
+ "n_pairs_beyond_tol": 0,
+ "sbg_v5": {
+  "n": 151,
+  "exact": 151,
+  "max_abs": 0.0,
+  "n_diff_gt_tol": 0
+ },
+ "per_predictor": {
+  "call_count": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "coverage_size": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "exception_fraction": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_state": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_temporal": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_v3": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  },
+  "sbg_v5": {
+   "n": 151,
+   "exact": 151,
+   "max_abs": 0.0,
+   "n_diff_gt_tol": 0
+  }
+ },
+ "self_distance_pairs_equal": 152,
+ "self_distance_pairs_total": 152,
+ "entry_fn_equal": 152,
+ "auroc_own_evaluated_rows": {
+  "committed": {
+   "n": 151,
+   "n_pos": 39,
+   "auroc": 0.384158,
+   "ci95": [
+    0.284722,
+    0.489879
+   ]
+  },
+  "committed_exSP2": {
+   "n": 111,
+   "n_pos": 39,
+   "auroc": 0.444444,
+   "ci95": [
+    0.355303,
+    0.538462
+   ]
+  },
+  "new": {
+   "n": 151,
+   "n_pos": 39,
+   "auroc": 0.384158,
+   "ci95": [
+    0.284722,
+    0.489879
+   ]
+  },
+  "new_exSP2": {
+   "n": 111,
+   "n_pos": 39,
+   "auroc": 0.444444,
+   "ci95": [
+    0.355303,
+    0.538462
+   ]
+  }
+ },
+ "auroc_delta_new_minus_committed": 0.0,
+ "auroc_delta_exSP2_new_minus_committed": 0.0,
+ "classification": "REPRODUCED-EXACT"
+}
