@@ -1,0 +1,804 @@
+{
+  "experiment": "HARD_NEGATIVE_V5_EVALUATION",
+  "supersedes": "benchmark/v5/hard_negatives/oracle.py summary table",
+  "correction": "The 12/12 figure previously reported as a behavioural-oracle result is an output comparison. It is reported here as 'output_reading_reference' and is not an SBG result.",
+  "seed": 42,
+  "regimes": {
+    "canonical": {
+      "input_regime": "canonical",
+      "n_pairs": 12,
+      "threshold_tau_star": 0.08,
+      "threshold_provenance": "median SBG distance of semantics-preserving dev pairs; fixed before these pairs were scored and not re-tuned here",
+      "metrics": {
+        "sbg_v5_output_free": {
+          "tp": 1,
+          "fp": 1,
+          "tn": 4,
+          "fn": 6,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": 0.5,
+          "recall": 0.1429,
+          "f1": 0.2222,
+          "accuracy": 0.4167,
+          "accuracy_95ci_wilson": [
+            0.19326,
+            0.680489
+          ]
+        },
+        "sbg_v3_output_free": {
+          "tp": 0,
+          "fp": 1,
+          "tn": 4,
+          "fn": 7,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "accuracy": 0.3333,
+          "accuracy_95ci_wilson": [
+            0.13812,
+            0.609378
+          ]
+        },
+        "exception_component_output_free": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 5,
+          "fn": 7,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": null,
+          "accuracy": 0.4167,
+          "accuracy_95ci_wilson": [
+            0.19326,
+            0.680489
+          ]
+        },
+        "output_reading_reference": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "accuracy_95ci_wilson": [
+            0.757506,
+            1.0
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01_same_exception_different_behavior",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "exception_fraction",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_01_same_exception_different_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_01_same_exception_different_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_02_same_volume_different_behavior",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "execution_volume",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_02_same_volume_different_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_02_same_volume_different_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.098575,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.394299,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "CHANGED",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_03_same_call_count_different_order",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "call_count",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_03_same_call_count_different_order/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_03_same_call_count_different_order/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.01,
+            "sbg_v3": 0.0,
+            "temporal": 0.04,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_04_rename_invariant",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "name_similarity",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_04_rename_invariant/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_04_rename_invariant/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0125,
+            "sbg_v3": 0.0,
+            "temporal": 0.05,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_05_structural_change_same_behavior",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_05_structural_change_same_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_05_structural_change_same_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.371919,
+            "sbg_v3": 0.305685,
+            "temporal": 0.476305,
+            "state": 0.4,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "CHANGED",
+          "sbg_v3_predicted": "CHANGED",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_06_constant_mutation",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_06_constant_mutation/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_06_constant_mutation/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_07_dead_code_insertion",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "coverage_size",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_07_dead_code_insertion/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_07_dead_code_insertion/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.005194,
+            "sbg_v3": 0.010388,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_08_wrong_variable",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_08_wrong_variable/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_08_wrong_variable/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_09_operator_mutation",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_09_operator_mutation/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_09_operator_mutation/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_10_exception_same_behavior",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "exception_fraction",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_10_exception_same_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_10_exception_same_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_11_loop_boundary",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "execution_volume",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_11_loop_boundary/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_11_loop_boundary/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.031942,
+            "sbg_v3": 0.002297,
+            "temporal": 0.0,
+            "state": 0.123173,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_12_data_structure_equivalent",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "import_diff",
+          "input_regime": "canonical",
+          "n_inputs": 11,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_12_data_structure_equivalent/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_12_data_structure_equivalent/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        }
+      ]
+    },
+    "declared": {
+      "input_regime": "declared",
+      "n_pairs": 12,
+      "threshold_tau_star": 0.08,
+      "threshold_provenance": "median SBG distance of semantics-preserving dev pairs; fixed before these pairs were scored and not re-tuned here",
+      "metrics": {
+        "sbg_v5_output_free": {
+          "tp": 2,
+          "fp": 2,
+          "tn": 3,
+          "fn": 5,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": 0.5,
+          "recall": 0.2857,
+          "f1": 0.3636,
+          "accuracy": 0.4167,
+          "accuracy_95ci_wilson": [
+            0.19326,
+            0.680489
+          ]
+        },
+        "sbg_v3_output_free": {
+          "tp": 1,
+          "fp": 1,
+          "tn": 4,
+          "fn": 6,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": 0.5,
+          "recall": 0.1429,
+          "f1": 0.2222,
+          "accuracy": 0.4167,
+          "accuracy_95ci_wilson": [
+            0.19326,
+            0.680489
+          ]
+        },
+        "exception_component_output_free": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 5,
+          "fn": 6,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": 1.0,
+          "recall": 0.1429,
+          "f1": 0.25,
+          "accuracy": 0.5,
+          "accuracy_95ci_wilson": [
+            0.253782,
+            0.746218
+          ]
+        },
+        "output_reading_reference": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "n_scored": 12,
+          "n_unscored": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "accuracy_95ci_wilson": [
+            0.757506,
+            1.0
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01_same_exception_different_behavior",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "exception_fraction",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_01_same_exception_different_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_01_same_exception_different_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_02_same_volume_different_behavior",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "execution_volume",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_02_same_volume_different_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_02_same_volume_different_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.096491,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.385965,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "CHANGED",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_03_same_call_count_different_order",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "call_count",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_03_same_call_count_different_order/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_03_same_call_count_different_order/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.380542,
+            "sbg_v3": 0.238095,
+            "temporal": 0.280211,
+            "state": 0.765766,
+            "exception_component": 1.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "CHANGED",
+          "sbg_v3_predicted": "CHANGED",
+          "exception_predicted": "CHANGED",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_04_rename_invariant",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "name_similarity",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_04_rename_invariant/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_04_rename_invariant/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_05_structural_change_same_behavior",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_05_structural_change_same_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_05_structural_change_same_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.576547,
+            "sbg_v3": 0.448021,
+            "temporal": 0.55649,
+            "state": 0.853659,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "CHANGED",
+          "sbg_v3_predicted": "CHANGED",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_06_constant_mutation",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_06_constant_mutation/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_06_constant_mutation/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_07_dead_code_insertion",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "coverage_size",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_07_dead_code_insertion/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_07_dead_code_insertion/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.005,
+            "sbg_v3": 0.01,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_08_wrong_variable",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_08_wrong_variable/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_08_wrong_variable/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_09_operator_mutation",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "structural_similarity",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_09_operator_mutation/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_09_operator_mutation/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_10_exception_same_behavior",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "exception_fraction",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_10_exception_same_behavior/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_10_exception_same_behavior/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.118937,
+            "sbg_v3": 0.044444,
+            "temporal": 0.244,
+            "state": 0.142857,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "CHANGED",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        },
+        {
+          "pair_id": "pair_11_loop_boundary",
+          "ground_truth": "CHANGED",
+          "ground_truth_label": 1,
+          "shortcut_defeated": "execution_volume",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_11_loop_boundary/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_11_loop_boundary/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.03125,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.125,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "CHANGED"
+          }
+        },
+        {
+          "pair_id": "pair_12_data_structure_equivalent",
+          "ground_truth": "EQUIV",
+          "ground_truth_label": 0,
+          "shortcut_defeated": "import_diff",
+          "input_regime": "declared",
+          "n_inputs": 1,
+          "threshold_tau_star": 0.08,
+          "base_program": "benchmark/v5/hard_negatives/pair_12_data_structure_equivalent/base_program.py",
+          "variant_program": "benchmark/v5/hard_negatives/pair_12_data_structure_equivalent/variant_program.py",
+          "trace_status": "ok",
+          "distances": {
+            "sbg_v5": 0.0,
+            "sbg_v3": 0.0,
+            "temporal": 0.0,
+            "state": 0.0,
+            "exception_component": 0.0,
+            "v5_full": true
+          },
+          "sbg_v5_predicted": "EQUIV",
+          "sbg_v3_predicted": "EQUIV",
+          "exception_predicted": "EQUIV",
+          "output_reference": {
+            "reads_program_output": true,
+            "predicted": "EQUIV"
+          }
+        }
+      ]
+    }
+  }
+}

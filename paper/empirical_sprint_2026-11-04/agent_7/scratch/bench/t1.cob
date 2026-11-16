@@ -1,0 +1,24 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PA.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  WS-N      PIC 9(2).
+       01  WS-I      PIC 9(2) VALUE 0.
+       01  WS-SUM    PIC 9(3) VALUE 0.
+       01  WS-CLASS  PIC X(5) VALUE SPACES.
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+           ACCEPT WS-N
+           PERFORM ACC-STEP VARYING WS-I FROM 1 BY 1 UNTIL WS-I > WS-N
+           PERFORM GRADE-BAND
+           DISPLAY "N=" WS-N " SUM=" WS-SUM " CLASS=" WS-CLASS
+           IF WS-SUM > 20 MOVE 4 TO RETURN-CODE END-IF
+           STOP RUN.
+       ACC-STEP.
+           COMPUTE WS-SUM = WS-SUM + WS-I.
+       GRADE-BAND.
+           EVALUATE TRUE
+              WHEN WS-SUM < 10 MOVE "SMALL" TO WS-CLASS
+              WHEN WS-SUM < 30 MOVE "MID  " TO WS-CLASS
+              WHEN OTHER MOVE "LARGE" TO WS-CLASS
+           END-EVALUATE.

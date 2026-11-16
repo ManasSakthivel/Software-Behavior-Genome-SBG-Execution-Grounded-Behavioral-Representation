@@ -1,0 +1,11 @@
+[hard-negatives] regime=canonical
+    sbg_v5_output_free                 acc=0.4167 TP=1 FP=1 TN=4 FN=6
+    sbg_v3_output_free                 acc=0.3333 TP=0 FP=1 TN=4 FN=7
+    exception_component_output_free    acc=0.4167 TP=0 FP=0 TN=5 FN=7
+    output_reading_reference           acc=1.0 TP=7 FP=0 TN=5 FN=0
+[hard-negatives] regime=declared
+    sbg_v5_output_free                 acc=0.4167 TP=2 FP=2 TN=3 FN=5
+    sbg_v3_output_free                 acc=0.4167 TP=1 FP=1 TN=4 FN=6
+    exception_component_output_free    acc=0.5 TP=1 FP=0 TN=5 FN=6
+    output_reading_reference           acc=1.0 TP=7 FP=0 TN=5 FN=0
+wrote artifacts/final/HARD_NEGATIVE_V5_RESULTS.json

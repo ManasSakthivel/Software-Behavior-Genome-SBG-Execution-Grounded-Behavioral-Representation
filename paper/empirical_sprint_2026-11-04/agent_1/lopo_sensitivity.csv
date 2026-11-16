@@ -1,0 +1,13 @@
+population,contrast_full_minus,pooled_delta,lopo_min,lopo_max,sign_stability_across_LOPO,most_influential_program_dropped,delta_without_it
+V10_test,V5_minus_V3,-0.008545,-0.010265,-0.007394,same,graph_topological_kahn,-0.010265
+V10_test,V5_minus_temporal,-0.006800,-0.008057,-0.003642,same,graph_topological_kahn,-0.003642
+V10_test,V5_minus_state,0.014632,0.011920,0.015893,same,graph_topological_kahn,0.011920
+V10_test,V3_only,0.015025,0.010994,0.016419,same,sort_pancake,0.010994
+V10_test,temporal_only,0.089754,0.073256,0.097495,same,sort_bitonic_sort,0.073256
+V10_test,state_only,-0.020332,-0.023614,-0.016600,same,sort_radix_sort_lsd,-0.016600
+V9c_val,V5_minus_V3,0.000900,-0.006300,0.006779,SIGN CHANGES,ds_stack_min,-0.006300
+V9c_val,V5_minus_temporal,-0.005723,-0.007599,-0.004139,same,graph_scc_tarjan,-0.007599
+V9c_val,V5_minus_state,0.015164,0.013215,0.019325,same,ds_stack_min,0.019325
+V9c_val,V3_only,0.011456,0.009717,0.015325,same,ds_stack_min,0.015325
+V9c_val,temporal_only,0.132523,0.118406,0.145340,same,math_perfect_numbers,0.118406
+V9c_val,state_only,-0.010995,-0.018797,-0.003503,same,graph_word_ladder,-0.018797

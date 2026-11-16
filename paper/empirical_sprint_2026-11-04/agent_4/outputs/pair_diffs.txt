@@ -1,0 +1,16 @@
+py3.9 vs py3.11 (both pre-PEP709):
+  ('HN_canonical', 'pair_07_dead_code_insertion') {'sbg_v5': (0.0, 0.005194), 'sbg_v3': (0.0, 0.010388)} (None, None) (None, None)
+  ('HN_declared', 'pair_07_dead_code_insertion') {'sbg_v5': (0.0, 0.005), 'sbg_v3': (0.0, 0.01)} (None, None) (None, None)
+py3.11 vs py3.13 (PEP709 boundary):
+  ('REG', 'REG_03') {} (125, 125) (95, 95)
+  ('REG', 'REG_09') {'sbg_v5': (0.3988, 0.0966), 'sbg_v3': (0.378, 0.153), 'temporal': (0.35, 0.0), 'state': (0.4891, 0.0805)} (159, 155) (159, 110)
+  ('HN_canonical', 'pair_02_same_volume_different_behavior') {'sbg_v5': (0.0892, 0.0986), 'state': (0.357, 0.3943)} (None, None) (None, None)
+  ('HN_canonical', 'pair_03_same_call_count_different_order') {'sbg_v5': (0.0083, 0.01), 'temporal': (0.0333, 0.04)} (None, None) (None, None)
+  ('HN_canonical', 'pair_04_rename_invariant') {'sbg_v5': (0.01, 0.0125), 'temporal': (0.04, 0.05)} (None, None) (None, None)
+  ('HN_canonical', 'pair_05_structural_change_same_behavior') {'sbg_v5': (0.2842, 0.3719), 'sbg_v3': (0.236, 0.3057), 'temporal': (0.3843, 0.4763), 'state': (0.2804, 0.4)} (None, None) (None, None)
+  ('HN_canonical', 'pair_11_loop_boundary') {'sbg_v5': (0.0294, 0.0319), 'state': (0.1128, 0.1232)} (None, None) (None, None)
+  ('HN_declared', 'pair_02_same_volume_different_behavior') {'sbg_v5': (0.0902, 0.0965), 'state': (0.3607, 0.386)} (None, None) (None, None)
+  ('HN_declared', 'pair_03_same_call_count_different_order') {'sbg_v5': (0.3652, 0.3805), 'sbg_v3': (0.2294, 0.2381), 'temporal': (0.2506, 0.2802), 'state': (0.7516, 0.7658)} (None, None) (None, None)
+  ('HN_declared', 'pair_05_structural_change_same_behavior') {'sbg_v5': (0.5722, 0.5765), 'sbg_v3': (0.4397, 0.448), 'temporal': (0.5462, 0.5565), 'state': (0.8632, 0.8537)} (None, None) (None, None)
+  ('HN_declared', 'pair_10_exception_same_behavior') {'sbg_v5': (0.117, 0.1189), 'state': (0.1351, 0.1429)} (None, None) (None, None)
+  ('HN_declared', 'pair_11_loop_boundary') {'sbg_v5': (0.0292, 0.0312), 'state': (0.1167, 0.125)} (None, None) (None, None)

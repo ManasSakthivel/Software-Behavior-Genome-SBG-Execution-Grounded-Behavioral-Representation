@@ -1,0 +1,1125 @@
+{
+ "python": "3.11.15",
+ "hashseed": "0",
+ "cases": {
+  "REG_03_buggy": {
+   "n_events": 13,
+   "by_type": {
+    "call": 3,
+    "line": 7,
+    "return": 3
+   },
+   "calls_by_func": {
+    "<lambda>": 1,
+    "_reg03_buggy": 1,
+    "<listcomp>": 1
+   },
+   "coverage_lines": [
+    17,
+    66,
+    68,
+    69
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "<lambda>",
+     17
+    ],
+    [
+     "line",
+     "<lambda>",
+     17
+    ],
+    [
+     "call",
+     "_reg03_buggy",
+     66
+    ],
+    [
+     "line",
+     "_reg03_buggy",
+     68
+    ],
+    [
+     "line",
+     "_reg03_buggy",
+     69
+    ],
+    [
+     "call",
+     "<listcomp>",
+     69
+    ],
+    [
+     "line",
+     "<listcomp>",
+     69
+    ],
+    [
+     "line",
+     "<listcomp>",
+     69
+    ],
+    [
+     "line",
+     "<listcomp>",
+     69
+    ],
+    [
+     "line",
+     "<listcomp>",
+     69
+    ],
+    [
+     "return",
+     "<listcomp>",
+     69
+    ],
+    [
+     "return",
+     "_reg03_buggy",
+     69
+    ],
+    [
+     "return",
+     "<lambda>",
+     17
+    ]
+   ],
+   "snapshot_sample": {
+    "scores": "[40, 50, 60]"
+   }
+  },
+  "REG_03_fixed": {
+   "n_events": 13,
+   "by_type": {
+    "call": 3,
+    "line": 7,
+    "return": 3
+   },
+   "calls_by_func": {
+    "<lambda>": 1,
+    "_reg03_fixed": 1,
+    "<listcomp>": 1
+   },
+   "coverage_lines": [
+    17,
+    72,
+    73,
+    74
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "<lambda>",
+     17
+    ],
+    [
+     "line",
+     "<lambda>",
+     17
+    ],
+    [
+     "call",
+     "_reg03_fixed",
+     72
+    ],
+    [
+     "line",
+     "_reg03_fixed",
+     73
+    ],
+    [
+     "line",
+     "_reg03_fixed",
+     74
+    ],
+    [
+     "call",
+     "<listcomp>",
+     74
+    ],
+    [
+     "line",
+     "<listcomp>",
+     74
+    ],
+    [
+     "line",
+     "<listcomp>",
+     74
+    ],
+    [
+     "line",
+     "<listcomp>",
+     74
+    ],
+    [
+     "line",
+     "<listcomp>",
+     74
+    ],
+    [
+     "return",
+     "<listcomp>",
+     74
+    ],
+    [
+     "return",
+     "_reg03_fixed",
+     74
+    ],
+    [
+     "return",
+     "<lambda>",
+     17
+    ]
+   ],
+   "snapshot_sample": {
+    "scores": "[40, 50, 60]"
+   }
+  },
+  "REG_09_buggy": {
+   "n_events": 14,
+   "by_type": {
+    "call": 2,
+    "line": 10,
+    "return": 2
+   },
+   "calls_by_func": {
+    "<lambda>": 1,
+    "_reg09_buggy": 1
+   },
+   "coverage_lines": [
+    17,
+    164,
+    166,
+    167,
+    168,
+    169
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "<lambda>",
+     17
+    ],
+    [
+     "line",
+     "<lambda>",
+     17
+    ],
+    [
+     "call",
+     "_reg09_buggy",
+     164
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     166
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     167
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     166
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     167
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     168
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     166
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     167
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     166
+    ],
+    [
+     "line",
+     "_reg09_buggy",
+     169
+    ],
+    [
+     "return",
+     "_reg09_buggy",
+     169
+    ],
+    [
+     "return",
+     "<lambda>",
+     17
+    ]
+   ],
+   "snapshot_sample": {
+    "lst": "[1, 2, 2, 3]",
+    "val": "2"
+   }
+  },
+  "REG_09_fixed": {
+   "n_events": 12,
+   "by_type": {
+    "call": 3,
+    "line": 6,
+    "return": 3
+   },
+   "calls_by_func": {
+    "<lambda>": 1,
+    "_reg09_fixed": 1,
+    "<listcomp>": 1
+   },
+   "coverage_lines": [
+    17,
+    172,
+    173
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "<lambda>",
+     17
+    ],
+    [
+     "line",
+     "<lambda>",
+     17
+    ],
+    [
+     "call",
+     "_reg09_fixed",
+     172
+    ],
+    [
+     "line",
+     "_reg09_fixed",
+     173
+    ],
+    [
+     "call",
+     "<listcomp>",
+     173
+    ],
+    [
+     "line",
+     "<listcomp>",
+     173
+    ],
+    [
+     "line",
+     "<listcomp>",
+     173
+    ],
+    [
+     "line",
+     "<listcomp>",
+     173
+    ],
+    [
+     "line",
+     "<listcomp>",
+     173
+    ],
+    [
+     "return",
+     "<listcomp>",
+     173
+    ],
+    [
+     "return",
+     "_reg09_fixed",
+     173
+    ],
+    [
+     "return",
+     "<lambda>",
+     17
+    ]
+   ],
+   "snapshot_sample": {
+    "lst": "[1, 2, 3]",
+    "val": "2"
+   }
+  },
+  "REG_11_buggy": {
+   "n_events": 20,
+   "by_type": {
+    "call": 2,
+    "line": 16,
+    "return": 2
+   },
+   "calls_by_func": {
+    "<lambda>": 1,
+    "_reg11_buggy": 1
+   },
+   "coverage_lines": [
+    17,
+    193,
+    195,
+    196,
+    197,
+    198,
+    199
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "<lambda>",
+     17
+    ],
+    [
+     "line",
+     "<lambda>",
+     17
+    ],
+    [
+     "call",
+     "_reg11_buggy",
+     193
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     195
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     196
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     197
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     196
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     197
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     198
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     196
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     197
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     196
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     197
+    ],
+    [
+     "line",
+     "_reg11_buggy",
+     198
+    ]
+   ],
+   "snapshot_sample": {
+    "lst": "[1, 2, 3, 2, 1]",
+    "target": "2"
+   }
+  },
+  "REG_11_fixed": {
+   "n_events": 10,
+   "by_type": {
+    "call": 2,
+    "line": 6,
+    "return": 2
+   },
+   "calls_by_func": {
+    "<lambda>": 1,
+    "_reg11_fixed": 1
+   },
+   "coverage_lines": [
+    17,
+    202,
+    203,
+    204,
+    205
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "<lambda>",
+     17
+    ],
+    [
+     "line",
+     "<lambda>",
+     17
+    ],
+    [
+     "call",
+     "_reg11_fixed",
+     202
+    ],
+    [
+     "line",
+     "_reg11_fixed",
+     203
+    ],
+    [
+     "line",
+     "_reg11_fixed",
+     204
+    ],
+    [
+     "line",
+     "_reg11_fixed",
+     203
+    ],
+    [
+     "line",
+     "_reg11_fixed",
+     204
+    ],
+    [
+     "line",
+     "_reg11_fixed",
+     205
+    ],
+    [
+     "return",
+     "_reg11_fixed",
+     205
+    ],
+    [
+     "return",
+     "<lambda>",
+     17
+    ]
+   ],
+   "snapshot_sample": {
+    "lst": "[1, 2, 3, 2, 1]",
+    "target": "2"
+   }
+  },
+  "pair_04_rename_invariant__base": {
+   "n_events": 16,
+   "by_type": {
+    "call": 3,
+    "line": 10,
+    "return": 3
+   },
+   "calls_by_func": {
+    "run": 1,
+    "<listcomp>": 1,
+    "compute_sum": 1
+   },
+   "coverage_lines": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    14,
+    15
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "run",
+     14
+    ],
+    [
+     "line",
+     "run",
+     15
+    ],
+    [
+     "call",
+     "<listcomp>",
+     15
+    ],
+    [
+     "line",
+     "<listcomp>",
+     15
+    ],
+    [
+     "call",
+     "compute_sum",
+     7
+    ],
+    [
+     "line",
+     "compute_sum",
+     8
+    ],
+    [
+     "line",
+     "compute_sum",
+     9
+    ],
+    [
+     "line",
+     "compute_sum",
+     10
+    ],
+    [
+     "line",
+     "compute_sum",
+     9
+    ],
+    [
+     "line",
+     "compute_sum",
+     10
+    ],
+    [
+     "line",
+     "compute_sum",
+     9
+    ],
+    [
+     "line",
+     "compute_sum",
+     11
+    ],
+    [
+     "return",
+     "compute_sum",
+     11
+    ],
+    [
+     "line",
+     "<listcomp>",
+     15
+    ]
+   ],
+   "snapshot_sample": {
+    ".0": "<list_iterator object at 0x10593be20>"
+   }
+  },
+  "pair_04_rename_invariant__variant": {
+   "n_events": 16,
+   "by_type": {
+    "call": 3,
+    "line": 10,
+    "return": 3
+   },
+   "calls_by_func": {
+    "run": 1,
+    "<listcomp>": 1,
+    "calculate_total": 1
+   },
+   "coverage_lines": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    15,
+    16
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "run",
+     15
+    ],
+    [
+     "line",
+     "run",
+     16
+    ],
+    [
+     "call",
+     "<listcomp>",
+     16
+    ],
+    [
+     "line",
+     "<listcomp>",
+     16
+    ],
+    [
+     "call",
+     "calculate_total",
+     8
+    ],
+    [
+     "line",
+     "calculate_total",
+     9
+    ],
+    [
+     "line",
+     "calculate_total",
+     10
+    ],
+    [
+     "line",
+     "calculate_total",
+     11
+    ],
+    [
+     "line",
+     "calculate_total",
+     10
+    ],
+    [
+     "line",
+     "calculate_total",
+     11
+    ],
+    [
+     "line",
+     "calculate_total",
+     10
+    ],
+    [
+     "line",
+     "calculate_total",
+     12
+    ],
+    [
+     "return",
+     "calculate_total",
+     12
+    ],
+    [
+     "line",
+     "<listcomp>",
+     16
+    ]
+   ],
+   "snapshot_sample": {
+    ".0": "<list_iterator object at 0x10593bd30>"
+   }
+  },
+  "pair_07_dead_code_insertion__base": {
+   "n_events": 12,
+   "by_type": {
+    "call": 2,
+    "line": 6,
+    "exception": 2,
+    "return": 2
+   },
+   "calls_by_func": {
+    "run": 1,
+    "fibonacci": 1
+   },
+   "coverage_lines": [
+    6,
+    7,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+   ],
+   "exception": "TypeError: '<' not supported between instances of 'list' and 'int'",
+   "events_head": [
+    [
+     "call",
+     "run",
+     19
+    ],
+    [
+     "line",
+     "run",
+     20
+    ],
+    [
+     "line",
+     "run",
+     21
+    ],
+    [
+     "line",
+     "run",
+     22
+    ],
+    [
+     "line",
+     "run",
+     23
+    ],
+    [
+     "call",
+     "fibonacci",
+     6
+    ],
+    [
+     "line",
+     "fibonacci",
+     7
+    ],
+    [
+     "exception",
+     "fibonacci",
+     7
+    ],
+    [
+     "return",
+     "fibonacci",
+     7
+    ],
+    [
+     "exception",
+     "run",
+     23
+    ],
+    [
+     "line",
+     "run",
+     24
+    ],
+    [
+     "return",
+     "run",
+     24
+    ]
+   ],
+   "snapshot_sample": {
+    "inputs": "[[3, 4]]",
+    "results": "[]",
+    "n": "[3, 4]"
+   }
+  },
+  "pair_07_dead_code_insertion__variant": {
+   "n_events": 12,
+   "by_type": {
+    "call": 2,
+    "line": 6,
+    "exception": 2,
+    "return": 2
+   },
+   "calls_by_func": {
+    "run": 1,
+    "fibonacci": 1
+   },
+   "coverage_lines": [
+    8,
+    9,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+   ],
+   "exception": "TypeError: '<' not supported between instances of 'list' and 'int'",
+   "events_head": [
+    [
+     "call",
+     "run",
+     26
+    ],
+    [
+     "line",
+     "run",
+     27
+    ],
+    [
+     "line",
+     "run",
+     28
+    ],
+    [
+     "line",
+     "run",
+     29
+    ],
+    [
+     "line",
+     "run",
+     30
+    ],
+    [
+     "call",
+     "fibonacci",
+     8
+    ],
+    [
+     "line",
+     "fibonacci",
+     9
+    ],
+    [
+     "exception",
+     "fibonacci",
+     9
+    ],
+    [
+     "return",
+     "fibonacci",
+     9
+    ],
+    [
+     "exception",
+     "run",
+     30
+    ],
+    [
+     "line",
+     "run",
+     31
+    ],
+    [
+     "return",
+     "run",
+     31
+    ]
+   ],
+   "snapshot_sample": {
+    "inputs": "[[3, 4]]",
+    "results": "[]",
+    "n": "[3, 4]"
+   }
+  },
+  "pair_03_same_call_count_different_order__base": {
+   "n_events": 32,
+   "by_type": {
+    "call": 8,
+    "line": 16,
+    "return": 8
+   },
+   "calls_by_func": {
+    "run": 1,
+    "<listcomp>": 3,
+    "compute": 1,
+    "validate": 1,
+    "process": 1,
+    "finalize": 1
+   },
+   "coverage_lines": [
+    6,
+    7,
+    10,
+    11,
+    14,
+    15,
+    18,
+    19,
+    20,
+    21,
+    24,
+    25
+   ],
+   "exception": null,
+   "events_head": [
+    [
+     "call",
+     "run",
+     24
+    ],
+    [
+     "line",
+     "run",
+     25
+    ],
+    [
+     "call",
+     "<listcomp>",
+     25
+    ],
+    [
+     "line",
+     "<listcomp>",
+     25
+    ],
+    [
+     "call",
+     "compute",
+     18
+    ],
+    [
+     "line",
+     "compute",
+     19
+    ],
+    [
+     "call",
+     "validate",
+     6
+    ],
+    [
+     "line",
+     "validate",
+     7
+    ],
+    [
+     "call",
+     "<listcomp>",
+     7
+    ],
+    [
+     "line",
+     "<listcomp>",
+     7
+    ],
+    [
+     "line",
+     "<listcomp>",
+     7
+    ],
+    [
+     "line",
+     "<listcomp>",
+     7
+    ],
+    [
+     "line",
+     "<listcomp>",
+     7
+    ],
+    [
+     "return",
+     "<listcomp>",
+     7
+    ]
+   ],
+   "snapshot_sample": {
+    ".0": "<list_iterator object at 0x1059395d0>"
+   }
+  },
+  "pair_03_same_call_count_different_order__variant": {
+   "n_events": 21,
+   "by_type": {
+    "call": 5,
+    "line": 6,
+    "exception": 5,
+    "return": 5
+   },
+   "calls_by_func": {
+    "run": 1,
+    "<listcomp>": 2,
+    "compute": 1,
+    "process": 1
+   },
+   "coverage_lines": [
+    12,
+    13,
+    20,
+    21,
+    26,
+    27
+   ],
+   "exception": "TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'",
+   "events_head": [
+    [
+     "call",
+     "run",
+     26
+    ],
+    [
+     "line",
+     "run",
+     27
+    ],
+    [
+     "call",
+     "<listcomp>",
+     27
+    ],
+    [
+     "line",
+     "<listcomp>",
+     27
+    ],
+    [
+     "call",
+     "compute",
+     20
+    ],
+    [
+     "line",
+     "compute",
+     21
+    ],
+    [
+     "call",
+     "process",
+     12
+    ],
+    [
+     "line",
+     "process",
+     13
+    ],
+    [
+     "call",
+     "<listcomp>",
+     13
+    ],
+    [
+     "line",
+     "<listcomp>",
+     13
+    ],
+    [
+     "line",
+     "<listcomp>",
+     13
+    ],
+    [
+     "exception",
+     "<listcomp>",
+     13
+    ],
+    [
+     "return",
+     "<listcomp>",
+     13
+    ],
+    [
+     "exception",
+     "process",
+     13
+    ]
+   ],
+   "snapshot_sample": {
+    ".0": "<list_iterator object at 0x1059392a0>"
+   }
+  }
+ }
+}

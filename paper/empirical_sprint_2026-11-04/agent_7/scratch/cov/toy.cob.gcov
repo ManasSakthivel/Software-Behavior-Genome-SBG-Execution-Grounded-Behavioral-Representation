@@ -1,0 +1,35 @@
+        -:    0:Source:toy.cob
+        -:    0:Graph:toy.gcno
+        -:    0:Data:toy.gcda
+        -:    0:Runs:1
+        -:    1:       IDENTIFICATION DIVISION.
+        -:    2:       PROGRAM-ID. TOY.
+        -:    3:       DATA DIVISION.
+        -:    4:       WORKING-STORAGE SECTION.
+        1:    5:       01  WS-I      PIC 9(2)  VALUE 0.
+        1:    6:       01  WS-SUM    PIC 9(3)  VALUE 0.
+        1:    7:       01  WS-SMALL  PIC 9(2)  VALUE 0.
+        1:    8:       01  WS-NAME   PIC X(6)  VALUE SPACES.
+        -:    9:       01  WS-TAB.
+        1:   10:           05 WS-ELT PIC 9(2) OCCURS 3 TIMES VALUE 0.
+        -:   11:       PROCEDURE DIVISION.
+        1:   12:       MAIN-PARA.
+       12:   13:           PERFORM LOOP-PARA VARYING WS-I FROM 1 BY 1 UNTIL WS-I > 5
+        1:   14:           DISPLAY "SUM=" WS-SUM
+        1:   15:           PERFORM OVF-PARA
+        1:   16:           CALL "NOSUCHPROG"
+        1:   17:               ON EXCEPTION DISPLAY "CALL-EXC"
+        -:   18:           END-CALL
+        1:   19:           MOVE "ABC" TO WS-NAME
+        1:   20:           DISPLAY "NAME=[" WS-NAME "]"
+        1:   21:           MOVE 7 TO WS-ELT(2)
+        1:   22:           DISPLAY "TAB=" WS-TAB
+        1:   23:           MOVE 3 TO RETURN-CODE
+        1:   24:           STOP RUN.
+        5:   25:       LOOP-PARA.
+        5:   26:           COMPUTE WS-SUM = WS-SUM + WS-I * 2.
+        1:   27:       OVF-PARA.
+        1:   28:           COMPUTE WS-SMALL = WS-SUM * 5
+        1:   29:               ON SIZE ERROR DISPLAY "SIZE-ERR"
+    #####:   30:               NOT ON SIZE ERROR DISPLAY "NO-SIZE-ERR"
+        -:   31:           END-COMPUTE.

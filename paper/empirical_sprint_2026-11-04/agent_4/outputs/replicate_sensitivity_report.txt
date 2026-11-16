@@ -1,0 +1,71 @@
+{
+ "HARD_NEGATIVE_V5_RESULTS.json": {
+  "distance_values": 120,
+  "distance_values_changed": 30,
+  "max_abs_distance_change": 0.119626,
+  "reported_values_changed": [],
+  "n_events_fields_changed": [],
+  "top5_moved": [
+   [
+    0.119626,
+    "regimes.canonical.pairs.4.distances.state"
+   ],
+   [
+    0.091999,
+    "regimes.canonical.pairs.4.distances.temporal"
+   ],
+   [
+    0.087757,
+    "regimes.canonical.pairs.4.distances.sbg_v5"
+   ],
+   [
+    0.069701,
+    "regimes.canonical.pairs.4.distances.sbg_v3"
+   ],
+   [
+    0.03731,
+    "regimes.canonical.pairs.1.distances.state"
+   ]
+  ]
+ },
+ "REGRESSION_V5_RESULTS.json": {
+  "distance_values": 75,
+  "distance_values_changed": 4,
+  "max_abs_distance_change": 0.408546,
+  "reported_values_changed": [],
+  "n_events_fields_changed": [
+   [
+    "pairs.2.n_events_buggy",
+    30
+   ],
+   [
+    "pairs.2.n_events_fixed",
+    30
+   ],
+   [
+    "pairs.8.n_events_fixed",
+    45
+   ]
+  ],
+  "top5_moved": [
+   [
+    0.408546,
+    "pairs.8.distances.state"
+   ],
+   [
+    0.350044,
+    "pairs.8.distances.temporal"
+   ],
+   [
+    0.302147,
+    "pairs.8.distances.sbg_v5"
+   ],
+   [
+    0.225,
+    "pairs.8.distances.sbg_v3"
+   ]
+  ]
+ }
+}
+HARD_NEGATIVE_V5_RESULTS.json MATCH_STORED
+REGRESSION_V5_RESULTS.json MATCH_STORED

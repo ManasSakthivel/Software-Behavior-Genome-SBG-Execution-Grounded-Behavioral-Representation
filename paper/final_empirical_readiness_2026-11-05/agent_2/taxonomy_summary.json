@@ -1,0 +1,56 @@
+{
+  "artifact": "REAL_BUG_FAILURE_TAXONOMY_SUMMARY",
+  "date": "2026-11-05",
+  "exact_zero_reconciliation": {
+    "v7_committed_zeros": 21,
+    "v7_temporal_zeros": 26,
+    "v7_purged_zeros": 24,
+    "v8_rescored_zeros": 26,
+    "total_positive_pairs": 41,
+    "details": {
+      "base_v7_zeros": 21,
+      "re_cache_contamination_pairs": [
+        "youtube-dl/6::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix",
+        "youtube-dl/7::youtube_dl/utils.py::js_to_json::real_fix",
+        "youtube-dl/26::youtube_dl/utils.py::js_to_json::real_fix"
+      ],
+      "entry_policy_mismatch_pairs": [
+        "luigi/14::luigi/scheduler.py::Task::real_fix",
+        "youtube-dl/31::youtube_dl/utils.py::parse_duration::real_fix"
+      ]
+    }
+  },
+  "bugsinpy": {
+    "n_pairs_total": 200,
+    "n_evaluated": 147,
+    "n_unevaluated": 53,
+    "positives_evaluated": 41,
+    "negatives_evaluated": 106,
+    "positives_by_category": {
+      "genuine_representation_failure": 12,
+      "fault_not_reached": 21,
+      "label_or_harness_defect": 8
+    },
+    "negatives_by_category": {
+      "label_or_harness_defect": 45,
+      "genuine_representation_failure": 61
+    }
+  },
+  "quixbugs_canonical": {
+    "n_pairs_total": 152,
+    "n_evaluated": 152,
+    "n_unevaluated": 0,
+    "positives_evaluated": 40,
+    "negatives_evaluated": 112,
+    "positives_by_category": {
+      "fault_not_reached": 26,
+      "genuine_representation_failure": 8,
+      "invalid_or_incomplete_execution": 1,
+      "fault_reached_output_not_observed": 5
+    },
+    "negatives_by_category": {
+      "genuine_representation_failure": 72,
+      "label_or_harness_defect": 40
+    }
+  }
+}

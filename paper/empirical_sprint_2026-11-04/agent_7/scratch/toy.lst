@@ -1,0 +1,39 @@
+GnuCOBOL 3.2.0          toy.cob              Wed Nov 04 2026 20:12:32  Page 0001
+
+LINE    PG/LN  A...B............................................................
+
+000001         IDENTIFICATION DIVISION.
+000002         PROGRAM-ID. TOY.
+000003         DATA DIVISION.
+000004         WORKING-STORAGE SECTION.
+000005         01  WS-I      PIC 9(2)  VALUE 0.
+000006         01  WS-SUM    PIC 9(3)  VALUE 0.
+000007         01  WS-SMALL  PIC 9(2)  VALUE 0.
+000008         01  WS-NAME   PIC X(6)  VALUE SPACES.
+000009         01  WS-TAB.
+000010             05 WS-ELT PIC 9(2) OCCURS 3 TIMES VALUE 0.
+000011         PROCEDURE DIVISION.
+000012         MAIN-PARA.
+000013             PERFORM LOOP-PARA VARYING WS-I FROM 1 BY 1 UNTIL WS-I > 5
+000014             DISPLAY "SUM=" WS-SUM
+000015             PERFORM OVF-PARA
+000016             CALL "NOSUCHPROG"
+000017                 ON EXCEPTION DISPLAY "CALL-EXC"
+000018             END-CALL
+000019             MOVE "ABC" TO WS-NAME
+000020             DISPLAY "NAME=[" WS-NAME "]"
+000021             MOVE 7 TO WS-ELT(2)
+000022             DISPLAY "TAB=" WS-TAB
+000023             MOVE 3 TO RETURN-CODE
+000024             STOP RUN.
+000025         LOOP-PARA.
+000026             COMPUTE WS-SUM = WS-SUM + WS-I * 2.
+000027         OVF-PARA.
+000028             COMPUTE WS-SMALL = WS-SUM * 5
+000029                 ON SIZE ERROR DISPLAY "SIZE-ERR"
+000030                 NOT ON SIZE ERROR DISPLAY "NO-SIZE-ERR"
+000031             END-COMPUTE.
+
+
+0 warnings in compilation group
+0 errors in compilation group
