@@ -1,0 +1,96 @@
+{
+ "design": "v10",
+ "split": "test",
+ "dir": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../results/raw/repro/sens/py311",
+ "totals": {
+  "rows": 140,
+  "evaluated_equal": 1,
+  "evaluated_flag_diff": 0,
+  "exact": 74,
+  "differing": 65,
+  "missing": 0
+ },
+ "n_keys_differing": {
+  "sbg_v5": 65,
+  "sbg_v3": 57,
+  "sbg_temporal": 57,
+  "sbg_state": 61,
+  "exception_fraction": 0,
+  "exception_component_v3": 0,
+  "exception_type_jaccard": 0,
+  "call_count": 34,
+  "n_functions": 16,
+  "coverage_size": 0,
+  "combined_shortcut": 34,
+  "v5_full": 0
+ },
+ "max_abs_diff_by_key": {
+  "sbg_v5": 0.34195748299999995,
+  "sbg_v3": 0.305945164,
+  "sbg_temporal": 0.63183892,
+  "sbg_state": 0.671604938,
+  "exception_fraction": 0.0,
+  "exception_component_v3": 0.0,
+  "exception_type_jaccard": 0.0,
+  "call_count": 0.99009901,
+  "n_functions": 0.666666667,
+  "coverage_size": 0.0,
+  "combined_shortcut": 0.46369637,
+  "v5_full": 0.0
+ },
+ "cross_label_pairs": 4830,
+ "cross_pairs_order_changed": 319,
+ "pooled_auroc_frozen_subset": 0.8406832298136646,
+ "pooled_auroc_new_subset": 0.8980331262939959,
+ "n_programs": 4,
+ "per_program": {
+  "ds_ranked_set": {
+   "rows": 38,
+   "exact": 16,
+   "differing": 22,
+   "python": "3.11.15",
+   "hashseed": "0",
+   "seconds": 1.05,
+   "max_abs_diff_v5": 0.14341785599999998,
+   "det_runs_identical": false,
+   "timeouts": 0,
+   "truncated": 0
+  },
+  "graph_topological_kahn": {
+   "rows": 36,
+   "exact": 14,
+   "differing": 22,
+   "python": "3.11.15",
+   "hashseed": "0",
+   "seconds": 1.39,
+   "max_abs_diff_v5": 0.34195748299999995,
+   "det_runs_identical": false,
+   "timeouts": 0,
+   "truncated": 0
+  },
+  "sort_radix_sort_lsd": {
+   "rows": 36,
+   "exact": 15,
+   "differing": 21,
+   "python": "3.11.15",
+   "hashseed": "0",
+   "seconds": 1.68,
+   "max_abs_diff_v5": 0.313202423,
+   "det_runs_identical": false,
+   "timeouts": 0,
+   "truncated": 0
+  },
+  "sort_stooge_sort": {
+   "rows": 30,
+   "exact": 30,
+   "differing": 0,
+   "python": "3.11.15",
+   "hashseed": "0",
+   "seconds": 15.43,
+   "max_abs_diff_v5": 0.0,
+   "det_runs_identical": false,
+   "timeouts": 0,
+   "truncated": 92
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "args": {
+  "cmd": "run",
+  "design": "v10",
+  "split": "test",
+  "out": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../results/raw/repro/sens/heavy_load_84procs",
+  "programs": "math_coin_change,sort_gravity_bead,math_fib_matrix,graph_network_delay",
+  "python": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../../venvs/py313/bin/python",
+  "hashseed": "0",
+  "purge": "pair",
+  "cwd": "repo",
+  "cwd_path": "/tmp",
+  "load": 84,
+  "workers": 4,
+  "timeout": 3600,
+  "seed_for_seeds": 12345
+ },
+ "python": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../../venvs/py313/bin/python",
+ "log": [
+  {
+   "program": "math_coin_change",
+   "status": "ok",
+   "seconds": 109.3,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_gravity_bead",
+   "status": "ok",
+   "seconds": 96.1,
+   "hashseed": "0"
+  },
+  {
+   "program": "math_fib_matrix",
+   "status": "ok",
+   "seconds": 51.8,
+   "hashseed": "0"
+  },
+  {
+   "program": "graph_network_delay",
+   "status": "ok",
+   "seconds": 28.4,
+   "hashseed": "0"
+  }
+ ]
+}

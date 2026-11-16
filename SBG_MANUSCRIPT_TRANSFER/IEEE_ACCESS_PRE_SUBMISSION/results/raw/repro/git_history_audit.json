@@ -1,0 +1,669 @@
+{
+ "FREEZE_V8 (+AMEND1/2)": {
+  "anchor": "artifacts/final/FREEZE_V8.json",
+  "freeze_commit": "ebb8c44",
+  "n_paths": 15,
+  "rows": [
+   {
+    "path": "artifacts/final/FREEZE_V8.json",
+    "n_commits": 1,
+    "first": "ebb8c44",
+    "last": "ebb8c44",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "d42ac74d37272c9a42df1546e3d26d228be7d1f9494e8334fc563338ea7859dc",
+    "blob_HEAD": "d42ac74d37272c9a42df1546e3d26d228be7d1f9494e8334fc563338ea7859dc"
+   },
+   {
+    "path": "artifacts/final/FREEZE_V8_AMENDMENT1.json",
+    "n_commits": 1,
+    "first": "465be1b",
+    "last": "465be1b",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [
+     "465be1b freeze amendment 1: score test on non-stale pairs only (first attempt "
+    ],
+    "blob_at_freeze": null,
+    "blob_HEAD": "777fb03a61ed13c0c3e2f3b93eece73adcbaf2c548028fefc2876922719960f9"
+   },
+   {
+    "path": "artifacts/final/FREEZE_V8_AMENDMENT2.json",
+    "n_commits": 1,
+    "first": "c0f6c6d",
+    "last": "c0f6c6d",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [
+     "c0f6c6d freeze amendment 2: chunked per-program scoring harness (dev-equivalen"
+    ],
+    "blob_at_freeze": null,
+    "blob_HEAD": "aa2028ad8cf68c57ead56a1fc93efcfc0487b7887d447eb82eda65f22e95a4af"
+   },
+   {
+    "path": "artifacts/final/v8_test_nonstale/pairs_test.jsonl",
+    "n_commits": 2,
+    "first": "b54ea99",
+    "last": "465be1b",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [
+     "465be1b freeze amendment 1: score test on non-stale pairs only (first attempt "
+    ],
+    "blob_at_freeze": null,
+    "blob_HEAD": "1484a46ad2ef199572ac9d222f535f5b0c27d65b354197c477e903c2fe4f4c96"
+   },
+   {
+    "path": "experiments/final/class_driver.py",
+    "n_commits": 1,
+    "first": "ad7b655",
+    "last": "ad7b655",
+    "last_date": "2026-10-03",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093",
+    "blob_HEAD": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093"
+   },
+   {
+    "path": "experiments/final/edit_size_analysis.py",
+    "n_commits": 1,
+    "first": "625ca3f",
+    "last": "625ca3f",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e",
+    "blob_HEAD": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e"
+   },
+   {
+    "path": "experiments/final/entry_policy.py",
+    "n_commits": 1,
+    "first": "d9d6380",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea",
+    "blob_HEAD": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea"
+   },
+   {
+    "path": "experiments/final/evaluate_v8.py",
+    "n_commits": 2,
+    "first": "496fb4f",
+    "last": "465be1b",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [
+     "465be1b freeze amendment 1: score test on non-stale pairs only (first attempt "
+    ],
+    "blob_at_freeze": "8e567b8cf107dd31e095a2a437ea5043e697adb4ddc8da940cce4d0ed071a539",
+    "blob_HEAD": "34f303afc2423838d2cdb44c513248dbdb6b5c91eb1cc3791774183f3dc7996d"
+   },
+   {
+    "path": "experiments/final/extraction.py",
+    "n_commits": 3,
+    "first": "9a9104f",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55",
+    "blob_HEAD": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55"
+   },
+   {
+    "path": "experiments/final/fit_weights.py",
+    "n_commits": 1,
+    "first": "ad7b655",
+    "last": "ad7b655",
+    "last_date": "2026-10-03",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34",
+    "blob_HEAD": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34"
+   },
+   {
+    "path": "experiments/final/protocol.py",
+    "n_commits": 2,
+    "first": "9a9104f",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+    "blob_HEAD": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab"
+   },
+   {
+    "path": "experiments/final/run_main_evaluation.py",
+    "n_commits": 2,
+    "first": "9a9104f",
+    "last": "b54ea99",
+    "last_date": "2026-10-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "ad809342d7acee33d019534d610c4c0ea64f6d7e760aebb1cb60c695f5b4ed51",
+    "blob_HEAD": "ad809342d7acee33d019534d610c4c0ea64f6d7e760aebb1cb60c695f5b4ed51"
+   },
+   {
+    "path": "experiments/final/static_baselines.py",
+    "n_commits": 1,
+    "first": "9a9104f",
+    "last": "9a9104f",
+    "last_date": "2026-09-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df",
+    "blob_HEAD": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df"
+   },
+   {
+    "path": "sbg/extraction/dynamic/tracer.py",
+    "n_commits": 4,
+    "first": "4409652",
+    "last": "b54ea99",
+    "last_date": "2026-10-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f",
+    "blob_HEAD": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f"
+   },
+   {
+    "path": "sbg/statistics.py",
+    "n_commits": 1,
+    "first": "9a9104f",
+    "last": "9a9104f",
+    "last_date": "2026-09-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b",
+    "blob_HEAD": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b"
+   }
+  ]
+ },
+ "FREEZE_V9": {
+  "anchor": "artifacts/final/FREEZE_V9.json",
+  "freeze_commit": "6dd5a0f",
+  "n_paths": 15,
+  "rows": [
+   {
+    "path": "artifacts/final/FREEZE_V9.json",
+    "n_commits": 1,
+    "first": "6dd5a0f",
+    "last": "6dd5a0f",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "19d4460ace0384e8892287075a9108d201a40d1c602a7f2f38ae972638968c8a",
+    "blob_HEAD": "19d4460ace0384e8892287075a9108d201a40d1c602a7f2f38ae972638968c8a"
+   },
+   {
+    "path": "artifacts/final/V9_MODELS_FROZEN.json",
+    "n_commits": 1,
+    "first": "6dd5a0f",
+    "last": "6dd5a0f",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "010394dadc91c47ac53e9741a0faf5144c1bb33df34c5d21752e97cb22438cc8",
+    "blob_HEAD": "010394dadc91c47ac53e9741a0faf5144c1bb33df34c5d21752e97cb22438cc8"
+   },
+   {
+    "path": "benchmark/scripts/generate_v9_composed.py",
+    "n_commits": 1,
+    "first": "6dd5a0f",
+    "last": "6dd5a0f",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "b32ff6168ecd093c216fbd544473bc560d89775cbc6d0b2a23a97e637187b712",
+    "blob_HEAD": "b32ff6168ecd093c216fbd544473bc560d89775cbc6d0b2a23a97e637187b712"
+   },
+   {
+    "path": "docs/current/EVALUATION_PLAN_V9.md",
+    "n_commits": 1,
+    "first": "6dd5a0f",
+    "last": "6dd5a0f",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "7a6e44469dbf532f484cf28ba1ea90dc89d2fb71c2f0e731fffe4763ed364e1a",
+    "blob_HEAD": "7a6e44469dbf532f484cf28ba1ea90dc89d2fb71c2f0e731fffe4763ed364e1a"
+   },
+   {
+    "path": "experiments/final/class_driver.py",
+    "n_commits": 1,
+    "first": "ad7b655",
+    "last": "ad7b655",
+    "last_date": "2026-10-03",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093",
+    "blob_HEAD": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093"
+   },
+   {
+    "path": "experiments/final/edit_size_analysis.py",
+    "n_commits": 1,
+    "first": "625ca3f",
+    "last": "625ca3f",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e",
+    "blob_HEAD": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e"
+   },
+   {
+    "path": "experiments/final/entry_policy.py",
+    "n_commits": 1,
+    "first": "d9d6380",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea",
+    "blob_HEAD": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea"
+   },
+   {
+    "path": "experiments/final/evaluate_v9.py",
+    "n_commits": 1,
+    "first": "6dd5a0f",
+    "last": "6dd5a0f",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc",
+    "blob_HEAD": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc"
+   },
+   {
+    "path": "experiments/final/extraction.py",
+    "n_commits": 3,
+    "first": "9a9104f",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55",
+    "blob_HEAD": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55"
+   },
+   {
+    "path": "experiments/final/fit_weights.py",
+    "n_commits": 1,
+    "first": "ad7b655",
+    "last": "ad7b655",
+    "last_date": "2026-10-03",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34",
+    "blob_HEAD": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34"
+   },
+   {
+    "path": "experiments/final/protocol.py",
+    "n_commits": 2,
+    "first": "9a9104f",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+    "blob_HEAD": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab"
+   },
+   {
+    "path": "experiments/final/run_chunked.py",
+    "n_commits": 2,
+    "first": "c0f6c6d",
+    "last": "6dd5a0f",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "7d8e67ffbb6403128c33885ca201acf2bae5839f87b89f742a954eb96d2bef21",
+    "blob_HEAD": "7d8e67ffbb6403128c33885ca201acf2bae5839f87b89f742a954eb96d2bef21"
+   },
+   {
+    "path": "experiments/final/static_baselines.py",
+    "n_commits": 1,
+    "first": "9a9104f",
+    "last": "9a9104f",
+    "last_date": "2026-09-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df",
+    "blob_HEAD": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df"
+   },
+   {
+    "path": "sbg/extraction/dynamic/tracer.py",
+    "n_commits": 4,
+    "first": "4409652",
+    "last": "b54ea99",
+    "last_date": "2026-10-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f",
+    "blob_HEAD": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f"
+   },
+   {
+    "path": "sbg/statistics.py",
+    "n_commits": 1,
+    "first": "9a9104f",
+    "last": "9a9104f",
+    "last_date": "2026-09-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b",
+    "blob_HEAD": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b"
+   }
+  ]
+ },
+ "FREEZE_V10": {
+  "anchor": "artifacts/final/FREEZE_V10.json",
+  "freeze_commit": "c5bc130",
+  "n_paths": 28,
+  "rows": [
+   {
+    "path": "artifacts/final/FREEZE_V10.json",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "77e95252e9d27e3910c06c3b686c659ff7b8f70b3c03a8b6eda0f9fed0f55c3a",
+    "blob_HEAD": "77e95252e9d27e3910c06c3b686c659ff7b8f70b3c03a8b6eda0f9fed0f55c3a"
+   },
+   {
+    "path": "artifacts/final/FREEZE_V10_SCORED.json",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "169600ece7bb06c49c83b9ce7f2b60c764374e5e15d90da3f894da59f95b74a8",
+    "blob_HEAD": "169600ece7bb06c49c83b9ce7f2b60c764374e5e15d90da3f894da59f95b74a8"
+   },
+   {
+    "path": "artifacts/final/V10_MODELS_FROZEN.json",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "fe637cbddd0236086e964f7c2b609ad4c6c0af72322733dfecd8cada287f7e76",
+    "blob_HEAD": "fe637cbddd0236086e964f7c2b609ad4c6c0af72322733dfecd8cada287f7e76"
+   },
+   {
+    "path": "artifacts/final/pairs_v10_test_v6exp.jsonl",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "292233fe70000b8f60326da2e2a22b9a0613caa95d5cd5c186ee9e3f01e2d146",
+    "blob_HEAD": "292233fe70000b8f60326da2e2a22b9a0613caa95d5cd5c186ee9e3f01e2d146"
+   },
+   {
+    "path": "artifacts/final/pairs_v9c_dev_v6exp.jsonl",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "16502e7199aa11d9d7c7a77c554d634dcc2030d91a0c5b7aef3bf7e96098fb0d",
+    "blob_HEAD": "16502e7199aa11d9d7c7a77c554d634dcc2030d91a0c5b7aef3bf7e96098fb0d"
+   },
+   {
+    "path": "artifacts/final/pairs_v9c_train_v6exp.jsonl",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "515eceee0e371842aa8df308a85dd0638e0883792d540cef1843b3e03b02724e",
+    "blob_HEAD": "515eceee0e371842aa8df308a85dd0638e0883792d540cef1843b3e03b02724e"
+   },
+   {
+    "path": "artifacts/paper_evidence/SBG_V6_EXPERIMENTAL_RATIONALE.md",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "9dfab9b961a9dd27fa7c5fe57e167e177a15953936fb1ace3be6b77c2e22532a",
+    "blob_HEAD": "9dfab9b961a9dd27fa7c5fe57e167e177a15953936fb1ace3be6b77c2e22532a"
+   },
+   {
+    "path": "artifacts/paper_evidence/V4_DEV_EVALUATION.json",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "da89b0f819e638056be127a67883d345bfe78c5a8f8dce49f5da95956fc5b115",
+    "blob_HEAD": "da89b0f819e638056be127a67883d345bfe78c5a8f8dce49f5da95956fc5b115"
+   },
+   {
+    "path": "benchmark/datasets/v10_independent/manifest.json",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "488b45f102632524e318054ae8c9ab421c206be79110ffcca4cf3bad6bd429f4",
+    "blob_HEAD": "488b45f102632524e318054ae8c9ab421c206be79110ffcca4cf3bad6bd429f4"
+   },
+   {
+    "path": "benchmark/datasets/v10_independent/pairs_test.jsonl",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "476c3efffcf4a20c9cf92212b932b03b29c64ca8e505742710a0da7555d53735",
+    "blob_HEAD": "476c3efffcf4a20c9cf92212b932b03b29c64ca8e505742710a0da7555d53735"
+   },
+   {
+    "path": "benchmark/scripts/generate_v10_independent.py",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "68da1b354de0656f48ae6885b23c2e2445033c20b2750609549319aa5c326684",
+    "blob_HEAD": "68da1b354de0656f48ae6885b23c2e2445033c20b2750609549319aa5c326684"
+   },
+   {
+    "path": "experiments/final/class_driver.py",
+    "n_commits": 1,
+    "first": "ad7b655",
+    "last": "ad7b655",
+    "last_date": "2026-10-03",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093",
+    "blob_HEAD": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093"
+   },
+   {
+    "path": "experiments/final/edit_size_analysis.py",
+    "n_commits": 1,
+    "first": "625ca3f",
+    "last": "625ca3f",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e",
+    "blob_HEAD": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e"
+   },
+   {
+    "path": "experiments/final/entry_policy.py",
+    "n_commits": 1,
+    "first": "d9d6380",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea",
+    "blob_HEAD": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea"
+   },
+   {
+    "path": "experiments/final/evaluate_v10.py",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "11f13de1e3bdbf3e929556ed9c0fb541314c19bc59164fc654d84e747038bbc5",
+    "blob_HEAD": "11f13de1e3bdbf3e929556ed9c0fb541314c19bc59164fc654d84e747038bbc5"
+   },
+   {
+    "path": "experiments/final/evaluate_v4_dev.py",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "c3f2b1997e2aa2540cee30c2392c51224a122e6f966e74f6fb83ec7af00f69a8",
+    "blob_HEAD": "c3f2b1997e2aa2540cee30c2392c51224a122e6f966e74f6fb83ec7af00f69a8"
+   },
+   {
+    "path": "experiments/final/evaluate_v9.py",
+    "n_commits": 1,
+    "first": "6dd5a0f",
+    "last": "6dd5a0f",
+    "last_date": "2026-10-29",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc",
+    "blob_HEAD": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc"
+   },
+   {
+    "path": "experiments/final/extraction.py",
+    "n_commits": 3,
+    "first": "9a9104f",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55",
+    "blob_HEAD": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55"
+   },
+   {
+    "path": "experiments/final/fit_weights.py",
+    "n_commits": 1,
+    "first": "ad7b655",
+    "last": "ad7b655",
+    "last_date": "2026-10-03",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34",
+    "blob_HEAD": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34"
+   },
+   {
+    "path": "experiments/final/protocol.py",
+    "n_commits": 2,
+    "first": "9a9104f",
+    "last": "d9d6380",
+    "last_date": "2026-10-25",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+    "blob_HEAD": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab"
+   },
+   {
+    "path": "experiments/final/score_v6_experimental.py",
+    "n_commits": 1,
+    "first": "c5bc130",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "fe1f0dbbab8655217c4c75fe7430d0ffbbff6970bab85386e6ea523e1c1d134f",
+    "blob_HEAD": "fe1f0dbbab8655217c4c75fe7430d0ffbbff6970bab85386e6ea523e1c1d134f"
+   },
+   {
+    "path": "experiments/final/static_baselines.py",
+    "n_commits": 1,
+    "first": "9a9104f",
+    "last": "9a9104f",
+    "last_date": "2026-09-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df",
+    "blob_HEAD": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df"
+   },
+   {
+    "path": "sbg/extraction/dynamic/tracer.py",
+    "n_commits": 4,
+    "first": "4409652",
+    "last": "b54ea99",
+    "last_date": "2026-10-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f",
+    "blob_HEAD": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f"
+   },
+   {
+    "path": "sbg/statistics.py",
+    "n_commits": 1,
+    "first": "9a9104f",
+    "last": "9a9104f",
+    "last_date": "2026-09-28",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b",
+    "blob_HEAD": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b"
+   },
+   {
+    "path": "sbg/v3/genome.py",
+    "n_commits": 1,
+    "first": "4409652",
+    "last": "4409652",
+    "last_date": "2026-08-21",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "8cc7437bdc6323ac9b7ff6b917ff96b5165d1b18a896ed13524649a856f0bafe",
+    "blob_HEAD": "8cc7437bdc6323ac9b7ff6b917ff96b5165d1b18a896ed13524649a856f0bafe"
+   },
+   {
+    "path": "sbg/v5/state_transition_genome.py",
+    "n_commits": 1,
+    "first": "4409652",
+    "last": "4409652",
+    "last_date": "2026-08-21",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "d098fbb71669ed4065f2ebe06f086de278fcd1ef0a70f1c25aeff7120a905f90",
+    "blob_HEAD": "d098fbb71669ed4065f2ebe06f086de278fcd1ef0a70f1c25aeff7120a905f90"
+   },
+   {
+    "path": "sbg/v5/temporal_genome_v5.py",
+    "n_commits": 1,
+    "first": "4409652",
+    "last": "4409652",
+    "last_date": "2026-08-21",
+    "in_freeze_commit": false,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "7d8b60fcc98c5ffffd83b8f32a6666bef6a8559204cf33592eb680997e76223e",
+    "blob_HEAD": "7d8b60fcc98c5ffffd83b8f32a6666bef6a8559204cf33592eb680997e76223e"
+   },
+   {
+    "path": "sbg/v6/state_transition_genome_v6.py",
+    "n_commits": 2,
+    "first": "4409652",
+    "last": "c5bc130",
+    "last_date": "2026-10-30",
+    "in_freeze_commit": true,
+    "commits_after_freeze_commit": [],
+    "blob_at_freeze": "c99b26d667c1b27ae13f90df75fba76326f1be5ed91c25f3138704bebdc5ae28",
+    "blob_HEAD": "c99b26d667c1b27ae13f90df75fba76326f1be5ed91c25f3138704bebdc5ae28"
+   }
+  ]
+ }
+}

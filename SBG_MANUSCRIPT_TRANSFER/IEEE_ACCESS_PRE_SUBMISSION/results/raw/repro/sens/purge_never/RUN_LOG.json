@@ -1,0 +1,45 @@
+{
+ "args": {
+  "cmd": "run",
+  "design": "v10",
+  "split": "test",
+  "out": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/results/raw/repro/sens/purge_never",
+  "programs": "ds_ranked_set,sort_radix_sort_lsd,graph_topological_kahn,sort_stooge_sort",
+  "python": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/venvs/py313/bin/python",
+  "hashseed": "0",
+  "purge": "never",
+  "cwd": "repo",
+  "cwd_path": "/tmp",
+  "load": 0,
+  "workers": 2,
+  "timeout": 3600,
+  "seed_for_seeds": 12345
+ },
+ "python": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/venvs/py313/bin/python",
+ "log": [
+  {
+   "program": "ds_ranked_set",
+   "status": "ok",
+   "seconds": 1.3,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_radix_sort_lsd",
+   "status": "ok",
+   "seconds": 2.3,
+   "hashseed": "0"
+  },
+  {
+   "program": "graph_topological_kahn",
+   "status": "ok",
+   "seconds": 1.7,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_stooge_sort",
+   "status": "ok",
+   "seconds": 17.8,
+   "hashseed": "0"
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+ "v10_test": {
+  "sources": [
+   "artifacts/final/pairs_v10_test_v6exp.jsonl"
+  ],
+  "population_rows": 644,
+  "rows_not_found_in_scored_files": 0,
+  "counts": {
+   "primary:rows": 638,
+   "primary:sbg_v5 exactly 0": 221,
+   "nonprimary:rows": 6,
+   "nonprimary:unevaluated": 3,
+   "nonprimary:sbg_v5 exactly 0": 1
+  },
+  "fallback_by_program": {}
+ },
+ "v9c_val": {
+  "sources": [
+   "artifacts/final/pairs_v9c_val_output_free_v8.jsonl",
+   "artifacts/final/pairs_v8val_output_free_v8.jsonl"
+  ],
+  "population_rows": 436,
+  "rows_not_found_in_scored_files": 0,
+  "counts": {
+   "primary:rows": 432,
+   "primary:sbg_v5 exactly 0": 160,
+   "nonprimary:rows": 4,
+   "nonprimary:unevaluated": 2,
+   "nonprimary:sbg_v5 exactly 0": 2
+  },
+  "fallback_by_program": {}
+ },
+ "v9c_dev": {
+  "sources": [
+   "artifacts/final/pairs_v9c_dev_output_free_v8.jsonl",
+   "artifacts/final/pairs_v8dev_output_free_v8.jsonl",
+   "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl"
+  ],
+  "population_rows": 466,
+  "rows_not_found_in_scored_files": 0,
+  "counts": {
+   "primary:rows": 464,
+   "primary:sbg_v5 exactly 0": 158,
+   "nonprimary:rows": 2,
+   "nonprimary:unevaluated": 1,
+   "nonprimary:sbg_v5 exactly 0": 1
+  },
+  "fallback_by_program": {}
+ },
+ "v9c_train": {
+  "sources": [
+   "artifacts/final/pairs_v9c_train_output_free_v8.jsonl",
+   "artifacts/final/pairs_v8train_output_free_v8.jsonl"
+  ],
+  "population_rows": 1684,
+  "rows_not_found_in_scored_files": 0,
+  "counts": {
+   "primary:rows": 1650,
+   "primary:sbg_v5 exactly 0": 628,
+   "nonprimary:rows": 34,
+   "nonprimary:unevaluated": 17,
+   "nonprimary:sbg_v5 exactly 0": 11
+  },
+  "fallback_by_program": {}
+ }
+}

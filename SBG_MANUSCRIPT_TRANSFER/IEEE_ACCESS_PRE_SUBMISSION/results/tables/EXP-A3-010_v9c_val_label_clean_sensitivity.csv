@@ -1,0 +1,53 @@
+scenario,n,n_programs,predictor,auroc,ci_lo,ci_hi
+S0 reported (432),432,11,sbg_v5,0.7514,0.706258,0.79356
+S0 reported (432),432,11,sbg_state,0.7624,0.697686,0.807897
+S0 reported (432),432,11,edit,0.6111,0.602435,0.624392
+S0 reported (432),432,11,M_EX,0.6903,0.635588,0.741476
+S0 reported (432),432,11,M_ESX,0.7113,0.640116,0.771338
+S0 reported (432),432,11,M_E,0.6111,0.602435,0.624392
+S0 reported (432),432,11,M_ES,0.7233,0.68948,0.76017
+S0 reported (432),432,11,coverage_size,0.6781,0.638115,0.719352
+S0 reported (432),432,11,static_ast,0.5969,0.590393,0.61088
+S0 reported (432),432,11,DELTA H2 M_ES-M_E,0.112183,,
+S0 reported (432),432,11,DELTA H3 V5-edit,0.140228,,
+S0 reported (432),432,11,DELTA H4 M_ESX-M_EX,0.021016,,
+S0 reported (432),432,11,DELTA V5-state,-0.010995,,
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,sbg_v5,0.7721,0.721569,0.819456
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,sbg_state,0.7815,0.706601,0.836364
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,edit,0.616,0.607489,0.631015
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,M_EX,0.7029,0.649717,0.754273
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,M_ESX,0.7181,0.640923,0.784188
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,M_E,0.616,0.607489,0.631015
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,M_ES,0.7394,0.701934,0.782379
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,coverage_size,0.6859,0.643173,0.730237
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,static_ast,0.6012,0.595885,0.61339
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,DELTA H2 M_ES-M_E,0.123425,,
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,DELTA H3 V5-edit,0.15605,,
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,DELTA H4 M_ESX-M_EX,0.015238,,
+S1 drop sets with EQ output-differing (SP-8/SP-11),400,11,DELTA V5-state,-0.009487,,
+S2 drop sets with CH no-observable-diff,298,11,sbg_v5,0.8157,0.778855,0.851108
+S2 drop sets with CH no-observable-diff,298,11,sbg_state,0.8403,0.813049,0.86923
+S2 drop sets with CH no-observable-diff,298,11,edit,0.6206,0.611778,0.636949
+S2 drop sets with CH no-observable-diff,298,11,M_EX,0.7373,0.661832,0.810819
+S2 drop sets with CH no-observable-diff,298,11,M_ESX,0.7741,0.667042,0.867706
+S2 drop sets with CH no-observable-diff,298,11,M_E,0.6206,0.611778,0.636949
+S2 drop sets with CH no-observable-diff,298,11,M_ES,0.7893,0.756348,0.824121
+S2 drop sets with CH no-observable-diff,298,11,coverage_size,0.7398,0.698897,0.785102
+S2 drop sets with CH no-observable-diff,298,11,static_ast,0.6044,0.591042,0.630303
+S2 drop sets with CH no-observable-diff,298,11,DELTA H2 M_ES-M_E,0.168709,,
+S2 drop sets with CH no-observable-diff,298,11,DELTA H3 V5-edit,0.195104,,
+S2 drop sets with CH no-observable-diff,298,11,DELTA H4 M_ESX-M_EX,0.036778,,
+S2 drop sets with CH no-observable-diff,298,11,DELTA V5-state,-0.024616,,
+S3 drop both (clean labels),266,11,sbg_v5,0.8491,0.804957,0.889858
+S3 drop both (clean labels),266,11,sbg_state,0.8723,0.83941,0.902514
+S3 drop both (clean labels),266,11,edit,0.6267,0.61392,0.648502
+S3 drop both (clean labels),266,11,M_EX,0.7592,0.683391,0.832257
+S3 drop both (clean labels),266,11,M_ESX,0.7902,0.673548,0.8934
+S3 drop both (clean labels),266,11,M_E,0.6267,0.61392,0.648502
+S3 drop both (clean labels),266,11,M_ES,0.8169,0.78151,0.853403
+S3 drop both (clean labels),266,11,coverage_size,0.7581,0.713374,0.805068
+S3 drop both (clean labels),266,11,static_ast,0.6117,0.599139,0.636679
+S3 drop both (clean labels),266,11,DELTA H2 M_ES-M_E,0.190203,,
+S3 drop both (clean labels),266,11,DELTA H3 V5-edit,0.222455,,
+S3 drop both (clean labels),266,11,DELTA H4 M_ESX-M_EX,0.03098,,
+S3 drop both (clean labels),266,11,DELTA V5-state,-0.023178,,

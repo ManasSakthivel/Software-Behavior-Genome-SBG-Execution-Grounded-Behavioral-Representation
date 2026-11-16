@@ -1,0 +1,11 @@
+model,features,max_abs_dw,abs_db,max_abs_dmean,max_abs_dstd,seconds
+E,edit,0.0,0.0,0.0,0.0,3.1
+X,exception_fraction+call_count+coverage_size,0.0,0.0,0.0,0.0,3.9
+ST,static_ast+static_token,0.0,0.0,0.0,0.0,3.5
+EX,edit+exception_fraction+call_count+coverage_size,0.0,0.0,0.0,0.0,4.5
+EST,edit+static_ast+static_token,0.0,0.0,0.0,0.0,4.1
+E+V5,edit+sbg_v5,0.0,0.0,0.0,0.0,3.5
+E+V6,edit+sbg_v6,0.0,0.0,0.0,0.0,3.5
+EX+V5,edit+sbg_v5+exception_fraction+call_count+coverage_size,0.0,0.0,0.0,0.0,4.9
+EX+V6,edit+sbg_v6+exception_fraction+call_count+coverage_size,0.0,0.0,0.0,0.0,4.9
+EX+V5+V6,edit+sbg_v5+sbg_v6+exception_fraction+call_count+coverage_size,0.0,0.0,0.0,0.0,5.3

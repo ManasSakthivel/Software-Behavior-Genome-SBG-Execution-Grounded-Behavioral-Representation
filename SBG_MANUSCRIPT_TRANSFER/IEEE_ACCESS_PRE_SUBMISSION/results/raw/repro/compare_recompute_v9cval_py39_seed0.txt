@@ -1,0 +1,47 @@
+{
+ "design": "v9c",
+ "split": "val",
+ "dir": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../results/raw/repro/recompute_v9cval_py39_seed0",
+ "totals": {
+  "rows": 436,
+  "evaluated_equal": 2,
+  "evaluated_flag_diff": 0,
+  "exact": 247,
+  "differing": 187,
+  "missing": 0
+ },
+ "n_keys_differing": {
+  "sbg_v5": 187,
+  "sbg_v3": 152,
+  "sbg_temporal": 53,
+  "sbg_state": 99,
+  "exception_fraction": 0,
+  "exception_component_v3": 0,
+  "exception_type_jaccard": 0,
+  "call_count": 35,
+  "n_functions": 27,
+  "coverage_size": 97,
+  "combined_shortcut": 127,
+  "v5_full": 0
+ },
+ "max_abs_diff_by_key": {
+  "sbg_v5": 0.28749923800000005,
+  "sbg_v3": 0.2750000000000001,
+  "sbg_temporal": 0.59999695,
+  "sbg_state": 0.42962963,
+  "exception_fraction": 0.0,
+  "exception_component_v3": 0.0,
+  "exception_type_jaccard": 0.0,
+  "call_count": 0.982142857,
+  "n_functions": 0.5,
+  "coverage_size": 0.833333333,
+  "combined_shortcut": 0.42342436899999997,
+  "v5_full": 0.0
+ },
+ "cross_label_pairs": 47088,
+ "cross_pairs_order_changed": 3006,
+ "pooled_auroc_frozen_subset": 0.752951919809718,
+ "pooled_auroc_new_subset": 0.7814729867482161,
+ "n_programs": 11
+}
+programs with differing rows: {'ds_stack_min': (7, 32, 0.024936), 'ds_two_sum': (18, 30, 0.220937), 'graph_scc_tarjan': (27, 44, 0.017515), 'graph_word_ladder': (6, 38, 0.045455), 'math_largest_rect_hist': (22, 40, 0.287499), 'math_lis_length': (28, 42, 0.287499), 'math_perfect_numbers': (10, 46, 0.030801), 'math_ways_to_change': (10, 42, 0.026279), 'sort_patience_sort': (32, 46, 0.282706), 'str_interleave_check': (21, 40, 0.198599), 'str_string_multiply': (6, 36, 0.020774)}

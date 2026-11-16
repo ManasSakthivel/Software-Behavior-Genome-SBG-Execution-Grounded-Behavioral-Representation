@@ -1,0 +1,21 @@
+[19:33:43] interpreter: Python 3.13.5  (canonical 3.13.5; requirements-lock.txt claims 3.13.15 -- see report 09 §environment)
+[19:33:43] REPO HEAD : 3425693  (audited: 3425693)
+[19:33:43] REPO dirty: 0 tracked-file changes (expected 0)
+[19:33:43] STEP 1  independent SHA-256 verification of every freeze/manifest pin (read-only; ~15 s)
+  "MATCH": 49,
+  "MISMATCH": 2
+MISMATCH / MISSING rows:
+[19:33:58]   OK   pins matching (expected 533 of 536; the 3 mismatches are the disclosed FREEZE_V8 evaluate_v8.py x2 and AMENDMENT2 run_chunked.py) (= 533)
+[19:33:58] STEP 2  clean checkout (git archive HEAD) -> /Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/work_20261114_193342/co
+[19:34:00] STEP 3  consistency gate on the clean copy (expect 10/10, ~1 s)
+10/10 checks passed
+[19:34:01]   OK   consistency_check (= 10/10 checks passed)
+[19:34:01] STEP 4  verify_trace_v4 on the clean copy (expect 35/35; NOTE: a doc-vs-artifact string check, not an independent verification)
+35/35 trace checks passed
+[19:34:01]   OK   35/35
+[19:34:01] STEP 5  recompute V10 (19 programs, 644 pairs) and V9c-val (11 programs, 436 pairs) scores from the clean-checkout code; exact equality vs frozen scored files
+[19:34:38]   v10/test rows exact differing order_flips = 644 644 0 0
+[19:34:38]   OK   V10 recompute (= 644 644 0 0)
+[19:35:46]   v9c/val rows exact differing order_flips = 436 436 0 0
+[19:35:46]   OK   V9c-val recompute (= 436 436 0 0)
+[19:35:46] DONE  fail=0  outputs in /Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/results/raw/repro/run_20261114_193342   (clean copy /Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/work_20261114_193342 can be deleted)

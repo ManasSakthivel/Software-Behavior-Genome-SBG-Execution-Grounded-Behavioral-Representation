@@ -1,0 +1,134 @@
+{
+ "repo": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG",
+ "head": "3425693b432bb774b10db1cf3185eae1a7eef095",
+ "n_pins": 536,
+ "totals": {
+  "MISMATCH": 3,
+  "MATCH": 533
+ },
+ "by_source": {
+  "artifacts/final/FREEZE_V10.json": {
+   "MATCH": 25
+  },
+  "artifacts/final/FREEZE_V10_SCORED.json": {
+   "MATCH": 1
+  },
+  "artifacts/final/FREEZE_V8.json": {
+   "MISMATCH": 2,
+   "MATCH": 19
+  },
+  "artifacts/final/FREEZE_V8_AMENDMENT1.json": {
+   "MATCH": 14
+  },
+  "artifacts/final/FREEZE_V8_AMENDMENT2.json": {
+   "MATCH": 3,
+   "MISMATCH": 1
+  },
+  "artifacts/final/FREEZE_V9.json": {
+   "MATCH": 21
+  },
+  "artifacts/final/PHASE2_FREEZE.json": {
+   "MATCH": 1
+  },
+  "artifacts/final/freeze_bugsinpy.json": {
+   "MATCH": 256
+  },
+  "artifacts/final/freeze_handoff.json": {
+   "MATCH": 10
+  },
+  "artifacts/final/freeze_quixbugs.json": {
+   "MATCH": 113
+  },
+  "artifacts/final/freeze_threshold.json": {
+   "MATCH": 1
+  },
+  "artifacts/paper_evidence/EXPERIMENT_MANIFEST.json": {
+   "MATCH": 35
+  },
+  "artifacts/paper_evidence/EXPERIMENT_MANIFEST_V3.json": {
+   "MATCH": 16
+  },
+  "artifacts/paper_evidence/EXPERIMENT_MANIFEST_V4.json": {
+   "MATCH": 18
+  }
+ },
+ "digests": [
+  {
+   "name": "freeze_bugsinpy.combined_sha256 (recomputed from the pinned per-file hashes)",
+   "expected": "4946b113130452078a39720607dc0fef8b14fe339ced0b20ade37777f6189677",
+   "actual": "4946b113130452078a39720607dc0fef8b14fe339ced0b20ade37777f6189677",
+   "ok": true
+  },
+  {
+   "name": "freeze_bugsinpy.combined_sha256 (recomputed from LIVE files)",
+   "expected": "4946b113130452078a39720607dc0fef8b14fe339ced0b20ade37777f6189677",
+   "actual": "4946b113130452078a39720607dc0fef8b14fe339ced0b20ade37777f6189677",
+   "ok": true
+  },
+  {
+   "name": "freeze_quixbugs.negatives.combined_sha256 (LIVE)",
+   "expected": "2e1c3bba3c01b0e1d96b5ff74395c31f1aef23f4430abd8087e249845a921b49",
+   "actual": "2e1c3bba3c01b0e1d96b5ff74395c31f1aef23f4430abd8087e249845a921b49",
+   "ok": true
+  },
+  {
+   "name": "FREEZE_V8.variants_tree_sha256",
+   "expected": "c250047b6041ff8ee768beeaaf7e3b9f0ffa32f2da429b068080877fe6daffc1",
+   "n_files": {
+    "tracked": 4693,
+    "tracked *.py": 4693
+   },
+   "algorithm_found": [
+    "tracked: T10 path\\0content (VERIFIED for FREEZE_V8 trees)",
+    "tracked *.py: T10 path\\0content (VERIFIED for FREEZE_V8 trees)"
+   ],
+   "ok": true,
+   "note": "algorithm is not documented in code; candidates T1-T9 tried"
+  },
+  {
+   "name": "FREEZE_V8.base_programs_tree_sha256",
+   "expected": "3494f09e918ae43cf674d0ae22e62d6e8b4c10064d89c9f9143682a2a284bb39",
+   "n_files": {
+    "tracked": 122,
+    "tracked *.py": 121
+   },
+   "algorithm_found": [
+    "tracked *.py: T10 path\\0content (VERIFIED for FREEZE_V8 trees)"
+   ],
+   "ok": true,
+   "note": "algorithm is not documented in code; candidates T1-T9 tried"
+  },
+  {
+   "name": "FREEZE_V10.variants_tree_sha256",
+   "expected": "f22f0c6c46059c05f548567b0f2b3072178478666a0182969999c603fd0ebe8d",
+   "n_files": {
+    "tracked": 644,
+    "tracked *.py": 644
+   },
+   "algorithm_found": null,
+   "ok": false,
+   "note": "algorithm is not documented in code; candidates T1-T9 tried"
+  }
+ ],
+ "prefix_totals": {
+  "MATCH": 49,
+  "MISMATCH": 2
+ }
+}
+
+MISMATCH / MISSING rows:
+  [MISMATCH] artifacts/final/FREEZE_V8.json :: code_sha256/experiments/final/evaluate_v8.py
+      path=experiments/final/evaluate_v8.py
+      expected=8e567b8cf107dd31e095a2a437ea5043e697adb4ddc8da940cce4d0ed071a539
+      actual  =34f303afc2423838d2cdb44c513248dbdb6b5c91eb1cc3791774183f3dc7996d
+      matches_at=['496fb4f']
+  [MISMATCH] artifacts/final/FREEZE_V8.json :: evaluation_script_sha256
+      path=experiments/final/evaluate_v8.py
+      expected=8e567b8cf107dd31e095a2a437ea5043e697adb4ddc8da940cce4d0ed071a539
+      actual  =34f303afc2423838d2cdb44c513248dbdb6b5c91eb1cc3791774183f3dc7996d
+      matches_at=['496fb4f']
+  [MISMATCH] artifacts/final/FREEZE_V8_AMENDMENT2.json :: run_chunked_sha256
+      path=experiments/final/run_chunked.py
+      expected=32a9eb05b928db93a80b610af97ef71b87ae5f906b6612b19181636dc9f8804d
+      actual  =7d8e67ffbb6403128c33885ca201acf2bae5839f87b89f742a954eb96d2bef21
+      matches_at=['c0f6c6d']

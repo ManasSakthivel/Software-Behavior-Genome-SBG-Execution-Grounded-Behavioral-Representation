@@ -1,0 +1,11 @@
+design,pair_id,label,role,failure_kind,failure_detail,edit_size,base_id,type,sc
+v10_test,test__math_fib_matrix__sc4+sp2_s0,1,unevaluated,,None,8.0,math_fib_matrix,SP-2,SC-4
+v10_test,test__math_fib_matrix__sc5+sp2_s1,1,unevaluated,,None,10.0,math_fib_matrix,SP-2,SC-5
+v10_test,test__sort_stooge_sort__sc3+sp1_s2,1,unevaluated,,None,8.0,sort_stooge_sort,SP-1,SC-3
+v10_test,test__math_fib_matrix__sp2_s0,0,evaluated-partner-dropped-by-matched-rule,,None,6.0,math_fib_matrix,SP-2,
+v10_test,test__math_fib_matrix__sp2_s1,0,evaluated-partner-dropped-by-matched-rule,,None,8.0,math_fib_matrix,SP-2,
+v10_test,test__sort_stooge_sort__sp1_s2,0,evaluated-partner-dropped-by-matched-rule,,None,6.0,sort_stooge_sort,SP-1,
+v9c_val,val__math_lis_length__sc3+sp6_s1_j16,1,unevaluated,nonterminating,exceeded the per-trace budget on 2 inputs,4.0,math_lis_length,SP-6,SC-3
+v9c_val,val__str_interleave_check__sc11+sp4_s0_j9,1,unevaluated,import_error,NameError: name 'j' is not defined,11.0,str_interleave_check,SP-4,SC-11
+v9c_val,val__math_lis_length__sp-6_s1,0,evaluated-partner-dropped-by-matched-rule,,None,2.0,math_lis_length,SP-6,
+v9c_val,val__str_interleave_check__sp-4_s0,0,evaluated-partner-dropped-by-matched-rule,,None,9.0,str_interleave_check,SP-4,

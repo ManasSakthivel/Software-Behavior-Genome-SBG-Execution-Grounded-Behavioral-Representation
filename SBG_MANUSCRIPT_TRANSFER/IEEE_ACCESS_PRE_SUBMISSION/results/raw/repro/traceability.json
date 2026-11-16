@@ -1,0 +1,630 @@
+[
+ {
+  "claim": "V10 H1: AUROC(sbg_v5)=0.8968, p=0.0005 (n=638)",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 39,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "PYTHONHASHSEED=0 python experiments/final/evaluate_v10.py run  (refuses unless FREEZE_V10 hashes match; single-run)"
+ },
+ {
+  "claim": "V10 H1 Holm p_adj=0.003",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 373,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 H2: E+V5 - E = +0.2545 [0.2178,0.2851]",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 337,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 H3: V5 - edit(fwd) = +0.2807",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 344,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 H4: EX+V5 - EX = +0.0063 [-0.069,0.068], p=0.81 (null)",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 351,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 H5: V6 - V5 = +0.0029, Holm p_adj=0.090 (not rejected)",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 358,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 H6: EX+V6 - EX = +0.0085 (null)",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 365,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 state-genome AUROC 0.917 (> SBG-V5 0.897)",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 68,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 edit forward 0.616 / reversed 0.384",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 96,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 exact-zero rate 0.3464 (equivalent 0.6364, changed 0.0564)",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 48,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 SC-6 changed zero-rate 0.7391 = 17/23",
+  "artifact": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json",
+  "line": 701,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v10.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V10 scored pairs (input of the above)",
+  "artifact": "artifacts/final/pairs_v10_test_v6exp.jsonl",
+  "line": null,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/score_v6_experimental.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [
+   "EXPERIMENT_MANIFEST_V4.json",
+   "FREEZE_V10_SCORED.json"
+  ],
+  "command": "PYTHONHASHSEED=0 python experiments/final/score_v6_experimental.py --design v10 --split test"
+ },
+ {
+  "claim": "V9c-val H1: AUROC(sbg_v5)=0.7514, p=0.0005 (n=432)",
+  "artifact": "artifacts/paper_evidence/V9_VAL_EVALUATION.json",
+  "line": 51,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v9.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V10.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "PYTHONHASHSEED=0 python experiments/final/evaluate_v9.py run --split val  (refuses unless FREEZE_V9 matches)"
+ },
+ {
+  "claim": "V9c-val H2: ES-E = +0.1122",
+  "artifact": "artifacts/paper_evidence/V9_VAL_EVALUATION.json",
+  "line": 186,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v9.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V10.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V9c-val H3: V5 - edit(fwd) = +0.1402",
+  "artifact": "artifacts/paper_evidence/V9_VAL_EVALUATION.json",
+  "line": 194,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v9.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V10.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V9c-val H4: ESX-EX = +0.0210 [-0.005,0.048], p=0.117 (null)",
+  "artifact": "artifacts/paper_evidence/V9_VAL_EVALUATION.json",
+  "line": 202,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v9.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V10.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V9c-val zero rate 0.3704",
+  "artifact": "artifacts/paper_evidence/V9_VAL_EVALUATION.json",
+  "line": 440,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v9.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V10.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V9c-val matched-set concordance SBG 0.806 vs edit 0.924",
+  "artifact": "artifacts/paper_evidence/V9_VAL_EVALUATION.json",
+  "line": 412,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v9.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V10.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "same"
+ },
+ {
+  "claim": "V8 test SBG-V5 AUROC 0.6937 (headline 0.694)",
+  "artifact": "artifacts/paper_evidence/V8_TEST_EVALUATION.json",
+  "line": 64,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v8.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V8.json",
+   "FREEZE_V8_AMENDMENT1.json",
+   "FREEZE_V8_AMENDMENT2.json"
+  ],
+  "script_hash_status": [
+   "MATCH",
+   "MISMATCH"
+  ],
+  "artifact_pinned_in": [
+   "EXPERIMENT_MANIFEST.json"
+  ],
+  "command": "python experiments/final/evaluate_v8.py run --split test  (single run; --allow-overwrite-never-use suppressed flag exists)"
+ },
+ {
+  "claim": "V8 test reversed edit-size 0.8759 (headline 0.876)",
+  "artifact": "artifacts/paper_evidence/V8_TEST_EVALUATION.json",
+  "line": 89,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/evaluate_v8.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V8.json",
+   "FREEZE_V8_AMENDMENT1.json",
+   "FREEZE_V8_AMENDMENT2.json"
+  ],
+  "script_hash_status": [
+   "MATCH",
+   "MISMATCH"
+  ],
+  "artifact_pinned_in": [
+   "EXPERIMENT_MANIFEST.json"
+  ],
+  "command": "same"
+ },
+ {
+  "claim": "V8 test scored pairs (non-stale subset)",
+  "artifact": "artifacts/final/v8_test_nonstale/pairs_test.jsonl",
+  "line": null,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/run_chunked.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json",
+   "FREEZE_V8_AMENDMENT2.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH",
+   "MISMATCH"
+  ],
+  "artifact_pinned_in": [
+   "FREEZE_V8_AMENDMENT1.json",
+   "FREEZE_V8_AMENDMENT2.json"
+  ],
+  "command": "python experiments/final/run_chunked.py --split test --pairs-dir artifacts/final/v8_test_nonstale --tag v8test"
+ },
+ {
+  "claim": "BugsInPy SBG-V5 AUROC 0.497 (SP-2 excluded rescoring)",
+  "artifact": "artifacts/paper_evidence/EXTERNAL_RESCORE_V8.json",
+  "line": 32,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/rescore_external_v8.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "PYTHONHASHSEED=0 python experiments/final/rescore_external_v8.py"
+ },
+ {
+  "claim": "BugsInPy SBG-V5 AUROC 0.410 (valid pairs, 147)",
+  "artifact": "artifacts/final/BUGSINPY_output_free_v7.json",
+  "line": 25,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/external_bugsinpy.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [
+   "EXPERIMENT_MANIFEST.json"
+  ],
+  "command": "python experiments/final/external_bugsinpy.py [fetch|build|score|analyse]"
+ },
+ {
+  "claim": "QuixBugs SBG-V5 AUROC 0.388 (all 152)",
+  "artifact": "artifacts/final/QUIXBUGS_output_free_v7.json",
+  "line": 22,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/external_quixbugs.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [
+   "EXPERIMENT_MANIFEST.json"
+  ],
+  "command": "python experiments/final/external_quixbugs.py [prepare|score|analyse]"
+ },
+ {
+  "claim": "QuixBugs 0.444 (111 pairs, excl. invalid negatives & SP-2)",
+  "artifact": "artifacts/paper_evidence/EXTERNAL_NEGATIVE_AUDIT.json",
+  "line": 146,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/audit_external_negatives.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "EXPERIMENT_MANIFEST_V3.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "python experiments/final/audit_external_negatives.py"
+ },
+ {
+  "claim": "QuixBugs within-program stratified 0.3884",
+  "artifact": "artifacts/paper_evidence/DIAGNOSTIC_EXTERNAL.json",
+  "line": 80,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/diagnose_external.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [
+   "EXPERIMENT_MANIFEST.json"
+  ],
+  "command": "python experiments/final/diagnose_external.py"
+ },
+ {
+  "claim": "Edit-size confound diagnostics (dev/train)",
+  "artifact": "artifacts/paper_evidence/DIAGNOSTIC_EDIT_SIZE.json",
+  "line": 2,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/diagnose_edit_size.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [
+   "EXPERIMENT_MANIFEST.json"
+  ],
+  "command": "PYTHONHASHSEED=0 python experiments/final/diagnose_edit_size.py"
+ },
+ {
+  "claim": "Ablations (component / weight-model / shortcut controls)",
+  "artifact": "artifacts/paper_evidence/ABLATIONS.json",
+  "line": 3,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/build_ablations.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [],
+  "command": "python3 experiments/final/build_ablations.py"
+ },
+ {
+  "claim": "Post-hoc V10 supplement (zero-rate, concordance)",
+  "artifact": "artifacts/paper_evidence/V10_POSTHOC_SUPPLEMENT.json",
+  "line": null,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/posthoc_v10_supplement.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [],
+  "command": "PYTHONHASHSEED=0 python experiments/final/posthoc_v10_supplement.py"
+ },
+ {
+  "claim": "Zero-score population (all scored files)",
+  "artifact": "artifacts/paper_evidence/raw/zero_score_population_v1.json",
+  "line": null,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/zero_score_population.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [],
+  "command": "python experiments/final/zero_score_population.py  (needs 4 UNTRACKED v8-dev files)"
+ },
+ {
+  "claim": "Zero-score root cause (class counts)",
+  "artifact": "artifacts/paper_evidence/ZERO_SCORE_ROOT_CAUSE_V1.md",
+  "line": null,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/diagnose_zero_scores.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [],
+  "command": "python experiments/final/diagnose_zero_scores.py"
+ },
+ {
+  "claim": "Weight fitting (V5 weights 0.50/0.25/0.25 fixed)",
+  "artifact": "artifacts/paper_evidence/WEIGHT_FITTING.json",
+  "line": null,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/fit_weights.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [
+   "FREEZE_V10.json",
+   "FREEZE_V8.json",
+   "FREEZE_V8_AMENDMENT1.json",
+   "FREEZE_V9.json"
+  ],
+  "script_hash_status": [
+   "MATCH"
+  ],
+  "artifact_pinned_in": [],
+  "command": "python experiments/final/fit_weights.py"
+ },
+ {
+  "claim": "'35/35 trace verifications'",
+  "artifact": "artifacts/paper_evidence/RESEARCH_STATUS_V4.md",
+  "line": null,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/verify_trace_v4.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [],
+  "command": "python experiments/final/verify_trace_v4.py"
+ },
+ {
+  "claim": "'10/10 consistency checks'",
+  "artifact": "docs/current/REPRODUCTION.md",
+  "line": 107,
+  "artifact_in_HEAD": true,
+  "value_found": true,
+  "artifact_clean_vs_HEAD": true,
+  "script": "experiments/final/consistency_check.py",
+  "script_in_HEAD": true,
+  "script_pinned_in": [],
+  "script_hash_status": [],
+  "artifact_pinned_in": [],
+  "command": "python experiments/final/consistency_check.py"
+ }
+]

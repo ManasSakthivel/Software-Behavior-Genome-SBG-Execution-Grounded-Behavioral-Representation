@@ -1,0 +1,135 @@
+{
+ "args": {
+  "cmd": "run",
+  "design": "v10",
+  "split": "test",
+  "out": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../results/raw/repro/recompute_v10_py39_seed0",
+  "programs": "",
+  "python": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../../venvs/py39/bin/python",
+  "hashseed": "0",
+  "purge": "pair",
+  "cwd": "repo",
+  "cwd_path": "/tmp",
+  "load": 0,
+  "workers": 4,
+  "timeout": 3600,
+  "seed_for_seeds": 12345
+ },
+ "python": "/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/../../venvs/py39/bin/python",
+ "log": [
+  {
+   "program": "ds_min_heap_array",
+   "status": "ok",
+   "seconds": 4.1,
+   "hashseed": "0"
+  },
+  {
+   "program": "ds_ranked_set",
+   "status": "ok",
+   "seconds": 1.5,
+   "hashseed": "0"
+  },
+  {
+   "program": "ds_union_find",
+   "status": "ok",
+   "seconds": 3.8,
+   "hashseed": "0"
+  },
+  {
+   "program": "graph_alien_dict",
+   "status": "ok",
+   "seconds": 0.3,
+   "hashseed": "0"
+  },
+  {
+   "program": "graph_cycle_detection_dfs",
+   "status": "ok",
+   "seconds": 1.3,
+   "hashseed": "0"
+  },
+  {
+   "program": "graph_network_delay",
+   "status": "ok",
+   "seconds": 4.9,
+   "hashseed": "0"
+  },
+  {
+   "program": "graph_topological_kahn",
+   "status": "ok",
+   "seconds": 1.9,
+   "hashseed": "0"
+  },
+  {
+   "program": "math_coin_change",
+   "status": "ok",
+   "seconds": 19.7,
+   "hashseed": "0"
+  },
+  {
+   "program": "math_fib_matrix",
+   "status": "FAILED rc=-6 cores.py\", line 122 in worker\n  File \"/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/recompute_scores.py\", line 284 in main\n  File \"/Users/manassakthivel/Desktop/SBG-FINALREVIEW/IEEE_ACCESS_PRE_SUBMISSION/reproduction/recompute_scores.py\", line 292 in <module>\n",
+   "seconds": 0.2,
+   "hashseed": "0"
+  },
+  {
+   "program": "math_knapsack_01",
+   "status": "ok",
+   "seconds": 0.9,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_bitonic_sort",
+   "status": "ok",
+   "seconds": 5.4,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_gnome_sort",
+   "status": "ok",
+   "seconds": 0.8,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_gravity_bead",
+   "status": "ok",
+   "seconds": 26.7,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_pancake",
+   "status": "ok",
+   "seconds": 4.2,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_radix_sort_lsd",
+   "status": "ok",
+   "seconds": 2.4,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_stooge_sort",
+   "status": "ok",
+   "seconds": 23.2,
+   "hashseed": "0"
+  },
+  {
+   "program": "sort_tree_sort",
+   "status": "ok",
+   "seconds": 4.4,
+   "hashseed": "0"
+  },
+  {
+   "program": "str_decode_run_length",
+   "status": "ok",
+   "seconds": 0.4,
+   "hashseed": "0"
+  },
+  {
+   "program": "str_group_anagrams",
+   "status": "ok",
+   "seconds": 0.5,
+   "hashseed": "0"
+  }
+ ]
+}
