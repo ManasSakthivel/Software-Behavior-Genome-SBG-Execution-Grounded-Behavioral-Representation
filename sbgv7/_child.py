@@ -9,7 +9,15 @@ for name, val in cfg["limits"].items():
         sys.stderr.write(f"SBGV7_LIMIT_FAIL {name} {e}\n"); sys.stderr.flush(); os._exit(97)
 if cfg.get("script"):
     sys.argv = [cfg["script"], *cfg["args"]]
-    runpy.run_path(cfg["script"], run_name="__main__")
+    g = {}
+    if cfg.get("chan"):  # per-run key arrives over a pipe we drain and close here, before any user code is imported
+        key = b""
+        while chunk := os.read(cfg["chan"]["k"], 4096):
+            key += chunk
+        os.close(cfg["chan"]["k"])
+        g["_SBGV7_CHAN"] = (cfg["chan"]["w"], key)  # the script must pop this into closure state (harness.py does)
+    del cfg
+    runpy.run_path(sys.argv[0], init_globals=g, run_name="__main__")
 else:
     sys.path.insert(0, cfg["path"])
     mod, _, qual = cfg["callable"].partition(":")

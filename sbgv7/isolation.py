@@ -4,7 +4,7 @@ Nothing degrades silently: see capabilities() for what is ACTIVE vs UNAVAILABLE.
 
 Limits (shortcuts): processes that setsid() escape the group kill; sandbox-exec is deprecated by Apple;
 Linux/Docker confinement is NOT implemented (reported UNAVAILABLE)."""
-import json, os, resource, shutil, signal, subprocess, sys, tempfile, threading, time
+import hashlib, hmac, json, os, resource, shutil, signal, subprocess, sys, tempfile, threading, time
 from dataclasses import dataclass, asdict, field
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -30,9 +30,40 @@ class Result:
     orphans_found: bool = False  # group members alive after the main child ended (then killed)
     cleanup_verified: bool = False  # killpg(pgid, 0) -> ESRCH after kill
     capabilities: dict = field(default_factory=dict)
+    payload: str | None = None  # channel=True only: the HMAC-verified result frame body (never parsed from stdout/stderr)
+    protocol_error: str = ""  # channel=True only: missing|malformed|truncated|oversized|duplicate|trailing|bad_mac ("" = ok)
 
     def to_dict(self):
         return asdict(self)
+
+
+# Result protocol (local correctness fix, NOT a security boundary against a same-address-space adversary; see
+# docs/architecture/V7B_RESULT_PROTOCOL.md). Trusted: this parent + _child.py + harness.py code paths. Untrusted: the evaluated
+# program. The parent makes a per-run random 32-byte key, hands it to the child over a pipe that _child.py drains and closes
+# before any user code runs, and reads ONE frame b"SBGV7F1 <len> <hmac-sha256-hex>\n"+payload from a dedicated result pipe.
+# stdout/stderr are never protocol. Any deviation is a protocol_error (fail closed).
+FRAME_MAGIC = b"SBGV7F1"
+
+
+def parse_frame(key, data, cap):
+    """-> (payload_str | None, error). Exactly one frame, nothing before or after, MAC must verify under the per-run key."""
+    if not data:
+        return None, "missing"
+    nl = data.find(b"\n", 0, 128)
+    parts = data[:nl].split(b" ") if nl >= 0 else []
+    if len(parts) != 3 or parts[0] != FRAME_MAGIC or not parts[1].isdigit() or len(parts[1]) > 12 or len(parts[2]) != 64:
+        return None, "malformed"
+    n = int(parts[1])
+    if n > cap:
+        return None, "oversized"
+    body = data[nl + 1:]
+    if len(body) < n:
+        return None, "truncated"
+    if len(body) > n:
+        return None, "duplicate" if body[n:].startswith(FRAME_MAGIC) else "trailing"
+    if not hmac.compare_digest(hmac.new(key, body, hashlib.sha256).hexdigest().encode(), parts[2]):
+        return None, "bad_mac"
+    return body.decode("utf-8", "replace"), ""
 
 
 def _sandbox_cmd(workdir):
@@ -69,7 +100,7 @@ def _kill_group(pgid):
     return False
 
 
-def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps):
+def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps, channel=False):
     t0 = time.monotonic()
     own_wd = workdir is None
     workdir = workdir or tempfile.mkdtemp(prefix="sbgv7_")
@@ -85,8 +116,24 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps):
         cfg["limits"] = lim
         cmd = (_sandbox_cmd(workdir) if sandbox else []) + [sys.executable, "-I", "-B", CHILD, json.dumps(cfg)]
         env = {"PATH": "/usr/bin:/bin", "HOME": workdir, "TMPDIR": workdir, "PYTHONDONTWRITEBYTECODE": "1"}
-        p = subprocess.Popen(cmd, cwd=workdir, env=env, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE, start_new_session=True)
+        key, chan_fds, keep = os.urandom(32), None, ()
+        if channel:
+            rr, rw = os.pipe(); kr, kw = os.pipe()
+            os.write(kw, key); os.close(kw)  # 32 bytes fit the pipe buffer; the child reads to EOF then closes kr
+            cfg["chan"] = {"w": rw, "k": kr}; keep = (rw, kr); chan_fds = (rr, rw, kr)
+            cmd = (_sandbox_cmd(workdir) if sandbox else []) + [sys.executable, "-I", "-B", CHILD, json.dumps(cfg)]
+        try:
+            p = subprocess.Popen(cmd, cwd=workdir, env=env, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
+                                 stderr=subprocess.PIPE, start_new_session=True, pass_fds=keep)
+        finally:
+            for fd in (chan_fds[1:] if chan_fds else ()): os.close(fd)  # parent keeps only the read end
+        frame, fcap = bytearray(), [False]
+
+        def pump_frame():
+            with os.fdopen(chan_fds[0], "rb", buffering=0) as f:
+                while chunk := f.read(65536):
+                    if len(frame) <= out_cap + 256: frame.extend(chunk)
+                    else: fcap[0] = True  # keep draining, discard
         pgid = p.pid
         bufs = {"o": [bytearray(), 0], "e": [bytearray(), 0]}
         capped = threading.Event()
@@ -101,6 +148,7 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps):
 
         ts = [threading.Thread(target=pump, args=(p.stdout, bufs["o"]), daemon=True),
               threading.Thread(target=pump, args=(p.stderr, bufs["e"]), daemon=True)]
+        if channel: ts.append(threading.Thread(target=pump_frame, daemon=True))
         [t.start() for t in ts]
         reason, peak, status_raw, ru = "", 0, None, None
         deadline, nextrss = t0 + timeout_s, 0
@@ -149,17 +197,20 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps):
             status, detail = "OK", ""
         else:
             status, detail = "CRASH", f"signal {sig}" if sig else f"exit {rc}"
+        payload, perr = (None, "")
+        if channel:
+            payload, perr = (None, "oversized") if fcap[0] else parse_frame(key, bytes(frame), out_cap)
         return Result(status, detail, rc, sig, so, se, bufs["o"][1] > out_cap, bufs["e"][1] > out_cap, wall,
-                      ru.ru_utime + ru.ru_stime, max(peak, ru.ru_maxrss * _RSS_UNIT), orphans, cleaned, caps)
+                      ru.ru_utime + ru.ru_stime, max(peak, ru.ru_maxrss * _RSS_UNIT), orphans, cleaned, caps, payload, perr)
     finally:
         if own_wd:
             shutil.rmtree(workdir, ignore_errors=True)
 
 
 def run_script(script, args=(), *, timeout_s=10, cpu_s=10, mem_mb=512, nofile=256, fsize_mb=16,
-               out_cap=65536, sandbox=True, workdir=None) -> Result:
+               out_cap=65536, sandbox=True, workdir=None, channel=False) -> Result:
     cfg = dict(script=os.path.abspath(script), args=list(args), cpu_s=cpu_s, nofile=nofile, fsize_mb=fsize_mb, _cpu=cpu_s)
-    return _run(cfg, timeout_s=timeout_s, mem_mb=mem_mb, out_cap=out_cap, sandbox=sandbox, workdir=workdir, caps=capabilities())
+    return _run(cfg, timeout_s=timeout_s, mem_mb=mem_mb, out_cap=out_cap, sandbox=sandbox, workdir=workdir, caps=capabilities(), channel=channel)
 
 
 def run_callable(func, args=(), **kw) -> Result:

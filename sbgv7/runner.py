@@ -10,7 +10,6 @@ from .compare import compare
 from .decide import Evidence, InputEv, decide
 
 HARNESS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "harness.py")
-MARK = "SBGV7RESULT:"
 BRANCH_OPS = ("POP_JUMP_IF_FALSE", "POP_JUMP_IF_TRUE", "POP_JUMP_IF_NONE", "POP_JUMP_IF_NOT_NONE", "FOR_ITER", "SEND")
 
 
@@ -39,6 +38,7 @@ class Ctx:
         self.cfg, self.log, self.entry, self.spent = cfg, log, entry, 0.0
         self.src = {"base": open(base_path, "rb").read(), "variant": open(var_path, "rb").read()}
         self.path = {"base": os.path.abspath(base_path), "variant": os.path.abspath(var_path)}
+        self.tampered = False  # any run had a result-protocol violation or monitoring-state tamper
         self.caps = isolation.capabilities()
         self.env_id = R.content_id("Env", [sys.version, sys.platform, {k: v["state"] for k, v in self.caps.items() if isinstance(v, dict)}])
         self.policy_id = R.content_id("Policy", [R.sha(open(isolation.PROFILE, "rb").read()) if os.path.exists(isolation.PROFILE) else "",
@@ -54,27 +54,35 @@ class Ctx:
         c = self.cfg["budget"]["per_run"]
         h = R.sha(R.canon_json([inp["args"], inp["kwargs"]]))
         arg = json.dumps(dict(src=self.path[side], entry=self.entry, mode=mode, args=inp["args"], kwargs=inp["kwargs"], ctl=ctl))
-        r = isolation.run_script(HARNESS, [arg], timeout_s=c["wall_s"], cpu_s=c["cpu_s"], mem_mb=c["rss_mib"], out_cap=4 << 20)
+        r = isolation.run_script(HARNESS, [arg], timeout_s=c["wall_s"], cpu_s=c["cpu_s"], mem_mb=c["rss_mib"], out_cap=4 << 20, channel=True)
         self.spent += r.cpu_s
         out = RunOut("", None)
         out.sandbox_ok = r.status != "SANDBOX_UNAVAILABLE" and r.cleanup_verified and not r.orphans_found and "rlimit could not" not in r.detail
         out.truncated = r.stdout_truncated
-        line = next((l for l in reversed(r.stdout.splitlines()) if l.startswith(MARK)), None)
+        d = None
+        if r.payload is not None:
+            try:
+                d = json.loads(r.payload)
+                if not isinstance(d, dict) or "phase" not in d: raise ValueError("no phase")
+            except ValueError:
+                d, r.protocol_error = None, "malformed"
         if r.status in ("TIMEOUT", "RESOURCE"):
             out.limit = r.detail
-        elif line and not r.stdout_truncated:
-            d = json.loads(line[len(MARK):])
+        elif d is not None:
             out.phase, out.msg = d["phase"], d.get("msg", "")
             out.truncated |= bool(d.get("stdout_trunc"))
-            out.tampered, out.sig = d.get("tampered", False), d.get("sig")
+            out.tampered, out.sig = bool(d.get("tampered", False)), d.get("sig")
             out.hits, out.branches = set(d.get("hits", [])), d.get("branches", {})
             if d["phase"] == "ok" and mode == "call": out.obs = d
-        elif out.sandbox_ok and not r.stdout_truncated:  # hard exit/kill without a result line
-            out.obs = {"t": "crashed", "signal": r.signal} if r.signal else {"t": "exited", "code": ["int", str(r.returncode)]}
+        elif out.sandbox_ok and r.signal and r.protocol_error == "missing":  # killed by a signal: a parent-observed fact, not a claim
+            out.obs = {"t": "crashed", "signal": r.signal}
             out.phase = "ok"
+        elif out.sandbox_ok:  # no authentic result: exit without a frame (os._exit, premature exit), bad/duplicate/forged frame
+            out.tampered, out.phase, out.msg = True, "protocol_error", r.protocol_error or "missing"
+        self.tampered |= out.tampered
         obs_id = self.log.append(R.Observation(out.obs)) if out.obs else None
         summ = {"status": r.status, "detail": r.detail, "phase": out.phase, "limit": out.limit, "truncated": out.truncated,
-                "sandbox_ok": out.sandbox_ok, "tampered": out.tampered, "n_hits": len(out.hits)}
+                "sandbox_ok": out.sandbox_ok, "tampered": out.tampered, "protocol_error": r.protocol_error, "n_hits": len(out.hits)}
         rec = R.Run(self.vers[side], h, kind, idx, self.h_id, obs_id, summ,
                     {"cpu_s": r.cpu_s, "wall_s": r.wall_s, "hits": sorted(out.hits)}, rid_extra=f"{mode}/{ctl}")
         out.run_id = self.log.append(rec)
@@ -136,7 +144,9 @@ def process_input(ctx, inp):
     ev.sandbox_ok = all(r.sandbox_ok for r in allruns)
     ev.truncated = any(r.truncated for r in allruns)
     for r in allruns:
-        if r.phase in ("import_error", "entry_missing", "harness_error"):
+        if r.tampered:
+            stat.append(("unsafe_program", f"{inp['id']}: {r.msg or 'trace tamper'} (result protocol violation or monitoring tamper)"))
+        elif r.phase in ("import_error", "entry_missing", "harness_error"):
             stat.append(("tool_error" if r.phase == "harness_error" else "import_error", f"{inp['id']}: {r.phase} in call run: {r.msg}"))
     hits = {s: set().union(*[r.hits for r in runs[s]]) for s in runs}
     br = {s: {} for s in runs}
@@ -194,6 +204,7 @@ def compare_versions(base_path, var_path, entry, inputs, cfg, out_dir):
         r = ctx.run(s, {"args": [], "kwargs": {}}, "probe", 0, mode="probe")
         probe_runs.append(r.run_id)
         if not r.sandbox_ok: st.append(("sandbox_failure", f"{s}: probe run"))
+        elif r.tampered: st.append(("unsafe_program", f"{s}: probe {r.msg or 'trace tamper'}"))
         elif r.limit: st.append(("resource_limit", f"{s}: import hit a limit ({r.limit})"))
         elif r.phase == "import_error": st.append(("import_error", f"{s}: {r.msg}"))
         elif r.phase == "entry_missing": st.append(("unsupported_signature", f"{s}: entry_missing {r.msg}"))
@@ -230,7 +241,7 @@ def compare_versions(base_path, var_path, entry, inputs, cfg, out_dir):
         got = sum(min(2, len(brs[s].get(k, ()))) for k in stat)
         cov[s] = 1.0 if not stat else got / (2 * len(stat))
     ev_all = Evidence(inputs=evs, blockers=st, changed_units=changed, hit_units=hit_units, branch_cov=cov,
-                      budget_exhausted=stop == "budget", tampered=False, s2_floor=cfg["suff"]["s2_branch_floor"])
+                      budget_exhausted=stop == "budget", tampered=ctx.tampered, s2_floor=cfg["suff"]["s2_branch_floor"])
     if st and not evs:
         ev_all.inputs = None  # nothing was executed because a static blocker fired
     value, level, primary, secondary, wid, blockers, floors = decide(ev_all)
