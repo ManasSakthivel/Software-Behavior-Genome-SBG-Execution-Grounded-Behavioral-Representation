@@ -62,3 +62,6 @@ From development data: K=78, 106 pairs, p0 (B1 detection) 0.774, discordance pi 
 | B2, B5 | partial | B2 QuixBugs only (used as QuixBugs truth); B5 237/321, V6 artifact lookup, excluded from CSV |
 | Published tools (shadow SE, Testora, Mokav, AFL etc.) | NOT IMPLEMENTED | no comparison; no superiority claim over them |
 | S3, explorer, Linux container isolation, declared renames, generator entries | NOT IMPLEMENTED | `docs/architecture/V7B_IMPLEMENTATION.md`; they cause most INSUFFICIENT outcomes (SP-2 renames, generators) |
+
+## Superseded numbers (post-fix rerun, commit 700532b8; see POSTFIX_RERUN_NOTE.md)
+The text above is preserved as originally written. After the NO_RUN fix, 3 quixbugs_neg pairs (knapsack sp-1, knapsack sp-3, levenshtein sp-3) moved from NO_DIVERGENCE_OBSERVED/S2 to INSUFFICIENT (resource_limit). Superseded -> current (`results/postfix/`): V7-B abstention 0.349 [0.300, 0.435] -> 0.360 [0.306, 0.435]; V7-B on NO_OBS_DIFF 72 INSUFFICIENT / 80 NO_DIV -> 75 / 77; SP negatives S2 47 -> 44, INSUFFICIENT 34 -> 37; resource_limit reasons 4 -> 7; sensitivity (no SP-2) abstention 0.188 -> 0.203 [0.140, 0.336]; risk-coverage all levels 0.651/0.077 -> 0.640/0.079, >= S2 0.589/0.053 -> 0.578/0.054. Detection (0.708), false assurance (0.123), false alarm (0.000), baselines, other paired comparisons and power are unchanged.

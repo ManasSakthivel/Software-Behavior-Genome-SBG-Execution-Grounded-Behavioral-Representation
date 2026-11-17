@@ -7,11 +7,13 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np, pandas as pd
 
-OUT = Path("results/figures"); OUT.mkdir(parents=True, exist_ok=True)
-D = pd.read_csv("results/processed/dev_pairs_per_system.csv", dtype=str, keep_default_na=False)
-SM = pd.read_csv("results/statistics/system_metrics.csv")
-RC = pd.read_csv("results/statistics/risk_coverage.csv")
-K1 = [json.loads(l) for l in open("results/processed/k1_spike_per_pair.jsonl")]
+import os
+PX = os.environ.get("POSTFIX_DIR")  # postfix rerun: read/write under this dir
+OUT = Path(PX + "/figures" if PX else "results/figures"); OUT.mkdir(parents=True, exist_ok=True)
+D = pd.read_csv((PX + "/processed" if PX else "results/processed") + "/dev_pairs_per_system.csv", dtype=str, keep_default_na=False)
+SM = pd.read_csv((PX + "/statistics" if PX else "results/statistics") + "/system_metrics.csv")
+RC = pd.read_csv((PX + "/statistics" if PX else "results/statistics") + "/risk_coverage.csv")
+K1 = [json.loads(l) for l in open((PX + "/processed" if PX else "results/processed") + "/k1_spike_per_pair.jsonl")]
 K1 = [r for r in K1 if r["tag"] == "run1"]
 SYS = ["V7-B", "B1", "B1+rep", "B3", "B4"]
 COL = {"V7-B": "#0072B2", "B1": "#E69F00", "B1+rep": "#009E73", "B3": "#CC79A7", "B4": "#999999"}

@@ -3,8 +3,8 @@
 Truth is never relabelled: QuixBugs DIV = the benchmark's own declared tests distinguish buggy from fixed (B2 oracle,
 independent of V7-B/B1/B3); synthetic = generator label; suspect generator labels are marked SUSPECT_LABEL (excluded from
 primary denominators, still counted); BugsInPy units and QuixBugs pairs without a test witness are UNLABELLED."""
-import csv, json, re
-P = "results/processed/"
+import csv, json, os, re
+P = os.environ.get("K1_PROC", "results/processed").rstrip("/") + "/"
 rd = lambda f: [json.loads(l) for l in open(P + f)]
 k1 = {(r["arm"], r["pair"]): r for r in rd("k1_spike_per_pair.jsonl") if r["tag"] == "run1"}
 bl = {(r["arm"], r["pair"]): r for r in rd("baselines_per_pair.jsonl")}

@@ -9,8 +9,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, ROOT)
-RAW = os.path.join(ROOT, "results/raw/k1_spike")
-PROC = os.path.join(ROOT, "results/processed")
+RAW = os.path.join(ROOT, os.environ.get("K1_RAW", "results/raw/k1_spike"))
+PROC = os.path.join(ROOT, os.environ.get("K1_PROC", "results/processed"))
 CFG = {"budget": {"cpu_seconds": 60, "per_run": {"cpu_s": 2, "wall_s": 5}}}
 MAXIN, SYN_MAX, WORKERS = 12, 150, 4
 ENV = dict(os.environ, OMP_NUM_THREADS="1", PYTHONHASHSEED="0")

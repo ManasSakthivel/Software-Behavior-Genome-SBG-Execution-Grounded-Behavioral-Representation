@@ -68,3 +68,6 @@ BugsInPy extracted units (REAL_BUGFIX, synthetic-battery inputs): 6 DIVERGENT, 1
 
 ## Limits of this spike
 Single machine and platform below minimum isolation; at most 12 inputs per pair; no exploration beyond given inputs; no replay/structure baselines (so K2 activation and K3 untested); sample of synthetic pairs is one stratified draw (seed 20261117); counts above are from `k1_spike_summary.json` and may be recomputed with `k1_spike.py summarize`.
+
+## Superseded numbers (post-fix rerun, commit 700532b8; see POSTFIX_RERUN_NOTE.md)
+Original text above is preserved. After the NO_RUN fix only the quixbugs_neg arm changed (3 pairs: knapsack sp-1, knapsack sp-3, levenshtein sp-3, NO_DIV S2 -> INSUFFICIENT resource_limit): quixbugs_neg row 1 / 47 S2 / 3 S1 / 34 INSUFFICIENT -> 1 / 44 / 3 / 37; INSUFFICIENT fraction 40% -> 43.5% with added reason resource_limit 3; combined line "S2 47, INSUFFICIENT 34 of 85" -> "S2 44, INSUFFICIENT 37 of 85". Other arms, K1 (not met) and K2 conclusions, and determinism for quixbugs/bugsinpy_units/quixbugs_neg are unchanged; synthetic determinism was not re-run post-fix.
