@@ -7,7 +7,8 @@ from . import baselines as B
 from ..config import load_inputs
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-RAW, PROC = os.path.join(ROOT, "results/raw/baselines"), os.path.join(ROOT, "results/processed")
+RAW = os.path.join(ROOT, os.environ.get("BL_RAW", "results/raw/baselines"))  # env overrides let reproduction runs avoid overwriting committed results
+PROC = os.path.join(ROOT, os.environ.get("K1_PROC", "results/processed"))
 CAP, SEED = 60, 1001  # CPU-s per pair (= V7-B headline budget); first exploration_seed of the spec
 CFG = {"budget": {"cpu_seconds": CAP, "per_run": {"cpu_s": 2, "wall_s": 5}}}  # identical to the K1 spike
 os.environ["OMP_NUM_THREADS"] = "1"; os.environ["PYTHONHASHSEED"] = "0"

@@ -185,7 +185,7 @@ def paired(o, systems, ref, boot, seed, n_perm):
             rows.append(dict(test=t, reference=r, outcome=m, family="primary" if m in PRIMARY_OUT else "secondary",
                              n_pairs=n, projects=int(proj.nunique()), rate_test=float(yt.mean()) if n else None, rate_ref=rr if n else None,
                              diff=diff, diff_lo=ci["lo"], diff_hi=ci["hi"], improvement=imp, impr_lo=ilo, impr_hi=ihi,
-                             rel_change=(None if not rr else diff / rr), b_test_only=bb, c_ref_only=cc,
+                             rel_change=(None if (not rr or diff is None) else diff / rr), b_test_only=bb, c_ref_only=cc,
                              discordance=(bb + cc) / n if n else None, odds_b_over_c=(bb / cc if cc else None),
                              p_signflip=sign_flip_p(dj.to_numpy(), n_perm, seed), p_mcnemar_exact_pairlevel=mcnemar_exact(bb, cc)))
     df = pd.DataFrame(rows)

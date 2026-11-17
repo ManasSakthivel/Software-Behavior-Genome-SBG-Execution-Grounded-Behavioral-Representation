@@ -1,524 +1,256 @@
-# Software Behavior Genome (SBG)
+# SBG V7-B: an evidence contract for differential execution of code changes
 
-[![CI](https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation/actions/workflows/ci.yml/badge.svg)](https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation/actions/workflows/ci.yml)
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
-
-Can you tell whether a code change altered what a program *does*, without
-looking at what it outputs?
-
-SBG builds a behavioural representation from execution traces — call-graph
-topology, call-order bigrams, exception structure, temporal patterns, abstract
-value-state transitions — and scores the distance between two versions of a
-program. The representation never reads return values, printed output, expected
-outputs or labels. The point of that constraint is to rule out a trivial
-solution: a method that "detects behavioural change" by comparing outputs has
-not learned anything about behaviour.
-
-**This release is a correction.** An earlier version of this README reported
-results that the evidence does not support. What follows replaces them, and the
-withdrawn claims are listed below rather than quietly removed.
+**Status: exploratory research prototype. Branch `research/v7b-final-validation`. No confirmatory result exists.**
+The previous README (V5/V6-era claims) is kept unchanged at [`docs/README_pre_v7b.md`](docs/README_pre_v7b.md). Its numbers (for example AUROC 0.897) are about a different method (V5/V6 behavioural distance), were measured on developer-authored benchmarks, and are **not** results of V7-B.
 
 ---
 
-## Update — 2026-10-30 (size-aware evaluation, branch `remediation/sbg-v4`)
+## 1. Positioning
 
-The sections below describe the V6-era correction and are retained as the historical record. Since then the project
-adopted a **size-aware evaluation design** (composed pairs, dynamic-oracle labels, preregistered Holm-corrected tests;
-`docs/current/EVALUATION_PLAN_V9.md`) and ran frozen evaluations on V9c-validation and V10. The current, authoritative
-summary is [`artifacts/paper_evidence/FINAL_SPRINT_REPORT.md`](artifacts/paper_evidence/FINAL_SPRINT_REPORT.md).
+V7-B is a small Python tool plus an evaluation harness. Given two versions of a Python function and a set of inputs, it runs both in isolated child processes and reports one of three verdicts, each backed by a replayable evidence record:
 
-- **Supported:** SBG V5 separates behaviour-changing from behaviour-preserving transformations far better than edit size
-  (V10, 19 held-out programs, 638 pairs: AUROC 0.897 [0.863, 0.922] vs 0.616; V9c validation: 0.751 [0.706, 0.794];
-  +0.254 AUROC when added to edit size; 0.875 with edit size exactly matched). V10 comes from the *same author and
-  generation procedure* as development; it is **not** independently authored software.
-- **Not supported:** any gain from adding SBG to edit size **plus execution statistics** (H4: +0.006, 95 % CI
-  [−0.069, +0.068], Holm p = 1.0 on V10; +0.021 [−0.005, +0.048] on V9c validation). This is a null, not evidence of equivalence.
-  SBG V6 is not shown to improve on V5 (Holm p = 0.090).
-- **Not supported / negative:** real-bug transfer (BugsInPy 0.497, QuixBugs 0.444 after excluding SP-2 negatives);
-  value-only mutations (SC-6) are invisible by design; the COBOL corpus tried in this sprint contains Db2 precompiler
-  test snippets and cannot support an evaluation (`artifacts/paper_evidence/COBOL_EVALUATION_REPORT.md`).
-- Novelty and claim boundaries: [`FINAL_NOVELTY_POSITION.md`](artifacts/paper_evidence/FINAL_NOVELTY_POSITION.md),
-  [`CLAIM_TO_EVIDENCE_MATRIX.md`](artifacts/paper_evidence/CLAIM_TO_EVIDENCE_MATRIX.md).
+- `DIVERGENT_OBSERVABLE`: a replay-confirmed input on which the two versions differ in an observed channel (a witness).
+- `INSUFFICIENT(reason)`: the tool refuses to conclude.
+- `NO_DIVERGENCE_OBSERVED(S1|S2)`: no difference was seen on the inputs tried, plus a sufficiency level describing how much of the changed code those inputs reached.
 
----
+It is positioned as a **design and feasibility study with a negative-result flavour**, not as a validated detector. An independent red-team review ([`reports/final/INDEPENDENT_RED_TEAM_REVIEW.md`](reports/final/INDEPENDENT_RED_TEAM_REVIEW.md)) rated it "publishable only as a design/feasibility/negative-result report; not ready as a validation paper", and nothing in this repository contradicts that.
 
-## The short version
-
-- **One claim is strongly supported: execution beats structure.** On the
-  strongest arm, a structural AST baseline scores AUROC **0.105** on the same
-  pairs where the execution-based distance scores **0.601** — a gap of +0.50,
-  Holm-corrected p = 0.006. Structural similarity is not merely uninformative
-  here, it is *anti*-correlated with semantic equivalence: the
-  semantics-preserving transformations rewrite the source heavily while the
-  semantics-changing mutations alter one operator. That inversion is exactly what
-  the project set out to address, and it holds in all three evaluation arms.
-- **The rest is weak.** SBG V5's 0.601 [0.490, 0.706] comes from 259 pairs over 7
-  programs and sits above the 0.551 label-shuffle noise floor, but it is not
-  distinguishable from any cheap execution statistic — not `exception_fraction`,
-  not `call_count`, not the V3 distance it was meant to improve on. On the
-  *published* benchmark under the same protocol it falls to 0.565, and to 0.502 —
-  chance — over every pair it can evaluate.
-- **The published evaluation was measuring something else.** Its entry-point
-  discovery traced each program's own `test_*` self-test driver, so the
-  "output-free" exception features were recording whether the program's unit
-  tests passed. Removing that leak costs about 0.08 AUROC (0.640 → 0.565 on the
-  same pairs), which is larger than every effect the paper claimed.
-- **40% of the benchmark's positive labels were false.** Mutations were being
-  placed in code the evaluation never executes. Repairing the benchmark moves
-  every method by ~0.09 AUROC, in the same direction, which is why the
-  aggregate number was never about the representation.
-- A **corrected protocol**, a **repaired benchmark**, corrected statistics and a
-  CI gate that keeps the numbers and the prose in agreement are all included.
-
-If you are here to check whether the claims are real, start with
-[`docs/current/EVALUATION_PROTOCOL.md`](docs/current/EVALUATION_PROTOCOL.md) and
-[`FINAL_STANFORD_READINESS_REPORT.md`](FINAL_STANFORD_READINESS_REPORT.md).
-
----
-
-## Claims withdrawn in this release
-
-| Previously reported | Actually |
-|---|---|
-| Hard negatives: **12/12**, labelled "Behavioral oracle" | That is an output comparison. SBG V5 scores 5/12 at the pre-fixed threshold |
-| Regression detection: **14/15**, labelled "Behavioral oracle" | Also an output comparison. SBG V5 scores 7/15 |
-| Silent bugs: **9/9 detected** | SBG V5 detects 3/9; the output-reading reference detects 9/9 |
-| Benchmark of **3,777 pairs** over **99 programs** | 3,577 pairs over 60 assigned programs (64 files on disk) |
-| Main AUROC over **744 test pairs** | Computed over the 643 that executed. All 101 failures are now categorised |
-| `exception_fraction` alone (0.593) beats SBG | 0.593 is the V3 exception *component* (two features), not `exception_fraction` (0.567). And under the published protocol neither is a shortcut — both read a leaked output oracle |
-| **516 tests** | The suite has grown; `make test` prints the count |
-| `make reproduce` "verifies reproducibility" | It compared hashes of committed files. Verification and reproduction are now separate targets |
-
-`experiments/final/consistency_check.py` fails the build if any of these
-reappears in a current document.
-
----
-
-## What went wrong, and how it was found
-
-### The output-free constraint was violated by the protocol, not the code
-
-Entry-point discovery falls back to the call-graph root — documented as "the
-function not called by any other module-level function". In this corpus that is
-each program's own `test_*` self-test driver: a driver calls everything, and
-nothing calls it.
-
-Tracing a self-test driver puts its `assert` statements inside the traced
-region. A mutant that breaks an assertion raises `AssertionError` there, and
-that lands in `exception_type_set` and `exception_rate`. Those features then
-encode *whether the program's own unit tests passed*.
-
-The earlier safeguard audit reported 9/9 checks passing, and its checks were
-correct as far as they went: no SBG code path reads a return value. It did not
-examine what was being executed.
-
-The audit is static, deterministic, and executes nothing:
-`experiments/final/output_oracle_leak_audit.py`.
-
-### 40% of the positive labels were false
-
-Mutation sites were collected with `ast.walk`, which is breadth-first. Module-
-level statements are visited before anything nested, so site 0 — the site every
-generated variant used — lands on scaffolding: the module docstring, the
-`if __name__ == '__main__'` guard, or a `test_*` driver. The result is a pair
-labelled CHANGED whose two programs behave identically when the entry function
-runs.
-
-180 variants had `__main__ ==` mutated to `!=`, which makes the file execute its
-own test driver on import; 22 of those crash while loading, which is part of why
-101 test pairs never reached the evaluation.
-
-### 103 variants did not compile
-
-SP-3 could emit `return None` at module or class scope. Its `validate()` used
-`ast.parse`, which *accepts* a module-level `return` — only the compiler rejects
-it — so the corrupt variants passed validation and were silently dropped later.
-
-### The confidence interval was not the one described
-
-`artifacts/v5/B07/results_test.json` records
-`"bootstrap": "cluster_by_base_program"`, but `baselines/v5/b07_dynamic_v5.py`
-calls `bootstrap_auroc_ci` without `pair_ids`, which takes the pair-level
-branch. 744 pairs come from 13 programs; resampling pairs understates the
-uncertainty. Permutation p-values could also be exactly 0, which a Monte Carlo
-test cannot support.
-
-`sbg/statistics.py` replaces all of it: clustered bootstrap, within-cluster
-permutation with the (b+1)/(m+1) estimator, a paired clustered bootstrap for
-differences between predictors, Wilson intervals for the small detection-rate
-denominators, and Holm correction. The old module is left untouched so the
-published artifacts stay reproducible.
-
-### Two tracer defects
-
-A timed-out worker thread left the process-global `sys.stdout` hijacked, so
-every later write by the host vanished into a dead thread's buffer — which
-silently swallowed the harness's own progress output and made a running job look
-hung. And timed-out workers accumulated: a mutant that loops forever left one
-unkillable thread per input per run, competing for the GIL with everything
-traced afterwards. Both are fixed and covered by
-`tests/test_tracer_isolation.py`.
-
----
-
-## Results
-
-Every number below is generated from an authoritative artifact by
-`experiments/final/make_tables.py`. None is typed by hand, and CI fails if the
-block drifts from the artifacts.
-
-<!-- BEGIN GENERATED RESULTS -->
-<!-- Generated by experiments/final/make_tables.py. Do not edit by hand; run `make tables`. -->
-
-### Main benchmark
-
-Test split: **744** nominal pairs over 13 programs. **643** executed under the published protocol; **520** of those also pass the static benchmark-validity audit. All three denominators are reported because the published result quoted the first and computed the second.
-
-AUROC, tie-aware; interval is a cluster bootstrap resampling base programs (the unit of independence), not pairs.
-
-| Predictor | evaluated (n=643) | statically valid (n=520) |
-|---|---|---|
-| `sbg_v5` | 0.546 [0.494, 0.617] | 0.640 [0.577, 0.706] |
-| `sbg_v3` | 0.553 [0.498, 0.627] | 0.648 [0.580, 0.717] |
-| `exception_component_v3` | 0.602 [0.557, 0.648] | 0.689 [0.626, 0.743] |
-| `exception_fraction` | 0.577 [0.532, 0.624] | 0.636 [0.561, 0.704] |
-| `call_count` | 0.576 [0.529, 0.630] | 0.662 [0.598, 0.720] |
-| `combined_shortcut` | 0.556 [0.503, 0.622] | 0.650 [0.587, 0.709] |
-| `static_ast` | 0.432 [0.389, 0.477] | 0.437 [0.397, 0.482] |
-| `static_token` | 0.376 [0.335, 0.429] | 0.378 [0.335, 0.442] |
-
-Label-shuffle noise floor on the valid set: **0.566** (95th percentile over 500 within-cluster shuffles). An AUROC below that is not evidence of signal.
-
-Paired comparisons on the valid set (paired cluster bootstrap, Holm-corrected). Overlapping marginal intervals are not a test of a difference.
-
-| SBG V5 versus | ΔAUROC | 95% CI | p (Holm) | significant |
-|---|---:|---|---:|---|
-| `exception_fraction` | +0.004 | [-0.053, 0.084] | 0.9335 | no |
-| `exception_component_v3` | -0.049 | [-0.073, -0.016] | 0.0300 | yes |
-| `call_count` | -0.022 | [-0.039, 0.000] | 0.1639 | no |
-| `combined_shortcut` | -0.010 | [-0.020, 0.005] | 0.2739 | no |
-| `sbg_v3` | -0.008 | [-0.016, -0.000] | 0.1639 | no |
-| `static_ast` | +0.204 | [0.113, 0.299] | 0.0060 | yes |
-
-Pairs that could not be executed, by cause — none is discarded:
-
-| Cause | Pairs |
-|---|---:|
-| `base:no_entry_function` | 58 |
-| `variant:import_error` | 22 |
-| `variant:no_entry_function` | 3 |
-| `variant:syntax_error` | 18 |
-
-### Same benchmark, output-free protocol
-
-Entry-point discovery excludes self-test drivers and inputs are synthesised from parameter annotations, so no assertion is traced. Programs whose signatures cannot be supplied from the fixed input battery are out of scope by a static rule applied identically to every predictor, which is why the denominator falls.
-
-**378** of 744 pairs executed; **294** are statistically valid.
-
-| Predictor | evaluated | statically valid |
-|---|---|---|
-| `sbg_v5` | 0.502 [0.466, 0.547] | 0.565 [0.489, 0.639] |
-| `sbg_v3` | 0.515 [0.485, 0.544] | 0.564 [0.500, 0.622] |
-| `exception_component_v3` | 0.529 [0.490, 0.574] | 0.578 [0.510, 0.640] |
-| `exception_fraction` | 0.516 [0.484, 0.559] | 0.551 [0.493, 0.615] |
-| `call_count` | 0.493 [0.471, 0.514] | 0.524 [0.478, 0.584] |
-| `combined_shortcut` | 0.498 [0.478, 0.517] | 0.562 [0.513, 0.612] |
-| `static_ast` | 0.395 [0.352, 0.439] | 0.408 [0.367, 0.461] |
-| `static_token` | 0.351 [0.315, 0.416] | 0.363 [0.331, 0.434] |
-
-### Corrected benchmark, output-free protocol
-
-The strongest arm: no leaked test oracle and no mislabelled pairs. Same programs and same splits as the published benchmark, regenerated with the transformation operators fixed.
-
-**259** of 488 pairs executed. Every executed pair is statistically valid, because the corrected generator rejects uncompilable and unobservable candidates at generation time.
-
-| Predictor | AUROC | 95% CI | p (within-cluster permutation) |
-|---|---:|---|---:|
-| `sbg_v5` | 0.601 | [0.490, 0.706] | 0.0005 |
-| `sbg_v3` | 0.599 | [0.500, 0.675] | 0.0010 |
-| `exception_component_v3` | 0.659 | [0.551, 0.742] | 0.0005 |
-| `exception_fraction` | 0.618 | [0.520, 0.700] | 0.0005 |
-| `call_count` | 0.565 | [0.463, 0.682] | 0.0020 |
-| `combined_shortcut` | 0.583 | [0.491, 0.671] | 0.0045 |
-| `static_ast` | 0.105 | [0.066, 0.157] | 1.0000 |
-| `static_token` | 0.169 | [0.130, 0.224] | 1.0000 |
-
-Label-shuffle noise floor: **0.551**; SBG V5 sits above it. With 7 programs, the paired comparisons (Holm-corrected) split cleanly:
-
-| SBG V5 versus | ΔAUROC | 95% CI | p (Holm) | significant |
-|---|---:|---|---:|---|
-| `exception_fraction` | -0.017 | [-0.056, 0.035] | 1.0000 | no |
-| `exception_component_v3` | -0.057 | [-0.097, 0.004] | 0.3598 | no |
-| `call_count` | +0.036 | [-0.085, 0.168] | 1.0000 | no |
-| `combined_shortcut` | +0.019 | [-0.022, 0.069] | 1.0000 | no |
-| `sbg_v3` | +0.003 | [-0.023, 0.045] | 1.0000 | no |
-| `static_ast` | +0.497 | [0.361, 0.614] | 0.0060 | yes |
-
-SBG beats `static_ast` and is not distinguishable from `call_count`, `combined_shortcut`, `exception_component_v3`, `exception_fraction`, `sbg_v3`.
-
-### Where the representation was claimed to win
-
-Both rows below were reported in an earlier README as SBG results. They are output comparisons. The SBG figures are the corrected ones.
-
-| Task | SBG V5, output-free | Output-reading reference |
-|---|---|---|
-| Hard negatives, 12 pairs (canonical inputs) | **5/12** | 12/12 |
-| Hard negatives, 12 pairs (declared inputs) | **5/12** | 12/12 |
-| Regression corpus, 15 bug/fix pairs | **7/15** | 13/15 |
-| Silent bugs (invisible to exception and volume shortcuts) | **3/9** | 9/9 |
-
-Decision threshold τ* = 0.08. No derivation artifact for this value exists in the repository, so the claim that it was fixed in advance is unverified (see docs/current/THRESHOLD_PROVENANCE.md).
-
-### Why the published comparison does not mean what it said
-
-The published protocol's entry-point discovery returns the call-graph root, which in this corpus is each program's own `test_*` self-test driver. Tracing it puts the driver's `assert` statements inside the traced region, so the exception features record whether the program's own tests passed.
+## 2. Overview
 
 | | |
-|---|---:|
-| Corpus programs | 64 |
-| Entry function is a self-test driver | 47 |
-| `assert` statements inside traced regions | 611 |
-| Programs where the canonical inputs never execute | 49 |
-
-### Benchmark
-
-**3577** pairs over **60** programs (64 files on disk; 4 take part in no experiment). All six split intersections empty.
-
-The published benchmark carries three defects, all measured statically:
-
-| Defect | Test split | All splits |
-|---|---:|---:|
-| Variants that do not compile | 20 | 103 |
-| CHANGED pairs whose mutation the entry function cannot reach | 135 of 366 | 785 |
-| Pairs with no discoverable entry function | 56 | 118 |
-
-`benchmark/datasets/v6/` regenerates the benchmark with the operators fixed: **2340** pairs, 0 uncompilable, 0 unobservable, same programs and same splits (test: 488 pairs, 13 programs).
-
-<!-- END GENERATED RESULTS -->
-
-### Reading these numbers
-
-**The two protocols answer different questions.** The published protocol traces
-self-test drivers, so its exception features carry the programs' own assertions.
-Its 0.640 on the valid set is therefore an upper bound contaminated by an output
-oracle, not an output-free result. The output-free protocol removes the
-contamination and the same predictor on the same pairs falls to 0.565. That
-0.075 gap is the size of the leak.
-
-**On the output-free protocol the result is weak and equivocal.** Over the 378
-evaluable pairs of the published benchmark SBG V5 sits at 0.502 — chance. Over
-the 294 statistically valid pairs it reaches 0.565; the within-cluster
-permutation test rejects the null (p = 0.004) but the clustered bootstrap
-interval still includes 0.5, and the two disagreeing is what a genuinely
-marginal effect looks like with 7 programs.
-
-**Repairing the benchmark is what recovers the signal.** On the corrected
-benchmark under the same output-free protocol, SBG V5 reaches 0.601 with
-permutation p < 0.001, above the noise floor. That arm is the one to judge the
-method on: it has neither the leaked test oracle nor the mislabelled positives.
-
-**Against structure, the margin is decisive; against execution statistics, there
-is none.** The structural AST baseline scores 0.105 and the token baseline 0.169
-on those same 259 pairs. SBG beats both by a margin no sample this small could
-produce by chance (ΔAUROC +0.50, Holm p = 0.006). But `exception_component_v3`
-(0.659) and the state genome alone (0.635) both score *higher* than the full V5
-distance, and no comparison against any execution-derived reference is
-significant. The supportable statement is that executing a program tells you
-something reading it does not — not that this particular representation of the
-execution is the right one.
-
-**The benchmark defect moved every method equally.** The jump from ~0.55 on the
-evaluable set to ~0.64 on the valid set under the published protocol is not
-about SBG: a mislabelled positive and a trivially-equal negative both produce
-distance exactly 0, so the invalid pairs pile both classes onto the same tie and
-drag every predictor toward 0.5.
-
-**The distance formula loses to its own parts.** SBG V5 scores below `sbg_v3`
-and below its temporal and state components on the published protocol. A
-fixed-weight combination that underperforms its components is a statement about
-the weights, and nobody has fitted them — so "the representation is weak" is not
-yet separable from "these weights are wrong". See
-[`docs/current/LIMITATIONS.md`](docs/current/LIMITATIONS.md).
-
----
-
-## Claim strength
-
-| Claim | Status |
 |---|---|
-| Execution-grounded comparison beats structural comparison | **Supported** — ΔAUROC +0.50 over a static AST baseline on the corrected benchmark, Holm p = 0.006; significant in all three evaluation arms |
-| Structural similarity is anti-correlated with semantic equivalence on this benchmark | **Supported** — static AST AUROC 0.105, static token 0.169, both far below 0.5 |
-| An output-free execution distance separates CHANGED from EQUIVALENT above chance | **Supported on the corrected benchmark** — AUROC 0.601, permutation p < 0.001, above the 0.551 noise floor. On the published benchmark it is 0.565 with a bootstrap interval that includes 0.5, and 0.502 over all evaluable pairs |
-| The published protocol violates the output-free constraint | **Supported** — static audit, 47/64 programs, 611 traced assertions |
-| 40% of the benchmark's CHANGED labels are unobservable | **Supported** — static audit, 135/336 in the test split |
-| SBG V5 beats the cheapest execution statistic | **Not supported** — under the output-free protocol no paired comparison against any reference is significant after Holm correction |
-| The multi-dimensional representation adds value over V3 | **Not supported** — ΔAUROC −0.008 under the published protocol, +0.001 under the output-free one; V5 scores below its own temporal and state components |
-| SBG detects behavioural change that output comparison misses | **Not supported** — the output-reading reference dominates on every auxiliary benchmark |
-| The published 0.593-beats-0.551 comparison shows a shortcut defeating the representation | **Withdrawn** — under a protocol that traces self-test drivers, the exception features are a leaked output oracle, not a shortcut |
-| The representation generalises beyond this corpus | **Open** — external corpora not verified in this release |
-| The distance formula's weights are the limit rather than the representation | **Open** — a learned combination has not been run |
+| Input | two `.py` files, the name of one top-level function, a JSON list of arguments, an optional JSON config |
+| Output | `verdict.json` and a hash-chained `evidence.jsonl` in an output directory |
+| Isolation | fresh child process per run under macOS `sandbox-exec` (network and writes denied, rlimits) |
+| Scope | top-level Python functions with JSON-representable arguments, CPython 3.13, macOS |
+| Evaluation | 321 development pairs from QuixBugs, BugsInPy units and synthetic transformations, all **non-pristine** |
+| Code | [`sbgv7/`](sbgv7) (about 1,100 lines); V5/V6 code (`sbg/`, `sbgv6/`) is untouched |
 
-Nothing here uses "proves", "solves" or "state of the art", because nothing here
-would support them.
+## 3. The problem
 
----
+A reviewer who sees a code change wants to know whether the behaviour changed. Running both versions on some inputs and comparing outputs (differential testing) can find a difference but cannot show there is none; a quiet run is easily over-read as assurance. V7-B asks a narrower question: can a tool report differences with replayable evidence, refuse when its evidence is weak (nondeterminism, changed code never executed), and never state "equivalent"?
 
-## How it works
+## 4. Contributions
+
+### 4.1 Implemented (software exists and is tested)
+- A closed verdict set with no equivalence value; `NO_DIVERGENCE_OBSERVED` cannot be turned into "equal" by the type system (`sbgv7/records.py`, `sbgv7/decide.py`). This is a naming guarantee, not a semantic one (section 7).
+- Witnesses confirmed by repeated fresh-process replay, with per-input outcomes (`CONFIRMED_DIFF`, `UNCONFIRMED_DIFF`, `ENV_SENSITIVE_DIFF`, `SAME`, `QUARANTINED`, `LIMIT_ASYMMETRIC`, `NO_RUN`).
+- A changed-region activation record and S1/S2 sufficiency levels (line coverage of changed lines; S2 adds a branch-direction floor).
+- Content-addressed, hash-chained evidence log and a `trace` function from verdict to runs.
+- A process-per-run isolation layer (macOS only).
+- Baselines B1 (plain differential), B1+rep (repeat 3 times), B2 (declared-test oracle, QuixBugs only), B3 (mutation loop), B4 (edit-size threshold), B5 (lookup of V6 scores for 237 of 321 pairs).
+- Analysis and power scripts with a pre-declared plan ([`research/evaluation/STATISTICAL_ANALYSIS_PLAN.md`](research/evaluation/STATISTICAL_ANALYSIS_PLAN.md)).
+
+### 4.2 Experimentally demonstrated
+**None confirmatory.** No held-out or independent benchmark exists, gate K1 is not met and K5 is not approached. What exists are exploratory development observations (section 11): the tool ran 321 invocations without crashing, reruns of 102 pairs in the post-fix run (139 in the pre-fix run) gave identical verdicts, and it emitted no false alarm on the labelled negatives. These show the harness is stable on development data, not that it is correct or useful.
+
+### 4.3 Exploratory (hypotheses, not findings)
+- That the sufficiency level reduces false assurance relative to plain differential testing. On current data the evidence does not support this (see sections 11 and 14).
+- That replay and control alternation add value over "run it 3 times" (B1+rep). On current data the difference is 2 of 311 pairs, both plain flakiness.
+- That an evidence-contract framing is a useful contribution in itself, independent of detection gains.
+
+Prior-art positioning (witnesses, patch coverage, abstention, flaky filtering all pre-exist) is in [`research/literature/RESEARCH_GAP_AND_NOVELTY_ASSESSMENT.md`](research/literature/RESEARCH_GAP_AND_NOVELTY_ASSESSMENT.md). No "first", "novel" or "state of the art" claim is made.
+
+## 5. Architecture
 
 ```
-two versions of a program
-        |
-        +-- static extraction ----> control, data, error dimensions
-        |
-        +-- dynamic extraction ---> sys.settrace sandbox, seed 42
-                  entry function + fixed input battery
-                  |
-                  +-- V3: call-transition bigrams, coverage, exception causality,
-                  |       input sensitivity, call-depth variance
-                  +-- V5: temporal trigrams, phase diversity, loop profiles
-                  +-- V5: abstract value-state transitions
-                             |
-                             +-- distance_v5 = 0.50*d_v3 + 0.25*d_temporal + 0.25*d_state
+compare BASE.py VARIANT.py --entry F --inputs inputs.json
+   config.py   strict config/inputs validation
+   runner.py   per input: r_det repeats, r_replay fresh replays, k_alt control-alternated runs; activation
+     isolation.py + _child.py + sandbox_darwin.sb   one sandboxed child per run (macOS)
+     harness.py  child-side executor: runs the entry, captures observations, line/branch hits
+     compare.py  boundary comparator (return, exception, stdout, temp files, arg mutation, globals, API break)
+   decide.py     pure function: outcomes + activation -> verdict + sufficiency level
+   records.py    typed, content-addressed, hash-chained evidence; trace()
 ```
 
-Which function gets executed is part of the method, and getting it wrong is what
-this release corrects. Two protocols are implemented and both are runnable:
-`published` reproduces the original exactly, `output_free_v6` excludes
-self-test drivers and synthesises inputs from parameter annotations. See
-[`docs/current/EVALUATION_PROTOCOL.md`](docs/current/EVALUATION_PROTOCOL.md).
+Diagram sources (Graphviz, **not rendered**; no `dot` is installed here): [`paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/figures/`](paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/figures). Implementation status per module: [`docs/architecture/V7B_IMPLEMENTATION.md`](docs/architecture/V7B_IMPLEMENTATION.md). Frozen design: [`reports/final/V7B_FROZEN_SPEC.md`](reports/final/V7B_FROZEN_SPEC.md).
 
----
+## 6. Core concepts
 
-## Quick start
+- **Witness**: an input whose observable outcome differs between versions and is reproduced on fresh replays (`r_replay=5`, agreement on observations only). Timeouts and resource kills are never witnesses.
+- **Observation boundary**: return value, exception type plus normalised message, stdout, sandbox-temp files, argument post-state, module globals written. stderr, resource use and internal state are excluded. Floats compare exactly (NaN equal, -0.0 differs from 0.0) unless a tolerance is configured.
+- **Changed region**: lines that differ between versions (imported read-only from `sbgv6.features.changed_lines`).
+- **Activation**: a changed unit counts as hit only by deterministic, confirmed `SAME` inputs.
+- **Sufficiency**: S1 and S2 are conjunctions of floors on activation and branch-direction coverage. Thresholds (for example 0.80) are **unvalidated defaults**. S0 appears only inside `INSUFFICIENT`. S3 is refused by the config.
+- **Quarantine**: nondeterministic inputs block `NO_DIVERGENCE_OBSERVED` rather than being dropped.
+
+## 7. Verdict semantics
+
+| Verdict | Meaning | Does NOT mean |
+|---|---|---|
+| `DIVERGENT_OBSERVABLE` | a replay-confirmed input differs in an observed channel | that the difference is a bug, or that the diff is the cause of a regression elsewhere |
+| `INSUFFICIENT(reason)` | the tool declines; the primary reason is the highest-ranked blocker (B1..B9), e.g. `changed_region_not_activated`, `unsupported_signature`, `nondeterministic`, `resource_limit` | honest abstention in general: most INSUFFICIENT cases here come from unimplemented engine features (renamed entries, generators, classes) |
+| `NO_DIVERGENCE_OBSERVED(S1\|S2)` | on the inputs tried, nothing differed and the changed region was exercised to the stated level | **equivalence, safety, correctness, "no bug", or any probability or confidence** |
+
+**`NO_DIVERGENCE_OBSERVED` is not equivalence.** It reports what the harness looked at. Real counter-example, run in this repository (section 13): `examples/v7b/variant_hidden.py` differs from `base.py` for every `x >= 1000`, and with three small inputs the tool returns `NO_DIVERGENCE_OBSERVED` at level S1. On development data, 16 of 46 driven BugsInPy real-fix pairs received this verdict (15 at S2) although a real difference exists by construction (inputs came from a synthetic battery, not tests aimed at the bug). Precedence is `DIVERGENT_OBSERVABLE` > `INSUFFICIENT` > `NO_DIVERGENCE_OBSERVED`. Byte-identical sources are "ineligible" and receive no verdict.
+
+S2 can be reached with as few as two inputs: levels ignore input count and diversity.
+
+## 8. Repository layout (real, top level)
+
+```
+sbgv7/                 V7-B engine (this work): runner, harness, decide, records, isolation, baselines/
+tests/v7/              V7-B tests (4 files)
+tests/*.py, tests/v6/  legacy V5/V6 tests
+experiments/v7b/       k1_spike.py: feasibility spike over the 321 pairs
+scripts/               analyze_results.py, power_actual.py, build_dev_pairs_csv.py, generate_figures.py, run_evaluation.sh
+examples/v7b/          tiny worked example used in this README
+external/              vendored QuixBugs and BugsInPy units (4.8 MB)
+datasets/README.md     how data is obtained (no data stored)
+results/               postfix/ (current), processed/ + statistics/ + figures/ (pre-fix, superseded), raw/ (run outputs, 128+ MB)
+research/              benchmarks/, evaluation/, literature/, security/, reproducibility/
+reports/final/         frozen spec, P0 reconciliation, red-team review, execution log
+docs/                  architecture/V7B_IMPLEMENTATION.md, README_pre_v7b.md, legacy current/, archive/, figures/
+paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/   draft manuscript (uncompiled), figure register, Graphviz sources (section 17)
+sbg/, sbgv6/, baselines/, benchmark/, phase5-7/, artifacts/, experiments/final/ ...   V1-V6 legacy, not modified
+```
+
+## 9. Technology stack
+
+CPython 3.13.15 (`.venv`), standard library only for `sbgv7/`. numpy 2.5.5, scipy 1.18.1, pandas 3.1.1, matplotlib 3.11.2 for analysis and figures; pytest 9.2.0. macOS `sandbox-exec`. The legacy `sbg/` library targets Python 3.9+, and CI (`.github/workflows/ci.yml`) is a legacy workflow that is not V7-B specific.
+
+## 10. Installation
 
 ```bash
-git clone https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation.git
-cd Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation
+git clone https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation.git SBG
+cd SBG && git checkout research/v7b-final-validation
+python3.13 -m venv .venv
+.venv/bin/pip install -r requirements-lock.txt numpy scipy pandas matplotlib
+```
+macOS is required for execution (see section 18). The numpy/scipy/pandas/matplotlib versions above are what was present in the author's `.venv`; `requirements-lock.txt` pins only pytest.
 
-python3 -m venv .venv && . .venv/bin/activate
-pip install pytest            # the only dependency
+## 11. Quick start (commands actually run; output captured)
 
-make test                     # full test suite
-make quickstart               # smoke test, instant
-make check                    # verify every committed artifact against its generator
-make help                     # all targets, with runtimes
+Run from the repository root with `.venv/bin/python`. Files are in [`examples/v7b/`](examples/v7b). Each command ran on macOS, CPython 3.13.15, on 2026-11-17.
+
+```bash
+for v in changed refactor hidden; do
+  .venv/bin/python -m sbgv7 compare examples/v7b/base.py examples/v7b/variant_$v.py \
+    --entry f --inputs examples/v7b/inputs.json --config examples/v7b/config.json --out /tmp/out_$v
+done
+```
+`base.py` is `x + 1 if x < 1000 else x`; the inputs are `1, 5, 7`. Output (JSON trimmed to the verdict fields; the full object also carries ids and `cpu_seconds_spent`, about 0.5 s per pair):
+
+| variant | what it is | verdict returned | exit |
+|---|---|---|---|
+| `variant_changed.py` | `x + 2` | `DIVERGENT_OBSERVABLE`, level null, a `witness_id` | 0 |
+| `variant_refactor.py` | `1 + x` (same behaviour) | `NO_DIVERGENCE_OBSERVED`, level `S1` | 0 |
+| `variant_hidden.py` | differs only for `x >= 1000` | `NO_DIVERGENCE_OBSERVED`, level `S1` (a real difference, missed) | 0 |
+
+Every record also carried `"policy_below_minimum": true` (the macOS sandbox is below the spec's minimum isolation grade). Other behaviours observed: re-running into an existing output directory prints `error: .../evidence.jsonl exists; refusing to overwrite evidence` and exits 2; comparing a file with itself prints `ineligible:identical (source bytes identical; no verdict is issued)` and exits 3. Output directory contents: `evidence.jsonl`, `verdict.json`.
+
+Tests and the evaluation pipeline: sections 15 and 16.
+
+## 12. Configuration
+
+JSON, strictly validated (unknown keys are errors). Defaults are the frozen-spec values and are **unvalidated**: `repeat.r_det=3`, `r_replay=5`, `k_alt=3`; `suff.s2_branch_floor=0.80`, `suff.s3_enabled=false` (true is refused); `budget.cpu_seconds=60`, `budget.per_run.cpu_s=10`, `wall_s=20`, `rss_mib=2048`; `harness.exc_message=exact_normalised`, `float_tol` 0. The evaluation runs used `{"budget": {"cpu_seconds": 60, "per_run": {"cpu_s": 2, "wall_s": 5}}}`. Schema: [`sbgv7/config.py`](sbgv7/config.py). Inputs are a JSON list of `{"id", "args", "kwargs"?}`; tuples, sets and objects are not representable.
+
+## 13. Output: real versus illustrative
+
+- **Real**: everything under "Quick start" (captured from actual runs) and every number in section 14 (read from `results/` files). No output in this README is illustrative or invented.
+- **Not shown**: fields of `verdict.json` and `evidence.jsonl` beyond those shown are not reproduced here; see [`sbgv7/records.py`](sbgv7/records.py). `records.trace(log, verdict_id)` walks the chain; I did not run it separately for this README.
+
+## 14. Benchmark status and results
+
+**All exposed data is non-pristine. K1 is not met. There is no sealed holdout, no independent ground truth and no confirmatory test.**
+
+| Arm | Pairs | Truth used | V7-B verdicts (from `results/postfix/processed/k1_spike_summary.json`) |
+|---|---|---|---|
+| QuixBugs buggy/fixed | 31 | declared tests (29 of 31) | 27 DIVERGENT, 4 INSUFFICIENT |
+| QuixBugs SP negatives | 85 | generator label | 1 DIVERGENT, 47 NO_DIVERGENCE_OBSERVED (S1 3, S2 44), 37 INSUFFICIENT |
+| Synthetic (changed + equivalent) | 150 | generator label (not adjudicated; at least 6 suspect) | 50 DIVERGENT, 45 NO_DIVERGENCE_OBSERVED (S1 13, S2 32), 55 INSUFFICIENT |
+| BugsInPy units | 55 | none defensible | 6 DIVERGENT, 16 NO_DIVERGENCE_OBSERVED (S1 1, S2 15), 24 INSUFFICIENT, 9 not driven (class units) |
+
+K1 asks for at least 100 runnable real pairs from at least 8 projects with project-level runs; the report finds 74 runnable real pairs and 0 project-level runs ([`research/evaluation/K1_K2_FEASIBILITY_REPORT.md`](research/evaluation/K1_K2_FEASIBILITY_REPORT.md)). K5 (60 projects, 250 independent divergent pairs, kappa >= 0.7) is not approached.
+
+Descriptive comparison on the 258 pairs with usable labels (106 DIV, 152 NO_OBS_DIFF), from `results/postfix/statistics/system_metrics.csv`; intervals are 95% project-cluster bootstrap and are untrustworthy (one cluster holds 113 eligible pairs):
+
+| System | Detection on DIV | False assurance on DIV | Abstention | False alarm on NO_OBS_DIFF |
+|---|---|---|---|---|
+| V7-B | 0.708 [0.545, 0.816] | 0.123 [0.054, 0.236] | 0.360 [0.306, 0.435] | 0.000 |
+| B1 (plain differential) | 0.774 [0.609, 0.881] | 0.226 [0.119, 0.392] | 0 | 0.303 |
+| B1+rep | 0.774 [0.610, 0.880] | 0.226 [0.120, 0.390] | 0 | 0.303 |
+| B3 (mutation loop) | 0.811 [0.663, 0.904] | 0.189 [0.097, 0.337] | 0 | 0.309 |
+
+How to read this: B1 detected every pair V7-B detected. V7-B's lower false-assurance number comes mostly from moving 18 divergent pairs into `INSUFFICIENT`, not from matched-coverage superiority. Baseline "false alarms" are dominated by 46 renamed-entry pairs (a harness artefact); without them B1's false-alarm rate is 0.000 and B1's detection (0.767) still exceeds V7-B's (0.728). No row meets the +10 percentage-point rule. Matched-coverage false-assurance (the K4 metric) was **not computed**. The observed design cannot support a confirmatory +10pp claim (power at +5pp is at best 0.27; `results/postfix/statistics/power_actual.json`). Full table and caveats: [`research/evaluation/EXPLORATORY_RESULTS.md`](research/evaluation/EXPLORATORY_RESULTS.md); the numbers above are the post-fix rerun after the red-team B-1 fix (3 pairs moved from `NO_DIVERGENCE_OBSERVED` to `INSUFFICIENT`), see [`research/evaluation/POSTFIX_RERUN_NOTE.md`](research/evaluation/POSTFIX_RERUN_NOTE.md). Synthetic-arm determinism was not re-checked post-fix (37/37 identical pre-fix).
+
+Claims this README does **not** make (from the red-team review): that V7-B reduces false assurance, improves detection or beats differential testing or any published tool; that thresholds are calibrated; that K1 or K2 pass; that replay adds value over B1+rep; that these datasets are evidence rather than development material; any cross-platform, cross-language or "safe execution of untrusted code" claim; and any reuse of the V5/V6 AUROC numbers as V7-B results.
+
+## 15. Testing
+
+Run (macOS, `.venv`, nothing else running; see the protocol for the stray-process hazard):
+
+```bash
+.venv/bin/python -m pytest tests/v7 -q     # V7-B tests
+.venv/bin/python -m pytest tests -q        # everything
 ```
 
-`make check` executes no experiment: it re-runs the static audits, rebuilds the
-manifest, regenerates every table from the artifacts and diffs them against the
-committed copies. To actually re-measure, use a `reproduce-*` target; each one
-overwrites its artifact, so a clean `git diff` afterwards means the result
-reproduced.
+Real results from this machine on 2026-11-17 (`.venv`, CPython 3.13.15):
 
-| Target | What it re-measures | Time |
-|---|---|---|
-| `make reproduce-fast` | hard negatives, regression corpus | ~1 min |
-| `make reproduce-v5` | main benchmark, published protocol | ~26 min |
-| `make reproduce-output-free` | main benchmark, output-free protocol | ~10 min |
-| `make benchmark-v6` | regenerates the corrected benchmark | ~3 min |
+| Scope | Result |
+|---|---|
+| `tests/v7` + `tests/v6` | **85 passed, 1 skipped** (the skip is the `RLIMIT_AS` test, unenforceable on macOS); also 84 passed / 1 failed once, see below |
+| `tests/v7` alone | 76 collected; 4 files: `test_core.py`, `test_isolation.py`, `test_baselines.py`, `test_analysis.py` |
+| all of `tests/` | 348 collected. The full run was **not completed**: it ran more than 13 minutes, I stopped it at about 85% progress with no failure shown, so the legacy V5/V6 suite is **not verified here** |
 
-Full details, including which results reproduce bit-for-bit and which do not, in
-[`docs/current/REPRODUCTION.md`](docs/current/REPRODUCTION.md).
+Two flakes were observed and are not fixed: `test_no_stray_processes` fails if any other V7-B run is active on the machine (it inspects the process table), and `test_timeout_asymmetric_and_both` failed once with `PermissionError` from `os.killpg` (probable race on a child that had already exited) and passed on rerun. The tests exercise sandboxed subprocesses and take about 30 s.
 
----
+## 16. Reproducing
 
-## Repository layout
-
+```bash
+scripts/run_evaluation.sh --dry-run   # preflight and plan only
+scripts/run_evaluation.sh --quick     # tests + QuixBugs-only pipeline (not comparable with committed results)
+scripts/run_evaluation.sh --full      # all 321 pairs; long
 ```
-sbg/
-  extraction/       static and dynamic genome extractors, sys.settrace tracer
-  v3/               DynamicGenomeV3 and distance_v3
-  v5/               temporal genome, state-transition genome, invariant identity
-  statistics.py     corrected AUROC, clustered bootstrap, paired comparison
+Output goes to `results/repro/<mode>_<timestamp>/`; committed results are never overwritten. See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`research/reproducibility/REPRODUCIBILITY_PROTOCOL.md`](research/reproducibility/REPRODUCIBILITY_PROTOCOL.md) and [`datasets/README.md`](datasets/README.md). Only files under `results/postfix/` (current) and `results/processed/` plus `results/statistics/` (pre-fix, superseded) are the source for numbers quoted here.
 
-benchmark/
-  corpus/           64 base programs (60 assigned to splits)
-  datasets/         the published benchmark: 3,577 pairs, frozen
-  datasets/v6/      the corrected benchmark: 2,340 pairs, same programs and splits
-  transformations/  12 semantics-preserving + 14 semantics-changing operators
-  scripts/          benchmark generation, validity audit, manifest
-  benchmark_manifest.json    authoritative counts for everything
+## 17. Figures and manuscript
 
-experiments/final/  the V6 evaluation pipeline
-  protocol.py            entry selection and input synthesis
-  extraction.py          one shared execution pass per program
-  run_main_evaluation.py raw per-pair records
-  analyse_results.py     metrics over ALL / EVALUABLE / VALID
-  make_tables.py         every table and headline number
-  consistency_check.py   the integrity gate CI runs
+- Data figures (PDF and PNG, generated from `results/` by `scripts/generate_figures.py`): [`results/postfix/figures/`](results/postfix/figures) (current); `results/figures/` holds superseded pre-fix versions. Exploratory data only.
+- Diagram sources, **not rendered** (no `dot` installed): [`paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/figures/`](paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/figures); register: [`FIGURE_AND_TABLE_REGISTER.md`](paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/FIGURE_AND_TABLE_REGISTER.md).
+- Manuscript: [`paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/`](paper/IEEE_ACCESS_INITIAL_MANUSCRIPT) (`main.tex`, see its [`README.md`](paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/README.md)). **Draft: never compiled (no LaTeX toolchain here), not peer reviewed, exploratory.** Do not cite it.
 
-artifacts/final/    authoritative results, with per-pair records
-docs/current/       protocol, benchmark, limitations, reproduction
-docs/generated/     tables, generated — do not edit
-docs/archive/       superseded documents, kept as the record
-tests/              statistics, tracer isolation, scientific integrity
-```
+## 18. Limitations
 
-### Finding your way through the versions
+- **macOS only.** Isolation is `sandbox-exec` (deprecated by Apple). Reads are not confined, a `setsid()` child escapes the group kill (untested), `RLIMIT_AS` and `RLIMIT_NPROC` are not enforced (memory cap is parent polling). Every record carries `policy_below_minimum=true`. This is not a mechanism for running untrusted code.
+- **No Linux or container verification**: not implemented, not tested (Docker daemon was down).
+- **No LaTeX compile**: manuscript unbuilt.
+- **Not implemented**: S3, the explorer / input generation, module E (`internal_divergence`), declared renames, generator and class entries, Merkle tree, supersession, calibration, gates K1 to K5. Several spec reason codes are never produced (`ambiguous_entry`, `unmodelled_change`, `unsafe_program`, `blind_spot_dominant`).
+- **Exploratory only**: 321 non-pristine pairs; V7-B was shaped by them; no independent labels; synthetic labels are known to be wrong in places; BugsInPy runs are function units on a synthetic battery.
+- Sufficiency is line plus branch-direction coverage of the diff with unvalidated thresholds; `s2_all_channels_instrumented` is a constant `True` in `sbgv7/decide.py`. Control alternation virtualises only `random.seed` and `time`.
+- Python top-level functions with JSON arguments only. No cross-language claim.
+- No published tool (Testora, DiffTestGen, Mokav, shadow symbolic execution, DiffKemp) was run as a baseline.
+- V7-B CPU is child-process only (lower bound); memory was not recorded.
+- `make readme` and `make verify-artifacts` (legacy targets) splice generated results into the old README between markers that this README no longer has; they will fail until the Makefile is updated.
 
-There are six research versions and the earlier ones left behind a `FINAL_*`
-document each. None of them is final.
-[`docs/VERSION_MAP.md`](docs/VERSION_MAP.md) says which result belongs to which
-version and which artifact is authoritative; everything superseded is under
-`docs/archive/` and is exempt from the consistency gate precisely because
-rewriting it would destroy the record.
+## 19. Roadmap (realistic, in order of what blocks any claim)
 
----
+1. Acquire independent real pairs from projects disjoint from QuixBugs, BugsInPy and the synthetic corpus; seal a holdout before running V7-B on it; kappa-checked labels (K5).
+2. Compare false assurance of V7-B against B1+rep on that set. This is the decisive experiment for the sufficiency idea; current data predicts no gain.
+3. Implement declared renames, generators and class entries so `INSUFFICIENT` means something other than "engine gap".
+4. Linux container isolation (I1 to I7 checks) so that K2 can be evaluated.
+5. Run at least one external baseline of the Testora/DiffTestGen/Mokav class, or drop competitive claims.
+6. Only then consider S3 and calibration of S1/S2.
 
-## Evidence chain
+No dates are promised. The alternative the red-team review suggests is to reframe the work as an evidence contract for differential testing rather than a sufficiency advance.
 
-```
-source code -> experiment script -> raw per-pair record -> authoritative artifact
-            -> docs/generated/*.md -> README / manuscript
-```
+## 20. Citation
 
-One source per number. `artifacts/final/ARTIFACT_PROVENANCE.json` classifies
-every result file as MEASURED, PARTIALLY_SYNTHETIC, SUPERSEDED, NON_REPRODUCING
-or DERIVED, and the gate refuses to let a document cite a non-MEASURED artifact
-without saying so. Two files earned those labels the hard way: one carried
-`"scores_are_real": true` beside its own note that nine of its ten features were
-synthesised from aggregate AUROCs, and one does not reproduce when its own
-generator is re-run.
+[`CITATION.cff`](CITATION.cff) exists (author Manas Sakthivel, software type, repository URL). It carries **no DOI, no version and no release date**, and its text predates V7-B. No paper describing V7-B has been published. Do not cite V7-B numbers from this README as a peer-reviewed result.
 
----
+## 21. Licence
 
-## Limitations
+MIT, see [`LICENSE`](LICENSE) (Copyright 2025 Manas Sakthivel). Vendored datasets keep their own licences: QuixBugs is MIT (`external/quixbugs/LICENSE`); BugsInPy units stay under each upstream project's licence (`external/bugsinpy/README.md`).
 
-The full list is in
-[`docs/current/LIMITATIONS.md`](docs/current/LIMITATIONS.md). The ones that bound
-every number above:
+## 22. Further reading
 
-- **13 programs** in the test split, 7 under the output-free protocol. The unit
-  of independence is the program, not the pair, so the intervals are wide and
-  nothing generalises beyond programs like these.
-- **Synthetic corpus.** Single-file exercises written for this benchmark, each
-  with its own self-test. No real-world code.
-- **The output-free protocol covers the easier half.** The 23 programs it cannot
-  handle are mostly class-based — the ones with state, where a state-transition
-  genome should have the most to say.
-- **External validation is unverified.** The QuixBugs, BugsInPy and Java results
-  in `results/external/` use the same entry-discovery code and are subject to the
-  same defect. They were not re-run here and are excluded from every claim above.
-- **CPython only.** `sys.settrace` is required. Trace-derived features can shift
-  between Python versions; CI runs 3.9 and 3.13.
+[`reports/final/V7B_FROZEN_SPEC.md`](reports/final/V7B_FROZEN_SPEC.md), [`reports/final/P0_FINAL_RECONCILIATION_REPORT.md`](reports/final/P0_FINAL_RECONCILIATION_REPORT.md), [`research/security/THREAT_MODEL.md`](research/security/THREAT_MODEL.md), [`research/security/EXECUTION_ISOLATION_AUDIT.md`](research/security/EXECUTION_ISOLATION_AUDIT.md), [`research/benchmarks/INDEPENDENCE_AND_LEAKAGE_AUDIT.md`](research/benchmarks/INDEPENDENCE_AND_LEAKAGE_AUDIT.md), [`research/evaluation/BASELINE_IMPLEMENTATION_AND_FAIRNESS.md`](research/evaluation/BASELINE_IMPLEMENTATION_AND_FAIRNESS.md), [`research/literature/RELATED_WORK_COMPARISON.md`](research/literature/RELATED_WORK_COMPARISON.md).
 
----
+## 23. History
 
-## Citation
+V1 to V6 (static and dynamic behavioural "genome" distances, AUROC evaluations, withdrawn claims) are documented in [`docs/README_pre_v7b.md`](docs/README_pre_v7b.md), [`docs/VERSION_MAP.md`](docs/VERSION_MAP.md) and [`FINAL_STANFORD_READINESS_REPORT.md`](FINAL_STANFORD_READINESS_REPORT.md). Preserved git tags: `v6-holdout-complete`, `v7-design-package-original`.
 
-```bibtex
-@misc{sbg2026,
-  title  = {Software Behavior Genome: An Empirical Study of Execution-Grounded
-            Behavioral Representations for Semantic Change Detection},
-  author = {Manas Sakthivel},
-  year   = {2026},
-  note   = {Includes a correction of the evaluation protocol and benchmark used
-            in earlier versions},
-  url    = {https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation},
-}
-```
+## 24. Acknowledgements
 
-## License
-
-MIT — see [LICENSE](LICENSE).
+None are claimed. The development history shows work by the repository owner assisted by AI coding agents; the independent red-team review in `reports/final/` was also produced by an AI reviewer, not by an external human reviewer.
