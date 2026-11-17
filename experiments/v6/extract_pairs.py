@@ -24,6 +24,9 @@ def load(name):
         if r["base_id"] in STALE or r["pair_id"] not in paths:
             continue
         r["_paths"] = paths[r["pair_id"]]
+        if "label" not in r:          # v10 scored file carries no labels: take them from the dataset file, unchanged
+            r["label"] = 0 if r["_paths"]["expected_label"] == "EQUIVALENT" else 1
+            r["transformation_type"] = r["_paths"]["transformation_type"]
         rows.append(r)
     return rows
 
