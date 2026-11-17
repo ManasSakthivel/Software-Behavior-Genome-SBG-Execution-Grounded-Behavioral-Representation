@@ -1,0 +1,9 @@
+digraph benchmark_provenance {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ qb [label="QuixBugs\n40 programs, json_testcases\n(burned: SMOKE only)"]; bp [label="BugsInPy\nextracted single-file units\n(burned; no project runs)"]; sy [label="Synthetic v8 / v10\ngenerator labels CHANGED / EQUIVALENT\n(scored earlier by V5/V6)"];
+ a1 [label="quixbugs buggy/fixed: 31"]; a2 [label="quixbugs SP negatives: 85"]; a3 [label="synthetic: 150"]; a4 [label="bugsinpy_units: 55 (46 driven)"];
+ dev [label="321 development pairs\nALL non-pristine", fillcolor="#f6d5c0"];
+ no [label="NOT used: sealed holdout / pristine split\n(does not exist yet)", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ qb -> a1; qb -> a2 [label="SP rewrites"]; sy -> a3; bp -> a4; a1 -> dev; a2 -> dev; a3 -> dev; a4 -> dev; no -> dev [style=dashed];
+}

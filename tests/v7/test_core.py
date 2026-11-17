@@ -131,7 +131,7 @@ def test_timeout_asymmetric_and_both(tmp_path):
     o = go(tmp_path, "def f(x):\n    return 1\n", hang, [[1]], config=c)
     assert (o["verdict"], o["primary"]) == ("INSUFFICIENT", "resource_limit")
     o = go(tmp_path, hang, hang.replace("pass", "x = 1"), [[1]], config=c, name="o2")
-    assert (o["verdict"], o["primary"]) == ("INSUFFICIENT", "no_inputs")  # both limit => NO_RUN, never a witness
+    assert (o["verdict"], o["primary"]) == ("INSUFFICIENT", "resource_limit")  # both limit => NO_RUN is a resource_limit blocker, never a witness
 
 
 def test_budget_exhausted(tmp_path):
@@ -338,3 +338,11 @@ def test_property_incomplete_evidence_never_positive():
             if value == "INSUFFICIENT":
                 assert primary in RANK and all(RANK[primary] <= RANK[c] for c in sec)
     assert seen == set(R.VERDICTS)
+
+
+def test_no_run_input_blocks_no_divergence():
+    """Regression (red-team B-1): [SAME, NO_RUN] must not yield NO_DIVERGENCE_OBSERVED."""
+    e = good()
+    e.inputs += [InputEv("n", "NO_RUN", None, None, None, False, True)]
+    d = decide(e)
+    assert d[0] == "INSUFFICIENT" and d[2] == "resource_limit"

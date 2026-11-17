@@ -1,0 +1,8 @@
+digraph split_pipeline {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ dev [label="DEV-development (this work):\n321 pairs, labels seen, engine shaped on it"];
+ devn [label="DEV-N / VAL", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"]; seal [label="Seal labels + commit holdout", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"]; hold [label="HOLDOUT unseal (K5 gate:\n>=60 projects, >=250 divergent pairs, kappa>=0.7,\nclean leakage audit)", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"]; conf [label="Confirmatory analysis (SAP)", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ ex [label="Exploratory report only\n(current status)", fillcolor="#f9e0a8"];
+ dev -> ex; dev -> devn [style=dashed]; devn -> seal [style=dashed]; seal -> hold [style=dashed]; hold -> conf [style=dashed];
+}

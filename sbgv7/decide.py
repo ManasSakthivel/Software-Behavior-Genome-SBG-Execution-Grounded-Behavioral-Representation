@@ -47,7 +47,7 @@ def _blockers(ev):
         if not i.sandbox_ok: b.append(("sandbox_failure", i.input_id))
         if i.truncated: b.append(("capture_truncated", i.input_id))
         code = {"CONFIRMED_DIFF": "tool_error", "UNCONFIRMED_DIFF": "flaky_witness", "ENV_SENSITIVE_DIFF": "env_sensitive", "QUARANTINED": "nondeterministic",
-                "LIMIT_ASYMMETRIC": "resource_limit"}.get(i.outcome)
+                "LIMIT_ASYMMETRIC": "resource_limit", "NO_RUN": "resource_limit"}.get(i.outcome)
         if code: b.append((code, i.input_id))
     same = [i for i in ev.inputs or [] if i.outcome == "SAME" and i.sandbox_ok and not i.truncated]
     if ev.inputs is not None and not same and not ev.blockers:

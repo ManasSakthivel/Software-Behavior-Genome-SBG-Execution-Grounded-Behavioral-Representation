@@ -1,0 +1,10 @@
+digraph isolation {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ par [label="Parent: runner (Python)"];
+ sb [label="macOS sandbox-exec profile:\nnetwork denied, writes confined to private tmp"];
+ ch [label="Fresh child per run:\nscrubbed env, private cwd, setrlimit,\nprocess-group kill, sys.monitoring tracer"];
+ pb [label="Every macOS record carries\npolicy_below_minimum=true\n(benchmark/synthetic grade only)", shape=note, fillcolor="#fffbe6"];
+ lx [label="Linux container, --network none\nNOT IMPLEMENTED\n(required for third-party repos)", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ par -> sb -> ch; ch -> par [label="observation, exit class"]; pb -> sb [style=dotted, arrowhead=none]; lx -> sb [style=dashed, label="would replace"];
+}

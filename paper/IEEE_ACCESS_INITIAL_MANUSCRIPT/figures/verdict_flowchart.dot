@@ -1,0 +1,10 @@
+digraph verdict_flowchart {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ q0 [shape=diamond, label="src, deps, runtime\nbyte-identical?"]; n0 [label="ineligible:identical\n(no verdict)"];
+ q1 [shape=diamond, label="some input CONFIRMED_DIFF?"]; v1 [label="DIVERGENT_OBSERVABLE", fillcolor="#f6d5c0"];
+ q2 [shape=diamond, label="any blocking condition B1..B9\n(missing record counts as true)?"]; v2 [label="INSUFFICIENT\n(primary + secondary reason codes)", fillcolor="#f9e0a8"];
+ q3 [shape=diamond, label="S2 floors hold?"]; v3 [label="NO_DIVERGENCE_OBSERVED S2", fillcolor="#cfe3f5"]; v4 [label="NO_DIVERGENCE_OBSERVED S1", fillcolor="#cfe3f5"];
+ note [shape=note, fillcolor="#fffbe6", label="No equivalence verdict exists.\nS3 never emitted."];
+ q0 -> n0 [label="yes"]; q0 -> q1 [label="no"]; q1 -> v1 [label="yes"]; q1 -> q2 [label="no"]; q2 -> v2 [label="yes"]; q2 -> q3 [label="no"]; q3 -> v3 [label="yes"]; q3 -> v4 [label="no"]; v3 -> note [style=dotted, arrowhead=none];
+}
