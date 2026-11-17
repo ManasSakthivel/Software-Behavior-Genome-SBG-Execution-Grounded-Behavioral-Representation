@@ -194,3 +194,33 @@ DT,"Prioritizing test cases (Rothermel, Untch, Chu, Harrold TSE 2001)",Crossref/
 ,QuixBugs,P0 verification file,INCLUDE,I5,,,"carried forward unchanged, access METADATA"
 ,TRACED: Execution-aware Pre-training for Source Code,P0 verification file,INCLUDE,I5,arXiv:2306.07487,,"carried forward unchanged, access ABSTRACT"
 ,Code Execution with Pre-trained Language Models,P0 verification file,INCLUDE,I5,arXiv:2305.05383,,"carried forward unchanged, access ABSTRACT"
+DT,"Covrig (Marinescu, Hosek, Cadar, ISSTA 2014)",Crossref title query,INCLUDE,I2 (resolves earlier E1),10.1145/2610384.2610419,1.0,[pass 2] DOI and authors verified; no abstract available; METADATA level
+TA,"Bailey & Cadar, ICST 2025 code/test/coverage evolution",Crossref title query,INCLUDE,I2 (resolves earlier E1),10.1109/ICST62969.2025.10989006,1.0,[pass 2] metadata and abstract verified (Semantic Scholar)
+TA,CoREBench: studying complexity of regression errors,Crossref title query,INCLUDE,I2,10.1145/2610384.2628058,1.0,[pass 2] metadata verified; the earlier wrong DOI 10.1145/2610384.2628053 (Major mutation framework) is not used
+DT,Testora (journal DOI),Crossref DOI lookup,INCLUDE,I1/I2,10.1145/3744916.3764527,1.0,[pass 2] ICSE 2026 DOI and pages verified; arXiv v1 title differed ('Regression Testing with a Natural Language Oracle')
+DT,Evaluating LLM-Based Regression Test Generation (Cleverest) journal version,Crossref DOI lookup,INCLUDE,I1/I2,10.1145/3808129,1.0,[pass 2] PACMSE FSE 2026; earlier matrix said FSE 2025: corrected; v1 title was 'Can LLM Generate Regression Tests for Software Commits?'
+DT,Mokav journal version,Crossref DOI lookup,INCLUDE,I1/I2,10.1016/j.jss.2025.112571,1.0,[pass 2] JSS 2025 DOI verified
+DT,PatchGuru (arXiv 2602.05270),web search + arXiv API,INCLUDE,I1/I2,arXiv:2602.05270,1.0,[pass 2] exists; metadata verified; full text read (mediated)
+DT,ORION (arXiv 2610.35223),web search + arXiv API,INCLUDE,I1/I2,arXiv:2610.35223,1.0,[pass 2] exists; metadata verified; full text read (mediated)
+DT,Prefactory (arXiv 2607.17211),web search + arXiv API,INCLUDE,I1/I2,arXiv:2607.17211,1.0,[pass 2] exists; three-way differential-test outcome; full text read (mediated)
+DT,SemaDiff (arXiv 2607.13111),web search + arXiv API,INCLUDE,I1/I2,arXiv:2607.13111,1.0,[pass 2] exists; full text read (mediated)
+TG,Evaluating LLM-Based Test Generation Under Software Evolution (arXiv 2603.23443),web search + arXiv API,INCLUDE,I1/I2,arXiv:2603.23443,1.0,[pass 2] exists; full text read (mediated)
+RT,On the Risks of using LLM-Generated Tests for Regression Testing (arXiv 2610.11835),web search + arXiv API,INCLUDE,I1/I2,arXiv:2610.11835,1.0,[pass 2] exists; full text read (mediated)
+MU,LLMs for Equivalent Mutant Detection (ISSTA 2024),Crossref title query,INCLUDE,I2,10.1145/3650212.3680395,1.0,[pass 2] metadata verified; full text read via arXiv HTML (mediated)
+TA,PIE: a dynamic failure-based technique (Voas 1992),Crossref title query,INCLUDE,I3,10.1109/32.153381,1.0,[pass 2] metadata verified; abstract not obtained
+TA,Checked coverage (ICST 2011; STVR 2013),Crossref title query,INCLUDE,I3,10.1109/icst.2011.32; 10.1002/stvr.1497,1.0,[pass 2] metadata verified; ICST PDF not readable via fetch tool
+DT,Automating Differential Testing with Overapproximate Symbolic Execution (Rutledge & Orso),Crossref title query,INCLUDE,I2,10.1109/ICST53961.2022.00035,1.0,[pass 2] metadata only; abstract unavailable
+MU,Madeyski et al. TSE 2014; Kintis et al. TSE 2018; Budd & Angluin 1982,Crossref title query,INCLUDE,I3,10.1109/tse.2013.44; 10.1109/tse.2017.2684805; 10.1007/bf00625279,1.0,[pass 2] metadata only
+CI,"Li et al. change impact analysis survey; Barr et al. oracle survey; Masri & Abou Assi (ICST 2010, TOSEM 2014)",Crossref title query,INCLUDE,I3,10.1002/stvr.1475; 10.1109/tse.2014.2372785; 10.1109/icst.2010.22; 10.1145/2559932,1.0,[pass 2] metadata only
+FL,FlakyLens / Understanding and Improving Flaky Test Classification (OOPSLA 2025),Crossref + search,INCLUDE,I2,10.1145/3763098,1.0,[pass 2] metadata verified; abstract per search result only
+AB,Wen et al. abstention survey (TACL 2025); Jeong et al. selective generation; Sharma & David; Rathnasuriya & Yang,Crossref/arXiv API,INCLUDE,I2,10.1162/tacl_a_00754; arXiv:2505.13553; arXiv:2502.11620; arXiv:2605.19369,1.0,[pass 2] abstention for code/LLM outputs; grounded on model uncertainty
+TR,NExT (Ni et al.),arXiv API + search,INCLUDE,I2,arXiv:2404.14662,1.0,[pass 2] execution traces as model input; abstract-level
+DT,Shadow symbolic execution with Java PathFinder / any 2020-2023 Shadow follow-up,web search,EXCLUDE,E1,,,"[pass 2] none found on the project page or by search; the page lists three Shadow papers (ICSE NIER 2014, ICSE 2016, TOSEM 2018). Absence is not proof."
+DT,Kuchta PhD thesis (Imperial 2016) 'Enhanced symbolic execution for patch testing and document recovery',web search,EXCLUDE,E3/I1,,,[pass 2] thesis catalogue record only; not a peer-reviewed paper; not read
+DT,DiffKemp: other Malik/Vojnar works beyond ICST 2021 and TOSEM 2026,web search,EXCLUDE,E1,,,[pass 2] only a PhD thesis (Malik) and a bachelor thesis found; not included; the TOSEM extension abstract (Crossref) was read
+DT,ReCatcher: regression testing for code-generating LLMs (arXiv 2507.19390),web search,EXCLUDE,E4,arXiv:2507.19390,,"[pass 2] object of study is regression between LLM versions, not program versions; only title/authors/keywords seen"
+TG,Evaluating LLM-Based Test Refactoring with a Behavior-Preserving Composite Metric; Beyond Surface Similarity (arXiv 2506.06767),web search,EXCLUDE,E4,,,[pass 2] test refactoring metrics; off-scope; only titles seen
+EQ,How Stable Are LLM-Generated Proofs Under Program Refactoring? (arXiv 2610.36328),web search,EXCLUDE,E4,,,"[pass 2] proof stability, not behaviour comparison; only a search description seen"
+FL,More & Bradbury (arXiv 2502.02715); LLM flakiness in C++ (arXiv 2412.12340); NIODebugger thesis,web search,EXCLUDE,E6,,,"[pass 2] seen only as search results; not verified or read; flaky classification/repair, peripheral to cross-version verdicts"
+DT,"Blog posts and aggregator reviews (api7.ai, themoonlight.io, emergentmind, alphaxiv)",web search,EXCLUDE,E3,,,[pass 2] vendor/aggregator pages; not used as evidence except to locate primary sources
+DT,Shadow TOSEM 2018 full text,ACM DL / spiral.imperial.ac.uk,EXCLUDE,E6,10.1145/3208952,,[pass 2] ACM DL HTTP 403 including the CC BY PDF URL; Imperial repository URL 404; kept at ABSTRACT level

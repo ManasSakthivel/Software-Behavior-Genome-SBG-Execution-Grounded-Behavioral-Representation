@@ -42,3 +42,6 @@ Not accessible / not used: ACM DL (HTTP 403 per P0), IEEE Xplore, Scopus, Web of
 
 ## Known coverage gaps
 Observability has only 2 included papers (tracing systems literature mostly lacks DOIs or was not reached: Dapper, X-Trace not verified). Static regression-test-selection tools, program-repair patch assessment beyond one paper, and LLM-for-testing 2024-26 work are sampled, not exhaustive. Searches were biased toward the reviewer's prior knowledge.
+
+## Pass 2 additions (2026-11-17)
+Additional web searches (about 14): LLM regression/differential test generation 2024-26; Cleverest; Shadow follow-ups; DiffKemp journal extension; PatchGuru; equivalent-mutant LLM study; PIE and checked coverage; LLM flakiness; behaviour-preservation checks; execution-trace representations; abstention for code models. Full texts were fetched from arXiv HTML pages, the Imperial/VUT author copies and an Internet Archive copy of Evans & Savoia. ACM DL remained inaccessible (HTTP 403). Searches remain biased to the reviewer's prior knowledge and the search engine's index; no counts per database exist. Not found: Shadow follow-ups after 2018, DiffKemp papers beyond ICST 2021 and TOSEM 2026 (other than theses).
