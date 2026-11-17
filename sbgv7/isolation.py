@@ -59,6 +59,8 @@ def _kill_group(pgid):
         os.killpg(pgid, signal.SIGKILL)
     except ProcessLookupError:
         return True
+    except PermissionError:  # macOS zombie group; fall through to the liveness check
+        pass
     end = time.monotonic() + 3
     while time.monotonic() < end:
         if not _alive(pgid):
@@ -117,7 +119,10 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps):
                 if rss > mem_mb * 2**20:
                     reason = "RESOURCE:rss_watchdog"
             if reason:
-                os.killpg(pgid, signal.SIGKILL)
+                try:
+                    os.killpg(pgid, signal.SIGKILL)
+                except (ProcessLookupError, PermissionError):  # macOS: group already exiting/zombie
+                    pass
                 _, status_raw, ru = os.wait4(p.pid, 0)
                 break
             time.sleep(0.01)

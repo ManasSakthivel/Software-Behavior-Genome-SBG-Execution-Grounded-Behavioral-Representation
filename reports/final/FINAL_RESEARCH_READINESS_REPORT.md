@@ -31,7 +31,7 @@ Detection V7-B 0.708 vs B1 0.774, B3 0.81; false assurance V7-B 0.123 vs B1 0.22
 3. No evidence sufficiency adds value; needs matched-coverage comparison on independent data.
 4. Fair comparison with published tools and 2024-26 LLM differential-testing work (Testora, Mokav, DiffTestGen, Cleverest, DiffSpec) not done.
 5. Entry-function limits (renames, generators), JSON-only inputs, no input generation.
-6. Flaky tests (`os.killpg` PermissionError once; stray-process test depends on concurrent runs).
+6. Flaky tests: os.killpg PermissionError guarded in isolation.py (3 clean runs; not a proof); stray-process test still depends on no concurrent runs.
 7. Raw results (~160 MB) committed to git; consider moving out.
 
 ## Novelty (see research/literature/RESEARCH_GAP_AND_NOVELTY_ASSESSMENT.md)
