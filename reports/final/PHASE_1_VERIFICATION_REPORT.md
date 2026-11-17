@@ -23,3 +23,8 @@ Three one-line changes in legacy V5 check scripts, repointing the README they re
 
 ## D. Final Git information
 See the commit and push result appended below after the push.
+
+Branch: research/v7b-final-validation. Local HEAD and `origin/research/v7b-final-validation` were both 543e2cd3ef559457e39237e7693c1a0aaf8bb803 after `git push` and `git fetch` (this report's own appended text is committed in the next commit). 3f140af2 is an ancestor. Working tree clean at that point; no force-push.
+
+## E. Overall Phase 1 verdict
+`PASS_WITH_LIMITATIONS`: all five checks were completed; limitations are listed in section C (notably: `make check` requires the venv interpreter, README/reproducibility verification was a spot check plus dry run, and the historical tags and three historical branches are local-only).
