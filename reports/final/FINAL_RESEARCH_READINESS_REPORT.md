@@ -42,3 +42,5 @@ V7-B only is justified; full V7 (explorer, internal-only divergence) is not.
 
 ## Reproduce
 `.venv/bin/python -m pytest tests/v7 -q`; `scripts/run_evaluation.sh --quick`; `.venv/bin/python paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/scripts/check_manuscript.py`. See REPRODUCIBILITY.md.
+
+Phase 1 closure: see `PHASE_1_FINAL_CLOSURE_REPORT.md` (note: the "~160 MB in history" figure in this report is uncompressed working-tree size; the repository pack is 48.61 MiB).

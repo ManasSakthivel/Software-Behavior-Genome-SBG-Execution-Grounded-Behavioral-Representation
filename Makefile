@@ -4,9 +4,10 @@
 # target only compared hashes of committed artifacts and was described as
 # reproducing the result. Verification and reproduction are now separate.
 
-PYTHON ?= python3
+# Prefer the project venv when present; an explicit PYTHON=... always wins. No dependencies are installed implicitly.
+PYTHON ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 
-.PHONY: help test quickstart verify-artifacts audit manifest tables readme \
+.PHONY: verify-docs-v7b help test quickstart verify-artifacts audit manifest tables readme \
         figures check check-reproduction reproduce-fast reproduce-v5 reproduce-output-free reproduce-all \
         benchmark-v6 clean setup verify-v7-invariance v7-train v7-fit v7-test \
         reproduce-v7 quixbugs bugsinpy java reproduce-real reproduce-external gate
@@ -75,7 +76,11 @@ readme:
 verify-artifacts: audit manifest tables figures
 	$(PYTHON) experiments/final/consistency_check.py
 
-check: verify-artifacts
+verify-docs-v7b:
+	$(PYTHON) scripts/check_docs_v7b.py
+
+check: verify-artifacts verify-docs-v7b
+	@$(PYTHON) -c 'import pytest' 2>/dev/null || { echo "ERROR: pytest is not importable with PYTHON=$(PYTHON). Create the venv (python3.13 -m venv .venv && .venv/bin/pip install -r requirements-lock.txt pytest) or pass PYTHON=/path/to/python" >&2; exit 1; }
 	$(PYTHON) -m pytest tests/test_integrity.py -q
 
 # ---------------------------------------------------------------------------
