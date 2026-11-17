@@ -69,10 +69,10 @@ tables:
 figures:
 	$(PYTHON) experiments/final/make_figures.py
 
-readme: tables
-	$(PYTHON) experiments/final/assemble_readme.py
+readme:
+	@echo 'legacy target disabled: README.md is hand-written since V7-B (old generator: experiments/final/assemble_readme.py, old README: docs/README_pre_v7b.md)'
 
-verify-artifacts: audit manifest tables figures readme
+verify-artifacts: audit manifest tables figures
 	$(PYTHON) experiments/final/consistency_check.py
 
 check: verify-artifacts
