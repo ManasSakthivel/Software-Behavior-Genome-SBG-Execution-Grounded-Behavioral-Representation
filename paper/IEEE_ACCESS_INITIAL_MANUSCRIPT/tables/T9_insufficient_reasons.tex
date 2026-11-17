@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering\scriptsize
+\caption{Primary reasons for INSUFFICIENT per arm (post-fix). Most are engine coverage gaps (renamed entries, generators, class units), not a sufficiency judgement. Source: \path{results/postfix/processed/k1_spike_summary.json}.}
+\label{tab:reasons}
+\begin{tabular}{lrr}
+\hline
+Arm & Primary INSUFFICIENT reason & n \\
+\hline
+quixbugs & resource\_limit & 2 \\
+quixbugs & changed\_region\_not\_activated & 2 \\
+quixbugs\_neg & unsupported\_signature & 31 \\
+quixbugs\_neg & changed\_region\_not\_activated & 3 \\
+quixbugs\_neg & resource\_limit & 3 \\
+synthetic & changed\_region\_not\_activated & 34 \\
+synthetic & unsupported\_signature & 18 \\
+synthetic & resource\_limit & 2 \\
+synthetic & nondeterministic & 1 \\
+bugsinpy\_units & changed\_region\_not\_activated & 21 \\
+bugsinpy\_units & nondeterministic & 1 \\
+bugsinpy\_units & import\_error & 1 \\
+bugsinpy\_units & unobservable\_outcome & 1 \\
+bugsinpy\_units & class unit & 8 \\
+\hline
+\end{tabular}
+\end{table}

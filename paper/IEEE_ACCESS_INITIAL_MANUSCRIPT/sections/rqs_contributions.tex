@@ -1,0 +1,15 @@
+\section{Research Questions and Contributions}\label{sec:rqs}
+\textbf{Research questions.}
+RQ1: can a closed three-verdict contract with replayable witnesses be implemented for Python functions? RQ2: does making \NDO{} conditional on a recorded sufficiency level reduce false assurance relative to a same-budget differential baseline with repetition? RQ3: does repetition-based replay and environment-sensitivity checking add value over plain repetition? RQ4: does the approach generalise across projects? RQ5: what is the overhead?
+
+\textbf{Answers available from this work.} RQ1: yes, as software (Section~\ref{sec:approach}). RQ2 and RQ3: not answerable; the exploratory data show no benefit (Section~\ref{sec:results}). RQ4: \NE{}. RQ5: lower bound only.
+
+\textbf{Contributions (defensible claims only).}
+\begin{enumerate}
+\item A definition of a three-valued verdict contract in which an equivalence verdict cannot be emitted by the code (a naming guarantee, not a semantic one).
+\item A record schema for witnesses and sufficiency records in a content-addressed, hash-chained evidence log from which a verdict can be traced to its runs.
+\item An implementation of sufficiency levels S0--S2 (S3 is not implemented) with unvalidated thresholds.
+\item A development-data evaluation framework with pre-declared statistics and a documented set of baselines B1--B5 (B2 and B5 partial).
+\item Exploratory empirical evidence on 321 non-pristine pairs. This evidence is exploratory only; it is not confirmatory, held out, or generalisable, and it includes null and negative findings.
+\end{enumerate}
+We do \emph{not} claim that V7-B or its sufficiency level reduces false assurance, improves detection or outperforms any tool; that thresholds are calibrated; that K1 or K2 pass; that replay adds value over B1+rep; or any cross-platform, cross-language or safe-execution-of-untrusted-code property.

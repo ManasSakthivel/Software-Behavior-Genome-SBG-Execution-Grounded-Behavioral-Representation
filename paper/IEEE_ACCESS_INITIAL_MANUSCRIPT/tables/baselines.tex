@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Baselines (from \path{research/evaluation/BASELINE_IMPLEMENTATION_AND_FAIRNESS.md}). B1--B3 share the runner, inputs, comparator and CPU budget unit with V7-B; baselines do not abstain.}
+\label{tab:baselines}
+\begin{tabular}{p{0.07\textwidth}p{0.4\textwidth}p{0.4\textwidth}}
+\hline
+ID & What it does & Status and caveat \\
+\hline
+B1 & same-input differential execution, one run per side, no repeats or sufficiency check & implemented and verified; renamed-entry pairs count as differences \\
+B1+rep & B1 plus $r_{det}=3$ and $r_{replay}=5$ repeats; no sufficiency gate, no control alternation & implemented and verified; the null model for V7-B minus sufficiency \\
+B2 & declared-test replay (pass/fail per version) & QuixBugs only; uses expected outputs V7-B does not; not run on other arms; excluded from the analysed table \\
+B3 & minimal coverage-guided mutation of arguments on top of B1 & implemented minimally; NOT a stand-in for AFL, libFuzzer or Hypothesis \\
+B4 & edit-size heuristic with a threshold tuned on development data & no usable signal on these pairs \\
+B5 & lookup of earlier-system (V6) scores from frozen artefacts & incomplete (part of the pairs), not input- or budget-matched; excluded from the analysed table \\
+Published tools & Shadow, DiffKemp, Mokav, Testora, DiffTestGen, Cleverest, AFL-class fuzzers, regression-verification provers, flaky-test tools, LLM equivalence judges & NOT IMPLEMENTED; NOT COMPARED \\
+\hline
+\end{tabular}
+\end{table*}

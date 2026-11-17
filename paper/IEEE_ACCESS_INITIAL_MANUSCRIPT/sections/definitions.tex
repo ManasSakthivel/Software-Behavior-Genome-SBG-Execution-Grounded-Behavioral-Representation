@@ -1,0 +1,14 @@
+\section{Definitions}\label{sec:definitions}
+These definitions match the implementation (\path{docs/architecture/V7B_IMPLEMENTATION.md}); where the frozen specification asks for more, Section~\ref{sec:limitations} says so.
+
+\textbf{Pair and scope.} A pair is two source files (base and variant) with one declared entry, which must be a top-level function, and a harness declaration $H$ (observed channels, normaliser, tolerances, repeat counts). Inputs are user-supplied JSON values; tuples, sets and objects are not generated.
+
+\textbf{Observation boundary $C_{obs}$.} Return value; exception (exact qualified type and normalised message, or message ignored by declaration); stdout; sandbox-temporary file content; argument post-call state; module globals written; and an API-break channel (argument-binding failure). Stderr, performance, line numbers and tracebacks are excluded. The type tag is part of identity (\texttt{1} differs from \texttt{1.0}); floats compare exactly (NaN equal, $-0.0\neq 0.0$) unless a tolerance is declared; mappings and sets are order-insensitive.
+
+\textbf{Run and per-input outcome.} A run is a fresh sandboxed child process. Per-input outcomes are: confirmed difference, unconfirmed difference (a replay disagreed), environment-sensitive difference, same, quarantined (a version is not self-consistent), limit-asymmetric (exactly one side hit a limit), and no-run (both sides hit a limit). A timeout or resource kill is never a witness.
+
+\textbf{Witness.} An immutable record stating that the two versions differ observably on one input, with both observations, the replay set, and environment and sandbox-policy identifiers. A witness asserts nothing beyond that input.
+
+\textbf{Changed unit and activation.} Changed lines are computed by diff and intersected with executable lines per side. A unit is hit only by a deterministic-confirmed \texttt{same} input.
+
+\textbf{Verdict.} One of \DIV, \INS{} (primary reason plus secondary reasons) or \NDO{} with level S1 or S2. Identical source yields no verdict (\texttt{ineligible:identical}).

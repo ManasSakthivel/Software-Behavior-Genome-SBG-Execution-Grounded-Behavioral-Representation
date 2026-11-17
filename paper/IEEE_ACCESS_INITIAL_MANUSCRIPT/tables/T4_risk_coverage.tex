@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering\scriptsize
+\caption{Risk--coverage against generator labels. Baselines carry no sufficiency level, so their S-level rows are not comparable; V7-B at S3 is empty because S3 is never emitted. Source: \path{results/postfix/statistics/risk_coverage.csv}.}
+\label{tab:riskcov}
+\begin{tabular}{lrrrrr}
+\hline
+System & Min. level & Coverage & Risk & Decided & Eligible \\
+\hline
+B1 & none & 1.000 & 0.271 & 258 & 258 \\
+B1 & S2 & 0.496 & 0.359 & 128 & 258 \\
+B1 & S3 & 0.496 & 0.359 & 128 & 258 \\
+B1+rep & none & 1.000 & 0.271 & 258 & 258 \\
+B1+rep & S2 & 0.496 & 0.359 & 128 & 258 \\
+B1+rep & S3 & 0.496 & 0.359 & 128 & 258 \\
+B3 & none & 1.000 & 0.260 & 258 & 258 \\
+B3 & S2 & 0.516 & 0.353 & 133 & 258 \\
+B3 & S3 & 0.516 & 0.353 & 133 & 258 \\
+V7-B & none & 0.640 & 0.079 & 165 & 258 \\
+V7-B & S2 & 0.578 & 0.054 & 149 & 258 \\
+V7-B & S3 & 0.291 & 0.000 & 75 & 258 \\
+\hline
+\end{tabular}
+\end{table}

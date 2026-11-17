@@ -1,0 +1,11 @@
+\section{Failure Analysis}\label{sec:failure}
+This section describes observed failure modes in the development data (Table~\ref{tab:reasons}).
+\begin{itemize}
+\item \textbf{Engine coverage gaps dominate \INS.} Of 120 \INS{} primary reasons overall, 60 are \texttt{changed\_region\_not\_activated} (the inputs never reached the changed lines, expected for batteries not written for the bug) and 49 are \texttt{unsupported\_signature} from renamed entries, which the engine cannot handle. Generator functions are not consumed, so their bodies never run (QuixBugs flatten and kheapsort). Eight BugsInPy class units are not driven. The \INS{} rate is therefore not evidence of honest abstention.
+\item \textbf{Resource limits.} After the fix there are 7 \texttt{resource\_limit} outcomes; three quixbugs negatives moved from \NDO{} to \INS{} when the no-run defect was fixed. An infinite loop introduced in one version is reported as its own stratum, not a witness.
+\item \textbf{\NDO{} on pairs known to differ.} 16 of 46 driven real-fix units and 13 of 78 changed-labelled synthetic pairs received \NDO, i.e.\ the battery did not reach the differing behaviour; S2 does not prevent this.
+\item \textbf{Label strictness.} The boundary treats the type tag as identity, so a semantics-preserving rewrite returning a boolean for an integer yields a witness (two labelled-equivalent pairs, not adjudicated); six suspect labels are excluded from denominators.
+\item \textbf{Capture gaps.} Output written through the file descriptor directly, or by subprocesses, bypasses capture; control alternation virtualises only seeded random and the clock, not other entropy sources, so environment-sensitivity detection is partial.
+\item \textbf{Defect.} The reachability of \NDO{} with a no-run input (Section~\ref{sec:verdicts}), found by the independent review, was fixed; three pairs changed.
+\end{itemize}
+\input{tables/T9_insufficient_reasons}

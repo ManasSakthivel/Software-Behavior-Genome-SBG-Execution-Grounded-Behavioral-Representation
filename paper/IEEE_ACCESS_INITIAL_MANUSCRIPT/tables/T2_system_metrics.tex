@@ -1,0 +1,16 @@
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Descriptive metrics, 95\% project-cluster bootstrap CI (B=10000, seed 42), post-fix run. Exploratory; non-pristine development data. Source: \path{results/postfix/statistics/system_metrics.csv}, \path{results/postfix/statistics/cost.csv}.}
+\label{tab:metrics}
+\begin{tabular}{lrrrrr}
+\hline
+System & Detection (DIV) & False assur. (DIV) & Abstention & False alarm & CPU s median (sum) \\
+\hline
+V7-B & 0.708 [0.545, 0.816] & 0.123 [0.054, 0.236] & 0.360 [0.306, 0.435] & 0.000 [0.000, 0.000] & 1.30 (456) \\
+B1 & 0.774 [0.609, 0.881] & 0.226 [0.119, 0.392] & 0.000 [0.000, 0.000] & 0.303 [0.149, 0.352] & 0.40 (151) \\
+B1+rep & 0.774 [0.610, 0.880] & 0.226 [0.120, 0.390] & 0.000 [0.000, 0.000] & 0.303 [0.148, 0.352] & 1.26 (543) \\
+B3 & 0.811 [0.662, 0.904] & 0.189 [0.097, 0.337] & 0.000 [0.000, 0.000] & 0.309 [0.147, 0.361] & 3.77 (1424) \\
+B4 & 0.009 [0.000, 0.019] & 0.991 [0.981, 1.000] & 0.000 [0.000, 0.000] & 0.007 [0.000, 0.010] & 0.00 (0) \\
+\hline
+\end{tabular}
+\end{table*}

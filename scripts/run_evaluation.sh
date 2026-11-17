@@ -36,9 +36,9 @@ echo "preflight OK (mode $MODE)"
 
 # ---- stage plan ----
 if [ "$MODE" = "--full" ]; then
-  ARMS="quixbugs,quixbugs_neg,synthetic,bugsinpy_units"; RERUN=25; BLONLY=""; BOOT=10000
+  ARMS="quixbugs,quixbugs_neg,synthetic,bugsinpy_units"; RERUN=25; BLONLY=""; BOOT=10000; TESTS="tests"
 else
-  ARMS="quixbugs"; RERUN=0; BLONLY="--only B1,B1rep,B2"; BOOT=500
+  ARMS="quixbugs"; RERUN=0; BLONLY="--only B1,B1rep,B2"; BOOT=500; TESTS="tests/v7 tests/v6"  # legacy V5/V6 suite takes >10 min
 fi
 export K1_PROC="$RUN/processed" K1_RAW="$RUN/raw/k1_spike" BL_RAW="$RUN/raw/baselines" POSTFIX_DIR="$RUN"
 export OMP_NUM_THREADS=1 PYTHONHASHSEED=0
@@ -53,7 +53,8 @@ stage() { # name, command...
 [ "$MODE" = "--dry-run" ] || mkdir -p "$K1_PROC" "$RUN/statistics"
 echo "output dir: $RUN"
 
-stage tests          "$PY" -m pytest tests -q
+# shellcheck disable=SC2086
+stage tests          "$PY" -m pytest $TESTS -q
 stage spike          "$PY" experiments/v7b/k1_spike.py run --arms "$ARMS" --rerun "$RERUN"
 stage spike-summary  "$PY" experiments/v7b/k1_spike.py summarize
 # shellcheck disable=SC2086
@@ -69,7 +70,7 @@ if [ "$MODE" = "--dry-run" ]; then
 elif [ "$MODE" != "--full" ]; then
   echo
   echo "NOT RUN in $MODE (reason: scope limited to the QuixBugs arm, baselines B1/B1+rep/B2 only):"
-  echo "  arms quixbugs_neg, synthetic, bugsinpy_units; baselines B3 (mutation loop), B4/B5 beyond what summarize derives; 25-pair determinism re-runs."
+  echo "  legacy tests outside tests/v7 and tests/v6; arms quixbugs_neg, synthetic, bugsinpy_units; baselines B3 (mutation loop), B4/B5 beyond what summarize derives; 25-pair determinism re-runs."
   echo "  Numbers from this run are NOT comparable with results/ and must not be cited."
 fi
 echo; echo "DONE mode $MODE in $((SECONDS-START)) s; output: $RUN"

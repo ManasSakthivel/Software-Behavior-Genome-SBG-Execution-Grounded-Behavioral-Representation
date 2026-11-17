@@ -1,0 +1,16 @@
+\section{Related Work}\label{sec:related}
+This review is thematic and limited: it was produced by a single reviewer, most statements rest on abstracts or metadata, and ``we found none'' statements are not proofs of absence. Table~\ref{tab:capability} compares capabilities only where the source text supports a label.
+
+\textbf{Cross-version differential execution.} Differential testing for change detection predates our setting~\cite{evans2007}; behavioural regression testing~\cite{jin2010automated}, DiffGen-style unit-test generation~\cite{taneja2008diffgen}, REST differential regression testing~\cite{godefroid2020differential}, and shadow symbolic execution~\cite{palikareva2016} execute versions side by side. Recent LLM-based tools target difference-exposing tests: Mokav~\cite{etemadi2024mokav}, Testora~\cite{pradel2025testora}, DiffTestGen~\cite{hu2026difftestgen}, the regression-test-generation study of Liu et al.~\cite{liu2025evaluating} (which we refer to as Cleverest) and DiffSpec~\cite{rao2024diffspec}. These are the closest competitors on discovering differences; none was run in our study.
+
+\textbf{Change coverage and impact.} Whether tests touch the change is studied as coverage~\cite{hilton2018a}; DiffTestGen uses a union coverage of modified code as generation feedback~\cite{hu2026difftestgen}; dynamic impact analysis states its limits relative to observed runs~\cite{law2003,orso2003}. From the abstracts read, none makes change coverage a precondition of the reported verdict (a weak, abstract-level observation). Coverage as a proxy for evidence strength is itself contested~\cite{inozemtseva2014coverage,just2014mut}, which is a threat to our sufficiency definition.
+
+\textbf{Sound equivalence and inconclusive outcomes.} Regression verification~\cite{godlin2009,felsing2014} and DiffKemp~\cite{malik2021} target equivalence statically; DiffKemp already has an undetermined outcome, whose reasons concern analysability rather than observation sufficiency. Abstention is established in machine learning~\cite{chow1970on,geifman2017,hendrickx2024machine} and applied to code models~\cite{spiess2025calibration}, but on model confidence rather than observational evidence.
+
+\textbf{Witnesses.} Verification witnesses are exchangeable, independently validated artefacts in software verification~\cite{beyer2022verification,beyer2015witness,beyer2016correctness}. In cross-version testing, witnesses are concrete difference-exposing inputs~\cite{palikareva2016,etemadi2024mokav}.
+
+\textbf{Flakiness and reproducibility.} Flaky tests are heavily studied~\cite{luo2014an,lam2019idflakies,parry2021a}, and LLM output nondeterminism threatens reproducibility~\cite{ouyang2025an}. Re-running to filter flaky differences is standard practice, so repetition alone is not a contribution.
+
+\textbf{Novelty assessment.} Each primitive has prior art. A replayable witness carrying observation context, a recorded sufficiency field gating the verdict, an observation-grounded inconclusive outcome, and flakiness evidence inside a cross-version verdict are each classified in our assessment as at most partially novel, and we use no ``first'' or ``state of the art'' wording. The defensible contribution is the integration under one record contract. Empirical benefit of that integration is unsupported by this work.
+
+\input{tables/capability}

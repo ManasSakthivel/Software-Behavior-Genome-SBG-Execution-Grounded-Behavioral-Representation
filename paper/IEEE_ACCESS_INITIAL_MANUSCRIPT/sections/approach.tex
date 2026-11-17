@@ -1,0 +1,6 @@
+\section{Approach and Architecture}\label{sec:approach}
+V7-B is the package \texttt{sbgv7}. A single \texttt{compare} invocation takes the two files, the entry, the inputs and a configuration, and writes an evidence log and a verdict. Modules: a record layer (types, content-addressed ids, hash-chained JSONL log, trace), a boundary comparator, strict configuration validation, a child-side harness with monitoring-based line and branch capture, a runner (repeats, replay, activation), a pure decision function, and a command-line entry point (Fig.~\ref{fig:architecture}, \ref{fig:workflow}). Earlier-generation code (V5/V6) is untouched and only the changed-lines routine is imported read-only. The explorer (input generation), the internal-state module E and Linux isolation are specified but not implemented; Fig.~\ref{fig:architecture} draws them dashed and labelled NOT IMPLEMENTED.
+
+For each input the runner executes each version $r_{det}=3$ times (early stop on disagreement); if the versions differ it performs $r_{replay}=5$ fresh replays per side and, if a controlled source (seeded random, clock) was consulted, $k_{alt}=3$ alternate-control runs. The decision function then applies the verdict table of Section~\ref{sec:verdicts}.
+\dotfig{architecture}{V7-B modules and data flow}{fig:architecture}
+\dotfig{workflow}{One \texttt{compare} run}{fig:workflow}
