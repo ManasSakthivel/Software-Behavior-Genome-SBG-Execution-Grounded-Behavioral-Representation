@@ -21,6 +21,7 @@ class InputEv:
     truncated: bool | None = None
     sandbox_ok: bool | None = None
     run_ids: tuple = ()
+    reason: str | None = None        # NO_RUN sub-reason; "invalid_input" = binding failed on BOTH sides (not a valid SAME, excluded from X_eff)
 
 
 @dataclass
@@ -47,13 +48,14 @@ def _blockers(ev):
         if not i.sandbox_ok: b.append(("sandbox_failure", i.input_id))
         if i.truncated: b.append(("capture_truncated", i.input_id))
         code = {"CONFIRMED_DIFF": "tool_error", "UNCONFIRMED_DIFF": "flaky_witness", "ENV_SENSITIVE_DIFF": "env_sensitive", "QUARANTINED": "nondeterministic",
-                "LIMIT_ASYMMETRIC": "resource_limit", "NO_RUN": "resource_limit"}.get(i.outcome)
+                "LIMIT_ASYMMETRIC": "resource_limit", "NO_RUN": None if i.reason == "invalid_input" else "resource_limit"}.get(i.outcome)
         if code: b.append((code, i.input_id))
     same = [i for i in ev.inputs or [] if i.outcome == "SAME" and i.sandbox_ok and not i.truncated]
     if ev.inputs is not None and not same and not ev.blockers:
         b.append(("no_inputs", "no deterministic-confirmed SAME input"))
-    elif same and all(i.degenerate is not False for i in same):
-        b.append(("unobservable_outcome", "every SAME input is degenerate on all channels"))
+    elif same and all(i.degenerate is not False or i.lossy is not False for i in same):
+        # equality established only on a degenerate or lossy canonical form is not evidence of no divergence (D-05/D-01 amendment A-L1)
+        b.append(("unobservable_outcome", "every SAME input is degenerate or lossy-canonicalised on all channels"))
     if ev.changed_units is not None and ev.hit_units is not None and (ev.changed_units - ev.hit_units):
         b.append(("budget_exhausted_s0" if ev.budget_exhausted else "changed_region_not_activated",
                   f"{len(ev.changed_units - ev.hit_units)} changed unit(s) unhit"))

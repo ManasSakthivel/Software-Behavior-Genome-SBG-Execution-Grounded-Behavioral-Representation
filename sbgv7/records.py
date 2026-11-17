@@ -40,8 +40,23 @@ class Rec:
             self.id = content_id(self.kind, [self.evidence_class, self.refs, self.body])
 
 
+SRC_CAP, INPUT_CAP = 1 << 20, 256 << 10  # evidence size caps; over cap the item is recorded as omitted and the verdict is not recomputable
+
+
 def ProgramVersion(role, src_bytes, entry):
-    return Rec("ProgramVersion", evidence_class="derived", body={"role": role, "sha256": sha(src_bytes), "entry": entry})
+    # source text lives in meta (not in the id, but inside the chain hash) so a verdict can be recomputed from the log alone
+    meta = {"src": src_bytes.decode("utf-8", "surrogateescape")} if len(src_bytes) <= SRC_CAP else {"src_omitted": len(src_bytes)}
+    return Rec("ProgramVersion", evidence_class="derived", body={"role": role, "sha256": sha(src_bytes), "entry": entry}, meta=meta)
+
+
+def pack_inputs(inputs):
+    return [{"id": i["id"], "args": i["args"], "kwargs": i["kwargs"]} if len(canon_json([i["args"], i["kwargs"]])) <= INPUT_CAP
+            else {"id": i["id"], "omitted": len(canon_json([i["args"], i["kwargs"]])), "sha": sha(canon_json([i["args"], i["kwargs"]]))} for i in inputs]
+
+
+def EvidencePackage(body):
+    """Everything a verifier needs besides runs/observations/versions: H/config, env, policy, inputs, rows, regions, stop reason."""
+    return Rec("EvidencePackage", evidence_class="derived", body=body)
 
 
 def Run(version_id, input_hash, run_kind, idx, harness_decl_id, obs_id, summary, meta, rid_extra=""):

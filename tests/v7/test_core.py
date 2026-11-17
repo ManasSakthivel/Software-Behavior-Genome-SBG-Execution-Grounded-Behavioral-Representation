@@ -76,7 +76,8 @@ def test_s1_and_s2(tmp_path):
 def test_s1_not_s2_when_lossy(tmp_path):
     src = "class N: pass\ndef f(x):\n    a = N(); a.n = N(); a.n.n = N(); a.n.n.n = N()\n    return a\n"
     o = go(tmp_path, src, src.replace("N(); a.n =", "N();  a.n ="), [[1]])
-    assert (o["verdict"], o["level"]) == ("NO_DIVERGENCE_OBSERVED", "S1")
+    # spec amendment A-L1: equality on a lossy canonical form is no evidence of no divergence (was NDO S1, now no usable SAME input)
+    assert (o["verdict"], o["primary"]) == ("INSUFFICIENT", "unobservable_outcome")
 
 
 def test_s0_never_with_no_divergence(tmp_path):
