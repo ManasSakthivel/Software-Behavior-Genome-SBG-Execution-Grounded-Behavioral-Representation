@@ -7,7 +7,7 @@ and the stop reason. Limit: a writer who can recompute the whole hash chain can 
 import json, os
 
 from . import records as R
-from .runner import ROW_FIELDS, RunOut, _hits, _row, classify, finalize, static_phase
+from .runner import ROW_FIELDS, RunOut, _hits, _row, classify, finalize, static_phase, v6_digest
 
 
 class VerifyError(Exception):
@@ -38,6 +38,11 @@ def verify(d):
     except (ValueError, KeyError) as e:
         raise VerifyError(f"unreadable evidence log: {e}")
     byid = {r["id"]: r for r in recs}
+    for r in recs:  # MB-04: an unknown reason code in a log is a named verification failure, not a KeyError
+        vb = r["body"] if r["kind"] == "Verdict" else {}
+        codes = [vb.get("primary"), *vb.get("secondary", [])] + [c for c, _ in r["body"].get("blockers", [])] if r["kind"] in ("Verdict", "SufficiencyRecord") else []
+        for c in codes:
+            _need(c is None or c in R.REASON_CODES, f"unknown reason code {c!r} in {r['kind']} {r['id']}")
     for r in recs:  # content-addressed kinds must hash to their id (Run: slot id; Witness: refs extended after id assignment)
         if r["kind"] not in ("Run", "Witness") and r["id"] != R.Rec(r["kind"], "", r["evidence_class"], r["status"], r["refs"], r["body"]).id:
             raise VerifyError(f"record {r['id']} ({r['kind']}) does not match its content id")
@@ -56,12 +61,13 @@ def verify(d):
         if "src" not in pv["meta"]: raise Unverifiable(f"source of {s} omitted (size cap): verdict not recomputable")
         src[s] = pv["meta"]["src"].encode("utf-8", "surrogateescape")
         _need(R.sha(src[s]) == pv["body"]["sha256"], f"source text of {s} does not match its recorded digest")
-    _need(R.content_id("H", [cfg["harness"], pkg["harness_sha"]]) == pkg["h_id"], "harness declaration id mismatch")
-    _need(R.content_id("Pair", [pkg["versions"]["base"], pkg["versions"]["variant"], pkg["entry"], pkg["h_id"]]) == verdict["body"]["pair_id"], "pair id mismatch")
+    _need(R.content_id("H", [cfg["harness"], cfg["repeat"], cfg["suff"], pkg["harness_sha"]]) == pkg["h_id"], "harness declaration id mismatch")
+    _need(R.content_id("Pair", [pkg["versions"]["base"], pkg["versions"]["variant"], pkg["entry"], pkg["h_id"], R.content_id("Policy", pkg["policy"])]) == verdict["body"]["pair_id"], "pair id mismatch")
     if any("omitted" in i for i in pkg["inputs"]): raise Unverifiable("an input was omitted (size cap): verdict not recomputable")
     ins = {i["id"]: R.sha(R.canon_json([i["args"], i["kwargs"]])) for i in pkg["inputs"]}
     role = lambda r: byid[r["refs"][0]]["body"]["role"]
     probe = {s: _runout(byid[rid], byid) for s, rid in pkg["probe_runs"].items()}
+    _need(pkg.get("v6_features_sha256") in (None, v6_digest()), "the V6 changed_lines module differs from the recorded digest: regions are not reproducible")
     st, reg, soft = static_phase(cfg, src, probe)
     _need(reg == pkg["regions"], "changed regions recomputed from the stored sources differ from the recorded ones")
     parts = []
@@ -81,7 +87,7 @@ def verify(d):
         st += stat; parts.append((ev, *_hits(runs)))
     tampered = any(r["body"]["summary"]["tampered"] for r in recs if r["kind"] == "Run")
     _need(tampered == pkg["tampered"], "tamper flag differs from the runs")
-    (value, level, primary, secondary, wid), body = finalize(cfg, src, st, reg, soft, parts, pkg["stop"], tampered)
+    (value, level, primary, secondary, wid), body = finalize(cfg, src, st, reg, soft, parts, pkg["stop"], tampered, pkg.get("policy_below_minimum"))
     vb = verdict["body"]
     _need((value, level, primary, sorted(secondary)) == (vb["value"], vb["level"], vb["primary"], vb["secondary"]),
           f"recomputed verdict {(value, level, primary, sorted(secondary))} differs from recorded {(vb['value'], vb['level'], vb['primary'], vb['secondary'])}")

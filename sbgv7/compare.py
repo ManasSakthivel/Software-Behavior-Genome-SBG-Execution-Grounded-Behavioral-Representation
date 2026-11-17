@@ -64,7 +64,7 @@ def compare(a, b, h):
     elif ta == "crashed":
         if a["signal"] != b["signal"]: ks.add("outcome")
     if "stdout" in a and "stdout" in b:  # both reached the call
-        if "side:stdout" in ch and a["stdout"] != b["stdout"]: ks.add("side_effect")
+        if "side:stdout" in ch and (a["stdout"], a.get("fd1", "")) != (b["stdout"], b.get("fd1", "")): ks.add("side_effect")
         if "side:file" in ch and a["files"] != b["files"]: ks.add("side_effect")
         if "side:argmut" in ch and not node_eq(a["argmut"], b["argmut"], tol, ordered): ks.add("side_effect")
         if "side:global" in ch and not _pairs_eq([[["str", k], v] for k, v in a["globals"].items()],

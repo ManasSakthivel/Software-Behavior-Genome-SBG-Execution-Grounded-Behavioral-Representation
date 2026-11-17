@@ -32,6 +32,12 @@ def _channels(v, path):
         raise ConfigError(f"{path}: must be a non-empty duplicate-free list drawn from {CHANNELS}")
 
 
+def _const(only):
+    def chk(v, path):  # SD-18: single built value; anything else is "not built", never silently ignored
+        if type(v) is not type(only) or v != only: raise ConfigError(f"{path}: {v!r} not built (only {only!r} is implemented)")
+    return chk
+
+
 def _s3(v, path):
     _bool(v, path)
     if v: raise ConfigError(f"{path}: S3 is not implemented in this build; true is refused rather than ignored")
@@ -41,7 +47,8 @@ def _s3(v, path):
 SCHEMA = {
     "harness": {"c_obs": (list(CHANNELS), _channels), "float_tol": {"rel": (0.0, _num(0)), "abs": (0.0, _num(0))},
                 "ordered_mapping": (False, _bool), "exc_message": ("exact_normalised", _enum("exact_normalised", "ignore")),
-                "api_break_probe": (True, _bool)},
+                "api_break_probe": (True, _bool), "normaliser_id": ("N1", _const("N1")), "stderr": ("excluded", _const("excluded")),
+                "capture_tier": ("L0", _const("L0"))},
     "repeat": {"r_det": (3, _num(1, integer=True)), "r_replay": (5, _num(1, integer=True)), "k_alt": (3, _num(0, integer=True))},
     "suff": {"s2_branch_floor": (0.80, _num(0, 1)), "s3_enabled": (False, _s3)},
     "budget": {"cpu_seconds": (60, _num(0, lo_open=True)),

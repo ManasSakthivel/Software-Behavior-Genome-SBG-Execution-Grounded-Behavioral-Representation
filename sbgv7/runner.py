@@ -1,7 +1,7 @@
 """Glue: run both versions on the same inputs through sbgv7.isolation (fresh child per run), classify determinism /
 replay, compute changed-region activation, then hand facts to decide(). Logs every step to the evidence log.
 Reuses sbgv6.features.changed_lines (read-only import)."""
-import ast, dis, hashlib, json, os, sys
+import ast, dis, hashlib, json, os, re, sys, time
 from dataclasses import dataclass, field
 
 from sbgv6.features import changed_lines
@@ -13,7 +13,32 @@ HARNESS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "harness.py")
 BRANCH_OPS = ("POP_JUMP_IF_FALSE", "POP_JUMP_IF_TRUE", "POP_JUMP_IF_NONE", "POP_JUMP_IF_NOT_NONE", "FOR_ITER", "SEND")
 
 
+FOLD_FD1, FD1_CAP = True, 32768  # UD-3 option A. Set False to revert to the pre-MB-02 behaviour (fd-1 output ignored)
+_ADDR = re.compile(r"0x[0-9a-fA-F]{4,}")
+
+
+def norm_parent(s, workdir, src):
+    """Same normaliser N1 as harness.norm (same replacement order), for parent-observed bytes (the workdir is known here, not to the child)."""
+    for p, t in ((src, "<SRC>"), (os.path.dirname(src), "<SRCDIR>"), (workdir, "<WORKDIR>"), (os.path.realpath(workdir), "<WORKDIR>")):
+        if p: s = s.replace(p, t)
+    return _ADDR.sub("0xADDR", s)
+
+
+def v6_digest():
+    """D-23: sha256 of the V6 module that provides changed_lines (read-only import); regions are only reproducible while it is unchanged."""
+    return R.sha(open(sys.modules[changed_lines.__module__].__file__, "rb").read())
+
+
+def below_minimum(cs):
+    """policy_below_minimum (SD-07/SD-09): macOS, any advisory control not ACTIVE, or an interpreter other than 3.13."""
+    return sys.platform == "darwin" or any(cs.get(k) != "ACTIVE" for k in isolation.ADVISORY) or sys.version_info[:2] != (3, 13)
+
+
 class Ineligible(Exception):
+    pass
+
+
+class BudgetStop(Exception):
     pass
 
 
@@ -36,20 +61,29 @@ class RunOut:
 class Ctx:
     def __init__(self, cfg, log, entry, base_path, var_path):
         self.cfg, self.log, self.entry, self.spent = cfg, log, entry, 0.0
+        self.t0 = time.process_time()  # SD-19: the budget also charges this (parent) process's own CPU
         self.src = {"base": open(base_path, "rb").read(), "variant": open(var_path, "rb").read()}
         self.path = {"base": os.path.abspath(base_path), "variant": os.path.abspath(var_path)}
         self.tampered = False  # any run had a result-protocol violation or monitoring-state tamper
         self.caps = isolation.capabilities()
         cs = {k: v["state"] for k, v in self.caps.items() if isinstance(v, dict)}
+        self.required_ok = all(cs.get(k) == "ACTIVE" for k in isolation.REQUIRED)  # SD-07
+        self.below_min = below_minimum(cs)
         self.env = [sys.version, sys.platform, cs]
-        self.policy = [R.sha(open(isolation.PROFILE, "rb").read()) if os.path.exists(isolation.PROFILE) else "", cs]
+        self.policy = [R.sha(open(isolation.PROFILE, "rb").read()) if os.path.exists(isolation.PROFILE) else "", cs, isolation.DET_ENV]
         self.env_id, self.policy_id = R.content_id("Env", self.env), R.content_id("Policy", self.policy)
-        self.h_id = R.content_id("H", [cfg["harness"], R.sha(open(HARNESS, "rb").read())])
+        self.h_id = R.content_id("H", [cfg["harness"], cfg["repeat"], cfg["suff"], R.sha(open(HARNESS, "rb").read())])  # SD-20 (budget excluded)
         self.vers = {}
         for s in self.src:
             pv = R.ProgramVersion(s, self.src[s], entry)
             self.vers[s] = log.append(pv)
-        self.pair_id = R.content_id("Pair", [self.vers["base"], self.vers["variant"], entry, self.h_id])
+        self.pair_id = R.content_id("Pair", [self.vers["base"], self.vers["variant"], entry, self.h_id, self.policy_id])
+
+    def cpu_total(self):
+        return self.spent + (time.process_time() - self.t0)
+
+    def over_budget(self):
+        return self.cpu_total() >= self.cfg["budget"]["cpu_seconds"]
 
     def run(self, side, inp, kind, idx, mode="call", ctl=None):
         c = self.cfg["budget"]["per_run"]
@@ -58,7 +92,7 @@ class Ctx:
         r = isolation.run_script(HARNESS, [arg], timeout_s=c["wall_s"], cpu_s=c["cpu_s"], mem_mb=c["rss_mib"], out_cap=4 << 20, channel=True)
         self.spent += r.cpu_s
         out = RunOut("", None)
-        out.sandbox_ok = r.status != "SANDBOX_UNAVAILABLE" and r.cleanup_verified and not r.orphans_found and "rlimit could not" not in r.detail
+        out.sandbox_ok = self.required_ok and r.status != "SANDBOX_UNAVAILABLE" and r.cleanup_verified and not r.orphans_found and "rlimit could not" not in r.detail
         out.truncated = r.stdout_truncated
         d = None
         if r.payload is not None:
@@ -74,7 +108,12 @@ class Ctx:
             out.truncated |= bool(d.get("stdout_trunc"))
             out.tampered, out.sig = bool(d.get("tampered", False)), d.get("sig")
             out.hits, out.branches = set(d.get("hits", [])), d.get("branches", {})
-            if d["phase"] == "ok" and mode == "call": out.obs = d
+            if d["phase"] == "ok" and mode == "call":
+                out.obs = d
+                # MB-02 (UD-3 option A; one switch: FOLD_FD1): bytes the program wrote to the real fd 1 (os.write, subprocess) as seen by the parent
+                fd1 = norm_parent(r.stdout, r.workdir, self.path[side])
+                if FOLD_FD1 and fd1:
+                    d["fd1"] = fd1[:FD1_CAP]; out.truncated |= len(fd1) > FD1_CAP
         elif out.sandbox_ok and r.signal and r.protocol_error == "missing":  # killed by a signal: a parent-observed fact, not a claim
             out.obs = {"t": "crashed", "signal": r.signal}
             out.phase = "ok"
@@ -153,30 +192,43 @@ def _hits(runs):
     return hits, br
 
 
+def _run_blockers(iid, runs):
+    stat = []
+    for r in runs:
+        if r.tampered:
+            stat.append(("unsafe_program", f"{iid}: {r.msg or 'trace tamper'} (result protocol violation or monitoring tamper)"))
+        elif r.phase in ("import_error", "entry_missing", "harness_error"):
+            stat.append(("tool_error" if r.phase == "harness_error" else "import_error", f"{iid}: {r.phase} in call run: {r.msg}"))
+    return stat
+
+
+def _no_run(ev, stat):
+    """MB-10: NO_RUN carries its real cause; decide.py maps only `both_limit` to resource_limit (the others bring their own blocker)."""
+    ev.outcome = "NO_RUN"
+    ev.reason = {"unsafe_program": "tamper", "import_error": "import", "tool_error": "tool"}[stat[0][0]] if stat else "sandbox"
+    return ev, stat, None
+
+
 def classify(iid, runs, cfg, fetch):
     """Pure per-input judgement (spec 5) from recorded runs. runs={side:[primary, repeats...]}; fetch(kind) -> {side:[RunOut]} for 'replay'/'alt'
     (live: executes them; verifier: reads them from the log). -> (InputEv, blockers, detail|None)."""
     h, rep = cfg["harness"], cfg["repeat"]
     ev = InputEv(iid, truncated=False, sandbox_ok=True)
-    stat = []
     allruns = runs["base"] + runs["variant"]
     ev.run_ids = tuple(r.run_id for r in allruns)
     ev.sandbox_ok = all(r.sandbox_ok for r in allruns)
     ev.truncated = any(r.truncated for r in allruns)
-    for r in allruns:
-        if r.tampered:
-            stat.append(("unsafe_program", f"{iid}: {r.msg or 'trace tamper'} (result protocol violation or monitoring tamper)"))
-        elif r.phase in ("import_error", "entry_missing", "harness_error"):
-            stat.append(("tool_error" if r.phase == "harness_error" else "import_error", f"{iid}: {r.phase} in call run: {r.msg}"))
+    stat = _run_blockers(iid, allruns)
     if stat or not ev.sandbox_ok:
-        ev.outcome = "NO_RUN"
-        return ev, stat, None
+        return _no_run(ev, stat)
     p = {s: runs[s][0] for s in runs}
     if not all(_same(h, runs[s][0], r) for s in runs for r in runs[s][1:]):
         ev.outcome = "QUARANTINED"; return ev, stat, None
     lim = [p[s].limit for s in p if p[s].obs is None]
     if lim:
-        ev.outcome = "NO_RUN" if len(lim) == 2 else "LIMIT_ASYMMETRIC"; return ev, stat, None
+        ev.outcome = "NO_RUN" if len(lim) == 2 else "LIMIT_ASYMMETRIC"
+        if len(lim) == 2: ev.reason = "both_limit"
+        return ev, stat, None
     if p["base"].obs["t"] == p["variant"].obs["t"] == "bind_error":
         # D-06: the input could not be prepared/bound for either version: not a valid equal execution, never a SAME
         ev.outcome, ev.reason = "NO_RUN", "invalid_input"; return ev, stat, None
@@ -191,6 +243,8 @@ def classify(iid, runs, cfg, fetch):
     rs = fetch("replay")
     ev.run_ids += tuple(r.run_id for s in rs for r in rs[s])
     ev.sandbox_ok &= all(r.sandbox_ok for s in rs for r in rs[s]); ev.truncated |= any(r.truncated for s in rs for r in rs[s])
+    stat = _run_blockers(iid, [r for s in rs for r in rs[s]])  # MB-05 (SD-10): replay/alt runs must be verified and untampered too
+    if stat or not ev.sandbox_ok: return _no_run(ev, stat)
     ok = sum(_same(h, p[s], r) for s in rs for r in rs[s])
     if ok < 2 * rep["r_replay"]:  # intermittent (0<ok) or failed_reproduction (ok==0): both unconfirmed
         ev.outcome = "UNCONFIRMED_DIFF"; ev.repro = "intermittent" if ok else "failed_reproduction"
@@ -198,6 +252,9 @@ def classify(iid, runs, cfg, fetch):
     # step 4: control-sensitivity: k_alt alternate control settings, each side's own observation must be invariant
     alt = fetch("alt")
     ev.run_ids += tuple(r.run_id for s in alt for r in alt[s])
+    ev.sandbox_ok &= all(r.sandbox_ok for s in alt for r in alt[s]); ev.truncated |= any(r.truncated for s in alt for r in alt[s])
+    stat = _run_blockers(iid, [r for s in alt for r in alt[s]])
+    if stat or not ev.sandbox_ok: return _no_run(ev, stat)
     if not all(_same(h, p[s], r) for s in alt for r in alt[s]):
         ev.outcome = "ENV_SENSITIVE_DIFF"; return ev, stat, None
     ev.outcome = "CONFIRMED_DIFF"
@@ -209,14 +266,19 @@ def process_input(ctx, inp):
     rep = ctx.cfg["repeat"]
     ih = R.sha(R.canon_json([inp["args"], inp["kwargs"]]))
     runs = {"base": [], "variant": []}
+    ob = getattr(ctx, "over_budget", lambda: False)
+
+    def run(*a, **k):  # SD-19: the budget is checked before every run, not only between inputs
+        if ob(): raise BudgetStop()
+        return ctx.run(*a, **k)
     for side in runs:  # step 1: r_det repeats, early stop at first disagreement
-        runs[side].append(ctx.run(side, inp, "primary", 0))
+        runs[side].append(run(side, inp, "primary", 0))
         for k in range(1, rep["r_det"]):
             if runs[side][0].obs is None and runs[side][0].limit: break
-            runs[side].append(ctx.run(side, inp, "repeat", k))
+            runs[side].append(run(side, inp, "repeat", k))
             if not _same(ctx.cfg["harness"], runs[side][0], runs[side][-1]): break
-    fetch = lambda kind: {s: [ctx.run(s, inp, "replay", k) for k in range(rep["r_replay"])] if kind == "replay"
-                          else [ctx.run(s, inp, "alt", k, ctl=k + 1) for k in range(rep["k_alt"])] for s in runs}
+    fetch = lambda kind: {s: [run(s, inp, "replay", k) for k in range(rep["r_replay"])] if kind == "replay"
+                          else [run(s, inp, "alt", k, ctl=k + 1) for k in range(rep["k_alt"])] for s in runs}
     ev, stat, det = classify(inp["id"], runs, ctx.cfg, fetch)
     hits, br = _hits(runs)
     if det:
@@ -252,10 +314,11 @@ def static_phase(cfg, src, probe):
     return st, reg, soft
 
 
-def finalize(cfg, src, st, reg, soft, parts, stop, tampered):
+def finalize(cfg, src, st, reg, soft, parts, stop, tampered, below_min=None):
     """Pure: everything after the runs -> decide(). parts=[(InputEv, hits, branches)]. Only deterministic-confirmed, non-lossy SAME
     inputs contribute to activation (a lossy-equal input is not evidence of no divergence)."""
     evs = [p[0] for p in parts]
+    if stop == "budget_mid_input": st = st + [("budget_exhausted_s0", "budget stop inside an input; that input is incomplete")]
     units = {s: set(reg["units"][s]) for s in reg["units"]}
     changed = frozenset((s, l) for s in units for l in units[s])
     hit, brs = {"base": set(), "variant": set()}, {"base": {}, "variant": {}}
@@ -271,7 +334,7 @@ def finalize(cfg, src, st, reg, soft, parts, stop, tampered):
         got = sum(min(2, len(brs[s].get(k, ()))) for k in stat)
         cov[s] = 1.0 if not stat else got / (2 * len(stat))
     ev_all = Evidence(inputs=evs, blockers=st + soft, changed_units=changed, hit_units=hit_units, branch_cov=cov,
-                      budget_exhausted=stop == "budget", tampered=tampered, s2_floor=cfg["suff"]["s2_branch_floor"])
+                      budget_exhausted=stop in ("budget", "budget_mid_input"), tampered=tampered, s2_floor=cfg["suff"]["s2_branch_floor"])
     if st and not evs:
         ev_all.inputs = None  # nothing was executed because a static blocker fired
     value, level, primary, secondary, wid, blockers, floors = decide(ev_all)
@@ -279,8 +342,12 @@ def finalize(cfg, src, st, reg, soft, parts, stop, tampered):
             "unhit": sorted(map(list, changed - hit_units)), "stop_reason": stop or "inputs_exhausted",
             "r_det": cfg["repeat"]["r_det"], "inputs_same": sum(e.outcome == "SAME" for e in evs),
             "quarantined": sum(e.outcome == "QUARANTINED" for e in evs), "r_empty": not changed and not any(reg["unmodelled"].values()),
-            "doc_only_lines": reg["doc"], "policy_below_minimum": sys.platform == "darwin", "blockers": [list(b) for b in blockers],
-            "run_set_root": R.sha(R.canon_json(sorted(r for e in evs for r in e.run_ids)))}
+            "doc_only_lines": reg["doc"], "policy_below_minimum": below_minimum({}) if below_min is None else below_min, "blockers": [list(b) for b in blockers],
+            "run_set_root": R.merkle_root([r for e in evs for r in e.run_ids]),
+            "factors": {"F1": {"quarantined": sum(e.outcome == "QUARANTINED" for e in evs), "r_det": cfg["repeat"]["r_det"]},
+                        "F2": {"truncated": any(e.truncated for e in evs), "tampered": bool(tampered), "lossy": any(e.lossy for e in evs)},
+                        "F3": {"units_hit": len(hit_units), "units_total": len(changed)},
+                        "F4": {"inputs_same": sum(e.outcome == "SAME" for e in evs), "stop_reason": stop or "inputs_exhausted"}}}
     return (value, level, primary, secondary, wid), body
 
 
@@ -293,6 +360,8 @@ def _row(ev):
 
 
 def compare_versions(base_path, var_path, entry, inputs, cfg, out_dir):
+    if open(base_path, "rb").read() == open(var_path, "rb").read():  # MB-08: eligibility before any side effect (no directory, no log)
+        raise Ineligible("ineligible:identical (source bytes identical; no verdict is issued)")
     os.makedirs(out_dir, exist_ok=True)
     log = R.EvidenceLog(os.path.join(out_dir, "evidence.jsonl"))
     ctx = Ctx(cfg, log, entry, base_path, var_path)
@@ -303,16 +372,21 @@ def compare_versions(base_path, var_path, entry, inputs, cfg, out_dir):
     parts, stop = [], None
     if not st:
         for inp in inputs:
-            if ctx.spent >= cfg["budget"]["cpu_seconds"]:
+            if ctx.over_budget():
                 stop = "budget"; break
-            ev, h, b, _, more = process_input(ctx, inp)
+            try:
+                ev, h, b, _, more = process_input(ctx, inp)
+            except BudgetStop:  # stopped mid-input: that input is dropped (its runs stay in the log) and the cut is a blocker (finalize)
+                stop = "budget_mid_input"; break
             parts.append((ev, h, b)); st += more
             if ev.outcome == "CONFIRMED_DIFF": stop = "witness"; break
-    (value, level, primary, secondary, wid), suff_body = finalize(cfg, ctx.src, st, reg, soft, parts, stop, ctx.tampered)
+        else:
+            if ctx.cpu_total() >= cfg["budget"]["cpu_seconds"]: stop = "budget"  # SD-19: exhausted as the last input finished
+    (value, level, primary, secondary, wid), suff_body = finalize(cfg, ctx.src, st, reg, soft, parts, stop, ctx.tampered, ctx.below_min)
     pkg = log.append(R.EvidencePackage(dict(
         entry=entry, config=cfg, h_id=ctx.h_id, harness_sha=R.sha(open(HARNESS, "rb").read()), env=ctx.env, policy=ctx.policy,
         versions=ctx.vers, probe_runs={s: probe[s].run_id for s in probe}, inputs=R.pack_inputs(inputs),
-        rows=[_row(p[0]) for p in parts], regions=reg, stop=stop, tampered=ctx.tampered)))
+        rows=[_row(p[0]) for p in parts], regions=reg, stop=stop, tampered=ctx.tampered, policy_below_minimum=ctx.below_min, v6_features_sha256=v6_digest())))
     if wid:
         refs = [wid]
     else:
@@ -321,7 +395,7 @@ def compare_versions(base_path, var_path, entry, inputs, cfg, out_dir):
     vid = log.append(R.Verdict(value, level, primary, secondary, refs + [pkg], ctx.pair_id))
     out = {"verdict": value, "level": level, "primary": primary, "secondary": sorted(secondary), "witness_id": wid,
            "verdict_id": vid, "sufficiency_id": None if wid else refs[0], "pair_id": ctx.pair_id, "package_id": pkg,
-           "r_empty": None if wid else suff_body["r_empty"], "policy_below_minimum": sys.platform == "darwin",
-           "cpu_seconds_spent": round(ctx.spent, 3), "log_head": log.prev}
+           "r_empty": None if wid else suff_body["r_empty"], "policy_below_minimum": suff_body["policy_below_minimum"],
+           "cpu_seconds_spent": round(ctx.cpu_total(), 3), "log_head": log.prev}
     json.dump(out, open(os.path.join(out_dir, "verdict.json"), "w"), indent=1)
     return out

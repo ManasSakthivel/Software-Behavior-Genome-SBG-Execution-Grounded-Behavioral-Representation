@@ -178,8 +178,8 @@ def test_verify_divergent_forged_to_same(runs, tmp_path):
     d = _copy(runs, "divergent", tmp_path)
     def m(recs):
         for r in recs:
-            if r["kind"] == "Observation" and r["body"].get("ret") == ["int", "6"]:
-                r["body"] = dict(r["body"], ret=["int", "-5"])  # make the variant's recorded return equal the base's
+            if r["kind"] == "Observation" and r["body"].get("ret") == ["int", "0x6"]:
+                r["body"] = dict(r["body"], ret=["int", "-0x5"])  # make the variant's recorded return equal the base's
     _rewrite(d, m)
     with pytest.raises(VerifyError): verify(str(d))
 

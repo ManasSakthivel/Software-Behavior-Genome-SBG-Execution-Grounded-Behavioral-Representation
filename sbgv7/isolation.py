@@ -32,6 +32,7 @@ class Result:
     capabilities: dict = field(default_factory=dict)
     payload: str | None = None  # channel=True only: the HMAC-verified result frame body (never parsed from stdout/stderr)
     protocol_error: str = ""  # channel=True only: missing|malformed|truncated|oversized|duplicate|trailing|bad_mac ("" = ok)
+    workdir: str = ""  # the private cwd of the run (for normalising parent-observed output)
 
     def to_dict(self):
         return asdict(self)
@@ -114,14 +115,14 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps, channel=Fal
                 lim[name] = int(val)
         lim["RLIMIT_CORE"] = 0
         cfg["limits"] = lim
-        cmd = (_sandbox_cmd(workdir) if sandbox else []) + [sys.executable, "-I", "-B", CHILD, json.dumps(cfg)]
-        env = {"PATH": "/usr/bin:/bin", "HOME": workdir, "TMPDIR": workdir, "PYTHONDONTWRITEBYTECODE": "1"}
+        cmd = (_sandbox_cmd(workdir) if sandbox else []) + [sys.executable, "-s", "-P", "-B", CHILD, json.dumps(cfg)]
+        env = child_env(workdir)
         key, chan_fds, keep = os.urandom(32), None, ()
         if channel:
             rr, rw = os.pipe(); kr, kw = os.pipe()
             os.write(kw, key); os.close(kw)  # 32 bytes fit the pipe buffer; the child reads to EOF then closes kr
             cfg["chan"] = {"w": rw, "k": kr}; keep = (rw, kr); chan_fds = (rr, rw, kr)
-            cmd = (_sandbox_cmd(workdir) if sandbox else []) + [sys.executable, "-I", "-B", CHILD, json.dumps(cfg)]
+            cmd = (_sandbox_cmd(workdir) if sandbox else []) + [sys.executable, "-s", "-P", "-B", CHILD, json.dumps(cfg)]
         try:
             p = subprocess.Popen(cmd, cwd=workdir, env=env, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
                                  stderr=subprocess.PIPE, start_new_session=True, pass_fds=keep)
@@ -201,7 +202,7 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps, channel=Fal
         if channel:
             payload, perr = (None, "oversized") if fcap[0] else parse_frame(key, bytes(frame), out_cap)
         return Result(status, detail, rc, sig, so, se, bufs["o"][1] > out_cap, bufs["e"][1] > out_cap, wall,
-                      ru.ru_utime + ru.ru_stime, max(peak, ru.ru_maxrss * _RSS_UNIT), orphans, cleaned, caps, payload, perr)
+                      ru.ru_utime + ru.ru_stime, max(peak, ru.ru_maxrss * _RSS_UNIT), orphans, cleaned, caps, payload, perr, workdir)
     finally:
         if own_wd:
             shutil.rmtree(workdir, ignore_errors=True)
@@ -260,6 +261,23 @@ if k == "sbx":
 print(json.dumps(out))
 '''
 _CAPS = None
+# SD-09 (I1, X6) determinism control profile of every child. NOT `-I`/`-E` for the interpreter: both make it ignore PYTHONHASHSEED (the hash
+# seed is read once at start-up, so it can only arrive via the environment). Safety instead comes from child_env(): an allowlist built from
+# scratch (nothing inherited), so no PYTHON*/LD_*/DYLD_* variable of the parent can reach the child; `-s -P` (and PYTHONNOUSERSITE/PYTHONSAFEPATH,
+# redundant on purpose) keep user site and cwd/script dir off sys.path. LOCAL environment control, NOT validated OS isolation.
+# datetime.now()/today() are NOT virtualised (SD-09); see docs/architecture/V7B_IMPLEMENTATION.md "Determinism" table.
+DET_ENV = {"PYTHONHASHSEED": "0", "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8:strict", "PYTHONNOUSERSITE": "1", "PYTHONSAFEPATH": "1",
+           "TZ": "UTC", "LC_ALL": "C.UTF-8", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"}
+
+
+def child_env(workdir):
+    """The complete environment of every child (explicit allowlist; os.environ is never read)."""
+    return {"PATH": "/usr/bin:/bin", "HOME": workdir, "TMPDIR": workdir, "PYTHONDONTWRITEBYTECODE": "1", **DET_ENV}
+
+
+# SD-07 (A-01): a run is sandbox_ok only if every REQUIRED property is ACTIVE; ADVISORY ones only flag policy_below_minimum.
+REQUIRED = ("network_denial", "write_confinement", "process_group_kill", "rlimit_cpu", "rlimit_fsize", "rlimit_nofile")
+ADVISORY = ("rlimit_as", "rlimit_nproc")
 
 
 def capabilities(refresh=False):

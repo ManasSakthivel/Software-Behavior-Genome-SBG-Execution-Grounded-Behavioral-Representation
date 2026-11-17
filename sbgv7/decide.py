@@ -48,7 +48,7 @@ def _blockers(ev):
         if not i.sandbox_ok: b.append(("sandbox_failure", i.input_id))
         if i.truncated: b.append(("capture_truncated", i.input_id))
         code = {"CONFIRMED_DIFF": "tool_error", "UNCONFIRMED_DIFF": "flaky_witness", "ENV_SENSITIVE_DIFF": "env_sensitive", "QUARANTINED": "nondeterministic",
-                "LIMIT_ASYMMETRIC": "resource_limit", "NO_RUN": None if i.reason == "invalid_input" else "resource_limit"}.get(i.outcome)
+                "LIMIT_ASYMMETRIC": "resource_limit", "NO_RUN": "resource_limit" if i.reason in (None, "both_limit") else None}.get(i.outcome)  # MB-10; None reason (legacy) stays conservative
         if code: b.append((code, i.input_id))
     same = [i for i in ev.inputs or [] if i.outcome == "SAME" and i.sandbox_ok and not i.truncated]
     if ev.inputs is not None and not same and not ev.blockers:
@@ -59,7 +59,7 @@ def _blockers(ev):
     if ev.changed_units is not None and ev.hit_units is not None and (ev.changed_units - ev.hit_units):
         b.append(("budget_exhausted_s0" if ev.budget_exhausted else "changed_region_not_activated",
                   f"{len(ev.changed_units - ev.hit_units)} changed unit(s) unhit"))
-    return b
+    return [x if x[0] in RANK else ("tool_error", f"unknown reason code {x[0]!r}: {x[1]}") for x in b]  # MB-04: never a KeyError in decide
 
 
 def sufficiency(ev, blockers):

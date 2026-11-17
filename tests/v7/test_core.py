@@ -10,7 +10,7 @@ from sbgv7.decide import Evidence, InputEv, decide, RANK
 from sbgv7.isolation import capabilities
 from sbgv7.runner import Ineligible, compare_versions, process_input
 
-pytestmark = pytest.mark.skipif(capabilities()["network_denial"]["state"] != "ACTIVE", reason="isolation not enforced here")
+pytestmark = pytest.mark.skipif(capabilities()["network_denial"]["state"] != "ACTIVE", reason=f"isolation not enforced here: {capabilities()['network_denial']['detail']}")
 FAST = {"repeat": {"r_det": 2, "r_replay": 2, "k_alt": 1}, "budget": {"per_run": {"wall_s": 3, "cpu_s": 3}}}
 
 

@@ -3,7 +3,8 @@ HMAC-authenticated frame written to a dedicated pipe fd handed in by _child.py (
 never protocol, the program's own stdout is captured into the observation.
 Trust: this file runs in the SAME process as the evaluated program, so this is protocol correctness (naive/accidental/forged-line
 output cannot fabricate a result), NOT isolation from a determined adversary that inspects harness frames/closures (Phase 3).
-Shortcut: writes via os.write(1)/subprocesses bypass stdout capture; tamper detection is a post-run monitoring-state check."""
+Scope: this is LOCAL result-channel protocol correctness (D-02), NOT operating-system isolation and not validated as such. Bytes written to the real
+fd 1 (os.write, subprocesses) are not seen here; the PARENT folds them into side:stdout (MB-02, UD-3 option A). Tamper detection is a post-run check."""
 import collections, contextlib, hashlib, hmac, importlib.util, inspect, io, json, os, re, sys, time, types
 
 cfg = json.loads(sys.argv[1])
@@ -14,8 +15,9 @@ LOSSY = [False]
 ADDR = re.compile(r"0x[0-9a-fA-F]{4,}")
 
 
-def norm(s):  # normaliser N: addresses and the private workdir only
-    return ADDR.sub("0xADDR", s.replace(os.getcwd(), "<WORKDIR>"))
+def norm(s):  # normaliser N1: source path/dir (MB-03; the two versions live in different files), private workdir, addresses
+    for p, t in ((SRC, "<SRC>"), (os.path.dirname(SRC), "<SRCDIR>"), (os.getcwd(), "<WORKDIR>")): s = s.replace(p, t)
+    return ADDR.sub("0xADDR", s)
 
 
 # Canonicalisation reads values WITHOUT running user code: no property getters, __getattr__/__getattribute__, __repr__,
@@ -26,7 +28,7 @@ def norm(s):  # normaliser N: addresses and the private workdir only
 MAXNODES, MAXNEST = 50000, 40
 _TG = type.__dict__
 _name = lambda t: f"{_TG['__module__'].__get__(t)}.{_TG['__qualname__'].__get__(t)}"
-_BASES = ((int, lambda v: ["int", str(int.__add__(v, 0))]), (float, lambda v: ["float", repr(float.__add__(v, 0.0))]),
+_BASES = ((int, lambda v: ["int", hex(int.__add__(v, 0))]), (float, lambda v: ["float", repr(float.__add__(v, 0.0))]),
           (str, lambda v: ["str", str.__str__(v) if type(v) is str else "".join(str.__iter__(v))]),
           (bytes, lambda v: ["bytes", bytes(memoryview(v)).hex()]))
 _state = {"nodes": 0}
@@ -73,7 +75,7 @@ def _c(v, d, stack):
     t = type(v)
     if v is None: return ["none"]
     if t is bool: return ["bool", v]
-    if t is int: return ["int", str(v)]
+    if t is int: return ["int", hex(v)]  # hex: str(int) raises past the 4300-digit limit
     if t is float: return ["float", repr(v)]
     if t is complex: return ["complex", repr(v)]
     if t is str: return ["str", v]
@@ -155,6 +157,8 @@ def on_branch(code, off, dest):
 
 
 def finish(res, cap):
+    try: sys.__stdout__.flush()  # buffered writes to the REAL stdout would be lost at os._exit; flushed bytes reach fd 1, which the parent folds into side:stdout
+    except BaseException: pass  # closed/broken stdout: nothing to flush, never a harness error
     res["stdout"], res["stdout_trunc"] = norm(cap.getvalue()), cap.over
     res["hits"] = sorted(hits)
     res["branches"] = {k: sorted(v) for k, v in branches.items()}
@@ -175,8 +179,11 @@ def main():
     if cfg.get("ctl"):  # alternate control setting: seeded RNG + shifted clock
         import random
         random.seed(cfg["ctl"]); off = cfg["ctl"] * 1000.0
-        _t, _tn = time.time, time.time_ns
+        _t, _tn, _m, _pc = time.time, time.time_ns, time.monotonic, time.perf_counter
         time.time = lambda: _t() + off; time.time_ns = lambda: _tn() + int(off * 1e9)
+        time.monotonic = lambda: _m() + off; time.perf_counter = lambda: _pc() + off
+        _rng = random.Random(cfg["ctl"] * 7919); os.urandom = lambda n: _rng.randbytes(n)  # also seeds uuid4
+        random._urandom = os.urandom  # secrets/SystemRandom bound the real os.urandom at import; rebind so alt runs are seeded too (primary runs keep real entropy)
     sys.path.insert(0, os.path.dirname(SRC))
     try:
         with contextlib.redirect_stdout(cap):
@@ -211,11 +218,14 @@ def main():
                 res["t"] = "bind_error"
             else:
                 try:
-                    res["t"], res["ret"] = "returned", canon(fn(*args, **kwargs))
+                    rv = fn(*args, **kwargs); res["t"] = "returned"
                 except SystemExit as e:
-                    res["t"], res["code"] = "exited", canon(e.code)
+                    rv = e.code; res["t"] = "exited"
                 except BaseException as e:
                     res["t"], res["type"], res["msg"] = "raised", f"{type(e).__module__}.{type(e).__qualname__}", norm(str(e))
+        # canonicalisation runs outside the program try: a failure here is a harness error, never a program outcome (MB-01)
+        if res["t"] == "returned": res["ret"] = canon(rv)
+        elif res["t"] == "exited": res["code"] = canon(rv)
         res["argmut"] = canon([args, kwargs]); res["args_changed"] = json.dumps(res["argmut"]) != before_a
         after_g = {k: canon(v) for k, v in vars(mod).items()
                    if not k.startswith("__") and not callable(v) and not issubclass(type(v), types.ModuleType)}

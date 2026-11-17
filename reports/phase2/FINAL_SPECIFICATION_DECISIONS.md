@@ -150,3 +150,8 @@ See `K1_K5_READINESS_AND_DECISION.md`. Options: (A) do not evaluate K1 in Phase 
 
 ## 3. What this file does not decide
 S3 enablement, any K gate, any change to numbers (floors, repeat counts, budgets), explorer or state-module scope, and the Linux isolation design. These need development-split evidence or Phase 3.
+
+## Ratifications recorded after the second-stage review (user instruction)
+- **Decision A (SD-09, hash seed):** `PYTHONHASHSEED` stays fixed at 0 in the primary K2 determinism measurement and is NOT varied in alternate runs. Hash-order sensitivity (set or dict-of-str iteration order) is a separate, currently untested dimension: a hash-order-dependent difference is never detected as `env_sensitive`. It must not be reported as covered.
+- **Decision B (SD-09, wall clock):** `datetime.now()/today()` is NOT virtualised. Retained limitation: a program that depends on the wall clock through `datetime` can produce a false witness (the replay and alt runs may not expose it). Reported as a limitation in the paper and risk register.
+- UD-3 option A (fd-level output folded into side:stdout, switch `runner.FOLD_FD1`) and UD-4 option A are implemented as recommended; UD-1 ratified as built; UD-2 and UD-5 remain open and are not implemented.

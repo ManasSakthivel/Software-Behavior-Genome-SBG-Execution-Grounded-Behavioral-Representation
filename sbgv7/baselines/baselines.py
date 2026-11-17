@@ -84,7 +84,7 @@ def plain(n):
     t = n[0]
     if t == "none": return None
     if t in ("bool", "str"): return n[1]
-    if t == "int": return int(n[1])
+    if t == "int": return int(n[1], 0)  # harness encodes ints as hex (MB-01)
     if t == "float": return float(n[1])
     if t in ("list", "tuple", "set", "frozenset"): return [plain(x) for x in n[1]]
     if t == "dict": return {json.dumps(plain(k)): plain(v) for k, v in n[1]}

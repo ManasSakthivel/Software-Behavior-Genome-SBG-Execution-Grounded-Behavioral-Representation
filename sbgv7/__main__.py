@@ -1,4 +1,6 @@
-"""python -m sbgv7 compare BASE.py VARIANT.py --entry FUNC --inputs inputs.json --config cfg.json --out DIR"""
+"""python -m sbgv7 compare BASE.py VARIANT.py --entry FUNC --inputs inputs.json --config cfg.json --out DIR
+Exit codes (SD-13). compare: 0 a verdict was written (any value: read verdict.json), 1 internal error (one-line message), 2 usage/config/inputs
+or output-path (OSError) error, 3 ineligible:identical. verify: 0 verified, 1 mismatch/tamper, 2 unreadable/missing, 4 evidence omitted by size cap."""
 import argparse, json, os, sys
 
 from .config import ConfigError, load_config, load_inputs
@@ -34,6 +36,10 @@ def main(argv=None):
         print(f"error: {e}", file=sys.stderr); return 2
     except Ineligible as e:
         print(str(e), file=sys.stderr); return 3
+    except OSError as e:  # output directory / log creation (existing file, permissions, FileExistsError from the no-overwrite policy)
+        print(f"error: cannot write evidence to {a.out}: {type(e).__name__}: {e}".splitlines()[0], file=sys.stderr); return 2
+    except Exception as e:  # noqa: BLE001  internal error: one line, no traceback
+        print(f"internal error: {type(e).__name__}: {e}".splitlines()[0], file=sys.stderr); return 1
     print(json.dumps(out, indent=1))
     return 0
 

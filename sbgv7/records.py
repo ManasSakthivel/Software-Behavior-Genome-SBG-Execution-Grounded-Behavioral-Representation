@@ -24,6 +24,14 @@ def sha(b):
     return hashlib.sha256(b if isinstance(b, bytes) else b.encode()).hexdigest()
 
 
+class InvariantError(ValueError, AssertionError):
+    """A record invariant was violated. Explicit raise (not `assert`) so `python -O` cannot disable it (MB-04)."""
+
+
+def _inv(ok, msg):
+    if not ok: raise InvariantError(msg)
+
+
 @dataclass
 class Rec:
     kind: str = ""
@@ -35,7 +43,7 @@ class Rec:
     meta: dict = field(default_factory=dict)  # non-identity data (timings); stored, not hashed into id
 
     def __post_init__(self):
-        assert self.evidence_class in EVIDENCE_CLASSES
+        _inv(self.evidence_class in EVIDENCE_CLASSES, f"unknown evidence class {self.evidence_class!r}")
         if not self.id:
             self.id = content_id(self.kind, [self.evidence_class, self.refs, self.body])
 
@@ -82,12 +90,20 @@ def SufficiencyRecord(refs, body):
 
 
 def Verdict(value, level, primary, secondary, refs, pair_id):
-    assert value in VERDICTS
-    assert (level is not None) == (value == "NO_DIVERGENCE_OBSERVED") and level in (None, "S1", "S2")  # S0 only inside INSUFFICIENT; S3 disabled
-    assert (primary is not None) == (value == "INSUFFICIENT") and (primary is None or primary in REASON_CODES)
-    assert all(c in REASON_CODES for c in secondary)
+    _inv(value in VERDICTS, f"verdict value {value!r} is not one of {VERDICTS}")
+    _inv((level is not None) == (value == "NO_DIVERGENCE_OBSERVED") and level in (None, "S1", "S2"), f"level {level!r} invalid for {value}")  # S0 only inside INSUFFICIENT; S3 disabled
+    _inv((primary is not None) == (value == "INSUFFICIENT") and (primary is None or primary in REASON_CODES), f"primary {primary!r} invalid for {value}")
+    _inv(all(c in REASON_CODES for c in secondary), f"unknown secondary reason code in {list(secondary)}")
     return Rec("Verdict", evidence_class="derived", refs=refs, body=dict(value=value, level=level, primary=primary,
                secondary=sorted(secondary), pair_id=pair_id))
+
+
+def merkle_root(ids):
+    """Binary Merkle root over the SORTED, de-duplicated ids (order-independent); an odd node is promoted unchanged."""
+    lvl = [sha(i) for i in sorted(set(ids))] or [sha("")]
+    while len(lvl) > 1:
+        lvl = [sha(lvl[i] + lvl[i + 1]) if i + 1 < len(lvl) else lvl[i] for i in range(0, len(lvl), 2)]
+    return lvl[0]
 
 
 class ChainError(Exception):
@@ -97,7 +113,7 @@ class ChainError(Exception):
 class EvidenceLog:
     def __init__(self, path):
         self.path, self.prev, self.n = path, "0" * 64, 0
-        open(path, "w").close()
+        open(path, "x").close()  # MB-08: never truncate existing evidence (FileExistsError)
 
     def append(self, rec):
         d = asdict(rec)
