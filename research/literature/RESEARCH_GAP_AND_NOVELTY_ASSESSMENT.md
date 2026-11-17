@@ -1,0 +1,27 @@
+# Research Gap and Novelty Assessment (adversarial)
+
+Stance: assume a reviewer who knows the testing literature and looks for prior art for each claim. Classification scale: **Novel** (no prior art found), **Partially novel** (components exist, specific combination/feature not found), **Not novel** (prior art found), **Unsupported** (cannot be assessed from this evidence). "Found none" means within this review's limited search (single reviewer, abstract/metadata for most sources) and is not an absence proof. No "first" claim is warranted for any item.
+
+## C1. Witness representation
+**Classification: Partially novel (not novel as a concept).**
+Prior art: verification witnesses are exchangeable, independently validated artefacts (Beyer et al. TOSEM 2022, FSE 2015, FSE 2016; abstracts). Cross-version testing tools already emit replayable concrete witnesses: Shadow replays divergent inputs natively on both versions (full text), Mokav emits a difference-exposing test input (abstract). Attack: "a witness is just a failing input plus both outputs". Surviving claim: a single schema that also carries observation context (what was exercised, in which environment, with what seeds) for both difference and no-difference outcomes, and that a third party can replay. No source found defines this for cross-version behaviour evidence; that is an absence claim.
+
+## C2. Explicit sufficiency
+**Classification: Partially novel; weakest of the five against prior art.**
+Prior art: dynamic impact analysis authors state results hold only for observed executions (Law & Rothermel; Orso et al., full text); Daikon's authors say accuracy depends on test quality (full text); patch coverage is measured (Hilton 2018 abstract; Covrig snippet); DiffTestGen's union coverage over old and new modified code is a change-coverage measure used as feedback (abstract, 2026); Cleverest generates tests that exercise the changed code (abstract). Attack: "sufficiency = patch coverage, which is known". Surviving claim: sufficiency as a recorded, per-claim, replayable field that gates the verdict. Risk: coverage-based sufficiency is itself contestable (Inozemtseva & Holmes, title-level; Just 2014 coupling 73%/17%).
+
+## C3. Evidence-grounded insufficient outcome
+**Classification: Partially novel; the "abstain" idea is Not novel.**
+Prior art: DiffKemp has "non-equal = not proven equal" plus an undetermined outcome (full text); regression verification is sound-direction; reject-option/selective prediction is established (Chow 1970; Geifman 2017; Hendrickx 2024), but grounded on model confidence. Testora's intended/unintended classification is a different outcome axis. Found none that emits "no difference observed, but the change was not exercised" for cross-version execution evidence. Attack: "this is just 'unknown' with coverage". Surviving claim: the grounds are observation evidence and are recorded in the witness. Must never be worded as equivalence (offline equivalence is undecidable; Godlin & Strichman abstract).
+
+## C4. Reproducibility-aware comparison
+**Classification: Partially novel; unassessable at depth.**
+Prior art: flaky-test detection and handling is extensive (iDFlakies, DeFlaker, Luo, Parry, Lam, Bell, etc.); LLM output nondeterminism studied (Ouyang); reproducibility methodology (Gonzalez-Barahona & Robles; Timperley; Kapoor & Narayanan). Repeated execution to separate genuine from nondeterministic differences is standard in flaky-test tools. Attack: "re-run N times" is not a contribution. Surviving claim: integrating nondeterminism evidence into the verdict/witness for cross-version comparison. Whether Testora/DiffTestGen do this internally is NOT VERIFIED (a search snippet suggests DiffTestGen re-runs tests to filter flaky results; not in its abstract).
+
+## C5. Empirical evidence
+**Classification: Unsupported by this review (a literature review cannot supply it).**
+This review can only state what evaluation standards prior work met: Shadow (18 patches, full text), Testora (PRs, 19 regressions), DiffTestGen (463 PRs), Mokav (1,535 pairs, but competition programs). Evidence for SBG must come from SBG's own runs. Pitfall controls from P0 (de-duplication, label-noise audit, time/project split, size-only and JIT baselines, generator-identity probe, abstention risk-coverage) remain necessary; Allamanis (up to 100% inflation), Herzig, Jimenez, Kapoor & Narayanan support them. Baselines a reviewer will demand: Shadow/KLEE-style, DiffTestGen/Testora/Mokav-style LLM differential tests (new in 2024-26 and absent from the P0 review), DiffKemp, Daikon diffing, plain coverage-of-change.
+
+## Overall
+The defensible contribution is the integration: one replayable contract carrying witness, sufficiency record, and an evidence-grounded insufficient outcome under nondeterminism checks, evaluated with pitfall controls. Each primitive has prior art. Newly found 2024-26 LLM differential-testing work (Testora, DiffTestGen, Mokav, Cleverest, DiffSpec) is the closest competitor on behaviour-difference discovery and must be cited and, where possible, used as baseline. Reviewers can truthfully say: witnesses exist (verification), coverage of changes is measured, abstention is standard, flakiness is solved per test. State claims as "we found none" and avoid "first".
+Limitations of this assessment: most prior-art statements rest on abstracts or titles; two of the five claims turn on absence in unread full texts.
