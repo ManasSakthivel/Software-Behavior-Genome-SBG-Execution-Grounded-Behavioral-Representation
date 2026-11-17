@@ -1,0 +1,34 @@
+{
+ "declared_at_utc": "2026-11-16T16:28:55.051917Z",
+ "source_rule": "reports/v6_redesign/03_PROBLEM_LITERATURE_ARCHITECTURES.md:61 (quoted verbatim, unmodified)",
+ "rule_text": "chosen on development data only (v8 train+val, program-grouped CV) by: (i) highest mean grouped-CV AUROC in the oracle-free regime for the raw (unsupervised) distance and for a fixed-capacity LR on the block features, (ii) subject to non-inferiority on the edit-size-stratified and leave-one-transformation-family-out analyses, (iii) ties broken in favour of the simpler/more interpretable architecture. D is not presumed: if the evidence layer adds nothing in ablation it is reported as an output of the system rather than as a predictive component.",
+ "operationalisation_note": "The source rule gives no non-inferiority margin, tie definition or simplicity order. The values below were fixed BEFORE the multi-seed ablation, LOFO and stratified comparisons of audit_selection.py were computed. They were NOT blind to the earlier single-seed ablation (ABLATION_dev.json), which had already been seen. They are not to be edited after the results are read.",
+ "candidates": [
+  "V5",
+  "FAM-A",
+  "FAM-B",
+  "FAM-C",
+  "FAM-E",
+  "V6 full (FAM-D hybrid)",
+  "V6 -A",
+  "V6 -B",
+  "V6 -C",
+  "V6 -evidence(E)"
+ ],
+ "primary_metric": "AUROC of 3-seed-mean out-of-fold LR scores (seeds 42,43,44; same 5-fold program-grouped folds per seed; inner grouped-CV tuning); raw-distance track: d_A,d_B,d_C,V6raw,V5raw (unsupervised, forward orientation fixed a priori)",
+ "noninferiority": {
+  "margin_auroc": 0.02,
+  "test": "candidate retained as non-inferior to the best candidate on a stratum iff lower 95% program-cluster-bootstrap bound (B=2000, seed 42) of AUROC(candidate)-AUROC(best) on that stratum > -0.02",
+  "strata": [
+   "edit-size tertile small",
+   "edit-size tertile mid",
+   "edit-size tertile large",
+   "pooled leave-one-transformation-type-out (LOFO, 20 folds)"
+  ]
+ },
+ "tie": "two candidates tie iff the 95% paired cluster-bootstrap CI of their primary-metric delta contains 0",
+ "simplicity_order": "fewer input features first (count of columns in the candidate's feature set); then fewer blocks",
+ "multiplicity": "Holm over the paired contrasts vs V6 full reported in the decision report",
+ "fusion_ablation": "V6raw (unweighted mean of d_A,d_B,d_C) vs learned LR on V6 block features",
+ "holdouts": "v8 test (H1), v10 (H2), X1, X2 are NOT read by any audit script. Per the frozen protocol H1/H2 are already observed for V5 (non-pristine); they have not been run for V6."
+}

@@ -1,0 +1,58 @@
+{
+ "frozen_at_utc": "2026-11-16T20:12:48.053590+00:00",
+ "architecture": "V6-B (V6 hybrid minus transition block d_B,g) -- output of the predeclared rule applied mechanically (SELECTION_RESULTS.json)",
+ "feature_columns_primary_R1": [
+  "d_A",
+  "d_C",
+  "cfg0",
+  "cfg1",
+  "cfg2",
+  "alpha",
+  "conf",
+  "st_act",
+  "st_nact",
+  "st_unk"
+ ],
+ "feature_columns_secondary_CONV+V6B": [
+  "static_token",
+  "static_ast",
+  "edit_lines",
+  "call_count",
+  "coverage_size",
+  "n_functions",
+  "exception_fraction",
+  "d_A",
+  "d_C",
+  "cfg0",
+  "cfg1",
+  "cfg2",
+  "alpha",
+  "conf",
+  "st_act",
+  "st_nact",
+  "st_unk"
+ ],
+ "preprocessing": "SimpleImputer(median, add_indicator=True); StandardScaler (LR only)",
+ "classifier_primary": "LogisticRegression(L2, max_iter=2000), C tuned in {0.1,1,10} by inner GroupKFold(3) on training programs; Platt calibration on inner OOF",
+ "classifier_secondary": "HistGradientBoosting(random_state=0), max_depth{2,3} x max_iter{50,100}, same inner tuning",
+ "seeds": [
+  42,
+  43,
+  44
+ ],
+ "outer_cv": "5-fold program-grouped; final holdout models fit on all DEV (v8 train+val) with same recipe",
+ "orientation": "forward, fixed a priori; never selected on held-out data",
+ "hashes": {
+  "sbgv6/config.py": "a72caeaf55b574c25204b69a81425e7c6f24695b6851246680560b54f7c907c0",
+  "sbgv6/features.py": "100175f1d19c4037ca84a255748de276bb8fc31bf2c6a106a524227f1bf374f4",
+  "sbgv6/distance.py": "82be21126c3a6d6d917cb2cd7924e9e12959c168d80e7e2692dc8849ae9f700e",
+  "sbgv6/observe.py": "1a4097cbafb8baae3f570d1df52e2a674c68c028ca14225f6edf47c0015a01d3",
+  "experiments/v6/evaluate.py": "ca00868f14d506e77770917d8743c831d50e05e0da6961b1112fcb93ce06d956",
+  "experiments/v6/audit_selection.py": "c4c27d63ea9e8a75af9d7665e584f4372fd946584ab189a4896731007b6f7996",
+  "artifacts/v6/audit/SELECTION_RULE_OPERATIONALISATION.json": "c68b2d426d05606eff9058781ed3d1d9cb0a3b6c83c9bfe5e58689c41b67c759",
+  "artifacts/v6/audit/SELECTION_RESULTS.json": "a8fb0966be359caf8620e1a3f39bc4b2d899d80a216336587f06029217fdb2b6",
+  "artifacts/v6/features_v8train.jsonl": "f2f27d4d85c0d5c2db5bf04be1d2f6deed4c90904a6b82dbbd7a2f0e5ec1f97e",
+  "artifacts/v6/features_v8val.jsonl": "27b203df0c25c1907ce84878efdb2254330a73603a76c06e0682329ffd938f41"
+ },
+ "holdouts_touched": "NONE. v8 test (H1), v10 (H2), X1, X2 not read by any audit script (grep-verified below). H1/H2 were already observed for V5 per the protocol, so they are non-pristine; they have not been run for V6."
+}

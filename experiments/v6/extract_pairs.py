@@ -63,7 +63,7 @@ def lost(group, why):
 if __name__ == "__main__":
     name = sys.argv[1]
     rows = load(name)
-    outf = REPO / "artifacts" / "v6" / f"features_{name}.jsonl"
+    outf = pathlib.Path(os.environ.get("SBG_V6_OUT", REPO / "artifacts" / "v6")) / f"features_{name}.jsonl"
     done = {json.loads(l)["pair_id"] for l in open(outf)} if outf.exists() else set()
     groups = {}
     for r in rows:

@@ -1,0 +1,97 @@
+{
+ "declared_at_utc": "2026-11-17T02:38:48.572831+00:00",
+ "status": "POST-HOC second-stage development comparison; see SELECTION_RULE_DISCLOSURE.md. Declared before any PROTOCOL_V2 result was computed.",
+ "data": "DEV only (v8 train+val). v8 test, v10, QuixBugs, BugsInPy are not read.",
+ "candidates": {
+  "C0_V6B_as_frozen": {
+   "features": [
+    "d_A",
+    "d_C",
+    "cfg0",
+    "cfg1",
+    "cfg2",
+    "alpha",
+    "conf",
+    "st_act",
+    "st_nact",
+    "st_unk"
+   ],
+   "policy": "frozen recipe: median impute WITH missing-indicator, no gating"
+  },
+  "C0g_V6B_gated": {
+   "features": [
+    "d_A",
+    "d_C",
+    "cfg0",
+    "cfg1",
+    "cfg2",
+    "alpha",
+    "conf",
+    "st_act",
+    "st_nact",
+    "st_unk"
+   ],
+   "policy": "P1"
+  },
+  "C1_V6B_minusE": {
+   "features": [
+    "d_A",
+    "d_C",
+    "cfg0",
+    "cfg1",
+    "cfg2"
+   ],
+   "policy": "P1",
+   "note": "E columns (alpha,conf,status one-hots) are metadata only"
+  },
+  "C2_V6B_minusE_minusA": {
+   "features": [
+    "d_C",
+    "cfg0",
+    "cfg1",
+    "cfg2"
+   ],
+   "policy": "P1",
+   "note": "A removed: non-contributing in the earlier ablation (+0.003, Holm p=0.40)"
+  }
+ },
+ "policy_P1": "Predictive vector excludes all E columns. Imputation: median, NO missing indicator. Classifier is trained on all DEV training pairs with original labels. At scoring time, pairs whose status is NOT_ACTIVATED or UNKNOWN are ABSTAINED: their score is the median of the activated training pairs' scores of the same fold. Abstention is never treated as evidence of equivalence. Both all-pairs (headline) and activated-only AUROC are reported, with the abstention rate and the label mix of abstained pairs.",
+ "metadata_fields": {
+  "activation": [
+   "alpha",
+   "status in {ACTIVATED,NOT_ACTIVATED}"
+  ],
+  "trace_completeness": [
+   "usable_frac",
+   "trunc_frac",
+   "n"
+  ],
+  "instrumentation_reliability": [
+   "fail",
+   "nondet",
+   "reasons"
+  ],
+  "unknown_evidence": [
+   "status==UNKNOWN with reason codes"
+  ],
+  "derived": [
+   "conf"
+  ]
+ },
+ "primary_metric": "AUROC of 3-seed (42,43,44) mean OOF LR scores under P1, all pairs, alone (oracle-free). Same folds as before (5-fold program-grouped; inner GroupKFold(3) tuning).",
+ "selection": "Same rule shape as the original operationalisation: best primary AUROC; eligible = candidates whose paired program-cluster-bootstrap (B=2000, seed 42) 95% CI of delta vs best contains 0 AND whose lower 95% bound of delta vs best is > -0.02 on each edit-size tertile and on pooled LOFO; ties to the fewest features. Candidates compared: C0g, C1, C2 (C0_as_frozen is a reference, not a candidate).",
+ "secondary_reported_not_decisive": [
+  "GBM",
+  "CONV+candidate increments over CONV (LR/GBM)",
+  "activated-only AUROC",
+  "dedup-weighted AUROC",
+  "raw-distance track"
+ ],
+ "R_regime": "d_R, delta_out are NEVER candidate features. Reported only in a separate R2 regime (CONV+DIFF, candidate+R).",
+ "seeds": [
+  42,
+  43,
+  44
+ ],
+ "reproduction": "All features re-extracted from raw sources into artifacts/v6/repro/ and compared with saved features; every model re-fit (no saved OOF reuse)."
+}

@@ -1,0 +1,58 @@
+{
+ "n_rows": 446,
+ "by_class": {
+  "CHANGED_LABEL_NO_OUTPUT_DIFF:activated; internal trace differs but output identical (masked)": 180,
+  "CHANGED_LABEL_NO_OUTPUT_DIFF:changed_code_not_exercised_by_declared_inputs (test inadequacy, NOT equivalence)": 61,
+  "CHANGED_LABEL_NO_OUTPUT_DIFF:activated; trace and output identical (candidate equivalent mutant OR insufficient discrimination)": 116,
+  "EQ_LABEL_OUTPUT_DIFF:exception_type_differs": 47,
+  "EQ_LABEL_OUTPUT_DIFF:repr_only_container_type (deque vs list); value equal": 42
+ },
+ "by_type_and_class": {
+  "SC-1|activated; internal trace differs but output identical (mask": 25,
+  "SC-2|activated; internal trace differs but output identical (mask": 15,
+  "SC-6|changed_code_not_exercised_by_declared_inputs (test inadequa": 18,
+  "SC-8|changed_code_not_exercised_by_declared_inputs (test inadequa": 9,
+  "SC-11|changed_code_not_exercised_by_declared_inputs (test inadequa": 13,
+  "SC-13|activated; internal trace differs but output identical (mask": 30,
+  "SC-6|activated; internal trace differs but output identical (mask": 3,
+  "SC-11|activated; internal trace differs but output identical (mask": 6,
+  "SC-1|activated; trace and output identical (candidate equivalent ": 13,
+  "SC-2|activated; trace and output identical (candidate equivalent ": 15,
+  "SC-3|activated; trace and output identical (candidate equivalent ": 27,
+  "SC-6|activated; trace and output identical (candidate equivalent ": 6,
+  "SC-11|activated; trace and output identical (candidate equivalent ": 7,
+  "SC-3|changed_code_not_exercised_by_declared_inputs (test inadequa": 6,
+  "SP-8|exception_type_differs": 47,
+  "SP-11|repr_only_container_type (deque vs list); value equal": 42,
+  "SC-4|activated; trace and output identical (candidate equivalent ": 33,
+  "SC-1|changed_code_not_exercised_by_declared_inputs (test inadequa": 6,
+  "SC-10|changed_code_not_exercised_by_declared_inputs (test inadequa": 6,
+  "SC-4|activated; internal trace differs but output identical (mask": 69,
+  "SC-8|activated; internal trace differs but output identical (mask": 12,
+  "SC-10|activated; internal trace differs but output identical (mask": 3,
+  "SC-3|activated; internal trace differs but output identical (mask": 11,
+  "SC-2|changed_code_not_exercised_by_declared_inputs (test inadequa": 3,
+  "SC-8|activated; trace and output identical (candidate equivalent ": 12,
+  "SC-5|activated; internal trace differs but output identical (mask": 6,
+  "SC-10|activated; trace and output identical (candidate equivalent ": 3
+ },
+ "sensitivity_delta_out_auroc": {
+  "all_pairs": 0.8049060853306136,
+  "drop_repr_only_deque": {
+   "n_kept": 2350,
+   "delta_out_auroc": 0.8307978902281457
+  },
+  "drop_all_89_eq_output_diff": {
+   "n_kept": 2303,
+   "delta_out_auroc": 0.8592342342342343
+  },
+  "drop_not_exercised": {
+   "n_kept": 2331,
+   "delta_out_auroc": 0.8215544883689859
+  },
+  "drop_unexplained_candidate_equivalent": {
+   "n_kept": 2276,
+   "delta_out_auroc": 0.8379973001489573
+  }
+ }
+}
