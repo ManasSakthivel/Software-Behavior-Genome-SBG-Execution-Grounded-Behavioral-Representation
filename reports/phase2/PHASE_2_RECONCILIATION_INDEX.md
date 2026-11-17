@@ -97,3 +97,5 @@ Sources: `docs/architecture/V7B_IMPLEMENTATION.md` "Not implemented", `INDEPENDE
 | U9 | Unrendered/unproduced artefacts: mermaid and ER diagrams, schema JSON files, regenerated worked examples; evaluation-side entities named but not specified |
 | U10 | Literature: absence ("found none") claims rest mostly on abstracts (158 rows: 7 full text, 89 abstract, 62 metadata); DOIs marked (3p) unusable for formal citation until rechecked |
 | U11 | Dependent Phase 3 items, all **Phase 3, not started**: Linux/container isolation (I1-I7), feasibility spike (about 30 projects), K1/K2/K3/K4/K5, external repository execution, independent benchmark and adjudication, published-tool baselines, explorer, V7-A pilot |
+
+- Added after MB acceptance: `LOCAL_EXPERIMENT_RERUN_MATRIX.md` (plan only; no experiment run), `MB_SECOND_STAGE_REVIEW.md`, `FINAL_SPECIFICATION_DECISIONS.md` ratifications (Decisions A and B).
