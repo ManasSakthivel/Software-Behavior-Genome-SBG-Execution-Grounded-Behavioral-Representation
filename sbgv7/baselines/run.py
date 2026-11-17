@@ -102,7 +102,17 @@ def cmd_summarize():
 
 
 DIV, NOD = B.DIVERGE, B.NO_DIFF
+def _usage_exit():
+    """-h/--help prints usage and exits 0 BEFORE any work or file write; unknown/missing commands exit 2 (they used to fall through to summarize)."""
+    a = sys.argv[1:]
+    if any(x in ("-h", "--help") for x in a):
+        print("usage:\n" + __doc__); sys.exit(0)
+    if not a or a[0] not in ("run", "summarize"):
+        print("usage: python -m sbgv7.baselines.run {run [--arms A,B] [--only B1,B3] [--limit N] | summarize} (see --help)", file=sys.stderr); sys.exit(2)
+
+
 if __name__ == "__main__":
+    _usage_exit()
     a = sys.argv
     if a[1] == "run":
         g = lambda k, d=None: a[a.index(k) + 1] if k in a else d

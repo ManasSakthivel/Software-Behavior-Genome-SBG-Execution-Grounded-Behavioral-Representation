@@ -165,7 +165,17 @@ def cmd_summarize():
     print(json.dumps(S, indent=1))
 
 
+def _usage_exit():
+    """-h/--help prints usage and exits 0 BEFORE any work or file write; unknown/missing commands exit 2 (they used to fall through to summarize)."""
+    a = sys.argv[1:]
+    if any(x in ("-h", "--help") for x in a):
+        print("usage:\n" + __doc__); sys.exit(0)
+    if not a or a[0] not in ("run", "summarize"):
+        print("usage: k1_spike.py {run [--arms A,B] [--rerun N] | summarize} (see --help)", file=sys.stderr); sys.exit(2)
+
+
 if __name__ == "__main__":
+    _usage_exit()
     if sys.argv[1] == "run":
         arms = (sys.argv[sys.argv.index("--arms") + 1] if "--arms" in sys.argv else "quixbugs,quixbugs_neg,synthetic,bugsinpy_units").split(",")
         cmd_run(arms, int(sys.argv[sys.argv.index("--rerun") + 1]) if "--rerun" in sys.argv else 25)
