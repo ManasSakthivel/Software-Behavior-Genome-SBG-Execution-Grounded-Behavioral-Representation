@@ -249,7 +249,7 @@ def check_oracle_attribution() -> Tuple[bool, List[str]]:
 
 def check_readme_block() -> Tuple[bool, List[str]]:
     """The README's results section must equal the generated block verbatim."""
-    readme = REPO_ROOT / "README.md"
+    readme = REPO_ROOT / "docs" / "README_pre_v7b.md"
     generated = GENERATED_DIR / "readme_results.md"
     if not generated.exists():
         return False, ["docs/generated/readme_results.md missing; run `make tables`"]

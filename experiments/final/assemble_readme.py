@@ -20,7 +20,7 @@ import pathlib
 import sys
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-README = REPO_ROOT / "README.md"
+README = REPO_ROOT / "docs" / "README_pre_v7b.md"
 GENERATED = REPO_ROOT / "docs" / "generated" / "readme_results.md"
 BEGIN = "<!-- BEGIN GENERATED RESULTS -->"
 END = "<!-- END GENERATED RESULTS -->"

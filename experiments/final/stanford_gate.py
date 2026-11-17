@@ -29,7 +29,7 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(REPO_ROOT / "experiments" / "final"))
 ART = REPO_ROOT / "artifacts" / "final"
 REPORT = REPO_ROOT / "FINAL_STANFORD_READINESS_REPORT.md"
-README = REPO_ROOT / "README.md"
+README = REPO_ROOT / "docs" / "README_pre_v7b.md"  # legacy V5 README (root README.md is hand-written since V7-B)
 
 PROTOCOL = "output_free_v7"
 MAIN_TEST = ART / f"MAIN_EVALUATION_v6test_{PROTOCOL}.json"
