@@ -46,3 +46,5 @@ Appended after the push (below).
 
 ## 7. Verdict
 `PASS_WITH_LIMITATIONS`: Makefile default fixed, V7-B doc validation added and negative-tested, historical refs now on the remote and verified; manuscript compile blocked by the missing toolchain and `--full` not run.
+
+**Git at closure:** branch research/v7b-final-validation; code commit 27765f5d, pushed and confirmed identical on origin (this appended note is committed next); working tree clean at that point; five historical refs verified on origin.
