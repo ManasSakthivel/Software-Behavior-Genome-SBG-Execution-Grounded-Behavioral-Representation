@@ -1,3 +1,5 @@
+> **Phase 2 update (2026-11-18):** superseded where it conflicts by `reports/phase2/PHASE2_FINAL_READINESS_MATRIX.md` and `PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md`. Numbers below that predate the Phase 2 engine are historical; no confirmatory claim is made.
+
 # Final research-readiness report: SBG V7-B (branch research/v7b-final-validation)
 
 **Verdict: B. Promising as a design/feasibility contribution; NOT ready for submission as a validation paper.** Date 2026-11-17.

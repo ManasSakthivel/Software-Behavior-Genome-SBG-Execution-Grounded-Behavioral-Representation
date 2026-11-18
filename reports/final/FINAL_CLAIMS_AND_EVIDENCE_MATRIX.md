@@ -1,3 +1,5 @@
+> **Phase 2 update (2026-11-18):** superseded where it conflicts by `reports/phase2/PHASE2_FINAL_READINESS_MATRIX.md` and `PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md`. Numbers below that predate the Phase 2 engine are historical; no confirmatory claim is made.
+
 # Claims and evidence matrix
 | Claim | Evidence | Source file/result | Verification status | Permitted wording |
 |---|---|---|---|---|

@@ -8,8 +8,8 @@ Table~\ref{tab:status} classifies each finding. ``Supported'' means supported de
 \hline
 Status & Finding \\
 \hline
-Supported (descriptive, clustered, exploratory) & V7-B has lower false assurance than B1 (13/106 versus 24/106; Holm $p=0.0059$; +10 point rule not met) and lower false alarm (0/152 versus 46/152); the false-assurance reduction is fully attributable to abstention (11 of 11) and to B1 lacking a sufficiency gate \\
-Descriptive & detection 75/106 versus 82/106 (not significant after Holm); abstention 122/258; runtime ratios; E5 stability; E4 invariance \\
+Supported (descriptive, clustered, exploratory) & V7-B has lower false assurance than B1 (13/106 versus 24/106; Holm $p=0.0059$; +10 point rule not met) (the false-assurance reduction is fully attributable to abstention (11 of 11) and to B1 lacking a sufficiency gate; abstention is selective, 11 of 24 B1 false assurances versus 7 of 82 B1 detections became \\INSUFFICIENT, but precision of \\NDO{} verdicts is not better: 13/61 wrong versus 24/130 for B1)\\
+Descriptive & detection 75/106 versus 82/106 (a possible loss: CI $[-11.5,-2.6]$ excludes zero, Holm $p=0.156$); false alarm 0/152 versus 46/152 (an artefact: all 46 B1 false alarms are renamed-entry pairs that B1 treats as differences, V7-B abstains on all 48 such pairs, and the pre-declared exclusion sensitivity was not run); abstention 122/258; runtime ratios; E5 stability; E4 invariance \\
 Exploratory & attribution to specific mechanisms (\texttt{unmodelled\_change}, set-order dependence) \\
 Inconclusive & any effect of the hash-seed change on determinism (1 versus 2 pairs); component value (no nondeterminism in the data) \\
 Unsupported & independent generalisation; superiority beyond these 258 non-pristine pairs; comparison with published tools; OS isolation; tamper-proof evidence; complete determinism; hash-order robustness \\

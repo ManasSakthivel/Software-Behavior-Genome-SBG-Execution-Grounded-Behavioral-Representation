@@ -19,7 +19,7 @@ It is positioned as a **design and feasibility study with a negative-result flav
 
 **Claims (all local, exploratory, on 321 non-pristine development pairs, macOS only):**
 - The tool issues a closed set of verdicts, none of which means equivalence, and each verdict can be recomputed offline from its evidence log (`python -m sbgv7 verify DIR`).
-- On the 258 labelled pairs, V7-B had a lower false-assurance rate than plain differential testing (B1) and no false alarms on the labelled negatives. The whole reduction is explained by abstention (`INSUFFICIENT`), not by detecting more.
+- On the 258 labelled pairs, V7-B had a lower false-assurance rate than plain differential testing (B1) (the 0/152 false-alarm figure is a harness artefact, not a result: B1 treats renamed entry points as differences and V7-B abstains on them). The whole reduction is explained by abstention (`INSUFFICIENT`), not by detecting more.
 - The harness ran every driven pair without an engine failure, and its verdicts were reproduced across two independent runs (321/321 strict identity, E1 versus E3).
 
 **Does NOT claim:** independent generalisation; that `NO_DIVERGENCE_OBSERVED` means equivalence, safety or "no bug"; operating-system isolation or a secure sandbox for untrusted code; tamper-proof evidence (the plaintext hash chain is forgeable by anyone who can recompute it); complete or hash-order-robust determinism; superiority over, or comparison with, any published tool (none was run); that thresholds are calibrated; any Linux, Docker or cross-language result; novelty ("first", "state of the art").
