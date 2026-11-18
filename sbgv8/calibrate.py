@@ -8,7 +8,7 @@ from __future__ import annotations
 import math
 import numpy as np
 from scipy import optimize
-from . import stats
+from . import stats, policy
 
 # pre-declared directions: -1 => more of the feature lowers risk, +1 => raises it, 0 => free (ERS response features)
 RISK_SIGN = {"act_frac": -1, "branch_cov_min": -1, "mu_min": -1, "mu_mean": -1, "n_same": -1, "n_rep": -1, "obs_react": -1,
@@ -50,7 +50,8 @@ def _code(b): return b[0] if isinstance(b, (list, tuple)) else str(b)
 
 
 def is_eligible(rec):
-    return not is_div(rec) and all(_code(b) in SOFT_BLOCKERS and not STRICT_BLOCKERS for b in rec.blockers)
+    """Witness exclusion + the ACTIVE named policy (sbgv8.policy; default v8.0). STRICT_BLOCKERS=True is the legacy alias of v8.0s."""
+    return not is_div(rec) and policy.blockers_ok(rec, "v8.0s" if STRICT_BLOCKERS else None)
 
 
 def _vec(feats, names, mean=None, std=None):
@@ -227,8 +228,32 @@ def fit_select(records, names, alphas=(0.15,), inner_k=3, seed=0, B=1000, lam_gr
     for a in alphas:
         taus[a] = stats.select_threshold(p, el, y, proj, a, B, seed)[0] if p is not None else -math.inf
     m = fit(records, names, lam=lam, tau=taus[alphas[0]], **kw)
-    m.taus = taus; m.info["chosen_lambda"] = lam; m.info["inner_oof_logloss"] = best[0] if best[0] < math.inf else None
+    m.taus = taus; m.oof = {"p": p, "el": el, "y": y, "proj": proj}   # inner-OOF risks (training labels only) for frozen_thresholds
+    m.info["chosen_lambda"] = lam; m.info["inner_oof_logloss"] = best[0] if best[0] < math.inf else None
     return m
+
+
+FROZEN_MIN_N = 5   # "pt" rule: minimum issued pairs on the calibration OOF risks before an empirical risk <= alpha is believed
+
+
+def frozen_thresholds(oof, alphas, target_cov, B=1000, seed=0):
+    """Thresholds learnt ONLY from calibration-side (training-project) inner-OOF risks and labels; nothing about any held-out project.
+    ('ub', a): largest-coverage tau whose one-sided 95% project-cluster-bootstrap UPPER bound on selective risk <= a (conservative).
+    ('pt', a): largest-coverage tau whose empirical OOF selective risk <= a with >= FROZEN_MIN_N issued (optimistic, no uncertainty).
+    ('cov',):  tau whose calibration coverage (issued / all labelled calibration pairs) is closest to `target_cov` (ties -> lower tau).
+    -inf = issue nothing."""
+    p, el, y, proj = oof["p"], np.asarray(oof["el"], bool), np.asarray(oof["y"], float), oof["proj"]
+    out = {("ub", a): stats.select_threshold(p, el, y, proj, a, B, seed)[0] for a in alphas}
+    o, st = stats._groups(p, el, y)
+    if not len(o):
+        return {**out, **{("pt", a): -math.inf for a in alphas}, ("cov",): -math.inf}
+    ends = np.r_[st[1:], len(o)] - 1; n = ends + 1; fa = np.cumsum(y[o])[ends]; sv = np.asarray(p)[o][ends]; N = len(y)
+    for a in alphas:
+        ok = np.flatnonzero((fa / n <= a + 1e-12) & (n >= FROZEN_MIN_N)); out[("pt", a)] = float(sv[ok[-1]]) if len(ok) else -math.inf
+    if target_cov is None: out[("cov",)] = -math.inf
+    else:
+        gap = np.abs(n / N - target_cov); out[("cov",)] = float(sv[int(np.argmin(gap))]) if gap.min() <= target_cov else -math.inf
+    return out
 
 
 def cli_register(sub):

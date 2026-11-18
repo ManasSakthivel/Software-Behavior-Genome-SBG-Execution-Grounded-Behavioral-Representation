@@ -269,3 +269,30 @@ def power_report(proj, y, ndo, target_delta=0.05):
                note=("issued NDO < 100 or projects < 60: results are pilot/exploratory; non-significance must not be read as no effect"
                      if small else "count thresholds met; precision still given by the interval, not by this label"))
     return rep
+
+
+# ---------------- mac reanalysis additions (appended; nothing above changed) ----------------
+def slope_cluster_ci(p, y, proj, B=1000, seed=0):
+    """Project-cluster bootstrap percentile CIs of the calibration slope and intercept. Replicates where y is constant are dropped (count returned)."""
+    u, idx = _codes(proj); p = np.asarray(p, float); y = np.asarray(y, float)
+    members = [np.flatnonzero(idx == k) for k in range(len(u))]
+    cnt = rng_for(seed, "slope").multinomial(len(u), np.full(len(u), 1 / len(u)), size=B)
+    ints, sls = [], []
+    for c in cnt:
+        ii = np.concatenate([np.repeat(members[k], c[k]) for k in np.flatnonzero(c)])
+        a, b = calibration_slope_intercept(p[ii], y[ii])
+        if not np.isnan(b): ints.append(a); sls.append(b)
+    return {"slope_ci95": list(pct_ci(sls)), "intercept_ci95": list(pct_ci(ints)), "n_valid": len(sls), "n_requested": int(B)}
+
+
+def paired_logloss(p_a, p_b, y, proj, B=2000, seed=0):
+    """Paired project-cluster bootstrap of mean log loss(b) - log loss(a) (positive = a better). Returns point, 95% CI, one-sided p (H1: a better)."""
+    d = logloss_each(p_b, y) - logloss_each(p_a, y); W = cluster_counts(proj, B, seed)
+    reps = (W * d).sum(1) / W.sum(1)
+    return {"point": float(d.mean()), "ci95": list(pct_ci(reps)), "p_one_sided": boot_p_one_sided(reps)}
+
+
+def permutation_p(observed, null, larger_is_extreme=True):
+    """Add-one permutation p-value of `observed` against a null sample."""
+    n = np.asarray(null, float); n = n[~np.isnan(n)]
+    return float((1 + (n >= observed - 1e-12).sum()) / (len(n) + 1)) if larger_is_extreme else float((1 + (n <= observed + 1e-12).sum()) / (len(n) + 1))

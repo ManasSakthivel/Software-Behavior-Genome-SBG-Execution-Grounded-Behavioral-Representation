@@ -5,7 +5,9 @@ Mapping decisions (each is a modelling choice, documented in reports/v8/V8_ARCHI
   present and not truncated, api <- signature recorded. A run without an observation (limit, tamper) captures nothing.
 - n_repeat_runs = recorded runs of kind repeat/replay/alt (both sides); deterministic = outcome != QUARANTINED.
 - hits/branches come from the sidecar only (and only when it is bound to this log); without it hits are empty and meta.no_hits=True.
-- integrity_ok = sbgv7 verify() succeeded AND the sidecar (if any) is consistent."""
+- integrity_ok = sbgv7 verify() succeeded AND the sidecar (if any) is consistent AND the V8 validator (evidence_schema.validate_dir) did not find the evidence untrusted
+  (independent-capture mismatch/incomplete/missing, schema or binding violation, bad anchor MAC when a key is supplied). meta.capture/anchor/untrusted/effective_verdict expose why;
+  a legacy V7-B dir with no V8 artefacts has capture='not_collected' (no independent record exists) and is NOT marked untrusted."""
 import json, os
 
 from sbgv7 import records as R
@@ -55,7 +57,9 @@ def load_sidecar(d):
     return json.load(open(p)) if os.path.exists(p) else None
 
 
-def load_record(evidence_dir, label=None, project=None, family=None):
+def load_record(evidence_dir, label=None, project=None, family=None, anchor_key=None, require_anchor=False):
+    from .evidence_schema import validate_dir
+    from .procsep import decide
     from .trust import check_sidecar
     d = evidence_dir
     recs, byid = load_log(d)
@@ -65,7 +69,7 @@ def load_record(evidence_dir, label=None, project=None, family=None):
     try: verify(d); vstat = "verified"
     except Unverifiable: vstat = "unverifiable"
     except (VerifyError, OSError, KeyError, ValueError, TypeError): vstat = "failed"
-    sc = check_sidecar(d)
+    val = validate_dir(d, anchor_key, require_anchor); sc = val["sidecar"]
     side = {p["input_id"]: p for p in load_sidecar(d)["parts"]} if sc["status"] == "ok" else {}
     inputs = []
     for row in pkg["rows"]:
@@ -85,8 +89,9 @@ def load_record(evidence_dir, label=None, project=None, family=None):
     vb = verdict["body"]
     meta = {"verify": vstat, "sidecar": sc["status"], "no_hits": not side, "log_head": json.loads(open(os.path.join(d, "evidence.jsonl")).read().splitlines()[-1])["hash"],
             "src_dir": d, "primary": vb["primary"], "secondary": vb["secondary"], "stop": pkg["stop"], "tampered": pkg["tampered"],
-            "policy_below_minimum": pkg.get("policy_below_minimum")}
+            "policy_below_minimum": pkg.get("policy_below_minimum"), "capture": val["capture"]["status"], "anchor": val["anchor"]["status"],
+            "untrusted": val["trusted"] is False, "untrusted_reasons": val["reasons"], "effective_verdict": decide(vb["value"], val)["verdict"]}
     return EvidenceRecord(
         pair_id=vb["pair_id"], project=project or "unknown", family=family or project or "unknown", y=label, v7b_verdict=vb["value"], v7b_level=vb["level"],
         inputs=inputs, changed_units={s: list(units[s]) for s in ("base", "variant")}, static_branches=sb, env_id=R.content_id("Env", pkg["env"]),
-        integrity_ok=vstat == "verified" and sc["status"] != "inconsistent", blockers=blockers, config={**pkg["config"]["repeat"], "s2_branch_floor": pkg["config"]["suff"]["s2_branch_floor"]}, meta=meta)
+        integrity_ok=vstat == "verified" and sc["status"] != "inconsistent" and val["trusted"] is not False, blockers=blockers, config={**pkg["config"]["repeat"], "s2_branch_floor": pkg["config"]["suff"]["s2_branch_floor"]}, meta=meta)

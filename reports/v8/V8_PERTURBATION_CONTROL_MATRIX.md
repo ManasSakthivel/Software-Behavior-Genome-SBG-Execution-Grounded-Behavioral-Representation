@@ -96,3 +96,20 @@ Everything implemented in `sbgv8/perturb.py` is **post-hoc**: it edits a copy of
 - Not applicable cases return an unchanged copy with `applicable=False` and a reason (no sole reacher for P1, immaterial channel for P4, no clean SAME input for P2, already divergent for P6, already violated for P8/P9).
 - P8 record-level proxy: `integrity_ok=False`. `sbgv8.trust.check` verifies evidence directories, so real forgery rejection is tested in `test_trust`, not here.
 - P4 approximation: fingerprints of partially masked inputs cannot be recomputed from a hash and are kept; inputs left with no channel become degenerate. Synthetic missed divergences are for property tests only, never fitting.
+
+## Addendum 2026-11-18 (Mac hardening, agent E; append-only)
+Detail and numbers: `reports/v8/mac/V8_MAC_PERTURBATION_VALIDATION.md`; data `results/v8_mac_perturb/`.
+
+| ID | Post-hoc class | Real-execution class and status (30 dev pairs) |
+|---|---|---|
+| P1 | (a) delete recorded inputs | none |
+| P1b | (a) least-multiplicity unit deletion (named variant, P1 kept) | none |
+| P2 | (a) synthetic recorded inputs, not runs | (b) engine re-run with added inputs hitting only unchanged code (verified from recorded hit sets): applicable 7 of 30 (no such candidate for 23), pass 7/7 for fitted/stub, 2/7 for the all-feature probe |
+| P3 | (a) | none |
+| P4 | (a) | none |
+| P5 | (a) | (b) re-run with (1,1,0), (2,3,1) vs recorded (3,5,3): 30/30 pass; engine verdict and `n_eff` constant, `n_rep` scales: repetition, not independent samples; fitted model response 0/30 (vacuous) |
+| P6 | (a) synthetic witness | (c) label/output-blind generated input, outcome-conditioned: applicable 1 of 30 (pass); no independent input derivable for 29 |
+| P7, P9 | (a) | none |
+| P8 | (a) flag | (a on disk) corrupted copies of evidence dirs through `trust.check` in `tests/v8/test_ers_validation.py` |
+
+Post-hoc applicable/pass/fail/N-A (312 records): P1 16/16/0/296, P1b 93/93/0/219, P2 227/227/0/85, P3 262/262/0/50, P4 178/178/0/134, P5 176/176/0/136, P6 228/228/0/84, P7 178/178/0/134, P8 312/312/0/0, P9 228/228/0/84 (stub and fitted model; applicable column first). Other predictors differ only where stated in the validation report.

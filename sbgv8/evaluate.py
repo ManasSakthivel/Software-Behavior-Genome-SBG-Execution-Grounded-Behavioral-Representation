@@ -6,7 +6,7 @@ pairs are counted and reported, never dropped silently. Unresolved handling beyo
 from __future__ import annotations
 import csv, json, math, os, time
 import numpy as np
-from . import baselines, calibrate, schema, stats
+from . import baselines, calibrate, policy, schema, stats
 from .schema import EvidenceRecord
 
 BANNER = "DEVELOPMENT DATA, EXPLORATORY, NOT INDEPENDENT VALIDATION"
@@ -94,7 +94,13 @@ def _sys_summary(name, y, proj, ndo, B, seed):
             "coverage_ci95": list(stats.pct_ci((W * ndo).sum(1) / W.sum(1)))}
 
 
-def run(records, out_dir, seed=0, B=stats.B_DEFAULT, outer_k=5, profile_fn=None, ers_factory="default", fit_B=500, plots=True, extra_banner=None, strict_blockers=False):
+def run(*a, policy_name=None, **kw):
+    """Evaluation under a named eligibility policy (sbgv8.policy; None = whatever is active, default v8.0); restored afterwards."""
+    with policy.use(policy_name or policy.current()):
+        return _run(*a, **kw)
+
+
+def _run(records, out_dir, seed=0, B=stats.B_DEFAULT, outer_k=5, profile_fn=None, ers_factory="default", fit_B=500, plots=True, extra_banner=None, strict_blockers=False):
     calibrate.STRICT_BLOCKERS = bool(strict_blockers)
     t0 = time.time(); os.makedirs(os.path.join(out_dir, "tables"), exist_ok=True)
     allrecs = list(records)
@@ -104,7 +110,7 @@ def run(records, out_dir, seed=0, B=stats.B_DEFAULT, outer_k=5, profile_fn=None,
     dev = any(r.split not in INDEPENDENT_SPLITS for r in allrecs)
     banner = BANNER if dev else "evaluation/holdout split records only"
     if ers_factory == "default": ers_factory = default_ers_factory()
-    res = {"banner": banner, "seed": seed, "strict_blockers": bool(strict_blockers), "soft_blockers": sorted(calibrate.SOFT_BLOCKERS), "bootstrap_B": B, "outer_k": outer_k, "n_records": len(allrecs), "n_labelled": len(recs),
+    res = {"banner": banner, "policy": policy.current(), "seed": seed, "strict_blockers": bool(strict_blockers), "soft_blockers": sorted(calibrate.SOFT_BLOCKERS), "bootstrap_B": B, "outer_k": outer_k, "n_records": len(allrecs), "n_labelled": len(recs),
            "n_unresolved_y_none": len(allrecs) - len(recs), "n_projects": len(set(proj)), "base_rate_y": float(y.mean()) if len(y) else None,
            "splits_present": sorted({r.split for r in allrecs}), "schema": schema.SCHEMA_VERSION, "note": extra_banner}
     if len(recs) < 10 or len(set(proj)) < 3:
@@ -287,6 +293,134 @@ def _plots(out_dir, res, S, y):
             ax.plot([b["mean_pred"] for b in r["reliability"]], [b["obs_rate"] for b in r["reliability"]], "o-", label=r["system"])
     ax.set_xlabel("predicted risk"); ax.set_ylabel("observed rate"); ax.set_title(res["banner"], fontsize=6); ax.legend(fontsize=6)
     fig.savefig(os.path.join(out_dir, "plots", "reliability.png"), dpi=130, bbox_inches="tight"); plt.close(fig)
+
+
+# ======================= FROZEN-THRESHOLD evaluation (deployable policy) + ERS placebo (mac hardening) =======================
+FROZEN_ALPHAS = (0.10, 0.15, 0.20)
+FROZEN_RULES = [("ub", a) for a in FROZEN_ALPHAS] + [("pt", a) for a in FROZEN_ALPHAS] + [("cov",)]
+FROZEN_SYSTEMS = ("b7_cov_calibration", "b9_cec_no_ers", "b8_full_cec")
+
+
+class Frozen:
+    """A model plus thresholds learnt on calibration (training) PROJECTS only. Immutable after freeze()."""
+    def __init__(self, name, model, taus, target_cov): self.name, self.model, self.taus, self.target_cov = name, model, taus, target_cov
+
+
+def _fit_system(train, name, seed, fit_B, alphas, profile_fn, ers_factory):
+    names, with_ers = baselines.MODEL_SPECS[name]
+    kw = dict(profile_fn=profile_fn, alphas=alphas, seed=seed, B=fit_B)
+    if with_ers:
+        if ers_factory is None: raise RuntimeError("ERS unavailable")
+        m9 = calibrate.fit_select(train, baselines.MODEL_SPECS["b9_cec_no_ers"][0], **kw)
+        fn, en = ers_factory(m9, seed=seed); kw.update(extra_features_fn=fn, extra_names=en)
+    return calibrate.fit_select(train, names, **kw)
+
+
+def gate_coverage(records):
+    """Coverage of the recorded V7-B gate (b3) over the labelled records: a property of V7-B verdicts, not of any held-out label."""
+    lab = [r for r in records if r.y is not None]
+    return sum(r.v7b_verdict == schema.VERDICTS[2] for r in lab) / max(len(lab), 1)
+
+
+def freeze(train, name, seed=0, alphas=FROZEN_ALPHAS, B=1000, fit_B=300, profile_fn=None, ers_factory=None, target_cov="gate"):
+    """Learn model + thresholds from `train` (development/calibration projects) only. Reads train labels, never any other data."""
+    m = _fit_system(train, name, seed, fit_B, alphas, profile_fn, ers_factory)
+    tc = gate_coverage(train) if target_cov == "gate" else target_cov
+    return Frozen(name, m, calibrate.frozen_thresholds(m.oof, alphas, tc, B, seed), tc)
+
+
+def apply_frozen(fz, test):
+    """Decisions for held-out records. Pure function of (frozen model, frozen thresholds, evidence): NEVER touches rec.y, and the
+    cut never depends on the distribution of held-out scores. -> (risk array, {rule: bool NDO array})."""
+    risk = np.array([fz.model.predict_risk(r) for r in test])
+    base = np.array([r.integrity_ok and not calibrate.is_div(r) and calibrate.is_eligible(r) for r in test])
+    return risk, {rule: base & (risk <= tau) for rule, tau in fz.taus.items()}
+
+
+def _boot_pair(ndo_a, ndo_b, y, W):
+    def rj(nd):
+        num = (W * nd * y).sum(1); den = (W * nd).sum(1)
+        return np.where(den > 0, num / np.where(den > 0, den, 1), np.nan), num / W.sum(1), den / W.sum(1)
+    (ra, ja, ca), (rb, jb, cb) = rj(ndo_a), rj(ndo_b)
+    one = lambda x: stats.selective_risk(y, x)
+    return {"risk_diff_b_minus_a": (one(ndo_b) - one(ndo_a)) if ndo_a.any() and ndo_b.any() else None, "risk_diff_ci95": list(stats.pct_ci(rb - ra)),
+            "fa_mass_diff_b_minus_a": float((ndo_b * y).mean() - (ndo_a * y).mean()), "fa_mass_diff_ci95": list(stats.pct_ci(jb - ja)),
+            "coverage_diff_b_minus_a": float(ndo_b.mean() - ndo_a.mean()), "coverage_diff_ci95": list(stats.pct_ci(cb - ca))}
+
+
+def frozen_eval(records, seed=0, outer_k=5, B=10000, fit_B=300, systems=FROZEN_SYSTEMS, profile_fn=None, ers_factory="default"):
+    """Project-grouped outer CV in which every held-out fold is scored by thresholds FROZEN on the other projects (see freeze/apply_frozen).
+    Realised coverage differs across models and folds; that is the point. Reports pooled held-out coverage, false-assurance risk, FA mass
+    (P(NDO and Y=1) over all labelled pairs; comparable across coverages) with project-clustered CIs, per-fold coverage, and paired contrasts."""
+    recs = sorted([r for r in records if r.y is not None], key=lambda r: (r.project, r.pair_id))
+    y = np.array([r.y for r in recs], float); proj = np.array([r.project for r in recs]); N = len(recs)
+    if ers_factory == "default": ers_factory = default_ers_factory()
+    fold = stats.project_folds(proj, outer_k, seed); folds = sorted(set(fold))
+    ndo = {(n, rule): np.zeros(N, bool) for n in systems for rule in FROZEN_RULES}; fold_cov = {k: [] for k in ndo}; taus = {}; unavailable = {}
+    for f in folds:
+        tr = [i for i in range(N) if fold[i] != f]; te = [i for i in range(N) if fold[i] == f]
+        assert not (set(proj[tr]) & set(proj[te]))
+        for n in systems:
+            if n in unavailable: continue
+            try: fz = freeze(_arr(recs, tr), n, seed, FROZEN_ALPHAS, B=fit_B, fit_B=fit_B, profile_fn=profile_fn, ers_factory=ers_factory)
+            except RuntimeError as e: unavailable[n] = str(e); continue
+            _, dec = apply_frozen(fz, _arr(recs, te)); taus[f"{n}|fold{f}"] = {"|".join(map(str, k)): t for k, t in fz.taus.items()}
+            taus[f"{n}|fold{f}"]["target_cov"] = fz.target_cov
+            for rule, d in dec.items(): ndo[(n, rule)][te] = d; fold_cov[(n, rule)].append(float(d.mean()))
+    W = stats.cluster_counts(proj, B, seed); rows = []
+    for (n, rule), d in ndo.items():
+        if n in unavailable: continue
+        s = _sys_summary(n, y, proj, d, B, seed)
+        reps = (W * d * y).sum(1) / W.sum(1)
+        s.update(rule="|".join(map(str, rule)), fa_mass=float((d * y).mean()), fa_mass_ci95=list(stats.pct_ci(reps)), fold_coverage=fold_cov[(n, rule)])
+        rows.append(s)
+    refs = []
+    for n in baselines.RULE_NAMES:
+        d = _cv_rule(recs, n, profile_fn)[1]
+        s = _sys_summary(n, y, proj, d, B, seed); s.update(rule="rule"); refs.append(s)
+    pairs = []
+    for rule in FROZEN_RULES:
+        for a_, b_ in (("b7_cov_calibration", "b9_cec_no_ers"), ("b7_cov_calibration", "b8_full_cec"), ("b9_cec_no_ers", "b8_full_cec")):
+            if a_ in unavailable or b_ in unavailable or a_ not in systems or b_ not in systems: continue
+            pairs.append({"rule": "|".join(map(str, rule)), "a": a_, "b": b_, **_boot_pair(ndo[(a_, rule)], ndo[(b_, rule)], y, W)})
+    return {"banner": BANNER, "policy": policy.current(), "seed": seed, "outer_k": outer_k, "n_labelled": N, "n_projects": len(set(proj)), "bootstrap_B": B,
+            "target_coverage": "V7-B gate coverage of the calibration (training) projects of each fold", "systems": rows, "reference_rules": refs, "paired": pairs,
+            "thresholds_per_fold": taus, "unavailable": unavailable}
+
+
+def ers_placebo(records, seed=0, outer_k=5, n_perm=100, fit_B=50, profile_fn=None, ers_factory="default"):
+    """Is the held-out log-loss gain of full CEC (with ERS) over CEC-without-ERS distinguishable from noise? Placebo: the ERS response vectors are
+    shuffled across records (train set and test set of each outer project fold separately, so the marginal ERS distribution is kept and
+    its link to the record/label is broken); the model is refit and rescored identically. p = P(null gain >= observed gain). Eligible pairs only."""
+    recs = sorted([r for r in records if r.y is not None], key=lambda r: (r.project, r.pair_id))
+    y = np.array([r.y for r in recs], float); proj = np.array([r.project for r in recs]); N = len(recs)
+    if ers_factory == "default": ers_factory = default_ers_factory()
+    if ers_factory is None: return {"error": "ERS unavailable"}
+    fold = stats.project_folds(proj, outer_k, seed); folds = sorted(set(fold))
+    names9 = baselines.MODEL_SPECS["b9_cec_no_ers"][0]; kw = dict(profile_fn=profile_fn, alphas=(0.15,), seed=seed, B=fit_B)
+    elig = np.array([calibrate.is_eligible(r) for r in recs]); p9 = np.full(N, np.nan); p8 = np.full(N, np.nan); pp = np.full((n_perm, N), np.nan)
+    for f in folds:
+        tr = [i for i in range(N) if fold[i] != f]; te = [i for i in range(N) if fold[i] == f]
+        m9 = calibrate.fit_select(_arr(recs, tr), names9, **kw); fn, en = ers_factory(m9, seed=seed)
+        vec = {recs[i].pair_id: fn(recs[i]) for i in tr + te}
+        names8 = baselines.MODEL_SPECS["b8_full_cec"][0]
+        def fit8(vmap):
+            return calibrate.fit_select(_arr(recs, tr), names8, extra_features_fn=lambda r: vmap[r.pair_id], extra_names=en, **kw)
+        for i in te: p9[i] = m9.predict_risk(recs[i])
+        m8 = fit8(vec)
+        for i in te: p8[i] = m8.predict_risk(recs[i])
+        for k in range(n_perm):
+            rng = stats.rng_for(seed, f"placebo{f}_{k}"); vm = {}
+            for grp in (tr, te):
+                perm = rng.permutation(len(grp))
+                for a, b in zip(grp, perm): vm[recs[a].pair_id] = vec[recs[grp[b]].pair_id]
+            mk = fit8(vm)
+            for i in te: pp[k, i] = mk.predict_risk(recs[i])
+    ll9 = stats.logloss(p9[elig], y[elig]); gain = ll9 - stats.logloss(p8[elig], y[elig])
+    null = np.array([ll9 - stats.logloss(pp[k][elig], y[elig]) for k in range(n_perm)])
+    return {"policy": policy.current(), "n_eligible": int(elig.sum()), "logloss_b9": ll9, "observed_gain_b9_minus_b8": float(gain),
+            "paired_cluster_bootstrap": stats.paired_logloss(p8[elig], p9[elig], y[elig], proj[elig], 2000, seed) | {"note": "point = logloss(b9)-logloss(b8) via paired_logloss(a=b8,b=b9); positive = ERS better"},
+            "placebo_null_mean": float(null.mean()), "placebo_null_q95": float(np.quantile(null, 0.95)), "placebo_p": stats.permutation_p(gain, null), "n_perm": n_perm}
 
 
 def cli_register(sub):

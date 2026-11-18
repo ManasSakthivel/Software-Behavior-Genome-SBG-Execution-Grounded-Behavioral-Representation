@@ -41,3 +41,6 @@ b8 (with ERS) vs b9 (without): held-out log loss lower by 0.030 (seed 0, 95% CI 
 
 ## Reproduce
 `.venv/bin/python experiments/v8/run_dev_evaluation.py` (seeds recorded in `run_meta.json`); tests: `.venv/bin/python -m pytest tests/v8/test_calibrate.py tests/v8/test_baselines.py tests/v8/test_stats.py tests/v8/test_evaluate.py`.
+
+## Addendum 2026-11-18 (Mac hardening, appended; earlier sections unchanged)
+New named eligibility policy `v8.1` (strict: V7-B blockers `changed_region_not_activated` / `budget_exhausted_s0` are hard, eligible pool = V7-B's NDO set, 61 pairs) is the primary policy by declared V7-B semantics; `v8.0` (above) stays reproducible by name. The "base-rate Brier 0.203" used above is an in-sample base rate; the honest out-of-fold base rate is Brier 0.231 (log loss 0.662) under v8.0. Slope instability is mostly a leave-project-out artefact of near-constant predictors (null-shuffle reference, CIs); frozen-threshold evaluation shows no risk control at alpha 0.10-0.20; ERS gain not resolved (paired cluster CI includes 0 in 5 of 6 runs). Details: `reports/v8/mac/V8_MAC_{POOL_POLICY_REVIEW,MATCHED_COVERAGE_REVIEW,STATISTICAL_REANALYSIS}.md`; data `results/v8_mac_reanalysis_20261118_210512/`.

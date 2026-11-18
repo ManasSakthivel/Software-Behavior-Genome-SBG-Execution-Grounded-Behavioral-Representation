@@ -78,6 +78,10 @@ def test_forgery_known_results(suite):
     assert all(suite[k]["outcome"].startswith("BLOCKED") for k in ("A03_os__exit_before_result", "A05_close_result_fd"))
     assert suite["A04_write_garbage_to_result_fd"]["verdict"] != "NO_DIVERGENCE_OBSERVED"  # blocked or no effect, never a false clean
     assert det("P01_edit_observation_no_rechain") and det("P02_edit_verdict_and_rechain") and det("P03_drop_verdict_json") and det("P06_substitute_evidence_of_another_program")
-    # documented OPEN issues must stay visible: if one starts being detected, the report must be updated
-    assert suite["A08_hide_stdout_divergence_by_patching_Cap"]["outcome"].startswith("SUCCEEDS")
-    assert suite["P04_edit_unverified_field_and_rechain"]["outcome"].startswith("SUCCEEDS")
+    # V8 mac hardening: the two formerly OPEN attacks are now detected (before-state preserved in results/v8_mac_security/attack_suite_before.json).
+    # Boundary kept visible: a writer who HOLDS the anchor key still succeeds (P08); only an out-of-band pinned head helps (tests/v8/test_security_schema.py).
+    assert det("A08_hide_stdout_divergence_by_patching_Cap") and "independent_capture" in suite["A08_hide_stdout_divergence_by_patching_Cap"]["outcome"]
+    assert det("P04_edit_unverified_field_and_rechain") and "anchor_mac" in suite["P04_edit_unverified_field_and_rechain"]["outcome"]
+    assert suite["P08_rechain_and_reanchor_with_the_key"]["outcome"].startswith("SUCCEEDS")
+    assert det("P09_strip_anchor") and det("A16_close_stderr_then_hide_stdout_divergence") and det("A17_forge_tee_record_with_guessed_nonce")
+    assert suite["A08_hide_stdout_divergence_by_patching_Cap"]["effective_verdict"] == "INSUFFICIENT"  # the V8 decision layer never sees NDO from untrusted evidence

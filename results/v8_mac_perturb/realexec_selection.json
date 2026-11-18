@@ -1,0 +1,59 @@
+{
+ "declared_before_running": true,
+ "seed": 20261118,
+ "quota": {
+  "quixbugs": 10,
+  "synthetic": 10,
+  "bugsinpy_units": 5,
+  "quixbugs_neg": 5
+ },
+ "pool_sizes": {
+  "bugsinpy_units": 28,
+  "quixbugs_neg": 49,
+  "synthetic": 79,
+  "quixbugs": 0
+ },
+ "selected": [
+  "synthetic:test__math_spiral_matrix__sc10_s1_p0",
+  "synthetic:train__graph_center_finder__sp-11_s1",
+  "synthetic:dev__str_first_unique_char__sp-3_s0",
+  "synthetic:dev__math_nth_permutation__sp-4_s0",
+  "synthetic:dev__graph_num_provinces__sp-4_s1",
+  "synthetic:test__sort_gravity_bead__sp4_s0",
+  "synthetic:train__math_gray_code__sp-6_s1",
+  "synthetic:train__ds_lfu_simulation__sp-3_s0",
+  "synthetic:train__str_bracket_balance__sp-4_s2",
+  "synthetic:train__math_staircase_ways__sc4_s1_p0",
+  "bugsinpy_units:youtube_dl__32__youtube_dl_utils_py__strip_jsonp",
+  "bugsinpy_units:luigi__9__luigi_execution_summary_py__depth_first_search",
+  "bugsinpy_units:luigi__9__luigi_execution_summary_py__partition_tasks",
+  "bugsinpy_units:youtube_dl__31__youtube_dl_utils_py__parse_duration",
+  "bugsinpy_units:youtube_dl__7__youtube_dl_utils_py__js_to_json",
+  "quixbugs_neg:bitcount__sp-1_s0",
+  "quixbugs_neg:knapsack__sp-1_s0",
+  "quixbugs_neg:powerset__sp-1_s0",
+  "quixbugs_neg:bucketsort__sp-3_s0",
+  "quixbugs_neg:max_sublist_sum__sp-1_s0"
+ ],
+ "records_sha256": "4d2b495913e8287880ffbb7fdf4c909aa1baec8e02c9732e340fb86ff7413205",
+ "rule": "(declared before running; uses no label y, no verdict-by-label, no predictor output):\n  pool = dev records whose src evidence dir exists, v7b_verdict != DIVERGENT_OBSERVABLE, >=1 clean SAME input, >=1 changed unit,\n         recorded wall_s <= 10 (bounds run time), and a task entry in dev_collect.tasks().\n  sample with random.Random(20261118) over pool sorted by pair_id, quota per arm: quixbugs 10, synthetic 10, bugsinpy_units 5, quixbugs_neg 5 (<=30).",
+ "written": "2026-11-18T20:58:41",
+ "supplement": {
+  "declared_after_primary_run": true,
+  "seed": 20261119,
+  "pool_size": 23,
+  "selected": [
+   "synthetic:train__str_atoi_manual__sc3_s0_p0",
+   "synthetic:train__str_is_number_valid__sc2_s2_p0",
+   "synthetic:train__str_rabin_karp_hash__sc4_s0_p0",
+   "synthetic:test__math_power_modular__sc1_s0_p0",
+   "synthetic:dev__graph_num_provinces__sc4_s2_p0",
+   "synthetic:test__str_wildcard_match__sc4_s1_p0",
+   "synthetic:train__sort_pigeonhole_sort__sc1_s0_p0",
+   "synthetic:train__ds_segment_tree_sum__sc4_s0_p0",
+   "synthetic:train__sort_bucket_sort__sc10_s1_p0",
+   "synthetic:train__str_levenshtein_distance__sc8_s1_p0"
+  ],
+  "written": "2026-11-18T21:02:38"
+ }
+}

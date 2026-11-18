@@ -67,6 +67,26 @@ PERTURBATION_MATRIX = {
 }
 assert tuple(PERTURBATION_MATRIX) == PERTURBATIONS
 
+# Evidence class (V8 audit 2026-11-18): (a) recorded-evidence transformation (nothing is executed; a copy of the record is edited),
+# (b) re-execution with changed conditions (the engine runs again with different inputs/config), (c) independently acquired new evidence.
+# "posthoc" is what sbgv8/perturb.py implements; "realexec" is experiments/v8/run_real_exec_perturbations.py (None = no execution analogue).
+EVIDENCE_CLASS = {
+    "P1": {"posthoc": "a", "realexec": None}, "P2": {"posthoc": "a (synthetic recorded inputs, not runs)", "realexec": "b"},
+    "P3": {"posthoc": "a", "realexec": None}, "P4": {"posthoc": "a", "realexec": None},
+    "P5": {"posthoc": "a", "realexec": "b (config change; repeated identical runs are not independent samples)"},
+    "P6": {"posthoc": "a (synthetic witness)", "realexec": "c (only when the discriminating input is derived independently of the pair's engine run)"},
+    "P7": {"posthoc": "a", "realexec": None}, "P8": {"posthoc": "a (flag)", "realexec": "a on disk (corrupt the evidence dir, then sbgv8.trust.check; no execution)"},
+    "P9": {"posthoc": "a", "realexec": None}, "P1b": {"posthoc": "a", "realexec": None}}
+for _k, _m_ in PERTURBATION_MATRIX.items(): _m_["evidence_class"] = EVIDENCE_CLASS[_k]
+
+# Additional NAMED variants (never replace the pre-declared nine; PERTURBATIONS stays as in schema.py).
+PERTURBATION_VARIANTS = {"P1b": dict(
+    PERTURBATION_MATRIX["P1"], id="P1b", name="least-multiplicity relevant-evidence deletion",
+    definition="Among changed units covered by >=1 clean SAME input (non-duplicate) and such that the deleting inputs would not be ALL clean inputs, take the unit with the fewest covering inputs (ties: smallest (side, line)) and delete every clean input covering it.",
+    transformation="inputs -= all clean inputs covering the least-multiplicity covered unit; recorded evidence only; selection uses hits only (never y/meta/predictor output).",
+    confounds="Uses the same recorded hit sets as mu_min/act_frac, so a model that reads them responds mechanically; N/A when every covered unit is covered by all clean inputs (deletion would be total evidence removal)",
+    evidence_class=EVIDENCE_CLASS["P1b"])}
+
 
 @dataclass
 class PerturbationRecord:
@@ -102,6 +122,16 @@ def _p1(r, rng, p):
     kind, target, ids = rng.choice(cands)
     p["deleted"], p["target"] = ids, [kind, list(target) if kind == "unit" else target]
     r.inputs = [i for i in r.inputs if i.input_id not in ids]
+
+
+def _p1b(r, rng, p):
+    cl = [i for i in r.inputs if _clean(i) and not i.duplicate_of]
+    cover = {u: sorted(i.input_id for i in cl if u in _hit(i)) for u in _units(r)}
+    cover = {u: ids for u, ids in cover.items() if ids and len(ids) < len(cl)}
+    if not cover: return "no covered changed unit leaves a clean input outside the deletion set"
+    u = min(cover, key=lambda u: (len(cover[u]), u))
+    p["deleted"], p["target"], p["multiplicity"] = cover[u], ["unit", list(u)], len(cover[u])
+    r.inputs = [i for i in r.inputs if i.input_id not in cover[u]]
 
 
 def _p2(r, rng, p):
@@ -173,7 +203,7 @@ def _p9(r, rng, p):
     if not r.env_consistent: return "environment already inconsistent"
     r.env_consistent, r.env_id = False, r.env_id + "|inconsistent"
 
-_FN = {"P1": _p1, "P2": _p2, "P3": _p3, "P4": _p4, "P5": _p5, "P6": _p6, "P7": _p7, "P8": _p8, "P9": _p9}
+_FN = {"P1": _p1, "P1b": _p1b, "P2": _p2, "P3": _p3, "P4": _p4, "P5": _p5, "P6": _p6, "P7": _p7, "P8": _p8, "P9": _p9}
 
 
 def apply(rec, pid, seed=0, **params):
@@ -182,7 +212,7 @@ def apply(rec, pid, seed=0, **params):
     r, p = copy.deepcopy(rec), dict(params, seed=seed)
     reason = _FN[pid](r, _rng(pid, seed, rec), p)
     if reason: r = copy.deepcopy(rec)
-    M = PERTURBATION_MATRIX[pid]
+    M = PERTURBATION_MATRIX.get(pid) or PERTURBATION_VARIANTS[pid]
     mode = "post_hoc_synthetic" if pid in ("P2", "P6") else "post_hoc"
     return r, PerturbationRecord(pid, json.loads(json.dumps(p, default=list)), seed, rec.digest(), r.digest(), mode,
                                  bool(M["execution"]), reason is None, reason or "")

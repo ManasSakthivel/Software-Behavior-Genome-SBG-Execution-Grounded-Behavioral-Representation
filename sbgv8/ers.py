@@ -10,8 +10,8 @@ from sbgv8.schema import PERTURBATIONS, EvidenceRecord
 
 NDO, DIV, INS = "NO_DIVERGENCE_OBSERVED", "DIVERGENT_OBSERVABLE", "INSUFFICIENT"
 EPS = 1e-6
-TOL = {"P1": EPS, "P2": 0.02, "P3": 0.02, "P4": EPS, "P5": EPS, "P6": 0.0, "P7": EPS, "P8": 0.0, "P9": EPS}
-_MONO = ("P1", "P4", "P5", "P7", "P9")
+TOL = {"P1": EPS, "P1b": EPS, "P2": 0.02, "P3": 0.02, "P4": EPS, "P5": EPS, "P6": 0.0, "P7": EPS, "P8": 0.0, "P9": EPS}
+_MONO = ("P1", "P1b", "P4", "P5", "P7", "P9")
 
 
 @dataclass
@@ -60,7 +60,7 @@ def compute_ers(rec, predictor, pid, seed=0, **params):
     if pid == "P8" and pr.applicable is False: ok = None
     cov = lambda p: {k: p[k] for k in ("act_frac", "branch_cov_min", "chan_complete")}
     return ERS(pid, pr.params, pr.applicable, p0, p1, r0, r1, v0, v1, cov(p0), cov(p1), {"before": p0["prov_ok"], "after": p1["prov_ok"]},
-               {"before": p0["integrity_ok"], "after": p1["integrity_ok"]}, perturb.PERTURBATION_MATRIX[pid]["expected"], why, ok, tol,
+               {"before": p0["integrity_ok"], "after": p1["integrity_ok"]}, (perturb.PERTURBATION_MATRIX.get(pid) or perturb.PERTURBATION_VARIANTS[pid])["expected"], why, ok, tol,
                d if pr.applicable else 0.0, "" if ok is not None else why, pr.to_dict())
 
 
@@ -79,7 +79,7 @@ def run_matrix(records, predictor, pids=PERTURBATIONS, seed=0):
             if k == "fail": fails.append((rec.pair_id, p))
     md = ["| Perturbation | Name | Mode | Pass | Fail | N/A |", "|---|---|---|---|---|---|"]
     for p in pids:
-        M, c = perturb.PERTURBATION_MATRIX[p], counts[p]
+        M, c = perturb.PERTURBATION_MATRIX.get(p) or perturb.PERTURBATION_VARIANTS[p], counts[p]
         mode = "post-hoc (synthetic recorded input; real execution needs collector)" if p in ("P2", "P6", "P5") else "post-hoc"
         md.append(f"| {p} | {M['name']} | {mode} | {c['pass']} | {c['fail']} | {c['na']} |")
     return {"counts": counts, "failures": fails, "n_records": len(records), "markdown": "\n".join(md)}
@@ -88,7 +88,11 @@ def run_matrix(records, predictor, pids=PERTURBATIONS, seed=0):
 class ActivationStubPredictor:
     """Simple deterministic stub: risk = 1 - act_frac; decision from the V7-B-style rules. For tests and CLI smoke only."""
     def predict_risk(self, rec): return 1.0 - build_profile(rec)["act_frac"]
-    def decide(self, rec): return v7b_style_decision(rec)[0], self.predict_risk(rec)
+    def decide(self, rec):
+        # V8 trust gate (same rule as calibrate.Model.decide): unverified evidence is never authoritative, witnessed DIVERGENT included.
+        # v7b_style_decision itself stays a faithful replica of V7-B (witness precedence over the tamper flag).
+        if not rec.integrity_ok: return "INSUFFICIENT", 1.0
+        return v7b_style_decision(rec)[0], self.predict_risk(rec)
 
 
 def _load(path):

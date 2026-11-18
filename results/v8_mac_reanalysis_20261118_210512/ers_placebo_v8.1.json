@@ -1,0 +1,59 @@
+[
+ {
+  "policy": "v8.1",
+  "n_eligible": 61,
+  "logloss_b9": 0.5833932339266003,
+  "observed_gain_b9_minus_b8": 0.005135721918549163,
+  "paired_cluster_bootstrap": {
+   "point": 0.005135721918549185,
+   "ci95": [
+    -0.06671766626516283,
+    0.08937310417092788
+   ],
+   "p_one_sided": 0.44677661169415295,
+   "note": "point = logloss(b9)-logloss(b8) via paired_logloss(a=b8,b=b9); positive = ERS better"
+  },
+  "placebo_null_mean": -0.015653435864205974,
+  "placebo_null_q95": 0.025616186424932342,
+  "placebo_p": 0.21782178217821782,
+  "n_perm": 100
+ },
+ {
+  "policy": "v8.1",
+  "n_eligible": 61,
+  "logloss_b9": 0.5630480147413746,
+  "observed_gain_b9_minus_b8": 0.02562917487562877,
+  "paired_cluster_bootstrap": {
+   "point": 0.025629174875628803,
+   "ci95": [
+    -0.016674616710241022,
+    0.07903453695454137
+   ],
+   "p_one_sided": 0.10494752623688156,
+   "note": "point = logloss(b9)-logloss(b8) via paired_logloss(a=b8,b=b9); positive = ERS better"
+  },
+  "placebo_null_mean": -0.01780512470627526,
+  "placebo_null_q95": 0.011691158652275132,
+  "placebo_p": 0.009900990099009901,
+  "n_perm": 100
+ },
+ {
+  "policy": "v8.1",
+  "n_eligible": 61,
+  "logloss_b9": 0.6004890449458948,
+  "observed_gain_b9_minus_b8": 0.056762479574574365,
+  "paired_cluster_bootstrap": {
+   "point": 0.05676247957457422,
+   "ci95": [
+    0.009067017580622809,
+    0.1450024813705545
+   ],
+   "p_one_sided": 0.009495252373813094,
+   "note": "point = logloss(b9)-logloss(b8) via paired_logloss(a=b8,b=b9); positive = ERS better"
+  },
+  "placebo_null_mean": -0.02057920716790562,
+  "placebo_null_q95": 0.012623543414380987,
+  "placebo_p": 0.009900990099009901,
+  "n_perm": 100
+ }
+]

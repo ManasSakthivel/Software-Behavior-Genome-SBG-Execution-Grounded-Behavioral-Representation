@@ -1,0 +1,33 @@
+{
+ "records": "/Users/manassakthivel/Desktop/SBG-V6/datasets/v8/dev_records.jsonl",
+ "records_sha256_16": "4d2b495913e82878",
+ "timestamp": "20261118_210512",
+ "args": {
+  "records": "/Users/manassakthivel/Desktop/SBG-V6/datasets/v8/dev_records.jsonl",
+  "boot": 10000,
+  "boot_extra": 2000,
+  "perms": 100,
+  "seeds": [
+   0,
+   1,
+   2
+  ],
+  "slope_seeds": 20,
+  "null_reps": 100,
+  "quick": false,
+  "tag": ""
+ },
+ "n_records": 312,
+ "n_labelled": 258,
+ "code_sha256_16": {
+  "sbgv8/policy.py": "0da73cadb6ed5c69",
+  "sbgv8/calibrate.py": "55eb18eb7fda4594",
+  "sbgv8/evaluate.py": "2bd01f9da40de3ab",
+  "sbgv8/stats.py": "669f7357265f338a",
+  "sbgv8/baselines.py": "543ab9dc7175b3aa",
+  "sbgv8/ers.py": "e6641a2f52350973",
+  "sbgv8/perturb.py": "0a9b7ff56529b30a",
+  "sbgv8/profile.py": "178f546398525aa0"
+ },
+ "note": "ers.py/perturb.py are owned by another agent and may change; hashes pin the code used"
+}

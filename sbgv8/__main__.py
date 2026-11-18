@@ -5,12 +5,16 @@ import argparse, importlib, json, sys
 MODULES = ("profile", "perturb", "ers", "calibrate", "baselines", "evaluate", "manifest", "splits", "adjudication")
 
 
-def _verify(d):
+def _verify(d, isolated=False):
+    """V7-B verify + sidecar + independent capture + anchor (key from $SBGV8_ANCHOR_KEY; without it the anchor is reported UNVERIFIED, not ok).
+    Exit 1 if verification fails or the V8 validator finds the evidence untrusted (decision layer must then say INSUFFICIENT)."""
     from sbgv7.verify import Unverifiable, VerifyError, verify
-    from .trust import check_sidecar
+    from .evidence_schema import validate_dir
+    from .procsep import validate_isolated
     try:
-        out = verify(d); out["sidecar"] = check_sidecar(d)
-        print(json.dumps(out)); return 0 if out["sidecar"]["status"] != "inconsistent" else 1
+        out = verify(d); v = validate_isolated(d) if isolated else validate_dir(d)
+        out.update(sidecar=v["sidecar"], capture=v["capture"], anchor=v["anchor"], untrusted=v["trusted"] is False, untrusted_reasons=v["reasons"])
+        print(json.dumps(out)); return 1 if v["trusted"] is False else 0
     except VerifyError as e:
         print(f"VERIFY FAILED: {e}", file=sys.stderr); return 1
     except Unverifiable as e:
@@ -29,14 +33,14 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="python -m sbgv8")
     sp = ap.add_subparsers(dest="cmd", required=True)
     sp.add_parser("compare", help="as `python -m sbgv7 compare` plus v8_parts.json")
-    sp.add_parser("verify", help="V7-B verify + sidecar consistency").add_argument("dir")
+    vp = sp.add_parser("verify", help="V7-B verify + sidecar + independent capture + anchor"); vp.add_argument("dir"); vp.add_argument("--isolated", action="store_true", help="validate in a fresh interpreter (authenticated reply)")
     f = sp.add_parser("forge-test", help="run the forgery suite (macOS sandbox; writes a JSON table)")
     f.add_argument("--out", default=None)
     for m in MODULES:
         try: getattr(importlib.import_module(f"sbgv8.{m}"), "cli_register")(sp)
         except (ImportError, AttributeError): pass
     a = ap.parse_args(argv)
-    if a.cmd == "verify": return _verify(a.dir)
+    if a.cmd == "verify": return _verify(a.dir, a.isolated)
     if a.cmd == "forge-test":
         from .trust import forgery_suite
         res = forgery_suite()

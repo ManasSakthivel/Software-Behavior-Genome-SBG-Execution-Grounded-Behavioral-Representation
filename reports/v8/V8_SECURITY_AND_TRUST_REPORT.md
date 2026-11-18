@@ -44,3 +44,17 @@ Counts: 15 attacks + 1 control; detected 9 (A01, A02, A07, P01, P02, P03, P05, P
 4. The shadow runner executes the evaluated code again (sandboxed via the same macOS profile); it is a cross-check of return values only, and for `obj`/lossy/raised outcomes it is `not_comparable`.
 5. `sidecar` is derivable from the Run records (the engine already logs per-run hits/branches in `Run.meta`); it is kept as the contract's explicit capture and cross-checked against the runs, so it adds consistency, not new information.
 6. Isolation is validated only as far as the V7-B probes on macOS; none of it is validated on Linux.
+
+---
+## 7. Addendum 2026-11-18: macOS hardening of A08 and P04 (branch research/v8-mac-hardening)
+Sections 1-6 above are the pre-fix record and are kept unchanged; their A08/P04 rows describe the state before this addendum (machine-readable: `results/v8_mac_security/attack_suite_before.json`). Details: `reports/v8/mac/V8_MAC_SECURITY_REMEDIATION.md`, `V8_MAC_ATTACK_RETEST.md`, `V8_MAC_PROCESS_ARCHITECTURE.md`. Still no security claim; macOS only; Linux unverified; process separation is NOT an OS-level sandbox.
+
+| Id | Before | After (`attack_suite_after.json`) | Residual |
+|---|---|---|---|
+| A08 hide stdout divergence by patching `Cap.write` | SUCCEEDS (open) | DETECTED by `independent_capture`; V8 verdict INSUFFICIENT | A program that replaces `sys.stdout` itself (or forges records after learning the per-run nonce from argv) is still invisible: same address space (M-4). Pinned by a test |
+| P04 edit unverified field + re-chain + re-bind sidecar | SUCCEEDS (open) | DETECTED by `anchor_mac` (+ `independent_capture` binding) | Only where the verifier holds the anchor key and the writer did not. New P08 (writer holding the key re-chains and re-anchors) SUCCEEDS (open) by design; only an out-of-band pinned head detects it |
+| A16 close stderr, patch Cap, print (new) | n/a | DETECTED (record incomplete) | |
+| A17 forge a tee record with a guessed nonce (new) | n/a | DETECTED (foreign record -> untrusted, fail safe) | denial of a true divergence is possible by this route, a false clean is not |
+| P09 strip the anchor (new) | n/a | DETECTED when a key/requirement is given | not detected if the verifier supplies neither |
+
+Counts after: 19 attacks + 1 control; detected 14 (A01, A02, A07, A08, A16, A17, P01-P07, P09), blocked by the engine 3 (A03-A05), no effect 1 (A06), still succeeds 1 (P08, the key-holder boundary). Of the original 15: A08 and P04 moved from open to detected, so open = 0 of the original 15; the new P08 is the honest remaining boundary.  Interface additions: `trust.check(..., anchor_key=, require_anchor=)`, `adapter.load_record(..., anchor_key=, require_anchor=)` and `collect.compare/run_capture(..., anchor_key=)`; new `EvidenceRecord.meta` keys `capture`, `anchor`, `untrusted`, `untrusted_reasons`, `effective_verdict`; `integrity_ok` is now also False when the independent capture or (given a key) the anchor fails. Legacy V7-B directories (no V8 artefacts) are `capture="not_collected"`, not untrusted: they have no independent record to contradict.
