@@ -1,0 +1,601 @@
+{
+ "note": "DEVELOPMENT/EXPLORATORY; non-pristine; descriptive only",
+ "cap_cpu_s": 60,
+ "seed": 1001,
+ "B4": {
+  "threshold": 97,
+  "tune_balanced_acc": 0.5,
+  "tune_n": 219,
+  "tune_rule": "projects with even sum(ord) hash"
+ },
+ "B5": {
+  "threshold": 0.47242106194078454,
+  "train_oof_balanced_acc": 0.741,
+  "n_train_oof_activated": 2208
+ },
+ "bugsinpy_units": {
+  "n": 46,
+  "B1": {
+   "verdicts": {
+    "DIVERGE": 7,
+    "NO_DIFF": 39
+   },
+   "by_label": {
+    "REAL_BUGFIX": {
+     "DIVERGE": 7,
+     "NO_DIFF": 39
+    }
+   },
+   "cpu_s": {
+    "median": 0.849,
+    "max": 1.741,
+    "total": 38.7
+   },
+   "vs_v7": {
+    "DIVERGE|DIVERGENT_OBSERVABLE": 6,
+    "NO_DIFF|INSUFFICIENT": 31,
+    "DIVERGE|INSUFFICIENT": 1,
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 8
+   }
+  },
+  "B1rep": {
+   "verdicts": {
+    "DIVERGE": 6,
+    "NO_DIFF": 40
+   },
+   "by_label": {
+    "REAL_BUGFIX": {
+     "DIVERGE": 6,
+     "NO_DIFF": 40
+    }
+   },
+   "cpu_s": {
+    "median": 3.447,
+    "max": 3.962,
+    "total": 137.7
+   },
+   "vs_v7": {
+    "DIVERGE|DIVERGENT_OBSERVABLE": 6,
+    "NO_DIFF|INSUFFICIENT": 32,
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 8
+   }
+  },
+  "B2": {
+   "verdicts": {
+    "NOT_RUN": 46
+   },
+   "by_label": {
+    "REAL_BUGFIX": {
+     "NOT_RUN": 46
+    }
+   },
+   "cpu_s": {
+    "median": null,
+    "max": null,
+    "total": 0
+   },
+   "vs_v7": {
+    "NOT_RUN|DIVERGENT_OBSERVABLE": 6,
+    "NOT_RUN|INSUFFICIENT": 32,
+    "NOT_RUN|NO_DIVERGENCE_OBSERVED": 8
+   }
+  },
+  "B3": {
+   "verdicts": {
+    "DIVERGE": 7,
+    "NO_DIFF": 39
+   },
+   "by_label": {
+    "REAL_BUGFIX": {
+     "DIVERGE": 7,
+     "NO_DIFF": 39
+    }
+   },
+   "cpu_s": {
+    "median": 6.801,
+    "max": 7.909,
+    "total": 265.1
+   },
+   "vs_v7": {
+    "DIVERGE|DIVERGENT_OBSERVABLE": 6,
+    "NO_DIFF|INSUFFICIENT": 31,
+    "DIVERGE|INSUFFICIENT": 1,
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 8
+   }
+  },
+  "B4": {
+   "verdicts": {
+    "NO_DIFF": 46
+   },
+   "by_label": {
+    "REAL_BUGFIX": {
+     "NO_DIFF": 46
+    }
+   },
+   "cpu_s": {
+    "median": 0.0,
+    "max": 0.0,
+    "total": 0.0
+   },
+   "vs_v7": {
+    "NO_DIFF|DIVERGENT_OBSERVABLE": 6,
+    "NO_DIFF|INSUFFICIENT": 32,
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 8
+   }
+  },
+  "B5": {
+   "verdicts": {
+    "NOT_RUN": 46
+   },
+   "by_label": {
+    "REAL_BUGFIX": {
+     "NOT_RUN": 46
+    }
+   },
+   "cpu_s": {
+    "median": null,
+    "max": null,
+    "total": 0
+   },
+   "vs_v7": {
+    "NOT_RUN|DIVERGENT_OBSERVABLE": 6,
+    "NOT_RUN|INSUFFICIENT": 32,
+    "NOT_RUN|NO_DIVERGENCE_OBSERVED": 8
+   }
+  }
+ },
+ "quixbugs": {
+  "n": 31,
+  "B1": {
+   "verdicts": {
+    "DIVERGE": 29,
+    "NO_DIFF": 2
+   },
+   "by_label": {
+    "BUGGY_VS_FIXED": {
+     "DIVERGE": 29,
+     "NO_DIFF": 2
+    }
+   },
+   "cpu_s": {
+    "median": 0.121,
+    "max": 2.075,
+    "total": 10.1
+   },
+   "vs_v7": {
+    "DIVERGE|INSUFFICIENT": 2,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 27,
+    "NO_DIFF|INSUFFICIENT": 2
+   }
+  },
+  "B1rep": {
+   "verdicts": {
+    "DIVERGE": 29,
+    "NO_DIFF": 2
+   },
+   "by_label": {
+    "BUGGY_VS_FIXED": {
+     "DIVERGE": 29,
+     "NO_DIFF": 2
+    }
+   },
+   "cpu_s": {
+    "median": 0.671,
+    "max": 16.519,
+    "total": 66.4
+   },
+   "vs_v7": {
+    "DIVERGE|INSUFFICIENT": 2,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 27,
+    "NO_DIFF|INSUFFICIENT": 2
+   }
+  },
+  "B2": {
+   "verdicts": {
+    "DIVERGE": 29,
+    "NO_DIFF": 2
+   },
+   "by_label": {
+    "BUGGY_VS_FIXED": {
+     "DIVERGE": 29,
+     "NO_DIFF": 2
+    }
+   },
+   "cpu_s": {
+    "median": 0.481,
+    "max": 18.586,
+    "total": 62.7
+   },
+   "vs_v7": {
+    "DIVERGE|INSUFFICIENT": 2,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 27,
+    "NO_DIFF|INSUFFICIENT": 2
+   }
+  },
+  "B3": {
+   "verdicts": {
+    "DIVERGE": 29,
+    "NO_DIFF": 2
+   },
+   "by_label": {
+    "BUGGY_VS_FIXED": {
+     "DIVERGE": 29,
+     "NO_DIFF": 2
+    }
+   },
+   "cpu_s": {
+    "median": 0.119,
+    "max": 4.051,
+    "total": 17.3
+   },
+   "vs_v7": {
+    "DIVERGE|INSUFFICIENT": 2,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 27,
+    "NO_DIFF|INSUFFICIENT": 2
+   }
+  },
+  "B4": {
+   "verdicts": {
+    "NO_DIFF": 30,
+    "DIVERGE": 1
+   },
+   "by_label": {
+    "BUGGY_VS_FIXED": {
+     "NO_DIFF": 30,
+     "DIVERGE": 1
+    }
+   },
+   "cpu_s": {
+    "median": 0.0,
+    "max": 0.0,
+    "total": 0.0
+   },
+   "vs_v7": {
+    "NO_DIFF|INSUFFICIENT": 4,
+    "NO_DIFF|DIVERGENT_OBSERVABLE": 26,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 1
+   }
+  },
+  "B5": {
+   "verdicts": {
+    "ABSTAIN_V6": 10,
+    "NO_DIFF": 11,
+    "DIVERGE": 10
+   },
+   "by_label": {
+    "BUGGY_VS_FIXED": {
+     "ABSTAIN_V6": 10,
+     "NO_DIFF": 11,
+     "DIVERGE": 10
+    }
+   },
+   "cpu_s": {
+    "median": null,
+    "max": null,
+    "total": 0
+   },
+   "vs_v7": {
+    "ABSTAIN_V6|INSUFFICIENT": 4,
+    "NO_DIFF|DIVERGENT_OBSERVABLE": 11,
+    "ABSTAIN_V6|DIVERGENT_OBSERVABLE": 6,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 10
+   }
+  }
+ },
+ "quixbugs_neg": {
+  "n": 85,
+  "B1": {
+   "verdicts": {
+    "NO_DIFF": 53,
+    "DIVERGE": 32
+   },
+   "by_label": {
+    "SYN_EQUIVALENT": {
+     "NO_DIFF": 53,
+     "DIVERGE": 32
+    }
+   },
+   "cpu_s": {
+    "median": 0.356,
+    "max": 8.494,
+    "total": 53.4
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 24,
+    "DIVERGE|INSUFFICIENT": 31,
+    "NO_DIFF|INSUFFICIENT": 29,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 1
+   }
+  },
+  "B1rep": {
+   "verdicts": {
+    "NO_DIFF": 53,
+    "DIVERGE": 32
+   },
+   "by_label": {
+    "SYN_EQUIVALENT": {
+     "NO_DIFF": 53,
+     "DIVERGE": 32
+    }
+   },
+   "cpu_s": {
+    "median": 1.073,
+    "max": 25.654,
+    "total": 170.3
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 24,
+    "DIVERGE|INSUFFICIENT": 31,
+    "NO_DIFF|INSUFFICIENT": 29,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 1
+   }
+  },
+  "B2": {
+   "verdicts": {
+    "NO_DIFF": 56,
+    "DIVERGE": 29
+   },
+   "by_label": {
+    "SYN_EQUIVALENT": {
+     "NO_DIFF": 56,
+     "DIVERGE": 29
+    }
+   },
+   "cpu_s": {
+    "median": 0.422,
+    "max": 8.515,
+    "total": 73.1
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 24,
+    "DIVERGE|INSUFFICIENT": 29,
+    "NO_DIFF|INSUFFICIENT": 31,
+    "NO_DIFF|DIVERGENT_OBSERVABLE": 1
+   }
+  },
+  "B3": {
+   "verdicts": {
+    "NO_DIFF": 52,
+    "DIVERGE": 33
+   },
+   "by_label": {
+    "SYN_EQUIVALENT": {
+     "NO_DIFF": 52,
+     "DIVERGE": 33
+    }
+   },
+   "cpu_s": {
+    "median": 4.007,
+    "max": 63.483,
+    "total": 736.1
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 23,
+    "DIVERGE|INSUFFICIENT": 31,
+    "NO_DIFF|INSUFFICIENT": 29,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 1,
+    "DIVERGE|NO_DIVERGENCE_OBSERVED": 1
+   }
+  },
+  "B4": {
+   "verdicts": {
+    "NO_DIFF": 84,
+    "DIVERGE": 1
+   },
+   "by_label": {
+    "SYN_EQUIVALENT": {
+     "NO_DIFF": 84,
+     "DIVERGE": 1
+    }
+   },
+   "cpu_s": {
+    "median": 0.0,
+    "max": 0.0,
+    "total": 0.0
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 23,
+    "NO_DIFF|INSUFFICIENT": 60,
+    "NO_DIFF|DIVERGENT_OBSERVABLE": 1,
+    "DIVERGE|NO_DIVERGENCE_OBSERVED": 1
+   }
+  },
+  "B5": {
+   "verdicts": {
+    "NO_DIFF": 53,
+    "DIVERGE": 19,
+    "ABSTAIN_V6": 13
+   },
+   "by_label": {
+    "SYN_EQUIVALENT": {
+     "NO_DIFF": 53,
+     "DIVERGE": 19,
+     "ABSTAIN_V6": 13
+    }
+   },
+   "cpu_s": {
+    "median": null,
+    "max": null,
+    "total": 0
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 24,
+    "NO_DIFF|INSUFFICIENT": 29,
+    "DIVERGE|INSUFFICIENT": 19,
+    "ABSTAIN_V6|INSUFFICIENT": 12,
+    "ABSTAIN_V6|DIVERGENT_OBSERVABLE": 1
+   }
+  }
+ },
+ "synthetic": {
+  "n": 150,
+  "B1": {
+   "verdicts": {
+    "NO_DIFF": 80,
+    "DIVERGE": 70
+   },
+   "by_label": {
+    "CHANGED": {
+     "NO_DIFF": 24,
+     "DIVERGE": 54
+    },
+    "EQUIVALENT": {
+     "NO_DIFF": 56,
+     "DIVERGE": 16
+    }
+   },
+   "cpu_s": {
+    "median": 0.677,
+    "max": 3.0,
+    "total": 104.4
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 39,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 50,
+    "NO_DIFF|INSUFFICIENT": 41,
+    "DIVERGE|INSUFFICIENT": 20
+   }
+  },
+  "B1rep": {
+   "verdicts": {
+    "NO_DIFF": 80,
+    "DIVERGE": 70
+   },
+   "by_label": {
+    "CHANGED": {
+     "NO_DIFF": 24,
+     "DIVERGE": 54
+    },
+    "EQUIVALENT": {
+     "NO_DIFF": 56,
+     "DIVERGE": 16
+    }
+   },
+   "cpu_s": {
+    "median": 2.194,
+    "max": 17.87,
+    "total": 348.9
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 39,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 50,
+    "NO_DIFF|INSUFFICIENT": 41,
+    "DIVERGE|INSUFFICIENT": 20
+   }
+  },
+  "B2": {
+   "verdicts": {
+    "NOT_RUN": 150
+   },
+   "by_label": {
+    "CHANGED": {
+     "NOT_RUN": 78
+    },
+    "EQUIVALENT": {
+     "NOT_RUN": 72
+    }
+   },
+   "cpu_s": {
+    "median": null,
+    "max": null,
+    "total": 0
+   },
+   "vs_v7": {
+    "NOT_RUN|NO_DIVERGENCE_OBSERVED": 39,
+    "NOT_RUN|DIVERGENT_OBSERVABLE": 50,
+    "NOT_RUN|INSUFFICIENT": 61
+   }
+  },
+  "B3": {
+   "verdicts": {
+    "NO_DIFF": 76,
+    "DIVERGE": 74
+   },
+   "by_label": {
+    "CHANGED": {
+     "NO_DIFF": 20,
+     "DIVERGE": 58
+    },
+    "EQUIVALENT": {
+     "NO_DIFF": 56,
+     "DIVERGE": 16
+    }
+   },
+   "cpu_s": {
+    "median": 4.309,
+    "max": 42.261,
+    "total": 735.8
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 38,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 50,
+    "NO_DIFF|INSUFFICIENT": 38,
+    "DIVERGE|INSUFFICIENT": 23,
+    "DIVERGE|NO_DIVERGENCE_OBSERVED": 1
+   }
+  },
+  "B4": {
+   "verdicts": {
+    "NO_DIFF": 150
+   },
+   "by_label": {
+    "CHANGED": {
+     "NO_DIFF": 78
+    },
+    "EQUIVALENT": {
+     "NO_DIFF": 72
+    }
+   },
+   "cpu_s": {
+    "median": 0.0,
+    "max": 0.0,
+    "total": 0.0
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 39,
+    "NO_DIFF|DIVERGENT_OBSERVABLE": 50,
+    "NO_DIFF|INSUFFICIENT": 61
+   }
+  },
+  "B5": {
+   "verdicts": {
+    "NO_DIFF": 59,
+    "DIVERGE": 54,
+    "NOT_RUN": 29,
+    "ABSTAIN_V6": 8
+   },
+   "by_label": {
+    "CHANGED": {
+     "NO_DIFF": 18,
+     "DIVERGE": 44,
+     "NOT_RUN": 13,
+     "ABSTAIN_V6": 3
+    },
+    "EQUIVALENT": {
+     "NO_DIFF": 41,
+     "DIVERGE": 10,
+     "NOT_RUN": 16,
+     "ABSTAIN_V6": 5
+    }
+   },
+   "cpu_s": {
+    "median": null,
+    "max": null,
+    "total": 0
+   },
+   "vs_v7": {
+    "NO_DIFF|NO_DIVERGENCE_OBSERVED": 16,
+    "DIVERGE|NO_DIVERGENCE_OBSERVED": 11,
+    "DIVERGE|DIVERGENT_OBSERVABLE": 35,
+    "NO_DIFF|INSUFFICIENT": 37,
+    "NOT_RUN|INSUFFICIENT": 10,
+    "NOT_RUN|NO_DIVERGENCE_OBSERVED": 10,
+    "DIVERGE|INSUFFICIENT": 8,
+    "ABSTAIN_V6|INSUFFICIENT": 6,
+    "NO_DIFF|DIVERGENT_OBSERVABLE": 6,
+    "NOT_RUN|DIVERGENT_OBSERVABLE": 9,
+    "ABSTAIN_V6|NO_DIVERGENCE_OBSERVED": 2
+   }
+  }
+ }
+}

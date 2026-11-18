@@ -1,0 +1,422 @@
+[
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "flip_byte_in_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "one byte of the middle of a Run line flipped (JSON error or chain break)",
+  "msg": "VERIFY FAILED: chain broken at seq 2"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "truncate_drop_last_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "Verdict line removed, chain intact up to there",
+  "msg": "VERIFY FAILED: log must hold exactly one EvidencePackage and end with exactly one Verdict"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "truncate_mid_line",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "file cut at half its size",
+  "msg": "VERIFY FAILED: unreadable evidence log: Expecting ',' delimiter: line 1 column 797 (char 796)"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "delete_middle_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "a middle line removed, chain not repaired",
+  "msg": "VERIFY FAILED: chain broken at seq 31"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "remove_package_rechained",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "EvidencePackage line removed, chain recomputed, verdict.json log_head updated",
+  "msg": "VERIFY FAILED: log must hold exactly one EvidencePackage and end with exactly one Verdict"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "break_chain_prev",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "a prev field altered",
+  "msg": "VERIFY FAILED: chain broken at seq 1"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "verdict_json_changed",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "verdict.json verdict value altered",
+  "msg": "VERIFY FAILED: verdict.json disagrees with the log"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "verdict_json_log_head_changed",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "verdict.json log_head altered",
+  "msg": "VERIFY FAILED: verdict.json log_head disagrees with the log"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "evidence_missing",
+  "expected": 2,
+  "observed": 2,
+  "as_expected": true,
+  "note": "evidence.jsonl deleted",
+  "msg": "VERIFY FAILED: malformed or missing evidence (FileNotFoundError: [Errno 2] No such file or directory: '/Users/manassakthivel/Desktop/SBG-V6/results/repro/p2_e7_20261118_190612/corruption/DIVERGENT_OBSERVABLE/evidence_missing/evidence.jsonl')"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "source_omitted_rechained",
+  "expected": 4,
+  "observed": 4,
+  "as_expected": true,
+  "note": "ProgramVersion src replaced by src_omitted (size-cap simulation), chain repaired",
+  "msg": "UNVERIFIABLE: source of base omitted (size cap): verdict not recomputable"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "forge_meta_timing_rechained",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: Run meta cpu_s/wall_s edited, chain + log_head repaired: not verified, not detected",
+  "msg": "{\"verified\": true, \"verdict\": \"DIVERGENT_OBSERVABLE\", \"level\": null, \"primary\": null, \"records\": 63, \"inputs\": 2}"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "forge_run_status_rechained",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: Run summary status/detail edited (facts taken as recorded), chain + log_head repaired",
+  "msg": "{\"verified\": true, \"verdict\": \"DIVERGENT_OBSERVABLE\", \"level\": null, \"primary\": null, \"records\": 63, \"inputs\": 2}"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "forge_without_rechain",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "negative control: the same timing edit WITHOUT repairing the chain",
+  "msg": "VERIFY FAILED: chain broken at seq 2"
+ },
+ {
+  "source_class": "DIVERGENT_OBSERVABLE",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+  "case": "delete_verdict_json",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: verdict.json is optional for verify; its removal is not detected",
+  "msg": "{\"verified\": true, \"verdict\": \"DIVERGENT_OBSERVABLE\", \"level\": null, \"primary\": null, \"records\": 63, \"inputs\": 2}"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "flip_byte_in_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "one byte of the middle of a Run line flipped (JSON error or chain break)",
+  "msg": "VERIFY FAILED: chain broken at seq 2"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "truncate_drop_last_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "Verdict line removed, chain intact up to there",
+  "msg": "VERIFY FAILED: log must hold exactly one EvidencePackage and end with exactly one Verdict"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "truncate_mid_line",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "file cut at half its size",
+  "msg": "VERIFY FAILED: unreadable evidence log: Unterminated string starting at: line 1 column 9 (char 8)"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "delete_middle_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "a middle line removed, chain not repaired",
+  "msg": "VERIFY FAILED: chain broken at seq 69"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "remove_package_rechained",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "EvidencePackage line removed, chain recomputed, verdict.json log_head updated",
+  "msg": "VERIFY FAILED: log must hold exactly one EvidencePackage and end with exactly one Verdict"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "break_chain_prev",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "a prev field altered",
+  "msg": "VERIFY FAILED: chain broken at seq 1"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "verdict_json_changed",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "verdict.json verdict value altered",
+  "msg": "VERIFY FAILED: verdict.json disagrees with the log"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "verdict_json_log_head_changed",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "verdict.json log_head altered",
+  "msg": "VERIFY FAILED: verdict.json log_head disagrees with the log"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "evidence_missing",
+  "expected": 2,
+  "observed": 2,
+  "as_expected": true,
+  "note": "evidence.jsonl deleted",
+  "msg": "VERIFY FAILED: malformed or missing evidence (FileNotFoundError: [Errno 2] No such file or directory: '/Users/manassakthivel/Desktop/SBG-V6/results/repro/p2_e7_20261118_190612/corruption/INSUFFICIENT/evidence_missing/evidence.jsonl')"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "source_omitted_rechained",
+  "expected": 4,
+  "observed": 4,
+  "as_expected": true,
+  "note": "ProgramVersion src replaced by src_omitted (size-cap simulation), chain repaired",
+  "msg": "UNVERIFIABLE: source of base omitted (size cap): verdict not recomputable"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "forge_meta_timing_rechained",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: Run meta cpu_s/wall_s edited, chain + log_head repaired: not verified, not detected",
+  "msg": "{\"verified\": true, \"verdict\": \"INSUFFICIENT\", \"level\": null, \"primary\": \"changed_region_not_activated\", \"records\": 139, \"inputs\": 11}"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "forge_run_status_rechained",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: Run summary status/detail edited (facts taken as recorded), chain + log_head repaired",
+  "msg": "{\"verified\": true, \"verdict\": \"INSUFFICIENT\", \"level\": null, \"primary\": \"changed_region_not_activated\", \"records\": 139, \"inputs\": 11}"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "forge_without_rechain",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "negative control: the same timing edit WITHOUT repairing the chain",
+  "msg": "VERIFY FAILED: chain broken at seq 2"
+ },
+ {
+  "source_class": "INSUFFICIENT",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/ansible__11__lib_ansible_modules_network_ios_ios_banner_py__map_obj_to_commands",
+  "case": "delete_verdict_json",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: verdict.json is optional for verify; its removal is not detected",
+  "msg": "{\"verified\": true, \"verdict\": \"INSUFFICIENT\", \"level\": null, \"primary\": \"changed_region_not_activated\", \"records\": 139, \"inputs\": 11}"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "flip_byte_in_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "one byte of the middle of a Run line flipped (JSON error or chain break)",
+  "msg": "VERIFY FAILED: chain broken at seq 2"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "truncate_drop_last_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "Verdict line removed, chain intact up to there",
+  "msg": "VERIFY FAILED: log must hold exactly one EvidencePackage and end with exactly one Verdict"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "truncate_mid_line",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "file cut at half its size",
+  "msg": "VERIFY FAILED: unreadable evidence log: Expecting value: line 1 column 582 (char 581)"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "delete_middle_record",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "a middle line removed, chain not repaired",
+  "msg": "VERIFY FAILED: chain broken at seq 69"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "remove_package_rechained",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "EvidencePackage line removed, chain recomputed, verdict.json log_head updated",
+  "msg": "VERIFY FAILED: log must hold exactly one EvidencePackage and end with exactly one Verdict"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "break_chain_prev",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "a prev field altered",
+  "msg": "VERIFY FAILED: chain broken at seq 1"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "verdict_json_changed",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "verdict.json verdict value altered",
+  "msg": "VERIFY FAILED: verdict.json disagrees with the log"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "verdict_json_log_head_changed",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "verdict.json log_head altered",
+  "msg": "VERIFY FAILED: verdict.json log_head disagrees with the log"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "evidence_missing",
+  "expected": 2,
+  "observed": 2,
+  "as_expected": true,
+  "note": "evidence.jsonl deleted",
+  "msg": "VERIFY FAILED: malformed or missing evidence (FileNotFoundError: [Errno 2] No such file or directory: '/Users/manassakthivel/Desktop/SBG-V6/results/repro/p2_e7_20261118_190612/corruption/NO_DIVERGENCE_OBSERVED/evidence_missing/evidence.jsonl')"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "source_omitted_rechained",
+  "expected": 4,
+  "observed": 4,
+  "as_expected": true,
+  "note": "ProgramVersion src replaced by src_omitted (size-cap simulation), chain repaired",
+  "msg": "UNVERIFIABLE: source of base omitted (size cap): verdict not recomputable"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "forge_meta_timing_rechained",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: Run meta cpu_s/wall_s edited, chain + log_head repaired: not verified, not detected",
+  "msg": "{\"verified\": true, \"verdict\": \"NO_DIVERGENCE_OBSERVED\", \"level\": \"S2\", \"primary\": null, \"records\": 139, \"inputs\": 11}"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "forge_run_status_rechained",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: Run summary status/detail edited (facts taken as recorded), chain + log_head repaired",
+  "msg": "{\"verified\": true, \"verdict\": \"NO_DIVERGENCE_OBSERVED\", \"level\": \"S2\", \"primary\": null, \"records\": 139, \"inputs\": 11}"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "forge_without_rechain",
+  "expected": 1,
+  "observed": 1,
+  "as_expected": true,
+  "note": "negative control: the same timing edit WITHOUT repairing the chain",
+  "msg": "VERIFY FAILED: chain broken at seq 2"
+ },
+ {
+  "source_class": "NO_DIVERGENCE_OBSERVED",
+  "source_dir": "results/repro/p2_e1_20261118_074906/raw/bugsinpy_units/run1/spacy__7__examples_information_extraction_entity_relations_py__filter_spans",
+  "case": "delete_verdict_json",
+  "expected": 0,
+  "observed": 0,
+  "as_expected": true,
+  "note": "KNOWN_LIMITATION: verdict.json is optional for verify; its removal is not detected",
+  "msg": "{\"verified\": true, \"verdict\": \"NO_DIVERGENCE_OBSERVED\", \"level\": \"S2\", \"primary\": null, \"records\": 139, \"inputs\": 11}"
+ }
+]

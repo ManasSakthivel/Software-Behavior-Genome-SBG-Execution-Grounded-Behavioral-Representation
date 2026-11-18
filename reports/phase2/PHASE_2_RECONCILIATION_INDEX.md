@@ -101,3 +101,5 @@ Sources: `docs/architecture/V7B_IMPLEMENTATION.md` "Not implemented", `INDEPENDE
 - Added after MB acceptance: `LOCAL_EXPERIMENT_RERUN_MATRIX.md` (plan only; no experiment run), `MB_SECOND_STAGE_REVIEW.md`, `FINAL_SPECIFICATION_DECISIONS.md` ratifications (Decisions A and B).
 
 - E1 executed 2026-11-18: result SUPPORTED (weak, confounded); report `E1_K2_DETERMINISM_REMEASUREMENT.md`; raw output `results/repro/p2_e1_20261118_074906/` (gitignored). E3-E7 pre-registered in `E3_E7_PROTOCOLS.md` before execution.
+
+- Phase 2 campaign 2026-11-18: E1, E3-E7 executed; consolidated analysis `PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md`; compact outputs `results/v7b_phase2_summary/`; raw archives outside git (sha256 listed there).
