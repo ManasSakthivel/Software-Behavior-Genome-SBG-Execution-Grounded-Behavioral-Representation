@@ -17,3 +17,8 @@ Branch `research/v8-mac-hardening`, base `01fdaf09` (design `e8ca1c12`). Not pus
 12. **Ready for the Linux stream:** the capture/anchor protocol and schema (to re-run the 15+4 attacks under Linux isolation), the frozen-threshold harness, the real-execution perturbation drivers, the policy version v8.1.
 13. **Still requires independent data or human adjudication:** any calibration or CEC-gain claim; the blinded adjudication study; the family-shift experiment; the holdout; real-execution P6 (needs independently derived discriminating inputs); provenance sensitivity (all dev pairs 'declared').
 Commits: see git log of `research/v8-mac-hardening`. Detail: the eight reports in this directory.
+
+## Addendum 2026-11-18 (later): two defects fixed
+1. **ERS profile defect fixed** (details in V8_MAC_PERTURBATION_VALIDATION.md, addendum): irrelevant inputs and unflagged duplicates no longer move any profile feature; the strict xfails are now passing tests. Statistics essentially unchanged (ERS log-loss gain 0.003-0.065, CI excludes 0 in 1 of 6 runs, as before; no ERS gain claimed).
+2. **`trust.check` crash fixed:** a log truncated before its Verdict, or empty, now yields a TrustReport with an integrity issue and effective verdict INSUFFICIENT (no crash); `adapter.load_record` raises `ValueError` for such a log (no record, no verdict). Found a second crash (`IndexError` on an empty log) while testing and fixed it too.
+Test run: `.venv/bin/python -m pytest tests/v8 -q` -> 264 passed in 87 s. The full V7+V6+V8 suite was NOT re-run after these edits (541 passed, 1 skipped, 2 xfailed before them; the 2 xfails are now passing tests); `sbgv7/`, `tests/v7`, `tests/v6` are unchanged.

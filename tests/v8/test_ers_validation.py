@@ -64,8 +64,6 @@ def test_fitted_model_and_stub_unchanged_by_duplicates_on_dev_records():
             e = compute_ers(r, P, "P3", k=4)
             assert e.passed is not False and e.delta == 0.0
 
-@pytest.mark.xfail(strict=True, reason="DOCUMENTED LIMITATION: invariance holds only for duplicates flagged via duplicate_of (set by P3); unflagged copies raise n_same/n_rep "
-                   "(adapter.load_record never sets duplicate_of). Remedy belongs to the adapter/profile owner.")
 def test_unflagged_duplicates_do_not_raise_confidence():
     r = rec(); m = all_feature_model([r]); r2 = copy.deepcopy(r)
     for i in list(r.inputs):
@@ -85,8 +83,6 @@ def test_fitted_model_irrelevant_evidence_cannot_improve_risk():
         if e.applicable: worst = min(worst, e.delta)
     assert worst >= -0.02
 
-@pytest.mark.xfail(strict=True, reason="DOCUMENTED DEFECT of the profile quantity features: n_same/n_eff/n_eff_prov/n_rep count irrelevant clean inputs, so a model that reads them "
-                   "credits irrelevant evidence. The fitted dev model is safe only because L2+sign constraints zeroed those coefficients.")
 def test_all_feature_model_irrelevant_evidence_cannot_improve_risk():
     e = compute_ers(rec(), all_feature_model([rec()]), "P2", k=4)
     assert e.delta >= -0.02
@@ -136,8 +132,7 @@ def test_trust_check_rejects_corrupted_evidence_and_no_authoritative_verdict(tmp
     d = tmp_path / "ev"; shutil.copytree(_pick(verdict), d); d = str(d)
     base = set(trust.check(d).issues)                         # control (pre-capture-record evidence may carry a standing issue; only NEW issues count)
     corrupt(d)
-    try: new = set(trust.check(d).issues) - base
-    except StopIteration: new = {"crash"}   # KNOWN DEFECT (trust.py, other owner): a log truncated before its Verdict makes check() raise instead of reporting; fail-closed, so accepted here
+    new = set(trust.check(d).issues) - base            # must report, never raise (truncated log: fixed, see test_truncated_log_*)
     assert new, "corruption not reported by trust.check"
     try: r = load_record(d)
     except Exception: return                                  # unreadable evidence yields no record, hence no verdict
@@ -195,3 +190,47 @@ def test_p1b_ers_stub_passes_and_credulous_fails():
 def test_evidence_class_declared_for_all():
     for p in PERTURBATIONS: assert perturb.PERTURBATION_MATRIX[p]["evidence_class"]["posthoc"].startswith("a")
     assert perturb.PERTURBATION_VARIANTS["P1b"]["evidence_class"]["posthoc"] == "a"
+
+
+# ---- truncated / partial logs: safe validation failure, not a crash ----
+@pytest.mark.parametrize("keep", [0, 1, 2])
+def test_truncated_log_gives_safe_failure_not_crash(tmp_path, keep):
+    from sbgv8 import trust
+    d = tmp_path / "ev"; shutil.copytree(_pick("NO_DIVERGENCE_OBSERVED"), d); p = d / "evidence.jsonl"
+    L = p.read_text().splitlines(); p.write_text("\n".join(L[:keep]) + ("\n" if keep else ""))
+    rep = trust.check(str(d))                              # must not raise
+    assert rep.issues and rep.inference.get("effective_verdict", "INSUFFICIENT") == "INSUFFICIENT"
+    assert not rep.inference.get("recomputable", False)
+    with pytest.raises((ValueError, OSError, KeyError)):   # no record, hence no verdict, can be built from it
+        load_record(str(d))
+
+
+# ---- profile: irrelevant evidence and copies cannot move any feature (defect fixed 2026-11-18) ----
+def test_irrelevant_and_unflagged_copies_leave_profile_unchanged():
+    from sbgv8.profile import build_profile
+    r = rec(); base = build_profile(r); r2 = copy.deepcopy(r)
+    for i in list(r.inputs):                                # unflagged exact copies
+        c = copy.deepcopy(i); c.input_id += "#u"; r2.inputs.append(c)
+    r2.inputs.append(I("irr", "SAME", obs_fingerprint="irr", channels_present=["outcome"], hits={"base": [5], "variant": [5]}))   # reaches no changed unit
+    assert build_profile(r2) == base
+
+def test_distinct_relevant_evidence_still_raises_confidence():
+    from sbgv8.profile import build_profile
+    r = rec(); r2 = copy.deepcopy(r)
+    r2.inputs.append(I("new", "SAME", obs_fingerprint="new", channels_present=["outcome"], hits={"base": [10, 11], "variant": [10, 11]}))
+    assert build_profile(r2)["n_eff"] == build_profile(r)["n_eff"] + 1 and build_profile(r2)["mu_min"] > build_profile(r)["mu_min"]
+
+def test_no_located_change_means_no_relevant_evidence():
+    from sbgv8.profile import build_profile
+    r = EvidenceRecord("p", "proj", changed_units={"base": [], "variant": []}, inputs=[inp("a", [4, 5])]); base = build_profile(r)
+    r2 = copy.deepcopy(r)
+    for k in range(4): r2.inputs.append(I(f"x{k}", "SAME", obs_fingerprint=f"x{k}", channels_present=["outcome"], hits={"base": [7], "variant": [7]}))
+    assert build_profile(r2) == base and base["n_same"] == 0.0
+
+@needs_data
+def test_all_feature_model_irrelevant_evidence_never_improves_risk_on_any_dev_record():
+    R = devrecs(); m = all_feature_model(R); worst = 0.0
+    for r in R:
+        e = compute_ers(r, m, "P2", k=4)
+        if e.applicable: worst = min(worst, e.delta)
+    assert worst >= -1e-9, worst            # exact: irrelevant inputs must not move the profile at all

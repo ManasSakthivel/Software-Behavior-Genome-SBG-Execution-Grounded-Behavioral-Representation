@@ -136,6 +136,13 @@ def check(evidence_dir, shadow=False, expected_sources=None, pinned_head=None, a
     except (R.ChainError, OSError, ValueError, KeyError) as e:
         integ["chain"] = f"broken: {e}"; issues.append(f"integrity: {e}")
         return TrustReport(integ, {}, {"established": [], "not_established": ["everything: the log is unreadable"]}, _isolation(None), issues)
+    pkg = next((r["body"] for r in recs if r["kind"] == "EvidencePackage"), None)
+    vb = next((r for r in recs if r["kind"] == "Verdict"), None)
+    if pkg is None or vb is None:  # truncated or partial log: fail safe with a report, never a crash and never a verdict
+        miss = [k for k, v in (("EvidencePackage", pkg), ("Verdict", vb)) if v is None]
+        integ["verify"] = f"failed: incomplete log, missing {', '.join(miss)}"; issues.append(f"integrity: incomplete log, missing {', '.join(miss)} record(s)")
+        return TrustReport(integ, {}, {"established": [], "not_established": ["everything: the log has no " + " / ".join(miss) + " record"]}, _isolation(pkg),
+                           issues, {"verdict": None, "effective_verdict": "INSUFFICIENT", "level": None, "recomputable": False, "meaning": "incomplete evidence: no verdict can be taken from it"})
     try: verify(d); integ["verify"] = "verified"
     except Unverifiable as e: integ["verify"] = f"unverifiable: {e}"; issues.append(f"integrity: {e}")
     except (VerifyError, OSError, KeyError, ValueError, TypeError) as e: integ["verify"] = f"failed: {e}"; issues.append(f"integrity: verify failed: {e}")
@@ -144,8 +151,6 @@ def check(evidence_dir, shadow=False, expected_sources=None, pinned_head=None, a
     if sc["status"] == "inconsistent": issues.append(f"integrity: sidecar {sc['detail']}")
     if val["capture"]["status"] in ("invalid", "untrusted", "missing"): issues.append(f"integrity: independent capture {val['capture']['status']}: {val['capture']['detail']}")
     if val["anchor"]["status"] == "invalid": issues.append(f"integrity: anchor {val['anchor']['detail']}")
-    pkg = next(r for r in recs if r["kind"] == "EvidencePackage")["body"]
-    vb = next(r for r in recs if r["kind"] == "Verdict")
     head = json.loads(open(os.path.join(d, "evidence.jsonl")).read().splitlines()[-1])["hash"]
     vj = os.path.join(d, "verdict.json")
     integ["verdict_json"] = "absent" if not os.path.exists(vj) else ("ok" if json.load(open(vj)).get("log_head") == head else "disagrees")

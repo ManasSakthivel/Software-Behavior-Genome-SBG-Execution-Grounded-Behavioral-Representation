@@ -33,7 +33,10 @@ def test_duplicates_counted_once():
             inp("d", [10, 11], duplicate_of="a")])
     r.inputs[0].obs_fingerprint = "fa"
     p = build_profile(r)
-    assert p["mu_min"] == 1 and p["n_eff"] == 1 and p["n_eff_prov"] == 1 and p["n_same"] == 3
+    # 2026-11-18 profile fix: unflagged copies (same fingerprint, hits, outcome, flags) are ONE piece of evidence, so n_same is 1, not 3 (the old
+    # assertion n_same == 3 pinned the defect that copies raise confidence). b differs only in provenance but is the same class here (provenance
+    # default is "declared").
+    assert p["mu_min"] == 1 and p["n_eff"] == 1 and p["n_eff_prov"] == 1 and p["n_same"] == 1
 
 def test_label_derived_prov():
     r = GOOD(); r.inputs[0].provenance = "label_derived"

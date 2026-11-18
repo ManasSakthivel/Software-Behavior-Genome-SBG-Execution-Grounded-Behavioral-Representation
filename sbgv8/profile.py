@@ -41,9 +41,26 @@ def _branch_cov(rec, clean):
     return cov
 
 
+def _relevant(rec, units):
+    """Evidence relevant to the change: inputs (not flagged duplicates) that reach >=1 changed unit. If the change maps to NO unit (e.g. V7-B
+    unmodelled_change) relevance is undefined and no input counts as evidence about it: counting everything would let added irrelevant inputs raise
+    the quantity features (found by the P2 probe on 9 records, 2026-11-18). Irrelevant inputs never enter any feature."""
+    return [i for i in rec.inputs if not i.duplicate_of and _hit(i, units)]
+
+
+def _classes(inputs, units):
+    """Collapse unflagged copies: inputs with the same observation fingerprint, hit set, outcome and flags are ONE piece of evidence (keep the
+    first; n_repeat_runs takes the max). An input without a fingerprint has no evidence of equality with any other and stays distinct."""
+    out = {}
+    for i in inputs:
+        k = (_fp(i), frozenset(_hit(i, units)), i.outcome, i.deterministic, i.lossy, i.degenerate, i.provenance, i.provenance_ok, tuple(sorted(i.channels_present)))
+        if k not in out or i.n_repeat_runs > out[k].n_repeat_runs: out[k] = i
+    return list(out.values())
+
+
 def build_profile(rec):
     units = _units(rec)
-    U = [i for i in rec.inputs if not i.duplicate_of]
+    U = _classes(_relevant(rec, units), units)    # relevant, de-duplicated evidence: irrelevant inputs and copies cannot move any feature
     clean = [i for i in U if _clean(i)]
     hit_all = set().union(*[_hit(i, units) for i in clean]) if clean else set()
     per_unit = {u: {_fp(i) for i in clean if u in _hit(i, units)} for u in units}

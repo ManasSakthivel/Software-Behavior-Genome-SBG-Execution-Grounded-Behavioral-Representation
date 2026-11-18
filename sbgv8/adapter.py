@@ -63,8 +63,9 @@ def load_record(evidence_dir, label=None, project=None, family=None, anchor_key=
     from .trust import check_sidecar
     d = evidence_dir
     recs, byid = load_log(d)
-    pkg = next(r for r in recs if r["kind"] == "EvidencePackage")["body"]
-    verdict = next(r for r in recs if r["kind"] == "Verdict")
+    pkg = next((r["body"] for r in recs if r["kind"] == "EvidencePackage"), None)
+    verdict = next((r for r in recs if r["kind"] == "Verdict"), None)
+    if pkg is None or verdict is None: raise ValueError("incomplete evidence log: no EvidencePackage/Verdict record (truncated?); no record can be built")
     suff = next((r for r in recs if r["kind"] == "SufficiencyRecord"), None)
     try: verify(d); vstat = "verified"
     except Unverifiable: vstat = "unverifiable"
