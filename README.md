@@ -1,6 +1,6 @@
 # SBG V7-B: an evidence contract for differential execution of code changes
 
-**Status: exploratory research prototype. Branch `research/v7b-final-validation`. No confirmatory result exists.**
+**Status: exploratory research prototype. Branch `research/v7b-final-validation`. No confirmatory result exists. Phase 2 (local, macOS, existing data only) is complete; Phase 3 (Linux isolation, independent data) has not been started.**
 The previous README (V5/V6-era claims) is kept unchanged at [`docs/README_pre_v7b.md`](docs/README_pre_v7b.md). Its numbers (for example AUROC 0.897) are about a different method (V5/V6 behavioural distance), were measured on developer-authored benchmarks, and are **not** results of V7-B.
 
 ---
@@ -15,6 +15,34 @@ V7-B is a small Python tool plus an evaluation harness. Given two versions of a 
 
 It is positioned as a **design and feasibility study with a negative-result flavour**, not as a validated detector. An independent red-team review ([`reports/final/INDEPENDENT_RED_TEAM_REVIEW.md`](reports/final/INDEPENDENT_RED_TEAM_REVIEW.md)) rated it "publishable only as a design/feasibility/negative-result report; not ready as a validation paper", and nothing in this repository contradicts that.
 
+## 1a. What V7-B claims and does not claim (Phase 2 state)
+
+**Claims (all local, exploratory, on 321 non-pristine development pairs, macOS only):**
+- The tool issues a closed set of verdicts, none of which means equivalence, and each verdict can be recomputed offline from its evidence log (`python -m sbgv7 verify DIR`).
+- On the 258 labelled pairs, V7-B had a lower false-assurance rate than plain differential testing (B1) and no false alarms on the labelled negatives. The whole reduction is explained by abstention (`INSUFFICIENT`), not by detecting more.
+- The harness ran every driven pair without an engine failure, and its verdicts were reproduced across two independent runs (321/321 strict identity, E1 versus E3).
+
+**Does NOT claim:** independent generalisation; that `NO_DIVERGENCE_OBSERVED` means equivalence, safety or "no bug"; operating-system isolation or a secure sandbox for untrusted code; tamper-proof evidence (the plaintext hash chain is forgeable by anyone who can recompute it); complete or hash-order-robust determinism; superiority over, or comparison with, any published tool (none was run); that thresholds are calibrated; any Linux, Docker or cross-language result; novelty ("first", "state of the art").
+
+### Verdict meanings (short; the guide is [`docs/VERDICT_INTERPRETATION.md`](docs/VERDICT_INTERPRETATION.md))
+`DIVERGENT_OBSERVABLE` = a replay-confirmed input differs on an observed channel (not "a bug"). `INSUFFICIENT(reason)` = the tool declines; the reason names the highest-ranked blocker. `NO_DIVERGENCE_OBSERVED(S1|S2)` = nothing differed on the inputs tried and the changed lines were exercised to that level; it never means equivalence.
+
+### Phase 2 results in brief (exploratory, non-pristine, 2026-11-18)
+Full tables: [`reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md`](reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md). Compact outputs: [`results/v7b_phase2_summary/`](results/v7b_phase2_summary). Engine commit `a6afa639` (implementation `5efcef74`), CPython 3.13.15, macOS arm64.
+
+| Exp | Headline (exact) | Status |
+|---|---|---|
+| E1 K2 determinism | pairs with a QUARANTINED input 1 versus 2 of 312 (inputs 1 versus 3 of 3,044); verdict "supported (weak)": no rise observed | confounded by other engine changes; tiny counts; hash-order not tested |
+| E3 detection / false assurance / abstention (106 divergent, 152 other, 258 labelled) | V7-B false assurance 13/106 = 0.123 versus B1 24/106 = 0.226 (-10.4pp, 95% CI [-20.5, -4.3], Holm p = 0.0059; the +10pp rule is **not** met); detection 0.708 versus 0.774 (Holm p = 0.156, not significant); abstention 122/258 = 0.473; false alarm 0/152 versus 0.303 | exploratory; **the false-assurance reduction is entirely abstention** (11 of 11 recovered pairs are `INSUFFICIENT`; V7-B detects nothing B1 misses) |
+| E4 ablations | no verdict value or level changes under any of 5 component ablations (one reason code moved) | the data hold almost no nondeterminism, so this cannot show component value |
+| E5 S2 floor 0.6/0.8/0.9 | verdict values identical; S2 share 71/55/43 | the floor only relabels S1/S2 |
+| E6 runtime (40 pairs x 5 reps) | V7-B about 1.6x B1 (wall), about 1.02x B1+rep | machine on battery, load rule tripped, run twice |
+| E7 verification | 828/828 evidence directories verified; 42/42 corruption cases as pre-registered | `verify` recomputes recorded facts and executes nothing; forged-and-rechained logs pass by design |
+
+Abstention rose from 0.360 (pre-Phase-2 engine) to 0.473 because 54 pairs now return `INSUFFICIENT(unmodelled_change)`: changed lines with no executable code (for example continuation lines of multi-line statements) are treated conservatively. Part of this may be noise of an unrefined rule. Witness ids near a resource limit can depend on timing (one pair differed between runs; its verdict did not).
+
+**Deferred to Phase 3 (not done, no claim):** Linux/Docker isolation, K1 (>= 100 runnable real pairs, >= 8 projects), K5 (>= 60 projects, >= 250 adjudicated divergent pairs, kappa >= 0.7), an independent sealed holdout, comparison with published tools, hash-order sensitivity (E2), a trust anchor for the evidence log, refinement of `unmodelled_change`.
+
 ## 2. Overview
 
 | | |
@@ -24,7 +52,7 @@ It is positioned as a **design and feasibility study with a negative-result flav
 | Isolation | fresh child process per run under macOS `sandbox-exec` (network and writes denied, rlimits) |
 | Scope | top-level Python functions with JSON-representable arguments, CPython 3.13, macOS |
 | Evaluation | 321 development pairs from QuixBugs, BugsInPy units and synthetic transformations, all **non-pristine** |
-| Code | [`sbgv7/`](sbgv7) (about 1,100 lines); V5/V6 code (`sbg/`, `sbgv6/`) is untouched |
+| Code | [`sbgv7/`](sbgv7) (about 1,560 lines); V5/V6 code (`sbg/`, `sbgv6/`) is untouched |
 
 ## 3. The problem
 
@@ -91,7 +119,7 @@ S2 can be reached with as few as two inputs: levels ignore input count and diver
 
 ```
 sbgv7/                 V7-B engine (this work): runner, harness, decide, records, isolation, baselines/
-tests/v7/              V7-B tests (4 files)
+tests/v7/              V7-B tests (see section 15 for counts)
 tests/*.py, tests/v6/  legacy V5/V6 tests
 experiments/v7b/       k1_spike.py: feasibility spike over the 321 pairs
 scripts/               analyze_results.py, power_actual.py, build_dev_pairs_csv.py, generate_figures.py, run_evaluation.sh
@@ -155,6 +183,8 @@ JSON, strictly validated (unknown keys are errors). Defaults are the frozen-spec
 
 **All exposed data is non-pristine. K1 is not met. There is no sealed holdout, no independent ground truth and no confirmatory test.**
 
+**The table and figures below are the pre-Phase-2 (post-red-team-fix) run of the OLD engine, kept as history.** The current engine's numbers are in section 1a and in `results/v7b_phase2_summary/` (for example abstention 0.473, not 0.360). Do not mix the two.
+
 | Arm | Pairs | Truth used | V7-B verdicts (from `results/postfix/processed/k1_spike_summary.json`) |
 |---|---|---|---|
 | QuixBugs buggy/fixed | 31 | declared tests (29 of 31) | 27 DIVERGENT, 4 INSUFFICIENT |
@@ -179,31 +209,45 @@ Claims this README does **not** make (from the red-team review): that V7-B reduc
 
 ## 15. Testing
 
-Run (macOS, `.venv`, nothing else running; see the protocol for the stray-process hazard):
+Run (macOS, `.venv`, nothing else running: `test_no_stray_processes` inspects the process table):
 
 ```bash
-.venv/bin/python -m pytest tests/v7 -q     # V7-B tests
-.venv/bin/python -m pytest tests -q        # everything
+.venv/bin/python -m pytest tests/v7 -q              # V7-B tests only
+.venv/bin/python -m pytest tests/v7 tests/v6 -q     # the set used for the Phase 2 E3 run
+.venv/bin/python -m pytest tests/v7/test_second_stage.py -q -k tamper_proof   # wording guard for docs/architecture
 ```
 
-Real results from this machine on 2026-11-17 (`.venv`, CPython 3.13.15):
+Recorded results (each number names its suite; none was re-run for this README):
 
-| Scope | Result |
-|---|---|
-| `tests/v7` + `tests/v6` | **85 passed, 1 skipped** (the skip is the `RLIMIT_AS` test, unenforceable on macOS); also 84 passed / 1 failed once, see below |
-| `tests/v7` alone | 76 collected; 4 files: `test_core.py`, `test_isolation.py`, `test_baselines.py`, `test_analysis.py` |
-| all of `tests/` | 348 collected. The full run was **not completed**: it ran more than 13 minutes, I stopped it at about 85% progress with no failure shown, so the legacy V5/V6 suite is **not verified here** |
+| Suite | Result | Where recorded |
+|---|---|---|
+| `tests/v7` alone | 276 passed, 1 skipped (277 tests; the skip is the `RLIMIT_AS` test, unenforceable on macOS) | `reports/phase2/MB_SECOND_STAGE_REVIEW.md`, at `5efcef74`; `git diff 5efcef74 HEAD -- sbgv7 tests` is empty, so this is the count for HEAD sources |
+| `tests/v7` + `tests/v6` | 286 passed, 1 skipped (`tests/v6` contributes 10) | tests stage of the E3 run, `results/v7b_phase2_summary/p2_e3_20261118_092700/E3_COMMANDS.sh` and `run.log` |
+| all of `tests/` (`pytest tests -q`, legacy V5/V6 included) | **not completed**: killed after more than 77 CPU-minutes without finishing in the Phase 2 campaign (an earlier attempt was stopped after 13 minutes) | `reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md` section 9 |
 
-Two flakes were observed and are not fixed: `test_no_stray_processes` fails if any other V7-B run is active on the machine (it inspects the process table), and `test_timeout_asymmetric_and_both` failed once with `PermissionError` from `os.killpg` (probable race on a child that had already exited) and passed on rerun. The tests exercise sandboxed subprocesses and take about 30 s.
+Older counts in other documents (74, 75, 85, 91, 168, 261) describe earlier states and are superseded; see [`docs/DOCUMENTATION_RECONCILIATION_INDEX.md`](docs/DOCUMENTATION_RECONCILIATION_INDEX.md). The tests exercise sandboxed subprocesses; `test_no_stray_processes` fails if another V7-B run is active. A pass count is not evidence that the engine is correct on real code.
 
 ## 16. Reproducing
 
+**Phase 2 workflow (one sequence; full commands in [`docs/PHASE2_REPRODUCTION_GUIDE.md`](docs/PHASE2_REPRODUCTION_GUIDE.md), pre-registration in [`docs/EXPERIMENT_PROTOCOL.md`](docs/EXPERIMENT_PROTOCOL.md)).** Always write to NEW directories under `results/repro/` (gitignored); never overwrite `results/raw`, `results/postfix` or `artifacts/`. Run one experiment at a time with nothing else CPU-heavy running. macOS required.
+
+1. E1 (about 16 min): `K1_RAW=results/repro/p2_e1_NEW/raw K1_PROC=results/repro/p2_e1_NEW/proc .venv/bin/python experiments/v7b/k1_spike.py run`, then `summarize` with the same variables, then `.venv/bin/python scripts/e1_analyze.py ...` and `python -m sbgv7 verify` on every evidence directory.
+2. E3 (long): do **not** use `scripts/run_evaluation.sh --full` as is. Its first stage is the legacy `pytest tests -q`, which took more than 77 CPU-minutes in the Phase 2 campaign without finishing (unrelated V5/V6 tests). Use the manual stage sequence recorded in `results/v7b_phase2_summary/p2_e3_20261118_092700/E3_COMMANDS.sh`: `pytest tests/v7 tests/v6`, `k1_spike.py run/summarize`, `sbgv7.baselines.run run/summarize`, `build_dev_pairs_csv.py`, `analyze_results.py ... --reference B1 --seed 42 --boot 10000`, `power_actual.py`, `generate_figures.py`.
+3. E4 and E5: `experiments/v7b/p2_variants.py run --variant V0..V5 / S2F06,S2F08,S2F09`, then `p2_variants.py csv` and `analyze_results.py` (commands in the protocol).
+4. E6: `scripts/p2_e6_runtime.py records|select|timing`. E7: `scripts/p2_e7_verify.py run`. Consolidation: `scripts/p2_consolidate.py build`.
+
+Smaller entry points (not comparable with committed results):
+
 ```bash
 scripts/run_evaluation.sh --dry-run   # preflight and plan only
-scripts/run_evaluation.sh --quick     # tests + QuixBugs-only pipeline (not comparable with committed results)
-scripts/run_evaluation.sh --full      # all 321 pairs; long
+scripts/run_evaluation.sh --quick     # tests/v7 + tests/v6 + QuixBugs-only pipeline
+scripts/run_evaluation.sh --full      # all 321 pairs; the first stage is the very slow legacy pytest (see above)
 ```
-Output goes to `results/repro/<mode>_<timestamp>/`; committed results are never overwritten. See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`research/reproducibility/REPRODUCIBILITY_PROTOCOL.md`](research/reproducibility/REPRODUCIBILITY_PROTOCOL.md) and [`datasets/README.md`](datasets/README.md). Only files under `results/postfix/` (current) and `results/processed/` plus `results/statistics/` (pre-fix, superseded) are the source for numbers quoted here.
+Output goes to `results/repro/<mode>_<timestamp>/`; committed results are never overwritten. See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md), [`research/reproducibility/REPRODUCIBILITY_PROTOCOL.md`](research/reproducibility/REPRODUCIBILITY_PROTOCOL.md) and [`datasets/README.md`](datasets/README.md).
+
+**Verifying evidence.** `python -m sbgv7 verify DIR` re-reads `DIR/evidence.jsonl`, checks the hash chain and content ids, recomputes per-input outcomes, changed regions, sufficiency and the verdict from the stored runs and sources, and compares them with the recorded verdict. Exit 0: verified; 1: mismatch or inconsistency detected; 2: unreadable, missing or malformed; 4: evidence omitted by a size cap (not recomputable). It does **not** re-execute anything, so it cannot detect a false recorded observation; it does **not** detect a writer who recomputes the whole chain and `log_head` (the plaintext chain is not tamper-proof); a deleted `verdict.json` is not detected. A trust anchor (pinned `log_head` or an external signature) is Phase 3. `compare` exits 0 (verdict written; read `verdict.json`), 1 internal error, 2 usage/config/output error, 3 `ineligible:identical`.
+
+**Where results are.** Compact tracked summaries: [`results/v7b_phase2_summary/`](results/v7b_phase2_summary) (index in its `README.md`). Raw per-run evidence (about 470 MB, about 27,000 files) is not in git: it is in tar.gz archives at `~/Desktop/SBG-V6-phase2-raw-archive/` on the author's machine, with sha256 sums in `results/v7b_phase2_summary/RAW_ARCHIVE_SHA256SUMS.txt`, and in gitignored `results/repro/p2_*`. Historical `results/postfix/` (old engine) is superseded by these for every number about the current engine.
 
 ## 17. Figures and manuscript
 
@@ -216,8 +260,15 @@ Output goes to `results/repro/<mode>_<timestamp>/`; committed results are never 
 - **macOS only.** Isolation is `sandbox-exec` (deprecated by Apple). Reads are not confined, a `setsid()` child escapes the group kill (untested), `RLIMIT_AS` and `RLIMIT_NPROC` are not enforced (memory cap is parent polling). Every record carries `policy_below_minimum=true`. This is not a mechanism for running untrusted code.
 - **No Linux or container verification**: not implemented, not tested (Docker daemon was down).
 - **No LaTeX compile**: manuscript unbuilt.
-- **Not implemented**: S3, the explorer / input generation, module E (`internal_divergence`), declared renames, generator and class entries, Merkle tree, supersession, calibration, gates K1 to K5. Several spec reason codes are never produced (`ambiguous_entry`, `unmodelled_change`, `unsafe_program`, `blind_spot_dominant`).
+- **Not implemented**: S3, the explorer / input generation, module E (`internal_divergence`), declared renames, generator and class entries, supersession, calibration, gates K1 to K5. Spec reason codes never produced: `ambiguous_entry`, `blind_spot_dominant` (`unmodelled_change` and `unsafe_program` are produced since Phase 2). A flat Merkle-style `run_set_root` exists in the sufficiency record; there is no Merkle domain separation.
 - **Exploratory only**: 321 non-pristine pairs; V7-B was shaped by them; no independent labels; synthetic labels are known to be wrong in places; BugsInPy runs are function units on a synthetic battery.
+- **Determinism is partial.** Children run with `PYTHONHASHSEED=0` (fixed: hash-order sensitivity is untested), `TZ=UTC`, one thread. `datetime.now()` and `secrets` are not virtualised (wall-clock programs can produce false witnesses); control alternation virtualises `time`, monotonic clocks and `random`/`os.urandom` seeding, and relies on the private `random._urandom` attribute. Not claimed: complete determinism.
+- **Evidence is not tamper-proof.** A plaintext SHA-256 chain detects accidental corruption and inconsistent edits only. `verify` re-derives, never re-executes.
+- **Pair id depends on the policy record** (`pair_id` includes the isolation policy id), so the same pair gets different ids on different hosts or policies.
+- **Result-channel protocol correctness is not isolation.** The harness runs in the same process as the evaluated code; no operating-system isolation is claimed or validated. Isolation is macOS-only and every record carries `policy_below_minimum=true`.
+- **`unmodelled_change` abstention noise.** 54 pairs abstain under a conservative rule that is unrefined for continuation lines of multi-line statements (UD-2 open).
+- **Witness id near resource limits is timing-dependent** (one E4 pair); verdicts were unchanged.
+- **Phase 2 results are exploratory:** same 321 pairs that shaped the tool; project clusters (one project holds most QuixBugs pairs); synthetic labels not adjudicated; B3/B4 tuned on development rows.
 - Sufficiency is line plus branch-direction coverage of the diff with unvalidated thresholds; `s2_all_channels_instrumented` is a constant `True` in `sbgv7/decide.py`. Control alternation virtualises only `random.seed` and `time`.
 - Python top-level functions with JSON arguments only. No cross-language claim.
 - No published tool (Testora, DiffTestGen, Mokav, shadow symbolic execution, DiffKemp) was run as a baseline.
@@ -245,7 +296,7 @@ MIT, see [`LICENSE`](LICENSE) (Copyright 2025 Manas Sakthivel). Vendored dataset
 
 ## 22. Further reading
 
-[`reports/final/V7B_FROZEN_SPEC.md`](reports/final/V7B_FROZEN_SPEC.md), [`reports/final/P0_FINAL_RECONCILIATION_REPORT.md`](reports/final/P0_FINAL_RECONCILIATION_REPORT.md), [`research/security/THREAT_MODEL.md`](research/security/THREAT_MODEL.md), [`research/security/EXECUTION_ISOLATION_AUDIT.md`](research/security/EXECUTION_ISOLATION_AUDIT.md), [`research/benchmarks/INDEPENDENCE_AND_LEAKAGE_AUDIT.md`](research/benchmarks/INDEPENDENCE_AND_LEAKAGE_AUDIT.md), [`research/evaluation/BASELINE_IMPLEMENTATION_AND_FAIRNESS.md`](research/evaluation/BASELINE_IMPLEMENTATION_AND_FAIRNESS.md), [`research/literature/RELATED_WORK_COMPARISON.md`](research/literature/RELATED_WORK_COMPARISON.md).
+[`docs/PHASE2_REPRODUCTION_GUIDE.md`](docs/PHASE2_REPRODUCTION_GUIDE.md), [`docs/EXPERIMENT_PROTOCOL.md`](docs/EXPERIMENT_PROTOCOL.md), [`docs/DATASET_PROVENANCE.md`](docs/DATASET_PROVENANCE.md), [`docs/FAILURE_MATRIX.md`](docs/FAILURE_MATRIX.md), [`docs/VERDICT_INTERPRETATION.md`](docs/VERDICT_INTERPRETATION.md), [`docs/CHANGELOG_V7B.md`](docs/CHANGELOG_V7B.md), [`docs/DOCUMENTATION_RECONCILIATION_INDEX.md`](docs/DOCUMENTATION_RECONCILIATION_INDEX.md), [`reports/final/V7B_FROZEN_SPEC.md`](reports/final/V7B_FROZEN_SPEC.md), [`reports/final/P0_FINAL_RECONCILIATION_REPORT.md`](reports/final/P0_FINAL_RECONCILIATION_REPORT.md), [`research/security/THREAT_MODEL.md`](research/security/THREAT_MODEL.md), [`research/security/EXECUTION_ISOLATION_AUDIT.md`](research/security/EXECUTION_ISOLATION_AUDIT.md), [`research/benchmarks/INDEPENDENCE_AND_LEAKAGE_AUDIT.md`](research/benchmarks/INDEPENDENCE_AND_LEAKAGE_AUDIT.md), [`research/evaluation/BASELINE_IMPLEMENTATION_AND_FAIRNESS.md`](research/evaluation/BASELINE_IMPLEMENTATION_AND_FAIRNESS.md), [`research/literature/RELATED_WORK_COMPARISON.md`](research/literature/RELATED_WORK_COMPARISON.md).
 
 ## 23. History
 

@@ -1,6 +1,6 @@
 \begin{table*}[t]
 \centering\scriptsize
-\caption{Capability comparison from the project's related-work review (\path{research/literature/RELATED_WORK_COMPARISON.md}). Labels: S = Supported, P = Partially supported, N = Not supported (full-text source states it), NE = Not evaluated (source silent at the access level read; silence is not evidence of absence), U = Unknown (access too low), NA = Not applicable. Capabilities: (A) executes both versions; (B) re-checkable witness; (C) sufficiency record; (D) evidence-grounded inconclusive outcome; (E) nondeterminism handling; (F) real-change evaluation. Cells reflect the cited text only, mostly abstracts; the last row is this work's own implementation, not a run of any compared tool.}
+\caption{Capability comparison from the project's related-work review (\path{research/literature/RELATED_WORK_COMPARISON.md}). Labels: S = Supported, P = Partially supported, N = Not supported (full-text source states it), NE = Not evaluated (source silent at the access level read; silence is not evidence of absence), U = Unknown (access too low), NA = Not applicable. Capabilities: (A) executes both versions; (B) re-checkable witness; (C) sufficiency record; (D) evidence-grounded inconclusive outcome; (E) nondeterminism handling; (F) real-change evaluation. Cells reflect the cited text only, mostly abstracts; the last row is this work's own implementation, not a run of any compared tool (B: replayable but \texttt{verify} re-executes nothing; D: grounds largely engine gaps; E: fixed hash seed, clock not virtualised). Prior work is not claimed to lack any capability where only an abstract was read.}
 \label{tab:capability}
 \begin{tabular}{lcccccc}
 \hline
@@ -26,7 +26,7 @@ Reject option~\cite{geifman2017,hendrickx2024machine} & NA & NA & NA & P & NA & 
 Calibration for code LMs~\cite{spiess2025calibration} & NA & NE & NE & P & NE & NE \\
 EquiBench~\cite{wei2025equibench} & NE & NE & NE & NE & NE & S \\
 \hline
-This work (V7-B, own implementation) & S & S & P & S & P & N \\
+This work (V7-B, own implementation) & S & P & P & P & P & N \\
 \hline
 \end{tabular}
 \end{table*}

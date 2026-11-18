@@ -1,0 +1,24 @@
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{E7 corruption suite: 14 corruption cases applied to copies of three evidence directories each (one per verdict class), 42 runs. Exit codes of \texttt{verify}: 0 verified, 1 mismatch, 2 unreadable or missing, 4 evidence omitted by size cap. ``As expected'' means as pre-registered; cases ending with exit 0 are documented limitations that the check does not detect. Source: \path{results/v7b_phase2_summary/p2_e7_20261118_190612/corruption_results.json}.}\label{tab:e7}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrl}
+\hline
+Case & Runs & Exit code & As expected & Outcome \\
+\hline
+flip\_byte\_in\_record & 3 & 1 & yes & detected \\
+truncate\_drop\_last\_record & 3 & 1 & yes & detected \\
+truncate\_mid\_line & 3 & 1 & yes & detected \\
+delete\_middle\_record & 3 & 1 & yes & detected \\
+remove\_package\_rechained & 3 & 1 & yes & detected \\
+break\_chain\_prev & 3 & 1 & yes & detected \\
+verdict\_json\_changed & 3 & 1 & yes & detected \\
+verdict\_json\_log\_head\_changed & 3 & 1 & yes & detected \\
+evidence\_missing & 3 & 2 & yes & detected \\
+source\_omitted\_rechained & 3 & 4 & yes & detected \\
+forge\_meta\_timing\_rechained & 3 & 0 & yes & NOT detected (documented limit) \\
+forge\_run\_status\_rechained & 3 & 0 & yes & NOT detected (documented limit) \\
+forge\_without\_rechain & 3 & 1 & yes & detected \\
+delete\_verdict\_json & 3 & 0 & yes & NOT detected (documented limit) \\
+\hline
+\end{tabular}}
+\end{table}

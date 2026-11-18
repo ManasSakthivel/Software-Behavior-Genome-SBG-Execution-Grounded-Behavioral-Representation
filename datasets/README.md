@@ -13,7 +13,7 @@ benchmark. See `research/benchmarks/INDEPENDENCE_AND_LEAKAGE_AUDIT.md` and `rese
 | BugsInPy units | 55 (9 not driven) | https://github.com/soarsmu/BugsInPy at commit `11c5f1eea954a42132cfd06bf257766a7963e0fd`; upstream code fetched at the buggy/fixed commits recorded in the manifest | `external/bugsinpy/units/`, `manifest.json` | `external/bugsinpy/README.md` describes the extraction; per-project licences apply and are listed there |
 | Synthetic CHANGED / EQUIVALENT | 78 / 72 | SC/SP transformations of the authored corpus in `benchmark/` | `benchmark/datasets/`, `benchmark/corpus/` | in repo |
 
-Totals: 321 pairs (31 + 85 + 78 + 72 + 55). Truth rules per arm are in `research/evaluation/EXPLORATORY_RESULTS.md`.
+Totals: 321 pairs (31 + 85 + 78 + 72 + 55). 9 BugsInPy class units are not driven (312 driven); the primary analyses use 258 pairs after excluding 57 UNLABELLED and 6 SUSPECT_LABEL. Exact source paths, selection rules and denominators: [`docs/DATASET_PROVENANCE.md`](../docs/DATASET_PROVENANCE.md). The synthetic pairs are read by `experiments/v7b/k1_spike.py` from `benchmark/datasets/v8` and `benchmark/datasets/v10_independent`; despite the directory name they are not independent of V7-B development. Truth rules per arm are in `research/evaluation/EXPLORATORY_RESULTS.md`.
 
 ## Verify what you have
 

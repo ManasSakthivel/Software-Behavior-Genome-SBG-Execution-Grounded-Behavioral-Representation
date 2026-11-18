@@ -1,0 +1,6 @@
+\section{Problem Definition}\label{sec:problem}
+\textbf{Setting.} A \emph{pair} consists of a base and a variant version of one top-level Python function, a set of user-supplied JSON inputs, and a harness declaration $H$ that fixes the observed channels, the normaliser, tolerances and repeat counts. The practitioner wants to know whether the change altered observable behaviour. Execution can only ever witness a difference; it cannot establish its absence.
+
+\textbf{Problem.} Given such a pair, return an outcome that (i) reports a divergence only when it can be reproduced and replayed, (ii) never presents silence as assurance when the change was not exercised or the comparison was unreliable, and (iii) records enough evidence that a third party can trace the outcome to the runs behind it. We call a reported ``no difference'' \emph{false assurance} when the pair is labelled divergent (Section~\ref{sec:metrics}); the problem is to reduce false assurance without a loss of detection that outweighs the benefit, and to know at what price in abstention.
+
+\textbf{Non-goals.} Input generation, multi-file or class-level changes, non-Python code, and proof of equivalence are out of scope. The prototype executes user-supplied inputs only.

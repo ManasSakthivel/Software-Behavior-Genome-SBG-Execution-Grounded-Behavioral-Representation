@@ -1,13 +1,12 @@
-# IEEE Access initial manuscript (V7-B)
+# IEEE Access exploratory manuscript (V7-B, Phase 2 results)
 
-Status: initial research manuscript, not peer reviewed, EXPLORATORY. All evaluation data are non-pristine development data; no confirmatory result exists.
+Status: initial research manuscript, not peer reviewed, EXPLORATORY. Phase 2 only (local macOS). All evaluation data are non-pristine development data with no independent holdout; Linux/Docker isolation, tamper-proofing, complete determinism, comparison with published tools, K1/K5 and Phase 3 are NOT validated or deferred. No claim of IEEE Access readiness, superiority, equivalence checking or generalisation.
 
-**Not compiled.** No LaTeX toolchain (`kpsewhich`, `pdflatex`) is installed on this machine, so `main.tex` was never compiled and may contain LaTeX errors. It uses `IEEEtran` (journal option); if `ieeeaccess.cls` is available, switch the `\documentclass` line. Diagrams in `figures/*.dot` are unrendered (no Graphviz); `\dotfig` prints a placeholder until `dot -Tpdf X.dot -o figures/X.pdf` is run.
+**Not compiled** (no LaTeX toolchain); see `COMPILE_OVERLEAF.md`.
 
-Layout: `main.tex`, `sections/*.tex`, `tables/*.tex` (T1-T10 generated, `capability`, `not_evaluated`, `baselines` hand-written), `references.bib` (only cited entries copied from `research/literature/VERIFIED_REFERENCES.bib`), `figures/` (diagram sources), `FIGURE_AND_TABLE_REGISTER.md`.
-Data figures are included from `../../results/postfix/figures/` (post-fix); `results/figures/` holds superseded pre-fix versions.
+Layout: `main.tex`; `sections/*.tex`; `tables/` (generated `P_*.tex` plus hand-written `baselines`, `capability`, `not_evaluated`); `references.bib` (only cited entries copied from `research/literature/VERIFIED_REFERENCES.bib`); `figures/*.dot` (old Graphviz sources, unused). Figures come from `results/v7b_phase2_summary/figures/` (see `FIGURE_TABLE_INVENTORY.md`).
 
-Scripts (run from this directory, Python 3 stdlib only):
-1. `python3 scripts/make_tables.py` regenerates `tables/T*.tex`, `tables/derived_crosstab.csv`, `tables/SOURCES.json` from `results/postfix/`.
-2. `python3 scripts/build_bib.py` rebuilds `references.bib`.
-3. `python3 scripts/check_manuscript.py` checks cite keys, refs/labels, included files, cited paths, and that every number in generated tables appears in its source file.
+Checks and generated files:
+1. `.venv/bin/python scripts/p2_make_paper_figures.py` (repository root) regenerates figures and `tables/P_*.tex`, `tables/SOURCES.json` from `results/v7b_phase2_summary/`.
+2. `python3 scripts/build_bib.py` rebuilds `references.bib`; `python3 scripts/check_manuscript.py` checks cites, refs, files and table numbers (run from this folder).
+3. `python3 scripts/verify_numerical_claims.py` regenerates `NUMERICAL_CLAIM_VERIFICATION.md`; `python3 scripts/build_citation_verification.py` regenerates `CITATION_VERIFICATION.md`.

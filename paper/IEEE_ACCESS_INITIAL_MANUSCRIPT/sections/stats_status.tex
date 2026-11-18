@@ -1,0 +1,18 @@
+\section{Statistical Analysis: What Is Supported}\label{sec:stats}
+Table~\ref{tab:status} classifies each finding. ``Supported'' means supported descriptively on these exploratory data after the pre-registered correction; it does not mean confirmed. Multiple-comparison control is Holm within each pre-registered family (E3: 8 tests; E4 and E5 their own families); no $p$-value is a claim of significance across the campaign. The design-property power simulation gives at most 0.267 power for a +5 point difference at the observed discordance and no reachable power for +10 points (\path{statistics/power_actual.json}); the study could not have supported a confirmatory claim.
+
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{Statistical status of the Phase 2 findings (source: \path{reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md}, section 8).}\label{tab:status}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lp{0.65\linewidth}}
+\hline
+Status & Finding \\
+\hline
+Supported (descriptive, clustered, exploratory) & V7-B has lower false assurance than B1 (13/106 versus 24/106; Holm $p=0.0059$; +10 point rule not met) and lower false alarm (0/152 versus 46/152); the false-assurance reduction is fully attributable to abstention (11 of 11) and to B1 lacking a sufficiency gate \\
+Descriptive & detection 75/106 versus 82/106 (not significant after Holm); abstention 122/258; runtime ratios; E5 stability; E4 invariance \\
+Exploratory & attribution to specific mechanisms (\texttt{unmodelled\_change}, set-order dependence) \\
+Inconclusive & any effect of the hash-seed change on determinism (1 versus 2 pairs); component value (no nondeterminism in the data) \\
+Unsupported & independent generalisation; superiority beyond these 258 non-pristine pairs; comparison with published tools; OS isolation; tamper-proof evidence; complete determinism; hash-order robustness \\
+\hline
+\end{tabular}}
+\end{table}

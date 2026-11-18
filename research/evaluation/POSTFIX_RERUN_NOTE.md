@@ -1,3 +1,5 @@
+> **Phase 2 status banner (2026-11-18):** the numbers in this document were measured with the engine before the Phase 2 fixes (child run under `-I`, random hash seed, pre MB-01..MB-16, pre D-01/D-02/D-05/D-06/D-09). They are historical measurements of the old engine and must not be cited as measurements of the current engine. Current exploratory results: `reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md`. Original text below is unchanged.
+
 # Post-fix rerun note (commit 700532b8: NO_RUN blocks NO_DIVERGENCE_OBSERVED as resource_limit)
 
 Date 2026-11-17. Full rerun of the K1 spike (321 pairs, run1) on the fixed engine, rebuilt CSV, `analyze_results.py` (B=10000, seed 42, ref B1), `power_actual.py`, figures. Nothing earlier was overwritten.

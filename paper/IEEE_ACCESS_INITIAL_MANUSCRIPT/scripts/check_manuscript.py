@@ -51,7 +51,11 @@ def present(tok, vals):
             return True
     return False
 n_checked = 0
+# Tables whose cells are counts aggregated over source rows (not literal source values); scripts/verify_numerical_claims.py recomputes them.
+DERIVED = {"P_datasets", "P_byarm", "P_metrics", "P_reasons", "P_e7"}
 for tname, srcs in json.load(open(P / "tables/SOURCES.json")).items():
+    if tname in DERIVED:
+        print(f"table {tname}: derived counts, literal check skipped (see verify_numerical_claims.py)"); continue
     body = (P / "tables" / f"{tname}.tex").read_text().split("\\hline")[2:]  # skip header
     body = "\n".join(body)
     vals = set().union(*(source_numbers(s) for s in srcs)) if srcs else set()

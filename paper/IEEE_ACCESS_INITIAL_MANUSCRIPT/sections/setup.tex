@@ -1,0 +1,21 @@
+\section{Experimental Setup}\label{sec:setup}
+All experiments ran on 2026-11-18 on one machine: Apple M4 Pro (14 cores, 48~GiB), macOS 26.7, arm64, CPython 3.13.15, \texttt{PYTHONHASHSEED=0} in every child. E1 ran at engine commit \texttt{a6afa639}; E3--E6 at commit \texttt{ee4749bc} (the per-run \texttt{RUN\_RECORD.md} files are authoritative). Table~\ref{tab:experiments} summarises the experiments; \texttt{E2} (hash-order sensitivity) was deliberately not run.
+
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{Phase 2 experiments (all local, exploratory, non-pristine data). Raw evidence archives are outside git; compact outputs are in \path{results/v7b_phase2_summary/}.}\label{tab:experiments}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lp{0.42\linewidth}p{0.3\linewidth}}
+\hline
+Exp. & Objective and design & Data and systems \\
+\hline
+E1 & K2 re-measurement: quarantined (self-inconsistent) inputs not higher after the hash-seed and environment fix; old engine versus current engine & 312 driven pairs; two runs; 102 pairs re-run \\
+E3 & Detection, false assurance, abstention against baselines; project-cluster bootstrap, sign-flip, McNemar, Holm & 258 labelled pairs; V7-B, B1, B1+rep, B3, B4 \\
+E4 & Component ablations V1--V5 (config deltas) & 321 pairs; five variants \\
+E5 & S2 branch-coverage floor 0.6, 0.8, 0.9 & 321 pairs; three floors \\
+E6 & Runtime cost, fresh process per job, 5 repetitions, two runs & fixed 40-pair subset; V7-B, B1, B1+rep \\
+E7 & \texttt{verify} on every evidence directory; corruption suite & 828 directories; 42 corruption cases \\
+\hline
+\end{tabular}}
+\end{table}
+
+\textbf{Protocol deviations (disclosed).} The first E3 attempt through the full evaluation script was killed after 77 CPU-minutes in an unrelated legacy test stage, and a second aborted at a documentation-wording guard; the reported E3 run replaces that stage by \texttt{pytest tests/v7 tests/v6} (286 passed, 1 skipped) and runs all other stages as in the full script; failed attempts produced no data. E6 was flagged by the pre-registered load rule, repeated once and both runs are reported; the machine was on battery power. The E3 baselines-stage wall time (20,880~s, apparently a machine suspend) is not used. E1's verify log column recorded the pipeline exit status; the \texttt{verified} field is the authority, and E7 re-verified with real exit codes.

@@ -1,0 +1,18 @@
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{Primary reason of the INSUFFICIENT verdicts in the E3 run (312 driven pairs; 9 pairs are not driven). Source: \path{results/v7b_phase2_summary/p2_e3_20261118_092700/processed/k1_spike_per_pair.jsonl}.}\label{tab:reasons}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrl}
+\hline
+Primary reason & Pairs & Meaning \\
+\hline
+unmodelled\_change & 54 & changed lines without executable code (rule A-U1) \\
+unsupported\_signature & 49 & renamed entry or unsupported signature \\
+changed\_region\_not\_activated & 40 & no input reached the changed lines \\
+unobservable\_outcome & 8 & lossy or degenerate observation \\
+resource\_limit & 4 & limit hit on a side or both \\
+nondeterministic & 1 & a version is not self-consistent \\
+import\_error & 1 & import or entry failure \\
+total & 157 &  \\
+\hline
+\end{tabular}}
+\end{table}

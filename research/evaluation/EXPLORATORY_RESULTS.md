@@ -1,3 +1,5 @@
+> **Phase 2 status banner (2026-11-18):** the numbers in this document were measured with the engine before the Phase 2 fixes (child run under `-I`, random hash seed, pre MB-01..MB-16, pre D-01/D-02/D-05/D-06/D-09). They are historical measurements of the old engine and must not be cited as measurements of the current engine. Current exploratory results: `reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md`. Original text below is unchanged.
+
 # V7-B exploratory development results
 
 Date 2026-11-17, branch research/v7b-final-validation. **EXPLORATORY DEVELOPMENT ANALYSIS. All 321 pairs are non-pristine (QuixBugs and BugsInPy are burned; v8/v10 synthetic pairs were scored by V5/V6) and V7-B was shaped by seeing this data. Nothing here is a confirmatory, held-out or generalisable result, and no claim is made about any detection rate in the field.** No sealed or holdout split exists yet; the K5 gate (>= 60 projects, >= 250 independent divergent pairs, kappa >= 0.7, clean leakage audit) is not met, so per SAP section 8 the study is exploratory.

@@ -1,22 +1,23 @@
 \begin{table*}[t]
 \centering\scriptsize
-\caption{NOT EVALUATED register (from \path{research/evaluation/EXPLORATORY_RESULTS.md} and \path{research/evaluation/K1_K2_FEASIBILITY_REPORT.md}).}
+\caption{NOT EVALUATED register (Phase 2; sources: \path{reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md}, section 10, and \path{reports/phase2/K1_K5_READINESS_AND_DECISION.md}).}
 \label{tab:notevaluated}
 \begin{tabular}{p{0.27\textwidth}p{0.14\textwidth}p{0.5\textwidth}}
 \hline
 Item & Status & Reason \\
 \hline
-Confirmatory family (P1/P2; H2a, H2b, H4) & NOT EVALUATED & no sealed holdout; data non-pristine; K5 not met; no independent real projects \\
-Superiority over a like-for-like comparator; K3/K4 gates; matched-coverage false assurance & NOT EVALUATED & only raw counts; no matched-coverage computation \\
-RQ4 generalisation & NOT ASSESSABLE & all data development-tuned; no independent project-level run \\
-RQ5 overhead & LOWER BOUND ONLY & V7-B CPU is child-process only; parent overhead and memory not recorded \\
+Confirmatory family and independent generalisation (RQ5) & NOT EVALUATED & no sealed holdout; data non-pristine; K5 not attempted; no independent real project-level run \\
+Superiority over any like-for-like comparator; matched-coverage false assurance & NOT EVALUATED & only raw counts; no matched-coverage computation \\
 Truth for BugsInPy units, two QuixBugs pairs, six suspect labels & NOT EVALUATED & no defensible label; never relabelled \\
-ICC and design effect & UNRELIABLE & one large cluster dominates; estimate is zero \\
-K1 and K2 (isolation-based) & NOT MET / NOT ASSESSABLE & fewer runnable real pairs than required; no project-level runs; no Linux isolation \\
-Published tools (Shadow, Testora, Mokav, DiffTestGen, Cleverest, DiffKemp, AFL-class fuzzers) & NOT IMPLEMENTED & no comparison; no claim relative to them \\
-S3, explorer, module E, Linux container isolation, declared renames, generator entries, Merkle and Supersession records & NOT IMPLEMENTED & see implementation status; they cause most INSUFFICIENT outcomes \\
-Component ablation of V7-B (replay, control alternation, thresholds) & NOT EVALUATED & never run; only B1 versus B1+rep is available as a proxy \\
-Sensitivity to thresholds (0.80 branch floor, repeat counts, budgets) & NOT EVALUATED & defaults are unvalidated and were not varied \\
+K1 (real-pair feasibility) and K2 under validated isolation & DEFERRED (Phase 3) & neither triggered nor cleared; needs Linux/Docker isolation \\
+Linux, Docker and OS-level isolation & NOT VALIDATED & macOS \texttt{sandbox-exec} only; policy flagged below minimum \\
+Tamper evidence against a deliberate writer & NOT PROVIDED & unkeyed hash chain; no trust anchor \\
+Complete determinism: hash-order sensitivity (E2), \texttt{datetime.now} & NOT EVALUATED & hash seed fixed and never varied; clock not virtualised \\
+Published tools (Shadow SE, DiffKemp, Testora, Cleverest, Prefactory, etc.) & NOT COMPARED & not implemented or run; no claim relative to them \\
+S3, explorer, module E, declared renames, generator entries & NOT IMPLEMENTED & contribute to \texttt{unsupported\_signature} and abstention \\
+Component value of replay, control alternation and thresholds & NOT SHOWN & ablations change no verdict (data have almost no nondeterminism) \\
+Calibration of the 0.80 branch floor and repeat counts & NOT EVALUATED & defaults are unvalidated; E5 shows only that the floor relabels S1/S2 \\
+Refinement of \texttt{unmodelled\_change} & OPEN & rule is conservative and unrefined (UD-2) \\
 Cross-language, cross-platform & NOT SUPPORTED & Python on macOS only \\
 \hline
 \end{tabular}

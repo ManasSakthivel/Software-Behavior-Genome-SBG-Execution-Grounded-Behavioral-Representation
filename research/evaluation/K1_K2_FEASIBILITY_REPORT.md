@@ -1,3 +1,5 @@
+> **Phase 2 status banner (2026-11-18):** the numbers in this document were measured with the engine before the Phase 2 fixes (child run under `-I`, random hash seed, pre MB-01..MB-16, pre D-01/D-02/D-05/D-06/D-09). They are historical measurements of the old engine and must not be cited as measurements of the current engine. Current exploratory results: `reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md`. Original text below is unchanged.
+
 # K1/K2 feasibility spike for sbgv7 (DEVELOPMENT / EXPLORATORY)
 
 Date 2026-11-17. Branch research/v7b-final-validation. Every dataset used here is non-pristine (QuixBugs and BugsInPy are burned; v8/v10 synthetic pairs were scored by V5/V6). Nothing below is an independent result, a detection rate, or evidence for or against any claim. No thresholds were tuned. Per-pair values come from the engine; labels were not given to it.

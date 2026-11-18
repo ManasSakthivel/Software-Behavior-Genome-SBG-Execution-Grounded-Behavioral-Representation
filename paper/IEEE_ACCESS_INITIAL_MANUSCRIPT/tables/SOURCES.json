@@ -1,33 +1,34 @@
 {
- "T1_datasets": [
-  "results/postfix/statistics/per_dataset.csv"
+ "P_datasets": [
+  "results/v7b_phase2_summary/p2_e3_20261118_092700/processed/dev_pairs_per_system.csv"
  ],
- "T2_system_metrics": [
-  "results/postfix/statistics/system_metrics.csv",
-  "results/postfix/statistics/cost.csv"
+ "P_byarm": [
+  "results/v7b_phase2_summary/p2_e3_20261118_092700/processed/dev_pairs_per_system.csv"
  ],
- "T3_paired": [
-  "results/postfix/statistics/paired_comparisons.csv"
+ "P_metrics": [
+  "results/v7b_phase2_summary/p2_e3_20261118_092700/statistics/system_metrics.csv",
+  "results/v7b_phase2_summary/p2_e3_20261118_092700/statistics/class_counts.csv"
  ],
- "T4_risk_coverage": [
-  "results/postfix/statistics/risk_coverage.csv"
+ "P_paired": [
+  "results/v7b_phase2_summary/p2_e3_20261118_092700/statistics/paired_comparisons.csv"
  ],
- "T5_class_counts": [
-  "results/postfix/statistics/class_counts.csv"
+ "P_riskcov": [
+  "results/v7b_phase2_summary/p2_e3_20261118_092700/statistics/risk_coverage.csv"
  ],
- "T6_power": [
-  "results/postfix/statistics/power_actual.json"
+ "P_gate": [
+  "results/v7b_phase2_summary/p2_consolidated_20261118_190644/consolidated.json"
  ],
- "T7_sufficiency_vs_label": [
-  "paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/tables/derived_crosstab.csv"
+ "P_reasons": [
+  "results/v7b_phase2_summary/p2_e3_20261118_092700/processed/k1_spike_per_pair.jsonl"
  ],
- "T8_v7b_by_arm": [
-  "paper/IEEE_ACCESS_INITIAL_MANUSCRIPT/tables/derived_crosstab.csv"
+ "P_e4": [
+  "results/v7b_phase2_summary/p2_consolidated_20261118_190644/consolidated.json"
  ],
- "T9_insufficient_reasons": [
-  "results/postfix/processed/k1_spike_summary.json"
+ "P_e6": [
+  "results/v7b_phase2_summary/p2_e6_20261118_171723/timing/timing_summary.json",
+  "results/v7b_phase2_summary/p2_e6b_20261118_174414/timing/timing_summary.json"
  ],
- "T10_k1_determinism": [
-  "results/postfix/processed/k1_spike_summary.json"
+ "P_e7": [
+  "results/v7b_phase2_summary/p2_e7_20261118_190612/corruption_results.json"
  ]
 }
