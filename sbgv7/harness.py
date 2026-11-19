@@ -9,7 +9,7 @@ import collections, contextlib, hashlib, hmac, importlib.util, inspect, io, json
 
 cfg = json.loads(sys.argv[1])
 SRC = cfg["src"]
-sys.argv = [SRC]
+sys.argv = ["target_program.py"]
 _WFD, _KEY = globals().pop("_SBGV7_CHAN")  # KeyError (=> no result, fail closed) if not launched through the channel
 STDOUT_CAP, MAXN, MAXDEPTH = 32768, 5000, 3
 LOSSY = [False]
@@ -189,7 +189,7 @@ def main():
     try:
         with contextlib.redirect_stdout(cap):
             spec = importlib.util.spec_from_file_location("sbgv7_target", SRC)
-            mod = importlib.util.module_from_spec(spec); sys.modules["sbgv7_target"] = mod
+            mod = importlib.util.module_from_spec(spec); mod.__file__ = "target_program.py"; sys.modules["sbgv7_target"] = mod
             spec.loader.exec_module(mod)
     except BaseException as e:
         res["phase"] = "import_error"; res["msg"] = norm(f"{type(e).__name__}: {e}")

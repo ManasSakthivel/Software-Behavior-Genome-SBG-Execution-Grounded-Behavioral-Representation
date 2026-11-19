@@ -17,7 +17,7 @@ from . import adapter, evidence_schema as ES, procsep
 
 SHADOW_SRC = r'''
 import json, os, sys
-a = json.loads(sys.argv[1]); sys.argv = [a["src"]]; out = os.dup(1); os.close(1); os.open(os.devnull, os.O_WRONLY)   # program output cannot reach the result fd by accident
+a = json.loads(sys.argv[1]); sys.argv = ["target_program.py"]; out = os.dup(1); os.close(1); os.open(os.devnull, os.O_WRONLY)   # program output cannot reach the result fd by accident
 def C(v):
     t = type(v)
     if v is None: return ["none"]
@@ -33,7 +33,7 @@ def C(v):
     return ["opaque", t.__qualname__]
 res = {"t": "error"}
 try:
-    ns = {"__name__": "shadow_target", "__file__": a["src"]}
+    ns = {"__name__": "target_program", "__file__": "target_program.py"}
     exec(compile(open(a["src"]).read(), a["src"], "exec"), ns)
     try: res = {"t": "returned", "ret": C(ns[a["entry"]](*a["args"], **a["kwargs"]))}
     except BaseException as e: res = {"t": "raised", "type": f"{type(e).__module__}.{type(e).__qualname__}"}

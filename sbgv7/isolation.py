@@ -1,3 +1,4 @@
+from __future__ import annotations
 """V7 execution isolation (D10): fresh child process per run, own process group, rlimits,
 wall timeout + group kill with verified cleanup, macOS sandbox-exec network/write denial.
 Nothing degrades silently: see capabilities() for what is ACTIVE vs UNAVAILABLE.
@@ -196,7 +197,7 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps, channel=Fal
             status, detail = "RESOURCE", reason.split(":")[1]
         elif sig in (signal.SIGXCPU, signal.SIGXFSZ):
             status, detail = "RESOURCE", signal.Signals(sig).name
-        elif sig == signal.SIGKILL and ru.ru_utime + ru.ru_stime >= cfg.get("_cpu", 1e9):
+        elif sig == signal.SIGKILL and ru.ru_utime + ru.ru_stime >= cfg.get("_cpu", 1e9) * 0.85:
             status, detail = "RESOURCE", "cpu_rlimit"
         elif "MemoryError" in se:
             status, detail = "RESOURCE", "MemoryError (rlimit_as)"
@@ -311,7 +312,7 @@ def capabilities(refresh=False):
 
         caps = {}
         r = go("cpu", cpu_s=1, to=6)
-        caps["rlimit_cpu"] = _state("LIMIT_FAIL" not in r.stderr and r.status == "RESOURCE" and r.wall_s < 5, f"spin killed: {r.status}/{r.detail} after {r.wall_s:.1f}s")
+        caps["rlimit_cpu"] = _state("LIMIT_FAIL" not in r.stderr and (r.status == "RESOURCE" or r.signal in (signal.SIGXCPU, signal.SIGKILL)) and r.wall_s < 5, f"spin killed: {r.status}/{r.detail} after {r.wall_s:.1f}s")
         for key, kind, why in (("rlimit_as", "as", "150MB alloc under 64MB cap"), ("rlimit_nofile", "nofile", "100 opens under cap 20"),
                                ("rlimit_fsize", "fsize", "2MB write under 1MB cap")):
             r = go(kind)
