@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Pure verdict + sufficiency logic (spec 2, 6). Precedence: DIVERGENT_OBSERVABLE > INSUFFICIENT(primary; secondary) >
 NO_DIVERGENCE_OBSERVED(S1|S2). A field that is None means the record is MISSING, and a missing record counts as a blocker.
 Never emits an equivalence verdict; S3 is not implemented (max level S2)."""
