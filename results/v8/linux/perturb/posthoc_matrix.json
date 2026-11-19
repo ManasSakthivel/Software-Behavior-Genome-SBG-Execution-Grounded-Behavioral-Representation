@@ -1,0 +1,1145 @@
+{
+ "meta": {
+  "script": "experiments/v8/run_perturbation_validation.py",
+  "command": "python experiments/v8/run_perturbation_validation.py results/v8/linux/perturb",
+  "seed": 0,
+  "records": "/root/sbg_sprint/datasets/v8/dev_records.jsonl",
+  "records_sha256": "4d2b495913e8287880ffbb7fdf4c909aa1baec8e02c9732e340fb86ff7413205",
+  "git_head": "",
+  "git_dirty": false,
+  "n_records": 312,
+  "tau": {
+   "stub": null,
+   "model": 0.1629451970156453,
+   "model_dense": 0.15557007185113225,
+   "probe_all_features": 0.023118236813123312,
+   "b3": null,
+   "b3_live": null
+  },
+  "model_nonzero_coef": {
+   "model": [
+    "mu_min"
+   ],
+   "model_dense": [
+    "mu_min"
+   ],
+   "probe_all_features": [
+    "act_frac",
+    "branch_cov_min",
+    "mu_min",
+    "mu_mean",
+    "n_same",
+    "n_rep",
+    "obs_react",
+    "n_eff",
+    "n_eff_prov",
+    "repro_frac",
+    "lossy_frac",
+    "chan_complete",
+    "prov_ok",
+    "integrity_ok",
+    "env_ok"
+   ]
+  }
+ },
+ "summary": {
+  "stub|P1": {
+   "predictor": "stub",
+   "pid": "P1",
+   "applicable": 16,
+   "passed": 16,
+   "failed": 0,
+   "na": 296,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 16,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 16,
+   "delta_min": 0.09090909090909094,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "not_applicable: no sole-reacher input to delete": 258,
+    "assurance_undefined_orig_DIVERGENT": 38
+   }
+  },
+  "stub|P1b": {
+   "predictor": "stub",
+   "pid": "P1b",
+   "applicable": 93,
+   "passed": 93,
+   "failed": 0,
+   "na": 219,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 93,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 93,
+   "delta_min": 0.06666666666666665,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "not_applicable: no covered changed unit leaves a clean input outside the deletion set": 210,
+    "assurance_undefined_orig_DIVERGENT": 9
+   }
+  },
+  "stub|P2": {
+   "predictor": "stub",
+   "pid": "P2",
+   "applicable": 227,
+   "passed": 227,
+   "failed": 0,
+   "na": 85,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 227,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no clean SAME input: added inputs would be the first evidence, not irrelevant": 85
+   }
+  },
+  "stub|P3": {
+   "predictor": "stub",
+   "pid": "P3",
+   "applicable": 262,
+   "passed": 262,
+   "failed": 0,
+   "na": 50,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 262,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no inputs to duplicate": 50
+   }
+  },
+  "stub|P4": {
+   "predictor": "stub",
+   "pid": "P4",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: channel immaterial: no input captured it": 50
+   }
+  },
+  "stub|P5": {
+   "predictor": "stub",
+   "pid": "P5",
+   "applicable": 176,
+   "passed": 176,
+   "failed": 0,
+   "na": 136,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 176,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 17,
+   "delta_min": 0.0,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 59,
+    "not_applicable: no deterministic SAME input to degrade": 77
+   }
+  },
+  "stub|P6": {
+   "predictor": "stub",
+   "pid": "P6",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: already divergent": 84
+   }
+  },
+  "stub|P7": {
+   "predictor": "stub",
+   "pid": "P7",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: no inputs": 50
+   }
+  },
+  "stub|P8": {
+   "predictor": "stub",
+   "pid": "P8",
+   "applicable": 312,
+   "passed": 312,
+   "failed": 0,
+   "na": 0,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 312,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {}
+  },
+  "stub|P9": {
+   "predictor": "stub",
+   "pid": "P9",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84
+   }
+  },
+  "model|P1": {
+   "predictor": "model",
+   "pid": "P1",
+   "applicable": 16,
+   "passed": 16,
+   "failed": 0,
+   "na": 296,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 16,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 9,
+   "delta_min": 0.0,
+   "delta_max": 0.12681205394248324,
+   "na_reasons": {
+    "not_applicable: no sole-reacher input to delete": 258,
+    "assurance_undefined_orig_DIVERGENT": 38
+   }
+  },
+  "model|P1b": {
+   "predictor": "model",
+   "pid": "P1b",
+   "applicable": 93,
+   "passed": 93,
+   "failed": 0,
+   "na": 219,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 93,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 68,
+   "delta_min": 0.0,
+   "delta_max": 0.3583155135487549,
+   "na_reasons": {
+    "not_applicable: no covered changed unit leaves a clean input outside the deletion set": 210,
+    "assurance_undefined_orig_DIVERGENT": 9
+   }
+  },
+  "model|P2": {
+   "predictor": "model",
+   "pid": "P2",
+   "applicable": 227,
+   "passed": 227,
+   "failed": 0,
+   "na": 85,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 227,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no clean SAME input: added inputs would be the first evidence, not irrelevant": 85
+   }
+  },
+  "model|P3": {
+   "predictor": "model",
+   "pid": "P3",
+   "applicable": 262,
+   "passed": 262,
+   "failed": 0,
+   "na": 50,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 262,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no inputs to duplicate": 50
+   }
+  },
+  "model|P4": {
+   "predictor": "model",
+   "pid": "P4",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: channel immaterial: no input captured it": 50
+   }
+  },
+  "model|P5": {
+   "predictor": "model",
+   "pid": "P5",
+   "applicable": 176,
+   "passed": 176,
+   "failed": 0,
+   "na": 136,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 176,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 100,
+   "delta_min": 0.0,
+   "delta_max": 0.2663384016465062,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 59,
+    "not_applicable: no deterministic SAME input to degrade": 77
+   }
+  },
+  "model|P6": {
+   "predictor": "model",
+   "pid": "P6",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: already divergent": 84
+   }
+  },
+  "model|P7": {
+   "predictor": "model",
+   "pid": "P7",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: no inputs": 50
+   }
+  },
+  "model|P8": {
+   "predictor": "model",
+   "pid": "P8",
+   "applicable": 312,
+   "passed": 312,
+   "failed": 0,
+   "na": 0,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 312,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {}
+  },
+  "model|P9": {
+   "predictor": "model",
+   "pid": "P9",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84
+   }
+  },
+  "model_dense|P1": {
+   "predictor": "model_dense",
+   "pid": "P1",
+   "applicable": 16,
+   "passed": 16,
+   "failed": 0,
+   "na": 296,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 16,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 9,
+   "delta_min": 0.0,
+   "delta_max": 0.1358625898531492,
+   "na_reasons": {
+    "not_applicable: no sole-reacher input to delete": 258,
+    "assurance_undefined_orig_DIVERGENT": 38
+   }
+  },
+  "model_dense|P1b": {
+   "predictor": "model_dense",
+   "pid": "P1b",
+   "applicable": 93,
+   "passed": 93,
+   "failed": 0,
+   "na": 219,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 93,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 68,
+   "delta_min": 0.0,
+   "delta_max": 0.3788618231270122,
+   "na_reasons": {
+    "not_applicable: no covered changed unit leaves a clean input outside the deletion set": 210,
+    "assurance_undefined_orig_DIVERGENT": 9
+   }
+  },
+  "model_dense|P2": {
+   "predictor": "model_dense",
+   "pid": "P2",
+   "applicable": 227,
+   "passed": 227,
+   "failed": 0,
+   "na": 85,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 227,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no clean SAME input: added inputs would be the first evidence, not irrelevant": 85
+   }
+  },
+  "model_dense|P3": {
+   "predictor": "model_dense",
+   "pid": "P3",
+   "applicable": 262,
+   "passed": 262,
+   "failed": 0,
+   "na": 50,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 262,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no inputs to duplicate": 50
+   }
+  },
+  "model_dense|P4": {
+   "predictor": "model_dense",
+   "pid": "P4",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: channel immaterial: no input captured it": 50
+   }
+  },
+  "model_dense|P5": {
+   "predictor": "model_dense",
+   "pid": "P5",
+   "applicable": 176,
+   "passed": 176,
+   "failed": 0,
+   "na": 136,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 176,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 100,
+   "delta_min": 0.0,
+   "delta_max": 0.28411401956945037,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 59,
+    "not_applicable: no deterministic SAME input to degrade": 77
+   }
+  },
+  "model_dense|P6": {
+   "predictor": "model_dense",
+   "pid": "P6",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: already divergent": 84
+   }
+  },
+  "model_dense|P7": {
+   "predictor": "model_dense",
+   "pid": "P7",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: no inputs": 50
+   }
+  },
+  "model_dense|P8": {
+   "predictor": "model_dense",
+   "pid": "P8",
+   "applicable": 312,
+   "passed": 312,
+   "failed": 0,
+   "na": 0,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 312,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {}
+  },
+  "model_dense|P9": {
+   "predictor": "model_dense",
+   "pid": "P9",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84
+   }
+  },
+  "probe_all_features|P1": {
+   "predictor": "probe_all_features",
+   "pid": "P1",
+   "applicable": 16,
+   "passed": 16,
+   "failed": 0,
+   "na": 296,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 16,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 16,
+   "delta_min": 0.023092434387836133,
+   "delta_max": 0.4363502458772422,
+   "na_reasons": {
+    "not_applicable: no sole-reacher input to delete": 258,
+    "assurance_undefined_orig_DIVERGENT": 38
+   }
+  },
+  "probe_all_features|P1b": {
+   "predictor": "probe_all_features",
+   "pid": "P1b",
+   "applicable": 93,
+   "passed": 93,
+   "failed": 0,
+   "na": 219,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 93,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 93,
+   "delta_min": 0.023092434387836133,
+   "delta_max": 0.9462967544464488,
+   "na_reasons": {
+    "not_applicable: no covered changed unit leaves a clean input outside the deletion set": 210,
+    "assurance_undefined_orig_DIVERGENT": 9
+   }
+  },
+  "probe_all_features|P2": {
+   "predictor": "probe_all_features",
+   "pid": "P2",
+   "applicable": 227,
+   "passed": 118,
+   "failed": 109,
+   "na": 85,
+   "total": 312,
+   "pass_rate": 0.5198237885462555,
+   "strict_pass": 118,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 105,
+   "delta_min": -0.3179996878733873,
+   "delta_max": -0.0024453639932273535,
+   "na_reasons": {
+    "not_applicable: no clean SAME input: added inputs would be the first evidence, not irrelevant": 85
+   }
+  },
+  "probe_all_features|P3": {
+   "predictor": "probe_all_features",
+   "pid": "P3",
+   "applicable": 262,
+   "passed": 262,
+   "failed": 0,
+   "na": 50,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 262,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no inputs to duplicate": 50
+   }
+  },
+  "probe_all_features|P4": {
+   "predictor": "probe_all_features",
+   "pid": "P4",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 178,
+   "delta_min": 0.00016913095813475554,
+   "delta_max": 0.06814629292116103,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: channel immaterial: no input captured it": 50
+   }
+  },
+  "probe_all_features|P5": {
+   "predictor": "probe_all_features",
+   "pid": "P5",
+   "applicable": 176,
+   "passed": 176,
+   "failed": 0,
+   "na": 136,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 176,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 176,
+   "delta_min": 0.00029576755569893365,
+   "delta_max": 0.874807358549741,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 59,
+    "not_applicable: no deterministic SAME input to degrade": 77
+   }
+  },
+  "probe_all_features|P6": {
+   "predictor": "probe_all_features",
+   "pid": "P6",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 228,
+   "delta_min": -0.055884571219247614,
+   "delta_max": 0.03401090597878062,
+   "na_reasons": {
+    "not_applicable: already divergent": 84
+   }
+  },
+  "probe_all_features|P7": {
+   "predictor": "probe_all_features",
+   "pid": "P7",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 178,
+   "delta_min": 0.0002334000515423762,
+   "delta_max": 0.3211234274512773,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: no inputs": 50
+   }
+  },
+  "probe_all_features|P8": {
+   "predictor": "probe_all_features",
+   "pid": "P8",
+   "applicable": 312,
+   "passed": 312,
+   "failed": 0,
+   "na": 0,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 312,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0002334000515423762,
+   "delta_max": 0.09964713226612976,
+   "na_reasons": {}
+  },
+  "probe_all_features|P9": {
+   "predictor": "probe_all_features",
+   "pid": "P9",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 228,
+   "delta_min": 0.0002334000515423762,
+   "delta_max": 0.09964713226612976,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84
+   }
+  },
+  "b3|P1": {
+   "predictor": "b3",
+   "pid": "P1",
+   "applicable": 16,
+   "passed": 16,
+   "failed": 0,
+   "na": 296,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 16,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no sole-reacher input to delete": 258,
+    "assurance_undefined_orig_DIVERGENT": 38
+   }
+  },
+  "b3|P1b": {
+   "predictor": "b3",
+   "pid": "P1b",
+   "applicable": 93,
+   "passed": 93,
+   "failed": 0,
+   "na": 219,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 93,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no covered changed unit leaves a clean input outside the deletion set": 210,
+    "assurance_undefined_orig_DIVERGENT": 9
+   }
+  },
+  "b3|P2": {
+   "predictor": "b3",
+   "pid": "P2",
+   "applicable": 227,
+   "passed": 227,
+   "failed": 0,
+   "na": 85,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 227,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no clean SAME input: added inputs would be the first evidence, not irrelevant": 85
+   }
+  },
+  "b3|P3": {
+   "predictor": "b3",
+   "pid": "P3",
+   "applicable": 262,
+   "passed": 262,
+   "failed": 0,
+   "na": 50,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 262,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no inputs to duplicate": 50
+   }
+  },
+  "b3|P4": {
+   "predictor": "b3",
+   "pid": "P4",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: channel immaterial: no input captured it": 50
+   }
+  },
+  "b3|P5": {
+   "predictor": "b3",
+   "pid": "P5",
+   "applicable": 176,
+   "passed": 176,
+   "failed": 0,
+   "na": 136,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 176,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 59,
+    "not_applicable: no deterministic SAME input to degrade": 77
+   }
+  },
+  "b3|P6": {
+   "predictor": "b3",
+   "pid": "P6",
+   "applicable": 228,
+   "passed": 157,
+   "failed": 71,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 0.6885964912280702,
+   "strict_pass": 0,
+   "abstention_credited_passes": 157,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: already divergent": 84
+   }
+  },
+  "b3|P7": {
+   "predictor": "b3",
+   "pid": "P7",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: no inputs": 50
+   }
+  },
+  "b3|P8": {
+   "predictor": "b3",
+   "pid": "P8",
+   "applicable": 312,
+   "passed": 157,
+   "failed": 155,
+   "na": 0,
+   "total": 312,
+   "pass_rate": 0.5032051282051282,
+   "strict_pass": 157,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {}
+  },
+  "b3|P9": {
+   "predictor": "b3",
+   "pid": "P9",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84
+   }
+  },
+  "b3_live|P1": {
+   "predictor": "b3_live",
+   "pid": "P1",
+   "applicable": 16,
+   "passed": 16,
+   "failed": 0,
+   "na": 296,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 16,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 8,
+   "delta_min": 0.0,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "not_applicable: no sole-reacher input to delete": 258,
+    "assurance_undefined_orig_DIVERGENT": 38
+   }
+  },
+  "b3_live|P1b": {
+   "predictor": "b3_live",
+   "pid": "P1b",
+   "applicable": 93,
+   "passed": 93,
+   "failed": 0,
+   "na": 219,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 93,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 50,
+   "delta_min": 0.0,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "not_applicable: no covered changed unit leaves a clean input outside the deletion set": 210,
+    "assurance_undefined_orig_DIVERGENT": 9
+   }
+  },
+  "b3_live|P2": {
+   "predictor": "b3_live",
+   "pid": "P2",
+   "applicable": 227,
+   "passed": 227,
+   "failed": 0,
+   "na": 85,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 227,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no clean SAME input: added inputs would be the first evidence, not irrelevant": 85
+   }
+  },
+  "b3_live|P3": {
+   "predictor": "b3_live",
+   "pid": "P3",
+   "applicable": 262,
+   "passed": 262,
+   "failed": 0,
+   "na": 50,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 262,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "not_applicable: no inputs to duplicate": 50
+   }
+  },
+  "b3_live|P4": {
+   "predictor": "b3_live",
+   "pid": "P4",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: channel immaterial: no input captured it": 50
+   }
+  },
+  "b3_live|P5": {
+   "predictor": "b3_live",
+   "pid": "P5",
+   "applicable": 176,
+   "passed": 176,
+   "failed": 0,
+   "na": 136,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 176,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 71,
+   "delta_min": 0.0,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 59,
+    "not_applicable: no deterministic SAME input to degrade": 77
+   }
+  },
+  "b3_live|P6": {
+   "predictor": "b3_live",
+   "pid": "P6",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 71,
+   "delta_min": 0.0,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "not_applicable: already divergent": 84
+   }
+  },
+  "b3_live|P7": {
+   "predictor": "b3_live",
+   "pid": "P7",
+   "applicable": 178,
+   "passed": 178,
+   "failed": 0,
+   "na": 134,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 178,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 0.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84,
+    "not_applicable: no inputs": 50
+   }
+  },
+  "b3_live|P8": {
+   "predictor": "b3_live",
+   "pid": "P8",
+   "applicable": 312,
+   "passed": 228,
+   "failed": 84,
+   "na": 0,
+   "total": 312,
+   "pass_rate": 0.7307692307692307,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 0,
+   "delta_min": 0.0,
+   "delta_max": 1.0,
+   "na_reasons": {}
+  },
+  "b3_live|P9": {
+   "predictor": "b3_live",
+   "pid": "P9",
+   "applicable": 228,
+   "passed": 228,
+   "failed": 0,
+   "na": 84,
+   "total": 312,
+   "pass_rate": 1.0,
+   "strict_pass": 228,
+   "abstention_credited_passes": 0,
+   "responded_beyond_tol": 71,
+   "delta_min": 0.0,
+   "delta_max": 1.0,
+   "na_reasons": {
+    "assurance_undefined_orig_DIVERGENT": 84
+   }
+  }
+ }
+}

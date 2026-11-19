@@ -88,7 +88,11 @@ class Supervisor:
     process only and always restores it. Not thread-safe (one supervised engine run per process at a time)."""
 
     def __init__(self, base, variant):
-        self.paths = {os.path.abspath(base): "base", os.path.abspath(variant): "variant"}
+        self.paths = {
+            base: "base", variant: "variant",
+            os.path.abspath(base): "base", os.path.abspath(variant): "variant",
+            os.path.realpath(base): "base", os.path.realpath(variant): "variant",
+        }
         self.session, self.runs, self.extra, self._orig = os.urandom(16).hex(), [], [], None
 
     def __enter__(self):
@@ -100,8 +104,14 @@ class Supervisor:
         return False
 
     def _spawn(self, script, args=(), **kw):
-        try: a = json.loads(args[0]); side = self.paths[a["src"]]; ok = os.path.abspath(script) == RUN.HARNESS and kw.get("channel") is True and len(args) == 1
-        except (IndexError, KeyError, ValueError, TypeError): ok = False
+        side = None
+        try:
+            a = json.loads(args[0])
+            src = a.get("src", "")
+            side = self.paths.get(src) or self.paths.get(os.path.abspath(src)) or self.paths.get(os.path.realpath(src))
+            ok = (os.path.realpath(str(script)) == os.path.realpath(RUN.HARNESS)) and (side is not None) and kw.get("channel") is True and len(args) == 1
+        except (IndexError, KeyError, ValueError, TypeError):
+            ok = False
         if not ok:
             self.extra.append(f"unsupervised spawn of {os.path.basename(str(script))}: no independent capture")
             return self._orig(script, args, **kw)

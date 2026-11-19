@@ -9,6 +9,7 @@ import collections, contextlib, hashlib, hmac, importlib.util, inspect, io, json
 
 cfg = json.loads(sys.argv[1])
 SRC = cfg["src"]
+sys.argv = [SRC]
 _WFD, _KEY = globals().pop("_SBGV7_CHAN")  # KeyError (=> no result, fail closed) if not launched through the channel
 STDOUT_CAP, MAXN, MAXDEPTH = 32768, 5000, 3
 LOSSY = [False]

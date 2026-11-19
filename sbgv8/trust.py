@@ -17,7 +17,7 @@ from . import adapter, evidence_schema as ES, procsep
 
 SHADOW_SRC = r'''
 import json, os, sys
-a = json.loads(sys.argv[1]); out = os.dup(1); os.close(1); os.open(os.devnull, os.O_WRONLY)   # program output cannot reach the result fd by accident
+a = json.loads(sys.argv[1]); sys.argv = [a["src"]]; out = os.dup(1); os.close(1); os.open(os.devnull, os.O_WRONLY)   # program output cannot reach the result fd by accident
 def C(v):
     t = type(v)
     if v is None: return ["none"]
@@ -65,19 +65,26 @@ def check_sidecar(d):
     if errs: return {"status": "inconsistent", "detail": "schema: " + "; ".join(errs[:3])}
     try:
         ev = os.path.join(d, "evidence.jsonl")
+        if not os.path.exists(ev):
+            return {"status": "inconsistent", "detail": "evidence.jsonl missing"}
+        lines = [l for l in open(ev).read().splitlines() if l.strip()]
+        if not lines:
+            return {"status": "inconsistent", "detail": "evidence.jsonl empty"}
         recs, byid = adapter.load_log(d)
-        head = json.loads(open(ev).read().splitlines()[-1])["hash"]
+        head = json.loads(lines[-1]).get("hash", "")
         if side.get("schema") != "v8.parts.1": return {"status": "inconsistent", "detail": "unknown sidecar schema"}
-        if side["evidence_sha256"] != _sha_file(ev) or side["log_head"] != head: return {"status": "inconsistent", "detail": "sidecar not bound to this evidence log (sha256/head)"}
-        rp, pkg = adapter.recorded_parts(recs, byid), next(r for r in recs if r["kind"] == "EvidencePackage")["body"]
-        rows = {r["input_id"]: r for r in pkg["rows"]}
-        if sorted(p["input_id"] for p in side["parts"]) != sorted(rows): return {"status": "inconsistent", "detail": "input set differs from the package rows"}
-        for p in side["parts"]:
+        if side.get("evidence_sha256") != _sha_file(ev) or side.get("log_head") != head: return {"status": "inconsistent", "detail": "sidecar not bound to this evidence log (sha256/head)"}
+        rp, pkg = adapter.recorded_parts(recs, byid), next((r for r in recs if r.get("kind") == "EvidencePackage"), {}).get("body", {})
+        rows = {r["input_id"]: r for r in pkg.get("rows", [])}
+        if sorted(p["input_id"] for p in side.get("parts", [])) != sorted(rows): return {"status": "inconsistent", "detail": "input set differs from the package rows"}
+        for p in side.get("parts", []):
+            if p["input_id"] not in rows:
+                return {"status": "inconsistent", "detail": f"{p['input_id']}: missing from package rows"}
             row = rows[p["input_id"]]
-            if (p["outcome"], p["lossy"], p["degenerate"]) != (row["outcome"], bool(row["lossy"]), bool(row["degenerate"])): return {"status": "inconsistent", "detail": f"{p['input_id']}: outcome/lossy/degenerate differ from the package"}
-            if p["hits"] != rp[p["input_id"]]["hits"] or p["branches"] != rp[p["input_id"]]["branches"]: return {"status": "inconsistent", "detail": f"{p['input_id']}: hits/branches differ from the Run records"}
+            if (p["outcome"], p["lossy"], p["degenerate"]) != (row.get("outcome"), bool(row.get("lossy")), bool(row.get("degenerate"))): return {"status": "inconsistent", "detail": f"{p['input_id']}: outcome/lossy/degenerate differ from the package"}
+            if p["hits"] != rp.get(p["input_id"], {}).get("hits") or p["branches"] != rp.get(p["input_id"], {}).get("branches"): return {"status": "inconsistent", "detail": f"{p['input_id']}: hits/branches differ from the Run records"}
         return {"status": "ok", "detail": "bound to the log head and equal to the Run records"}
-    except (R.ChainError, OSError, KeyError, ValueError, StopIteration) as e:
+    except (R.ChainError, OSError, KeyError, ValueError, IndexError, StopIteration, json.JSONDecodeError) as e:
         return {"status": "inconsistent", "detail": f"{type(e).__name__}: {e}"}
 
 
@@ -144,18 +151,30 @@ def check(evidence_dir, shadow=False, expected_sources=None, pinned_head=None, a
     if sc["status"] == "inconsistent": issues.append(f"integrity: sidecar {sc['detail']}")
     if val["capture"]["status"] in ("invalid", "untrusted", "missing"): issues.append(f"integrity: independent capture {val['capture']['status']}: {val['capture']['detail']}")
     if val["anchor"]["status"] == "invalid": issues.append(f"integrity: anchor {val['anchor']['detail']}")
-    pkg = next(r for r in recs if r["kind"] == "EvidencePackage")["body"]
-    vb = next(r for r in recs if r["kind"] == "Verdict")
-    head = json.loads(open(os.path.join(d, "evidence.jsonl")).read().splitlines()[-1])["hash"]
-    vj = os.path.join(d, "verdict.json")
-    integ["verdict_json"] = "absent" if not os.path.exists(vj) else ("ok" if json.load(open(vj)).get("log_head") == head else "disagrees")
-    prov = {"verdict_json_present": os.path.exists(vj), "sidecar_present": sc["status"] != "missing", "harness_sha_matches_current": pkg["harness_sha"] == _sha_file(HARNESS),
-            "pinned_head": None if pinned_head is None else pinned_head == head, "sources_match_expected": None, "log_head": head}
+    try:
+        pkg = next((r["body"] for r in recs if r["kind"] == "EvidencePackage"), None)
+        vb = next((r for r in recs if r["kind"] == "Verdict"), None)
+        lines = open(os.path.join(d, "evidence.jsonl")).read().splitlines()
+        head = json.loads(lines[-1])["hash"] if lines else "00" * 32
+        vj = os.path.join(d, "verdict.json")
+        integ["verdict_json"] = "absent" if not os.path.exists(vj) else ("ok" if json.load(open(vj)).get("log_head") == head else "disagrees")
+        prov = {"verdict_json_present": os.path.exists(vj), "sidecar_present": sc["status"] != "missing",
+                "harness_sha_matches_current": bool(pkg and pkg.get("harness_sha") == _sha_file(HARNESS)),
+                "pinned_head": None if pinned_head is None else pinned_head == head, "sources_match_expected": None, "log_head": head}
+        if not vb: issues.append("integrity: Verdict record absent from evidence log")
+        if not pkg: issues.append("integrity: EvidencePackage record absent from evidence log")
+    except Exception as e:
+        pkg, vb, head = None, None, "00" * 32
+        prov = {"verdict_json_present": False, "sidecar_present": False, "harness_sha_matches_current": False, "pinned_head": None, "sources_match_expected": None, "log_head": head}
+        issues.append(f"integrity: log parsing failure: {e}")
     if not prov["verdict_json_present"]: issues.append("provenance: verdict.json absent (verify cannot notice; the verdict must be taken from the log)")
     if not prov["harness_sha_matches_current"]: issues.append("provenance: evidence was produced by a different harness.py than the current one")
     if pinned_head is not None and pinned_head != head: issues.append("provenance: log head differs from the externally pinned head")
     if expected_sources:
-        ok = all(_sha_file(p) == byid[pkg["versions"][s]]["body"]["sha256"] for s, p in expected_sources.items())
+        if byid and pkg and "versions" in pkg:
+            ok = all(s in pkg["versions"] and pkg["versions"][s] in byid and _sha_file(p) == byid[pkg["versions"][s]].get("body", {}).get("sha256") for s, p in expected_sources.items())
+        else:
+            ok = False
         prov["sources_match_expected"] = ok
         if not ok: issues.append("provenance: recorded program source differs from the expected file (evidence substitution)")
     auth = {"established": ["records are consistent with each other (chain, content ids)", "the verdict follows from the recorded runs (verify recomputation)"] +
@@ -170,7 +189,9 @@ def check(evidence_dir, shadow=False, expected_sources=None, pinned_head=None, a
         auth["shadow"] = shadow_check(d)
         if auth["shadow"]["status"] == "mismatch": issues.append("authenticity: shadow re-observation disagrees with the recorded return value(s)")
         elif auth["shadow"]["status"] == "match": auth["established"].append("an independent re-execution reproduced the recorded return values on comparable inputs (cross-check only; same-address-space limits apply)")
-    inf = {"verdict": vb["body"]["value"], "effective_verdict": procsep.decide(vb["body"]["value"], val)["verdict"], "level": vb["body"]["level"], "recomputable": integ["verify"] == "verified",
+    raw_v = vb["body"]["value"] if vb and isinstance(vb, dict) and "body" in vb and "value" in vb["body"] else "INSUFFICIENT"
+    raw_lvl = vb["body"].get("level") if vb and isinstance(vb, dict) and "body" in vb else None
+    inf = {"verdict": raw_v, "effective_verdict": procsep.decide(raw_v, val)["verdict"], "level": raw_lvl, "recomputable": integ["verify"] == "verified",
            "meaning": "NO_DIVERGENCE_OBSERVED = no divergence observed within the executed inputs/channels; never equivalence. Correctness of the inference is relative to those inputs (V8 profile/calibration judge sufficiency)."}
     return TrustReport(integ, prov, auth, _isolation(pkg), issues, inf)
 
@@ -195,6 +216,7 @@ ATTACKS = {  # variant programs (all are genuinely divergent: x+2 vs x+1); the a
     "A08_hide_stdout_divergence_by_patching_Cap": HDR + "if hasattr(m, 'Cap'): m.Cap.write = lambda self, s: len(s)\ndef f(x):\n    print('extra output')\n    return x + 1\n",
     "A07_sense_harness_and_behave": HDR + "def f(x):\n    return x + 1 if hasattr(m, 'canon') else x + 2\n",
     # new attacks (V8 hardening, ids appended; A01-A08 above are the original suite and are unchanged)
+    "A07c_sense_argv_eval_environment": "import sys\ndef f(x):\n    return x + 1 if ('harness' in sys.argv[0] or 'shadow' in sys.argv[0] or any('shadow' in a for a in sys.argv)) else x + 2\n",
     "A16_close_stderr_then_hide_stdout_divergence": HDR + "if hasattr(m, 'Cap'): m.Cap.write = lambda self, s: len(s)\ndef f(x):\n    import os\n    os.close(2)\n    print('extra output')\n    return x + 1\n",
     "A17_forge_tee_record_with_guessed_nonce": "import os\ndef f(x):\n    os.write(2, b'@@SBGV8T@@' + b'0' * 32 + b' 1 W 41@@\\n')\n    return x + 2\n",
 }

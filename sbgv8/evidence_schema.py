@@ -149,35 +149,45 @@ def check_capture(d):
         return {"status": "not_collected", "detail": "legacy V7-B directory: no independent stdout record exists", "reasons": []}
     try:
         c = _load(cp)
-        recs = R.read_log(os.path.join(d, "evidence.jsonl"))
-        head = json.loads(open(os.path.join(d, "evidence.jsonl")).read().splitlines()[-1])["hash"]
-    except (OSError, ValueError, KeyError, IndexError, R.ChainError) as e:
+        ev_file = os.path.join(d, "evidence.jsonl")
+        if not os.path.exists(ev_file):
+            return _bad("evidence.jsonl missing")
+        lines = [l for l in open(ev_file).read().splitlines() if l.strip()]
+        if not lines:
+            return _bad("evidence.jsonl empty")
+        recs = R.read_log(ev_file)
+        head = json.loads(lines[-1]).get("hash", "")
+    except (OSError, ValueError, KeyError, IndexError, R.ChainError, json.JSONDecodeError) as e:
         return _bad(f"unreadable: {type(e).__name__}: {e}")
     errs = check_schema(CAPTURE, c, "capture")
     if errs: return _bad("; ".join(errs[:3]))
-    byid = {r["id"]: r for r in recs}
-    pk = [r for r in recs if r["kind"] == "EvidencePackage"]
-    runs = [r for r in recs if r["kind"] == "Run"]
+    byid = {r.get("id"): r for r in recs if isinstance(r, dict)}
+    pk = [r for r in recs if isinstance(r, dict) and r.get("kind") == "EvidencePackage"]
+    runs = [r for r in recs if isinstance(r, dict) and r.get("kind") == "Run"]
     if len(pk) != 1: return _bad("log has no unique EvidencePackage")
-    pkg = pk[0]["body"]
+    pkg = pk[0].get("body", {})
     why = []
-    if c["log_head"] != head or c["evidence_sha256"] != sha_file(os.path.join(d, "evidence.jsonl")): why.append("capture is not bound to this evidence log (replayed from another run or log edited)")
-    if c["config_sha256"] != R.sha(R.canon_json(pkg["config"])): why.append("configuration binding differs")
-    if c["harness_sha256"] != pkg["harness_sha"]: why.append("harness digest differs from the package")
-    cr = c["runs"]
-    if [x["seq"] for x in cr] != list(range(len(cr))): why.append("run records missing/duplicated/reordered (seq not contiguous)")
-    if len({x["nonce"] for x in cr}) != len(cr): why.append("duplicate run nonce")
+    if c.get("log_head") != head or c.get("evidence_sha256") != sha_file(os.path.join(d, "evidence.jsonl")): why.append("capture is not bound to this evidence log (replayed from another run or log edited)")
+    if c.get("config_sha256") != R.sha(R.canon_json(pkg.get("config", {}))): why.append("configuration binding differs")
+    if c.get("harness_sha256") != pkg.get("harness_sha"): why.append("harness digest differs from the package")
+    cr = c.get("runs", [])
+    if [x.get("seq") for x in cr] != list(range(len(cr))): why.append("run records missing/duplicated/reordered (seq not contiguous)")
+    if len({x.get("nonce") for x in cr}) != len(cr): why.append("duplicate run nonce")
     if len(cr) != len(runs): why.append(f"{len(cr)} capture records but {len(runs)} Run records (partial or extra records)")
     else:
         for i, (x, r) in enumerate(zip(cr, runs)):
-            s, role = r["body"]["summary"], byid[r["refs"][0]]["body"]["role"]
-            if (x["status"], x["detail"], x["protocol_error"]) != (s["status"], s["detail"], s["protocol_error"]): why.append(f"run {i}: status/detail/protocol_error differ from the log")
-            if x["input_hash"] != r["body"]["input_hash"] or x["side"] != role: why.append(f"run {i}: input hash / side differ from the log")
-            if (x["mode"] == "probe") != (r["body"]["run_kind"] == "probe"): why.append(f"run {i}: mode differs from run_kind")
-            if (x["cpu_s"], x["wall_s"]) != (r["meta"]["cpu_s"], r["meta"]["wall_s"]): why.append(f"run {i}: timings differ from the log")
-            obs = byid[r["refs"][1]]["body"] if len(r["refs"]) > 1 else None
-            if obs is not None and x["harness"]["frame"] and x["harness"]["stdout_sha256"] != hashlib.sha256(str(obs.get("stdout", "")).encode()).hexdigest():
-                why.append(f"run {i}: recorded observation stdout differs from the stdout the harness reported to the parent")
+            try:
+                s = r.get("body", {}).get("summary", {})
+                role = byid[r["refs"][0]]["body"]["role"] if r.get("refs") and r["refs"][0] in byid and "body" in byid[r["refs"][0]] and "role" in byid[r["refs"][0]]["body"] else "unknown"
+                if (x.get("status"), x.get("detail"), x.get("protocol_error")) != (s.get("status"), s.get("detail"), s.get("protocol_error")): why.append(f"run {i}: status/detail/protocol_error differ from the log")
+                if x.get("input_hash") != r.get("body", {}).get("input_hash") or x.get("side") != role: why.append(f"run {i}: input hash / side differ from the log")
+                if (x.get("mode") == "probe") != (r.get("body", {}).get("run_kind") == "probe"): why.append(f"run {i}: mode differs from run_kind")
+                if (x.get("cpu_s"), x.get("wall_s")) != (r.get("meta", {}).get("cpu_s"), r.get("meta", {}).get("wall_s")): why.append(f"run {i}: timings differ from the log")
+                obs = byid[r["refs"][1]]["body"] if len(r.get("refs", [])) > 1 and r["refs"][1] in byid and "body" in byid[r["refs"][1]] else None
+                if obs is not None and x.get("harness", {}).get("frame") and x.get("harness", {}).get("stdout_sha256") != hashlib.sha256(str(obs.get("stdout", "")).encode()).hexdigest():
+                    why.append(f"run {i}: recorded observation stdout differs from the stdout the harness reported to the parent")
+            except Exception as ex:
+                why.append(f"run {i}: invalid run structure ({type(ex).__name__}: {ex})")
     if why: return _bad("; ".join(why[:4]), reasons=why)
     if c["trusted"] != all(x["verdict"] in ("match", "no_frame") for x in cr) or not cr and c["trusted"]: return _bad("capture.trusted disagrees with its own run verdicts")
     if not c["trusted"]: return {"status": "untrusted", "detail": "; ".join(c["reasons"][:3]) or "run flagged untrusted by the collector", "reasons": c["reasons"]}

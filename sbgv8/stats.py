@@ -233,7 +233,15 @@ def project_folds(proj, k, seed=0):
 def redundancy_table(X, names, thresh=0.8):
     """Spearman correlation matrix, VIF per feature, and the list of |rho|>=thresh pairs."""
     X = np.asarray(X, float)
-    R = np.array(sps.spearmanr(X).correlation).reshape(len(names), len(names)) if X.shape[1] > 1 else np.ones((1, 1))
+    if X.shape[1] <= 1:
+        R = np.ones((len(names), len(names)))
+    else:
+        corr = sps.spearmanr(X).correlation
+        R = np.asarray(corr, float)
+        if R.ndim == 0:
+            R = np.eye(len(names))
+        elif R.shape != (len(names), len(names)):
+            R = R.reshape(len(names), len(names))
     R = np.nan_to_num(R, nan=0.0); np.fill_diagonal(R, 1.0)
     vif = np.diag(np.linalg.pinv(R))
     pairs = [(names[i], names[j], float(R[i, j])) for i in range(len(names)) for j in range(i + 1, len(names)) if abs(R[i, j]) >= thresh]

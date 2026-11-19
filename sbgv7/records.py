@@ -58,8 +58,11 @@ def ProgramVersion(role, src_bytes, entry):
 
 
 def pack_inputs(inputs):
-    return [{"id": i["id"], "args": i["args"], "kwargs": i["kwargs"]} if len(canon_json([i["args"], i["kwargs"]])) <= INPUT_CAP
-            else {"id": i["id"], "omitted": len(canon_json([i["args"], i["kwargs"]])), "sha": sha(canon_json([i["args"], i["kwargs"]]))} for i in inputs]
+    def _pack_one(i):
+        a, kw = i.get("args", []), i.get("kwargs", {})
+        cj = canon_json([a, kw])
+        return {"id": i["id"], "args": a, "kwargs": kw} if len(cj) <= INPUT_CAP else {"id": i["id"], "omitted": len(cj), "sha": sha(cj)}
+    return [_pack_one(i) for i in inputs]
 
 
 def EvidencePackage(body):

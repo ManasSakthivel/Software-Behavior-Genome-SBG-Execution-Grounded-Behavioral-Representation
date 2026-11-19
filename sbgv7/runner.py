@@ -87,8 +87,9 @@ class Ctx:
 
     def run(self, side, inp, kind, idx, mode="call", ctl=None):
         c = self.cfg["budget"]["per_run"]
-        h = R.sha(R.canon_json([inp["args"], inp["kwargs"]]))
-        arg = json.dumps(dict(src=self.path[side], entry=self.entry, mode=mode, args=inp["args"], kwargs=inp["kwargs"], ctl=ctl))
+        args, kwargs = inp.get("args", []), inp.get("kwargs", {})
+        h = R.sha(R.canon_json([args, kwargs]))
+        arg = json.dumps(dict(src=self.path[side], entry=self.entry, mode=mode, args=args, kwargs=kwargs, ctl=ctl))
         r = isolation.run_script(HARNESS, [arg], timeout_s=c["wall_s"], cpu_s=c["cpu_s"], mem_mb=c["rss_mib"], out_cap=4 << 20, channel=True)
         self.spent += r.cpu_s
         out = RunOut("", None)
@@ -264,7 +265,7 @@ def classify(iid, runs, cfg, fetch):
 def process_input(ctx, inp):
     """-> (InputEv, hits{side}, branches{side}, False, blockers); executes runs live, judgement is classify()."""
     rep = ctx.cfg["repeat"]
-    ih = R.sha(R.canon_json([inp["args"], inp["kwargs"]]))
+    ih = R.sha(R.canon_json([inp.get("args", []), inp.get("kwargs", {})]))
     runs = {"base": [], "variant": []}
     ob = getattr(ctx, "over_budget", lambda: False)
 

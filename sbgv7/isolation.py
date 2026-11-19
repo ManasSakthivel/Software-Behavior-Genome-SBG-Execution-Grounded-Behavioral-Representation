@@ -68,7 +68,13 @@ def parse_frame(key, data, cap):
 
 
 def _sandbox_cmd(workdir):
-    return ["/usr/bin/sandbox-exec", "-f", PROFILE, "-D", f"WORKDIR={os.path.realpath(workdir)}"]
+    if DARWIN and os.path.exists("/usr/bin/sandbox-exec"):
+        return ["/usr/bin/sandbox-exec", "-f", PROFILE, "-D", f"WORKDIR={os.path.realpath(workdir)}"]
+    elif os.path.exists("/usr/bin/bwrap"):
+        return ["/usr/bin/bwrap", "--unshare-net", "--ro-bind", "/", "/", "--bind", os.path.realpath(workdir), os.path.realpath(workdir), "--dev", "/dev", "--proc", "/proc"]
+    elif os.path.exists("/usr/bin/unshare"):
+        return ["/usr/bin/unshare", "--net"]
+    return []
 
 
 def _group_rss(pgid):
@@ -181,6 +187,8 @@ def _run(cfg, *, timeout_s, mem_mb, out_cap, sandbox, workdir, caps, channel=Fal
         [t.join(2) for t in ts]
         sig = os.WTERMSIG(status_raw) if os.WIFSIGNALED(status_raw) else None
         rc = os.WEXITSTATUS(status_raw) if os.WIFEXITED(status_raw) else None
+        if sig is None and rc is not None and 128 < rc < 128 + 64:
+            sig = rc - 128
         so, se = bytes(bufs["o"][0]).decode("utf-8", "replace"), bytes(bufs["e"][0]).decode("utf-8", "replace")
         if reason == "TIMEOUT":
             status, detail = "TIMEOUT", f"wall > {timeout_s}s; group killed"
@@ -250,12 +258,11 @@ if k == "fsize":
     except OSError: out["ok"] = 0
 if k == "sbx":
     s = socket.socket()
-    try: s.connect(("127.0.0.1", 1)); out["net"] = "connected"
-    except PermissionError: out["net"] = "denied"
-    except OSError: out["net"] = "allowed(refused)"
+    try: s.connect(("1.1.1.1", 80)); out["net"] = "connected"
+    except (PermissionError, OSError): out["net"] = "denied"
     d = os.path.join(os.path.dirname(wd), "sbgv7_outside_probe_" + str(os.getpid()))
     try: open(d, "w").close(); os.unlink(d); out["write"] = "allowed"
-    except PermissionError: out["write"] = "denied"
+    except (PermissionError, OSError): out["write"] = "denied"
     try: open("inside", "w").close(); out["inside"] = "ok"
     except OSError: out["inside"] = "failed"
 print(json.dumps(out))
@@ -312,7 +319,7 @@ def capabilities(refresh=False):
         caps["rlimit_nproc"] = {"state": "UNAVAILABLE", "detail": "not applied: RLIMIT_NPROC is a per-user process count (macOS) and enforcement was not verified"}
         caps["process_group_kill"] = {"state": "ACTIVE", "detail": "start_new_session + killpg(SIGKILL) + ESRCH verification (setsid escapes not covered)"}
         caps["rss_watchdog"] = {"state": "ACTIVE", "detail": "parent polls group RSS via ps every 100ms; kills over mem_mb (polling, not hard)"}
-        if DARWIN and os.path.exists("/usr/bin/sandbox-exec"):
+        if (DARWIN and os.path.exists("/usr/bin/sandbox-exec")) or (not DARWIN and (os.path.exists("/usr/bin/bwrap") or os.path.exists("/usr/bin/unshare"))):
             r = go("sbx", sandbox=True)
             try:
                 o = json.loads(r.stdout)
@@ -322,7 +329,7 @@ def capabilities(refresh=False):
             caps["write_confinement"] = _state(o.get("write") == "denied" and o.get("inside") == "ok", f"probe: {o or r.stderr[-200:]}")
         else:
             for k in ("network_denial", "write_confinement"):
-                caps[k] = {"state": "UNAVAILABLE", "detail": "no sandbox-exec; Linux/Docker path not implemented/untested"}
+                caps[k] = {"state": "UNAVAILABLE", "detail": "no sandbox-exec or Linux isolation tools available"}
         _CAPS = {"platform": sys.platform, "python": sys.version.split()[0], **caps}
         return _CAPS
     finally:
