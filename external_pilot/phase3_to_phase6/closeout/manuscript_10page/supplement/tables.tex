@@ -12,10 +12,10 @@ Result & Source & Class & Raw & Tree & Re-run & Known gap \\
 Corpus and labels & \bcode{datasets\/v8\/dev\_records.jsonl} (312 records) & R & Records only & Unrecorded & Analysis; Collect needs V7-B & Per-run logs (\bcode{results\/repro\/v8\_dev\_20261118\_195446}) absent \\
 Rule and model risks, contrasts & \bcode{scripts\/stats\_recompute.py} $\to$ \bcode{audit\/stats\_summary.json} & D & Yes & Code at \code{07ecd5b7} & Analysis, about 1 min & -- \\
 Seeds, B6 contrast & \bcode{results\/v8\_dev\_eval\_20261119\_*\_linux\_\{soft,strict\}} & R & Yes & Unrecorded & Analysis & Run metadata lack a commit \\
-Placebo, frozen thresholds, profile fix & mac: \bcode{results\/v8\_mac\_reanalysis\_20261118\_*} & R & Yes & Not in public repository; available on request & Analysis & Fix not merged into the evaluated branch \\
+Placebo, frozen thresholds, profile fix & mac: \bcode{results\/v8\_mac\_reanalysis\_20261118\_*} & R & Yes & In public repository & Analysis & Fix not merged into the evaluated branch \\
 \ers{} matrix & \bcode{results\/v8\/linux\/perturb\/posthoc\_matrix.json}; mac \bcode{results\/v8\_mac\_perturb\/} & R & Yes & Linux: clean flag, commit unrecorded & Analysis & -- \\
 Real-execution analogue & \bcode{results\/v8\_mac\_perturb\/realexec\_matrix.json} (720 rows) & D & Matrix only & Dirty at \code{01fdaf09} & Collect & Run directories absent; uncommitted changes listed in manifest \\
-Security, macOS & \bcode{audit\/security\_rerun\_darwin.json}; mac \bcode{results\/v8\_mac\_security\/} & R & Yes & Output not in public repository; available on request & Collect, about 9\,s & macOS only \\
+Security, macOS & \bcode{audit\/security\_rerun\_darwin.json}; mac \bcode{results\/v8\_mac\_security\/} & R & Yes & In public repository & Collect, about 9\,s & macOS only \\
 Security, Linux & \bcode{results\/v8\/linux\/expanded\_security\_suite\_results.json} & R & Yes & Unrecorded & Collect & No host, sandbox or time metadata \\
 Five-dataset audit & Generator code and manifests; \bcode{scripts\/verify\_five\_dataset.py} & D & Yes & Code at \code{07ecd5b7} & Static & -- \\
 Cross-platform status & Saved outputs on both branches & M & Yes & As above & Static & -- \\
