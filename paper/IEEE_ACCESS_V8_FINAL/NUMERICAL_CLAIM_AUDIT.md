@@ -10,6 +10,18 @@ Verification modes:
 
 Development-data numbers are seed 0, Linux-branch code, before the profile fix, unless the row says otherwise.
 
+**Second-round note (2026-11-20).** The research questions were renumbered:
+
+| Old | New |
+|---|---|
+| RQ1 (rules) | RQ3 |
+| RQ2 (CEC/ERS value) | RQ4 |
+| RQ3 (ERS conformance) | RQ2 |
+| RQ4 (security) | RQ1 |
+| — | RQ5 (five-dataset and cross-platform scope), new |
+
+The section headings below keep their round-1 labels, and every value in them is unchanged. Numbers introduced in the second round are listed at the end. No experiment, benchmark, validation run or statistical pipeline was re-executed: every new number was read from an existing output or counted from an existing file. One round-1 error was corrected. The share of B1 verdicts withheld by the V7-B gate is 122 of 183, two thirds, not "three quarters".
+
 ## Corpus (Table 7, §VII-C, abstract, introduction)
 
 | Number | Meaning | Source | Mode |
@@ -70,7 +82,7 @@ Development-data numbers are seed 0, Linux-branch code, before the profile fix, 
 | 71, 155, 84 | V7-B failures: recorded P6, recorded P8, recomputed P8 | `posthoc_matrix.md` | C |
 | 9 of 16; 68 of 93; 100 of 176 | Fitted-model responses beyond tolerance on P1, P1b, P5 | `posthoc_matrix.md` ("responded beyond tol") | C |
 | 0.02; 1e-6 | Invariance and monotone tolerances | `sbgv8/ers.py:13` | X |
-| 30 pairs | Pairs with real-execution perturbation analogues | `audit/ARCHITECTURE_AND_DEFINITIONS.md` §1.6 | X |
+| 30 pairs | Pairs with real-execution perturbation analogues (20 primary + 10 supplementary) | `results/v8_mac_perturb/realexec_matrix.json` (`n_pairs`, `n_primary`) | C |
 
 ## RQ4 (Table 10, Fig. 8, §VIII-E)
 
@@ -106,3 +118,31 @@ Development-data numbers are seed 0, Linux-branch code, before the profile fix, 
 | Bugs.jar 1,158 bugs / 8 projects | Saha et al. 2018 | L |
 | SemaDiff: 183 annotated commits | Ayub et al. 2026 (preprint) | L |
 | BESTEST: 18 Java classes | Fraser & Walkinshaw 2015 | L |
+
+## Second-round additions
+
+| Number | Meaning | Source | Mode |
+|---|---|---|---|
+| 122 of 183 (two thirds) | B1 verdicts withheld by the V7-B gate (183 − 61) | Rule counts above | R |
+| 7 of 30 | Pairs where a real input exercising only unchanged code was found (P2 applicable: 5 primary + 2 supplementary) | `results/v8_mac_perturb/realexec_matrix.json` → `summary["*\|P2\|*"]` | C |
+| 5 of 7; 0.087–0.095 | Probe failures on real P2 (4 primary + 1 supplementary); size of the risk reduction | Same file, `rows` with `predictor = probe_all_features`, `status = fail` | C |
+| 30 / 30 | Real P5 (low and mid configurations) passes, all six predictors | Same file, `summary["*\|P5_low\|*"]`, `["*\|P5_mid\|*"]` | C |
+| 0 of 20; 1 of 10 | Real P6 applicable in the primary / supplementary cohort (the single trial passed) | Same file, `summary["*\|P6\|*"]` | C |
+| 720 | Per-trial rows in the real-execution matrix | Same file (`rows`) | C |
+| 01fdaf09 (dirty tree); seed 20261118; quota 10/10/5/5 | Run provenance of the real-execution analogue; selection declared before running | `results/v8_mac_perturb/realexec_20261118/manifest.json`; `realexec_selection.json` | C |
+| −4.4 [−11.5, +9.7]; p 0.76 | B6 − B8 at c* (soft, seed 0); B = 2,000; pre-registered family Holm 1.0 | `results/v8_dev_eval_20261119_055209_linux_soft` (saved `per_seed[0].vs_b6`, `holm`) | C |
+| p 0.42 / 0.33 / 0.09 / 0.08 / 0.45 / 0.08 / 0.20 / 0.42 | One-sided p of the eight contrasts in Table 17 | `audit/stats_summary.json` → `seed0_recomputed.soft_v8.0.contrasts_own_bootstrap.*.p_one_sided` | R |
+| Holm 1.00 / 1.00 / 0.68 / 0.68 / 1.00 / 0.68 / 1.00 / 1.00 | Eight-contrast Holm p | Same, `p_holm_family_of_8` | R |
+| +7.9 [−2.8, +14.7]; +8.2 [−2.5, +15.6] | B9 − B8 and multiplicity-only − B8 at c* | Same, `b9_cec_no_ers_minus_b8`, `abl_mult_only_minus_b8` | R |
+| +0.033 [−0.055, +0.104]; +0.004 [−0.047, +0.052] | Log-loss B7 − B8 and multiplicity-only − B8 | Same | R |
+| 0.502 / 0.999 / 1.000 | Valid bootstrap share of the matched-coverage contrasts (B3; others; log loss) | Same, `valid_share` | R |
+| Strict: +0.032 [−0.093, +0.154]; +0.005 [−0.068, +0.090] | Strict log-loss B7 − B9 and B9 − B8 | Same, `strict_v8.0s` | R |
+| identical (empty diff) | macOS pre-fix vs Linux post-hoc ERS matrix | `diff` of `results/v8_mac_perturb/posthoc_matrix.md` and `results/v8/linux/perturb/posthoc_matrix.md` (both on this branch) | C |
+| 1e-9 | Linux vs mac pre-fix (210512) point values, seeds 0–2, both policies | `audit/STATISTICAL_AUDIT_REPORT.md`, finding 5 | C (round 1) |
+| 07e57a80 (md5) | `dev_records.jsonl`, identical on both branches | Round-1 check | C |
+| 250 (244 distinct); 47; 12; 180 / 70 | Five-dataset records; project names; templates; Java / Python records | `audit/five_dataset_summary.json`; `audit/DATASET_VERIFICATION_REPORT.md` | C |
+| 50 / 50 / 50 / 30+20 / 50; 10 / 10 / 10 / 10 / 7 | Records and project names per dataset name (Defects4J, BugsInPy, Bears, BugSwarm, Bugs.jar) | `audit/five_dataset_summary.json` → `per_dataset` | C |
+| 25: per-attack outcomes | Rows of Table 9 (A03–A06, SENSE01/04/04b/04c/04d, A07/A07c, P06, P08, P09) | `audit/security_outcomes.json` (suite `audit_rerun_head_darwin`) | C |
+| 78.2% of 463 PRs | Literature: change-directed LLM test generation exposing differences (preprint) | hu2026difftestgen (L) | L |
+| ~76%; 183 commits | Literature: SemaDiff agreement-rule accuracy (preprint) | ayub2026semadiff (L) | L |
+| 237 words | Abstract length (stripped LaTeX) | `sections/abstract.tex` | X |

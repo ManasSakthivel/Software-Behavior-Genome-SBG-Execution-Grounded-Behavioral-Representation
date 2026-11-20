@@ -17,5 +17,17 @@
 \newcommand{\cov}{\kappa}
 \newcommand{\pp}{\,pp}
 \newcommand{\code}[1]{\texttt{#1}}
+% Breakable underscore and slash inside long code paths in tables.
+\DeclareRobustCommand{\bus}{\textunderscore\allowbreak}
+\newcommand{\bcode}[1]{{\def\_{\bus}\def\/{/\allowbreak}\texttt{#1}}}
 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Theorem-like environments (plain LaTeX; the ieeeaccess class does not load amsthm).
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+% Ragged-right algorithm bodies (narrow IEEE column).
+\usepackage{etoolbox}
+\AtBeginEnvironment{algorithmic}{\raggedright}

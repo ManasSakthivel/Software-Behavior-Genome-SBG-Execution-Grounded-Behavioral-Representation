@@ -11,6 +11,17 @@ All 70 entries in `references.bib` were re-verified on **2026-11-19**. Verificat
 
 Columns: **Supports** = the claim in our paper that the reference may support. **Must NOT be cited for** = misuses to avoid.
 
+**Second-round use (2026-11-20).** No new reference was added, and none was re-fetched in round 2.
+- `rezaalipour2024empirical` was uncited and has been removed from `references.bib`. All 70 remaining entries are cited.
+- The new positioning table (paper Table 2, 15 works) and synthesis matrix (Table 3, streams A–H) were filled only from the "Contribution" and "Supports" columns below. Each cell was checked against "Must NOT be cited for". Specifically:
+  - SemaDiff and DiffTestGen are marked as preprints.
+  - `chen2018metamorphic` is cited for the relation *idea* applied to an estimator, not as metamorphic testing of programs.
+  - `schuler2011assessing` is credited as the precursor of P1.
+  - `angelopoulos2024conformal` and `bates2021distribution` are cited only with their exchangeability or i.i.d. assumption stated.
+  - `torresarias2019intoto` is not cited for behavioural correctness.
+- SLSA is cited explicitly as version 1.0.
+- The streams in the paper (A–H) differ from this register's section letters. `NOVELTY_AND_PRIOR_WORK_ANALYSIS.md` gives the mapping.
+
 ---
 
 ## (A) Differential testing, regression comparison, shadow execution

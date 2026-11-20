@@ -12,12 +12,11 @@ HERE = os.path.dirname(os.path.abspath(__file__)); BASE = os.path.dirname(HERE)
 S = json.load(open(os.path.join(BASE, "audit/stats_summary.json")))
 FIG = os.path.join(BASE, "figures"); TAB = os.path.join(BASE, "tables"); os.makedirs(FIG, exist_ok=True); os.makedirs(TAB, exist_ok=True)
 
-plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "Times", "Nimbus Roman", "DejaVu Serif"], "mathtext.fontset": "stix",
-                     "font.size": 8, "axes.labelsize": 8, "legend.fontsize": 6.5, "xtick.labelsize": 7, "ytick.labelsize": 7,
-                     "axes.linewidth": 0.6, "lines.linewidth": 1.0, "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.bbox": "tight", "savefig.pad_inches": 0.02})
+import figstyle  # noqa: F401  shared rcParams and palette for all manuscript figures
+plt.rcParams["savefig.bbox"] = "tight"
 W = 3.5
 # Okabe-Ito (colour-blind safe)
-OI = {"black": "#000000", "orange": "#E69F00", "sky": "#56B4E9", "green": "#009E73", "yellow": "#F0E442", "blue": "#0072B2", "verm": "#D55E00", "purple": "#CC79A7", "grey": "#999999"}
+OI = {"black": "#000000", "orange": "#E69F00", "sky": "#56B4E9", "green": "#009E73", "yellow": "#F0E442", "blue": "#0072B2", "verm": "#D55E00", "purple": "#CC79A7", "grey": "#7F7F7F"}
 MOD = [("b7_cov_calibration", "Coverage-only calib. (B7)", OI["orange"], (0, (4, 1.5))),
        ("abl_mult_only", "Multiplicity-only", OI["green"], (0, (1, 1))),
        ("b9_cec_no_ers", "CEC w/o ERS (B9)", OI["sky"], (0, (6, 2, 1, 2))),

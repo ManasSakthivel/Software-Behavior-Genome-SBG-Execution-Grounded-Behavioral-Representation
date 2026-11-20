@@ -1,13 +1,28 @@
 \section{Threats to Validity}\label{sec:threats}
 
-\paragraph*{Construct validity} The estimand is defined by independent adjudication, but every risk in this paper uses construction labels: generator labels for synthetic pairs and test-based labels for QuixBugs. Construction labels may disagree with what an adjudicator would find within the declared boundary and budget, in either direction. In the QuixBugs arm the same declared inputs produce the label and the evidence, which biases risk downwards there. The observable-influence feature is a reachability proxy, and three gate features were constant, so the profile measures fewer evidence dimensions in practice than in design. The \ers{} perturbations are post-hoc edits of recorded evidence; they test the estimator, not the collector or the program, and they are not causal interventions.
+Table~\ref{tab:threatsval} lists the threats by type, with their effect on the conclusions and the mitigation in place.
 
-\paragraph*{Internal validity} The development corpus was examined repeatedly while the method was designed, and two changes to the method---the integrity override for witnessed divergences and the relevant-evidence profile fix---were made in response to results on the same records. Thresholds and hyperparameters were selected on inner folds, but the choice of features, policies and perturbations was not blind to the data. Matched-coverage comparisons are transductive diagnostics. The strict-policy bootstrap is degenerate at $c^\ast$ and its intervals are not reported. Seeds are replicates over the same pairs and are not pooled.
+\begin{table*}[!t]
+\caption{Threats to validity.}
+\label{tab:threatsval}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{1.6cm}|L{4.6cm}|L{4.4cm}|L{5.0cm}|}
+\hline
+Type & Threat & Effect on conclusions & Mitigation and residual \\
+\hline
+Construct & Construction labels replace adjudication; QuixBugs labels and evidence share inputs & Risks may be biased in either direction; downward in QuixBugs & All risks labelled as construction-label risks; adjudication protocol implemented, not run \\
+Construct & Influence feature is a reachability proxy; three gate features constant & Profile measures fewer dimensions than designed & Gate features examined only through P7--P9; stated as limitation \\
+Construct & Perturbations are post-hoc edits & $\Delta_j$ describes the estimator, not programs & Execution-level analogue for P2/P5/P6 on 30 pairs (exploratory) \\
+Internal & Corpus examined during design; two method changes followed results on the same records & Optimistic bias for \sbg{} & Inner-fold selection; results still negative; changes disclosed \\
+Internal & Matched coverage is transductive; strict bootstrap degenerate at $c^\ast$ & Not a deployable operating point & Deployable thresholds reported separately; strict intervals not interpreted \\
+External & Small generated Python functions and QuixBugs; one cluster holds 43.8\% of labels; BugsInPy units (12 projects) executed but unlabelled; Python only; no held-out benchmark & No generalisation & Stated in abstract and RQ5; five-dataset artifact excluded \\
+Conclusion & Underpowered (MDE $\approx$16\,pp); secondary analyses unadjusted & Negative result inconclusive & Power analysis; Holm adjustment; seeds not pooled; no equivalence claim \\
+Security & macOS executed; Linux probes mostly undecided, no host metadata, no post-fix re-run; author-written attacks & Security position is platform- and suite-bound & Undecided runs not counted as isolation; SENSE04b reported as open \\
+Artifact & Internal reports contained unsupported figures & Risk of propagating them & Every number traced to a machine-readable source; unsupported values excluded (Section~\ref{sec:repro}) \\
+\hline
+\end{tabular}
+\end{table*}
 
-\paragraph*{External validity} The labelled data consist of small generated Python programs and QuixBugs; one cluster holds 43.8\% of them, and the 46 pairs derived from real-project bugs are unlabelled. The executed programs are single Python functions with declared inputs. Nothing in this paper supports generalisation to other languages, to whole-program or multi-module changes, to large real-world projects or to other input generators.
-
-\paragraph*{Conclusion validity} The study is underpowered for the effects of interest (Section~\ref{sec:res-robust}). Non-significant differences must not be read as evidence of no effect. Several secondary analyses, including the placebo comparison, are unadjusted.
-
-\paragraph*{Security evaluation} The executed adversarial evidence is from macOS. The Linux isolation probes mostly did not reach a decision, the Linux results lack environment metadata, and no Linux re-run after remediation exists. The probe suites are author-written; an independent red team could find further channels, as the SENSE04b variant found in this audit illustrates.
-
-\paragraph*{Artifact integrity} During the preparation of this paper we audited the project's own artifacts against its reports and found discrepancies, which we disclose in Section~\ref{sec:repro}. Every number in this paper was recomputed from machine-readable records by scripts in the replication package, and numbers that could not be traced to such records are not used.
+Two of these threats deserve emphasis. First, the corpus was not held out: the integrity-first ordering of the trust gate and the relevant-evidence profile fix were both responses to \ers{} results on the same records. This favours \sbg{}, yet its predictive comparison remained negative. Second, every number in this paper was recomputed or counted from machine-readable records. Values that existed only in report text are listed as excluded in the replication package.

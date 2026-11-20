@@ -1,51 +1,169 @@
-\section{Problem Formulation}\label{sec:problem}
+\section{System Model and Problem Formulation}\label{sec:problem}
 
-\subsection{Observations, Divergence and Evidence}
-A \emph{change} is a pair $c=(P,P')$ of a base and a variant program with a common entry point. Let $\obs$ denote the declared \emph{observation boundary}: the set of channels on which behaviour is compared. In \sbg{}, $\obs \subseteq \{\textit{outcome}, \textit{exception}, \textit{side\_effect}, \textit{api}\}$, where \textit{outcome} is the canonicalised, non-truncated result of the call, \textit{exception} the typed result kind (normal return or exception type), \textit{side\_effect} the captured standard output, files written, module globals and argument mutations, and \textit{api} the recorded signature of the entry point (\code{sbgv8/adapter.py}). For an input $x$, $o_{\obs}(P,x)$ is the canonical observation of $P$ on $x$ restricted to $\obs$. The change \emph{diverges observably on $x$} if $o_{\obs}(P,x) \neq o_{\obs}(P',x)$ and the difference is reproducible.
+This section fixes the objects that the rest of the paper reasons about. Table~\ref{tab:notation} collects the notation. Every definition is stated so that it can be checked against the implementation; the module that realises it is named where relevant.
 
-The \emph{evidence} for a change is a finite record $\Ev = (I, U_c, \textit{meta})$ where $I$ is a multiset of per-input records. Each $i \in I$ carries an outcome (\code{SAME}, \code{CONFIRMED\_DIFF}, or a non-comparable status such as \code{QUARANTINED} or \code{NO\_RUN}), the set of executed lines and branch directions on each side, an observation fingerprint, the channels actually captured, a determinism flag and repeat count, and a provenance label. $U_c$ is the set of changed units (changed lines on either side). The metadata record whether the execution environment was consistent across runs and whether the evidence passed integrity validation (Section~\ref{sec:trust}).
+\begin{table}[!t]
+\caption{Notation.}
+\label{tab:notation}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{1.25cm}|L{6.1cm}|}
+\hline
+Symbol & Meaning \\
+\hline
+$P,P'$ & Base and variant program versions with a common entry point \\
+$c=(P,P')$ & A change pair; $\mathcal{C}$ is a population of change pairs \\
+$U_c$ & Changed units: changed lines on either side of $c$ \\
+$\mathcal{X}$, $I$ & Declared input domain; executed inputs, a finite multiset over $\mathcal{X}$ \\
+$e$ & Execution environment (interpreter, sandbox, limits, platform) \\
+$\obs$ & Observation boundary: the channels compared, $\obs\subseteq\{\textit{outcome},\textit{exception},\textit{side\_effect},\textit{api}\}$ \\
+$o_{\obs}(P,x;e)$ & Canonical observation of $P$ on $x$ in $e$, restricted to $\obs$ \\
+$\Ev$ & Evidence record of one change: per-input records, $U_c$ and metadata \\
+$\pi(i)$ & Provenance label of input record $i$ (declared, generated, label-derived) \\
+$\iota(\Ev)$ & Integrity flag: $1$ iff the evidence directory validates (Algorithm~\ref{alg:validate}) \\
+$\varepsilon(\Ev)$ & Environment-consistency flag \\
+$K$ & Controller-held anchor key; never present in an evaluated process \\
+$\prof(\Ev)$ & Change-conditioned evidence profile (15 features, Table~\ref{tab:profile}) \\
+$\textsf{elig}(\Ev)$ & Eligibility under a blocker policy (v8.0 soft, v8.0s strict, v8.1) \\
+$g$, $\Rhat(\Ev)$ & Calibrated risk model; estimated false-assurance risk $g(\prof(\Ev))$ \\
+$\tau_\alpha$ & Issuing threshold for target risk $\alpha$ \\
+$V(\Ev)$ & Decision procedure; values \DIV{}, \NDO{}, \INS{} \\
+$\budget$ & Adjudication budget: resources and procedure for searching for a divergence \\
+$A(c;\obs,\budget)$ & Adjudication outcome in $\{\textit{div},\textit{nodiv},\textit{unresolved}\}$ \\
+$F$ & False-assurance event, $\mathbf{1}[A=\textit{div}]$ for an issued \NDO{} \\
+$\R$, $\cov$ & False-assurance risk and coverage of $V$ on $\mathcal{C}$ \\
+$c^\ast$ & Matched coverage at which procedures are compared ($61/258$) \\
+$T_j$, $\Delta_j$ & Evidence perturbation $j$ and the estimator's response to it \\
+$Y$ & Construction label used in place of $F$ in this study \\
+\hline
+\end{tabular}
+\end{table}
 
-\subsection{Verdicts}
-A decision procedure maps evidence to one of three verdicts:
+\subsection{Changes, Observations and Divergence}
+\begin{definition}[Observable divergence]
+Let $c=(P,P')$ be a change, $\obs$ an observation boundary and $e$ an environment. The change \emph{diverges observably on input $x$} if $o_{\obs}(P,x;e)\neq o_{\obs}(P',x;e)$ and the inequality is reproduced on re-execution. An input with this property is a \emph{witness}.
+\end{definition}
+In \sbg{}, \textit{outcome} is the canonicalised, non-truncated result of the call; \textit{exception} is the typed result kind; \textit{side\_effect} covers captured standard output, files written, module globals and argument mutations; and \textit{api} is the recorded signature of the entry point (\code{sbgv8/adapter.py}).
+
+\begin{definition}[Evidence record]
+The evidence for $c$ is $\Ev=(I,U_c,\mathit{meta})$. Each $i\in I$ carries an outcome (\code{SAME}, \code{CONFIRMED\_DIFF}, or a non-comparable status), the executed lines $h_s(i)$ and branch directions on each side $s$, an observation fingerprint $\mathit{fp}(i)$, the captured channels $\mathit{ch}(i)\subseteq\obs$, a determinism flag and repeat count, and a provenance label $\pi(i)$. The metadata contain $\iota(\Ev)$, $\varepsilon(\Ev)$ and the blocker codes that the predecessor engine recorded.
+\end{definition}
+
+\begin{definition}[Integrity]
+$\iota(\Ev)=1$ if and only if the evidence directory passes validation: exact schemas, binding of the hit sidecar and the run-capture record to the hash-chained log head, sequence contiguity, per-run nonce uniqueness, per-run trust status, and, when a key is configured, an anchor $\mathrm{HMAC}_K$ over the digests of all evidence files (\code{evidence\_schema.validate\_dir}). Integrity is a property of the record, not of the programs.
+\end{definition}
+
+\begin{definition}[Eligibility]
+Let $\beta(\Ev)$ be the set of blocker codes recorded for $\Ev$ (no clean input, unobservable outcome, nondeterminism, changed region not activated, budget exhausted, environment sensitivity), and let $\Theta$ be the set of codes a policy tolerates. Then $\textsf{elig}(\Ev)$ holds if $\Ev$ contains no witness and $\beta(\Ev)\subseteq\Theta$. The soft policy v8.0 tolerates \{changed region not activated, budget exhausted\}; v8.0s tolerates none; v8.1 additionally requires that the predecessor's fixed gate would issue \NDO{}.
+\end{definition}
+
+\subsection{Verdicts and the Decision Procedure}
+\begin{definition}[Decision procedure]
+A decision procedure is a map $V$ from evidence records to verdicts:
 \begin{itemize}
-\item \DIVfull{} (\DIV{}): some input produced a confirmed, reproducible observable divergence; the input is a witness.
-\item \NDOfull{} (\NDO{}): no divergence was observed and the evidence was judged adequate to report this.
-\item \INSfull{} (\INS{}): the procedure abstains, because the evidence is inadequate, non-reproducible, untrusted or out of scope.
+\item \DIVfull{} (\DIV{}): a witness exists;
+\item \NDOfull{} (\NDO{}): no divergence was observed and the evidence was judged adequate to report this;
+\item \INSfull{} (\INS{}): abstention, because the evidence is untrusted, inadequate, non-reproducible or out of scope.
 \end{itemize}
-A \DIV{} verdict carries its own witness and can be checked by replay. An \NDO{} verdict carries no witness; its reliability is the subject of this paper. \NDO{} is \emph{observation-conditioned}: it states that, on the inputs run and within $\obs$, no divergence was seen. It does not state that $P$ and $P'$ are equivalent.
+The \sbg{} procedure is
+\begin{equation}
+V(\Ev)=\begin{cases}
+\INS{} & \text{if } \iota(\Ev)=0,\\
+\DIV{} & \text{else if a witness exists},\\
+\NDO{} & \text{else if } \textsf{elig}(\Ev)\wedge\Rhat(\Ev)\le\tau_\alpha,\\
+\INS{} & \text{otherwise}
+\end{cases}
+\label{eq:V}
+\end{equation}
+(\code{calibrate.Model.decide}; Algorithm~\ref{alg:decide}).
+\end{definition}
+A \DIV{} verdict carries its witness and can be checked by replay. An \NDO{} verdict carries no witness, and its reliability is the subject of this paper.
+
+\begin{remark}[No-divergence is not equivalence]\label{rem:equiv}
+Program equivalence relative to $\mathcal{X}$ is the statement $\forall x\in\mathcal{X}:\ o(P,x)=o(P',x)$ on \emph{all} channels. An \NDO{} verdict asserts only $\forall i\in I:\ o_{\obs}(P,x_i;e)=o_{\obs}(P',x_i;e)$, for a finite $I$, a restricted $\obs$ and one environment $e$, together with a judgment that the evidence is adequate. Equivalence implies that no divergence can be observed, but the converse fails in three independent ways: an unexecuted input ($\mathcal{X}\setminus I$), an unobserved channel, or an environment-dependent behaviour. \NDO{} is therefore observation-conditioned, and nothing in this paper treats it as \code{PROGRAM\_EQUIVALENCE}. Regression verification~\cite{godlin2009regression,lahiri2012symdiff} addresses the latter question with proofs.
+\end{remark}
+
+\paragraph*{Why integrity precedes the witness} The order of the cases in~\eqref{eq:V} is a consequence of the threat model, not a convention. Let an \emph{evidence adversary} be any party that, for any change $c$ and any record content, can produce a record for $c$ with that content, but cannot produce one that passes validation ($\iota=1$) without the key $K$. The program under test, which shares a process with part of the harness, is such a party (Section~\ref{sec:trust}).
+
+\begin{proposition}[Integrity must gate every verdict]\label{prop:integrity}
+Let $V$ be any decision procedure and suppose there is a record $\Ev^\ast$ with $\iota(\Ev^\ast)=0$ and $V(\Ev^\ast)=v\neq\INS{}$. Then an evidence adversary can make $V$ return $v$ on every change. If $v=\NDO{}$, the false-assurance risk of $V$ on changes chosen by the adversary is $1$; if $v=\DIV{}$, the adversary can force a divergence verdict on equivalent changes.
+\end{proposition}
+\emph{Proof:} for any change $c$ the adversary writes a record for $c$ with the content of $\Ev^\ast$. The record fails validation, as $\Ev^\ast$ does, so it is indistinguishable from $\Ev^\ast$ to $V$, and $V$ returns $v$. Choosing only changes that diverge within $\obs$ makes every issued \NDO{} a false assurance; choosing equivalent changes makes every issued \DIV{} spurious.\hfill$\square$
+
+Bounded risk under this adversary therefore requires $V(\Ev)=\INS{}$ whenever $\iota(\Ev)=0$, which is property P8 of Section~\ref{sec:ers}. Because a forged witness is also content, the integrity check must precede the witness check. The price is that a true divergence recorded in tampered evidence yields \INS{} rather than \DIV{}: a denial of a true verdict, never a false assurance. The proposition says nothing about adversaries who hold $K$, or who corrupt the observations before they are recorded; Section~\ref{sec:trust} bounds those cases.
 
 \subsection{The False-Assurance Estimand}
-Let $\budget$ denote an \emph{evaluation budget}: the resources and procedure an independent adjudicator may use to search for a divergence of $c$ within $\obs$ (for example, a fixed time allowance, access to the patch and to the benchmark's tests, and the freedom to construct further inputs). Adjudication returns $A(c;\obs,\budget)\in\{\textit{div},\textit{nodiv},\textit{unresolved}\}$. For a change on which the procedure issued \NDO{}, define the false-assurance indicator
+Let $\budget$ be an \emph{adjudication budget}: the resources and procedure an independent adjudicator may use to search for a divergence of $c$ within $\obs$, for example a fixed time allowance, access to the patch and tests, and freedom to construct further inputs. Adjudication returns $A(c;\obs,\budget)\in\{\textit{div},\textit{nodiv},\textit{unresolved}\}$.
+
+\begin{definition}[False assurance, risk and coverage]
+For a change on which $V$ issued \NDO{}, the \emph{false-assurance event} is
 \begin{equation}
-F = \mathbf{1}\left[A(c;\obs,\budget)=\textit{div}\right].
+F=\mathbf{1}\left[A(c;\obs,\budget)=\textit{div}\right].
 \label{eq:F}
 \end{equation}
-The \emph{false-assurance risk} of a decision procedure on a population of changes $\mathcal{C}$ is
-\begin{equation}
-\R \;=\; P\!\left(F=1 \,\middle|\, V(\Ev)=\NDO{}\right), \qquad c\sim\mathcal{C},
-\label{eq:R}
-\end{equation}
-and its \emph{coverage} is
-\begin{equation}
-\cov \;=\; P\!\left(V(\Ev)=\NDO{}\right).
-\label{eq:kappa}
-\end{equation}
-In the terminology of selective classification~\cite{elyaniv2010foundations,geifman2017selective}, $\R$ is the selective risk of the \NDO{} decision at coverage $\cov$. The estimand is relative to three declared quantities: the observation boundary $\obs$, the budget $\budget$ and the change population $\mathcal{C}$. Changing any of them changes $\R$.
+The \emph{false-assurance risk} and the \emph{coverage} of $V$ on population $\mathcal{C}$ are
+\begin{align}
+\R&=P\!\left(F=1\,\middle|\,V(\Ev)=\NDO{}\right),\label{eq:R}\\
+\cov&=P\!\left(V(\Ev)=\NDO{}\right),\qquad c\sim\mathcal{C}.\label{eq:kappa}
+\end{align}
+\end{definition}
+$\R$ is the selective risk of the \NDO{} decision at coverage $\cov$, in the sense of selective classification~\cite{elyaniv2010foundations,geifman2017selective}. It is defined relative to three declared quantities, $\obs$, $\budget$ and $\mathcal{C}$, and changes when any of them changes. Proposition~\ref{prop:mono} below makes precise in which sense the measured $\R$ is a lower bound.
 
-Three properties of Eq.~\eqref{eq:R} shape the evaluation.
-\begin{enumerate}
-\item \emph{It is not an equivalence statement.} $\R=0$ on a population does not imply that any change in it is behaviour-preserving: divergences outside $\obs$, or beyond the reach of $\budget$, are not counted. Because adjudication is itself bounded, and assuming adjudicators do not report spurious divergences, the measured $\R$ is a lower bound on the rate at which \NDO{} verdicts conceal divergence in the wider sense.
-\item \emph{Unresolved adjudications must be accounted for, not dropped silently.} With $n_d$, $n_u$ and $n_n$ the numbers of \NDO{} verdicts adjudicated \textit{div}, \textit{unresolved} and \textit{nodiv}, we report the complete-case estimate $n_d/(n_d+n_n)$ together with the worst-case bound $(n_d+n_u)/(n_d+n_u+n_n)$ and the optimistic bound $n_d/(n_d+n_u+n_n)$.
-\item \emph{Risk depends on coverage.} A procedure that issues fewer \NDO{} verdicts can have lower observed risk without discriminating better. Comparisons of $\R$ are therefore only meaningful at matched $\cov$ (Section~\ref{sec:design}).
-\end{enumerate}
+\paragraph*{Unresolved cases} With $n_d$, $n_u$ and $n_n$ the numbers of issued \NDO{} verdicts adjudicated \textit{div}, \textit{unresolved} and \textit{nodiv}, we report the complete-case estimate $n_d/(n_d+n_n)$, the worst case $(n_d+n_u)/(n_d+n_u+n_n)$ and the optimistic bound $n_d/(n_d+n_u+n_n)$. In this study, unlabelled pairs play the role of unresolved cases.
+
+The dependence of $\R$ on $\obs$ and $\budget$ has a fixed direction under two assumptions. Adjudication is \emph{sound}: it reports \textit{div} only with a reproducible witness. It is also \emph{monotone}: writing $\budget\preceq\budget'$ for a budget at least as generous, if $\obs\subseteq\obs'$ and $\budget\preceq\budget'$, an input that adjudication under $(\obs,\budget)$ finds and that separates the versions under $\obs'$ is also found under $(\obs',\budget')$.
+
+\begin{proposition}[Boundary and budget monotonicity]\label{prop:mono}
+Fix the set $S$ of changes on which $V$ issued \NDO{}. If $\obs\subseteq\obs'$ and $\budget\preceq\budget'$, then $\R_{\obs,\budget}(S)\le\R_{\obs',\budget'}(S)$, where $\R_{\obs,\budget}(S)$ is the share of $S$ adjudicated \textit{div} under $(\obs,\budget)$.
+\end{proposition}
+\emph{Proof:} if a witness $x$ separates $P$ and $P'$ under $\obs$, the observations already differ on a channel in $\obs\subseteq\obs'$, so $x$ also separates them under $\obs'$, and by monotonicity it is found under $(\obs',\budget')$. Hence every $c\in S$ with $A(c;\obs,\budget)=\textit{div}$ also has $A(c;\obs',\budget')=\textit{div}$. The numerator can only grow while the denominator $|S|$ is fixed.\hfill$\square$
+
+A risk reported under a declared boundary and budget is therefore a lower bound on the risk of the same verdicts under any wider boundary or stronger budget. Two consequences follow. Reported risks are meaningless without $(\obs,\budget)$, and risks of procedures that use different boundaries cannot be compared. The converse bound does not hold: nothing observed under $\obs$ bounds the risk under $\obs'$ from above.
+
+\begin{definition}[Matched-coverage risk]
+For a scored procedure that issues \NDO{} to eligible records in increasing order of $\Rhat$, $\R(c^\ast)$ is the selective risk when exactly a fraction $c^\ast$ of the population is issued, with fractional issuance among tied scores (\code{stats.matched\_risk}; Algorithm~\ref{alg:matched}). It is defined only if the eligible share is at least $c^\ast$.
+\end{definition}
+
+The next result explains why risk must be compared at matched coverage and why random abstention is the right reference.
+
+\begin{proposition}[Random abstention preserves expected risk]\label{prop:random}
+Let $V$ issue \NDO{} on a set $S$ of $n$ changes, of which $m$ have $F=1$. Let $V_k$ keep a uniformly random subset of $S$ of fixed size $k\le n$ and abstain on the rest. Then the expected risk among the verdicts kept by $V_k$ is $m/n$, the risk of $V$.
+\end{proposition}
+\emph{Proof:} each element of $S$ is kept with probability $k/n$, so the expected number of kept false assurances is $mk/n$. Because the denominator $k$ is fixed, the expected risk is $(mk/n)/k=m/n$.\hfill$\square$
+
+Abstention therefore lowers the \emph{number} of false assurances without lowering their \emph{rate} unless it is informative. A procedure that issues fewer verdicts can show fewer false assurances while being no better than chance at choosing which verdicts to withhold. In this paper, B6 (random abstention to $c^\ast$) instantiates $V_k$, and its expected risk equals that of plain differential testing (Section~\ref{sec:results}).
 
 \subsection{Estimating Risk from Evidence}
-\sbg{} estimates risk per verdict. A profile map $\prof$ turns evidence into a feature vector (Section~\ref{sec:approach}); a calibrated model $g$ yields
+\sbg{} estimates risk per verdict through a profile map $\prof$ (Section~\ref{sec:approach}) and a calibrated model $g$:
 \begin{equation}
-\Rhat(\Ev) \;=\; g\!\left(\prof(\Ev)\right) \;\approx\; P\!\left(F=1 \,\middle|\, \prof(\Ev),\ \Ev\text{ eligible}\right),
+\Rhat(\Ev)=g\!\left(\prof(\Ev)\right)\approx P\!\left(F=1\,\middle|\,\prof(\Ev),\ \textsf{elig}(\Ev)\right).
 \label{eq:rhat}
 \end{equation}
-and the decision rule issues \NDO{} if and only if the evidence is eligible (no blocking condition, Section~\ref{sec:approach}), no witness exists, integrity holds and $\Rhat(\Ev)\le\tau$, abstaining otherwise. The threshold $\tau$ trades coverage against risk. If $g$ were perfectly calibrated, the risk among issued verdicts would be the mean of $\Rhat$ over them; the evaluation checks whether this is approximately so.
+The threshold $\tau_\alpha$ trades coverage against risk. If $g$ were perfectly calibrated, the risk among issued verdicts would equal the mean of $\Rhat$ over them. The evaluation tests whether this holds approximately.
+
+\subsection{Evidence Perturbations}
+\begin{definition}[Perturbation response]
+A perturbation $T_j$ maps an evidence record to a modified copy. For a risk estimator $\Rhat$ and procedure $V$, the response is
+\begin{equation}
+\Delta_j(\Ev)=\Rhat\!\left(T_j(\Ev)\right)-\Rhat(\Ev),
+\label{eq:delta}
+\end{equation}
+recorded together with $V(\Ev)$, $V(T_j(\Ev))$ and both profiles. The Evidence Response Signature (\ers{}) of $\Ev$ is the vector $\big(\Delta_j(\Ev),V(T_j(\Ev))\big)_j$. Each $T_j$ has a declared expected response; a trial passes, fails, or is not applicable (N/A) when $T_j$ cannot be applied to $\Ev$.
+\end{definition}
+
+\begin{remark}[Conformance is necessary, not sufficient]\label{rem:vacuous}
+The procedure $V_\bot\equiv\INS{}$ with a constant risk estimate, which always abstains, passes every property of Section~\ref{sec:ers} as implemented: the monotone properties and P6 accept \INS{}, P8 requires \INS{}, and the invariances see no change. Conformance to \ers{} is therefore a necessary condition for a sensible estimator, not evidence of usefulness. It must be read together with coverage, and passes that rest on abstention (\emph{abstention credit}) are reported separately.
+\end{remark}
+
+The converse also fails: accuracy does not imply conformance.
+
+\begin{proposition}[Conformance and accuracy are independent]\label{prop:indep}
+Let $\mathcal{D}$ be the distribution of evidence records on which risk, coverage and calibration are measured, and let $T_j$ be a perturbation with $T_j(\Ev)\notin\operatorname{supp}(\mathcal{D})$ for some $\Ev\in\operatorname{supp}(\mathcal{D})$. (i) There is a procedure that passes every \ers{} property and has coverage $0$. (ii) For every estimator $g$ there is an estimator $g'$ that agrees with $g$ on $\operatorname{supp}(\mathcal{D})$, and so has the same risk, coverage, Brier score, log loss and calibration on $\mathcal{D}$, but fails property $j$ on $\Ev$.
+\end{proposition}
+\emph{Proof:} (i) is Remark~\ref{rem:vacuous}. For (ii), set $g'=g$ on $\operatorname{supp}(\mathcal{D})$ and choose $g'(T_j(\Ev))$ to violate the pass condition of $j$: for an invariance, $|g'(T_j(\Ev))-g(\Ev)|>0.02$; for a monotone property and $V(\Ev)=\NDO{}$, $g'(T_j(\Ev))<g(\Ev)-10^{-6}$, which keeps the verdict \NDO{} when $T_j(\Ev)$ is eligible, because the lower value still meets the threshold. (If $T_j(\Ev)$ is ineligible, every estimator passes, so the trial cannot separate estimators.) Every metric on $\mathcal{D}$ depends on $g'$ only through its values on the support.\hfill$\square$
+
+Perturbed records are typically off the empirical support: no development record contains two appended inputs that reach only unchanged lines. Aggregate metrics are thus structurally blind to the defects that \ers{} tests, and \ers{} is blind to accuracy. The two must be evaluated separately, which is why RQ2 and RQ4 are distinct questions. Section~\ref{sec:res-rq2} reports an instance of~(ii): a defect that changed no prediction on unperturbed data.
 
 \subsection{Labels Used in This Study}
-The estimand is defined by independent adjudication. In the development study reported here, $F$ is replaced by a \emph{construction label} $Y$: for synthetic pairs, the generator's record of whether the injected change alters behaviour on the declared domain; for QuixBugs pairs, whether the benchmark's tests distinguish the buggy and fixed versions (negative pairs are identical-behaviour variants by construction). These labels are not adjudications under $(\obs,\budget)$, they were visible to the authors during design, and for the QuixBugs arm the same declared inputs feed both the label and the evidence. All empirical risks in this paper are therefore risks with respect to construction labels on development data. A blinded two-adjudicator protocol that produces $A(c;\obs,\budget)$ has been implemented but not yet executed (Section~\ref{sec:repro}).
+The estimand is defined by independent adjudication. In the development study, $F$ is replaced by a \emph{construction label} $Y$. For synthetic pairs, $Y$ is the generator's record of whether the injected change alters behaviour on the declared domain. For QuixBugs pairs, $Y$ records whether the benchmark's tests distinguish the buggy and fixed versions; negative pairs are behaviour-preserving variants by construction. These labels are not adjudications under $(\obs,\budget)$, and they were visible during design. In the QuixBugs arm the same declared inputs feed both the label and the evidence. Every empirical risk in this paper is therefore a risk with respect to construction labels on development data. A blinded two-adjudicator protocol that produces $A(c;\obs,\budget)$ has been implemented but not executed (Section~\ref{sec:repro}).

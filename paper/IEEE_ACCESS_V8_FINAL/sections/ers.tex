@@ -1,71 +1,113 @@
 \section{Evidence Response Signature}\label{sec:ers}
 
-A risk estimator for \NDO{} verdicts can be wrong in ways that an aggregate metric such as log loss will not reveal. An estimator that lowers its risk when meaningless inputs are added, or that remains reassuring when the evidence has been tampered with, is unfit for purpose even if it happens to score well on one dataset. The Evidence Response Signature makes such requirements explicit and testable.
+A risk estimator for \NDO{} verdicts can be wrong in ways that an aggregate metric such as log loss does not reveal. An estimator that lowers its risk when meaningless inputs are added, or that stays reassuring when the evidence has been tampered with, is unfit for purpose even if it scores well on one dataset. The Evidence Response Signature (\ers{}) states such requirements as properties with executable pass criteria. Conceptually, it applies the idea of metamorphic testing~\cite{chen2018metamorphic,segura2016survey} to the risk estimator rather than to the program. A transformation of the input evidence with a known expected effect on the output risk replaces an oracle for the risk itself, which is unavailable without adjudication.
 
-\subsection{Definition}
-A \emph{perturbation} $T_j$ maps an evidence record to a modified copy, $\Ev \mapsto T_j(\Ev)$. For a risk estimator $\Rhat$ and decision procedure $V$, the response to $T_j$ is
-\begin{equation}
-\Delta_j(\Ev) \;=\; \Rhat\!\left(T_j(\Ev)\right) - \Rhat(\Ev),
-\label{eq:delta}
-\end{equation}
-recorded together with the original and perturbed verdicts, profiles, and integrity status. The \emph{Evidence Response Signature} of $\Ev$ is the vector $\left(\Delta_j(\Ev),\, V(T_j(\Ev))\right)_{j=1}^{9}$. Each perturbation has a pre-declared expected response; a trial \emph{passes} if the observed response satisfies it, \emph{fails} if not, and is \emph{not applicable} (N/A) if the perturbation cannot be applied to $\Ev$ (for example, deleting the sole input that reaches a changed unit when no such input exists). N/A trials are never counted as passes.
+\subsection{Properties, Perturbations and Pass Criteria}
+Fig.~\ref{fig:ersframework} maps the eight properties to the perturbations that test them. Table~\ref{tab:ersprops} gives, for each property, its formal intent, the transformation, the pass and failure conditions as implemented in \code{sbgv8/ers.py}, the existing evidence and the main limitation. Table~\ref{tab:perturb} defines the perturbations operationally. The properties fall into three classes:
+\begin{itemize}
+\item \emph{Invariances} (negative controls; Properties 1 and 2): a correct estimator must not respond. They encode the principle that evidence \emph{quantity} is not evidence \emph{quality}.
+\item \emph{Monotone requirements} (robustness tests; Properties 3, 4, 6, 8 and the environment check): degrading the evidence must not lower the risk. A move to abstention counts as a pass, because withdrawing a reassuring verdict when evidence weakens is correct behaviour.
+\item \emph{Prescribed outcomes} (positive controls; Properties 5 and 7): the procedure must respond in a fixed way.
+\end{itemize}
+Formally, write $v_0=V(\Ev)$, $v_1=V(T_j(\Ev))$ and $\Delta=\Delta_j(\Ev)$, with tolerances $\epsilon=10^{-6}$ and $\delta=0.02$.
 
-\subsection{Properties}
-\ers{} specifies eight properties of a reasonable false-assurance estimator, plus an environment check that the implementation adds.
-\begin{enumerate}
-\item \emph{Irrelevant-evidence invariance.} Adding inputs that reach no changed unit must not change the risk or the verdict.
-\item \emph{Duplicate-evidence invariance.} Adding copies of existing observations must not change the risk or the verdict.
-\item \emph{Relevant-evidence sensitivity.} Removing evidence that uniquely supports a changed unit must not lower the risk; the verdict may move to abstention.
-\item \emph{Observation-loss sensitivity.} Removing an observation channel must not lower the risk.
-\item \emph{Divergence responsiveness.} Adding an independent discriminating input must withdraw a reassuring verdict; the intended outcome is \DIV{}, and the implementation also accepts \INS{} or a risk increase.
-\item \emph{Provenance sensitivity.} Degrading the provenance of the evidence must not lower the risk.
-\item \emph{Evidence-integrity sensitivity.} An integrity violation must force \INS{}, irrespective of the original verdict.
-\item \emph{Reproducibility sensitivity.} Reducing determinism or the repetition budget must not lower the risk.
-\end{enumerate}
-The additional check, \emph{environment sensitivity}, requires that marking the execution environment inconsistent must not lower the risk.
+\begin{definition}[\ers{} conformance]\label{def:ers}
+A trial of perturbation $T_j$ on an applicable record $\Ev$ \emph{passes} if
+\begin{itemize}
+\item invariance ($j\in\{\mathrm{P2},\mathrm{P3}\}$): $|\Delta|\le\delta\wedge v_1=v_0$;
+\item monotone ($j\in\mathcal{M}$): $\Delta\ge-\epsilon\vee v_1=\INS{}$, applicable only if $v_0\neq\DIV{}$;
+\item divergence ($j=\mathrm{P6}$): $v_1\in\{\DIV{},\INS{}\}\vee\Delta>0$;
+\item integrity ($j=\mathrm{P8}$): $\iota(T_j(\Ev))=0\wedge v_1=\INS{}$,
+\end{itemize}
+where $\mathcal{M}=\{\mathrm{P1},\mathrm{P1b},\mathrm{P4},\mathrm{P5},\mathrm{P7},\mathrm{P9}\}$; a monotone trial with $v_0=\DIV{}$ is N/A. The \emph{conformance rate} of property $j$ on a corpus is passes divided by applicable trials. Its \emph{abstention credit} is the share of passes in which $v_1=\INS{}$ while the risk condition alone fails.
+\end{definition}
+The definition is a direct transcription of \code{ers.\_eval}. By Proposition~\ref{prop:indep}, a conformance rate of 1 says nothing about accuracy, and accuracy says nothing about the conformance rate; Remark~\ref{rem:vacuous} explains why abstention credit must be reported.
 
-Properties 1 and 2 are invariances: they encode the principle that evidence \emph{quantity} is not evidence \emph{quality}. Properties 3, 4, 6 and 8 and the environment check are monotonicity requirements. Property 7 prescribes an exact outcome; Property 5 prescribes withdrawal of \NDO{}. The monotone properties count a move to abstention as a pass, because a procedure that withdraws a reassuring verdict when its evidence weakens is behaving correctly even if its numeric risk does not change.
+A trial whose perturbation cannot be applied is N/A and never counts as a pass. A monotone trial on a record that is already \DIV{} is N/A, because assurance risk is undefined there. Remark~\ref{rem:vacuous} applies throughout: passes are necessary, not sufficient, so we report abstention credit separately.
 
-\subsection{Perturbations P1--P9}
-Table~\ref{tab:perturb} defines the nine perturbations and Fig.~\ref{fig:taxonomy} maps them to properties and control types. P2 and P3 are \emph{negative controls}: a correct estimator must not respond. P6 and P8 are \emph{positive controls}: a correct procedure must respond in a prescribed way. The remaining perturbations are \emph{robustness tests} of the monotone properties. P1 has a named variant, P1b, that deletes all clean inputs covering the least-multiplicity unit; it is reported with P1.
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_ers_framework.pdf}
+\caption{\ers{} framework: the eight properties (rows; ``E'' is the environment check added by the implementation), the perturbation that tests each property (columns), and the three pass criteria (right), coloured by class. Each perturbation tests exactly one property.}
+\label{fig:ersframework}
+\end{figure*}
+
+\begin{table*}[!t]
+\caption{\ers{} properties: intent, transformation, pass and failure conditions as implemented (tolerances from \code{sbgv8/ers.py}: $10^{-6}$ for monotone properties, $0.02$ for invariances), existing evidence on the 312 development records, and limitations. ``Resp.'' counts applicable trials in which the fitted model's risk moved by more than the tolerance.}
+\label{tab:ersprops}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{|c|L{2.35cm}|L{2.35cm}|c|L{2.1cm}|L{2.0cm}|L{3.3cm}|L{2.35cm}|}
+\hline
+\# & Property and formal intent & Transformation & $T_j$ & Pass & Failure & Existing evidence & Limitation \\
+\hline
+1 & Irrelevant-evidence invariance: $h(i)\cap U_c=\emptyset\Rightarrow$ no effect & Append inputs that hit only unchanged lines, fresh fingerprints & P2 & $|\Delta|\le0.02$ and $V$ unchanged & Risk moves or verdict changes & Probe failed 109/227 before the profile fix, 227/227 after; real-execution analogue: probe failed 5 of 7 & Appended records are synthetic; two inputs per trial \\
+2 & Duplicate-evidence invariance: copies add no information & Append two flagged copies of existing inputs & P3 & as P2 & as P2 & All predictors 262/262 & Flagged copies only; unflagged copies are handled by the fix, not tested here \\
+3 & Relevant-evidence sensitivity: removing sole support may not lower risk & Delete a sole reacher of a changed unit (P1); all covers of the least-multiplicity unit (P1b) & P1, P1b & $\Delta\ge-10^{-6}$ or $V{=}\INS{}$ & Risk falls & All pass (16, 93); fitted model Resp.\ 9/16, 68/93 & P1 applicable to only 16 records \\
+4 & Observation-loss sensitivity: fewer channels may not lower risk & Remove one captured channel from every input & P4 & as P1 & Risk falls & All pass (178); Resp.\ 0 & Fitted model is indifferent, so the pass is vacuous for it \\
+5 & Divergence responsiveness: a witness withdraws \NDO{} & Append a confirmed-difference input hitting all changed units & P6 & $V{=}\DIV{}$; \INS{} or $\Delta>0$ accepted & \NDO{} kept with $\Delta\le0$ & Recorded V7-B failed 71 (157 passes are abstention credit); recomputed and \sbg{} 228/228 & Synthetic witness; real-execution analogue applicable once \\
+6 & Provenance sensitivity: weaker provenance may not lower risk & Mark all inputs label-derived & P7 & as P1 & Risk falls & All pass (178); Resp.\ 0 & \code{prov\_ok} constant in training \\
+7 & Integrity rejection: violation forces abstention & Set $\iota(\Ev)=0$ & P8 & $V{=}\INS{}$ & Any other verdict & Recorded V7-B failed 155, recomputed V7-B 84 (all \DIV{}); \sbg{} 312/312 & Tests the decision procedure; passes by construction under the trust gate \\
+8 & Reproducibility sensitivity: less determinism may not lower risk & Mark half the deterministic inputs non-deterministic; halve repeats & P5 & as P1 & Risk falls & All pass (176); Resp.\ 100/176; real-execution analogue 30/30 for all predictors & Repeated deterministic runs are not independent samples \\
+E & Environment check: inconsistency may not lower risk & Mark environment inconsistent & P9 & as P1 & Risk falls & All pass (228); Resp.\ 0 & \code{env\_ok} constant in training \\
+\hline
+\end{tabular}
+\end{table*}
 
 \begin{table}[!t]
-\caption{Controlled evidence perturbations as implemented (\code{sbgv8/perturb.py}). All are applied to a copy of a recorded evidence record. Control: N = negative control, P = positive control, R = robustness (monotone).}
+\caption{Controlled evidence perturbations (\code{sbgv8/perturb.py}). Ctrl.: N negative control, P positive control, R robustness (monotone). Mode: H = post-hoc edit of a record copy (all ten, evaluated on 312 records); X = an execution-level analogue also exists (30 pairs, macOS, exploratory). App.: applicable trials of 312.}
 \label{tab:perturb}
 \centering
 \scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{|c|L{3.9cm}|c|L{1.75cm}|}
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{|c|L{3.55cm}|c|c|c|r|}
 \hline
-Id & Operation & Ctrl. & Expected response \\
+Id & Operation & Prop. & Ctrl. & Mode & App. \\
 \hline
-P1 & Delete one clean input that is the sole reacher of a changed unit or sole capturer of a channel (P1b: all covers of the least-multiplicity unit) & R & $\Delta\ge0$ or \INS{} \\
-P2 & Append two \code{SAME} inputs that hit only unchanged lines, with fresh fingerprints & N & $|\Delta|\le0.02$, verdict unchanged \\
-P3 & Append two copies of existing inputs, flagged as duplicates & N & $|\Delta|\le0.02$, verdict unchanged \\
-P4 & Remove one captured channel from every input & R & $\Delta\ge0$ or \INS{} \\
-P5 & Mark half of the deterministic \code{SAME} inputs non-deterministic; halve repeat counts & R & $\Delta\ge0$ or \INS{} \\
-P6 & Append a confirmed-difference witness that hits all changed units & P & verdict $=\DIV{}$ (\INS{} or $\Delta>0$ accepted) \\
-P7 & Mark the provenance of all inputs as label-derived & R & $\Delta\ge0$ or \INS{} \\
-P8 & Set the integrity flag to violated & P & verdict $=\INS{}$ \\
-P9 & Mark the execution environment inconsistent & R & $\Delta\ge0$ or \INS{} \\
+P1 & Delete one clean input that is the sole reacher of a changed unit or sole capturer of a channel & 3 & R & H & 16 \\
+P1b & Delete all clean inputs covering the least-multiplicity unit & 3 & R & H & 93 \\
+P2 & Append two \code{SAME} inputs hitting only unchanged lines & 1 & N & H, X & 227 \\
+P3 & Append two flagged copies of existing inputs & 2 & N & H & 262 \\
+P4 & Remove one captured channel from every input & 4 & R & H & 178 \\
+P5 & Mark half of deterministic \code{SAME} inputs non-deterministic; halve repeats & 8 & R & H, X & 176 \\
+P6 & Append a confirmed-difference witness hitting all changed units & 5 & P & H, X & 228 \\
+P7 & Mark the provenance of all inputs label-derived & 6 & R & H & 178 \\
+P8 & Set the integrity flag to violated & 7 & P & H & 312 \\
+P9 & Mark the execution environment inconsistent & E & R & H & 228 \\
 \hline
 \end{tabular}
 \end{table}
 
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=0.86\textwidth]{figures/fig_perturbation_taxonomy.pdf}
-\caption{Perturbation taxonomy. Each perturbation (left) tests one \ers{} property (centre) and is classified by the pass criterion it uses (right). P9 tests the environment check that the implementation adds to the eight properties. The tolerance $10^{-6}$ for monotone properties and $0.02$ for invariances are fixed in \code{sbgv8/ers.py}.}
-\label{fig:taxonomy}
-\end{figure*}
+\begin{algorithm}[!t]
+\caption{\ers{} evaluation of one trial}
+\label{alg:ers}
+\small
+\begin{algorithmic}[1]
+\Statex \textit{Implements:} \bcode{ers.compute\_ers}, \bcode{ers.\_eval}
+\Require record $\Ev$, predictor $(\Rhat,V)$, perturbation $j$, seed
+\State $(\Ev',\mathit{applicable})\gets T_j(\textsc{copy}(\Ev))$ \Comment{the sealed evidence is never modified}
+\If{\textbf{not} $\mathit{applicable}$} \Return N/A \EndIf
+\State $\Delta\gets\Rhat(\Ev')-\Rhat(\Ev)$;\ $v_0\gets V(\Ev)$;\ $v_1\gets V(\Ev')$
+\If{$j$ is monotone (P1, P1b, P4, P5, P7, P9)}
+  \If{$v_0=\DIV{}$} \Return N/A \EndIf
+  \State \Return pass iff $\Delta\ge-10^{-6}$ \textbf{or} $v_1=\INS{}$
+\ElsIf{$j\in\{$P2, P3$\}$} \Return pass iff $|\Delta|\le0.02$ \textbf{and} $v_0=v_1$
+\ElsIf{$j=$ P6} \Return pass iff $v_1=\DIV{}$ \textbf{or} $\Delta>0$ \textbf{or} $v_1=\INS{}$
+\Else{} \Return pass iff $\iota(\Ev')=0$ \textbf{and} $v_1=\INS{}$ \Comment{P8}
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 
-\subsection{Post-Hoc Perturbations Are Not Interventions}
-All nine perturbations, as evaluated in this paper, are \emph{post-hoc transformations of recorded evidence}. They edit the record that an execution produced; they do not re-execute anything. This makes them cheap, deterministic and exactly repeatable, and it is the right instrument for testing how an \emph{estimator} responds to its input. It is the wrong instrument for estimating how a \emph{program} or a \emph{collection process} would behave under the corresponding real change. For example, P2 appends synthetic records that claim to reach only unchanged lines; a real irrelevant input could have side effects that the synthetic record does not. We therefore interpret $\Delta_j$ as a description of the estimator's behaviour, never as a causal effect of the evidence on program behaviour. A separate real-execution script for P2, P5 and P6 exists, but no raw output from it is in the replication package, and no result from it is used.
+\subsection{Post-Hoc and Execution-Level Perturbations}
+Table~\ref{tab:perturb} gives each perturbation's mode. All ten, as evaluated on the full corpus, are \emph{post-hoc transformations}: they edit a copy of the record an execution produced and re-execute nothing. That makes them cheap, deterministic and exactly repeatable, and it is the right instrument for testing how an \emph{estimator} responds to its input. It is the wrong instrument for estimating how a \emph{program} or the \emph{collector} would behave under the corresponding real change. A post-hoc P2 record claims to reach only unchanged lines, whereas a real irrelevant input could have side effects. We therefore read $\Delta_j$ as a description of the estimator, never as a causal effect.
+
+
+\paragraph*{Execution-level analogues} For P2, P5 and P6, an execution-level analogue re-runs the collector with changed conditions. P2 adds real inputs that exercise only unchanged code. P5 re-runs with fewer repetitions. P6 adds a discriminating input found by a seeded generator that never sees outputs or labels. These analogues were run once, on macOS, on 20 development pairs selected by a rule declared and stored before any run (seeded quotas per arm, no labels used), plus a supplementary cohort of 10 pairs with $Y{=}1$. The supplementary cohort was declared after the primary run showed P6 applicable on none of the 20 pairs, and we report it separately for that reason. The run used the pre-fix profile from a working tree with uncommitted modifications (recorded in its manifest). Its per-trial results (720 rows) are preserved, but its per-run evidence directories are not, so we treat it as exploratory corroboration (Section~\ref{sec:res-rq2}).
 
 \subsection{Two Roles of the Signature}
-\ers{} plays two distinct roles in \sbg{}, which must be evaluated separately.
+\ers{} plays two roles in \sbg{}, which we evaluate separately.
 \begin{itemize}
-\item As a \emph{conformance test}, the property matrix checks whether an estimator and decision procedure satisfy the eight properties on a corpus of real evidence records. This role does not depend on labels.
-\item As \emph{predictive features}, the nine responses $\Delta_j$ are appended to the profile in the full \cec{} model, on the hypothesis that how strongly an estimate reacts to evidence degradation carries information about the risk beyond the profile itself. This role is evaluated by matched-coverage risk and proper scoring rules against labelled data.
+\item As a \emph{conformance test}, the property matrix checks whether an estimator and decision procedure satisfy the properties on real evidence records. This role uses no labels (RQ2).
+\item As \emph{predictive features}, the responses $\Delta_j$ are appended to the profile in the full \cec{} model. The hypothesis is that how strongly an estimate reacts to evidence degradation carries information about risk beyond the profile itself. This role is evaluated by matched-coverage risk and proper scoring rules against labels (RQ4).
 \end{itemize}
-The results in Section~\ref{sec:results} support the first role and do not support the second.
