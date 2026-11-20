@@ -1,0 +1,196 @@
+{
+  "phase": "4",
+  "wave": "9",
+  "analysis": "confound_shortcut_audit",
+  "n_test_pairs": 744,
+  "b07_test_auroc_reference": 0.5292,
+  "b07_test_auroc_this_run": 0.53038,
+  "b07_auroc_reproducibility_note": "b07_test_auroc_this_run is the AUROC obtained by re-running B07 in this script; b07_test_auroc_reference is the historical Wave 1 value. Both are reported for transparency; small floating differences (if any) reflect no code changes, only re-execution.",
+  "noise_floor_upper_reference": 0.544121,
+  "methodology": "For each feature, delta = |feature(variant) - feature(base)| is computed per pair. pseudo_similarity = 1/(1+delta) (monotonic decreasing in delta) is fed through the SAME compute_auroc() used throughout the project. This mirrors the single-dimension methodology of Wave 8's feature ablation (experiments/v2/run_feature_ablation_wave8.py) for direct comparability. No feature was chosen or discarded based on its resulting AUROC \u2014 the full list was fixed by the Phase 4 spec before this script was written.",
+  "features_tested": {
+    "program_size_loc": {
+      "status": "OK",
+      "n_valid": 744,
+      "n_missing": 0,
+      "auroc": 0.414954,
+      "ci_auroc_lower": 0.395618,
+      "ci_auroc_upper": 0.47575,
+      "permutation_p": 0.0,
+      "pearson_corr_delta_vs_label": -0.156672,
+      "pearson_corr_delta_vs_b07_score": -0.079332,
+      "matches_or_beats_b07_auroc": false,
+      "above_noise_floor": false
+    },
+    "program_size_chars": {
+      "status": "OK",
+      "n_valid": 744,
+      "n_missing": 0,
+      "auroc": 0.489584,
+      "ci_auroc_lower": 0.452219,
+      "ci_auroc_upper": 0.533256,
+      "permutation_p": 0.629,
+      "pearson_corr_delta_vs_label": -0.103613,
+      "pearson_corr_delta_vs_b07_score": -0.048142,
+      "matches_or_beats_b07_auroc": false,
+      "above_noise_floor": false
+    },
+    "token_count": {
+      "status": "OK",
+      "n_valid": 744,
+      "n_missing": 0,
+      "auroc": 0.486259,
+      "ci_auroc_lower": 0.454355,
+      "ci_auroc_upper": 0.537727,
+      "permutation_p": 0.507,
+      "pearson_corr_delta_vs_label": -0.121739,
+      "pearson_corr_delta_vs_b07_score": -0.011834,
+      "matches_or_beats_b07_auroc": false,
+      "above_noise_floor": false
+    },
+    "n_functions_static": {
+      "status": "OK",
+      "n_valid": 744,
+      "n_missing": 0,
+      "auroc": 0.455525,
+      "ci_auroc_lower": 0.423872,
+      "ci_auroc_upper": 0.503403,
+      "permutation_p": 0.03,
+      "pearson_corr_delta_vs_label": -0.190949,
+      "pearson_corr_delta_vs_b07_score": -0.052759,
+      "matches_or_beats_b07_auroc": false,
+      "above_noise_floor": false
+    },
+    "n_branches_static": {
+      "status": "OK",
+      "n_valid": 744,
+      "n_missing": 0,
+      "auroc": 0.48983,
+      "ci_auroc_lower": 0.449237,
+      "ci_auroc_upper": 0.530864,
+      "permutation_p": 0.625,
+      "pearson_corr_delta_vs_label": -0.208939,
+      "pearson_corr_delta_vs_b07_score": -0.163807,
+      "matches_or_beats_b07_auroc": false,
+      "above_noise_floor": false
+    },
+    "wall_time_ms": {
+      "status": "OK",
+      "n_valid": 696,
+      "n_missing": 48,
+      "auroc": 0.57058,
+      "ci_auroc_lower": 0.528416,
+      "ci_auroc_upper": 0.613929,
+      "permutation_p": 0.004,
+      "pearson_corr_delta_vs_label": 0.154332,
+      "pearson_corr_delta_vs_b07_score": -0.373586,
+      "matches_or_beats_b07_auroc": true,
+      "above_noise_floor": true
+    },
+    "trace_length_mean": {
+      "status": "OK",
+      "n_valid": 696,
+      "n_missing": 48,
+      "auroc": 0.527885,
+      "ci_auroc_lower": 0.496076,
+      "ci_auroc_upper": 0.577604,
+      "permutation_p": 0.21,
+      "pearson_corr_delta_vs_label": 0.176052,
+      "pearson_corr_delta_vs_b07_score": -0.502477,
+      "matches_or_beats_b07_auroc": false,
+      "above_noise_floor": false
+    },
+    "call_count_total": {
+      "status": "OK",
+      "n_valid": 696,
+      "n_missing": 48,
+      "auroc": 0.56783,
+      "ci_auroc_lower": 0.521405,
+      "ci_auroc_upper": 0.605739,
+      "permutation_p": 0.003,
+      "pearson_corr_delta_vs_label": 0.152512,
+      "pearson_corr_delta_vs_b07_score": -0.367537,
+      "matches_or_beats_b07_auroc": true,
+      "above_noise_floor": true
+    },
+    "n_functions_called": {
+      "status": "OK",
+      "n_valid": 696,
+      "n_missing": 48,
+      "auroc": 0.558413,
+      "ci_auroc_lower": 0.516244,
+      "ci_auroc_upper": 0.60174,
+      "permutation_p": 0.011,
+      "pearson_corr_delta_vs_label": 0.180205,
+      "pearson_corr_delta_vs_b07_score": -0.729586,
+      "matches_or_beats_b07_auroc": true,
+      "above_noise_floor": true
+    },
+    "exception_fraction": {
+      "status": "OK",
+      "n_valid": 696,
+      "n_missing": 48,
+      "auroc": 0.569226,
+      "ci_auroc_lower": 0.519942,
+      "ci_auroc_upper": 0.603725,
+      "permutation_p": 0.001,
+      "pearson_corr_delta_vs_label": 0.178654,
+      "pearson_corr_delta_vs_b07_score": -0.797519,
+      "matches_or_beats_b07_auroc": true,
+      "above_noise_floor": true
+    },
+    "coverage_size_proxy_for_branches": {
+      "status": "OK",
+      "n_valid": 696,
+      "n_missing": 48,
+      "auroc": 0.528637,
+      "ci_auroc_lower": 0.495474,
+      "ci_auroc_upper": 0.581471,
+      "permutation_p": 0.213,
+      "pearson_corr_delta_vs_label": 0.188748,
+      "pearson_corr_delta_vs_b07_score": -0.785744,
+      "matches_or_beats_b07_auroc": false,
+      "above_noise_floor": false
+    }
+  },
+  "features_unavailable": {
+    "memory": "No memory instrumentation exists anywhere in the tracing stack. sbg/extraction/dynamic/tracer.py and sbg/v2/execution/runner.py import no resource/psutil/tracemalloc module and record no memory metric of any kind. Fabricating a memory feature would violate the no-fabrication mandate; this feature is honestly reported as UNAVAILABLE rather than approximated.",
+    "cpu": "Only wall-clock time (time.monotonic_ns) is measured by SandboxRunner (sbg/v2/execution/runner.py L145-151) and the v1 Tracer (sbg/extraction/dynamic/tracer.py L174, L187-188). No CPU-time measurement (time.process_time / resource.getrusage) exists. Reported as UNAVAILABLE rather than substituting wall-time under a different label."
+  },
+  "shortcut_features_matching_or_beating_b07": [
+    "wall_time_ms",
+    "call_count_total",
+    "n_functions_called",
+    "exception_fraction"
+  ],
+  "shortcut_features_above_noise_floor": [
+    "wall_time_ms",
+    "call_count_total",
+    "n_functions_called",
+    "exception_fraction"
+  ],
+  "features_strongly_correlated_with_b07_score": {
+    "threshold_abs_pearson": 0.5,
+    "features": [
+      "trace_length_mean",
+      "n_functions_called",
+      "exception_fraction",
+      "coverage_size_proxy_for_branches"
+    ],
+    "note": "Pearson correlation between each feature's per-pair delta and B07's own similarity score, across all valid pairs. A strong correlation here would indicate B07's score is largely REDUNDANT with a superficial feature (a stronger form of shortcut exploitation than label-correlation alone), independent of whether that feature predicts the label well."
+  },
+  "verdict": "SHORTCUT_DETECTED",
+  "critical_nuance_constituent_vs_independent_shortcut": "Of the 4 flagged features, 3 (call_count_total, n_functions_called, exception_fraction) are NOT independent confounds discovered post-hoc - they are near-direct constituent measurements already fused INSIDE B07's own DynamicGenome distance formula (sbg/v2/execution/genome.py::distance): n_functions_called overlaps with the coverage/call-frequency signal (d_coverage + d_call_freq, weight 0.60 combined), exception_fraction IS exception_rate (part of d_exception, weight 0.15), and call_count_total overlaps with the same call-frequency signal. Their high AUROC and strong negative correlation with B07's score (-0.37 to -0.80) is therefore expected and definitional, not evidence of an UNDISCLOSED shortcut riding along with B07 - it is evidence that B07's own features ARE these superficial execution-volume statistics, just re-weighted. The ONE feature that is a genuinely INDEPENDENT, not-fused-into-B07 superficial property is wall_time_ms (AUROC=0.5706, matches/beats B07, moderate correlation -0.37 with B07 score, NOT any input to DynamicGenome or its distance function). This is the more scientifically important finding: B07's discrimination is not obviously separable from raw execution-volume/exception-occurrence statistics, and a model with direct access to wall-clock time alone performs comparably. Both framings are reported; neither is hidden.",
+
+  "verdict_note": "The following superficial feature(s) predict the CHANGED/EQUIVALENT label at least as well as B07 Dynamic V2 (AUROC>=0.5292): ['wall_time_ms', 'call_count_total', 'n_functions_called', 'exception_fraction']. This is disclosed per the Phase 4 mandate ('If a trivial feature predicts labels as well as B07: DOCUMENT IT.').",
+  "branch_coverage_proxy_disclosure": "'coverage_size_proxy_for_branches' is NOT a genuine executed-branch count. sbg/extraction/dynamic/tracer.py records LINE coverage via sys.settrace line events (state.coverage.add(frame.f_lineno)), not branch-taken/not-taken pairs. It is used here as the closest available proxy and is explicitly labeled as a proxy, not fabricated as a true branch-coverage metric.",
+  "integrity_notes": [
+    "Frozen benchmark/datasets/pairs_test.jsonl was used unmodified (744 pairs, same file as H7-H10/Wave2).",
+    "No feature was added, removed, or re-weighted after seeing its AUROC. The full feature list was fixed by the Phase 4 spec text before implementation.",
+    "memory and CPU are reported UNAVAILABLE with an explicit code-level reason, not imputed or approximated under a misleading label."
+  ],
+  "bootstrap_config": {
+    "n": 1000,
+    "seed": 42
+  }
+}

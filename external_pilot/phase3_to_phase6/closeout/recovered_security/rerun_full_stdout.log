@@ -1,0 +1,29 @@
+/Users/manassakthivel/SBG_EXTERNAL_PILOT/phase3_to_phase6/closeout/recovered_security/rerun_full/paper/IEEE_ACCESS_V8_FINAL/scripts/audit_security_rerun.py:20: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  out = {"meta": {"platform": sys.platform, "host": platform.platform(), "python": sys.version.split()[0], "utc": datetime.datetime.utcnow().isoformat() + "Z",
+H00_honest_control                             DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | NO EFFECT (engine still reports the true verdict)
+A01_patch_canonicaliser_via___main__           NO_DIVERGENCE_OBSERVED NO_DIVERGENCE_OBSERVED | DETECTED by shadow_reobservation
+A02_forge_result_via_harness_finish            NO_DIVERGENCE_OBSERVED NO_DIVERGENCE_OBSERVED | DETECTED by shadow_reobservation
+A03_os__exit_before_result                     INSUFFICIENT           INSUFFICIENT | BLOCKED by engine (verdict degraded to INSUFFICIENT)
+A04_write_garbage_to_result_fd                 INSUFFICIENT           INSUFFICIENT | BLOCKED by engine (verdict degraded to INSUFFICIENT)
+A05_close_result_fd                            INSUFFICIENT           INSUFFICIENT | BLOCKED by engine (verdict degraded to INSUFFICIENT)
+A06_forged_result_line_on_stdout               DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | NO EFFECT (engine still reports the true verdict)
+A08_hide_stdout_divergence_by_patching_Cap     NO_DIVERGENCE_OBSERVED INSUFFICIENT | DETECTED by independent_capture
+A07_sense_harness_and_behave                   NO_DIVERGENCE_OBSERVED NO_DIVERGENCE_OBSERVED | DETECTED by shadow_reobservation
+A07c_sense_argv_eval_environment               DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | NO EFFECT (engine still reports the true verdict)
+A16_close_stderr_then_hide_stdout_divergence   NO_DIVERGENCE_OBSERVED INSUFFICIENT | DETECTED by independent_capture
+A17_forge_tee_record_with_guessed_nonce        DIVERGENT_OBSERVABLE   INSUFFICIENT | DETECTED by independent_capture
+P01_edit_observation_no_rechain                DIVERGENT_OBSERVABLE   INSUFFICIENT | DETECTED by chain, verify
+P02_edit_verdict_and_rechain                   NO_DIVERGENCE_OBSERVED INSUFFICIENT | DETECTED by verify, sidecar, independent_capture, anchor_mac
+P03_drop_verdict_json                          DIVERGENT_OBSERVABLE   INSUFFICIENT | DETECTED by anchor_mac, verdict_json_absent
+P04_edit_unverified_field_and_rechain          DIVERGENT_OBSERVABLE   INSUFFICIENT | DETECTED by independent_capture, anchor_mac
+P05_tamper_sidecar_hits                        DIVERGENT_OBSERVABLE   INSUFFICIENT | DETECTED by sidecar, anchor_mac
+P06_substitute_evidence_of_another_program     NO_DIVERGENCE_OBSERVED NO_DIVERGENCE_OBSERVED | DETECTED by source_binding
+P07_rechain_without_rebinding_sidecar          DIVERGENT_OBSERVABLE   INSUFFICIENT | DETECTED by sidecar, independent_capture, anchor_mac
+P08_rechain_and_reanchor_with_the_key          DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | SUCCEEDS (open): evidence altered, no check fires
+P09_strip_anchor                               DIVERGENT_OBSERVABLE   INSUFFICIENT | DETECTED by anchor_mac
+SENSE04_sense_file_name                        DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | NO EFFECT (engine still reports the true verdict)
+SENSE04b_sense_code_filename                   NO_DIVERGENCE_OBSERVED NO_DIVERGENCE_OBSERVED | SUCCEEDS (open): false verdict with no check firing
+SENSE04c_sense_spec_origin                     NO_DIVERGENCE_OBSERVED NO_DIVERGENCE_OBSERVED | DETECTED by shadow_reobservation
+SENSE04d_sense_cwd_listing                     DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | NO EFFECT (engine still reports the true verdict)
+SENSE01_sense_argv                             DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | NO EFFECT (engine still reports the true verdict)
+SENSE07_benign_control                         DIVERGENT_OBSERVABLE   DIVERGENT_OBSERVABLE | NO EFFECT (engine still reports the true verdict)

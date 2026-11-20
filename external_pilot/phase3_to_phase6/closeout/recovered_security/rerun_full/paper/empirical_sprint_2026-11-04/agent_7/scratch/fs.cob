@@ -1,0 +1,18 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. FS.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT F ASSIGN TO "nosuchfile.dat"
+               ORGANIZATION LINE SEQUENTIAL
+               FILE STATUS IS WS-FS.
+       DATA DIVISION.
+       FILE SECTION.
+       FD  F.
+       01  F-REC PIC X(10).
+       WORKING-STORAGE SECTION.
+       01  WS-FS PIC XX.
+       PROCEDURE DIVISION.
+           OPEN INPUT F
+           DISPLAY "FS=" WS-FS
+           STOP RUN.

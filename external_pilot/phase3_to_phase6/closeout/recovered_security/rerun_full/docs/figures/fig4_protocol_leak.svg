@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="372" viewBox="0 0 960 372" role="img" aria-label="Output-free constraint: protocol audit">
+<title>Output-free constraint: protocol audit</title>
+<rect width="960" height="372" fill="#ffffff"/>
+<style>text{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;fill:#1b1b1f} .muted{fill:#6b6b76} .small{font-size:11px} .tiny{font-size:10px} .bold{font-weight:600}</style>
+<text x="20" y="28" class="bold" font-size="15">What the published protocol actually traces</text>
+<text x="20" y="46" class="small muted">Static analysis of all 64 corpus programs. No program is executed.</text>
+<text x="348" y="94" text-anchor="end" class="small">corpus programs</text>
+<rect x="360" y="80" width="440" height="18" fill="#d8d8de"/>
+<rect x="360" y="80" width="440.0" height="18" fill="#7a7a85" opacity="0.8"/>
+<text x="808" y="94" class="small">64 / 64</text>
+<text x="348" y="128" text-anchor="end" class="small">entry point is a self-test driver</text>
+<rect x="360" y="114" width="440" height="18" fill="#d8d8de"/>
+<rect x="360" y="114" width="323.1" height="18" fill="#9a3b3b" opacity="0.8"/>
+<text x="808" y="128" class="small">47 / 64</text>
+<text x="348" y="162" text-anchor="end" class="small">assert statements land inside the trace</text>
+<rect x="360" y="148" width="440" height="18" fill="#d8d8de"/>
+<rect x="360" y="148" width="323.1" height="18" fill="#9a3b3b" opacity="0.8"/>
+<text x="808" y="162" class="small">47 / 64</text>
+<text x="348" y="196" text-anchor="end" class="small">canonical inputs never execute</text>
+<rect x="360" y="182" width="440" height="18" fill="#d8d8de"/>
+<rect x="360" y="182" width="336.9" height="18" fill="#b8792a" opacity="0.8"/>
+<text x="808" y="196" class="small">49 / 64</text>
+<text x="20" y="242" class="tiny">Entry-point discovery returns the call-graph root, defined as the function no</text>
+<text x="20" y="258" class="tiny">other module-level function calls. In this corpus that is the program's own</text>
+<text x="20" y="274" class="tiny">test_* self-test driver. Its assert statements -- 611 of them across the corpus --</text>
+<text x="20" y="290" class="tiny">then execute inside the traced region, so exception_rate and exception_type_set</text>
+<text x="20" y="306" class="tiny">record whether the program's own unit tests passed.</text>
+</svg>

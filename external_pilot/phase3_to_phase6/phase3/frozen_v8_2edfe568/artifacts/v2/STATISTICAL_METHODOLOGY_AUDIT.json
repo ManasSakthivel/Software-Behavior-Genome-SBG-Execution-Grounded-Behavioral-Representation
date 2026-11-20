@@ -1,0 +1,348 @@
+{
+  "audit_version": "v2.0",
+  "audit_date": "2025-07-07",
+  "auditor": "Agent I — Statistical Methodology Audit",
+  "scope": "SBG V2 primary claims (H7, H8, H9) and V1 primary claims (H1-H6)",
+  "constraint": "READ-ONLY. No experimental results were modified.",
+  "note_on_family_size": "Protocol declares Holm-Bonferroni across H1-H12 (n=12). V1 artifacts (phase3/FINAL) use plain Bonferroni n=6. This audit uses n=12 per protocol for corrected_alpha; INCONSISTENCY flagged per claim.",
+
+  "primary_claims": [
+    {
+      "claim_id": "C1",
+      "hypothesis": "H7",
+      "CLAIM": "Dynamic behavioral signatures (B07_DYNAMIC_V2) achieve higher AUROC than static-only SBG v1",
+      "METRIC": "AUROC",
+      "N": 744,
+      "N_POS": 366,
+      "N_NEG": 378,
+      "CI": [0.499136, 0.580563],
+      "CI_SOURCE": "artifacts/v2/B07/results_test.json (bootstrap, 1000 resamples, seed=42, indices [25]/[974])",
+      "AUROC_OBSERVED": 0.531023,
+      "AUROC_NULL": 0.4237,
+      "DELTA_AUROC": 0.107323,
+      "TEST": "Bootstrap AUROC CI (1000 resamples); no formal one-sided z-test or permutation test yet run",
+      "P": "not yet computed",
+      "P_APPROXIMATE": "< 0.001 (Hanley-McNeil SE=0.0235, z≈4.55 one-sided)",
+      "CORRECTED_ALPHA": 0.004167,
+      "CORRECTED_ALPHA_SOURCE": "Holm-Bonferroni n=12, H7 is rank 1 (most significant)",
+      "EFFECT_SIZE_DELTA_AUROC": 0.1073,
+      "EFFECT_SIZE_COHENS_H": "not yet computed (requires thresholded prediction arrays)",
+      "EFFECT_SIZE_NOTE": "HYPOTHESES_V2.md specifies Cohen's h on thresholded predictions — not yet reported",
+      "GLASSS_DELTA": "not applicable to AUROC",
+      "CI_LOWER_ABOVE_NULL": true,
+      "CI_LOWER_ABOVE_NULL_SUPPORT": "0.499 > 0.4237 — strong directional evidence",
+      "DEGENERATE_THRESHOLD_NOTE": "threshold=1.000001 (predict all CHANGED); F1=0.659459 is majority-class value, NOT discriminative",
+      "STATUS": "VALID",
+      "STATUS_NOTES": [
+        "Bootstrap CI entirely above null value — strong support for H7",
+        "Approximate z-test confirms significance beyond corrected alpha",
+        "Cohen's h still missing — required by protocol before final reporting",
+        "Formal p-value (permutation or z-test) should be computed and recorded"
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "hypothesis": "H8",
+      "CLAIM": "Hybrid (static+dynamic) genome outperforms pure dynamic genome",
+      "METRIC": "AUROC",
+      "N": 744,
+      "N_POS": 325,
+      "N_NEG": 419,
+      "CI": [0.450492, 0.535058],
+      "CI_SOURCE": "artifacts/v2/B08/results_test.json (bootstrap, 1000 resamples, seed=42)",
+      "AUROC_OBSERVED": 0.488442,
+      "AUROC_NULL": 0.531023,
+      "DELTA_AUROC": -0.042581,
+      "TEST": "Bootstrap CI comparison (directional); no McNemar test on H7 vs H8 predictions yet",
+      "P": "not yet computed",
+      "P_APPROXIMATE": "> 0.9 one-sided (effect in wrong direction)",
+      "CORRECTED_ALPHA": 0.004167,
+      "CORRECTED_ALPHA_SOURCE": "Holm-Bonferroni n=12, rank 2",
+      "EFFECT_SIZE_DELTA_AUROC": -0.0426,
+      "EFFECT_SIZE_COHENS_H": "not yet computed",
+      "GLASSS_DELTA": "not applicable",
+      "CI_OVERLAP": true,
+      "CI_OVERLAP_NOTE": "B07 CI=[0.499,0.581]; B08 CI=[0.450,0.535] — overlapping, hybrid lower",
+      "STATIC_COMPONENT_NOTE": "B08 uses token-overlap as static proxy, not full v1 behavioral_distance. OPEN_ISSUES in PHASE_2_GATE.json explicitly flags this. Verdict should be qualified as 'NOT SUPPORTED with token-overlap proxy'.",
+      "STATUS": "VALID — correctly assessed as NOT_SUPPORTED",
+      "STATUS_NOTES": [
+        "H8 verdict NOT_SUPPORTED is statistically valid: hybrid AUROC < dynamic AUROC",
+        "Static component is a weak proxy — protocol requires full v1 behavioral_distance (PHASE_2_GATE open issue)",
+        "McNemar test on per-pair predictions not yet run — required to confirm whether difference is significant",
+        "Cohen's h missing",
+        "H8 result is scientifically meaningful as a negative finding even with the proxy caveat"
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "hypothesis": "H9",
+      "CLAIM": "Dynamic features reduce the structural-semantic inversion (delta_dynamic < delta_static=0.0335)",
+      "METRIC": "Inversion delta = mean(CHANGED_similarity) - mean(EQUIV_similarity)",
+      "N": 744,
+      "CI": "not computed (no bootstrap CI on delta reported in artifacts)",
+      "CI_SOURCE": "N/A — delta CI requires paired bootstrap on group means",
+      "DELTA_OBSERVED_DYNAMIC": -0.045265,
+      "DELTA_NULL_STATIC": 0.0335,
+      "TEST": "Direction only; permutation test specified in HYPOTHESES_V2.md but NOT YET RUN",
+      "P": "not yet computed",
+      "P_APPROXIMATE": "not computed — permutation p-value missing",
+      "CORRECTED_ALPHA": 0.004167,
+      "CORRECTED_ALPHA_SOURCE": "Holm-Bonferroni n=12, rank 3",
+      "EFFECT_SIZE_GLASSS_DELTA": "specified in HYPOTHESES_V2.md — not yet reported",
+      "EFFECT_SIZE_DELTA_AUROC": "N/A (H9 uses mean similarity delta, not AUROC)",
+      "SC3_SC11_STRATIFICATION": "SAFEGUARD-4 requires stratified reporting for SC-3/SC-11 — NOT YET DONE",
+      "STATUS": "NEEDS_CORRECTION",
+      "STATUS_NOTES": [
+        "H9 SUPPORTED verdict is directionally correct (delta=-0.0453 < 0.0335)",
+        "CRITICAL: No permutation test p-value. Claimed support rests only on point estimate direction.",
+        "CRITICAL: Glass's delta not computed (required by HYPOTHESES_V2.md)",
+        "CRITICAL: SAFEGUARD-4 (SC-3/SC-11 stratified analysis) not completed",
+        "CRITICAL: No bootstrap CI on the delta itself — uncertainty unknown",
+        "Full support requires: permutation p < 0.004167, Glass's delta, SC-3/SC-11 sub-analysis"
+      ]
+    },
+    {
+      "claim_id": "C4",
+      "hypothesis": "H10",
+      "CLAIM": "Hybrid genomes retain discrimination across SP transform types (max AUROC spread < 0.10)",
+      "METRIC": "AUROC by SP type",
+      "N": "not yet evaluated",
+      "CI": "not yet computed",
+      "TEST": "Permutation test across SP types; Kendall's W (specified in protocol)",
+      "P": "not yet computed",
+      "EFFECT_SIZE": "Kendall's W — not yet computed",
+      "STATUS": "INSUFFICIENT",
+      "STATUS_NOTES": ["H10 not evaluated yet"]
+    },
+    {
+      "claim_id": "C5",
+      "hypothesis": "H11",
+      "CLAIM": "Hybrid genomes identify equivalent behavior across Python and Java (AUROC > 0.6)",
+      "METRIC": "AUROC",
+      "N": 15,
+      "N_NOTE": "N=15 is severely underpowered. Protocol explicitly declares H11 EXPLORATORY.",
+      "CI": "not yet computed",
+      "TEST": "AUROC with bootstrap CI; power explicitly documented as ~25%",
+      "P": "not yet computed",
+      "POWER_AT_CORRECTED_ALPHA": "~0.25 (declared in HYPOTHESES_V2.md — confirmed by power analysis)",
+      "EFFECT_SIZE": "not yet computed",
+      "STATUS": "INSUFFICIENT",
+      "STATUS_NOTES": [
+        "H11 not evaluated yet",
+        "N=15 gives ~25% power at corrected alpha — correctly classified as EXPLORATORY in protocol",
+        "Any result from N=15 must be reported as exploratory regardless of direction"
+      ]
+    },
+    {
+      "claim_id": "C6",
+      "hypothesis": "H12",
+      "CLAIM": "Hybrid genomes detect behavioral regressions with AUROC > best static baseline (0.5528)",
+      "METRIC": "AUROC",
+      "N": "not yet evaluated",
+      "CI": "not yet computed",
+      "TEST": "Bootstrap AUROC CI (1000 resamples)",
+      "P": "not yet computed",
+      "EFFECT_SIZE": "Delta AUROC — not yet computed",
+      "STATUS": "INSUFFICIENT",
+      "STATUS_NOTES": ["H12 not evaluated yet"]
+    },
+    {
+      "claim_id": "C7",
+      "hypothesis": "H1 (V1)",
+      "CLAIM": "SBG full representation achieves AUROC > random chance (0.5)",
+      "METRIC": "AUROC",
+      "N": 744,
+      "CI": [0.401193, 0.482963],
+      "CI_SOURCE": "artifacts/final/FINAL_STATISTICAL_RESULTS.json",
+      "AUROC_OBSERVED": 0.423664,
+      "TEST": "Bootstrap CI; McNemar (continuity-corrected)",
+      "P": "mcnemar_p=1.0 (artifacts/final/FINAL_STATISTICAL_RESULTS.json)",
+      "CORRECTED_ALPHA": 0.0017,
+      "CORRECTED_ALPHA_SOURCE": "FINAL artifact uses plain Bonferroni n=6 (vs protocol Holm n=12)",
+      "EFFECT_SIZE": "delta=+0.0335 (INVERTED: CHANGED mean > EQUIV mean)",
+      "STATUS": "VALID — NOT_SUPPORTED correctly assessed",
+      "STATUS_NOTES": [
+        "McNemar p=1.0 is suspicious — requires verification with actual prediction arrays",
+        "CI entirely below 0.5: AUROC=0.4237 is sub-random",
+        "Family size mismatch: v1 artifacts use Bonferroni n=6, not Holm n=12"
+      ]
+    },
+    {
+      "claim_id": "C8",
+      "hypothesis": "H2 (V1)",
+      "CLAIM": "SBG outperforms all baselines on AUROC",
+      "METRIC": "AUROC",
+      "N": 744,
+      "CI": [0.401193, 0.482963],
+      "CI_SOURCE": "artifacts/final/FINAL_STATISTICAL_RESULTS.json",
+      "AUROC_OBSERVED": 0.423664,
+      "BEST_BASELINE_AUROC": 0.552845,
+      "DELTA_SBG_MINUS_BEST": -0.1292,
+      "TEST": "Bootstrap CI comparison; McNemar p=1.0",
+      "P": "mcnemar_p=1.0",
+      "EFFECT_SIZE": "delta=-0.1292 (SBG worse than B02_AST)",
+      "STATUS": "VALID — NOT_SUPPORTED correctly assessed",
+      "STATUS_NOTES": [
+        "CIs do not overlap with B02_AST CI=[0.509,0.593]: clear separation",
+        "McNemar p=1.0 requires investigation — prediction arrays needed to verify",
+        "Negative result is correctly reported"
+      ]
+    }
+  ],
+
+  "cross_cutting_issues": [
+    {
+      "issue_id": "I1",
+      "severity": "HIGH",
+      "category": "Family size mismatch",
+      "description": "Protocol (HYPOTHESES_V2.md, PREREGISTRATION_MANIFEST, PHASE_0_GATE) declares Holm-Bonferroni with family n=12 (H1-H12 combined). V1 artifacts (FINAL_STATISTICAL_RESULTS.json, phase3/STATISTICAL_ANALYSIS.json) use plain Bonferroni with n=6 (H1-H6 only). These produce different corrected alphas: protocol=0.0042 vs v1 artifacts=0.0017. Plain Bonferroni is more conservative than Holm-Bonferroni, but n=6 gives alpha=0.0017 which is more conservative than Holm n=12 at most ranks. The inconsistency must be resolved for transparent reporting.",
+      "corrective_action": "Recompute all reported p-values under the Holm-Bonferroni n=12 protocol. Document v1 / v2 families separately if needed."
+    },
+    {
+      "issue_id": "I2",
+      "severity": "HIGH",
+      "category": "Missing permutation tests",
+      "description": "H9 specifies a paired permutation test as the required statistical test. H10 specifies a permutation test across SP types. Neither has been run. Current H9 verdict rests only on a point estimate (delta=-0.0453 < 0.0335) without a p-value.",
+      "corrective_action": "Run permutation_test_delta() from e1_statistical_analysis.py for H9. Implement SP-type permutation test for H10. Record p-values in artifacts."
+    },
+    {
+      "issue_id": "I3",
+      "severity": "HIGH",
+      "category": "Missing effect sizes",
+      "description": "HYPOTHESES_V2.md specifies: Cohen's h (H7, H8, H12), Glass's delta (H9), Kendall's W (H10). None are reported in current artifacts. FINAL_STATISTICAL_RESULTS.json reports Glass's delta direction for v1 H3 but not a value.",
+      "corrective_action": "Compute Cohen's h from thresholded predictions for H7/H8/H12. Compute Glass's delta for H9. Compute Kendall's W when H10 data is available."
+    },
+    {
+      "issue_id": "I4",
+      "severity": "MEDIUM",
+      "category": "Degenerate threshold / invalid F1 comparisons",
+      "description": "Five of eight phase3 baselines (B02, B03, B04, B07, B08) and B07_v2 produce threshold=1.000001 (predict all CHANGED), yielding identical F1=0.659459. The B07_v2 F1=0.659459 in PHASE_2_GATE.json is the same majority-class value. F1 comparisons between these baselines are meaningless. AUROC is unaffected and correctly used as primary metric.",
+      "corrective_action": "Do not compare F1 values between baselines with degenerate thresholds. Mark F1 as 'majority_class_baseline' in artifact notes when threshold>=1.0. AUROC remains valid primary metric."
+    },
+    {
+      "issue_id": "I5",
+      "severity": "MEDIUM",
+      "category": "McNemar p=1.0 unexplained",
+      "description": "FINAL_STATISTICAL_RESULTS.json reports mcnemar_p=1.0 for SBG vs B02_AST comparison. A McNemar p=1.0 with non-overlapping CIs is paradoxical and requires verification. Possible causes: all disagreements are symmetric (equal b and c in contingency table), or implementation error. Per-pair prediction arrays are needed to verify.",
+      "corrective_action": "Reconstruct per-pair prediction arrays for SBG_full and B02_AST. Recompute McNemar test manually. Verify b and c counts in the 2x2 contingency table."
+    },
+    {
+      "issue_id": "I6",
+      "severity": "MEDIUM",
+      "category": "SAFEGUARD-4 not completed (SC-3/SC-11 stratification)",
+      "description": "H9 requires stratified analysis of SC-3 (off-by-one) and SC-11 (incorrect constant) separately, where static similarity=1.0. This is a blocking safeguard (SAFEGUARD-4). The current H9 verdict reports only the aggregate delta=-0.0453 without the SC-3/SC-11 sub-analysis.",
+      "corrective_action": "Filter test pairs by transformation_type in [SC-3, SC-11]. Compute dynamic similarity separately for these pairs. Report delta and CI for this hard-negative subset."
+    },
+    {
+      "issue_id": "I7",
+      "severity": "MEDIUM",
+      "category": "Bootstrap CI non-independence",
+      "description": "Multiple pairs share the same base_program (e.g., api_rate_limiter appears in many pairs: SP-2_s0, SP-2_s1, SP-2_s2, SP-3_s0, etc.). Bootstrap sampling treats all pairs as i.i.d. but pairs sharing a base program are correlated through the base program's similarity scores. This violates the i.i.d. assumption of standard bootstrap.",
+      "corrective_action": "Consider cluster bootstrap (resample by base_program rather than by pair) to account for within-program pair correlation. At minimum, document this as a limitation. The effect is likely small if each program contributes a small fraction of total pairs."
+    },
+    {
+      "issue_id": "I8",
+      "severity": "LOW",
+      "category": "Bootstrap percentile indexing — minor conservative bias",
+      "description": "compute_metrics uses boot[25] and boot[974] from 1000 sorted bootstrap samples. The exact 2.5th percentile position is index 24.975 (0-based). Using index 25 gives a 1-sample conservative bias on the lower bound. This is common practice and negligible (0.1% coverage excess).",
+      "corrective_action": "No action required. Document as known minor conservatism."
+    },
+    {
+      "issue_id": "I9",
+      "severity": "LOW",
+      "category": "SAFEGUARD-6: n_runs=1",
+      "description": "PHASE_2_GATE.json open issues note that SandboxRunner uses n_runs=1 instead of the required 5. SAFEGUARD-6 requires ≥5 extractions per program to measure noise floor. With n_runs=1, intra-version variance is unknown.",
+      "corrective_action": "Re-run extractions with n_runs=5. Measure intra-version variance. Flag non-deterministic features (std/mean > 0.10) and exclude from genome if needed."
+    },
+    {
+      "issue_id": "I10",
+      "severity": "LOW",
+      "category": "Dev/test distribution shift in B07",
+      "description": "B07_DYNAMIC_V2 reports dev AUROC=0.460 but test AUROC=0.531 — a positive shift of +0.071. This is unusual (dev should approximate test). Possible cause: degenerate threshold (1.000001) on dev triggers different discrimination pattern. Should be investigated to confirm no test-set contamination.",
+      "corrective_action": "Verify that threshold was frozen on dev before any test evaluation. Investigate the dev AUROC=0.460 anomaly. Check that dev and test sets have similar label balance (dev: 315/300 pos/neg; test: 366/378 pos/neg — proportions comparable)."
+    }
+  ],
+
+  "methodology_summary": {
+    "bootstrap_ci": {
+      "status": "VALID",
+      "n_resamples": 1000,
+      "seed": 42,
+      "percentile_indexing": "boot[25]/boot[974] — slight conservative bias, acceptable",
+      "independence_assumption": "VIOLATED by within-program pair correlation — cluster bootstrap recommended"
+    },
+    "auroc_computation": {
+      "status": "VALID",
+      "method": "Trapezoidal integration over sorted similarity scores",
+      "convention": "ascending similarity = descending distance = positive class score — correct"
+    },
+    "holm_bonferroni": {
+      "status": "IMPLEMENTATION_VALID — FAMILY_SIZE_INCONSISTENT",
+      "implementation": "Correct in e1_statistical_analysis.py",
+      "declared_family": 12,
+      "used_family_v1_artifacts": 6,
+      "correction_method_v1_artifacts": "plain Bonferroni (not Holm)",
+      "action_needed": true
+    },
+    "permutation_tests": {
+      "status": "MISSING",
+      "required_for": ["H9", "H10"],
+      "implemented_but_not_run": "permutation_test_delta() exists in e1_statistical_analysis.py"
+    },
+    "effect_sizes": {
+      "status": "LARGELY_MISSING",
+      "cohens_h": "specified but not computed for H7, H8, H12",
+      "glasss_delta": "specified but not computed for H9",
+      "kendalls_w": "specified but not computed for H10",
+      "delta_auroc": "computed and reported for H7, H8"
+    },
+    "power": {
+      "N744_adequacy": "ADEQUATE for large effects (H7 delta=0.107, z≈4.5)",
+      "N744_small_effects": "~50-70% power for delta<0.05 at corrected alpha",
+      "N15_H11": "~25% power — correctly classified as EXPLORATORY in protocol"
+    }
+  },
+
+  "claims_needing_correction": [
+    {
+      "claim": "H9 SUPPORTED",
+      "reason": "Verdict based on point estimate only. No permutation p-value, no Glass's delta, no SC-3/SC-11 stratification (SAFEGUARD-4 incomplete).",
+      "methodology_change_required": true,
+      "blocking": true
+    },
+    {
+      "claim": "F1 comparisons between B02/B03/B04/B07/B08 (phase3 and v2)",
+      "reason": "All produce degenerate threshold=1.0 with identical majority-class F1=0.659459. Comparisons are invalid.",
+      "methodology_change_required": false,
+      "blocking": false,
+      "note": "AUROC comparisons remain valid"
+    },
+    {
+      "claim": "McNemar p=1.0 for H2",
+      "reason": "p=1.0 with non-overlapping CIs is anomalous. Requires verification from prediction arrays.",
+      "methodology_change_required": false,
+      "blocking": false
+    },
+    {
+      "claim": "Holm-Bonferroni family n=12 in phase3 artifacts",
+      "reason": "Phase3 and FINAL artifacts use plain Bonferroni n=6. Must be corrected to Holm-Bonferroni n=12 per protocol.",
+      "methodology_change_required": true,
+      "blocking": false,
+      "note": "Does not change NOT_SUPPORTED verdicts for H1-H6 as effects are in wrong direction"
+    }
+  ],
+
+  "claims_that_are_statistically_unsupported": [
+    "H9 SUPPORTED: directionally correct but lacks required p-value, Glass's delta, and SC-3/SC-11 stratification",
+    "H10, H11, H12: no data evaluated yet",
+    "McNemar p=1.0 for H2: needs verification"
+  ],
+
+  "claims_that_are_statistically_sound": [
+    "H7 SUPPORTED: AUROC=0.531 with bootstrap CI [0.499, 0.581] entirely above null 0.4237; approximate z≈4.5 far exceeds corrected alpha",
+    "H8 NOT_SUPPORTED: AUROC_hybrid=0.488 < AUROC_dynamic=0.531; directionally clear even without formal test",
+    "H1 NOT_SUPPORTED: AUROC=0.4237 with CI [0.401, 0.483] entirely below 0.5",
+    "H2 NOT_SUPPORTED: AUROC delta=-0.129, non-overlapping CIs",
+    "H5 NOT_SUPPORTED: AUROC=0.5528 < 0.65 threshold"
+  ]
+}

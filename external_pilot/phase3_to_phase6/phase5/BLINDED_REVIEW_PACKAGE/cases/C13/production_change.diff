@@ -1,0 +1,13 @@
+diff --git a/more_itertools/more.py b/more_itertools/more.py
+index 9c56ab3..deb8c29 100755
+--- a/more_itertools/more.py
++++ b/more_itertools/more.py
+@@ -4279,7 +4279,7 @@ def all_unique(iterable, key=None):
+     seenset_add = seenset.add
+     seenlist = []
+     seenlist_add = seenlist.append
+-    for element in map(key, iterable) if key else iterable:
++    for element in map(key, iterable) if key is not None else iterable:
+         try:
+             if element in seenset:
+                 return False

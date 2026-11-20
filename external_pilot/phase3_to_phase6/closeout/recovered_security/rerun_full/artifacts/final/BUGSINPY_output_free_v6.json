@@ -1,0 +1,645 @@
+{
+ "experiment": "BUGSINPY_OUTPUT_FREE_EVALUATION",
+ "produced_at": "2026-09-28T16:34:26+00:00",
+ "produced_with_python": "3.13.15",
+ "protocol": "output_free_v6",
+ "preregistration": "docs/current/PHASE2_PREREGISTRATION.md \u00a76 (BugsInPy)",
+ "bugsinpy_commit": "11c5f1eea954a42132cfd06bf257766a7963e0fd",
+ "manifest": "external/bugsinpy/manifest.json",
+ "freeze": {
+  "file": "artifacts/final/freeze_bugsinpy.json",
+  "combined_sha256": "4946b113130452078a39720607dc0fef8b14fe339ced0b20ade37777f6189677"
+ },
+ "input_regime": "canonical (protocol-synthesised inputs only)",
+ "cluster_unit": "bug (project/bug id)",
+ "labels": "positives: upstream developer fixes recorded by BugsInPy (buggy vs fixed commit); negatives: repository SP transformers applied to the fixed unit; no label set or edited by hand",
+ "headline": {
+  "protocol": "output_free_v6",
+  "bugs_total": 501,
+  "bugs_with_eligible_unit": 51,
+  "units_eligible": 55,
+  "pairs_total": 200,
+  "pairs_evaluable": 140,
+  "pairs_valid": 140,
+  "bugs_evaluated_with_valid_positive": 37,
+  "sbg_v5_auroc_valid": 0.405687,
+  "sbg_v5_ci_valid": [
+   0.322268,
+   0.490072
+  ],
+  "tau_metrics_computed": true
+ },
+ "stage_counts": {
+  "bugs_total": 501,
+  "bugs_excluded_before_scoring": 450,
+  "bug_exclusion_taxonomy": {
+   "no_eligible_unit": 408,
+   "commit_not_resolvable_upstream": 31,
+   "change_outside_function_or_method": 10,
+   "no_non_test_python_file_changed": 1
+  },
+  "units_total": 704,
+  "units_eligible": 55,
+  "unit_exclusion_taxonomy": {
+   "project_internal_import": 428,
+   "third_party_import": 110,
+   "non_literal_or_unresolved_global": 61,
+   "unit_added_or_removed_by_fix": 30,
+   "unit_identical_after_normalisation": 7,
+   "unsafe_module": 6,
+   "ambiguous_binding": 6,
+   "local_project_internal_import": 1
+  },
+  "negatives_generated": 145,
+  "pairs_total": 200,
+  "pairs_failed_at_execution": {
+   "fixed:unsupported_signature": 56,
+   "fixed:import_error": 4
+  },
+  "positives_unobservable_from_entry": 0
+ },
+ "set_definitions": {
+  "ALL": "every pair; unevaluable pairs scored at distance 0 (static baselines kept)",
+  "EVALUABLE": "both sides executed under the protocol",
+  "VALID": "EVALUABLE, and for positives a changed member statically reachable from the protocol's entry (primary set)"
+ },
+ "sets": {
+  "ALL": {
+   "n_pairs": 200,
+   "n_pos": 55,
+   "n_neg": 145,
+   "n_bugs": 51,
+   "n_bugs_with_positive": 51,
+   "predictors": {
+    "sbg_v5": {
+     "auroc": 0.433605,
+     "ci_lower": 0.374237,
+     "ci_upper": 0.489599,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9920039980009995,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "sbg_v3": {
+     "auroc": 0.463072,
+     "ci_lower": 0.411134,
+     "ci_upper": 0.510837,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9335332333833083,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "sbg_temporal": {
+     "auroc": 0.428527,
+     "ci_lower": 0.378634,
+     "ci_upper": 0.473315,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.999000499750125,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "sbg_state": {
+     "auroc": 0.517994,
+     "ci_lower": 0.466505,
+     "ci_upper": 0.566499,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.09145427286356822,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "exception_fraction": {
+     "auroc": 0.5,
+     "ci_lower": 0.5,
+     "ci_upper": 0.5,
+     "ci_n_effective": 2000,
+     "p_permutation": 1.0,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "exception_component_v3": {
+     "auroc": 0.481505,
+     "ci_lower": 0.461268,
+     "ci_upper": 0.501984,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9305347326336831,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "exception_type_jaccard": {
+     "auroc": 0.481505,
+     "ci_lower": 0.461268,
+     "ci_upper": 0.501984,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9305347326336831,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "call_count": {
+     "auroc": 0.485204,
+     "ci_lower": 0.443862,
+     "ci_upper": 0.518657,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.7571214392803598,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "n_functions": {
+     "auroc": 0.457429,
+     "ci_lower": 0.402746,
+     "ci_upper": 0.50245,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9965017491254373,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "coverage_size": {
+     "auroc": 0.459248,
+     "ci_lower": 0.405698,
+     "ci_upper": 0.505978,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9675162418790605,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "combined_shortcut": {
+     "auroc": 0.466207,
+     "ci_lower": 0.419452,
+     "ci_upper": 0.509467,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9425287356321839,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "static_token": {
+     "auroc": 0.44,
+     "ci_lower": 0.340385,
+     "ci_upper": 0.544942,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9500249875062469,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    },
+    "static_ast": {
+     "auroc": 0.623386,
+     "ci_lower": 0.554926,
+     "ci_upper": 0.691169,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.00849575212393803,
+     "n_pairs": 200,
+     "n_pos": 55,
+     "n_neg": 145,
+     "n_clusters": 51
+    }
+   }
+  },
+  "EVALUABLE": {
+   "n_pairs": 140,
+   "n_pos": 39,
+   "n_neg": 101,
+   "n_bugs": 37,
+   "n_bugs_with_positive": 37,
+   "predictors": {
+    "sbg_v5": {
+     "auroc": 0.405687,
+     "ci_lower": 0.322268,
+     "ci_upper": 0.490072,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9850074962518741,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "sbg_v3": {
+     "auroc": 0.437928,
+     "ci_lower": 0.361909,
+     "ci_upper": 0.510595,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9550224887556222,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "sbg_temporal": {
+     "auroc": 0.388804,
+     "ci_lower": 0.319588,
+     "ci_upper": 0.456618,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9955022488755623,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "sbg_state": {
+     "auroc": 0.508505,
+     "ci_lower": 0.433232,
+     "ci_upper": 0.580679,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.21889055472263869,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "exception_fraction": {
+     "auroc": 0.5,
+     "ci_lower": 0.5,
+     "ci_upper": 0.5,
+     "ci_n_effective": 2000,
+     "p_permutation": 1.0,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "exception_component_v3": {
+     "auroc": 0.473217,
+     "ci_lower": 0.444954,
+     "ci_upper": 0.50123,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9430284857571214,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "exception_type_jaccard": {
+     "auroc": 0.473217,
+     "ci_lower": 0.444954,
+     "ci_upper": 0.50123,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9430284857571214,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "call_count": {
+     "auroc": 0.470043,
+     "ci_lower": 0.409951,
+     "ci_upper": 0.526429,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.8525737131434283,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "n_functions": {
+     "auroc": 0.436151,
+     "ci_lower": 0.365785,
+     "ci_upper": 0.505601,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9945027486256871,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "coverage_size": {
+     "auroc": 0.435771,
+     "ci_lower": 0.363798,
+     "ci_upper": 0.504175,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9775112443778111,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "combined_shortcut": {
+     "auroc": 0.444275,
+     "ci_lower": 0.379286,
+     "ci_upper": 0.504429,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9620189905047476,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "static_token": {
+     "auroc": 0.439325,
+     "ci_lower": 0.32084,
+     "ci_upper": 0.56297,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9255372313843079,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "static_ast": {
+     "auroc": 0.633156,
+     "ci_lower": 0.557588,
+     "ci_upper": 0.709181,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.015492253873063468,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    }
+   }
+  },
+  "VALID": {
+   "n_pairs": 140,
+   "n_pos": 39,
+   "n_neg": 101,
+   "n_bugs": 37,
+   "n_bugs_with_positive": 37,
+   "predictors": {
+    "sbg_v5": {
+     "auroc": 0.405687,
+     "ci_lower": 0.322268,
+     "ci_upper": 0.490072,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9850074962518741,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "sbg_v3": {
+     "auroc": 0.437928,
+     "ci_lower": 0.361909,
+     "ci_upper": 0.510595,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9550224887556222,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "sbg_temporal": {
+     "auroc": 0.388804,
+     "ci_lower": 0.319588,
+     "ci_upper": 0.456618,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9955022488755623,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "sbg_state": {
+     "auroc": 0.508505,
+     "ci_lower": 0.433232,
+     "ci_upper": 0.580679,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.21889055472263869,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "exception_fraction": {
+     "auroc": 0.5,
+     "ci_lower": 0.5,
+     "ci_upper": 0.5,
+     "ci_n_effective": 2000,
+     "p_permutation": 1.0,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "exception_component_v3": {
+     "auroc": 0.473217,
+     "ci_lower": 0.444954,
+     "ci_upper": 0.50123,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9430284857571214,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "exception_type_jaccard": {
+     "auroc": 0.473217,
+     "ci_lower": 0.444954,
+     "ci_upper": 0.50123,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9430284857571214,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "call_count": {
+     "auroc": 0.470043,
+     "ci_lower": 0.409951,
+     "ci_upper": 0.526429,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.8525737131434283,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "n_functions": {
+     "auroc": 0.436151,
+     "ci_lower": 0.365785,
+     "ci_upper": 0.505601,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9945027486256871,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "coverage_size": {
+     "auroc": 0.435771,
+     "ci_lower": 0.363798,
+     "ci_upper": 0.504175,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9775112443778111,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "combined_shortcut": {
+     "auroc": 0.444275,
+     "ci_lower": 0.379286,
+     "ci_upper": 0.504429,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9620189905047476,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "static_token": {
+     "auroc": 0.439325,
+     "ci_lower": 0.32084,
+     "ci_upper": 0.56297,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.9255372313843079,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    },
+    "static_ast": {
+     "auroc": 0.633156,
+     "ci_lower": 0.557588,
+     "ci_upper": 0.709181,
+     "ci_n_effective": 2000,
+     "p_permutation": 0.015492253873063468,
+     "n_pairs": 140,
+     "n_pos": 39,
+     "n_neg": 101,
+     "n_clusters": 37
+    }
+   }
+  }
+ },
+ "primary_set": "VALID",
+ "holm_comparisons_sbg_v5_vs": {
+  "raw": {
+   "static_ast": {
+    "delta": -0.227469,
+    "ci_lower": -0.327041,
+    "ci_upper": -0.126368,
+    "p_two_sided": 0.001,
+    "n_effective": 2000
+   },
+   "static_token": {
+    "delta": -0.033638,
+    "ci_lower": -0.149911,
+    "ci_upper": 0.084982,
+    "p_two_sided": 0.589705,
+    "n_effective": 2000
+   },
+   "exception_fraction": {
+    "delta": -0.094313,
+    "ci_lower": -0.177732,
+    "ci_upper": -0.009928,
+    "p_two_sided": 0.026987,
+    "n_effective": 2000
+   },
+   "call_count": {
+    "delta": -0.064356,
+    "ci_lower": -0.128231,
+    "ci_upper": -0.002252,
+    "p_two_sided": 0.042979,
+    "n_effective": 2000
+   },
+   "sbg_v3": {
+    "delta": -0.032242,
+    "ci_lower": -0.076875,
+    "ci_upper": 0.015932,
+    "p_two_sided": 0.172914,
+    "n_effective": 2000
+   }
+  },
+  "holm": {
+   "static_ast": {
+    "p_raw": 0.001,
+    "p_adjusted": 0.005,
+    "reject_at_alpha": true,
+    "rank": 1,
+    "n_comparisons": 5
+   },
+   "exception_fraction": {
+    "p_raw": 0.026987,
+    "p_adjusted": 0.107948,
+    "reject_at_alpha": false,
+    "rank": 2,
+    "n_comparisons": 5
+   },
+   "call_count": {
+    "p_raw": 0.042979,
+    "p_adjusted": 0.128937,
+    "reject_at_alpha": false,
+    "rank": 3,
+    "n_comparisons": 5
+   },
+   "sbg_v3": {
+    "p_raw": 0.172914,
+    "p_adjusted": 0.345828,
+    "reject_at_alpha": false,
+    "rank": 4,
+    "n_comparisons": 5
+   },
+   "static_token": {
+    "p_raw": 0.589705,
+    "p_adjusted": 0.589705,
+    "reject_at_alpha": false,
+    "rank": 5,
+    "n_comparisons": 5
+   }
+  }
+ },
+ "label_shuffle_noise_floor": {
+  "mean": 0.490194,
+  "std": 0.040157,
+  "p95": 0.555217,
+  "n_shuffles": 500
+ },
+ "threshold": {
+  "computed": true,
+  "tau_star": 0.072905,
+  "tau_source": "artifacts/final/THRESHOLD_FROZEN.json",
+  "tau_record_sha256": "9dcd74eb97088bdc8fc31df9a33f082893a88afdd6bc8c50a65b95812102173b",
+  "rule": "detected iff sbg_v5 > \u03c4*",
+  "detection_rate": {
+   "k": 12,
+   "n": 39,
+   "rate": 0.307692,
+   "wilson_95": [
+    0.185659,
+    0.464213
+   ]
+  },
+  "false_positive_rate": {
+   "k": 34,
+   "n": 101,
+   "rate": 0.336634,
+   "wilson_95": [
+    0.251966,
+    0.433273
+   ]
+  }
+ },
+ "output_reading_reference": {
+  "label": "OUTPUT-READING REFERENCE \u2014 reads return values; not SBG, not output-free",
+  "rule": "flags a pair iff the function entry's return values or exception types differ on the protocol's inputs",
+  "positives_flagged": {
+   "k": 4,
+   "n": 39
+  },
+  "negatives_flagged": {
+   "k": 15,
+   "n": 101
+  },
+  "note": "computed only where the protocol selects a function entry"
+ }
+}

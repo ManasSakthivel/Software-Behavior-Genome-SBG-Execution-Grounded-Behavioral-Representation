@@ -1,0 +1,136 @@
+{
+  "experiment": "SBG_BUGSINPY_REAL_EVALUATION",
+  "timestamp": "2026-08-30T13:26:05Z",
+  "protocol_hash": "fac6bd8e0cffc91b52ed88577637d199ccfda8cfe9200edc487094f7e8e5088b",
+  "dataset": "BugsInPy real GitHub extraction",
+  "tau_star": 0.08,
+  "seed": 42,
+  "zero_shot": true,
+  "phase": "Phase 2 - Extended Coverage",
+  "n_evaluated": 2,
+  "n_skipped": 3,
+  "detected_eep": 1,
+  "detected_baseline": 1,
+  "detected_oracle": 2,
+  "det_rate_eep": 0.5,
+  "det_rate_baseline": 0.5,
+  "full_exclusion_taxonomy": {
+    "total_bugs": 502,
+    "taxonomy": {
+      "E01_NO_PATCH": {
+        "n": 1,
+        "examples": [
+          "pandas/~$Bugs info.xlsx"
+        ]
+      },
+      "E03_NO_SOURCE_CHANGE": {
+        "n": 1,
+        "examples": [
+          "keras/12"
+        ]
+      },
+      "E04_MULTI_FILE_PATCH": {
+        "n": 90,
+        "examples": [
+          "PySnooper/1",
+          "ansible/5",
+          "ansible/13"
+        ]
+      },
+      "E06_NO_FUNCTION_CONTEXT": {
+        "n": 254,
+        "examples": [
+          "ansible/2",
+          "ansible/3",
+          "ansible/8"
+        ]
+      },
+      "E08_NO_COMMIT_IDS": {
+        "n": 23,
+        "examples": [
+          "youtube-dl/1",
+          "youtube-dl/3",
+          "youtube-dl/5"
+        ]
+      },
+      "E10_FRAMEWORK_OBJECT_DEPS": {
+        "n": 55,
+        "examples": [
+          "PySnooper/2",
+          "ansible/6",
+          "ansible/9"
+        ]
+      },
+      "POTENTIALLY_EVALUABLE": {
+        "n": 78,
+        "examples": [
+          "PySnooper/3",
+          "ansible/1",
+          "ansible/4"
+        ]
+      }
+    }
+  },
+  "skipped": [
+    {
+      "id": "scrapy-15",
+      "reason": "FUNCTIONS_IDENTICAL_TRACE_PRESERVING"
+    },
+    {
+      "id": "scrapy-25",
+      "reason": "FN_NOT_FOUND__urlencode"
+    },
+    {
+      "id": "luigi-6",
+      "reason": "FETCH_FAIL_BUGGY"
+    }
+  ],
+  "per_pair_results": [
+    {
+      "id": "tornado-9",
+      "project": "tornado",
+      "bug_id": "9",
+      "bug_type": "missing_case",
+      "label": 1,
+      "source": "bugsinpy_real_github",
+      "provenance": "GitHub: tornadoweb/tornado @ c9d2a3fa5739",
+      "n_inputs": 6,
+      "eep_full": 0.365784,
+      "detected_eep": true,
+      "detected_baseline": true,
+      "detected_oracle": true,
+      "output_divergence": 0.1667,
+      "d_trace_length": 0.163725,
+      "d_line_seq": 1.0,
+      "d_sequential_drift": 0.0,
+      "baseline_sbg": 0.391077,
+      "exc_frac_only": 0.166667,
+      "d_exc_frac": 0.166667,
+      "d_exc_jac": 1.0
+    },
+    {
+      "id": "tqdm-9",
+      "project": "tqdm",
+      "bug_id": "9",
+      "bug_type": "wrong_condition",
+      "label": 1,
+      "source": "bugsinpy_real_github",
+      "provenance": "GitHub: tqdm/tqdm @ 9da1d5d116ae",
+      "n_inputs": 10,
+      "eep_full": 0.056538,
+      "detected_eep": false,
+      "detected_baseline": false,
+      "detected_oracle": true,
+      "output_divergence": 0.3,
+      "d_trace_length": 0.038462,
+      "d_line_seq": 0.3,
+      "d_sequential_drift": 0.0,
+      "baseline_sbg": 0.007135,
+      "exc_frac_only": 0.0,
+      "d_exc_frac": 0.0,
+      "d_exc_jac": 0.0
+    }
+  ],
+  "elapsed_s": 4.07,
+  "methodology": "Real function pairs fetched from GitHub at exact buggy/fixed commits specified in BugsInPy metadata. AST extraction of changed function. Test inputs derived from function signatures and test file analysis. Functions executed with lightweight namespace isolation (exec + namespace dict). No checkout, no pip install required."
+}

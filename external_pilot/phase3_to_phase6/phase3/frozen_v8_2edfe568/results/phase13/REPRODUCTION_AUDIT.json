@@ -1,0 +1,165 @@
+{
+  "audit": "PHASE13_REPRODUCTION_AUDIT",
+  "repo": "/Users/manassakthivel/Desktop/SF Projects/SBG",
+  "summary": {
+    "total_checks": 16,
+    "verified": 15,
+    "discrepancy": 1
+  },
+  "results": [
+    {
+      "claim_id": 1,
+      "reported_value": 744,
+      "computed_value": 744,
+      "delta": 0,
+      "status": "VERIFIED",
+      "method": "count non-empty lines in pairs_test.jsonl",
+      "source": "benchmark/datasets/pairs_test.jsonl"
+    },
+    {
+      "claim_id": 2,
+      "reported_value": 0.551246,
+      "computed_value": 0.551246,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "read test_auroc field",
+      "source": "artifacts/v5/B07/results_test.json"
+    },
+    {
+      "claim_id": 3,
+      "reported_value": 0.539906,
+      "computed_value": 0.539906,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "read key_results.sbg_v3_auroc",
+      "source": "artifacts/v5/FINAL_EVIDENCE_MANIFEST_V5.json"
+    },
+    {
+      "claim_id": 4,
+      "reported_value": 0.592947,
+      "computed_value": 0.592947,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "read summary.best_shortcut_auroc",
+      "source": "artifacts/v5/INCREMENTAL_INFO_RESULTS.json"
+    },
+    {
+      "claim_id": "5a",
+      "reported_value": 0.2,
+      "computed_value": 0.2,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "read detection_rates.sbg_distance_output_free",
+      "source": "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json"
+    },
+    {
+      "claim_id": "5b",
+      "reported_value": 0.2,
+      "computed_value": 0.2,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "manual count: 3/15 detected_by_sbg==True",
+      "source": "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json",
+      "note": "manual_count=3 n_pairs=15"
+    },
+    {
+      "claim_id": "6a",
+      "reported_value": 0.8,
+      "computed_value": 0.8,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "read auroc.sbg_output_free",
+      "source": "artifacts/v5/REAL_WORLD_PILOT_RESULTS.json"
+    },
+    {
+      "claim_id": "6b",
+      "reported_value": 12,
+      "computed_value": 12,
+      "delta": 0,
+      "status": "VERIFIED",
+      "method": "read n_pairs",
+      "source": "artifacts/v5/REAL_WORLD_PILOT_RESULTS.json"
+    },
+    {
+      "claim_id": 7,
+      "reported_value": 7,
+      "computed_value": 7,
+      "delta": 0,
+      "status": "VERIFIED",
+      "method": "read summary.pass",
+      "source": "results/phase1/OUTPUT_LEAKAGE_GATE.json"
+    },
+    {
+      "claim_id": "8a",
+      "reported_value": 40,
+      "computed_value": 40,
+      "delta": 0,
+      "status": "VERIFIED",
+      "method": "read n_total",
+      "source": "results/phase45/SCALED_REGRESSION_RESULTS.json"
+    },
+    {
+      "claim_id": "8b",
+      "reported_value": 0.13157894736842105,
+      "computed_value": 0.1316,
+      "delta": 2.1052631578949432e-05,
+      "status": "VERIFIED",
+      "method": "read sbg_detection_rate",
+      "source": "results/phase45/SCALED_REGRESSION_RESULTS.json",
+      "note": "5/38 = 0.1316"
+    },
+    {
+      "claim_id": "8c",
+      "reported_value": 0.13157894736842105,
+      "computed_value": 0.13157894736842105,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "manual count: 5/38 where label==1 AND detected_sbg==True",
+      "source": "results/phase45/SCALED_REGRESSION_RESULTS.json",
+      "note": "manual_detected=5 n_positive=38"
+    },
+    {
+      "claim_id": 9,
+      "reported_value": 0.488,
+      "computed_value": 0.488,
+      "delta": 0.0,
+      "status": "VERIFIED",
+      "method": "read split_consistency.dev.auroc",
+      "source": "artifacts/v5/FINAL_EXPERIMENTAL_MATRIX.json"
+    },
+    {
+      "claim_id": 10,
+      "reported_value": 516,
+      "computed_value": 516,
+      "delta": 0,
+      "status": "VERIFIED",
+      "method": "python3 -m pytest sbg/ -q --tb=no; parse N passed",
+      "source": "sbg/ pytest suite",
+      "note": "pytest_tail='........................................................................ [ 69%]\\n........................................................................ [ 83%]\\n........................................................................ [ 97%]\\n............                                                             [100%]\\n516 passed in 23.82s'"
+    },
+    {
+      "claim_id": 11,
+      "reported_value": 6,
+      "computed_value": 6,
+      "delta": 0,
+      "status": "VERIFIED",
+      "method": "python3 experiments/v5/reproduction_check.py; parse N PASS",
+      "source": "experiments/v5/reproduction_check.py",
+      "note": "script_tail='  Running: pytest_available\u2026 PASS\\n  Running: bootstrap_seed\u2026 PASS\\n\\n[V5 REPRODUCTION CHECK] Overall: PASS  (6 PASS, 0 FAIL, 0 ERROR)  [0.1s]\\n[V5 REPRODUCTION CHECK] Report: /Users/manassakthivel/Desktop/SF Projects/SBG/artifacts/v5/REPRODUCIBILITY_AUDIT_V5.json'"
+    },
+    {
+      "claim_id": 12,
+      "reported_value": "discrepancy documented",
+      "computed_value": {
+        "REPRESENTATION_ABLATION_R1_auroc": 0.567005,
+        "INCREMENTAL_INFO_best_shortcut_auroc": 0.592947,
+        "INCREMENTAL_INFO_exception_fraction_standalone": 0.567005
+      },
+      "delta": 0.02594200000000002,
+      "status": "DISCREPANCY",
+      "method": "REPRESENTATION_ABLATION.json R1 auroc vs INCREMENTAL_INFO_RESULTS.json summary.best_shortcut_auroc",
+      "source": "results/phase2/REPRESENTATION_ABLATION.json + artifacts/v5/INCREMENTAL_INFO_RESULTS.json",
+      "note": "ABLATION R1=0.567005 (exception_fraction standalone); INCR best_shortcut_auroc=0.592947 (claimed in Claim 4 as best). The standalone_auroc for exception_fraction in INCREMENTAL_INFO is 0.567005 \u2014 same as ABLATION R1. best_shortcut_auroc (0.592947) appears to be a DIFFERENT metric (possibly combined_shortcut or best across a transformed set). delta between the two values = 0.025942."
+    }
+  ]
+}

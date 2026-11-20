@@ -1,0 +1,72 @@
+{
+  "gate": "PHASE_2",
+  "status": "PASS",
+  "timestamp": "2026-08-20T03:34:01.866215+00:00",
+  "genome_dimensions_implemented": 8,
+  "dimensions": {
+    "CONTROL": {
+      "extractor": "sbg/extraction/static/extractor.py",
+      "tests": 84,
+      "status": "PASS"
+    },
+    "DATA": {
+      "extractor": "sbg/extraction/static/data_genome.py",
+      "tests": 53,
+      "status": "PASS"
+    },
+    "STATE": {
+      "extractor": "sbg/extraction/dynamic/state_genome.py",
+      "tests": 36,
+      "status": "PASS"
+    },
+    "RESOURCE": {
+      "extractor": "sbg/extraction/dynamic/resource_genome.py",
+      "tests": 15,
+      "status": "PASS"
+    },
+    "TEMPORAL": {
+      "extractor": "sbg/extraction/dynamic/temporal_genome.py",
+      "tests": 15,
+      "status": "PASS"
+    },
+    "ERROR": {
+      "extractor": "sbg/extraction/static/error_genome.py",
+      "tests": 20,
+      "status": "PASS"
+    },
+    "INTERACTION": {
+      "extractor": "sbg/extraction/dynamic/interaction_genome.py",
+      "tests": 47,
+      "status": "PASS"
+    },
+    "EXECUTION": {
+      "extractor": "sbg/extraction/dynamic/tracer.py",
+      "tests": 52,
+      "status": "PASS"
+    }
+  },
+  "canonicalization_implemented": true,
+  "behavioral_distance_implemented": true,
+  "serialization_implemented": true,
+  "cli_implemented": true,
+  "dynamic_tracer_implemented": true,
+  "total_sbg_tests": 653,
+  "sbg_tests_pass": 653,
+  "sbg_tests_fail": 0,
+  "repeat_runs": 3,
+  "deterministic": true,
+  "distance_self_zero": true,
+  "distance_symmetric": true,
+  "distance_in_unit_interval": true,
+  "canonicalize_idempotent": true,
+  "sp_transform_small_distance": true,
+  "blocking_issues": [],
+  "phase_3_prerequisites": [
+    "Baseline implementations must use identical benchmark splits from split_assignment.json",
+    "All baselines must receive the same pair definitions",
+    "No baseline-specific test-set tuning",
+    "Token/TF-IDF, AST, CFG baselines must be implemented",
+    "Confidence intervals required for all metrics"
+  ],
+  "agent": "2-INTEGRATION"
+}

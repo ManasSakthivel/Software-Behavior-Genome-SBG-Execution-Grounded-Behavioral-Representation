@@ -1,0 +1,144 @@
+{
+  "registry": "ARTIFACT_PROVENANCE",
+  "statuses": {
+    "MEASURED": "every number came from executing this repository's pipeline",
+    "PARTIALLY_SYNTHETIC": "some numbers are reconstructed from aggregates",
+    "SUPERSEDED": "a later artifact corrects it; kept for the record",
+    "NON_REPRODUCING": "re-running its own generator does not reproduce it",
+    "DERIVED": "contains no primary measurement, only copies"
+  },
+  "rule": "A headline number may only cite an artifact whose status is MEASURED. experiments/final/consistency_check.py enforces this.",
+  "counts": {
+    "MEASURED": 9,
+    "SUPERSEDED": 1,
+    "PARTIALLY_SYNTHETIC": 1,
+    "NON_REPRODUCING": 1,
+    "DERIVED": 1
+  },
+  "artifacts": {
+    "artifacts/final/BENCHMARK_VALIDITY_AUDIT.json": {
+      "status": "MEASURED",
+      "evidence": "benchmark/scripts/observability_audit.py; static, deterministic",
+      "authoritative_for": [
+        "benchmark validity counts"
+      ],
+      "exists": true,
+      "sha256": "6f53abba6fdcc6b2a42e1031abbe97d1c94fdfd552ac63660bb36126b6387a8c",
+      "bytes": 2145047
+    },
+    "artifacts/final/HARD_NEGATIVE_V5_RESULTS.json": {
+      "status": "MEASURED",
+      "evidence": "experiments/final/hard_negative_evaluation.py",
+      "authoritative_for": [
+        "hard-negative detection"
+      ],
+      "exists": true,
+      "sha256": "e4f7efc11d2e6bf182569bae8373081eb37a3b2711e1bf5274f5810338af2571",
+      "bytes": 28173
+    },
+    "artifacts/final/MAIN_EVALUATION_test_output_free_v6.json": {
+      "status": "MEASURED",
+      "evidence": "same pipeline under PROTOCOL output_free_v6",
+      "authoritative_for": [
+        "main benchmark AUROC under the output-free protocol"
+      ],
+      "exists": true,
+      "sha256": "a6ef375b886c764a331a7b256f8385e8cb7d5fbefa3edbd4802d988977acbc37",
+      "bytes": 24625
+    },
+    "artifacts/final/MAIN_EVALUATION_test_published.json": {
+      "status": "MEASURED",
+      "evidence": "produced by experiments/final/run_main_evaluation.py + analyse_results.py in this repo; per-pair records committed alongside it as pairs_test_published.jsonl",
+      "authoritative_for": [
+        "main benchmark AUROC under the published protocol"
+      ],
+      "exists": true,
+      "sha256": "91f7058863a0df3566edac4a3f8d714b897feec39aec73bf9f9f59d6a8155524",
+      "bytes": 24618
+    },
+    "artifacts/final/OUTPUT_ORACLE_LEAK_AUDIT.json": {
+      "status": "MEASURED",
+      "evidence": "experiments/final/output_oracle_leak_audit.py; static, deterministic",
+      "authoritative_for": [
+        "output-free constraint audit"
+      ],
+      "exists": true,
+      "sha256": "e51b3fe38e1d174a29a89d6b77682018d95e233219f4f4d65ddb27c91e1c8816",
+      "bytes": 34097
+    },
+    "artifacts/final/REGRESSION_V5_RESULTS.json": {
+      "status": "MEASURED",
+      "evidence": "experiments/final/regression_evaluation.py",
+      "authoritative_for": [
+        "regression-corpus detection"
+      ],
+      "exists": true,
+      "sha256": "7561b35cedada19a5baa29140511925bae780cf3369922050d46abac84377d12",
+      "bytes": 16643
+    },
+    "artifacts/v4/FEATURE_ABLATION.json": {
+      "status": "MEASURED",
+      "evidence": "643 evaluated pairs with bootstrap CIs; its only_exception row (0.592947) is the V3 exception COMPONENT (0.5*Jaccard of exception types + 0.5*|delta rate|) with the other seven weights zeroed -- not the single exception_fraction feature",
+      "authoritative_for": [
+        "V4 feature ablation"
+      ],
+      "caveat": "the README quoted 0.593 as '`exception_fraction` alone -- a single feature counting how often the program throws an exception'. That describes artifacts/v4/SHORTCUT_CONTROLS.json's 0.567, a different predictor. The two values were never in conflict; the label was.",
+      "exists": true,
+      "sha256": "e59f7db796aa98d8fa8bec3f9c578d2e606ac40846da21cb646db152d499838e",
+      "bytes": 5005
+    },
+    "artifacts/v4/SHORTCUT_CONTROLS.json": {
+      "status": "MEASURED",
+      "evidence": "643 evaluated pairs, 101 recorded missing; exc_frac = 0.567 [0.522, 0.616] is the pure exception-fraction shortcut",
+      "authoritative_for": [
+        "exception_fraction shortcut AUROC (published protocol)"
+      ],
+      "exists": true,
+      "sha256": "7ec26b647d6e98dc66f49e83b7f3d561c3dc51294571b052453d02f26e72134e",
+      "bytes": 2133
+    },
+    "artifacts/v5/B07/results_test.json": {
+      "status": "SUPERSEDED",
+      "evidence": "AUROC 0.551246 over 643 pairs is reproduced here, but its methodology block claims 'bootstrap: cluster_by_base_program' while baselines/v5/b07_dynamic_v5.py calls bootstrap_auroc_ci without pair_ids, which takes the pair-level branch. The published interval is therefore narrower than a clustered one.",
+      "superseded_by": "artifacts/final/MAIN_EVALUATION_test_published.json",
+      "exists": true,
+      "sha256": "e55ca5314c865f511a61075b538c370f00e5a492cdf9605c517ab4c737722cd4",
+      "bytes": 1101
+    },
+    "artifacts/v5/INCREMENTAL_INFO_RESULTS.json": {
+      "status": "PARTIALLY_SYNTHETIC",
+      "evidence": "its own reconstruction_note: only sbg_static has real per-pair scores; the other nine features are reconstructed from aggregate AUROCs by _reconstruct_scores_from_auroc(). The committed copy carries scores_are_real=true, which the generator no longer emits.",
+      "must_not_be_cited_as": "a measured standalone AUROC for any feature other than sbg_static",
+      "superseded_by": "artifacts/final/MAIN_EVALUATION_test_published.json",
+      "exists": true,
+      "sha256": "ad4264449c6eb1255459fd47158c57200f0f23698c10499a951acb20c3ec456d",
+      "bytes": 6213
+    },
+    "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json": {
+      "status": "NON_REPRODUCING",
+      "evidence": "re-running experiments/v5/regression_evaluator.py on this machine gives volume_ratio_only 11/15 (artifact: 7) and 4 silent bugs (artifact: 8). Its volume feature is a wall-clock ratio, so the silent-bug partition it derives is timing dependent. Its SBG column is a three-statistic proxy, not the V5 representation.",
+      "superseded_by": "artifacts/final/REGRESSION_V5_RESULTS.json",
+      "exists": true,
+      "sha256": "e986d25fe6f8858c141763d3dbe97a98572509e7aef495d4e4e0797597bcd93a",
+      "bytes": 14054
+    },
+    "benchmark/benchmark_manifest.json": {
+      "status": "MEASURED",
+      "evidence": "benchmark/scripts/build_manifest.py, generated from the files",
+      "authoritative_for": [
+        "every program and pair count"
+      ],
+      "exists": true,
+      "sha256": "a224a678e4816b986c014148b27b4763cf14cfd7b0c4861af824665232c18f91",
+      "bytes": 30573
+    },
+    "results/phase2/REPRESENTATION_ABLATION.json": {
+      "status": "DERIVED",
+      "evidence": "every row names artifacts/v5/INCREMENTAL_INFO_RESULTS.json as its source, so it inherits that file's synthetic reconstruction",
+      "superseded_by": "artifacts/final/MAIN_EVALUATION_test_published.json",
+      "exists": true,
+      "sha256": "a9d4cdb95d47f3785298dcc86b48aa4e19e872d622ff3e7b163893fdf3c5baf3",
+      "bytes": 10710
+    }
+  }
+}

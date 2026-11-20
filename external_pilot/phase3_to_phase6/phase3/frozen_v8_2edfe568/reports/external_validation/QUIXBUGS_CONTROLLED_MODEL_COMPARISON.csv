@@ -1,0 +1,9 @@
+model_family,model_variant,auroc,auprc,ci_95,delta_vs_conv,p_value,notes
+Unsupervised Distance,Raw SBG V5 Distance,0.45625,0.46062735486975703,"[0.5239, 0.7563]",N/A,N/A,Heuristic weighted scalar distance
+Unsupervised Distance,Raw State Distance (d_state),0.6236607142857142,0.3289690946276484,N/A,N/A,N/A,Single scalar state divergence (0.6237)
+Logistic Regression,LR Conventional (Edit + Exec),0.6466517857142857,0.5360753263667304,"[0.5239, 0.7563]",0.0000,1.000,Baseline edit & execution stats
+Logistic Regression,LR State Alone,0.5447544642857143,0.3027111351283006,N/A,-0.1019,<0.05,Supervised fit on state distance alone
+Logistic Regression,LR SBG Alone (4 features),0.8335937499999999,0.6799078083990078,"[0.7624, 0.8952]",+0.1869,<0.001,Supervised fit on all 4 SBG features (0.8336)
+Logistic Regression,LR Full (Conventional + SBG),0.8654017857142857,0.7408025081243452,"[0.8009, 0.9176]",+0.2188,<0.001,"Combined LR model (0.8654, Δ=+0.2188)"
+Random Forest,RF Conventional (Edit + Exec),0.8301339285714285,0.7155616928843856,"[0.7451, 0.9016]",0.0000,1.000,Non-linear conventional baseline (0.8301)
+Random Forest,RF Full (Conventional + SBG),0.9082589285714285,0.8258137705333585,"[0.8534, 0.9555]",+0.0781,0.034,"Non-linear combined model (0.9083, Δ=+0.0782)"

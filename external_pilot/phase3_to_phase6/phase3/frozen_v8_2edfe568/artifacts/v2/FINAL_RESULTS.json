@@ -1,0 +1,247 @@
+{
+  "version": "v2",
+  "generated_at": "2025-07-07T00:00:00Z",
+  "frozen": true,
+  "test_pairs": 744,
+  "dev_pairs": 615,
+  "n_programs": 13,
+  "primary_results": {
+    "V1_STATIC_SBG": {
+      "auroc": 0.423664,
+      "auprc": 0.421863,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.401193,
+      "ci_auroc_upper": 0.482963,
+      "inversion_delta": 0.0335,
+      "source": "artifacts/phase3/B08/results_test.json"
+    },
+    "B01_TOKEN": {
+      "auroc": 0.404263,
+      "auprc": 0.415352,
+      "f1": 0.58427,
+      "ci_auroc_lower": 0.368512,
+      "ci_auroc_upper": 0.445702,
+      "source": "artifacts/phase3/B01/results_test.json"
+    },
+    "B02_AST": {
+      "auroc": 0.552845,
+      "auprc": 0.47793,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.509315,
+      "ci_auroc_upper": 0.592881,
+      "source": "artifacts/phase3/B02/results_test.json"
+    },
+    "B03_CFG": {
+      "auroc": 0.461315,
+      "auprc": 0.445228,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.425356,
+      "ci_auroc_upper": 0.507328,
+      "source": "artifacts/phase3/B03/results_test.json"
+    },
+    "B04_DEP": {
+      "auroc": 0.399305,
+      "auprc": 0.405839,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.368233,
+      "ci_auroc_upper": 0.447124,
+      "source": "artifacts/phase3/B04/results_test.json"
+    },
+    "B05_EMBED": {
+      "auroc": 0.369395,
+      "auprc": 0.401414,
+      "f1": 0.546032,
+      "ci_auroc_lower": 0.329148,
+      "ci_auroc_upper": 0.41064,
+      "source": "artifacts/phase3/B05/results_test.json"
+    },
+    "B06_DYNAMIC_V1": {
+      "auroc": 0.504554,
+      "auprc": 0.481404,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.487899,
+      "ci_auroc_upper": 0.567415,
+      "source": "artifacts/phase3/B06/results_test.json"
+    },
+    "B06_FAIR_V2": {
+      "auroc": 0.504966,
+      "auprc": 0.481751,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.489001,
+      "ci_auroc_upper": 0.568129,
+      "inversion_delta": -0.024768,
+      "n_canonical_inputs": 8,
+      "source": "artifacts/v2/B06_FAIR/results_test.json",
+      "note": "SAFEGUARD-5 compliant: same V2 inputs as B07, different representation"
+    },
+    "B07_DYNAMIC_V2": {
+      "auroc": 0.531023,
+      "auprc": 0.510099,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.499136,
+      "ci_auroc_upper": 0.580563,
+      "inversion_delta": -0.045265,
+      "n_canonical_inputs": 8,
+      "n_runs": 5,
+      "source": "artifacts/v2/B07/results_test.json"
+    },
+    "B08_HYBRID_V2_TOKEN_PROXY": {
+      "auroc": 0.488442,
+      "auprc": 0.491416,
+      "f1": 0.628627,
+      "ci_auroc_lower": 0.450492,
+      "ci_auroc_upper": 0.535058,
+      "inversion_delta": -0.006281,
+      "fusion_weights": {"static": 0.4, "dynamic": 0.6},
+      "static_component": "token_overlap_jaccard_PROXY",
+      "source": "artifacts/v2/B08/results_test.json",
+      "note": "H8 NOT SUPPORTED with token-overlap proxy. Replaced by B08_CORRECT."
+    },
+    "B08_HYBRID_V2_CORRECT": {
+      "auroc": 0.528096,
+      "auprc": 0.506484,
+      "f1": 0.659459,
+      "ci_auroc_lower": 0.496707,
+      "ci_auroc_upper": 0.577828,
+      "inversion_delta": -0.045032,
+      "selected_w_static": 0.0,
+      "preregistered_default_w_static": 0.4,
+      "static_component": "full_v1_behavioral_distance",
+      "h8_verdict": "NOT_SUPPORTED",
+      "note": "Grid selected w_static=0.0 on DEV — static adds no signal. AUROC < B07.",
+      "source": "artifacts/v2/B08_CORRECT/results_test.json"
+    }
+  },
+  "inversion_analysis": {
+    "v1_static_delta": 0.0335,
+    "v2_dynamic_delta": -0.045265,
+    "v2_hybrid_correct_delta": -0.045032,
+    "v2_b06_fair_delta": -0.024768,
+    "inversion_resolved_by_dynamic": true,
+    "sc3_inversion_delta_dynamic": 0.083029,
+    "sc3_inversion_resolved": false,
+    "sc11_inversion_delta_dynamic": -0.226533,
+    "sc11_inversion_resolved": true
+  },
+  "hypothesis_verdicts": {
+    "H7": {
+      "claim": "AUROC(dynamic) > AUROC(static_SBG=0.4237)",
+      "verdict": "SUPPORTED",
+      "auroc": 0.531023,
+      "ci": [0.499136, 0.580563],
+      "delta": 0.107359,
+      "two_sample_z": 3.5185,
+      "two_sample_p": 0.000217,
+      "ci_criterion_met": true,
+      "test": "Hanley-McNeil two-sample z-test (V1 SE approximated from stored CI)",
+      "source": "artifacts/v2/H7_CORRECTED_RESULTS.json",
+      "phase3a_corrected": true
+    },
+    "H8": {
+      "claim": "AUROC(hybrid_full_v1_static) > AUROC(dynamic_only)",
+      "verdict": "NOT_SUPPORTED",
+      "hybrid_auroc_correct": 0.528096,
+      "dynamic_auroc": 0.531023,
+      "delta": -0.002927,
+      "grid_selected_w_static": 0.0,
+      "grid_dev_auroc_at_w0": 0.4586,
+      "paired_bootstrap_ci_on_delta": [0.0, 0.0],
+      "note": "Grid selected w_static=0.0: B08_CORRECT is identical to B07. Paired bootstrap delta CI=[0.0, 0.0] — zero static signal.",
+      "source": "artifacts/v2/H8_PAIRED_RESULTS.json",
+      "phase3a_corrected": true
+    },
+    "H9": {
+      "claim": "inversion_delta_dynamic < inversion_delta_static=0.0335",
+      "verdict": "SUPPORTED",
+      "v1_delta": 0.0335,
+      "v2_dynamic_delta": -0.045265,
+      "reduction": 0.079,
+      "permutation_p_value": 0.0,
+      "permutation_n": 1000,
+      "permutation_seed": 42,
+      "note": "Inversion fully resolved overall (permutation p<0.001). SC-3 NOT resolved (delta=+0.083); SC-11 resolved (delta=-0.227). Verdict is SUPPORTED at Holm-Bonferroni corrected alpha.",
+      "sc3_ci_corrected": true,
+      "sc3_old_ci_was_invalid": "point=0.544 > upper=0.491 — impossible; stratified bootstrap fixes this",
+      "sc3_new_ci": [0.484, 0.608],
+      "source": "artifacts/v2/H9_CORRECTED_RESULTS.json",
+      "phase3a_corrected": true
+    },
+    "H10": {
+      "claim": "AUROC spread across SP types < 0.10",
+      "verdict": "NOT_SUPPORTED",
+      "reason": "NOT_SUPPORTED_FRAGILE: spread=0.311 for B07 (criterion=0.10). All three methods show fragile performance across SP types.",
+      "b07_spread": 0.311135,
+      "b07_mean_auroc": 0.437011,
+      "b07_min_auroc": 0.240157,
+      "b07_max_auroc": 0.551292,
+      "note": "High variance across SP types indicates dynamic representations are sensitive to the structure-preserving transformation applied to the equivalent program."
+    },
+    "H11": {
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "reason": "No Java executor available. N=15 Python-only pairs gives ~25% power at alpha=0.0042.",
+      "note": "Explicitly EXPLORATORY per pre-registration. Correct verdict."
+    },
+    "H12": {
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "reason": "Benchmark contains only regression pairs (n=55, label=1). No non-regression control pairs. AUROC undefined (single class). Benchmark redesign required.",
+      "n_pairs": 55,
+      "n_regressions": 55,
+      "n_correct": 0,
+      "note": "L5: CRITICAL benchmark design flaw — not a scientific failure, a task incompleteness."
+    }
+  },
+  "leakage_audit": {
+    "status": "CLEAN_WITH_WARNINGS",
+    "leakage_found": false,
+    "warning_lv10": "conc and parse categories in TEST but absent from DEV — non-blocking (degenerate threshold)",
+    "source": "artifacts/v2/LEAKAGE_AUDIT_V2.json"
+  },
+  "noise_floor": {
+    "status": "PARTIAL",
+    "n_programs_tested": 1,
+    "n_programs_skipped": 9,
+    "stable_fields": ["coverage_size","coverage_consistency","exception_rate","call_depth_mean","call_depth_max","trace_length_mean","trace_length_std","n_unique_functions"],
+    "unstable_fields": [],
+    "note": "9/10 programs FILE_NOT_FOUND in benchmark/corpus/base_programs/. Stability measured on api_rate_limiter only. All 8 fields stable (CV=0.0 across 5 runs).",
+    "source": "artifacts/v2/NOISE_FLOOR_RESULTS.json"
+  },
+  "hard_negatives": {
+    "sc3_verdict": "NOT_SUPPORTED",
+    "sc11_verdict": "SUPPORTED_FULLY_RESOLVED",
+    "overall": "SUPPORTED_PARTIALLY",
+    "sc3_b07_auroc": 0.544363,
+    "sc11_b07_auroc": 0.789581,
+    "sc3_inversion_delta": 0.083029,
+    "sc11_inversion_delta": -0.226533,
+    "sc3_near_identical_fraction": 0.8462,
+    "sc3_ci_phase3a_corrected": [0.4839, 0.6075],
+    "sc3_ci_was_invalid_before_phase3a": "point=0.544 > upper=0.491",
+    "sc11_ci": [0.7209, 0.8446],
+    "source": "artifacts/v2/HARD_NEGATIVE_RESULTS.json",
+    "phase3a_note": "SC-3 CI corrected via stratified bootstrap. Original non-stratified CI was mathematically impossible."
+  },
+  "safeguards": {
+    "SAFEGUARD_1": "COMPLETE — H7-H12 pre-registered before any dynamic execution",
+    "SAFEGUARD_2": "COMPLETE — DynamicGenome output-free verified by test_v2_engine.py",
+    "SAFEGUARD_3": "COMPLETE — V2 inputs independent from V1",
+    "SAFEGUARD_4": "COMPLETE — SC-3 NOT_SUPPORTED (delta=+0.083), SC-11 SUPPORTED (delta=-0.227)",
+    "SAFEGUARD_5": "COMPLETE — B06-V2-FAIR: AUROC=0.505, same V2 inputs as B07",
+    "SAFEGUARD_6": "PARTIAL — n_runs=5 fixed in b07; noise_floor ran 1/10 programs (FILE_NOT_FOUND)",
+    "SAFEGUARD_7": "DECLARED — Holm-Bonferroni family_size=12; step-down stopping rule incomplete"
+  },
+  "statistical_audit": {
+    "bootstrap_ci": "PASS",
+    "stratified_bootstrap_sc3_ci": "FIXED (Phase 3A) — was mathematically impossible, now valid",
+    "auroc_computation": "PASS",
+    "holm_bonferroni_implementation": "FIXED (Phase 3A) — step-down stopping rule added",
+    "family_size_consistency": "FIXED (Phase 3A) — new reports use n=12 Holm; phase3 artifacts unchanged",
+    "f1_comparisons": "DOCUMENTED (Phase 3A) — removed from primary tables; documented as threshold degeneracy",
+    "h7_test": "FIXED (Phase 3A) — two-sample z=3.52, p=0.000217 (artifact: H7_CORRECTED_RESULTS.json)",
+    "h9_permutation_test": "FIXED (Phase 3A) — permutation p=0.000, SUPPORTED at corrected alpha (artifact: H9_CORRECTED_RESULTS.json)",
+    "h8_paired_bootstrap": "FIXED (Phase 3A) — delta=0.0, CI=[0.0, 0.0]; w_static=0.0 means B08=B07 (artifact: H8_PAIRED_RESULTS.json)",
+    "c4_claim_status": "FIXED (Phase 3A) — corrected from SUPPORTED to DIRECTIONALLY_SUPPORTED (CI overlap)",
+    "effect_sizes": "NOT_COMPUTED (Cohen's h, Glass's delta — deferred to Phase 3B)",
+    "phase3a_integrity": "COMPLETE — 7 bugs fixed, 497 tests passing",
+    "source": "artifacts/v2/STATISTICAL_INTEGRITY.json"
+  }
+}

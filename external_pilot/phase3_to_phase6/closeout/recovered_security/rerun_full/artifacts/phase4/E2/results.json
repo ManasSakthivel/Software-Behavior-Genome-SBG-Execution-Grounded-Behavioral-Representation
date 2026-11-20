@@ -1,0 +1,673 @@
+{
+  "experiment": "E2",
+  "timestamp": "2026-08-20T06:14:28Z",
+  "hypothesis_addressed": [
+    "H1",
+    "H2"
+  ],
+  "n_changed_pairs": 366,
+  "n_equiv_pairs": 378,
+  "n_mutation_types": 13,
+  "mutation_types": [
+    "SC-1",
+    "SC-10",
+    "SC-11",
+    "SC-12",
+    "SC-13",
+    "SC-2",
+    "SC-3",
+    "SC-4",
+    "SC-5",
+    "SC-6",
+    "SC-7",
+    "SC-8",
+    "SC-9"
+  ],
+  "per_mutation_stats": {
+    "SC-1": {
+      "SBG_static": {
+        "n": 33,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 33,
+        "mean": 0.9989,
+        "std": 0.0027,
+        "ci_lo": 0.9979,
+        "ci_hi": 0.9997,
+        "min": 0.99,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 33,
+        "mean": 0.9784,
+        "std": 0.0235,
+        "ci_lo": 0.97,
+        "ci_hi": 0.986,
+        "min": 0.9134,
+        "max": 0.9994,
+        "near_identical_fraction": 0.9091
+      }
+    },
+    "SC-10": {
+      "SBG_static": {
+        "n": 6,
+        "mean": 0.9942,
+        "std": 0.001,
+        "ci_lo": 0.9935,
+        "ci_hi": 0.9949,
+        "min": 0.9931,
+        "max": 0.9952,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 6,
+        "mean": 0.966,
+        "std": 0.008,
+        "ci_lo": 0.9607,
+        "ci_hi": 0.9713,
+        "min": 0.958,
+        "max": 0.974,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 6,
+        "mean": 0.9962,
+        "std": 0.0024,
+        "ci_lo": 0.9946,
+        "ci_hi": 0.9979,
+        "min": 0.9938,
+        "max": 0.9987,
+        "near_identical_fraction": 1.0
+      }
+    },
+    "SC-11": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.996,
+        "std": 0.008,
+        "ci_lo": 0.9933,
+        "ci_hi": 0.9984,
+        "min": 0.9704,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.977,
+        "std": 0.0238,
+        "ci_lo": 0.9688,
+        "ci_hi": 0.9843,
+        "min": 0.9125,
+        "max": 0.9994,
+        "near_identical_fraction": 0.8462
+      }
+    },
+    "SC-12": {
+      "SBG_static": {
+        "n": 9,
+        "mean": 0.9969,
+        "std": 0.0039,
+        "ci_lo": 0.9942,
+        "ci_hi": 0.999,
+        "min": 0.9914,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 9,
+        "mean": 0.982,
+        "std": 0.0057,
+        "ci_lo": 0.978,
+        "ci_hi": 0.9847,
+        "min": 0.974,
+        "max": 0.986,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 9,
+        "mean": 0.9773,
+        "std": 0.007,
+        "ci_lo": 0.9726,
+        "ci_hi": 0.9821,
+        "min": 0.9688,
+        "max": 0.9859,
+        "near_identical_fraction": 1.0
+      }
+    },
+    "SC-13": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.9881,
+        "std": 0.0066,
+        "ci_lo": 0.9861,
+        "ci_hi": 0.9902,
+        "min": 0.9759,
+        "max": 0.9969,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.8584,
+        "std": 0.0998,
+        "ci_lo": 0.8225,
+        "ci_hi": 0.8873,
+        "min": 0.572,
+        "max": 0.936,
+        "near_identical_fraction": 0.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9774,
+        "std": 0.0239,
+        "ci_lo": 0.9691,
+        "ci_hi": 0.9848,
+        "min": 0.9134,
+        "max": 0.9995,
+        "near_identical_fraction": 0.8462
+      }
+    },
+    "SC-2": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.9901,
+        "std": 0.0044,
+        "ci_lo": 0.9886,
+        "ci_hi": 0.9915,
+        "min": 0.9815,
+        "max": 0.9957,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.998,
+        "std": 0.0,
+        "ci_lo": 0.998,
+        "ci_hi": 0.998,
+        "min": 0.9979,
+        "max": 0.998,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9771,
+        "std": 0.0239,
+        "ci_lo": 0.9689,
+        "ci_hi": 0.9845,
+        "min": 0.9134,
+        "max": 0.9994,
+        "near_identical_fraction": 0.8462
+      }
+    },
+    "SC-3": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9771,
+        "std": 0.0238,
+        "ci_lo": 0.9689,
+        "ci_hi": 0.9845,
+        "min": 0.9134,
+        "max": 0.9994,
+        "near_identical_fraction": 0.8462
+      }
+    },
+    "SC-4": {
+      "SBG_static": {
+        "n": 33,
+        "mean": 0.9896,
+        "std": 0.0086,
+        "ci_lo": 0.9867,
+        "ci_hi": 0.9923,
+        "min": 0.9736,
+        "max": 0.9996,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 33,
+        "mean": 0.988,
+        "std": 0.0079,
+        "ci_lo": 0.9852,
+        "ci_hi": 0.9907,
+        "min": 0.97,
+        "max": 0.998,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 33,
+        "mean": 0.9763,
+        "std": 0.0249,
+        "ci_lo": 0.9669,
+        "ci_hi": 0.9843,
+        "min": 0.9129,
+        "max": 0.9995,
+        "near_identical_fraction": 0.8182
+      }
+    },
+    "SC-5": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.9824,
+        "std": 0.0019,
+        "ci_lo": 0.9818,
+        "ci_hi": 0.983,
+        "min": 0.98,
+        "max": 0.984,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9772,
+        "std": 0.0238,
+        "ci_lo": 0.969,
+        "ci_hi": 0.9846,
+        "min": 0.9135,
+        "max": 0.9994,
+        "near_identical_fraction": 0.8462
+      }
+    },
+    "SC-6": {
+      "SBG_static": {
+        "n": 36,
+        "mean": 0.9998,
+        "std": 0.0005,
+        "ci_lo": 0.9997,
+        "ci_hi": 1.0,
+        "min": 0.9982,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 36,
+        "mean": 0.9815,
+        "std": 0.0121,
+        "ci_lo": 0.9775,
+        "ci_hi": 0.9854,
+        "min": 0.954,
+        "max": 0.994,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 36,
+        "mean": 0.9755,
+        "std": 0.024,
+        "ci_lo": 0.9673,
+        "ci_hi": 0.9834,
+        "min": 0.9135,
+        "max": 0.9994,
+        "near_identical_fraction": 0.8333
+      }
+    },
+    "SC-7": {
+      "SBG_static": {
+        "n": 6,
+        "mean": 0.9592,
+        "std": 0.0362,
+        "ci_lo": 0.9351,
+        "ci_hi": 0.9834,
+        "min": 0.923,
+        "max": 0.9954,
+        "near_identical_fraction": 0.5
+      },
+      "AST": {
+        "n": 6,
+        "mean": 0.9869,
+        "std": 0.0111,
+        "ci_lo": 0.9795,
+        "ci_hi": 0.9943,
+        "min": 0.9759,
+        "max": 0.998,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 6,
+        "mean": 0.9864,
+        "std": 0.0016,
+        "ci_lo": 0.9853,
+        "ci_hi": 0.9875,
+        "min": 0.9848,
+        "max": 0.988,
+        "near_identical_fraction": 1.0
+      }
+    },
+    "SC-8": {
+      "SBG_static": {
+        "n": 9,
+        "mean": 0.9993,
+        "std": 0.0006,
+        "ci_lo": 0.9989,
+        "ci_hi": 0.9997,
+        "min": 0.9985,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 9,
+        "mean": 0.9973,
+        "std": 0.0019,
+        "ci_lo": 0.9964,
+        "ci_hi": 0.9987,
+        "min": 0.996,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 9,
+        "mean": 0.9791,
+        "std": 0.0138,
+        "ci_lo": 0.9707,
+        "ci_hi": 0.9889,
+        "min": 0.9648,
+        "max": 0.9977,
+        "near_identical_fraction": 1.0
+      }
+    },
+    "SC-9": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.9923,
+        "std": 0.0085,
+        "ci_lo": 0.9893,
+        "ci_hi": 0.9948,
+        "min": 0.972,
+        "max": 1.0,
+        "near_identical_fraction": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9772,
+        "std": 0.0238,
+        "ci_lo": 0.969,
+        "ci_hi": 0.9846,
+        "min": 0.9135,
+        "max": 0.9994,
+        "near_identical_fraction": 0.8462
+      }
+    }
+  },
+  "detectability_ranking": {
+    "SBG_static": [
+      {
+        "mutation_type": "SC-1",
+        "mean_similarity": 1.0,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-3",
+        "mean_similarity": 1.0,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-5",
+        "mean_similarity": 1.0,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-9",
+        "mean_similarity": 1.0,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-6",
+        "mean_similarity": 0.9998,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-8",
+        "mean_similarity": 0.9993,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-12",
+        "mean_similarity": 0.9969,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-11",
+        "mean_similarity": 0.996,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-10",
+        "mean_similarity": 0.9942,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-2",
+        "mean_similarity": 0.9901,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-4",
+        "mean_similarity": 0.9896,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-13",
+        "mean_similarity": 0.9881,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-7",
+        "mean_similarity": 0.9592,
+        "detectability": "HARD"
+      }
+    ],
+    "AST": [
+      {
+        "mutation_type": "SC-3",
+        "mean_similarity": 1.0,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-11",
+        "mean_similarity": 1.0,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-1",
+        "mean_similarity": 0.9989,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-2",
+        "mean_similarity": 0.998,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-8",
+        "mean_similarity": 0.9973,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-9",
+        "mean_similarity": 0.9923,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-4",
+        "mean_similarity": 0.988,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-7",
+        "mean_similarity": 0.9869,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-5",
+        "mean_similarity": 0.9824,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-12",
+        "mean_similarity": 0.982,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-6",
+        "mean_similarity": 0.9815,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-10",
+        "mean_similarity": 0.966,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-13",
+        "mean_similarity": 0.8584,
+        "detectability": "MEDIUM"
+      }
+    ],
+    "Token": [
+      {
+        "mutation_type": "SC-10",
+        "mean_similarity": 0.9962,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-7",
+        "mean_similarity": 0.9864,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-8",
+        "mean_similarity": 0.9791,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-1",
+        "mean_similarity": 0.9784,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-13",
+        "mean_similarity": 0.9774,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-12",
+        "mean_similarity": 0.9773,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-5",
+        "mean_similarity": 0.9772,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-9",
+        "mean_similarity": 0.9772,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-2",
+        "mean_similarity": 0.9771,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-3",
+        "mean_similarity": 0.9771,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-11",
+        "mean_similarity": 0.977,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-4",
+        "mean_similarity": 0.9763,
+        "detectability": "HARD"
+      },
+      {
+        "mutation_type": "SC-6",
+        "mean_similarity": 0.9755,
+        "detectability": "HARD"
+      }
+    ]
+  },
+  "overall_analysis": {
+    "SBG_static": {
+      "changed_mean": 0.9954,
+      "equiv_mean": 0.9619,
+      "near_identical_fraction_changed": 0.9918,
+      "auroc": 0.2198,
+      "mutation_detection_difficulty": "VERY_HARD (>90% mutations look nearly identical)"
+    },
+    "AST": {
+      "changed_mean": 0.9777,
+      "equiv_mean": 0.9306,
+      "near_identical_fraction_changed": 0.8934,
+      "auroc": 0.4479,
+      "mutation_detection_difficulty": "HARD"
+    },
+    "Token": {
+      "changed_mean": 0.9776,
+      "equiv_mean": 0.9647,
+      "near_identical_fraction_changed": 0.8607,
+      "auroc": 0.4043,
+      "mutation_detection_difficulty": "HARD"
+    }
+  },
+  "finding": "SC mutations (off-by-one, operator swap, constant change) produce near-identical source code \u2014 high similarity for CHANGED pairs. This makes them very hard to detect with static representations. The near-identical fraction for static SBG is expected to exceed 90%. This directly explains why H1 and H2 are not supported in Phase 3.",
+  "scientific_verdict": "NEGATIVE: SC mutations are structurally near-invisible to all tested representations",
+  "seed": 42
+}

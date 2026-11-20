@@ -1,0 +1,123 @@
+{
+  "agent": "0B",
+  "timestamp": "2026-08-20T07:00:00Z",
+  "audit_run_at": "2026-08-20T08:47:24.249114Z",
+  "sources_read": [
+    "artifacts/phase3/B02/results_test.json",
+    "artifacts/phase3/B08/results_test.json",
+    "artifacts/phase4/E1/results.json",
+    "artifacts/phase4/E2/results.json",
+    "artifacts/phase4/E3/results.json",
+    "artifacts/phase4/E6/results.json",
+    "baselines/b02_ast.py",
+    "baselines/common.py",
+    "benchmark/datasets/pairs_test.jsonl (first 5 pairs)"
+  ],
+  "verified_metrics": {
+    "sbg_auroc": {
+      "artifact_value": 0.4237,
+      "full_precision_value": 0.423664,
+      "source": "artifacts/phase3/B08/results_test.json + E6/h2_verdict",
+      "verified": true,
+      "notes": "B08 (SBG) results_test.json stores auroc=0.423664. E6 h2_verdict rounds this to 0.4237 (4dp). round(0.423664, 4)==0.4237 confirmed. AUROC < 0.5 is correct: with threshold=1.000001 all pairs predicted CHANGED, and the inversion (SC mutations score higher than SP transforms) means lower-similarity ranks EQUIV first, giving sub-random discrimination."
+    },
+    "best_baseline_auroc": {
+      "artifact_value": 0.5528,
+      "full_precision_value": 0.552845,
+      "source": "artifacts/phase3/B02/results_test.json + E6/baseline_table_sorted_by_auroc[0]",
+      "verified": true,
+      "notes": "B02 (AST) results_test.json stores auroc=0.552845. E6 correctly identifies B02 as best baseline (highest AUROC in table). round(0.552845, 4)==0.5528 confirmed. B02 is above random (>0.5), but CI=[0.509, 0.593] overlaps 0.5, indicating marginal discrimination."
+    },
+    "sbg_f1": {
+      "artifact_value": 0.659459,
+      "source": "artifacts/phase3/B08/results_test.json",
+      "verified": true,
+      "notes": "B08 threshold=1.000001 \u2192 all 744 pairs predicted CHANGED. tp=366, fp=378, fn=0, tn=0. F1 = 2*366/(2*366+378+0) = 732/1110 = 0.659459... confirmed. Same F1 as B02 and most other baselines because all use threshold=1.000001 and predict every pair as CHANGED."
+    },
+    "inversion_delta": {
+      "artifact_value": 0.0335,
+      "source": "artifacts/phase4/E1/results.json inversion_analysis.SBG_static",
+      "verified": true,
+      "notes": "E1 stores: SBG_static equiv_mean=0.9619, changed_mean=0.9954, delta=0.0335. Computed delta = round(0.9954 - 0.9619, 4) = 0.0335. Match confirmed. inversion=True because changed_mean > equiv_mean: CHANGED pairs score HIGHER than EQUIV. This is the structural-semantic inversion \u2014 SC mutations (off-by-one, operator swap) are near-identical syntactically, while SP transforms (refactoring) change structure. E2 stores identical values (changed_mean=0.9954, equiv_mean=0.9619), confirming consistency."
+    },
+    "near_identical_fraction": {
+      "artifact_value": 0.9918,
+      "source": "artifacts/phase4/E2/results.json overall_analysis.SBG_static.near_identical_fraction_changed",
+      "verified": true,
+      "notes": "E2 stores near_identical_fraction_changed=0.9918 for SBG_static: 99.18% of CHANGED pairs (SC mutations) score >=0.99 similarity \u2014 nearly indistinguishable from identical code. Out of 366 CHANGED pairs, ~363 appear near-identical. Per-mutation breakdown shows SC-1/SC-3/SC-5/SC-9/SC-11 at fraction=1.0 (all instances look identical). Only SC-7 shows lower fraction (0.5), pulling the overall average below 1.0. No arithmetic inconsistency found."
+    },
+    "mcnemar_p": {
+      "artifact_value": 1.0,
+      "source": "artifacts/phase4/E6/results.json mcnemar_B08_vs_B02",
+      "verified": true,
+      "notes": "E6 stores: b=0, c=0, statistic=0.0, p_value=1.0. B08 and B02 BOTH use threshold=1.000001 \u2192 both predict EVERY pair as CHANGED. Therefore they agree on every single prediction: disagreements b=c=0. With b+c=0 the McNemar test has no valid statistic; p=1.0 is the standard convention (maximum non-significance). This is mathematically correct and well-documented in E6 note field: 'b+c=0 \u2014 classifiers agree on all disagreements'. VERIFIED."
+    },
+    "e3_permutation_p": {
+      "artifact_value": 1.0,
+      "source": "artifacts/phase4/E3/results.json stability_results.SBG_static.permutation_p_one_sided",
+      "verified": true,
+      "notes": "H3 tests whether var(SC) > var(SP) \u2014 i.e., SBG is MORE stable under SP transforms. All three methods show the OPPOSITE: SP_std > SC_std in all cases. SBG_static: SP_std=0.05954, SC_std=0.00929; var_diff(SC-SP)=-0.003459 (negative). AST: SP_std=0.14046, SC_std=0.05339; var_diff=-0.016879 (negative). Token: SP_std=0.0508, SC_std=0.02324; var_diff=-0.00204 (negative). In a one-sided permutation test where H3 requires var(SC)-var(SP) > 0, an observed value of -0.003459 means ZERO permutations out of 1000 will exceed a negative observed value (all permutation diffs can be >=0 or negative, but the sign test means no permutation can 'beat' the negative observed). Therefore p=1.0 is correct: there is NO evidence for H3. Computed var differences match stored values within floating-point rounding. VERIFIED."
+    },
+    "test_split_composition": {
+      "artifact_value": {
+        "n_pairs": 744,
+        "n_equiv": 378,
+        "n_changed": 366
+      },
+      "verified": true,
+      "notes": "B02, B08, and E6 all store n_samples/n_test_pairs=744. E1 and E2 store n_equiv_pairs=378, n_changed_pairs=366 (378+366=744). Confirmed: 378 EQUIV + 366 CHANGED = 744 total test pairs. Split is slightly unbalanced (50.8% EQUIV vs 49.2% CHANGED) \u2014 random baseline would be ~50.8% accuracy, consistent with observed metrics. Seeds: all 42 as required."
+    },
+    "b02_score_fn_spot_check": {
+      "pairs_checked": 5,
+      "all_in_range_01": true,
+      "sample_scores": {
+        "test__api_rate_limiter__sp-2_s0": {
+          "score": 1.0,
+          "label": "EQUIVALENT"
+        },
+        "test__api_rate_limiter__sp-2_s1": {
+          "score": 1.0,
+          "label": "EQUIVALENT"
+        },
+        "test__api_rate_limiter__sp-2_s2": {
+          "score": 1.0,
+          "label": "EQUIVALENT"
+        },
+        "test__api_rate_limiter__sp-3_s0": {
+          "score": 0.402,
+          "label": "EQUIVALENT"
+        },
+        "test__api_rate_limiter__sp-3_s1": {
+          "score": 0.472,
+          "label": "EQUIVALENT"
+        }
+      },
+      "verified": true,
+      "notes": "score_fn independently executed on first 5 test pairs. All scores in [0,1]. SP-2 (rename variables) yields score=1.0 after normalization \u2014 correct because B02 normalizes variable names, so renamed vars look identical. SP-3 (algorithm restructure) yields scores 0.40-0.47 \u2014 correct because AST sequence changes substantially. These EQUIV pairs receiving LOW scores (0.40) directly confirm the inversion: the model assigns LOW similarity to EQUIV-restructured code, while SC mutations (near-identical AST) score ~1.0. AUROC formula and score_fn verified."
+    }
+  },
+  "issues_found": [
+    {
+      "issue_id": "I1",
+      "severity": "INFORMATIONAL",
+      "description": "E6 headline sbg_auroc=0.4237 is a 4dp rounded value of 0.423664 (B08). The rounding is correct (round-half-even at 4dp gives 0.4237). Not an error, but downstream citations should use 0.4237 (4dp) consistently."
+    },
+    {
+      "issue_id": "I2",
+      "severity": "INFORMATIONAL",
+      "description": "McNemar p=1.0 arises because B08 and B02 share the same threshold=1.000001 and thus make identical predictions (all CHANGED). The McNemar test is therefore degenerate (b+c=0). This is a consequence of the threshold selection, not a bug. Any meaningful paired comparison of B02 vs B08 discrimination must use AUROC (which does differ: 0.5528 vs 0.4237), not the McNemar test."
+    },
+    {
+      "issue_id": "I3",
+      "severity": "INFORMATIONAL",
+      "description": "E3 permutation p=1.0 for H3 ('SBG is more stable') is correct but could be misread as 'p=1.0 therefore strong evidence'. The correct interpretation is the opposite: p=1.0 means ZERO evidence for H3 (observed difference is in the WRONG direction). The artifact interpretation string correctly says 'NOT SUPPORTED'."
+    },
+    {
+      "issue_id": "I4",
+      "severity": "NOTE",
+      "description": "SP-3 EQUIV pairs receive B02 scores of 0.40-0.47 (very low similarity), confirming the inversion is real: AST sequence changes substantially under algorithm restructure. This is expected behavior for the benchmark design, but means B02 actively misclassifies SP-3 EQUIV pairs as CHANGED."
+    }
+  ],
+  "overall_verdict": "VERIFIED",
+  "summary": "All 6 headline metrics and the 2 statistical test results independently verified. B08 AUROC=0.4237 confirmed (B08 results_test.json stores 0.423664, rounds to 0.4237). B02 AUROC=0.5528 confirmed (B02 results_test.json stores 0.552845, rounds to 0.5528). Inversion delta=0.0335 arithmetic confirmed. Near-identical fraction=0.9918 confirmed. McNemar p=1.0 correct (b+c=0, degenerate test). E3 permutation p=1.0 correct (observed var diff is negative, cannot be exceeded). Score function live-tested on 5 pairs: all in [0,1], behavior consistent with inversion. No fabricated or incorrect numbers found in v1 artifacts. 4 informational notes recorded (rounding, degenerate McNemar, p-value interpretation, SP-3 behavior)."
+}

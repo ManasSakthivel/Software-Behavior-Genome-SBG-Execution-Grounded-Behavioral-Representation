@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_01_same_exception_different_behavior",
+  "ground_truth": "CHANGED",
+  "shortcut_defeated": "exception_fraction",
+  "description": "Both programs raise ValueError on the same negative inputs (identical exception fraction), but the non-exception path returns x*2 vs x*3. A detector that only checks exception_fraction sees no difference and wrongly labels this EQUIV.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": true,
+  "expected_volume_same": true,
+  "boundary_inputs_required": false
+}

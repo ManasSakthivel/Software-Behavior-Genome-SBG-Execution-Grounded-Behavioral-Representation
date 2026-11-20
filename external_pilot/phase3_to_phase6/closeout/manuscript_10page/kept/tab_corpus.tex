@@ -1,0 +1,19 @@
+\begin{table}[!t]
+\caption{Development corpus by arm (\code{datasets/v8/dev\_records.jsonl}). V7-B verdicts are the predecessor's fixed-gate verdicts. ``\NDO{} (miss)'' counts labeled \NDO{} verdicts and, in parentheses, those with $Y{=}1$.}
+\label{tab:corpus}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+Arm & Pairs & Clusters & $Y{=}1$ & $Y{=}0$ & Unlab. & V7-B \DIV{} & \NDO{} (miss) \\
+\hline
+Synthetic & 150 & 101 & 77 & 68 & 5 & 50 & 37 (13) \\
+QuixBugs & 31 & \multirow{2}{*}{1} & 29 & 0 & 2 & 27 & 0 (0) \\
+QuixBugs neg. & 85 & & 0 & 84 & 1 & 1 & 24 (0) \\
+BugsInPy-derived & 46 & 12 & -- & -- & 46 & 6 & -- \\
+\hline
+Total & 312 & 114 & 106 & 152 & 54 & 84 & 61 (13) \\
+\hline
+\end{tabular}
+\end{table}

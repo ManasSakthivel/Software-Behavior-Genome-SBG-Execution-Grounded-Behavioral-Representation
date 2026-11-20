@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_08_wrong_variable",
+  "ground_truth": "CHANGED",
+  "shortcut_defeated": "structural_similarity",
+  "description": "The two programs differ by exactly one character in one variable name (lst[j] vs lst[i] on the RHS). Structural similarity is near 1.0. Yet base performs a real swap while variant is a no-op identity assignment.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": true,
+  "expected_volume_same": true,
+  "boundary_inputs_required": true
+}

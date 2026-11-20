@@ -1,0 +1,176 @@
+{
+  "experiment": "E8",
+  "timestamp": "2026-08-20T06:16:51Z",
+  "hypothesis_addressed": [
+    "H1_generalization"
+  ],
+  "n_test_pairs": 744,
+  "n_test_programs": 13,
+  "n_unseen_programs": 13,
+  "unseen_program_fraction": 1.0,
+  "per_program_results": {
+    "api_rate_limiter": {
+      "n_pairs": 53,
+      "n_equiv": 26,
+      "n_changed": 27,
+      "unseen": true,
+      "AST_auroc": 0.4402,
+      "Token_auroc": 0.1994,
+      "Static_SBG_auroc": 0.1709
+    },
+    "conc_read_write_lock": {
+      "n_pairs": 58,
+      "n_equiv": 28,
+      "n_changed": 30,
+      "unseen": true,
+      "AST_auroc": 0.4179,
+      "Token_auroc": 0.1976,
+      "Static_SBG_auroc": 0.1929
+    },
+    "ds_hash_table": {
+      "n_pairs": 58,
+      "n_equiv": 25,
+      "n_changed": 33,
+      "unseen": true,
+      "AST_auroc": 0.4291,
+      "Token_auroc": 0.1976,
+      "Static_SBG_auroc": 0.2303
+    },
+    "err_result_type": {
+      "n_pairs": 57,
+      "n_equiv": 27,
+      "n_changed": 30,
+      "unseen": true,
+      "AST_auroc": 0.442,
+      "Token_auroc": 0.2321,
+      "Static_SBG_auroc": 0.2222
+    },
+    "file_config_parser": {
+      "n_pairs": 56,
+      "n_equiv": 26,
+      "n_changed": 30,
+      "unseen": true,
+      "AST_auroc": 0.5115,
+      "Token_auroc": 0.3615,
+      "Static_SBG_auroc": 0.2859
+    },
+    "fsm_vending_machine": {
+      "n_pairs": 53,
+      "n_equiv": 26,
+      "n_changed": 27,
+      "unseen": true,
+      "AST_auroc": 0.4359,
+      "Token_auroc": 0.1966,
+      "Static_SBG_auroc": 0.1838
+    },
+    "graph_bfs_shortest_path": {
+      "n_pairs": 58,
+      "n_equiv": 31,
+      "n_changed": 27,
+      "unseen": true,
+      "AST_auroc": 0.4839,
+      "Token_auroc": 0.2987,
+      "Static_SBG_auroc": 0.233
+    },
+    "math_statistics": {
+      "n_pairs": 58,
+      "n_equiv": 31,
+      "n_changed": 27,
+      "unseen": true,
+      "AST_auroc": 0.448,
+      "Token_auroc": 0.2545,
+      "Static_SBG_auroc": 0.1935
+    },
+    "parse_recursive_descent": {
+      "n_pairs": 60,
+      "n_equiv": 30,
+      "n_changed": 30,
+      "unseen": true,
+      "AST_auroc": 0.5,
+      "Token_auroc": 0.26,
+      "Static_SBG_auroc": 0.25
+    },
+    "res_object_pool": {
+      "n_pairs": 59,
+      "n_equiv": 29,
+      "n_changed": 30,
+      "unseen": true,
+      "AST_auroc": 0.5276,
+      "Token_auroc": 0.2402,
+      "Static_SBG_auroc": 0.2391
+    },
+    "sort_heapsort": {
+      "n_pairs": 53,
+      "n_equiv": 29,
+      "n_changed": 24,
+      "unseen": true,
+      "AST_auroc": 0.319,
+      "Token_auroc": 0.1595,
+      "Static_SBG_auroc": 0.1509
+    },
+    "sort_counting_sort": {
+      "n_pairs": 63,
+      "n_equiv": 36,
+      "n_changed": 27,
+      "unseen": true,
+      "AST_auroc": 0.4105,
+      "Token_auroc": 0.2078,
+      "Static_SBG_auroc": 0.2521
+    },
+    "str_tokenizer": {
+      "n_pairs": 58,
+      "n_equiv": 34,
+      "n_changed": 24,
+      "unseen": true,
+      "AST_auroc": 0.4669,
+      "Token_auroc": 0.1765,
+      "Static_SBG_auroc": 0.2463
+    }
+  },
+  "generalization_stats": {
+    "AST": {
+      "n_programs_evaluated": 13,
+      "mean_per_program_auroc": 0.4487,
+      "std_per_program_auroc": 0.0513,
+      "ci_lo": 0.4189,
+      "ci_hi": 0.4744,
+      "min_auroc": 0.319,
+      "max_auroc": 0.5276,
+      "generalization_gap": 0.0513,
+      "best_program": "res_object_pool",
+      "best_program_auroc": 0.5276,
+      "worst_program": "sort_heapsort",
+      "worst_program_auroc": 0.319
+    },
+    "Token": {
+      "n_programs_evaluated": 13,
+      "mean_per_program_auroc": 0.2294,
+      "std_per_program_auroc": 0.0527,
+      "ci_lo": 0.2033,
+      "ci_hi": 0.2594,
+      "min_auroc": 0.1595,
+      "max_auroc": 0.3615,
+      "generalization_gap": 0.0527,
+      "best_program": "file_config_parser",
+      "best_program_auroc": 0.3615,
+      "worst_program": "sort_heapsort",
+      "worst_program_auroc": 0.1595
+    },
+    "Static_SBG": {
+      "n_programs_evaluated": 13,
+      "mean_per_program_auroc": 0.2193,
+      "std_per_program_auroc": 0.0367,
+      "ci_lo": 0.1978,
+      "ci_hi": 0.2388,
+      "min_auroc": 0.1509,
+      "max_auroc": 0.2859,
+      "generalization_gap": 0.0367,
+      "best_program": "file_config_parser",
+      "best_program_auroc": 0.2859,
+      "worst_program": "sort_heapsort",
+      "worst_program_auroc": 0.1509
+    }
+  },
+  "finding": "High std of per-program AUROC = poor generalization across programs. Low std = consistent (even if uniformly poor) performance. See generalization_stats per method.",
+  "seed": 42
+}

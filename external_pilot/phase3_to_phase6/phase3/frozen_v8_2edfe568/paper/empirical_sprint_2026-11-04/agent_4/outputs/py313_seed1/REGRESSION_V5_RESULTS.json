@@ -1,0 +1,556 @@
+{
+  "experiment": "REGRESSION_V5_EVALUATION",
+  "supersedes": "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json",
+  "correction": "The superseded artifact's 'sbg_distance_output_free' was a three-statistic proxy, not the SBG V5 representation; its 'output_oracle_BASELINE' 14/15 was reported in the README as an SBG result. Both are corrected here.",
+  "seed": 42,
+  "threshold_tau_star": 0.08,
+  "n_pairs": 15,
+  "all_pairs": {
+    "sbg_v5_output_free": {
+      "n_total": 15,
+      "n_scored": 15,
+      "n_unscored": 0,
+      "n_detected": 7,
+      "detection_rate": 0.4667,
+      "detection_rate_95ci_wilson": [
+        0.248095,
+        0.69883
+      ]
+    },
+    "sbg_v3_output_free": {
+      "n_total": 15,
+      "n_scored": 15,
+      "n_unscored": 0,
+      "n_detected": 4,
+      "detection_rate": 0.2667,
+      "detection_rate_95ci_wilson": [
+        0.108975,
+        0.519504
+      ]
+    },
+    "exception_component_output_free": {
+      "n_total": 15,
+      "n_scored": 15,
+      "n_unscored": 0,
+      "n_detected": 3,
+      "detection_rate": 0.2,
+      "detection_rate_95ci_wilson": [
+        0.070475,
+        0.451854
+      ]
+    },
+    "output_reading_reference_full_behaviour": {
+      "n_total": 15,
+      "n_detected": 13,
+      "detection_rate": 0.8667,
+      "note": "reads program outputs; a ceiling, not an SBG result"
+    },
+    "output_reading_reference_return_value_only": {
+      "n_total": 15,
+      "n_detected": 11,
+      "detection_rate": 0.7333,
+      "note": "definition used by the superseded artifact"
+    }
+  },
+  "silent_bugs_only": {
+    "definition": "bug invisible to both the exception and the volume shortcut",
+    "sbg_v5_output_free": {
+      "n_total": 9,
+      "n_scored": 9,
+      "n_unscored": 0,
+      "n_detected": 3,
+      "detection_rate": 0.3333,
+      "detection_rate_95ci_wilson": [
+        0.120584,
+        0.645798
+      ]
+    },
+    "output_reading_reference": {
+      "n_total": 9,
+      "n_detected": 9,
+      "note": "reads program outputs; a ceiling, not an SBG result"
+    }
+  },
+  "pairs": [
+    {
+      "id": "REG_01",
+      "name": "binary_search_off_by_one",
+      "bug_type": "off_by_one",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": true,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 195,
+      "n_events_fixed": 225,
+      "distances": {
+        "sbg_v5": 0.026963,
+        "sbg_v3": 0.020593,
+        "temporal": 0.0,
+        "state": 0.066667,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 0.0,
+        "output_divergence_return_value_only": 0.0,
+        "predicted_changed": false,
+        "predicted_changed_return_value_only": false
+      },
+      "is_silent_bug": false
+    },
+    {
+      "id": "REG_02",
+      "name": "missing_base_case_empty_list",
+      "bug_type": "missing_edge_case",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 2,
+      "bug_visible_to_exception": true,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 120,
+      "n_events_fixed": 125,
+      "distances": {
+        "sbg_v5": 0.229917,
+        "sbg_v3": 0.172333,
+        "temporal": 0.175,
+        "state": 0.4,
+        "exception_component": 0.75,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": true,
+      "detected_by_sbg_v3": true,
+      "detected_by_exception_component": true,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 0.5,
+        "output_divergence_return_value_only": 0.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": false
+      },
+      "is_silent_bug": false
+    },
+    {
+      "id": "REG_03",
+      "name": "wrong_comparison_operator",
+      "bug_type": "wrong_operator",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 2,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 95,
+      "n_events_fixed": 95,
+      "distances": {
+        "sbg_v5": 0.0,
+        "sbg_v3": 0.0,
+        "temporal": 0.0,
+        "state": 0.0,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_04",
+      "name": "loop_fencepost_error",
+      "bug_type": "off_by_one",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": true,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 200,
+      "n_events_fixed": 230,
+      "distances": {
+        "sbg_v5": 0.058074,
+        "sbg_v3": 0.050359,
+        "temporal": 0.0,
+        "state": 0.131579,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": false
+    },
+    {
+      "id": "REG_05",
+      "name": "wrong_variable_in_product",
+      "bug_type": "wrong_variable",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 120,
+      "n_events_fixed": 120,
+      "distances": {
+        "sbg_v5": 0.0,
+        "sbg_v3": 0.0,
+        "temporal": 0.0,
+        "state": 0.0,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_06",
+      "name": "missing_empty_guard",
+      "bug_type": "missing_edge_case",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 2,
+      "bug_visible_to_exception": true,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 70,
+      "n_events_fixed": 70,
+      "distances": {
+        "sbg_v5": 0.263361,
+        "sbg_v3": 0.217,
+        "temporal": 0.175,
+        "state": 0.444444,
+        "exception_component": 0.75,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": true,
+      "detected_by_sbg_v3": true,
+      "detected_by_exception_component": true,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 0.5,
+        "output_divergence_return_value_only": 0.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": false
+      },
+      "is_silent_bug": false
+    },
+    {
+      "id": "REG_07",
+      "name": "integer_division_truncation",
+      "bug_type": "wrong_operator",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 90,
+      "n_events_fixed": 90,
+      "distances": {
+        "sbg_v5": 0.0,
+        "sbg_v3": 0.0,
+        "temporal": 0.0,
+        "state": 0.0,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_08",
+      "name": "missing_return_keyword",
+      "bug_type": "missing_return",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 325,
+      "n_events_fixed": 285,
+      "distances": {
+        "sbg_v5": 0.237405,
+        "sbg_v3": 0.133333,
+        "temporal": 0.1375,
+        "state": 0.545455,
+        "exception_component": 0.833333,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": true,
+      "detected_by_sbg_v3": true,
+      "detected_by_exception_component": true,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_09",
+      "name": "mutation_during_iteration",
+      "bug_type": "mutation_during_iteration",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": true,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 159,
+      "n_events_fixed": 110,
+      "distances": {
+        "sbg_v5": 0.096636,
+        "sbg_v3": 0.153003,
+        "temporal": 0.0,
+        "state": 0.080537,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": true,
+      "detected_by_sbg_v3": true,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 0.0,
+        "output_divergence_return_value_only": 0.0,
+        "predicted_changed": false,
+        "predicted_changed_return_value_only": false
+      },
+      "is_silent_bug": false
+    },
+    {
+      "id": "REG_10",
+      "name": "wrong_index_access",
+      "bug_type": "wrong_variable",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 2,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 60,
+      "n_events_fixed": 60,
+      "distances": {
+        "sbg_v5": 0.0,
+        "sbg_v3": 0.0,
+        "temporal": 0.0,
+        "state": 0.0,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_11",
+      "name": "missing_break_finds_last",
+      "bug_type": "missing_break",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": true,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 260,
+      "n_events_fixed": 140,
+      "distances": {
+        "sbg_v5": 0.093571,
+        "sbg_v3": 0.057143,
+        "temporal": 0.0,
+        "state": 0.26,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": true,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 0.6667,
+        "output_divergence_return_value_only": 0.6667,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": false
+    },
+    {
+      "id": "REG_12",
+      "name": "mutable_default_argument",
+      "bug_type": "mutable_default",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 105,
+      "n_events_fixed": 135,
+      "distances": {
+        "sbg_v5": 0.155556,
+        "sbg_v3": 0.066667,
+        "temporal": 0.0,
+        "state": 0.488889,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": true,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_13",
+      "name": "wrong_string_slicing",
+      "bug_type": "wrong_slice",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 90,
+      "n_events_fixed": 90,
+      "distances": {
+        "sbg_v5": 0.0,
+        "sbg_v3": 0.0,
+        "temporal": 0.0,
+        "state": 0.0,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_14",
+      "name": "wrong_sort_direction",
+      "bug_type": "wrong_operator",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 90,
+      "n_events_fixed": 90,
+      "distances": {
+        "sbg_v5": 0.0,
+        "sbg_v3": 0.0,
+        "temporal": 0.0,
+        "state": 0.0,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": false,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    },
+    {
+      "id": "REG_15",
+      "name": "fibonacci_wrong_base_case",
+      "bug_type": "wrong_base_case",
+      "ground_truth_label": 1,
+      "n_trigger_inputs": 3,
+      "bug_visible_to_exception": false,
+      "bug_visible_to_volume": false,
+      "threshold_tau_star": 0.08,
+      "trace_status": "ok",
+      "n_events_buggy": 655,
+      "n_events_fixed": 930,
+      "distances": {
+        "sbg_v5": 0.176809,
+        "sbg_v3": 0.077111,
+        "temporal": 0.082425,
+        "state": 0.470588,
+        "exception_component": 0.0,
+        "v5_full": true
+      },
+      "detected_by_sbg_v5": true,
+      "detected_by_sbg_v3": false,
+      "detected_by_exception_component": false,
+      "output_reference": {
+        "reads_program_output": true,
+        "output_divergence_full_behaviour": 1.0,
+        "output_divergence_return_value_only": 1.0,
+        "predicted_changed": true,
+        "predicted_changed_return_value_only": true
+      },
+      "is_silent_bug": true
+    }
+  ]
+}

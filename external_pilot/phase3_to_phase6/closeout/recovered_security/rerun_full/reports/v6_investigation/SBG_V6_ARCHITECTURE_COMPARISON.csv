@@ -1,0 +1,5 @@
+architecture_id,architecture_name,scientific_novelty,theoretical_rigour,resolves_sp2_rename_flaw,resolves_fixed_weight_flaw,cross_language_potential,interpretability,computational_cost,implementation_complexity,recommendation_status
+Arch-A,Invariant State-Centred SBG,High,Strong (Daikon Invariant Diffing),YES (100% Invariant),Partial,High (Universal Invariants),Very High (Exact Invariant Diff),Low (O(N) Predicates),Medium,Recommended Core Component
+Arch-B,Causal Execution-Sequence SBG,Medium,Moderate (DTW / String Kernels),YES,Partial,High,Medium (Sequence Mismatches),High (O(M^2) Alignment),High,Optional Component
+Arch-C,Dynamic Code Property Graph,High,Strong (Graph Neural Kernels),Partial,Partial,Medium (Requires AST parsers),Medium (GNN Explanations),Very High (Graph Matching),Very High,High Risk of Static Dominance
+Arch-D,Evidence-Aware Adaptive Hybrid,Very High,Very Strong (Evidence-Weighted Fusion),YES (100% Invariant),YES (Dynamic Evidence Weights),Very High (Language Agnostic),High (Trace Quality Gated),Low-Medium (O(N) Vector Operations),Medium,PRIMARY RECOMMENDED ARCHITECTURE

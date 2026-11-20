@@ -1,0 +1,16 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CRASH.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  WS-T.
+           05 WS-E PIC 9(2) OCCURS 3 TIMES VALUE 5.
+       01  WS-I  PIC 9(2) VALUE 4.
+       01  WS-N  PIC 9(3) VALUE 12.
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+           PERFORM SUB-PARA
+           MOVE WS-E(WS-I) TO WS-N
+           DISPLAY "UNREACHED " WS-N
+           STOP RUN.
+       SUB-PARA.
+           ADD 1 TO WS-N.

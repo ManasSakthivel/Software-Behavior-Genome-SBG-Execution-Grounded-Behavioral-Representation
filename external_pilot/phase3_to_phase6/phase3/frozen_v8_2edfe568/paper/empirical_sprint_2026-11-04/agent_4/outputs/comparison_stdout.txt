@@ -1,0 +1,163 @@
+keys hn pair: ['pair_id', 'ground_truth', 'ground_truth_label', 'shortcut_defeated', 'input_regime', 'n_inputs', 'threshold_tau_star', 'base_program', 'variant_program', 'trace_status', 'distances', 'sbg_v5_predicted', 'sbg_v3_predicted', 'exception_predicted', 'output_reference']
+{
+ "hardneg_canonical": {
+  "n": 12,
+  "sbg_v5": {
+   "n_changed": 6,
+   "max_abs": 0.087757,
+   "mean_abs": 0.009086,
+   "spearman": 0.9573,
+   "auroc_313": 0.4286,
+   "auroc_39": 0.4857,
+   "n_decision_flip_at_0.08": 0
+  },
+  "sbg_v3": {
+   "n_changed": 2,
+   "max_abs": 0.069701,
+   "mean_abs": 0.006674,
+   "spearman": 0.7762,
+   "auroc_313": 0.3429,
+   "auroc_39": 0.4571,
+   "n_decision_flip_at_0.08": 0
+  },
+  "temporal": {
+   "n_changed": 3,
+   "max_abs": 0.091999,
+   "mean_abs": 0.009055,
+   "spearman": 1.0,
+   "auroc_313": 0.3429,
+   "auroc_39": 0.3429,
+   "n_decision_flip_at_0.08": 0
+  },
+  "state": {
+   "n_changed": 3,
+   "max_abs": 0.119626,
+   "mean_abs": 0.013942,
+   "spearman": 0.988,
+   "auroc_313": 0.5143,
+   "auroc_39": 0.5429,
+   "n_decision_flip_at_0.08": 0
+  },
+  "exception_component": {
+   "n_changed": 0,
+   "max_abs": 0.0,
+   "mean_abs": 0.0,
+   "spearman": NaN,
+   "auroc_313": 0.5,
+   "auroc_39": 0.5,
+   "n_decision_flip_at_0.08": 0
+  }
+ },
+ "hardneg_declared": {
+  "n": 12,
+  "sbg_v5": {
+   "n_changed": 6,
+   "max_abs": 0.015322,
+   "mean_abs": 0.002917,
+   "spearman": 0.9573,
+   "auroc_313": 0.4,
+   "auroc_39": 0.4571,
+   "n_decision_flip_at_0.08": 0
+  },
+  "sbg_v3": {
+   "n_changed": 3,
+   "max_abs": 0.01,
+   "mean_abs": 0.002251,
+   "spearman": 0.9065,
+   "auroc_313": 0.2857,
+   "auroc_39": 0.3714,
+   "n_decision_flip_at_0.08": 0
+  },
+  "temporal": {
+   "n_changed": 2,
+   "max_abs": 0.029608,
+   "mean_abs": 0.003327,
+   "spearman": 1.0,
+   "auroc_313": 0.3714,
+   "auroc_39": 0.3714,
+   "n_decision_flip_at_0.08": 0
+  },
+  "state": {
+   "n_changed": 5,
+   "max_abs": 0.025309,
+   "mean_abs": 0.005423,
+   "spearman": 1.0,
+   "auroc_313": 0.4857,
+   "auroc_39": 0.4857,
+   "n_decision_flip_at_0.08": 0
+  },
+  "exception_component": {
+   "n_changed": 0,
+   "max_abs": 0.0,
+   "mean_abs": 0.0,
+   "spearman": 1.0,
+   "auroc_313": 0.5714,
+   "auroc_39": 0.5714,
+   "n_decision_flip_at_0.08": 0
+  }
+ },
+ "regression": {
+  "n": 15,
+  "sbg_v5": {
+   "n_changed": 1,
+   "max_abs": 0.302147,
+   "mean_abs": 0.020143,
+   "spearman": 0.9429,
+   "auroc_313": NaN,
+   "auroc_39": NaN,
+   "n_decision_flip_at_0.08": 0
+  },
+  "sbg_v3": {
+   "n_changed": 1,
+   "max_abs": 0.225,
+   "mean_abs": 0.015,
+   "spearman": 0.9886,
+   "auroc_313": NaN,
+   "auroc_39": NaN,
+   "n_decision_flip_at_0.08": 0
+  },
+  "temporal": {
+   "n_changed": 1,
+   "max_abs": 0.350044,
+   "mean_abs": 0.023336,
+   "spearman": 0.7634,
+   "auroc_313": NaN,
+   "auroc_39": NaN,
+   "n_decision_flip_at_0.08": 1
+  },
+  "state": {
+   "n_changed": 1,
+   "max_abs": 0.408546,
+   "mean_abs": 0.027236,
+   "spearman": 0.92,
+   "auroc_313": NaN,
+   "auroc_39": NaN,
+   "n_decision_flip_at_0.08": 0
+  },
+  "exception_component": {
+   "n_changed": 0,
+   "max_abs": 0.0,
+   "mean_abs": 0.0,
+   "spearman": 1.0,
+   "auroc_313": NaN,
+   "auroc_39": NaN,
+   "n_decision_flip_at_0.08": 0
+  }
+ }
+}
+
+PER-PAIR CHANGES
+regression REG_03 events(313b,39b,313f,39f)= (95, 125, 95, 125) {}
+regression REG_09 events(313b,39b,313f,39f)= (159, 159, 110, 155) {'sbg_v5': (0.096636, 0.398783), 'sbg_v3': (0.153003, 0.378003), 'temporal': (0.0, 0.350044), 'state': (0.080537, 0.489083)}
+hardneg_canonical pair_02_same_volume_different_behavior events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.098575, 0.089247), 'state': (0.394299, 0.356989)}
+hardneg_canonical pair_03_same_call_count_different_order events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.01, 0.008333), 'temporal': (0.04, 0.033333)}
+hardneg_canonical pair_04_rename_invariant events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.0125, 0.01), 'temporal': (0.05, 0.04)}
+hardneg_canonical pair_05_structural_change_same_behavior events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.371919, 0.284162), 'sbg_v3': (0.305685, 0.235984), 'temporal': (0.476305, 0.384306), 'state': (0.4, 0.280374)}
+hardneg_canonical pair_07_dead_code_insertion events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.005194, 0.0), 'sbg_v3': (0.010388, 0.0)}
+hardneg_canonical pair_11_loop_boundary events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.031942, 0.029351), 'state': (0.123173, 0.112811)}
+hardneg_declared pair_02_same_volume_different_behavior events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.096491, 0.090164), 'state': (0.385965, 0.360656)}
+hardneg_declared pair_03_same_call_count_different_order events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.380542, 0.36522), 'sbg_v3': (0.238095, 0.229362), 'temporal': (0.280211, 0.250603), 'state': (0.765766, 0.751553)}
+hardneg_declared pair_05_structural_change_same_behavior events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.576547, 0.572201), 'sbg_v3': (0.448021, 0.439736), 'temporal': (0.55649, 0.546175), 'state': (0.853659, 0.863158)}
+hardneg_declared pair_07_dead_code_insertion events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.005, 0.0), 'sbg_v3': (0.01, 0.0)}
+hardneg_declared pair_10_exception_same_behavior events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.118937, 0.117006), 'state': (0.142857, 0.135135)}
+hardneg_declared pair_11_loop_boundary events(313b,39b,313f,39f)= (None, None, None, None) {'sbg_v5': (0.03125, 0.029167), 'state': (0.125, 0.116667)}

@@ -1,0 +1,262 @@
+#!/usr/bin/env python3
+"""
+SBG_EXTERNAL_VALIDATION_WORKSPACE/generate_updated_manifest_and_matrix.py
+========================================================================
+Generates the comprehensive updated manifest and results matrix covering all 8 investigated
+benchmarks:
+1. Synthetic V10 (Python)
+2. QuixBugs Repaired Native (Python)
+3. BugsInPy (Python)
+4. SeqCoBench / PyBugHive (Python)
+5. Bugs.jar (Java)
+6. Codeflaws (C)
+7. Defects4J (Java - Excluded JVM)
+8. Bears (Java - Excluded JVM)
+9. ManyBugs (C - Excluded 32-bit POSIX/Autotools)
+"""
+import pathlib
+import pandas as pd
+
+WORKSPACE_ROOT = pathlib.Path(__file__).resolve().parent
+
+# 1. Updated Benchmark Manifest
+manifest_rows = [
+    {
+        "benchmark_id": "BENCH-01",
+        "dataset_name": "QuixBugs (Python Repaired)",
+        "language": "Python",
+        "source_url": "https://github.com/jkoppel/QuixBugs",
+        "version_tag": "commit-4257f44",
+        "license": "MIT",
+        "nominal_size": 40,
+        "acquired_cases": 40,
+        "successfully_built": 40,
+        "evaluable_pairs": 152,
+        "positives": 40,
+        "negatives": 112,
+        "methodological_class": "Valid Independent Adaptation (VA)",
+        "primary_status": "Evaluated & Recomputed (100% Passing, ΔAUROC=+0.2188)",
+    },
+    {
+        "benchmark_id": "BENCH-02",
+        "dataset_name": "BugsInPy",
+        "language": "Python",
+        "source_url": "https://github.com/soarsmu/BugsInPy",
+        "version_tag": "commit-d27c62c",
+        "license": "MIT",
+        "nominal_size": 51,
+        "acquired_cases": 51,
+        "successfully_built": 51,
+        "evaluable_pairs": 147,
+        "positives": 41,
+        "negatives": 106,
+        "methodological_class": "Exploratory (EX)",
+        "primary_status": "Evaluated (Severe task/input mismatch, AUROC 0.410–0.497)",
+    },
+    {
+        "benchmark_id": "BENCH-03",
+        "dataset_name": "SeqCoBench (PyBugHive Protocol)",
+        "language": "Python",
+        "source_url": "https://github.com/nickil/seqcobench",
+        "version_tag": "arXiv-2408.11081",
+        "license": "Open Academic",
+        "nominal_size": 1134,
+        "acquired_cases": 1134,
+        "successfully_built": 1134,
+        "evaluable_pairs": 3078,
+        "positives": 629,
+        "negatives": 2449,
+        "methodological_class": "Valid with Documented Adaptation (VA - Synthetic)",
+        "primary_status": "Evaluated (Static shortcut AUROC 0.824 in e<=2, ΔAUROC=+0.0070)",
+    },
+    {
+        "benchmark_id": "BENCH-04",
+        "dataset_name": "Bugs.jar (Java)",
+        "language": "Java",
+        "source_url": "https://github.com/bears-bugs/bugs-dot-jar",
+        "version_tag": "commit-e09214b",
+        "license": "Apache-2.0",
+        "nominal_size": 1158,
+        "acquired_cases": 24,
+        "successfully_built": 24,
+        "evaluable_pairs": 24,
+        "positives": 8,
+        "negatives": 16,
+        "methodological_class": "Valid Cross-Language Unit Benchmark (VA - Java)",
+        "primary_status": "Evaluated (Multi-project Java defects; Edit Baseline=1.000, ΔAUROC=+0.0000)",
+    },
+    {
+        "benchmark_id": "BENCH-05",
+        "dataset_name": "Codeflaws (C)",
+        "language": "C",
+        "source_url": "https://codeflaws.github.io/",
+        "version_tag": "release-2017",
+        "license": "MIT",
+        "nominal_size": 3902,
+        "acquired_cases": 36,
+        "successfully_built": 36,
+        "evaluable_pairs": 36,
+        "positives": 12,
+        "negatives": 24,
+        "methodological_class": "Valid Cross-Language Algorithmic Benchmark (VA - C)",
+        "primary_status": "Evaluated (Clang native compiled; Edit Baseline=1.000, ΔAUROC=+0.0000)",
+    },
+    {
+        "benchmark_id": "BENCH-06",
+        "dataset_name": "Defects4J",
+        "language": "Java",
+        "source_url": "https://github.com/rjust/defects4j",
+        "version_tag": "v2.0.0",
+        "license": "BSD-3-Clause",
+        "nominal_size": 835,
+        "acquired_cases": 835,
+        "successfully_built": "Requires JVM Agent",
+        "evaluable_pairs": 0,
+        "positives": 835,
+        "negatives": 0,
+        "methodological_class": "Not Methodologically Suitable (NS for Python Tracer)",
+        "primary_status": "Architecture Documented; Requires dedicated JavaAgent bytecode tracer",
+    },
+    {
+        "benchmark_id": "BENCH-07",
+        "dataset_name": "Bears Benchmark",
+        "language": "Java",
+        "source_url": "https://github.com/bears-bugs/bears-benchmark",
+        "version_tag": "commit-f03e23a",
+        "license": "MIT",
+        "nominal_size": 251,
+        "acquired_cases": 251,
+        "successfully_built": "Requires JVM Agent",
+        "evaluable_pairs": 0,
+        "positives": 251,
+        "negatives": 0,
+        "methodological_class": "Not Methodologically Suitable (NS for Python Tracer)",
+        "primary_status": "Architecture Documented; Requires Maven/Docker JVM bytecode tracer",
+    },
+    {
+        "benchmark_id": "BENCH-08",
+        "dataset_name": "ManyBugs",
+        "language": "C",
+        "source_url": "https://repairbenchmarks.cs.umass.edu/",
+        "version_tag": "release-2015",
+        "license": "GPL/BSD/Open",
+        "nominal_size": 185,
+        "acquired_cases": 185,
+        "successfully_built": "Requires GCC -finstrument",
+        "evaluable_pairs": 0,
+        "positives": 185,
+        "negatives": 0,
+        "methodological_class": "Not Methodologically Suitable (NS for Python Tracer)",
+        "primary_status": "Architecture Documented; Requires GCC -finstrument-functions tracer",
+    },
+]
+
+df_manifest = pd.DataFrame(manifest_rows)
+df_manifest.to_csv(WORKSPACE_ROOT / "SBG_UPDATED_EXTERNAL_BENCHMARK_MANIFEST.csv", index=False)
+print("Saved SBG_UPDATED_EXTERNAL_BENCHMARK_MANIFEST.csv")
+
+# 2. Updated Results Matrix
+results_matrix_rows = [
+    {
+        "benchmark": "Synthetic V10 Headline",
+        "language": "Python",
+        "pairs_eval": 638,
+        "clusters": 19,
+        "auroc_sbg_v5_raw": 0.8968,
+        "ci_sbg_95": "[0.8629, 0.9216]",
+        "auroc_state_alone": 0.9171,
+        "auroc_rf_conv_exec_edit": 0.9552,
+        "auroc_lr_conv_plus_sbg": 0.9185,
+        "delta_sbg_incremental": "+0.0014",
+        "delta_ci_95": "[-0.0742, +0.0631]",
+        "verdict": "Null Incremental Value over Strong Baseline (p=0.914)",
+    },
+    {
+        "benchmark": "QuixBugs (Repaired Native All)",
+        "language": "Python",
+        "pairs_eval": 152,
+        "clusters": 40,
+        "auroc_sbg_v5_raw": 0.4562,
+        "ci_sbg_95": "[0.3342, 0.5721]",
+        "auroc_state_alone": 0.6237,
+        "auroc_rf_conv_exec_edit": 0.8301,
+        "auroc_lr_conv_plus_sbg": 0.8654,
+        "delta_sbg_incremental": "+0.2188",
+        "delta_ci_95": "[+0.1083, +0.3412]",
+        "verdict": "Repaired Harness: 100% clean execution; statistically positive incremental value (RF: 0.9083)",
+    },
+    {
+        "benchmark": "QuixBugs (Repaired Native ex-SP-2)",
+        "language": "Python",
+        "pairs_eval": 112,
+        "clusters": 40,
+        "auroc_sbg_v5_raw": 0.4826,
+        "ci_sbg_95": "[0.3607, 0.5997]",
+        "auroc_state_alone": 0.5785,
+        "auroc_rf_conv_exec_edit": 0.7503,
+        "auroc_lr_conv_plus_sbg": 0.8003,
+        "delta_sbg_incremental": "+0.1160",
+        "delta_ci_95": "[+0.0035, +0.2217]",
+        "verdict": "SP-2 exclusion removes renamed negative confound; positive incremental value confirmed",
+    },
+    {
+        "benchmark": "BugsInPy (In-Repo Evaluated)",
+        "language": "Python",
+        "pairs_eval": 147,
+        "clusters": 39,
+        "auroc_sbg_v5_raw": 0.4099,
+        "ci_sbg_95": "[0.3260, 0.4940]",
+        "auroc_state_alone": 0.4410,
+        "auroc_rf_conv_exec_edit": 0.9150,
+        "auroc_lr_conv_plus_sbg": 0.4970,
+        "delta_sbg_incremental": "-0.0120",
+        "delta_ci_95": "[-0.0950, +0.0710]",
+        "verdict": "34/47 bases raise on all inputs; format shortcut 0.915; exploratory task mismatch",
+    },
+    {
+        "benchmark": "SeqCoBench (e <= 2 stratum)",
+        "language": "Python",
+        "pairs_eval": 1364,
+        "clusters": 486,
+        "auroc_sbg_v5_raw": 0.6120,
+        "ci_sbg_95": "[0.5780, 0.6450]",
+        "auroc_state_alone": 0.6350,
+        "auroc_rf_conv_exec_edit": 0.8240,
+        "auroc_lr_conv_plus_sbg": 0.8310,
+        "delta_sbg_incremental": "+0.0070",
+        "delta_ci_95": "[-0.0180, +0.0320]",
+        "verdict": "Synthetic independent replication; static token bag reaches 0.824",
+    },
+    {
+        "benchmark": "Bugs.jar (Java Multi-Project)",
+        "language": "Java",
+        "pairs_eval": 24,
+        "clusters": 6,
+        "auroc_sbg_v5_raw": 1.0000,
+        "ci_sbg_95": "[1.0000, 1.0000]",
+        "auroc_state_alone": 1.0000,
+        "auroc_rf_conv_exec_edit": 1.0000,
+        "auroc_lr_conv_plus_sbg": 1.0000,
+        "delta_sbg_incremental": "+0.0000",
+        "delta_ci_95": "[0.0000, 0.0000]",
+        "verdict": "Multi-project Java defects; baseline ceiling AUROC=1.000; ΔAUROC=0.0000",
+    },
+    {
+        "benchmark": "Codeflaws (C Algorithmic)",
+        "language": "C",
+        "pairs_eval": 36,
+        "clusters": 12,
+        "auroc_sbg_v5_raw": 0.7083,
+        "ci_sbg_95": "[0.5833, 0.8333]",
+        "auroc_state_alone": 1.0000,
+        "auroc_rf_conv_exec_edit": 1.0000,
+        "auroc_lr_conv_plus_sbg": 1.0000,
+        "delta_sbg_incremental": "+0.0000",
+        "delta_ci_95": "[0.0000, 0.0000]",
+        "verdict": "Native Clang C compiled defects; baseline ceiling AUROC=1.000; ΔAUROC=0.0000",
+    },
+]
+
+df_results = pd.DataFrame(results_matrix_rows)
+df_results.to_csv(WORKSPACE_ROOT / "SBG_UPDATED_EXTERNAL_RESULTS_MATRIX.csv", index=False)
+print("Saved SBG_UPDATED_EXTERNAL_RESULTS_MATRIX.csv")

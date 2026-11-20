@@ -1,0 +1,1719 @@
+{
+ "sources": [
+  "reports/external_validation/*",
+  "external/quixbugs",
+  "external/bugsinpy/manifest.json",
+  "datasets/v8/dev_records.jsonl"
+ ],
+ "note": "Derived registry; no original artifact modified. A case may carry several classes. EXTERNAL_EVALUATION is assigned to none: no case is both real, executed with V8, and unseen/untuned.",
+ "class_counts": {
+  "VERIFIED_PARTIAL_EXECUTION": 40,
+  "DEVELOPMENT_DATA": 74,
+  "UNCERTAIN": 17,
+  "UNVERIFIED_EXECUTION": 54,
+  "GENERATED_STAND_IN": 20,
+  "UNVERIFIED_PROVENANCE": 21
+ },
+ "n_entries": 115,
+ "cases": [
+  {
+   "benchmark": "QuixBugs",
+   "case": "bitcount",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "breadth_first_search",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "bucketsort",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "depth_first_search",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "detect_cycle",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "find_first_in_sorted",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "find_in_sorted",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "flatten",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "gcd",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "get_factors",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "hanoi",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "is_valid_parenthesization",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "kheapsort",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "knapsack",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "kth",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "lcs_length",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "levenshtein",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "lis",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "longest_common_subsequence",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "max_sublist_sum",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "mergesort",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "minimum_spanning_tree",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "next_palindrome",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "next_permutation",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "pascal",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "possible_change",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "powerset",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "quicksort",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "reverse_linked_list",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "rpn_eval",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "shortest_path_length",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "shortest_path_lengths",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "shortest_paths",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "shunting_yard",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "sieve",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "sqrt",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "subsequences",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "to_base",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "topological_ordering",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "not in V8 dev corpus, but harness was repaired after seeing results on all 40",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "QuixBugs",
+   "case": "wrap",
+   "upstream": "jkoppel/QuixBugs @4257f44b0ff1 (resolves, 2022-08-29)",
+   "buggy_fixed_source": "real upstream files in external/quixbugs",
+   "executed_in_earlier_workstream": true,
+   "sbg_version_in_that_run": "V5 (sbg_v5 column)",
+   "negatives": "synthetic SP-1/2/3/6 transformations of the fixed program",
+   "classes": [
+    "VERIFIED_PARTIAL_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "program in V8 dev corpus",
+   "used_to_tune": "yes: harness repaired (FIX-QB-01..03) after below-chance AUROC; not external"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "ansible/2",
+   "upstream": "https://github.com/ansible/ansible buggy de59b17c7f fixed 5b9418c06c",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "ansible/7",
+   "upstream": "https://github.com/ansible/ansible buggy cd146b836e fixed 4ec1437212",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "ansible/11",
+   "upstream": "https://github.com/ansible/ansible buggy da07b98b7a fixed 52f3ce8a80",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "ansible/15",
+   "upstream": "https://github.com/ansible/ansible buggy b1e8a6c1cb fixed 68de182555",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "black/16",
+   "upstream": "https://github.com/psf/black buggy fb34c9e195 fixed 42a3fe5331",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "black/21",
+   "upstream": "https://github.com/psf/black buggy c071af761e fixed 8e7848c63e",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "black/23",
+   "upstream": "https://github.com/psf/black buggy 8de552eb4f fixed 6316e293ac",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "httpie/1",
+   "upstream": "https://github.com/jakubroztocil/httpie/ buggy 001bda1945 fixed 5300b0b490",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "keras/9",
+   "upstream": "https://github.com/keras-team/keras buggy 0cd3b07eb5 fixed 0505393746",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "keras/20",
+   "upstream": "https://github.com/keras-team/keras buggy 76da5f0a21 fixed 6dd087ab73",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "keras/34",
+   "upstream": "https://github.com/keras-team/keras buggy 7ef5244a2f fixed 4b74fc5418",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "luigi/6",
+   "upstream": "https://github.com/spotify/luigi buggy d9667b7c8c fixed ce881b2a95",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "luigi/9",
+   "upstream": "https://github.com/spotify/luigi buggy f7e0b7710f fixed b7115974c3",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "luigi/14",
+   "upstream": "https://github.com/spotify/luigi buggy f7219c3812 fixed 43f2de2646",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "matplotlib/24",
+   "upstream": "https://github.com/matplotlib/matplotlib buggy 9a5473dbac fixed 407a9fe71a",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "matplotlib/26",
+   "upstream": "https://github.com/matplotlib/matplotlib buggy 04d9d28b82 fixed 557375ff91",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "pandas/18",
+   "upstream": "https://github.com/pandas-dev/pandas buggy e008a0a7ac fixed cb71376385",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "pandas/22",
+   "upstream": "https://github.com/pandas-dev/pandas buggy 38b669a206 fixed 299e27da8a",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "pandas/167",
+   "upstream": "https://github.com/pandas-dev/pandas buggy 6af6d5133c fixed 226398224d",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "scrapy/2",
+   "upstream": "https://github.com/scrapy/scrapy buggy f02c3d1dcf fixed 439a3e59b8",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "scrapy/8",
+   "upstream": "https://github.com/scrapy/scrapy buggy f2f9350c47 fixed 4e765acaed",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "scrapy/34",
+   "upstream": "https://github.com/scrapy/scrapy buggy e521740b39 fixed 773ea5a5ef",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "scrapy/36",
+   "upstream": "https://github.com/scrapy/scrapy buggy cb8140a42a fixed cf9be5344a",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "spacy/1",
+   "upstream": "https://github.com/explosion/spaCy buggy 9ce059dd06 fixed a987e9e45d",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "spacy/4",
+   "upstream": "https://github.com/explosion/spaCy buggy abd5c06374 fixed 9fa9d7f2cb",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "spacy/7",
+   "upstream": "https://github.com/explosion/spaCy buggy da6e0de34f fixed 6f54e59fe7",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "thefuck/8",
+   "upstream": "https://github.com/nvbn/thefuck buggy 449cb9a006 fixed be48f02784",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "thefuck/10",
+   "upstream": "https://github.com/nvbn/thefuck buggy 8bd6c5da67 fixed 0c84eefa55",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "thefuck/18",
+   "upstream": "https://github.com/nvbn/thefuck buggy b65a9a0a4f fixed c3b1ba7637",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "thefuck/20",
+   "upstream": "https://github.com/nvbn/thefuck buggy 0a6a3db65d fixed 280751b36e",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "thefuck/27",
+   "upstream": "https://github.com/nvbn/thefuck buggy bc6b107066 fixed 1becd92b12",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "thefuck/29",
+   "upstream": "https://github.com/nvbn/thefuck buggy 4a2f869c6d fixed 88831c424f",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "UNCERTAIN"
+   ],
+   "dev_overlap": "eligible, not found in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "thefuck/32",
+   "upstream": "https://github.com/nvbn/thefuck buggy cb33c912e5 fixed 25cc98a21a",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "tqdm/9",
+   "upstream": "https://github.com/tqdm/tqdm buggy 9da1d5d116 fixed d877c1dfb4",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/6",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 4f29fa9906 fixed d631d5f9f2",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/7",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 63a6494834 fixed d01949dc89",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/10",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 85d5866177 fixed d305dd73a3",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/15",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy e7f3529f68 fixed c384d537f8",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/17",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 4bf22f7a10 fixed 5b232f46dc",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/23",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy a22b2fd19b fixed b3ee552e4b",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/25",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 9e5751b9fe fixed e4659b4547",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/26",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 4c93ee8d14 fixed 47212f7bcb",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/27",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy d631d5f9f2 fixed db2fe38b55",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/31",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy ab07963b5c fixed e8df5cee12",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/32",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy bf951c5e29 fixed 609a61e3e6",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/33",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 50c8266ef0 fixed 6ad4013d40",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/34",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 07e764439a fixed 410f3e73ab",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/35",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 89294b5f50 fixed 99b67fecc5",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/37",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 98b7cf1ace fixed 676eb3f2dd",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/41",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy 81c2f20b53 fixed 026fcc0495",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "BugsInPy",
+   "case": "youtube-dl/43",
+   "upstream": "https://github.com/ytdl-org/youtube-dl buggy cecaaf3f58 fixed d6c7a367e8",
+   "buggy_fixed_source": "function-level units fetched verbatim at recorded commits (external/bugsinpy)",
+   "executed_in_earlier_workstream": "results not per-case in the worktree (earlier pairs file lives outside it)",
+   "sbg_version_in_that_run": "V5/V7 output-free",
+   "negatives": "synthetic SP-2 renames",
+   "classes": [
+    "UNVERIFIED_EXECUTION",
+    "DEVELOPMENT_DATA"
+   ],
+   "dev_overlap": "bug used in V8 dev corpus",
+   "used_to_tune": "unknown"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "ACCUMULO-1051",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "FLINK-2021",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "LOG4J2-811",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "MATH-1021",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "MATH-1115",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "MATH-988",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "OAK-1422",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Bugs.jar",
+   "case": "WICKET-3452",
+   "upstream": "claimed bugs-dot-jar commit-e09214b (does not resolve, HTTP 404)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_bugsjar.py; no checkout",
+   "executed_in_earlier_workstream": "Java compiled (javac) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "112-A-bug-18098765-18098770",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "118-A-bug-18012345-18012360",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "131-A-bug-18069181-18073244",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "133-A-bug-18048780-18048793",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "158-A-bug-18234567-18234580",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "231-A-bug-18055428-18055539",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "282-A-bug-18151234-18151240",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "4-A-bug-18258406-18258457",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "467-A-bug-18348808-18348843",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "58-A-bug-18163826-18163845",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "71-A-bug-18359456-18359477",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "Codeflaws",
+   "case": "96-A-bug-18284844-18284870",
+   "upstream": "claimed Codeflaws release-2017 (not checked)",
+   "buggy_fixed_source": "hand-written snippet embedded in evaluate_codeflaws.py; no checkout",
+   "executed_in_earlier_workstream": "C compiled (clang) and traced",
+   "sbg_version_in_that_run": "V5",
+   "negatives": "synthetic identity/refactor variants",
+   "classes": [
+    "GENERATED_STAND_IN",
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "dev_overlap": "none by name",
+   "used_to_tune": "unknown; scores of 1.000 were flagged by the project's own perfect-score audits"
+  },
+  {
+   "benchmark": "SeqCoBench",
+   "case": "1134 MBPP problems (3078 pairs)",
+   "upstream": "arXiv:2408.11081; nickil/seqcobench (not fetched)",
+   "buggy_fixed_source": "LLM-generated semantics-preserving/altering transformations",
+   "classes": [
+    "UNVERIFIED_PROVENANCE"
+   ],
+   "note": "synthetic mutations, not real bug-fix pairs"
+  },
+  {
+   "benchmark": "Defects4J",
+   "case": "none evaluated",
+   "classes": [
+    "UNVERIFIED_EXECUTION"
+   ],
+   "note": "0 evaluated pairs; marked needing a JVM/GCC tracer"
+  },
+  {
+   "benchmark": "Bears",
+   "case": "none evaluated",
+   "classes": [
+    "UNVERIFIED_EXECUTION"
+   ],
+   "note": "0 evaluated pairs; marked needing a JVM/GCC tracer"
+  },
+  {
+   "benchmark": "ManyBugs",
+   "case": "none evaluated",
+   "classes": [
+    "UNVERIFIED_EXECUTION"
+   ],
+   "note": "0 evaluated pairs; marked needing a JVM/GCC tracer"
+  }
+ ]
+}

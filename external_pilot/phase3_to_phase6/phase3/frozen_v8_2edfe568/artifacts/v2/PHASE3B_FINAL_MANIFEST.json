@@ -1,0 +1,139 @@
+{
+  "phase": "3B",
+  "generated_by": "experiments/v2/run_phase3b.py",
+  "date": "2025-07-08",
+  "test_set": {
+    "n_pairs": 744,
+    "n_changed": 366,
+    "n_equiv": 378,
+    "frozen": true,
+    "imputed_pairs": 58,
+    "imputed_pairs_program": "conc_read_write_lock",
+    "imputed_score": 0.5
+  },
+  "wave_completion": {
+    "wave1_forensic_audit": "COMPLETE",
+    "wave2_noise_floor": "COMPLETE_12_OF_13",
+    "wave3_hard_negatives": "COMPLETE",
+    "wave4_sp_stratification": "COMPLETE",
+    "wave5_b06_b07_fairness": "COMPLETE",
+    "wave6_negative_control": "COMPLETE",
+    "wave7_confound_audit": "COMPLETE",
+    "wave8_h9_reconciliation": "COMPLETE",
+    "wave9_hostile_review": "COMPLETE_4_REVIEWERS"
+  },
+  "primary_results": {
+    "b07_auroc": 0.528356,
+    "v1_static_auroc": 0.423664,
+    "ast_auroc": 0.552845,
+    "b06_fair_auroc": 0.504966,
+    "b07_inversion_delta": -0.045037,
+    "v1_inversion_delta": 0.0335
+  },
+  "noise_floor": {
+    "n_programs_ok": 12,
+    "n_programs_excluded_by_design": 1,
+    "excluded_program": "conc_read_write_lock",
+    "max_cv": 0.0,
+    "all_fields_stable": true,
+    "source": "artifacts/v2/NOISE_FLOOR_RESULTS.json"
+  },
+  "hard_negatives": {
+    "sc3": {
+      "auroc": 0.5444,
+      "inversion_delta": 0.083,
+      "ci": [0.484, 0.608],
+      "near_identical_fraction": 0.846,
+      "verdict": "NOT_RESOLVED"
+    },
+    "sc11": {
+      "auroc": 0.7896,
+      "inversion_delta": -0.2265,
+      "ci": [0.721, 0.845],
+      "verdict": "FULLY_RESOLVED"
+    },
+    "source": "artifacts/v2/HARD_NEGATIVE_RESULTS.json"
+  },
+  "sp_type_stratification": {
+    "n_types": 25,
+    "sc_best": {"type": "SC-12", "auroc": 0.844},
+    "sc_worst": {"type": "SC-10", "auroc": 0.447},
+    "sp_best": {"type": "SP-1", "auroc": 0.551},
+    "sp_worst": {"type": "SP-2", "auroc": 0.240},
+    "auroc_spread": 0.6037,
+    "h10_verdict": "NOT_SUPPORTED_FRAGILE",
+    "source": "artifacts/v2/SP_TYPE_STRATIFIED_RESULTS.json"
+  },
+  "b06_b07_comparison": {
+    "inputs_identical": true,
+    "b06_auroc": 0.505,
+    "b07_auroc": 0.528,
+    "delta": 0.023,
+    "paired_ci": [-0.042, 0.054],
+    "verdict": "DIRECTIONALLY_B07_BETTER",
+    "source": "artifacts/v2/B06_B07_FAIR_COMPARISON.json"
+  },
+  "negative_control": {
+    "b07_auroc": 0.528,
+    "random_label_ci": [0.461, 0.544],
+    "p_random_ge_b07": 0.1,
+    "b07_above_noise_floor": false,
+    "verdict": "SIGNAL_WITHIN_NOISE_FLOOR",
+    "contextual_note": "Aggregate compression from unresolved inversion types. Per-type signal real for SC-11/SC-12/SC-8.",
+    "source": "artifacts/v2/NEGATIVE_CONTROL_RESULTS.json"
+  },
+  "confound_audit": {
+    "strong_confounds": [],
+    "verdict": "NO_STRONG_CONFOUNDS",
+    "source": "artifacts/v2/DYNAMIC_CONFOUND_AUDIT.json"
+  },
+  "h9_reconciliation": {
+    "aggregate_delta": -0.045037,
+    "permutation_p": 0.0,
+    "n_sc_types_resolved": 6,
+    "n_sc_types_total": 13,
+    "resolution_fraction": 0.4615,
+    "verdict": "SUPPORTED_WITH_TRANSFORMATION_DEPENDENT_LIMITATION",
+    "source": "artifacts/v2/H9_STRATIFIED_RESULTS.json"
+  },
+  "hypothesis_verdicts": {
+    "H7": "SUPPORTED (z=3.52, p=0.000217) — NOTE: aggregate AUROC within noise floor",
+    "H8": "NOT_SUPPORTED (delta=0.000, w_static=0.0)",
+    "H9": "SUPPORTED_WITH_TRANSFORMATION_DEPENDENT_LIMITATION (agg p<0.001, 6/13 SC types)",
+    "H10": "NOT_SUPPORTED_FRAGILE (spread=0.604)",
+    "H11": "INSUFFICIENT_EVIDENCE",
+    "H12": "INSUFFICIENT_EVIDENCE"
+  },
+  "tests": {
+    "total": 497,
+    "passed": 497,
+    "failed": 0
+  },
+  "gate_status": "PASSED",
+  "remaining_blockers": [
+    "P0: H7 noise floor — B07 AUROC within random-label CI; reframe required",
+    "P0: Central claim scope — narrow from 'resolves inversion' to 'resolves for 6/13 SC types'",
+    "P1: conc_read_write_lock 7.8% imputation — disclose in all tables",
+    "P1: B07 < AST — must be primary finding",
+    "P1: H10 spread=0.604 — scope all claims to specific SC types",
+    "P2: B07 vs B06 non-significant — C4 DIRECTIONALLY_SUPPORTED only",
+    "P2: Publication track — target empirical/negative results venue"
+  ],
+  "artifacts_produced": [
+    "artifacts/v2/NOISE_FLOOR_RESULTS.json",
+    "artifacts/v2/HARD_NEGATIVE_RESULTS.json",
+    "artifacts/v2/SP_TYPE_STRATIFIED_RESULTS.json",
+    "artifacts/v2/B06_B07_FAIR_COMPARISON.json",
+    "artifacts/v2/NEGATIVE_CONTROL_RESULTS.json",
+    "artifacts/v2/DYNAMIC_CONFOUND_AUDIT.json",
+    "artifacts/v2/H9_STRATIFIED_RESULTS.json",
+    "docs/v2/PHASE3B_FORENSIC_AUDIT.md",
+    "docs/v2/NOISE_FLOOR_ANALYSIS.md",
+    "docs/v2/SP_TYPE_ANALYSIS.md",
+    "docs/v2/PHASE3B_GATE_REPORT.md",
+    "artifacts/v2/PHASE3B_FINAL_MANIFEST.json"
+  ],
+  "scripts_produced": [
+    "experiments/v2/run_phase3b.py"
+  ]
+}

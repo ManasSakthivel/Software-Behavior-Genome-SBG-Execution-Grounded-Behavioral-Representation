@@ -1,0 +1,10 @@
+\section{Failure Analysis}\label{sec:failure}
+This section describes observed failure modes in the development data (Tables~\ref{tab:reasons} and~\ref{tab:byarm}).
+\begin{itemize}
+\item \textbf{Engine gaps and conservative blocking dominate \INS{}.} Of 157 \INS{} verdicts on the driven pairs, 54 are \texttt{unmodelled\_change}, 49 \texttt{unsupported\_signature} (renamed or unsupported entries) and 40 \texttt{changed\_region\_not\_activated} (the inputs never reached the changed lines). Generator functions are not consumed and nine pairs are not driven (class units and one unsupported entry policy). The abstention rate is therefore not a measure of anything beyond engine gaps and conservative blocking on development data, and its usefulness is unshown.
+\item \textbf{\texttt{unmodelled\_change} is unrefined.} Continuation lines of an executable statement are not mapped to the statement; the rule A-U1 abstains on them. Part of the 54 abstentions may be noise of the rule.
+\item \textbf{\NDO{} on pairs known to differ.} 13 of 106 divergent-labelled pairs still receive \NDO{}; the battery did not reach the differing behaviour and S2 does not prevent this.
+\item \textbf{Timing-dependent witness identity.} One pair (\texttt{quixbugs/longest\_common\_subsequence}) has a different witness id in E4-V0 than in E1 and E3: one input sits at the 2~s CPU limit and hit it on one side in one run (limit-asymmetric), so a later input became the witness. The verdict is unchanged, but witness identity is timing-dependent for inputs near a resource limit. Strict-key consistency is 321 of 321 between E1 and E3 and 320 of 321 between E3 and E4-V0.
+\item \textbf{Label strictness.} The boundary treats the type tag as identity, so a semantics-preserving rewrite returning a boolean for an integer yields a witness; six suspect labels are excluded.
+\item \textbf{Capture and determinism gaps.} Control alternation does not virtualise \texttt{datetime.now}, hash-order sensitivity is untested, and subprocess or detached-session behaviour is untested under isolation.
+\end{itemize}

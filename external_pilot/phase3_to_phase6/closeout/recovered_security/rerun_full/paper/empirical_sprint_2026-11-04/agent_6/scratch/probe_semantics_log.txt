@@ -1,0 +1,9 @@
+call events (function_name): ['probe', 'f', 'f', '__init__', 'f', '__init__', 'applyAsInt', '<lambda>']
+line-event snapshots of probe() (line -> keys):
+   8 [('n', '3')]
+   9 [('n', '3'), ('total', '0')]
+   10 [('n', '3'), ('total', '12')]
+   11 [('n', '3'), ('total', '23')]
+   12 [('n', '3'), ('op', '<java_programs.PROBE$$Lambda/0x0000007001001418 object>'), ('total', '23')]
+   13 [('n', '3'), ('op', '<java_programs.PROBE$$Lambda/0x0000007001001418 object>'), ('total', '25')]
+   14 [('boxed', 'None'), ('n', '3'), ('op', '<java_programs.PROBE$$Lambda/0x0000007001001418 object>'), ('total', '25')]

@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-08-20T06:33:39Z",
+  "python_version_required": ">=3.9",
+  "external_dependencies": "NONE \u2014 stdlib only",
+  "seeds": {
+    "global_seed": 42,
+    "bootstrap_seed": 42,
+    "permutation_test_seed": 42,
+    "split_assignment_seed": 42
+  },
+  "deterministic": true,
+  "test_suite": {
+    "total_tests": 653,
+    "all_pass": true,
+    "consecutive_runs_identical": true
+  },
+  "reproduction_steps": [
+    "1. cd /path/to/SBG",
+    "2. python3 benchmark/scripts/generate_benchmark.py  # regenerate pairs",
+    "3. python3 benchmark/scripts/validate_benchmark.py  # validate 0 issues",
+    "4. python3 baselines/run_all_baselines.py           # reproduce Phase 3",
+    "5. python3 experiments/phase4/e1_equivalence_detection.py  # reproduce E1",
+    "6. python3 experiments/phase4/run_phase4_gate.py   # reproduce Phase 4 gate"
+  ],
+  "known_non_reproducibility": [
+    "Dynamic tracing timeout (5s) may vary on different hardware",
+    "Java programs cannot be executed \u2014 Phase 5 Java validation is manual"
+  ],
+  "artifact_hash_manifest": {
+    "artifacts/research/PHASE_0_GATE.json": "c5e33166a2b6432d",
+    "artifacts/research/PHASE_1_GATE.json": "407f8927d954efc1",
+    "artifacts/research/PHASE_2_GATE.json": "f88bebd7e02020a6",
+    "artifacts/research/PHASE_3_GATE.json": "4d78fa6ea25731d8",
+    "artifacts/research/PHASE_4_GATE.json": "8e8f414753ce7ef1",
+    "artifacts/research/PHASE_5_GATE.json": "7a0697655340128d",
+    "artifacts/research/PHASE_6_GATE.json": "6652ba86dfade918",
+    "artifacts/phase3/B02/results_test.json": "6d87c16bb958343b",
+    "artifacts/phase3/B08/results_test.json": "efe00bff25e73747",
+    "artifacts/phase4/E1/results.json": "e0fa9acca567a11d",
+    "artifacts/phase4/E2/results.json": "ce5f300269ff36ee",
+    "artifacts/phase4/E3/results.json": "fa60c3d0e533862e",
+    "artifacts/phase4/E6/results.json": "b5c8cb99cc68a0b4",
+    "artifacts/phase4/E7/results.json": "c76c591015128b70",
+    "artifacts/phase4/E10/results.json": "90f2487c788afbff",
+    "artifacts/phase4/E12/results.json": "69149bcc9c3cb16b",
+    "artifacts/phase5/cross_language_results.json": "96655ab97aafdaa3",
+    "artifacts/phase5/regression_results.json": "10492220dae58071",
+    "docs/CLAIMS_REGISTRY.yaml": "946d8d3f7f2e299c"
+  }
+}

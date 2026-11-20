@@ -1,0 +1,11 @@
+\section{Limitations}\label{sec:limitations}
+\begin{itemize}
+\item \textbf{Scope of the tool.} Python top-level functions in single files; user-supplied JSON inputs (no generation, no tuples, sets or objects); no classes, generators, declared renames, multi-file or repository-level changes, or non-Python code. The explorer, internal-state module and S3 are not implemented.
+\item \textbf{Isolation.} macOS \texttt{sandbox-exec} only, policy flagged below the specification minimum. Linux, Docker and OS-level isolation were not implemented, tested or validated. No safe-execution or cross-platform claim.
+\item \textbf{Evidence.} The chain is not tamper-proof and there is no trust anchor; \texttt{verify} executes nothing; the log contains unredacted source and inputs. Merkle log and supersession records are not implemented.
+\item \textbf{Determinism.} Not complete: fixed, unvaried hash seed (hash-order sensitivity untested; E2 not run); \texttt{datetime.now} not virtualised; process ids, threads and addresses uncontrolled; timing-dependent witness identity near resource limits.
+\item \textbf{Thresholds.} The 0.80 floor, repeat counts and limits are unvalidated defaults; E5 shows only that the floor relabels S1 and S2.
+\item \textbf{Evaluation.} Non-pristine development data, no holdout, no adjudicated labels, no independent projects; K1 and K5 and all Phase 3 work deferred; published tools not compared; results are exploratory.
+\item \textbf{Specification.} 135-rule implementation conformance is 78 conforming, 30 partially, 7 deviating, 14 not implemented, 2 unverifiable, 4 deferred to Phase 3; several user decisions (for example UD-2, the treatment of unmodelled changed lines) remain open.
+\end{itemize}
+Table~\ref{tab:notevaluated} lists what is not evaluated.

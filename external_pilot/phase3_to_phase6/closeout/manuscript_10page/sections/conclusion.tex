@@ -1,0 +1,14 @@
+\section{Conclusion}\label{sec:conclusion}
+
+An empty difference set is evidence that no divergence was observed on the inputs that were run, within the channels that were watched. This paper treated the corresponding verdict as a selective prediction. We defined its false-assurance risk relative to a declared observation boundary and adjudication budget, separated it formally from equivalence, and showed that the measured risk is a lower bound for wider boundaries, that integrity must gate every verdict, and that evidence-response conformance and accuracy must be tested separately. We estimated the risk from a change-conditioned evidence profile behind an integrity-first decision procedure, and we specified an Evidence Response Signature whose eight properties can be checked without labels.
+
+On a 312-pair development corpus the results separate what works from what remains open.
+\begin{itemize}
+\item Plain differential testing gave false assurance in about one in six no-difference verdicts. The predecessor's gate abstained heavily without improving that rate, which only a matched-coverage comparison against random abstention reveals.
+\item As a conformance test, the signature found a real profile defect, observed it in an exploratory real-execution matrix (run directories absent), and exposed the predecessor's indifference to integrity failures.
+\item As a predictor, calibration over the richer evidence was not shown to beat coverage-only calibration ($+1.6$ points, interval $-6.6$ to $+16.3$). The study could detect only differences of about 16 points.
+\item Keyless tampering forces abstention, and result-channel attacks are blocked or have no effect. In-process harness forgery and evidence substitution are detected but not prevented, and one sensing channel remains open.
+\item QuixBugs and BugsInPy subjects were executed only as development data; a single-run v8 test split evaluation gave NOT DEMONSTRATED, and no independent, confirmatory held-out benchmark evaluation was successfully established. The project's five-dataset artifact is invalid as external-validation evidence: its records were template-generated, its outcomes were set from labels, its predictor was a stub, no benchmark program was executed, and no human adjudication verdict exists.
+\end{itemize}
+
+The estimand can thus be operationalised, and the evidence-response protocol can detect estimator defects: it found one that aggregate metrics missed. Whether richer evidence improves risk estimates remains an open, empirical question. Answering it requires an independently adjudicated external corpus of several hundred to over a thousand issued verdicts.

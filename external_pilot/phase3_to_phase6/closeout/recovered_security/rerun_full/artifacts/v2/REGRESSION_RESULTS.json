@@ -1,0 +1,24 @@
+{
+  "hypothesis": "H12",
+  "criterion_auroc_threshold": 0.5528,
+  "reference_baseline": "B02_AST_AUROC=0.5528",
+  "synthetic_note": "ALL pairs are SYNTHETIC \u2014 not from real historical repositories",
+  "n_pairs": 55,
+  "n_regressions": 55,
+  "n_correct": 0,
+  "method_metrics": {},
+  "per_category_dynamic": {},
+  "h12_verdict": "INSUFFICIENT_EVIDENCE",
+  "h12_reason": "Benchmark contains only regression pairs (no non-regression control pairs). Binary AUROC requires both positive and negative classes. Adding equivalent-but-refactored control pairs is required before H12 can be evaluated.",
+  "bootstrap_config": {
+    "n": 1000,
+    "seed": 42
+  },
+  "limitations": [
+    "L1: Synthetic pairs only \u2014 real historical regressions unavailable",
+    "L2: Python only \u2014 no cross-language regression detection",
+    "L3: Limited categories \u2014 no concurrency or resource regressions",
+    "L4: Small N \u2014 insufficient power for definitive claims",
+    "L5: CRITICAL \u2014 benchmark lacks non-regression control pairs; AUROC undefined"
+  ]
+}

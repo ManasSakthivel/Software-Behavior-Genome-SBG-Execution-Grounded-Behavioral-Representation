@@ -1,0 +1,27 @@
+{
+ "input": "results/repro/p2_e4_20261118_154218/statistics/e4_ungated.csv",
+ "seed": 42,
+ "bootstrap_reps": 10000,
+ "signflip_mc": 20000,
+ "reference": "V0",
+ "systems": [
+  "B1",
+  "B1+rep",
+  "V0"
+ ],
+ "excluded_from_primary_denominators": {
+  "UNLABELLED": 57,
+  "SUSPECT_LABEL": 6
+ },
+ "failed_or_missing_runs": 0,
+ "design_div_pairs": {
+  "pairs": 106,
+  "projects": 78,
+  "mean_cluster": 1.358974358974359,
+  "max_cluster": 29,
+  "icc": null,
+  "design_effect": null,
+  "kish_n": null
+ },
+ "pairs_total_primary": 258
+}

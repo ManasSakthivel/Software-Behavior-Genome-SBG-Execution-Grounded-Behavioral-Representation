@@ -1,0 +1,85 @@
+# V8 Mac perturbation / ERS validation (2026-11-18)
+
+Scope: macOS only, development data only (312 records of `datasets/v8/dev_records.jsonl`), branch `research/v8-mac-hardening`, base 01fdaf09, tree dirty (uncommitted work of several agents). No holdout, no Linux, no external repositories. V7-B untouched. DEVELOPMENT / EXPLORATORY: nothing here is a performance claim. Artefacts: `results/v8_mac_perturb/` (`posthoc_matrix.{json,md}`, `posthoc_per_record.jsonl` with expected/observed/reason per record, `realexec_selection.json`, `realexec_20261118/` evidence directories + `manifest.json` + `manifest_supplement.json`, `realexec_matrix.{json,md}`, run logs). Code: `sbgv8/perturb.py`, `sbgv8/ers.py`, `experiments/v8/run_perturbation_validation.py`, `experiments/v8/run_real_exec_perturbations.py`; tests `tests/v8/test_ers_validation.py`, `tests/v8/test_realexec_perturb.py`.
+
+## 1. Audit: what each perturbation really is
+Classes: (a) recorded-evidence transformation (a copy of a record is edited; nothing runs), (b) re-execution with changed conditions (engine runs again), (c) independently acquired new evidence. `perturb.EVIDENCE_CLASS` now records this per perturbation. The repository defines **nine** properties (P1-P9); no separate list of eight was found, so all nine are audited.
+
+| P | Property (pass rule, `ers._eval`) | `sbgv8/perturb.py` implements | Real-execution variant | Remark |
+|---|---|---|---|---|
+| P1 | risk non-decreasing or abstain | (a) delete sole-reacher inputs | none | not an execution intervention; deletion of already-recorded runs |
+| P1b | same rule | (a) NEW: delete all clean inputs covering the least-multiplicity covered unit | none | additional named variant, P1 preserved |
+| P2 | risk and verdict unchanged, \|d\|<=0.02 | (a) synthetic recorded inputs with fresh fingerprints (not runs) | (b) engine re-run with added inputs hitting only unchanged code | the synthetic variant is NOT evidence about program behaviour |
+| P3 | risk and verdict unchanged | (a) flagged copies (`duplicate_of`) | none | invariance holds only for flagged copies (section 4) |
+| P4 | risk non-decreasing or abstain | (a) channel masking; fingerprints of partly masked inputs kept (approximation) | none | masked witnesses are synthetic missed divergences |
+| P5 | risk non-decreasing or abstain | (a) halve `n_repeat_runs`, mark inputs non-deterministic | (b) engine re-run with other r_det/r_replay/k_alt | repeated identical runs are repetition, not independent samples |
+| P6 | DIV, or risk up, or abstain | (a) synthetic CONFIRMED_DIFF input; response comes from the decision function | (c) input from a label/output-blind generator, outcome-conditioned | post-hoc P6 tests wiring (witness precedence), not discovery power |
+| P7 | risk non-decreasing or abstain | (a) flags | none | V7-B has no provenance concept |
+| P8 | rejection: integrity_ok=0 and INSUFFICIENT | (a) flag (and optional hit corruption) | (a on disk) corrupt a copied evidence dir, run `trust.check` (tests) | the flag test checks the policy gate, not forgery detection |
+| P9 | risk non-decreasing or abstain | (a) flags | none | |
+
+No post-hoc perturbation is described as an execution intervention. Only the P2/P5/P6 runs of section 3 executed anything.
+
+## 2. Post-hoc matrix on 312 development records (N/A never counted as pass)
+Predictors: `stub` (1 - act_frac), `model` (`calibrate.fit`, full_profile, lambda=1; diagnostic tau = 30th percentile of in-sample eligible risk so that NDO exists), `b3` (V7-B fixed gate = recorded `v7b_verdict`), plus labelled extras `b3_live` (V7-B `decide` recomputed on the perturbed record), `model_dense` (lambda=0.01) and `probe_all_features` (unfitted `calibrate.Model` reading every feature with its declared sign; diagnostic only). Cell = pass/applicable (denominator = pass+fail; N/A in brackets). Pass rate is over APPLICABLE cases.
+
+| P | stub | model | b3 (recorded gate) | b3_live | probe_all_features |
+|---|---|---|---|---|---|
+| P1 | 16/16 (N/A 296) | 16/16 (296) | 16/16 (296) | 16/16 (296) | 16/16 (296) |
+| P1b | 93/93 (219) | 93/93 (219) | 93/93 (219) | 93/93 (219) | 93/93 (219) |
+| P2 | 227/227 (85) | 227/227 (85) | 227/227 (85) | 227/227 (85) | **118/227** (85) |
+| P3 | 262/262 (50) | 262/262 (50) | 262/262 (50) | 262/262 (50) | 262/262 (50) |
+| P4 | 178/178 (134) | 178/178 (134) | 178/178 (134) | 178/178 (134) | 178/178 (134) |
+| P5 | 176/176 (136) | 176/176 (136) | 176/176 (136) | 176/176 (136) | 176/176 (136) |
+| P6 | 228/228 (84) | 228/228 (84) | **157/228** (84) | 228/228 (84) | 228/228 (84) |
+| P7 | 178/178 (134) | 178/178 (134) | 178/178 (134) | 178/178 (134) | 178/178 (134) |
+| P8 | 312/312 (0) | 312/312 (0) | **157/312** (0) | **228/312** (0) | 312/312 (0) |
+| P9 | 228/228 (84) | 228/228 (84) | 228/228 (84) | 228/228 (84) | 228/228 (84) |
+| P1-P9 total | 1805/1805, N/A 1003 of 2808 | 1805/1805, 1003 | 1579/1805, 1003 | 1721/1805, 1003 | 1696/1805, 1003 |
+
+P1b adds 93 applicable cases (N/A 219). Per-record expected/observed/reason: `posthoc_per_record.jsonl`; N/A reasons: P1 258 "no sole-reacher input", 38 "original DIVERGENT, assurance undefined"; P2 85 "no clean SAME input"; P6 84 "already divergent"; P8 none.
+
+What the pass rates do and do not mean:
+- **Passes are largely vacuous for the fitted model.** `model.coef_report()` keeps only `mu_min`; every other coefficient is exactly 0 (also at lambda=0.01). So P2, P3, P4, P6, P7, P9 have delta exactly 0 ("responded beyond tolerance" column of `posthoc_matrix.md` is 0 for them) and "risk non-decreasing" is satisfied by "no response". Only P1/P1b/P5 respond (through `mu_min`). Passing therefore shows the absence of a wrong-direction response, not sensitivity. This is why `probe_all_features` was added: it reads all features and exposes the quantity trap (P2 118/227).
+- No pass of stub, model, model_dense, b3_live or probe rests on abstention credit (0 in the column): every monotone pass is a risk delta >= 0. Exception: 157 of the 157 `b3` P6 passes are records the recorded gate already marks INSUFFICIENT.
+- Failures: `b3` is the recorded historical verdict, so it cannot respond to a perturbed record (P6 71 failures = non-divergent records that do not become DIVERGENT; P8 155 = every record not already INSUFFICIENT). `b3_live` (and the V7-B replica `profile.v7b_style_decision`) keeps a witnessed DIVERGENT_OBSERVABLE when the integrity flag is false (witness precedence in V7-B; 84 P8 failures): faithful to V7-B and exactly the gap the V8 trust gate closes.
+- `ers.ActivationStubPredictor.decide` had the same P8 gap (84 failures); it now applies the same integrity gate as `calibrate.Model.decide` (see 5, defect 1). Before the fix the stub row was P8 228/312.
+
+### Why P1 applies to only 16 of 312 records, and P1b
+P1 needs a changed unit (or a channel) reached by exactly one clean SAME input. Of 312 records: 85 have no clean SAME input, 52 have clean inputs that hit no changed unit (only channel candidates may apply), 136 have every covered unit covered by >= 2 clean inputs, 39 + some channel cases are applicable: 54 applicable in total, 38 of them originally DIVERGENT (assurance risk undefined, N/A), leaving 16. P1 thus mostly measures records with thin evidence; it is "sole-evidence" deletion, not "relevant" deletion in general.
+P1b (declared in `perturb.PERTURBATION_VARIANTS`, `evidence_class` a): among changed units covered by >= 1 clean non-duplicate input and where the deleting set is not all clean inputs, take the unit with the fewest covering inputs (ties: smallest `(side, line)`), delete every clean input covering it. Justification: the selection uses only recorded hit sets and input ids (never `y`, `meta`, or a predictor output), it is the weakest-evidence unit (the natural analogue of P1's sole reacher), and the exclusion of total deletion avoids a degenerate "remove everything" case (73 records). Applicable on 102 records, 93 non-DIVERGENT. Limit: it uses the same hit sets as `act_frac`/`mu_min`, so a model that reads those responds mechanically; P1b adds denominator, not independence. P1 is unchanged (`test_p1b_*`).
+
+## 3. Real-execution variants (macOS, engine via `python -m sbgv8 compare`)
+Pre-declared selection (`realexec_selection.json`, written before any engine run; seed 20261118; <= 30 pairs; label-free): pool = records with evidence dir, recorded verdict not DIVERGENT, >= 1 clean input, >= 1 changed unit, recorded wall <= 10 s; quota quixbugs 10 / synthetic 10 / bugsinpy_units 5 / quixbugs_neg 5. **The QuixBugs buggy/fixed pool was empty** (all recorded verdicts divergent or without clean activation), so 20 pairs were selected (10 synthetic, 5 bugsinpy, 5 quixbugs_neg). Because primary P6 applied to 0/20, a **supplement of 10 synthetic pairs** with dev label y=1 and non-divergent recorded verdict was declared afterwards (seed 20261119; stated as post hoc in the file; label used only to pick pairs where a divergence is known to exist, the input generator is label- and output-blind). 30 pairs total, 2 workers, per-run limits as `dev_collect` (cpu 2 s / wall 5 s, budget 60 s). Every run: 0 failed engine runs. Commands, seeds, git head, per-run rc/wall/trust issues: `manifest*.json`. A concurrent collector change (adds `v8_capture.json`) landed during the primary run, so early directories lack the capture record; the per-run `trust_issues` fields show it.
+
+Candidate inputs: <= 24 seeded, output-blind mutations of each pair's own recorded args. A probe run executes them; selection from recorded hit sets: P2 inputs = outcome SAME, deterministic, non-lossy, hits non-empty and **no changed unit hit** (re-verified on the final augmented record, `test_selection_declared_before_run_and_consistent`; original-input evidence reproduced identically in all P2 runs); P6 input = deterministic CONFIRMED_DIFF candidate.
+
+| Real exec | class | cohort | applicable | pass | fail | N/A (reason) |
+|---|---|---|---|---|---|---|
+| P2 stub / model / model_dense / b3 / b3_live | b | primary 20 | 5 | 5 | 0 | 15: no candidate exercising only unchanged code among 16-24 probed |
+| P2 same predictors | b | supplement 10 | 2 | 2 | 0 | 8: same reason |
+| P2 probe_all_features | b | 20 + 10 | 7 | 2 | 5 | (same N/A) |
+| P6 all predictors | c | primary 20 | 0 | 0 | 0 | 20: no discriminating input among probed candidates |
+| P6 all predictors | c | supplement 10 | 1 | 1 | 0 | 9: same (the one hit: `test__math_power_modular__sc1_s0_p0` NDO -> DIVERGENT_OBSERVABLE; real V7-B risk-pseudo 0 -> 1) |
+| P5_low (1,1,0) and P5_mid (2,3,1) vs recorded (3,5,3), all predictors | b | 30 | 30 | 30 | 0 | none |
+
+- **P6**: no independently derivable discriminating input exists for 29 of 30 pairs under this generator (a mutation generator is weak; QuixBugs declared test cases were all already used in the recorded evidence, so no unused independent input exists there; BugsInPy units offer only the structural inputs). Applicable 1 only: the P6 real-execution result is anecdotal, not a rate.
+- **P5**: engine verdicts did not change in any of the 30 pairs under any budget; `n_rep` was 0 / 22 / 44 / 88 (low / mid / default / high, typical) while `n_eff` (distinct observation fingerprints) and `repro_frac` were constant: extra identical repetition produces no new independent evidence. The fitted model responded in 0/30 (it ignores `n_rep`), so its P5 pass is vacuous again; `probe_all_features` lowered risk when repetition was increased (default -> high) in 30/30 pairs (min -0.042), i.e. a model reading `n_rep` credits repeated identical runs as evidence. The (5,8,5) config carries no declared expectation and is information only.
+- **P2 real**: the probe model fails P2 5/7, the fitted models and stubs pass 7/7 because they ignore the added evidence, consistent with section 2.
+
+## 4. Verified properties (executed tests, `tests/v8/test_ers_validation.py`: 24 passed, 2 xfailed by design)
+- Duplicates cannot raise confidence: a raw-count predictor fails P3 (detected); the fitted model, the stub and an all-feature `calibrate.Model` are invariant (delta exactly 0, profile identical) under k = 1, 3, 8 **flagged** copies. **Limitation (xfail, strict)**: copies not flagged with `duplicate_of` raise `n_same`/`n_rep` (e.g. 5 -> 8 and 20 -> 32) and lower an all-feature model's risk on 79 of 312 records by > 0.02. `adapter.load_record` never sets `duplicate_of`, so for real collections duplicate invariance is not guaranteed by the profile.
+- Irrelevant evidence cannot improve risk: fitted model worst delta >= -0.02 over all records (in fact exactly 0); a count-crediting predictor is detected failing P2. **Defect (xfail, strict)**: `n_same`, `n_eff`, `n_eff_prov`, `n_rep` count irrelevant clean inputs, so any model that reads them credits irrelevant evidence (118/227 post-hoc, 5/7 real). The fitted model is protected only because its coefficients are 0.
+- Integrity: at decision level a witnessed DIVERGENT and a NDO/INSUFFICIENT record both become INSUFFICIENT under P8 for stub and `calibrate.Model`; a witness-blind predictor fails. On corrupted COPIES of real evidence directories (verdict flipped in the log, log truncated before the Verdict, sidecar hits edited, `verdict.json` head edited; one DIVERGENT and one NO_DIVERGENCE directory each): `trust.check` reports a new issue in every case and either `load_record` raises or yields `integrity_ok=False` and the decision is INSUFFICIENT. Truncation makes `trust.check` raise `StopIteration` instead of reporting (fail-closed, but a crash in another owner's module, not fixed here).
+- Observation loss cannot lower risk: a predictor with the wrong direction is detected failing P4; stub, all-feature model and fitted model are monotone on every dev record tested (they are flat for the fitted model).
+- Divergence responsiveness: P6 -> DIVERGENT_OBSERVABLE for stub and fitted model by witness precedence; an unresponsive predictor fails; N/A when already divergent. This is a property of the decision function, so it is passed by construction for any predictor that keeps witness precedence.
+
+## 5. Defects and decisions
+1. FIXED `ers.ActivationStubPredictor.decide`: returned DIVERGENT_OBSERVABLE for tampered evidence (84 P8 failures). Now INSUFFICIENT when `integrity_ok` is false, as in `calibrate.Model.decide`. `profile.v7b_style_decision` is deliberately left as a faithful V7-B replica.
+2. OPEN, proven, not fixed: profile quantity features credit irrelevant evidence (P2) and identical repetition (real P5 `n_rep`), and unflagged duplicates. Changing feature semantics would alter every fitted model and other agents' results; the remedy is to restrict `n_same`/`n_rep`/`n_eff`/`n_eff_prov` to inputs that hit a changed unit and to collapse identical (fingerprint, hit set) inputs in the adapter. Needs a decision of the profile/adapter owner and a refit.
+3. OPEN: the fitted development model reads only `mu_min`; ERS pass rates for it say little about sensitivity (section 2).
+4. OPEN (other owner): `trust.check` crashes on a log truncated before its Verdict.
+5. ADDED: P1b, `PERTURBATION_VARIANTS`, `EVIDENCE_CLASS`; `ers` accepts "P1b" (tolerance 1e-6, monotone rule). The nine-element `PERTURBATIONS` and `PERTURBATION_MATRIX` are unchanged.
+
+## 6. Not done / limits
+Development data only; in-sample tau; real P6 has a single applicable pair; real P2 has 7; no real-execution variant of P1/P3/P4/P7/P9; the generator for real P6 is a weak mutation search; QuixBugs buggy/fixed pairs could not be used (empty pool); results mix two collector versions in the primary run.

@@ -1,0 +1,14 @@
+SBG V8 condensed IEEE Access manuscript (working version, about 10 two-column pages)
+
+Compile: tectonic -X compile main.tex   (XeTeX engine; bibliography run automatically)
+          pdfLaTeX with BibTeX also works with the original ieeeaccess.cls included here.
+
+Build-only shim (scratch copy only, NOT in this package): tectonic cannot run spotcolor.sty (it needs
+pdfTeX primitives). The scratch build replaced the spotcolor block in ieeeaccess.cls with the CMYK
+equivalent {1,0.3,0,0.2} for accessblue. The packaged ieeeaccess.cls is the original template class.
+
+Layout: main.tex (abstract, body, propositions, two figures: fig_risk_coverage and fig_ablation_forest);
+        kept/tab_*.tex (the eight tables kept in the main text);
+        supplement/tables.tex (tables moved to the supplementary material; not compiled here);
+        figures/ (all figures; only fig_risk_coverage and fig_ablation_forest are used in main.tex).
+The authoritative LaTeX source for the full-length version is closeout/manuscript_final (unchanged).

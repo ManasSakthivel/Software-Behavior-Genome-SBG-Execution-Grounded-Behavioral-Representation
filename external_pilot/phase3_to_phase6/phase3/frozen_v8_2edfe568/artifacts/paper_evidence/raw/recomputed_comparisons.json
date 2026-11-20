@@ -1,0 +1,338 @@
+{
+  "v6train_v7": {
+    "set": "VALID",
+    "n": 1033,
+    "n_programs": 28,
+    "n_changed": 474,
+    "n_equivalent": 559,
+    "predictors": {
+      "sbg_v5": {
+        "auroc": 0.665329,
+        "ci95_lo": 0.598724,
+        "ci95_hi": 0.730503,
+        "n_boot": 2000
+      },
+      "edit_size_reversed": {
+        "auroc": 0.954372,
+        "ci95_lo": 0.939295,
+        "ci95_hi": 0.967586,
+        "n_boot": 2000
+      },
+      "exception_fraction": {
+        "auroc": 0.576176,
+        "ci95_lo": 0.530168,
+        "ci95_hi": 0.625975,
+        "n_boot": 2000
+      },
+      "call_count": {
+        "auroc": 0.628773,
+        "ci95_lo": 0.566327,
+        "ci95_hi": 0.692053,
+        "n_boot": 2000
+      },
+      "static_ast": {
+        "auroc": 0.126224,
+        "ci95_lo": 0.092011,
+        "ci95_hi": 0.161552,
+        "n_boot": 2000
+      },
+      "learned_m1": {
+        "auroc": 0.694957,
+        "ci95_lo": 0.638997,
+        "ci95_hi": 0.749873,
+        "n_boot": 2000
+      },
+      "learned_m2": {
+        "auroc": 0.724219,
+        "ci95_lo": 0.672244,
+        "ci95_hi": 0.770953,
+        "n_boot": 2000
+      }
+    },
+    "paired_deltas": {
+      "sbg_v5_minus_edit_size_reversed": {
+        "delta": -0.289043,
+        "ci_lower": -0.357514,
+        "ci_upper": -0.219567,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_exception_fraction": {
+        "delta": 0.089153,
+        "ci_lower": 0.028854,
+        "ci_upper": 0.147829,
+        "p_two_sided": 0.005997,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_call_count": {
+        "delta": 0.036556,
+        "ci_lower": -0.010189,
+        "ci_upper": 0.083739,
+        "p_two_sided": 0.122939,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_learned_m1": {
+        "delta": -0.029628,
+        "ci_lower": -0.077525,
+        "ci_upper": 0.022215,
+        "p_two_sided": 0.230885,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_learned_m2": {
+        "delta": -0.058891,
+        "ci_lower": -0.10666,
+        "ci_upper": -0.016,
+        "p_two_sided": 0.009995,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_edit_size_reversed": {
+        "delta": -0.230152,
+        "ci_lower": -0.287443,
+        "ci_upper": -0.179361,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_exception_fraction": {
+        "delta": 0.148044,
+        "ci_lower": 0.09716,
+        "ci_upper": 0.198042,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_call_count": {
+        "delta": 0.095446,
+        "ci_lower": 0.035524,
+        "ci_upper": 0.158803,
+        "p_two_sided": 0.001999,
+        "n_effective": 2000
+      }
+    },
+    "learned_weights_note": "learned_m1/m2 use weights fitted on v6 TRAIN (WEIGHT_FITTING.json); in-sample on v6train, selection set on v6dev, out-of-distribution on v8dev",
+    "method": "sbg.statistics cluster bootstrap (2000, seed 42) by base program; paired deltas via paired_cluster_bootstrap_delta",
+    "code": "experiments/final/build_paper_evidence.py"
+  },
+  "v6dev_v7": {
+    "set": "VALID",
+    "n": 345,
+    "n_programs": 9,
+    "n_changed": 156,
+    "n_equivalent": 189,
+    "predictors": {
+      "sbg_v5": {
+        "auroc": 0.667125,
+        "ci95_lo": 0.602825,
+        "ci95_hi": 0.744573,
+        "n_boot": 2000
+      },
+      "edit_size_reversed": {
+        "auroc": 0.956909,
+        "ci95_lo": 0.932664,
+        "ci95_hi": 0.981123,
+        "n_boot": 2000
+      },
+      "exception_fraction": {
+        "auroc": 0.613248,
+        "ci95_lo": 0.531975,
+        "ci95_hi": 0.700068,
+        "n_boot": 2000
+      },
+      "call_count": {
+        "auroc": 0.58798,
+        "ci95_lo": 0.495896,
+        "ci95_hi": 0.701878,
+        "n_boot": 2000
+      },
+      "static_ast": {
+        "auroc": 0.096018,
+        "ci95_lo": 0.054423,
+        "ci95_hi": 0.139434,
+        "n_boot": 2000
+      },
+      "learned_m1": {
+        "auroc": 0.665632,
+        "ci95_lo": 0.597072,
+        "ci95_hi": 0.743817,
+        "n_boot": 2000
+      },
+      "learned_m2": {
+        "auroc": 0.71281,
+        "ci95_lo": 0.678306,
+        "ci95_hi": 0.761821,
+        "n_boot": 2000
+      }
+    },
+    "paired_deltas": {
+      "sbg_v5_minus_edit_size_reversed": {
+        "delta": -0.289784,
+        "ci_lower": -0.349106,
+        "ci_upper": -0.220444,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_exception_fraction": {
+        "delta": 0.053877,
+        "ci_lower": -0.050883,
+        "ci_upper": 0.177068,
+        "p_two_sided": 0.330835,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_call_count": {
+        "delta": 0.079145,
+        "ci_lower": 0.008925,
+        "ci_upper": 0.149871,
+        "p_two_sided": 0.017991,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_learned_m1": {
+        "delta": 0.001492,
+        "ci_lower": -0.055585,
+        "ci_upper": 0.049745,
+        "p_two_sided": 0.994503,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_learned_m2": {
+        "delta": -0.045686,
+        "ci_lower": -0.110086,
+        "ci_upper": 0.039667,
+        "p_two_sided": 0.230885,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_edit_size_reversed": {
+        "delta": -0.244098,
+        "ci_lower": -0.284635,
+        "ci_upper": -0.194285,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_exception_fraction": {
+        "delta": 0.099562,
+        "ci_lower": 0.036607,
+        "ci_upper": 0.17932,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_call_count": {
+        "delta": 0.12483,
+        "ci_lower": 0.009528,
+        "ci_upper": 0.229787,
+        "p_two_sided": 0.027986,
+        "n_effective": 2000
+      }
+    },
+    "learned_weights_note": "learned_m1/m2 use weights fitted on v6 TRAIN (WEIGHT_FITTING.json); in-sample on v6train, selection set on v6dev, out-of-distribution on v8dev",
+    "method": "sbg.statistics cluster bootstrap (2000, seed 42) by base program; paired deltas via paired_cluster_bootstrap_delta",
+    "code": "experiments/final/build_paper_evidence.py"
+  },
+  "v8dev_v8_rescore": {
+    "set": "VALID",
+    "n": 593,
+    "n_programs": 14,
+    "n_changed": 344,
+    "n_equivalent": 249,
+    "predictors": {
+      "sbg_v5": {
+        "auroc": 0.739259,
+        "ci95_lo": 0.697581,
+        "ci95_hi": 0.781091,
+        "n_boot": 2000
+      },
+      "edit_size_reversed": {
+        "auroc": 0.845212,
+        "ci95_lo": 0.786108,
+        "ci95_hi": 0.892599,
+        "n_boot": 2000
+      },
+      "exception_fraction": {
+        "auroc": 0.571758,
+        "ci95_lo": 0.53833,
+        "ci95_hi": 0.612031,
+        "n_boot": 2000
+      },
+      "call_count": {
+        "auroc": 0.544766,
+        "ci95_lo": 0.466377,
+        "ci95_hi": 0.625096,
+        "n_boot": 2000
+      },
+      "static_ast": {
+        "auroc": 0.317146,
+        "ci95_lo": 0.263721,
+        "ci95_hi": 0.375774,
+        "n_boot": 2000
+      },
+      "learned_m1": {
+        "auroc": 0.805921,
+        "ci95_lo": 0.767805,
+        "ci95_hi": 0.84916,
+        "n_boot": 2000
+      },
+      "learned_m2": {
+        "auroc": 0.803738,
+        "ci95_lo": 0.767716,
+        "ci95_hi": 0.845714,
+        "n_boot": 2000
+      }
+    },
+    "paired_deltas": {
+      "sbg_v5_minus_edit_size_reversed": {
+        "delta": -0.105953,
+        "ci_lower": -0.180185,
+        "ci_upper": -0.027448,
+        "p_two_sided": 0.009995,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_exception_fraction": {
+        "delta": 0.167501,
+        "ci_lower": 0.12225,
+        "ci_upper": 0.209306,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_call_count": {
+        "delta": 0.194493,
+        "ci_lower": 0.126814,
+        "ci_upper": 0.261762,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_learned_m1": {
+        "delta": -0.066662,
+        "ci_lower": -0.108408,
+        "ci_upper": -0.025045,
+        "p_two_sided": 0.005997,
+        "n_effective": 2000
+      },
+      "sbg_v5_minus_learned_m2": {
+        "delta": -0.064479,
+        "ci_lower": -0.096112,
+        "ci_upper": -0.034073,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_edit_size_reversed": {
+        "delta": -0.041474,
+        "ci_lower": -0.10436,
+        "ci_upper": 0.020672,
+        "p_two_sided": 0.18091,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_exception_fraction": {
+        "delta": 0.23198,
+        "ci_lower": 0.186421,
+        "ci_upper": 0.279701,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      },
+      "learned_m2_minus_call_count": {
+        "delta": 0.258972,
+        "ci_lower": 0.178957,
+        "ci_upper": 0.334962,
+        "p_two_sided": 0.001,
+        "n_effective": 2000
+      }
+    },
+    "learned_weights_note": "learned_m1/m2 use weights fitted on v6 TRAIN (WEIGHT_FITTING.json); in-sample on v6train, selection set on v6dev, out-of-distribution on v8dev",
+    "method": "sbg.statistics cluster bootstrap (2000, seed 42) by base program; paired deltas via paired_cluster_bootstrap_delta",
+    "code": "experiments/final/build_paper_evidence.py"
+  }
+}

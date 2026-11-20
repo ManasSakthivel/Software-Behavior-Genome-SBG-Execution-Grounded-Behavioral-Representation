@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "mutation_types": [
+    {
+      "id": "SC-1",
+      "name": "OFF_BY_ONE",
+      "description": "Modify range() bounds or comparison constants by ±1",
+      "hard_negative": true,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["Call(range)", "Compare.comparators"]
+    },
+    {
+      "id": "SC-2",
+      "name": "OPERATOR_MUTATION",
+      "description": "Swap arithmetic (+/-/*/) or comparison (</>/==/!=) operators",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["BinOp.op", "Compare.ops"]
+    },
+    {
+      "id": "SC-3",
+      "name": "CONSTANT_MUTATION",
+      "description": "Perturb integer constants by ±1/2, or append suffix to strings",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["Constant(int)", "Constant(str)"]
+    },
+    {
+      "id": "SC-4",
+      "name": "BOUNDARY_CONDITION",
+      "description": "Remove a guard check (if x < 0: return None) by replacing body with Pass",
+      "hard_negative": true,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["If with Return/Raise body"]
+    },
+    {
+      "id": "SC-5",
+      "name": "CONDITION_NEGATE",
+      "description": "Negate an If branch condition with not()",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["If.test"]
+    },
+    {
+      "id": "SC-6",
+      "name": "RETURN_MUTATION",
+      "description": "Alter a return value: add 1 to ints, negate booleans/expressions",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["Return.value"]
+    },
+    {
+      "id": "SC-7",
+      "name": "EXCEPTION_SUPPRESSION",
+      "description": "Replace except handler body with pass, swallowing the exception",
+      "hard_negative": true,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["ExceptHandler.body"]
+    },
+    {
+      "id": "SC-8",
+      "name": "LOOP_BOUND_CHANGE",
+      "description": "Modify range() start/stop to skip first or last iteration",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["For.iter (range call)"]
+    },
+    {
+      "id": "SC-9",
+      "name": "ORDERING_MUTATION",
+      "description": "Swap two adjacent assignment/expression statements",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["adjacent body statements"]
+    },
+    {
+      "id": "SC-10",
+      "name": "MISSING_UPDATE",
+      "description": "Remove an AugAssign (+=/-=) inside a loop body",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["AugAssign inside For/While"]
+    },
+    {
+      "id": "SC-11",
+      "name": "WRONG_VARIABLE",
+      "description": "Substitute one local variable name for another in a single Load site",
+      "hard_negative": false,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["Name(Load) inside FunctionDef"]
+    },
+    {
+      "id": "SC-12",
+      "name": "RESOURCE_LEAK",
+      "description": "Remove a .close()/.release()/.cleanup() call",
+      "hard_negative": true,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["Expr(Call) with cleanup method names"]
+    },
+    {
+      "id": "SC-13",
+      "name": "CONDITION_REMOVAL",
+      "description": "Remove an if-check entirely; inline its body unconditionally",
+      "hard_negative": true,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["If nodes in body lists"]
+    },
+    {
+      "id": "SC-14",
+      "name": "STATE_TRANSITION_ERROR",
+      "description": "Change a target state constant to a different state constant",
+      "hard_negative": true,
+      "status": "IMPLEMENTED",
+      "ast_targets": ["Constant(str) in Assign / Dict values (ALL_CAPS)"]
+    }
+  ],
+  "total": 14,
+  "implemented": 14,
+  "hard_negatives": 6
+}

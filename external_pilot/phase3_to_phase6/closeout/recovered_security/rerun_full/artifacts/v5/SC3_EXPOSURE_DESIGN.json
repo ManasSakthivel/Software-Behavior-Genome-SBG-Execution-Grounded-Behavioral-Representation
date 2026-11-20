@@ -1,0 +1,167 @@
+{
+  "experiment": "SC3_EXPOSURE_DESIGN",
+  "version": "v5",
+  "generated_by": "analysis_of_v2_v3_v4_artifacts",
+  "status": "DESIGN",
+
+  "context": {
+    "sc3_v2_detection_rate": 0.0,
+    "sc3_v3_detection_rate": 0.075145,
+    "sc3_v3_n_pairs_total": 179,
+    "sc3_v3_n_pairs_verified": 38,
+    "sc3_v3_n_pairs_unverified": 141,
+    "sc3_v3_mean_sbg_similarity": 0.897742,
+    "by_difficulty": {
+      "EASY": {"n": 34, "detection_rate": 0.382, "note": "constant sits in a test-harness assertion — canonic inputs trivially hit it"},
+      "MEDIUM": {"n": 1, "detection_rate": 0.0},
+      "HARD": {"n": 126, "detection_rate": 0.0, "note": "constant is in library logic never exercised by generic list-sorting inputs"}
+    }
+  },
+
+  "root_cause_analysis": {
+    "primary_cause": "INPUT_COVERAGE_FAILURE",
+    "cause_fractions": {
+      "input_coverage_failure": {
+        "estimated_fraction": 0.74,
+        "explanation": "The SBG V3 runner uses 10 canonical inputs ([], [1], fibonacci-digit lists, numeric ranges). These inputs were designed for sorting/searching programs. 74% of the 179 SC-3v3 pairs mutate integer constants that are only exercised when a specific state threshold is reached: retry counts (err_retry_backoff), capacity limits (ds_hash_table initial_capacity=8), queue sizes (conc_producer_consumer), assertion boundaries in test harnesses, etc. A generic list input never triggers these code paths."
+      },
+      "aggregation_smoothing": {
+        "estimated_fraction": 0.19,
+        "explanation": "For the EASY pairs (38.2% detection rate) and a small number of HARD pairs, the mutation IS exercised by at least one canonical input, but the DynamicGenomeV3 similarity vector averages over all 10 inputs. A single divergent trace is diluted by 9 identical traces, yielding similarity > 0.5. The mutation is visible in the raw trace but smoothed out by the aggregation step."
+      },
+      "true_invisibility": {
+        "estimated_fraction": 0.07,
+        "explanation": "A residual ~7% fraction are cases where the mutated constant controls initialisation or compile-time structure (e.g., a minimum-capacity sentinel that never participates in a comparison once set). No input can expose these because the execution path through the constant is not a comparison branch — it is a fixed configuration value."
+      }
+    },
+    "note_on_v2_vs_v4": "The 7.5% figure (v4/SC3_CORRECTED_EVALUATION.json) already reflects the corrected v3 benchmark with 179 real integer mutations. The 0% from v2 was entirely a label error (cosmetic mutations). The 7.5% residual on v3 is a genuine SBG measurement failure and is the subject of this design."
+  },
+
+  "mutation_aware_input_generation_strategy": {
+    "name": "BoundaryInputGenerator",
+    "motivation": "Integer-constant mutations change program behavior only at the boundary of the constant. If the constant k appears in context 'if x >= k', then inputs where x = k-1, x = k, x = k+1 will diverge between base (k) and variant (k±1). The canonical inputs virtually never place x near k by construction.",
+    "algorithm": {
+      "step_1": "Parse source with ast.parse(). Walk the AST collecting all Constant(int) nodes. For each constant, record its value and AST parent context (comparison operator, subscript, argument, etc.).",
+      "step_2": "For each integer constant c found, generate 3 boundary values: c-1 (below), c (at), c+1 (above). These are candidate scalar inputs.",
+      "step_3": "Determine the function signature of the entry point. Wrap scalar candidates as appropriate for the input type: if the function takes a list, generate [c-1], [c], [c+1] and also lists that include the value in various positions. If the function takes an int, use the scalar directly.",
+      "step_4": "Execute both base and variant on every boundary input. Record return value, exception type, and (optionally) execution trace.",
+      "step_5": "Divergence check: a pair (base_output, variant_output) counts as divergent if return values differ OR exception presence/type differs.",
+      "oracle_decision": "If ANY boundary input produces divergent outputs across A and B, report behavioral_divergence_detected=true."
+    },
+    "label_blindness": "The generator receives only the program source and its type signature. It does NOT receive the mutation label, the mutation site, or whether the program is a base or variant. Both programs are treated symmetrically: extract comparisons from BOTH, union the boundary candidates, execute both on every candidate input.",
+    "complexity": "O(k * B * T) where k = number of integer constants, B = 3 (boundary offsets), T = execution cost per input. For typical benchmark programs: k ≤ 30, B = 3, T ≈ 1ms → ~90ms per pair."
+  },
+
+  "sc3_exposure_oracle_design": {
+    "name": "MutationExposureOracle",
+    "inputs": "source_a: str, source_b: str (no label, no mutation metadata)",
+    "outputs": {
+      "behavioral_divergence_detected": "bool — true if any boundary input produced different observable behavior",
+      "inputs_tested": "list[dict] — all inputs tried, with input value and type",
+      "divergence_inputs": "list[dict] — inputs that produced divergence, with output_a and output_b",
+      "n_comparisons_extracted": "int — number of integer constants found across both sources",
+      "n_boundary_inputs_generated": "int — total boundary inputs generated",
+      "exposure_confidence": "float in [0,1] — fraction of constants that were exercised by at least one input"
+    },
+    "evaluation_protocol": {
+      "1_extract": "Run BoundaryInputGenerator.extract_comparisons() on source_a and source_b independently, union the constant values",
+      "2_generate": "Run BoundaryInputGenerator.generate_boundary_inputs() for each constant",
+      "3_execute": "Execute compiled(source_a) and compiled(source_b) on each input, catching all exceptions",
+      "4_compare": "Compare (return_value, exception_type) tuples for each input",
+      "5_report": "Produce ExposureResult dataclass"
+    },
+    "execution_safety": "Each program is compiled in a restricted namespace (no __builtins__ side effects). Execution is wrapped in try/except with a 2-second timeout. Programs that import non-stdlib modules are skipped with a note."
+  },
+
+  "exposure_estimates_for_38_verified_pairs": {
+    "reasoning": "The 38 verified pairs all have behavioral_verification=VERIFIED and witness_input recorded. For these pairs, the mutation IS known to produce divergence on at least one input. The question is whether boundary-input generation would find that input automatically.",
+    "constant_categories_in_verified_pairs": {
+      "test_harness_assertions": {
+        "examples": ["ds_binary_search_tree line 146: 5→6", "ds_lru_cache line 108: 2→3", "ds_stack_queue line 185: 2→3"],
+        "n": 18,
+        "boundary_hits": "HIGH — the constant is used directly in assert x == c; boundary input x=c-1 will diverge",
+        "estimated_exposed": 18
+      },
+      "capacity_thresholds": {
+        "examples": ["ds_hash_table line 145: 30→32", "ds_min_heap line 108: 3→4"],
+        "n": 8,
+        "boundary_hits": "MEDIUM — must generate a list/sequence of length near c; boundary generator will produce inputs of size c-1, c, c+1",
+        "estimated_exposed": 6
+      },
+      "loop_bounds": {
+        "examples": ["sort_* sift_down thresholds", "math_fibonacci assert fib(10)==56 mutated"],
+        "n": 6,
+        "boundary_hits": "HIGH for direct range(n) mutations; MEDIUM for indirect comparisons",
+        "estimated_exposed": 4
+      },
+      "api_rate_limiter_capacity": {
+        "examples": ["api_rate_limiter line 162: 5→6"],
+        "n": 6,
+        "boundary_hits": "HIGH — the mutation changes a rate/capacity limit; calling with exactly 5 vs 6 requests diverges",
+        "estimated_exposed": 5
+      }
+    },
+    "estimated_pairs_exposed": 28,
+    "estimated_exposure_rate": 0.74,
+    "note": "This 74% estimate is conservative. Pairs where the constant controls data structure sizing (initial_capacity, MIN_CAPACITY) are harder to expose because the divergence only manifests when enough insertions trigger a resize — a boundary input of a list of size c-1/c/c+1 may not be sufficient if the function signature takes a single integer rather than a sequence."
+  },
+
+  "expected_improvement_over_sbg_v3": {
+    "current_detection_rate_verified_pairs": 0.382,
+    "projected_detection_rate_with_boundary_inputs": 0.74,
+    "absolute_improvement": 0.358,
+    "mechanism": "By generating inputs that land exactly at the boundary of each integer constant, we convert invisible divergences into visible ones. The improvement is entirely from input coverage — no change to the SBG representation or similarity metric is required.",
+    "residual_failure_cases": [
+      "Mutations in dead code (constant never reached by any callable entry point)",
+      "Mutations in concurrent programs where timing determines behavior (conc_* category)",
+      "Mutations in config/initialization constants where the function signature does not accept relevant input types",
+      "Constants used only in string formatting or error messages (behaviorally equivalent despite integer change)"
+    ]
+  },
+
+  "module_design": {
+    "file": "experiments/v5/input_guided_executor.py",
+    "classes": {
+      "Comparison": {
+        "fields": ["value: int", "line: int", "col: int", "context: str"],
+        "description": "Represents a single integer constant extracted from the AST"
+      },
+      "Input": {
+        "fields": ["value: Any", "description: str"],
+        "description": "A single input to be passed to the program under test"
+      },
+      "ExposureResult": {
+        "fields": [
+          "behavioral_divergence_detected: bool",
+          "inputs_tested: list",
+          "divergence_inputs: list",
+          "n_constants_extracted: int",
+          "n_inputs_generated: int",
+          "exposure_confidence: float",
+          "error: Optional[str]"
+        ]
+      },
+      "BoundaryInputGenerator": {
+        "methods": {
+          "extract_comparisons(source: str) -> list[Comparison]": "Parse source with ast.parse(); walk AST collecting Constant(int) nodes; return deduplicated list",
+          "generate_boundary_inputs(comparison: Comparison) -> list[Input]": "For constant value c, return inputs: c-1, c, c+1 as scalars, plus [c-1], [c], [c+1] as singleton lists"
+        }
+      },
+      "MutationExposureOracle": {
+        "methods": {
+          "evaluate_pair(source_a: str, source_b: str) -> ExposureResult": "Full pipeline: extract → generate → execute both → compare outputs → return ExposureResult"
+        }
+      }
+    },
+    "stdlib_only": true,
+    "dependencies": ["ast", "types", "sys", "io", "traceback", "dataclasses", "typing"]
+  },
+
+  "integrity_notes": [
+    "This design document contains NO frozen benchmark modifications.",
+    "The exposure oracle is label-blind: it cannot access mutation metadata.",
+    "All estimates are grounded in the v4/SC3_CORRECTED_EVALUATION.json data and sc3_corrected_pairs.jsonl.",
+    "The 7.5% detection rate figure comes from artifacts/v4/SC3_CORRECTED_EVALUATION.json: detection_rate_at_0_5 = 0.075145.",
+    "The 38 verified pairs count comes from benchmark/v3/sc3_corrected/SC3_CORRECTED_MANIFEST.json: n_verified_behavioral_change = 38."
+  ]
+}

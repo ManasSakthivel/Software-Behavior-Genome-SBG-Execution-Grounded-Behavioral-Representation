@@ -1,0 +1,146 @@
+{
+  "experiment": "PHASE3_EXPANDED_CORPUS",
+  "version": "v4",
+  "test_auroc_frozen": 0.545537,
+  "test_n_programs": 13,
+  "dev_result": {
+    "auroc": 0.488365,
+    "ci": [
+      0.457598,
+      0.542515
+    ],
+    "n_valid": 536,
+    "n_missing": 79,
+    "per_program": {
+      "api_event_bus": {
+        "auroc": 0.565556,
+        "n": 60,
+        "n_pos": 30,
+        "n_neg": 30
+      },
+      "ds_stack_queue": {
+        "auroc": 0.686,
+        "n": 55,
+        "n_pos": 30,
+        "n_neg": 25
+      },
+      "file_csv_aggregator": {
+        "auroc": 0.482143,
+        "n": 61,
+        "n_pos": 33,
+        "n_neg": 28
+      },
+      "fsm_parser_state": {
+        "auroc": 0.46,
+        "n": 55,
+        "n_pos": 30,
+        "n_neg": 25
+      },
+      "graph_connected_components": {
+        "auroc": 0.424242,
+        "n": 63,
+        "n_pos": 30,
+        "n_neg": 33
+      },
+      "math_numerical_integration": {
+        "auroc": 0.5,
+        "n": 61,
+        "n_pos": 32,
+        "n_neg": 29
+      },
+      "res_cache_ttl": {
+        "auroc": 0.635185,
+        "n": 57,
+        "n_pos": 30,
+        "n_neg": 27
+      },
+      "sort_quicksort": {
+        "auroc": 0.468333,
+        "n": 60,
+        "n_pos": 30,
+        "n_neg": 30
+      },
+      "str_run_length_encode": {
+        "auroc": 0.472141,
+        "n": 64,
+        "n_pos": 33,
+        "n_neg": 31
+      }
+    }
+  },
+  "val_result": {
+    "auroc": 0.51209,
+    "ci": [
+      0.454694,
+      0.589609
+    ],
+    "n_valid": 492,
+    "n_missing": 35,
+    "per_program": {
+      "conc_producer_consumer": {
+        "auroc": 0.666667,
+        "n": 53,
+        "n_pos": 27,
+        "n_neg": 26
+      },
+      "ds_binary_search_tree": {
+        "auroc": 0.694872,
+        "n": 56,
+        "n_pos": 30,
+        "n_neg": 26
+      },
+      "file_word_count_stream": {
+        "auroc": 0.421875,
+        "n": 61,
+        "n_pos": 29,
+        "n_neg": 32
+      },
+      "fsm_order_lifecycle": {
+        "auroc": 0.601562,
+        "n": 48,
+        "n_pos": 24,
+        "n_neg": 24
+      },
+      "graph_cycle_detect_dfs": {
+        "auroc": 0.462963,
+        "n": 52,
+        "n_pos": 25,
+        "n_neg": 27
+      },
+      "math_polynomial": {
+        "auroc": 0.484375,
+        "n": 62,
+        "n_pos": 30,
+        "n_neg": 32
+      },
+      "parse_ini_config": {
+        "auroc": 0.497143,
+        "n": 46,
+        "n_pos": 25,
+        "n_neg": 21
+      },
+      "sort_timsort_runs": {
+        "auroc": 0.451389,
+        "n": 54,
+        "n_pos": 24,
+        "n_neg": 30
+      },
+      "str_anagram_groups": {
+        "auroc": 0.467742,
+        "n": 60,
+        "n_pos": 29,
+        "n_neg": 31
+      }
+    }
+  },
+  "generalization_analysis": {
+    "test_vs_dev_delta": 0.057172,
+    "test_vs_val_delta": 0.033447,
+    "verdict": "PERFORMANCE_VARIES_BY_SPLIT"
+  },
+  "methodology": {
+    "note": "DEV/VAL pairs used; TEST set remains frozen/untouched",
+    "threshold": "1.0000 (from frozen v3 dev evaluation)",
+    "auroc": "WMW tie-aware"
+  }
+}

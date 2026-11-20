@@ -1,0 +1,28 @@
+% Source: results/v8/linux/perturb/posthoc_matrix.{json,md} (Linux branch, pre-fix profile) and, for the probe after the profile fix,
+% research/v8-mac-hardening@b9b8a86c:results/v8_mac_perturb_profilefix2/posthoc_matrix.md. Driver: experiments/v8/run_perturbation_validation.py.
+\begin{table*}[!t]
+\caption{\ers{} property matrix on the 312 development records (post-hoc perturbations of recorded evidence). Each cell gives the number of passes among the applicable trials; N/A trials are excluded. ``Resp.'' is the number of applicable trials in which the fitted model's risk moved by more than the tolerance. Failures are in bold.}
+\label{tab:ers}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|l|l|c|c|c|c|c|c|c|c|}
+\hline
+ & & & \multicolumn{2}{c|}{Fitted profile model} & \multicolumn{2}{c|}{All-feature probe} & & \multicolumn{2}{c|}{V7-B gate} \\
+Id & Property & Applicable & Pass & Resp. & Pre-fix & Post-fix & Activation stub & Recorded & Recomputed \\
+\hline
+P1 & Relevant-evidence sensitivity & 16 & 16 & 9 & 16 & 16 & 16 & 16 & 16 \\
+P1b & Relevant-evidence sensitivity & 93 & 93 & 68 & 93 & 93 & 93 & 93 & 93 \\
+P2 & Irrelevant-evidence invariance & 227 & 227 & 0 & \textbf{118} & 227 & 227 & 227 & 227 \\
+P3 & Duplicate-evidence invariance & 262 & 262 & 0 & 262 & 262 & 262 & 262 & 262 \\
+P4 & Observation-loss sensitivity & 178 & 178 & 0 & 178 & 178 & 178 & 178 & 178 \\
+P5 & Reproducibility sensitivity & 176 & 176 & 100 & 176 & 176 & 176 & 176 & 176 \\
+P6 & Divergence responsiveness & 228 & 228 & 0 & 228 & 228 & 228 & \textbf{157} & 228 \\
+P7 & Provenance sensitivity & 178 & 178 & 0 & 178 & 178 & 178 & 178 & 178 \\
+P8 & Integrity sensitivity & 312 & 312 & 0 & 312 & 312 & 312 & \textbf{157} & \textbf{228} \\
+P9 & Environment sensitivity & 228 & 228 & 0 & 228 & 228 & 228 & 228 & 228 \\
+\hline
+\end{tabular}
+\\[3pt]
+\parbox{\textwidth}{\scriptsize Fitted model: $L_2$ logistic regression on the full profile, with a diagnostic threshold at the 30th percentile of in-sample eligible risk so that \NDO{} verdicts exist to be withdrawn; it is not a deployment threshold, and no pass in this column rests on abstention credit. All-feature probe: an \emph{unfitted} model that reads every profile feature with its pre-declared sign; it exists because the fitted model retains essentially one feature (\code{mu\_min}), which makes invariance checks on the other features vacuous for it. Post-fix: after restricting features to relevant evidence and collapsing unflagged copies (mac-hardening branch, commit \code{b9b8a86c}); only the P2 row changed for any predictor. Activation stub: risk $=1-a(\Ev)$. V7-B ``recorded'' replays the stored verdict and therefore ignores the perturbed evidence by construction; ``recomputed'' re-applies the V7-B gate to the perturbed record.}
+\end{table*}

@@ -1,0 +1,66 @@
+{
+ "counts": {
+  "pairs": 2392,
+  "programs": 57,
+  "unique_base_sources": 57,
+  "unique_variant_files": 1275,
+  "unique_base_x_type_groups": 816,
+  "unique_variants_changed": 599,
+  "unique_variants_equiv": 676,
+  "dup_groups(size>1)": 596,
+  "rows_in_dup_groups": 1713,
+  "max_group_size": 4,
+  "pairs_per_unique_variant_mean": 1.876078431372549
+ },
+ "dup_group_properties": {
+  "cross_program_groups": 0,
+  "cross_type_groups": 9,
+  "label_conflict_groups": 0,
+  "cross_split_groups(train/val)": 0
+ },
+ "cross_type_group_type_sets": [
+  [
+   [
+    "SC-1",
+    "SC-3"
+   ],
+   8
+  ],
+  [
+   [
+    "SC-3",
+    "SC-8"
+   ],
+   1
+  ]
+ ],
+ "base_source_shared_by_multiple_base_ids": 0,
+ "variant_groups_straddling_train_test": {
+  "program_grouped_seed42": 0,
+  "program_grouped_seed43": 0,
+  "program_grouped_seed44": 0,
+  "leave_one_type_out": 18,
+  "leave_type_groups_out(4)": 16,
+  "leave_domain_out": 0
+ },
+ "program_overlap_straddling": {
+  "program_grouped_seed42": 0,
+  "program_grouped_seed43": 0,
+  "program_grouped_seed44": 0,
+  "leave_one_type_out": 816,
+  "leave_type_groups_out(4)": 228,
+  "leave_domain_out": 0
+ },
+ "holdout_metadata_overlap": {
+  "v8_test": {
+   "programs": 26,
+   "base_id_overlap_with_DEV": 0,
+   "base_source_hash_overlap_with_DEV": 0
+  },
+  "v10": {
+   "programs": 19,
+   "base_id_overlap_with_DEV": 0,
+   "base_source_hash_overlap_with_DEV": 0
+  }
+ }
+}

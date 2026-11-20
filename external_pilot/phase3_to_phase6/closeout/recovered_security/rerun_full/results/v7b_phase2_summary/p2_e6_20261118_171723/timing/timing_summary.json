@@ -1,0 +1,222 @@
+{
+ "hardware": {
+  "cpu": "Apple M4 Pro",
+  "ncpu": "14",
+  "mem_bytes": "51539607552",
+  "os": "26.7",
+  "machine": "arm64",
+  "python": "3.13.15",
+  "loadavg": [
+   4.81201171875,
+   6.12109375,
+   7.04150390625
+  ],
+  "power": [
+   "Now drawing from 'Battery Power'"
+  ],
+  "loadavg_end": [
+   1.64501953125,
+   3.2158203125,
+   4.732421875
+  ]
+ },
+ "reps": 5,
+ "n_pairs": 40,
+ "failed_runs": 0,
+ "systems": {
+  "V0": {
+   "wall_s": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 2.075,
+     "q1": 1.99,
+     "q3": 3.149,
+     "max": 20.116,
+     "sum": 115.987
+    },
+    "cv_across_reps": {
+     "median": 0.0048,
+     "max": 0.0301
+    }
+   },
+   "cpu_s": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 2.584,
+     "q1": 2.465,
+     "q3": 4.08,
+     "max": 23.112,
+     "sum": 143.726
+    },
+    "cv_across_reps": {
+     "median": 0.0046,
+     "max": 0.0224
+    }
+   },
+   "peak_rss_mib": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 25.617,
+     "q1": 25.422,
+     "q3": 25.688,
+     "max": 706.719,
+     "sum": 1704.25
+    },
+    "cv_across_reps": {
+     "median": 0.0042,
+     "max": 0.0068
+    }
+   }
+  },
+  "B1": {
+   "wall_s": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 1.31,
+     "q1": 1.265,
+     "q3": 1.807,
+     "max": 5.832,
+     "sum": 65.665
+    },
+    "cv_across_reps": {
+     "median": 0.0052,
+     "max": 0.0486
+    }
+   },
+   "cpu_s": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 1.52,
+     "q1": 1.457,
+     "q3": 2.212,
+     "max": 6.808,
+     "sum": 77.707
+    },
+    "cv_across_reps": {
+     "median": 0.0038,
+     "max": 0.0222
+    }
+   },
+   "peak_rss_mib": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 27.781,
+     "q1": 27.75,
+     "q3": 27.797,
+     "max": 704.625,
+     "sum": 1788.984
+    },
+    "cv_across_reps": {
+     "median": 0.0038,
+     "max": 0.0068
+    }
+   }
+  },
+  "B1rep": {
+   "wall_s": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 1.909,
+     "q1": 1.762,
+     "q3": 3.097,
+     "max": 17.504,
+     "sum": 120.375
+    },
+    "cv_across_reps": {
+     "median": 0.0074,
+     "max": 0.0864
+    }
+   },
+   "cpu_s": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 2.335,
+     "q1": 2.146,
+     "q3": 4.009,
+     "max": 19.977,
+     "sum": 148.227
+    },
+    "cv_across_reps": {
+     "median": 0.0059,
+     "max": 0.0225
+    }
+   },
+   "peak_rss_mib": {
+    "per_pair_median": {
+     "n": 40,
+     "median": 27.945,
+     "q1": 27.824,
+     "q3": 28.051,
+     "max": 707.359,
+     "sum": 1798.016
+    },
+    "cv_across_reps": {
+     "median": 0.0038,
+     "max": 0.0058
+    }
+   }
+  }
+ },
+ "relative_overhead": {
+  "V0_over_B1_wall_s": {
+   "per_pair_ratio": {
+    "n": 40,
+    "median": 1.595,
+    "q1": 1.518,
+    "q3": 1.742,
+    "max": 6.274,
+    "sum": 65.835
+   },
+   "ratio_of_sums": 1.766,
+   "median_ratio_ci95": [
+    1.584,
+    1.742
+   ]
+  },
+  "V0_over_B1_cpu_s": {
+   "per_pair_ratio": {
+    "n": 40,
+    "median": 1.718,
+    "q1": 1.636,
+    "q3": 1.844,
+    "max": 6.342,
+    "sum": 69.366
+   },
+   "ratio_of_sums": 1.85,
+   "median_ratio_ci95": [
+    1.706,
+    1.844
+   ]
+  },
+  "V0_over_B1rep_wall_s": {
+   "per_pair_ratio": {
+    "n": 40,
+    "median": 1.018,
+    "q1": 1.012,
+    "q3": 1.126,
+    "max": 1.15,
+    "sum": 39.914
+   },
+   "ratio_of_sums": 0.964,
+   "median_ratio_ci95": [
+    1.014,
+    1.072
+   ]
+  },
+  "V0_over_B1rep_cpu_s": {
+   "per_pair_ratio": {
+    "n": 40,
+    "median": 1.02,
+    "q1": 1.013,
+    "q3": 1.142,
+    "max": 1.168,
+    "sum": 39.967
+   },
+   "ratio_of_sums": 0.97,
+   "median_ratio_ci95": [
+    1.016,
+    1.085
+   ]
+  }
+ }
+}

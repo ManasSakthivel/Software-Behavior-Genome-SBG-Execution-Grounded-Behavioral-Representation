@@ -1,0 +1,27 @@
+\begin{table*}[!t]
+\caption{Capabilities of the closest prior work relative to the question ``how far can this no-divergence verdict be trusted?''. $\bullet$ = addressed; $\circ$ = partly addressed (see note); -- = not addressed. Comp.: C = conceptual comparison only; B$k$ = the work's decision rule is instantiated as baseline B$k$. No prior tool was executed. $^{\mathrm{p}}$ = preprint.}
+\label{tab:positioning}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.6pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{|L{3.25cm}|c|c|c|c|c|c|c|c|L{3.35cm}|}
+\hline
+Work (stream) & \makecell{Interprets\\empty result} & \makecell{Per-verdict\\probability} & \makecell{Abstains} & \makecell{Sufficiency\\signal} & \makecell{Evidence\\integrity} & \makecell{Response to\\degraded evid.} & \makecell{Risk\\control} & Comp. & Note on partial marks / distinction \\
+\hline
+Evans \& Savoia~\cite{evans2007differential} (S1) & $\circ$ & -- & -- & -- & -- & -- & -- & B1 & Notes ambiguity; no estimate \\
+BERT~\cite{jin2010automated}, NEZHA~\cite{petsios2017nezha} (S1) & -- & -- & -- & $\circ$ & -- & -- & -- & C & Diversity guides search, not trust \\
+Shadow symbolic exec.~\cite{palikareva2016shadow} (S1) & -- & -- & -- & $\circ$ & -- & -- & -- & C & Path exploration bounds the search \\
+SemaDiff$^{\mathrm{p}}$~\cite{ayub2026semadiff} (S1) & $\bullet$ & -- & -- & -- & -- & -- & -- & B1 & Dataset-level accuracy of agreement rule \\
+Regression verification~\cite{lahiri2012symdiff} (S1) & $\bullet$ & -- & $\circ$ & -- & -- & -- & -- & C & Proof, not observation; may be inconclusive \\
+Mutation analysis~\cite{jia2011analysis,just2014mutants} (S2) & $\circ$ & -- & -- & $\bullet$ & -- & $\circ$ & -- & C & Suite score for one version; perturbs programs \\
+Checked coverage~\cite{schuler2011assessing} (S5) & -- & -- & -- & $\bullet$ & -- & $\circ$ & -- & C & Assertion removal validates a metric (P1 credited) \\
+Pseudo-tested methods~\cite{niedermayr2016will,veraperez2019comprehensive} (S5) & $\circ$ & -- & -- & $\bullet$ & -- & $\circ$ & -- & C & Covered but unchecked code \\
+Selective classification~\cite{geifman2017selective} (S6) & -- & $\bullet$ & $\bullet$ & -- & -- & -- & $\bullet$ & B6 & i.i.d.\ guarantee; no software evidence \\
+Conformal risk control~\cite{angelopoulos2024conformal} (S7) & -- & $\circ$ & $\bullet$ & -- & -- & -- & $\bullet$ & C & Marginal; needs exchangeability \\
+in-toto~\cite{torresarias2019intoto} (S8) & -- & -- & -- & -- & $\bullet$ & -- & -- & C & Attests artifacts, not runtime observations \\
+\hline
+\sbg{} (this paper) & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\circ$ & -- & Risk control specified but not achieved (Sec.~\ref{sec:res-rq4}) \\
+\hline
+\end{tabular}
+\end{table*}

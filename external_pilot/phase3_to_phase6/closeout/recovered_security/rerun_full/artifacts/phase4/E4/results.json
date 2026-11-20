@@ -1,0 +1,121 @@
+{
+  "experiment": "E4",
+  "timestamp": "2026-08-20T06:12:53Z",
+  "hypothesis_addressed": [
+    "H3"
+  ],
+  "n_equiv_pairs": 378,
+  "n_changed_pairs": 366,
+  "method_analysis": {
+    "Bytecode": {
+      "equiv_mean": 0.937,
+      "equiv_ci": [
+        0.9138,
+        0.9578
+      ],
+      "changed_mean": 0.9965,
+      "changed_ci": [
+        0.9959,
+        0.997
+      ],
+      "delta": 0.0595,
+      "auroc": 0.3268,
+      "inversion": true
+    },
+    "AST": {
+      "equiv_mean": 0.9306,
+      "equiv_ci": [
+        0.9163,
+        0.944
+      ],
+      "changed_mean": 0.9777,
+      "changed_ci": [
+        0.9717,
+        0.983
+      ],
+      "delta": 0.0471,
+      "auroc": 0.4479,
+      "inversion": true
+    },
+    "Token": {
+      "equiv_mean": 0.9647,
+      "equiv_ci": [
+        0.9592,
+        0.9694
+      ],
+      "changed_mean": 0.9776,
+      "changed_ci": [
+        0.9752,
+        0.9799
+      ],
+      "delta": 0.0129,
+      "auroc": 0.4043,
+      "inversion": true
+    }
+  },
+  "bytecode_by_transform": {
+    "SP-2": {
+      "mean": 0.9997,
+      "n": 39,
+      "std": 0.0012
+    },
+    "SP-3": {
+      "mean": 0.4692,
+      "n": 39,
+      "std": 0.4815
+    },
+    "SP-4": {
+      "mean": 0.9928,
+      "n": 39,
+      "std": 0.0023
+    },
+    "SP-5": {
+      "mean": 0.9873,
+      "n": 39,
+      "std": 0.0225
+    },
+    "SP-6": {
+      "mean": 0.9888,
+      "n": 39,
+      "std": 0.0085
+    },
+    "SP-8": {
+      "mean": 0.9771,
+      "n": 17,
+      "std": 0.0144
+    },
+    "SP-9": {
+      "mean": 1.0,
+      "n": 39,
+      "std": 0.0
+    },
+    "SP-10": {
+      "mean": 1.0,
+      "n": 39,
+      "std": 0.0
+    },
+    "SP-12": {
+      "mean": 0.9996,
+      "n": 39,
+      "std": 0.0017
+    },
+    "SP-11": {
+      "mean": 0.9875,
+      "n": 12,
+      "std": 0.0025
+    },
+    "SP-1": {
+      "mean": 1.0,
+      "n": 22,
+      "std": 0.0
+    },
+    "SP-7": {
+      "mean": 0.9116,
+      "n": 15,
+      "std": 0.0661
+    }
+  },
+  "finding": "Bytecode similarity provides an alternative 'post-compilation' view. If bytecode is more stable under SP transforms than source-level features, it supports using execution-level representations over source-level ones. See method_analysis[Bytecode].inversion for the key finding.",
+  "note": "Bytecode opcode Jaccard approximates compiler-level equivalence without full execution.",
+  "seed": 42
+}

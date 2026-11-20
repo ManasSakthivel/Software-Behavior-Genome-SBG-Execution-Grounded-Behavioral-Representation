@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_10_exception_same_behavior",
+  "ground_truth": "EQUIV",
+  "shortcut_defeated": "exception_fraction",
+  "description": "Base uses try/except (exception_fraction > 0 on bad inputs). Variant uses isinstance guards (exception_fraction = 0 always). A detector that compares exception fractions sees a large difference and wrongly labels this CHANGED. Actual behavior is identical.",
+  "expected_exception_fraction_same": false,
+  "expected_call_count_same": true,
+  "expected_volume_same": false,
+  "boundary_inputs_required": false
+}

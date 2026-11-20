@@ -1,0 +1,23 @@
+diff --git a/tests/test_seqs.py b/tests/test_seqs.py
+index 68e3b0f..fd1629b 100644
+--- a/tests/test_seqs.py
++++ b/tests/test_seqs.py
+@@ -4,6 +4,7 @@ import pytest
+ from whatever import _
+ 
+ from funcy.cross import xrange, PY3
++from funcy import is_list
+ from funcy.seqs import *
+ 
+ 
+@@ -105,6 +106,10 @@ def test_flatten():
+     assert flatten([(2, 3)]) == [2, 3]
+     assert flatten([iter([2, 3])]) == [2, 3]
+ 
++def test_flatten_follow():
++    assert flatten([1, [2, 3]], follow=is_list) == [1, 2, 3]
++    assert flatten([1, [(2, 3)]], follow=is_list) == [1, (2, 3)]
++
+ def test_mapcat():
+     assert mapcat(lambda x: [x, x], 'abc') == list('aabbcc')
+ 

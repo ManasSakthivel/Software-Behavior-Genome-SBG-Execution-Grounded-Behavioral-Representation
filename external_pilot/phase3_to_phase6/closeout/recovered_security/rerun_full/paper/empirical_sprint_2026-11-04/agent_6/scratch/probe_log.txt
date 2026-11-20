@@ -1,0 +1,28 @@
+# env
+openjdk version "21.0.12.1" 2026-08-18 LTS
+javac 21.0.12.1
+Python 3.13.5
+# pytest tests/test_external_java.py
+............                                                             [100%]
+12 passed in 7.83s
+# probe_loop_parity
+[0] JAVA {'call': 1, 'line': 3, 'return': 1} cov_n 3 | PY {'call': 1, 'line': 3, 'return': 1} cov_n 5
+[1] JAVA {'call': 1, 'line': 6, 'return': 1} cov_n 5 | PY {'call': 1, 'line': 6, 'return': 1} cov_n 7
+[7] JAVA {'call': 1, 'line': 12, 'return': 1} cov_n 5 | PY {'call': 1, 'line': 12, 'return': 1} cov_n 7
+[255] JAVA {'call': 1, 'line': 27, 'return': 1} cov_n 5 | PY {'call': 1, 'line': 27, 'return': 1} cov_n 7
+java lines seq (input 7): [14, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15, 19]
+py   lines seq (input 7): [16, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 7]
+java call snapshot: {'n': '7'} | py call snapshot: {'a': '(7,)'}
+java return snapshot: [{'n': '0', 'count': '3'}] | py: [{'n': '0', 'count': '3'}, {'a': '(7,)'}]
+# probe_static_eligibility
+{
+ "canonical:eligible": 30,
+ "declared:eligible": 30,
+ "canonical:unsupported_signature": 10,
+ "declared:excluded": 10
+}
+canonical-ineligible param types: [('List<Node>',), ('List<WeightedEdge>',), ('Map<List<Node>,Integer>', 'Node', 'Node'), ('Node',), ('Node', 'Node'), ('String', 'Map<List<String>,Integer>'), ('int', 'Map<List<Integer>,Integer>'), ('int', 'int[][]')]
+# probe_overhead
+GCD ok True n_traces 55 n_events 420 wall_s [1.42, 1.1] events/s 296.4 identical_feature_fingerprint_across_2_fresh_JVM_runs True
+BITCOUNT ok True n_traces 55 n_events 1415 wall_s [1.58, 1.59] events/s 894.6 identical_feature_fingerprint_across_2_fresh_JVM_runs True
+QUICKSORT ok True n_traces 55 n_events 8640 wall_s [16.97, 16.95] events/s 509.1 identical_feature_fingerprint_across_2_fresh_JVM_runs True

@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "genome_dimension": "g_T",
+  "title": "State-Transition Genome (v5)",
+  "created_at": "2025-07",
+  "authors": ["SBG Research"],
+
+  "A_current_state_model": {
+    "what_state_genome_captures": {
+      "variable_assignment_counts": "Histogram of how often each variable name appeared across all trace snapshots — an aggregate frequency, not a sequence.",
+      "state_space_size": "Count of distinct frozenset(locals.items()) snapshots — measures state-space width but not transition structure.",
+      "mutation_rate": "Fraction of consecutive-event pairs where any variable changed — a scalar summary, not a per-variable or per-path record.",
+      "heap_object_types": "Histogram of inferred Python types — captures what kinds of objects exist, not their lifecycle.",
+      "stack_depth_profile": "Histogram of call-stack depths — aggregate distribution, no sequence.",
+      "state_transition_count": "Total variable-value changes — raw count with no structural information about which transitions occurred."
+    },
+    "what_transitions_are_recorded": {
+      "execution_tracer": "Records four event types: 'call', 'return', 'exception', 'line'. Each carries the full locals snapshot at that step.",
+      "v2_normalizer": "Converts function names to anonymous indices (first-call order). Produces normalized call frequencies, coverage stats, exception type sets.",
+      "state_genome_extractor": "Scans consecutive-event pairs to count changed variables, but does not store the (pre, event, post) triple — only the aggregate count."
+    },
+    "what_is_missing": [
+      "No per-transition structure: we know HOW MANY state changes occurred, not WHICH abstract-value transitions occurred (e.g. ZERO → POSITIVE).",
+      "No sequenced path: we cannot reconstruct whether error states followed specific value shapes.",
+      "No creation/deletion semantics: variable appearance and disappearance are conflated into mutation_rate.",
+      "No resource lifecycle: file/lock acquire-then-release sequences are not distinguished from generic mutation.",
+      "No data-flow edges: which variable produced a value that another variable later consumed.",
+      "Aggregate distributions are rename-invariant only by accident; transition keys using function indexes make this structural."
+    ]
+  },
+
+  "B_state_transition_graph_design": {
+    "state_definition": "Abstraction of a single variable's value at a program point, drawn from a fixed abstract domain.",
+    "abstract_value_domain": {
+      "scalar": ["ZERO", "POSITIVE", "NEGATIVE", "NULL", "NON_NULL"],
+      "collection": ["EMPTY_COLLECTION", "SINGLETON", "MULTI_ELEMENT"],
+      "control_flow": ["EXCEPTION_STATE", "NORMAL"],
+      "sentinels": ["ABSENT", "UNKNOWN"]
+    },
+    "transition_definition": "(func_idx: int, pre_state: str, event_kind: str, post_state: str)",
+    "graph_definition": "Dict[TransitionKey, frequency] — set of observed transitions with counts",
+    "invariants": [
+      "func_idx is the anonymous function index (first-call order), not the name → SP-2 invariant",
+      "pre_state and post_state are abstract labels, not repr values → SP-1 invariant",
+      "Only abstract-value-changing pairs generate transition records → compact representation"
+    ]
+  },
+
+  "C_specific_features": {
+    "state_creation_events": {
+      "trigger": "Variable name absent in snap_pre, present in snap_post",
+      "event_kind": "state_creation",
+      "transition": "(func_idx, ABSENT, state_creation, post_abstract_value)"
+    },
+    "state_mutation_events": {
+      "trigger": "Variable present in both snapshots with different abstract values",
+      "event_kind": "state_mutation",
+      "transition": "(func_idx, pre_abstract_value, state_mutation, post_abstract_value)"
+    },
+    "state_deletion_events": {
+      "trigger": "Variable name present in snap_pre, absent in snap_post",
+      "event_kind": "state_deletion",
+      "transition": "(func_idx, pre_abstract_value, state_deletion, ABSENT)"
+    },
+    "resource_acquisition_releases": {
+      "trigger": "Variable name matches heuristic pattern (file, lock, conn, handle, socket, fd, fp, mutex, resource). NULL→NON_NULL = acquire; NON_NULL→NULL = release.",
+      "event_kinds": ["resource_acquire", "resource_release"],
+      "transitions": [
+        "(func_idx, NULL, resource_acquire, NON_NULL)",
+        "(func_idx, NON_NULL, resource_release, NULL)"
+      ]
+    },
+    "error_state_transitions": {
+      "trigger_enter": "event_type changes to 'exception', or post_abstract is EXCEPTION_STATE",
+      "trigger_exit": "event_type returns from 'exception' to 'line'/'return'",
+      "event_kinds": ["error_transition", "error_recovery"],
+      "transitions": [
+        "(func_idx, NORMAL, error_transition, EXCEPTION_STATE)",
+        "(func_idx, EXCEPTION_STATE, error_recovery, NORMAL)"
+      ]
+    },
+    "data_flow_transitions": {
+      "trigger": "Variable absent in snap_pre but present in snap_post, no exception context — models output of prior step feeding into current scope",
+      "event_kind": "data_flow",
+      "transition": "(func_idx, ABSENT, data_flow, post_abstract_value)"
+    }
+  },
+
+  "D_canonicalization": {
+    "abstract_value_invariance": "Variable names are never stored in transition keys; only abstract domain labels. SP-1 (variable rename) → identical graph.",
+    "function_index_invariance": "Function positions (not names) used as func_idx following v2 TraceNormalizer first-call-order convention. SP-2 (function rename) → identical graph.",
+    "frequency_normalization": "Transition counts are divided by total to produce fractions in [0,1] rounded to 6 dp. Allows comparison across traces of different lengths.",
+    "sequence_normalization": "Transitions sorted by (func_idx ASC, pre_state LEX, event_kind LEX, post_state LEX) — deterministic canonical ordering.",
+    "idempotence": "canonicalize(canonicalize(g)) == canonicalize(g) — verified by test 8."
+  },
+
+  "E_distance_function": {
+    "formula": "d(g1, g2) = 1 − (Σ_{k ∈ T1∩T2} min(f1(k), f2(k))) / (Σ_{k ∈ T1∪T2} max(f1(k), f2(k)))",
+    "name": "Frequency-weighted Jaccard distance",
+    "range": "[0, 1]",
+    "properties": {
+      "reflexivity": "d(g, g) = 0.0 for any g",
+      "symmetry": "d(g1, g2) = d(g2, g1) — min and max are symmetric",
+      "range_proof": "numerator ≤ denominator always (min ≤ max), so 1 − ratio ∈ [0,1]"
+    },
+    "rationale": "Transitions that appear in both graphs with similar frequencies contribute to similarity. Rare transitions in one but not the other widen the distance. Pure Jaccard (binary) would ignore frequency, which matters for loop/mutation intensity."
+  },
+
+  "F_sensitivity_analysis": {
+    "SC_3_operator_mutation": {
+      "example": "x = a + b → x = a - b",
+      "effect": "The abstract value of x may change (e.g. result changes sign: POSITIVE → NEGATIVE). The transition (func_idx, ZERO, state_mutation, NEGATIVE) appears where (func_idx, ZERO, state_mutation, POSITIVE) previously did.",
+      "detected": true,
+      "confidence": "HIGH — abstract domain distinguishes sign"
+    },
+    "SC_1_off_by_one": {
+      "example": "range(n) → range(n+1) — loop runs one extra iteration",
+      "effect": "An additional loop-body mutation transition is recorded. The frequency of transitions inside the loop body increases. If the boundary crosses zero (e.g. i goes from positive to zero on last iteration), the exit state changes.",
+      "detected": true,
+      "confidence": "MEDIUM — detects extra iteration; may not if abstract values don't change at boundary"
+    },
+    "SC_11_wrong_variable": {
+      "example": "result = x → result = y (different variable used)",
+      "effect": "The abstract value propagated into result may differ (e.g. y is NULL where x was POSITIVE), producing a different post_state in the mutation transition.",
+      "detected": true,
+      "confidence": "HIGH when abstract values differ; LOW when x and y happen to have same abstract value (e.g. both POSITIVE)"
+    },
+    "SP_2_function_rename": {
+      "example": "def compute() → def calculate()",
+      "effect": "Function index assigned at first-call order is determined by position in trace, not name. Same execution order → same index → identical transitions.",
+      "detected": false,
+      "invariant": true,
+      "confidence": "COMPLETE — by construction"
+    },
+    "SP_1_variable_rename": {
+      "example": "counter = 0 → idx = 0",
+      "effect": "Variable name is never stored in transition keys. Only abstract value label (ZERO) participates. Transition is identical.",
+      "detected": false,
+      "invariant": true,
+      "confidence": "COMPLETE — by construction"
+    }
+  },
+
+  "G_implementation": {
+    "file": "sbg/v5/state_transition_genome.py",
+    "class": "StateTransitionGenome",
+    "dataclass": "StateTransitionGraph",
+    "methods": {
+      "extract": "List[ExecutionTrace] → StateTransitionGraph",
+      "distance": "(StateTransitionGraph, StateTransitionGraph) → float in [0,1]",
+      "canonicalize": "StateTransitionGraph → StateTransitionGraph (idempotent canonical form)"
+    },
+    "helpers": {
+      "_repr_to_abstract": "repr string → abstract domain label",
+      "_run_tests": "8 inline unit tests, stdlib only"
+    },
+    "unit_tests": [
+      "test_repr_to_abstract — abstract domain mapping for all value types",
+      "test_extract_empty — empty trace list returns empty graph",
+      "test_extract_mutation — ZERO→POSITIVE mutation transition recorded",
+      "test_extract_creation_deletion — ABSENT→value and value→ABSENT",
+      "test_extract_error_state — exception event type generates error transitions",
+      "test_resource_acquire_release — file variable NULL→NON_NULL→NULL",
+      "test_distance_properties — reflexivity, symmetry, range",
+      "test_canonicalize_idempotent — canonical form stable and sorted"
+    ],
+    "dependencies": "stdlib only + sbg.extraction.dynamic.tracer (ExecutionTrace, TraceEvent)"
+  }
+}

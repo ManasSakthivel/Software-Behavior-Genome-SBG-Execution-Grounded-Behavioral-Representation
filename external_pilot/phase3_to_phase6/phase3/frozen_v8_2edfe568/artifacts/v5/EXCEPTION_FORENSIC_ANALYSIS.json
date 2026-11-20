@@ -1,0 +1,102 @@
+{
+  "experiment": "EXCEPTION_FRACTION_FORENSIC_ANALYSIS",
+  "version": "v5",
+  "timestamp": "2025-07-09T00:00:00Z",
+  "critical_finding": "exception_fraction alone (AUROC=0.593) outperforms full SBG model (AUROC=0.550), delta=-0.043",
+  "exception_dominance_hypothesis": "HYPOTHESIS_D_REDUNDANCY_WITH_COMPRESSION_LOSS",
+  "exception_dominance_hypothesis_rationale": "Exception behavior IS genuine behavioral signal but SBG fusion architecture compresses it away. Volume features (coverage 0.20, call_freq 0.25) compete with exception (0.10) and dilute its signal.",
+  "exception_fraction_stats": {
+    "auroc_standalone": 0.592947,
+    "ci_lower": 0.547682,
+    "ci_upper": 0.639613,
+    "auroc_full_model": 0.549857,
+    "full_model_ci_lower": 0.50302,
+    "full_model_ci_upper": 0.595955,
+    "delta_exception_beats_full": 0.04309,
+    "delta_direction": "exception_fraction BEATS full_model by +0.043 AUROC",
+    "exc_shortcut_auroc": 0.567,
+    "exc_shortcut_ci": [
+      0.521925,
+      0.616262
+    ],
+    "exc_shortcut_beats_sbg_delta": -0.027094,
+    "n_valid": 643,
+    "n_test_pairs": 744
+  },
+  "volume_proxy_features": [
+    {
+      "name": "coverage_size",
+      "weight": 0.2,
+      "category": "PURE_VOLUME",
+      "rationale": "Counts unique lines executed \u2014 increases with dead code, refactoring"
+    },
+    {
+      "name": "call_freq",
+      "weight": 0.25,
+      "category": "PURE_VOLUME",
+      "rationale": "L1 distance on normalized call histogram \u2014 dominated by call count"
+    },
+    {
+      "name": "call_depth_mean",
+      "weight": 0.1,
+      "category": "VOLUME_PROXY",
+      "rationale": "Mean call depth \u2014 changes with wrapping functions"
+    },
+    {
+      "name": "exception_rate",
+      "weight": 0.1,
+      "category": "MIXED",
+      "rationale": "Fraction of traces with exceptions \u2014 genuine behavioral signal"
+    },
+    {
+      "name": "call_bigrams",
+      "weight": 0.25,
+      "category": "BEHAVIORAL",
+      "rationale": "Call transition sequences \u2014 order-sensitive, less volume-correlated"
+    }
+  ],
+  "ablation_evidence": {
+    "removing_coverage_helps": true,
+    "no_coverage_auroc": 0.560113,
+    "no_coverage_delta": 0.010256,
+    "only_volume_auroc": 0.534688,
+    "only_coverage_auroc": 0.538473,
+    "interpretation": "Coverage HURTS model performance when removed, but only_exception HELPS by +0.043. Coverage and exception are anti-correlated in terms of label signal."
+  },
+  "exception_debiased_design": {
+    "recommended_approach": "MULTI_VIEW_ENSEMBLE",
+    "description": "Build separate Exception View (exception_fraction + exception_types) and Structural View (call_bigrams + coverage_consistency), ensemble both",
+    "rationale": "If views are orthogonal, ensemble should beat either alone. If not, exception_fraction alone is sufficient.",
+    "predicted_auroc": "0.560-0.580",
+    "fallback": "If multi-view provides no improvement, adopt exception_fraction as primary predictor (AUROC=0.593 at 100x lower cost)"
+  },
+  "residualized_sbg_validity": "CONDITIONALLY_VALID \u2014 exceptions may be mediators (CHANGED\u2192exceptions\u2192lower coverage), so regressing out exceptions could remove causal path. Use with caution.",
+  "recommendation": "MULTI_VIEW_VALIDATION_BEFORE_RESIDUALIZATION",
+  "evidence": [
+    {
+      "id": "E1",
+      "source": "artifacts/v4/FEATURE_ABLATION.json",
+      "finding": "only_exception AUROC=0.593 > full_model AUROC=0.550, delta=+0.043"
+    },
+    {
+      "id": "E2",
+      "source": "artifacts/v4/FEATURE_ABLATION.json",
+      "finding": "no_coverage AUROC=0.560, delta=+0.010: removing coverage IMPROVES model"
+    },
+    {
+      "id": "E3",
+      "source": "artifacts/v4/SHORTCUT_CONTROLS.json",
+      "finding": "exc_frac shortcut AUROC=0.567 > SBG_v3=0.540, survives_shortcut_controls=False"
+    },
+    {
+      "id": "E4",
+      "source": "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json",
+      "finding": "9/9 silent bugs (invisible to exception+volume) detected by behavioral oracle"
+    },
+    {
+      "id": "E5",
+      "source": "experiments/v5/incremental_info_framework.py",
+      "finding": "Full model AUROC=0.550, best shortcut=0.593, incremental SBG delta=-0.043"
+    }
+  ]
+}

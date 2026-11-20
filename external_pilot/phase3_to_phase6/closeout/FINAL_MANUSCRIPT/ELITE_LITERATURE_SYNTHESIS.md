@@ -1,0 +1,5 @@
+# Literature synthesis
+Supersedes `audit/literature_tables.md`; linked from README.md.
+Eight streams (S1 differential/equivalence, S2 adequacy, S3 oracles, S4 metamorphic, S5 sufficiency/observability, S6 selective prediction, S7 conformal, S8 integrity/perturbation) arranged as an argument: how divergences are found, when absence of failure is informative, how risk is estimated, whether evidence and estimator can be trusted. Each stream states where it stops.
+**Reference check (2026-11-20):** 76 entries; 69 re-resolved by DOI/arXiv (Crossref/arXiv) and 7 by URL (HTTP 200). Title mismatches were short Crossref titles only. Added: voas1992pie, masri2014prevalence, androutsopoulos2014analysis, jahangirova2016oracle, wei2025equibench, kachroo2026feagent (last two preprints). Removed earlier: rezaalipour2024empirical.
+**Not done:** a claim-by-claim re-read of all 70 older references against primary texts; weak-relevance pruning. Preprint-based claims (SemaDiff, FEAgent, EquiBench, DiffTestGen) rest on abstracts.

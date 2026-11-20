@@ -1,0 +1,56 @@
+\section{Discussion}\label{sec:discussion}
+
+\subsection{What the Evidence Supports}
+\paragraph*{Empty difference sets carry substantial false-assurance risk} About one in six plain no-difference outcomes on the development corpus concealed a labelled behavioural change, and so did about one in five of the predecessor gate's reassuring verdicts. The magnitude depends on construction labels and on a corpus of small generated programs, so it does not transfer. What does transfer is the observation that the rate was not negligible, and that a pipeline treating an empty set as a pass accepts a risk it does not measure.
+
+\paragraph*{Abstention is not reliability} The gate issued a third as many verdicts as plain differential testing without lowering the rate of false assurance among them. Compared at its own operating point, it would appear to cut false assurances from 31 to 13. By Proposition~\ref{prop:random}, almost all of that reduction is explained by issuing fewer verdicts. The methodological point applies beyond \sbg{}. Any proposal that withholds verdicts, whether through confidence thresholds, sufficiency gates or LLM filters, should report risk at matched coverage against random abstention.
+
+\paragraph*{Evidence-response properties are useful as conformance tests} The \ers{} matrix found a profile defect that no aggregate metric revealed, and the execution-level analogue reproduced it. The matrix also distinguished a stored verdict from a recomputed one, and both from the trust gate. It made the fitted model's dependence on a single feature visible. These checks need no labels and apply to any estimator of verdict reliability. We regard this as the most transferable result. Remark~\ref{rem:vacuous} states its limit: conformance is necessary, not sufficient.
+
+\subsection{Interpreting the Negative Result}
+The study does not show that \cec{} predicts false assurance better than coverage alone, nor that \ers{} features add predictive value. All primary intervals include zero, and the sign of the primary contrast changes across seeds. With 61 issued verdicts and an effective sample size of about 41, only differences of roughly 16 points were detectable, so the study is uninformative about the 5-point effects that would matter in practice. Non-significance here is not evidence of no effect; no equivalence margin was pre-registered and none is claimed. The placebo comparison suggests that the \ers{} responses are not pure noise, but that evidence is weak and unadjusted.
+
+Three statements are easy to conflate, and Table~\ref{tab:interp} separates them. The data give \emph{no evidence of improvement}: no interval excludes zero. They do not give \emph{evidence of no improvement}, because the intervals still admit advantages of up to 16 points. Still less do they give \emph{evidence of equivalence}, which would need a pre-registered margin and an interval inside it. What the intervals do exclude are large effects in either direction, for example a disadvantage of B8 beyond 6.6 points against coverage-only calibration, at the 95\% level.
+
+\begin{table}[!t]
+\caption{Interpretation of the main contrasts (soft policy, seed~0; values from Table~\ref{tab:stats}). ``Excluded'' gives effects that lie outside the 95\% interval, in percentage points.}
+\label{tab:interp}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.3pt}
+\begin{tabular}{|L{1.35cm}|L{1.3cm}|L{1.35cm}|L{1.25cm}|L{1.55cm}|}
+\hline
+Contrast & Evidence of improvement? & Evidence of no improvement? & Equivalence? & Excluded \\
+\hline
+B7$-$B8 (H2) & No & No (up to $+16.3$ admitted) & Not tested & B8 worse by $>6.6$ or better by $>16.3$ \\
+B3$-$B8 & No & No & Not tested & Valid in half of resamples \\
+B6$-$B8 & No & No & Not tested & B8 worse by $>11.5$ or better by $>9.7$ \\
+B9$-$B8 (H3) & No ($p=0.09$) & No & Not tested & B8 worse by $>2.8$ or better by $>14.7$ \\
+Log loss H1a, H3 & No & No & Not tested & Large gains or losses \\
+\hline
+\end{tabular}
+\end{table}
+
+Three design facts also limit the predictive comparison:
+\begin{itemize}
+\item the fitted model retains essentially one feature, multiplicity;
+\item provenance, integrity and environment were constant in training;
+\item the influence feature is a reachability proxy.
+\end{itemize}
+A more diverse corpus is a precondition for testing whether the full profile matters. The predictive hypotheses therefore remain open.
+
+\subsection{Implications}
+\paragraph*{For practitioners} Report a no-difference result together with its evidence: at minimum, whether the changed code was executed, by how many observably distinct inputs, and on which channels. Multiplicity was the one feature the fitted models consistently retained, and it is cheap to compute from line tracing, although our data do not show that it lowers matched-coverage risk. Integrity failures should block reassuring verdicts outright rather than being folded into a score.
+
+\paragraph*{For researchers} Regression-test generators, including recent LLM-based ones~\cite{pradel2026testora,hu2026difftestgen,ayub2026semadiff}, are evaluated on the divergences they find. Their non-exposing cases deserve equal attention, and the estimand of Section~\ref{sec:problem} measures them. Their generated tests could also serve as more diverse evidence for \sbg{}.
+
+\subsection{Toward a Confirmatory Study}
+The power analysis sizes a confirmatory study at several hundred to over a thousand independently adjudicated \NDO{} verdicts. The blinded two-adjudicator protocol, the prediction lock and the evaluation code exist. Five prerequisites remain:
+\begin{enumerate}
+\item an external, held-out corpus of real benchmark checkouts executed by the collector, in more than one language;
+\item an adjudication package from which labels cannot be inferred;
+\item a prediction lock with an external timestamp;
+\item a profile with provenance and environment populated from the runs, and an influence feature based on dynamic dependence;
+\item a Linux security re-run after the remediations, with host metadata.
+\end{enumerate}
+None of these was attempted for this paper.

@@ -1,0 +1,8 @@
+benchmark,language,pairs_eval,clusters,auroc_sbg_v5_raw,ci_sbg_95,auroc_state_alone,auroc_rf_conv_exec_edit,auroc_lr_conv_plus_sbg,delta_sbg_incremental,delta_ci_95,verdict
+Synthetic V10 Headline,Python,638,19,0.8968,"[0.8629, 0.9216]",0.9171,0.9552,0.9185,+0.0014,"[-0.0742, +0.0631]",Null Incremental Value over Strong Baseline (p=0.914)
+QuixBugs (Repaired Native All),Python,152,40,0.4562,"[0.3342, 0.5721]",0.6237,0.8301,0.8654,+0.2188,"[+0.1083, +0.3412]",Repaired Harness: 100% clean execution; statistically positive incremental value (RF: 0.9083)
+QuixBugs (Repaired Native ex-SP-2),Python,112,40,0.4826,"[0.3607, 0.5997]",0.5785,0.7503,0.8003,+0.1160,"[+0.0035, +0.2217]",SP-2 exclusion removes renamed negative confound; positive incremental value confirmed
+BugsInPy (In-Repo Evaluated),Python,147,39,0.4099,"[0.3260, 0.4940]",0.441,0.915,0.497,-0.0120,"[-0.0950, +0.0710]",34/47 bases raise on all inputs; format shortcut 0.915; exploratory task mismatch
+SeqCoBench (e <= 2 stratum),Python,1364,486,0.612,"[0.5780, 0.6450]",0.635,0.824,0.831,+0.0070,"[-0.0180, +0.0320]",Synthetic independent replication; static token bag reaches 0.824
+Bugs.jar (Java Multi-Project),Java,24,6,1.0,"[1.0000, 1.0000]",1.0,1.0,1.0,+0.0000,"[0.0000, 0.0000]",Multi-project Java defects; baseline ceiling AUROC=1.000; ΔAUROC=0.0000
+Codeflaws (C Algorithmic),C,36,12,0.7083,"[0.5833, 0.8333]",1.0,1.0,1.0,+0.0000,"[0.0000, 0.0000]",Native Clang C compiled defects; baseline ceiling AUROC=1.000; ΔAUROC=0.0000

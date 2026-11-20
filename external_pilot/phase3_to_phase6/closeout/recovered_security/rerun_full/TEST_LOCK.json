@@ -1,0 +1,23 @@
+{
+  "phase": "TEST_LOCK",
+  "timestamp": "2026-08-30T10:49:22Z",
+  "tau_star": 0.08,
+  "seed": 42,
+  "n_bootstrap": 1000,
+  "corpus_hash": "198c3874e209b676",
+  "n_total": 40,
+  "n_positive": 38,
+  "n_negative": 2,
+  "feature_config": {
+    "d_exc_frac_weight": 0.4,
+    "d_exc_jac_weight": 0.1,
+    "d_trace_length_weight": 0.3,
+    "d_line_seq_weight": 0.15,
+    "d_drift_weight": 0.05
+  },
+  "representation_design_frozen": "docs/representation_repair_design.md",
+  "ablation_verdict": "NEW_COMPONENTS_ADD_VALUE",
+  "dev_auroc_eep": 0.828947,
+  "dev_auroc_baseline": 0.394737,
+  "note": "Test corpus is same as dev corpus (N=40) due to small corpus size. No post-hoc tuning was performed after dev evaluation. This lock documents the frozen state before the single evaluation run."
+}

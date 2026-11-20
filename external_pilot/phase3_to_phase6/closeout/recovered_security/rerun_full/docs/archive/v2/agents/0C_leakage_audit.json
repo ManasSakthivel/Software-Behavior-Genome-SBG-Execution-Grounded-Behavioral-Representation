@@ -1,0 +1,90 @@
+{
+  "agent": "0C",
+  "timestamp": "2023-10-24T12:00:00Z",
+  "v1_leakage_status": "CLEAN",
+  "v2_leakage_risks": [
+    {
+      "risk_id": "R1",
+      "type": "LABEL_LEAKAGE",
+      "severity": "MEDIUM",
+      "description": "Transformation type or details could be inferred from execution trace content (stdout/stderr). If a semantic transformation (such as SP-1 variable renaming) changes printed exception messages, traceback structures, or custom debug prints, or if class/function names are logged during dynamic execution, the evaluation model can infer the transformation type.",
+      "affected_programs": [
+        "ds_min_heap.py",
+        "err_circuit_breaker.py"
+      ],
+      "mitigation": "Strictly sanitize all stdout, stderr, and trace output. Standardize trace captures to structured return values or serialized program state, stripping out tracebacks, exception details referencing variable names, or internal class/function names."
+    },
+    {
+      "risk_id": "R2",
+      "type": "METADATA_LEAKAGE",
+      "severity": "HIGH",
+      "description": "Filename/path names could appear in stack traces, system errors, or __file__ variables. If temporary execution files use names like 'tmp_SP1_program.py' or if programs print their own names dynamically, the pair identity or transformation class is directly leaked.",
+      "affected_programs": [
+        "err_circuit_breaker.py",
+        "err_retry_backoff.py"
+      ],
+      "mitigation": "Execute programs in a sandboxed environment where __file__ is mocked or inaccessible. Preprocess all stack traces and replace specific file paths, temporary names, and line references with generalized placeholders."
+    },
+    {
+      "risk_id": "R3",
+      "type": "TIMING_LEAKAGE",
+      "severity": "LOW",
+      "description": "Semantic transformations (SP) change program structure or add/remove helper logic which can affect execution duration. If timing systematically differs between SP and SC transformations, a model could exploit this. However, execution noise usually overwhelms small structural timing differences.",
+      "affected_programs": [
+        "err_circuit_breaker.py",
+        "err_retry_backoff.py"
+      ],
+      "mitigation": "Excluding execution time/durations from the trace data made visible to the evaluation models, and enforcing a strict timeout cap for all execution runs."
+    },
+    {
+      "risk_id": "R4",
+      "type": "DETERMINISM_RISKS",
+      "severity": "HIGH",
+      "description": "Use of system clock calls (time.time, time.monotonic, datetime.now), sleep delays (time.sleep), memory address queries (id()), or concurrent threads leads to non-deterministic program state and output variation between runs. This results in false mismatches or false equivalents in dynamic verification.",
+      "affected_programs": [
+        "err_circuit_breaker.py",
+        "err_retry_backoff.py",
+        "ds_min_heap.py",
+        "conc_read_write_lock.py",
+        "conc_producer_consumer.py",
+        "conc_thread_safe_counter.py"
+      ],
+      "mitigation": "Mock/patch time.time, time.monotonic, and id() during dynamic execution, and replace real sleeps with virtual clock updates. Exclude or restrict multi-threaded base programs from direct dynamic trace comparison unless thread execution is strictly synchronized/serialized."
+    },
+    {
+      "risk_id": "R5",
+      "type": "INPUT_SENSITIVITY",
+      "severity": "MEDIUM",
+      "description": "If two programs exhibit identical behavior on a limited set of fixed inputs but differ on other input paths, the dynamic execution suite will incorrectly label them as equivalent (false equivalents) due to sparse input coverage.",
+      "affected_programs": [
+        "api_rate_limiter.py",
+        "res_cache_ttl.py"
+      ],
+      "mitigation": "Utilize diverse and comprehensive input generation including automatically generated boundary values, edge cases, and random-seeded fuzzing inputs to maximize code path coverage."
+    }
+  ],
+  "programs_with_nondeterminism": [
+    "benchmark/corpus/base_programs/err_circuit_breaker.py",
+    "benchmark/corpus/base_programs/err_retry_backoff.py",
+    "benchmark/corpus/base_programs/ds_min_heap.py",
+    "benchmark/corpus/base_programs/conc_read_write_lock.py",
+    "benchmark/corpus/base_programs/conc_producer_consumer.py",
+    "benchmark/corpus/base_programs/conc_thread_safe_counter.py"
+  ],
+  "programs_safe_for_dynamic_execution": [
+    "benchmark/corpus/base_programs/api_rate_limiter.py",
+    "benchmark/corpus/base_programs/res_cache_ttl.py",
+    "benchmark/corpus/base_programs/file_log_processor.py",
+    "benchmark/corpus/base_programs/math_numerical_integration.py",
+    "benchmark/corpus/base_programs/ds_hash_table.py",
+    "benchmark/corpus/base_programs/ds_trie.py",
+    "benchmark/corpus/base_programs/str_kmp_search.py",
+    "benchmark/corpus/base_programs/sort_mergesort.py"
+  ],
+  "recommended_exclusions": [
+    "benchmark/corpus/base_programs/conc_read_write_lock.py",
+    "benchmark/corpus/base_programs/conc_producer_consumer.py",
+    "benchmark/corpus/base_programs/conc_thread_safe_counter.py"
+  ],
+  "overall_verdict": "RISKS_IDENTIFIED"
+}

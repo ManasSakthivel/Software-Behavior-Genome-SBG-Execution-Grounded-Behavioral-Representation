@@ -1,0 +1,69 @@
+{
+  "phase": 5,
+  "status": "CONDITIONAL",
+  "timestamp": "2026-08-20T05:30:00Z",
+  "experiments_completed": [
+    "cross_language_corpus_generation",
+    "cross_language_evaluation",
+    "regression_detection_constructed",
+    "regression_detection_phase1_benchmark"
+  ],
+  "cross_language": {
+    "n_python_programs": 10,
+    "n_java_programs": 10,
+    "n_java_changed_variants": 5,
+    "n_pairs_total": 15,
+    "n_equivalent": 11,
+    "n_changed": 4,
+    "oracle_validation": "PASS (10/10 Python programs pass shared test oracle)",
+    "java_validation": "MANUAL — Java cannot be executed from Python; implementations validated by inspection",
+    "normalized_cf_auroc": 0.4091,
+    "equiv_mean_sim": 0.7479,
+    "changed_mean_sim": 0.7759,
+    "inversion_present": true,
+    "h4_status": "NOT_SUPPORTED",
+    "limitation": "Corpus too small (n=15) for robust AUROC. Java features via regex, not Java AST parser."
+  },
+  "regression_detection": {
+    "constructed_pairs": 3,
+    "constructed_pair_types": ["state_machine_regression", "lru_cache_refactor", "rate_limiter_regression"],
+    "ast_direction_on_constructed": "INVERTED (CHANGED pairs have higher similarity than EQUIV)",
+    "phase1_best_auroc": 0.5528,
+    "h5_status": "NOT_SUPPORTED",
+    "practical_tpr_at_fpr5pct": 0.0082
+  },
+  "provenance": {
+    "corpus_provenance": "HAND_CRAFTED — all Python and Java implementations written by authors",
+    "no_llm_generated_code": true,
+    "no_fabricated_labels": true,
+    "java_equivalence_by_inspection": true,
+    "explicit_provenance_labels": true
+  },
+  "leakage_check": {
+    "phase5_programs_overlap_phase1": false,
+    "note": "Phase 5 programs are independent of Phase 1 benchmark corpus"
+  },
+  "p0_issues": [],
+  "p1_issues": [
+    "P1: Cross-language corpus too small (n=15) for robust quantitative claims",
+    "P1: Java semantic equivalence validated by inspection only — no JUnit test execution"
+  ],
+  "p2_issues": [
+    "P2: Java features via regex heuristics, not full Java AST parser",
+    "P2: Only 3 constructed regression pairs — insufficient for H5 sub-analysis"
+  ],
+  "hypothesis_verdicts": {
+    "H4": {
+      "status": "NOT_SUPPORTED",
+      "evidence": "Cross-language AUROC=0.4091 (n=15). Inversion present in cross-language too. Corpus too small for strong claims.",
+      "note": "Larger corpus (50+ pairs) needed for definitive H4 evaluation"
+    },
+    "H5": {
+      "status": "NOT_SUPPORTED",
+      "evidence": "Phase 1 best AUROC=0.5528 < 0.65. Constructed pairs show inversion. TPR@FPR5%=0.8%."
+    }
+  },
+  "key_finding": "The structural-semantic inversion persists across language boundaries (Python vs Java) and across evolution scenarios (v1 vs v2 regressions). Both H4 and H5 are NOT SUPPORTED in Phase 5.",
+  "recommendation": "CONDITIONAL PASS. Infrastructure is correct and provenance is clean. Both H4 and H5 are honestly assessed as NOT_SUPPORTED. Phase 6 adversarial review should evaluate whether the corpus construction methodology is sound and whether alternative representations could bridge the inversion.",
+  "agent": "5-PHASE-GATE"
+}

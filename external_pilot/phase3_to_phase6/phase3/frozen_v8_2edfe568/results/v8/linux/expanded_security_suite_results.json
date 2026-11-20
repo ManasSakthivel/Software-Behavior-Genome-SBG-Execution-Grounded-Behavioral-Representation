@@ -1,0 +1,2155 @@
+{
+  "container_74": [
+    {
+      "id": "FS01_write_etc_passwd",
+      "category": "FS01",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 1.846,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS02_write_root_dir",
+      "category": "FS02",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 2.935,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS03_read_shadow_file",
+      "category": "FS03",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 1.84,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS04_symlink_escape",
+      "category": "FS04",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 3.081,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS05_symlink_root_parent",
+      "category": "FS05",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 3.108,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS06_chmod_readonly_mount",
+      "category": "FS06",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 1.795,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS07_mknod_device",
+      "category": "FS07",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 2.954,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS08_mount_filesystem",
+      "category": "FS08",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 1.787,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS09_unshare_mount_ns",
+      "category": "FS09",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.227,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FS10_chroot_escape",
+      "category": "FS10",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.223,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET01_socket_tcp_connect",
+      "category": "NET01",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.265,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET02_socket_udp_send",
+      "category": "NET02",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.268,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET03_raw_socket",
+      "category": "NET03",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.218,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET04_bind_server_socket",
+      "category": "NET04",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.306,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET05_unix_domain_socket",
+      "category": "NET05",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.245,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET06_dns_resolve",
+      "category": "NET06",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.232,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET07_ipv6_socket",
+      "category": "NET07",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.271,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "NET08_netlink_socket",
+      "category": "NET08",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.25,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC01_fork_bomb",
+      "category": "PROC01",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.256,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC02_setpgid_escape",
+      "category": "PROC02",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.196,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC03_ptrace_attach_parent",
+      "category": "PROC03",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.25,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC04_kill_parent_sigkill",
+      "category": "PROC04",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.244,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC05_signal_mask_sigkill",
+      "category": "PROC05",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.285,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC06_daemonize_setsid",
+      "category": "PROC06",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.249,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC07_prctl_deathsig",
+      "category": "PROC07",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.225,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC08_zombie_spawn",
+      "category": "PROC08",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.213,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC09_process_vm_readv",
+      "category": "PROC09",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.258,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PROC10_sched_setaffinity",
+      "category": "PROC10",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.286,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES01_cpu_infinite_loop",
+      "category": "RES01",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.233,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES02_memory_allocation_bomb",
+      "category": "RES02",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.201,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES03_stdout_flood_5mb",
+      "category": "RES03",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.712,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES04_stderr_flood_5mb",
+      "category": "RES04",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.277,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES05_rlimit_as_exhaustion",
+      "category": "RES05",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 1.35,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES06_rlimit_nofile_exhaustion",
+      "category": "RES06",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.198,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES07_sleep_30s",
+      "category": "RES07",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.248,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "RES08_recursive_stack_exhaustion",
+      "category": "RES08",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.221,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD01_close_all_fds",
+      "category": "FD01",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.695,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD02_write_random_fds",
+      "category": "FD02",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.674,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD03_dup2_stdout_to_stderr",
+      "category": "FD03",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.199,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD04_dup2_stderr_to_stdout",
+      "category": "FD04",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.276,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD05_close_stdout",
+      "category": "FD05",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.279,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD06_close_stderr",
+      "category": "FD06",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.29,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD07_fcntl_setfl_nonblock",
+      "category": "FD07",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.275,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD08_read_parent_fds",
+      "category": "FD08",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.256,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD09_inject_forged_frame_magic",
+      "category": "FD09",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.255,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "FD10_corrupt_pipe_buffer",
+      "category": "FD10",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.285,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY01_patch_sys_modules",
+      "category": "PY01",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.228,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY02_patch_builtins_open",
+      "category": "PY02",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 1.435,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY03_patch_builtins_type",
+      "category": "PY03",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.194,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY04_patch_gc_disable",
+      "category": "PY04",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.209,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY05_patch_sys_stdout",
+      "category": "PY05",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.285,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY06_patch_sys_stderr",
+      "category": "PY06",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 1.447,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY07_inspect_stack_caller",
+      "category": "PY07",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.244,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY08_sys_settrace_evasion",
+      "category": "PY08",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.209,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY09_sys_setprofile_evasion",
+      "category": "PY09",
+      "verdict": "DIVERGENT_OBSERVABLE",
+      "effective_verdict": "DIVERGENT_OBSERVABLE",
+      "outcome_category": "MITIGATED",
+      "outcome_detail": "NO EFFECT (engine still reports the true verdict)",
+      "duration_s": 1.42,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY10_ctypes_memory_read",
+      "category": "PY10",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.348,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY11_ctypes_memory_overwrite",
+      "category": "PY11",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.232,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY12_os_environ_clear",
+      "category": "PY12",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.244,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY13_os_environ_forge_key",
+      "category": "PY13",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.206,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "PY14_patch_harness_globals",
+      "category": "PY14",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.251,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE01_sense_argv",
+      "category": "SENSE01",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.281,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE02_sense_main_module",
+      "category": "SENSE02",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.262,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE03_sense_cwd",
+      "category": "SENSE03",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.291,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE04_sense_file_name",
+      "category": "SENSE04",
+      "verdict": "NO_DIVERGENCE_OBSERVED",
+      "effective_verdict": "NO_DIVERGENCE_OBSERVED",
+      "outcome_category": "SUCCESSFUL",
+      "outcome_detail": "SUCCEEDS (open): false verdict with no check firing",
+      "duration_s": 0.776,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "match",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE05_sense_rlimit",
+      "category": "SENSE05",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.257,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE06_sense_nproc",
+      "category": "SENSE06",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.208,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE07_sense_time_delay",
+      "category": "SENSE07",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.249,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE08_sense_fd_count",
+      "category": "SENSE08",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.246,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE09_sense_cgroup",
+      "category": "SENSE09",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.227,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE10_sense_env_vars",
+      "category": "SENSE10",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.207,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE11_sense_parent_process",
+      "category": "SENSE11",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.253,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE12_sense_seccomp",
+      "category": "SENSE12",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.333,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE13_sense_uid_gid",
+      "category": "SENSE13",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.175,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    },
+    {
+      "id": "SENSE14_sense_network_namespace",
+      "category": "SENSE14",
+      "verdict": "INSUFFICIENT",
+      "effective_verdict": "INSUFFICIENT",
+      "outcome_category": "BLOCKED",
+      "outcome_detail": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+      "duration_s": 0.243,
+      "checks": {
+        "verify": "verified",
+        "sidecar": "ok",
+        "capture": "ok",
+        "anchor": "ok",
+        "verdict_json": "ok",
+        "chain": "ok",
+        "shadow": "not_comparable",
+        "sources_match": true
+      },
+      "issues": []
+    }
+  ],
+  "tamper_51": [
+    {
+      "id": "EV_TAMPER_01",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_1",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: sidecar not bound to this evidence log (sha256/head)",
+        "capture: capture is not bound to this evidence log (replayed from another run or log edited)",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: verify failed: log must hold exactly one EvidencePackage and end with exactly one Verdict",
+        "integrity: sidecar sidecar not bound to this evidence log (sha256/head)",
+        "integrity: independent capture invalid: capture is not bound to this evidence log (replayed from another run or log edited)",
+        "integrity: anchor evidence.jsonl changed or missing since it was anchored",
+        "integrity: Verdict record absent from evidence log"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_02",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_2",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: evidence.jsonl empty",
+        "capture: evidence.jsonl empty",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: verify failed: log must hold exactly one EvidencePackage and end with exactly one Verdict",
+        "integrity: sidecar evidence.jsonl empty",
+        "integrity: independent capture invalid: evidence.jsonl empty",
+        "integrity: anchor evidence.jsonl changed or missing since it was anchored",
+        "integrity: Verdict record absent from evidence log",
+        "integrity: EvidencePackage record absent from evidence log",
+        "provenance: evidence was produced by a different harness.py than the current one",
+        "provenance: recorded program source differs from the expected file (evidence substitution)"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_03",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_3",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_04",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_4",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 1",
+        "capture: unreadable: ChainError: chain broken at seq 1",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 1"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_05",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_5",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "capture: unreadable: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: Expecting value: line 1 column 1 (char 0)"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_06",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_6",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: sidecar not bound to this evidence log (sha256/head)",
+        "capture: capture is not bound to this evidence log (replayed from another run or log edited); run 0: input hash / side differ from the log; run 2: input hash / side differ from the log; run 3: input hash / side differ from the log",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: verify failed: record pro_tampered (ProgramVersion) does not match its content id",
+        "integrity: sidecar sidecar not bound to this evidence log (sha256/head)",
+        "integrity: independent capture invalid: capture is not bound to this evidence log (replayed from another run or log edited); run 0: input hash / side differ from the log; run 2: input hash / side differ from the log; run 3: input hash / side differ from the log",
+        "integrity: anchor evidence.jsonl changed or missing since it was anchored",
+        "provenance: recorded program source differs from the expected file (evidence substitution)"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_07",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_7",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_08",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_8",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_09",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_9",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_10",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_10",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_11",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_11",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_12",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_12",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_13",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_13",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_14",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_14",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "EV_TAMPER_15",
+      "target": "evidence.jsonl",
+      "description": "log_tamper_variant_15",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: ChainError: chain broken at seq 0",
+        "capture: unreadable: ChainError: chain broken at seq 0",
+        "anchor: evidence.jsonl changed or missing since it was anchored",
+        "integrity: chain broken at seq 0"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_01",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_1",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.trusted disagrees with its own run verdicts",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.trusted disagrees with its own run verdicts",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_02",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_2",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_03",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_3",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: run 0: timings differ from the log",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: run 0: timings differ from the log",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_04",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_4",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: 11 capture records but 12 Run records (partial or extra records)",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: 11 capture records but 12 Run records (partial or extra records)",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_05",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_5",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.schema: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.schema: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_06",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_6",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.harness_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.harness_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_07",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_7",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_08",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_8",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_09",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_9",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_10",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_10",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_11",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_11",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_12",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_12",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_13",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_13",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_14",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_14",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "CAP_TAMPER_15",
+      "target": "v8_capture.json",
+      "description": "capture_tamper_variant_15",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "capture: capture.config_sha256: invalid value",
+        "anchor: v8_capture.json changed or missing since it was anchored",
+        "integrity: independent capture invalid: capture.config_sha256: invalid value",
+        "integrity: anchor v8_capture.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_01",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_1",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: input set differs from the package rows",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar input set differs from the package rows",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_02",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_2",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: schema: sidecar.schema: invalid value",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar schema: sidecar.schema: invalid value",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_03",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_3",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: schema: sidecar.log_head: invalid value",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar schema: sidecar.log_head: invalid value",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_04",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_4",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: schema: sidecar.evidence_sha256: invalid value",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar schema: sidecar.evidence_sha256: invalid value",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_05",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_5",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: i0: outcome/lossy/degenerate differ from the package",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar i0: outcome/lossy/degenerate differ from the package",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_06",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_6",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: i0: outcome/lossy/degenerate differ from the package",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar i0: outcome/lossy/degenerate differ from the package",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_07",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_7",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: i0: outcome/lossy/degenerate differ from the package",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar i0: outcome/lossy/degenerate differ from the package",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_08",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_8",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: i0: outcome/lossy/degenerate differ from the package",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar i0: outcome/lossy/degenerate differ from the package",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_09",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_9",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: i0: outcome/lossy/degenerate differ from the package",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar i0: outcome/lossy/degenerate differ from the package",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "PART_TAMPER_10",
+      "target": "v8_parts.json",
+      "description": "sidecar_tamper_variant_10",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "sidecar: i0: outcome/lossy/degenerate differ from the package",
+        "anchor: v8_parts.json changed or missing since it was anchored",
+        "integrity: sidecar i0: outcome/lossy/degenerate differ from the package",
+        "integrity: anchor v8_parts.json changed or missing since it was anchored"
+      ]
+    },
+    {
+      "id": "ANC_TAMPER_01",
+      "target": "v8_anchor.json",
+      "description": "anchor_tamper_variant_1",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "anchor: anchor file absent but an anchor is required (stripped?)",
+        "integrity: anchor anchor file absent but an anchor is required (stripped?)"
+      ]
+    },
+    {
+      "id": "ANC_TAMPER_02",
+      "target": "v8_anchor.json",
+      "description": "anchor_tamper_variant_2",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "anchor: anchor.mac: invalid value",
+        "integrity: anchor anchor.mac: invalid value"
+      ]
+    },
+    {
+      "id": "ANC_TAMPER_03",
+      "target": "v8_anchor.json",
+      "description": "anchor_tamper_variant_3",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "anchor: anchor.key_id: invalid value",
+        "integrity: anchor anchor.key_id: invalid value"
+      ]
+    },
+    {
+      "id": "ANC_TAMPER_04",
+      "target": "v8_anchor.json",
+      "description": "anchor_tamper_variant_4",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "anchor: anchor.files.evidence.jsonl: invalid value",
+        "integrity: anchor anchor.files.evidence.jsonl: invalid value"
+      ]
+    },
+    {
+      "id": "ANC_TAMPER_05",
+      "target": "v8_anchor.json",
+      "description": "anchor_tamper_variant_5",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "anchor: anchor.files.evidence.jsonl: invalid value",
+        "integrity: anchor anchor.files.evidence.jsonl: invalid value"
+      ]
+    },
+    {
+      "id": "ANC_TAMPER_06",
+      "target": "v8_anchor.json",
+      "description": "anchor_tamper_variant_6",
+      "outcome_category": "DETECTED",
+      "validator_trusted": false,
+      "reasons": [
+        "anchor: anchor.files.evidence.jsonl: invalid value",
+        "integrity: anchor anchor.files.evidence.jsonl: invalid value"
+      ]
+    },
+    {
+      "id": "SUBST_TAMPER_01",
+      "target": "cross_pair",
+      "description": "substitution_variant_1",
+      "outcome_category": "DETECTED",
+      "validator_trusted": true,
+      "reasons": [
+        "provenance: recorded program source differs from the expected file (evidence substitution)"
+      ]
+    },
+    {
+      "id": "SUBST_TAMPER_02",
+      "target": "cross_pair",
+      "description": "substitution_variant_2",
+      "outcome_category": "DETECTED",
+      "validator_trusted": true,
+      "reasons": [
+        "provenance: recorded program source differs from the expected file (evidence substitution)"
+      ]
+    },
+    {
+      "id": "SUBST_TAMPER_03",
+      "target": "cross_pair",
+      "description": "substitution_variant_3",
+      "outcome_category": "DETECTED",
+      "validator_trusted": true,
+      "reasons": [
+        "provenance: recorded program source differs from the expected file (evidence substitution)"
+      ]
+    },
+    {
+      "id": "SUBST_TAMPER_04",
+      "target": "cross_pair",
+      "description": "substitution_variant_4",
+      "outcome_category": "DETECTED",
+      "validator_trusted": true,
+      "reasons": [
+        "provenance: recorded program source differs from the expected file (evidence substitution)"
+      ]
+    },
+    {
+      "id": "SUBST_TAMPER_05",
+      "target": "cross_pair",
+      "description": "substitution_variant_5",
+      "outcome_category": "DETECTED",
+      "validator_trusted": true,
+      "reasons": [
+        "provenance: recorded program source differs from the expected file (evidence substitution)"
+      ]
+    }
+  ],
+  "counts": {
+    "container_total": 74,
+    "container_by_cat": {
+      "BLOCKED": 65,
+      "DETECTED": 0,
+      "MITIGATED": 8,
+      "NOT_EXERCISED": 0,
+      "NOT_APPLICABLE": 0,
+      "SUCCESSFUL": 1
+    },
+    "tamper_total": 51,
+    "tamper_by_cat": {
+      "BLOCKED": 0,
+      "DETECTED": 51,
+      "MITIGATED": 0,
+      "NOT_EXERCISED": 0,
+      "NOT_APPLICABLE": 0,
+      "SUCCESSFUL": 0
+    }
+  }
+}

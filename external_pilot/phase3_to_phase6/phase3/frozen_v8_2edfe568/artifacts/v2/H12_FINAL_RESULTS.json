@@ -1,0 +1,40 @@
+{
+  "artifact": "H12_FINAL_RESULTS",
+  "phase": 4,
+  "wave": 6,
+  "hypothesis": "H12",
+  "hypothesis_text": "Dynamic SBG can detect real software behavioral regressions across versions better than static/structural baselines.",
+  "pre_registered_criterion": "B07 Dynamic SBG AUROC on regression-vs-equivalent-change classification exceeds the best classical baseline (B02_AST, 0.5528), with statistical significance under permutation testing.",
+  "verdict": "WEAKLY_SUPPORTED_BY_POINT_ESTIMATE_BUT_NOT_SIGNIFICANT_AFTER_CORRECTION",
+  "source_artifact": "artifacts/v2/H12_REGRESSION_RESULTS.json",
+  "source_doc": "docs/v2/H12_REGRESSION_ANALYSIS.md",
+  "key_numbers": {
+    "corpus_source": "synthetic - no real in-repo or approved public version-history corpus available within scope",
+    "n_regression_pairs": 55,
+    "n_control_pairs": 39,
+    "n_total": 94,
+    "b07_auroc": 0.5706,
+    "b07_ci_95": [0.5059, 0.6293],
+    "b07_permutation_p": 0.066,
+    "ast_baseline_auroc": 0.7739,
+    "negative_finding": "B02_AST substantially outperforms B07 Dynamic SBG on this task, opposite of H12's motivating premise",
+    "tie_averaging_bug_disclosure": "naive compute_auroc() without tie-averaging produced an inflated 0.9515 on this severely-tied corpus; corrected value (0.5706) used throughout this artifact"
+  },
+  "statistical_reconciliation": {
+    "family_wise_correction_applied": true,
+    "method": "Holm-Bonferroni across pre-registered H1-H12 family",
+    "holm_rank": 3,
+    "corrected_alpha_at_rank": 0.005,
+    "raw_p": 0.0659,
+    "survives_correction": false,
+    "reference": "artifacts/v2/PHASE4_STATISTICAL_RECONCILIATION.json"
+  },
+  "power_report": {
+    "n_available": 94,
+    "n_is_full_available_corpus_not_subsample": true,
+    "interpretation": "Genuine non-significance at this N, not merely a small-sample artifact; a larger independently-sourced real-world control corpus remains an open limitation for future work"
+  },
+  "no_test_set_tuning": true,
+  "no_frozen_data_modified": true,
+  "no_fabricated_significance": true
+}

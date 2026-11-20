@@ -1,0 +1,22 @@
+\begin{table*}[!t]
+\caption{\ers{} properties: intent, transformation, pass and failure conditions as implemented (tolerances from \code{sbgv8/ers.py}: $10^{-6}$ for monotone properties, $0.02$ for invariances), existing evidence on the 312 development records, and limitations. ``Resp.'' counts applicable trials in which the fitted model's risk moved by more than the tolerance.}
+\label{tab:ersprops}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{|c|L{2.35cm}|L{2.35cm}|c|L{2.1cm}|L{2.0cm}|L{3.3cm}|L{2.35cm}|}
+\hline
+\# & Property and formal intent & Transformation & $T_j$ & Pass & Failure & Existing evidence & Limitation \\
+\hline
+1 & Irrelevant-evidence invariance: $h(i)\cap U_c=\emptyset\Rightarrow$ no effect & Append inputs that hit only unchanged lines, fresh fingerprints & P2 & $|\Delta|\le0.02$ and $V$ unchanged & Risk moves or verdict changes & Probe failed 109/227 before the profile fix, 227/227 after; real-execution analogue: probe failed 5 of 7 & Appended records are synthetic; two inputs per trial \\
+2 & Duplicate-evidence invariance: copies add no information & Append two flagged copies of existing inputs & P3 & as P2 & as P2 & All predictors 262/262 & Flagged copies only; unflagged copies are handled by the fix, not tested here \\
+3 & Relevant-evidence sensitivity: removing sole support may not lower risk & Delete a sole reacher of a changed unit (P1); all covers of the least-multiplicity unit (P1b) & P1, P1b & $\Delta\ge-10^{-6}$ or $V{=}\INS{}$ & Risk falls & All pass (16, 93); fitted model Resp.\ 9/16, 68/93 & P1 applicable to only 16 records \\
+4 & Observation-loss sensitivity: fewer channels may not lower risk & Remove one captured channel from every input & P4 & as P1 & Risk falls & All pass (178); Resp.\ 0 & Fitted model is indifferent, so the pass is vacuous for it \\
+5 & Divergence responsiveness: a witness withdraws \NDO{} & Append a confirmed-difference input hitting all changed units & P6 & $V{=}\DIV{}$; \INS{} or $\Delta>0$ accepted & \NDO{} kept with $\Delta\le0$ & Recorded V7-B failed 71 (157 passes are abstention credit); recomputed and \sbg{} 228/228 & Synthetic witness; real-execution analogue applicable once \\
+6 & Provenance sensitivity: weaker provenance may not lower risk & Mark all inputs label-derived & P7 & as P1 & Risk falls & All pass (178); Resp.\ 0 & \code{prov\_ok} constant in training \\
+7 & Integrity rejection: violation forces abstention & Set $\iota(\Ev)=0$ & P8 & $V{=}\INS{}$ & Any other verdict & Recorded V7-B failed 155, recomputed V7-B 84 (all \DIV{}); \sbg{} 312/312 & Tests the decision procedure; passes by construction under the trust gate \\
+8 & Reproducibility sensitivity: less determinism may not lower risk & Mark half the deterministic inputs non-deterministic; halve repeats & P5 & as P1 & Risk falls & All pass (176); Resp.\ 100/176; real-execution analogue 30/30 for all predictors & Repeated deterministic runs are not independent samples \\
+E & Environment check: inconsistency may not lower risk & Mark environment inconsistent & P9 & as P1 & Risk falls & All pass (228); Resp.\ 0 & \code{env\_ok} constant in training \\
+\hline
+\end{tabular}
+\end{table*}

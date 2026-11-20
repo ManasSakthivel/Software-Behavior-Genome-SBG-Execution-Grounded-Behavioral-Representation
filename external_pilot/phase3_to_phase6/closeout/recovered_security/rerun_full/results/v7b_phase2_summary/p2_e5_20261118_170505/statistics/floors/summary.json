@@ -1,0 +1,27 @@
+{
+ "input": "results/repro/p2_e5_20261118_170505/statistics/e5_floors.csv",
+ "seed": 42,
+ "bootstrap_reps": 10000,
+ "signflip_mc": 20000,
+ "reference": "S2F08",
+ "systems": [
+  "S2F06",
+  "S2F08",
+  "S2F09"
+ ],
+ "excluded_from_primary_denominators": {
+  "UNLABELLED": 57,
+  "SUSPECT_LABEL": 6
+ },
+ "failed_or_missing_runs": 0,
+ "design_div_pairs": {
+  "pairs": 106,
+  "projects": 78,
+  "mean_cluster": 1.358974358974359,
+  "max_cluster": 29,
+  "icc": null,
+  "design_effect": null,
+  "kish_n": null
+ },
+ "pairs_total_primary": 258
+}

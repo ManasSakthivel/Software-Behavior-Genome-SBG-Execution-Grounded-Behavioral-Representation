@@ -1,0 +1,5 @@
+\section{Baselines}\label{sec:baselines}
+Table~\ref{tab:baselines} lists the baselines. B1, B1+rep and B3 share V7-B's runner, inputs, comparator and CPU-budget unit. B1+rep adds exactly V7-B's repetition counts and is the null model for V7-B without its sufficiency gate and control alternation. Baselines never abstain, treat a missing entry or one-sided limit as a difference, and have no sufficiency level. B4's threshold is fitted on development material. Only B1, B1+rep, B3 and B4 enter the analysed tables.
+
+\textbf{Published tools not compared.} Shadow symbolic execution, DiffKemp, Mokav, Testora, DiffTestGen, Cleverest, Prefactory, PatchGuru, ORION, SemaDiff and other LLM differential-testing tools, AFL, libFuzzer, Atheris and property-based generators (B3 is only a minimal analogue), differential unit testing, dynamic impact analysis, regression-verification provers, flaky-test tools and LLM equivalence judges were not implemented and not run. No empirical claim is made relative to any of them; the numbers reported by their authors are not comparable with ours.
+\input{tables/baselines}

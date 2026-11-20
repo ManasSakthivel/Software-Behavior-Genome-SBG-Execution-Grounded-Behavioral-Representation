@@ -1,0 +1,88 @@
+{
+ "artifact": "EXPERIMENT_MANIFEST_V4",
+ "branch": "remediation/sbg-v4",
+ "base_commit": "8386eb5e96af79a20bf5d1377474dd566eef4c12",
+ "environment": {
+  "python": "3.13.5",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "PYTHONHASHSEED": "0",
+  "numpy": "not installed (pure stdlib)"
+ },
+ "experiments_run": [
+  {
+   "id": "ZERO-DIAG",
+   "label": "exploratory",
+   "script": "experiments/final/diagnose_zero_scores.py",
+   "data": "v9c train+dev (2114 pairs)",
+   "output": "artifacts/paper_evidence/raw/zero_score_diagnostic_v1.json"
+  },
+  {
+   "id": "ZERO-ADDR",
+   "label": "exploratory",
+   "script": "experiments/final/zero_score_address_correction.py",
+   "output": "artifacts/paper_evidence/raw/zero_score_address_correction_v1.json"
+  },
+  {
+   "id": "EQ-LABEL-AUDIT",
+   "label": "exploratory",
+   "script": "experiments/final/audit_equivalent_label_validity.py",
+   "output": "artifacts/paper_evidence/EQUIVALENT_LABEL_AUDIT.json"
+  },
+  {
+   "id": "V6-DEV",
+   "label": "development",
+   "script": "experiments/final/score_v6_experimental.py + evaluate_v4_dev.py",
+   "output": "artifacts/paper_evidence/V4_DEV_EVALUATION.json"
+  },
+  {
+   "id": "V10-INDEPENDENT",
+   "label": "independent test (single run)",
+   "script": "generate_v10_independent.py, score_v6_experimental.py --design v10, evaluate_v10.py run",
+   "freeze": "artifacts/final/FREEZE_V10.json",
+   "output": "artifacts/paper_evidence/V10_INDEPENDENT_EVALUATION.json"
+  }
+ ],
+ "not_run": [
+  "v8 test (burned, deliberately untouched)",
+  "v9c val for V6 (would not be independent)",
+  "BugsInPy/QuixBugs re-validation beyond V3 evidence"
+ ],
+ "reproduce": [
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/score_v6_experimental.py --design v9c --split train --workers 7",
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/score_v6_experimental.py --design v9c --split dev --workers 7",
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/evaluate_v4_dev.py",
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python benchmark/scripts/generate_v10_independent.py   # ~10 min; deterministic",
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/evaluate_v10.py fit   # (done before freezing)",
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/score_v6_experimental.py --design v10 --split test --workers 7",
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/evaluate_v10.py run   # refuses unless FREEZE_V10.json hashes match; single run; delete the output to re-derive",
+  "PYTHONHASHSEED=0 /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/build_evidence_v4.py && /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/../venvs/py313/bin/python experiments/final/verify_trace_v4.py"
+ ],
+ "weights_thresholds_provenance": {
+  "sbg_v5_weights": "0.50/0.25/0.25 (extraction.W_V3/W_TEMPORAL/W_STATE; frozen, unchanged since V5)",
+  "v6_weights": "identical 0.50/0.25/0.25",
+  "logistic_models": "fitted on v9c train only, L2=1.0 (fit_weights.fit_logistic); V10_MODELS_FROZEN.json",
+  "thresholds": "Youden on v9c train per predictor (V10_MODELS_FROZEN.json)",
+  "v6_constants": "_INT_EXACT_MAX=16, _SIZE_EXACT_MAX=8, float 2dp: fixed from forensic examples before any V6 score (SBG_V6_EXPERIMENTAL_RATIONALE.md)"
+ },
+ "hashes": {
+  "experiments/final/extraction.py": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55",
+  "experiments/final/score_v6_experimental.py": "fe1f0dbbab8655217c4c75fe7430d0ffbbff6970bab85386e6ea523e1c1d134f",
+  "experiments/final/evaluate_v4_dev.py": "c3f2b1997e2aa2540cee30c2392c51224a122e6f966e74f6fb83ec7af00f69a8",
+  "experiments/final/evaluate_v10.py": "11f13de1e3bdbf3e929556ed9c0fb541314c19bc59164fc654d84e747038bbc5",
+  "benchmark/scripts/generate_v10_independent.py": "68da1b354de0656f48ae6885b23c2e2445033c20b2750609549319aa5c326684",
+  "sbg/v6/state_transition_genome_v6.py": "c99b26d667c1b27ae13f90df75fba76326f1be5ed91c25f3138704bebdc5ae28",
+  "sbg/v5/state_transition_genome.py": "d098fbb71669ed4065f2ebe06f086de278fcd1ef0a70f1c25aeff7120a905f90",
+  "sbg/v3/genome.py": "8cc7437bdc6323ac9b7ff6b917ff96b5165d1b18a896ed13524649a856f0bafe",
+  "artifacts/final/FREEZE_V10.json": "77e95252e9d27e3910c06c3b686c659ff7b8f70b3c03a8b6eda0f9fed0f55c3a",
+  "artifacts/final/FREEZE_V10_SCORED.json": "169600ece7bb06c49c83b9ce7f2b60c764374e5e15d90da3f894da59f95b74a8",
+  "artifacts/final/V10_MODELS_FROZEN.json": "fe637cbddd0236086e964f7c2b609ad4c6c0af72322733dfecd8cada287f7e76",
+  "artifacts/final/pairs_v10_test_v6exp.jsonl": "292233fe70000b8f60326da2e2a22b9a0613caa95d5cd5c186ee9e3f01e2d146",
+  "artifacts/final/pairs_v9c_train_v6exp.jsonl": "515eceee0e371842aa8df308a85dd0638e0883792d540cef1843b3e03b02724e",
+  "artifacts/final/pairs_v9c_dev_v6exp.jsonl": "16502e7199aa11d9d7c7a77c554d634dcc2030d91a0c5b7aef3bf7e96098fb0d",
+  "benchmark/datasets/v10_independent/pairs_test.jsonl": "476c3efffcf4a20c9cf92212b932b03b29c64ca8e505742710a0da7555d53735",
+  "benchmark/datasets/v10_independent/manifest.json": "488b45f102632524e318054ae8c9ab421c206be79110ffcca4cf3bad6bd429f4",
+  "artifacts/final/FREEZE_V9.json": "19d4460ace0384e8892287075a9108d201a40d1c602a7f2f38ae972638968c8a",
+  "artifacts/final/V9_MODELS_FROZEN.json": "010394dadc91c47ac53e9741a0faf5144c1bb33df34c5d21752e97cb22438cc8"
+ },
+ "git_head_at_build": "8386eb5e96af79a20bf5d1377474dd566eef4c12"
+}

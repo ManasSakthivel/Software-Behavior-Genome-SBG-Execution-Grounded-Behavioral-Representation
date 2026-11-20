@@ -1,0 +1,216 @@
+{
+  "experiment": "FINAL_EXPERIMENTAL_MATRIX",
+  "version": "v5_phase7",
+  "timestamp": "2025",
+  "dataset": "Main benchmark: N=744 test pairs, 13 programs",
+  "seed": 42,
+  "n_bootstrap": 1000,
+  "methodology": {
+    "auroc": "WMW tie-aware (Wilcoxon-Mann-Whitney)",
+    "ci": "Bootstrap, 1000 resamples, seed=42, clustered by base program",
+    "multiple_comparisons": "Holm-Bonferroni (family-wise alpha=0.05)",
+    "output_free_constraint": "All predictors verified output-free (SAFEGUARD-2)",
+    "test_set_frozen": true,
+    "threshold_pre_registered": true
+  },
+
+  "main_benchmark_results": {
+    "random_baseline": {
+      "auroc": 0.500,
+      "ci": [0.500, 0.500],
+      "note": "theoretical"
+    },
+    "exception_fraction_only": {
+      "auroc": 0.593,
+      "ci": [0.548, 0.640],
+      "p_value": "significant",
+      "output_free": true,
+      "note": "BEST SINGLE FEATURE — defines minimum bar for SBG"
+    },
+    "volume_only": {
+      "auroc": 0.535,
+      "ci": [0.496, 0.577],
+      "p_value": 0.052,
+      "output_free": true,
+      "note": "Not significant at alpha=0.05"
+    },
+    "call_bigrams_only": {
+      "auroc": 0.545,
+      "ci": [0.505, 0.586],
+      "p_value": 0.019,
+      "output_free": true,
+      "note": "Order-sensitive; unique information"
+    },
+    "coverage_only": {
+      "auroc": 0.538,
+      "ci": [0.501, 0.578],
+      "p_value": 0.038,
+      "output_free": true,
+      "note": "Significant but marginal"
+    },
+    "call_count_only": {
+      "auroc": 0.553,
+      "ci": [0.511, 0.597],
+      "p_value": 0.004,
+      "output_free": true
+    },
+    "ast_edit_distance": {
+      "auroc": 0.553,
+      "ci": [0.509, 0.594],
+      "output_free": true,
+      "note": "Static baseline B02"
+    },
+    "sbg_v3_distance": {
+      "auroc": 0.540,
+      "ci": [0.497, 0.584],
+      "output_free": true,
+      "note": "V3 8-component weighted distance"
+    },
+    "sbg_v5_identity_full": {
+      "auroc": 0.551,
+      "ci": [0.505, 0.594],
+      "p_value": 0.01,
+      "output_free": true,
+      "note": "V5 with invariant_identity + temporal + state; B07 pipeline",
+      "delta_vs_v3": 0.011,
+      "delta_vs_exception_frac": -0.042,
+      "rq1_status": "H0 NOT REJECTED — SBG V5 < exception_fraction"
+    }
+  },
+
+  "split_consistency": {
+    "dev": {
+      "auroc": 0.488,
+      "ci": [0.458, 0.543],
+      "n_programs": 10,
+      "n_pairs": 536,
+      "note": "BELOW CHANCE — primary reliability concern"
+    },
+    "val": {
+      "auroc": 0.512,
+      "ci": [0.455, 0.590],
+      "n_programs": 9,
+      "n_pairs": 492
+    },
+    "test": {
+      "auroc": 0.551,
+      "ci": [0.505, 0.594],
+      "n_programs": 13,
+      "n_pairs": 744,
+      "note": "Primary evaluation split"
+    }
+  },
+
+  "hypothesis_verdicts_with_correction": {
+    "family_size": 12,
+    "correction": "Holm-Bonferroni",
+    "H1": {"description": "SP distance < SC distance", "verdict": "NOT_SUPPORTED", "note": "Inversion: SP causes larger structural change"},
+    "H2": {"description": "SBG > all baselines", "verdict": "NOT_SUPPORTED", "note": "exception_frac and AST both beat SBG"},
+    "H3": {"description": "Stable under refactoring", "verdict": "NOT_SUPPORTED", "note": "SP-2 AUROC=0.259 before V5; V5 improves but benchmark not re-run"},
+    "H4": {"description": "Cross-language (Java)", "verdict": "INSUFFICIENT_EVIDENCE", "note": "N=3 Java programs; no AUROC"},
+    "H5": {"description": "Regression detection", "verdict": "PARTIALLY_SUPPORTED_CORRECTED", "note": "CORRECTED: output-free SBG detects 3/15=20% (not 93.3%)"},
+    "H6": {"description": "Multi-dimensional > single", "verdict": "NOT_SUPPORTED", "note": "exception_frac alone beats full model"},
+    "H7": {"description": "Dynamic > static", "verdict": "SUPPORTED", "survives_holm": true, "note": "V2/V3 dynamic > V1 static; p<0.01"},
+    "H8": {"description": "Hybrid > dynamic", "verdict": "NOT_SUPPORTED"},
+    "H9": {"description": "Inversion resolved by execution", "verdict": "SUPPORTED", "survives_holm": true, "note": "Delta +0.034 → -0.064 (V3); p<0.01"},
+    "H10": {"description": "Robust to SP transforms", "verdict": "NOT_SUPPORTED"},
+    "H11": {"description": "Cross-language similarity", "verdict": "INSUFFICIENT_EVIDENCE"},
+    "H12": {"description": "Real regression detection", "verdict": "PARTIALLY_SUPPORTED_CORRECTED", "note": "20% output-free; 93.3% is output oracle, not SBG"}
+  },
+
+  "regression_evaluation_corrected": {
+    "source": "experiments/v5/regression_evaluator.py (Phase 3 corrected)",
+    "n_pairs": 15,
+    "tau_star": 0.08,
+    "sbg_output_free_detection_rate": 0.200,
+    "sbg_n_detected": 3,
+    "exception_fraction_detection_rate": 0.200,
+    "volume_only_detection_rate": 0.333,
+    "output_oracle_BASELINE": 0.933,
+    "safeguards_passed": 4,
+    "note": "Previous 93.3% was output oracle, not SBG. Corrected to 20.0% for output-free predictor.",
+    "silent_bugs": {
+      "n_total": 10,
+      "n_detected_by_sbg": 0,
+      "n_detected_by_output_oracle": 9
+    }
+  },
+
+  "real_world_pilot": {
+    "source": "experiments/v5/real_world_pilot.py (Phase 5)",
+    "dataset": "QuixBugs-style inline pilot",
+    "n_pairs": 12,
+    "n_changed": 10,
+    "n_equiv": 2,
+    "sbg_auroc": 0.800,
+    "sbg_ci_95": [0.500, 1.000],
+    "sbg_detection_at_tau": 0.200,
+    "sbg_precision": 1.000,
+    "sbg_recall": 0.200,
+    "sbg_f1": 0.333,
+    "output_oracle_auroc": 0.800,
+    "note": "N=12 too small for strong claims; CI width = 0.500 covers random baseline"
+  },
+
+  "v5_identity_comparison": {
+    "source": "artifacts/v5/B07/results_test.json",
+    "v3_baseline_auroc": 0.540,
+    "v5_identity_auroc": 0.551,
+    "delta": 0.011,
+    "v5_dev_auroc": 0.588,
+    "v3_dev_auroc": 0.488,
+    "dev_delta": 0.100,
+    "note": "Identity normalization helps on DEV (+0.100) but test improvement is marginal (+0.011)"
+  },
+
+  "rq_verdicts": {
+    "RQ1": {
+      "question": "Does SBG-V5-identity exceed exception_fraction baseline?",
+      "result": "NO — AUROC=0.551 < 0.593 (exception_fraction)",
+      "verdict": "H0 NOT REJECTED",
+      "effect_size": "Cliff's delta ≈ -0.042 (negligible, SBG worse)"
+    },
+    "RQ2": {
+      "question": "Does V5 identity normalization improve SP-2 rename robustness?",
+      "result": "YES on unit tests (12/12) and DEV (+0.100 AUROC). Test improvement marginal (+0.011).",
+      "verdict": "PARTIALLY SUPPORTED — unit tests pass; aggregate test improvement small"
+    },
+    "RQ3": {
+      "question": "What is honest SBG detection rate on regression corpus?",
+      "result": "3/15 = 20.0% (output-free predictor). NOT 93.3%.",
+      "verdict": "ANSWERED — previous result was output oracle, not SBG"
+    },
+    "RQ4": {
+      "question": "Does SBG above chance on real-world bugs (pilot)?",
+      "result": "AUROC=0.800 but CI=[0.500, 1.000] (N=12 too small).",
+      "verdict": "INCONCLUSIVE — signal present but N insufficient for statistical test"
+    },
+    "RQ5": {
+      "question": "Does multi-dimensional genome add incremental info beyond exception_frac?",
+      "result": "NO on aggregate (delta=-0.042). Some individual features have unique info.",
+      "verdict": "H0 NOT REJECTED for full model. Individual features (call_bigrams, coverage) have marginal unique info."
+    },
+    "RQ6": {
+      "question": "Does SBG-V5-identity beat exception_frac on hard-negative pairs?",
+      "result": "NOT DIRECTLY MEASURED with output-free predictor. Previous oracle result (12/12) was output oracle.",
+      "verdict": "UNMEASURED — requires running output-free predictor on 12 hard-negative pairs (infrastructure gap)"
+    }
+  },
+
+  "key_negative_findings": [
+    "SBG V5 full pipeline AUROC=0.551 < exception_fraction AUROC=0.593 on test split",
+    "DEV AUROC=0.488 (below chance) raises generalization concerns",
+    "Output-free regression detection = 20.0% (corrected from previous 93.3% which was output oracle)",
+    "Silent bugs (invisible to exception+volume): SBG detects 0/10; output oracle detects 9/10",
+    "Multi-dimensional genome adds negative incremental value vs best single feature"
+  ],
+
+  "key_positive_findings": [
+    "H7: Dynamic > Static (survives Holm-Bonferroni; p<0.01)",
+    "H9: Execution resolves structural-semantic inversion (survives Holm-Bonferroni; p<0.01)",
+    "V5 identity normalization improves DEV AUROC from 0.488 to 0.588 (+0.100)",
+    "Hard-negative pairs: output oracle 12/12 (but this is output-based, not SBG distance)",
+    "Pilot: SBG AUROC=0.800 on QuixBugs-style programs (CI wide; N=12)",
+    "SBG is above noise floor on test split (permutation p=0.01)"
+  ]
+}

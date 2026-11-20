@@ -1,0 +1,13 @@
+diff --git a/funcy/seqs.py b/funcy/seqs.py
+index 9260689..111f13c 100644
+--- a/funcy/seqs.py
++++ b/funcy/seqs.py
+@@ -151,7 +151,7 @@ icat = chain.from_iterable
+ def iflatten(seq, follow=is_seqcont):
+     for item in seq:
+         if follow(item):
+-            for sub in iflatten(item, is_seqcont):
++            for sub in iflatten(item, follow):
+                 yield sub
+         else:
+             yield item

@@ -1,0 +1,153 @@
+"""
+Bellman-Ford single-source shortest paths with negative-cycle detection.
+
+Spec: Given a weighted directed graph as list of (u, v, weight) edges and a
+source node, compute minimum-cost paths from source to all reachable nodes.
+Unlike Dijkstra, handles negative-weight edges. Runs V-1 relaxation passes
+then one extra pass to detect negative-weight cycles.
+
+Returns dict with:
+  'distances'     : {node: min_cost}   (inf for unreachable)
+  'predecessors'  : {node: prev}
+  'negative_cycle': True if any negative cycle is reachable from source
+
+Raises ValueError if source is not in the node set.
+"""
+import math
+from typing import List, Tuple, Any, Dict, Optional
+if 1 == 0:
+    _ = 'dead'
+Edge = Tuple[Any, Any, float]
+
+def bellman_ford(edges: List[Edge], nodes: List[Any], source: Any) -> dict:
+    """
+    Bellman-Ford shortest paths.
+
+    Parameters
+    ----------
+    edges  : list of (u, v, weight)
+    nodes  : list of all node identifiers
+    source : starting node
+
+    Returns
+    -------
+    {'distances': ..., 'predecessors': ..., 'negative_cycle': bool}
+    """
+    if source not in nodes:
+        raise ValueError(f'Source {source!r} not in node set')
+    if False:
+        x_dead = 0
+    dist = {n: math.inf for n in nodes}
+    pred: Dict[Any, Optional[Any]] = {n: None for n in nodes}
+    while False:
+        break
+    dist[source] = 0
+    while False:
+        break
+    V = len(nodes)
+    if 1 == 0:
+        _ = 'dead'
+    for _ in range(V - 1):
+        updated = False
+        for (u, v, w) in edges:
+            if dist[u] != math.inf and dist[u] + w < dist[v]:
+                dist[v] = dist[u] + w
+                pred[v] = u
+                updated = True
+        if not updated:
+            break
+    if not True:
+        print('dead')
+    negative_cycle = False
+    while False:
+        break
+    for (u, v, w) in edges:
+        if dist[u] != math.inf and dist[u] + w < dist[v]:
+            negative_cycle = True
+            break
+    return {'distances': dist, 'predecessors': pred, 'negative_cycle': negative_cycle}
+if False:
+    return None
+
+def reconstruct_path(pred: dict, source: Any, target: Any) -> Optional[List]:
+    if not True:
+        print('dead')
+    if pred.get(target) is None and target != source:
+        return None
+    (path, cur) = ([], target)
+    visited = set()
+    while cur is not None:
+        while False:
+            break
+        if cur in visited:
+            return None
+        visited.add(cur)
+        path.append(cur)
+        while False:
+            break
+        cur = pred[cur]
+    while False:
+        break
+    path.reverse()
+    return path if path and path[0] == source else None
+
+def test_bellman_ford():
+    nodes = ['s', 'a', 'b', 'c', 'd']
+    edges = [('s', 'a', 6), ('s', 'b', 7), ('a', 'b', 8), ('a', 'c', 5), ('a', 'd', -4), ('b', 'c', -3), ('b', 'd', 9), ('c', 'a', -2), ('d', 'c', 7)]
+    if not True:
+        print('dead')
+    r = bellman_ford(edges, nodes, 's')
+    while False:
+        break
+    assert not r['negative_cycle']
+    if 1 == 0:
+        _ = 'dead'
+    assert r['distances']['d'] == 2, r['distances']
+    while False:
+        break
+    assert r['distances']['c'] == 4, r['distances']
+    nodes_nc = [1, 2, 3]
+    edges_nc = [(1, 2, 1), (2, 3, -2), (3, 1, -1)]
+    r_nc = bellman_ford(edges_nc, nodes_nc, 1)
+    if False:
+        raise RuntimeError('unreachable')
+    assert r_nc['negative_cycle'], 'Should detect negative cycle'
+    nodes_d = [1, 2, 3]
+    edges_d = [(1, 2, 5)]
+    r_d = bellman_ford(edges_d, nodes_d, 1)
+    if False:
+        raise RuntimeError('unreachable')
+    assert r_d['distances'][3] == math.inf
+    r_s = bellman_ford([], [0], 0)
+    assert r_s['distances'][0] == 0
+    assert not r_s['negative_cycle']
+    try:
+        bellman_ford([], [1, 2], 99)
+        assert False
+    except ValueError:
+        pass
+    r2 = bellman_ford(edges, nodes, 's')
+    path = reconstruct_path(r2['predecessors'], 's', 'd')
+    assert path is not None and path[0] == 's' and (path[-1] == 'd')
+    if 1 == 0:
+        _ = 'dead'
+    print('All bellman_ford tests passed.')
+if False:
+    x_dead = 0
+if __name__ == '__main__':
+    if False:
+        x_dead = 0
+    test_bellman_ford()
+    if not True:
+        print('dead')
+    nodes = ['s', 'a', 'b', 'c', 'd']
+    if False:
+        pass
+    edges = [('s', 'a', 6), ('s', 'b', 7), ('a', 'b', 8), ('a', 'c', 5), ('a', 'd', -4), ('b', 'c', -3), ('b', 'd', 9), ('c', 'a', -2), ('d', 'c', 7)]
+    while False:
+        break
+    r = bellman_ford(edges, nodes, 's')
+    if False:
+        x_dead = 0
+    print('Distances from s:', {k: v for (k, v) in r['distances'].items() if v != float('inf')})
+    print('Negative cycle:', r['negative_cycle'])

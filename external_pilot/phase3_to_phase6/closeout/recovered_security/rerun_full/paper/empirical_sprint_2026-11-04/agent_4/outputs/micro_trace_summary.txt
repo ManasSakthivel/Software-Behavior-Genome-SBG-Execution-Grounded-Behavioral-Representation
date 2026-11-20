@@ -1,0 +1,14 @@
+{'py39': '3.9.6', 'py311': '3.11.15', 'py312': '3.12.10', 'py313': '3.13.5'}
+case | n_events 3.9/3.11/3.12/3.13 | calls(3.9) | calls(3.13)
+REG_03_buggy | [13, 13, 10, 10] | {'<lambda>': 1, '_reg03_buggy': 1, '<listcomp>': 1} | {'<lambda>': 1, '_reg03_buggy': 1} | exc: None 
+REG_03_fixed | [13, 13, 10, 10] | {'<lambda>': 1, '_reg03_fixed': 1, '<listcomp>': 1} | {'<lambda>': 1, '_reg03_fixed': 1} | exc: None 
+REG_09_buggy | [14, 14, 14, 14] | {'<lambda>': 1, '_reg09_buggy': 1} | {'<lambda>': 1, '_reg09_buggy': 1} | exc: None 
+REG_09_fixed | [12, 12, 9, 9] | {'<lambda>': 1, '_reg09_fixed': 1, '<listcomp>': 1} | {'<lambda>': 1, '_reg09_fixed': 1} | exc: None 
+REG_11_buggy | [20, 20, 20, 20] | {'<lambda>': 1, '_reg11_buggy': 1} | {'<lambda>': 1, '_reg11_buggy': 1} | exc: None 
+REG_11_fixed | [10, 10, 10, 10] | {'<lambda>': 1, '_reg11_fixed': 1} | {'<lambda>': 1, '_reg11_fixed': 1} | exc: None 
+pair_04_rename_invariant__base | [16, 16, 13, 13] | {'run': 1, '<listcomp>': 1, 'compute_sum': 1} | {'run': 1, 'compute_sum': 1} | exc: None 
+pair_04_rename_invariant__variant | [16, 16, 13, 13] | {'run': 1, '<listcomp>': 1, 'calculate_total': 1} | {'run': 1, 'calculate_total': 1} | exc: None 
+pair_07_dead_code_insertion__base | [12, 12, 12, 12] | {'run': 1, 'fibonacci': 1} | {'run': 1, 'fibonacci': 1} | exc: TypeError: '<' not supported between instances of 'list' and 'int' 
+pair_07_dead_code_insertion__variant | [12, 12, 12, 12] | {'run': 1, 'fibonacci': 1} | {'run': 1, 'fibonacci': 1} | exc: TypeError: '<' not supported between instances of 'list' and 'int' 
+pair_03_same_call_count_different_order__base | [32, 32, 23, 23] | {'run': 1, '<listcomp>': 3, 'compute': 1, 'validate': 1, 'process': 1, 'finalize': 1} | {'run': 1, 'compute': 1, 'validate': 1, 'process': 1, 'finalize': 1} | exc: None 
+pair_03_same_call_count_different_order__variant | [21, 21, 15, 15] | {'run': 1, '<listcomp>': 2, 'compute': 1, 'process': 1} | {'run': 1, 'compute': 1, 'process': 1} | exc: TypeError: unsupported operand type(s) for *: 'NoneType' and 'int' 

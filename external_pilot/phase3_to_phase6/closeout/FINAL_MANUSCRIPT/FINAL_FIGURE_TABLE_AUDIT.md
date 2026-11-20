@@ -1,0 +1,5 @@
+# Final figure and table audit
+Supersedes `FIGURE_AND_TABLE_CATALOG.md` numbering (retained for history); linked from README.md.
+Figures (12): 1 motivation, 2 architecture, 3 lifecycle, 4 CEC, 5 ERS framework, 6 threat model, 7 landscape, 8 risk-coverage, 9 forest, 10 calibration, 11 power, 12 traceability. Removed as redundant: perturbation taxonomy (Table 9), security outcomes (Table 16), cross-platform (Table 20).
+Tables (23): 1 contributions, 2 positioning (redesigned, symbols), 3 synthesis, 4 notation, 5 components, 6 profile, 7 cost, 8 ERS properties, 9 perturbations, 10 threats, 11 design, 12 landscape, 13 corpus, 14 controls, 15 baselines, 16 security, 17 ERS matrix, 18 ablation, 19 statistics, 20 cross-platform, 21 interpretation, 22 threats to validity, 23 provenance.
+Data figures use existing JSON/records only. Known issues: Tables 2, 3, 8, 12 are dense; Table 2 had a 10 pt overflow fixed by narrowing; four overfull boxes of 1-6.5 pt remain; some content overlaps (Tables 16/20 vs text).

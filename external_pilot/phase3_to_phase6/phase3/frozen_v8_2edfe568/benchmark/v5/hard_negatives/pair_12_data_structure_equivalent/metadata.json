@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_12_data_structure_equivalent",
+  "ground_truth": "EQUIV",
+  "shortcut_defeated": "import_diff",
+  "description": "Variant imports `collections.deque` (not present in base). An import-diff shortcut sees a new import and different internal type, and wrongly labels this CHANGED. The public interface and all observable behaviors are identical.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": true,
+  "expected_volume_same": true,
+  "boundary_inputs_required": false
+}

@@ -1,0 +1,27 @@
+\begin{table*}[!t]
+\caption{Statistical results (soft policy, seed~0, out-of-fold). Risk effects are differences in observed false-assurance risk in percentage points; log-loss effects are differences in nats. Positive values favour B8. Intervals: 95\% paired project-cluster bootstrap (10{,}000 resamples; B6 contrast from the saved Linux run, 2{,}000 resamples). $p$: one-sided bootstrap. Holm: within the eight-contrast family; the B6 contrast belongs to the three-test family declared in the design notes (Holm $p=1.0$). ``Valid'': share of resamples in which the contrast is defined.}
+\label{tab:stats}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|l|l|c|c|c|c|c|l|}
+\hline
+Contrast & Hypothesis & Effect & 95\% CI & $p$ & Holm $p$ & Valid & Reading \\
+\hline
+\multicolumn{8}{|l|}{\emph{Matched-coverage risk at $c^\ast=0.236$ (61 verdicts)}} \\
+B7 $-$ B8 & H2 (primary) & $+1.6$ & [$-6.6$, $+16.3$] & 0.42 & 1.00 & 0.999 & Not supported; below 5-pt margin \\
+B3 $-$ B8 & primary family & $0.0$ & [$-6.2$, $+16.2$] & 0.33 & 1.00 & 0.502 & Tie with predecessor \\
+B6 $-$ B8 & primary family & $-4.4$ & [$-11.5$, $+9.7$] & 0.76 & 1.00$^{a}$ & 1.000 & Not better than chance \\
+B9 $-$ B8 & H3 (matched) & $+7.9$ & [$-2.8$, $+14.7$] & 0.09 & 0.68 & 0.999 & Inconclusive \\
+Mult.\ only $-$ B8 & ablation & $+8.2$ & [$-2.5$, $+15.6$] & 0.08 & 0.68 & 0.999 & Inconclusive \\
+\hline
+\multicolumn{8}{|l|}{\emph{Out-of-fold log loss (85 eligible pairs)}} \\
+B7 $-$ B9 & H1a & $+0.003$ & [$-0.083$, $+0.058$] & 0.45 & 1.00 & 1.000 & Not supported \\
+B9 $-$ B8 & H3 & $+0.030$ & [$-0.014$, $+0.085$] & 0.08 & 0.68 & 1.000 & Not supported \\
+B7 $-$ B8 & -- & $+0.033$ & [$-0.055$, $+0.104$] & 0.20 & 1.00 & 1.000 & Inconclusive \\
+Mult.\ only $-$ B8 & ablation & $+0.004$ & [$-0.047$, $+0.052$] & 0.42 & 1.00 & 1.000 & Inconclusive \\
+\hline
+\end{tabular}
+\\[3pt]
+\parbox{\textwidth}{\scriptsize $^{a}$Three-test family declared in the design notes (not externally registered). Strict policy: all matched-coverage contrasts are $0$ by construction (valid share 0.502); log-loss contrasts B7$-$B9 $+0.032$ [$-0.093$, $+0.154$] and B9$-$B8 $+0.005$ [$-0.068$, $+0.090$], all Holm $p=1.0$. Worst-case and complete-case risks for the rule baselines are given in Section~\ref{sec:res-rq3}. Source: \code{audit/stats\_summary.json}.}
+\end{table*}

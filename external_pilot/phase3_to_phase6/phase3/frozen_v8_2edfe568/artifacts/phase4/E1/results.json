@@ -1,0 +1,581 @@
+{
+  "experiment": "E1",
+  "timestamp": "2026-08-20T06:13:44Z",
+  "hypothesis_addressed": [
+    "H1",
+    "H3"
+  ],
+  "n_equiv_pairs": 378,
+  "n_changed_pairs": 366,
+  "methods_evaluated": [
+    "SBG_static",
+    "AST",
+    "Token"
+  ],
+  "per_transform_stats": {
+    "SP-1": {
+      "SBG_static": {
+        "n": 22,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "AST": {
+        "n": 22,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "Token": {
+        "n": 22,
+        "mean": 0.8733,
+        "std": 0.1471,
+        "ci_lo": 0.8048,
+        "ci_hi": 0.9261,
+        "min": 0.328,
+        "max": 0.9959
+      }
+    },
+    "SP-10": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9772,
+        "std": 0.0238,
+        "ci_lo": 0.969,
+        "ci_hi": 0.9846,
+        "min": 0.9135,
+        "max": 0.9994
+      }
+    },
+    "SP-11": {
+      "SBG_static": {
+        "n": 12,
+        "mean": 0.9896,
+        "std": 0.0059,
+        "ci_lo": 0.9864,
+        "ci_hi": 0.9929,
+        "min": 0.9847,
+        "max": 0.9995
+      },
+      "AST": {
+        "n": 12,
+        "mean": 0.972,
+        "std": 0.0069,
+        "ci_lo": 0.968,
+        "ci_hi": 0.976,
+        "min": 0.968,
+        "max": 0.984
+      },
+      "Token": {
+        "n": 12,
+        "mean": 0.9524,
+        "std": 0.0288,
+        "ci_lo": 0.9367,
+        "ci_hi": 0.9689,
+        "min": 0.9127,
+        "max": 0.9916
+      }
+    },
+    "SP-12": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.9996,
+        "std": 0.0022,
+        "ci_lo": 0.9988,
+        "ci_hi": 1.0,
+        "min": 0.9867,
+        "max": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.9998,
+        "std": 0.001,
+        "ci_lo": 0.9995,
+        "ci_hi": 1.0,
+        "min": 0.994,
+        "max": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9772,
+        "std": 0.0238,
+        "ci_lo": 0.969,
+        "ci_hi": 0.9846,
+        "min": 0.9135,
+        "max": 0.9994
+      }
+    },
+    "SP-2": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.8805,
+        "std": 0.0573,
+        "ci_lo": 0.8632,
+        "ci_hi": 0.8991,
+        "min": 0.8025,
+        "max": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lo": 1.0,
+        "ci_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9716,
+        "std": 0.0262,
+        "ci_lo": 0.9624,
+        "ci_hi": 0.9798,
+        "min": 0.9008,
+        "max": 0.9992
+      }
+    },
+    "SP-3": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.8495,
+        "std": 0.0407,
+        "ci_lo": 0.8372,
+        "ci_hi": 0.8619,
+        "min": 0.7552,
+        "max": 0.9194
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.5575,
+        "std": 0.0966,
+        "ci_lo": 0.5268,
+        "ci_hi": 0.5864,
+        "min": 0.38,
+        "max": 0.752
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9359,
+        "std": 0.0276,
+        "ci_lo": 0.9273,
+        "ci_hi": 0.945,
+        "min": 0.8786,
+        "max": 0.9829
+      }
+    },
+    "SP-4": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.9954,
+        "std": 0.0027,
+        "ci_lo": 0.9946,
+        "ci_hi": 0.9962,
+        "min": 0.9887,
+        "max": 0.999
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.9994,
+        "std": 0.0014,
+        "ci_lo": 0.9989,
+        "ci_hi": 0.9998,
+        "min": 0.996,
+        "max": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.977,
+        "std": 0.0239,
+        "ci_lo": 0.9688,
+        "ci_hi": 0.9844,
+        "min": 0.9133,
+        "max": 0.9992
+      }
+    },
+    "SP-5": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.9817,
+        "std": 0.033,
+        "ci_lo": 0.9717,
+        "ci_hi": 0.9913,
+        "min": 0.8917,
+        "max": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.9819,
+        "std": 0.0336,
+        "ci_lo": 0.9715,
+        "ci_hi": 0.9917,
+        "min": 0.904,
+        "max": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9767,
+        "std": 0.0236,
+        "ci_lo": 0.9686,
+        "ci_hi": 0.9841,
+        "min": 0.9135,
+        "max": 0.9989
+      }
+    },
+    "SP-6": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.9708,
+        "std": 0.0069,
+        "ci_lo": 0.9686,
+        "ci_hi": 0.973,
+        "min": 0.9561,
+        "max": 0.9831
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.8894,
+        "std": 0.0607,
+        "ci_lo": 0.8702,
+        "ci_hi": 0.9085,
+        "min": 0.754,
+        "max": 0.96
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.9742,
+        "std": 0.0239,
+        "ci_lo": 0.9659,
+        "ci_hi": 0.9816,
+        "min": 0.9081,
+        "max": 0.9985
+      }
+    },
+    "SP-7": {
+      "SBG_static": {
+        "n": 15,
+        "mean": 0.9246,
+        "std": 0.0579,
+        "ci_lo": 0.8948,
+        "ci_hi": 0.9521,
+        "min": 0.7869,
+        "max": 0.9691
+      },
+      "AST": {
+        "n": 15,
+        "mean": 0.8385,
+        "std": 0.0778,
+        "ci_lo": 0.8004,
+        "ci_hi": 0.8792,
+        "min": 0.692,
+        "max": 0.91
+      },
+      "Token": {
+        "n": 15,
+        "mean": 0.9621,
+        "std": 0.0485,
+        "ci_lo": 0.9366,
+        "ci_hi": 0.9832,
+        "min": 0.8422,
+        "max": 0.9882
+      }
+    },
+    "SP-8": {
+      "SBG_static": {
+        "n": 17,
+        "mean": 0.9712,
+        "std": 0.0251,
+        "ci_lo": 0.9586,
+        "ci_hi": 0.9819,
+        "min": 0.8964,
+        "max": 0.9955
+      },
+      "AST": {
+        "n": 17,
+        "mean": 0.9332,
+        "std": 0.0434,
+        "ci_lo": 0.9119,
+        "ci_hi": 0.9526,
+        "min": 0.828,
+        "max": 0.994
+      },
+      "Token": {
+        "n": 17,
+        "mean": 0.9797,
+        "std": 0.0215,
+        "ci_lo": 0.9687,
+        "ci_hi": 0.9887,
+        "min": 0.9153,
+        "max": 0.9986
+      }
+    },
+    "SP-9": {
+      "SBG_static": {
+        "n": 39,
+        "mean": 0.9983,
+        "std": 0.0042,
+        "ci_lo": 0.9968,
+        "ci_hi": 0.9995,
+        "min": 0.9866,
+        "max": 1.0
+      },
+      "AST": {
+        "n": 39,
+        "mean": 0.9992,
+        "std": 0.0022,
+        "ci_lo": 0.9985,
+        "ci_hi": 0.9998,
+        "min": 0.992,
+        "max": 1.0
+      },
+      "Token": {
+        "n": 39,
+        "mean": 0.977,
+        "std": 0.0239,
+        "ci_lo": 0.9689,
+        "ci_hi": 0.9844,
+        "min": 0.9135,
+        "max": 0.9994
+      }
+    }
+  },
+  "overall_equiv_stats": {
+    "SBG_static": {
+      "n": 378,
+      "mean": 0.9619,
+      "std": 0.0595
+    },
+    "AST": {
+      "n": 378,
+      "mean": 0.9306,
+      "std": 0.1405
+    },
+    "Token": {
+      "n": 378,
+      "mean": 0.9647,
+      "std": 0.0508
+    }
+  },
+  "overall_changed_stats": {
+    "SBG_static": {
+      "n": 366,
+      "mean": 0.9954,
+      "std": 0.0093
+    },
+    "AST": {
+      "n": 366,
+      "mean": 0.9777,
+      "std": 0.0534
+    },
+    "Token": {
+      "n": 366,
+      "mean": 0.9776,
+      "std": 0.0232
+    }
+  },
+  "inversion_analysis": {
+    "SBG_static": {
+      "equiv_mean": 0.9619,
+      "changed_mean": 0.9954,
+      "inversion": true,
+      "delta": 0.0335,
+      "description": "INVERTED: CHANGED pairs have HIGHER similarity than EQUIV pairs \u2014 SP transforms cause more structural change than SC mutations",
+      "auroc": 0.2198
+    },
+    "AST": {
+      "equiv_mean": 0.9306,
+      "changed_mean": 0.9777,
+      "inversion": true,
+      "delta": 0.0471,
+      "description": "INVERTED: CHANGED pairs have HIGHER similarity than EQUIV pairs \u2014 SP transforms cause more structural change than SC mutations",
+      "auroc": 0.4479
+    },
+    "Token": {
+      "equiv_mean": 0.9647,
+      "changed_mean": 0.9776,
+      "inversion": true,
+      "delta": 0.0129,
+      "description": "INVERTED: CHANGED pairs have HIGHER similarity than EQUIV pairs \u2014 SP transforms cause more structural change than SC mutations",
+      "auroc": 0.4043
+    }
+  },
+  "ranking_by_difficulty": {
+    "SBG_static": [
+      {
+        "transform": "SP-3",
+        "mean_equiv_sim": 0.8495
+      },
+      {
+        "transform": "SP-2",
+        "mean_equiv_sim": 0.8805
+      },
+      {
+        "transform": "SP-7",
+        "mean_equiv_sim": 0.9246
+      },
+      {
+        "transform": "SP-6",
+        "mean_equiv_sim": 0.9708
+      },
+      {
+        "transform": "SP-8",
+        "mean_equiv_sim": 0.9712
+      },
+      {
+        "transform": "SP-5",
+        "mean_equiv_sim": 0.9817
+      },
+      {
+        "transform": "SP-11",
+        "mean_equiv_sim": 0.9896
+      },
+      {
+        "transform": "SP-4",
+        "mean_equiv_sim": 0.9954
+      },
+      {
+        "transform": "SP-9",
+        "mean_equiv_sim": 0.9983
+      },
+      {
+        "transform": "SP-12",
+        "mean_equiv_sim": 0.9996
+      },
+      {
+        "transform": "SP-10",
+        "mean_equiv_sim": 1.0
+      },
+      {
+        "transform": "SP-1",
+        "mean_equiv_sim": 1.0
+      }
+    ],
+    "AST": [
+      {
+        "transform": "SP-3",
+        "mean_equiv_sim": 0.5575
+      },
+      {
+        "transform": "SP-7",
+        "mean_equiv_sim": 0.8385
+      },
+      {
+        "transform": "SP-6",
+        "mean_equiv_sim": 0.8894
+      },
+      {
+        "transform": "SP-8",
+        "mean_equiv_sim": 0.9332
+      },
+      {
+        "transform": "SP-11",
+        "mean_equiv_sim": 0.972
+      },
+      {
+        "transform": "SP-5",
+        "mean_equiv_sim": 0.9819
+      },
+      {
+        "transform": "SP-9",
+        "mean_equiv_sim": 0.9992
+      },
+      {
+        "transform": "SP-4",
+        "mean_equiv_sim": 0.9994
+      },
+      {
+        "transform": "SP-12",
+        "mean_equiv_sim": 0.9998
+      },
+      {
+        "transform": "SP-2",
+        "mean_equiv_sim": 1.0
+      },
+      {
+        "transform": "SP-10",
+        "mean_equiv_sim": 1.0
+      },
+      {
+        "transform": "SP-1",
+        "mean_equiv_sim": 1.0
+      }
+    ],
+    "Token": [
+      {
+        "transform": "SP-1",
+        "mean_equiv_sim": 0.8733
+      },
+      {
+        "transform": "SP-3",
+        "mean_equiv_sim": 0.9359
+      },
+      {
+        "transform": "SP-11",
+        "mean_equiv_sim": 0.9524
+      },
+      {
+        "transform": "SP-7",
+        "mean_equiv_sim": 0.9621
+      },
+      {
+        "transform": "SP-2",
+        "mean_equiv_sim": 0.9716
+      },
+      {
+        "transform": "SP-6",
+        "mean_equiv_sim": 0.9742
+      },
+      {
+        "transform": "SP-5",
+        "mean_equiv_sim": 0.9767
+      },
+      {
+        "transform": "SP-4",
+        "mean_equiv_sim": 0.977
+      },
+      {
+        "transform": "SP-9",
+        "mean_equiv_sim": 0.977
+      },
+      {
+        "transform": "SP-10",
+        "mean_equiv_sim": 0.9772
+      },
+      {
+        "transform": "SP-12",
+        "mean_equiv_sim": 0.9772
+      },
+      {
+        "transform": "SP-8",
+        "mean_equiv_sim": 0.9797
+      }
+    ]
+  },
+  "finding": "All three methods (SBG_static, AST, Token) show inversion: CHANGED pairs have higher structural similarity than EQUIVALENT pairs. This confirms that semantics-preserving transforms (rename, restructure, extract function) cause greater structural change than semantics-altering mutations (off-by-one, operator swap). E1 quantifies this per-transform-type to identify which SP transforms are hardest.",
+  "scientific_verdict": "INVERSION_CONFIRMED \u2014 structural features cannot reliably detect semantic change in this benchmark",
+  "scores_cache_path": "/Users/manassakthivel/Desktop/SF Projects/SBG/artifacts/phase4/E1/scores_cache.json",
+  "seed": 42
+}

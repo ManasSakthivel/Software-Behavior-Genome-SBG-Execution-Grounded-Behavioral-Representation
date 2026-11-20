@@ -1,0 +1,388 @@
+\begin{table*}[!t]
+\caption{Artifact provenance. Class: R = raw machine-readable output; D = derived by a script from R; M = manuscript calculation; C = conceptual. Raw: raw output present in the repository. Tree: state of the code when the output was produced (clean, dirty, or unrecorded). Re-run: whether an independent group can regenerate the result from the repository (Analysis = from saved records without executing programs; Collect = requires re-executing programs). ``mac'' = branch \code{research/v8-mac-hardening}.}
+\label{tab:artifacts}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{|L{2.6cm}|L{4.4cm}|c|L{1.0cm}|L{1.25cm}|L{1.45cm}|L{3.3cm}|}
+\hline
+Result & Source & Class & Raw & Tree & Re-run & Known gap \\
+\hline
+Corpus and labels & \bcode{datasets\/v8\/dev\_records.jsonl} (312 records) & R & Records only & Unrecorded & Analysis; Collect needs V7-B & Per-run logs (\bcode{results\/repro\/v8\_dev\_20261118\_195446}) absent \\
+Rule and model risks, contrasts & \bcode{scripts\/stats\_recompute.py} $\to$ \bcode{audit\/stats\_summary.json} & D & Yes & Code at \code{07ecd5b7} & Analysis, about 1 min & -- \\
+Seeds, B6 contrast & \bcode{results\/v8\_dev\_eval\_20261119\_*\_linux\_\{soft,strict\}} & R & Yes & Unrecorded & Analysis & Run metadata lack a commit \\
+Placebo, frozen thresholds, profile fix & mac: \bcode{results\/v8\_mac\_reanalysis\_20261118\_*} & R & Yes & Not in public repository; available on request & Analysis & Fix not merged into the evaluated branch \\
+\ers{} matrix & \bcode{results\/v8\/linux\/perturb\/posthoc\_matrix.json}; mac \bcode{results\/v8\_mac\_perturb\/} & R & Yes & Linux: clean flag, commit unrecorded & Analysis & -- \\
+Real-execution analogue & \bcode{results\/v8\_mac\_perturb\/realexec\_matrix.json} (720 rows) & D & Matrix only & Dirty at \code{01fdaf09} & Collect & Run directories absent; uncommitted changes listed in manifest \\
+Security, macOS & \bcode{audit\/security\_rerun\_darwin.json}; mac \bcode{results\/v8\_mac\_security\/} & R & Yes & Output not in public repository; available on request & Collect, about 9\,s & macOS only \\
+Security, Linux & \bcode{results\/v8\/linux\/expanded\_security\_suite\_results.json} & R & Yes & Unrecorded & Collect & No host, sandbox or time metadata \\
+Five-dataset audit & Generator code and manifests; \bcode{scripts\/verify\_five\_dataset.py} & D & Yes & Code at \code{07ecd5b7} & Static & -- \\
+Cross-platform status & Saved outputs on both branches & M & Yes & As above & Static & -- \\
+Test suite & \code{tests/v8} & R & Summary only & \code{07ecd5b7} & Collect, about 85\,s & Linux run report-only \\
+Conceptual figures & \bcode{scripts\/make\_figures.py} & C & -- & -- & Static & -- \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table}[!t]
+\caption{Baselines and ablations. ``Labels'' marks comparators fitted on labels (within training folds only).}
+\label{tab:baselines}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{|c|L{4.4cm}|c|L{1.6cm}|}
+\hline
+Id & Definition & Labels & Role \\
+\hline
+B1 & Plain differential testing: \NDO{} unless a witness exists (``all inputs agree'') & No & Practice baseline \\
+B2 & B1; a witness must be deterministic, a quarantined input yields \INS{} & No & Repetition \\
+B3 & V7-B sufficiency gate (predecessor's fixed verdict) & No & Predecessor; sets $c^\ast$ \\
+B4 & \NDO{} iff full activation and the branch-coverage floor hold & No & Coverage rule \\
+B5 & B1, but \NDO{} only under full activation & No & Coverage rule \\
+B6 & B1-issuable pairs abstained at random to $c^\ast$ (1{,}000 draws) & No & Chance reference (Prop.~\ref{prop:random}) \\
+B7 & Logistic model on activation and branch coverage & Yes & Primary comparator \\
+B8 & Full \cec{}: 15 profile features plus \ers{} responses & Yes & Proposed \\
+B9 & \cec{} without \ers{}: 15 profile features & Yes & \ers{} ablation \\
+-- & Coverage + multiplicity; multiplicity only & Yes & Multiplicity ablations \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table*}[!t]
+\caption{Evaluation landscape. Every row except F and G is an executed setting with machine-readable output. ``Dev.''\ = development data, examined during design. GT = ground truth.}
+\label{tab:benchmarks}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{|c|L{2.6cm}|L{2.1cm}|L{0.9cm}|L{1.25cm}|L{1.9cm}|L{2.3cm}|L{1.3cm}|L{3.2cm}|}
+\hline
+Cat. & Source & Subjects (projects) & Lang. & Executed; OS & Objective & GT provenance & Independent & Main limitation \\
+\hline
+A & Synthetic pairs & 150 (101 programs) & Python & Yes; one env.\ id & RQ2--RQ4 & Generator labels & No (dev.) & Generated changes; small programs \\
+A & QuixBugs~\cite{lin2017quixbugs} buggy/fixed & 31 (1 benchmark, 31 programs) & Python & Yes; one env.\ id & RQ2--RQ4 & Benchmark tests & No (dev.) & Label and evidence share inputs \\
+A & QuixBugs negatives & 85 (same 31 programs) & Python & Yes; one env.\ id & RQ2--RQ4 & Preserving by construction & No (dev.) & One cluster holds 43.8\% of labels \\
+A & BugsInPy~\cite{widyasari2020bugsinpy} units & 46 (12 projects, 43 bugs) & Python & Yes; one env.\ id & RQ2; descriptive & None & No (dev.) & Unlabelled; 9 of 55 extractions yielded no record \\
+B & Real-execution analogue & 30 pairs, 720 trials & Python & Yes; macOS & RQ2 & Not needed (label-free) & No & Run dirs absent; dirty tree; supplement chosen with labels \\
+C & Cross-platform analysis & 312 records, 5 seeds & -- & Yes; macOS, Linux & RQ1, RQ5 & -- & -- & Same records: analysis, not collection \\
+D & Attack and probe suites & 25 (macOS); 125 (Linux) & Python & Yes; macOS, Linux & RQ1 & Designed outcome & No (author-written) & Linux run pre-fix, no host metadata \\
+E & Test suite & 257 tests & Python & Yes; macOS & RQ1 & Assertions & No & Linux run asserted in text only \\
+\hline
+F & Five-dataset artifact & 250 records (47 names) & Java, Python (text) & \textbf{No} & None & Labels copied into outcomes & -- & Invalid as external-validation evidence (stub predictor; 0 human verdicts) \\
+G & Two-adjudicator protocol & -- & -- & \textbf{No} & Confirmatory study & Blinded adjudication & Yes (planned) & Not executed \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\caption{Component responsibilities. ``Verdict path'' marks components whose output can change the verdict; the remaining components report only.}
+\label{tab:components}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{2.6cm}|L{3.3cm}|L{6.0cm}|L{2.2cm}|c|}
+\hline
+Component & Module & Responsibility & Trust role & Verdict path \\
+\hline
+Evaluated process & V7-B isolation child; \bcode{\_tee\_child.py} & Runs $P$ or $P'$ on one input; the stub tees every standard-output write to fd~2 as a nonce-framed record & Untrusted (A1) & -- \\
+OS sandbox & \bcode{sandbox-exec} (macOS); \bcode{bwrap}/\bcode{unshare} (Linux) & Denies network, confines writes; rlimits and environment allow-list exclude $K$ & Containment & -- \\
+Controller & \bcode{collect.run\_capture} & Runs the unmodified engine; a spy on the engine's finalisation records per-input hits and branch directions & Trusted & Yes \\
+Supervisor & \bcode{procsep.Supervisor} & Spawns children with per-run nonce; parses tee records; \bcode{judge}: match, mismatch, incomplete, no frame & Trusted & Yes \\
+Result channel & V7-B result frame & HMAC-SHA256 under a per-run key passed over a pipe closed before user code runs & Authenticated & Yes \\
+Evidence directory & \bcode{evidence.jsonl}, \bcode{verdict.json}, \bcode{v8\_parts.json}, \bcode{v8\_capture.json}, \bcode{v8\_anchor.json} & Hash-chained log; hit sidecar bound to the log head; per-run capture record; anchor $\mathrm{HMAC}_K$ over the file digests & Sealed & -- \\
+Validator & \bcode{evidence\_schema.validate\_dir}; \bcode{procsep.validate\_isolated} & Schema, binding, contiguity, nonce, per-run status and anchor checks; the isolated variant runs in a fresh interpreter with a MAC-authenticated reply & Trusted & Yes \\
+Trust gate & \bcode{procsep.decide}; \bcode{calibrate.Model.decide} & Untrusted evidence yields \INS{} for any engine verdict, including \DIV{} & Trusted & Yes \\
+Adapter & \bcode{adapter.load\_record} & Builds the evidence record; sets $\iota$ from engine verification, sidecar consistency and the validator & Trusted & Yes \\
+Profile & \bcode{profile.build\_profile} & Computes the 15 change-conditioned features (Table~\ref{tab:profile}) & Label-free & Yes \\
+Eligibility & \bcode{policy}; \bcode{calibrate.is\_eligible} & Applies the blocker policy (v8.0, v8.0s, v8.1) & Label-free & Yes \\
+CEC & \bcode{calibrate.fit\_select}, \bcode{Model} & Sign-constrained logistic risk model; penalty by inner grouped CV & Uses labels at fit time & Yes \\
+Threshold & \bcode{stats.select\_threshold} & Largest prefix whose cluster-bootstrap upper risk bound is $\le\alpha$ & Uses labels at fit time & Yes \\
+ERS audit & \bcode{ers.compute\_ers}; \bcode{perturb.apply} & Applies $T_j$ to a copy; records $\Delta_j$, verdicts and pass/fail/N/A & Label-free & No (features in B8) \\
+Reviewer checks & \bcode{trust.check} & Shadow re-observation, source binding, pinned log head & Optional & No \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\caption{Design controls: how each threat to the empirical questions is handled and what remains uncontrolled.}
+\label{tab:controls}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{|L{2.6cm}|L{6.4cm}|L{1.7cm}|L{4.9cm}|}
+\hline
+Threat & Control in the design & Status & Residual \\
+\hline
+Project dependence & Project-grouped CV folds; project-cluster bootstrap; ICC and design effect in the power analysis & Controlled & All QuixBugs pairs form one cluster (43.8\% of labels) \\
+Development exposure & None possible on this corpus; stated as pilot; prediction lock prepared for a confirmatory study & Not controlled & Every result may be optimistic \\
+Train--test leakage & Hyperparameters and thresholds chosen on inner folds; no project in both fitting and evaluation of a prediction & Controlled & Feature set designed on the whole corpus \\
+Label provenance & Construction labels declared; worst-case risk reported; adjudication implemented & Not controlled & Labels are not adjudications under $(\obs,\budget)$ \\
+Coverage differences & All comparisons at matched coverage $c^\ast$; random abstention B6 as reference (Prop.~\ref{prop:random}) & Controlled & $c^\ast$ fixed by the predecessor; matched point is transductive \\
+Threshold selection & Inner-fold cluster-bootstrap thresholds; frozen-threshold study on held-out projects & Controlled & Deployable thresholds issued nothing or missed targets \\
+Multiple comparisons & Holm within the three-test family declared in the design notes and within an eight-contrast family & Controlled & -- \\
+Repeated perturbation trials & Trials reported as counts per property; no test pools trials across records & Controlled & Counts are descriptive only \\
+Seeds & Five fold assignments reported separately, not pooled & Controlled & Sign of the primary contrast varies \\
+Platform & Analysis repeated on macOS and Linux & Partly & Collection platform unrecorded; one environment id \\
+Observation boundary & Four channels declared; risk is boundary-relative (Prop.~\ref{prop:mono}) & Declared & Not varied \\
+Execution budget & Fixed collector configuration; P5 varies repeat counts & Partly & Adjudication budget undefined for construction labels \\
+Single language & -- & Not controlled & Python only \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table}[!t]
+\caption{Cost of each stage (from the code; no new measurement). Times in the last row are descriptive statistics of existing run records.}
+\label{tab:cost}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{|L{2.1cm}|L{2.4cm}|L{3.2cm}|}
+\hline
+Stage & Time & Note \\
+\hline
+Collection (Alg.~\ref{alg:acquire}) & $O(n\cdot r)$ program runs per side & $r$ = configured determinism, replay and alternate-input repeats; dominates total cost \\
+Validation (Alg.~\ref{alg:validate}) & $O(L)$ & Hashing and schema checks; isolated mode adds one interpreter start \\
+Profile & $O(u\,n\,h)$ & Set intersections of hits with changed units \\
+\cec{} fit (Alg.~\ref{alg:cec}) & $O(|\Lambda|\,k\,t\,N d)+O(BN)$ & $|\Lambda|{=}4$, $k{=}3$ inner folds, $t$ L-BFGS-B iterations; threshold bound uses $B{=}1{,}000$ \\
+Decision (Alg.~\ref{alg:decide}) & $O(d)$ after the profile & Constant per verdict \\
+\ers{} matrix (Alg.~\ref{alg:ers}) & $O(NJ(u\,n\,h+d))$ per predictor & $312\times10\times6=18{,}720$ trials here \\
+Matched risk (Alg.~\ref{alg:matched}) & $O(N\log N + BN)$ & $B{=}10{,}000$ for intervals \\
+\hline
+Observed collection time & \multicolumn{2}{L{5.6cm}|}{Median 2.8\,s, p90 3.6\,s, max 20.3\,s per pair; 932\,s for 312 pairs; host load 5.9--9.0 (\bcode{dev\_records.jsonl}, \code{run\_meta.wall\_s})} \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table*}[!t]
+\caption{\ers{} property matrix on the 312 development records (post-hoc perturbations of recorded evidence). Each cell gives the number of passes among the applicable trials; N/A trials are excluded. ``Resp.'' is the number of applicable trials in which the fitted model's risk moved by more than the tolerance. Failures are in bold.}
+\label{tab:ers}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|l|l|c|c|c|c|c|c|c|c|}
+\hline
+ & & & \multicolumn{2}{c|}{Fitted profile model} & \multicolumn{2}{c|}{All-feature probe} & & \multicolumn{2}{c|}{V7-B gate} \\
+Id & Property & Applicable & Pass & Resp. & Pre-fix & Post-fix & Activation stub & Recorded & Recomputed \\
+\hline
+P1 & Relevant-evidence sensitivity & 16 & 16 & 9 & 16 & 16 & 16 & 16 & 16 \\
+P1b & Relevant-evidence sensitivity & 93 & 93 & 68 & 93 & 93 & 93 & 93 & 93 \\
+P2 & Irrelevant-evidence invariance & 227 & 227 & 0 & \textbf{118} & 227 & 227 & 227 & 227 \\
+P3 & Duplicate-evidence invariance & 262 & 262 & 0 & 262 & 262 & 262 & 262 & 262 \\
+P4 & Observation-loss sensitivity & 178 & 178 & 0 & 178 & 178 & 178 & 178 & 178 \\
+P5 & Reproducibility sensitivity & 176 & 176 & 100 & 176 & 176 & 176 & 176 & 176 \\
+P6 & Divergence responsiveness & 228 & 228 & 0 & 228 & 228 & 228 & \textbf{157} & 228 \\
+P7 & Provenance sensitivity & 178 & 178 & 0 & 178 & 178 & 178 & 178 & 178 \\
+P8 & Integrity sensitivity & 312 & 312 & 0 & 312 & 312 & 312 & \textbf{157} & \textbf{228} \\
+P9 & Environment sensitivity & 228 & 228 & 0 & 228 & 228 & 228 & 228 & 228 \\
+\hline
+\end{tabular}
+\\[3pt]
+\parbox{\textwidth}{\scriptsize Fitted model: $L_2$ logistic regression on the full profile, with a diagnostic threshold at the 30th percentile of in-sample eligible risk so that \NDO{} verdicts exist to be withdrawn; it is not a deployment threshold, and no pass in this column rests on abstention credit. All-feature probe: an \emph{unfitted} model that reads every profile feature with its pre-declared sign; it exists because the fitted model retains essentially one feature (\code{mu\_min}), which makes invariance checks on the other features vacuous for it. Post-fix: after restricting features to relevant evidence and collapsing unflagged copies (mac-hardening branch, commit \code{b9b8a86c}); only the P2 row changed for any predictor. Activation stub: risk $=1-a(\Ev)$. V7-B ``recorded'' replays the stored verdict and therefore ignores the perturbed evidence by construction; ``recomputed'' re-applies the V7-B gate to the perturbed record.}
+\end{table*}
+
+\begin{table}[!t]
+\caption{Interpretation of the main contrasts (soft policy, seed~0; values from Table~\ref{tab:stats}). ``Excluded'' gives effects that lie outside the 95\% interval, in percentage points.}
+\label{tab:interp}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.3pt}
+\begin{tabular}{|L{1.35cm}|L{1.3cm}|L{1.35cm}|L{1.25cm}|L{1.55cm}|}
+\hline
+Contrast & Evidence of improvement? & Evidence of no improvement? & Equivalence? & Excluded \\
+\hline
+B7$-$B8 (H2) & No & No (up to $+16.3$ admitted) & Not tested & B8 worse by $>6.6$ or better by $>16.3$ \\
+B3$-$B8 & No & No & Not tested & Valid in half of resamples \\
+B6$-$B8 & No & No & Not tested & B8 worse by $>11.5$ or better by $>9.7$ \\
+B9$-$B8 (H3) & No ($p=0.09$) & No & Not tested & B8 worse by $>2.8$ or better by $>14.7$ \\
+Log loss H1a, H3 & No & No & Not tested & Large gains or losses \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\caption{Notation.}
+\label{tab:notation}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{1.25cm}|L{6.1cm}|}
+\hline
+Symbol & Meaning \\
+\hline
+$P,P'$ & Base and variant program versions with a common entry point \\
+$c=(P,P')$ & A change pair; $\mathcal{C}$ is a population of change pairs \\
+$U_c$ & Changed units: changed lines on either side of $c$ \\
+$\mathcal{X}$, $I$ & Declared input domain; executed inputs, a finite multiset over $\mathcal{X}$ \\
+$e$ & Execution environment (interpreter, sandbox, limits, platform) \\
+$\obs$ & Observation boundary: the channels compared, $\obs\subseteq\{\textit{outcome},\textit{exception},\textit{side\_effect},\textit{api}\}$ \\
+$o_{\obs}(P,x;e)$ & Canonical observation of $P$ on $x$ in $e$, restricted to $\obs$ \\
+$\Ev$ & Evidence record of one change: per-input records, $U_c$ and metadata \\
+$\pi(i)$ & Provenance label of input record $i$ (declared, generated, label-derived) \\
+$\iota(\Ev)$ & Integrity flag: $1$ iff the evidence directory validates (Algorithm~\ref{alg:validate}) \\
+$\varepsilon(\Ev)$ & Environment-consistency flag \\
+$K$ & Controller-held anchor key; never present in an evaluated process \\
+$\prof(\Ev)$ & Change-conditioned evidence profile (15 features, Table~\ref{tab:profile}) \\
+$\textsf{elig}(\Ev)$ & Eligibility under a blocker policy (v8.0 soft, v8.0s strict, v8.1) \\
+$g$, $\Rhat(\Ev)$ & Calibrated risk model; estimated false-assurance risk $g(\prof(\Ev))$ \\
+$\tau_\alpha$ & Issuing threshold for target risk $\alpha$ \\
+$V(\Ev)$ & Decision procedure; values \DIV{}, \NDO{}, \INS{} \\
+$\budget$ & Adjudication budget: resources and procedure for searching for a divergence \\
+$A(c;\obs,\budget)$ & Adjudication outcome in $\{\textit{div},\textit{nodiv},\textit{unresolved}\}$ \\
+$F$ & False-assurance event, $\mathbf{1}[A=\textit{div}]$ for an issued \NDO{} \\
+$\R$, $\cov$ & False-assurance risk and coverage of $V$ on $\mathcal{C}$ \\
+$c^\ast$ & Matched coverage at which procedures are compared ($61/258$) \\
+$T_j$, $\Delta_j$ & Evidence perturbation $j$ and the estimator's response to it \\
+$Y$ & Construction label used in place of $F$ in this study \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\caption{Controlled evidence perturbations (\code{sbgv8/perturb.py}). Ctrl.: N negative control, P positive control, R robustness (monotone). Mode: H = post-hoc edit of a record copy (all ten, evaluated on 312 records); X = an execution-level analogue also exists (30 pairs, macOS, exploratory). App.: applicable trials of 312.}
+\label{tab:perturb}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{|c|L{3.55cm}|c|c|c|r|}
+\hline
+Id & Operation & Prop. & Ctrl. & Mode & App. \\
+\hline
+P1 & Delete one clean input that is the sole reacher of a changed unit or sole capturer of a channel & 3 & R & H & 16 \\
+P1b & Delete all clean inputs covering the least-multiplicity unit & 3 & R & H & 93 \\
+P2 & Append two \code{SAME} inputs hitting only unchanged lines & 1 & N & H, X & 227 \\
+P3 & Append two flagged copies of existing inputs & 2 & N & H & 262 \\
+P4 & Remove one captured channel from every input & 4 & R & H & 178 \\
+P5 & Mark half of deterministic \code{SAME} inputs non-deterministic; halve repeats & 8 & R & H, X & 176 \\
+P6 & Append a confirmed-difference witness hitting all changed units & 5 & P & H, X & 228 \\
+P7 & Mark the provenance of all inputs label-derived & 6 & R & H & 178 \\
+P8 & Set the integrity flag to violated & 7 & P & H & 312 \\
+P9 & Mark the execution environment inconsistent & E & R & H & 228 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\caption{Evidence profile $\prof(\Ev)$ as implemented (\code{sbgv8/profile.py}). Count features enter the model as $\log(1+x)$. ``Const.'' marks features that were constant on the development corpus.}
+\label{tab:profile}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{2.3cm}|L{3.4cm}|L{1.5cm}|}
+\hline
+Feature & Definition & Dimension \\
+\hline
+\code{act\_frac} & Share of $U_c$ executed by clean inputs, Eq.~\eqref{eq:act} & Activation \\
+\code{branch\_cov\_min} & Min.\ over sides of observed branch directions on changed lines, relative to $2\times$ static branches & Coverage \\
+\code{mu\_min}, \code{mu\_mean} & Min.\ and mean of $\mu_u$, Eq.~\eqref{eq:mu} & Multiplicity \\
+\code{n\_same} & $|C|$ & Quantity \\
+\code{n\_rep} & Repeat, replay and alternative runs over $C$ & Repetition \\
+\code{obs\_react} & Share of $U_c$ reached by a clean, non-degenerate input with a captured channel (a reachability proxy, not a dependence analysis) & Influence \\
+\code{n\_eff} & Distinct fingerprints in $C$ & Diversity \\
+\code{n\_eff\_prov} & Distinct (fingerprint, provenance) pairs with trusted provenance & Diversity \\
+\code{repro\_frac} & Share of deterministic inputs & Reproducibility \\
+\code{lossy\_frac} & Share of lossy or degenerate inputs & Loss \\
+\code{chan\_complete} & Mean share of declared channels captured & Channels \\
+\code{prov\_ok} & All inputs trusted, non-label-derived (const.) & Provenance \\
+\code{integrity\_ok} & $\iota(\Ev)$ (const.) & Integrity \\
+\code{env\_ok} & $\varepsilon(\Ev)$ (const.) & Environment \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table*}[!t]
+\caption{Synthesis of the eight streams: what each contributes to trusting a no-divergence verdict, where it stops, and what \sbg{} takes from it.}
+\label{tab:synthesis}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{|L{2.6cm}|L{4.3cm}|L{4.6cm}|L{4.9cm}|}
+\hline
+Stream & Contribution & Where it stops & Use in \sbg{} \\
+\hline
+S1 Differential testing, equivalence assessment & Finds divergent inputs; judges or proves equivalence & Empty result uninterpreted, or scored only at dataset level; abstention without a risk estimand & Supplies the evidence; B1 instantiates the agreement rule \\
+S2 Regression testing, adequacy & Selects tests; measures suite strength & Suite-level score for one version & Change-conditioned coverage features \\
+S3 Oracle problem & Treats oracles as fallible & Per oracle, not per verdict & Unobserved channels as a sufficiency gap \\
+S4 Metamorphic testing & Relations with known effect replace a missing oracle & Relations act on program inputs & \ers{} relations act on the estimator's evidence \\
+S5 Sufficiency, observability & Explains why passing executions mislead (PIE, coincidental correctness, flakiness) & Per location or suite; no per-verdict probability & Activation, multiplicity, channel and reproducibility features \\
+S6 Selective prediction & Risk--coverage trade-off; calibration & Input taken as given; i.i.d.\ guarantees & $\R$ as selective risk; matched coverage; random abstention as reference \\
+S7 Conformal risk control & Finite-sample risk guarantees & Exchangeability violated by project clustering & Exploratory option only; no guarantee claimed \\
+S8 Integrity, perturbation conformance & Attests artifacts; validates measures by perturbation & Artifacts, not runtime observations; no property set for verdict-risk estimators & Integrity as a verdict precondition; \ers{} property set with N/A and abstention accounting \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\caption{Security threat summary: threat, mechanism, measured outcome and residual risk. Outcomes are from the macOS re-run at the final commit unless stated otherwise.}
+\label{tab:threats}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|c|L{3.3cm}|L{3.4cm}|L{3.6cm}|L{4.6cm}|}
+\hline
+Adv. & Threat (attacks) & Mechanism & Measured outcome & Residual risk \\
+\hline
+A1 & Forge a result on standard output (A06); exit early, write garbage to or close the result fd (A03--A05) & HMAC result frame, per-run key & A06 no effect; A03--A05 blocked (\INS{}) & None observed \\
+A1 & Hide or alter standard output (A08) & Tee to fd~2, parent-side \code{judge} & Blocked (\INS{}) & Stream-object replacement or nonce reading in-process is not detected \\
+A1 & Patch canonicaliser, forge via harness (A01, A02) & Shadow re-observation (optional) & Detection only; false \NDO{} remains effective & Requires reviewer action \\
+A1 & Sense the analysis (SENSE01, 04, 04b--d; A07, A07c) & Masking of \code{\_\_file\_\_}, \code{sys.argv}; shadow (optional) & SENSE01, 04, 04d, A07c no effect; 04c and A07 detection only; 04b \emph{succeeds} & Code-object file paths reveal analysis; anonymised file names not implemented \\
+A1 & Forge tee record with guessed nonce (A17) & Nonce-framed records & Detected; true \DIV{} becomes \INS{} & Denial of a true divergence \\
+A2 & Edit a field and re-chain the log (PR-04) & Anchor $\mathrm{HMAC}_K$; validator & Blocked (\INS{}) & None for keyless writers \\
+A2 & Strip or alter the anchor & Anchor required when key configured & Blocked (\INS{}) & Legacy directories without capture are not counted as untrusted \\
+A3 & Substitute another program's genuine evidence (PR-06) & Source binding (optional) & Detection only & Requires reviewer-supplied sources \\
+-- & Key holder re-anchors (PR-08) & Out of scope & Succeeds by design & Key management is outside the threat model \\
+A1 & Linux isolation probes (74, pre-fix) & \code{bwrap}, network unsharing & 8 no effect; 1 succeeded (SENSE04); 65 \INS{}, cause unrecorded & Undecided runs are not evidence of isolation; no Linux re-run after remediation \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\caption{Threats to validity.}
+\label{tab:threatsval}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{1.6cm}|L{4.6cm}|L{4.4cm}|L{5.0cm}|}
+\hline
+Type & Threat & Effect on conclusions & Mitigation and residual \\
+\hline
+Construct & Construction labels replace adjudication; QuixBugs labels and evidence share inputs & Risks may be biased in either direction; downward in QuixBugs & All risks labelled as construction-label risks; adjudication protocol implemented, not run \\
+Construct & Influence feature is a reachability proxy; three gate features constant & Profile measures fewer dimensions than designed & Gate features examined only through P7--P9; stated as limitation \\
+Construct & Perturbations are post-hoc edits & $\Delta_j$ describes the estimator, not programs & Execution-level analogue for P2/P5/P6 on 30 pairs (exploratory) \\
+Internal & Corpus examined during design; two method changes followed results on the same records & Optimistic bias for \sbg{} & Inner-fold selection; results still negative; changes disclosed \\
+Internal & Matched coverage is transductive; strict bootstrap degenerate at $c^\ast$ & Not a deployable operating point & Deployable thresholds reported separately; strict intervals not interpreted \\
+External & Small generated Python functions and QuixBugs; one cluster holds 43.8\% of labels; BugsInPy units (12 projects) executed but unlabelled; Python only; single-run v8 test split only (not independent; NOT DEMONSTRATED); no confirmatory held-out benchmark & No generalisation & Stated in abstract and RQ5; five-dataset artifact invalid as external evidence (label-derived outcomes; stub predictor) \\
+Conclusion & Underpowered (MDE $\approx$16\,pp); secondary analyses unadjusted & Negative result inconclusive & Power analysis; Holm adjustment; seeds not pooled; no equivalence claim \\
+Security & macOS executed; Linux probes mostly undecided, no host metadata, no post-fix re-run; author-written attacks & Security position is platform- and suite-bound & Undecided runs not counted as isolation; SENSE04b reported as open \\
+Artifact & Earlier internal reports contained figures not supported by stored outputs & Risk of propagating them & Values taken from stored machine-readable outputs; unsupported values excluded (Section~\ref{sec:repro}) \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table}[!t]
+\caption{Cross-platform summary. Ex.\ = executed with raw output; Part.\ = executed but raw output incomplete; Rep.\ = report text only (not used); -- = not run.}
+\label{tab:xplat}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{|L{3.4cm}|c|c|L{2.3cm}|}
+\hline
+Activity & macOS & Linux & Evidence \\
+\hline
+Evidence collection (312 pairs) & \multicolumn{2}{c|}{one env.\ id} & Platform not recorded \\
+Statistics, 5 seeds $\times$ 2 policies & Ex. & Ex. & Reported; not re-run \\
+\ers{} matrix, pre-fix & Ex. & Ex. & Identical \\
+Real-execution P2/P5/P6 (30 pairs) & Part. & -- & Run dirs absent \\
+Profile fix; \ers{} re-run & Ex. & -- & Mac branch \\
+Placebo; frozen thresholds & Ex. & -- & Mac branch \\
+Test suite & Ex. & Rep. & 247 / 8 / 2 (mac) \\
+Attack suite (19) & Ex. & -- & Before / after \\
+Sensing probes & Ex. & Part. & Mac re-run at HEAD \\
+Tamper probes (51) & -- & Part. & No host metadata \\
+Isolation probes (74) & -- & Part. & 65 undecided \\
+Container runtime isolation & -- & Rep. & Not invoked by code \\
+\hline
+\end{tabular}
+\end{table}

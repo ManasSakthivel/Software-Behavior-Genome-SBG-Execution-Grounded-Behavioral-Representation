@@ -1,0 +1,63 @@
+{
+  "phase": 11,
+  "title": "Robustness Results",
+  "sp2_rename_robustness": {
+    "v3_status": "BROKEN \u2014 SP-2 AUROC=0.259 (below chance; effectively random)",
+    "v5_status": "IMPROVED \u2014 V5 identity normalization brings DEV AUROC from 0.488 to 0.588 (+0.100)",
+    "unit_tests": "12/12 PASS",
+    "test_split_improvement": "+0.011 (marginal; CI overlapping)",
+    "hypothesis_h3": "NOT_SUPPORTED",
+    "h3_note": "SP-2 AUROC=0.259 before V5; V5 improves but benchmark not re-run"
+  },
+  "formatting_robustness": {
+    "status": "ROBUST",
+    "reason": "Dynamic extraction ignores source text entirely. Genome is computed from execution traces, not source code. Whitespace, comments, and formatting changes produce identical traces."
+  },
+  "dead_code_robustness": {
+    "status": "ROBUST",
+    "reason": "Dead code is never executed and therefore never traced. Unreachable branches do not appear in execution trace \u2192 do not affect genome features.",
+    "evidence": "pair_07_dead_code_insertion: oracle CORRECT (EQUIV verdict preserved despite dead branch insertion)"
+  },
+  "sc3_detection": {
+    "canonical_inputs_detection_rate": 0.075145,
+    "input_guided_detection_rate": 0.240223,
+    "improvement_delta": 0.165078,
+    "improvement_relative_pct": 219.68,
+    "n_sc3_pairs": 179,
+    "n_sc3_detected_input_guided": 43,
+    "by_difficulty": {
+      "UNKNOWN": {
+        "total": 18,
+        "detected": 0,
+        "rate": 0.0
+      },
+      "EASY": {
+        "total": 34,
+        "detected": 34,
+        "rate": 1.0
+      },
+      "HARD": {
+        "total": 126,
+        "detected": 8,
+        "rate": 0.0635
+      },
+      "MEDIUM": {
+        "total": 1,
+        "detected": 1,
+        "rate": 1.0
+      }
+    },
+    "interpretation": "SC-3 (operator/logic mutations) detection is catastrophically low with canonical inputs (7.5%). Input-guided execution improves to 24.0% (+219.7% relative). EASY pairs: 100% detection. HARD pairs: only 6.35% detection. This is a fundamental limitation: most SC-3 bugs do not change exception behavior and require carefully chosen boundary inputs to expose."
+  },
+  "generalization_concern": {
+    "dev_auroc": 0.488,
+    "dev_below_chance": true,
+    "test_auroc": 0.551,
+    "val_auroc": 0.512,
+    "verdict": "GENERALIZATION CONCERN \u2014 DEV AUROC=0.488 is below chance. This 0.063 spread across splits exceeds the claimed effect size and raises doubts about robustness across program families."
+  },
+  "hypothesis_h10": {
+    "verdict": "NOT_SUPPORTED",
+    "description": "Robust to SP transforms"
+  }
+}

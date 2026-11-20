@@ -1,0 +1,289 @@
+{
+  "artifact": "V10_MODELS_FROZEN",
+  "fitted_on": {
+    "design": "v9c",
+    "split": "train",
+    "population": "matched-complete",
+    "n_pairs": 1650,
+    "n_programs": 46,
+    "scored_v6exp_sha256": "515eceee0e371842aa8df308a85dd0638e0883792d540cef1843b3e03b02724e"
+  },
+  "fit": "fit_weights.fit_logistic (L2=1.0, lr=0.5, 5000 its, standardised); logit scores",
+  "models": {
+    "E": {
+      "features": [
+        "edit"
+      ],
+      "weights_standardised": [
+        0.292613103
+      ],
+      "bias": 0.002506615,
+      "feature_means": [
+        9.410303030303
+      ],
+      "feature_stds": [
+        6.497609110326
+      ],
+      "final_mean_logloss": 0.682840389
+    },
+    "X": {
+      "features": [
+        "exception_fraction",
+        "call_count",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        0.403888854,
+        -0.122450552,
+        0.504625355
+      ],
+      "bias": 0.024499289,
+      "feature_means": [
+        0.04989277196,
+        0.133810236394,
+        0.370011168333
+      ],
+      "feature_stds": [
+        0.136387091645,
+        0.336116987428,
+        0.403388780223
+      ],
+      "final_mean_logloss": 0.640855915
+    },
+    "ST": {
+      "features": [
+        "static_ast",
+        "static_token"
+      ],
+      "weights_standardised": [
+        0.334068008,
+        -0.084862733
+      ],
+      "bias": 0.002099154,
+      "feature_means": [
+        0.077254888692,
+        0.097914493035
+      ],
+      "feature_stds": [
+        0.077241566731,
+        0.083223599711
+      ],
+      "final_mean_logloss": 0.685250007
+    },
+    "EX": {
+      "features": [
+        "edit",
+        "exception_fraction",
+        "call_count",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        0.003118504,
+        0.40361919,
+        -0.122182388,
+        0.503135926
+      ],
+      "bias": 0.024480303,
+      "feature_means": [
+        9.410303030303,
+        0.04989277196,
+        0.133810236394,
+        0.370011168333
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.136387091645,
+        0.336116987428,
+        0.403388780223
+      ],
+      "final_mean_logloss": 0.640856156
+    },
+    "EST": {
+      "features": [
+        "edit",
+        "static_ast",
+        "static_token"
+      ],
+      "weights_standardised": [
+        0.219854228,
+        0.171966045,
+        -0.063532358
+      ],
+      "bias": 0.002701665,
+      "feature_means": [
+        9.410303030303,
+        0.077254888692,
+        0.097914493035
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.077241566731,
+        0.083223599711
+      ],
+      "final_mean_logloss": 0.681917502
+    },
+    "E+V5": {
+      "features": [
+        "edit",
+        "sbg_v5"
+      ],
+      "weights_standardised": [
+        0.223325573,
+        0.612090429
+      ],
+      "bias": 0.02861252,
+      "feature_means": [
+        9.410303030303,
+        0.126723406784
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.195639889919
+      ],
+      "final_mean_logloss": 0.644907754
+    },
+    "E+V6": {
+      "features": [
+        "edit",
+        "sbg_v6"
+      ],
+      "weights_standardised": [
+        0.214273562,
+        0.671108412
+      ],
+      "bias": 0.035520088,
+      "feature_means": [
+        9.410303030303,
+        0.130246728962
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.197397777706
+      ],
+      "final_mean_logloss": 0.638575664
+    },
+    "EX+V5": {
+      "features": [
+        "edit",
+        "sbg_v5",
+        "exception_fraction",
+        "call_count",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        0.108816852,
+        1.258708239,
+        -0.054487343,
+        -0.882940219,
+        0.191717612
+      ],
+      "bias": 0.054914193,
+      "feature_means": [
+        9.410303030303,
+        0.126723406784,
+        0.04989277196,
+        0.133810236394,
+        0.370011168333
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.195639889919,
+        0.136387091645,
+        0.336116987428,
+        0.403388780223
+      ],
+      "final_mean_logloss": 0.609838317
+    },
+    "EX+V6": {
+      "features": [
+        "edit",
+        "sbg_v6",
+        "exception_fraction",
+        "call_count",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        0.131416495,
+        1.566320374,
+        -0.193841869,
+        -1.052413915,
+        0.11035557
+      ],
+      "bias": 0.068093424,
+      "feature_means": [
+        9.410303030303,
+        0.130246728962,
+        0.04989277196,
+        0.133810236394,
+        0.370011168333
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.197397777706,
+        0.136387091645,
+        0.336116987428,
+        0.403388780223
+      ],
+      "final_mean_logloss": 0.597741388
+    },
+    "EX+V5+V6": {
+      "features": [
+        "edit",
+        "sbg_v5",
+        "sbg_v6",
+        "exception_fraction",
+        "call_count",
+        "coverage_size"
+      ],
+      "weights_standardised": [
+        0.128218581,
+        -0.80226572,
+        2.308570217,
+        -0.184773711,
+        -1.001608263,
+        0.112679625
+      ],
+      "bias": 0.065987948,
+      "feature_means": [
+        9.410303030303,
+        0.126723406784,
+        0.130246728962,
+        0.04989277196,
+        0.133810236394,
+        0.370011168333
+      ],
+      "feature_stds": [
+        6.497609110326,
+        0.195639889919,
+        0.197397777706,
+        0.136387091645,
+        0.336116987428,
+        0.403388780223
+      ],
+      "final_mean_logloss": 0.594063684
+    }
+  },
+  "thresholds_youden_train": {
+    "sbg_v5": 7.955e-05,
+    "sbg_v6": 0.033974509,
+    "sbg_state": 0.001113173,
+    "sbg_state_v6": 0.001001168,
+    "edit": 3.0,
+    "exception_fraction": 0.083333333,
+    "call_count": 0.833333333,
+    "coverage_size": 0.5,
+    "static_ast": 0.042553191,
+    "static_token": 0.027777778,
+    "edit_reversed": -37.0,
+    "M_E": -0.286174749,
+    "M_X": -0.290594571,
+    "M_ST": -0.238795777,
+    "M_EX": -0.535750973,
+    "M_EST": -0.297314757,
+    "M_E+V5": -0.381044691,
+    "M_E+V6": -0.365527699,
+    "M_EX+V5": -0.563812035,
+    "M_EX+V6": 0.046408188,
+    "M_EX+V5+V6": 0.030116559
+  }
+}

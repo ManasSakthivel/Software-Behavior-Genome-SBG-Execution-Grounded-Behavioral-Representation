@@ -1,0 +1,95 @@
+{
+  "canonical": {
+    "regime": "canonical",
+    "programs_evaluated": 40,
+    "total_pairs": 80,
+    "crash_counts": {
+      "buggy": 40,
+      "correct": 40,
+      "both": 40
+    },
+    "auroc_sbg_v5": 0.625,
+    "ci_sbg_v5": [
+      0.5625,
+      0.7
+    ],
+    "auroc_state": 0.575,
+    "ci_state": [
+      0.525,
+      0.6375
+    ],
+    "auroc_edit": 0.9875,
+    "ci_edit": [
+      0.9625,
+      1.0
+    ],
+    "auroc_steps": 0.5625,
+    "ci_steps": [
+      0.5125,
+      0.625
+    ],
+    "delta_sbg_vs_edit": -0.36250000000000004
+  },
+  "declared": {
+    "regime": "declared",
+    "programs_evaluated": 31,
+    "total_pairs": 62,
+    "crash_counts": {
+      "buggy": 31,
+      "correct": 31,
+      "both": 31
+    },
+    "auroc_sbg_v5": 0.9032258064516129,
+    "ci_sbg_v5": [
+      0.8225806451612903,
+      0.967741935483871
+    ],
+    "auroc_state": 0.8709677419354839,
+    "ci_state": [
+      0.7903225806451613,
+      0.9516129032258065
+    ],
+    "auroc_edit": 0.9838709677419355,
+    "ci_edit": [
+      0.9516129032258065,
+      1.0
+    ],
+    "auroc_steps": 0.8387096774193548,
+    "ci_steps": [
+      0.7580645161290323,
+      0.9193548387096775
+    ],
+    "delta_sbg_vs_edit": -0.08064516129032262
+  },
+  "repaired_native": {
+    "regime": "repaired_native",
+    "programs_evaluated": 40,
+    "total_pairs": 80,
+    "crash_counts": {
+      "buggy": 40,
+      "correct": 40,
+      "both": 40
+    },
+    "auroc_sbg_v5": 0.875,
+    "ci_sbg_v5": [
+      0.8,
+      0.9375
+    ],
+    "auroc_state": 0.85,
+    "ci_state": [
+      0.775,
+      0.925
+    ],
+    "auroc_edit": 0.9875,
+    "ci_edit": [
+      0.9625,
+      1.0
+    ],
+    "auroc_steps": 0.8,
+    "ci_steps": [
+      0.725,
+      0.875
+    ],
+    "delta_sbg_vs_edit": -0.11250000000000004
+  }
+}

@@ -1,0 +1,15 @@
+[PASS] C1 generated tables match their artifacts
+[PASS] C2 benchmark manifest is internally consistent
+[PASS] C3 result denominators agree with the sets
+[PASS] C4 documents cite only MEASURED artifacts
+[PASS] C5 no retired claim appears in a current document
+[PASS] C6 no output-reading result is attributed to SBG
+[PASS] C7 output-free protocol traces no self-test driver
+[PASS] C8 README results block matches the generated tables
+[PASS] C9 frozen inputs are unchanged (prereg, benchmark, threshold, corpora)
+[FAIL] C10 gate verdict is recomputed from artifacts and quoted exactly
+         STANFORD_GATE.json differs from the verdict recomputed from the artifacts on disk; run `make gate`
+
+9/10 checks passed
+../venvs/py313/bin/python experiments/final/consistency_check.py >  2>&1  419.93s user 1061.30s system 88% cpu 27:49.26 total
+EXIT=1

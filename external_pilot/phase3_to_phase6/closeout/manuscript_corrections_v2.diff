@@ -1,0 +1,210 @@
+diff --color -ru manuscript_original/CLAIM_EVIDENCE_REGISTER.md manuscript_corrected/CLAIM_EVIDENCE_REGISTER.md
+--- manuscript_original/CLAIM_EVIDENCE_REGISTER.md	2026-11-20 17:02:50
++++ manuscript_corrected/CLAIM_EVIDENCE_REGISTER.md	2026-11-20 17:03:41
+@@ -97,7 +97,7 @@
+ 
+ | ID | Statement | § | Value | Source report | Machine-readable artifact | Branch / commit | Repro | Status | Limitation | Class |
+ |---|---|---|---|---|---|---|---|---|---|---|
+-| V1 | The five-dataset artifact: 250 records (244 distinct) from 12 templates; SHA-1 digests of literal strings; 0/180 Java records compiled or run; outcomes set from labels; integrity and environment hard-coded; stub predictor | VII-B, VIII-E, Table 11 | 250; 12 | `audit/DATASET_VERIFICATION_REPORT.md` | `audit/five_dataset_summary.json`; generator code under `datasets/`, `experiments/` | linux | R4 | Verified | — | DER |
++| V1 | The five-dataset artifact: 250 records (244 distinct) from 12 templates; SHA-1 digests of literal strings; 0/180 Java records compiled or run; outcomes set from labels; integrity and environment hard-coded; stub predictor | VII-B, VIII-E, Table 11 | 250; 12 | `audit/DATASET_VERIFICATION_REPORT.md` | `audit/five_dataset_summary.json`; generator code under `datasets/`, `experiments/` | linux | R4 | Verified (description) | Invalid as external-validation evidence: stub predictor, no benchmark program executed, 0 of 250 human verdicts | DER |
+ | V2 | No external multi-dataset benchmark was executed | Abstract, VII-B, VIII-E | — | same | — | — | R4 | Verified | — | CALC |
+ | V3 | Cross-platform status grid (Table 18, Fig. 14) | VIII-E | — | this register (S5–S9) | as in S5–S9 | both | R3 | Verified | Curated from saved outputs | CALC |
+ | V4 | The 312 records carry a single env id; collection platform not recorded | VIII-E | 1 | — | `datasets/v8/dev_records.jsonl` (`env_id`) | linux | R3 | Verified | — | RAW |
+@@ -115,7 +115,7 @@
+ 
+ | Value | Source | Reason |
+ |---|---|---|
+-| 250-pair "independent validation", 200/50 split, 2,500 ERS trials, 1.90 ms | `reports/v8/independent-validation/*` | Label-derived; no benchmark executed |
++| 250-pair "independent validation", 200/50 split, 2,500 ERS trials, 1.90 ms | `reports/v8/independent-validation/*` | Label-derived; predictor was the activation stub; no benchmark executed; 0 of 250 human verdicts; not an execution or external-validation claim |
+ | Calibration slopes 0.942 / 0.915; strict coverage 18.22%; per-seed p 0.431 / 0.398 | `reports/v8/linux/STATISTICAL_ANALYSIS_REPORT.md` | No raw support, or contradicted by raw output |
+ | Podman ISO-01..10; "608 tests" | `reports/v8/linux/PODMAN_ISOLATION_REPORT.md`, `FULL_REGRESSION_REPORT.md` | Report text only |
+ 
+diff --color -ru manuscript_original/FINAL_CLAIM_EVIDENCE_REGISTER.md manuscript_corrected/FINAL_CLAIM_EVIDENCE_REGISTER.md
+--- manuscript_original/FINAL_CLAIM_EVIDENCE_REGISTER.md	2026-11-20 17:02:50
++++ manuscript_corrected/FINAL_CLAIM_EVIDENCE_REGISTER.md	2026-11-20 17:03:41
+@@ -97,7 +97,7 @@
+ 
+ | ID | Statement | § | Value | Source report | Machine-readable artifact | Branch / commit | Repro | Status | Limitation | Class |
+ |---|---|---|---|---|---|---|---|---|---|---|
+-| V1 | The five-dataset artifact: 250 records (244 distinct) from 12 templates; SHA-1 digests of literal strings; 0/180 Java records compiled or run; outcomes set from labels; integrity and environment hard-coded; stub predictor | VII-B, VIII-E, Table 11 | 250; 12 | `audit/DATASET_VERIFICATION_REPORT.md` | `audit/five_dataset_summary.json`; generator code under `datasets/`, `experiments/` | linux | R4 | Verified | — | DER |
++| V1 | The five-dataset artifact: 250 records (244 distinct) from 12 templates; SHA-1 digests of literal strings; 0/180 Java records compiled or run; outcomes set from labels; integrity and environment hard-coded; stub predictor | VII-B, VIII-E, Table 11 | 250; 12 | `audit/DATASET_VERIFICATION_REPORT.md` | `audit/five_dataset_summary.json`; generator code under `datasets/`, `experiments/` | linux | R4 | Verified (description) | Invalid as external-validation evidence: stub predictor, no benchmark program executed, 0 of 250 human verdicts | DER |
+ | V2 | No external multi-dataset benchmark was executed | Abstract, VII-B, VIII-E | — | same | — | — | R4 | Verified | — | CALC |
+ | V3 | Cross-platform status grid (Table 18, Fig. 14) | VIII-E | — | this register (S5–S9) | as in S5–S9 | both | R3 | Verified | Curated from saved outputs | CALC |
+ | V4 | The 312 records carry a single env id; collection platform not recorded | VIII-E | 1 | — | `datasets/v8/dev_records.jsonl` (`env_id`) | linux | R3 | Verified | — | RAW |
+@@ -115,7 +115,7 @@
+ 
+ | Value | Source | Reason |
+ |---|---|---|
+-| 250-pair "independent validation", 200/50 split, 2,500 ERS trials, 1.90 ms | `reports/v8/independent-validation/*` | Label-derived; no benchmark executed |
++| 250-pair "independent validation", 200/50 split, 2,500 ERS trials, 1.90 ms | `reports/v8/independent-validation/*` | Label-derived; predictor was the activation stub; no benchmark executed; 0 of 250 human verdicts; not an execution or external-validation claim |
+ | Calibration slopes 0.942 / 0.915; strict coverage 18.22%; per-seed p 0.431 / 0.398 | `reports/v8/linux/STATISTICAL_ANALYSIS_REPORT.md` | No raw support, or contradicted by raw output |
+ | Podman ISO-01..10; "608 tests" | `reports/v8/linux/PODMAN_ISOLATION_REPORT.md`, `FULL_REGRESSION_REPORT.md` | Report text only |
+ 
+diff --color -ru manuscript_original/sections/abstract.tex manuscript_corrected/sections/abstract.tex
+--- manuscript_original/sections/abstract.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/abstract.tex	2026-11-20 18:14:51
+@@ -1 +1 @@
+-Differential regression testing acts on disagreement, but an empty difference set is read as reassurance, although it reports only that its inputs showed nothing on the compared channels. We reformulate such a no-divergence verdict as a selective prediction about its evidence and define its false-assurance risk relative to a declared observation boundary and adjudication budget, distinct from equivalence. Three results follow. A risk measured under one boundary is a lower bound for any wider one. Any verdict issued on unvalidated evidence can be forced by an adversary, so integrity must gate every verdict. Conformance of a risk estimator to evidence-response properties is logically independent of its accuracy. SBG~V8 operationalises the formulation with a change-conditioned evidence profile, an integrity-first abstaining decision procedure, and an Evidence Response Signature of eight label-free properties tested by evidence perturbations. In a pilot on 312 executed development pairs from synthetic programs, QuixBugs and BugsInPy (258 with construction labels), plain differential testing had an observed false-assurance risk of 0.169. The predecessor's sufficiency gate withheld two thirds of those verdicts without lowering the risk, no better than random abstention. The signature exposed a profile defect invisible to aggregate metrics, confirmed under real execution, and showed that the predecessor ignored tampered evidence. The richer evidence was not shown to improve prediction: at matched coverage it differed from coverage-only calibration by 1.6 percentage points (95\% interval $-6.6$ to $+16.3$), and only effects near 16 points were detectable. The data are single-language and unadjudicated, and no held-out benchmark was evaluated.
++Differential regression testing acts on disagreement, but an empty difference set is read as reassurance, although it reports only that its inputs showed nothing on the compared channels. We reformulate such a no-divergence verdict as a selective prediction about its evidence and define its false-assurance risk relative to a declared observation boundary and adjudication budget, distinct from equivalence. Three results follow. A risk measured under one boundary is a lower bound for any wider one. Any verdict issued on unvalidated evidence can be forced by an adversary, so integrity must gate every verdict. Conformance of a risk estimator to evidence-response properties is logically independent of its accuracy. SBG~V8 operationalises the formulation with a change-conditioned evidence profile, an integrity-first abstaining decision procedure, and an Evidence Response Signature of eight label-free properties tested by evidence perturbations. In a pilot on 312 executed development pairs from synthetic programs, QuixBugs and BugsInPy (258 with construction labels), plain differential testing had an observed false-assurance risk of 0.169. The predecessor's sufficiency gate withheld two thirds of those verdicts without lowering the risk, no better than random abstention. The signature exposed a profile defect invisible to aggregate metrics, confirmed under real execution, and showed that the predecessor ignored tampered evidence. The richer evidence was not shown to improve prediction: at matched coverage it differed from coverage-only calibration by 1.6 percentage points (95\% interval $-6.4$ to $+16.3$), and only effects near 16 points were detectable. The data are single-language and unadjudicated, and no held-out benchmark was evaluated.
+diff --color -ru manuscript_original/sections/conclusion.tex manuscript_corrected/sections/conclusion.tex
+--- manuscript_original/sections/conclusion.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/conclusion.tex	2026-11-20 18:14:46
+@@ -6,10 +6,10 @@
+ \begin{itemize}
+ \item Plain differential testing gave false assurance in about one in six no-difference verdicts. The predecessor's gate abstained heavily without improving that rate, which only a matched-coverage comparison against random abstention reveals.
+ \item As a conformance test, the signature found a real profile defect, reproduced it under real execution, and exposed the predecessor's indifference to integrity failures.
+-\item As a predictor, calibration over the richer evidence was not shown to beat coverage-only calibration ($+1.6$ points, interval $-6.6$ to $+16.3$, sign unstable). The study could detect only differences of about 16 points.
++\item As a predictor, calibration over the richer evidence was not shown to beat coverage-only calibration ($+1.6$ points, interval $-6.4$ to $+16.3$, sign unstable). The study could detect only differences of about 16 points.
+ \item Keyless tampering forces abstention, and result-channel attacks are blocked or have no effect. In-process harness forgery and evidence substitution are detected but not prevented, and one sensing channel remains open.
+ \item The statistical analysis reproduced across macOS and Linux to $10^{-9}$ on identical records.
+-\item QuixBugs and BugsInPy subjects were executed only as development data; no benchmark was held out. The project's five-dataset artifact was template-generated and is excluded.
++\item QuixBugs and BugsInPy subjects were executed only as development data; no benchmark was held out. The project's five-dataset artifact is invalid as external-validation evidence: its records were template-generated, its outcomes were set from labels, its predictor was a stub, no benchmark program was executed, and no human adjudication verdict exists.
+ \end{itemize}
+ 
+ The estimand can thus be operationalised, and the evidence-response protocol can detect estimator defects: it found one that aggregate metrics missed. Whether richer evidence improves risk estimates remains an open, empirical question. Answering it requires an independently adjudicated external corpus of several hundred to over a thousand issued verdicts.
+diff --color -ru manuscript_original/sections/design.tex manuscript_corrected/sections/design.tex
+--- manuscript_original/sections/design.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/design.tex	2026-11-20 18:15:26
+@@ -37,10 +37,10 @@
+ \item[C)] \emph{Cross-platform systems validation.} The same analysis and post-hoc \ers{} matrix run on macOS and Linux over identical records.
+ \item[D)] \emph{Security and integrity evaluation.} 25 attacks and probes re-run on macOS at the final commit; 125 Linux probes before the last fix.
+ \item[E)] \emph{Unit and regression testing.} The implementation's test suite (247 passed, 8 skipped, 2 expected failures, macOS).
+-\item[F)] \emph{Template-derived artifacts, excluded.} A ``five-dataset'' artifact named after Defects4J, BugsInPy, Bears, BugSwarm and Bugs.jar. A static audit (RQ5) found that its 250 records come from 12 hand-written templates with outcomes assigned from labels and that no benchmark code was executed. It is a pipeline smoke test and supports no claim.
++\item[F)] \emph{Template-derived artifacts, excluded.} A ``five-dataset'' artifact named after Defects4J, BugsInPy, Bears, BugSwarm and Bugs.jar. A static audit (RQ5) found that its 250 records come from 12 hand-written templates with outcomes assigned from labels and that no benchmark code was executed. Its outcomes were set from labels, its predictor was the activation stub, and it has zero completed human verdicts. It is invalid as external-validation evidence and is a pipeline smoke test that supports no claim.
+ \item[G)] \emph{Independent outcome adjudication.} Designed and implemented, not executed. Every label in this paper is a construction label.
+ \end{enumerate}
+-The study therefore has several distinct evaluation settings, A--E. All of them are single-language (Python), development-exposed and unadjudicated. No benchmark was evaluated as held-out data.
++The study therefore has several distinct evaluation settings, A--E. Apart from the held-out test split described in the results, all of them are single-language (Python), development-exposed and unadjudicated. One evaluation used a held-out test split: a single frozen run on the v8 test split (22 programs, 956 valid pairs). Its pre-declared criterion was not met, and it is not a confirmatory external validation.
+ 
+ \begin{table*}[!t]
+ \caption{Evaluation landscape. Every row except F and G is an executed setting with machine-readable output. ``Dev.''\ = development data, examined during design. GT = ground truth.}
+@@ -62,7 +62,7 @@
+ D & Attack and probe suites & 25 (macOS); 125 (Linux) & Python & Yes; macOS, Linux & RQ1 & Designed outcome & No (author-written) & Linux run pre-fix, no host metadata \\
+ E & Test suite & 257 tests & Python & Yes; macOS & RQ1 & Assertions & No & Linux run asserted in text only \\
+ \hline
+-F & Five-dataset artifact & 250 records (47 names) & Java, Python (text) & \textbf{No} & None & Labels copied into outcomes & -- & Template-generated; excluded \\
++F & Five-dataset artifact & 250 records (47 names) & Java, Python (text) & \textbf{No} & None & Labels copied into outcomes & -- & Invalid as external-validation evidence (stub predictor; 0 human verdicts) \\
+ G & Two-adjudicator protocol & -- & -- & \textbf{No} & Confirmatory study & Blinded adjudication & Yes (planned) & Not executed \\
+ \hline
+ \end{tabular}
+@@ -100,7 +100,7 @@
+ \begin{figure*}[!t]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fig_evidence_landscape.pdf}
+-\caption{Evidence landscape. (a) The executed development corpus by arm and construction label (data: \code{dev\_records.jsonl}). (b) Status of the seven evidence categories A--G. (c) The five-dataset artifact, shown hatched and grey because its records are template-generated with outcomes set from labels; it is excluded as evidence and no metric is derived from it.}
++\caption{Evidence landscape. (a) The executed development corpus by arm and construction label (data: \code{dev\_records.jsonl}). (b) Status of the seven evidence categories A--G. (c) The five-dataset artifact, shown hatched and grey because its records are template-generated with outcomes set from labels; it is invalid as external-validation evidence (outcomes set from labels, stub predictor, no benchmark executed, zero human verdicts), and no metric is derived from it.}
+ \label{fig:landscape}
+ \end{figure*}
+ 
+diff --color -ru manuscript_original/sections/discussion.tex manuscript_corrected/sections/discussion.tex
+--- manuscript_original/sections/discussion.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/discussion.tex	2026-11-20 18:14:51
+@@ -10,7 +10,7 @@
+ \subsection{Interpreting the Negative Result}
+ The study does not show that \cec{} predicts false assurance better than coverage alone, nor that \ers{} features add predictive value. All primary intervals include zero, and the sign of the primary contrast changes across seeds. With 61 issued verdicts and an effective sample size of about 41, only differences of roughly 16 points were detectable, so the study is uninformative about the 5-point effects that would matter in practice. Non-significance here is not evidence of no effect; no equivalence margin was pre-registered and none is claimed. The placebo comparison suggests that the \ers{} responses are not pure noise, but that evidence is weak and unadjusted.
+ 
+-Three statements are easy to conflate, and Table~\ref{tab:interp} separates them. The data give \emph{no evidence of improvement}: no interval excludes zero. They do not give \emph{evidence of no improvement}, because the intervals still admit advantages of up to 16 points. Still less do they give \emph{evidence of equivalence}, which would need a pre-registered margin and an interval inside it. What the intervals do exclude are large effects in either direction, for example a disadvantage of B8 beyond 6.6 points against coverage-only calibration, at the 95\% level.
++Three statements are easy to conflate, and Table~\ref{tab:interp} separates them. The data give \emph{no evidence of improvement}: no interval excludes zero. They do not give \emph{evidence of no improvement}, because the intervals still admit advantages of up to 16 points. Still less do they give \emph{evidence of equivalence}, which would need a pre-registered margin and an interval inside it. What the intervals do exclude are large effects in either direction, for example a disadvantage of B8 beyond 6.4 points against coverage-only calibration, at the 95\% level.
+ 
+ \begin{table}[!t]
+ \caption{Interpretation of the main contrasts (soft policy, seed~0; values from Table~\ref{tab:stats}). ``Excluded'' gives effects that lie outside the 95\% interval, in percentage points.}
+@@ -22,7 +22,7 @@
+ \hline
+ Contrast & Evidence of improvement? & Evidence of no improvement? & Equivalence? & Excluded \\
+ \hline
+-B7$-$B8 (H2) & No & No (up to $+16.3$ admitted) & Not tested & B8 worse by $>6.6$ or better by $>16.3$ \\
++B7$-$B8 (H2) & No & No (up to $+16.3$ admitted) & Not tested & B8 worse by $>6.4$ or better by $>16.3$ \\
+ B3$-$B8 & No & No & Not tested & Valid in half of resamples \\
+ B6$-$B8 & No & No & Not tested & B8 worse by $>11.5$ or better by $>9.7$ \\
+ B9$-$B8 (H3) & No ($p=0.09$) & No & Not tested & B8 worse by $>2.8$ or better by $>14.7$ \\
+diff --color -ru manuscript_original/sections/introduction.tex manuscript_corrected/sections/introduction.tex
+--- manuscript_original/sections/introduction.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/introduction.tex	2026-11-20 18:14:46
+@@ -42,8 +42,8 @@
+ \item Plain differential testing had an observed false-assurance risk of 0.169 (31 of 183 \NDO{} verdicts).
+ \item The predecessor's sufficiency gate abstained on two thirds of those verdicts without lowering the rate (0.213).
+ \item As a label-free conformance test, \ers{} found a real defect in the evidence profile, corroborated it under real execution, and showed that the predecessor's verdicts ignore integrity failures.
+-\item As a source of predictive features, the richer evidence was \emph{not} shown to help. At matched coverage, full \cec{} differed from coverage-only calibration by 1.6 percentage points, with an interval from $-6.6$ to $+16.3$ and a sign that changes across seeds. Only differences of about 16 points were detectable.
+-\item The project's own ``five-dataset'' artifact turned out to be template-generated with label-derived outcomes, so this paper excludes it as evidence.
++\item As a source of predictive features, the richer evidence was \emph{not} shown to help. At matched coverage, full \cec{} differed from coverage-only calibration by 1.6 percentage points, with an interval from $-6.4$ to $+16.3$ and a sign that changes across seeds. Only differences of about 16 points were detectable.
++\item The project's own ``five-dataset'' artifact turned out to be template-generated, with outcomes set from labels, a stub predictor, no executed benchmark program and zero human verdicts. It is invalid as external-validation evidence, and this paper excludes it.
+ \end{itemize}
+ 
+ Table~\ref{tab:contrib} maps the contributions to the research questions and to the evidence that supports each.
+diff --color -ru manuscript_original/sections/reproducibility.tex manuscript_corrected/sections/reproducibility.tex
+--- manuscript_original/sections/reproducibility.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/reproducibility.tex	2026-11-20 17:03:41
+@@ -50,7 +50,7 @@
+ \subsection{Artifact Audit}
+ Before writing, we audited the project's machine-readable records against its internal reports. Three findings affect what can be claimed.
+ \begin{enumerate}
+-\item The five-dataset artifact does not meet the evidential standard (Section~\ref{sec:res-rq5}). It is excluded entirely.
++\item The five-dataset artifact does not meet the evidential standard (Section~\ref{sec:res-rq5}). It is classified invalid as external-validation evidence (label-derived outcomes, stub predictor, no executed benchmark, zero human verdicts) and is excluded entirely.
+ \item Some report figures have no raw support; they are not used.
+ \item The profile fix exists on a sibling branch. We report the evaluated branch's numbers and the effect of the fix separately, and merging the fix is required before any further study.
+ \end{enumerate}
+diff --color -ru manuscript_original/sections/results.tex manuscript_corrected/sections/results.tex
+--- manuscript_original/sections/results.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/results.tex	2026-11-20 18:15:26
+@@ -53,7 +53,7 @@
+ \subsection{RQ3: Observed False-Assurance Risk of Decision Rules}\label{sec:res-rq3}
+ The upper block of Table~\ref{tab:ablation} and the point markers in Fig.~\ref{fig:riskcov} show the rule baselines.
+ \begin{itemize}
+-\item \emph{Plain differential testing (B1)} issues \NDO{} on 183 of 258 labelled pairs (coverage 0.709). Of these, 31 have $Y{=}1$: an observed risk of 0.169 [0.086, 0.354]. Roughly one in six ``no difference'' outcomes concealed a labelled behavioural change. Requiring deterministic witnesses (B2) changes nothing.
++\item \emph{Plain differential testing (B1)} issues \NDO{} on 183 of 258 labelled pairs (coverage 0.709). Of these, 31 have $Y{=}1$: an observed risk of 0.169 (interval not recovered from source; not reported). Roughly one in six ``no difference'' outcomes concealed a labelled behavioural change. Requiring deterministic witnesses (B2) changes nothing.
+ \item \emph{The V7-B gate (B3)} issues 61 verdicts (coverage 0.236), 13 of them wrong: a risk of 0.213 [0.090, 0.457]. Abstaining on two thirds of the B1 verdicts (122 of 183) did not lower the risk among those that remained.
+ \item \emph{Coverage gates.} B4 issues 141 verdicts at 0.121 [0.044, 0.343], and B5 issues 144 at 0.125 [0.052, 0.343].
+ \end{itemize}
+@@ -73,7 +73,7 @@
+ \subsection{RQ4: Incremental Value of \cec{} and \ers{} at Matched Coverage}\label{sec:res-rq4}
+ Table~\ref{tab:stats} lists every contrast with its effect, interval, one-sided $p$ and Holm-adjusted $p$. Fig.~\ref{fig:forest} plots them.
+ 
+-\paragraph*{Matched-coverage risk} At $c^\ast$ under the soft policy, B8 has risk 0.213 [0.124, 0.392], against 0.230 for B7, 0.292 for B9 and 0.295 for multiplicity alone. The primary contrast, B7 minus B8, is $+1.6$ points [$-6.6$, $+16.3$], so H2 is not supported. B8 ties the V7-B gate (0.0 [$-6.2$, $+16.2$]; defined in only half of the resamples) and lies 4.4 points above random abstention ($-4.4$ [$-11.5$, $+9.7$]). In the pre-registered three-test family, the Holm-adjusted $p$ is at least 0.46 in every soft-policy seed. In the eight-contrast family, the smallest Holm-adjusted $p$ is 0.68 (soft) and 1.0 (strict).
++\paragraph*{Matched-coverage risk} At $c^\ast$ under the soft policy, B8 has risk 0.213 [0.124, 0.392], against 0.230 for B7, 0.292 for B9 and 0.295 for multiplicity alone. The primary contrast, B7 minus B8, is $+1.6$ points [$-6.4$, $+16.3$] (percentile interval, seed 0, soft policy; the BCa interval is [$-6.7$, $+15.3$]), so H2 is not supported. B8 ties the V7-B gate (0.0 [$-6.2$, $+16.2$]; defined in only half of the resamples) and lies 4.4 points above random abstention ($-4.4$ [$-11.5$, $+9.7$]). In the pre-registered three-test family, the Holm-adjusted $p$ is at least 0.46 in every soft-policy seed. In the eight-contrast family, the smallest Holm-adjusted $p$ is 0.68 (soft) and 1.0 (strict).
+ 
+ Under the strict policy every calibrated model is confined to V7-B's own 61 \NDO{} pairs. At $c^\ast$ all of them therefore issue that set, with identical risk 0.213. The strict matched contrasts are zero by construction, and their intervals (defined in about half of the resamples) are not interpreted.
+ 
+@@ -101,7 +101,7 @@
+ Contrast & Hypothesis & Effect & 95\% CI & $p$ & Holm $p$ & Valid & Reading \\
+ \hline
+ \multicolumn{8}{|l|}{\emph{Matched-coverage risk at $c^\ast=0.236$ (61 verdicts)}} \\
+-B7 $-$ B8 & H2 (primary) & $+1.6$ & [$-6.6$, $+16.3$] & 0.42 & 1.00 & 0.999 & Not supported; below 5-pt margin \\
++B7 $-$ B8 & H2 (primary) & $+1.6$ & [$-6.4$, $+16.3$] & 0.42 & 1.00 & 0.999 & Not supported; below 5-pt margin \\
+ B3 $-$ B8 & primary family & $0.0$ & [$-6.2$, $+16.2$] & 0.33 & 1.00 & 0.502 & Tie with predecessor \\
+ B6 $-$ B8 & primary family & $-4.4$ & [$-11.5$, $+9.7$] & 0.76 & 1.00$^{a}$ & 1.000 & Not better than chance \\
+ B9 $-$ B8 & H3 (matched) & $+7.9$ & [$-2.8$, $+14.7$] & 0.09 & 0.68 & 0.999 & Inconclusive \\
+@@ -148,10 +148,11 @@
+ \item none of the 180 Java records was compiled or run;
+ \item each input's outcome is set from the pair's label in \code{executor.pair\_to\_evidence\_record};
+ \item the integrity flag and the Linux environment identifier are hard-coded;
+-\item the activation-stub predictor was used;
++\item the predictor was the activation stub, a component documented as for tests and smoke tests only, not the calibrated model;
++\item no benchmark program was executed by this path, and no human adjudication verdict exists for any of the 250 records (0 of 250);
+ \item six records are duplicates.
+ \end{itemize}
+-Every verdict therefore equals its label by construction, and the artifact establishes only that the record schema, profile, \ers{} harness and prediction lock process 250 records end to end. It provides no evidence about detection, false-assurance risk, cross-dataset generalisation or container isolation. Table~\ref{tab:benchmarks} (row F) and Fig.~\ref{fig:landscape}(c) present it on that basis. Under the five benchmark names the artifact holds 50, 50, 50, 50 and 50 records with 10, 10, 10, 10 and 7 project names; five of the ten BugsInPy names are not BugsInPy projects. No per-dataset metric is reported.
++Every verdict therefore equals its label by construction, and the artifact establishes only that the record schema and harness run on label-derived records. It is invalid as external-validation evidence: its outcomes are set from labels, its predictions come from the stub, and no program under test was run. It provides no evidence about detection, false-assurance risk, cross-dataset generalisation or container isolation. Table~\ref{tab:benchmarks} (row F) and Fig.~\ref{fig:landscape}(c) present it on that basis. Under the five benchmark names the artifact holds 50, 50, 50, 50 and 50 records with 10, 10, 10, 10 and 7 project names; five of the ten BugsInPy names are not BugsInPy projects. No per-dataset metric is reported.
+ 
+ \paragraph*{Cross-platform evidence} Table~\ref{tab:xplat} separates what was executed on each platform from what is asserted only in report text.
+ \begin{itemize}
+@@ -162,7 +163,7 @@
+ \end{itemize}
+ The 312 development records carry a single environment identifier and do not record the collection platform.
+ 
+-\paragraph*{Answer to RQ5} The evaluation spans five executed settings, including real changes from 12 BugsInPy projects, but only synthetic and QuixBugs pairs carry labels, and all data are development data in one language. There is no held-out or multi-dataset benchmark evaluation; the five-dataset artifact is template-generated and excluded. The cross-platform evidence shows that the analysis is reproducible, plus partial Linux security testing; it does not show cross-platform evidence collection.
++\paragraph*{Answer to RQ5} The evaluation spans five executed settings, including real changes from 12 BugsInPy projects, but only synthetic and QuixBugs pairs carry labels, and, apart from that test split, all data are development data in one language. A single held-out run on the v8 test split (22 programs, 956 valid pairs; 547 changed, 409 equivalent) was executed once under the frozen configuration. SBG's AUROC was 0.694 [0.659, 0.727] (cluster bootstrap, 2000 resamples), against 0.876 [0.859, 0.892] for reversed edit size, a paired difference of $-0.182$ [$-0.220$, $-0.144$]. The pre-declared success criterion was not met; the verdict is NOT DEMONSTRATED. The split uses the same generator and carries the edit-size confound described above, so it is not an external validation. There is no multi-dataset benchmark evaluation; the five-dataset artifact is template-generated and excluded. The cross-platform evidence shows that the analysis is reproducible, plus partial Linux security testing; it does not show cross-platform evidence collection.
+ 
+ \begin{table}[!t]
+ \caption{Cross-platform summary. Ex.\ = executed with raw output; Part.\ = executed but raw output incomplete; Rep.\ = report text only (not used); -- = not run.}
+diff --color -ru manuscript_original/sections/threats.tex manuscript_corrected/sections/threats.tex
+--- manuscript_original/sections/threats.tex	2026-11-20 17:02:50
++++ manuscript_corrected/sections/threats.tex	2026-11-20 18:15:26
+@@ -17,7 +17,7 @@
+ Construct & Perturbations are post-hoc edits & $\Delta_j$ describes the estimator, not programs & Execution-level analogue for P2/P5/P6 on 30 pairs (exploratory) \\
+ Internal & Corpus examined during design; two method changes followed results on the same records & Optimistic bias for \sbg{} & Inner-fold selection; results still negative; changes disclosed \\
+ Internal & Matched coverage is transductive; strict bootstrap degenerate at $c^\ast$ & Not a deployable operating point & Deployable thresholds reported separately; strict intervals not interpreted \\
+-External & Small generated Python functions and QuixBugs; one cluster holds 43.8\% of labels; BugsInPy units (12 projects) executed but unlabelled; Python only; no held-out benchmark & No generalisation & Stated in abstract and RQ5; five-dataset artifact excluded \\
++External & Small generated Python functions and QuixBugs; one cluster holds 43.8\% of labels; BugsInPy units (12 projects) executed but unlabelled; Python only; one held-out test split on the generated benchmark, one run; no held-out external benchmark & No generalisation & Stated in abstract and RQ5; five-dataset artifact invalid as external evidence (label-derived outcomes; stub predictor) \\
+ Conclusion & Underpowered (MDE $\approx$16\,pp); secondary analyses unadjusted & Negative result inconclusive & Power analysis; Holm adjustment; seeds not pooled; no equivalence claim \\
+ Security & macOS executed; Linux probes mostly undecided, no host metadata, no post-fix re-run; author-written attacks & Security position is platform- and suite-bound & Undecided runs not counted as isolation; SENSE04b reported as open \\
+ Artifact & Internal reports contained unsupported figures & Risk of propagating them & Every number traced to a machine-readable source; unsupported values excluded (Section~\ref{sec:repro}) \\

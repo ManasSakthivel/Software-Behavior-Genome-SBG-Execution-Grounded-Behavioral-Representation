@@ -1,0 +1,19 @@
+digraph architecture {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ cli [label="CLI: python -m sbgv7 compare\nBASE.py VARIANT.py --entry --inputs --config"];
+ cfg [label="config.py\nstrict validation"];
+ run [label="runner.py\nreplay protocol, activation"];
+ har [label="harness.py\nchild-side executor\n(sys.monitoring line/branch)"];
+ iso [label="sbgv7.isolation\nmacOS sandbox-exec child per run"];
+ cmp [label="compare.py\nboundary comparator"];
+ dec [label="decide.py\npure verdict + sufficiency"];
+ rec [label="records.py\ncontent-addressed ids,\nhash-chained evidence.jsonl"];
+ out [label="verdict.json + evidence.jsonl"];
+ chg [label="sbgv6.features.changed_lines\n(imported read-only)"];
+ expl [label="explorer / input generation\nNOT IMPLEMENTED\n(inputs are user-supplied JSON)", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ e [label="module E internal_divergence\nNOT IMPLEMENTED", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ lin [label="Linux container isolation\nNOT IMPLEMENTED", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ cli -> cfg -> run; chg -> run; run -> iso -> har; har -> cmp [label="observations"]; run -> cmp; cmp -> dec; run -> dec; dec -> rec -> out;
+ expl -> run [style=dashed]; lin -> iso [style=dashed]; e -> dec [style=dashed];
+}

@@ -1,0 +1,19 @@
+\begin{table*}[!t]
+\caption{Contributions, research questions, evidence and status. Status uses three levels: supported, partly supported, and not demonstrated.}
+\label{tab:contrib}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|c|L{4.2cm}|c|L{4.6cm}|L{4.0cm}|}
+\hline
+Id & Contribution & RQ & Evidence & Status \\
+\hline
+C1 & False-assurance estimand for \NDO{} verdicts, separated from equivalence; four propositions on abstention, boundary monotonicity, integrity and conformance (Section~\ref{sec:problem}) & -- & Definitions; four propositions with proofs in Section~\ref{sec:problem} & Formal contribution \\
+C2 & Change-conditioned evidence profile and \cec{} decision procedure with an integrity-first trust gate (Section~\ref{sec:approach}) & RQ3, RQ4 & 258 labeled pairs; matched-coverage contrasts & Implemented; predictive advantage not demonstrated \\
+C3 & \ers{}: eight properties, ten perturbations, pass criteria with N/A and abstention accounting (Section~\ref{sec:ers}) & RQ2 & 312 records $\times$ 6 predictors; 30-pair real-execution analogue & Supported as a conformance test; not supported as predictive features \\
+C4 & Trusted evidence collection with a bounded threat model (Section~\ref{sec:trust}) & RQ1 & macOS re-run (25), Linux probes (125) & Partly supported: fail-safe for keyless writers; detection only for in-process forgery; one open channel \\
+C5 & Matched-coverage evaluation protocol with power analysis (Section~\ref{sec:design}) & RQ3, RQ4 & Bootstrap, Holm, MDE & Supported; result inconclusive (underpowered) \\
+C6 & Evidence audit and traceability: claim register, exclusion of a label-derived artifact, cross-platform status (Sections~\ref{sec:res-rq5}, \ref{sec:repro}) & RQ5 & Static audit; register; saved outputs & Supported \\
+\hline
+\end{tabular}
+\end{table*}

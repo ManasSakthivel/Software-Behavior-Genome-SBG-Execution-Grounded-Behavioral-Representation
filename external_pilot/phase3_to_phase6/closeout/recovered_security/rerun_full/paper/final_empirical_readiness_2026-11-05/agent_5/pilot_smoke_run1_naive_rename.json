@@ -1,0 +1,90 @@
+{
+ "note": "mechanical smoke run, n=3 programs, NOT an evaluation",
+ "jdk": "OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)",
+ "programs": [
+  {
+   "program": "SUMDIGITS",
+   "signature": {
+    "method": "sumdigits",
+    "return": "int",
+    "params": [
+     [
+      "n",
+      "int"
+     ]
+    ]
+   },
+   "n_inputs": 11,
+   "base_ok": true,
+   "SP": {
+    "oracle_inputs_differing": 0,
+    "variant_ok": true,
+    "edit_lines": 6,
+    "sbg_v5": 0.0
+   },
+   "SC": {
+    "oracle_inputs_differing": 10,
+    "variant_ok": true,
+    "edit_lines": 1,
+    "sbg_v5": 0.1253
+   },
+   "status": "ran"
+  },
+  {
+   "program": "COUNTVOWELS",
+   "signature": {
+    "method": "countvowels",
+    "return": "int",
+    "params": [
+     [
+      "s",
+      "String"
+     ]
+    ]
+   },
+   "n_inputs": 11,
+   "base_ok": true,
+   "SP": {
+    "oracle_inputs_differing": 1,
+    "variant_ok": true,
+    "edit_lines": 6,
+    "sbg_v5": 0.0
+   },
+   "SC": {
+    "oracle_inputs_differing": 0,
+    "variant_ok": true,
+    "edit_lines": 1,
+    "sbg_v5": 0.0
+   },
+   "status": "ran"
+  },
+  {
+   "program": "MAXRUN",
+   "signature": {
+    "method": "maxrun",
+    "return": "int",
+    "params": [
+     [
+      "xs",
+      "int[]"
+     ]
+    ]
+   },
+   "n_inputs": 11,
+   "base_ok": true,
+   "SP": {
+    "oracle_inputs_differing": 0,
+    "variant_ok": true,
+    "edit_lines": 7,
+    "sbg_v5": 0.0
+   },
+   "SC": {
+    "oracle_inputs_differing": 1,
+    "variant_ok": true,
+    "edit_lines": 1,
+    "sbg_v5": 0.0
+   },
+   "status": "ran"
+  }
+ ]
+}

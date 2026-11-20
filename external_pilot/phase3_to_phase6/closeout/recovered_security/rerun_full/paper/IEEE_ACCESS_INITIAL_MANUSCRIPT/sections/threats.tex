@@ -1,0 +1,14 @@
+\section{Threats to Validity}\label{sec:threats}
+\textbf{Data (internal and external).} All data are non-pristine and there is no independent holdout. QuixBugs and BugsInPy are public and widely used benchmarks, so exposure through earlier evaluations or through public sources cannot be excluded; synthetic pairs were scored by earlier systems; V7-B and its thresholds were shaped while seeing these pairs. Every result is therefore exploratory, and no result supports generalisation.
+
+\textbf{Labels.} Divergent and no-difference labels are generator labels or a test-replay oracle; they are not adjudicated. ``Equivalent'' synthetic labels use a looser equality than the observation boundary, so a witnessed pair may be a label artefact; six suspect labels are excluded and 57 pairs are unlabelled. False assurance is relative to labels, not to verified misses. BugsInPy units are run on synthetic batteries rather than project tests.
+
+\textbf{Statistical conclusion.} One cluster (QuixBugs, 29 divergent pairs) is large; percentile bootstrap intervals with few independent projects can undercover; pairs cluster by project; the $p$-values are descriptive. Power is too low for a confirmatory claim. The attribution statistic rests on $n=11$.
+
+\textbf{Construct.} The sufficiency level is a coverage proxy of contested validity~\cite{inozemtseva2014coverage,just2014mut}; S2 is reachable from two inputs; no evidence shows that S1 or S2 discriminate correct from incorrect verdicts. The abstention rate reflects engine gaps and a conservative, unrefined rule more than a calibrated judgement.
+
+\textbf{Environment and reproducibility.} One machine, one operating system (macOS) and one interpreter version; isolation is not validated; E6 was run under battery power with a load-rule flag. Determinism is incomplete (fixed hash seed never varied, \texttt{datetime.now} not virtualised) and witness identity is timing-dependent near resource limits. The E1 comparison is confounded with other engine changes.
+
+\textbf{Evidence integrity.} The hash chain is unkeyed and not tamper-proof; a deliberate writer can produce a log that verifies; the result channel shares an address space with the evaluated program.
+
+\textbf{Literature.} The related-work review is thematic, by one reviewer, and most statements rest on abstracts, tool-mediated reads or metadata; ``we found none'' is not a proof of absence (Section~\ref{sec:related}).

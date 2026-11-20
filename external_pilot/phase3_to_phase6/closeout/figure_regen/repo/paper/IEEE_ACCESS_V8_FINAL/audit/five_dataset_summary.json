@@ -1,0 +1,707 @@
+{
+  "generated_by": "paper/IEEE_ACCESS_V8_FINAL/scripts/verify_five_dataset.py",
+  "git_head": "07ecd5b7410f5b6de28368d998ca852ff118d2de",
+  "identifiers": {
+    "n_pair_manifest": 250,
+    "n_execution_results": 250,
+    "n_ers_results": 250,
+    "n_exclusions": 0,
+    "duplicate_pair_ids": [],
+    "pair_ids_match_execution": true,
+    "pair_ids_match_ers": true
+  },
+  "provenance": {
+    "pair_manifest_equals_datasets_py_output": true,
+    "buggy_sha_equals_sha1_of_literal_string": 250,
+    "distinct_code_templates_by_dataset_and_change_type": {
+      "Bears|bug_fix|Java": 1,
+      "Bears|non_behavioural|Java": 1,
+      "BugSwarm|bug_fix|Java": 1,
+      "BugSwarm|bug_fix|Python": 1,
+      "BugSwarm|non_behavioural|Java": 1,
+      "BugSwarm|non_behavioural|Python": 1,
+      "Bugs.jar|bug_fix|Java": 1,
+      "Bugs.jar|non_behavioural|Java": 1,
+      "BugsInPy|bug_fix|Python": 1,
+      "BugsInPy|non_behavioural|Python": 1,
+      "Defects4J|bug_fix|Java": 1,
+      "Defects4J|non_behavioural|Java": 2
+    },
+    "distinct_raw_source_pairs": 244,
+    "patch_diff_is_truncated_60_char_stub": 250,
+    "distinct_templates_total": 13,
+    "evidence_records_rederived_identically_without_execution": 250,
+    "outcomes_equal_label_rule": 250
+  },
+  "python_snippet_reexecution": {
+    "BugSwarm|bug_fix|real_divergence": 16,
+    "BugSwarm|non_behavioural|no_divergence": 4,
+    "BugsInPy|bug_fix|real_divergence": 40,
+    "BugsInPy|non_behavioural|no_divergence": 10
+  },
+  "java_pairs_compiled_or_executed": 0,
+  "per_dataset": {
+    "Defects4J": {
+      "languages": {
+        "Java": 50
+      },
+      "n_pairs": 50,
+      "n_bug_fix": 40,
+      "n_non_behavioural": 10,
+      "projects": [
+        "Cli",
+        "Codec",
+        "Compress",
+        "Csv",
+        "Gson",
+        "JacksonCore",
+        "Jsoup",
+        "Lang",
+        "Math",
+        "Time"
+      ],
+      "n_projects": 10,
+      "pairs_per_project": {
+        "Cli": 5,
+        "Codec": 5,
+        "Compress": 5,
+        "Csv": 5,
+        "Gson": 5,
+        "JacksonCore": 5,
+        "Jsoup": 5,
+        "Lang": 5,
+        "Math": 5,
+        "Time": 5
+      },
+      "executed": 50,
+      "integrity_ok": 50,
+      "verdicts": {
+        "DIVERGENT_OBSERVABLE": 40,
+        "NO_DIVERGENCE_OBSERVED": 10,
+        "INSUFFICIENT": 0
+      },
+      "verdict_x_label": {
+        "bug_fix->DIVERGENT_OBSERVABLE": 40,
+        "non_behavioural->NO_DIVERGENCE_OBSERVED": 10
+      },
+      "risk_scores": {
+        "0.0": 50
+      },
+      "exclusions": 0,
+      "dev_project_name_overlap": [],
+      "duration_ms": {
+        "mean": 6.846560760000001,
+        "median": 6.940583500000013,
+        "min": 6.247291000000016,
+        "max": 7.224416000000011,
+        "sum": 342.32803800000005
+      }
+    },
+    "BugsInPy": {
+      "languages": {
+        "Python": 50
+      },
+      "n_pairs": 50,
+      "n_bug_fix": 40,
+      "n_non_behavioural": 10,
+      "projects": [
+        "click",
+        "cookiecutter",
+        "fastapi",
+        "flask",
+        "pysnooper",
+        "pytest",
+        "requests",
+        "rich",
+        "sanic",
+        "tornado"
+      ],
+      "n_projects": 10,
+      "pairs_per_project": {
+        "fastapi": 5,
+        "flask": 5,
+        "cookiecutter": 5,
+        "tornado": 5,
+        "sanic": 5,
+        "rich": 5,
+        "click": 5,
+        "pysnooper": 5,
+        "pytest": 5,
+        "requests": 5
+      },
+      "executed": 50,
+      "integrity_ok": 50,
+      "verdicts": {
+        "DIVERGENT_OBSERVABLE": 40,
+        "NO_DIVERGENCE_OBSERVED": 10,
+        "INSUFFICIENT": 0
+      },
+      "verdict_x_label": {
+        "bug_fix->DIVERGENT_OBSERVABLE": 40,
+        "non_behavioural->NO_DIVERGENCE_OBSERVED": 10
+      },
+      "risk_scores": {
+        "0.0": 50
+      },
+      "exclusions": 0,
+      "dev_project_name_overlap": [],
+      "duration_ms": {
+        "mean": 6.8231416799999955,
+        "median": 6.939041999999979,
+        "min": 6.121750000000037,
+        "max": 7.071790999999994,
+        "sum": 341.15708399999977
+      }
+    },
+    "Bears": {
+      "languages": {
+        "Java": 50
+      },
+      "n_pairs": 50,
+      "n_bug_fix": 40,
+      "n_non_behavioural": 10,
+      "projects": [
+        "Checkstyle",
+        "Dubbo",
+        "ElasticJob",
+        "Fastjson",
+        "GraphQLJava",
+        "Infinispan",
+        "OpenHtmlToPdf",
+        "Spoon",
+        "SpringDataCommons",
+        "Traccar"
+      ],
+      "n_projects": 10,
+      "pairs_per_project": {
+        "Traccar": 5,
+        "Dubbo": 5,
+        "GraphQLJava": 5,
+        "ElasticJob": 5,
+        "Checkstyle": 5,
+        "Spoon": 5,
+        "OpenHtmlToPdf": 5,
+        "Infinispan": 5,
+        "SpringDataCommons": 5,
+        "Fastjson": 5
+      },
+      "executed": 50,
+      "integrity_ok": 50,
+      "verdicts": {
+        "DIVERGENT_OBSERVABLE": 40,
+        "NO_DIVERGENCE_OBSERVED": 10,
+        "INSUFFICIENT": 0
+      },
+      "verdict_x_label": {
+        "bug_fix->DIVERGENT_OBSERVABLE": 40,
+        "non_behavioural->NO_DIVERGENCE_OBSERVED": 10
+      },
+      "risk_scores": {
+        "0.0": 50
+      },
+      "exclusions": 0,
+      "dev_project_name_overlap": [],
+      "duration_ms": {
+        "mean": 6.655976679999995,
+        "median": 6.91543750000001,
+        "min": 5.250166000000056,
+        "max": 7.635292000000016,
+        "sum": 332.7988339999998
+      }
+    },
+    "BugSwarm": {
+      "languages": {
+        "Java": 30,
+        "Python": 20
+      },
+      "n_pairs": 50,
+      "n_bug_fix": 40,
+      "n_non_behavioural": 10,
+      "projects": [
+        "ClosureTemplates",
+        "Dropwizard",
+        "FlaskAdmin",
+        "HubSpot",
+        "Orbit",
+        "PyJWT",
+        "PyPDF",
+        "RestAssured",
+        "ScikitLearn",
+        "SquareWire"
+      ],
+      "n_projects": 10,
+      "pairs_per_project": {
+        "Dropwizard": 5,
+        "HubSpot": 5,
+        "Orbit": 5,
+        "RestAssured": 5,
+        "SquareWire": 5,
+        "ClosureTemplates": 5,
+        "ScikitLearn": 5,
+        "FlaskAdmin": 5,
+        "PyPDF": 5,
+        "PyJWT": 5
+      },
+      "executed": 50,
+      "integrity_ok": 50,
+      "verdicts": {
+        "DIVERGENT_OBSERVABLE": 40,
+        "NO_DIVERGENCE_OBSERVED": 10,
+        "INSUFFICIENT": 0
+      },
+      "verdict_x_label": {
+        "bug_fix->DIVERGENT_OBSERVABLE": 40,
+        "non_behavioural->NO_DIVERGENCE_OBSERVED": 10
+      },
+      "risk_scores": {
+        "0.0": 50
+      },
+      "exclusions": 0,
+      "dev_project_name_overlap": [],
+      "duration_ms": {
+        "mean": 5.9297374599999975,
+        "median": 6.098396000000061,
+        "min": 3.0957080000000303,
+        "max": 7.644499999999832,
+        "sum": 296.4868729999999
+      }
+    },
+    "Bugs.jar": {
+      "languages": {
+        "Java": 50
+      },
+      "n_pairs": 50,
+      "n_bug_fix": 40,
+      "n_non_behavioural": 10,
+      "projects": [
+        "Accumulo",
+        "Camel",
+        "Flink",
+        "JackrabbitOak",
+        "Log4j2",
+        "Maven",
+        "Wicket"
+      ],
+      "n_projects": 7,
+      "pairs_per_project": {
+        "Camel": 8,
+        "Flink": 8,
+        "Wicket": 8,
+        "JackrabbitOak": 7,
+        "Log4j2": 7,
+        "Maven": 6,
+        "Accumulo": 6
+      },
+      "executed": 50,
+      "integrity_ok": 50,
+      "verdicts": {
+        "DIVERGENT_OBSERVABLE": 40,
+        "NO_DIVERGENCE_OBSERVED": 10,
+        "INSUFFICIENT": 0
+      },
+      "verdict_x_label": {
+        "bug_fix->DIVERGENT_OBSERVABLE": 40,
+        "non_behavioural->NO_DIVERGENCE_OBSERVED": 10
+      },
+      "risk_scores": {
+        "0.0": 50
+      },
+      "exclusions": 0,
+      "dev_project_name_overlap": [],
+      "duration_ms": {
+        "mean": 6.426607519999994,
+        "median": 6.9561455000000105,
+        "min": 4.227207999999871,
+        "max": 7.234249999999998,
+        "sum": 321.3303759999997
+      }
+    }
+  },
+  "totals": {
+    "pairs": 250,
+    "bug_fix": 200,
+    "non_behavioural": 50,
+    "languages": {
+      "Java": 180,
+      "Python": 70
+    },
+    "distinct_projects": 47,
+    "distinct_project_names_global": 47,
+    "verdicts": {
+      "DIVERGENT_OBSERVABLE": 200,
+      "NO_DIVERGENCE_OBSERVED": 50
+    },
+    "verdict_x_label": {
+      "bug_fix->DIVERGENT_OBSERVABLE": 200,
+      "non_behavioural->NO_DIVERGENCE_OBSERVED": 50
+    },
+    "label_verdict_agreement": 250,
+    "reproducibility_records_in_results": 0,
+    "duration_ms_mean": 6.536404819999997,
+    "duration_ms_sum": 1634.101204999999
+  },
+  "overlap": {
+    "cross_dataset_project_names": {},
+    "dev_manifest_rows": 321,
+    "dev_records_rows": 312,
+    "dev_projects": 114,
+    "dev_families": {
+      "bugsinpy": 55,
+      "quixbugs": 116,
+      "synthetic": 150
+    },
+    "dev_project_name_overlap_total": []
+  },
+  "ers": {
+    "perturbations": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P8",
+      "P9"
+    ],
+    "n_trials": 2250,
+    "overall": {
+      "P1": {
+        "pass": 10,
+        "fail": 0,
+        "na": 240
+      },
+      "P2": {
+        "pass": 250,
+        "fail": 0,
+        "na": 0
+      },
+      "P3": {
+        "pass": 250,
+        "fail": 0,
+        "na": 0
+      },
+      "P4": {
+        "pass": 50,
+        "fail": 0,
+        "na": 200
+      },
+      "P5": {
+        "pass": 50,
+        "fail": 0,
+        "na": 200
+      },
+      "P6": {
+        "pass": 50,
+        "fail": 0,
+        "na": 200
+      },
+      "P7": {
+        "pass": 50,
+        "fail": 0,
+        "na": 200
+      },
+      "P8": {
+        "pass": 250,
+        "fail": 0,
+        "na": 0
+      },
+      "P9": {
+        "pass": 50,
+        "fail": 0,
+        "na": 200
+      }
+    },
+    "per_dataset": {
+      "Defects4J": {
+        "P1": {
+          "pass": 0,
+          "fail": 0,
+          "na": 50
+        },
+        "P2": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P3": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P4": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P5": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P6": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P7": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P8": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P9": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        }
+      },
+      "BugsInPy": {
+        "P1": {
+          "pass": 0,
+          "fail": 0,
+          "na": 50
+        },
+        "P2": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P3": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P4": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P5": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P6": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P7": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P8": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P9": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        }
+      },
+      "Bears": {
+        "P1": {
+          "pass": 0,
+          "fail": 0,
+          "na": 50
+        },
+        "P2": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P3": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P4": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P5": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P6": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P7": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P8": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P9": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        }
+      },
+      "BugSwarm": {
+        "P1": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P2": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P3": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P4": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P5": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P6": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P7": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P8": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P9": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        }
+      },
+      "Bugs.jar": {
+        "P1": {
+          "pass": 0,
+          "fail": 0,
+          "na": 50
+        },
+        "P2": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P3": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P4": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P5": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P6": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P7": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        },
+        "P8": {
+          "pass": 50,
+          "fail": 0,
+          "na": 0
+        },
+        "P9": {
+          "pass": 10,
+          "fail": 0,
+          "na": 40
+        }
+      }
+    },
+    "max_abs_delta": 1.0,
+    "distinct_orig_risk": [
+      0.0
+    ],
+    "predictor": "sbgv8.ers.ActivationStubPredictor (risk = 1 - act_frac; docstring: 'For tests and CLI smoke only')",
+    "totals": {
+      "pass": 1010,
+      "fail": 0,
+      "na": 1240
+    },
+    "profile_fix_check": {
+      "fix_commit_in_HEAD": false,
+      "HEAD_profile_has__relevant": false,
+      "fixed_profile_has__relevant": true,
+      "replay_current_matches_recorded": 2250,
+      "n_compared": 2250,
+      "fixed_vs_current_pass_or_delta_or_decision_differs": 0,
+      "fixed_vs_current_P2P3_pert_profile_feature_differs": 250,
+      "P2P3_features_changed_under_current_profile": [
+        "n_eff",
+        "n_eff_prov",
+        "n_rep",
+        "n_same"
+      ],
+      "P2P3_features_changed_under_fixed_profile": []
+    }
+  },
+  "prediction_lock": {
+    "claimed_package_sha256": "c1ee208e1da99643a59dcbc313c0f083bba61ec0bc5003aa4e53ea814e166298",
+    "sha256_locked_manifest_file": "c1ee208e1da99643a59dcbc313c0f083bba61ec0bc5003aa4e53ea814e166298",
+    "match": true,
+    "manifest_rebuilt_from_execution_results_identical": true,
+    "n_locked": 250,
+    "hash_scope": "SHA-256 of locked_predictions_manifest.json bytes only; blinded cases, CSV, pair_manifest, execution/ERS JSONL are NOT covered",
+    "external_timestamp_or_signature": false,
+    "file_sha256": {
+      "blinded_adjudication_cases.json": "df29851f64e16537ed5c6924a85cd342a9c518092cd463aaa882c244119ee9a9",
+      "blinded_adjudication_template.csv": "b31ff334b403dba68587b63614c796de00969f5abf9c67e22bdf7d62760f2fff",
+      "dataset_manifest.json": "8318deb20e7abf8992036c9a60accd53a91394ab7f03f1cbe7f29b343dd4eed2",
+      "ers_results.jsonl": "7d0289644af9b4fa75a4a9ed1661965b7858ac6a8f5f0b98a9bc17a672d2a7be",
+      "exclusions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "execution_results.jsonl": "7b5e63b35577de84618a29d29ba25932a8b364c3671ac23c18404ce28635febb",
+      "locked_predictions_manifest.json": "c1ee208e1da99643a59dcbc313c0f083bba61ec0bc5003aa4e53ea814e166298",
+      "pair_manifest.json": "be2fec0c6d49056a4eeee5e5cd8168cdad6e9abc44ad6595c39315438f490a8e",
+      "prediction_lock_metadata.json": "cc4f818f28de254101511d75717ea4f22fc5b49a1e8b8ca2ff5f4cf23f0f1072"
+    }
+  },
+  "adjudication": {
+    "template_rows": 250,
+    "rows_with_any_decision": 0,
+    "blinded_cases": 250,
+    "label_leak_case_id_contains_non_behav_or_bug": 130,
+    "label_leak_description_says_fix": 200,
+    "label_leak_patch_comment_buggy_or_fixed": 56
+  }
+}

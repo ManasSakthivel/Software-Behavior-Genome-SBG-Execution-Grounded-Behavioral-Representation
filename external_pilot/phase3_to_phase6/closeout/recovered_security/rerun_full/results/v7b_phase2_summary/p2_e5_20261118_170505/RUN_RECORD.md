@@ -1,0 +1,3 @@
+commit: ee4749bcd91cf4de4317479eb96a95614019d9a1
+date: 2026-11-18T11:35:05Z
+E3 source: results/repro/p2_e3_20261118_092700

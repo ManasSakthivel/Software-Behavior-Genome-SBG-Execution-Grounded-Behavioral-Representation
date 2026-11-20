@@ -1,0 +1,81 @@
+% SBG V8 -- IEEE Access manuscript (official IEEE Access LaTeX template, ACCESS_latex_template_20260513).
+% Build: see README.md. Compiler: pdfLaTeX + BibTeX (the ieeeaccess class requires pdfTeX primitives).
+\documentclass{ieeeaccess}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\makeatletter
+\AtBeginDocument{\DeclareMathVersion{bold}
+\SetSymbolFont{operators}{bold}{T1}{times}{b}{n}
+\SetSymbolFont{NewLetters}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathrm}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathit}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathbf}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{pcr}{b}{n}
+\SetSymbolFont{symbols}{bold}{OMS}{cmsy}{b}{n}
+\renewcommand\boldmath{\@nomath\boldmath\mathversion{bold}}}
+\makeatother
+
+\input{macros}
+
+\begin{document}
+\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+\doi{10.1109/ACCESS.2026.DOI}
+
+\title{How Far Can a No-Divergence Verdict Be Trusted? False-Assurance Risk, Evidence Response Signatures, and a Pilot Study in Differential Regression Testing}
+
+\author{\uppercase{Manas Sakthivel}\authorrefmark{1}}
+\address[1]{Affiliation and e-mail to be supplied by the author before submission}
+
+\tfootnote{This work received no specific external funding.}
+
+\markboth
+{Sakthivel: How Far Can a No-Divergence Verdict Be Trusted?}
+{Sakthivel: How Far Can a No-Divergence Verdict Be Trusted?}
+
+\corresp{Corresponding author: Manas Sakthivel.}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{keywords}
+\input{sections/keywords}
+\end{keywords}
+
+\titlepgskip=-21pt
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/problem}
+\input{sections/approach}
+\input{sections/ers}
+\input{sections/trust}
+\input{sections/design}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/threats}
+\input{sections/reproducibility}
+\input{sections/conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\begin{IEEEbiographynophoto}{Manas Sakthivel}
+Biography to be supplied by the author before submission.
+\end{IEEEbiographynophoto}
+
+\EOD
+\end{document}

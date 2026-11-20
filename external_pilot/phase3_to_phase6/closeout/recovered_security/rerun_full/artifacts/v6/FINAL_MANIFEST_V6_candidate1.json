@@ -1,0 +1,144 @@
+{
+ "manifest": "SBG V6 FINAL ARCHITECTURE CANDIDATE 1 -- immutable configuration manifest",
+ "created_utc": "2026-11-17T03:07:46.388314+00:00",
+ "approval_status": "NOT APPROVED for holdout. Awaiting explicit reviewer approval. Supersedes artifacts/v6/FREEZE_V6.json (V6-B as first frozen) only if approved.",
+ "architecture": {
+  "name": "V6-B gated (C0g)",
+  "selected_by": "PROTOCOL_V2 selection rule applied mechanically (FINAL_RESULTS.json: rule.selected_by_rule)",
+  "decision_caveat": "Rule is partly post-hoc (see SELECTION_RULE_DISCLOSURE.md). Not fully preregistered.",
+  "reviewer_decision_pending": "C1_V6B_minusE (E columns removed from the predictive vector) is the clean-metadata alternative. It tied on the primary metric but failed the small-stratum non-inferiority gate, so the rule did not select it."
+ },
+ "feature_roles": {
+  "predictive_R1_oracle_free": [
+   "d_A",
+   "d_C",
+   "cfg0",
+   "cfg1",
+   "cfg2",
+   "alpha",
+   "conf",
+   "st_act",
+   "st_nact",
+   "st_unk"
+  ],
+  "predictive_note": "alpha, conf, st_act, st_nact, st_unk are in the predictive vector of the rule-selected candidate; they are ALSO logged as execution-quality metadata for every pair.",
+  "metadata_only_never_fed_to_classifier": [
+   "usable_frac(base,var)",
+   "trunc_frac(base,var)",
+   "n(base,var)",
+   "exc_frac(base,var)",
+   "nondet(base,var)",
+   "fail(base,var)",
+   "reasons",
+   "status",
+   "secs"
+  ],
+  "evidence_taxonomy": {
+   "activation": [
+    "alpha",
+    "status(ACTIVATED|NOT_ACTIVATED)"
+   ],
+   "trace_completeness": [
+    "usable_frac",
+    "trunc_frac"
+   ],
+   "instrumentation_reliability": [
+    "fail",
+    "nondet"
+   ],
+   "unknown_evidence": [
+    "status==UNKNOWN with reasons"
+   ]
+  },
+  "optional_oracle_available_R2_separate_regime": {
+   "features": [
+    "d_R",
+    "delta_out"
+   ],
+   "definition": "d_R: abstract (exception type, value type, sign, length bucket) difference of return values between base and variant over inputs usable on both sides; delta_out: exact repr difference of return value/exception type over the same inputs. Both REQUIRE executing both program versions on identical inputs and comparing their outputs (differential testing). No ground-truth label or expected-output oracle is used.",
+   "excluded_from_primary": true,
+   "reported_only_in": [
+    "R2:C1+R",
+    "R2:DIFF",
+    "R2:CONV+DIFF",
+    "R2:CONV+DIFF+C1"
+   ]
+  },
+  "removed_not_used": [
+   "d_B",
+   "g",
+   "sbg_temporal",
+   "sbg_state",
+   "sbg_v3",
+   "sbg_v5"
+  ],
+  "conventional_baseline_features(reference only, not SBG)": [
+   "static_token",
+   "static_ast",
+   "edit_lines",
+   "call_count",
+   "coverage_size",
+   "n_functions",
+   "exception_fraction"
+  ]
+ },
+ "policy_P1": "NOT_ACTIVATED and UNKNOWN pairs are ABSTAINED at scoring: score = median of the activated training pairs' inner-OOF scores of the same fold. Never interpreted as equivalence. Report all-pairs and activated-only AUROC plus the abstention rate.",
+ "preprocessing": "SimpleImputer(strategy=median, add_indicator=False); StandardScaler (LR only)",
+ "classifier_primary": "LogisticRegression(L2,max_iter=2000), C in {0.1,1,10}, inner GroupKFold(3) by program, scoring roc_auc",
+ "classifier_secondary": "HistGradientBoostingClassifier(random_state=0), max_depth in {2,3}, max_iter in {50,100}, same inner CV",
+ "seeds": [
+  42,
+  43,
+  44
+ ],
+ "outer_cv": "5-fold program-grouped (folds(g,seed)); final holdout model: fit on all DEV with identical recipe",
+ "orientation": "forward, fixed a priori",
+ "holdouts": {
+  "touched": false,
+  "v8_test": "not run",
+  "v10": "not run",
+  "quixbugs": "not run",
+  "bugsinpy": "not run",
+  "metadata_read": "only program ids and base-source hashes of v8 test/v10 pair files were read, for a DEV/holdout overlap check (0 overlap). No scores, labels or features were read."
+ },
+ "environment": {
+  "python": "3.13.15",
+  "platform": "macOS-26.7-arm64-arm-64bit-Mach-O",
+  "sklearn": "1.9.1",
+  "numpy": "2.5.5",
+  "pandas": "3.1.1",
+  "PYTHONHASHSEED": "0",
+  "OMP_NUM_THREADS": "1"
+ },
+ "hashes_sha256": {
+  "sbgv6/config.py": "a72caeaf55b574c25204b69a81425e7c6f24695b6851246680560b54f7c907c0",
+  "sbgv6/features.py": "100175f1d19c4037ca84a255748de276bb8fc31bf2c6a106a524227f1bf374f4",
+  "sbgv6/distance.py": "82be21126c3a6d6d917cb2cd7924e9e12959c168d80e7e2692dc8849ae9f700e",
+  "sbgv6/observe.py": "1a4097cbafb8baae3f570d1df52e2a674c68c028ca14225f6edf47c0015a01d3",
+  "experiments/v6/evaluate.py": "ca00868f14d506e77770917d8743c831d50e05e0da6961b1112fcb93ce06d956",
+  "experiments/v6/extract_pairs.py": "ed17b3c11c534501455dfd028ae007635070a5f46bd742ebd61b2b2eacd7f7ef",
+  "experiments/v6/final_pipeline.py": "e86a1efc1f099f7b7a0165a689fedda5dffd72c563091f1bed28a1b594c39f6f",
+  "experiments/v6/repro_compare.py": "7df0f0b4287c284741067fbc04b92166820127763e66a306ab1c79966eefddb1",
+  "experiments/v6/audit_dups_labels.py": "e96339a0c1d2a9642efeca36d9ec4d5efbbc0b8cef6db1f551130887a7df9c0b",
+  "experiments/v6/audit_labels.py": "2d85b5e44b308358eb8622d35851e5c102c7b5eb8fd87a05ca94152752156e04",
+  "experiments/v6/audit_leakage.py": "1a4e0a6e0245743c3c49d7bd9a824ac73e7ad5b47c331c782917ce1661f17a60",
+  "experiments/v6/audit_selection.py": "c4c27d63ea9e8a75af9d7665e584f4372fd946584ab189a4896731007b6f7996",
+  "experiments/v6/audit_diff.py": "f4ee48b4906cd36f485d68ffff7a216c57ff28bd48875d0daf8feec791a233f7",
+  "artifacts/v6/audit/SELECTION_RULE_OPERATIONALISATION.json": "c68b2d426d05606eff9058781ed3d1d9cb0a3b6c83c9bfe5e58689c41b67c759",
+  "artifacts/v6/audit/SELECTION_RULE_DISCLOSURE.md": "8a1a75596d27bad9c81a6be1fce97c5f5ed56fd82a8237c97dca6d5cd2e604a6",
+  "artifacts/v6/audit/PROTOCOL_V2.json": "472340270de560597f1221a86db49dfb0c2ea0299d9bf47d3b37d93101caee49",
+  "artifacts/v6/audit/DUPLICATE_AUDIT.json": "7b2b78351d51635a513c8bcb475c53a40d0ee91d59ca3587628969951a77828c",
+  "artifacts/v6/audit/LABEL_ADJUDICATION.csv": "3f471ea5d90a6114ebcf42e60b87a757d4f35d2ed6b704f41ea0b6794697a348",
+  "artifacts/v6/audit/LABEL_ADJUDICATION_SUMMARY.json": "77eff30ba692e33f83dbaa1be7410e7bf81cd737fe8b45043c0cc3b963394b48",
+  "artifacts/v6/audit/LEAKAGE_AUDIT.json": "919e1ec9b8af62dfd7b54b3c62347d5ec06b50a3fecf0e09fbdb7fb70ccbbbb1",
+  "artifacts/v6/audit/SELECTION_RESULTS.json": "a8fb0966be359caf8620e1a3f39bc4b2d899d80a216336587f06029217fdb2b6",
+  "artifacts/v6/repro/features_v8train.jsonl": "7fe0588e2580db7492c15289b3b47d01932c0a5e4d645f4804df1644fa369f12",
+  "artifacts/v6/repro/features_v8val.jsonl": "4b53889d6ff9ce6a1177aa93f643583e60966abfe315665cc332b7def9672d42",
+  "artifacts/v6/repro/REPRO_COMPARE.json": "776a96bf7e07fa0c6ab14fb923aabfd16e2c922efa7f5c7ff21cbc9590c0700b",
+  "artifacts/v6/final/FINAL_RESULTS.json": "70555382cfcb5c9abfac537b08010c028af998c4c8d947e0bb620c7159ce7295",
+  "artifacts/v6/final/predictions_final.csv": "d29950ee9683d361d8a6d88bdd093b8e0bdff8ec9415f4bb19cf88acf1054098",
+  "artifacts/v6/final/OOF_final.npz": "5591c07e39db8b0db2e7a5651de00afea82598c4faaf24d0d037a0d869da103f",
+  "artifacts/v6/final.log": "c8ae8e9c68256d6d48d19b49c8e7dbde4a49706e2b788eb1081eb218c9101455",
+  "requirements-lock.txt": "c25aba80f1521902486d3e31cd2e664282c0177039377d641c254d36377a883f"
+ }
+}

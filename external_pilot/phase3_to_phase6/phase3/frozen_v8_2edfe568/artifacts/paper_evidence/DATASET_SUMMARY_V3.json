@@ -1,0 +1,163 @@
+{
+ "artifact": "DATASET_SUMMARY_V3",
+ "v8": {
+  "train": {
+   "n_pairs": 2057,
+   "n_programs": 49,
+   "n_changed": 1167,
+   "n_equivalent": 890
+  },
+  "dev": {
+   "n_pairs": 597,
+   "n_programs": 14,
+   "n_changed": 348,
+   "n_equivalent": 249
+  },
+  "val": {
+   "n_pairs": 461,
+   "n_programs": 11,
+   "n_changed": 243,
+   "n_equivalent": 218
+  },
+  "test": {
+   "n_pairs": 1130,
+   "n_programs": 26,
+   "n_changed": 648,
+   "n_equivalent": 482
+  }
+ },
+ "v8_scored_this_session": {
+  "train": {
+   "source": {
+    "path": "artifacts/final/pairs_v8train_output_free_v8.jsonl",
+    "sha256": "370a88b76871ed7eab7d8ee851a62cc8dc81cce3c84ffa8c4e4949c6d153e6d5"
+   },
+   "n_pairs": 1909,
+   "n_programs": 46
+  },
+  "val": {
+   "source": {
+    "path": "artifacts/final/pairs_v8val_output_free_v8.jsonl",
+    "sha256": "f6e1567efc60e8bd9c251511768f64510a169a0f53a1c1c9ffd382fd6b30cd0f"
+   },
+   "n_pairs": 459,
+   "n_programs": 11
+  }
+ },
+ "v9_composed": {
+  "manifest": {
+   "path": "benchmark/datasets/v9_composed/manifest.json",
+   "sha256": "4ee38527e285ec7da2a5d0de700411b04f8e6f6f939f165b3446d1caa67363f8"
+  },
+  "test_split_generated": false,
+  "stale_programs_excluded": [
+   "math_count_set_bits",
+   "math_digital_root",
+   "math_extended_gcd",
+   "math_gcd_lcm",
+   "math_happy_number",
+   "math_nthroot_newton",
+   "math_power_modular",
+   "math_trailing_zeros"
+  ],
+  "splits": {
+   "train": {
+    "n_programs": 46,
+    "n_equivalent_v8_reused": 842,
+    "n_composed_changed": 842,
+    "n_unmatched_equivalent": 0,
+    "scored_selection_audit": {
+     "all_pairs_in_file": 1684,
+     "evaluated": 1667,
+     "valid": 1667,
+     "matched_complete": 1650,
+     "dropped_by_matching_rule": 17,
+     "failure_kinds": {
+      "harness_timeout": 4,
+      "import_error": 2,
+      "nonterminating": 11
+     },
+     "mean_edit_all_valid_changed": 10.336,
+     "mean_edit_matched_changed": 10.336
+    }
+   },
+   "dev": {
+    "n_programs": 13,
+    "n_equivalent_v8_reused": 233,
+    "n_composed_changed": 233,
+    "n_unmatched_equivalent": 0,
+    "scored_selection_audit": {
+     "all_pairs_in_file": 466,
+     "evaluated": 465,
+     "valid": 465,
+     "matched_complete": 464,
+     "dropped_by_matching_rule": 1,
+     "failure_kinds": {
+      "import_error": 1
+     },
+     "mean_edit_all_valid_changed": 10.448,
+     "mean_edit_matched_changed": 10.448
+    }
+   },
+   "val": {
+    "n_programs": 11,
+    "n_equivalent_v8_reused": 218,
+    "n_composed_changed": 218,
+    "n_unmatched_equivalent": 0,
+    "scored_selection_audit": {
+     "all_pairs_in_file": 436,
+     "evaluated": 434,
+     "valid": 434,
+     "matched_complete": 432,
+     "dropped_by_matching_rule": 2,
+     "failure_kinds": {
+      "nonterminating": 1,
+      "import_error": 1
+     },
+     "mean_edit_all_valid_changed": 10.125,
+     "mean_edit_matched_changed": 10.125
+    }
+   }
+  }
+ },
+ "label_distribution_by_edit_size_bucket_v8_train": {
+  "0-1": {
+   "n_changed": 0,
+   "n_equivalent": 0,
+   "frac_changed": 0.0
+  },
+  "2-2": {
+   "n_changed": 951,
+   "n_equivalent": 219,
+   "frac_changed": 0.813
+  },
+  "3-5": {
+   "n_changed": 129,
+   "n_equivalent": 89,
+   "frac_changed": 0.592
+  },
+  "6-10": {
+   "n_changed": 6,
+   "n_equivalent": 306,
+   "frac_changed": 0.019
+  },
+  "11-20": {
+   "n_changed": 3,
+   "n_equivalent": 177,
+   "frac_changed": 0.017
+  },
+  "21-inf": {
+   "n_changed": 0,
+   "n_equivalent": 51,
+   "frac_changed": 0.0
+  }
+ },
+ "harness_timeout_events": {
+  "cause": "math_gray_code SC-4/SC-5 mutants remove the n>14 guard; a leaked tracer worker exceeds 18 GB RSS. Pairs are recorded unevaluated (failure_kind=harness_timeout), never imputed.",
+  "v8_train": 6,
+  "v9c_train": 4,
+  "v8_dev": 0,
+  "v8_val": 0,
+  "v8_test": 0
+ }
+}

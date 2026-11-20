@@ -1,0 +1,361 @@
+{
+ "n_pairs": 638,
+ "n_sets": 319,
+ "n_programs": 19,
+ "pooled": {
+  "v5": 0.896768,
+  "edit": 0.616046,
+  "mex": 0.790789
+ },
+ "per_program": {
+  "ds_min_heap_array": {
+   "n_pairs": 32,
+   "n_chg": 16,
+   "n_eq": 16,
+   "v5": 0.927734,
+   "edit": 0.646484,
+   "mex": 0.667969
+  },
+  "ds_ranked_set": {
+   "n_pairs": 38,
+   "n_chg": 19,
+   "n_eq": 19,
+   "v5": 0.908587,
+   "edit": 0.637119,
+   "mex": 0.642659
+  },
+  "ds_union_find": {
+   "n_pairs": 30,
+   "n_chg": 15,
+   "n_eq": 15,
+   "v5": 0.946667,
+   "edit": 0.606667,
+   "mex": 0.784444
+  },
+  "graph_alien_dict": {
+   "n_pairs": 14,
+   "n_chg": 7,
+   "n_eq": 7,
+   "v5": 0.877551,
+   "edit": 0.612245,
+   "mex": 1.0
+  },
+  "graph_cycle_detection_dfs": {
+   "n_pairs": 34,
+   "n_chg": 17,
+   "n_eq": 17,
+   "v5": 0.937716,
+   "edit": 0.589965,
+   "mex": 0.816609
+  },
+  "graph_network_delay": {
+   "n_pairs": 36,
+   "n_chg": 18,
+   "n_eq": 18,
+   "v5": 0.962963,
+   "edit": 0.655864,
+   "mex": 0.959877
+  },
+  "graph_topological_kahn": {
+   "n_pairs": 36,
+   "n_chg": 18,
+   "n_eq": 18,
+   "v5": 0.705247,
+   "edit": 0.632716,
+   "mex": 0.799383
+  },
+  "math_coin_change": {
+   "n_pairs": 38,
+   "n_chg": 19,
+   "n_eq": 19,
+   "v5": 0.927978,
+   "edit": 0.677285,
+   "mex": 0.897507
+  },
+  "math_fib_matrix": {
+   "n_pairs": 26,
+   "n_chg": 13,
+   "n_eq": 13,
+   "v5": 0.970414,
+   "edit": 0.606509,
+   "mex": 0.514793
+  },
+  "math_knapsack_01": {
+   "n_pairs": 48,
+   "n_chg": 24,
+   "n_eq": 24,
+   "v5": 0.881076,
+   "edit": 0.635417,
+   "mex": 0.842014
+  },
+  "sort_bitonic_sort": {
+   "n_pairs": 38,
+   "n_chg": 19,
+   "n_eq": 19,
+   "v5": 0.907202,
+   "edit": 0.641274,
+   "mex": 0.945983
+  },
+  "sort_gnome_sort": {
+   "n_pairs": 32,
+   "n_chg": 16,
+   "n_eq": 16,
+   "v5": 0.8125,
+   "edit": 0.675781,
+   "mex": 0.802734
+  },
+  "sort_gravity_bead": {
+   "n_pairs": 38,
+   "n_chg": 19,
+   "n_eq": 19,
+   "v5": 0.908587,
+   "edit": 0.605263,
+   "mex": 0.677285
+  },
+  "sort_pancake": {
+   "n_pairs": 38,
+   "n_chg": 19,
+   "n_eq": 19,
+   "v5": 0.916898,
+   "edit": 0.642659,
+   "mex": 0.396122
+  },
+  "sort_radix_sort_lsd": {
+   "n_pairs": 36,
+   "n_chg": 18,
+   "n_eq": 18,
+   "v5": 0.74537,
+   "edit": 0.645062,
+   "mex": 0.878086
+  },
+  "sort_stooge_sort": {
+   "n_pairs": 28,
+   "n_chg": 14,
+   "n_eq": 14,
+   "v5": 0.941327,
+   "edit": 0.630102,
+   "mex": 0.844388
+  },
+  "sort_tree_sort": {
+   "n_pairs": 36,
+   "n_chg": 18,
+   "n_eq": 18,
+   "v5": 0.953704,
+   "edit": 0.646605,
+   "mex": 0.82716
+  },
+  "str_decode_run_length": {
+   "n_pairs": 30,
+   "n_chg": 15,
+   "n_eq": 15,
+   "v5": 0.946667,
+   "edit": 0.615556,
+   "mex": 0.92
+  },
+  "str_group_anagrams": {
+   "n_pairs": 30,
+   "n_chg": 15,
+   "n_eq": 15,
+   "v5": 0.788889,
+   "edit": 0.64,
+   "mex": 0.946667
+  }
+ },
+ "win_loss": {
+  "V5_vs_edit": {
+   "wins": 19,
+   "losses": 0,
+   "ties": 0,
+   "mean_diff": 0.259184,
+   "median_diff": 0.274238,
+   "sign_test_p": 3.814697265625e-06,
+   "program_bootstrap_ci95_mean_diff": [
+    0.2199,
+    0.2942
+   ]
+  },
+  "V5_vs_MEX": {
+   "wins": 14,
+   "losses": 5,
+   "ties": 0,
+   "mean_diff": 0.094916,
+   "median_diff": 0.039062,
+   "sign_test_p": 0.063568115234375,
+   "program_bootstrap_ci95_mean_diff": [
+    0.0153,
+    0.1805
+   ],
+   "sign_test_note": "Not significant at 0.05; no multiplicity claim"
+  }
+ },
+ "lopo": {
+  "v5": {
+   "min": [
+    0.892167,
+    "ds_union_find"
+   ],
+   "max": [
+    0.906182,
+    "graph_topological_kahn"
+   ]
+  },
+  "edit": {
+   "min": [
+    0.613311,
+    "math_coin_change"
+   ],
+   "max": [
+    0.619282,
+    "graph_cycle_detection_dfs"
+   ]
+  },
+  "mex": {
+   "min": [
+    0.781228,
+    "sort_bitonic_sort"
+   ],
+   "max": [
+    0.814567,
+    "sort_pancake"
+   ]
+  },
+  "delta_v5_edit_range": [
+   0.275169,
+   0.288777
+  ],
+  "delta_v5_mex_range": [
+   0.081806,
+   0.118091
+  ]
+ },
+ "within_between": {
+  "v5": {
+   "n_cross": 101761,
+   "within_n": 5567,
+   "between_n": 96194,
+   "within_share": 0.054707,
+   "between_share": 0.945293,
+   "within_conc": 0.890875,
+   "between_conc": 0.897109,
+   "pooled_check": 0.896768,
+   "within_contrib": 0.048737,
+   "between_contrib": 0.848031
+  },
+  "edit": {
+   "n_cross": 101761,
+   "within_n": 5567,
+   "between_n": 96194,
+   "within_share": 0.054707,
+   "between_share": 0.945293,
+   "within_conc": 0.636339,
+   "between_conc": 0.614872,
+   "pooled_check": 0.616046,
+   "within_contrib": 0.034812,
+   "between_contrib": 0.581234
+  },
+  "mex": {
+   "n_cross": 101761,
+   "within_n": 5567,
+   "between_n": 96194,
+   "within_share": 0.054707,
+   "between_share": 0.945293,
+   "within_conc": 0.790911,
+   "between_conc": 0.790782,
+   "pooled_check": 0.790789,
+   "within_contrib": 0.043268,
+   "between_contrib": 0.747521
+  }
+ },
+ "program_mean_v5_changed_vs_equivalent": {
+  "ds_min_heap_array": [
+   0.5365,
+   0.0368
+  ],
+  "ds_ranked_set": [
+   0.2349,
+   0.0397
+  ],
+  "ds_union_find": [
+   0.6043,
+   0.0058
+  ],
+  "graph_alien_dict": [
+   0.4353,
+   0.0782
+  ],
+  "graph_cycle_detection_dfs": [
+   0.5207,
+   0.0524
+  ],
+  "graph_network_delay": [
+   0.2706,
+   0.0073
+  ],
+  "graph_topological_kahn": [
+   0.2486,
+   0.1512
+  ],
+  "math_coin_change": [
+   0.2328,
+   0.0197
+  ],
+  "math_fib_matrix": [
+   0.4621,
+   0.018
+  ],
+  "math_knapsack_01": [
+   0.2005,
+   0.0439
+  ],
+  "sort_bitonic_sort": [
+   0.3261,
+   0.0265
+  ],
+  "sort_gnome_sort": [
+   0.2235,
+   0.0292
+  ],
+  "sort_gravity_bead": [
+   0.5087,
+   0.0422
+  ],
+  "sort_pancake": [
+   0.1838,
+   0.0292
+  ],
+  "sort_radix_sort_lsd": [
+   0.286,
+   0.1174
+  ],
+  "sort_stooge_sort": [
+   0.6271,
+   0.0133
+  ],
+  "sort_tree_sort": [
+   0.6465,
+   0.0523
+  ],
+  "str_decode_run_length": [
+   0.1774,
+   0.0057
+  ],
+  "str_group_anagrams": [
+   0.3269,
+   0.1034
+  ]
+ },
+ "pooled_cluster_bootstrap_ci95": {
+  "v5": [
+   0.8648,
+   0.9219
+  ],
+  "v5_minus_edit": [
+   0.2458,
+   0.307
+  ],
+  "v5_minus_mex": [
+   0.0314,
+   0.1836
+  ]
+ }
+}

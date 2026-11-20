@@ -1,0 +1,839 @@
+{
+  "scope": "Component ablation of SBG V5 (v3/temporal/state), weight-model ablation (M0/M1/M2), edit-size confound controls, label-shuffle noise floors. Dev/train/observed-test only.",
+  "component_ablation_v5": {
+    "definition": "sbg_v5 = 0.50*sbg_v3 + 0.25*sbg_temporal + 0.25*sbg_state; each component scored separately by analyse_results.py on the VALID set",
+    "by_run": {
+      "v6train_v7": {
+        "sbg_v5": {
+          "auroc": 0.665329,
+          "ci95": [
+            0.598724,
+            0.730503
+          ]
+        },
+        "sbg_v3": {
+          "auroc": 0.659922,
+          "ci95": [
+            0.596908,
+            0.722574
+          ]
+        },
+        "sbg_temporal": {
+          "auroc": 0.653418,
+          "ci95": [
+            0.591273,
+            0.71629
+          ]
+        },
+        "sbg_state": {
+          "auroc": 0.680044,
+          "ci95": [
+            0.621275,
+            0.737378
+          ]
+        },
+        "exception_fraction": {
+          "auroc": 0.576176,
+          "ci95": [
+            0.530168,
+            0.625975
+          ]
+        },
+        "call_count": {
+          "auroc": 0.628773,
+          "ci95": [
+            0.566327,
+            0.692053
+          ]
+        },
+        "coverage_size": {
+          "auroc": 0.580065,
+          "ci95": [
+            0.516913,
+            0.640419
+          ]
+        },
+        "n_functions": {
+          "auroc": 0.561995,
+          "ci95": [
+            0.511504,
+            0.614834
+          ]
+        },
+        "combined_shortcut": {
+          "auroc": 0.640877,
+          "ci95": [
+            0.572765,
+            0.712312
+          ]
+        },
+        "static_token": {
+          "auroc": 0.192861,
+          "ci95": [
+            0.154383,
+            0.225466
+          ]
+        },
+        "static_ast": {
+          "auroc": 0.126224,
+          "ci95": [
+            0.092011,
+            0.161552
+          ]
+        },
+        "_label_shuffle_noise_floor": {
+          "mean": 0.527015,
+          "std": 0.015281,
+          "p95": 0.554352,
+          "n_shuffles": 500
+        },
+        "_source": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6train_output_free_v7.json",
+          "sha256": "f0d575210d8087501b9facd0e12e52bf1eab70b6d6548cc70fb9754c77c7fc62"
+        }
+      },
+      "v6dev_v7": {
+        "sbg_v5": {
+          "auroc": 0.667125,
+          "ci95": [
+            0.602825,
+            0.744573
+          ]
+        },
+        "sbg_v3": {
+          "auroc": 0.655915,
+          "ci95": [
+            0.593153,
+            0.729322
+          ]
+        },
+        "sbg_temporal": {
+          "auroc": 0.635667,
+          "ci95": [
+            0.571243,
+            0.714066
+          ]
+        },
+        "sbg_state": {
+          "auroc": 0.668447,
+          "ci95": [
+            0.60587,
+            0.746289
+          ]
+        },
+        "exception_fraction": {
+          "auroc": 0.613248,
+          "ci95": [
+            0.531975,
+            0.700068
+          ]
+        },
+        "call_count": {
+          "auroc": 0.58798,
+          "ci95": [
+            0.495896,
+            0.701878
+          ]
+        },
+        "coverage_size": {
+          "auroc": 0.598392,
+          "ci95": [
+            0.525461,
+            0.683017
+          ]
+        },
+        "n_functions": {
+          "auroc": 0.4932,
+          "ci95": [
+            0.428962,
+            0.575525
+          ]
+        },
+        "combined_shortcut": {
+          "auroc": 0.624474,
+          "ci95": [
+            0.55107,
+            0.719662
+          ]
+        },
+        "static_token": {
+          "auroc": 0.23138,
+          "ci95": [
+            0.111508,
+            0.307617
+          ]
+        },
+        "static_ast": {
+          "auroc": 0.096018,
+          "ci95": [
+            0.054423,
+            0.139434
+          ]
+        },
+        "_label_shuffle_noise_floor": {
+          "mean": 0.552763,
+          "std": 0.026251,
+          "p95": 0.595509,
+          "n_shuffles": 500
+        },
+        "_source": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6dev_output_free_v7.json",
+          "sha256": "17ceb9a278d2d5bdb545b0294dac2d10fc50cea892ccda04c3556360d170d567"
+        }
+      },
+      "v8dev_v8_rescore": {
+        "sbg_v5": {
+          "auroc": 0.739259,
+          "ci95": [
+            0.697581,
+            0.781091
+          ]
+        },
+        "sbg_v3": {
+          "auroc": 0.674856,
+          "ci95": [
+            0.628187,
+            0.72413
+          ]
+        },
+        "sbg_temporal": {
+          "auroc": 0.60088,
+          "ci95": [
+            0.530148,
+            0.671274
+          ]
+        },
+        "sbg_state": {
+          "auroc": 0.789647,
+          "ci95": [
+            0.753242,
+            0.830176
+          ]
+        },
+        "exception_fraction": {
+          "auroc": 0.571758,
+          "ci95": [
+            0.53833,
+            0.612031
+          ]
+        },
+        "call_count": {
+          "auroc": 0.544766,
+          "ci95": [
+            0.466377,
+            0.625096
+          ]
+        },
+        "coverage_size": {
+          "auroc": 0.595685,
+          "ci95": [
+            0.569533,
+            0.622435
+          ]
+        },
+        "n_functions": {
+          "auroc": 0.496865,
+          "ci95": [
+            0.451874,
+            0.546834
+          ]
+        },
+        "combined_shortcut": {
+          "auroc": 0.606426,
+          "ci95": [
+            0.558215,
+            0.657631
+          ]
+        },
+        "static_token": {
+          "auroc": 0.330426,
+          "ci95": [
+            0.278623,
+            0.392887
+          ]
+        },
+        "static_ast": {
+          "auroc": 0.317146,
+          "ci95": [
+            0.263721,
+            0.375774
+          ]
+        },
+        "_label_shuffle_noise_floor": {
+          "mean": 0.504095,
+          "std": 0.023173,
+          "p95": 0.541661,
+          "n_shuffles": 500
+        },
+        "_source": {
+          "path": "artifacts/final/MAIN_EVALUATION_v8devrescore_output_free_v8.json",
+          "sha256": "95058e7901d6e79adff497fcf867472b855730e667db861a2621f49d4d8ebb7c"
+        }
+      },
+      "v6test_v6": {
+        "sbg_v5": {
+          "auroc": 0.60127,
+          "ci95": [
+            0.490396,
+            0.705738
+          ]
+        },
+        "sbg_v3": {
+          "auroc": 0.598694,
+          "ci95": [
+            0.5003,
+            0.674864
+          ]
+        },
+        "sbg_temporal": {
+          "auroc": 0.614145,
+          "ci95": [
+            0.511924,
+            0.698559
+          ]
+        },
+        "sbg_state": {
+          "auroc": 0.635166,
+          "ci95": [
+            0.524643,
+            0.739595
+          ]
+        },
+        "exception_fraction": {
+          "auroc": 0.618367,
+          "ci95": [
+            0.520079,
+            0.700337
+          ]
+        },
+        "call_count": {
+          "auroc": 0.565487,
+          "ci95": [
+            0.462838,
+            0.681713
+          ]
+        },
+        "coverage_size": {
+          "auroc": 0.533088,
+          "ci95": [
+            0.450355,
+            0.606161
+          ]
+        },
+        "n_functions": {
+          "auroc": 0.513864,
+          "ci95": [
+            0.455479,
+            0.585068
+          ]
+        },
+        "combined_shortcut": {
+          "auroc": 0.582585,
+          "ci95": [
+            0.490999,
+            0.670582
+          ]
+        },
+        "static_token": {
+          "auroc": 0.169032,
+          "ci95": [
+            0.130169,
+            0.224099
+          ]
+        },
+        "static_ast": {
+          "auroc": 0.104743,
+          "ci95": [
+            0.065573,
+            0.157425
+          ]
+        },
+        "_label_shuffle_noise_floor": {
+          "mean": 0.506647,
+          "std": 0.027991,
+          "p95": 0.551054,
+          "n_shuffles": 500
+        },
+        "_source": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6test_output_free_v6.json",
+          "sha256": "828cdad5c2a495d3700c5b89abee63ae74b21c8a7faacf5503a12a01945a0bb9"
+        }
+      }
+    }
+  },
+  "weight_model_ablation": {
+    "fitted_on": "v6 TRAIN (VALID pairs)",
+    "selected_on": "v6 DEV AUROC",
+    "models": {
+      "M0": {
+        "features": [
+          "sbg_v5 (0.50 v3 + 0.25 temporal + 0.25 state)"
+        ],
+        "train_auroc": 0.665329,
+        "dev_auroc": 0.667125
+      },
+      "M1": {
+        "features": [
+          "sbg_v3",
+          "sbg_temporal",
+          "sbg_state"
+        ],
+        "train_auroc": 0.694957,
+        "dev_auroc": 0.665632
+      },
+      "M2": {
+        "features": [
+          "sbg_v3",
+          "sbg_temporal",
+          "sbg_state",
+          "exception_fraction",
+          "exception_component_v3",
+          "exception_type_jaccard",
+          "call_count",
+          "n_functions",
+          "coverage_size"
+        ],
+        "train_auroc": 0.724219,
+        "dev_auroc": 0.71281
+      }
+    },
+    "chosen_on_dev": "M2",
+    "source": {
+      "path": "artifacts/final/WEIGHT_FITTING.json",
+      "sha256": "6d1e157a1a317845d0c143de2cb586c69613df3cbfd704cf5870adb4b75553fb"
+    },
+    "caveat": "dev AUROC of M2 (0.7128) vs M0 (0.6671) is a selection statistic on 9 programs; the M2-minus-M0 difference was not tested out-of-sample on a held-out TEST split."
+  },
+  "edit_size_confound_control": {
+    "finding": "Reversed edit size (smaller edit => CHANGED) alone separates CHANGED from EQUIVALENT with AUROC ~0.95 on v6 train/dev (construction artefact of the v6 generator). On v8 (max_names=1 edit-size redesign) the confound is reduced but not removed (~0.85).",
+    "by_run": {
+      "v6train_v7": {
+        "edit_size_unit": "changed canonical-AST lines (experiments/final/edit_size_analysis._edit_size)",
+        "mean_edit_size": {
+          "changed": 2.291,
+          "equivalent": 24.689
+        },
+        "strata": {
+          "0": {
+            "edit_size_range": [
+              0,
+              2
+            ],
+            "n": 449,
+            "n_changed": 411,
+            "n_equivalent": 38,
+            "sbg_v5": {
+              "auroc": 0.619926,
+              "ci95": [
+                0.495979,
+                0.742784
+              ],
+              "n_programs": 27
+            },
+            "exception_fraction": {
+              "auroc": 0.592233,
+              "ci95": [
+                0.539063,
+                0.648883
+              ],
+              "n_programs": 27
+            },
+            "learned_m2": {
+              "auroc": 0.676975,
+              "ci95": [
+                0.54422,
+                0.790967
+              ],
+              "n_programs": 27
+            }
+          },
+          "1": {
+            "edit_size_range": [
+              3,
+              5
+            ],
+            "n": 102,
+            "n_changed": 57,
+            "n_equivalent": 45,
+            "sbg_v5": {
+              "auroc": 0.799415,
+              "ci95": [
+                0.668129,
+                0.921856
+              ],
+              "n_programs": 23
+            },
+            "exception_fraction": {
+              "auroc": 0.598246,
+              "ci95": [
+                0.466387,
+                0.726273
+              ],
+              "n_programs": 23
+            },
+            "learned_m2": {
+              "auroc": 0.770175,
+              "ci95": [
+                0.629329,
+                0.893506
+              ],
+              "n_programs": 23
+            }
+          },
+          "2": {
+            "edit_size_range": [
+              6,
+              10
+            ],
+            "n": 106,
+            "n_changed": 0,
+            "n_equivalent": 106,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          },
+          "3": {
+            "edit_size_range": [
+              11,
+              20
+            ],
+            "n": 143,
+            "n_changed": 6,
+            "n_equivalent": 137,
+            "sbg_v5": {
+              "auroc": 0.784672,
+              "ci95": [
+                0.711806,
+                0.844118
+              ],
+              "n_programs": 28
+            },
+            "exception_fraction": {
+              "auroc": 0.70438,
+              "ci95": [
+                0.677481,
+                0.722868
+              ],
+              "n_programs": 28
+            },
+            "learned_m2": {
+              "auroc": 0.510949,
+              "ci95": [
+                0.45935,
+                0.567376
+              ],
+              "n_programs": 28
+            }
+          },
+          "4": {
+            "edit_size_range": [
+              21,
+              40
+            ],
+            "n": 136,
+            "n_changed": 0,
+            "n_equivalent": 136,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          },
+          "5": {
+            "edit_size_range": [
+              41,
+              null
+            ],
+            "n": 97,
+            "n_changed": 0,
+            "n_equivalent": 97,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          }
+        }
+      },
+      "v6dev_v7": {
+        "edit_size_unit": "changed canonical-AST lines (experiments/final/edit_size_analysis._edit_size)",
+        "mean_edit_size": {
+          "changed": 2.212,
+          "equivalent": 23.831
+        },
+        "strata": {
+          "0": {
+            "edit_size_range": [
+              0,
+              2
+            ],
+            "n": 148,
+            "n_changed": 135,
+            "n_equivalent": 13,
+            "sbg_v5": {
+              "auroc": 0.491738,
+              "ci95": [
+                0.262346,
+                0.76044
+              ],
+              "n_programs": 9
+            },
+            "exception_fraction": {
+              "auroc": 0.648148,
+              "ci95": [
+                0.557292,
+                0.741935
+              ],
+              "n_programs": 9
+            },
+            "learned_m2": {
+              "auroc": 0.545299,
+              "ci95": [
+                0.31901,
+                0.787263
+              ],
+              "n_programs": 9
+            }
+          },
+          "1": {
+            "edit_size_range": [
+              3,
+              5
+            ],
+            "n": 41,
+            "n_changed": 18,
+            "n_equivalent": 23,
+            "sbg_v5": {
+              "auroc": 0.84058,
+              "ci95": [
+                0.738095,
+                0.952381
+              ],
+              "n_programs": 9
+            },
+            "exception_fraction": {
+              "auroc": 0.75,
+              "ci95": [
+                0.5625,
+                0.928571
+              ],
+              "n_programs": 9
+            },
+            "learned_m2": {
+              "auroc": 0.92029,
+              "ci95": [
+                0.791667,
+                1.0
+              ],
+              "n_programs": 9
+            }
+          },
+          "2": {
+            "edit_size_range": [
+              6,
+              10
+            ],
+            "n": 36,
+            "n_changed": 3,
+            "n_equivalent": 33,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          },
+          "3": {
+            "edit_size_range": [
+              11,
+              20
+            ],
+            "n": 47,
+            "n_changed": 0,
+            "n_equivalent": 47,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          },
+          "4": {
+            "edit_size_range": [
+              21,
+              40
+            ],
+            "n": 47,
+            "n_changed": 0,
+            "n_equivalent": 47,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          },
+          "5": {
+            "edit_size_range": [
+              41,
+              null
+            ],
+            "n": 26,
+            "n_changed": 0,
+            "n_equivalent": 26,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          }
+        }
+      },
+      "v8dev_v8_rescore": {
+        "edit_size_unit": "changed canonical-AST lines (experiments/final/edit_size_analysis._edit_size)",
+        "mean_edit_size": {
+          "changed": 2.738,
+          "equivalent": 9.169
+        },
+        "strata": {
+          "0": {
+            "edit_size_range": [
+              0,
+              2
+            ],
+            "n": 329,
+            "n_changed": 278,
+            "n_equivalent": 51,
+            "sbg_v5": {
+              "auroc": 0.85876,
+              "ci95": [
+                0.800633,
+                0.902318
+              ],
+              "n_programs": 13
+            },
+            "exception_fraction": {
+              "auroc": 0.602518,
+              "ci95": [
+                0.556106,
+                0.655556
+              ],
+              "n_programs": 13
+            },
+            "learned_m2": {
+              "auroc": 0.853752,
+              "ci95": [
+                0.79845,
+                0.899366
+              ],
+              "n_programs": 13
+            }
+          },
+          "1": {
+            "edit_size_range": [
+              3,
+              5
+            ],
+            "n": 62,
+            "n_changed": 39,
+            "n_equivalent": 23,
+            "sbg_v5": {
+              "auroc": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_programs": 13
+            },
+            "exception_fraction": {
+              "auroc": 0.5,
+              "ci95": [
+                0.5,
+                0.5
+              ],
+              "n_programs": 13
+            },
+            "learned_m2": {
+              "auroc": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "n_programs": 13
+            }
+          },
+          "2": {
+            "edit_size_range": [
+              6,
+              10
+            ],
+            "n": 122,
+            "n_changed": 24,
+            "n_equivalent": 98,
+            "sbg_v5": {
+              "auroc": 0.928571,
+              "ci95": [
+                0.8625,
+                0.981707
+              ],
+              "n_programs": 13
+            },
+            "exception_fraction": {
+              "auroc": 0.558036,
+              "ci95": [
+                0.548969,
+                0.5625
+              ],
+              "n_programs": 13
+            },
+            "learned_m2": {
+              "auroc": 0.951531,
+              "ci95": [
+                0.905172,
+                0.982843
+              ],
+              "n_programs": 13
+            }
+          },
+          "3": {
+            "edit_size_range": [
+              11,
+              20
+            ],
+            "n": 67,
+            "n_changed": 3,
+            "n_equivalent": 64,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          },
+          "4": {
+            "edit_size_range": [
+              21,
+              40
+            ],
+            "n": 13,
+            "n_changed": 0,
+            "n_equivalent": 13,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          },
+          "5": {
+            "edit_size_range": [
+              41,
+              null
+            ],
+            "n": 0,
+            "n_changed": 0,
+            "n_equivalent": 0,
+            "note": "stratum omitted: fewer than 5 pairs in a class (AUROC undefined/unstable)"
+          }
+        }
+      }
+    },
+    "raw_confound_files": [
+      "artifacts/paper_evidence/raw/confound_v6train.json",
+      "artifacts/paper_evidence/raw/confound_v6dev.json",
+      "artifacts/paper_evidence/raw/confound_v8dev.json"
+    ],
+    "historical_test_confound": {
+      "reversed_edit_size_auroc_v6_test": 0.9667,
+      "source": "reports/remediation/results/edit_size_analysis_test.json (pre-existing, not recomputed here)"
+    }
+  },
+  "external_corpora_shortcut_controls": {
+    "bugsinpy_valid_set": {
+      "sbg_v5": 0.409917,
+      "exception_fraction": 0.495283,
+      "call_count": 0.476415,
+      "combined_shortcut": 0.444777,
+      "static_ast": 0.636102
+    },
+    "source": {
+      "path": "artifacts/final/BUGSINPY_output_free_v7.json",
+      "sha256": "9c1d73998d4ce792fe9056997c3adc6fe6905068e2f11134983e70cf829cb493"
+    }
+  },
+  "historical_ablations_not_comparable": {
+    "files": [
+      "results/ablations/component_ablation.json",
+      "results/ablations/representation_ablation.json"
+    ],
+    "reason": "produced 2026-08-30 on the pre-remediation 'published' protocol over the original 744-pair test split; not comparable to output_free_v7/v8 runs and not re-run"
+  },
+  "output_oracle_leak_audit": {
+    "path": "artifacts/final/OUTPUT_ORACLE_LEAK_AUDIT.json",
+    "sha256": "e51b3fe38e1d174a29a89d6b77682018d95e233219f4f4d65ddb27c91e1c8816"
+  },
+  "not_available": [
+    "No ablation on any held-out TEST split (none exists); no v8 TEST ablation; no per-transformation-type v8 ablation computed."
+  ]
+}

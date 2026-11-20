@@ -1,0 +1,58 @@
+{
+  "benchmark_version": "v9_composed",
+  "generator": "benchmark/scripts/generate_v9_composed.py",
+  "derived_from": "benchmark/datasets/v8 (EQUIVALENT pairs reused verbatim)",
+  "sc_types": [
+    "SC-1",
+    "SC-2",
+    "SC-3",
+    "SC-4",
+    "SC-5",
+    "SC-6",
+    "SC-7",
+    "SC-8",
+    "SC-9",
+    "SC-10",
+    "SC-11",
+    "SC-12",
+    "SC-13",
+    "SC-14"
+  ],
+  "stale_programs_excluded": [
+    "math_count_set_bits",
+    "math_digital_root",
+    "math_extended_gcd",
+    "math_gcd_lcm",
+    "math_happy_number",
+    "math_nthroot_newton",
+    "math_power_modular",
+    "math_trailing_zeros"
+  ],
+  "test_split_generated": false,
+  "splits": {
+    "train": {
+      "n_programs": 46,
+      "n_equivalent_v8_reused": 842,
+      "n_composed_changed": 842,
+      "n_unmatched_equivalent": 0,
+      "unmatched_pair_ids": [],
+      "pair_file_sha256": "61df7eadab02df65d2a22e0ec3867468dc61b48e03b562edc3a822c25192e699"
+    },
+    "dev": {
+      "n_programs": 13,
+      "n_equivalent_v8_reused": 233,
+      "n_composed_changed": 233,
+      "n_unmatched_equivalent": 0,
+      "unmatched_pair_ids": [],
+      "pair_file_sha256": "e56880a831dffb2dcfa1c01b31ccd0a3701e9da62a4ff8d24c4cc11b3c4714fc"
+    },
+    "val": {
+      "n_programs": 11,
+      "n_equivalent_v8_reused": 218,
+      "n_composed_changed": 218,
+      "n_unmatched_equivalent": 0,
+      "unmatched_pair_ids": [],
+      "pair_file_sha256": "41f764b5ced50c4e7fe77ddf5b89a18878cd6aa5b3418cca9f54a0e1cb947b91"
+    }
+  }
+}

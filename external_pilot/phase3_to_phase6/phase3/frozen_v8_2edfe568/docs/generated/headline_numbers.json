@@ -1,0 +1,786 @@
+{
+  "_note": "Every number quoted in the README, the manuscript or a figure must appear here and must be produced by make_tables.py from an artifact. consistency_check.py enforces it.",
+  "corpus_files_on_disk": 64,
+  "corpus_programs_assigned": 60,
+  "corpus_programs_unassigned": 4,
+  "hard_negatives.canonical.exception_component_output_free.correct": 5,
+  "hard_negatives.canonical.exception_component_output_free.n": 12,
+  "hard_negatives.canonical.output_reading_reference.correct": 12,
+  "hard_negatives.canonical.output_reading_reference.n": 12,
+  "hard_negatives.canonical.sbg_v3_output_free.correct": 4,
+  "hard_negatives.canonical.sbg_v3_output_free.n": 12,
+  "hard_negatives.canonical.sbg_v5_output_free.correct": 5,
+  "hard_negatives.canonical.sbg_v5_output_free.n": 12,
+  "hard_negatives.declared.exception_component_output_free.correct": 6,
+  "hard_negatives.declared.exception_component_output_free.n": 12,
+  "hard_negatives.declared.output_reading_reference.correct": 12,
+  "hard_negatives.declared.output_reading_reference.n": 12,
+  "hard_negatives.declared.sbg_v3_output_free.correct": 5,
+  "hard_negatives.declared.sbg_v3_output_free.n": 12,
+  "hard_negatives.declared.sbg_v5_output_free.correct": 5,
+  "hard_negatives.declared.sbg_v5_output_free.n": 12,
+  "leak.assert_statements_traced": 611,
+  "leak.canonical_inputs_unused": 49,
+  "leak.entry_is_self_test_driver": 47,
+  "leak.entry_traces_assertions": 47,
+  "leak.programs": 64,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.call_count.auroc": 0.526901,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.call_count.ci": [
+    0.477733,
+    0.590567
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.call_count.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.combined_shortcut.auroc": 0.52869,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.combined_shortcut.ci": [
+    0.481611,
+    0.584617
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.combined_shortcut.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.coverage_size.auroc": 0.504325,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.coverage_size.ci": [
+    0.463865,
+    0.551534
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.coverage_size.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_component_v3.auroc": 0.576967,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_component_v3.ci": [
+    0.510702,
+    0.645151
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_component_v3.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_fraction.auroc": 0.556071,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_fraction.ci": [
+    0.50227,
+    0.615599
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_fraction.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_type_jaccard.auroc": 0.559993,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_type_jaccard.ci": [
+    0.505461,
+    0.622985
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.exception_type_jaccard.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.n_functions.auroc": 0.503166,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.n_functions.ci": [
+    0.472278,
+    0.541581
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.n_functions.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_state.auroc": 0.552526,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_state.ci": [
+    0.49144,
+    0.629013
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_state.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_temporal.auroc": 0.552417,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_temporal.ci": [
+    0.4951,
+    0.614061
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_temporal.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_v3.auroc": 0.529698,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_v3.ci": [
+    0.477434,
+    0.591731
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_v3.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_v5.auroc": 0.523592,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_v5.ci": [
+    0.467278,
+    0.593665
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.sbg_v5.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.static_ast.auroc": 0.350996,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.static_ast.ci": [
+    0.227125,
+    0.45461
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.static_ast.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.static_token.auroc": 0.367979,
+  "output-free_protocol_v6,_corrected_benchmark.ALL.static_token.ci": [
+    0.265301,
+    0.4609
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.ALL.static_token.n": 488,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.call_count.auroc": 0.565487,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.call_count.ci": [
+    0.462838,
+    0.681713
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.call_count.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.combined_shortcut.auroc": 0.582585,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.combined_shortcut.ci": [
+    0.490999,
+    0.670582
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.combined_shortcut.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.coverage_size.auroc": 0.533088,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.coverage_size.ci": [
+    0.450355,
+    0.606161
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.coverage_size.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_component_v3.auroc": 0.658612,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_component_v3.ci": [
+    0.550845,
+    0.741588
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_component_v3.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_fraction.auroc": 0.618367,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_fraction.ci": [
+    0.520079,
+    0.700337
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_fraction.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_type_jaccard.auroc": 0.626123,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_type_jaccard.ci": [
+    0.535778,
+    0.703399
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.exception_type_jaccard.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.n_functions.auroc": 0.513864,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.n_functions.ci": [
+    0.455479,
+    0.585068
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.n_functions.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_state.auroc": 0.635166,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_state.ci": [
+    0.524643,
+    0.739595
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_state.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_temporal.auroc": 0.614145,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_temporal.ci": [
+    0.511924,
+    0.698559
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_temporal.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_v3.auroc": 0.598694,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_v3.ci": [
+    0.5003,
+    0.674864
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_v3.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_v5.auroc": 0.60127,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_v5.ci": [
+    0.490396,
+    0.705738
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.sbg_v5.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.static_ast.auroc": 0.104743,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.static_ast.ci": [
+    0.065573,
+    0.157425
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.static_ast.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.static_token.auroc": 0.169032,
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.static_token.ci": [
+    0.130169,
+    0.224099
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.EVALUABLE.static_token.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.call_count.auroc": 0.565487,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.call_count.ci": [
+    0.462838,
+    0.681713
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.call_count.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.combined_shortcut.auroc": 0.582585,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.combined_shortcut.ci": [
+    0.490999,
+    0.670582
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.combined_shortcut.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.coverage_size.auroc": 0.533088,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.coverage_size.ci": [
+    0.450355,
+    0.606161
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.coverage_size.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_component_v3.auroc": 0.658612,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_component_v3.ci": [
+    0.550845,
+    0.741588
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_component_v3.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_fraction.auroc": 0.618367,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_fraction.ci": [
+    0.520079,
+    0.700337
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_fraction.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_type_jaccard.auroc": 0.626123,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_type_jaccard.ci": [
+    0.535778,
+    0.703399
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.exception_type_jaccard.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.n_functions.auroc": 0.513864,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.n_functions.ci": [
+    0.455479,
+    0.585068
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.n_functions.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_state.auroc": 0.635166,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_state.ci": [
+    0.524643,
+    0.739595
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_state.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_temporal.auroc": 0.614145,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_temporal.ci": [
+    0.511924,
+    0.698559
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_temporal.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_v3.auroc": 0.598694,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_v3.ci": [
+    0.5003,
+    0.674864
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_v3.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_v5.auroc": 0.60127,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_v5.ci": [
+    0.490396,
+    0.705738
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.sbg_v5.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.static_ast.auroc": 0.104743,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.static_ast.ci": [
+    0.065573,
+    0.157425
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.static_ast.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.static_token.auroc": 0.169032,
+  "output-free_protocol_v6,_corrected_benchmark.VALID.static_token.ci": [
+    0.130169,
+    0.224099
+  ],
+  "output-free_protocol_v6,_corrected_benchmark.VALID.static_token.n": 259,
+  "output-free_protocol_v6,_corrected_benchmark.failure_ledger": {
+    "base:unsupported_signature": 218,
+    "variant:import_error": 4,
+    "variant:nonterminating": 3,
+    "variant:unsupported_signature": 4
+  },
+  "output-free_protocol_v6,_corrected_benchmark.set_sizes": {
+    "ALL": 488,
+    "EVALUABLE": 259,
+    "VALID": 259
+  },
+  "output-free_protocol_v6.ALL.call_count.auroc": 0.493943,
+  "output-free_protocol_v6.ALL.call_count.ci": [
+    0.481493,
+    0.505549
+  ],
+  "output-free_protocol_v6.ALL.call_count.n": 744,
+  "output-free_protocol_v6.ALL.combined_shortcut.auroc": 0.494868,
+  "output-free_protocol_v6.ALL.combined_shortcut.ci": [
+    0.483674,
+    0.504912
+  ],
+  "output-free_protocol_v6.ALL.combined_shortcut.n": 744,
+  "output-free_protocol_v6.ALL.coverage_size.auroc": 0.490687,
+  "output-free_protocol_v6.ALL.coverage_size.ci": [
+    0.477681,
+    0.502729
+  ],
+  "output-free_protocol_v6.ALL.coverage_size.n": 744,
+  "output-free_protocol_v6.ALL.exception_component_v3.auroc": 0.512367,
+  "output-free_protocol_v6.ALL.exception_component_v3.ci": [
+    0.492816,
+    0.534153
+  ],
+  "output-free_protocol_v6.ALL.exception_component_v3.n": 744,
+  "output-free_protocol_v6.ALL.exception_fraction.auroc": 0.505754,
+  "output-free_protocol_v6.ALL.exception_fraction.ci": [
+    0.490518,
+    0.523421
+  ],
+  "output-free_protocol_v6.ALL.exception_fraction.n": 744,
+  "output-free_protocol_v6.ALL.exception_type_jaccard.auroc": 0.512588,
+  "output-free_protocol_v6.ALL.exception_type_jaccard.ci": [
+    0.492868,
+    0.534405
+  ],
+  "output-free_protocol_v6.ALL.exception_type_jaccard.n": 744,
+  "output-free_protocol_v6.ALL.n_functions.auroc": 0.491023,
+  "output-free_protocol_v6.ALL.n_functions.ci": [
+    0.479454,
+    0.502407
+  ],
+  "output-free_protocol_v6.ALL.n_functions.n": 744,
+  "output-free_protocol_v6.ALL.sbg_state.auroc": 0.50429,
+  "output-free_protocol_v6.ALL.sbg_state.ci": [
+    0.489334,
+    0.518894
+  ],
+  "output-free_protocol_v6.ALL.sbg_state.n": 744,
+  "output-free_protocol_v6.ALL.sbg_temporal.auroc": 0.498023,
+  "output-free_protocol_v6.ALL.sbg_temporal.ci": [
+    0.483877,
+    0.510793
+  ],
+  "output-free_protocol_v6.ALL.sbg_temporal.n": 744,
+  "output-free_protocol_v6.ALL.sbg_v3.auroc": 0.49876,
+  "output-free_protocol_v6.ALL.sbg_v3.ci": [
+    0.484687,
+    0.513552
+  ],
+  "output-free_protocol_v6.ALL.sbg_v3.n": 744,
+  "output-free_protocol_v6.ALL.sbg_v5.auroc": 0.491211,
+  "output-free_protocol_v6.ALL.sbg_v5.ci": [
+    0.476691,
+    0.505751
+  ],
+  "output-free_protocol_v6.ALL.sbg_v5.n": 744,
+  "output-free_protocol_v6.ALL.static_ast.auroc": 0.473534,
+  "output-free_protocol_v6.ALL.static_ast.ci": [
+    0.420938,
+    0.513786
+  ],
+  "output-free_protocol_v6.ALL.static_ast.n": 744,
+  "output-free_protocol_v6.ALL.static_token.auroc": 0.424278,
+  "output-free_protocol_v6.ALL.static_token.ci": [
+    0.366001,
+    0.479246
+  ],
+  "output-free_protocol_v6.ALL.static_token.n": 744,
+  "output-free_protocol_v6.EVALUABLE.call_count.auroc": 0.493452,
+  "output-free_protocol_v6.EVALUABLE.call_count.ci": [
+    0.471485,
+    0.514131
+  ],
+  "output-free_protocol_v6.EVALUABLE.call_count.n": 378,
+  "output-free_protocol_v6.EVALUABLE.combined_shortcut.auroc": 0.498363,
+  "output-free_protocol_v6.EVALUABLE.combined_shortcut.ci": [
+    0.478095,
+    0.516841
+  ],
+  "output-free_protocol_v6.EVALUABLE.combined_shortcut.n": 378,
+  "output-free_protocol_v6.EVALUABLE.coverage_size.auroc": 0.489318,
+  "output-free_protocol_v6.EVALUABLE.coverage_size.ci": [
+    0.471389,
+    0.506666
+  ],
+  "output-free_protocol_v6.EVALUABLE.coverage_size.n": 378,
+  "output-free_protocol_v6.EVALUABLE.exception_component_v3.auroc": 0.529239,
+  "output-free_protocol_v6.EVALUABLE.exception_component_v3.ci": [
+    0.490027,
+    0.573702
+  ],
+  "output-free_protocol_v6.EVALUABLE.exception_component_v3.n": 378,
+  "output-free_protocol_v6.EVALUABLE.exception_fraction.auroc": 0.515551,
+  "output-free_protocol_v6.EVALUABLE.exception_fraction.ci": [
+    0.483568,
+    0.559046
+  ],
+  "output-free_protocol_v6.EVALUABLE.exception_fraction.n": 378,
+  "output-free_protocol_v6.EVALUABLE.exception_type_jaccard.auroc": 0.5301,
+  "output-free_protocol_v6.EVALUABLE.exception_type_jaccard.ci": [
+    0.490248,
+    0.574422
+  ],
+  "output-free_protocol_v6.EVALUABLE.exception_type_jaccard.n": 378,
+  "output-free_protocol_v6.EVALUABLE.n_functions.auroc": 0.486284,
+  "output-free_protocol_v6.EVALUABLE.n_functions.ci": [
+    0.468778,
+    0.504121
+  ],
+  "output-free_protocol_v6.EVALUABLE.n_functions.n": 378,
+  "output-free_protocol_v6.EVALUABLE.sbg_state.auroc": 0.525246,
+  "output-free_protocol_v6.EVALUABLE.sbg_state.ci": [
+    0.492035,
+    0.566749
+  ],
+  "output-free_protocol_v6.EVALUABLE.sbg_state.n": 378,
+  "output-free_protocol_v6.EVALUABLE.sbg_temporal.auroc": 0.504276,
+  "output-free_protocol_v6.EVALUABLE.sbg_temporal.ci": [
+    0.474631,
+    0.537648
+  ],
+  "output-free_protocol_v6.EVALUABLE.sbg_temporal.n": 378,
+  "output-free_protocol_v6.EVALUABLE.sbg_v3.auroc": 0.514605,
+  "output-free_protocol_v6.EVALUABLE.sbg_v3.ci": [
+    0.484555,
+    0.543761
+  ],
+  "output-free_protocol_v6.EVALUABLE.sbg_v3.n": 378,
+  "output-free_protocol_v6.EVALUABLE.sbg_v5.auroc": 0.502484,
+  "output-free_protocol_v6.EVALUABLE.sbg_v5.ci": [
+    0.46649,
+    0.546836
+  ],
+  "output-free_protocol_v6.EVALUABLE.sbg_v5.n": 378,
+  "output-free_protocol_v6.EVALUABLE.static_ast.auroc": 0.395137,
+  "output-free_protocol_v6.EVALUABLE.static_ast.ci": [
+    0.351737,
+    0.439353
+  ],
+  "output-free_protocol_v6.EVALUABLE.static_ast.n": 378,
+  "output-free_protocol_v6.EVALUABLE.static_token.auroc": 0.350813,
+  "output-free_protocol_v6.EVALUABLE.static_token.ci": [
+    0.314501,
+    0.416214
+  ],
+  "output-free_protocol_v6.EVALUABLE.static_token.n": 378,
+  "output-free_protocol_v6.VALID.call_count.auroc": 0.524272,
+  "output-free_protocol_v6.VALID.call_count.ci": [
+    0.478058,
+    0.583789
+  ],
+  "output-free_protocol_v6.VALID.call_count.n": 294,
+  "output-free_protocol_v6.VALID.combined_shortcut.auroc": 0.561673,
+  "output-free_protocol_v6.VALID.combined_shortcut.ci": [
+    0.513086,
+    0.611608
+  ],
+  "output-free_protocol_v6.VALID.combined_shortcut.n": 294,
+  "output-free_protocol_v6.VALID.coverage_size.auroc": 0.543993,
+  "output-free_protocol_v6.VALID.coverage_size.ci": [
+    0.497821,
+    0.594645
+  ],
+  "output-free_protocol_v6.VALID.coverage_size.n": 294,
+  "output-free_protocol_v6.VALID.exception_component_v3.auroc": 0.578001,
+  "output-free_protocol_v6.VALID.exception_component_v3.ci": [
+    0.510309,
+    0.639804
+  ],
+  "output-free_protocol_v6.VALID.exception_component_v3.n": 294,
+  "output-free_protocol_v6.VALID.exception_fraction.auroc": 0.551247,
+  "output-free_protocol_v6.VALID.exception_fraction.ci": [
+    0.493141,
+    0.615397
+  ],
+  "output-free_protocol_v6.VALID.exception_fraction.n": 294,
+  "output-free_protocol_v6.VALID.exception_type_jaccard.auroc": 0.579683,
+  "output-free_protocol_v6.VALID.exception_type_jaccard.ci": [
+    0.510338,
+    0.641036
+  ],
+  "output-free_protocol_v6.VALID.exception_type_jaccard.n": 294,
+  "output-free_protocol_v6.VALID.n_functions.auroc": 0.505627,
+  "output-free_protocol_v6.VALID.n_functions.ci": [
+    0.472895,
+    0.551608
+  ],
+  "output-free_protocol_v6.VALID.n_functions.n": 294,
+  "output-free_protocol_v6.VALID.sbg_state.auroc": 0.573257,
+  "output-free_protocol_v6.VALID.sbg_state.ci": [
+    0.500442,
+    0.639427
+  ],
+  "output-free_protocol_v6.VALID.sbg_state.n": 294,
+  "output-free_protocol_v6.VALID.sbg_temporal.auroc": 0.561645,
+  "output-free_protocol_v6.VALID.sbg_temporal.ci": [
+    0.503132,
+    0.610309
+  ],
+  "output-free_protocol_v6.VALID.sbg_temporal.n": 294,
+  "output-free_protocol_v6.VALID.sbg_v3.auroc": 0.563796,
+  "output-free_protocol_v6.VALID.sbg_v3.ci": [
+    0.499577,
+    0.621852
+  ],
+  "output-free_protocol_v6.VALID.sbg_v3.n": 294,
+  "output-free_protocol_v6.VALID.sbg_v5.auroc": 0.564679,
+  "output-free_protocol_v6.VALID.sbg_v5.ci": [
+    0.489167,
+    0.638862
+  ],
+  "output-free_protocol_v6.VALID.sbg_v5.n": 294,
+  "output-free_protocol_v6.VALID.static_ast.auroc": 0.407519,
+  "output-free_protocol_v6.VALID.static_ast.ci": [
+    0.366721,
+    0.461443
+  ],
+  "output-free_protocol_v6.VALID.static_ast.n": 294,
+  "output-free_protocol_v6.VALID.static_token.auroc": 0.362506,
+  "output-free_protocol_v6.VALID.static_token.ci": [
+    0.330836,
+    0.43377
+  ],
+  "output-free_protocol_v6.VALID.static_token.n": 294,
+  "output-free_protocol_v6.failure_ledger": {
+    "base:unsupported_signature": 337,
+    "variant:import_error": 13,
+    "variant:nonterminating": 3,
+    "variant:syntax_error": 9,
+    "variant:unsupported_signature": 4
+  },
+  "output-free_protocol_v6.set_sizes": {
+    "ALL": 744,
+    "EVALUABLE": 378,
+    "VALID": 294
+  },
+  "published_protocol.ALL.call_count.auroc": 0.562527,
+  "published_protocol.ALL.call_count.ci": [
+    0.526441,
+    0.603716
+  ],
+  "published_protocol.ALL.call_count.n": 744,
+  "published_protocol.ALL.combined_shortcut.auroc": 0.539552,
+  "published_protocol.ALL.combined_shortcut.ci": [
+    0.500096,
+    0.587407
+  ],
+  "published_protocol.ALL.combined_shortcut.n": 744,
+  "published_protocol.ALL.coverage_size.auroc": 0.53952,
+  "published_protocol.ALL.coverage_size.ci": [
+    0.502975,
+    0.584391
+  ],
+  "published_protocol.ALL.coverage_size.n": 744,
+  "published_protocol.ALL.exception_component_v3.auroc": 0.586376,
+  "published_protocol.ALL.exception_component_v3.ci": [
+    0.547763,
+    0.628876
+  ],
+  "published_protocol.ALL.exception_component_v3.n": 744,
+  "published_protocol.ALL.exception_fraction.auroc": 0.565458,
+  "published_protocol.ALL.exception_fraction.ci": [
+    0.524957,
+    0.610559
+  ],
+  "published_protocol.ALL.exception_fraction.n": 744,
+  "published_protocol.ALL.exception_type_jaccard.auroc": 0.585589,
+  "published_protocol.ALL.exception_type_jaccard.ci": [
+    0.547482,
+    0.627511
+  ],
+  "published_protocol.ALL.exception_type_jaccard.n": 744,
+  "published_protocol.ALL.n_functions.auroc": 0.558682,
+  "published_protocol.ALL.n_functions.ci": [
+    0.526811,
+    0.590205
+  ],
+  "published_protocol.ALL.n_functions.n": 744,
+  "published_protocol.ALL.sbg_state.auroc": 0.561793,
+  "published_protocol.ALL.sbg_state.ci": [
+    0.518366,
+    0.612531
+  ],
+  "published_protocol.ALL.sbg_state.n": 744,
+  "published_protocol.ALL.sbg_temporal.auroc": 0.557305,
+  "published_protocol.ALL.sbg_temporal.ci": [
+    0.521847,
+    0.596929
+  ],
+  "published_protocol.ALL.sbg_temporal.n": 744,
+  "published_protocol.ALL.sbg_v3.auroc": 0.537554,
+  "published_protocol.ALL.sbg_v3.ci": [
+    0.497337,
+    0.591693
+  ],
+  "published_protocol.ALL.sbg_v3.n": 744,
+  "published_protocol.ALL.sbg_v5.auroc": 0.531489,
+  "published_protocol.ALL.sbg_v5.ci": [
+    0.491699,
+    0.585962
+  ],
+  "published_protocol.ALL.sbg_v5.n": 744,
+  "published_protocol.ALL.static_ast.auroc": 0.460325,
+  "published_protocol.ALL.static_ast.ci": [
+    0.404539,
+    0.515952
+  ],
+  "published_protocol.ALL.static_ast.n": 744,
+  "published_protocol.ALL.static_token.auroc": 0.40101,
+  "published_protocol.ALL.static_token.ci": [
+    0.344368,
+    0.459924
+  ],
+  "published_protocol.ALL.static_token.n": 744,
+  "published_protocol.EVALUABLE.call_count.auroc": 0.575785,
+  "published_protocol.EVALUABLE.call_count.ci": [
+    0.529069,
+    0.629644
+  ],
+  "published_protocol.EVALUABLE.call_count.n": 643,
+  "published_protocol.EVALUABLE.combined_shortcut.auroc": 0.555534,
+  "published_protocol.EVALUABLE.combined_shortcut.ci": [
+    0.502804,
+    0.622176
+  ],
+  "published_protocol.EVALUABLE.combined_shortcut.n": 643,
+  "published_protocol.EVALUABLE.coverage_size.auroc": 0.55549,
+  "published_protocol.EVALUABLE.coverage_size.ci": [
+    0.504798,
+    0.621875
+  ],
+  "published_protocol.EVALUABLE.coverage_size.n": 643,
+  "published_protocol.EVALUABLE.exception_component_v3.auroc": 0.601732,
+  "published_protocol.EVALUABLE.exception_component_v3.ci": [
+    0.557256,
+    0.647869
+  ],
+  "published_protocol.EVALUABLE.exception_component_v3.n": 643,
+  "published_protocol.EVALUABLE.exception_fraction.auroc": 0.576849,
+  "published_protocol.EVALUABLE.exception_fraction.ci": [
+    0.531554,
+    0.623563
+  ],
+  "published_protocol.EVALUABLE.exception_fraction.n": 643,
+  "published_protocol.EVALUABLE.exception_type_jaccard.auroc": 0.600677,
+  "published_protocol.EVALUABLE.exception_type_jaccard.ci": [
+    0.5577,
+    0.64504
+  ],
+  "published_protocol.EVALUABLE.exception_type_jaccard.n": 643,
+  "published_protocol.EVALUABLE.n_functions.auroc": 0.570102,
+  "published_protocol.EVALUABLE.n_functions.ci": [
+    0.529834,
+    0.614249
+  ],
+  "published_protocol.EVALUABLE.n_functions.n": 643,
+  "published_protocol.EVALUABLE.sbg_state.auroc": 0.577087,
+  "published_protocol.EVALUABLE.sbg_state.ci": [
+    0.517858,
+    0.64699
+  ],
+  "published_protocol.EVALUABLE.sbg_state.n": 643,
+  "published_protocol.EVALUABLE.sbg_temporal.auroc": 0.569841,
+  "published_protocol.EVALUABLE.sbg_temporal.ci": [
+    0.524803,
+    0.620198
+  ],
+  "published_protocol.EVALUABLE.sbg_temporal.n": 643,
+  "published_protocol.EVALUABLE.sbg_v3.auroc": 0.552858,
+  "published_protocol.EVALUABLE.sbg_v3.ci": [
+    0.497534,
+    0.62681
+  ],
+  "published_protocol.EVALUABLE.sbg_v3.n": 643,
+  "published_protocol.EVALUABLE.sbg_v5.auroc": 0.545743,
+  "published_protocol.EVALUABLE.sbg_v5.ci": [
+    0.493541,
+    0.617363
+  ],
+  "published_protocol.EVALUABLE.sbg_v5.n": 643,
+  "published_protocol.EVALUABLE.static_ast.auroc": 0.431688,
+  "published_protocol.EVALUABLE.static_ast.ci": [
+    0.389234,
+    0.477355
+  ],
+  "published_protocol.EVALUABLE.static_ast.n": 643,
+  "published_protocol.EVALUABLE.static_token.auroc": 0.375767,
+  "published_protocol.EVALUABLE.static_token.ci": [
+    0.334748,
+    0.428656
+  ],
+  "published_protocol.EVALUABLE.static_token.n": 643,
+  "published_protocol.VALID.call_count.auroc": 0.662359,
+  "published_protocol.VALID.call_count.ci": [
+    0.598329,
+    0.719684
+  ],
+  "published_protocol.VALID.call_count.n": 520,
+  "published_protocol.VALID.combined_shortcut.auroc": 0.649891,
+  "published_protocol.VALID.combined_shortcut.ci": [
+    0.586898,
+    0.709187
+  ],
+  "published_protocol.VALID.combined_shortcut.n": 520,
+  "published_protocol.VALID.coverage_size.auroc": 0.640589,
+  "published_protocol.VALID.coverage_size.ci": [
+    0.583498,
+    0.701468
+  ],
+  "published_protocol.VALID.coverage_size.n": 520,
+  "published_protocol.VALID.exception_component_v3.auroc": 0.688832,
+  "published_protocol.VALID.exception_component_v3.ci": [
+    0.626339,
+    0.742741
+  ],
+  "published_protocol.VALID.exception_component_v3.n": 520,
+  "published_protocol.VALID.exception_fraction.auroc": 0.63572,
+  "published_protocol.VALID.exception_fraction.ci": [
+    0.560926,
+    0.703638
+  ],
+  "published_protocol.VALID.exception_fraction.n": 520,
+  "published_protocol.VALID.exception_type_jaccard.auroc": 0.687535,
+  "published_protocol.VALID.exception_type_jaccard.ci": [
+    0.6261,
+    0.739947
+  ],
+  "published_protocol.VALID.exception_type_jaccard.n": 520,
+  "published_protocol.VALID.n_functions.auroc": 0.643669,
+  "published_protocol.VALID.n_functions.ci": [
+    0.595248,
+    0.683561
+  ],
+  "published_protocol.VALID.n_functions.n": 520,
+  "published_protocol.VALID.sbg_state.auroc": 0.66076,
+  "published_protocol.VALID.sbg_state.ci": [
+    0.59302,
+    0.726462
+  ],
+  "published_protocol.VALID.sbg_state.n": 520,
+  "published_protocol.VALID.sbg_temporal.auroc": 0.655469,
+  "published_protocol.VALID.sbg_temporal.ci": [
+    0.59891,
+    0.70476
+  ],
+  "published_protocol.VALID.sbg_temporal.n": 520,
+  "published_protocol.VALID.sbg_v3.auroc": 0.647838,
+  "published_protocol.VALID.sbg_v3.ci": [
+    0.580131,
+    0.717355
+  ],
+  "published_protocol.VALID.sbg_v3.n": 520,
+  "published_protocol.VALID.sbg_v5.auroc": 0.640032,
+  "published_protocol.VALID.sbg_v5.ci": [
+    0.576695,
+    0.705975
+  ],
+  "published_protocol.VALID.sbg_v5.n": 520,
+  "published_protocol.VALID.static_ast.auroc": 0.43652,
+  "published_protocol.VALID.static_ast.ci": [
+    0.397427,
+    0.482132
+  ],
+  "published_protocol.VALID.static_ast.n": 520,
+  "published_protocol.VALID.static_token.auroc": 0.378165,
+  "published_protocol.VALID.static_token.ci": [
+    0.33539,
+    0.441611
+  ],
+  "published_protocol.VALID.static_token.n": 520,
+  "published_protocol.failure_ledger": {
+    "base:no_entry_function": 58,
+    "variant:import_error": 22,
+    "variant:no_entry_function": 3,
+    "variant:syntax_error": 18
+  },
+  "published_protocol.set_sizes": {
+    "ALL": 744,
+    "EVALUABLE": 643,
+    "VALID": 520
+  },
+  "regression.exception_component_output_free.detected": 3,
+  "regression.exception_component_output_free.n": 15,
+  "regression.output_reading_reference_full_behaviour.detected": 13,
+  "regression.output_reading_reference_full_behaviour.n": 15,
+  "regression.output_reading_reference_return_value_only.detected": 11,
+  "regression.output_reading_reference_return_value_only.n": 15,
+  "regression.sbg_v3_output_free.detected": 4,
+  "regression.sbg_v3_output_free.n": 15,
+  "regression.sbg_v5_output_free.detected": 7,
+  "regression.sbg_v5_output_free.n": 15,
+  "regression.silent_bugs.output_reference.detected": 9,
+  "regression.silent_bugs.sbg_v5.detected": 3,
+  "regression.silent_bugs.sbg_v5.n": 9,
+  "v5_published_test_pairs": 744,
+  "v5_published_test_programs": 13,
+  "v5_published_test_valid_pairs": 533,
+  "v5_published_total_pairs": 3577,
+  "v5_published_total_valid_pairs": 2571,
+  "v6_corrected_test_pairs": 488,
+  "v6_corrected_test_programs": 13,
+  "v6_corrected_test_valid_pairs": 469,
+  "v6_corrected_total_pairs": 2340,
+  "v6_corrected_total_valid_pairs": 2302
+}

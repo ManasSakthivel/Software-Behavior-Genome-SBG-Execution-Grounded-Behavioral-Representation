@@ -1,0 +1,10 @@
+{
+ "purpose": "Is re.purge() sufficient to make a single extraction order-independent within a process?",
+ "method": "3 consecutive extract_program calls (output_free_v8), re.purge() before each, same process; PYTHONHASHSEED 0 and 1. Commands transcribed from the interactive probe /tmp/sd_probe.py (run 2026-10-29); script logic = rescore_external_v8.purged_extract.",
+ "results_n_events": {
+  "black__21__dump_to_file/fixed.py": {"hashseed_0": [5756, 945, 945], "hashseed_1": [5756, 945, 945]},
+  "black__23__assert_equivalent/fixed.py": {"hashseed_0": [22351, 17440, 17440]}
+ },
+ "conclusion": "Even with re.purge() the FIRST extraction in a process traces more events than later ones (one-off import / lazy-initialisation work of the unit's dependencies inside the traced region). Subsequent extractions are identical. This matches the 3/41 nonzero self-distances (0.60-0.67) in EXTERNAL_RESCORE_V8.json and is the same cold-start defect noted in tests/test_entry_policy.py. A fully order-independent harness would need a warm-up extraction (discarded) per process; not applied because it would change frozen extraction semantics.",
+ "status": "EXPLORATORY diagnostic; no artifact modified"
+}

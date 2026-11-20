@@ -1,0 +1,117 @@
+{
+  "experiment": "E12",
+  "timestamp": "2026-08-20T06:12:58Z",
+  "hypothesis_addressed": [
+    "reproducibility",
+    "H3_cost"
+  ],
+  "n_programs_profiled": 64,
+  "n_pairs_profiled": 60,
+  "n_warmup": 3,
+  "n_measured": 10,
+  "single_program_extraction_ms": {
+    "ast_parse": {
+      "median_ms": 0.364,
+      "p25_ms": 0.241,
+      "p75_ms": 0.418,
+      "iqr_ms": 0.177,
+      "mean_ms": 0.331,
+      "min_ms": 0.032,
+      "max_ms": 0.579,
+      "n_items": 64,
+      "throughput_per_sec": 2745.9
+    },
+    "control_extract": {
+      "median_ms": 0.812,
+      "p25_ms": 0.554,
+      "p75_ms": 0.966,
+      "iqr_ms": 0.413,
+      "mean_ms": 0.762,
+      "min_ms": 0.086,
+      "max_ms": 1.331,
+      "n_items": 64,
+      "throughput_per_sec": 1231.3
+    },
+    "data_extract": {
+      "median_ms": 0.781,
+      "p25_ms": 0.541,
+      "p75_ms": 0.945,
+      "iqr_ms": 0.404,
+      "mean_ms": 0.737,
+      "min_ms": 0.085,
+      "max_ms": 1.27,
+      "n_items": 64,
+      "throughput_per_sec": 1279.6
+    },
+    "error_extract": {
+      "median_ms": 0.793,
+      "p25_ms": 0.548,
+      "p75_ms": 0.926,
+      "iqr_ms": 0.378,
+      "mean_ms": 0.736,
+      "min_ms": 0.084,
+      "max_ms": 1.26,
+      "n_items": 64,
+      "throughput_per_sec": 1260.9
+    }
+  },
+  "pairwise_comparison_ms": {
+    "token_similarity": {
+      "median_ms": 2.017,
+      "p25_ms": 1.855,
+      "p75_ms": 3.309,
+      "iqr_ms": 1.455,
+      "mean_ms": 2.593,
+      "min_ms": 1.476,
+      "max_ms": 4.499,
+      "n_items": 60,
+      "throughput_per_sec": 495.8
+    },
+    "ast_similarity": {
+      "median_ms": 37.901,
+      "p25_ms": 36.49,
+      "p75_ms": 39.552,
+      "iqr_ms": 3.062,
+      "mean_ms": 38.008,
+      "min_ms": 32.679,
+      "max_ms": 42.007,
+      "n_items": 60,
+      "throughput_per_sec": 26.4
+    },
+    "static_sbg_full": {
+      "median_ms": 3.749,
+      "p25_ms": 3.296,
+      "p75_ms": 5.814,
+      "iqr_ms": 2.517,
+      "mean_ms": 4.619,
+      "min_ms": 2.741,
+      "max_ms": 8.532,
+      "n_items": 60,
+      "throughput_per_sec": 266.7
+    }
+  },
+  "full_static_sbg_pipeline_ms": {
+    "median_ms": 3.76,
+    "p25_ms": 3.177,
+    "p75_ms": 5.76,
+    "iqr_ms": 2.583,
+    "mean_ms": 4.731,
+    "min_ms": 2.713,
+    "max_ms": 8.16,
+    "n_items": 30,
+    "throughput_per_sec": 265.9
+  },
+  "cost_breakdown": {
+    "ast_parse_ms": 0.364,
+    "control_extract_ms": 0.812,
+    "data_extract_ms": 0.781,
+    "error_extract_ms": 0.793,
+    "total_extraction_ms": 2.386,
+    "ast_similarity_pair_ms": 37.901,
+    "static_sbg_pair_ms": 3.749,
+    "throughput_pairs_per_sec_ast": 26.4,
+    "throughput_pairs_per_sec_sbg": 266.7
+  },
+  "finding": "Cost analysis shows feasibility for large-scale benchmark evaluation. All static extraction operations run in <100ms per program on typical benchmark programs. See cost_breakdown for per-component timing.",
+  "seed": 42
+}

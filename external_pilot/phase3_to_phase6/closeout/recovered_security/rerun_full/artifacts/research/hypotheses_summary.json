@@ -1,0 +1,326 @@
+{
+  "agent": "0E",
+  "generated": "2025",
+  "source_document": "docs/research/RESEARCH_HYPOTHESES.md",
+  "depends_on": [
+    "docs/research/FORMAL_MODEL.md",
+    "docs/research/PRIOR_ART_MATRIX.md"
+  ],
+  "primary_rqs": [
+    {
+      "id": "RQ1",
+      "question": "Does the Software Behavior Genome remain stable under semantics-preserving transformations while being sensitive to semantics-changing transformations?",
+      "covered_hypotheses": ["H1", "H3", "SH-1"],
+      "evaluation_criteria": {
+        "mean_D_preserving": "< 0.05",
+        "mean_D_changing": "> 0.25",
+        "mann_whitney_p": "< 0.0017",
+        "cliffs_delta": ">= 0.5",
+        "pct_preserving_below_threshold": ">= 85%",
+        "pct_changing_above_threshold": ">= 90%"
+      }
+    }
+  ],
+  "secondary_rqs": [
+    {
+      "id": "RQ2",
+      "question": "Does the structured 8-dimensional SBG outperform single-signal baselines in detecting behavioral regressions?",
+      "covered_hypotheses": ["H2", "H5"],
+      "evaluation_criteria": {
+        "auc_roc_sbg": ">= 0.80",
+        "delta_auc_over_best_baseline": ">= 0.05",
+        "delong_p_vs_codebert": "< 0.0017",
+        "f1_at_optimal_threshold": ">= 0.74",
+        "precision_at_threshold": ">= 0.70",
+        "recall_at_threshold": ">= 0.80"
+      }
+    },
+    {
+      "id": "RQ3",
+      "question": "Which refactoring transformations are most/least challenging for SBG stability, and which genome dimensions drive the instability?",
+      "covered_hypotheses": ["H3", "SH-1"],
+      "evaluation_criteria": {
+        "mean_D_per_refactoring_type": "< 0.10",
+        "mean_D_rename_extract_inline": "< 0.03",
+        "mean_temporal_resource_under_loop_hoisting": "< 0.15",
+        "pct_all_refactoring_pairs_below_threshold": ">= 80%"
+      }
+    },
+    {
+      "id": "RQ4",
+      "question": "Can SBG identify semantically equivalent programs across programming languages using language-portable genome dimensions?",
+      "covered_hypotheses": ["H4", "SH-2"],
+      "evaluation_criteria": {
+        "mean_D_xlang_equivalent": "< 0.15",
+        "mean_D_xlang_nonequivalent": "> 0.35",
+        "cliffs_delta": ">= 0.5",
+        "auc_roc_cross_language": ">= 0.80",
+        "generalization_all_5_language_pairs": "all pass at alpha=0.01"
+      }
+    },
+    {
+      "id": "RQ5",
+      "question": "Can genome distance serve as a test-suite-free regression oracle, and does richer input sampling improve detection?",
+      "covered_hypotheses": ["H5", "SH-2"],
+      "evaluation_criteria": {
+        "auc_roc_I_prod": ">= 0.80",
+        "auc_roc_I_cov": ">= 0.85",
+        "recall_at_threshold_I_prod": ">= 0.80",
+        "recall_at_threshold_I_cov": ">= 0.88",
+        "recall_improvement_rare_trigger": ">= 0.15"
+      }
+    },
+    {
+      "id": "RQ6",
+      "question": "Does each of the 8 genome dimensions contribute independent, non-redundant behavioral signal across tasks?",
+      "covered_hypotheses": ["H6", "SH-1", "SH-5"],
+      "evaluation_criteria": {
+        "delta_auc_per_omitted_dimension": ">= 0.03 drop",
+        "max_pairwise_dimension_correlation": "< 0.70",
+        "lasso_nonzero_coefficients": ">= 6 of 8",
+        "friedman_p_9_variants": "< 0.0017"
+      }
+    }
+  ],
+  "exploratory_rqs": [
+    {
+      "id": "RQ7",
+      "question": "What is the minimum number of execution traces N* required for a reliable genome estimate, and how does it depend on program behavioral variance?",
+      "covered_hypotheses": ["SH-3"],
+      "addresses_open_problem": "OP-1",
+      "evaluation_criteria": {
+        "convergence_exponent_alpha": "< -0.3",
+        "N_for_error_below_001": "<= 500 for 80% of programs",
+        "correlation_variance_Nstar": "report rho (descriptive)"
+      }
+    },
+    {
+      "id": "RQ8",
+      "question": "Do specific genome dimensions provide dominant signal for specific task categories?",
+      "covered_hypotheses": ["SH-5"],
+      "evaluation_criteria": {
+        "predicted_dominant_dim_in_top2": ">=3 of 4 tasks",
+        "standalone_auc_dominant_dim": ">= 0.65 per task",
+        "improvement_task_specific_weights": "delta-AUC >= 0.03"
+      }
+    },
+    {
+      "id": "RQ9",
+      "question": "Is genome distance monotonically increasing in syntactic change magnitude, and where does this break down?",
+      "covered_hypotheses": ["SH-4"],
+      "evaluation_criteria": {
+        "median_spearman_rho": ">= 0.30",
+        "positive_rho_in_n_of_10_projects": ">= 7",
+        "adversarial_breakdown_rate": "report descriptively"
+      }
+    },
+    {
+      "id": "RQ10",
+      "question": "What fraction of unrelated program pairs have genome distance below collision threshold epsilon_collision = 0.05?",
+      "covered_hypotheses": ["H6-uniqueness"],
+      "evaluation_criteria": {
+        "pct_random_pairs_below_epsilon_collision": "<= 0.01",
+        "mean_D_random_pairs": ">= 0.40",
+        "pct_pairs_below_0.10": "<= 0.05"
+      }
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "name": "Behavioral Genome Stability",
+      "null_hypothesis": "The mean behavioral distance between semantics-preserving program pairs equals the mean behavioral distance between semantics-changing pairs: E[D | equiv_S] = E[D | not-equiv_S].",
+      "alternative_hypothesis": "E[D | semantics-preserving] << E[D | semantics-changing] with Cohen's d >= 0.8.",
+      "independent_variables": ["transformation_type (preserving vs changing)", "program_identity", "input_distribution"],
+      "dependent_variables": ["behavioral_distance_D", "per_dimension_distances"],
+      "controls": ["fixed hardware", "fixed runtime versions", "N=200 traces", "shared test-suite oracle for equivalence"],
+      "operationalization": "Apply automated preserving (rename, extract, inline, dead-code, loop-hoist) and changing (Defects4J mutations) transforms to 50 programs. Compute D(G(P), G(P')) under I_prod with N=200 traces. Compare distributions with Mann-Whitney U.",
+      "expected_effect_direction": "D_sp << D_sc",
+      "expected_magnitude": "E[D_sp] <= 0.05; E[D_sc] >= 0.30; Cohen's d >= 1.5",
+      "min_effect_size": 0.8,
+      "min_effect_size_unit": "Cohen's d",
+      "statistical_test": "Two-sided Mann-Whitney U; Bootstrap 95% CI on E[D_sp]; Cliff's delta",
+      "significance_threshold": 0.0017,
+      "required_sample_size_per_group": 60,
+      "actual_sample_size": ">=250 pairs per group (50 programs x 5 transforms)",
+      "falsification_condition": "Mann-Whitney fails to reject H1_0 at alpha=0.0017, OR E[D_sp] > 0.10, OR more than 10% of preserving pairs have D > 0.05, OR Cliff's delta < 0.4."
+    },
+    {
+      "id": "H2",
+      "name": "Structured SBG Outperforms Baselines",
+      "null_hypothesis": "There is no statistically significant difference in F1 score between the full 8-dimensional SBG and the best single-signal baseline on Defects4J.",
+      "alternative_hypothesis": "SBG-8D achieves higher F1 and AUC-ROC than every evaluated baseline (code2vec, CodeBERT, GraphCodeBERT, syntactic diff, single-dimension SBG).",
+      "independent_variables": ["representation_method", "program_corpus_split", "input_distribution"],
+      "dependent_variables": ["AUC_ROC", "AUC_PR", "F1_at_optimal_threshold", "Precision", "Recall"],
+      "controls": ["Defects4J gold standard labels", "same N=200 traces for SBG", "60/20/20 train/val/test split by project", "theta_star tuned on validation only"],
+      "operationalization": "Compute D(G^k, G^{k+1}) for all Defects4J consecutive version pairs. Label as regression iff Defects4J marks bug-fix commit. Sweep theta 0->1. Report F1(theta*), AUC-ROC, AUC-PR on held-out test split.",
+      "expected_effect_direction": "F1(SBG-8D) > F1(best baseline)",
+      "expected_magnitude": "delta-AUC-ROC >= 0.08 over CodeBERT; delta-AUC-PR >= 0.10",
+      "min_effect_size": 0.05,
+      "min_effect_size_unit": "delta-AUC-ROC",
+      "statistical_test": "DeLong's test for AUC comparison; McNemar's test for paired classification; Bootstrap 95% CI on delta-AUC",
+      "significance_threshold": 0.0017,
+      "required_sample_size_per_group": 150,
+      "actual_sample_size": "395+ regression pairs in Defects4J v2.0",
+      "falsification_condition": "Any baseline achieves F1 >= F1(SBG-8D) with statistical significance, OR DeLong test shows AUC(SBG) not > AUC(CodeBERT) at alpha=0.0017, OR SBG F1 < 0.70 on test split."
+    },
+    {
+      "id": "H3",
+      "name": "Robustness Under Refactoring",
+      "null_hypothesis": "Mean behavioral distance after refactoring equals mean behavioral distance after semantics-changing mutation: E[D | refactoring] = E[D | mutation].",
+      "alternative_hypothesis": "E[D | refactoring] << E[D | mutation] for all 9 refactoring types, with Cohen's d >= 0.8.",
+      "independent_variables": ["refactoring_type (9 types)", "transformation_magnitude (small/medium/large)", "program_domain"],
+      "dependent_variables": ["D per refactoring type", "per-dimension distances d_k", "stable_rate (fraction D < 0.05)"],
+      "controls": ["automated refactoring tool (IntelliJ/rope)", "test-suite oracle for correctness", "N=200 traces", "I=I_prod"],
+      "operationalization": "Apply 9 refactoring types × 3 magnitudes to 50 programs (1350 pairs). Compute D and d_k for each. Fit linear model D ~ type + magnitude + domain. Test stability per type with Kruskal-Wallis and Dunn post-hoc.",
+      "expected_effect_direction": "E[D | refactoring] <= 0.05 across all 9 types",
+      "expected_magnitude": "E[d_C] < 0.02 (rename/extract); E[d_T] < 0.15 (loop hoisting); E[d_R] < 0.10 (dead-code)",
+      "min_effect_size": 0.05,
+      "min_effect_size_unit": "absolute distance units (per-dimension)",
+      "statistical_test": "Kruskal-Wallis; Dunn post-hoc with Holm correction; paired Mann-Whitney (refactoring vs. mutation per type)",
+      "significance_threshold": 0.0017,
+      "required_sample_size_per_group": 15,
+      "actual_sample_size": "150 per refactoring type (50 programs x 3 magnitudes)",
+      "falsification_condition": "Any refactoring type yields E[D] > 0.10, OR more than 20% of any refactoring type's pairs exceed D=0.05, OR any type is indistinguishable from mutation at alpha=0.0017."
+    },
+    {
+      "id": "H4",
+      "name": "Cross-Language Generalization",
+      "null_hypothesis": "Behavioral distance between cross-language equivalent pairs is not significantly smaller than between random non-equivalent cross-language pairs.",
+      "alternative_hypothesis": "D_portable(C_E(G(P_L1)), C_E(G(P_L2))) is significantly smaller for equivalent pairs, with Cliff's delta >= 0.5, restricted to dimensions {g_C, g_D, g_X}.",
+      "independent_variables": ["language_pair (5 pairs)", "algorithm_class (5 classes)", "equivalence_label"],
+      "dependent_variables": ["D_xlang (portable dimensions only)", "per-language-pair distance distribution", "dimension separability"],
+      "controls": ["shared I/O test oracle (>=1000 cases)", "environment canonicalization C_E (Def 22c)", "EXECUTION dimension excluded", "N=200 traces", "shared JSON-serialized inputs"],
+      "operationalization": "For each of 5 algorithm classes × 5 language pairs: compute D_portable(G_L1, G_L2) for equivalent pairs and D_portable(G_L1, G_L2_other) for non-equivalent. Compare with Mann-Whitney U.",
+      "expected_effect_direction": "E[D_equiv] << E[D_nonequiv]",
+      "expected_magnitude": "E[D_equiv] < 0.15 (epsilon_xlang); E[D_nonequiv] > 0.40; Cliff's delta >= 0.5",
+      "min_effect_size": 0.5,
+      "min_effect_size_unit": "Cliff's delta",
+      "statistical_test": "Mann-Whitney U; Linear mixed model (D ~ language_pair + algorithm_class with random effects); Bootstrap 95% CI on epsilon_xlang",
+      "significance_threshold": 0.0017,
+      "required_sample_size_per_group": 35,
+      "actual_sample_size": ">=35 equivalent pairs per language pair (augmented with RosettaCode implementations)",
+      "falsification_condition": "E[D_equiv] > 0.20, OR Mann-Whitney fails at alpha=0.0017, OR 95% CI for E[D_equiv] entirely exceeds 0.15 on any language pair."
+    },
+    {
+      "id": "H5",
+      "name": "Genome as Regression Oracle",
+      "null_hypothesis": "AUC-ROC(SBG) <= 0.70 on the held-out regression corpus at all thresholds theta.",
+      "alternative_hypothesis": "AUC-ROC(SBG) > 0.80 AND there exists theta* with Recall(theta*) >= 0.80, Precision(theta*) >= 0.70 on the held-out Defects4J test split.",
+      "independent_variables": ["SBG_threshold_theta", "input_distribution (I_prod / I_cov / I_adv)", "corpus_split"],
+      "dependent_variables": ["Precision(theta)", "Recall(theta)", "F1(theta)", "AUC-ROC", "AUC-PR", "per-regression-type performance"],
+      "controls": ["Defects4J gold-standard labels", "theta* selected on validation split only", "one-shot test-set evaluation", "N=200 traces"],
+      "operationalization": "Compute D(G^k, G^{k+1}) for all Defects4J version pairs. Sweep theta, find theta* = argmax F1 on validation. Evaluate Precision(theta*), Recall(theta*), AUC-ROC, AUC-PR on test split. Repeat under I_cov and I_adv.",
+      "expected_effect_direction": "AUC-ROC rises above 0.80; Recall >= 0.80, Precision >= 0.70 at theta*",
+      "expected_magnitude": "AUC-ROC >= 0.82 (I_prod); >= 0.88 (I_cov); F1 >= 0.74 at theta*",
+      "min_effect_size": 0.10,
+      "min_effect_size_unit": "AUC-ROC points above H5_0 baseline of 0.70",
+      "statistical_test": "DeLong's test (AUC vs baseline); Bootstrap 95% CI on AUC-ROC; McNemar test vs best baseline",
+      "significance_threshold": 0.0017,
+      "required_sample_size_per_group": 100,
+      "actual_sample_size": "395+ labeled pairs in Defects4J v2.0",
+      "falsification_condition": "AUC-ROC < 0.80 on test split under any input distribution, OR no theta achieves Recall >= 0.80 AND Precision >= 0.70 simultaneously, OR F1 at theta* < 0.70."
+    },
+    {
+      "id": "H6",
+      "name": "Multi-Dimensional Value",
+      "null_hypothesis": "For every task, a strict subset S with |S| <= 6 dimensions achieves the same performance as the full 8-dimensional SBG (no statistically significant difference in AUC-ROC).",
+      "alternative_hypothesis": "For at least one task, adding each of the 8 dimensions individually provides a statistically significant improvement over the 7-dimensional ablation that omits it (DELTA-AUC >= 0.03 per omitted dimension).",
+      "independent_variables": ["dimension_subset (all 256 subsets; focus on 8 leave-one-out and 8 single-dimension)", "task (regression detection, clone detection, cross-language matching)"],
+      "dependent_variables": ["AUC-ROC per task × subset", "mutual_information I(d_k; task_label)", "inter-dimension correlation matrix"],
+      "controls": ["N=200 traces", "I=I_prod", "uniform weights renormalized over included dimensions", "same task evaluation protocol as H2 and H5"],
+      "operationalization": "For each of 8 leave-one-out ablations: compute AUC-ROC on 3 tasks. Compute per-dimension mutual information. Compute Pearson correlation matrix of {d_k}. Fit LASSO on task labels with cross-validated lambda.",
+      "expected_effect_direction": "All 8 dimensions contribute non-redundant signal; each leave-one-out drops AUC by >= 0.03",
+      "expected_magnitude": "Max |r(d_j, d_k)| < 0.50; LASSO selects >= 7 non-zero coefficients; DELTA-AUC >= 0.03 per omitted dimension",
+      "min_effect_size": 0.03,
+      "min_effect_size_unit": "delta-AUC-ROC per omitted dimension",
+      "statistical_test": "Friedman test (9 model variants); Nemenyi post-hoc with Holm correction; paired DeLong test (full vs each ablation); LASSO path analysis",
+      "significance_threshold": 0.0017,
+      "required_sample_size_per_group": 60,
+      "actual_sample_size": "395+ version pairs (Defects4J); augmented by BigCloneBench and H4 corpus",
+      "falsification_condition": "Any 6-dimension subset achieves equal AUC as 8D model (DeLong p > 0.0017) on all 3 tasks, OR LASSO selects <= 5 dimensions on any task, OR any two dimensions have |r| > 0.85."
+    }
+  ],
+  "sub_hypotheses": [
+    {
+      "id": "SH-1",
+      "name": "Dimension-Wise Stability Ordering",
+      "informal": "Under semantics-preserving transforms, dimensions follow a consistent stability ordering: CONTROL >= DATA >= INTERACTION > STATE > ERROR > RESOURCE > TEMPORAL > EXECUTION.",
+      "operationalization": "Extract per-dimension distances from H1/H3 experiments. Compute E[d_k]. Test ordering with one-sided Mann-Whitney between adjacent pairs.",
+      "mechanistic_insight": "Justifies FORMAL_MODEL.md caveat on TEMPORAL/RESOURCE; guides task-specific dimension selection.",
+      "prerequisites": ["H1"],
+      "falsification": "Any inversion of adjacent pair with |E[d_j] - E[d_k]| > 0.03."
+    },
+    {
+      "id": "SH-2",
+      "name": "Input Coverage Governs Sensitivity",
+      "informal": "Recall(SBG, I_cov) > Recall(SBG, I_prod) > Recall(SBG, I_unif), especially for rare-trigger regressions.",
+      "operationalization": "Stratify Defects4J regressions by mu_prod(Delta) into rare/medium/common. Compare Recall under I_prod, I_unif, I_cov per stratum.",
+      "mechanistic_insight": "Directly tests the formal dependency of H2 on input coverage from FORMAL_MODEL.md. Motivates when to use coverage-guided inputs.",
+      "prerequisites": [],
+      "falsification": "Recall(I_prod) >= Recall(I_cov) on rare-trigger regressions."
+    },
+    {
+      "id": "SH-3",
+      "name": "Genome Convergence Rate",
+      "informal": "||G_N - G_inf|| decreases as O(1/sqrt(N)), addressing Open Problem OP-1 from FORMAL_MODEL.md.",
+      "operationalization": "For N in {10,25,50,100,200,500,1000}: compute G_N and compare to G_10000 as reference. Fit log-log regression. Test H0: alpha = -0.5.",
+      "mechanistic_insight": "Establishes practical minimum N; if alpha ~ -0.5, N=200 gives reliable estimates.",
+      "prerequisites": [],
+      "addresses_open_problem": "OP-1",
+      "falsification": "alpha > -0.3 (convergence slower than O(N^{-0.3})), implying N=1000 is insufficient for high-variance programs."
+    },
+    {
+      "id": "SH-4",
+      "name": "Behavioral Distance is Locally Monotone in Code Change Size",
+      "informal": "D(G^k, G^{k+1}) is positively correlated with |Delta_code| in expectation across typical commits (tests FORMAL_MODEL.md H4).",
+      "operationalization": "Extract consecutive version pairs from 10 GitHub projects (>=100 commits). Compute Spearman rho(|Delta_code|, D). Stratify by commit type (refactoring / feature / bug fix).",
+      "mechanistic_insight": "Confirms O(|Delta_code|^alpha) claim; identifies alpha exponent and breakdown conditions.",
+      "prerequisites": ["H1"],
+      "falsification": "Median rho < 0.2 across projects, or rho < 0 on any project."
+    },
+    {
+      "id": "SH-5",
+      "name": "Dimension-Task Specialization",
+      "informal": "g_C and g_D dominate for algorithm equivalence; g_E and g_R for performance regression; g_X and g_S for security analysis.",
+      "operationalization": "For 4 tasks (algorithm equivalence, performance regression, null-dereference detection, output regression): compute standalone AUC per dimension. Test if predicted dominant dimension is top-2 by Friedman test.",
+      "mechanistic_insight": "Justifies task-specific non-uniform weights w_k; guides practitioners on dimension selection per use case.",
+      "prerequisites": ["H6"],
+      "falsification": "No single dimension achieves AUC >= 0.65 standalone for any task, or predicted dominant dimension is not top-2 on any task."
+    }
+  ],
+  "prerequisite_order": [
+    {"hypothesis": "SH-3", "prerequisites": [], "rationale": "Foundational: establishes N sufficiency before any other experiment"},
+    {"hypothesis": "SH-2", "prerequisites": [], "rationale": "Foundational: characterizes input distributions independently"},
+    {"hypothesis": "H1", "prerequisites": ["SH-3"], "rationale": "Core stability claim requires N to be validated first"},
+    {"hypothesis": "H3", "prerequisites": ["H1"], "rationale": "Refactoring robustness specializes H1 to a defined transform class"},
+    {"hypothesis": "SH-1", "prerequisites": ["H1"], "rationale": "Per-dimension data from H1 experiments required"},
+    {"hypothesis": "SH-4", "prerequisites": ["H1"], "rationale": "Monotonicity test requires D to be validated as meaningful"},
+    {"hypothesis": "H4", "prerequisites": ["SH-2", "SH-3"], "rationale": "Cross-language comparison requires N sufficiency and input protocol"},
+    {"hypothesis": "H5", "prerequisites": ["H1", "SH-2"], "rationale": "Regression oracle recall depends on stability (H1) and input coverage (SH-2)"},
+    {"hypothesis": "H2", "prerequisites": ["H1", "H5"], "rationale": "Baseline comparison meaningful only if SBG signal established"},
+    {"hypothesis": "H6", "prerequisites": ["H1", "H3", "SH-1"], "rationale": "Multi-dimensional value analysis requires all dimension stability data"}
+  ],
+  "recommended_experimental_sequence": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "experimental_sequence_labels": ["SH-3", "SH-2", "H1", "H3+SH-1", "SH-4", "H4", "H5", "H2", "H6"],
+  "bonferroni_correction": {
+    "n_primary_hypotheses": 6,
+    "alpha_nominal": 0.01,
+    "alpha_adjusted": 0.0017,
+    "note": "All significance thresholds apply Bonferroni correction across H1-H6. Sub-hypotheses tested at alpha=0.01 (exploratory)."
+  },
+  "corpus_requirements": {
+    "primary_corpus": "Defects4J v2.0 (395+ bugs, 17 Java projects)",
+    "supplementary_corpora": ["RosettaCode (cross-language, H4)", "BigCloneBench (clone detection, H6)", "10 GitHub projects with 100+ commits each (SH-4)", "Custom refactoring suite (50 programs x 9 types x 3 magnitudes, H3)"],
+    "minimum_N_traces": 200,
+    "validation_protocol": "60/20/20 train/val/test split by project for Defects4J"
+  },
+  "open_problem_connections": {
+    "OP-1": "Addressed by SH-3 (convergence rate experiment)",
+    "OP-2": "Not directly addressed; noted as theoretical limitation",
+    "OP-3": "Motivates future extension: confidence-weighted D in H5",
+    "OP-4": "Partially addressed in H4 via manual procedure correspondence table",
+    "OP-5": "Addressed implicitly in H3 STATE dimension stability analysis",
+    "OP-6": "Addressed in H4 via C_E canonicalization with SPECint normalization"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_03_same_call_count_different_order",
+  "ground_truth": "CHANGED",
+  "shortcut_defeated": "call_count",
+  "description": "Both programs call validate(), process(), and finalize() exactly once. A call-count shortcut sees identical call signatures and wrongly labels this EQUIV. But the ORDER matters: base validates before processing (Nones removed first), variant processes before validating (process crashes on None inputs).",
+  "expected_exception_fraction_same": false,
+  "expected_call_count_same": true,
+  "expected_volume_same": false,
+  "boundary_inputs_required": true
+}

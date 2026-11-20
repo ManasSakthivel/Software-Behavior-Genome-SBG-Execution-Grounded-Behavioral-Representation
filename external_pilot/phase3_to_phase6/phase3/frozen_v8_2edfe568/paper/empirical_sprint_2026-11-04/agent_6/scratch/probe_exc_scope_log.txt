@@ -1,0 +1,16 @@
+fin(0)  JAVA: [('call', 'fin'), ('call', 'helper'), ('exception', 'helper'), ('return', 'helper'), ('exception', 'fin'), ('exception', 'fin'), ('return', 'fin')] | exc: ArithmeticException: / by zero
+fin(0)  PY  : [('call', '<lambda>'), ('call', 'fin'), ('call', 'helper'), ('exception', 'helper'), ('return', 'helper'), ('exception', 'fin'), ('return', 'fin'), ('exception', '<lambda>'), ('return', '<lambda>')] | exc: ZeroDivisionError: integer division or modulo by zero
+fin(2)  JAVA: [('call', 'fin'), ('call', 'helper'), ('return', 'helper'), ('return', 'fin')] | exc: None
+fin(2)  PY  : [('call', '<lambda>'), ('call', 'fin'), ('call', 'helper'), ('return', 'helper'), ('return', 'fin'), ('return', '<lambda>')] | exc: None
+PY any(genexpr) event types: {'call': 6, 'exception': 0, 'return': 6, 'line': 6} funcs: ['<genexpr>', '<lambda>', 'gen'] exception-event funcs: []
+PY any(genexpr) event types: {'call': 3, 'exception': 0, 'return': 3, 'line': 3} funcs: ['<genexpr>', '<lambda>', 'gen'] exception-event funcs: []
+JAVA scope() snapshots per line event:
+  line 13 [('n', '3')]
+  line 14 [('n', '3'), ('total', '0')]
+  line 15 [('i', '0'), ('n', '3'), ('total', '0')]
+  line 16 [('i', '0'), ('n', '3'), ('t', '6'), ('total', '0')]
+  line 14 [('i', '0'), ('n', '3'), ('total', '6')]
+  line 15 [('i', '1'), ('n', '3'), ('total', '6')]
+  line 16 [('i', '1'), ('n', '3'), ('t', '6'), ('total', '6')]
+  line 14 [('i', '1'), ('n', '3'), ('total', '12')]
+  line 18 [('n', '3'), ('total', '12')]

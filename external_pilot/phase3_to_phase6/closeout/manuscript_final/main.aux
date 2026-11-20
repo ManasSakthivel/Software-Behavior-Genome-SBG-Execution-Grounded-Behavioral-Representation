@@ -1,0 +1,338 @@
+\relax 
+\citation{evans2007differential,mckeeman1998differential}
+\citation{evans2007differential}
+\citation{godlin2009regression,lahiri2012symdiff}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\newlabel{sec:intro}{{I}{1}{}{section.1}{}}
+\citation{inozemtseva2014coverage,jia2011analysis,schuler2011assessing}
+\citation{elyaniv2010foundations,geifman2017selective}
+\citation{angelopoulos2024conformal}
+\citation{ayub2026semadiff}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Five ways a differential comparison can end. Cases (a)--(d) all produce an empty difference set and the same NDO{} verdict, but only (a) is correct; (b) and (c) are false assurances, and (d) lies outside the declared observation boundary $\mathcal  {O}$. The figure is conceptual.}}{2}{}\protected@file@percent }
+\newlabel{fig:motivation}{{1}{2}{}{figure.1}{}}
+\citation{mckeeman1998differential}
+\citation{evans2007differential}
+\citation{jin2010automated,taneja2008diffgen}
+\citation{santelices2008testsuite}
+\citation{cadar2014shadow,palikareva2016shadow,kuchta2018shadow}
+\citation{petsios2017nezha}
+\citation{godefroid2020differential}
+\citation{pradel2026testora,hu2026difftestgen,lecong2026patchguru,fu2026orion,etemadi2025mokav,liu2026evaluating,schafer2024empirical}
+\citation{godlin2009regression,lahiri2012symdiff,felsing2014automating,malik2021automatically}
+\citation{wei2025equibench}
+\citation{kachroo2026feagent}
+\citation{evans2007differential}
+\citation{hu2026difftestgen}
+\citation{ayub2026semadiff}
+\citation{rothermel1996analyzing,yoo2012regression}
+\citation{claessen2000quickcheck,maciver2019hypothesis}
+\citation{zhu1997software}
+\citation{inozemtseva2014coverage,gopinath2014code,kochhar2015code}
+\citation{chekam2017empirical}
+\citation{jia2011analysis,papadakis2019mutation}
+\citation{just2014mutants}
+\citation{papadakis2018mutation}
+\citation{fraser2012behaviourally,fraser2015assessing}
+\citation{barr2015oracle}
+\citation{jahangirova2016oracle}
+\citation{zhang2015assertions}
+\citation{paul2026beyond}
+\citation{chen2018metamorphic,segura2016survey}
+\citation{le2014compiler}
+\citation{voas1992pie}
+\citation{androutsopoulos2014analysis}
+\citation{masri2014prevalence}
+\citation{schuler2011assessing,schuler2013checked}
+\citation{niedermayr2016will,veraperez2018descartes,veraperez2019comprehensive}
+\citation{luo2014empirical,parry2022survey}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work and Gap Analysis}{3}{}\protected@file@percent }
+\newlabel{sec:background}{{II}{3}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}How Divergences Are Searched For}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}When Absence of Failure Is Informative}{3}{}\protected@file@percent }
+\citation{chow1970optimum,elyaniv2010foundations,geifman2017selective,hendrickx2024machine}
+\citation{brier1950verification}
+\citation{niculescumizil2005predicting,guo2017calibration}
+\citation{bates2021distribution}
+\citation{angelopoulos2024conformal}
+\citation{torresarias2019intoto}
+\citation{slsa2023spec}
+\citation{lamb2022reproducible}
+\citation{schuler2011assessing}
+\citation{jia2011analysis,niedermayr2016will}
+\citation{chen2018metamorphic}
+\citation{schuler2011assessing}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Contributions, research questions, evidence and status. Status uses three levels: supported, partly supported, and not demonstrated.}}{4}{}\protected@file@percent }
+\newlabel{tab:contrib}{{1}{4}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}How the Risk of Accepted Verdicts Is Estimated}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Whether the Evidence and the Estimator Can Be Trusted}{4}{}\protected@file@percent }
+\citation{evans2007differential}
+\citation{jin2010automated}
+\citation{petsios2017nezha}
+\citation{palikareva2016shadow}
+\citation{ayub2026semadiff}
+\citation{wei2025equibench}
+\citation{kachroo2026feagent}
+\citation{lahiri2012symdiff}
+\citation{jia2011analysis,just2014mutants}
+\citation{jahangirova2016oracle}
+\citation{voas1992pie,androutsopoulos2014analysis}
+\citation{schuler2011assessing}
+\citation{niedermayr2016will,veraperez2019comprehensive}
+\citation{geifman2017selective}
+\citation{angelopoulos2024conformal}
+\citation{torresarias2019intoto}
+\citation{just2014defects4j}
+\citation{widyasari2020bugsinpy}
+\citation{lin2017quixbugs}
+\citation{madeiral2019bears}
+\citation{tomassi2019bugswarm}
+\citation{saha2018bugsjar}
+\citation{durieux2019critical,tomassi2019note}
+\citation{godlin2009regression,lahiri2012symdiff}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Gap and Positioning}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}System Model and Problem Formulation}{5}{}\protected@file@percent }
+\newlabel{sec:problem}{{III}{5}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Changes, Observations and Divergence}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Verdicts and the Decision Procedure}{5}{}\protected@file@percent }
+\newlabel{eq:V}{{1}{5}{}{equation.1}{}}
+\newlabel{rem:equiv}{{1}{5}{}{equation.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Capabilities of the closest prior work relative to the question ``how far can this no-divergence verdict be trusted?''. $\bullet $ = addressed; $\circ $ = partly addressed (see note); -- = not addressed. Comp.: C = conceptual comparison only; B$k$ = the work's decision rule is instantiated as baseline B$k$. No prior tool was executed. $^{\mathrm  {p}}$ = preprint.}}{6}{}\protected@file@percent }
+\newlabel{tab:positioning}{{2}{6}{}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Synthesis of the eight streams: what each contributes to trusting a no-divergence verdict, where it stops, and what SBG~V8{} takes from it.}}{6}{}\protected@file@percent }
+\newlabel{tab:synthesis}{{3}{6}{}{table.3}{}}
+\citation{elyaniv2010foundations,geifman2017selective}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Notation.}}{7}{}\protected@file@percent }
+\newlabel{tab:notation}{{4}{7}{}{table.4}{}}
+\newlabel{prop:integrity}{{1}{7}{}{equation.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}The False-Assurance Estimand}{7}{}\protected@file@percent }
+\newlabel{eq:F}{{2}{7}{}{equation.2}{}}
+\newlabel{eq:R}{{3}{7}{}{equation.3}{}}
+\newlabel{eq:kappa}{{4}{7}{}{equation.4}{}}
+\newlabel{prop:mono}{{2}{7}{}{equation.4}{}}
+\newlabel{prop:random}{{3}{8}{}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Estimating Risk from Evidence}{8}{}\protected@file@percent }
+\newlabel{eq:rhat}{{5}{8}{}{equation.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Evidence Perturbations}{8}{}\protected@file@percent }
+\newlabel{eq:delta}{{6}{8}{}{equation.6}{}}
+\newlabel{rem:vacuous}{{2}{8}{}{equation.6}{}}
+\newlabel{prop:indep}{{4}{8}{}{equation.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Labels Used in This Study}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Methodology: Evidence Acquisition, Profile and Calibrated Decision}{8}{}\protected@file@percent }
+\newlabel{sec:approach}{{IV}{8}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Architecture and Component Responsibilities}{8}{}\protected@file@percent }
+\citation{schuler2011assessing}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Evidence acquisition and sealing}}{9}{}\protected@file@percent }
+\newlabel{alg:acquire}{{1}{9}{}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Evidence Acquisition and Sealing}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Change-Conditioned Evidence Profile}{9}{}\protected@file@percent }
+\newlabel{eq:act}{{7}{9}{}{equation.7}{}}
+\newlabel{eq:mu}{{8}{9}{}{equation.8}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Integrity validation}}{9}{}\protected@file@percent }
+\newlabel{alg:validate}{{2}{9}{}{algorithm.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Change-Conditioned Evidence Calibration}{9}{}\protected@file@percent }
+\citation{angelopoulos2024conformal}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces SBG~V8{} architecture as implemented. Each run of $P$ or $P'$ is a fresh sandboxed child. The trusted controller holds the anchor key $K$, which never enters the child; captures an independent tee of standard output; and checks the HMAC-authenticated result frame. Validation of the sealed evidence directory gates the verdict. Shadow re-observation and reviewer-supplied inputs feed optional checks that report issues but do not change the verdict.}}{10}{}\protected@file@percent }
+\newlabel{fig:architecture}{{2}{10}{}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Evidence lifecycle for one change pair, with the implementing module under each stage. Any failure in capture, sealing or validation, and any abstention on inadequate evidence, leads to INS{} (lower lane). Stage~8 is a label-free audit that operates on copies.}}{10}{}\protected@file@percent }
+\newlabel{fig:lifecycle}{{3}{10}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Cost and Complexity}{10}{}\protected@file@percent }
+\newlabel{sec:cost}{{\mbox  {IV-E}}{10}{}{subsection.4.5}{}}
+\citation{chen2018metamorphic,segura2016survey}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Component responsibilities. ``Verdict path'' marks components whose output can change the verdict; the remaining components report only.}}{11}{}\protected@file@percent }
+\newlabel{tab:components}{{5}{11}{}{table.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Change-conditioned evidence calibration. Fit: labels are read only for eligible training pairs. Threshold: chosen on inner out-of-fold risks with a one-sided project-cluster bootstrap bound (the inset is schematic, not data). Decide: the per-record procedure of Eq.~\eqref  {eq:V}.}}{11}{}\protected@file@percent }
+\newlabel{fig:cec}{{4}{11}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Evidence Response Signature}{11}{}\protected@file@percent }
+\newlabel{sec:ers}{{V}{11}{}{section.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Evidence profile $\phi (\mathcal  {E})$ as implemented (\texttt  {sbgv8/profile.py}). Count features enter the model as $\log (1+x)$. ``Const.'' marks features that were constant on the development corpus.}}{12}{}\protected@file@percent }
+\newlabel{tab:profile}{{6}{12}{}{table.6}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces CEC fit and threshold}}{12}{}\protected@file@percent }
+\newlabel{alg:cec}{{3}{12}{}{algorithm.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Verdict generation}}{12}{}\protected@file@percent }
+\newlabel{alg:decide}{{4}{12}{}{algorithm.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Cost of each stage (from the code; no new measurement). Times in the last row are descriptive statistics of existing run records.}}{12}{}\protected@file@percent }
+\newlabel{tab:cost}{{7}{12}{}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Properties, Perturbations and Pass Criteria}{12}{}\protected@file@percent }
+\newlabel{def:ers}{{9}{12}{}{subsection.5.1}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces ERS{} evaluation of one trial}}{13}{}\protected@file@percent }
+\newlabel{alg:ers}{{5}{13}{}{algorithm.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Post-Hoc and Execution-Level Perturbations}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Two Roles of the Signature}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Trusted Execution and Evidence Integrity}{13}{}\protected@file@percent }
+\newlabel{sec:trust}{{VI}{13}{}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Threat Model}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Mechanisms}{13}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces ERS{} framework: the eight properties (rows; ``E'' is the environment check added by the implementation), the perturbation that tests each property (columns), and the three pass criteria (right), coloured by class. Each perturbation tests exactly one property.}}{14}{}\protected@file@percent }
+\newlabel{fig:ersframework}{{5}{14}{}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces ERS{} properties: intent, transformation, pass and failure conditions as implemented (tolerances from \texttt  {sbgv8/ers.py}: $10^{-6}$ for monotone properties, $0.02$ for invariances), existing evidence on the 312 development records, and limitations. ``Resp.'' counts applicable trials in which the fitted model's risk moved by more than the tolerance.}}{14}{}\protected@file@percent }
+\newlabel{tab:ersprops}{{8}{14}{}{table.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Threat model and outcomes. Each attack surface (left of each zone) is connected to the mechanism that addresses it and the outcome measured in the adversarial evaluation (macOS, final commit). Dashed elements are out of scope.}}{15}{}\protected@file@percent }
+\newlabel{fig:threat}{{6}{15}{}{figure.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Controlled evidence perturbations (\texttt  {sbgv8/perturb.py}). Ctrl.: N negative control, P positive control, R robustness (monotone). Mode: H = post-hoc edit of a record copy (all ten, evaluated on 312 records); X = an execution-level analogue also exists (30 pairs, macOS, exploratory). App.: applicable trials of 312.}}{15}{}\protected@file@percent }
+\newlabel{tab:perturb}{{9}{15}{}{table.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Outcome Categories and Residual Risk}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Evaluation Design}{15}{}\protected@file@percent }
+\newlabel{sec:design}{{VII}{15}{}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Research Questions}{15}{}\protected@file@percent }
+\citation{lin2017quixbugs}
+\citation{widyasari2020bugsinpy}
+\citation{lin2017quixbugs}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Security threat summary: threat, mechanism, measured outcome and residual risk. Outcomes are from the macOS re-run at the final commit unless stated otherwise.}}{16}{}\protected@file@percent }
+\newlabel{tab:threats}{{10}{16}{}{table.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Evaluation Settings and Evidence Categories}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Development Corpus}{16}{}\protected@file@percent }
+\citation{widyasari2020bugsinpy}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Experimental design by research question. All label-dependent analyses use construction labels on development data.}}{17}{}\protected@file@percent }
+\newlabel{tab:design}{{11}{17}{}{table.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Evaluation landscape. Every row except F and G is an executed setting with machine-readable output. ``Dev.''\ = development data, examined during design. GT = ground truth.}}{17}{}\protected@file@percent }
+\newlabel{tab:benchmarks}{{12}{17}{}{table.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Development corpus by arm (\texttt  {datasets/v8/dev\_records.jsonl}). V7-B verdicts are the predecessor's fixed-gate verdicts. ``NDO{} (miss)'' counts labelled NDO{} verdicts and, in parentheses, those with $Y{=}1$.}}{17}{}\protected@file@percent }
+\newlabel{tab:corpus}{{13}{17}{}{table.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Evidence landscape. (a) The executed development corpus by arm and construction label (data: \texttt  {dev\_records.jsonl}). (b) Status of the seven evidence categories A--G. (c) The five-dataset artifact, shown hatched and grey because its records are template-generated with outcomes set from labels; it is excluded as evidence and no metric is derived from it.}}{18}{}\protected@file@percent }
+\newlabel{fig:landscape}{{7}{18}{}{figure.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Baselines and Ablations}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-E}}Metrics and Matched Coverage}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-F}}Statistical Methodology}{18}{}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Matched-coverage risk}}{18}{}\protected@file@percent }
+\newlabel{alg:matched}{{6}{18}{}{algorithm.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Design controls: how each threat to the empirical questions is handled and what remains uncontrolled.}}{19}{}\protected@file@percent }
+\newlabel{tab:controls}{{14}{19}{}{table.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Baselines and ablations. ``Labels'' marks comparators fitted on labels (within training folds only).}}{19}{}\protected@file@percent }
+\newlabel{tab:baselines}{{15}{19}{}{table.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Results}{19}{}\protected@file@percent }
+\newlabel{sec:results}{{VIII}{19}{}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}RQ1: Integrity-Checked Evidence and Reproducible Analysis}{19}{}\protected@file@percent }
+\newlabel{sec:res-rq1}{{\mbox  {VIII-A}}{19}{}{subsection.8.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}RQ2: Conformance to the Evidence Response Signature}{20}{}\protected@file@percent }
+\newlabel{sec:res-rq2}{{\mbox  {VIII-B}}{20}{}{subsection.8.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Adversarial evaluation outcomes. Controls excluded. ``Det.\ only'' counts detections by optional reviewer checks that leave a false NDO{} as the effective verdict.}}{20}{}\protected@file@percent }
+\newlabel{tab:security}{{16}{20}{}{table.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-C}}RQ3: Observed False-Assurance Risk of Decision Rules}{21}{}\protected@file@percent }
+\newlabel{sec:res-rq3}{{\mbox  {VIII-C}}{21}{}{subsection.8.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-D}}RQ4: Incremental Value of CEC{} and ERS{} at Matched Coverage}{21}{}\protected@file@percent }
+\newlabel{sec:res-rq4}{{\mbox  {VIII-D}}{21}{}{subsection.8.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Risk--coverage curves for the calibrated models (out-of-fold, seed~0) under (a) soft and (b) strict blocker policies, with rule baselines as points (95\% project-cluster bootstrap intervals). The vertical line marks $c^\ast =61/258$. Calibrated curves end at the eligible share (85 soft, 61 strict).}}{21}{}\protected@file@percent }
+\newlabel{fig:riskcov}{{8}{21}{}{figure.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces ERS{} property matrix on the 312 development records (post-hoc perturbations of recorded evidence). Each cell gives the number of passes among the applicable trials; N/A trials are excluded. ``Resp.'' is the number of applicable trials in which the fitted model's risk moved by more than the tolerance. Failures are in bold.}}{22}{}\protected@file@percent }
+\newlabel{tab:ers}{{17}{22}{}{table.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Development-set comparison of SBG V8 decision rules, calibrated models and ablations (seed 0, out-of-fold).}}{22}{}\protected@file@percent }
+\newlabel{tab:ablation}{{18}{22}{}{table.18}{}}
+\newlabel{sec:res-robust}{{\mbox  {VIII-D}}{22}{}{subsection.8.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Paired contrasts with full CEC{} (B8) at matched coverage $c^\ast $ (left, percentage points) and in out-of-fold log loss (right). Positive values favour B8. Dots: seed~0 with 95\% project-cluster bootstrap intervals; ticks: seeds 1--4. The dotted line marks the 5-point margin of H2. Strict-policy matched-risk intervals use only resamples in which $c^\ast $ is attainable and are shown for completeness only.}}{23}{}\protected@file@percent }
+\newlabel{fig:forest}{{9}{23}{}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Reliability diagram for the calibrated models (soft policy, seed~0, out-of-fold, five quantile bins of about 17 eligible pairs, Wilson 95\% intervals). Legend values are logistic calibration slopes.}}{23}{}\protected@file@percent }
+\newlabel{fig:calibration}{{10}{23}{}{figure.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-E}}RQ5: Scope of the Evaluation Evidence}{23}{}\protected@file@percent }
+\newlabel{sec:res-rq5}{{\mbox  {VIII-E}}{23}{}{subsection.8.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Minimum detectable paired difference in false-assurance risk (80\% power, two-sided $\alpha =0.05$, design effect 1.48) as a function of the number of issued NDO{} verdicts. The vertical line marks the present $n=61$; the dotted line marks the 5-point margin of H2.}}{23}{}\protected@file@percent }
+\newlabel{fig:power}{{11}{23}{}{figure.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces Statistical results (soft policy, seed~0, out-of-fold). Risk effects are differences in observed false-assurance risk in percentage points; log-loss effects are differences in nats. Positive values favour B8. Intervals: 95\% paired project-cluster bootstrap (10{,}000 resamples; B6 contrast from the saved Linux run, 2{,}000 resamples). $p$: one-sided bootstrap. Holm: within the eight-contrast family; the B6 contrast belongs to the pre-registered three-test family (Holm $p=1.0$). ``Valid'': share of resamples in which the contrast is defined.}}{24}{}\protected@file@percent }
+\newlabel{tab:stats}{{19}{24}{}{table.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Discussion}{24}{}\protected@file@percent }
+\newlabel{sec:discussion}{{IX}{24}{}{section.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-A}}What the Evidence Supports}{24}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces Cross-platform summary. Ex.\ = executed with raw output; Part.\ = executed but raw output incomplete; Rep.\ = report text only (not used); -- = not run.}}{24}{}\protected@file@percent }
+\newlabel{tab:xplat}{{20}{24}{}{table.20}{}}
+\citation{pradel2026testora,hu2026difftestgen,ayub2026semadiff}
+\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces Interpretation of the main contrasts (soft policy, seed~0; values from Table~\ref {tab:stats}). ``Excluded'' gives effects that lie outside the 95\% interval, in percentage points.}}{25}{}\protected@file@percent }
+\newlabel{tab:interp}{{21}{25}{}{table.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-B}}Interpreting the Negative Result}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-C}}Implications}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-D}}Toward a Confirmatory Study}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {X}Threats to Validity}{25}{}\protected@file@percent }
+\newlabel{sec:threats}{{X}{25}{}{section.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {XI}Reproducibility and Evidence Traceability}{25}{}\protected@file@percent }
+\newlabel{sec:repro}{{XI}{25}{}{section.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {XI-A}}Replication Package}{25}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {22}{\ignorespaces Threats to validity.}}{26}{}\protected@file@percent }
+\newlabel{tab:threatsval}{{22}{26}{}{table.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {23}{\ignorespaces Artifact provenance. Class: R = raw machine-readable output; D = derived by a script from R; M = manuscript calculation; C = conceptual. Raw: raw output present in the repository. Tree: state of the code when the output was produced (clean, dirty, or unrecorded). Re-run: whether an independent group can regenerate the result from the repository (Analysis = from saved records without executing programs; Collect = requires re-executing programs). ``mac'' = branch \texttt  {research/v8-mac-hardening}.}}{26}{}\protected@file@percent }
+\newlabel{tab:artifacts}{{23}{26}{}{table.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {XI-B}}Claim Register and Traceability}{26}{}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibdata{references}
+\bibcite{evans2007differential}{1}
+\bibcite{mckeeman1998differential}{2}
+\bibcite{godlin2009regression}{3}
+\bibcite{lahiri2012symdiff}{4}
+\bibcite{inozemtseva2014coverage}{5}
+\bibcite{jia2011analysis}{6}
+\bibcite{schuler2011assessing}{7}
+\bibcite{elyaniv2010foundations}{8}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {XI-C}}Artifact Audit}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {XI-D}}Adjudication Protocol and Prediction Lock}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {XII}Conclusion}{27}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{XII}{27}{}{section.12}{}}
+\@writefile{toc}{\contentsline {section}{REFERENCES}{27}{}\protected@file@percent }
+\bibcite{geifman2017selective}{9}
+\bibcite{angelopoulos2024conformal}{10}
+\bibcite{ayub2026semadiff}{11}
+\bibcite{jin2010automated}{12}
+\bibcite{taneja2008diffgen}{13}
+\bibcite{santelices2008testsuite}{14}
+\bibcite{cadar2014shadow}{15}
+\bibcite{palikareva2016shadow}{16}
+\bibcite{kuchta2018shadow}{17}
+\bibcite{petsios2017nezha}{18}
+\bibcite{godefroid2020differential}{19}
+\bibcite{pradel2026testora}{20}
+\bibcite{hu2026difftestgen}{21}
+\bibcite{lecong2026patchguru}{22}
+\bibcite{fu2026orion}{23}
+\bibcite{etemadi2025mokav}{24}
+\bibcite{liu2026evaluating}{25}
+\bibcite{schafer2024empirical}{26}
+\bibcite{felsing2014automating}{27}
+\bibcite{malik2021automatically}{28}
+\bibcite{wei2025equibench}{29}
+\bibcite{kachroo2026feagent}{30}
+\bibcite{rothermel1996analyzing}{31}
+\bibcite{yoo2012regression}{32}
+\bibcite{claessen2000quickcheck}{33}
+\bibcite{maciver2019hypothesis}{34}
+\bibcite{zhu1997software}{35}
+\bibcite{gopinath2014code}{36}
+\bibcite{kochhar2015code}{37}
+\bibcite{chekam2017empirical}{38}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Evidence-to-claim traceability: three example chains from a manuscript claim through its register entry, derived artifact and generating script to the raw machine-readable source and its version anchor.}}{28}{}\protected@file@percent }
+\newlabel{fig:trace}{{12}{28}{}{figure.12}{}}
+\bibcite{papadakis2019mutation}{39}
+\bibcite{just2014mutants}{40}
+\bibcite{papadakis2018mutation}{41}
+\bibcite{fraser2012behaviourally}{42}
+\bibcite{fraser2015assessing}{43}
+\bibcite{barr2015oracle}{44}
+\bibcite{jahangirova2016oracle}{45}
+\bibcite{zhang2015assertions}{46}
+\bibcite{paul2026beyond}{47}
+\bibcite{chen2018metamorphic}{48}
+\bibcite{segura2016survey}{49}
+\bibcite{le2014compiler}{50}
+\bibcite{voas1992pie}{51}
+\bibcite{androutsopoulos2014analysis}{52}
+\bibcite{masri2014prevalence}{53}
+\bibcite{schuler2013checked}{54}
+\bibcite{niedermayr2016will}{55}
+\bibcite{veraperez2018descartes}{56}
+\bibcite{veraperez2019comprehensive}{57}
+\bibcite{luo2014empirical}{58}
+\bibcite{parry2022survey}{59}
+\bibcite{chow1970optimum}{60}
+\bibcite{hendrickx2024machine}{61}
+\bibcite{brier1950verification}{62}
+\bibcite{niculescumizil2005predicting}{63}
+\bibcite{guo2017calibration}{64}
+\bibcite{bates2021distribution}{65}
+\bibcite{torresarias2019intoto}{66}
+\bibcite{slsa2023spec}{67}
+\bibcite{lamb2022reproducible}{68}
+\bibcite{just2014defects4j}{69}
+\bibcite{widyasari2020bugsinpy}{70}
+\bibcite{lin2017quixbugs}{71}
+\bibcite{madeiral2019bears}{72}
+\bibcite{tomassi2019bugswarm}{73}
+\bibcite{saha2018bugsjar}{74}
+\bibcite{durieux2019critical}{75}
+\bibcite{tomassi2019note}{76}
+\@writefile{toc}{\contentsline {subsection}{Manas Sakthivel}{29}{}\protected@file@percent }
+\gdef \@abspage@last{29}

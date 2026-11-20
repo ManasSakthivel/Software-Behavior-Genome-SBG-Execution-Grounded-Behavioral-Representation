@@ -1,0 +1,16 @@
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{The 321 development pairs by arm and truth class (V7-B rows; all data non-pristine). Primary denominators: divergent (div.) and no-observed-difference (no-diff.) labels (258 pairs); suspect and unlabelled pairs are excluded. Source: \path{results/v7b_phase2_summary/p2_e3_20261118_092700/processed/dev_pairs_per_system.csv}.}\label{tab:datasets}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrl}
+\hline
+Arm & Pairs & Div. & No-diff. & Suspect & Unlab. & Truth rule \\
+\hline
+bugsinpy\_units & 55 & 0 & 0 & 0 & 55 & real fixes; no defensible label \\
+quixbugs\_buggy\_fixed & 31 & 29 & 0 & 0 & 2 & declared tests fail on buggy, pass on fixed \\
+quixbugs\_sp\_negatives & 85 & 0 & 84 & 1 & 0 & generator: semantics-preserving variant \\
+synthetic\_equivalent & 72 & 0 & 68 & 4 & 0 & generator label: equivalent (looser equality) \\
+synthetic\_changed & 78 & 77 & 0 & 1 & 0 & generator label: changed \\
+total & 321 & 106 & 152 & 6 & 57 &  \\
+\hline
+\end{tabular}}
+\end{table}

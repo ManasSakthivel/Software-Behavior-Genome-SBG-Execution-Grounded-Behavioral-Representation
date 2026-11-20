@@ -1,0 +1,230 @@
+{
+ "note": "Blinded: contains no SBG output, no predictions, no other reviewers' labels. Commit subjects are included as context only; reviewers must judge from diffs and tests.",
+ "cases": [
+  {
+   "case_id": "C01",
+   "repository": "schedule",
+   "parent_revision": "170b63afc58af0456f40b139199272caa3a99d99",
+   "fixed_revision": "90bfdf3557efb2f260070730e692cda1a7c2e373",
+   "source_files": [
+    "schedule/__init__.py"
+   ],
+   "test_files": [
+    "test_schedule.py"
+   ],
+   "commit_subject": "Fix str of job when there is no __name__ (#430)",
+   "production_diff": "cases/C01/production_change.diff",
+   "test_diff": "cases/C01/test_change.diff"
+  },
+  {
+   "case_id": "C02",
+   "repository": "schedule",
+   "parent_revision": "a6fdc61af08da7553ed0d8239444a7976dd39a92",
+   "fixed_revision": "f19998bcfc4f3bb593af8a82b6d93385c57b6eec",
+   "source_files": [
+    "schedule/__init__.py"
+   ],
+   "test_files": [
+    "test_schedule.py"
+   ],
+   "commit_subject": "Bugfix: tuesday.at('HH:MM:SS') where HMS=now+10s doesn't run today #331 (#337)",
+   "production_diff": "cases/C02/production_change.diff",
+   "test_diff": "cases/C02/test_change.diff"
+  },
+  {
+   "case_id": "C03",
+   "repository": "schedule",
+   "parent_revision": "fa1b06beaeebd84dd0c13a116867fecabfa200ef",
+   "fixed_revision": "bcfa35789e2b0a0d8adb89cd59b7948e6c470513",
+   "source_files": [
+    "schedule/__init__.py"
+   ],
+   "test_files": [
+    "test_schedule.py"
+   ],
+   "commit_subject": "Fix run_all with many cancel_job",
+   "production_diff": "cases/C03/production_change.diff",
+   "test_diff": "cases/C03/test_change.diff"
+  },
+  {
+   "case_id": "C04",
+   "repository": "funcy",
+   "parent_revision": "40011cc3b9344d2c4e6ad2e3cff54b41ac7015f7",
+   "fixed_revision": "6cfcd4eec2381e4f231d6956c13c6dd870521ac9",
+   "source_files": [
+    "funcy/decorators.py"
+   ],
+   "test_files": [
+    "tests/test_flow.py"
+   ],
+   "commit_subject": "fix: include all arguments in once_per_args",
+   "production_diff": "cases/C04/production_change.diff",
+   "test_diff": "cases/C04/test_change.diff"
+  },
+  {
+   "case_id": "C05",
+   "repository": "funcy",
+   "parent_revision": "40011cc3b9344d2c4e6ad2e3cff54b41ac7015f7",
+   "fixed_revision": "2da8b5e048002a6bef7f608aafdaf5e6c35e8170",
+   "source_files": [
+    "funcy/objects.py"
+   ],
+   "test_files": [
+    "tests/test_objects.py"
+   ],
+   "commit_subject": "Fix deletion of wrapped properties",
+   "production_diff": "cases/C05/production_change.diff",
+   "test_diff": "cases/C05/test_change.diff"
+  },
+  {
+   "case_id": "C06",
+   "repository": "funcy",
+   "parent_revision": "26b1650f233de922bb664de56e9a4cf3bcdec25f",
+   "fixed_revision": "980f0279a094e1a12e28313dbee3117a068ac65a",
+   "source_files": [
+    "funcy/flow.py"
+   ],
+   "test_files": [
+    "tests/test_flow.py"
+   ],
+   "commit_subject": "Handle fractional-second error rate timeouts (#187)",
+   "production_diff": "cases/C06/production_change.diff",
+   "test_diff": "cases/C06/test_change.diff"
+  },
+  {
+   "case_id": "C07",
+   "repository": "funcy",
+   "parent_revision": "46a1fc44da97eae8d6382427c59508dcb88c52ae",
+   "fixed_revision": "848dd6dd2b13f86a6c414d8834c781185f398450",
+   "source_files": [
+    "funcy/seqs.py"
+   ],
+   "test_files": [
+    "tests/test_seqs.py"
+   ],
+   "commit_subject": "fix: _cut_iter yields wrong-length parts when step > n (#177)",
+   "production_diff": "cases/C07/production_change.diff",
+   "test_diff": "cases/C07/test_change.diff"
+  },
+  {
+   "case_id": "C08",
+   "repository": "funcy",
+   "parent_revision": "c72bfae84581458ac17fa3da3d9b92a8962ba682",
+   "fixed_revision": "e148cc9ab0217ee11a4bfedb584854290356b28b",
+   "source_files": [
+    "funcy/calc.py"
+   ],
+   "test_files": [
+    "tests/test_calc.py"
+   ],
+   "commit_subject": "Preserve key_func when memoize is called directly (#179)",
+   "production_diff": "cases/C08/production_change.diff",
+   "test_diff": "cases/C08/test_change.diff"
+  },
+  {
+   "case_id": "C09",
+   "repository": "funcy",
+   "parent_revision": "e5090591930fffdde1688fa086274b7b0e6ccc06",
+   "fixed_revision": "6c111987f25eb8371e33b71f8b76e2975c30617d",
+   "source_files": [
+    "funcy/flow.py"
+   ],
+   "test_files": [
+    "tests/test_flow.py"
+   ],
+   "commit_subject": "Fix @throttle() for timedelta arg",
+   "production_diff": "cases/C09/production_change.diff",
+   "test_diff": "cases/C09/test_change.diff"
+  },
+  {
+   "case_id": "C10",
+   "repository": "funcy",
+   "parent_revision": "ff699f1a3e0b1d418690209e26c9b01e25104e1d",
+   "fixed_revision": "e068b64005b0f3c432311a7584b82d4e08420a67",
+   "source_files": [
+    "funcy/colls.py"
+   ],
+   "test_files": [
+    "tests/test_colls.py"
+   ],
+   "commit_subject": "Don't crash in where on nonexistent keys from conditions",
+   "production_diff": "cases/C10/production_change.diff",
+   "test_diff": "cases/C10/test_change.diff"
+  },
+  {
+   "case_id": "C11",
+   "repository": "funcy",
+   "parent_revision": "3d3d8421dde91482ad1c9f820e07707e075d9759",
+   "fixed_revision": "54ed07a6a52acad6f409a828f544c37ace003902",
+   "source_files": [
+    "funcy/seqs.py"
+   ],
+   "test_files": [
+    "tests/test_seqs.py"
+   ],
+   "commit_subject": "Fix bug with flatten() follow argument",
+   "production_diff": "cases/C11/production_change.diff",
+   "test_diff": "cases/C11/test_change.diff"
+  },
+  {
+   "case_id": "C12",
+   "repository": "more-itertools",
+   "parent_revision": "b2f3aff7633057d234ec9186c18a53f4df306d08",
+   "fixed_revision": "2b8d5cddce4ea01f88a973551cd50479cf5fa45f",
+   "source_files": [
+    "more_itertools/more.py"
+   ],
+   "test_files": [
+    "tests/test_more.py"
+   ],
+   "commit_subject": "Issue 1284: don't let a bucket lookup invent a key",
+   "production_diff": "cases/C12/production_change.diff",
+   "test_diff": "cases/C12/test_change.diff"
+  },
+  {
+   "case_id": "C13",
+   "repository": "more-itertools",
+   "parent_revision": "81c21a8db1c922260cd673841257fb9b112c1318",
+   "fixed_revision": "71e070b35d8c136484e91189719c2a4eccd36fc3",
+   "source_files": [
+    "more_itertools/more.py"
+   ],
+   "test_files": [
+    "tests/test_more.py"
+   ],
+   "commit_subject": "fix: honour a falsey key in all_unique",
+   "production_diff": "cases/C13/production_change.diff",
+   "test_diff": "cases/C13/test_change.diff"
+  },
+  {
+   "case_id": "C14",
+   "repository": "more-itertools",
+   "parent_revision": "ca711220a6657a22655f6fa497524d006a735c5f",
+   "fixed_revision": "6b1907de293a655fb77881bf81948f95fd15bd7c",
+   "source_files": [
+    "more_itertools/more.py"
+   ],
+   "test_files": [
+    "tests/test_more.py"
+   ],
+   "commit_subject": "fix: seekable.peek/bool no longer drop items when maxlen is 0",
+   "production_diff": "cases/C14/production_change.diff",
+   "test_diff": "cases/C14/test_change.diff"
+  },
+  {
+   "case_id": "C15",
+   "repository": "boltons",
+   "parent_revision": "609cabe932a1ea1423b24568644945abb1b8bb84",
+   "fixed_revision": "d0a284fc7ef1aebceb54798600d73be4eeb76ed8",
+   "source_files": [
+    "boltons/setutils.py"
+   ],
+   "test_files": [
+    "tests/test_setutils.py"
+   ],
+   "commit_subject": "fix IndexedSet out-of-range negative indexing wrapping around (x[-n-k], pop(-n-k))",
+   "production_diff": "cases/C15/production_change.diff",
+   "test_diff": "cases/C15/test_change.diff"
+  }
+ ]
+}

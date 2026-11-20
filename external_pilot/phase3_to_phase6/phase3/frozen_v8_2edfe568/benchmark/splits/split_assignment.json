@@ -1,0 +1,149 @@
+{
+  "seed": 42,
+  "method": "stratified_by_category",
+  "splits": {
+    "train": [
+      "api_mock_http_client",
+      "api_rest_crud_mock",
+      "conc_thread_safe_counter",
+      "ds_min_heap",
+      "ds_trie",
+      "ds_lru_cache",
+      "err_retry_backoff",
+      "err_validation_chain",
+      "file_log_processor",
+      "file_binary_encoder",
+      "fsm_connection_pool",
+      "fsm_traffic_light",
+      "graph_topological_sort",
+      "graph_dijkstra",
+      "graph_bellman_ford",
+      "math_prime_sieve",
+      "math_dynamic_programming",
+      "math_matrix_ops",
+      "parse_json_subset",
+      "res_memory_allocator",
+      "res_task_scheduler",
+      "sort_mergesort",
+      "sort_topk_select",
+      "sort_binary_search",
+      "sort_radix_sort",
+      "str_kmp_search",
+      "str_edit_distance",
+      "str_word_frequency"
+    ],
+    "dev": [
+      "api_event_bus",
+      "ds_stack_queue",
+      "err_circuit_breaker",
+      "file_csv_aggregator",
+      "fsm_parser_state",
+      "graph_connected_components",
+      "math_numerical_integration",
+      "res_cache_ttl",
+      "sort_quicksort",
+      "str_run_length_encode"
+    ],
+    "val": [
+      "conc_producer_consumer",
+      "ds_binary_search_tree",
+      "file_word_count_stream",
+      "fsm_order_lifecycle",
+      "graph_cycle_detect_dfs",
+      "math_polynomial",
+      "parse_ini_config",
+      "sort_timsort_runs",
+      "str_anagram_groups"
+    ],
+    "test": [
+      "api_rate_limiter",
+      "conc_read_write_lock",
+      "ds_hash_table",
+      "err_result_type",
+      "file_config_parser",
+      "fsm_vending_machine",
+      "graph_bfs_shortest_path",
+      "math_statistics",
+      "parse_recursive_descent",
+      "res_object_pool",
+      "sort_heapsort",
+      "sort_counting_sort",
+      "str_tokenizer"
+    ]
+  },
+  "split_counts": {
+    "train": 28,
+    "dev": 10,
+    "val": 9,
+    "test": 13
+  },
+  "category_split_counts": {
+    "api": {
+      "train": 2,
+      "dev": 1,
+      "test": 1
+    },
+    "conc": {
+      "train": 1,
+      "val": 1,
+      "test": 1
+    },
+    "ds": {
+      "train": 3,
+      "dev": 1,
+      "val": 1,
+      "test": 1
+    },
+    "err": {
+      "train": 2,
+      "dev": 1,
+      "test": 1
+    },
+    "file": {
+      "train": 2,
+      "dev": 1,
+      "val": 1,
+      "test": 1
+    },
+    "fsm": {
+      "train": 2,
+      "dev": 1,
+      "val": 1,
+      "test": 1
+    },
+    "graph": {
+      "train": 3,
+      "dev": 1,
+      "val": 1,
+      "test": 1
+    },
+    "math": {
+      "train": 3,
+      "dev": 1,
+      "val": 1,
+      "test": 1
+    },
+    "parse": {
+      "train": 1,
+      "val": 1,
+      "test": 1
+    },
+    "res": {
+      "train": 2,
+      "dev": 1,
+      "test": 1
+    },
+    "sort": {
+      "train": 4,
+      "dev": 1,
+      "val": 1,
+      "test": 2
+    },
+    "str": {
+      "train": 3,
+      "dev": 1,
+      "val": 1,
+      "test": 1
+    }
+  }
+}

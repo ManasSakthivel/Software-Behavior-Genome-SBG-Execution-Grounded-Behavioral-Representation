@@ -1,0 +1,297 @@
+{
+ "meta": {
+  "platform": "darwin",
+  "note": "unresolved attacks are open issues; no security is claimed",
+  "config": {
+   "repeat": {
+    "r_det": 2,
+    "r_replay": 2,
+    "k_alt": 1
+   },
+   "budget": {
+    "cpu_seconds": 30,
+    "per_run": {
+     "cpu_s": 2,
+     "wall_s": 5
+    }
+   }
+  }
+ },
+ "results": [
+  {
+   "attack": "H00_honest_control",
+   "description": "no attack (control)",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "A01_patch_canonicaliser_via___main__",
+   "description": "attack launched from the evaluated (variant) program: patch canonicaliser via   main  ",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "mismatch",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by shadow_reobservation",
+   "issues": [
+    "authenticity: shadow re-observation disagrees with the recorded return value(s)"
+   ]
+  },
+  {
+   "attack": "A02_forge_result_via_harness_finish",
+   "description": "attack launched from the evaluated (variant) program: forge result via harness finish",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "mismatch",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by shadow_reobservation",
+   "issues": [
+    "authenticity: shadow re-observation disagrees with the recorded return value(s)"
+   ]
+  },
+  {
+   "attack": "A03_os__exit_before_result",
+   "description": "attack launched from the evaluated (variant) program: os  exit before result",
+   "verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+   "issues": []
+  },
+  {
+   "attack": "A04_write_garbage_to_result_fd",
+   "description": "attack launched from the evaluated (variant) program: write garbage to result fd",
+   "verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+   "issues": []
+  },
+  {
+   "attack": "A05_close_result_fd",
+   "description": "attack launched from the evaluated (variant) program: close result fd",
+   "verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+   "issues": []
+  },
+  {
+   "attack": "A06_forged_result_line_on_stdout",
+   "description": "attack launched from the evaluated (variant) program: forged result line on stdout",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "A08_hide_stdout_divergence_by_patching_Cap",
+   "description": "attack launched from the evaluated (variant) program: hide stdout divergence by patching Cap",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "SUCCEEDS (open): false verdict with no check firing",
+   "issues": []
+  },
+  {
+   "attack": "A07_sense_harness_and_behave",
+   "description": "attack launched from the evaluated (variant) program: sense harness and behave",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "mismatch",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by shadow_reobservation",
+   "issues": [
+    "authenticity: shadow re-observation disagrees with the recorded return value(s)"
+   ]
+  },
+  {
+   "attack": "P01_edit_observation_no_rechain",
+   "description": "post-hoc: edit observation no rechain",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": null,
+    "sidecar": null,
+    "verdict_json": null,
+    "chain": "broken: chain broken at seq 8",
+    "shadow": null,
+    "sources_match": null
+   },
+   "outcome": "DETECTED by chain, verify",
+   "issues": [
+    "integrity: chain broken at seq 8"
+   ]
+  },
+  {
+   "attack": "P02_edit_verdict_and_rechain",
+   "description": "post-hoc: edit verdict and rechain",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "failed: recomputed verdict ('DIVERGENT_OBSERVABLE', None, None, []) differs from recorded ('NO_DIVERGENCE_OBSERVED', 'S1', None, [])",
+    "sidecar": "inconsistent",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by verify, sidecar",
+   "issues": [
+    "integrity: verify failed: recomputed verdict ('DIVERGENT_OBSERVABLE', None, None, []) differs from recorded ('NO_DIVERGENCE_OBSERVED', 'S1', None, [])",
+    "integrity: sidecar sidecar not bound to this evidence log (sha256/head)"
+   ]
+  },
+  {
+   "attack": "P03_drop_verdict_json",
+   "description": "post-hoc: drop verdict json",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "absent",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by verdict_json_absent",
+   "issues": [
+    "provenance: verdict.json absent (verify cannot notice; the verdict must be taken from the log)"
+   ]
+  },
+  {
+   "attack": "P04_edit_unverified_field_and_rechain",
+   "description": "post-hoc: edit unverified field and rechain",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "SUCCEEDS (open): evidence altered, no check fires",
+   "issues": []
+  },
+  {
+   "attack": "P05_tamper_sidecar_hits",
+   "description": "post-hoc: tamper sidecar hits",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "inconsistent",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by sidecar",
+   "issues": [
+    "integrity: sidecar i0: hits/branches differ from the Run records"
+   ]
+  },
+  {
+   "attack": "P06_substitute_evidence_of_another_program",
+   "description": "post-hoc: substitute evidence of another program",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": false
+   },
+   "outcome": "DETECTED by source_binding",
+   "issues": [
+    "provenance: recorded program source differs from the expected file (evidence substitution)"
+   ]
+  },
+  {
+   "attack": "P07_rechain_without_rebinding_sidecar",
+   "description": "post-hoc: rechain without rebinding sidecar",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "inconsistent",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by sidecar",
+   "issues": [
+    "integrity: sidecar sidecar not bound to this evidence log (sha256/head)"
+   ]
+  }
+ ]
+}

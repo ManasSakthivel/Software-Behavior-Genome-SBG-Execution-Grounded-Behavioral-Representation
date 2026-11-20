@@ -1,0 +1,80 @@
+{
+  "artifact": "FREEZE_V8",
+  "status": "FROZEN",
+  "written_at": "2026-10-29T04:41:43+00:00",
+  "freeze_code_commit": "496fb4fc7002344eaea8216112159c41b03692ea",
+  "protocol_id": "output_free_v8",
+  "entry_policy": "v8:structural (function tier); class tier only if no function entry, flagged rename_invariant=False",
+  "python": "CPython 3.13.5 (venvs/py313)",
+  "PYTHONHASHSEED": "0 (fixed for the test scoring; v8 dev scoring was shown independent of the seed: 0/1/7 identical)",
+  "evaluation_script_sha256": "8e567b8cf107dd31e095a2a437ea5043e697adb4ddc8da940cce4d0ed071a539",
+  "code_sha256": {
+    "experiments/final/evaluate_v8.py": "8e567b8cf107dd31e095a2a437ea5043e697adb4ddc8da940cce4d0ed071a539",
+    "experiments/final/run_main_evaluation.py": "ad809342d7acee33d019534d610c4c0ea64f6d7e760aebb1cb60c695f5b4ed51",
+    "experiments/final/extraction.py": "549d5cf29acb807e9b984e40c424f730744ab01d2642bd7fc2d24008f1835f55",
+    "experiments/final/protocol.py": "b121d9c73174117b6c943c348e92311a6ac4d60c03b799aeffbc24714accfdab",
+    "experiments/final/entry_policy.py": "4514383f432e65d9f7e695b49e2c9f6ce79581099f05b94952e6dff6e1e437ea",
+    "experiments/final/class_driver.py": "f426edac1e6c68e22b8d89816ad80876a55b488fafa3c65cf44daaa29ddec093",
+    "experiments/final/static_baselines.py": "0facb27875ac1ae00d75a56e48b8412cfbadd67b21e587160083a2cb0e8001df",
+    "experiments/final/edit_size_analysis.py": "f5957c6da488f91f983a35fb102f35752a67fb9ea1cb7c12f30d86169967da9e",
+    "experiments/final/fit_weights.py": "af15680c43ba93b1e4d9badcfe965f5368193975dd6399bdaef4d08c6015de34",
+    "sbg/statistics.py": "727519b47b1aa1142172817ed4b9a67ad42817e49d9ad4a187fc3f8b59d3924b",
+    "sbg/extraction/dynamic/tracer.py": "76676e91725142aac4314a52f005ea1494f43e3385ac42bd810a9fd7e4fced6f"
+  },
+  "tau_v8": {
+    "artifact": "artifacts/final/THRESHOLD_V8_FROZEN.json",
+    "sha256": "65a98c5decf2b501d907411e1d911f9fb228cb862a2530c79ec3e50124c011bb",
+    "derived_on": "v8 DEV only (13 programs after the stale-variant exclusion)"
+  },
+  "weights": {
+    "artifact": "artifacts/final/WEIGHT_FITTING.json",
+    "sha256": "6d1e157a1a317845d0c143de2cb586c69613df3cbfd704cf5870adb4b75553fb",
+    "fit_on": "v6 TRAIN",
+    "selected_on": "v6 DEV",
+    "note": "learned_m1/m2 are secondary; sbg_v5 fixed weights 0.50/0.25/0.25 is the primary predictor"
+  },
+  "dataset": {
+    "dir": "benchmark/datasets/v8",
+    "pairs_sha256": {
+      "train": "17866e93b0f165d87808bc595a8dde378da8432b32ff672c68fe8f7922c9782c",
+      "dev": "8dda7f573765e0c5eaf7a5969212a2e5a500cbd3c7752c662ef209ce35826928",
+      "val": "aa545bd1a86b6a452a65134769197f2f2c95e2bab26a9d46dcd46cac956e1366",
+      "test": "124c870364bc998b3ea3c24f3b23f994006d07619fadea36ee5e82b276813e83"
+    },
+    "variants_tree_sha256": "c250047b6041ff8ee768beeaaf7e3b9f0ffa32f2da429b068080877fe6daffc1",
+    "base_programs_tree_sha256": "3494f09e918ae43cf674d0ae22e62d6e8b4c10064d89c9f9143682a2a284bb39",
+    "manifest_sha256": "1a3f32d031c160c77e8b2d4fb521fe4634c542aa73bdaf16116ca1517c008b2d"
+  },
+  "validity_audit": {
+    "artifact": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json",
+    "sha256": "06840ff1c178a86acb0414e8a0abf99839e4208dfcb48c75a1c6ac2eee2792a1",
+    "caveat": "static observability audit using the v7 entry rule applied to v8 pairs; no v8-specific audit"
+  },
+  "pre_declared_exclusion": {
+    "artifact": "artifacts/paper_evidence/DIAGNOSTIC_V8_STALE_VARIANTS.json",
+    "sha256": "309e06f4ee7a0b16192893e292865d0eb1eafbf200f0f4ad49e7733e3e333e81",
+    "rule": "8 programs whose committed variants do not match their current base file (base edited after variant generation) are excluded from evaluation; content-only rule, 4 of them are test programs (math_count_set_bits, math_gcd_lcm, math_nthroot_newton, math_power_modular; 163 test pairs)"
+  },
+  "statistics": {
+    "auroc": "tie-aware Mann-Whitney",
+    "ci": "cluster bootstrap by base program, 2000 resamples, seed 42",
+    "paired_delta": "paired cluster bootstrap, 2000, seed 42",
+    "multiplicity": "Holm-Bonferroni over the 6 baselines (edit_size_reversed, exception_fraction, call_count, coverage_size, static_ast, static_token)",
+    "noise_floor": "500 within-cluster label shuffles seed 42",
+    "stratified": "exact canonical edit-size strata, cluster bootstrap"
+  },
+  "pre_declared_success_criterion": "SBG V5 beats the best baseline INCLUDING reversed edit size with a delta-AUROC 95% CI lower bound > 0 AND its exact-edit-size-stratified AUROC exceeds the label-shuffle p95; otherwise reported as NOT DEMONSTRATED",
+  "test_split": {
+    "programs": 26,
+    "pairs": 1130,
+    "scored_before_freeze": false,
+    "run_policy": "single run; evaluate_v8.py refuses to overwrite V8_TEST_EVALUATION.json; no re-run after seeing results"
+  },
+  "known_limits_of_confirmatory_status": [
+    "Programs authored in-repo by the project team, not an independent corpus; the v8 generator (max_names=1) and the entry policy were designed after the v6 edit-size confound was observed. The v8 DEV split was inspected and scored repeatedly during design.",
+    "The v8 test programs were never traced/scored before this freeze, but the exposure was: variant files of 4 test programs were diffed against regenerated variants while diagnosing the stale-variant defect (content only, no scores).",
+    "No pre-registration document for v8 existed before the dev dry-run; this file plus the evaluation script constitute the freeze, committed before the first test extraction.",
+    "26 programs (22 after exclusion) is a small number of clusters; cluster-bootstrap CIs may be anti-conservative.",
+    "tau_v8 is derived on 13 dev programs and affects operating-point numbers only, not AUROC."
+  ]
+}

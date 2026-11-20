@@ -1,0 +1,97 @@
+\section{Related Work and Gap Analysis}\label{sec:background}
+
+Trusting a no-divergence verdict requires answers to four questions: how divergences are searched for, when the absence of an observed failure is informative, how the risk of an accepted verdict can be estimated and controlled, and whether the evidence and the estimator can themselves be trusted. Eight streams of work address parts of these questions (S1--S8). We review them in that order, state for each what it contributes and where it stops, and end with the gap. Table~\ref{tab:positioning} compares \sbg{} with the closest individual works and Table~\ref{tab:synthesis} summarises the streams. All comparisons are conceptual unless a baseline in this paper instantiates the idea; no prior tool was executed.
+
+\subsection{How Divergences Are Searched For}
+\paragraph*{S1. Differential testing and equivalence assessment} Differential testing runs comparable systems on the same inputs and treats disagreement as a symptom~\cite{mckeeman1998differential}; in regression testing the old version is the reference~\cite{evans2007differential}. Test generators compare versions value by value~\cite{jin2010automated,taneja2008diffgen} or target the propagation of a change~\cite{santelices2008testsuite}. Shadow symbolic execution solves for divergent inputs~\cite{cadar2014shadow,palikareva2016shadow,kuchta2018shadow}, NEZHA guides differential fuzzing by behavioural diversity~\cite{petsios2017nezha}, and differential regression testing has been applied to cloud services~\cite{godefroid2020differential}. LLM-based tools now generate regression-revealing tests for pull requests~\cite{pradel2026testora,hu2026difftestgen,lecong2026patchguru,fu2026orion,etemadi2025mokav,liu2026evaluating,schafer2024empirical}. At the other end, regression verification proves equivalence with deductive or symbolic reasoning~\cite{godlin2009regression,lahiri2012symdiff,felsing2014automating,malik2021automatically}. Between the two, LLMs have been benchmarked as equivalence checkers, with accuracies only modestly above chance on the hardest categories~\cite{wei2025equibench}. FEAgent (a preprint) combines program-graph evidence with LLM-surrogate execution, records its claims in an evidence ledger, and returns \textsc{unclear} instead of forcing a verdict when paths are uncovered~\cite{kachroo2026feagent}.
+
+\emph{Where it stops.} Search tools are evaluated on the divergences they expose; their output when nothing is found is an empty set, whose ambiguity Evans and Savoia noted without quantifying it~\cite{evans2007differential}. A generator that exposed differences in 78.2\% of 463 pull requests~\cite{hu2026difftestgen} leaves the remaining cases uncharacterised. SemaDiff (a preprint)~\cite{ayub2026semadiff} labels a commit semantics-preserving when all generated tests agree and reports about 76\% accuracy on 183 annotated commits. This is the dataset-level accuracy of an agreement rule, which is our baseline B1, not a conditional risk for each verdict. FEAgent is the closest in spirit: it abstains and keeps its evidence reviewable. As described, it does not define or estimate the probability that an accepted equivalence verdict is wrong, test how its decision responds to degraded evidence, or protect its evidence against the program under assessment.
+
+\subsection{When Absence of Failure Is Informative}
+\paragraph*{S2. Regression testing and test adequacy} Regression test selection decides which tests to re-run~\cite{rothermel1996analyzing,yoo2012regression}, and property-based testing generates inputs of the kind \sbg{} consumes~\cite{claessen2000quickcheck,maciver2019hypothesis}. Coverage criteria describe how much code a test set exercises~\cite{zhu1997software}; once suite size is controlled, coverage is at best moderately correlated with fault detection~\cite{inozemtseva2014coverage,gopinath2014code,kochhar2015code}, depending on criterion and faults~\cite{chekam2017empirical}. Mutation analysis asks whether a passing suite would have detected seeded faults~\cite{jia2011analysis,papadakis2019mutation}; mutants couple to real faults to a useful degree~\cite{just2014mutants}, although scores can be inflated~\cite{papadakis2018mutation}. BESTEST measures behavioural adequacy as the held-out accuracy of a model inferred from executions~\cite{fraser2012behaviourally,fraser2015assessing}.
+
+\paragraph*{S3. The test-oracle problem} Barr et al.\ survey the problem of deciding whether an observed behaviour is correct~\cite{barr2015oracle}. Oracle assessment treats the oracle itself as fallible, measuring and reducing its false positives and false negatives~\cite{jahangirova2016oracle}. Assertions and coverage have been studied jointly~\cite{zhang2015assertions}, as have gaps between documented and tested behaviour~\cite{paul2026beyond}. In version comparison, the old version is the oracle and the comparison channels are its assertions: a channel that is not compared is not checked.
+
+\paragraph*{S4. Metamorphic testing} Metamorphic testing replaces a missing oracle with relations between the outputs of related inputs~\cite{chen2018metamorphic,segura2016survey}, and equivalence modulo inputs derives program variants that must agree~\cite{le2014compiler}. The key idea for this paper is that a transformation with a \emph{known expected effect} can stand in for an unavailable oracle.
+
+\paragraph*{S5. Evidence sufficiency and observability} A fault reveals itself only if it is executed, infects the state, and the infection propagates to an observed output; the PIE analysis estimates these probabilities per location~\cite{voas1992pie}. Failed error propagation, in which an infected state does not reach the output, has been analysed information-theoretically~\cite{androutsopoulos2014analysis}, and coincidental correctness, in which faulty code executes without failure, is common in practice~\cite{masri2014prevalence}. Checked coverage counts only statements that influence an oracle check~\cite{schuler2011assessing,schuler2013checked}, and pseudo-tested methods are covered methods whose bodies can be removed without any test failing~\cite{niedermayr2016will,veraperez2018descartes,veraperez2019comprehensive}. Flaky tests show that a single execution is not always reproducible evidence~\cite{luo2014empirical,parry2022survey}.
+
+\emph{Where S2--S5 stop.} Together these streams explain \emph{why} an empty difference set can mislead: the change was not reached, the infection did not propagate, the relevant channel was not compared, or the run was not reproducible. Their unit, however, is a test suite or a program location for one version, and their output is a score. None attaches a conditional probability of error to a particular no-divergence verdict on a particular version pair, and none treats the integrity or provenance of the evidence as part of sufficiency. \sbg{} turns these failure mechanisms into features of a per-verdict estimate: activation, multiplicity, channel completeness, reproducibility and trust. Its influence feature is a reachability proxy, much weaker than checked coverage or a propagation analysis; we record this as a limitation.
+
+\subsection{How the Risk of Accepted Verdicts Is Estimated}
+\paragraph*{S6. Selective prediction and calibration} A selective classifier may abstain, and its quality is the risk among accepted predictions as a function of coverage~\cite{chow1970optimum,elyaniv2010foundations,geifman2017selective,hendrickx2024machine}. Probabilistic predictions are judged by proper scoring rules~\cite{brier1950verification} and calibration diagnostics~\cite{niculescumizil2005predicting,guo2017calibration}.
+
+\paragraph*{S7. Conformal and distribution-free risk control} Risk-controlling prediction sets~\cite{bates2021distribution} and conformal risk control~\cite{angelopoulos2024conformal} give finite-sample guarantees on expected risk, under i.i.d.\ and exchangeable calibration data respectively.
+
+\emph{Where S6--S7 stop.} These streams supply the estimand (our $\R$ is a selective risk) and the discipline of comparing at matched coverage, but they take the input of a prediction as given. They do not say what the input of a software verdict is, whether it was produced honestly, or how an estimate should respond when it is degraded. Their guarantees also require exchangeable units, whereas change pairs cluster by project; in our corpus one cluster holds 43.8\% of the labelled data. We therefore use a project-cluster bootstrap bound and claim no finite-sample guarantee.
+
+\subsection{Whether the Evidence and the Estimator Can Be Trusted}
+\paragraph*{S8. Evidence integrity and perturbation-based conformance} in-toto attests each step of a software supply chain~\cite{torresarias2019intoto}, SLSA~1.0 defines provenance levels~\cite{slsa2023spec}, and reproducible builds make artifacts independently re-derivable~\cite{lamb2022reproducible}. Separately, adequacy measures have been validated by controlled perturbation: checked coverage by removing assertions and showing that it degrades faster than statement coverage~\cite{schuler2011assessing}, suites by mutating programs~\cite{jia2011analysis,niedermayr2016will}, and systems by transforming inputs~\cite{chen2018metamorphic}.
+
+\emph{Where it stops.} Attestation frameworks certify \emph{artifacts and build steps}, not runtime observations made inside a process that the program under test also controls, and they treat integrity as something to verify rather than as an input to a risk judgment. Perturbation-based validation targets programs, suites and coverage measures. We found no declared property set for an \emph{estimator of verdict reliability} that fixes expected responses for invariance, monotonicity and prescribed outcomes; counts trials that cannot be applied as not applicable rather than as passes; reports passes earned by abstention separately; and includes integrity as a positive control. Schuler and Zeller's evidence deletion~\cite{schuler2011assessing} is the direct precursor of our property P1.
+
+\subsection{Gap and Positioning}
+Across S1--S8 we did not find a method that provides all three of the following:
+\begin{enumerate}
+\item a per-verdict false-assurance estimand for no-divergence verdicts on a version pair, relative to a declared observation boundary and adjudication budget, separated formally from equivalence;
+\item an estimate of that risk from evidence that includes integrity and provenance, behind a decision procedure that cannot be satisfied by forged evidence;
+\item a label-free conformance test that checks whether the estimate responds correctly to controlled degradations of its evidence, and that cannot be passed vacuously without the vacuity being visible.
+\end{enumerate}
+Each ingredient adapts an established idea: selective risk (S6), the execution--infection--propagation view of sufficiency (S5), evidence deletion and metamorphic relations (S4, S8), and attestation (S8). We claim novelty for none of them individually. The contribution is the reformulation of ``no difference found'' as a selective prediction about evidence, the three formal results that this reformulation yields (Section~\ref{sec:problem}), and the conformance discipline that follows from them, together with an evaluation that reports where the combination did and did not help. Table~\ref{tab:positioning} makes the comparison explicit; a mark means that the cited work addresses the capability, not that it does so successfully, and the same caveat applies to \sbg{}, whose predictive benefit is not demonstrated (Section~\ref{sec:res-rq4}).
+
+\begin{table*}[!t]
+\caption{Capabilities of the closest prior work relative to the question ``how far can this no-divergence verdict be trusted?''. $\bullet$ = addressed; $\circ$ = partly addressed (see note); -- = not addressed. Comp.: C = conceptual comparison only; B$k$ = the work's decision rule is instantiated as baseline B$k$. No prior tool was executed. $^{\mathrm{p}}$ = preprint.}
+\label{tab:positioning}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.6pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{|L{3.25cm}|c|c|c|c|c|c|c|c|L{3.35cm}|}
+\hline
+Work (stream) & \makecell{Interprets\\empty result} & \makecell{Per-verdict\\probability} & \makecell{Abstains} & \makecell{Sufficiency\\signal} & \makecell{Evidence\\integrity} & \makecell{Response to\\degraded evid.} & \makecell{Risk\\control} & Comp. & Note on partial marks / distinction \\
+\hline
+Evans \& Savoia~\cite{evans2007differential} (S1) & $\circ$ & -- & -- & -- & -- & -- & -- & B1 & Notes ambiguity; no estimate \\
+BERT~\cite{jin2010automated}, NEZHA~\cite{petsios2017nezha} (S1) & -- & -- & -- & $\circ$ & -- & -- & -- & C & Diversity guides search, not trust \\
+Shadow symbolic exec.~\cite{palikareva2016shadow} (S1) & -- & -- & -- & $\circ$ & -- & -- & -- & C & Path exploration bounds the search \\
+SemaDiff$^{\mathrm{p}}$~\cite{ayub2026semadiff} (S1) & $\bullet$ & -- & -- & -- & -- & -- & -- & B1 & Dataset-level accuracy of agreement rule \\
+EquiBench$^{\mathrm{p}}$~\cite{wei2025equibench} (S1) & $\circ$ & -- & -- & -- & -- & -- & -- & C & Measures accuracy of LLM equivalence judgments \\
+FEAgent$^{\mathrm{p}}$~\cite{kachroo2026feagent} (S1) & $\bullet$ & -- & $\bullet$ & $\circ$ & $\circ$ & -- & -- & C & Abstains on uncovered paths; reviewable evidence ledger \\
+Regression verification~\cite{lahiri2012symdiff} (S1) & $\bullet$ & -- & $\circ$ & -- & -- & -- & -- & C & Proof, not observation; may be inconclusive \\
+Mutation analysis~\cite{jia2011analysis,just2014mutants} (S2) & $\circ$ & -- & -- & $\bullet$ & -- & $\circ$ & -- & C & Suite score for one version; perturbs programs \\
+Oracle assessment~\cite{jahangirova2016oracle} (S3) & $\circ$ & -- & -- & $\bullet$ & -- & -- & -- & C & Oracle false negatives, per oracle \\
+PIE / failed propagation~\cite{voas1992pie,androutsopoulos2014analysis} (S5) & $\circ$ & $\circ$ & -- & $\bullet$ & -- & -- & -- & C & Probabilities per location, not per verdict \\
+Checked coverage~\cite{schuler2011assessing} (S5) & -- & -- & -- & $\bullet$ & -- & $\circ$ & -- & C & Assertion removal validates a metric (P1 credited) \\
+Pseudo-tested methods~\cite{niedermayr2016will,veraperez2019comprehensive} (S5) & $\circ$ & -- & -- & $\bullet$ & -- & $\circ$ & -- & C & Covered but unchecked code \\
+Selective classification~\cite{geifman2017selective} (S6) & -- & $\bullet$ & $\bullet$ & -- & -- & -- & $\bullet$ & B6 & i.i.d.\ guarantee; no software evidence \\
+Conformal risk control~\cite{angelopoulos2024conformal} (S7) & -- & $\circ$ & $\bullet$ & -- & -- & -- & $\bullet$ & C & Marginal; needs exchangeability \\
+in-toto~\cite{torresarias2019intoto} (S8) & -- & -- & -- & -- & $\bullet$ & -- & -- & C & Attests artifacts, not runtime observations \\
+\hline
+\sbg{} (this paper) & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\circ$ & -- & Risk control specified but not achieved (Sec.~\ref{sec:res-rq4}) \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\caption{Synthesis of the eight streams: what each contributes to trusting a no-divergence verdict, where it stops, and what \sbg{} takes from it.}
+\label{tab:synthesis}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{|L{2.6cm}|L{4.3cm}|L{4.6cm}|L{4.9cm}|}
+\hline
+Stream & Contribution & Where it stops & Use in \sbg{} \\
+\hline
+S1 Differential testing, equivalence assessment & Finds divergent inputs; judges or proves equivalence & Empty result uninterpreted, or scored only at dataset level; abstention without a risk estimand & Supplies the evidence; B1 instantiates the agreement rule \\
+S2 Regression testing, adequacy & Selects tests; measures suite strength & Suite-level score for one version & Change-conditioned coverage features \\
+S3 Oracle problem & Treats oracles as fallible & Per oracle, not per verdict & Unobserved channels as a sufficiency gap \\
+S4 Metamorphic testing & Relations with known effect replace a missing oracle & Relations act on program inputs & \ers{} relations act on the estimator's evidence \\
+S5 Sufficiency, observability & Explains why passing executions mislead (PIE, coincidental correctness, flakiness) & Per location or suite; no per-verdict probability & Activation, multiplicity, channel and reproducibility features \\
+S6 Selective prediction & Risk--coverage trade-off; calibration & Input taken as given; i.i.d.\ guarantees & $\R$ as selective risk; matched coverage; random abstention as reference \\
+S7 Conformal risk control & Finite-sample risk guarantees & Exchangeability violated by project clustering & Exploratory option only; no guarantee claimed \\
+S8 Integrity, perturbation conformance & Attests artifacts; validates measures by perturbation & Artifacts, not runtime observations; no property set for verdict-risk estimators & Integrity as a verdict precondition; \ers{} property set with N/A and abstention accounting \\
+\hline
+\end{tabular}
+\end{table*}
+
+\paragraph*{Benchmarks} Empirical claims in this area rest on benchmarks such as Defects4J~\cite{just2014defects4j}, BugsInPy~\cite{widyasari2020bugsinpy}, QuixBugs~\cite{lin2017quixbugs}, Bears~\cite{madeiral2019bears}, BugSwarm~\cite{tomassi2019bugswarm} and Bugs.jar~\cite{saha2018bugsjar}, whose suitability has itself been disputed~\cite{durieux2019critical,tomassi2019note}. We apply the same scrutiny to our own artifacts: an artifact named after a benchmark is evidence about that benchmark only if its programs were executed (Section~\ref{sec:res-rq5}).

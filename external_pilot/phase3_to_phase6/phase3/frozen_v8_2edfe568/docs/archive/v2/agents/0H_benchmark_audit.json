@@ -1,0 +1,808 @@
+{
+  "agent": "0H",
+  "task": "Dynamic Evaluation Suitability Audit for SBG v2 Upgrade",
+  "timestamp": "2025-07-07T00:00:00+00:00",
+  "corpus_stats": {
+    "total_base_programs": 63,
+    "total_pairs_generated": 3577,
+    "equivalent_pairs": 1774,
+    "changed_pairs": 1803,
+    "sp_transforms": 12,
+    "sc_mutations": 14,
+    "hard_negative_sc_types": 6
+  },
+
+  "sp_transform_dynamic_validity": {
+    "SP-1_VARIABLE_RENAME": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Renaming local variables is a pure AST textual change with no semantic content. Python variable names carry no runtime meaning beyond scoping. All renamed sites are within local scope only (dunder names and function names are skipped), so no __dict__ reflection, getattr, or dynamic attribute access is triggered.",
+      "failure_conditions": [
+        "If user code uses locals() or vars() and inspects variable names by string key, renamed variables would produce different dict keys — but none of the 63 corpus programs do this.",
+        "If a variable name is used as a string key in exec() or eval() — not present in corpus.",
+        "Serialization that encodes local variable names (e.g. pickle of closures with co_varnames introspection) — not present in corpus."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "STRONG",
+      "corpus_risk": "NEGLIGIBLE"
+    },
+    "SP-2_FUNCTION_RENAME": {
+      "guarantees_identical_runtime": true,
+      "rationale": "All call sites referencing the renamed function are updated by the AST transformer. The function's behavior is unchanged; only its identifier changes.",
+      "failure_conditions": [
+        "If the function is looked up by string name via getattr(module, 'func_name') — possible but rare in corpus.",
+        "If the function is referenced as a string in a decorator or metaclass — not present in corpus.",
+        "If tests import the function by name from another module that is NOT transformed — would cause NameError, not behavioral divergence."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "STRONG",
+      "corpus_risk": "LOW — test harnesses reference functions by name in assert statements within the same file, which ARE updated"
+    },
+    "SP-3_DEAD_CODE_INSERT": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Inserted blocks are wrapped in `if False:` or `while False:` guards. Python's interpreter parses but never executes these branches. No side effects can occur.",
+      "failure_conditions": [
+        "If inserted code raises a SyntaxError detectable at compile-time — the transformer compiles-checks each result, so this is prevented.",
+        "If instrumentation (coverage tools, AST tracers) count branch-not-taken events — irrelevant for output comparison."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "STRONG",
+      "notes": "SP-3 is listed as affecting EXECUTION dimension but dead code is definitionally unreachable — this is a manifest metadata inaccuracy."
+    },
+    "SP-4_COMMENT_STRIP": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Comments and docstrings carry no runtime semantics. Removing them cannot affect any output. Docstrings stored in __doc__ will become None/empty, but no corpus program inspects __doc__ at runtime.",
+      "failure_conditions": [
+        "If program uses __doc__ to drive runtime behavior (e.g., Sphinx-style directive in docstring used by a decorator) — not present in corpus.",
+        "If a string expression that doubles as a docstring is also used as a value elsewhere — the AST stripping targets only leading Expr nodes in function/class/module bodies."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "STRONG",
+      "corpus_risk": "NEGLIGIBLE"
+    },
+    "SP-5_LOOP_REWRITE": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Converting `for i in range(n):` to `while` with explicit init/increment produces identical iteration counts and values. ListComp→list(genexpr) is also semantically identical.",
+      "failure_conditions": [
+        "Negative-step range with non-integer step: the transformer uses `Gt` comparison for negative step, but if the original range has step != -1 and the transformer hardcodes -1, it could differ — needs verification.",
+        "If a for-loop's body modifies the loop variable, a while-rewrite may behave differently if the original for-loop ignores such modification (Python for-loop rebinds the variable on each iteration; while-loop does not) — this is a real, though unlikely, edge case.",
+        "Loop over non-range iterables are not targeted, so no risk there."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "MODERATE",
+      "corpus_risk": "LOW — corpus uses simple range() loops; the loop-body-modifies-iterator edge case is not present in reviewed programs"
+    },
+    "SP-6_CONDITION_REWRITE": {
+      "guarantees_identical_runtime": true,
+      "rationale": "De Morgan's law rewrites (a > b → not(a <= b)) are logically equivalent for all inputs when applied to simple comparison nodes. BoolOp rewrites (a and b → not(not a or not b)) are similarly equivalent.",
+      "failure_conditions": [
+        "Chained comparisons (a < b < c) are explicitly skipped by the transformer — correct.",
+        "Operator overloading: if __le__ and __gt__ are defined differently on custom objects, not(a <= b) may not equal a > b — not present in corpus numeric types.",
+        "NaN comparisons in float arithmetic: `a > b` and `not (a <= b)` differ when a or b is NaN (both return False for >, True for not(<=)) — a latent risk for math_* programs using floats."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "MODERATE",
+      "corpus_risk": "LOW-MEDIUM — math programs with float inputs could exhibit NaN divergence, but corpus inputs in tests are all well-behaved integers/rationals"
+    },
+    "SP-7_INLINE_FUNCTION": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Inlining a pure helper (≤5 stmts, single return, no recursion, no *args/**kwargs) at call sites with the return expression substituted is semantically equivalent, provided the substitution is hygienic.",
+      "failure_conditions": [
+        "If formal parameter appears multiple times in return expression and actual argument has a side effect (e.g., calling a stateful function), the inlined version evaluates the argument once while the original evaluates it once — actually equivalent. But if argument appears N times in inlined expression, it gets evaluated N times rather than 1 — BEHAVIORAL DIVERGENCE for stateful callables.",
+        "If actual argument is a complex expression with side effects and appears >1 time in return expression body — e.g., inline f(g()) where g() is stateful.",
+        "Only positional-arg calls are inlined; keyword calls are skipped — reduces but does not eliminate risk."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "MODERATE",
+      "corpus_risk": "LOW — corpus helpers are pure arithmetic/conditional operations; no stateful argument expressions detected in reviewed programs"
+    },
+    "SP-8_EXTRACT_FUNCTION": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Extracting a pure computation slice into a new helper and calling it is semantically equivalent if: (a) all variables used inside are passed as parameters, (b) all variables produced inside and used outside are returned, (c) the slice has no control-flow exits (no return/break/continue/raise).",
+      "failure_conditions": [
+        "If the extraction algorithm misidentifies 'used-after' variables (returns only 1 variable by design), it may silently drop a variable update — BEHAVIORAL DIVERGENCE.",
+        "If the slice contains a nonlocal/global write to an outer variable — the extraction would break the write because it is now inside a new function scope.",
+        "If the slice modifies a mutable argument (list.append, dict.update), the mutation propagates correctly because Python passes object references — safe.",
+        "The 'at most 1 return variable' constraint is a known limitation that could silently produce incorrect extractions for multi-output slices."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "WEAK",
+      "corpus_risk": "MEDIUM — at-most-1-return constraint means multi-output slices produce divergent behavior; this is the highest-risk SP transform"
+    },
+    "SP-9_CONSTANT_FOLD": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Pre-computing constant expressions at transformation time produces the exact same value that runtime would compute. Result is identical by construction.",
+      "failure_conditions": [
+        "Floating-point associativity: `(a + b) + c` and `a + (b + c)` may differ in float; constant folding must fold the exact sub-expression without reordering — the transformer folds in-place so this is safe.",
+        "Magnitude cap at 10^15 prevents overflow issues.",
+        "x*0 is explicitly NOT folded — correct, since list*0 = [] but int*0 = 0 would differ."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "STRONG",
+      "corpus_risk": "NEGLIGIBLE"
+    },
+    "SP-10_FORMAT_NORMALIZE": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Pure whitespace/formatting changes via AST round-trip (ast.unparse) cannot affect runtime behavior. ast.unparse is semantics-preserving by the Python standard.",
+      "failure_conditions": [
+        "ast.unparse may change string literal quoting style (single→double quotes or vice versa), which could affect hash-based caching if code hashes are compared — not a runtime behavioral difference.",
+        "Some very long lines or complex f-strings may not round-trip perfectly in older Python versions — risk is Python version-dependent."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "STRONG",
+      "corpus_risk": "NEGLIGIBLE"
+    },
+    "SP-11_EQUIVALENT_DATA_STRUCTURE": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Replacing list() with collections.deque() for stack/queue-only operations (append, pop, extend) is semantically equivalent for those operations. deque.pop() and list.pop() both remove from the right (LIFO). deque.append() and list.append() are equivalent.",
+      "failure_conditions": [
+        "If the variable is later indexed (e.g., var[0], var[-1]) — the transformer's safety check is supposed to catch this, but if it misses an indirect index access, deque does not support O(1) random access (though it does support indexing, the behavior differs for slicing: deque does not support slicing at all — TypeError on deque[1:3]).",
+        "If the variable is passed to a function expecting a list type (isinstance checks, len() calls that work on deque too — actually safe), or if sorted(), reversed() produce different iterator types.",
+        "If `extend` is called with a generator, both list and deque handle it — safe.",
+        "Ordering of iteration: deque iterates left-to-right, same as list — safe."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "MODERATE",
+      "corpus_risk": "LOW-MEDIUM — slicing on the replaced variable would cause a TypeError at runtime; this is an actual divergence mode not just incorrect output"
+    },
+    "SP-12_ALGEBRAIC_REWRITE": {
+      "guarantees_identical_runtime": true,
+      "rationale": "Algebraic identities (x*2→x+x, x+0→x, x*1→x, x**1→x, x**0→1) are mathematically equivalent for all numeric types.",
+      "failure_conditions": [
+        "x*2→x+x: for strings, `'a'*2` = 'aa' but `'a'+'a'` = 'aa' — equivalent. For lists, `[1]*2` = [1,1] but `[1]+[1]` = [1,1] — equivalent.",
+        "x**0→1: for float('nan')**0, Python returns 1.0 (correct, but x**0 implementation is replaced by the constant 1, which may differ if x has a custom __pow__ method that has side effects).",
+        "x-x→0 and x&x→x: applied only to simple Name nodes to avoid double evaluation — correct.",
+        "Float precision: x*2 and x+x are bitwise identical for IEEE 754 floats — safe."
+      ],
+      "detectable_by_output_comparison": true,
+      "dynamic_validity_rating": "STRONG",
+      "corpus_risk": "NEGLIGIBLE"
+    }
+  },
+
+  "sc_mutation_output_visibility": {
+    "SC-1_OFF_BY_ONE": {
+      "changes_observable_output": true,
+      "visibility": "HIGH",
+      "analysis": "Modifying range() bounds by ±1 directly changes loop iteration count. For sort algorithms this produces truncated/extended arrays; for fibonacci this shifts results by one sequence position.",
+      "invisible_edge_cases": [
+        "If the mutated range boundary coincides with the actual loop range for all test inputs — e.g., range(n+1) vs range(n) is only different when n >= 1; an input of n=0 would not expose it.",
+        "Off-by-one in a comparison (e.g., < vs <=) only matters when the compared value equals the boundary."
+      ],
+      "witness_inputs_needed": "Any non-trivial input that exercises the full range. For mergesort: any list with len >= 2. For fibonacci: fib(n) for n >= 2. For LRU: put() calls at exactly capacity.",
+      "hard_negative": true,
+      "detectable_by_output_diff": true
+    },
+    "SC-2_OPERATOR_MUTATION": {
+      "changes_observable_output": true,
+      "visibility": "HIGH",
+      "analysis": "Swapping + to -, * to /, < to >, == to != directly changes computed values or branch direction for most inputs.",
+      "invisible_edge_cases": [
+        "Swapping + and - when both operands are 0 produces no difference.",
+        "Swapping < to > when both operands are equal (boundary case) — the mutation is invisible at exactly equal inputs.",
+        "Swapping == to != only matters when the condition is triggered."
+      ],
+      "witness_inputs_needed": "Non-zero, non-boundary inputs. For fibonacci: any n >= 2. For mergesort: unsorted list with at least 2 elements.",
+      "hard_negative": false,
+      "detectable_by_output_diff": true
+    },
+    "SC-3_CONSTANT_MUTATION": {
+      "changes_observable_output": true,
+      "visibility": "MEDIUM-HIGH",
+      "analysis": "Perturbing integer constants by ±1 affects thresholds, capacities, or loop bounds. Perturbing string constants affects string comparisons and outputs.",
+      "invisible_edge_cases": [
+        "If the constant appears only in a path never exercised by test inputs.",
+        "If perturbing a constant by ±1 falls within a tolerance band (e.g., floating-point approximate equality tests).",
+        "String suffix append only matters if the string is compared or returned — invisible if string is only used as a log message."
+      ],
+      "witness_inputs_needed": "Inputs that exercise the code path where the constant is used. For LRU cache: capacity=3 mutated to 4 requires exactly 4 put() calls. For retry_backoff: max_attempts=5 mutated to 6 requires always-failing function.",
+      "hard_negative": false,
+      "detectable_by_output_diff": true
+    },
+    "SC-4_BOUNDARY_CONDITION": {
+      "changes_observable_output": true,
+      "visibility": "LOW-MEDIUM",
+      "analysis": "Removing a guard check (e.g., `if n < 0: raise ValueError`) by replacing its body with `pass` is only observable when the guard condition is actually triggered — i.e., when a boundary-violating input is provided.",
+      "invisible_edge_cases": [
+        "If test inputs never include negative/zero/boundary values, the removal is completely invisible.",
+        "If the guard raises an exception that is caught by the caller and silently handled — removing it might cause downstream incorrect behavior that only manifests much later in the call chain.",
+        "This is classified as hard_negative in the manifest — confirms high invisible rate on uniform random inputs."
+      ],
+      "witness_inputs_needed": "Inputs that trigger the guard: negative n for fibonacci, capacity=0 for LRU, max_attempts=0 for retry_backoff, duration=0 for traffic_light.",
+      "hard_negative": true,
+      "detectable_by_output_diff": "ONLY with boundary-probing inputs"
+    },
+    "SC-5_CONDITION_NEGATE": {
+      "changes_observable_output": true,
+      "visibility": "HIGH",
+      "analysis": "Negating an if-branch condition causes the true-branch to execute when it previously would not, and vice versa. For most programs this produces completely wrong outputs on normal inputs.",
+      "invisible_edge_cases": [
+        "If the negated condition guards a branch whose body is empty or a no-op — the negate is invisible.",
+        "If the if-statement has no else clause and the body is a log-only side effect."
+      ],
+      "witness_inputs_needed": "Any input that exercises the conditional path — usually trivial for most programs.",
+      "hard_negative": false,
+      "detectable_by_output_diff": true
+    },
+    "SC-6_RETURN_MUTATION": {
+      "changes_observable_output": true,
+      "visibility": "HIGH",
+      "analysis": "Altering a return value (int+1, bool negate) directly changes what the caller receives. Virtually always detectable with any input that causes the function to return.",
+      "invisible_edge_cases": [
+        "If the return value is unused by the caller (void-style call) — not visible from output.",
+        "If the mutation adds 1 to an integer that is then used only as an index, and the test input produces a valid (non-crashing) result for both index values."
+      ],
+      "witness_inputs_needed": "Any input that causes the mutated function to be called and its return value to be used in a comparison or output.",
+      "hard_negative": false,
+      "detectable_by_output_diff": true
+    },
+    "SC-7_EXCEPTION_SUPPRESSION": {
+      "changes_observable_output": true,
+      "visibility": "LOW-MEDIUM",
+      "analysis": "Suppressing an exception handler (replacing except body with pass) is only visible if: (a) the exception is expected to propagate and is checked, or (b) the exception handler sets a return value or state that is later observed.",
+      "invisible_edge_cases": [
+        "If the except block only logs, the suppression is invisible to output comparison.",
+        "If tests never trigger the code path that raises the exception, the mutation is completely invisible.",
+        "For retry_backoff: suppressing the exception re-raise means all-failing calls silently return None instead of raising — highly visible if callers check the raised exception."
+      ],
+      "witness_inputs_needed": "Inputs that trigger the exception path: always-failing lambdas for retry_backoff, invalid keys for parsers, empty stacks for ds_stack_queue.",
+      "hard_negative": true,
+      "detectable_by_output_diff": "Requires exception-triggering inputs"
+    },
+    "SC-8_LOOP_BOUND_CHANGE": {
+      "changes_observable_output": true,
+      "visibility": "HIGH",
+      "analysis": "Modifying range() start/stop to skip the first or last iteration changes iteration count. Similar to SC-1 but specifically targets loop structures rather than comparison constants.",
+      "invisible_edge_cases": [
+        "Skipping last iteration of a range(n) where n=0 or n=1 (empty or single-element case) may produce identical results if the last element is never actually needed.",
+        "For sort algorithms: skipping the last pass in an insertion sort only matters if the last element is out of place."
+      ],
+      "witness_inputs_needed": "Lists/sequences with enough elements to exercise the skipped iteration. Minimum 3 elements for most sort programs.",
+      "hard_negative": false,
+      "detectable_by_output_diff": true
+    },
+    "SC-9_ORDERING_MUTATION": {
+      "changes_observable_output": true,
+      "visibility": "MEDIUM",
+      "analysis": "Swapping two adjacent assignment/expression statements is only observable if the second statement depends on the first (i.e., the first produces a value used by the second). Independent statements produce identical output when swapped.",
+      "invisible_edge_cases": [
+        "Swapping two independent assignments (a=1; b=2 → b=2; a=1) is semantically equivalent and ALWAYS invisible.",
+        "The mutation may frequently produce no-op swaps if the AST transformer picks independent statements.",
+        "Swapping `a, b = b, a + b` (fibonacci update) would be visible, but this is a single tuple assignment, not two adjacent statements."
+      ],
+      "witness_inputs_needed": "Any input that exercises the swapped statements, combined with code analysis to confirm the swapped statements are actually data-dependent.",
+      "hard_negative": false,
+      "detectable_by_output_diff": "CONDITIONAL — depends on whether swapped statements are data-dependent"
+    },
+    "SC-10_MISSING_UPDATE": {
+      "changes_observable_output": true,
+      "visibility": "HIGH",
+      "analysis": "Removing an AugAssign (+=/-=) inside a loop prevents the accumulator from being updated. This produces incorrect loop results on virtually all inputs with multiple loop iterations.",
+      "invisible_edge_cases": [
+        "If the loop executes 0 iterations (empty input), the missing update is never triggered.",
+        "If the removed update is for a counter that is never used outside the loop (dead store after removal)."
+      ],
+      "witness_inputs_needed": "Any non-empty input that causes at least 2 loop iterations. For fibonacci: n >= 2. For mergesort: list with >= 2 elements.",
+      "hard_negative": false,
+      "detectable_by_output_diff": true
+    },
+    "SC-11_WRONG_VARIABLE": {
+      "changes_observable_output": true,
+      "visibility": "MEDIUM-HIGH",
+      "analysis": "Substituting one local variable for another in a Load site causes the wrong value to be used at that point. Visibility depends on whether the substituted variable has the same value at that point.",
+      "invisible_edge_cases": [
+        "If both variables hold the same value at the substitution point (e.g., after `a = b = 0`), the mutation is invisible.",
+        "If the substituted variable is never read after the substitution (dead load).",
+        "If the two variables happen to be equal for all test inputs."
+      ],
+      "witness_inputs_needed": "Inputs where the two variables diverge in value before the substitution site. For LRU cache: operations that make key and value differ. For sort: list with non-equal adjacent elements.",
+      "hard_negative": false,
+      "detectable_by_output_diff": true
+    },
+    "SC-12_RESOURCE_LEAK": {
+      "changes_observable_output": true,
+      "visibility": "LOW",
+      "analysis": "Removing a .close()/.release()/.cleanup() call prevents resource cleanup. In short-lived test runs, this typically produces NO observable output difference — the resource is just leaked. Only visible in long-running or resource-sensitive scenarios.",
+      "invisible_edge_cases": [
+        "In virtually all test scenarios, removing .close() on a mock or in-memory object has zero output impact.",
+        "Only becomes visible if the leaked resource causes subsequent operations to fail (e.g., file descriptor exhaustion, lock not released causing deadlock).",
+        "This is classified as hard_negative — confirms extremely low output visibility on standard inputs."
+      ],
+      "witness_inputs_needed": "Repeated resource acquisition/release cycles in sufficient volume to exhaust the resource pool, OR explicit post-cleanup state checks. Standard unit tests do NOT expose this mutation.",
+      "hard_negative": true,
+      "detectable_by_output_diff": "RARELY — requires resource-exhaustion scenarios"
+    },
+    "SC-13_CONDITION_REMOVAL": {
+      "changes_observable_output": true,
+      "visibility": "MEDIUM-HIGH",
+      "analysis": "Removing an if-check and inlining its body unconditionally causes the body to execute even when the guard would have prevented it. Visible whenever the guard condition would be false.",
+      "invisible_edge_cases": [
+        "If the guard condition is always true for test inputs, the removal is invisible.",
+        "If the inlined body is idempotent when executed unconditionally (e.g., appending to a list that is empty anyway)."
+      ],
+      "witness_inputs_needed": "Inputs where the guard condition is false. For LRU cache: removing the `if key not in self._map` check requires a key that IS in the map. For traffic_light: removing the emergency check requires non-emergency ticks.",
+      "hard_negative": true,
+      "detectable_by_output_diff": true
+    },
+    "SC-14_STATE_TRANSITION_ERROR": {
+      "changes_observable_output": true,
+      "visibility": "HIGH",
+      "analysis": "Changing a target state constant (e.g., 'GREEN' → 'RED') in an FSM transition directly causes the machine to enter the wrong state. Visible on any input that triggers the affected transition.",
+      "invisible_edge_cases": [
+        "The mutation targets ALL_CAPS string/constant assignments, so it applies to FSM-style programs (fsm_* category). Non-FSM programs may have no applicable sites.",
+        "If the changed state happens to produce the same observable behavior as the original for the test inputs used."
+      ],
+      "witness_inputs_needed": "For traffic_light: tick through the affected transition (RED→GREEN mutated to RED→RED requires 3+ ticks). For FSM programs generally: drive the machine to the mutated transition.",
+      "hard_negative": true,
+      "detectable_by_output_diff": true
+    }
+  },
+
+  "programs_with_callable_functions": [
+    {
+      "program_id": "sort_mergesort",
+      "entry_point": "mergesort(arr: list) -> list",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "list of comparables",
+      "notes": "Ideal for dynamic evaluation — pure function, deterministic, no state. Call with any list and compare outputs."
+    },
+    {
+      "program_id": "math_fibonacci",
+      "entry_point": "fib(n: int) -> int",
+      "pure_function": true,
+      "callable_complexity": "TRIVIAL",
+      "input_type": "non-negative integer",
+      "notes": "Simplest possible evaluation target — single integer input, single integer output. Perfect for SC-1, SC-2, SC-3, SC-8, SC-10."
+    },
+    {
+      "program_id": "math_prime_sieve",
+      "entry_point": "sieve(n: int) -> list[int]",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "positive integer (upper bound)",
+      "notes": "Pure function, list output enables exact comparison."
+    },
+    {
+      "program_id": "sort_binary_search",
+      "entry_point": "binary_search(arr, target) -> int",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "sorted list + target value",
+      "notes": "Pure function. SC-1 (off-by-one in mid calculation) is high-risk and easily exposed."
+    },
+    {
+      "program_id": "str_edit_distance",
+      "entry_point": "edit_distance(s1: str, s2: str) -> int",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "two strings",
+      "notes": "DP algorithm, pure function. Rich test space for SC-1/SC-8/SC-10."
+    },
+    {
+      "program_id": "str_palindrome",
+      "entry_point": "is_palindrome(s: str) -> bool",
+      "pure_function": true,
+      "callable_complexity": "TRIVIAL",
+      "input_type": "string",
+      "notes": "Boolean return — SC-5, SC-6 produce immediate visible divergence."
+    },
+    {
+      "program_id": "str_run_length_encode",
+      "entry_point": "encode(s: str) -> str",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "string",
+      "notes": "Pure transformation, string output."
+    },
+    {
+      "program_id": "math_statistics",
+      "entry_point": "mean(data), median(data), std_dev(data)",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "list of numbers",
+      "notes": "Multiple pure functions. Numeric outputs enable floating-point diff comparison."
+    },
+    {
+      "program_id": "graph_dijkstra",
+      "entry_point": "dijkstra(graph, source) -> dict",
+      "pure_function": true,
+      "callable_complexity": "MODERATE",
+      "input_type": "adjacency dict + source node",
+      "notes": "Pure function with dict output. SC-1/SC-2 on distance comparisons are directly visible."
+    },
+    {
+      "program_id": "graph_bfs_shortest_path",
+      "entry_point": "bfs_shortest_path(graph, start, end) -> list",
+      "pure_function": true,
+      "callable_complexity": "MODERATE",
+      "input_type": "adjacency dict + two nodes",
+      "notes": "Pure function with path output."
+    },
+    {
+      "program_id": "sort_heapsort",
+      "entry_point": "heapsort(arr) -> list",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "list of comparables",
+      "notes": "Pure sort — same input exposure profile as mergesort."
+    },
+    {
+      "program_id": "math_polynomial",
+      "entry_point": "evaluate(coeffs, x) -> float",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "list of coefficients + scalar x",
+      "notes": "Pure numeric function."
+    },
+    {
+      "program_id": "math_matrix_ops",
+      "entry_point": "matrix_multiply(A, B) -> list[list]",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "two 2D lists",
+      "notes": "Pure matrix operation."
+    },
+    {
+      "program_id": "str_kmp_search",
+      "entry_point": "kmp_search(text, pattern) -> list[int]",
+      "pure_function": true,
+      "callable_complexity": "MODERATE",
+      "input_type": "two strings",
+      "notes": "Pure search function returning list of match positions."
+    },
+    {
+      "program_id": "str_anagram_groups",
+      "entry_point": "anagram_groups(words: list[str]) -> list[list[str]]",
+      "pure_function": true,
+      "callable_complexity": "SIMPLE",
+      "input_type": "list of strings",
+      "notes": "Pure grouping function."
+    }
+  ],
+
+  "programs_requiring_special_inputs": [
+    {
+      "program_id": "ds_lru_cache",
+      "special_input_type": "STATEFUL_SEQUENCE",
+      "reason": "LRU cache is a stateful class. Dynamic evaluation requires executing a sequence of put()/get()/peek() operations and comparing resulting state (keys_lru_order(), get() return values, __len__()). A single operation call is insufficient.",
+      "recommended_harness": "Script a fixed sequence: [put(1,'a'), put(2,'b'), put(3,'c'), get(1), put(4,'d')] and compare keys_lru_order() and get() results after each step.",
+      "sc_mutations_hardest_to_expose": ["SC-4_BOUNDARY_CONDITION (capacity validation)", "SC-12_RESOURCE_LEAK (no resources to leak in memory-only impl)"]
+    },
+    {
+      "program_id": "fsm_traffic_light",
+      "special_input_type": "STATEFUL_SEQUENCE",
+      "reason": "FSM requires driving through state transitions via tick() calls. Output is state sequence, not a single return value. Emergency path requires trigger_emergency() + clear_emergency() in sequence.",
+      "recommended_harness": "Initialize with short durations (e.g., red=2, green=2, yellow=1), run 20 ticks, record state sequence. Compare state sequences between base and variant.",
+      "sc_mutations_hardest_to_expose": ["SC-4_BOUNDARY_CONDITION (only triggered on invalid duration inputs)", "SC-12_RESOURCE_LEAK (no resource cleanup in this program)"]
+    },
+    {
+      "program_id": "err_retry_backoff",
+      "special_input_type": "CALLABLE_ARGUMENT",
+      "reason": "Requires a callable as argument. Must test with (a) always-succeeding lambda, (b) always-failing lambda, (c) fail-then-succeed lambda (flaky). Uses time.sleep in production version — use retry_with_backoff_no_sleep for testing.",
+      "recommended_harness": "counter-based flaky function that succeeds on attempt N; verify return value and attempt count. Test with max_attempts=0 to expose SC-4.",
+      "sc_mutations_hardest_to_expose": ["SC-1 on attempt range (only visible for max_attempts >= 3 with specific flakiness pattern)", "SC-7_EXCEPTION_SUPPRESSION requires always-failing function"]
+    },
+    {
+      "program_id": "conc_producer_consumer",
+      "special_input_type": "THREADING_NONDETERMINISTIC",
+      "reason": "Uses real threading. Output ordering is non-deterministic between runs. Cannot use simple output comparison for dynamic evaluation without synchronization harness or trace collection.",
+      "recommended_harness": "Replace threading with a synchronous simulation or use thread-safe result collection with sorted output comparison. AVOID raw output diff.",
+      "sc_mutations_hardest_to_expose": ["ALL — nondeterminism masks most mutations"]
+    },
+    {
+      "program_id": "conc_read_write_lock",
+      "special_input_type": "THREADING_NONDETERMINISTIC",
+      "reason": "Same as producer_consumer — threading makes output nondeterministic.",
+      "recommended_harness": "Sequential simulation mode or deterministic thread scheduling.",
+      "sc_mutations_hardest_to_expose": ["ALL — threading masks behavioral changes"]
+    },
+    {
+      "program_id": "conc_thread_safe_counter",
+      "special_input_type": "THREADING_NONDETERMINISTIC",
+      "reason": "Counter increments from multiple threads may arrive in any order.",
+      "recommended_harness": "Single-threaded invocation of increment() N times, compare final count.",
+      "sc_mutations_hardest_to_expose": ["SC-9_ORDERING_MUTATION in threaded context"]
+    },
+    {
+      "program_id": "file_csv_aggregator",
+      "special_input_type": "FILE_IO",
+      "reason": "Reads from CSV files. Requires fixture CSV data. Not a pure function — needs file system setup.",
+      "recommended_harness": "Create in-memory StringIO fixtures; patch file open calls.",
+      "sc_mutations_hardest_to_expose": ["SC-12_RESOURCE_LEAK (file handle not closed)"]
+    },
+    {
+      "program_id": "file_log_processor",
+      "special_input_type": "FILE_IO",
+      "reason": "Same file I/O constraints as csv_aggregator.",
+      "recommended_harness": "StringIO or tempfile fixtures.",
+      "sc_mutations_hardest_to_expose": ["SC-12_RESOURCE_LEAK"]
+    },
+    {
+      "program_id": "res_cache_ttl",
+      "special_input_type": "TIME_DEPENDENT",
+      "reason": "Cache TTL expiration depends on real time.time(). Tests that check expiration behavior require time.time to be mockable.",
+      "recommended_harness": "Inject a mock clock or use freezegun/time-travel. Non-expiration tests are fine without mocking.",
+      "sc_mutations_hardest_to_expose": ["SC-3_CONSTANT_MUTATION on TTL values requires timed inputs"]
+    },
+    {
+      "program_id": "api_rest_crud_mock",
+      "special_input_type": "STATEFUL_SEQUENCE",
+      "reason": "REST CRUD mock requires a sequence of create/read/update/delete operations to exercise full behavior.",
+      "recommended_harness": "Fixed operation sequence with assertions on state after each step.",
+      "sc_mutations_hardest_to_expose": ["SC-4 on validation guards requires invalid inputs"]
+    },
+    {
+      "program_id": "parse_json_subset",
+      "special_input_type": "STRING_GRAMMAR",
+      "reason": "Parser operates on structured string input — requires valid JSON-subset strings AND intentionally malformed strings to exercise error paths.",
+      "recommended_harness": "Fixed corpus of valid and invalid JSON strings; compare parse results.",
+      "sc_mutations_hardest_to_expose": ["SC-7_EXCEPTION_SUPPRESSION requires invalid input strings"]
+    }
+  ],
+
+  "recommended_test_input_templates": {
+    "sort_mergesort": {
+      "entry_point": "mergesort",
+      "inputs": [
+        {"case": "empty", "args": [[]], "expose_mutations": []},
+        {"case": "single", "args": [[42]], "expose_mutations": []},
+        {"case": "two_elements_sorted", "args": [[1, 2]], "expose_mutations": ["SC-1", "SC-2", "SC-5"]},
+        {"case": "two_elements_reversed", "args": [[2, 1]], "expose_mutations": ["SC-1", "SC-2", "SC-5", "SC-6"]},
+        {"case": "general_unsorted", "args": [[5, 2, 4, 6, 1, 3]], "expose_mutations": ["SC-1", "SC-2", "SC-3", "SC-5", "SC-6", "SC-8", "SC-10", "SC-11"]},
+        {"case": "all_equal", "args": [[3, 3, 3, 3]], "expose_mutations": ["SC-2 (boundary at tie)"]},
+        {"case": "large_random_seed42", "args": "random.Random(42).sample(range(1000), 100)", "expose_mutations": ["SC-1", "SC-2", "SC-5", "SC-8", "SC-10"]},
+        {"case": "stability_tuples", "args": [[[1, "b"], [1, "a"], [2, "c"]]], "expose_mutations": ["SC-2 (stable <= vs <)"]},
+        {"case": "boundary_guard_negative", "args": [null], "expose_mutations": ["SC-4 — does mergesort even validate input type?"], "notes": "Not directly applicable — mergesort has no guard for None input"}
+      ],
+      "oracle": "sorted(input_list)",
+      "output_type": "list"
+    },
+    "math_fibonacci": {
+      "entry_point": "fib",
+      "inputs": [
+        {"case": "fib_0", "args": [0], "expected": 0, "expose_mutations": ["SC-6 (return mutation)"]},
+        {"case": "fib_1", "args": [1], "expected": 1, "expose_mutations": ["SC-6", "SC-8"]},
+        {"case": "fib_2", "args": [2], "expected": 1, "expose_mutations": ["SC-1", "SC-8", "SC-10"]},
+        {"case": "fib_5", "args": [5], "expected": 5, "expose_mutations": ["SC-1", "SC-2", "SC-5", "SC-8", "SC-10", "SC-11"]},
+        {"case": "fib_10", "args": [10], "expected": 55, "expose_mutations": ["SC-1", "SC-2", "SC-3", "SC-5", "SC-6", "SC-8", "SC-9", "SC-10", "SC-11"]},
+        {"case": "fib_20", "args": [20], "expected": 6765, "expose_mutations": ["all_loop_mutations"]},
+        {"case": "negative_boundary", "args": [-1], "expected": "ValueError", "expose_mutations": ["SC-4_removes_guard", "SC-7_suppresses_raise"]}
+      ],
+      "oracle": "reference_fib(n)",
+      "output_type": "int or exception"
+    },
+    "fsm_traffic_light": {
+      "entry_point": "TrafficLight + tick()",
+      "inputs": [
+        {
+          "case": "full_cycle",
+          "setup": "TrafficLight(red_duration=2, green_duration=2, yellow_duration=1)",
+          "operations": "20x tick()",
+          "expected_output": "sequence of TrafficState values",
+          "expose_mutations": ["SC-14_state_transition", "SC-1_off_by_one_on_duration_comparison", "SC-5_negate_condition"]
+        },
+        {
+          "case": "emergency_path",
+          "setup": "TrafficLight(2, 2, 1)",
+          "operations": "tick(), tick(), trigger_emergency(), tick(), tick(), clear_emergency(), tick()",
+          "expected_output": "state sequence including EMERGENCY_RED",
+          "expose_mutations": ["SC-13_remove_emergency_guard", "SC-14", "SC-5"]
+        },
+        {
+          "case": "invalid_duration_guard",
+          "setup": "TrafficLight(red_duration=0)",
+          "expected_output": "ValueError",
+          "expose_mutations": ["SC-4_boundary_condition"]
+        },
+        {
+          "case": "is_safe_to_cross_sequence",
+          "setup": "TrafficLight(2, 2, 1)",
+          "operations": "tick x6 with is_safe_to_cross() checked at each step",
+          "expose_mutations": ["SC-6_return_negate_on_is_safe", "SC-14_GREEN_to_RED"]
+        }
+      ],
+      "oracle": "hand-computed state sequence for given durations",
+      "output_type": "List[TrafficState]"
+    },
+    "err_retry_backoff": {
+      "entry_point": "retry_with_backoff_no_sleep",
+      "inputs": [
+        {
+          "case": "always_succeed",
+          "func": "lambda: 42",
+          "max_attempts": 3,
+          "expected_return": 42,
+          "expected_call_count": 1,
+          "expose_mutations": ["SC-5 (negates max_attempts<1 check)", "SC-6 (return mutation of result)"]
+        },
+        {
+          "case": "fail_twice_succeed_third",
+          "func": "flaky with counter=0, fails if counter<3",
+          "max_attempts": 5,
+          "expected_return": "ok",
+          "expected_call_count": 3,
+          "expose_mutations": ["SC-1 (range(max_attempts)±1)", "SC-8 (loop bound)", "SC-10 (missing attempt increment)"]
+        },
+        {
+          "case": "always_fail",
+          "func": "lambda: raise ValueError('boom')",
+          "max_attempts": 3,
+          "expected": "raises ValueError",
+          "expose_mutations": ["SC-7 (exception suppression — returns None instead of raising)", "SC-4 (boundary on max_attempts)"]
+        },
+        {
+          "case": "max_attempts_zero",
+          "func": "lambda: 42",
+          "max_attempts": 0,
+          "expected": "raises ValueError",
+          "expose_mutations": ["SC-4_boundary_condition"]
+        }
+      ],
+      "oracle": "call count + return value + exception type",
+      "output_type": "return value or exception"
+    },
+    "ds_lru_cache": {
+      "entry_point": "LRUCache class",
+      "inputs": [
+        {
+          "case": "basic_eviction",
+          "setup": "LRUCache(capacity=2)",
+          "operations": ["put(1,'a')", "put(2,'b')", "get(1)", "put(3,'c')", "get(2)", "get(3)"],
+          "expected_outputs": [null, null, "a", null, -1, "c"],
+          "expose_mutations": ["SC-1 on capacity check", "SC-5 on eviction condition", "SC-13 on MRU update guard"]
+        },
+        {
+          "case": "update_recency",
+          "setup": "LRUCache(capacity=2)",
+          "operations": ["put('x',1)", "put('y',2)", "put('x',10)", "keys_lru_order()"],
+          "expected_outputs": [null, null, null, ["x", "y"]],
+          "expose_mutations": ["SC-9 ordering swap in put()", "SC-11 wrong variable in eviction"]
+        },
+        {
+          "case": "peek_no_recency_change",
+          "setup": "LRUCache(capacity=2)",
+          "operations": ["put('a',1)", "put('b',2)", "peek('a')", "put('c',3)", "get('a')", "get('b')"],
+          "expected_outputs": [null, null, 1, null, -1, 2],
+          "expose_mutations": ["SC-13 removes peek condition guard", "SC-5 negates is-present check in peek"]
+        },
+        {
+          "case": "capacity_one",
+          "setup": "LRUCache(capacity=1)",
+          "operations": ["put('k1',100)", "put('k2',200)", "get('k1')", "get('k2')"],
+          "expected_outputs": [null, null, -1, 200],
+          "expose_mutations": ["SC-1 on capacity>=1 check", "SC-3 on default -1 return"]
+        },
+        {
+          "case": "invalid_capacity_guard",
+          "setup": "LRUCache(capacity=0)",
+          "expected": "raises ValueError",
+          "expose_mutations": ["SC-4_boundary_condition"]
+        }
+      ],
+      "oracle": "expected return values per operation + keys_lru_order() final state",
+      "output_type": "sequence of get/peek return values + order list"
+    }
+  },
+
+  "v2_benchmark_gaps": [
+    {
+      "gap_id": "GAP-01",
+      "severity": "CRITICAL",
+      "title": "No dynamic execution harness exists",
+      "description": "The current benchmark has no infrastructure to actually run base and variant programs and compare outputs. The ground_truth/validator.py performs static schema validation only. For v2 dynamic evaluation, a test runner must: (1) load both base and variant programs in isolated namespaces, (2) call entry points with fixed inputs, (3) capture return values, exceptions, and optionally stdout, (4) compare outputs.",
+      "required_component": "benchmark/dynamic/runner.py — a differential execution harness"
+    },
+    {
+      "gap_id": "GAP-02",
+      "severity": "CRITICAL",
+      "title": "No per-program test input registries",
+      "description": "The programs_manifest.json records test_count and spec but does not encode the actual test inputs needed to exercise each program. For dynamic evaluation, each program needs a machine-readable test vector catalog (inputs + expected outputs) that can be loaded and replayed.",
+      "required_component": "benchmark/dynamic/test_vectors/{program_id}.json"
+    },
+    {
+      "gap_id": "GAP-03",
+      "severity": "HIGH",
+      "title": "SC mutations lack witness input records in practice",
+      "description": "The ground_truth schema has a witness_input field, but pairs_dev.jsonl shows gt_tier GT-T3 with confidence 0.95 for ALL SP pairs and no SC pair witness inputs in the dev split sample. The dynamic v2 benchmark requires pre-computed witness inputs for each SC pair — the specific input that demonstrates the behavioral difference.",
+      "required_component": "Witness input generation step in the mutation pipeline (mutator.py should record the first input that exposes divergence)"
+    },
+    {
+      "gap_id": "GAP-04",
+      "severity": "HIGH",
+      "title": "Hard-negative SC mutations (SC-4, SC-7, SC-12, SC-13, SC-14) are invisible to random inputs",
+      "description": "6 of 14 SC mutation types are classified as hard_negative=true, meaning they trigger on <10% of uniform random inputs. A dynamic benchmark using random inputs will fail to expose these mutations most of the time, degrading SC detection rates. Targeted, semantics-aware input generation is required for these types.",
+      "required_component": "Per-mutation-type input generators: boundary probers (SC-4), exception-triggering inputs (SC-7), state-transition sequences (SC-14)"
+    },
+    {
+      "gap_id": "GAP-05",
+      "severity": "HIGH",
+      "title": "SP-8 (EXTRACT_FUNCTION) has a real behavioral divergence risk",
+      "description": "The at-most-1-return-variable constraint in SP-8 means multi-output slices are silently under-returned, producing behavioral divergence in what should be an EQUIVALENT pair. Dynamic execution would expose these as false EQUIVALENT labels. A v2 dynamic run would find SP-8 pairs that diverge, requiring either the transformer to be fixed or those pairs to be re-labeled as CHANGED.",
+      "required_component": "Fix SP-8 to handle multi-output slices OR add dynamic validation step that re-labels divergent SP pairs"
+    },
+    {
+      "gap_id": "GAP-06",
+      "severity": "HIGH",
+      "title": "Concurrency programs (conc_* category) are fundamentally untestable by output comparison",
+      "description": "3 programs (conc_producer_consumer, conc_read_write_lock, conc_thread_safe_counter) use real threading. Non-deterministic scheduling means identical programs can produce different outputs in different runs, and different programs can produce the same output by chance. Dynamic output comparison will produce false positives and false negatives.",
+      "required_component": "Deterministic simulation mode for concurrency programs OR exclusion from the dynamic benchmark with a separate concurrency-specific evaluation protocol"
+    },
+    {
+      "gap_id": "GAP-07",
+      "severity": "MEDIUM",
+      "title": "SC-9 (ORDERING_MUTATION) is frequently a no-op",
+      "description": "Swapping independent adjacent statements produces semantically equivalent code and is therefore an incorrect label (marked CHANGED but should be EQUIVALENT). The mutator does not verify that swapped statements are data-dependent. A dynamic run would expose these as label errors.",
+      "required_component": "Pre-mutation data-dependency analysis in the SC-9 mutator to only swap data-dependent statement pairs"
+    },
+    {
+      "gap_id": "GAP-08",
+      "severity": "MEDIUM",
+      "title": "SC-12 (RESOURCE_LEAK) mutations produce no observable output difference in isolated test runs",
+      "description": "Removing .close()/.release() in memory-only implementations (LRU cache, event bus, mock HTTP client) has zero impact on output. These mutations will consistently be undetectable by output comparison, yet are labeled CHANGED. This inflates the apparent difficulty of the benchmark.",
+      "required_component": "Resource-leak mutations should be restricted to programs with real external resources (file I/O, socket, actual OS locks) OR the evaluation should add resource-state checks beyond output comparison"
+    },
+    {
+      "gap_id": "GAP-09",
+      "severity": "MEDIUM",
+      "title": "SP-6 (CONDITION_REWRITE) has a latent NaN divergence mode for float programs",
+      "description": "De Morgan rewrites of comparisons are NOT equivalent under IEEE 754 NaN semantics: `x > 0.0` returns False for NaN but `not (x <= 0.0)` returns True for NaN. For math_* programs using floats, this could produce SP pairs that diverge on NaN inputs, invalidating the EQUIVALENT label.",
+      "required_component": "SP-6 should either skip float comparisons or the dynamic test vectors should exclude NaN inputs for math programs. NaN inputs should be added to the hard-negative test input library to detect this."
+    },
+    {
+      "gap_id": "GAP-10",
+      "severity": "MEDIUM",
+      "title": "Programs with time.sleep() (err_retry_backoff) make dynamic tests slow",
+      "description": "retry_with_backoff uses time.sleep() with exponential backoff. Running dynamic tests naively against the production function will be very slow for always-failing test cases. The _no_sleep variant exists but is not the primary labeled variant.",
+      "required_component": "Dynamic harness must either (a) use retry_with_backoff_no_sleep, (b) patch time.sleep to a no-op, or (c) set base_delay=0 for test vectors"
+    },
+    {
+      "gap_id": "GAP-11",
+      "severity": "MEDIUM",
+      "title": "SP transforms are not cross-validated with dynamic execution — no actual differential test evidence",
+      "description": "All EQUIVALENT pairs have gt_tier=GT-T3 and confidence=0.95 in the observed sample, based on 'certified_transformation' rationale. No actual n_tests_run is recorded per pair in the JSONL. For v2, SP pairs must be dynamically validated to confirm zero divergence, especially for SP-5, SP-6, SP-7, SP-8, and SP-11 which have identified failure conditions.",
+      "required_component": "Add differential_testing_n_tests and differential_testing_n_divergent fields to each JSONL record after running the dynamic harness"
+    },
+    {
+      "gap_id": "GAP-12",
+      "severity": "LOW",
+      "title": "Sort programs cover 9 of 63 programs — a domain imbalance that concentrates pure-function coverage",
+      "description": "Pure functions (sort_*, math_*, str_*, graph_*) make up ~60% of the corpus and are straightforward for dynamic evaluation. Stateful programs (ds_*, fsm_*, err_*, api_*, res_*, conc_*) make up ~40% and require harness complexity. The v2 benchmark should weight coverage toward stateful programs since those are underserved by current dynamic tooling.",
+      "required_component": "Prioritize harness development for ds_*, fsm_*, and err_* categories in v2"
+    }
+  ],
+
+  "overall_assessment": "PARTIALLY_SUITABLE",
+  "overall_assessment_rationale": {
+    "summary": "The existing SBG v1 corpus and transformations are PARTIALLY SUITABLE for dynamic evaluation. The structural foundations are sound and most SP transforms genuinely guarantee runtime equivalence. However, critical infrastructure gaps prevent direct deployment as a dynamic benchmark without significant v2 work.",
+    "what_works": [
+      "8 of 12 SP transforms (SP-1, SP-2, SP-3, SP-4, SP-9, SP-10, SP-11, SP-12) have strong or adequate dynamic equivalence guarantees for the corpus programs reviewed.",
+      "~60% of corpus programs (pure functions in sort_*, math_*, str_*, graph_* categories) have simple callable entry points directly usable for output comparison.",
+      "The SC mutation taxonomy covers the right behavioral categories — the design intent is sound.",
+      "8 of 14 SC mutation types (SC-1, SC-2, SC-3, SC-5, SC-6, SC-8, SC-10, SC-11) produce highly visible output differences on standard inputs.",
+      "The ground_truth schema already has the right fields (witness_input, n_tests_run, n_divergent) to support a dynamic evaluation protocol — v2 needs to populate them."
+    ],
+    "what_needs_fixing": [
+      "CRITICAL: No dynamic execution harness exists — must be built for v2.",
+      "CRITICAL: No machine-readable test vector registries per program.",
+      "HIGH: 6 hard-negative SC types require targeted inputs, not random testing.",
+      "HIGH: SP-8 has a known correctness defect (multi-output extraction) that will produce false EQUIVALENT labels under dynamic evaluation.",
+      "HIGH: Concurrency programs (3 of 63) are fundamentally incompatible with output-comparison dynamic evaluation.",
+      "MEDIUM: SC-9 and SC-12 have significant rates of effectively invisible mutations that will skew detection metrics.",
+      "MEDIUM: SP-6 NaN divergence mode must be tested and either fixed or documented."
+    ],
+    "v2_readiness_by_category": {
+      "sort_searching": "READY — all pure functions, simple array inputs",
+      "math_numerical": "READY — pure functions, numeric I/O",
+      "string_text": "READY — pure functions, string I/O",
+      "graph_algorithms": "READY — pure functions, graph dict inputs",
+      "data_structures": "REQUIRES_HARNESS — stateful classes need sequence-based test vectors",
+      "state_machines": "REQUIRES_HARNESS — FSM tick-sequence execution model needed",
+      "error_handling": "REQUIRES_HARNESS — exception path testing required",
+      "file_stream": "REQUIRES_MOCKING — file I/O fixtures needed",
+      "api_http": "REQUIRES_HARNESS — stateful operation sequences",
+      "resource_management": "REQUIRES_HARNESS — stateful lifecycle testing",
+      "concurrency": "REQUIRES_REDESIGN — threading incompatible with output comparison",
+      "parsers": "REQUIRES_FIXTURES — structured string input corpus needed"
+    }
+  }
+}

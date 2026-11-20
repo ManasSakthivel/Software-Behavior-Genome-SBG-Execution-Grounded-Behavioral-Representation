@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_11_loop_boundary",
+  "ground_truth": "CHANGED",
+  "shortcut_defeated": "execution_volume",
+  "description": "Off-by-one in the loop bound (range(n) vs range(n+1)). Per-iteration behavior is identical. Volume-based shortcuts that normalise by input size may not detect the extra iteration. Output lengths differ by 1 for all n > 0.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": false,
+  "expected_volume_same": false,
+  "boundary_inputs_required": false
+}

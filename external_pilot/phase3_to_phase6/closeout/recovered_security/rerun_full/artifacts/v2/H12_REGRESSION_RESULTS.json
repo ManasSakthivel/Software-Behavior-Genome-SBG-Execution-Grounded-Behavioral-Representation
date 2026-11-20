@@ -1,0 +1,243 @@
+{
+  "hypothesis": "H12",
+  "formal_statement": "AUROC(hybrid_regression) > AUROC(B02_AST=0.5528)",
+  "fix_applied": "Wave 6 generates NEW stratified control pairs (label=0) since the FROZEN benchmark/regression/regression_pairs.jsonl (55 pairs) contains ONLY label=1 regressions, making binary AUROC undefined. Controls are written to benchmark/regression/controls/ (NEW dir). The frozen 55-pair file and benchmark/regression/programs/ were NEVER modified by this script.",
+  "stratification": {
+    "method": "Cycle through ALL 12 registered SP-transform IDs (sorted order) applied to each regression pair's BASE program, seed=42. No cherry-picking of 'easy' types.",
+    "sp_types_used": [
+      "SP-1",
+      "SP-10",
+      "SP-11",
+      "SP-12",
+      "SP-2",
+      "SP-3",
+      "SP-4",
+      "SP-5",
+      "SP-6",
+      "SP-7",
+      "SP-8",
+      "SP-9"
+    ],
+    "control_counts_by_sp_type": {
+      "SP-1": 2,
+      "SP-10": 5,
+      "SP-12": 5,
+      "SP-2": 5,
+      "SP-3": 5,
+      "SP-4": 5,
+      "SP-5": 4,
+      "SP-6": 4,
+      "SP-9": 4
+    },
+    "n_controls_generated": 39,
+    "n_excluded_validation_failed": 16,
+    "excluded_detail": [
+      {
+        "pair_id": "reg_003",
+        "sp_id": "SP-11",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_010",
+        "sp_id": "SP-7",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_011",
+        "sp_id": "SP-8",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_013",
+        "sp_id": "SP-1",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_015",
+        "sp_id": "SP-11",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_022",
+        "sp_id": "SP-7",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_023",
+        "sp_id": "SP-8",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_025",
+        "sp_id": "SP-1",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_027",
+        "sp_id": "SP-11",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_034",
+        "sp_id": "SP-7",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_035",
+        "sp_id": "SP-8",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_037",
+        "sp_id": "SP-1",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_039",
+        "sp_id": "SP-11",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_046",
+        "sp_id": "SP-7",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_047",
+        "sp_id": "SP-8",
+        "reason": "validation_failed"
+      },
+      {
+        "pair_id": "reg_051",
+        "sp_id": "SP-11",
+        "reason": "validation_failed"
+      }
+    ]
+  },
+  "corpus": {
+    "n_regression_pairs": 55,
+    "n_control_pairs": 39,
+    "n_total": 94,
+    "regression_source": "benchmark/regression/regression_pairs.jsonl (FROZEN, unmodified)",
+    "control_source": "benchmark/regression/controls/regression_controls.jsonl (NEW, this wave)",
+    "leakage_check": "This corpus is entirely disjoint from benchmark/datasets/pairs_test.jsonl (the frozen H7-H10 test split) \u2014 regression programs live under benchmark/regression/programs/, not benchmark/corpus/base_programs/ or benchmark/datasets/variants/. No overlap possible."
+  },
+  "method_metrics": {
+    "B01_TOKEN": {
+      "n": 94,
+      "auroc": 0.5,
+      "auroc_naive_uncorrected": 1.0,
+      "tie_fraction": 0.989362,
+      "ci_auroc_lower": 0.5,
+      "ci_auroc_upper": 0.5,
+      "permutation_p": 1.0,
+      "auprc": 1.0,
+      "tpr_at_fpr1": 1.0,
+      "tpr_at_fpr5": 1.0,
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "mrr": "N/A - binary classification task, not a ranking task"
+    },
+    "B02_AST": {
+      "n": 94,
+      "auroc": 0.773893,
+      "auroc_naive_uncorrected": 0.892774,
+      "tie_fraction": 0.542553,
+      "ci_auroc_lower": 0.673835,
+      "ci_auroc_upper": 0.864815,
+      "permutation_p": 0.000999,
+      "auprc": 0.851421,
+      "tpr_at_fpr1": 0.072727,
+      "tpr_at_fpr5": 0.072727,
+      "f1": 0.8,
+      "precision": 0.888889,
+      "recall": 0.727273,
+      "mrr": "N/A - binary classification task, not a ranking task"
+    },
+    "STATIC_SBG_V1": {
+      "n": 94,
+      "auroc": 0.427506,
+      "auroc_naive_uncorrected": 0.432168,
+      "tie_fraction": 0.095745,
+      "ci_auroc_lower": 0.30787,
+      "ci_auroc_upper": 0.550595,
+      "permutation_p": 0.224775,
+      "auprc": 0.519665,
+      "tpr_at_fpr1": 0.0,
+      "tpr_at_fpr5": 0.0,
+      "f1": 0.714286,
+      "precision": 0.588235,
+      "recall": 0.909091,
+      "mrr": "N/A - binary classification task, not a ranking task"
+    },
+    "B07_DYNAMIC_V2": {
+      "n": 94,
+      "auroc": 0.570629,
+      "auroc_naive_uncorrected": 0.951515,
+      "tie_fraction": 0.904255,
+      "ci_auroc_lower": 0.505888,
+      "ci_auroc_upper": 0.629252,
+      "permutation_p": 0.065934,
+      "auprc": 0.911385,
+      "tpr_at_fpr1": 0.054545,
+      "tpr_at_fpr5": 0.054545,
+      "f1": 0.323529,
+      "precision": 0.846154,
+      "recall": 0.2,
+      "mrr": "N/A - binary classification task, not a ranking task"
+    }
+  },
+  "per_regression_category_b07_auroc": {
+    "missing_condition": {
+      "n_regression": 11,
+      "n_control": 39,
+      "auroc": 0.780886
+    },
+    "off_by_one": {
+      "n_regression": 12,
+      "n_control": 39,
+      "auroc": 0.592949
+    },
+    "wrong_constant": {
+      "n_regression": 11,
+      "n_control": 39,
+      "auroc": 0.474359
+    },
+    "wrong_operator": {
+      "n_regression": 13,
+      "n_control": 39,
+      "auroc": 0.512821
+    },
+    "wrong_return": {
+      "n_regression": 8,
+      "n_control": 39,
+      "auroc": 0.474359
+    }
+  },
+  "h12_verdict": "WEAKLY_SUPPORTED",
+  "h12_verdict_criteria": {
+    "SUPPORTED": "AUROC(B07) > 0.5528 AND CI_lower > 0.5528",
+    "WEAKLY_SUPPORTED": "AUROC(B07) > 0.5528 but CI_lower <= 0.5528",
+    "NOT_SUPPORTED": "AUROC(B07) <= 0.5528"
+  },
+  "statistical_significance_caveat": "B07's permutation p-value is 0.0659 (n_perm=1000) - NOT significant at alpha=0.05. CI=[0.5059,0.6293] barely excludes 0.5 (chance) but the lower bound (0.5059) is far below the 0.5528 threshold, so the pre-registered SUPPORTED bar is not met with statistical confidence. WEAKLY_SUPPORTED reflects only the point-estimate-vs-threshold criterion, not a confident positive result.",
+  "important_comparative_finding": "B02_AST (AUROC=0.7739, CI=[0.6738,0.8648], permutation p=0.001) substantially OUTPERFORMS B07_DYNAMIC_V2 (AUROC=0.5706) on this corpus - the opposite of H12's motivating claim that execution-derived features would beat static AST similarity on regression detection. Disclosed as a genuine negative finding. Plausible explanation: regression edits are single-token diffs highly visible to AST diffing, while SP-transform controls (SP-3 dead-code, SP-9/SP-12 folding, SP-10 reformat) can leave AST structure nearly untouched relative to the base, while B07's execution genome frequently produces IDENTICAL trace features for both the regression and its correct base (90.4% tie fraction) because these regressions are extremely localized and the V2 canonical inputs do not always exercise the changed branch. This is flagged for Wave 9's shortcut/confound audit as a corpus-construction-driven effect, not evidence that AST is generally superior for regression detection.",
+  "excluded_sp_types_note": "SP-7 (INLINE_FUNCTION) and SP-8 (EXTRACT_FUNCTION) produced ZERO successful controls (all attempts failed transformer.py's own validate() check on these small single-function regression programs - likely because they lack the multi-statement structure SP-7/SP-8 require). This is a transform-applicability limitation of the small regression corpus, not a hand-picked exclusion; all 12 SP types were attempted uniformly per the stratification protocol.",
+  "bootstrap_config": {
+    "n": 1000,
+    "seed": 42
+  },
+  "permutation_config": {
+    "n": 1000,
+    "seed": 42
+  },
+  "limitations": [
+    "L1: Regression pairs are SYNTHETIC hand-crafted bugs, not mined from real commit histories \u2014 no real version-history corpus was found in the repository (see infrastructure check below).",
+    "L2: Control pairs are SP-transformed versions of the regression pairs' OWN base programs, not independently sourced equivalent changes \u2014 this is the best available option without expanding benchmark scope, but the two classes are constructed by different processes (hand-crafted bug injection vs. automated SP-transform), which is itself a potential systematic difference AST/token methods could exploit rather than genuine regression detection.",
+    "L3: Python only.",
+    "L4: n=94 (55 regressions + 39 controls) is modest; per-category (n~8-13 regressions vs 39 shared controls) breakdowns are descriptive only, not independently powered.",
+    "L5: No real-world version-history data source was located in this repository for H12 (checked benchmark/regression/, docs/research/, and REGISTRY.yaml) \u2014 synthetic corpus is used per the pre-registered fallback (docs/v2/H12_REGRESSION_DESIGN.md Sec 3.1), fully disclosed."
+  ],
+  "real_world_data_check": "No version-history / real-commit corpus exists in this repository for H12. benchmark/regression/regression_pairs.jsonl is explicitly labeled SYNTHETIC on every record (pre-existing, Wave-0-confirmed). Per the Phase 4 mandate's preferred-order fallback (synthetic only if real history is unavailable), this is disclosed, not hidden."
+}

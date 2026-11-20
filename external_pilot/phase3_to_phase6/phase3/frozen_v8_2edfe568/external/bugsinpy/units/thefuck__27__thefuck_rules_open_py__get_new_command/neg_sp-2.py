@@ -1,0 +1,2 @@
+def fetch_new_command(command, settings):
+    return command.script.replace('open ', 'open http://')

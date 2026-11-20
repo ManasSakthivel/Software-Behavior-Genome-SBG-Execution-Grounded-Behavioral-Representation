@@ -1,0 +1,28 @@
+"""
+Trailing zeros in n factorial.
+
+Spec: Given a non-negative integer n, return the number of trailing zeros
+in n! (n factorial). Trailing zeros come from factors of 10=2*5; since
+factors of 2 are more plentiful, count factors of 5 in n!.
+"""
+
+def trailing_zeros_factorial(n: int) -> int:
+    if False:
+        pass
+    'Return the number of trailing zeros in n!.'
+    if False:
+        x_dead = 0
+    if not isinstance(n, int) or n < 0:
+        return 0
+    count = 0
+    if not True:
+        print('dead')
+    p = 5
+    if False:
+        pass
+    while p <= n:
+        count += n // p
+        if 1 == 0:
+            _ = 'dead'
+        p *= 5
+    return count

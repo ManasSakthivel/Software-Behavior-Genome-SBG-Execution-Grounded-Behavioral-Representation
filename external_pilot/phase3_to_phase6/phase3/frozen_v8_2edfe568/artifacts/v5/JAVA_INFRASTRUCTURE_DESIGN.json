@@ -1,0 +1,140 @@
+{
+  "artifact_id": "JAVA_INFRASTRUCTURE_DESIGN",
+  "version": "v5",
+  "created": "2025-01",
+  "description": "Design specification for the Java execution infrastructure added in SBG v5, enabling cross-language behavioral genome extraction.",
+
+  "motivation": {
+    "problem": "The SBG project has 10 Python programs with Java equivalents specified in benchmark/cross_language/ (p01–p10), but no actual Java source files or Java execution pipeline exists.",
+    "goal": "Enable extraction of DynamicGenome-compatible behavioral signatures from Java programs using the same feature schema as the Python tracer, so Python and Java programs can be compared by distance().",
+    "constraint": "No third-party Java parsing libraries. No bytecode instrumentation (ASM/Javassist). Must work with JDK 17 at /usr/bin/javac and stdlib subprocess only."
+  },
+
+  "architecture": {
+    "components": [
+      {
+        "name": "JavaInstrumenter",
+        "file": "experiments/v5/java_executor.py",
+        "role": "Inject System.err.println trace calls at method ENTER/EXIT boundaries using string-level regex manipulation. Detects pre-instrumented sources and skips re-injection.",
+        "instrumentation_protocol": {
+          "stderr_format": "TRACE <EVENT> <method_name> depth=<N>",
+          "events": ["ENTER", "EXIT", "EXCEPTION"],
+          "depth_counter": "static int callDepth on the class, incremented at ENTER, decremented in finally block",
+          "why_stderr": "Keeps trace output cleanly separated from functional stdout; subprocess(stderr=PIPE) captures them independently"
+        }
+      },
+      {
+        "name": "JavaExecutor",
+        "file": "experiments/v5/java_executor.py",
+        "role": "Orchestrate instrument → javac compile → java run → genome extraction pipeline.",
+        "graceful_degradation": "If /usr/bin/javac is absent, run() returns {status: NOT_AVAILABLE, reason: javac not found} without raising."
+      },
+      {
+        "name": "JavaTraceEvent",
+        "file": "experiments/v5/java_executor.py",
+        "role": "Dataclass for a single parsed trace event (mirrors Python TraceEvent structure)."
+      }
+    ]
+  },
+
+  "genome_schema": {
+    "note": "All keys mirror DynamicGenome.to_dict() so the existing distance() function works without modification.",
+    "keys": {
+      "program_id": "str — Java class name (file stem)",
+      "coverage_size": "int — count of unique (depth_bucket × 1000 + anon_idx) tuples across all traces; structural analogue of line coverage",
+      "coverage_consistency": "float [0,1] — mean pairwise Jaccard of per-trace coverage sets",
+      "anon_call_freq": "Dict[str,float] — normalized call frequency keyed by first-call-order integer index (str-keyed to match to_dict() serialisation)",
+      "hot_path_hash": "str — 16-hex SHA-256 of top-5 anonymous indices by frequency; rename-invariant",
+      "exception_type_set": "List[str] — sorted unique Java exception class names; no messages (SAFEGUARD-2)",
+      "exception_rate": "float [0,1] — fraction of input traces that raised an exception",
+      "call_depth_mean": "float — mean max call depth across traces",
+      "call_depth_max": "float — maximum call depth observed",
+      "trace_length_mean": "float — mean event count per trace",
+      "trace_length_std": "float — std of event count per trace",
+      "n_unique_functions": "int — count of distinct instrumented methods called",
+      "feature_classification": "\"OUTPUT_FREE\" (SAFEGUARD-2)",
+      "safeguard_2_compliant": "true"
+    }
+  },
+
+  "anonymization": {
+    "strategy": "First-call order (mirrors TraceNormalizer in sbg/v2/execution/normalizer.py)",
+    "filtered_methods": ["main", "<clinit>", "<init>", "java.*"],
+    "rationale": "main() is the entry harness, not an algorithm. Constructors and static initialisers carry no algorithmic trace signal. java.* are JDK internals."
+  },
+
+  "coverage_proxy": {
+    "problem": "Java execution traces carry no source line numbers — only method ENTER/EXIT events.",
+    "solution": "Synthetic coverage token = depth_bucket * 1000 + anon_method_index. Two ENTER events at the same method and depth produce the same token, giving a structural (not textual) notion of coverage.",
+    "property": "Rename-invariant: uses anon_method_index, not method name."
+  },
+
+  "benchmark_programs": {
+    "directory": "benchmark/v5/java_programs/",
+    "files": [
+      {
+        "file": "BubbleSort.java",
+        "cross_language_pair": "benchmark/cross_language/p01_bubble_sort.py",
+        "algorithm": "In-place bubble sort (ascending)",
+        "static_method": "static int[] sort(int[] arr)",
+        "stdin": "space-separated integers on one line",
+        "stdout": "sorted integers on one line",
+        "instrumented_methods": ["sort", "parseInput"]
+      },
+      {
+        "file": "BinarySearch.java",
+        "cross_language_pair": "benchmark/cross_language/p03_binary_search.py",
+        "algorithm": "Iterative binary search",
+        "static_method": "static int search(int[] arr, int target)",
+        "stdin": "line 1 = sorted integers, line 2 = target",
+        "stdout": "index or -1",
+        "instrumented_methods": ["search", "parseIntArray"]
+      },
+      {
+        "file": "LinkedList.java",
+        "cross_language_pair": null,
+        "algorithm": "Singly-linked list with add/remove/contains",
+        "static_method": "static void add(int), static boolean remove(int), static boolean contains(int)",
+        "stdin": "one command per line: add X | remove X | contains X",
+        "stdout": "true/false per remove or contains command",
+        "instrumented_methods": ["add", "remove", "contains"]
+      }
+    ]
+  },
+
+  "design_decisions": [
+    {
+      "decision": "String-level instrumentation, not ASM/Javassist bytecode instrumentation",
+      "rationale": "Benchmark programs are simple (no nested classes, no lambdas in hot paths). String manipulation avoids a 3rd-party dependency and keeps the instrumenter auditable at a glance."
+    },
+    {
+      "decision": "Pre-instrumented Java files in benchmark/v5/java_programs/",
+      "rationale": "For benchmark programs, manual instrumentation is more readable and verifiable than auto-generated code. JavaInstrumenter.instrument() detects the TRACE ENTER marker and skips re-injection."
+    },
+    {
+      "decision": "stderr for trace output, stdout for functional output",
+      "rationale": "Allows subprocess to capture both streams independently. Functional correctness can be checked from stdout; behavioral trace is read from stderr. No interleaving risk."
+    },
+    {
+      "decision": "depth_bucket * 1000 + anon_idx as coverage proxy",
+      "rationale": "Without source line numbers, method-call depth encodes structural path information. Combining with anon_idx ensures two different methods at the same depth produce different tokens."
+    },
+    {
+      "decision": "Mirror TraceNormalizer's first-call-order anonymization exactly",
+      "rationale": "Ensures anon_call_freq keying is semantically equivalent between Python and Java genomes, making the distance() function meaningful across languages."
+    }
+  ],
+
+  "limitations": [
+    "String-level instrumenter does not handle: nested anonymous classes, lambda expressions, multi-catch blocks, or programs with non-trivial generics in method signatures.",
+    "Coverage proxy (depth × anon_idx) is a structural approximation — not equivalent to Python's sys.settrace line coverage.",
+    "callDepth is a static field: not thread-safe. Acceptable for single-threaded benchmark programs.",
+    "Only 3 of the 10 cross-language pairs have Java implementations in this version."
+  ],
+
+  "future_work": [
+    "Add Java files for p02 (insertion sort), p04–p10 to complete the 10-pair cross-language corpus.",
+    "Add cross-language distance() evaluation: run both Python and Java genomes through the existing DynamicGenome distance function, validate d < 0.3 for equivalent pairs.",
+    "Replace string-level instrumenter with a proper JavaParser-based instrumenter for richer programs."
+  ]
+}

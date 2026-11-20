@@ -1,0 +1,41 @@
+{
+  "baseline": "B08_HYBRID_V2_CORRECT",
+  "static_component": "full_v1_behavioral_distance",
+  "split": "test",
+  "threshold_from": "dev",
+  "selected_w_static": 0.0,
+  "preregistered_default_w_static": 0.4,
+  "threshold": 1.000001,
+  "metrics": {
+    "accuracy": 0.491935,
+    "precision": 0.491935,
+    "recall": 1.0,
+    "f1": 0.659459,
+    "auroc": 0.528096,
+    "auprc": 0.506484,
+    "tp": 366,
+    "fp": 378,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 744,
+    "threshold_used": 1.000001,
+    "ci_f1_lower": 0.626039,
+    "ci_f1_upper": 0.688987,
+    "ci_auroc_lower": 0.496707,
+    "ci_auroc_upper": 0.577828
+  },
+  "inversion_analysis": {
+    "equiv_mean_similarity": 0.875385,
+    "changed_mean_similarity": 0.830353,
+    "inversion_delta_hybrid_correct": -0.045032,
+    "inversion_delta_v1_reference": 0.0335,
+    "inversion_delta_b07_dynamic_v2": -0.0453,
+    "inversion_resolved": true
+  },
+  "h8_verdict": "NOT_SUPPORTED",
+  "comparison": {
+    "b07_dynamic_v2_auroc": 0.531023,
+    "b08_correct_auroc": 0.528096,
+    "delta": -0.002927
+  }
+}

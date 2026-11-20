@@ -1,0 +1,32 @@
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Capability comparison from the project's related-work review (\path{research/literature/RELATED_WORK_COMPARISON.md}). Labels: S = Supported, P = Partially supported, N = Not supported (full-text source states it), NE = Not evaluated (source silent at the access level read; silence is not evidence of absence), U = Unknown (access too low), NA = Not applicable. Capabilities: (A) executes both versions; (B) re-checkable witness; (C) sufficiency record; (D) evidence-grounded inconclusive outcome; (E) nondeterminism handling; (F) real-change evaluation. Cells reflect the cited text only, mostly abstracts; the last row is this work's own implementation, not a run of any compared tool (B: replayable but \texttt{verify} re-executes nothing; D: grounds largely engine gaps; E: fixed hash seed, clock not virtualised). Prior work is not claimed to lack any capability where only an abstract was read.}
+\label{tab:capability}
+\begin{tabular}{lcccccc}
+\hline
+Work & A & B & C & D & E & F \\
+\hline
+Shadow symbolic execution~\cite{palikareva2016} & S & P & P & N & NE & S \\
+Differential testing~\cite{evans2007} & S & U & U & U & U & P \\
+Behavioral regression testing~\cite{jin2010automated} & U & U & U & U & U & U \\
+Mokav~\cite{etemadi2024mokav} & S & P & NE & NE & NE & P \\
+Testora~\cite{pradel2025testora} & S & NE & NE & P & NE & S \\
+DiffTestGen~\cite{hu2026difftestgen} & S & NE & P & NE & U & S \\
+Cleverest~\cite{liu2025evaluating} & NE & NE & P & NE & NE & S \\
+DiffKemp~\cite{malik2021} & N & NE & NE & P & NA & S \\
+Regression verification~\cite{felsing2014} & N & NE & NE & NE & NA & P \\
+Dynamic impact analysis~\cite{law2003,orso2003} & N & P & P & N & NE & P \\
+Chianti~\cite{ren2004} & N & NE & N & NE & NA & S \\
+Daikon~\cite{ernst2001} & P & P & P & N & NE & P \\
+Verification witnesses~\cite{beyer2022verification} & NA & S & NE & NE & NE & NE \\
+Patch coverage~\cite{hilton2018a} & NE & NE & P & NE & NE & S \\
+Flaky-test work~\cite{lam2019idflakies,luo2014an,parry2021a} & NE & NE & NE & NE & S & S \\
+LLM non-determinism~\cite{ouyang2025an} & NE & NE & NE & NE & S & NE \\
+Reject option~\cite{geifman2017,hendrickx2024machine} & NA & NA & NA & P & NA & S \\
+Calibration for code LMs~\cite{spiess2025calibration} & NA & NE & NE & P & NE & NE \\
+EquiBench~\cite{wei2025equibench} & NE & NE & NE & NE & NE & S \\
+\hline
+This work (V7-B, own implementation) & S & P & P & P & P & N \\
+\hline
+\end{tabular}
+\end{table*}

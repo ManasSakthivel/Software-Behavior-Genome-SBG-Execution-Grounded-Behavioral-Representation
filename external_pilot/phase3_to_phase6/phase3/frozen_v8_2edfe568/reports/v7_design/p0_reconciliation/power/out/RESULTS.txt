@@ -1,0 +1,5 @@
+master seed 20261117; numpy 2.5.5
+selfcheck type-I (K=40,m=3.75,rho=.15,delta=0; upper tail of two-sided .05 test, expect ~0.025): 0.0262
+selfcheck type-I (K=20,m=2,rho=.30,delta=0; expect ~0.025): 0.0279
+selfcheck t-test vs sign-flip permutation power (K=40,m=3.75,rho=.15,p0=.6,pi=.2,delta=.05, 400 sims): t=0.175 perm=0.117
+selfcheck empirical ICC of d (nominal 0.15): 0.153

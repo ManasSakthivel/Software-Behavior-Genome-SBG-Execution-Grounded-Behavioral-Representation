@@ -1,0 +1,118 @@
+{
+  "version": "v2",
+  "timestamp": "2025-07-07T00:00:00Z",
+  "n_reviewers": 10,
+  "total_p0": 4,
+  "total_p1": 5,
+  "total_p2": 1,
+  "reviews": [
+    {
+      "reviewer_id": "R1",
+      "perspective": "ML_REVIEWER",
+      "strongest_rejection_reason": "Dynamic AUROC=0.5310 with 95% CI [0.499, 0.581]. The lower bound is 0.499, essentially random chance. The Holm-Bonferroni corrected alpha is 0.0042, and the AUROC CI lower bound does not clear 0.5 with high confidence. The paper would be claiming a solved inversion while neither dynamic nor hybrid beats AST (AUROC=0.5528). No method clears practical utility threshold. This is a negative result paper claiming positive results.",
+      "severity": "P0",
+      "addressable": "Yes — reframe as honest negative-result study. The inversion finding (delta=-0.0453 vs +0.0335) is the actual contribution.",
+      "action_required": "Run full Holm-Bonferroni corrected permutation tests. If H7 fails at alpha=0.0042, report NOT_SUPPORTED."
+    },
+    {
+      "reviewer_id": "R2",
+      "perspective": "PROGRAMMING_LANGUAGES_REVIEWER",
+      "strongest_rejection_reason": "The behavioral genome has no formal semantic grounding. d(p1,p2)=0 does NOT imply p1 semantically equivalent to p2 under any formal definition. The distance function is ad hoc. PL venues (POPL/PLDI) require denotational or operational semantic connection. The AUROC~0.5 failure is directly predicted by this gap.",
+      "severity": "P0",
+      "addressable": "Yes — explicitly scope as empirical approximation study. Abandon 'behavioral genome' for 'execution-trace-derived similarity features'. Or add formal semantics (different paper).",
+      "action_required": "Reframe scope OR add formal semantics section with clear approximation bounds"
+    },
+    {
+      "reviewer_id": "R3",
+      "perspective": "SOFTWARE_ENGINEERING_REVIEWER",
+      "strongest_rejection_reason": "Benchmark has no connection to any realistic SE task. TPR=0.8% at FPR<=5% for regression detection makes the system useless in practice. The 13-program benchmark of toy algorithms is not representative of any real software engineering scenario. SE venues (ICSE/FSE/ASE) require demonstrated utility on realistic tasks.",
+      "severity": "P0",
+      "addressable": "Requires new evaluation on real programs, real commits, or Defects4J. Cannot be fixed with current benchmark.",
+      "action_required": "Add realistic SE evaluation OR explicitly scope contribution to theoretical/benchmark finding"
+    },
+    {
+      "reviewer_id": "R4",
+      "perspective": "EMPIRICAL_SE_METHODOLOGY_REVIEWER",
+      "strongest_rejection_reason": "N=13 programs is too small for any generalization claim. Per-program AUROC computed on 53-63 pairs each. The 13 programs are NOT a random sample of Python software. H10-H12 are marked NOT_EVALUATED_YET. EMSE/TSE requires 50-100+ programs with principled sampling.",
+      "severity": "P1",
+      "addressable": "Yes — expand benchmark or explicitly bound generalization claims to these 13 programs.",
+      "action_required": "Add explicit power analysis and generalization scope. Mark H10-H12 with INSUFFICIENT_EVIDENCE until evaluated."
+    },
+    {
+      "reviewer_id": "R5",
+      "perspective": "STATISTICS_REVIEWER",
+      "strongest_rejection_reason": "Holm-Bonferroni correction declared over 12 hypotheses but only 2 are evaluated. H10-H12 are NOT_EVALUATED_YET. This is selective reporting. The permutation tests were pre-registered but never executed. H7 'SUPPORTED' is based on bootstrap CI alone, NOT on the declared corrected permutation test at alpha=0.0042. The statistical protocol is incomplete.",
+      "severity": "P0",
+      "addressable": "Yes — run full H1-H12 corrected test suite. Classify unevaluated hypotheses as INSUFFICIENT_EVIDENCE.",
+      "action_required": "Execute permutation tests. Compute Cohen's h for H7/H8/H12. Apply Holm-Bonferroni stopping rule correctly."
+    },
+    {
+      "reviewer_id": "R6",
+      "perspective": "CAUSAL_METHODOLOGY_REVIEWER",
+      "strongest_rejection_reason": "The 'structural-semantic inversion' is an artifact of benchmark construction, not a discovery about programs in general. SP transforms are defined as large syntactic changes (refactoring, renaming). SC mutations are defined as tiny syntactic changes (off-by-one, operator swap). The inversion is CAUSED BY THE DESIGN, not discovered by the study.",
+      "severity": "P0",
+      "addressable": "Requires redesigning benchmark to decouple syntactic magnitude from semantic change. OR explicitly frame as 'this benchmark demonstrates the following limit'.",
+      "action_required": "Reframe finding as benchmark design property, not general program property. Add confound analysis."
+    },
+    {
+      "reviewer_id": "R7",
+      "perspective": "BENCHMARK_QUALITY_REVIEWER",
+      "strongest_rejection_reason": "Degenerate threshold collapse: 5 of 8 baselines use threshold=1.000001, predicting all pairs as CHANGED. F1=0.6595 for every collapsed baseline is the majority-class baseline. The benchmark does not provide separable score distributions for any method. Score overlaps make meaningful threshold-based evaluation impossible.",
+      "severity": "P1",
+      "addressable": "Yes — abandon threshold-based metrics (F1, accuracy) in favor of ranking-only metrics (AUROC, AUPRC). Document degenerate threshold as a finding.",
+      "action_required": "Remove F1 from primary metrics. Use AUROC/AUPRC only. Document why thresholding is degenerate."
+    },
+    {
+      "reviewer_id": "R8",
+      "perspective": "REPRODUCIBILITY_REVIEWER",
+      "strongest_rejection_reason": "SAFEGUARD-6 violation: B07 dynamic baseline uses n_runs=1 (now fixed to n_runs=5). All H7/H9 results were computed without a valid noise floor measurement. Additionally, git commit hash for SAFEGUARD-1 is referenced but not verifiable from artifacts alone.",
+      "severity": "P1",
+      "addressable": "Yes — n_runs=1 has been fixed to n_runs=5. Re-run B07 with n_runs=5. Add git commit hash to a signed artifact.",
+      "action_required": "Re-run B07 with n_runs=5. Verify H7/H9 results reproduce. Add signed provenance artifact with git hash."
+    },
+    {
+      "reviewer_id": "R9",
+      "perspective": "PRIOR_ART_REVIEWER",
+      "strongest_rejection_reason": "Five critical papers are absent from the related work: (1) McKeeman 1998 (Differential Testing), (2) Jiang & Su ISSTA 2009 (I/O Clone Detection via execution), (3) Ramos & Engler 2015 (symbolic equivalence checking), (4) Chen et al. 1998/2018 (metamorphic testing), (5) mutation testing theory predicts all negative results. Any reviewer familiar with the field will immediately flag these.",
+      "severity": "P1",
+      "addressable": "Yes — add comprehensive related work section covering these papers. Reposition contribution relative to prior art.",
+      "action_required": "Add citations and discuss how SBG differs from Jiang & Su, McKeeman, and mutation testing theory."
+    },
+    {
+      "reviewer_id": "R10",
+      "perspective": "SENIOR_THESIS_ADMISSIONS_REVIEWER",
+      "strongest_rejection_reason": "The paper fails the publishability test: it does not answer a question the community cares about with evidence strong enough to change anyone's behavior. The 'positive' results (H7, H9) show a dynamic trace similarity that doesn't beat AST and barely clears 0.5 AUROC. H10-H12 are NOT_EVALUATED_YET. This is an incomplete system that doesn't work, where the most interesting claims are deferred. A publishable result requires at least ONE complete, positive finding.",
+      "severity": "P1",
+      "addressable": "Yes — complete H10-H12. Frame as negative-result paper with the inversion finding as the core contribution. One complete, well-supported finding is sufficient.",
+      "action_required": "Complete H10-H12 evaluation. Write definitive negative-result narrative. Establish one defensible positive claim."
+    }
+  ],
+  "blocking_issues": [
+    {
+      "id": "B-P0-01",
+      "description": "H7 SUPPORTED verdict based on bootstrap CI alone, not corrected permutation test at alpha=0.0042. CI lower bound=0.499 barely above 0.5.",
+      "methodology_change": true,
+      "action": "Run full Holm-Bonferroni corrected permutation test suite"
+    },
+    {
+      "id": "B-P0-02",
+      "description": "Structural-semantic inversion is confounded by benchmark design (SP=large transforms, SC=small mutations). The inversion is definitional, not discovered.",
+      "methodology_change": true,
+      "action": "Reframe as benchmark design property OR redesign benchmark to decouple"
+    },
+    {
+      "id": "B-P0-03",
+      "description": "H10-H12 NOT_EVALUATED_YET. Paper is incomplete. 50% of v2 hypotheses untested.",
+      "methodology_change": true,
+      "action": "Complete H10-H12 evaluation before claiming research is complete"
+    },
+    {
+      "id": "B-P0-04",
+      "description": "No practical utility demonstrated (TPR<1% at FPR<=5%). Must reframe or find positive-utility regime.",
+      "methodology_change": true,
+      "action": "Reframe as negative-result study with inversion finding as contribution"
+    }
+  ],
+  "strongest_positive_finding": "Structural-semantic inversion documented with statistical support: SC mutations have HIGHER static similarity than SP transforms (delta=+0.0335), and execution-derived features partially resolve this (delta=-0.0453). This is an honest, empirically documented benchmark finding.",
+  "recommended_reframing": "The paper's contribution is the empirical documentation of the structural-semantic inversion phenomenon and the partial resolution via execution-derived features. This is a valid negative-result contribution if framed correctly."
+}

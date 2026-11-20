@@ -1,0 +1,16 @@
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{E4 ablations on the 321 pairs (verdict counts; flips = pairs whose verdict value or level differs from V0). CPU is the summed per-pair CPU of the run (concurrency 4, load-sensitive). Only a reason code changes (one pair, V1 and V4). Source: \path{results/v7b_phase2_summary/p2_consolidated_20261118_190644/consolidated.json}, key \texttt{E4}.}\label{tab:e4}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrr}
+\hline
+Variant & Change & DIV & INSUF. & NDO & Flips vs V0 & CPU s (sum) \\
+\hline
+V0 & default & 84 & 157 & 71 & -- & 546.8 \\
+V1 & $r_{det}=1$ & 84 & 157 & 71 & 0 & 271.6 \\
+V2 & $r_{replay}=1$ & 84 & 157 & 71 & 0 & 521.4 \\
+V3 & $k_{alt}=0$ & 84 & 157 & 71 & 0 & 512.5 \\
+V4 & V1+V2+V3 & 84 & 157 & 71 & 0 & 225.1 \\
+V5 & FOLD\_FD1=False & 84 & 157 & 71 & 0 & 520.1 \\
+\hline
+\end{tabular}}
+\end{table}

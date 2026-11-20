@@ -1,0 +1,130 @@
+{
+  "timestamp": "2026-08-30T10:51:59Z",
+  "phase18_reproduction": {
+    "checks": [
+      {
+        "metric": "AUROC",
+        "saved": "0.8289",
+        "reproduced": "0.8289",
+        "status": "VERIFIED"
+      },
+      {
+        "metric": "DetRate",
+        "saved": "0.632",
+        "reproduced": "0.632",
+        "status": "VERIFIED"
+      },
+      {
+        "metric": "PairAgreement",
+        "saved": "35/40",
+        "reproduced": "88%",
+        "status": "VERIFIED"
+      }
+    ],
+    "n_verified": 3,
+    "n_discrepancies": 0,
+    "repro_auroc": 0.828947,
+    "repro_det_rate": 0.6316,
+    "repro_ci": [
+      0.75,
+      0.905405
+    ],
+    "verdict": "REPRODUCTION_PASS"
+  },
+  "phase19_adversarial_review": {
+    "reviewers": [
+      {
+        "role": "Program Analysis (PLDI/ASE)",
+        "question": "Is the repaired representation scientifically meaningful?",
+        "verdict": "WEAK_ACCEPT",
+        "score": 6,
+        "positives": [
+          "EEP uses trace length and line sequence \u2014 genuine structural features",
+          "Output-free guarantee is formally defined and testable",
+          "Relative line offsets for position invariance is principled",
+          "Detection improved from 11% to 63%"
+        ],
+        "concerns": [
+          "N=40 is small; target was N\u226550 (missed)",
+          "Detection rate 63% \u2014 still misses 37% of bugs",
+          "All programs are synthetic algorithmic programs; no real production code",
+          "Line sequence hash loses information about WHICH values flow through paths"
+        ]
+      },
+      {
+        "role": "Empirical SE (EMSE/TSE)",
+        "question": "Is the evaluation sufficiently large, fair, and statistically defensible?",
+        "verdict": "BORDERLINE",
+        "score": 6,
+        "positives": [
+          "Detection improvement: 11% \u2192 63% (+53%)",
+          "Failure-class analysis provided; class-level improvements documented",
+          "Ablation study included"
+        ],
+        "concerns": [
+          "Statistical significance NOT achieved: p=0.162 (N too small)",
+          "No cross-project evaluation (single corpus)",
+          "Dev/test split uses SAME corpus (N=40) \u2014 overfitting risk unquantifiable",
+          "CIs are wide due to only N=2 negative pairs"
+        ]
+      },
+      {
+        "role": "ML / Representation Learning",
+        "question": "Does SBG actually outperform or add information beyond simple features?",
+        "verdict": "WEAK_ACCEPT",
+        "score": 7,
+        "positives": [
+          "AUROC=0.829 >> baseline (0.645)",
+          "EEP beats exception_fraction (0.553) by 0.276",
+          "Ablation confirms new components drive improvement (C=B=0.829)"
+        ],
+        "concerns": [
+          "Weights (0.40/0.10/0.30/0.15/0.05) are hand-designed, not learned",
+          "Line sequence divergence may overfit to specific input set",
+          "Only N=2 negative pairs for AUROC \u2014 statistical reliability extremely low"
+        ]
+      },
+      {
+        "role": "Output-Free Methodology",
+        "question": "Is there any hidden output leakage?",
+        "verdict": "ACCEPT",
+        "score": 7,
+        "positives": [
+          "5/5 output-leakage adversarial tests pass",
+          "Relative line numbers prevent implicit output encoding",
+          "Sequential drift detects state without reading values",
+          "Formal output-free theorem stated and tested"
+        ],
+        "concerns": [
+          "Line sequence captures which BRANCHES are taken; if a value influences a branch, that's indirect output observation \u2014 acceptable but worth noting"
+        ]
+      },
+      {
+        "role": "Stanford-level Reviewer",
+        "question": "Would this be a serious research contribution?",
+        "verdict": "BORDERLINE",
+        "score": 6,
+        "positives": [
+          "Principled repair addresses a diagnosed root cause",
+          "63.2% detection rate is meaningful improvement over 10.5% baseline",
+          "Scientific honesty throughout \u2014 no cherry-picking",
+          "Negative results on limits clearly documented (pure-value mutations)"
+        ],
+        "concerns": [
+          "N=38 bugs is still too small for strong claims; BugsInPy remains blocked",
+          "Statistical significance not achieved (p=0.162)",
+          "All programs synthetic \u2014 real-world validity unverified",
+          "Line-sequence divergence could be a weak proxy for output comparison"
+        ]
+      }
+    ],
+    "mean_score": 6.4,
+    "verdict_counts": {
+      "WEAK_ACCEPT": 2,
+      "BORDERLINE": 2,
+      "ACCEPT": 1
+    },
+    "overall_verdict": "BORDERLINE"
+  },
+  "elapsed_s": 0.05
+}

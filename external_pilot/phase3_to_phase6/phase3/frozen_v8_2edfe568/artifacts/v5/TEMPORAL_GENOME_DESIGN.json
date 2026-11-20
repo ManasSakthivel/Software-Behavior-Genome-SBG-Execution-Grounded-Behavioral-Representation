@@ -1,0 +1,111 @@
+{
+  "artifact_id": "temporal_genome_v5_design",
+  "title": "Temporal Behavioral Genome V5 — Design Artifact",
+  "version": "v5",
+  "file": "sbg/v5/temporal_genome_v5.py",
+  "docs": "docs/v5/TEMPORAL_GENOME_DESIGN.md",
+  "classification": "OUTPUT_FREE",
+  "safeguard_2_compliant": true,
+  "stdlib_only": true,
+  "feature_families": [
+    {
+      "id": "F1",
+      "name": "Call N-grams",
+      "fields": ["call_trigrams", "bigram_entropy", "trigram_entropy"],
+      "description": "Extends V3 bigrams to trigrams. Captures 3-call sequential patterns and Shannon diversity of transition sequences.",
+      "rename_invariant": true,
+      "invariance_mechanism": "Integer indices from first-call order"
+    },
+    {
+      "id": "F2",
+      "name": "Exception Transitions",
+      "fields": ["exception_transition_triples", "exception_recovery_rate"],
+      "description": "Records (pre_call_idx, exception_type, post_call_idx) triples at each exception. Recovery rate = fraction of exceptions followed by a normal call.",
+      "rename_invariant": true,
+      "invariance_mechanism": "Function indices for pre/post; exception type strings are class names (intrinsically invariant)"
+    },
+    {
+      "id": "F3",
+      "name": "Causal Chains",
+      "fields": ["causal_precedence_set", "causal_entropy"],
+      "description": "For every function-index pair (i,j): if i precedes j in >50% of co-occurrences, record (i,j) as causal. Causal entropy = mean binary entropy of ordering probabilities.",
+      "rename_invariant": true,
+      "invariance_mechanism": "Integer indices; ordering probabilities derived from call sequence positions"
+    },
+    {
+      "id": "F4",
+      "name": "Phase Diversity",
+      "fields": ["phase_diversity_vector"],
+      "description": "Split call sequence into setup/main/teardown phases (equal thirds). Compute normalized Shannon entropy per phase. Vector = [setup_div, main_div, teardown_div].",
+      "rename_invariant": true,
+      "invariance_mechanism": "Integer indices in frequency count; phase boundaries by position ratio"
+    },
+    {
+      "id": "F5",
+      "name": "Loop Profiles",
+      "fields": ["loop_mean_run_length", "loop_early_exit_score"],
+      "description": "Contiguous run length per function index in call sequence. Mean run length captures loop depth. CV of all run lengths = early_exit_score (high = irregular loops).",
+      "rename_invariant": true,
+      "invariance_mechanism": "Dict keyed by str(anon_idx); values are run-length statistics"
+    }
+  ],
+  "distance_function": {
+    "name": "distance",
+    "output_range": [0.0, 1.0],
+    "reflexive": true,
+    "symmetric": true,
+    "components": [
+      {"name": "d_trigrams",       "weight": 0.20, "formula": "L1(trigram_dicts) / 2"},
+      {"name": "d_entropy",        "weight": 0.10, "formula": "0.5*|H_bi1-H_bi2| + 0.5*|H_tri1-H_tri2|"},
+      {"name": "d_exc_transitions","weight": 0.10, "formula": "Jaccard distance on exception triple sets"},
+      {"name": "d_exc_recovery",   "weight": 0.15, "formula": "|recovery_rate_1 - recovery_rate_2|"},
+      {"name": "d_causal",         "weight": 0.15, "formula": "Jaccard distance on causal_precedence_sets"},
+      {"name": "d_phase",          "weight": 0.10, "formula": "L1(phase_vectors) / 2"},
+      {"name": "d_loop",           "weight": 0.20, "formula": "0.5*d_run_length + 0.5*|CV1-CV2|/max_CV"}
+    ],
+    "weight_sum": 1.0
+  },
+  "extraction_api": {
+    "function": "extract",
+    "signature": "extract(events: List[dict], name_to_idx: Optional[Dict[str, int]] = None, program_id: str = 'unknown') -> TemporalGenomeV5",
+    "input_format": {
+      "event_type": "str — 'call' | 'return' | 'exception' | 'line'",
+      "function_name": "str — function name (will be anonymized)",
+      "depth": "int — call stack depth"
+    },
+    "notes": [
+      "If name_to_idx is None, built from first-call order in the event list.",
+      "Providing a pre-built map enables cross-program comparison with shared index space.",
+      "canonicalize() is applied before return."
+    ]
+  },
+  "canonicalization": {
+    "function": "canonicalize",
+    "idempotent": true,
+    "steps": [
+      "Sort all dict keys lexicographically",
+      "Round all float values to 6 decimal places",
+      "Sort all list fields",
+      "Clamp floats to [0,1] where semantically appropriate"
+    ]
+  },
+  "tests": [
+    {"id": 1,  "name": "test_self_distance_zero",         "property": "distance(g,g) == 0.0"},
+    {"id": 2,  "name": "test_symmetry",                   "property": "distance(g1,g2) == distance(g2,g1)"},
+    {"id": 3,  "name": "test_distance_range",             "property": "distance result in [0,1]"},
+    {"id": 4,  "name": "test_rename_invariance",          "property": "Same call structure under different names → same trigrams"},
+    {"id": 5,  "name": "test_swapped_causal",             "property": "Swapped call order → different causal_precedence_set (shared index map)"},
+    {"id": 6,  "name": "test_loop_run_length",            "property": "Single repeated call → loop_mean_run_length > 1"},
+    {"id": 7,  "name": "test_exception_triples",          "property": "Exception event → non-empty exception_transition_triples"},
+    {"id": 8,  "name": "test_single_bigram_entropy_zero", "property": "Single bigram type → bigram_entropy == 0.0"},
+    {"id": 9,  "name": "test_phase_vector_sum",           "property": "phase_diversity_vector has 3 elements, sum ≤ 1.0"},
+    {"id": 10, "name": "test_trigram_extraction_5call",   "property": "5-call sequence → 3 trigrams with correct keys and equal frequencies"}
+  ],
+  "relationship_to_prior_versions": {
+    "v2": "Volume statistics: coverage, call_freq, exception_rate",
+    "v3": "Adds bigrams, input_sensitivity_score, call_depth_variance, hot_path_stability",
+    "v5_temporal": "Adds trigrams, exception transitions, causal chains, phase diversity, loop profiles. Standalone extractor — no dependency on V2/V3 normalizer."
+  },
+  "created_at": "2025-01-01",
+  "author": "SBG temporal genome implementation"
+}

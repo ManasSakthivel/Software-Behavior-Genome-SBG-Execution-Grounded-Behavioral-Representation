@@ -1,0 +1,37 @@
+{
+  "pairs_file": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+  "dataset_dir": "benchmark/datasets/v8",
+  "n_evaluated": 593,
+  "n_changed": 344,
+  "n_equivalent": 249,
+  "n_programs": 14,
+  "edit_size_forward_auroc": 0.154788,
+  "edit_size_reversed_auroc": 0.845212,
+  "edit_size_forward_ci95": [
+    0.107401,
+    0.213892,
+    2000
+  ],
+  "sbg_v5_auroc": 0.739259,
+  "sbg_v5_ci95": [
+    0.697581,
+    0.781091,
+    2000
+  ],
+  "edit_size_stats": {
+    "mean_changed": 2.738,
+    "mean_equivalent": 9.169
+  },
+  "M1_auroc_with_train_fit_weights": 0.805921,
+  "M1_ci95": [
+    0.767805,
+    0.84916,
+    2000
+  ],
+  "M2_auroc_with_train_fit_weights": 0.803738,
+  "M2_ci95": [
+    0.767716,
+    0.845714,
+    2000
+  ]
+}

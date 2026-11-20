@@ -1,0 +1,10 @@
+digraph evidence_witness_model {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ pv [label="ProgramVersion x2\n(derived)"]; inp [label="Input (user-supplied)"]; runs [label="ExecutionRun / Reproducibility\n(observation)"]; rc [label="ReplayCheck\n(observation)"];
+ wit [label="Witness: pair, input_hash, kinds,\nobs_old, obs_new, replay_set\n(derived; immutable)"]; chg [label="ChangedRegions (derived)"];
+ suf [label="SufficiencyRecord\n(derived, uncertain):\nfactors, stop reason, r_det, run-set hash, unhit units"];
+ ver [label="Verdict", fillcolor="#cfe3f5"];
+ mk [label="Merkle tree, Supersession/void,\nreplay recipe + event stream\nNOT IMPLEMENTED (flat hash of run ids only)", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ ver -> wit [label="DIVERGENT_OBSERVABLE"]; ver -> suf [label="NO_DIVERGENCE_OBSERVED /\nINSUFFICIENT"]; wit -> runs; wit -> rc; wit -> pv; wit -> inp; suf -> runs; suf -> chg; suf -> pv; mk -> suf [style=dashed];
+}

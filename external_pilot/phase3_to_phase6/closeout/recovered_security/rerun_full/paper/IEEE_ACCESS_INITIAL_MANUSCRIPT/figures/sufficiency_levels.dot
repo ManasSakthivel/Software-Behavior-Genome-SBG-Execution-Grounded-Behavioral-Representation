@@ -1,0 +1,10 @@
+digraph sufficiency_levels {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ rankdir=LR;
+ s0 [label="S0\nan S1 floor fails\n(appears only inside INSUFFICIENT)"];
+ s1 [label="S1\n>=1 deterministic SAME input;\n100% changed units hit;\nr_det done; no truncation/blind spot"];
+ s2 [label="S2 = S1 +\nbranch-direction coverage of changed\nregions >= 0.80 per version;\nno equal_lossy on ret/side"];
+ s3 [label="S3 (s3_enabled=false)\nNOT IMPLEMENTED:\nrefused in config, never emitted", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ s0 -> s1 [label="floors hold"]; s1 -> s2; s2 -> s3 [style=dashed];
+}

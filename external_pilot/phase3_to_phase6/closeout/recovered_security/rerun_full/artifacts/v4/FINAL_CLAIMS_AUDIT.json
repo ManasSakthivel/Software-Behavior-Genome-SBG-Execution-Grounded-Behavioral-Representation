@@ -1,0 +1,76 @@
+{
+  "version": "v4",
+  "generated_at": "2026-08-20T17:35:13.081243Z",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "SBG V3 detects semantic changes better than static SBG V1",
+      "verdict": "SUPPORTED",
+      "evidence": "V3 AUROC=0.546 vs V1=0.424, delta=0.122",
+      "caveats": "CIs overlap; V1 is a weak baseline"
+    },
+    {
+      "id": "C2",
+      "claim": "SBG V3 contains behavioral information beyond execution volume",
+      "verdict": "NOT_SUPPORTED",
+      "evidence": "Phase 1: exc_frac AUROC=0.567 > SBG V3 AUROC=0.540",
+      "caveats": "This is the central negative finding"
+    },
+    {
+      "id": "C3",
+      "claim": "SBG V3 detects constant mutations (SC-3)",
+      "verdict": "NOT_SUPPORTED",
+      "evidence": "Phase 2: detection rate 7.5% on 173 integer mutations",
+      "caveats": "Hard mutations undetectable; easy mutations partially detected"
+    },
+    {
+      "id": "C4",
+      "claim": "SBG V3 is invariant under function rename (SP-2)",
+      "verdict": "PARTIALLY_FAILED",
+      "evidence": "Phase 7: SP-2 mean_sim=0.587 (expected ~1.0)",
+      "caveats": "Fixed entry-fn bug; residual invariance failure persists"
+    },
+    {
+      "id": "C5",
+      "claim": "SBG V3 generalizes across programs",
+      "verdict": "NOT_SUPPORTED",
+      "evidence": "Phase 3: DEV=0.488, VAL=0.512, TEST=0.546 \u2014 high variance",
+      "caveats": "TEST may be favorable fluctuation"
+    },
+    {
+      "id": "C6",
+      "claim": "V3 features (call bigrams, input sensitivity) add information",
+      "verdict": "NOT_SUPPORTED",
+      "evidence": "Phase 8: no_all_v3_features delta=-0.001; call bigrams delta=+0.002",
+      "caveats": "Exception alone (0.593) beats full model (0.550)"
+    },
+    {
+      "id": "C7",
+      "claim": "Benchmark labels are valid (EQUIV/CHANGED correctly assigned)",
+      "verdict": "PARTIALLY_CONFIRMED",
+      "evidence": "Phase 4 oracle: 69.6% agreement (135 evaluable pairs)",
+      "caveats": "65 load failures; 35 oracle FN; oracle uses limited inputs"
+    },
+    {
+      "id": "C8",
+      "claim": "SBG beats AST-based similarity",
+      "verdict": "CONTEXT_DEPENDENT",
+      "evidence": "Phase 9: SBG=0.546 > AST-hist=0.429; v2 reference AST=0.553 > SBG v2=0.531",
+      "caveats": "Different AST implementations used; implementation-dependent"
+    },
+    {
+      "id": "C9",
+      "claim": "AUROC methodology is statistically correct",
+      "verdict": "SUPPORTED",
+      "evidence": "19/19 unit tests pass; validated against sklearn; WMW tie-aware",
+      "caveats": "None"
+    },
+    {
+      "id": "C10",
+      "claim": "SBG can detect real regression bugs",
+      "verdict": "NOT_SUPPORTED",
+      "evidence": "Phase 5: accuracy=0.50 (random), AUROC=0.313 (inverted), n=8",
+      "caveats": "N=8 is too small; but direction is clearly negative"
+    }
+  ]
+}

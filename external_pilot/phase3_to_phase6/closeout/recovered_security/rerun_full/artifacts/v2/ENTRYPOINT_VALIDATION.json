@@ -1,0 +1,97 @@
+{
+  "phase": "4",
+  "wave": "1",
+  "title": "conc_read_write_lock entry-point validation \u2014 corrected B07 evaluation",
+  "fix_summary": {
+    "root_cause": "conc_read_write_lock.py and all its 58 test-set variant pairs have NO top-level callable function (only classes ReadWriteLock/ProtectedDict). B07's entry-function discovery (_load_entry_fn) previously found nothing and _score_pair() imputed a neutral 0.5 for all 58 pairs (7.8% of the 744-pair test set), contributing zero signal to any AUROC computation.",
+    "fix_implemented": "Added a reflection-based, composition-aware class execution adapter (baselines/v2/b07_dynamic_v2.py::_build_class_adapter) as a fallback entry point when no top-level callable exists. The adapter: (1) selects the 'outer/composed' class structurally (an instance holding an attribute that is itself an instance of another discovered class in the module), not by source-line order (unreliable for importlib-loaded modules); (2) drives all public methods sequentially over V2_CANONICAL_INPUTS with a FRESH class instance per individual method call, to prevent a single corrupted transaction (e.g. a lock left acquired due to a genuine bug in a transform variant) from cascading into a permanent deadlock across the rest of the trace; (3) does not spawn any threads, so it remains deterministic and does not reproduce the non-determinism that previously justified excluding this program from SandboxRunner._UNSAFE_PROGRAMS.",
+    "runner_change": "Removed 'conc_read_write_lock' from sbg/v2/execution/runner.py::_UNSAFE_PROGRAMS. 'conc_producer_consumer' (a program that does not exist in the corpus) is retained for documentation purposes only.",
+    "fairness_fix": "Also fixed baselines/v2/b06_fair_v2.py, which for the same 58 pairs was computing Jaccard({}, {})==1.0 -- fabricating MAXIMUM similarity (worse than B07's honest 0.5 neutral) whenever entry-fn discovery failed. Now returns the same neutral 0.5 convention as B07 when n_traces==0."
+  },
+  "impact": {
+    "total_test_pairs": 744,
+    "total_dev_pairs": 615,
+    "conc_read_write_lock_test_pairs": 58,
+    "conc_read_write_lock_dev_pairs": 0,
+    "fraction_of_test_set": 0.078,
+    "pairs_now_scored_with_real_execution_test": 53,
+    "pairs_still_imputed_at_0p5_test": 5,
+    "pairs_now_scored_with_real_execution_dev": 0,
+    "pairs_still_imputed_at_0p5_dev": 0,
+    "resolution_rate_test": 0.9138
+  },
+  "residual_imputation_disclosure": {
+    "count": 5,
+    "justification": "NOT a fabrication. These 5 test pairs (SP-3 x2, SP-8 x1, SC-11 x2) reference variant source files that contain a SyntaxError: the benchmark's dead-code-injection transform generator inserted a bare `return None` statement at MODULE scope (outside any function body), which is invalid Python syntax. importlib's exec_module() raises SyntaxError and the module cannot be loaded at all -- there is no class, no function, nothing to execute. This is a pre-existing bug in the benchmark's transform generator (independent of Wave 1's B07 fix), not something addressable by any entry-point adapter. The 0.5 imputation is retained and explicitly disclosed for these 5 pairs only, per the Phase 4 mandate: 'Never fabricate a score.'",
+    "detail": [
+      {
+        "pair_id": "test__conc_read_write_lock__sp-3_s1",
+        "transformation_type": "SP-3",
+        "semantic_relation": "EQUIVALENT",
+        "base_entry_resolved": true,
+        "variant_entry_resolved": false,
+        "reason": "MODULE_IMPORT_FAILURE (SyntaxError in variant source \u2014 dead-code injection transform bug places a bare `return` statement outside any function at module scope, which is a SyntaxError; module cannot be exec'd at all)"
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-3_s2",
+        "transformation_type": "SP-3",
+        "semantic_relation": "EQUIVALENT",
+        "base_entry_resolved": true,
+        "variant_entry_resolved": false,
+        "reason": "MODULE_IMPORT_FAILURE (SyntaxError in variant source \u2014 dead-code injection transform bug places a bare `return` statement outside any function at module scope, which is a SyntaxError; module cannot be exec'd at all)"
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-8_s2",
+        "transformation_type": "SP-8",
+        "semantic_relation": "EQUIVALENT",
+        "base_entry_resolved": true,
+        "variant_entry_resolved": false,
+        "reason": "MODULE_IMPORT_FAILURE (SyntaxError in variant source \u2014 dead-code injection transform bug places a bare `return` statement outside any function at module scope, which is a SyntaxError; module cannot be exec'd at all)"
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sc11_s1_p0",
+        "transformation_type": "SC-11",
+        "semantic_relation": "CHANGED",
+        "base_entry_resolved": true,
+        "variant_entry_resolved": false,
+        "reason": "MODULE_IMPORT_FAILURE (SyntaxError in variant source \u2014 dead-code injection transform bug places a bare `return` statement outside any function at module scope, which is a SyntaxError; module cannot be exec'd at all)"
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sc11_s2_p0",
+        "transformation_type": "SC-11",
+        "semantic_relation": "CHANGED",
+        "base_entry_resolved": true,
+        "variant_entry_resolved": false,
+        "reason": "MODULE_IMPORT_FAILURE (SyntaxError in variant source \u2014 dead-code injection transform bug places a bare `return` statement outside any function at module scope, which is a SyntaxError; module cannot be exec'd at all)"
+      }
+    ]
+  },
+  "conc_read_write_lock_specific_results": {
+    "n_equivalent_pairs": 28,
+    "n_changed_pairs": 30,
+    "equiv_mean_similarity": 0.9412,
+    "changed_mean_similarity": 0.8021
+  },
+  "corrected_test_set_metrics": {
+    "note": "This is a NEW Phase 4 corrected analysis. Historical Phase 3B artifacts (artifacts/v2/B07/results_test.json) are NOT modified.",
+    "auroc": 0.529209,
+    "ci_auroc_lower": 0.500987,
+    "ci_auroc_upper": 0.584455,
+    "f1": 0.659459,
+    "threshold": 1.000001,
+    "inversion_delta_corrected": -0.052968,
+    "equiv_mean_similarity": 0.907051,
+    "changed_mean_similarity": 0.854083
+  },
+  "historical_phase3b_reference": {
+    "auroc": 0.531023,
+    "note": "Original B07 test AUROC before Wave 1 entry-point fix, for comparison. Delta = corrected - historical.",
+    "delta": -0.001814
+  },
+  "integrity_notes": [
+    "No frozen benchmark files (pairs_test.jsonl, pairs_dev.jsonl, variant source files) were modified.",
+    "No model tuning occurred; the adapter is a generic reflection-based execution mechanism, not tuned to any specific program or transform type.",
+    "Historical Phase 3B artifacts under artifacts/v2/B07/ are untouched; this is a new artifact directory (artifacts/v2/B07_ENTRYPOINT_CORRECTED/).",
+    "5/744 test pairs (0.67% of the full test set) remain honestly imputed at 0.5 due to a documented, unrelated SyntaxError bug in the benchmark's transform generator -- disclosed explicitly above, not hidden."
+  ]
+}

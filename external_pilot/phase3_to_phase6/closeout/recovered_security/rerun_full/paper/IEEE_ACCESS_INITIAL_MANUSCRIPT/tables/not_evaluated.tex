@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering\scriptsize
+\caption{NOT EVALUATED register (Phase 2; sources: \path{reports/phase2/PHASE2_CONSOLIDATED_EXPERIMENTAL_ANALYSIS.md}, section 10, and \path{reports/phase2/K1_K5_READINESS_AND_DECISION.md}).}
+\label{tab:notevaluated}
+\begin{tabular}{p{0.27\textwidth}p{0.14\textwidth}p{0.5\textwidth}}
+\hline
+Item & Status & Reason \\
+\hline
+Confirmatory family and independent generalisation (RQ5) & NOT EVALUATED & no sealed holdout; data non-pristine; K5 not attempted; no independent real project-level run \\
+Superiority over any like-for-like comparator; matched-coverage false assurance & NOT EVALUATED & only raw counts; no matched-coverage computation \\
+Truth for BugsInPy units, two QuixBugs pairs, six suspect labels & NOT EVALUATED & no defensible label; never relabelled \\
+K1 (real-pair feasibility) and K2 under validated isolation & DEFERRED (Phase 3) & neither triggered nor cleared; needs Linux/Docker isolation \\
+Linux, Docker and OS-level isolation & NOT VALIDATED & macOS \texttt{sandbox-exec} only; policy flagged below minimum \\
+Tamper evidence against a deliberate writer & NOT PROVIDED & unkeyed hash chain; no trust anchor \\
+Complete determinism: hash-order sensitivity (E2), \texttt{datetime.now} & NOT EVALUATED & hash seed fixed and never varied; clock not virtualised \\
+Published tools (Shadow SE, DiffKemp, Testora, Cleverest, Prefactory, etc.) & NOT COMPARED & not implemented or run; no claim relative to them \\
+S3, explorer, module E, declared renames, generator entries & NOT IMPLEMENTED & contribute to \texttt{unsupported\_signature} and abstention \\
+Component value of replay, control alternation and thresholds & NOT SHOWN & ablations change no verdict (data have almost no nondeterminism) \\
+Calibration of the 0.80 branch floor and repeat counts & NOT EVALUATED & defaults are unvalidated; E5 shows only that the floor relabels S1/S2 \\
+Refinement of \texttt{unmodelled\_change} & OPEN & rule is conservative and unrefined (UD-2) \\
+Cross-language, cross-platform & NOT SUPPORTED & Python on macOS only \\
+\hline
+\end{tabular}
+\end{table*}

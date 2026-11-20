@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_04_rename_invariant",
+  "ground_truth": "EQUIV",
+  "shortcut_defeated": "name_similarity",
+  "description": "Every identifier is renamed (function, parameter, accumulator) but the logic is identical. A naive name-based or token-overlap shortcut sees zero name overlap and wrongly labels this CHANGED.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": true,
+  "expected_volume_same": true,
+  "boundary_inputs_required": false
+}

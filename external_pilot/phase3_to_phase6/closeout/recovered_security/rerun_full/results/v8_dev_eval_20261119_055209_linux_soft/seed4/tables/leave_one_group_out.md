@@ -1,0 +1,9 @@
+| left_out | logloss | matched_risk@v7b_gate | matched_risk@c=0.3 |
+|---|---|---|---|
+| coverage | 0.6010 | 0.2787 | 0.2972 |
+| multiplicity | 0.6443 | 0.2131 | 0.2713 |
+| repetition | 0.6011 | 0.2787 | 0.2972 |
+| influence_proxy | 0.6010 | 0.2787 | 0.2972 |
+| diversity | 0.6011 | 0.2787 | 0.2972 |
+| observation | 0.6011 | 0.2787 | 0.2972 |
+| trust | 0.6011 | 0.2787 | 0.2972 |

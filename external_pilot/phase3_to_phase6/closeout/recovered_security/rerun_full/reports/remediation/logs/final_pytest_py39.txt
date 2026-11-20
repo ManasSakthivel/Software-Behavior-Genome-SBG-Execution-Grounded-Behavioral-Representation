@@ -1,0 +1,30 @@
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 29%]
+........................................................................ [ 39%]
+........................................................................ [ 49%]
+........................................................................ [ 59%]
+........................................................................ [ 68%]
+........................................................................ [ 78%]
+........................................................................ [ 88%]
+........................................................................ [ 98%]
+............                                                             [100%]
+=============================== warnings summary ===============================
+tests/test_integrity.py::TestBenchmarkValidity::test_generated_variants_compile
+tests/test_integrity.py::TestSourceCompiles::test_all_first_party_source_compiles
+  /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/benchmark/datasets/v6/variants/val/graph_cycle_detect_dfs__sc1_s0_p0.py:37: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+    if result is not 2 and result[0]:
+
+tests/test_integrity.py::TestBenchmarkValidity::test_generated_variants_compile
+tests/test_integrity.py::TestSourceCompiles::test_all_first_party_source_compiles
+  /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/benchmark/datasets/v6/variants/val/graph_cycle_detect_dfs__sc1_s1_p0.py:37: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+    if result is not 0 and result[0]:
+
+tests/test_integrity.py::TestBenchmarkValidity::test_generated_variants_compile
+tests/test_integrity.py::TestSourceCompiles::test_all_first_party_source_compiles
+  /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/benchmark/datasets/v6/variants/val/graph_cycle_detect_dfs__sc1_s2_p0.py:37: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+    if result is not 0 and result[0]:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+732 passed, 6 warnings in 67.51s (0:01:07)
+EXIT=0

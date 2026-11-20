@@ -1,0 +1,52 @@
+{
+ "counts": {
+  "P1": {
+   "pass": 16,
+   "fail": 0,
+   "na": 296
+  },
+  "P2": {
+   "pass": 227,
+   "fail": 0,
+   "na": 85
+  },
+  "P3": {
+   "pass": 262,
+   "fail": 0,
+   "na": 50
+  },
+  "P4": {
+   "pass": 178,
+   "fail": 0,
+   "na": 134
+  },
+  "P5": {
+   "pass": 176,
+   "fail": 0,
+   "na": 136
+  },
+  "P6": {
+   "pass": 228,
+   "fail": 0,
+   "na": 84
+  },
+  "P7": {
+   "pass": 178,
+   "fail": 0,
+   "na": 134
+  },
+  "P8": {
+   "pass": 312,
+   "fail": 0,
+   "na": 0
+  },
+  "P9": {
+   "pass": 228,
+   "fail": 0,
+   "na": 84
+  }
+ },
+ "failures": [],
+ "n_records": 312,
+ "markdown": "| Perturbation | Name | Mode | Pass | Fail | N/A |\n|---|---|---|---|---|---|\n| P1 | relevant-evidence deletion | post-hoc | 16 | 0 | 296 |\n| P2 | irrelevant augmentation | post-hoc (synthetic recorded input; real execution needs collector) | 227 | 0 | 85 |\n| P3 | duplicate augmentation | post-hoc | 262 | 0 | 50 |\n| P4 | observation masking | post-hoc | 178 | 0 | 134 |\n| P5 | reproducibility-budget degradation | post-hoc (synthetic recorded input; real execution needs collector) | 176 | 0 | 136 |\n| P6 | independent discriminating evidence | post-hoc (synthetic recorded input; real execution needs collector) | 228 | 0 | 84 |\n| P7 | provenance degradation | post-hoc | 178 | 0 | 134 |\n| P8 | integrity violation | post-hoc | 312 | 0 | 0 |\n| P9 | environment inconsistency | post-hoc | 228 | 0 | 84 |"
+}

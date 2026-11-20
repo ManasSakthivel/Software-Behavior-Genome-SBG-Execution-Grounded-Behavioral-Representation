@@ -1,0 +1,767 @@
+{
+  "dataset": "benchmark/datasets/v6",
+  "n_pairs": 2340,
+  "n_programs": 60,
+  "defect_counts": {
+    "sp2_dangling_method_reference": 75
+  },
+  "sp2_equivalent_pairs_by_split": {
+    "train": 84,
+    "dev": 30,
+    "val": 27,
+    "test": 39
+  },
+  "sp2_dangling_by_split": {
+    "train": 30,
+    "dev": 13,
+    "val": 10,
+    "test": 22
+  },
+  "defects": {
+    "sp2_dangling_method_reference": [
+      {
+        "pair_id": "train__api_mock_http_client__sp-2_s0",
+        "base_id": "api_mock_http_client",
+        "split": "train",
+        "names": [
+          "dispatch",
+          "route",
+          "stats",
+          "use"
+        ]
+      },
+      {
+        "pair_id": "train__api_mock_http_client__sp-2_s1",
+        "base_id": "api_mock_http_client",
+        "split": "train",
+        "names": [
+          "ok",
+          "use"
+        ]
+      },
+      {
+        "pair_id": "train__api_mock_http_client__sp-2_s2",
+        "base_id": "api_mock_http_client",
+        "split": "train",
+        "names": [
+          "ok"
+        ]
+      },
+      {
+        "pair_id": "train__api_rest_crud_mock__sp-2_s0",
+        "base_id": "api_rest_crud_mock",
+        "split": "train",
+        "names": [
+          "_validate",
+          "create",
+          "list_resources",
+          "patch",
+          "read",
+          "update"
+        ]
+      },
+      {
+        "pair_id": "train__api_rest_crud_mock__sp-2_s1",
+        "base_id": "api_rest_crud_mock",
+        "split": "train",
+        "names": [
+          "count",
+          "ok",
+          "read"
+        ]
+      },
+      {
+        "pair_id": "train__api_rest_crud_mock__sp-2_s2",
+        "base_id": "api_rest_crud_mock",
+        "split": "train",
+        "names": [
+          "ok"
+        ]
+      },
+      {
+        "pair_id": "train__conc_thread_safe_counter__sp-2_s0",
+        "base_id": "conc_thread_safe_counter",
+        "split": "train",
+        "names": [
+          "decrement",
+          "increment",
+          "reset"
+        ]
+      },
+      {
+        "pair_id": "train__conc_thread_safe_counter__sp-2_s1",
+        "base_id": "conc_thread_safe_counter",
+        "split": "train",
+        "names": [
+          "value"
+        ]
+      },
+      {
+        "pair_id": "train__ds_min_heap__sp-2_s0",
+        "base_id": "ds_min_heap",
+        "split": "train",
+        "names": [
+          "_swap",
+          "decrease_key",
+          "is_empty",
+          "peek",
+          "pop",
+          "push"
+        ]
+      },
+      {
+        "pair_id": "train__ds_min_heap__sp-2_s1",
+        "base_id": "ds_min_heap",
+        "split": "train",
+        "names": [
+          "is_empty",
+          "peek"
+        ]
+      },
+      {
+        "pair_id": "train__ds_min_heap__sp-2_s2",
+        "base_id": "ds_min_heap",
+        "split": "train",
+        "names": [
+          "is_empty"
+        ]
+      },
+      {
+        "pair_id": "train__ds_trie__sp-2_s0",
+        "base_id": "ds_trie",
+        "split": "train",
+        "names": [
+          "_count_words",
+          "all_words",
+          "count_with_prefix",
+          "delete",
+          "search",
+          "starts_with"
+        ]
+      },
+      {
+        "pair_id": "train__ds_trie__sp-2_s1",
+        "base_id": "ds_trie",
+        "split": "train",
+        "names": [
+          "autocomplete",
+          "delete",
+          "insert"
+        ]
+      },
+      {
+        "pair_id": "train__ds_trie__sp-2_s2",
+        "base_id": "ds_trie",
+        "split": "train",
+        "names": [
+          "insert"
+        ]
+      },
+      {
+        "pair_id": "train__ds_lru_cache__sp-2_s0",
+        "base_id": "ds_lru_cache",
+        "split": "train",
+        "names": [
+          "_add_to_front",
+          "_remove_node",
+          "get",
+          "keys_lru_order",
+          "peek",
+          "put"
+        ]
+      },
+      {
+        "pair_id": "train__ds_lru_cache__sp-2_s1",
+        "base_id": "ds_lru_cache",
+        "split": "train",
+        "names": [
+          "get",
+          "keys_lru_order"
+        ]
+      },
+      {
+        "pair_id": "train__ds_lru_cache__sp-2_s2",
+        "base_id": "ds_lru_cache",
+        "split": "train",
+        "names": [
+          "get"
+        ]
+      },
+      {
+        "pair_id": "train__fsm_connection_pool__sp-2_s0",
+        "base_id": "fsm_connection_pool",
+        "split": "train",
+        "names": [
+          "acquire",
+          "heal",
+          "mark_broken",
+          "release",
+          "stats",
+          "tick"
+        ]
+      },
+      {
+        "pair_id": "train__fsm_connection_pool__sp-2_s1",
+        "base_id": "fsm_connection_pool",
+        "split": "train",
+        "names": [
+          "_update_pool_state",
+          "mark_broken",
+          "pool_state"
+        ]
+      },
+      {
+        "pair_id": "train__fsm_connection_pool__sp-2_s2",
+        "base_id": "fsm_connection_pool",
+        "split": "train",
+        "names": [
+          "pool_state"
+        ]
+      },
+      {
+        "pair_id": "train__fsm_traffic_light__sp-2_s0",
+        "base_id": "fsm_traffic_light",
+        "split": "train",
+        "names": [
+          "_transition",
+          "history",
+          "state",
+          "tick",
+          "trigger_emergency"
+        ]
+      },
+      {
+        "pair_id": "train__fsm_traffic_light__sp-2_s1",
+        "base_id": "fsm_traffic_light",
+        "split": "train",
+        "names": [
+          "state",
+          "tick"
+        ]
+      },
+      {
+        "pair_id": "train__fsm_traffic_light__sp-2_s2",
+        "base_id": "fsm_traffic_light",
+        "split": "train",
+        "names": [
+          "state"
+        ]
+      },
+      {
+        "pair_id": "train__parse_json_subset__sp-2_s0",
+        "base_id": "parse_json_subset",
+        "split": "train",
+        "names": [
+          "_array",
+          "_consume",
+          "_object",
+          "_peek",
+          "_value",
+          "parse"
+        ]
+      },
+      {
+        "pair_id": "train__parse_json_subset__sp-2_s1",
+        "base_id": "parse_json_subset",
+        "split": "train",
+        "names": [
+          "_number",
+          "_skip_ws",
+          "parse"
+        ]
+      },
+      {
+        "pair_id": "train__parse_json_subset__sp-2_s2",
+        "base_id": "parse_json_subset",
+        "split": "train",
+        "names": [
+          "_skip_ws"
+        ]
+      },
+      {
+        "pair_id": "train__res_memory_allocator__sp-2_s0",
+        "base_id": "res_memory_allocator",
+        "split": "train",
+        "names": [
+          "coalesce",
+          "fragmentation_ratio",
+          "free"
+        ]
+      },
+      {
+        "pair_id": "train__res_memory_allocator__sp-2_s1",
+        "base_id": "res_memory_allocator",
+        "split": "train",
+        "names": [
+          "stats"
+        ]
+      },
+      {
+        "pair_id": "train__res_task_scheduler__sp-2_s0",
+        "base_id": "res_task_scheduler",
+        "split": "train",
+        "names": [
+          "cancel",
+          "submit",
+          "tick"
+        ]
+      },
+      {
+        "pair_id": "train__res_task_scheduler__sp-2_s1",
+        "base_id": "res_task_scheduler",
+        "split": "train",
+        "names": [
+          "stats"
+        ]
+      },
+      {
+        "pair_id": "dev__api_event_bus__sp-2_s0",
+        "base_id": "api_event_bus",
+        "split": "dev",
+        "names": [
+          "publish",
+          "publish_batch",
+          "replay",
+          "subscribe",
+          "topics",
+          "unsubscribe"
+        ]
+      },
+      {
+        "pair_id": "dev__api_event_bus__sp-2_s1",
+        "base_id": "api_event_bus",
+        "split": "dev",
+        "names": [
+          "subscribe",
+          "unsubscribe"
+        ]
+      },
+      {
+        "pair_id": "dev__api_event_bus__sp-2_s2",
+        "base_id": "api_event_bus",
+        "split": "dev",
+        "names": [
+          "subscribe"
+        ]
+      },
+      {
+        "pair_id": "dev__ds_stack_queue__sp-2_s0",
+        "base_id": "ds_stack_queue",
+        "split": "dev",
+        "names": [
+          "enqueue",
+          "front",
+          "is_empty",
+          "peek",
+          "peek_front",
+          "pop",
+          "pop_back",
+          "pop_front",
+          "push",
+          "push_back"
+        ]
+      },
+      {
+        "pair_id": "dev__ds_stack_queue__sp-2_s1",
+        "base_id": "ds_stack_queue",
+        "split": "dev",
+        "names": [
+          "enqueue",
+          "is_empty",
+          "push_back"
+        ]
+      },
+      {
+        "pair_id": "dev__ds_stack_queue__sp-2_s2",
+        "base_id": "ds_stack_queue",
+        "split": "dev",
+        "names": [
+          "peek_back"
+        ]
+      },
+      {
+        "pair_id": "dev__err_circuit_breaker__sp-2_s0",
+        "base_id": "err_circuit_breaker",
+        "split": "dev",
+        "names": [
+          "_on_failure",
+          "call"
+        ]
+      },
+      {
+        "pair_id": "dev__err_circuit_breaker__sp-2_s1",
+        "base_id": "err_circuit_breaker",
+        "split": "dev",
+        "names": [
+          "_on_success"
+        ]
+      },
+      {
+        "pair_id": "dev__err_circuit_breaker__sp-2_s2",
+        "base_id": "err_circuit_breaker",
+        "split": "dev",
+        "names": [
+          "call"
+        ]
+      },
+      {
+        "pair_id": "dev__graph_connected_components__sp-2_s0",
+        "base_id": "graph_connected_components",
+        "split": "dev",
+        "names": [
+          "find",
+          "union"
+        ]
+      },
+      {
+        "pair_id": "dev__res_cache_ttl__sp-2_s0",
+        "base_id": "res_cache_ttl",
+        "split": "dev",
+        "names": [
+          "delete",
+          "expire_all",
+          "get",
+          "keys_alive",
+          "set",
+          "stats"
+        ]
+      },
+      {
+        "pair_id": "dev__res_cache_ttl__sp-2_s1",
+        "base_id": "res_cache_ttl",
+        "split": "dev",
+        "names": [
+          "get",
+          "set"
+        ]
+      },
+      {
+        "pair_id": "dev__res_cache_ttl__sp-2_s2",
+        "base_id": "res_cache_ttl",
+        "split": "dev",
+        "names": [
+          "set"
+        ]
+      },
+      {
+        "pair_id": "val__ds_binary_search_tree__sp-2_s0",
+        "base_id": "ds_binary_search_tree",
+        "split": "val",
+        "names": [
+          "_inorder",
+          "_insert",
+          "delete",
+          "height",
+          "inorder",
+          "search"
+        ]
+      },
+      {
+        "pair_id": "val__ds_binary_search_tree__sp-2_s1",
+        "base_id": "ds_binary_search_tree",
+        "split": "val",
+        "names": [
+          "_height",
+          "delete",
+          "insert"
+        ]
+      },
+      {
+        "pair_id": "val__ds_binary_search_tree__sp-2_s2",
+        "base_id": "ds_binary_search_tree",
+        "split": "val",
+        "names": [
+          "insert"
+        ]
+      },
+      {
+        "pair_id": "val__file_word_count_stream__sp-2_s0",
+        "base_id": "file_word_count_stream",
+        "split": "val",
+        "names": [
+          "char_count",
+          "feed",
+          "line_count",
+          "unique_words"
+        ]
+      },
+      {
+        "pair_id": "val__file_word_count_stream__sp-2_s1",
+        "base_id": "file_word_count_stream",
+        "split": "val",
+        "names": [
+          "feed",
+          "top_n"
+        ]
+      },
+      {
+        "pair_id": "val__fsm_order_lifecycle__sp-2_s0",
+        "base_id": "fsm_order_lifecycle",
+        "split": "val",
+        "names": [
+          "_advance_tick",
+          "add_item",
+          "cancel",
+          "confirm",
+          "deliver",
+          "ship"
+        ]
+      },
+      {
+        "pair_id": "val__fsm_order_lifecycle__sp-2_s1",
+        "base_id": "fsm_order_lifecycle",
+        "split": "val",
+        "names": [
+          "confirm",
+          "return_request",
+          "state"
+        ]
+      },
+      {
+        "pair_id": "val__fsm_order_lifecycle__sp-2_s2",
+        "base_id": "fsm_order_lifecycle",
+        "split": "val",
+        "names": [
+          "state"
+        ]
+      },
+      {
+        "pair_id": "val__parse_ini_config__sp-2_s0",
+        "base_id": "parse_ini_config",
+        "split": "val",
+        "names": [
+          "get",
+          "parse",
+          "sections"
+        ]
+      },
+      {
+        "pair_id": "val__parse_ini_config__sp-2_s1",
+        "base_id": "parse_ini_config",
+        "split": "val",
+        "names": [
+          "items"
+        ]
+      },
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s0",
+        "base_id": "api_rate_limiter",
+        "split": "test",
+        "names": [
+          "allow",
+          "remaining"
+        ]
+      },
+      {
+        "pair_id": "test__api_rate_limiter__sp-2_s1",
+        "base_id": "api_rate_limiter",
+        "split": "test",
+        "names": [
+          "_leak"
+        ]
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s0",
+        "base_id": "conc_read_write_lock",
+        "split": "test",
+        "names": [
+          "acquire_read",
+          "acquire_write",
+          "delete",
+          "get",
+          "release_read",
+          "release_write",
+          "set"
+        ]
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s1",
+        "base_id": "conc_read_write_lock",
+        "split": "test",
+        "names": [
+          "acquire_read",
+          "get",
+          "release_read"
+        ]
+      },
+      {
+        "pair_id": "test__conc_read_write_lock__sp-2_s2",
+        "base_id": "conc_read_write_lock",
+        "split": "test",
+        "names": [
+          "release_read"
+        ]
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s0",
+        "base_id": "ds_hash_table",
+        "split": "test",
+        "names": [
+          "_slot",
+          "delete",
+          "get",
+          "items",
+          "put",
+          "values"
+        ]
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s1",
+        "base_id": "ds_hash_table",
+        "split": "test",
+        "names": [
+          "_probe_for_write",
+          "delete",
+          "load_factor"
+        ]
+      },
+      {
+        "pair_id": "test__ds_hash_table__sp-2_s2",
+        "base_id": "ds_hash_table",
+        "split": "test",
+        "names": [
+          "load_factor"
+        ]
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s0",
+        "base_id": "err_result_type",
+        "split": "test",
+        "names": [
+          "err",
+          "ok",
+          "unwrap",
+          "unwrap_err"
+        ]
+      },
+      {
+        "pair_id": "test__err_result_type__sp-2_s1",
+        "base_id": "err_result_type",
+        "split": "test",
+        "names": [
+          "flat_map"
+        ]
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s0",
+        "base_id": "file_config_parser",
+        "split": "test",
+        "names": [
+          "dump",
+          "get",
+          "get_bool",
+          "get_float",
+          "sections"
+        ]
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s1",
+        "base_id": "file_config_parser",
+        "split": "test",
+        "names": [
+          "get",
+          "items",
+          "load"
+        ]
+      },
+      {
+        "pair_id": "test__file_config_parser__sp-2_s2",
+        "base_id": "file_config_parser",
+        "split": "test",
+        "names": [
+          "load"
+        ]
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s0",
+        "base_id": "fsm_vending_machine",
+        "split": "test",
+        "names": [
+          "cancel",
+          "get_balance",
+          "insert_coin",
+          "restock",
+          "select_product",
+          "state"
+        ]
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s1",
+        "base_id": "fsm_vending_machine",
+        "split": "test",
+        "names": [
+          "get_balance",
+          "state"
+        ]
+      },
+      {
+        "pair_id": "test__fsm_vending_machine__sp-2_s2",
+        "base_id": "fsm_vending_machine",
+        "split": "test",
+        "names": [
+          "state"
+        ]
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s0",
+        "base_id": "parse_recursive_descent",
+        "split": "test",
+        "names": [
+          "_expr",
+          "_term",
+          "consume",
+          "parse",
+          "peek",
+          "read_int"
+        ]
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s1",
+        "base_id": "parse_recursive_descent",
+        "split": "test",
+        "names": [
+          "consume",
+          "peek"
+        ]
+      },
+      {
+        "pair_id": "test__parse_recursive_descent__sp-2_s2",
+        "base_id": "parse_recursive_descent",
+        "split": "test",
+        "names": [
+          "peek"
+        ]
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s0",
+        "base_id": "res_object_pool",
+        "split": "test",
+        "names": [
+          "acquire",
+          "close",
+          "release",
+          "stats"
+        ]
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s1",
+        "base_id": "res_object_pool",
+        "split": "test",
+        "names": [
+          "stats"
+        ]
+      },
+      {
+        "pair_id": "test__res_object_pool__sp-2_s2",
+        "base_id": "res_object_pool",
+        "split": "test",
+        "names": [
+          "acquire",
+          "close",
+          "release",
+          "stats"
+        ]
+      }
+    ]
+  }
+}

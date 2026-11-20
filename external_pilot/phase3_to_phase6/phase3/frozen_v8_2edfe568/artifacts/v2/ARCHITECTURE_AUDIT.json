@@ -1,0 +1,396 @@
+{
+  "audit_version": "1.0",
+  "generated_by": "Agent O — Repository Architecture and Cleanup Audit",
+  "timestamp": "2025-07-07T00:00:00Z",
+  "scope": "Full SBG V2 repository (audit only — no files modified or deleted)",
+
+  "python_files": {
+    "sbg_engine_v1": [
+      { "path": "sbg/__init__.py",                                   "purpose": "Package init for sbg engine v1",                                   "status": "ACTIVE" },
+      { "path": "sbg/canonicalization.py",                           "purpose": "GENOME_REGISTRY; canonical forms for each SBG dimension",           "status": "ACTIVE" },
+      { "path": "sbg/distance.py",                                   "purpose": "behavioral_distance(G1, G2) — 8-dimension weighted combination",    "status": "ACTIVE" },
+      { "path": "sbg/serialization.py",                              "purpose": "GenomeBundle JSON serialization; ProvenanceTracker",                 "status": "ACTIVE" },
+      { "path": "sbg/cli.py",                                        "purpose": "CLI entry point for single-program genome extraction",               "status": "ACTIVE" },
+      { "path": "sbg/extraction/__init__.py",                        "purpose": "Extraction package init",                                            "status": "ACTIVE" },
+      { "path": "sbg/extraction/static/__init__.py",                 "purpose": "Static extraction subpackage init",                                  "status": "ACTIVE" },
+      { "path": "sbg/extraction/static/extractor.py",                "purpose": "Unified static extractor (CONTROL + DATA + ERROR dimensions)",      "status": "ACTIVE" },
+      { "path": "sbg/extraction/static/data_genome.py",             "purpose": "DATA dimension extractor (variable types, assignment patterns)",     "status": "ACTIVE" },
+      { "path": "sbg/extraction/static/error_genome.py",            "purpose": "ERROR dimension extractor (exception handling patterns)",            "status": "ACTIVE" },
+      { "path": "sbg/extraction/dynamic/__init__.py",                "purpose": "Dynamic extraction subpackage init",                                 "status": "ACTIVE" },
+      { "path": "sbg/extraction/dynamic/tracer.py",                  "purpose": "V1 dynamic tracer (runtime call/coverage collection)",              "status": "ACTIVE" },
+      { "path": "sbg/extraction/dynamic/state_genome.py",           "purpose": "STATE dimension (variable values at key execution points)",          "status": "ACTIVE" },
+      { "path": "sbg/extraction/dynamic/resource_genome.py",        "purpose": "RESOURCE dimension (memory/file allocation patterns)",               "status": "ACTIVE" },
+      { "path": "sbg/extraction/dynamic/temporal_genome.py",        "purpose": "TEMPORAL dimension (execution timing profile)",                      "status": "ACTIVE" },
+      { "path": "sbg/extraction/dynamic/interaction_genome.py",     "purpose": "INTERACTION dimension (I/O and API call sequences)",                 "status": "ACTIVE" },
+      { "path": "sbg/test_distance.py",                              "purpose": "Unit tests for behavioral_distance()",                               "status": "TEST" },
+      { "path": "sbg/test_serialization.py",                         "purpose": "Unit tests for GenomeBundle serialization",                          "status": "TEST" },
+      { "path": "sbg/extraction/static/test_data_genome.py",        "purpose": "Unit tests for DATA genome extractor",                               "status": "TEST" },
+      { "path": "sbg/extraction/static/test_error_genome.py",       "purpose": "Unit tests for ERROR genome extractor",                              "status": "TEST" },
+      { "path": "sbg/extraction/static/test_extractor.py",          "purpose": "Unit tests for unified static extractor",                            "status": "TEST" },
+      { "path": "sbg/extraction/dynamic/test_tracer.py",            "purpose": "Unit tests for dynamic tracer",                                      "status": "TEST" },
+      { "path": "sbg/extraction/dynamic/test_state_genome.py",      "purpose": "Unit tests for STATE genome",                                        "status": "TEST" },
+      { "path": "sbg/extraction/dynamic/test_resource_genome.py",   "purpose": "Unit tests for RESOURCE genome",                                     "status": "TEST" },
+      { "path": "sbg/extraction/dynamic/test_temporal_genome.py",   "purpose": "Unit tests for TEMPORAL genome",                                     "status": "TEST" },
+      { "path": "sbg/extraction/dynamic/test_interaction_genome.py","purpose": "Unit tests for INTERACTION genome",                                  "status": "TEST" }
+    ],
+    "sbg_engine_v2": [
+      { "path": "sbg/v2/__init__.py",                                "purpose": "V2 engine package init",                                             "status": "ACTIVE" },
+      { "path": "sbg/v2/execution/__init__.py",                      "purpose": "V2 execution subpackage init",                                       "status": "ACTIVE" },
+      { "path": "sbg/v2/execution/runner.py",                        "purpose": "SandboxRunner: runs programs with V2 canonical inputs + noise floor","status": "ACTIVE" },
+      { "path": "sbg/v2/execution/normalizer.py",                    "purpose": "TraceNormalizer: anonymize function names; rename-invariant features","status": "ACTIVE" },
+      { "path": "sbg/v2/execution/genome.py",                        "purpose": "DynamicGenome dataclass + DynamicGenomeExtractor + distance()",     "status": "ACTIVE" },
+      { "path": "sbg/v2/hybrid/__init__.py",                         "purpose": "V2 hybrid subpackage init",                                          "status": "ACTIVE" },
+      { "path": "sbg/v2/hybrid/fusion.py",                           "purpose": "HybridGenome + hybrid_distance() with pre-registered weights",      "status": "ACTIVE" },
+      { "path": "sbg/v2/hybrid/distance.py",                         "purpose": "hybrid_distance() with provenance + sweep_alpha() for ablation",    "status": "ACTIVE" },
+      { "path": "sbg/v2/static_proxy.py",                            "purpose": "V1 behavioral_distance adapter for V2 hybrid pipeline (path-keyed cache)", "status": "ACTIVE" },
+      { "path": "sbg/v2/execution/tests/__init__.py",                "purpose": "V2 test subpackage init",                                            "status": "TEST" },
+      { "path": "sbg/v2/execution/tests/test_runner.py",             "purpose": "Tests for SandboxRunner",                                            "status": "TEST" },
+      { "path": "sbg/v2/execution/tests/test_normalizer.py",         "purpose": "Tests for TraceNormalizer",                                          "status": "TEST" },
+      { "path": "sbg/v2/execution/tests/test_genome.py",             "purpose": "Tests for DynamicGenome + distance()",                               "status": "TEST" },
+      { "path": "sbg/v2/execution/tests/test_v2_engine.py",          "purpose": "Integration tests: SAFEGUARD-2 compliance, rename-invariance, distance properties (19 tests)", "status": "TEST" },
+      { "path": "sbg/v2/test_static_proxy.py",                       "purpose": "Tests for static_proxy v1_behavioral_distance adapter",              "status": "TEST" }
+    ],
+    "baselines_v1": [
+      { "path": "baselines/__init__.py",                             "purpose": "Baselines package init",                                             "status": "ACTIVE" },
+      { "path": "baselines/common.py",                               "purpose": "Shared utilities: load_pairs, compute_metrics, compute_auroc, save_results", "status": "ACTIVE" },
+      { "path": "baselines/run_all_baselines.py",                    "purpose": "Entry point: run all V1 baselines (B01–B08) in sequence",            "status": "ACTIVE" },
+      { "path": "baselines/b01_token.py",                            "purpose": "B01: Token TF-IDF cosine similarity",                                "status": "ACTIVE" },
+      { "path": "baselines/b02_ast.py",                              "purpose": "B02: Normalized AST edit-distance similarity (best V1 baseline)",   "status": "ACTIVE" },
+      { "path": "baselines/b03_cfg.py",                              "purpose": "B03: Static CFG structure similarity",                               "status": "ACTIVE" },
+      { "path": "baselines/b04_dependency.py",                       "purpose": "B04: Use-def dependency approximation (not full PDG)",               "status": "ACTIVE" },
+      { "path": "baselines/b05_embedding.py",                        "purpose": "B05: Subword n-gram TF-IDF fallback (CodeBERT unavailable)",         "status": "ACTIVE" },
+      { "path": "baselines/b06_dynamic.py",                          "purpose": "B06: V1 flat dynamic trace features",                                "status": "ACTIVE" },
+      { "path": "baselines/b07_static_sbg.py",                       "purpose": "B07: Static-only SBG (CONTROL+DATA+ERROR)",                          "status": "ACTIVE" },
+      { "path": "baselines/b08_full_sbg.py",                         "purpose": "B08: Full 8-dimension SBG (primary system)",                         "status": "ACTIVE" }
+    ],
+    "baselines_v2": [
+      { "path": "baselines/v2/__init__.py",                          "purpose": "V2 baselines package init",                                          "status": "ACTIVE" },
+      { "path": "baselines/v2/b07_dynamic_v2.py",                    "purpose": "B07-V2: Dynamic-only SBG v2 (tests H7, H9)",                         "status": "ACTIVE" },
+      { "path": "baselines/v2/b08_hybrid_sbg_v2.py",                 "purpose": "B08-V2: Hybrid static+dynamic SBG v2 (tests H8, H9)",                "status": "ACTIVE" },
+      { "path": "baselines/v2/b06_fair_v2.py",                       "purpose": "B06-FAIR-V2: B06 re-scored with V2 canonical inputs (SAFEGUARD-5 isolation)", "status": "ACTIVE" }
+    ],
+    "experiments_phase4": [
+      { "path": "experiments/phase4/__init__.py",                    "purpose": "Phase 4 experiments package init",                                   "status": "ACTIVE" },
+      { "path": "experiments/phase4/utils.py",                       "purpose": "Shared utilities for Phase 4 experiments",                           "status": "ACTIVE" },
+      { "path": "experiments/phase4/run_phase4_gate.py",             "purpose": "Entry point: run all Phase 4 experiments + produce gate artifact",   "status": "ACTIVE" },
+      { "path": "experiments/phase4/e1_equivalence_detection.py",    "purpose": "E1: Full equivalence detection evaluation",                          "status": "ACTIVE" },
+      { "path": "experiments/phase4/e2_mutation_detection.py",       "purpose": "E2: Mutation detection evaluation",                                  "status": "ACTIVE" },
+      { "path": "experiments/phase4/e3_invariance.py",               "purpose": "E3: SP/SC permutation invariance test (H3)",                        "status": "ACTIVE" },
+      { "path": "experiments/phase4/e4_compiler_invariance.py",      "purpose": "E4: Compiler/formatting invariance analysis",                        "status": "ACTIVE" },
+      { "path": "experiments/phase4/e5_static_vs_dynamic.py",        "purpose": "E5: Static vs. dynamic feature comparison",                          "status": "ACTIVE" },
+      { "path": "experiments/phase4/e6_baseline_comparison.py",      "purpose": "E6: Full baseline comparison + McNemar pairwise tests",              "status": "ACTIVE" },
+      { "path": "experiments/phase4/e7_ablation.py",                 "purpose": "E7: SBG dimension ablation study (H6)",                              "status": "ACTIVE" },
+      { "path": "experiments/phase4/e8_generalization.py",           "purpose": "E8: Generalization across program categories",                       "status": "ACTIVE" },
+      { "path": "experiments/phase4/e9_cross_language.py",           "purpose": "E9: Preliminary cross-language analysis (H4)",                      "status": "ACTIVE" },
+      { "path": "experiments/phase4/e10_regression.py",              "purpose": "E10: Regression detection experiment (H5)",                          "status": "ACTIVE" },
+      { "path": "experiments/phase4/e11_robustness.py",              "purpose": "E11: Noise robustness analysis",                                     "status": "ACTIVE" },
+      { "path": "experiments/phase4/e12_runtime_cost.py",            "purpose": "E12: Extraction runtime cost benchmarking",                          "status": "ACTIVE" }
+    ],
+    "experiments_v2": [
+      { "path": "experiments/v2/__init__.py",                        "purpose": "V2 experiments package init",                                        "status": "ACTIVE" },
+      { "path": "experiments/v2/e1_statistical_analysis.py",         "purpose": "V2 E1: Statistical analysis for H7/H8/H9; reads B07/B08 artifacts", "status": "ACTIVE" },
+      { "path": "experiments/v2/noise_floor.py",                     "purpose": "SAFEGUARD-6: Noise floor measurement for DynamicGenome features (n_runs=5)", "status": "ACTIVE" }
+    ],
+    "benchmark": [
+      { "path": "benchmark/__init__.py",                             "purpose": "Benchmark package init",                                             "status": "ACTIVE" },
+      { "path": "benchmark/scripts/generate_benchmark.py",          "purpose": "Entry point: generate all pairs from corpus + transformations",      "status": "ACTIVE" },
+      { "path": "benchmark/scripts/validate_benchmark.py",          "purpose": "Entry point: validate generated pairs (0 issues expected)",          "status": "ACTIVE" },
+      { "path": "benchmark/scripts/assign_splits.py",               "purpose": "Split assignment logic (seed=42, stratified by category)",           "status": "ACTIVE" },
+      { "path": "benchmark/scripts/leakage_audit.py",               "purpose": "Cross-split leakage check (0 leakage confirmed)",                    "status": "ACTIVE" },
+      { "path": "benchmark/scripts/diversity_audit.py",             "purpose": "Corpus diversity analysis (score=0.852 confirmed)",                  "status": "ACTIVE" },
+      { "path": "benchmark/scripts/power_analysis.py",              "purpose": "Statistical power analysis (power=0.858 at n=744 test pairs)",       "status": "ACTIVE" },
+      { "path": "benchmark/scripts/test_leakage_audit.py",          "purpose": "Unit tests for leakage_audit.py",                                    "status": "TEST" },
+      { "path": "benchmark/ground_truth/validator.py",              "purpose": "DifferentialTester + GroundTruthValidator; 4-tier confidence protocol", "status": "ACTIVE" }
+    ],
+    "phase5_scripts": [
+      { "path": "phase5/cross_language/generate_corpus.py",         "purpose": "Generate Python↔Java cross-language corpus (10+10 programs)",       "status": "ACTIVE" },
+      { "path": "phase5/cross_language/evaluate_cross_language.py", "purpose": "Evaluate cross-language behavioral similarity (n=15 pairs, H4 pilot)", "status": "ACTIVE" },
+      { "path": "phase5/regression/evaluate_regression.py",         "purpose": "Regression detection experiment (H5) using simulated commit history", "status": "ACTIVE" }
+    ],
+    "phase5_corpus_python": [
+      { "path": "phase5/cross_language/corpus/python/binary_search.py",   "purpose": "Cross-language corpus: binary search (Python reference)",   "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/bubble_sort.py",     "purpose": "Cross-language corpus: bubble sort (Python reference)",     "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/count_chars.py",     "purpose": "Cross-language corpus: character count (Python reference)", "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/factorial.py",       "purpose": "Cross-language corpus: factorial (Python reference)",       "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/fibonacci.py",       "purpose": "Cross-language corpus: fibonacci (Python reference)",       "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/gcd.py",             "purpose": "Cross-language corpus: GCD (Python reference)",             "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/insertion_sort.py",  "purpose": "Cross-language corpus: insertion sort (Python reference)",  "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/is_palindrome.py",   "purpose": "Cross-language corpus: palindrome check (Python reference)","status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/is_prime.py",        "purpose": "Cross-language corpus: prime check (Python reference)",     "status": "DATA" },
+      { "path": "phase5/cross_language/corpus/python/linear_search.py",   "purpose": "Cross-language corpus: linear search (Python reference)",   "status": "DATA" }
+    ],
+    "phase6_phase7": [
+      { "path": "phase6/adversarial_review.py",                     "purpose": "Adversarial reviewer simulation — flags threats to validity",        "status": "ACTIVE" },
+      { "path": "phase7/generate_final_artifacts.py",               "purpose": "Entry point: generate all artifacts/final/ release files",           "status": "ACTIVE" }
+    ]
+  },
+
+  "dead_files": {
+    "confirmed_dead": [],
+    "suspected_unused": [
+      {
+        "path": "sbg/cli.py",
+        "reason": "CLI entry point exists but is not referenced in README reproduction steps, run_all_baselines.py, or any experiment script. No import found from other modules. May be useful for interactive use but is not part of the documented pipeline.",
+        "risk": "LOW — not harmful, just undocumented"
+      },
+      {
+        "path": "benchmark/scripts/diversity_report.json",
+        "reason": "Static JSON file output from diversity_audit.py. Not a Python file. Stored in scripts/ directory rather than artifacts/ which breaks directory convention.",
+        "risk": "LOW — misplaced artifact, not a dead file per se"
+      },
+      {
+        "path": "benchmark/scripts/power_analysis_report.json",
+        "reason": "Same as diversity_report.json — artifact output stored inside scripts/ directory.",
+        "risk": "LOW — misplaced artifact, not dead"
+      }
+    ],
+    "note": "benchmark/datasets/variants/ contains ~3,500+ generated .py variant files. These are data artifacts, not source code, and are expected to be large in number."
+  },
+
+  "todo_fixme_items": [
+    {
+      "file": "benchmark/ground_truth/validator.py",
+      "line": 7,
+      "type": "PLACEHOLDER",
+      "text": "GT-T1  confidence ≥ 0.999 — formal proof (placeholder hook)",
+      "severity": "LOW",
+      "explanation": "GT-T1 tier (formal proof) is declared as a placeholder hook in the docstring. The implementation correctly allocates GT-T1 to SC pairs with a witness found (differential_testing_witness_found), so the placeholder is in the documentation comment only. No functional code is missing. The formal proof pathway is not exercised by any benchmark pair.",
+      "action_required": "Document that GT-T1 formal proof hook is intentionally unimplemented; update comment to note that GT-T1 is assigned via differential witness, not formal proof in the current system."
+    },
+    {
+      "file": "docs/v2/agents/0C_leakage_audit.json",
+      "line": 26,
+      "type": "PLACEHOLDER",
+      "text": "replace specific file paths, temporary names, and line references with generalized placeholders",
+      "severity": "NOTE",
+      "explanation": "This is inside a recommendation note within the leakage audit JSON, not executable code. It describes a mitigation strategy using the word 'placeholder' in a natural-language sense.",
+      "action_required": "None — not a code TODO."
+    }
+  ],
+
+  "directory_structure_issues": [
+    {
+      "issue": "benchmark/scripts/ contains output artifacts",
+      "paths": [
+        "benchmark/scripts/diversity_report.json",
+        "benchmark/scripts/power_analysis_report.json"
+      ],
+      "expected_location": "artifacts/research/ or artifacts/phase1/",
+      "severity": "MINOR",
+      "recommendation": "Move these JSON outputs to artifacts/ in a future cleanup pass. Do NOT move now (audit only)."
+    },
+    {
+      "issue": "experiments/v2/ is missing 4 of 6 designed experiment scripts",
+      "details": "docs/v2/DESIGN.md specifies: e1_dynamic_discrimination.py, e2_inversion_reduction.py, e3_hybrid_vs_dynamic.py, e4_refactoring_robustness.py, e5_hard_negative_analysis.py, run_all_experiments.py. Only e1_statistical_analysis.py and noise_floor.py are present. H10/H11/H12 are explicitly marked NOT_EVALUATED_YET in PHASE_2_GATE.json.",
+      "severity": "HIGH — REPRODUCIBILITY RISK",
+      "recommendation": "Flag in README: H10, H11, H12 are pre-registered but not yet evaluated. Experiments e2–e5 and run_all_experiments.py are missing from experiments/v2/."
+    },
+    {
+      "issue": "artifacts/v2/ is missing E2–E5 experiment result directories",
+      "details": "PHASE_2_GATE.json confirms H10/H11/H12 as NOT_EVALUATED_YET. The artifact directories for these experiments do not exist.",
+      "severity": "MEDIUM — matches the experiments gap above",
+      "recommendation": "This is consistent with work-in-progress status; document clearly in README."
+    },
+    {
+      "issue": "phase5/regression/commits/ directory appears empty",
+      "details": "Phase 5 regression evaluation requires simulated commit history in phase5/regression/commits/ but the directory was found empty in the directory listing.",
+      "severity": "MEDIUM — regression evaluation depends on this data",
+      "recommendation": "Confirm whether commits/ is populated after evaluate_regression.py runs, or if the corpus must be generated separately."
+    },
+    {
+      "issue": "V2 design specifies b06_fair_v2.py in baselines/v2/ but it is not referenced in REGISTRY.yaml or PHASE_2_GATE.json",
+      "details": "b06_fair_v2.py (SAFEGUARD-5 fair comparison) is present in baselines/v2/ but no corresponding artifact directory exists in artifacts/v2/B06/ and no registry entry tracks it.",
+      "severity": "MEDIUM",
+      "recommendation": "Add B06-FAIR-V2 to experiments/REGISTRY.yaml and create its artifact directory when run."
+    },
+    {
+      "issue": "sbg/v2/static_proxy.py is not imported by any V2 baseline",
+      "details": "b08_hybrid_sbg_v2.py uses a token-overlap Jaccard proxy instead of v1_behavioral_distance from static_proxy.py. PHASE_2_GATE.json flags this as an open issue: 'H8 uses token-overlap proxy as static component — should use full v1 behavioral_distance'. static_proxy.py was built to solve this but is not wired in.",
+      "severity": "MEDIUM — H8 result may not represent the intended comparison",
+      "recommendation": "Update b08_hybrid_sbg_v2.py to use static_proxy.v1_behavioral_distance() rather than token-overlap Jaccard when evaluating H8 formally."
+    }
+  ],
+
+  "experiment_scripts_audit": {
+    "in_experiments_phase4": {
+      "count": 13,
+      "all_present": true,
+      "missing": []
+    },
+    "in_experiments_v2": {
+      "count": 2,
+      "designed_count": 6,
+      "present": ["e1_statistical_analysis.py", "noise_floor.py"],
+      "missing_vs_design": [
+        "e1_dynamic_discrimination.py (note: e1_statistical_analysis.py covers H7/H8/H9 analysis but is named differently from design spec)",
+        "e2_inversion_reduction.py",
+        "e3_hybrid_vs_dynamic.py",
+        "e4_refactoring_robustness.py",
+        "e5_hard_negative_analysis.py",
+        "run_all_experiments.py"
+      ]
+    }
+  },
+
+  "baseline_scripts_audit": {
+    "v1_baselines": {
+      "count": 8,
+      "all_present": true,
+      "run_all_script": "baselines/run_all_baselines.py — PRESENT"
+    },
+    "v2_baselines": {
+      "count": 3,
+      "present": ["b07_dynamic_v2.py", "b08_hybrid_sbg_v2.py", "b06_fair_v2.py"],
+      "run_all_script": "MISSING — no baselines/v2/run_all_baselines_v2.py exists",
+      "note": "b06_fair_v2.py is present but not in REGISTRY.yaml and has no artifact directory"
+    }
+  },
+
+  "registry_audit": {
+    "path": "experiments/REGISTRY.yaml",
+    "experiments_registered": 8,
+    "covers": "EXP-B01 through EXP-B08 (all Phase 3 baselines)",
+    "missing_entries": [
+      "Phase 4 experiments E1–E12 (no registry entries)",
+      "V2 baselines B07-V2 and B08-V2",
+      "V2 experiments e1_statistical_analysis",
+      "b06_fair_v2.py"
+    ],
+    "recommendation": "Extend REGISTRY.yaml to cover all experiments across phases, or document that REGISTRY.yaml is Phase 3 only."
+  },
+
+  "pipeline_entry_points": {
+    "clear": true,
+    "documented_in_readme": true,
+    "steps": [
+      { "step": 1, "script": "benchmark/scripts/generate_benchmark.py",      "documented": true  },
+      { "step": 2, "script": "benchmark/scripts/validate_benchmark.py",       "documented": true  },
+      { "step": 3, "script": "baselines/run_all_baselines.py",                "documented": true  },
+      { "step": 4, "script": "experiments/phase4/e*.py",                      "documented": true  },
+      { "step": 5, "script": "experiments/phase4/run_phase4_gate.py",         "documented": true  },
+      { "step": 6, "script": "python3 -m pytest sbg/ benchmark/ground_truth/","documented": true  },
+      { "step": 7, "script": "phase7/generate_final_artifacts.py",            "documented": true  },
+      { "step": 8, "script": "baselines/v2/b07_dynamic_v2.py",               "documented": false, "note": "V2 pipeline not in README reproduction section" },
+      { "step": 9, "script": "baselines/v2/b08_hybrid_sbg_v2.py",            "documented": false, "note": "V2 pipeline not in README reproduction section" },
+      { "step": 10,"script": "experiments/v2/e1_statistical_analysis.py",    "documented": false, "note": "V2 analysis not in README reproduction section" }
+    ]
+  },
+
+  "recommended_cleanups": [
+    {
+      "id": "RC-1",
+      "priority": "HIGH",
+      "action": "Add V2 reproduction steps to README.md",
+      "details": "README.md reproduction section stops at Phase 4. V2 baselines (b07, b08), V2 statistical analysis (e1), and noise floor experiment are not documented. Hinders reproducibility of H7/H8/H9 findings.",
+      "files_to_update": ["README.md"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-2",
+      "priority": "HIGH",
+      "action": "Document H10/H11/H12 as NOT_EVALUATED in README.md",
+      "details": "Three pre-registered hypotheses (H10: refactoring robustness, H11: cross-language AUROC>0.6, H12: regression hybrid) have no experiment scripts and no artifact results. This must be called out prominently in the README to avoid misleading readers.",
+      "files_to_update": ["README.md"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-3",
+      "priority": "MEDIUM",
+      "action": "Wire static_proxy.v1_behavioral_distance into b08_hybrid_sbg_v2.py",
+      "details": "The H8 result (hybrid NOT SUPPORTED) is based on a token-overlap Jaccard proxy for static distance, not the full v1 behavioral_distance(). sbg/v2/static_proxy.py was built for this purpose but never wired in. The current H8 result may be confounded by the weak proxy.",
+      "files_to_update": ["baselines/v2/b08_hybrid_sbg_v2.py"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-4",
+      "priority": "MEDIUM",
+      "action": "Add b06_fair_v2.py to REGISTRY.yaml and create artifacts/v2/B06/",
+      "details": "b06_fair_v2.py (SAFEGUARD-5 fair comparison baseline) is implemented but unregistered and has no artifact directory. It cannot be reproduced without tracking.",
+      "files_to_update": ["experiments/REGISTRY.yaml"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-5",
+      "priority": "MEDIUM",
+      "action": "Move benchmark/scripts/diversity_report.json and power_analysis_report.json to artifacts/",
+      "details": "Output artifacts stored in the scripts/ directory violate the project convention of storing all generated outputs under artifacts/. Should move to artifacts/phase1/ or artifacts/research/.",
+      "files_to_update": ["benchmark/scripts/diversity_report.json", "benchmark/scripts/power_analysis_report.json"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-6",
+      "priority": "LOW",
+      "action": "Add baselines/v2/run_all_baselines_v2.py",
+      "details": "The V1 pipeline has baselines/run_all_baselines.py for one-command reproduction. V2 has no equivalent, requiring users to run b07 and b08 manually in sequence.",
+      "files_to_update": ["baselines/v2/"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-7",
+      "priority": "LOW",
+      "action": "Update GT-T1 comment in benchmark/ground_truth/validator.py",
+      "details": "The docstring comment 'formal proof (placeholder hook)' at line 7 is the only PLACEHOLDER token in the Python codebase. The implementation correctly handles GT-T1 via differential witness. The comment should clarify that the formal proof pathway is intentionally unimplemented.",
+      "files_to_update": ["benchmark/ground_truth/validator.py"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-8",
+      "priority": "LOW",
+      "action": "Document sbg/cli.py in README",
+      "details": "sbg/cli.py provides a useful command-line interface for single-program genome extraction but is not mentioned in the README or any documentation.",
+      "files_to_update": ["README.md"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-9",
+      "priority": "LOW",
+      "action": "Confirm or populate phase5/regression/commits/",
+      "details": "The commits/ directory appears empty in the directory listing. If regression evaluation requires pre-populated commit data, this should be generated by a script and documented in the pipeline.",
+      "files_to_update": ["phase5/regression/"],
+      "do_not_execute": true
+    },
+    {
+      "id": "RC-10",
+      "priority": "LOW",
+      "action": "Extend REGISTRY.yaml to cover Phase 4 and V2 experiments",
+      "details": "REGISTRY.yaml currently registers only Phase 3 baselines (B01–B08). Extending it to cover E1–E12 (Phase 4) and B07-V2, B08-V2, E1-V2 would provide a single machine-readable index of all experiments.",
+      "files_to_update": ["experiments/REGISTRY.yaml"],
+      "do_not_execute": true
+    }
+  ],
+
+  "readme_assessment": {
+    "present": true,
+    "quality": "GOOD",
+    "strengths": [
+      "Research question, key finding (structural-semantic inversion), and all hypothesis verdicts are clearly documented",
+      "Benchmark statistics table is accurate and matches FINAL_BENCHMARK_MANIFEST.json",
+      "Baseline comparison table (Phase 3 results) is complete and accurate",
+      "Reproduction steps are present and cover Phase 1 through Phase 4",
+      "Limitations section is honest and comprehensive",
+      "File structure section is present and largely accurate",
+      "Citation and license blocks are present"
+    ],
+    "gaps": [
+      "V2 pipeline (H7–H12) is not documented in the reproduction section",
+      "H7 SUPPORTED and H9 SUPPORTED (inversion resolved) findings from V2 are not surfaced",
+      "H10/H11/H12 NOT_EVALUATED_YET is not called out",
+      "sbg/cli.py is not mentioned",
+      "b06_fair_v2.py is not mentioned",
+      "The artifacts/v2/ directory is not in the File Structure section"
+    ]
+  },
+
+  "summary": {
+    "total_python_files_audited": 62,
+    "dead_files_confirmed": 0,
+    "placeholder_tokens_in_source_code": 1,
+    "fixme_todo_in_source_code": 0,
+    "directory_structure_issues": 6,
+    "recommended_cleanups": 10,
+    "high_priority_cleanups": 2,
+    "medium_priority_cleanups": 3,
+    "low_priority_cleanups": 5,
+    "public_release_readiness": "CONDITIONAL — V1 results are well-documented and reproducible. V2 pipeline (H7/H9 SUPPORTED) needs README documentation before public release. Three pre-registered hypotheses (H10/H11/H12) are unimplemented and must be flagged."
+  }
+}

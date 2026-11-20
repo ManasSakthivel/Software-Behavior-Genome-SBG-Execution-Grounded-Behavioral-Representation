@@ -1,0 +1,42 @@
+{
+ "programs": {
+  "test:orig_exc": 244,
+  "test:eligible": 97,
+  "valid:orig_exc": 158,
+  "valid:eligible": 71,
+  "train:eligible": 164,
+  "train:orig_exc": 400,
+  "train:no_entry": 1
+ },
+ "rows": {
+  "test": {
+   "SP|e2|same": 116,
+   "SP|e0|same": 81,
+   "SP|e3+|same": 293,
+   "SA|enone|variant_no_entry": 29,
+   "SA|e2|same": 56,
+   "SA|e2|diff": 143,
+   "SP|e3+|variant_load_error": 13
+  },
+  "valid": {
+   "SP|e2|same": 91,
+   "SP|e0|same": 70,
+   "SP|e3+|same": 224,
+   "SA|e2|diff": 106,
+   "SA|enone|variant_no_entry": 2,
+   "SP|e3+|variant_load_error": 10,
+   "SA|e2|same": 39
+  },
+  "train": {
+   "SP|e2|same": 193,
+   "SP|e0|same": 173,
+   "SP|e3+|same": 504,
+   "SA|e2|diff": 211,
+   "SA|e2|same": 111,
+   "SP|e3+|variant_load_error": 6,
+   "SA|enone|variant_no_entry": 29,
+   "SP|e3+|diff": 9,
+   "SP|e2|diff": 1
+  }
+ }
+}

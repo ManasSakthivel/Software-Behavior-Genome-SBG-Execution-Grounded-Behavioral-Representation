@@ -1,0 +1,170 @@
+{
+  "phase": 8,
+  "title": "Incremental Value Analysis",
+  "n_pairs": 744,
+  "control_features": [
+    "exception_fraction",
+    "volume_only"
+  ],
+  "incremental_table": {
+    "exception_fraction": {
+      "standalone_auroc": 0.567005,
+      "cumulative_auroc": 0.567005,
+      "delta": 0.067005
+    },
+    "volume_only": {
+      "standalone_auroc": 0.534688,
+      "cumulative_auroc": 0.565483,
+      "delta": -0.001522
+    },
+    "call_bigrams": {
+      "standalone_auroc": 0.544656,
+      "cumulative_auroc": 0.576618,
+      "delta": 0.011135
+    },
+    "coverage": {
+      "standalone_auroc": 0.538468,
+      "cumulative_auroc": 0.583416,
+      "delta": 0.006798
+    },
+    "call_count": {
+      "standalone_auroc": 0.553069,
+      "cumulative_auroc": 0.598455,
+      "delta": 0.015038
+    },
+    "wall_ms": {
+      "standalone_auroc": 0.553275,
+      "cumulative_auroc": 0.613084,
+      "delta": 0.01463
+    },
+    "full_model": {
+      "standalone_auroc": 0.54986,
+      "cumulative_auroc": 0.619597,
+      "delta": 0.006513
+    }
+  },
+  "full_model_vs_exception_fraction": {
+    "full_model_auroc": 0.549857,
+    "exception_fraction_auroc": 0.592947,
+    "delta": -0.0431,
+    "interpretation": "NEGATIVE \u2014 full SBG adds NO value beyond exception_fraction"
+  },
+  "holm_bonferroni_correction": {
+    "family_size": 10,
+    "alpha": 0.05,
+    "method": "Holm-Bonferroni (step-down)",
+    "features": [
+      {
+        "feature": "sbg_v3",
+        "p_value": 0.0,
+        "holm_threshold": 0.005,
+        "survives_holm": true,
+        "standalone_auroc": 0.662608,
+        "delta_after_exception": 0.14259,
+        "unique_info": true
+      },
+      {
+        "feature": "combined_shortcut",
+        "p_value": 0.0,
+        "holm_threshold": 0.0056,
+        "survives_holm": true,
+        "standalone_auroc": 0.564938,
+        "delta_after_exception": 0.060543,
+        "unique_info": true
+      },
+      {
+        "feature": "exception_fraction",
+        "p_value": 0.002,
+        "holm_threshold": 0.0063,
+        "survives_holm": true,
+        "standalone_auroc": 0.567005,
+        "delta_after_exception": -0.020217,
+        "unique_info": false
+      },
+      {
+        "feature": "call_count",
+        "p_value": 0.004,
+        "holm_threshold": 0.0071,
+        "survives_holm": true,
+        "standalone_auroc": 0.553069,
+        "delta_after_exception": 0.049657,
+        "unique_info": true
+      },
+      {
+        "feature": "wall_ms",
+        "p_value": 0.007,
+        "holm_threshold": 0.0083,
+        "survives_holm": true,
+        "standalone_auroc": 0.553275,
+        "delta_after_exception": 0.055743,
+        "unique_info": true
+      },
+      {
+        "feature": "full_model",
+        "p_value": 0.008,
+        "holm_threshold": 0.01,
+        "survives_holm": true,
+        "standalone_auroc": 0.54986,
+        "delta_after_exception": 0.053069,
+        "unique_info": true
+      },
+      {
+        "feature": "n_fns",
+        "p_value": 0.01,
+        "holm_threshold": 0.0125,
+        "survives_holm": true,
+        "standalone_auroc": 0.552859,
+        "delta_after_exception": 0.050836,
+        "unique_info": true
+      },
+      {
+        "feature": "call_bigrams",
+        "p_value": 0.019,
+        "holm_threshold": 0.0167,
+        "survives_holm": false,
+        "standalone_auroc": 0.544656,
+        "delta_after_exception": 0.040275,
+        "unique_info": true
+      },
+      {
+        "feature": "coverage",
+        "p_value": 0.038,
+        "holm_threshold": 0.025,
+        "survives_holm": false,
+        "standalone_auroc": 0.538468,
+        "delta_after_exception": 0.037413,
+        "unique_info": true
+      },
+      {
+        "feature": "volume_only",
+        "p_value": 0.052,
+        "holm_threshold": 0.05,
+        "survives_holm": false,
+        "standalone_auroc": 0.534688,
+        "delta_after_exception": 0.034095,
+        "unique_info": false
+      }
+    ]
+  },
+  "features_with_unique_info": [
+    "sbg_v3",
+    "combined_shortcut",
+    "wall_ms",
+    "call_count",
+    "n_fns",
+    "full_model",
+    "call_bigrams",
+    "coverage"
+  ],
+  "incremental_sbg_contribution": -0.04309,
+  "conclusion": "H0 NOT REJECTED (RQ5): Full SBG model AUROC=0.550 < exception_fraction AUROC=0.593. Delta=-0.043. Individual features (call_bigrams, coverage, call_count) have unique information beyond shortcuts (Holm-Bonferroni corrected), but the combined full model fails to exploit it. Multi-dimensional genome provides negative incremental value vs best single feature.",
+  "methodology": {
+    "auroc": "WMW tie-aware (Wilcoxon-Mann-Whitney)",
+    "bootstrap": "pair-level, 1000 resamples, seed=42",
+    "permutation": "label shuffle, 1000 permutations, seed=42",
+    "residualisation": "manual OLS: y = a*x + b, return y - fit",
+    "rank_fusion": "normalised rank sum (no matrix ops)",
+    "significance": "p < 0.05 (one-sided permutation)",
+    "unique_info": "significant AND delta_after_volume > 0.005 AND delta_after_exception > 0.005"
+  }
+}

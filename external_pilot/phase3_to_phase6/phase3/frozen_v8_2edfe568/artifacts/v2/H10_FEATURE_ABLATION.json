@@ -1,0 +1,351 @@
+{
+  "hypothesis_context": "Phase 4 Wave 8 \u2014 Feature ablation (supports RQ4)",
+  "genome_architecture": "v1 8-dimension genome (sbg/distance.py behavioral_distance)",
+  "default_weights": {
+    "CONTROL": 0.2,
+    "DATA": 0.15,
+    "STATE": 0.15,
+    "RESOURCE": 0.1,
+    "TEMPORAL": 0.1,
+    "ERROR": 0.1,
+    "INTERACTION": 0.1,
+    "EXECUTION": 0.1
+  },
+  "noise_floor_upper_bound": 0.544121,
+  "bootstrap_config": {
+    "n": 1000,
+    "seed": 42
+  },
+  "configurations": {
+    "SINGLE_CONTROL": {
+      "dimensions": [
+        "CONTROL"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.406085,
+      "ci_lower": 0.368231,
+      "ci_upper": 0.446428,
+      "cohens_d": -0.689866,
+      "eq_mean_similarity": 0.943127,
+      "changed_mean_similarity": 0.995357,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "SINGLE_DATA": {
+      "dimensions": [
+        "DATA"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.403331,
+      "ci_lower": 0.359073,
+      "ci_upper": 0.438084,
+      "cohens_d": -0.691337,
+      "eq_mean_similarity": 0.976964,
+      "changed_mean_similarity": 0.995261,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "SINGLE_STATE": {
+      "dimensions": [
+        "STATE"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.509122,
+      "ci_lower": 0.46686,
+      "ci_upper": 0.547842,
+      "cohens_d": 0.056975,
+      "eq_mean_similarity": 0.986702,
+      "changed_mean_similarity": 0.983671,
+      "inversion": false,
+      "above_noise_floor": false
+    },
+    "SINGLE_RESOURCE": {
+      "dimensions": [
+        "RESOURCE"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.533755,
+      "ci_lower": 0.503772,
+      "ci_upper": 0.584839,
+      "cohens_d": 0.183619,
+      "eq_mean_similarity": 0.960307,
+      "changed_mean_similarity": 0.948761,
+      "inversion": false,
+      "above_noise_floor": false
+    },
+    "SINGLE_TEMPORAL": {
+      "dimensions": [
+        "TEMPORAL"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.505197,
+      "ci_lower": 0.463929,
+      "ci_upper": 0.542083,
+      "cohens_d": -0.021508,
+      "eq_mean_similarity": 0.995877,
+      "changed_mean_similarity": 0.996944,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "SINGLE_ERROR": {
+      "dimensions": [
+        "ERROR"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.476978,
+      "ci_lower": 0.430793,
+      "ci_upper": 0.512002,
+      "cohens_d": -0.322778,
+      "eq_mean_similarity": 0.976978,
+      "changed_mean_similarity": 0.995879,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "SINGLE_INTERACTION": {
+      "dimensions": [
+        "INTERACTION"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.499819,
+      "ci_lower": 0.45903,
+      "ci_upper": 0.538971,
+      "cohens_d": -0.050894,
+      "eq_mean_similarity": 0.996032,
+      "changed_mean_similarity": 0.997951,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "SINGLE_EXECUTION": {
+      "dimensions": [
+        "EXECUTION"
+      ],
+      "n_dimensions": 1,
+      "n": 744,
+      "auroc": 0.509035,
+      "ci_lower": 0.466378,
+      "ci_upper": 0.547242,
+      "cohens_d": 0.045662,
+      "eq_mean_similarity": 0.974187,
+      "changed_mean_similarity": 0.969452,
+      "inversion": false,
+      "above_noise_floor": false
+    },
+    "LOO_CONTROL": {
+      "dimensions": [
+        "DATA",
+        "STATE",
+        "RESOURCE",
+        "TEMPORAL",
+        "ERROR",
+        "INTERACTION",
+        "EXECUTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.436833,
+      "ci_lower": 0.399154,
+      "ci_upper": 0.478023,
+      "cohens_d": -0.305017,
+      "eq_mean_similarity": 0.968715,
+      "changed_mean_similarity": 0.981993,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "LOO_DATA": {
+      "dimensions": [
+        "CONTROL",
+        "STATE",
+        "RESOURCE",
+        "TEMPORAL",
+        "ERROR",
+        "INTERACTION",
+        "EXECUTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.401972,
+      "ci_lower": 0.369772,
+      "ci_upper": 0.450294,
+      "cohens_d": -0.543011,
+      "eq_mean_similarity": 0.950924,
+      "changed_mean_similarity": 0.983288,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "LOO_STATE": {
+      "dimensions": [
+        "CONTROL",
+        "DATA",
+        "RESOURCE",
+        "TEMPORAL",
+        "ERROR",
+        "INTERACTION",
+        "EXECUTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.358943,
+      "ci_lower": 0.321376,
+      "ci_upper": 0.401386,
+      "cohens_d": -0.640708,
+      "eq_mean_similarity": 0.95935,
+      "changed_mean_similarity": 0.987647,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "LOO_RESOURCE": {
+      "dimensions": [
+        "CONTROL",
+        "DATA",
+        "STATE",
+        "TEMPORAL",
+        "ERROR",
+        "INTERACTION",
+        "EXECUTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.359868,
+      "ci_lower": 0.318077,
+      "ci_upper": 0.39749,
+      "cohens_d": -0.603763,
+      "eq_mean_similarity": 0.961268,
+      "changed_mean_similarity": 0.989397,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "LOO_TEMPORAL": {
+      "dimensions": [
+        "CONTROL",
+        "DATA",
+        "STATE",
+        "RESOURCE",
+        "ERROR",
+        "INTERACTION",
+        "EXECUTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.366019,
+      "ci_lower": 0.328519,
+      "ci_upper": 0.409311,
+      "cohens_d": -0.607125,
+      "eq_mean_similarity": 0.957276,
+      "changed_mean_similarity": 0.984321,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "LOO_ERROR": {
+      "dimensions": [
+        "CONTROL",
+        "DATA",
+        "STATE",
+        "RESOURCE",
+        "TEMPORAL",
+        "INTERACTION",
+        "EXECUTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.363142,
+      "ci_lower": 0.326564,
+      "ci_upper": 0.405243,
+      "cohens_d": -0.60361,
+      "eq_mean_similarity": 0.954937,
+      "changed_mean_similarity": 0.983743,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "LOO_INTERACTION": {
+      "dimensions": [
+        "CONTROL",
+        "DATA",
+        "STATE",
+        "RESOURCE",
+        "TEMPORAL",
+        "ERROR",
+        "EXECUTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.36453,
+      "ci_lower": 0.326913,
+      "ci_upper": 0.405563,
+      "cohens_d": -0.590145,
+      "eq_mean_similarity": 0.957274,
+      "changed_mean_similarity": 0.984391,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "LOO_EXECUTION": {
+      "dimensions": [
+        "CONTROL",
+        "DATA",
+        "STATE",
+        "RESOURCE",
+        "TEMPORAL",
+        "ERROR",
+        "INTERACTION"
+      ],
+      "n_dimensions": 7,
+      "n": 744,
+      "auroc": 0.361501,
+      "ci_lower": 0.324175,
+      "ci_upper": 0.40315,
+      "cohens_d": -0.656081,
+      "eq_mean_similarity": 0.959499,
+      "changed_mean_similarity": 0.987245,
+      "inversion": true,
+      "above_noise_floor": false
+    },
+    "FULL_8DIM": {
+      "dimensions": [
+        "CONTROL",
+        "DATA",
+        "STATE",
+        "RESOURCE",
+        "TEMPORAL",
+        "ERROR",
+        "INTERACTION",
+        "EXECUTION"
+      ],
+      "n_dimensions": 8,
+      "n": 744,
+      "auroc": 0.367747,
+      "ci_lower": 0.331056,
+      "ci_upper": 0.410348,
+      "cohens_d": -0.587383,
+      "eq_mean_similarity": 0.95805,
+      "changed_mean_similarity": 0.984729,
+      "inversion": true,
+      "above_noise_floor": false
+    }
+  },
+  "summary": {
+    "purpose": "Determine whether SBG's (weak) discriminative signal is driven by one dominant feature family or represents genuinely multidimensional behavioral structure, per Phase 4 Wave 8 mandate.",
+    "methodology_note": "Uses the v1 8-dimension genome (sbg/distance.py behavioral_distance with a dimensions= restriction) because CONTROL/DATA/STATE/RESOURCE/TEMPORAL/ERROR/INTERACTION/EXECUTION as 8 distinct named dimensions only exist together in the v1 architecture; B07's V2 DynamicGenome condenses execution-derived signal into 5 output-free fields (not 8 named genomes) by design (SAFEGUARD-2/3), so it is not the right vehicle for THIS specific 8-way ablation as literally specified.",
+    "no_test_tuning_statement": "All 17 configurations (8 single, 8 leave-one-out, 1 full) were fixed a priori as the complete, exhaustive, non-cherry-picked set implied by 'at minimum: [8 named dimensions] ... single ... leave-one-out ... full'. No dimension subset was chosen or discarded based on any observed test AUROC.",
+    "full_8dim_auroc": 0.367747,
+    "best_single_dimension": {
+      "dimension": "RESOURCE",
+      "auroc": 0.533755
+    },
+    "worst_single_dimension": {
+      "dimension": "DATA",
+      "auroc": 0.403331
+    },
+    "most_important_dimension_by_loo_drop": "STATE",
+    "least_important_dimension_by_loo_drop": "CONTROL",
+    "n_single_dims_above_noise_floor": 0,
+    "n_loo_configs_above_noise_floor": 0,
+    "n_single_dims_total": 8,
+    "interpretation": "See docs analysis for full narrative interpretation of whether performance is concentrated in one dimension or distributed."
+  }
+}

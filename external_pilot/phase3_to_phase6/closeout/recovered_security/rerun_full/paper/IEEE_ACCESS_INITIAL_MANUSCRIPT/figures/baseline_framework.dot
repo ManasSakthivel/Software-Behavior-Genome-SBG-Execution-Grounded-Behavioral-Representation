@@ -1,0 +1,8 @@
+digraph baseline_framework {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ pairs [label="Same 321 pairs, same inputs.json\nas V7-B"]; run [label="Same runner + isolation + V7 boundary comparator\nbudget 60 CPU-s/pair"];
+ b1 [label="B1 same-input differential"]; b1r [label="B1+rep: r_det=3, r_replay=5, no sufficiency"]; b2 [label="B2 test replay\nQuixBugs only; truth oracle for QuixBugs"]; b3 [label="B3 minimal mutation loop\n(not AFL)"]; b4 [label="B4 edit-size heuristic\n(static; threshold 97)"]; b5 [label="B5 V6 C0g lookup\n237/321 scored; not in the CSV"];
+ ni [label="Published tools (shadow SE, Testora, Mokav,\nAFL/libFuzzer, ...)\nNOT IMPLEMENTED", style="rounded,dashed,filled", fillcolor="#eeeeee", fontcolor="#555555"];
+ pairs -> run; run -> b1; run -> b1r; run -> b2; run -> b3; pairs -> b4; pairs -> b5; ni -> run [style=dashed];
+}

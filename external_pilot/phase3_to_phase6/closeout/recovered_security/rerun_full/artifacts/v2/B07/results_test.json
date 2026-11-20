@@ -1,0 +1,31 @@
+{
+  "baseline": "B07_DYNAMIC_V2",
+  "split": "test",
+  "threshold_from": "dev",
+  "threshold": 1.000001,
+  "metrics": {
+    "accuracy": 0.491935,
+    "precision": 0.491935,
+    "recall": 1.0,
+    "f1": 0.659459,
+    "auroc": 0.531023,
+    "auprc": 0.510099,
+    "tp": 366,
+    "fp": 378,
+    "fn": 0,
+    "tn": 0,
+    "n_samples": 744,
+    "threshold_used": 1.000001,
+    "ci_f1_lower": 0.626039,
+    "ci_f1_upper": 0.688987,
+    "ci_auroc_lower": 0.499136,
+    "ci_auroc_upper": 0.580563
+  },
+  "inversion_analysis": {
+    "equiv_mean_similarity": 0.874492,
+    "changed_mean_similarity": 0.829227,
+    "inversion_delta_v2": -0.045265,
+    "inversion_delta_v1_reference": 0.0335,
+    "inversion_resolved": true
+  }
+}

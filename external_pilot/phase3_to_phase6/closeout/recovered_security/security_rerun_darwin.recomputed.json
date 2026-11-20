@@ -1,0 +1,575 @@
+{
+ "meta": {
+  "platform": "darwin",
+  "host": "macOS-26.7-arm64-arm-64bit-Mach-O",
+  "python": "3.13.15",
+  "utc": "2026-11-20T12:43:03.192147Z",
+  "caps": {
+   "rlimit_cpu": "ACTIVE",
+   "rlimit_as": "UNAVAILABLE",
+   "rlimit_nofile": "ACTIVE",
+   "rlimit_fsize": "ACTIVE",
+   "rlimit_nproc": "UNAVAILABLE",
+   "process_group_kill": "ACTIVE",
+   "rss_watchdog": "ACTIVE",
+   "network_denial": "ACTIVE",
+   "write_confinement": "ACTIVE"
+  },
+  "duration_s": 9.4
+ },
+ "forgery_suite": [
+  {
+   "attack": "H00_honest_control",
+   "description": "no attack (control)",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "A01_patch_canonicaliser_via___main__",
+   "description": "attack launched from the evaluated (variant) program: patch canonicaliser via   main  ",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "mismatch",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by shadow_reobservation",
+   "issues": [
+    "authenticity: shadow re-observation disagrees with the recorded return value(s)"
+   ]
+  },
+  {
+   "attack": "A02_forge_result_via_harness_finish",
+   "description": "attack launched from the evaluated (variant) program: forge result via harness finish",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "mismatch",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by shadow_reobservation",
+   "issues": [
+    "authenticity: shadow re-observation disagrees with the recorded return value(s)"
+   ]
+  },
+  {
+   "attack": "A03_os__exit_before_result",
+   "description": "attack launched from the evaluated (variant) program: os  exit before result",
+   "verdict": "INSUFFICIENT",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+   "issues": []
+  },
+  {
+   "attack": "A04_write_garbage_to_result_fd",
+   "description": "attack launched from the evaluated (variant) program: write garbage to result fd",
+   "verdict": "INSUFFICIENT",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+   "issues": []
+  },
+  {
+   "attack": "A05_close_result_fd",
+   "description": "attack launched from the evaluated (variant) program: close result fd",
+   "verdict": "INSUFFICIENT",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "BLOCKED by engine (verdict degraded to INSUFFICIENT)",
+   "issues": []
+  },
+  {
+   "attack": "A06_forged_result_line_on_stdout",
+   "description": "attack launched from the evaluated (variant) program: forged result line on stdout",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "A08_hide_stdout_divergence_by_patching_Cap",
+   "description": "attack launched from the evaluated (variant) program: hide stdout divergence by patching Cap",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "untrusted",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by independent_capture",
+   "issues": [
+    "integrity: independent capture untrusted: run 4 (variant/call): harness-reported stdout (0 chars, truncated=False) differs from the parent-captured program output (13 chars, truncated=False); run 5 (variant/call): harness-reported stdout (0 chars, truncated=False) differs from the parent-captured program output (13 chars, truncated=False)"
+   ]
+  },
+  {
+   "attack": "A07_sense_harness_and_behave",
+   "description": "attack launched from the evaluated (variant) program: sense harness and behave",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "mismatch",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by shadow_reobservation",
+   "issues": [
+    "authenticity: shadow re-observation disagrees with the recorded return value(s)"
+   ]
+  },
+  {
+   "attack": "A07c_sense_argv_eval_environment",
+   "description": "attack launched from the evaluated (variant) program:  sense argv eval environment",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "A16_close_stderr_then_hide_stdout_divergence",
+   "description": "attack launched from the evaluated (variant) program: close stderr then hide stdout divergence",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "untrusted",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by independent_capture",
+   "issues": [
+    "integrity: independent capture untrusted: run 4 (variant/call): independent record incomplete (no open/close record: stderr closed or redirected?); run 5 (variant/call): independent record incomplete (no open/close record: stderr closed or redirected?)"
+   ]
+  },
+  {
+   "attack": "A17_forge_tee_record_with_guessed_nonce",
+   "description": "attack launched from the evaluated (variant) program: forge tee record with guessed nonce",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "untrusted",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by independent_capture",
+   "issues": [
+    "integrity: independent capture untrusted: run 4 (variant/call): independent record corrupt (gaps=0 foreign=1 malformed=0); run 5 (variant/call): independent record corrupt (gaps=0 foreign=1 malformed=0); run 8 (variant/call): independent record corrupt (gaps=0 foreign=1 malformed=0)"
+   ]
+  },
+  {
+   "attack": "P01_edit_observation_no_rechain",
+   "description": "post-hoc: edit observation no rechain",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": null,
+    "sidecar": null,
+    "capture": null,
+    "anchor": null,
+    "verdict_json": null,
+    "chain": "broken: chain broken at seq 8",
+    "shadow": null,
+    "sources_match": null
+   },
+   "outcome": "DETECTED by chain, verify",
+   "issues": [
+    "integrity: chain broken at seq 8"
+   ]
+  },
+  {
+   "attack": "P02_edit_verdict_and_rechain",
+   "description": "post-hoc: edit verdict and rechain",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "failed: recomputed verdict ('DIVERGENT_OBSERVABLE', None, None, []) differs from recorded ('NO_DIVERGENCE_OBSERVED', 'S1', None, [])",
+    "sidecar": "inconsistent",
+    "capture": "invalid",
+    "anchor": "invalid",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by verify, sidecar, independent_capture, anchor_mac",
+   "issues": [
+    "integrity: verify failed: recomputed verdict ('DIVERGENT_OBSERVABLE', None, None, []) differs from recorded ('NO_DIVERGENCE_OBSERVED', 'S1', None, [])",
+    "integrity: sidecar sidecar not bound to this evidence log (sha256/head)",
+    "integrity: independent capture invalid: capture is not bound to this evidence log (replayed from another run or log edited)",
+    "integrity: anchor evidence.jsonl changed or missing since it was anchored"
+   ]
+  },
+  {
+   "attack": "P03_drop_verdict_json",
+   "description": "post-hoc: drop verdict json",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "invalid",
+    "verdict_json": "absent",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by anchor_mac, verdict_json_absent",
+   "issues": [
+    "integrity: anchor verdict.json changed or missing since it was anchored",
+    "provenance: verdict.json absent (verify cannot notice; the verdict must be taken from the log)"
+   ]
+  },
+  {
+   "attack": "P04_edit_unverified_field_and_rechain",
+   "description": "post-hoc: edit unverified field and rechain",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "invalid",
+    "anchor": "invalid",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by independent_capture, anchor_mac",
+   "issues": [
+    "integrity: independent capture invalid: capture is not bound to this evidence log (replayed from another run or log edited); run 0: timings differ from the log; run 1: timings differ from the log; run 2: timings differ from the log",
+    "integrity: anchor evidence.jsonl changed or missing since it was anchored"
+   ]
+  },
+  {
+   "attack": "P05_tamper_sidecar_hits",
+   "description": "post-hoc: tamper sidecar hits",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "inconsistent",
+    "capture": "ok",
+    "anchor": "invalid",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by sidecar, anchor_mac",
+   "issues": [
+    "integrity: sidecar i0: hits/branches differ from the Run records",
+    "integrity: anchor v8_parts.json changed or missing since it was anchored"
+   ]
+  },
+  {
+   "attack": "P06_substitute_evidence_of_another_program",
+   "description": "post-hoc: substitute evidence of another program",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": false
+   },
+   "outcome": "DETECTED by source_binding",
+   "issues": [
+    "provenance: recorded program source differs from the expected file (evidence substitution)"
+   ]
+  },
+  {
+   "attack": "P07_rechain_without_rebinding_sidecar",
+   "description": "post-hoc: rechain without rebinding sidecar",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "inconsistent",
+    "capture": "invalid",
+    "anchor": "invalid",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by sidecar, independent_capture, anchor_mac",
+   "issues": [
+    "integrity: sidecar sidecar not bound to this evidence log (sha256/head)",
+    "integrity: independent capture invalid: capture is not bound to this evidence log (replayed from another run or log edited); run 0: timings differ from the log; run 1: timings differ from the log; run 2: timings differ from the log",
+    "integrity: anchor evidence.jsonl changed or missing since it was anchored"
+   ]
+  },
+  {
+   "attack": "P08_rechain_and_reanchor_with_the_key",
+   "description": "post-hoc: rechain and reanchor with the key",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "SUCCEEDS (open): evidence altered, no check fires",
+   "issues": []
+  },
+  {
+   "attack": "P09_strip_anchor",
+   "description": "post-hoc: strip anchor",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "INSUFFICIENT",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "invalid",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "not run",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by anchor_mac",
+   "issues": [
+    "integrity: anchor anchor file absent but an anchor is required (stripped?)"
+   ]
+  }
+ ],
+ "sensing_probes": [
+  {
+   "attack": "SENSE04_sense_file_name",
+   "description": "audit sensing probe",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "SENSE04b_sense_code_filename",
+   "description": "audit sensing probe",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "SUCCEEDS (open): false verdict with no check firing",
+   "issues": []
+  },
+  {
+   "attack": "SENSE04c_sense_spec_origin",
+   "description": "audit sensing probe",
+   "verdict": "NO_DIVERGENCE_OBSERVED",
+   "effective_verdict": "NO_DIVERGENCE_OBSERVED",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "mismatch",
+    "sources_match": true
+   },
+   "outcome": "DETECTED by shadow_reobservation",
+   "issues": [
+    "authenticity: shadow re-observation disagrees with the recorded return value(s)"
+   ]
+  },
+  {
+   "attack": "SENSE04d_sense_cwd_listing",
+   "description": "audit sensing probe",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "SENSE01_sense_argv",
+   "description": "audit sensing probe",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  },
+  {
+   "attack": "SENSE07_benign_control",
+   "description": "audit sensing probe",
+   "verdict": "DIVERGENT_OBSERVABLE",
+   "effective_verdict": "DIVERGENT_OBSERVABLE",
+   "honest_expected": "DIVERGENT_OBSERVABLE",
+   "checks": {
+    "verify": "verified",
+    "sidecar": "ok",
+    "capture": "ok",
+    "anchor": "ok",
+    "verdict_json": "ok",
+    "chain": "ok",
+    "shadow": "match",
+    "sources_match": true
+   },
+   "outcome": "NO EFFECT (engine still reports the true verdict)",
+   "issues": []
+  }
+ ]
+}

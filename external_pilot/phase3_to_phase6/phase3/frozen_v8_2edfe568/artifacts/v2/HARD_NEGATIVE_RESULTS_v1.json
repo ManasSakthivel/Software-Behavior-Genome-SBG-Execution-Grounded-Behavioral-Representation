@@ -1,0 +1,98 @@
+{
+  "safeguard": "SAFEGUARD-4",
+  "pre_registration": "docs/v2/HYPOTHESES_V2.md H9",
+  "hard_negative_types": [
+    "SC-3",
+    "SC-11"
+  ],
+  "total_test_pairs": 744,
+  "n_sc3": 39,
+  "n_sc11": 39,
+  "n_equiv": 378,
+  "stratified_results": {
+    "SC-3": {
+      "V1_STATIC_SBG": {
+        "method": "V1_STATIC_SBG",
+        "note": "AUROC ~0.0 from prior analysis (E1/E2): static similarity=1.0 for SC-3/SC-11",
+        "auroc_prior": 0.0,
+        "inversion_delta_prior": 0.0381,
+        "source": "artifacts/phase4/E1, E2"
+      },
+      "B07_DYNAMIC_V2": {
+        "method": "B07_DYNAMIC_V2",
+        "n": 417,
+        "n_changed": 39,
+        "n_equiv": 378,
+        "auroc": 0.544363,
+        "auprc": 0.093183,
+        "ci_auroc_lower": 0.327663,
+        "ci_auroc_upper": 0.491323,
+        "equiv_mean_similarity": 0.875372,
+        "changed_mean_similarity": 0.9584,
+        "inversion_delta": 0.083029,
+        "v1_reference_delta": 0.0335,
+        "near_identical_fraction": 0.8462,
+        "h9_hard_negative_verdict": "NOT_SUPPORTED"
+      },
+      "B08_HYBRID_V2": {
+        "method": "B08_HYBRID_V2",
+        "n": 417,
+        "n_changed": 39,
+        "n_equiv": 378,
+        "auroc": 0.35409,
+        "auprc": 0.066075,
+        "ci_auroc_lower": 0.270311,
+        "ci_auroc_upper": 0.437395,
+        "equiv_mean_similarity": 0.791918,
+        "changed_mean_similarity": 0.854468,
+        "inversion_delta": 0.062551,
+        "v1_reference_delta": 0.0335,
+        "near_identical_fraction": 0.0,
+        "h9_hard_negative_verdict": "NOT_SUPPORTED"
+      }
+    },
+    "SC-11": {
+      "V1_STATIC_SBG": {
+        "method": "V1_STATIC_SBG",
+        "note": "AUROC ~0.0 from prior analysis (E1/E2): static similarity=1.0 for SC-3/SC-11",
+        "auroc_prior": 0.0,
+        "inversion_delta_prior": 0.0341,
+        "source": "artifacts/phase4/E1, E2"
+      },
+      "B07_DYNAMIC_V2": {
+        "method": "B07_DYNAMIC_V2",
+        "n": 417,
+        "n_changed": 39,
+        "n_equiv": 378,
+        "auroc": 0.789581,
+        "auprc": 0.259636,
+        "ci_auroc_lower": 0.654891,
+        "ci_auroc_upper": 0.819811,
+        "equiv_mean_similarity": 0.875372,
+        "changed_mean_similarity": 0.648839,
+        "inversion_delta": -0.226533,
+        "v1_reference_delta": 0.0335,
+        "near_identical_fraction": 0.1795,
+        "h9_hard_negative_verdict": "SUPPORTED_FULLY_RESOLVED"
+      },
+      "B08_HYBRID_V2": {
+        "method": "B08_HYBRID_V2",
+        "n": 417,
+        "n_changed": 39,
+        "n_equiv": 378,
+        "auroc": 0.71103,
+        "auprc": 0.192263,
+        "ci_auroc_lower": 0.608393,
+        "ci_auroc_upper": 0.801849,
+        "equiv_mean_similarity": 0.791918,
+        "changed_mean_similarity": 0.677117,
+        "inversion_delta": -0.114801,
+        "v1_reference_delta": 0.0335,
+        "near_identical_fraction": 0.0,
+        "h9_hard_negative_verdict": "SUPPORTED_FULLY_RESOLVED"
+      }
+    }
+  },
+  "overall_h9_hard_negative_verdict": "SUPPORTED_PARTIALLY",
+  "methodology_note": "Dynamic V2 (B07) re-scored on SC-3/SC-11 subset plus EQUIV pairs. V1 static AUROC from prior E1/E2 analysis. Bootstrap CI: 1000 resamples, seed=42."
+}

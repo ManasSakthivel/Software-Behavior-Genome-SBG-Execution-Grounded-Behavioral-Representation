@@ -1,0 +1,197 @@
+{
+  "hypothesis": "H11",
+  "formal_statement": "AUROC(cross_language, test) > 0.6",
+  "pre_registered_n": 15,
+  "pre_registered_power_at_n15": 0.25,
+  "verdict": "INSUFFICIENT_EVIDENCE",
+  "verdict_secondary": "UNDERPOWERED",
+  "reason": "No Java (or other non-Python) execution-tracing infrastructure exists in this repository. sbg/v2/execution/runner.py wraps a Python-only sys.settrace tracer (sbg/extraction/dynamic/tracer.py). javac/java ARE present on this machine (verified: `javac 17.0.18`, `java 17.0.18`), but no JVMTI agent, bytecode instrumentation layer, or Java-source-to-DynamicGenome pipeline exists, and building one is out-of-scope infrastructure work for Phase 4 per the explicit 'do not spend excessive time installing huge infrastructure' constraint. Presence of the JDK binary alone does not enable execution-grounded DynamicGenome extraction for Java programs.",
+  "infrastructure_audit": {
+    "javac_available": true,
+    "java_available": true,
+    "javac_version": "17.0.18",
+    "java_execution_tracer_exists": false,
+    "java_ast_to_genome_pipeline_exists": false,
+    "python_tracer_module": "sbg/extraction/dynamic/tracer.py",
+    "python_runner_module": "sbg/v2/execution/runner.py"
+  },
+  "achievable_lower_bound_diagnostic": {
+    "description": "N=12 pre-registered Agent-G pairs: Python-idiomatic impl vs. Java-idiomatic-style impl (still Python code), same behavioral spec, same canonical inputs. Executed with the PRODUCTION DynamicGenomeExtractor (same code path as B07).",
+    "source": "experiments/v2/cross_language_design.py::CROSS_LANGUAGE_PAIRS",
+    "n_pairs": 12,
+    "n_equivalent": 11,
+    "n_changed": 1,
+    "verdict": "LOWER_BOUND_FAILED",
+    "note": "Even the achievable Python-only lower-bound diagnostic (same spec, Java-idiomatic style vs Python-idiomatic style, executed as Python) shows AUROC<=0.5. If DynamicGenome cannot recognize two Python implementations of an identical spec as equivalent when one merely uses Java-style control flow (explicit indices, while-loops, temp variables), true Python<->Java execution would be expected to fail at least as badly. This is a necessary-but-not-sufficient negative signal for H11.",
+    "methods": {
+      "dynamic_sbg_v2_lower_bound": {
+        "n": 12,
+        "auroc": 0.181818,
+        "ci_lower": 0.0,
+        "ci_upper": 0.5,
+        "permutation_p": 0.412587,
+        "cohens_d": 0.0,
+        "eq_mean_similarity": 0.89841,
+        "changed_mean_similarity": 0.957265,
+        "inversion": true,
+        "above_noise_floor": false
+      },
+      "static_sbg_v1_lower_bound": {
+        "n": 12,
+        "auroc": 0.181818,
+        "ci_lower": 0.0,
+        "ci_upper": 0.5,
+        "permutation_p": 0.416583,
+        "cohens_d": 0.0,
+        "eq_mean_similarity": 0.789223,
+        "changed_mean_similarity": 0.951497,
+        "inversion": true,
+        "above_noise_floor": false
+      },
+      "ast_baseline_lower_bound": {
+        "n": 12,
+        "auroc": 0.181818,
+        "ci_lower": 0.0,
+        "ci_upper": 0.5,
+        "permutation_p": 0.416583,
+        "cohens_d": 0.0,
+        "eq_mean_similarity": 0.464318,
+        "changed_mean_similarity": 0.715789,
+        "inversion": true,
+        "above_noise_floor": false
+      }
+    },
+    "per_pair": [
+      {
+        "pair_id": "cl_sort_01_bubble",
+        "category": "sorting",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.867429,
+        "static_sbg_similarity": 0.818214,
+        "ast_similarity": 0.541667,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_sort_02_insertion",
+        "category": "sorting",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.976945,
+        "static_sbg_similarity": 0.984146,
+        "ast_similarity": 0.815534,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_search_03_binary",
+        "category": "searching",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.976322,
+        "static_sbg_similarity": 0.971128,
+        "ast_similarity": 0.781609,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_search_04_linear",
+        "category": "searching",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.937825,
+        "static_sbg_similarity": 0.773194,
+        "ast_similarity": 0.452381,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_arith_05_factorial",
+        "category": "arithmetic",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.936318,
+        "static_sbg_similarity": 0.723007,
+        "ast_similarity": 0.564103,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_arith_06_gcd",
+        "category": "arithmetic",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.933333,
+        "static_sbg_similarity": 0.91195,
+        "ast_similarity": 0.606061,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_arith_07_fibonacci",
+        "category": "arithmetic",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.891818,
+        "static_sbg_similarity": 0.768463,
+        "ast_similarity": 0.435484,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_str_08_palindrome",
+        "category": "string",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.805711,
+        "static_sbg_similarity": 0.69438,
+        "ast_similarity": 0.218182,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_str_09_reverse",
+        "category": "string",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.841765,
+        "static_sbg_similarity": 0.630584,
+        "ast_similarity": 0.18,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_list_10_max",
+        "category": "list_manipulation",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.871595,
+        "static_sbg_similarity": 0.751015,
+        "ast_similarity": 0.295082,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_list_11_sum",
+        "category": "list_manipulation",
+        "label": "EQUIVALENT",
+        "dynamic_sbg_similarity": 0.843454,
+        "static_sbg_similarity": 0.655371,
+        "ast_similarity": 0.217391,
+        "genome_extraction_ok": true
+      },
+      {
+        "pair_id": "cl_changed_12_binary_search_off_by_one",
+        "category": "searching",
+        "label": "CHANGED",
+        "dynamic_sbg_similarity": 0.957265,
+        "static_sbg_similarity": 0.951497,
+        "ast_similarity": 0.715789,
+        "genome_extraction_ok": true
+      }
+    ]
+  },
+  "power_analysis": {
+    "method": "Normal-approximation one-sided AUROC shift test (H0: AUROC=0.5, H1: AUROC=0.6, effect d~0.20-0.25), matching docs/v2/H11_CROSS_LANGUAGE_DESIGN.md Sec 3.",
+    "alpha_corrected": 0.0042,
+    "power_at_n12": 0.1067,
+    "power_at_n15_this_script_reestimate": 0.1399,
+    "power_at_n15_preregistered_authoritative": 0.25,
+    "power_discrepancy_note": "This script's own crude re-derivation (0.14 at N=15) differs numerically from the pre-registered figure (0.25 at N=15, docs/v2/H11_CROSS_LANGUAGE_DESIGN.md Sec 3). The pre-registered 0.25 is treated as AUTHORITATIVE per Wave-10/pre-registration discipline (do not invent new tests or supersede pre-registered numbers after seeing results); this script's figure is reported only as an order-of-magnitude sanity check confirming both estimates land in the same 'severely underpowered' regime, not as a replacement.",
+    "target_power": 0.8,
+    "required_n_for_80pct_power": 80,
+    "required_n_for_80pct_power_preregistered": "120-150 (docs/v2/H11_CROSS_LANGUAGE_DESIGN.md Sec 3, conservative effect size d=0.20)",
+    "conclusion": "N=12 (achievable diagnostic) and N=15 (pre-registered full H11 target, infeasible without Java execution) are both far below the pre-registered ~120-150 required for 80% power. H11 CANNOT be claimed SUPPORTED or NOT_SUPPORTED from this evidence; UNDERPOWERED / INSUFFICIENT_EVIDENCE is the only honest verdict."
+  },
+  "phase5_proxy_context_only": {
+    "source": "artifacts/phase5/cross_language_results.json",
+    "n_pairs": 15,
+    "method": "regex heuristics on Java source text (NOT execution-derived)",
+    "auroc": 0.4091,
+    "valid_h11_evidence": false,
+    "reason_invalid": "Not execution-derived; violates H11's requirement of DynamicGenome (behavioral) comparison. Regex-based has_recursion flag misclassifies non-recursive calls. N=15 CI spans essentially the full [0,1] range."
+  },
+  "no_fabrication_statement": "No Java DynamicGenome was computed. No Java execution occurred. The only executed code in this experiment is Python. All 'H11 evidence' reported here is either (a) an explicitly-labeled Python-only lower-bound diagnostic, or (b) a pre-existing, clearly-flagged non-execution proxy from Phase 5. This complies with docs/v2/H11_CROSS_LANGUAGE_DESIGN.md and experiments/v2/cross_language_design.py, both authored during Wave 0 before this script ran, and is NOT test-set tuning since benchmark/datasets/pairs_test.jsonl was never touched by this experiment.",
+  "seed": 42
+}

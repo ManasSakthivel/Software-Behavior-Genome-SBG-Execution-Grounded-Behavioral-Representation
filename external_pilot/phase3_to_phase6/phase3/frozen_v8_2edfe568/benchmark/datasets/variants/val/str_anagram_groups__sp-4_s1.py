@@ -1,0 +1,72 @@
+from typing import List, Dict, Tuple
+from collections import defaultdict
+
+def anagram_signature(word: str) -> str:
+    return ''.join(sorted(word.lower()))
+
+def are_anagrams(a: str, b: str, strict: bool=False) -> bool:
+
+    def normalize(s: str) -> str:
+        if strict:
+            return s.lower()
+        return ''.join((c for c in s.lower() if c.isalpha()))
+    return sorted(normalize(a)) == sorted(normalize(b))
+
+def group_anagrams(words: List[str]) -> Dict[str, List[str]]:
+    groups: Dict[str, List[str]] = defaultdict(list)
+    for word in words:
+        groups[anagram_signature(word)].append(word)
+    return {sig: ws for (sig, ws) in groups.items() if len(ws) >= 2}
+
+def find_anagram_pairs(words: List[str]) -> List[Tuple[str, str]]:
+    groups = group_anagrams(words)
+    pairs = []
+    for ws in groups.values():
+        for i in range(len(ws)):
+            for j in range(i + 1, len(ws)):
+                (a, b) = (ws[i], ws[j])
+                pairs.append((min(a, b), max(a, b)))
+    return sorted(pairs)
+
+def longest_anagram_group(words: List[str]) -> List[str]:
+    groups = group_anagrams(words)
+    if not groups:
+        return []
+    return max(groups.values(), key=len)
+
+def ungrouped_words(words: List[str]) -> List[str]:
+    groups = group_anagrams(words)
+    grouped = {w for ws in groups.values() for w in ws}
+    return [w for w in words if w not in grouped]
+
+def test_anagrams():
+    words = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+    groups = group_anagrams(words)
+    assert {'eat', 'tea', 'ate'} in [set(v) for v in groups.values()]
+    assert {'tan', 'nat'} in [set(v) for v in groups.values()]
+    assert 'bat' not in {w for ws in groups.values() for w in ws}
+    assert are_anagrams('listen', 'silent')
+    assert are_anagrams('Astronomer', 'Moon starer')
+    assert not are_anagrams('hello', 'world')
+    assert are_anagrams('Astronomer', 'Moon starer', strict=False)
+    assert not are_anagrams('ab', 'a b', strict=True)
+    assert anagram_signature('eat') == anagram_signature('tea')
+    assert anagram_signature('Eat') == anagram_signature('eat')
+    pairs = find_anagram_pairs(words)
+    assert ('ate', 'eat') in pairs or ('eat', 'tea') in pairs
+    longest = longest_anagram_group(words)
+    assert len(longest) == 3
+    assert group_anagrams(['abc', 'def', 'ghi']) == {}
+    assert longest_anagram_group(['abc', 'def']) == []
+    ungrouped = ungrouped_words(words)
+    assert ungrouped == ['bat']
+    assert group_anagrams(['abc']) == {}
+    groups2 = group_anagrams(['abc', 'abc'])
+    assert len(groups2) == 1
+    print('All anagram tests passed.')
+if __name__ == '__main__':
+    test_anagrams()
+    words = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+    print('Groups:', group_anagrams(words))
+    print('Longest group:', longest_anagram_group(words))
+    print('Ungrouped:', ungrouped_words(words))

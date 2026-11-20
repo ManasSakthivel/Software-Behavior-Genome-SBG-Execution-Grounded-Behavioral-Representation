@@ -1,0 +1,835 @@
+{
+  "total_programs": 64,
+  "categories": {
+    "Sorting/Searching Algorithms": {
+      "count": 9,
+      "programs": [
+        "sort_binary_search",
+        "sort_counting_sort",
+        "sort_heapsort",
+        "sort_insertion_sort",
+        "sort_mergesort",
+        "sort_quicksort",
+        "sort_radix_sort",
+        "sort_timsort_runs",
+        "sort_topk_select"
+      ]
+    },
+    "Graph Algorithms": {
+      "count": 6,
+      "programs": [
+        "graph_bellman_ford",
+        "graph_bfs_shortest_path",
+        "graph_connected_components",
+        "graph_cycle_detect_dfs",
+        "graph_dijkstra",
+        "graph_topological_sort"
+      ]
+    },
+    "Data Structures": {
+      "count": 6,
+      "programs": [
+        "ds_binary_search_tree",
+        "ds_hash_table",
+        "ds_lru_cache",
+        "ds_min_heap",
+        "ds_stack_queue",
+        "ds_trie"
+      ]
+    },
+    "String/Text Processing": {
+      "count": 7,
+      "programs": [
+        "str_anagram_groups",
+        "str_edit_distance",
+        "str_kmp_search",
+        "str_palindrome",
+        "str_run_length_encode",
+        "str_tokenizer",
+        "str_word_frequency"
+      ]
+    },
+    "Mathematical/Numerical": {
+      "count": 7,
+      "programs": [
+        "math_dynamic_programming",
+        "math_fibonacci",
+        "math_matrix_ops",
+        "math_numerical_integration",
+        "math_polynomial",
+        "math_prime_sieve",
+        "math_statistics"
+      ]
+    },
+    "State Machines": {
+      "count": 5,
+      "programs": [
+        "fsm_connection_pool",
+        "fsm_order_lifecycle",
+        "fsm_parser_state",
+        "fsm_traffic_light",
+        "fsm_vending_machine"
+      ]
+    },
+    "File/Stream Processing": {
+      "count": 5,
+      "programs": [
+        "file_binary_encoder",
+        "file_config_parser",
+        "file_csv_aggregator",
+        "file_log_processor",
+        "file_word_count_stream"
+      ]
+    },
+    "API/HTTP Simulation": {
+      "count": 4,
+      "programs": [
+        "api_event_bus",
+        "api_mock_http_client",
+        "api_rate_limiter",
+        "api_rest_crud_mock"
+      ]
+    },
+    "Resource Management": {
+      "count": 4,
+      "programs": [
+        "res_cache_ttl",
+        "res_memory_allocator",
+        "res_object_pool",
+        "res_task_scheduler"
+      ]
+    },
+    "Error Handling": {
+      "count": 5,
+      "programs": [
+        "err_assert_guard",
+        "err_circuit_breaker",
+        "err_result_type",
+        "err_retry_backoff",
+        "err_validation_chain"
+      ]
+    },
+    "Concurrency Simulation": {
+      "count": 3,
+      "programs": [
+        "conc_producer_consumer",
+        "conc_read_write_lock",
+        "conc_thread_safe_counter"
+      ]
+    },
+    "Parser Implementations": {
+      "count": 3,
+      "programs": [
+        "parse_ini_config",
+        "parse_json_subset",
+        "parse_recursive_descent"
+      ]
+    }
+  },
+  "programs": [
+    {
+      "program_id": "api_event_bus",
+      "category": "API/HTTP Simulation",
+      "category_prefix": "api",
+      "filename": "api_event_bus.py",
+      "spec": "In-process event bus with publish/subscribe, filtering, and replay.",
+      "test_count": 3,
+      "lines": 186,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "api_mock_http_client",
+      "category": "API/HTTP Simulation",
+      "category_prefix": "api",
+      "filename": "api_mock_http_client.py",
+      "spec": "Mock HTTP client with request/response simulation, retry logic, and middleware.",
+      "test_count": 3,
+      "lines": 218,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "api_rate_limiter",
+      "category": "API/HTTP Simulation",
+      "category_prefix": "api",
+      "filename": "api_rate_limiter.py",
+      "spec": "Rate limiter: token bucket, leaky bucket, and sliding-window counter.",
+      "test_count": 3,
+      "lines": 207,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "api_rest_crud_mock",
+      "category": "API/HTTP Simulation",
+      "category_prefix": "api",
+      "filename": "api_rest_crud_mock.py",
+      "spec": "Mock REST CRUD API with in-memory store, validation, and pagination.",
+      "test_count": 3,
+      "lines": 193,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "conc_producer_consumer",
+      "category": "Concurrency Simulation",
+      "category_prefix": "conc",
+      "filename": "conc_producer_consumer.py",
+      "spec": "program_id: conc_producer_consumer",
+      "test_count": 3,
+      "lines": 77,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "conc_read_write_lock",
+      "category": "Concurrency Simulation",
+      "category_prefix": "conc",
+      "filename": "conc_read_write_lock.py",
+      "spec": "program_id: conc_read_write_lock",
+      "test_count": 3,
+      "lines": 110,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "conc_thread_safe_counter",
+      "category": "Concurrency Simulation",
+      "category_prefix": "conc",
+      "filename": "conc_thread_safe_counter.py",
+      "spec": "program_id: conc_thread_safe_counter",
+      "test_count": 3,
+      "lines": 76,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "ds_binary_search_tree",
+      "category": "Data Structures",
+      "category_prefix": "ds",
+      "filename": "ds_binary_search_tree.py",
+      "spec": "Binary Search Tree (BST) with insert, search, delete, and traversals.",
+      "test_count": 3,
+      "lines": 210,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "ds_hash_table",
+      "category": "Data Structures",
+      "category_prefix": "ds",
+      "filename": "ds_hash_table.py",
+      "spec": "Hash table with open addressing (linear probing) and dynamic resizing.",
+      "test_count": 3,
+      "lines": 213,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "ds_lru_cache",
+      "category": "Data Structures",
+      "category_prefix": "ds",
+      "filename": "ds_lru_cache.py",
+      "spec": "LRU (Least Recently Used) cache with O(1) get and put.",
+      "test_count": 3,
+      "lines": 171,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "ds_min_heap",
+      "category": "Data Structures",
+      "category_prefix": "ds",
+      "filename": "ds_min_heap.py",
+      "spec": "Min-heap (priority queue) with decrease-key support.",
+      "test_count": 3,
+      "lines": 177,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "ds_stack_queue",
+      "category": "Data Structures",
+      "category_prefix": "ds",
+      "filename": "ds_stack_queue.py",
+      "spec": "Stack and Queue implemented with linked lists, plus a double-ended deque.",
+      "test_count": 3,
+      "lines": 249,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "ds_trie",
+      "category": "Data Structures",
+      "category_prefix": "ds",
+      "filename": "ds_trie.py",
+      "spec": "Trie (prefix tree) for string key storage with prefix search.",
+      "test_count": 3,
+      "lines": 180,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "err_assert_guard",
+      "category": "Error Handling",
+      "category_prefix": "err",
+      "filename": "err_assert_guard.py",
+      "spec": "program_id: err_assert_guard",
+      "test_count": 3,
+      "lines": 39,
+      "valid_python": true,
+      "complexity": "LOW"
+    },
+    {
+      "program_id": "err_circuit_breaker",
+      "category": "Error Handling",
+      "category_prefix": "err",
+      "filename": "err_circuit_breaker.py",
+      "spec": "program_id: err_circuit_breaker",
+      "test_count": 3,
+      "lines": 94,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "err_result_type",
+      "category": "Error Handling",
+      "category_prefix": "err",
+      "filename": "err_result_type.py",
+      "spec": "program_id: err_result_type",
+      "test_count": 3,
+      "lines": 102,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "err_retry_backoff",
+      "category": "Error Handling",
+      "category_prefix": "err",
+      "filename": "err_retry_backoff.py",
+      "spec": "program_id: err_retry_backoff",
+      "test_count": 3,
+      "lines": 69,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "err_validation_chain",
+      "category": "Error Handling",
+      "category_prefix": "err",
+      "filename": "err_validation_chain.py",
+      "spec": "program_id: err_validation_chain",
+      "test_count": 3,
+      "lines": 71,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "file_binary_encoder",
+      "category": "File/Stream Processing",
+      "category_prefix": "file",
+      "filename": "file_binary_encoder.py",
+      "spec": "Binary data encoder/decoder: Base64, hex, and custom nibble encoding.",
+      "test_count": 3,
+      "lines": 186,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "file_config_parser",
+      "category": "File/Stream Processing",
+      "category_prefix": "file",
+      "filename": "file_config_parser.py",
+      "spec": "INI-style configuration file parser with type coercion and validation.",
+      "test_count": 3,
+      "lines": 257,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "file_csv_aggregator",
+      "category": "File/Stream Processing",
+      "category_prefix": "file",
+      "filename": "file_csv_aggregator.py",
+      "spec": "In-memory CSV data aggregator with GROUP BY and aggregate functions.",
+      "test_count": 3,
+      "lines": 207,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "file_log_processor",
+      "category": "File/Stream Processing",
+      "category_prefix": "file",
+      "filename": "file_log_processor.py",
+      "spec": "Log file processor: parse, filter, aggregate, and summarize log lines.",
+      "test_count": 3,
+      "lines": 187,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "file_word_count_stream",
+      "category": "File/Stream Processing",
+      "category_prefix": "file",
+      "filename": "file_word_count_stream.py",
+      "spec": "Streaming word count processor using a line-by-line iterator model.",
+      "test_count": 3,
+      "lines": 182,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "fsm_connection_pool",
+      "category": "State Machines",
+      "category_prefix": "fsm",
+      "filename": "fsm_connection_pool.py",
+      "spec": "Connection pool state machine with health-check and circuit breaker.",
+      "test_count": 3,
+      "lines": 224,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "fsm_order_lifecycle",
+      "category": "State Machines",
+      "category_prefix": "fsm",
+      "filename": "fsm_order_lifecycle.py",
+      "spec": "Order lifecycle FSM for an e-commerce system.",
+      "test_count": 3,
+      "lines": 203,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "fsm_parser_state",
+      "category": "State Machines",
+      "category_prefix": "fsm",
+      "filename": "fsm_parser_state.py",
+      "spec": "FSM-based simple CSV/DSV parser line processor.",
+      "test_count": 3,
+      "lines": 166,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "fsm_traffic_light",
+      "category": "State Machines",
+      "category_prefix": "fsm",
+      "filename": "fsm_traffic_light.py",
+      "spec": "Traffic light finite state machine with configurable timing and emergency mode.",
+      "test_count": 3,
+      "lines": 197,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "fsm_vending_machine",
+      "category": "State Machines",
+      "category_prefix": "fsm",
+      "filename": "fsm_vending_machine.py",
+      "spec": "Vending machine FSM with coin insertion, product selection, and change dispensin",
+      "test_count": 3,
+      "lines": 197,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "graph_bellman_ford",
+      "category": "Graph Algorithms",
+      "category_prefix": "graph",
+      "filename": "graph_bellman_ford.py",
+      "spec": "Bellman-Ford single-source shortest paths with negative-cycle detection.",
+      "test_count": 3,
+      "lines": 145,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "graph_bfs_shortest_path",
+      "category": "Graph Algorithms",
+      "category_prefix": "graph",
+      "filename": "graph_bfs_shortest_path.py",
+      "spec": "Breadth-First Search: shortest path (hop count) and level-order traversal.",
+      "test_count": 3,
+      "lines": 130,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "graph_connected_components",
+      "category": "Graph Algorithms",
+      "category_prefix": "graph",
+      "filename": "graph_connected_components.py",
+      "spec": "Connected components: Union-Find (DSU) and DFS-based implementations.",
+      "test_count": 3,
+      "lines": 155,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "graph_cycle_detect_dfs",
+      "category": "Graph Algorithms",
+      "category_prefix": "graph",
+      "filename": "graph_cycle_detect_dfs.py",
+      "spec": "Cycle detection in directed and undirected graphs using DFS coloring.",
+      "test_count": 3,
+      "lines": 133,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "graph_dijkstra",
+      "category": "Graph Algorithms",
+      "category_prefix": "graph",
+      "filename": "graph_dijkstra.py",
+      "spec": "Dijkstra's single-source shortest paths on a weighted directed graph.",
+      "test_count": 3,
+      "lines": 140,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "graph_topological_sort",
+      "category": "Graph Algorithms",
+      "category_prefix": "graph",
+      "filename": "graph_topological_sort.py",
+      "spec": "Topological sort using both Kahn's (BFS) and DFS-based algorithms.",
+      "test_count": 3,
+      "lines": 155,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "math_dynamic_programming",
+      "category": "Mathematical/Numerical",
+      "category_prefix": "math",
+      "filename": "math_dynamic_programming.py",
+      "spec": "Dynamic programming: Knapsack, Longest Common Subsequence, and Coin Change.",
+      "test_count": 3,
+      "lines": 174,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "math_fibonacci",
+      "category": "Mathematical/Numerical",
+      "category_prefix": "math",
+      "filename": "math_fibonacci.py",
+      "spec": "program_id: math_fibonacci",
+      "test_count": 3,
+      "lines": 27,
+      "valid_python": true,
+      "complexity": "LOW"
+    },
+    {
+      "program_id": "math_matrix_ops",
+      "category": "Mathematical/Numerical",
+      "category_prefix": "math",
+      "filename": "math_matrix_ops.py",
+      "spec": "Matrix operations: multiplication, transpose, determinant (Gaussian), and trace.",
+      "test_count": 3,
+      "lines": 162,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "math_numerical_integration",
+      "category": "Mathematical/Numerical",
+      "category_prefix": "math",
+      "filename": "math_numerical_integration.py",
+      "spec": "Numerical integration: Simpson's rule, trapezoidal rule, and adaptive Simpson.",
+      "test_count": 3,
+      "lines": 145,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "math_polynomial",
+      "category": "Mathematical/Numerical",
+      "category_prefix": "math",
+      "filename": "math_polynomial.py",
+      "spec": "Polynomial arithmetic: evaluation, addition, multiplication, and root-finding.",
+      "test_count": 3,
+      "lines": 162,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "math_prime_sieve",
+      "category": "Mathematical/Numerical",
+      "category_prefix": "math",
+      "filename": "math_prime_sieve.py",
+      "spec": "Prime number utilities: Sieve of Eratosthenes, factorization, and primality.",
+      "test_count": 3,
+      "lines": 169,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "math_statistics",
+      "category": "Mathematical/Numerical",
+      "category_prefix": "math",
+      "filename": "math_statistics.py",
+      "spec": "Descriptive statistics: mean, median, mode, variance, std dev, percentiles.",
+      "test_count": 3,
+      "lines": 183,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "parse_ini_config",
+      "category": "Parser Implementations",
+      "category_prefix": "parse",
+      "filename": "parse_ini_config.py",
+      "spec": "program_id: parse_ini_config",
+      "test_count": 3,
+      "lines": 101,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "parse_json_subset",
+      "category": "Parser Implementations",
+      "category_prefix": "parse",
+      "filename": "parse_json_subset.py",
+      "spec": "program_id: parse_json_subset",
+      "test_count": 3,
+      "lines": 130,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "parse_recursive_descent",
+      "category": "Parser Implementations",
+      "category_prefix": "parse",
+      "filename": "parse_recursive_descent.py",
+      "spec": "program_id: parse_recursive_descent",
+      "test_count": 3,
+      "lines": 104,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "res_cache_ttl",
+      "category": "Resource Management",
+      "category_prefix": "res",
+      "filename": "res_cache_ttl.py",
+      "spec": "TTL (time-to-live) cache with lazy expiry, max size eviction, and stats.",
+      "test_count": 3,
+      "lines": 206,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "res_memory_allocator",
+      "category": "Resource Management",
+      "category_prefix": "res",
+      "filename": "res_memory_allocator.py",
+      "spec": "First-fit and best-fit memory allocator simulation.",
+      "test_count": 3,
+      "lines": 223,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "res_object_pool",
+      "category": "Resource Management",
+      "category_prefix": "res",
+      "filename": "res_object_pool.py",
+      "spec": "Generic object pool with acquire/release, timeout simulation, and lifecycle.",
+      "test_count": 3,
+      "lines": 210,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "res_task_scheduler",
+      "category": "Resource Management",
+      "category_prefix": "res",
+      "filename": "res_task_scheduler.py",
+      "spec": "Priority-based task scheduler with deadlines and resource budgets.",
+      "test_count": 3,
+      "lines": 220,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "sort_binary_search",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_binary_search.py",
+      "spec": "Binary search with multiple modes: exact, leftmost, rightmost, and range count.",
+      "test_count": 3,
+      "lines": 142,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "sort_counting_sort",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_counting_sort.py",
+      "spec": "Counting sort with support for arbitrary integer ranges.",
+      "test_count": 3,
+      "lines": 116,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "sort_heapsort",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_heapsort.py",
+      "spec": "Heapsort: in-place comparison sort using a max-heap.",
+      "test_count": 3,
+      "lines": 93,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "sort_insertion_sort",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_insertion_sort.py",
+      "spec": "program_id: sort_insertion_sort",
+      "test_count": 3,
+      "lines": 25,
+      "valid_python": true,
+      "complexity": "LOW"
+    },
+    {
+      "program_id": "sort_mergesort",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_mergesort.py",
+      "spec": "Mergesort: stable, out-of-place top-down recursive sort.",
+      "test_count": 3,
+      "lines": 83,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "sort_quicksort",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_quicksort.py",
+      "spec": "Quicksort: in-place divide-and-conquer sort using Lomuto partition scheme.",
+      "test_count": 3,
+      "lines": 85,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "sort_radix_sort",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_radix_sort.py",
+      "spec": "Radix sort (LSD): non-comparative integer sort using base-10 digit bucketing.",
+      "test_count": 3,
+      "lines": 92,
+      "valid_python": true,
+      "complexity": "MEDIUM"
+    },
+    {
+      "program_id": "sort_timsort_runs",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_timsort_runs.py",
+      "spec": "Timsort-inspired natural run detector + insertion sort + merge.",
+      "test_count": 3,
+      "lines": 143,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "sort_topk_select",
+      "category": "Sorting/Searching Algorithms",
+      "category_prefix": "sort",
+      "filename": "sort_topk_select.py",
+      "spec": "Top-K selection using the QuickSelect (Hoare) algorithm.",
+      "test_count": 3,
+      "lines": 121,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "str_anagram_groups",
+      "category": "String/Text Processing",
+      "category_prefix": "str",
+      "filename": "str_anagram_groups.py",
+      "spec": "Anagram grouping and related string classification utilities.",
+      "test_count": 3,
+      "lines": 140,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "str_edit_distance",
+      "category": "String/Text Processing",
+      "category_prefix": "str",
+      "filename": "str_edit_distance.py",
+      "spec": "Edit distance (Levenshtein) with full DP table and alignment reconstruction.",
+      "test_count": 3,
+      "lines": 141,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "str_kmp_search",
+      "category": "String/Text Processing",
+      "category_prefix": "str",
+      "filename": "str_kmp_search.py",
+      "spec": "Knuth-Morris-Pratt (KMP) substring search algorithm.",
+      "test_count": 3,
+      "lines": 134,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "str_palindrome",
+      "category": "String/Text Processing",
+      "category_prefix": "str",
+      "filename": "str_palindrome.py",
+      "spec": "program_id: str_palindrome",
+      "test_count": 3,
+      "lines": 19,
+      "valid_python": true,
+      "complexity": "LOW"
+    },
+    {
+      "program_id": "str_run_length_encode",
+      "category": "String/Text Processing",
+      "category_prefix": "str",
+      "filename": "str_run_length_encode.py",
+      "spec": "Run-Length Encoding (RLE): encode, decode, and ratio computation.",
+      "test_count": 3,
+      "lines": 142,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "str_tokenizer",
+      "category": "String/Text Processing",
+      "category_prefix": "str",
+      "filename": "str_tokenizer.py",
+      "spec": "Simple expression tokenizer with multi-character token support.",
+      "test_count": 3,
+      "lines": 143,
+      "valid_python": true,
+      "complexity": "HIGH"
+    },
+    {
+      "program_id": "str_word_frequency",
+      "category": "String/Text Processing",
+      "category_prefix": "str",
+      "filename": "str_word_frequency.py",
+      "spec": "Word frequency counter with stop-word filtering and normalization.",
+      "test_count": 3,
+      "lines": 165,
+      "valid_python": true,
+      "complexity": "HIGH"
+    }
+  ]
+}

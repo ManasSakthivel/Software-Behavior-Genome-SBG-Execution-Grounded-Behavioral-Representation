@@ -1,0 +1,8 @@
+benchmark,partition_unit,n_clusters,split_strategy,auroc_conv,auroc_full,delta_auroc,p_val,clustering_verified
+Synthetic V10,Base Program Cluster,19,Project-Disjoint Test Set,0.7908,0.7971,+0.0063,0.142,YES
+QuixBugs (Repaired Native All),Program Algorithm,40,Leave-One-Program-Out CV,0.6467,0.8654,+0.2188,<0.001,YES
+QuixBugs (Repaired Native ex-SP2),Program Algorithm,40,Leave-One-Program-Out CV,0.6844,0.8003,+0.1160,0.041,YES
+Bugs.jar,Apache Project Repository,6,Leave-One-Project-Out CV,1.0,1.0,+0.0000,1.000,YES
+Codeflaws,Codeforces Problem ID,12,Leave-One-Problem-Out CV,1.0,1.0,+0.0000,1.000,YES
+BugsInPy,Python Project / Bug ID,39,Leave-One-Bug-Out CV,0.497,0.497,-0.0120,0.820,YES
+SeqCoBench (e<=2),MBPP Problem ID,486,Disjoint Problem Test Set,0.824,0.831,+0.0070,0.582,YES

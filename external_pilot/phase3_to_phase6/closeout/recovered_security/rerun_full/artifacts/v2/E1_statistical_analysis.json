@@ -1,0 +1,37 @@
+{
+  "version": "v2",
+  "analysis": "Phase 2 gate statistical analysis",
+  "test_n_pairs": 744,
+  "baselines": {
+    "v1_static_sbg_auroc": 0.4237,
+    "v1_best_baseline_auroc": 0.5528,
+    "v1_b06_dynamic_auroc": 0.5046,
+    "b07_dynamic_v2_auroc": 0.531023,
+    "b07_ci": [
+      0.499136,
+      0.580563
+    ],
+    "b08_hybrid_v2_auroc": 0.488442,
+    "b08_ci": [
+      0.450492,
+      0.535058
+    ]
+  },
+  "inversion_analysis": {
+    "v1_static_delta": 0.0335,
+    "b07_dynamic_delta": -0.045265,
+    "b08_hybrid_delta": -0.006281,
+    "h9_b07_verdict": "SUPPORTED",
+    "inversion_resolved_by_dynamic": true
+  },
+  "hypothesis_verdicts": {
+    "H7": "SUPPORTED",
+    "H8": "NOT_SUPPORTED",
+    "H9": "SUPPORTED",
+    "H10": "NOT_EVALUATED_YET",
+    "H11": "NOT_EVALUATED_YET",
+    "H12": "NOT_EVALUATED_YET"
+  },
+  "holm_bonferroni_family_size": 12,
+  "note": "Full statistical tests require re-scored similarity arrays for McNemar and permutation tests; bootstrap CIs from compute_metrics are used here"
+}

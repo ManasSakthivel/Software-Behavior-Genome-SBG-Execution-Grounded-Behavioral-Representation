@@ -1,0 +1,100 @@
+{
+  "experiment": "PHASE9_STRONG_BASELINES",
+  "version": "v4",
+  "n_test_pairs": 744,
+  "results": {
+    "B01_token_tfidf": {
+      "auroc": 0.385492,
+      "ci": [
+        0.355813,
+        0.399491
+      ],
+      "n_valid": 744,
+      "n_missing": 0
+    },
+    "B02_ast": {
+      "auroc": 0.428922,
+      "ci": [
+        0.403141,
+        0.452919
+      ],
+      "n_valid": 744,
+      "n_missing": 0
+    },
+    "B03_edit_dist": {
+      "auroc": 0.440397,
+      "ci": [
+        0.392857,
+        0.464303
+      ],
+      "n_valid": 744,
+      "n_missing": 0
+    },
+    "B04_volume": {
+      "auroc": 0.537829,
+      "ci": [
+        0.468648,
+        0.604605
+      ],
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "B06_sbg_v2": {
+      "auroc": 0.538483,
+      "ci": [
+        0.49936,
+        0.582237
+      ],
+      "n_valid": 643,
+      "n_missing": 101
+    },
+    "B07_sbg_v3": {
+      "auroc": 0.546038,
+      "ci": [
+        0.503248,
+        0.591988
+      ],
+      "n_valid": 643,
+      "n_missing": 101
+    }
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "baseline": "B07_sbg_v3",
+      "auroc": 0.546038
+    },
+    {
+      "rank": 2,
+      "baseline": "B06_sbg_v2",
+      "auroc": 0.538483
+    },
+    {
+      "rank": 3,
+      "baseline": "B04_volume",
+      "auroc": 0.537829
+    },
+    {
+      "rank": 4,
+      "baseline": "B03_edit_dist",
+      "auroc": 0.440397
+    },
+    {
+      "rank": 5,
+      "baseline": "B02_ast",
+      "auroc": 0.428922
+    },
+    {
+      "rank": 6,
+      "baseline": "B01_token_tfidf",
+      "auroc": 0.385492
+    }
+  ],
+  "sbg_v3_rank": 1,
+  "methodology": {
+    "test_set": "benchmark/datasets/pairs_test.jsonl (frozen, 744 pairs)",
+    "auroc": "WMW tie-aware (sbg.v3.metrics)",
+    "bootstrap": "cluster-by-base-program, 500 resamples",
+    "all_methods": "same pairs, same labels, same AUROC formula"
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "artifact": "NOVELTY_AUDIT_V2",
+  "agent": "K",
+  "version": "v2",
+  "date": "2025",
+  "basis": [
+    "docs/research/NOVELTY_ANALYSIS.md",
+    "docs/research/PRIOR_ART_MATRIX.md",
+    "docs/v2/agents/0E_prior_art_audit.json",
+    "docs/v2/agents/0F_adversarial_review.json",
+    "docs/CLAIMS_REGISTRY.yaml",
+    "artifacts/v2/PHASE_2_GATE.json",
+    "artifacts/v2/E1_statistical_analysis.json"
+  ],
+
+  "v2_key_metrics": {
+    "b07_dynamic_auroc": 0.5310,
+    "b07_ci": [0.4991, 0.5806],
+    "v1_static_sbg_auroc": 0.4237,
+    "v1_best_baseline_ast_auroc": 0.5528,
+    "v1_inversion_delta": 0.0335,
+    "v2_inversion_delta": -0.0453,
+    "h7_verdict": "SUPPORTED",
+    "h9_verdict": "SUPPORTED",
+    "h8_verdict": "NOT_SUPPORTED"
+  },
+
+  "contributions": [
+
+    {
+      "claim_id": "NC-01",
+      "claim": "The structural-semantic inversion: semantics-preserving transforms cause larger structural change than semantics-changing mutations, causing all representations to produce inverted similarity signals.",
+      "claim_type": "EMPIRICAL_FINDING",
+      "novelty_status": "NOVEL",
+      "confidence": "HIGH",
+      "evidence": {
+        "claim_registry": "C009 — SUPPORTED, N=744, all 8 representations inverted",
+        "auroc_range": "0.35–0.55 for all methods",
+        "inversion_delta_v1": 0.0335,
+        "statistical_test": "bootstrap CI, 1000 resamples, seed=42",
+        "preregistered": false,
+        "note": "Retrospective finding from v1; pre-registration of resolution hypothesis (H9) completed in git commit 35b614c before v2 execution"
+      },
+      "prior_art": {
+        "closest": "None found in 40-work matrix",
+        "nearest_related": "Jia & Harman mutation testing survey (2011) — mutation operators categorized but inversion phenomenon not quantified",
+        "gap_reference": "Agent 0E GAP-06: no prior work names or quantifies this phenomenon"
+      },
+      "sbg_delta": "First empirical characterization of the structural-semantic inversion. No prior work in software similarity, clone detection, or mutation testing literature quantifies or names this phenomenon.",
+      "strongest_citation": "C009 — All 8 baselines inverted, EQUIV_mean < CHANGED_mean, N=744, bootstrap CI all overlapping 0.5",
+      "weaknesses": [
+        "Observed on a single benchmark (SBG Phase 1, Python programs, specific SP/SC operators)",
+        "Has not been replicated on Defects4J, Java programs, or other mutation operator sets",
+        "Mutation adequacy literature may contain related observations — not yet swept"
+      ]
+    },
+
+    {
+      "claim_id": "NC-02",
+      "claim": "Execution-derived behavioral features resolve the structural-semantic inversion: dynamic AUROC=0.5310 with inversion delta=-0.0453 vs. v1 static delta=+0.0335.",
+      "claim_type": "EMPIRICAL_FINDING",
+      "novelty_status": "NOVEL",
+      "confidence": "HIGH_PARTIAL",
+      "evidence": {
+        "claim_registry": "H7 SUPPORTED, H9 SUPPORTED (PHASE_2_GATE.json)",
+        "b07_auroc": 0.5310,
+        "inversion_delta": -0.0453,
+        "preregistered": true,
+        "preregistration_commit": "35b614c",
+        "note": "AUROC=0.5310 resolves inversion directionally but remains below practical utility threshold and below best static baseline (AST=0.5528)"
+      },
+      "prior_art": {
+        "closest": "No prior work tests whether execution features resolve this specific inversion",
+        "related": [
+          "Jiang & Su ISSTA 2009 — execution-based clone detection (does not address inversion)",
+          "McKeeman 1998 Differential Testing (binary divergence, does not address inversion)"
+        ]
+      },
+      "sbg_delta": "First empirical test of whether execution features correct the structural-semantic inversion. The question is novel because the inversion itself was not previously documented.",
+      "strongest_citation": "PHASE_2_GATE.json: H7 SUPPORTED (CI [0.4991, 0.5806] entirely above v1=0.4237); H9 SUPPORTED (delta -0.0453 < 0 < 0.0335)",
+      "weaknesses": [
+        "AUROC=0.5310 is still near-chance — clinical/practical utility threshold not met",
+        "H8 NOT SUPPORTED: hybrid with token-overlap proxy underperforms pure dynamic (0.4884 < 0.5310)",
+        "H10, H11, H12 not yet evaluated",
+        "n_runs=1 for noise floor (SAFEGUARD-6 requires >=5)"
+      ]
+    },
+
+    {
+      "claim_id": "NC-03",
+      "claim": "Output-free behavioral genome: DynamicGenome uses only structural execution features (call frequency ranks, branch coverage consistency, exception type sets), explicitly excluding output values.",
+      "claim_type": "ARCHITECTURAL_DESIGN",
+      "novelty_status": "NOVEL",
+      "confidence": "MODERATE",
+      "evidence": {
+        "safeguard": "SAFEGUARD-2 verified in 19-test PHASE_2_GATE test suite",
+        "test": "SAFEGUARD-2: return_value and stdout absent from DynamicGenome",
+        "note": "Architectural separation enforced and tested"
+      },
+      "prior_art": {
+        "closest": "Jiang & Su ISSTA 2009 — I/O behavior vectors (uses output comparison directly)",
+        "also": "McKeeman 1998 Differential Testing — binary output comparison",
+        "gap_reference": "Agent 0E: SBG v2 must distinguish from Jiang & Su; SAFEGUARD-2 is the mechanism"
+      },
+      "sbg_delta": "SBG V2 detects behavioral divergence through internal execution structure, not output values. Two programs can produce identical outputs while diverging in error handling, call patterns, or coverage — SBG V2 is sensitive to these; Jiang & Su and differential testing are not.",
+      "strongest_citation": "v2 PHASE_2_GATE test: 'SAFEGUARD-2: return_value and stdout absent from DynamicGenome' — PASS",
+      "weaknesses": [
+        "The output-free claim is only as strong as the feature audit; coverage-consistency and branch features may correlate with output correctness in simple cases",
+        "Empirical comparison against Jiang & Su on the same benchmark has not been run"
+      ]
+    },
+
+    {
+      "claim_id": "NC-04",
+      "claim": "Formal pseudometric properties (symmetry, self-zero, bounded range) on execution-trace-derived behavioral features, formally specified and test-verified.",
+      "claim_type": "FORMAL_FRAMEWORK",
+      "novelty_status": "INCREMENTAL",
+      "confidence": "MODERATE",
+      "evidence": {
+        "tests": [
+          "distance self-zero: d(g,g) == 0.0 — PASS",
+          "distance symmetry: d(g1,g2) == d(g2,g1) — PASS",
+          "distance range: d in [0,1] — PASS"
+        ],
+        "source": "PHASE_2_GATE.json engine_tests, 19/19 passed"
+      },
+      "prior_art": {
+        "closest": "Walenstein et al. 2007 — informal behavioral distance via trace n-grams",
+        "also": "Christodorescu et al. S&P 2005 — behavioral templates (theorem-prover-based, not pseudometric)",
+        "gap_reference": "Agent 0E GAP-05: behavioral distance as formal concept exists in security literature"
+      },
+      "sbg_delta": "SBG V2 defines and tests formal pseudometric properties on execution-derived features. Prior behavioral fingerprinting works (TTAnalyze, Walenstein) use informal similarity measures without formal properties. The static CPG analogs (Joern, ProGraML) are not pseudometric systems.",
+      "strongest_citation": "PHASE_2_GATE.json: all 3 pseudometric property tests pass; formal properties specified in HYPOTHESES_V2.md",
+      "weaknesses": [
+        "The formal pseudometric claim is challenged by the security literature (Christodorescu 2005, Brumley 2008) which also formally defines behavioral distance",
+        "These prior works (GAP-05) are not currently in the prior art matrix"
+      ]
+    },
+
+    {
+      "claim_id": "NC-05",
+      "claim": "8-dimensional behavioral genome unifying CONTROL, DATA, STATE, RESOURCE, TEMPORAL, ERROR, INTERACTION, EXECUTION into a single normalized behavioral object.",
+      "claim_type": "REPRESENTATION",
+      "novelty_status": "INCREMENTAL",
+      "confidence": "HIGH",
+      "evidence": {
+        "claim_registry": "C001 — SUPPORTED (653 unit tests pass)",
+        "note": "Architecture is functional and tested"
+      },
+      "prior_art": {
+        "closest": "Joern / Code Property Graph (Yamaguchi et al. S&P 2014) — unifies AST+CFG+PDG in single static representation",
+        "also": "ProGraML (Cummins et al. ICML 2021) — unified control/data-flow/call graph representation",
+        "individual_dims": "gcov (g_U), perf (g_R), strace (g_X), Valgrind (g_S), exception logs (g_E) — all standard tools"
+      },
+      "sbg_delta": "Dynamic domain equivalent of Joern's CPG does not exist. SBG extends the unified multi-representation principle from static to dynamic/behavioral domain. Individual dimensions are known; unified dynamic formal object is not.",
+      "strongest_citation": "NOVELTY_ANALYSIS.md Claim S1: 'No prior system defines a single, formally specified behavioral fingerprint that covers all eight behavioral dimensions simultaneously with a unified distance function D'",
+      "weaknesses": [
+        "Attack 3 (NOVELTY_ANALYSIS.md) correctly identifies this as a 'committee of standard metrics'",
+        "C006 NOT SUPPORTED: combining 8 dimensions HURTS performance vs ERROR_only (AUROC 0.349 vs 0.477)",
+        "The architectural unity is not empirically validated as useful — it may be theoretically motivated but practically counterproductive"
+      ]
+    },
+
+    {
+      "claim_id": "NC-06",
+      "claim": "Longitudinal behavioral genome tracking: versioned record of how program behavioral profile evolves across release history.",
+      "claim_type": "SYSTEM_CAPABILITY",
+      "novelty_status": "INCREMENTAL",
+      "confidence": "MODERATE",
+      "evidence": {
+        "claim_registry": "CG-1 from PRIOR_ART_MATRIX.md coverage gaps",
+        "note": "Identified as coverage gap; not yet empirically demonstrated"
+      },
+      "prior_art": {
+        "closest": "APM tools (Datadog, NewRelic, AppDynamics) — collect longitudinal multi-dimensional execution metrics for deployed services",
+        "academic": "No academic system maintains versioned behavioral genome history",
+        "gap_reference": "Agent 0E GAP-07: APM tools collect longitudinal metrics but without formal pseudometric"
+      },
+      "sbg_delta": "APM tools lack: formal pseudometric properties, semantic behavioral distance (not just operational metrics), and longitudinal comparison architecture. SBG's formal distance function is absent from all industrial monitoring tools. However, the longitudinal concept is present in industrial practice.",
+      "strongest_citation": "NOVELTY_ANALYSIS.md Claim S2: 'No prior work defines or implements a versioned, queryable record of how a program behavioral profile evolves across its entire release history'",
+      "weaknesses": [
+        "This is a vision/architecture claim, not an empirically validated system",
+        "APM tools provide partial instantiation in industrial practice",
+        "Not demonstrated on a multi-version benchmark"
+      ]
+    },
+
+    {
+      "claim_id": "NC-07",
+      "claim": "Cross-language behavioral equivalence: hybrid genomes identify equivalent behavior across Python and Java (H11).",
+      "claim_type": "CAPABILITY_CLAIM",
+      "novelty_status": "INCREMENTAL",
+      "confidence": "LOW",
+      "evidence": {
+        "claim_registry": "C008 — NOT_EVALUABLE (v1: N=5 illustrative pairs, not true cross-language)",
+        "v2_status": "H11 NOT_EVALUATED_YET; planned N=15 — explicitly underpowered (~25% power at Bonferroni-corrected alpha)",
+        "note": "Pre-registered as EXPLORATORY in HYPOTHESES_V2.md"
+      },
+      "prior_art": {
+        "closest": "Jiang & Su ISSTA 2009 — I/O-based equivalence detection across language families on OJ dataset",
+        "also": [
+          "CLCDSA (Perez et al.) — static cross-language clone detection",
+          "code2vec cross-language (Buch & Trivedi 2019)",
+          "Tufano et al. — cross-language transfer"
+        ],
+        "gap_reference": "CG-2: all prior cross-language work is static or requires shared IR"
+      },
+      "sbg_delta": "SBG detects equivalence through runtime behavior without shared compilation target. CONTROL, TEMPORAL, EXECUTION dimensions excluded cross-language (OP-4, OP-6 unsolved). Effective cross-language genome is 3–5 of 8 dimensions (g_D, g_X, partial g_C). Delta over static methods: no source code or IR required.",
+      "strongest_citation": "NOVELTY_ANALYSIS.md Claim S4: 'All cross-language similarity work is either static or requires shared IR'",
+      "weaknesses": [
+        "Jiang & Su (2009) perform execution-based equivalence cross-language on OJ dataset — SBG V2 must differentiate",
+        "N=15 in planned H11 is severely underpowered",
+        "3 of 8 dimensions excluded cross-language (OP-4, OP-6 open problems)",
+        "No empirical result yet"
+      ]
+    },
+
+    {
+      "claim_id": "NC-08",
+      "claim": "Holm-Bonferroni framework for behavioral hypothesis testing across H1-H12.",
+      "claim_type": "STATISTICAL_FRAMEWORK",
+      "novelty_status": "NOT_NOVEL",
+      "confidence": "HIGH",
+      "evidence": {
+        "method": "Standard Holm-Bonferroni correction (Holm 1979)",
+        "application": "12-hypothesis family, alpha_familywise=0.05, alpha_per_test=0.0042"
+      },
+      "prior_art": {
+        "closest": "Holm 1979 — original method",
+        "common_use": "Standard practice in empirical software engineering"
+      },
+      "sbg_delta": "No delta — this is standard statistical practice, not a contribution.",
+      "strongest_citation": "N/A",
+      "weaknesses": ["This is good practice, not a novelty claim. Pre-registration + git commit hash as evidence is notable methodological rigor but not a scientific contribution."]
+    }
+  ],
+
+  "missing_citations_critical": [
+    {
+      "work": "McKeeman, W.M. 'Differential Testing for Software.' Digital Technical Journal, 9(1), 1998.",
+      "gap_id": "GAP-01",
+      "severity": "SERIOUS",
+      "reason": "Direct predecessor for execution-comparison mechanism; any reviewer will ask about this first"
+    },
+    {
+      "work": "Chen, T.Y. et al. 'Metamorphic Testing: A Review of Challenges and Opportunities.' ACM CSUR, 51(1), 2018.",
+      "gap_id": "GAP-01",
+      "severity": "HIGH",
+      "reason": "Dominant oracle-free testing paradigm; SBG V2's 'specification-free' claim directly competes"
+    },
+    {
+      "work": "Jiang, L., Su, Z. 'Automatic Mining of Functionally Equivalent Code Fragments via Random Testing.' ISSTA, 2009.",
+      "gap_id": "GAP-02",
+      "severity": "HIGH",
+      "reason": "Most direct prior art for execution-based behavioral equivalence detection; MISSING from matrix"
+    },
+    {
+      "work": "Ramos, D.A., Engler, D. 'Under-Constrained Symbolic Execution.' USENIX Security, 2015.",
+      "gap_id": "GAP-04",
+      "severity": "HIGH",
+      "reason": "Sound symbolic equivalence checking — the benchmark competitor SBG V2 explicitly trades soundness for scalability against"
+    },
+    {
+      "work": "Christodorescu, M. et al. 'Semantics-Aware Malware Detection.' IEEE S&P, 2005.",
+      "gap_id": "GAP-05",
+      "severity": "MEDIUM",
+      "reason": "Independently defines behavioral distance from trace abstraction; affects 'first formal behavioral distance' claim"
+    }
+  ],
+
+  "risks_summary": [
+    {
+      "risk_id": "RISK-01",
+      "description": "Jiang & Su (2009) is the most direct prior art for execution-based behavioral equivalence; its absence leaves a critical hole in the prior art review",
+      "severity": "HIGH",
+      "weakens_claim": "NC-03 (output-free genome), NC-02 (inversion resolution)"
+    },
+    {
+      "risk_id": "RISK-02",
+      "description": "McKeeman (1998) Differential Testing is the canonical execution-comparison prior art and is missing from the matrix",
+      "severity": "SERIOUS",
+      "weakens_claim": "All execution-comparison claims"
+    },
+    {
+      "risk_id": "RISK-03",
+      "description": "AUROC=0.5310 is marginally above chance; practical utility of the inversion resolution is limited",
+      "severity": "MEDIUM",
+      "weakens_claim": "NC-02 (empirical resolution of inversion)"
+    },
+    {
+      "risk_id": "RISK-04",
+      "description": "H8 NOT SUPPORTED — combining static and dynamic features hurts performance; the full genome may be less useful than individual dynamic features alone",
+      "severity": "MEDIUM",
+      "weakens_claim": "NC-05 (8-dimensional genome), NC-04 (multi-dimensional distance)"
+    },
+    {
+      "risk_id": "RISK-05",
+      "description": "C006 NOT SUPPORTED — ERROR_only (0.477) outperforms full 3-dim SBG (0.349); multi-dimensional combination may be counterproductive",
+      "severity": "MEDIUM",
+      "weakens_claim": "NC-05 (8-dimensional genome utility)"
+    },
+    {
+      "risk_id": "RISK-06",
+      "description": "Inversion finding may be benchmark-specific (Python, specific SP/SC operators); has not been replicated on independent benchmark",
+      "severity": "MEDIUM",
+      "weakens_claim": "NC-01 (structural-semantic inversion novelty)"
+    },
+    {
+      "risk_id": "RISK-07",
+      "description": "H11 cross-language: N=15 underpowered (~25% power), 3 of 8 dimensions excluded, no empirical result yet",
+      "severity": "HIGH",
+      "weakens_claim": "NC-07 (cross-language equivalence)"
+    }
+  ],
+
+  "overall_verdict": {
+    "status": "CONDITIONAL_NOVEL",
+    "primary_novel_contribution": "NC-01: Structural-semantic inversion — first quantification and naming of the phenomenon that all structural similarity representations produce inverted signals on refactored code vs. mutated code",
+    "secondary_novel_contribution": "NC-02: First empirical test of whether execution-derived features resolve the inversion (H7+H9 SUPPORTED, pre-registered)",
+    "incremental_contributions": ["NC-03 (output-free genome design)", "NC-04 (formal pseudometric)", "NC-05 (8-dimensional architecture)", "NC-06 (longitudinal tracking)"],
+    "not_novel": ["NC-08 (Holm-Bonferroni)", "Individual genome dimensions (NC-05 components)"],
+    "over_reaching": "NC-07 (cross-language equivalence) — explicitly underpowered, key dimensions excluded, no empirical result",
+    "conditions_for_novel": [
+      "Add McKeeman 1998, Jiang & Su 2009, Chen 1998/2018, Ramos & Engler 2015 to PRIOR_ART_MATRIX.md with explicit deltas",
+      "Frame all contributions relative to the structural-semantic inversion as organizing finding",
+      "Explicitly label H11 as EXPLORATORY in any external communication",
+      "Complete H10, H11, H12 evaluation before claiming final v2 novelty verdict",
+      "Run explicit comparison against Jiang & Su I/O-based clone detection on the same benchmark"
+    ],
+    "conditions_for_marginal": [
+      "If SBG V2 is framed as a generic behavioral similarity system without foregrounding the inversion finding",
+      "If missing prior art citations (GAP-01 through GAP-04) are not addressed"
+    ]
+  },
+
+  "recommended_framing": "The structural-semantic inversion in software behavioral representations: characterization and execution-based resolution. We show that semantics-preserving transforms produce systematically larger structural change than semantics-altering mutations, causing all static and hybrid representations to fail on behavioral equivalence benchmarks. We then demonstrate that execution-derived behavioral features — output-free structural execution profiles — resolve this inversion (AUROC 0.4237→0.5310, inversion delta +0.0335→−0.0453), and identify the output-free design constraint as the key architectural requirement that separates behavioral genome detection from differential testing.",
+
+  "files_produced": [
+    "docs/v2/NOVELTY_AUDIT_V2.md",
+    "artifacts/v2/NOVELTY_AUDIT_V2.json"
+  ]
+}

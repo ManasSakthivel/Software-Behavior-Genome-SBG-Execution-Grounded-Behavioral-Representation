@@ -1,0 +1,20 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PK.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  WS-P   PIC S9(5)V99 COMP-3 VALUE -123.45.
+       01  WS-D   PIC S9(5)V99 VALUE -123.45.
+       01  WS-X   PIC X(4) VALUE "AB1 ".
+       01  WS-R   PIC 9V99 VALUE 0.
+       PROCEDURE DIVISION.
+           DISPLAY "P=" WS-P " D=" WS-D
+           DISPLAY "SIGNED-DISPLAY-BYTES-HEX=" FUNCTION HEX-OF(WS-D)
+           DISPLAY "PACKED-HEX=" FUNCTION HEX-OF(WS-P)
+           COMPUTE WS-R = 10 / 3
+           DISPLAY "R=" WS-R
+           IF WS-X IS NUMERIC
+              DISPLAY "X-NUMERIC"
+           ELSE
+              DISPLAY "X-NOT-NUM"
+           END-IF
+           STOP RUN.

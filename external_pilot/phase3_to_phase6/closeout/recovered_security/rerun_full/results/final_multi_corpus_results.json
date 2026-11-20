@@ -1,0 +1,172 @@
+{
+  "experiment": "SBG_FINAL_MULTI_CORPUS_RESULTS",
+  "version": "final",
+  "timestamp": "2026-09-01T00:00:00Z",
+  "protocol_hash": "fac6bd8e0cffc91b52ed88577637d199ccfda8cfe9200edc487094f7e8e5088b",
+  "tau_star": 0.08,
+  "seed": 42,
+  "parameters_frozen_from": "synthetic_corpus_only",
+
+  "datasets": {
+    "synthetic_python": {
+      "language": "Python",
+      "n_candidates": 38,
+      "n_excluded": 0,
+      "n_evaluated": 38,
+      "n_detected": 24,
+      "detection_rate": 0.6316,
+      "auroc": 0.828947,
+      "auroc_ci_95": [0.75, 0.905405],
+      "binomial_p": 0.072,
+      "zero_shot": false,
+      "projects": 1,
+      "note": "Calibration corpus — used for hyperparameter selection"
+    },
+    "quixbugs_python": {
+      "language": "Python",
+      "n_candidates": 31,
+      "n_excluded": 3,
+      "n_evaluated": 28,
+      "n_detected": 17,
+      "detection_rate": 0.6071,
+      "wilson_ci_95": [0.424, 0.764],
+      "binomial_p": 0.172,
+      "zero_shot": true,
+      "projects": 1,
+      "exclusions": {
+        "E_TIMEOUT": ["bitcount", "find_first_in_sorted", "sqrt"]
+      },
+      "baselines": {
+        "exception_only_rate": 0.214,
+        "baseline_sbg_rate": 0.25
+      }
+    },
+    "quixbugs_java": {
+      "language": "Java",
+      "n_candidates": 40,
+      "n_excluded": 22,
+      "n_evaluated": 18,
+      "n_detected": 6,
+      "detection_rate": 0.3333,
+      "wilson_ci_95": [0.163, 0.563],
+      "binomial_p": 0.9519,
+      "zero_shot": true,
+      "projects": 1,
+      "instrumentation": "method_boundary_TRACE_ENTER_EXIT_stderr",
+      "output_free": true,
+      "exclusion_breakdown": {
+        "E_NODE": 9,
+        "E_COMPLEX_TYPE": 5,
+        "E_COMPILE": 5,
+        "E_TIMEOUT": 3
+      },
+      "transfer_delta_vs_python": -0.274,
+      "representation_note": "Java instrumentation captures method-level events; Python captures line-level events. Loop-count changes observable in Python are NOT observable in Java with this adapter.",
+      "trace_preserving_confirmed": [
+        "BUCKETSORT (wrong_variable — same loop count)",
+        "GET_FACTORS (wrong_return — same call structure)",
+        "HANOI (wrong_variable — same call structure)",
+        "IS_VALID_PARENTHESIZATION (wrong_return — same call structure)",
+        "TO_BASE (wrong_operator — same call structure)"
+      ]
+    },
+    "bugsinpy_real": {
+      "language": "Python",
+      "n_candidates": 502,
+      "n_excluded": 495,
+      "n_evaluated": 7,
+      "n_detected": 6,
+      "detection_rate": 0.8571,
+      "wilson_ci_95": [0.487, 0.974],
+      "binomial_p": 0.062,
+      "zero_shot": true,
+      "projects": 6,
+      "per_project": {
+        "black": {"n": 2, "detected": 2, "rate": 1.0},
+        "keras": {"n": 2, "detected": 2, "rate": 1.0},
+        "spacy": {"n": 1, "detected": 1, "rate": 1.0},
+        "tornado": {"n": 1, "detected": 1, "rate": 1.0},
+        "tqdm": {"n": 1, "detected": 0, "rate": 0.0}
+      },
+      "exclusion_breakdown": {
+        "E01_NO_PATCH": 1,
+        "E03_NO_SOURCE_CHANGE": 1,
+        "E04_MULTI_FILE_PATCH": 90,
+        "E06_NO_FUNCTION_CONTEXT": 254,
+        "E08_NO_COMMIT_IDS": 23,
+        "E10_FRAMEWORK_OBJECT_DEPS": 55,
+        "runtime": 4,
+        "unknown": 67
+      },
+      "mandatory_disclosure": "Evaluable subset (7/502 = 1.4%) is not random — skews toward exception-raising bugs"
+    }
+  },
+
+  "combined_external_python": {
+    "description": "QuixBugs Python + BugsInPy (both external, zero-shot)",
+    "n_bugs": 35,
+    "n_detected": 23,
+    "detection_rate": 0.6571,
+    "binomial_p": 0.0448,
+    "wilson_ci_95": [0.4915, 0.7917],
+    "projects": 7,
+    "zero_shot": true
+  },
+
+  "cross_language": {
+    "python_quixbugs": {"n_eval": 28, "n_det": 17, "rate": 0.6071},
+    "java_quixbugs":   {"n_eval": 18, "n_det": 6,  "rate": 0.3333},
+    "transfer_delta":  -0.274,
+    "interpretation":  "SUBSTANTIAL_LOSS",
+    "explanation": [
+      "Python EEP uses sys.settrace (per-line events) — captures loop iterations, branch selections",
+      "Java EEP uses method-boundary injection — captures method calls but NOT loop iterations",
+      "Bugs that change only return values or iteration count (without changing method call structure) are invisible to Java EEP",
+      "This is an instrumentation-level representation difference, not a failure of the EEP formula"
+    ]
+  },
+
+  "defect_class_summary": {
+    "wrong_condition":   {"n": 14, "detected": 11, "rate": 0.79},
+    "missing_case":      {"n": 6,  "detected": 6,  "rate": 1.00},
+    "wrong_variable":    {"n": 15, "detected": 10, "rate": 0.67},
+    "wrong_recursion":   {"n": 7,  "detected": 6,  "rate": 0.86},
+    "wrong_operator":    {"n": 7,  "detected": 3,  "rate": 0.43},
+    "wrong_return":      {"n": 6,  "detected": 3,  "rate": 0.50},
+    "off_by_one":        {"n": 7,  "detected": 4,  "rate": 0.57},
+    "missing_parameter": {"n": 1,  "detected": 1,  "rate": 1.00}
+  },
+
+  "negative_controls": {
+    "variable_renames": {"n": 6, "fp": 0, "fpr": 0.0},
+    "function_renames": {"n": 3, "fp": 0, "fpr": 0.0},
+    "formatting":       {"n": 3, "fp": 0, "fpr": 0.0},
+    "for_to_while":     {"n": 1, "fp": 1, "fpr": 1.0,
+                         "note": "Known FP: CPython sys.settrace granularity difference"},
+    "total_renames":    {"n": 9, "fp": 0, "fpr": 0.0}
+  },
+
+  "output_free_audit": {
+    "total_checks": 9,
+    "passed": 9,
+    "failed": 0
+  },
+
+  "statistical_summary": {
+    "synthetic_auroc": 0.829,
+    "synthetic_auroc_ci": [0.750, 0.905],
+    "combined_external_p": 0.0448,
+    "note": "Individual dataset p-values > 0.05; combined external p=0.045 is borderline significant"
+  },
+
+  "datasets_investigated": {
+    "synthetic_python":    "INCLUDED",
+    "quixbugs_python":     "INCLUDED",
+    "quixbugs_java":       "INCLUDED",
+    "bugsinpy":            "INCLUDED",
+    "defects4j":           "EXCLUDED - Java adapter not validated",
+    "codeflaws":           "EXCLUDED - No C trace adapter",
+    "runbugrun":           "EXCLUDED - Output-based labels conflict with output-free constraint",
+    "manystubs4j":         "EXCLUDED - Java barrier + label ambiguity"
+  }
+}

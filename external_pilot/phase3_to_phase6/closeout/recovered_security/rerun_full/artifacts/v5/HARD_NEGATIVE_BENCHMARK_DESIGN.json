@@ -1,0 +1,228 @@
+{
+  "benchmark_name": "SBG Hard Negatives v5",
+  "version": "1.0.0",
+  "created": "2025",
+  "purpose": "12 adversarial program pairs engineered to defeat trivial shortcut detectors. Each pair isolates one specific heuristic failure mode.",
+  "total_pairs": 12,
+  "label_distribution": {
+    "EQUIV": 5,
+    "CHANGED": 7
+  },
+  "shortcuts_targeted": [
+    "exception_fraction",
+    "execution_volume",
+    "call_count",
+    "name_similarity",
+    "structural_similarity",
+    "coverage_size",
+    "import_diff"
+  ],
+  "pairs": [
+    {
+      "pair_id": "pair_01_same_exception_different_behavior",
+      "ground_truth": "CHANGED",
+      "shortcut_defeated": "exception_fraction",
+      "mutation_type": "constant_mutation",
+      "mutation_description": "Return value changed from x*2 to x*3 on non-exception path",
+      "shortcut_failure_mode": "exception_fraction shortcut sees identical raise/no-raise ratios and labels EQUIV",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": true,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "raises ValueError on negative, returns x*2 on positive",
+        "variant": "raises ValueError on negative, returns x*3 on positive"
+      }
+    },
+    {
+      "pair_id": "pair_02_same_volume_different_behavior",
+      "ground_truth": "CHANGED",
+      "shortcut_defeated": "execution_volume",
+      "mutation_type": "operator_mutation",
+      "mutation_description": "Loop body changed from sum accumulation to product accumulation",
+      "shortcut_failure_mode": "volume shortcut sees identical iteration count and labels EQUIV",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": true,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "iterates N times, returns sum(1..N)",
+        "variant": "iterates N times, returns product(1..N)"
+      }
+    },
+    {
+      "pair_id": "pair_03_same_call_count_different_order",
+      "ground_truth": "CHANGED",
+      "shortcut_defeated": "call_count",
+      "mutation_type": "ordering_mutation",
+      "mutation_description": "Function call order changed: validate→process→finalize vs process→validate→finalize",
+      "shortcut_failure_mode": "call_count shortcut sees same 3 function calls and labels EQUIV",
+      "expected_exception_fraction_same": false,
+      "expected_call_count_same": true,
+      "expected_volume_same": false,
+      "boundary_inputs_required": true,
+      "programs": {
+        "base": "validate(), process(), finalize() — Nones filtered before processing",
+        "variant": "process(), validate(), finalize() — Nones reach process(), causing TypeError"
+      }
+    },
+    {
+      "pair_id": "pair_04_rename_invariant",
+      "ground_truth": "EQUIV",
+      "shortcut_defeated": "name_similarity",
+      "mutation_type": "rename_only",
+      "mutation_description": "All identifiers renamed; logic unchanged",
+      "shortcut_failure_mode": "name-overlap shortcut sees zero shared tokens and labels CHANGED",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": true,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "compute_sum(items) — sum accumulator",
+        "variant": "calculate_total(collection) — identical accumulation, all names changed"
+      }
+    },
+    {
+      "pair_id": "pair_05_structural_change_same_behavior",
+      "ground_truth": "EQUIV",
+      "shortcut_defeated": "structural_similarity",
+      "mutation_type": "refactoring",
+      "mutation_description": "Monolithic function extracted into 4 helper functions",
+      "shortcut_failure_mode": "AST/structural shortcut sees very different tree shapes and labels CHANGED",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": false,
+      "expected_volume_same": false,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "Single 30-line function: filter, square, sort, sum-top-half",
+        "variant": "_filter_negatives + _square_elements + _sort_ascending + _sum_top_half"
+      }
+    },
+    {
+      "pair_id": "pair_06_constant_mutation",
+      "ground_truth": "CHANGED",
+      "shortcut_defeated": "structural_similarity",
+      "mutation_type": "constant_mutation",
+      "mutation_description": "Binary search 'not found' sentinel changed: return -1 → return len(arr)",
+      "shortcut_failure_mode": "Near-identical AST fools structural similarity; behaviorally diverges on all absent-target inputs",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": false,
+      "boundary_inputs_required": true,
+      "programs": {
+        "base": "binary_search returns -1 when target not found",
+        "variant": "binary_search returns len(arr) when target not found"
+      }
+    },
+    {
+      "pair_id": "pair_07_dead_code_insertion",
+      "ground_truth": "EQUIV",
+      "shortcut_defeated": "coverage_size",
+      "mutation_type": "dead_code_insertion",
+      "mutation_description": "Unreachable `if False:` block inserted; never executes",
+      "shortcut_failure_mode": "Coverage/line-count shortcut sees more branches in variant and labels CHANGED",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": true,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "Clean iterative Fibonacci",
+        "variant": "Same Fibonacci with `if False: return n*999` dead branch"
+      }
+    },
+    {
+      "pair_id": "pair_08_wrong_variable",
+      "ground_truth": "CHANGED",
+      "shortcut_defeated": "structural_similarity",
+      "mutation_type": "variable_mutation",
+      "mutation_description": "RHS of swap changed from lst[j] to lst[i] — identity assignment, no swap occurs",
+      "shortcut_failure_mode": "1-character difference; structural similarity ~1.0; behaviorally a no-op",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": true,
+      "boundary_inputs_required": true,
+      "programs": {
+        "base": "lst[i], lst[j] = lst[j], lst[i]  (correct swap)",
+        "variant": "lst[i], lst[j] = lst[i], lst[j]  (identity, no-op)"
+      }
+    },
+    {
+      "pair_id": "pair_09_operator_mutation",
+      "ground_truth": "CHANGED",
+      "shortcut_defeated": "structural_similarity",
+      "mutation_type": "operator_mutation",
+      "mutation_description": "Comparison operator changed from >= to >",
+      "shortcut_failure_mode": "Single-token difference; all inputs except age=18 agree; structural similarity 0.99+",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": true,
+      "boundary_inputs_required": true,
+      "programs": {
+        "base": "return age >= 18",
+        "variant": "return age > 18"
+      }
+    },
+    {
+      "pair_id": "pair_10_exception_same_behavior",
+      "ground_truth": "EQUIV",
+      "shortcut_defeated": "exception_fraction",
+      "mutation_type": "control_flow_refactoring",
+      "mutation_description": "try/except replaced by isinstance guard; identical behavior, zero exceptions raised",
+      "shortcut_failure_mode": "exception_fraction(base) > 0 vs exception_fraction(variant) = 0; shortcut labels CHANGED",
+      "expected_exception_fraction_same": false,
+      "expected_call_count_same": true,
+      "expected_volume_same": false,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "try: return int(value) except: return 0",
+        "variant": "if isinstance(value, ...): return int(value) else: return 0"
+      }
+    },
+    {
+      "pair_id": "pair_11_loop_boundary",
+      "ground_truth": "CHANGED",
+      "shortcut_defeated": "execution_volume",
+      "mutation_type": "constant_mutation",
+      "mutation_description": "Loop bound changed from range(n) to range(n+1) — off-by-one",
+      "shortcut_failure_mode": "Per-iteration logic identical; volume shortcut normalized by n may miss the extra iteration",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": false,
+      "expected_volume_same": false,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "for i in range(n): results.append(i*i)",
+        "variant": "for i in range(n+1): results.append(i*i)"
+      }
+    },
+    {
+      "pair_id": "pair_12_data_structure_equivalent",
+      "ground_truth": "EQUIV",
+      "shortcut_defeated": "import_diff",
+      "mutation_type": "data_structure_substitution",
+      "mutation_description": "Internal list replaced with collections.deque; interface and behavior identical",
+      "shortcut_failure_mode": "import_diff shortcut sees new `from collections import deque` and labels CHANGED",
+      "expected_exception_fraction_same": true,
+      "expected_call_count_same": true,
+      "expected_volume_same": true,
+      "boundary_inputs_required": false,
+      "programs": {
+        "base": "Stack backed by list",
+        "variant": "Stack backed by collections.deque"
+      }
+    }
+  ],
+  "oracle": {
+    "path": "benchmark/v5/hard_negatives/oracle.py",
+    "method": "behavioral_comparison",
+    "description": "Executes both programs on TEST_INPUTS, compares return values, then reports which shortcut detectors get each pair right/wrong."
+  },
+  "shortcut_detector_definitions": {
+    "exception_fraction": "Fraction of test outputs that are exception strings. Two programs are labeled EQUIV if their fractions are within 0.01.",
+    "execution_volume": "Sum of output lengths across all test inputs as proxy for total loop iterations.",
+    "call_count": "Number of top-level function definitions in source as proxy for call complexity.",
+    "name_similarity": "Token overlap between source identifiers (not implemented in oracle; conceptual).",
+    "structural_similarity": "AST edit distance or token sequence similarity (not implemented in oracle; conceptual).",
+    "coverage_size": "Total number of executable lines / branches in source (not implemented in oracle; conceptual).",
+    "import_diff": "Presence of new import statements in variant not present in base (not implemented in oracle; conceptual)."
+  }
+}

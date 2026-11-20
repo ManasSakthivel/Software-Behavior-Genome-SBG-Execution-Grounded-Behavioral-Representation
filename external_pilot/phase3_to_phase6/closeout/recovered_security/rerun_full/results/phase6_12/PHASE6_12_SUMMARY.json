@@ -1,0 +1,85 @@
+{
+  "experiment": "PHASE6_12_ANALYSIS",
+  "version": "v5_phase6_12",
+  "timestamp": "2025",
+  "output_files": [
+    "CROSS_PROJECT.json",
+    "BASELINE_COMPARISON.json",
+    "INCREMENTAL_VALUE_ANALYSIS.json",
+    "HARD_NEGATIVES.json",
+    "FAILURE_ANALYSIS.json",
+    "ROBUSTNESS_RESULTS.json",
+    "STATISTICAL_ANALYSIS.json"
+  ],
+  "headline_metrics": {
+    "sbg_v5_test_auroc": 0.551,
+    "exception_fraction_auroc": 0.593,
+    "static_only_auroc": 0.349,
+    "dev_auroc_below_chance": 0.488,
+    "regression_detection_rate_output_free": "3/15 = 20.0%",
+    "regression_detection_rate_n40": "5/38 = 13.2%",
+    "sc3_detection_canonical": "7.5%",
+    "sc3_detection_input_guided": "24.0%",
+    "hard_negative_oracle_correct": "12/12",
+    "hard_negative_exception_fraction_correct": "5/12"
+  },
+  "hypothesis_summary": {
+    "total_hypotheses": 12,
+    "supported": [
+      "H7",
+      "H9"
+    ],
+    "partially_supported": [
+      "H5",
+      "H12"
+    ],
+    "not_supported": [
+      "H1",
+      "H2",
+      "H3",
+      "H6",
+      "H8",
+      "H10"
+    ],
+    "insufficient_evidence": [
+      "H4",
+      "H11"
+    ]
+  },
+  "key_negative_findings": [
+    "SBG V5 AUROC=0.551 < exception_fraction AUROC=0.593 \u2014 primary claim NOT supported",
+    "DEV AUROC=0.488 below chance \u2014 generalization concern",
+    "Output-free regression detection = 13.2% on N=40 corpus (far below chance 50%)",
+    "Silent bugs: SBG detects 0/8; these bugs change values not exceptions/volume",
+    "Multi-dimensional genome adds NEGATIVE incremental value vs best single feature",
+    "SC-3 detection with canonical inputs = 7.5% (catastrophically low)",
+    "Only 2/12 hypotheses survive Holm-Bonferroni correction"
+  ],
+  "key_positive_findings": [
+    "H7 SUPPORTED: Dynamic features >> Static (AUROC 0.551 vs 0.349; \u0394=+0.202, p<0.001)",
+    "H9 SUPPORTED: Execution resolves structural-semantic inversion (p<0.001)",
+    "V5 identity normalization improves DEV AUROC by +0.100 (0.488 \u2192 0.588)",
+    "Hard negative oracle: 12/12 correct while exception_fraction misses 7/12",
+    "Input-guided SC-3 detection: 24.0% (+220% relative vs canonical 7.5%)",
+    "SBG above noise floor on test split: permutation p=0.01"
+  ],
+  "phase_outputs": {
+    "CROSS_PROJECT.json": "Phase 6 \u2014 Split consistency analysis; cross-project evaluation impossible with current corpus",
+    "BASELINE_COMPARISON.json": "Phase 7 \u2014 Full baseline table; SBG loses to exception_fraction",
+    "INCREMENTAL_VALUE_ANALYSIS.json": "Phase 8 \u2014 Holm-Bonferroni corrected incremental analysis; full model adds -0.043 AUROC",
+    "HARD_NEGATIVES.json": "Phase 9 \u2014 Hard negative benchmark; oracle 12/12 correct but output-free predictor unmeasured",
+    "FAILURE_ANALYSIS.json": "Phase 10 \u2014 Bug-type failure analysis; value-changing bugs invisible to exception+volume features",
+    "ROBUSTNESS_RESULTS.json": "Phase 11 \u2014 Robustness across transforms; dead code and formatting robust; SC-3 weak",
+    "STATISTICAL_ANALYSIS.json": "Phase 12 \u2014 5 statistical tests; only H7/H9 survive correction",
+    "PHASE6_12_SUMMARY.json": "Master summary of all phase 6-12 findings"
+  },
+  "recommended_reframing": "The paper's strongest contributions are: (1) NEGATIVE RESULT: exception-volume shortcuts dominate behavioral genome on synthetic SC/SP benchmarks. (2) POSITIVE RESULT: H7/H9 \u2014 dynamic execution information is valuable; execution resolves structural inversion. (3) HARD NEGATIVE BENCHMARK: conditions where behavioral comparison works and shortcuts fail. (4) BENCHMARK CORPUS: 3,577-pair SC/SP benchmark with honest methodology.",
+  "recommended_venue": "MSR_PRIMARY, ISSTA_SECONDARY",
+  "minimum_for_publication": [
+    "Expand test corpus to 50+ programs",
+    "Add Piech 2015 and Sumner 2011 to prior art",
+    "Fix reproduction check failures",
+    "Run output-free SBG on hard-negative pairs (RQ6)",
+    "Fine-tune supervised baseline (LR on exception_fraction)"
+  ]
+}

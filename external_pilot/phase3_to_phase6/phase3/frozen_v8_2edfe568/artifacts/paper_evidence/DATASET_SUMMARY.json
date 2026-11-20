@@ -1,0 +1,529 @@
+{
+  "generated_by": "experiments/final/build_paper_evidence.py",
+  "datasets": {
+    "v6": {
+      "dataset_dir": "benchmark/datasets/v6",
+      "splits": {
+        "train": {
+          "n_pairs": 1129,
+          "n_unique_pair_ids": 1129,
+          "n_programs": 28,
+          "n_changed": 570,
+          "n_equivalent": 559,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 559,
+            "CHANGED": 570
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-13",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SC-7",
+            "SC-8",
+            "SP-1",
+            "SP-11",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-7",
+            "SP-8",
+            "SP-9"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_train.jsonl",
+            "sha256": "e5259734572414ea78410662190b0d17b9d67ba3e5c31c75c135187c39c0dff9"
+          }
+        },
+        "dev": {
+          "n_pairs": 372,
+          "n_unique_pair_ids": 372,
+          "n_programs": 10,
+          "n_changed": 159,
+          "n_equivalent": 213,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 213,
+            "CHANGED": 159
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-12",
+            "SC-13",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SC-8",
+            "SP-1",
+            "SP-11",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-7",
+            "SP-8",
+            "SP-9"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_dev.jsonl",
+            "sha256": "f58b92256d648e6e5e6fe23547b32084cfe89808133d00528d79a9eb538fdbdd"
+          }
+        },
+        "val": {
+          "n_pairs": 351,
+          "n_unique_pair_ids": 351,
+          "n_programs": 9,
+          "n_changed": 169,
+          "n_equivalent": 182,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 182,
+            "CHANGED": 169
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-13",
+            "SC-14",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SP-1",
+            "SP-11",
+            "SP-12",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-7",
+            "SP-8",
+            "SP-9"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_val.jsonl",
+            "sha256": "b100e5d109326d5beacfbebfedbd8b13d3f9c59095293ed61b586263708081d3"
+          }
+        },
+        "test": {
+          "n_pairs": 488,
+          "n_unique_pair_ids": 488,
+          "n_programs": 13,
+          "n_changed": 246,
+          "n_equivalent": 242,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 242,
+            "CHANGED": 246
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-13",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SC-7",
+            "SC-8",
+            "SP-1",
+            "SP-11",
+            "SP-12",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-7",
+            "SP-8",
+            "SP-9"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v6/pairs_test.jsonl",
+            "sha256": "ada35810bd783fe194e86ebda29f1bd729ad3a396c772d4a0406b1d532c2b396"
+          }
+        }
+      },
+      "total_pairs": 2340,
+      "total_programs": 60,
+      "program_overlap_between_splits": {},
+      "program_disjointness_check": "PASS",
+      "pair_id_global_uniqueness_check": "PASS",
+      "missing_referenced_files": 0
+    },
+    "v8": {
+      "dataset_dir": "benchmark/datasets/v8",
+      "splits": {
+        "train": {
+          "n_pairs": 2057,
+          "n_unique_pair_ids": 2057,
+          "n_programs": 49,
+          "n_changed": 1167,
+          "n_equivalent": 890,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 890,
+            "CHANGED": 1167
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-12",
+            "SC-13",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SC-8",
+            "SP-1",
+            "SP-11",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-8",
+            "SP-9"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_train.jsonl",
+            "sha256": "17866e93b0f165d87808bc595a8dde378da8432b32ff672c68fe8f7922c9782c"
+          }
+        },
+        "dev": {
+          "n_pairs": 597,
+          "n_unique_pair_ids": 597,
+          "n_programs": 14,
+          "n_changed": 348,
+          "n_equivalent": 249,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 249,
+            "CHANGED": 348
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-13",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SC-8",
+            "SP-1",
+            "SP-11",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-8"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_dev.jsonl",
+            "sha256": "8dda7f573765e0c5eaf7a5969212a2e5a500cbd3c7752c662ef209ce35826928"
+          }
+        },
+        "val": {
+          "n_pairs": 461,
+          "n_unique_pair_ids": 461,
+          "n_programs": 11,
+          "n_changed": 243,
+          "n_equivalent": 218,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 218,
+            "CHANGED": 243
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-13",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SC-8",
+            "SP-1",
+            "SP-11",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-8"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_val.jsonl",
+            "sha256": "aa545bd1a86b6a452a65134769197f2f2c95e2bab26a9d46dcd46cac956e1366"
+          }
+        },
+        "test": {
+          "n_pairs": 1130,
+          "n_unique_pair_ids": 1130,
+          "n_programs": 26,
+          "n_changed": 648,
+          "n_equivalent": 482,
+          "semantic_relation_counts": {
+            "EQUIVALENT": 482,
+            "CHANGED": 648
+          },
+          "transformation_types": [
+            "SC-1",
+            "SC-10",
+            "SC-11",
+            "SC-13",
+            "SC-2",
+            "SC-3",
+            "SC-4",
+            "SC-5",
+            "SC-6",
+            "SC-8",
+            "SP-1",
+            "SP-11",
+            "SP-2",
+            "SP-3",
+            "SP-4",
+            "SP-5",
+            "SP-6",
+            "SP-8"
+          ],
+          "pair_file": {
+            "path": "benchmark/datasets/v8/pairs_test.jsonl",
+            "sha256": "124c870364bc998b3ea3c24f3b23f994006d07619fadea36ee5e82b276813e83"
+          }
+        }
+      },
+      "total_pairs": 4245,
+      "total_programs": 100,
+      "program_overlap_between_splits": {},
+      "program_disjointness_check": "PASS",
+      "pair_id_global_uniqueness_check": "PASS",
+      "missing_referenced_files": 0
+    }
+  },
+  "v6_v8_program_overlap": [],
+  "v6_v8_program_disjointness_check": "PASS",
+  "scored_runs": {
+    "v6train_v7": {
+      "dataset": "v6",
+      "split": "train",
+      "protocol": "output_free_v7",
+      "role": "weight-fitting TRAIN split (in-sample for learned weights)",
+      "status": "complete",
+      "n_pairs_scored_rows": 1129,
+      "n_evaluated": 1090,
+      "n_changed_evaluated": 531,
+      "n_equivalent_evaluated": 559,
+      "n_programs_in_pairs": 28,
+      "n_programs_evaluated": 28,
+      "failure_ledger": {
+        "variant:import_error": 15,
+        "variant:nonterminating": 24
+      },
+      "programs_file_n_programs_incl_variants": 133,
+      "programs_file_n_ok": 129,
+      "wall_time_s_recorded": 862.7,
+      "sources": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6train_output_free_v7.jsonl",
+          "sha256": "ebbc7a411180017720ffc6435589e3ae042d78c0865365916a779af5bae4a6f5"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v6train_output_free_v7.json",
+          "sha256": "fd076c7b87be4d3e03ea0ef09ee8d48e8961c3a064887d64e55e7bda618ef600"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6train_output_free_v7.json",
+          "sha256": "f0d575210d8087501b9facd0e12e52bf1eab70b6d6548cc70fb9754c77c7fc62"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+          "sha256": "4360b99f942a7f30b3165c4a7197717dbb11c234dc68e7a9a4ad366df49fb347"
+        }
+      }
+    },
+    "v6dev_v7": {
+      "dataset": "v6",
+      "split": "dev",
+      "protocol": "output_free_v7",
+      "role": "DEV split: tau* derived here, weight model selected here",
+      "status": "complete (frozen 2026-09-28; not byte-reproducible under current code, see DATA_VALIDATION.md)",
+      "n_pairs_scored_rows": 372,
+      "n_evaluated": 345,
+      "n_changed_evaluated": 156,
+      "n_equivalent_evaluated": 189,
+      "n_programs_in_pairs": 10,
+      "n_programs_evaluated": 9,
+      "failure_ledger": {
+        "base:unsupported_signature": 27
+      },
+      "programs_file_n_programs_incl_variants": 382,
+      "programs_file_n_ok": 356,
+      "wall_time_s_recorded": 78.5,
+      "sources": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6dev_output_free_v7.jsonl",
+          "sha256": "64deffbc0c0839a4bd0d825e9e59154b33d7ae98944f2b7f5bec3b91903e0ee6"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v6dev_output_free_v7.json",
+          "sha256": "0398439cf1fddba0dfa97efb116aa60408c16bae8efc1528a096d6415dca6ef6"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6dev_output_free_v7.json",
+          "sha256": "17ceb9a278d2d5bdb545b0294dac2d10fc50cea892ccda04c3556360d170d567"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7.json",
+          "sha256": "4360b99f942a7f30b3165c4a7197717dbb11c234dc68e7a9a4ad366df49fb347"
+        }
+      }
+    },
+    "v8dev_v8_rescore": {
+      "dataset": "v8",
+      "split": "dev",
+      "protocol": "output_free_v8",
+      "role": "fresh-program DEV split of the CURRENT v8 dataset, re-scored 2026-10-28 (not used for tau*/weights)",
+      "status": "complete; exploratory (v8 TEST not evaluated)",
+      "n_pairs_scored_rows": 597,
+      "n_evaluated": 593,
+      "n_changed_evaluated": 344,
+      "n_equivalent_evaluated": 249,
+      "n_programs_in_pairs": 14,
+      "n_programs_evaluated": 14,
+      "failure_ledger": {
+        "variant:import_error": 2,
+        "variant:unsupported_signature": 2
+      },
+      "programs_file_n_programs_incl_variants": 611,
+      "programs_file_n_ok": 607,
+      "wall_time_s_recorded": 24.1,
+      "sources": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v8devrescore_output_free_v8.jsonl",
+          "sha256": "86ff18771d3563c4fede04d6f437fdd024791f2838ce19579ea7a6b1bae50f81"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v8devrescore_output_free_v8.json",
+          "sha256": "8e85513e7bee753c4a9cf464cb4893261322ee22e3ee8ece929d9916f8c363dd"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v8devrescore_output_free_v8.json",
+          "sha256": "95058e7901d6e79adff497fcf867472b855730e667db861a2621f49d4d8ebb7c"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V7ENTRY_ON_V8.json",
+          "sha256": "06840ff1c178a86acb0414e8a0abf99839e4208dfcb48c75a1c6ac2eee2792a1"
+        }
+      }
+    },
+    "v6test_v6": {
+      "dataset": "v6",
+      "split": "test",
+      "protocol": "output_free_v6",
+      "role": "OBSERVED (not held-out) v6 test, historical protocol v6, committed before this session",
+      "status": "historical; exploratory; NOT rerun",
+      "n_pairs_scored_rows": 488,
+      "n_evaluated": 259,
+      "n_changed_evaluated": 121,
+      "n_equivalent_evaluated": 138,
+      "n_programs_in_pairs": 13,
+      "n_programs_evaluated": 7,
+      "failure_ledger": {
+        "base:unsupported_signature": 218,
+        "variant:import_error": 4,
+        "variant:nonterminating": 3,
+        "variant:unsupported_signature": 4
+      },
+      "programs_file_n_programs_incl_variants": 501,
+      "programs_file_n_ok": 276,
+      "wall_time_s_recorded": 941.2,
+      "sources": {
+        "pairs": {
+          "path": "artifacts/final/pairs_v6test_output_free_v6.jsonl",
+          "sha256": "2f811d19e274dab1fd2195de1a2667456912ad4aa4152ff69c55daae26fdcad8"
+        },
+        "programs": {
+          "path": "artifacts/final/programs_v6test_output_free_v6.json",
+          "sha256": "a9ccae22062d6f876f7fa55a5ea8091b56b3027f3732ee4bd38cf0f9afc09868"
+        },
+        "main_evaluation": {
+          "path": "artifacts/final/MAIN_EVALUATION_v6test_output_free_v6.json",
+          "sha256": "828cdad5c2a495d3700c5b89abee63ae74b21c8a7faacf5503a12a01945a0bb9"
+        },
+        "validity_audit": {
+          "path": "artifacts/final/BENCHMARK_VALIDITY_AUDIT_V6.json",
+          "sha256": "3cc9595133de4e7dd81fe78fcdb659b79b59326bc7ea633768134c39daa5a992"
+        }
+      }
+    }
+  },
+  "external_corpora": {
+    "quixbugs_output_free_v7": {
+      "pairs_total": 152,
+      "pairs_evaluated": 152,
+      "n_changed": 40,
+      "n_equivalent": 112,
+      "sbg_v5_auroc": 0.387723,
+      "ci95": null,
+      "note": "CI not computed in source artifact; produced pre-freeze; BELOW CHANCE",
+      "source": {
+        "path": "artifacts/final/QUIXBUGS_output_free_v7.json",
+        "sha256": "82bbc79a9de2caa8fa9cd849485d22fc5f396e2cb1fc45119982960290009f93"
+      }
+    },
+    "bugsinpy_output_free_v7": {
+      "protocol": "output_free_v7",
+      "bugs_total": 501,
+      "bugs_with_eligible_unit": 51,
+      "units_eligible": 55,
+      "pairs_total": 200,
+      "pairs_evaluable": 147,
+      "pairs_valid": 147,
+      "bugs_evaluated_with_valid_positive": 39,
+      "sbg_v5_auroc_valid": 0.409917,
+      "sbg_v5_ci_valid": [
+        0.326232,
+        0.493946
+      ],
+      "tau_metrics_computed": true,
+      "source": {
+        "path": "artifacts/final/BUGSINPY_output_free_v7.json",
+        "sha256": "9c1d73998d4ce792fe9056997c3adc6fe6905068e2f11134983e70cf829cb493"
+      }
+    }
+  },
+  "integrity_checks": {
+    "forbidden_test_artifacts_present": [],
+    "learned_scores_present_in_scored_files": {
+      "v6train_v7": 0,
+      "v6dev_v7": 0,
+      "v8dev_v8_rescore": 0,
+      "v6test_v6": 0
+    },
+    "v6train_scored_ids_equal_dataset_ids": {
+      "v6train_v7": true,
+      "v6dev_v7": true,
+      "v8dev_v8_rescore": true,
+      "v6test_v6": true
+    }
+  }
+}

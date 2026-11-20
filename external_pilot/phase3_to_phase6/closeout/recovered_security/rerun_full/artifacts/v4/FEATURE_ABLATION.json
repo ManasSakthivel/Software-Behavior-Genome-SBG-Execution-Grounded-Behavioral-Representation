@@ -1,0 +1,240 @@
+{
+  "experiment": "PHASE8_FEATURE_ABLATION",
+  "version": "v4",
+  "n_test_pairs": 744,
+  "full_model_auroc": 0.549857,
+  "ablation_results": {
+    "full_model": {
+      "auroc": 0.549857,
+      "auroc_ci": [
+        0.50302,
+        0.595955
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.2,
+        "W_seq": 0.25,
+        "W_freq": 0.2,
+        "W_exc": 0.1,
+        "W_dep": 0.1,
+        "W_con": 0.05,
+        "W_inp": 0.05,
+        "W_exc2": 0.05
+      },
+      "delta_vs_full": 0.0,
+      "matters": false
+    },
+    "no_call_bigrams": {
+      "auroc": 0.551483,
+      "auroc_ci": [
+        0.503453,
+        0.598228
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.25,
+        "W_seq": 0.0,
+        "W_freq": 0.28,
+        "W_exc": 0.15,
+        "W_dep": 0.15,
+        "W_con": 0.07,
+        "W_inp": 0.05,
+        "W_exc2": 0.05
+      },
+      "delta_vs_full": 0.001626,
+      "matters": false
+    },
+    "no_input_sensitivity": {
+      "auroc": 0.550379,
+      "auroc_ci": [
+        0.504184,
+        0.596769
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.21,
+        "W_seq": 0.26,
+        "W_freq": 0.21,
+        "W_exc": 0.11,
+        "W_dep": 0.11,
+        "W_con": 0.05,
+        "W_inp": 0.0,
+        "W_exc2": 0.05
+      },
+      "delta_vs_full": 0.000522,
+      "matters": false
+    },
+    "no_exc_causality": {
+      "auroc": 0.548889,
+      "auroc_ci": [
+        0.502222,
+        0.593582
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.21,
+        "W_seq": 0.26,
+        "W_freq": 0.21,
+        "W_exc": 0.11,
+        "W_dep": 0.1,
+        "W_con": 0.06,
+        "W_inp": 0.05,
+        "W_exc2": 0.0
+      },
+      "delta_vs_full": -0.000968,
+      "matters": false
+    },
+    "no_all_v3_features": {
+      "auroc": 0.548531,
+      "auroc_ci": [
+        0.504284,
+        0.594598
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.375,
+        "W_seq": 0.0,
+        "W_freq": 0.375,
+        "W_exc": 0.15,
+        "W_dep": 0.1,
+        "W_con": 0.0,
+        "W_inp": 0.0,
+        "W_exc2": 0.0
+      },
+      "delta_vs_full": -0.001326,
+      "matters": false
+    },
+    "no_coverage": {
+      "auroc": 0.560113,
+      "auroc_ci": [
+        0.522962,
+        0.603188
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.0,
+        "W_seq": 0.3,
+        "W_freq": 0.25,
+        "W_exc": 0.15,
+        "W_dep": 0.12,
+        "W_con": 0.06,
+        "W_inp": 0.07,
+        "W_exc2": 0.05
+      },
+      "delta_vs_full": 0.010256,
+      "matters": true
+    },
+    "no_call_freq": {
+      "auroc": 0.549382,
+      "auroc_ci": [
+        0.502289,
+        0.594476
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.27,
+        "W_seq": 0.33,
+        "W_freq": 0.0,
+        "W_exc": 0.13,
+        "W_dep": 0.13,
+        "W_con": 0.07,
+        "W_inp": 0.07,
+        "W_exc2": 0.0
+      },
+      "delta_vs_full": -0.000475,
+      "matters": false
+    },
+    "only_call_bigrams": {
+      "auroc": 0.544654,
+      "auroc_ci": [
+        0.508942,
+        0.586307
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.0,
+        "W_seq": 1.0,
+        "W_freq": 0.0,
+        "W_exc": 0.0,
+        "W_dep": 0.0,
+        "W_con": 0.0,
+        "W_inp": 0.0,
+        "W_exc2": 0.0
+      },
+      "delta_vs_full": -0.005203,
+      "matters": false
+    },
+    "only_coverage": {
+      "auroc": 0.538473,
+      "auroc_ci": [
+        0.495875,
+        0.582223
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 1.0,
+        "W_seq": 0.0,
+        "W_freq": 0.0,
+        "W_exc": 0.0,
+        "W_dep": 0.0,
+        "W_con": 0.0,
+        "W_inp": 0.0,
+        "W_exc2": 0.0
+      },
+      "delta_vs_full": -0.011384,
+      "matters": true
+    },
+    "only_volume": {
+      "auroc": 0.534688,
+      "auroc_ci": [
+        0.495614,
+        0.576221
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.5,
+        "W_seq": 0.0,
+        "W_freq": 0.5,
+        "W_exc": 0.0,
+        "W_dep": 0.0,
+        "W_con": 0.0,
+        "W_inp": 0.0,
+        "W_exc2": 0.0
+      },
+      "delta_vs_full": -0.015169,
+      "matters": true
+    },
+    "only_exception": {
+      "auroc": 0.592947,
+      "auroc_ci": [
+        0.547682,
+        0.639613
+      ],
+      "n_valid": 643,
+      "weights": {
+        "W_cov": 0.0,
+        "W_seq": 0.0,
+        "W_freq": 0.0,
+        "W_exc": 1.0,
+        "W_dep": 0.0,
+        "W_con": 0.0,
+        "W_inp": 0.0,
+        "W_exc2": 0.0
+      },
+      "delta_vs_full": 0.04309,
+      "matters": true
+    }
+  },
+  "important_features": [
+    "no_coverage",
+    "only_coverage",
+    "only_volume",
+    "only_exception"
+  ],
+  "criterion": "Feature matters if |AUROC_ablated - AUROC_full| >= 0.01",
+  "methodology": {
+    "ablation_method": "Set feature weights to 0, normalize remaining weights to sum=1",
+    "auroc": "WMW tie-aware",
+    "bootstrap": "cluster-by-base-program, 300 resamples"
+  }
+}

@@ -1,0 +1,8 @@
+benchmark,language,n_pairs,clusters,raw_sbg_auroc,raw_state_auroc,lr_conv_auroc,lr_sbg_auroc,lr_full_auroc,rf_conv_auroc,rf_full_auroc,delta_lr,delta_rf,empirical_finding
+Synthetic V10,Python,638,19,0.8968,0.9171,0.7908,0.8968,0.7971,0.9552,0.9566,+0.0063,+0.0014,"Confirmed: Incremental predictive value is small (+0.0063 in LR, +0.0014 in RF) over execution statistics and edit size."
+QuixBugs (Repaired Native All),Python,152,40,0.4562,0.6237,0.6467,0.8336,0.8654,0.8301,0.9083,+0.2188,+0.0782,"Confirmed: Significant incremental value (+0.2188 in LR, +0.0782 in RF) on clean native execution."
+QuixBugs (Repaired Native ex-SP2),Python,112,40,0.4826,0.5785,0.6844,0.7687,0.8003,0.7503,0.8851,+0.1160,+0.1348,Confirmed: Positive incremental value remains significant after excluding variable-rename SP-2 variants.
+SeqCoBench (e<=2),Python,1364,486,0.612,0.635,0.824,0.635,0.831,0.824,0.831,+0.0070,+0.0070,"Confirmed: Static token bag reaches AUROC=0.8240, leaving small incremental window (+0.0070)."
+BugsInPy,Python,147,39,0.4099,0.441,0.497,0.441,0.497,0.915,0.915,-0.0000,-0.0000,Confirmed: Representation failure due to unactivated dummy inputs (34/47 bases raise on input); format heuristic shortcut reaches 0.9150.
+Bugs.jar,Java,24,6,1.0,1.0,1.0,1.0,1.0,1.0,1.0,+0.0000,+0.0000,"Confirmed: Edit baseline achieves ceiling (AUROC=1.0000), leaving zero headroom for incremental signal."
+Codeflaws,C,36,12,0.7083,1.0,1.0,1.0,1.0,1.0,1.0,+0.0000,+0.0000,Confirmed: State distance achieves 1.0000; edit baseline achieves 1.0000; delta is +0.0000.

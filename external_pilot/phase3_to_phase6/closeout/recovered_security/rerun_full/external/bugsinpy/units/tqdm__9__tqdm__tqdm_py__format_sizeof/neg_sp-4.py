@@ -1,0 +1,12 @@
+from __future__ import division, absolute_import
+
+def format_sizeof(num, suffix=''):
+    for unit in ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z']:
+        if abs(num) < 999.95:
+            if abs(num) < 99.95:
+                if abs(num) < 9.995:
+                    return '{0:1.2f}'.format(num) + unit + suffix
+                return '{0:2.1f}'.format(num) + unit + suffix
+            return '{0:3.0f}'.format(num) + unit + suffix
+        num /= 1000.0
+    return '{0:3.1f}Y'.format(num) + suffix

@@ -1,0 +1,149 @@
+experiments:
+  - id: EXP-B01
+    name: TOKEN_TFIDF
+    baseline: B1
+    hypothesis: H2
+    description: "Token-level TF-IDF cosine similarity"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B01/
+    status: COMPLETE
+    test_f1: 0.5843
+    test_auroc: 0.4043
+
+  - id: EXP-B02
+    name: AST_SIMILARITY
+    baseline: B2
+    hypothesis: H2
+    description: "Normalized AST sequence edit-distance similarity"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: ast_sequence_similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B02/
+    status: COMPLETE
+    test_f1: 0.6595
+    test_auroc: 0.5528
+
+  - id: EXP-B03
+    name: CFG_SIMILARITY
+    baseline: B3
+    hypothesis: H2
+    description: "Static CFG structure similarity (node distribution + edge type)"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: cfg_structure_similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B03/
+    status: COMPLETE
+    test_f1: 0.6595
+    test_auroc: 0.4613
+
+  - id: EXP-B04
+    name: DEPENDENCY_APPROXIMATION
+    baseline: B4
+    hypothesis: H2
+    description: "Static use-def approximation (NOT full PDG)"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: dep_combined_similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B04/
+    status: COMPLETE
+    test_f1: 0.6595
+    test_auroc: 0.3993
+    limitation: "Use-def approximation, not full PDG"
+
+  - id: EXP-B05
+    name: EMBEDDING_FALLBACK
+    baseline: B5
+    hypothesis: H2
+    description: "Subword n-gram TF-IDF fallback (CodeBERT not available)"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: embedding_cosine_similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B05/
+    status: COMPLETE
+    test_f1: 0.5460
+    test_auroc: 0.3694
+    fallback: true
+    fallback_reason: "torch/transformers unavailable; subword n-gram TF-IDF used instead"
+
+  - id: EXP-B06
+    name: DYNAMIC_TRACE
+    baseline: B6
+    hypothesis: H2
+    description: "Flat dynamic trace features (call bigrams, coverage, return types, exception rate)"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: trace_similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B06/
+    status: COMPLETE
+    test_f1: 0.6595
+    test_auroc: 0.5046
+
+  - id: EXP-B07
+    name: STATIC_SBG
+    baseline: B7
+    hypothesis: H6_ablation
+    description: "SBG with static dimensions only (CONTROL+DATA+ERROR)"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: static_sbg_similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B07/
+    status: COMPLETE
+    test_f1: 0.6595
+    test_auroc: 0.3491
+    finding: "Static features anti-correlated with semantic change in this benchmark"
+
+  - id: EXP-B08
+    name: FULL_SBG
+    baseline: B8
+    hypothesis: H1_H2
+    description: "Full SBG with all 8 dimensions, DEFAULT_WEIGHTS (not tuned on test)"
+    dataset_splits: [dev, test]
+    input: source_code_pairs
+    output: full_sbg_similarity_scores
+    threshold_selection: DEV_only
+    primary_metric: F1
+    secondary_metrics: [AUROC, AUPRC, accuracy, precision, recall]
+    statistical_test: McNemar_paired
+    seed: 42
+    artifact_path: artifacts/phase3/B08/
+    status: COMPLETE
+    test_f1: 0.6595
+    test_auroc: 0.4237
+    weights_source: "DEFAULT_WEIGHTS — not tuned on test set"

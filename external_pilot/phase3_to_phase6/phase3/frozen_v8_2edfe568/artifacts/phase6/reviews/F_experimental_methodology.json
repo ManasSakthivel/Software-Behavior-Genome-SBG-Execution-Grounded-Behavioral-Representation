@@ -1,0 +1,42 @@
+{
+  "reviewer": "F \u2014 Experimental Methodology",
+  "overall_assessment": "The experimental protocol is clean with proper train/dev/val/test splits and zero data leakage confirmed. The dynamic tracing limitation is acknowledged. The methodology is reproducible with deterministic seeds. No P0 issues.",
+  "p0": 0,
+  "p1": 0,
+  "p2": 2,
+  "p3": 2,
+  "findings": [
+    {
+      "severity": "P2",
+      "title": "Transformation generators are deterministic \u2014 all programs see all transformations",
+      "detail": "Every base program generates all SP-1 through SP-12 transformations and all SC-1 through SC-13 mutations. This means per-transformation AUROC (E1, E2) is confounded with the program-transformation interaction \u2014 we cannot tell if a transformation is inherently hard or if it's hard for specific programs.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "This is a design choice for coverage. Stratified analysis in E5 partially addresses this."
+    },
+    {
+      "severity": "P2",
+      "title": "Dynamic tracing uses fixed canonical inputs, not representative inputs",
+      "detail": "Dynamic genomes (STATE, RESOURCE, TEMPORAL, INTERACTION, EXECUTION) are extracted using a fixed set of 5 canonical inputs per program. Programs with input-dependent behavior may produce different traces for different input distributions. This limits dynamic genome validity.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "DOCUMENTED in Phase 2 gate and Phase 3 limitations. Fixed inputs are reproducible and deterministic \u2014 a tradeoff."
+    },
+    {
+      "severity": "P3",
+      "title": "Threshold selection uses max-F1 on dev, not expected-cost",
+      "detail": "Max-F1 threshold selection treats FP and FN as equally costly. In practice, regression detection might weight FN (missed regression) much more heavily than FP. A cost-sensitive threshold would change the practical evaluation.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Standard practice. E10 also reports TPR@FPR=5% which is cost-aware."
+    },
+    {
+      "severity": "P3",
+      "title": "No ablation over number of seed transformations per program",
+      "detail": "Each transformation generates 5 seeds (s0-s4). The choice of 5 is arbitrary. More seeds would provide more pairs per transformation type but might create more near-duplicate pairs within a type.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Minor design choice. Documented in Phase 1 generation scripts."
+    }
+  ]
+}

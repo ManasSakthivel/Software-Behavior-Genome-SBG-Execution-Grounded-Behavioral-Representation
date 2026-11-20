@@ -1,0 +1,55 @@
+........................................................................ [ 10%]
+........................................................................ [ 21%]
+........................................................................ [ 32%]
+........................................................................ [ 43%]
+........................................................................ [ 54%]
+........................................................................ [ 65%]
+........................................................................ [ 76%]
+..........................................................F..F.......... [ 87%]
+........................................................................ [ 98%]
+.........                                                                [100%]
+=================================== FAILURES ===================================
+___________ test_unit_closure_includes_helpers_constants_and_stdlib ____________
+
+index = <experiments.final.external_bugsinpy._ModuleIndex object at 0x10b216cd0>
+
+    def test_unit_closure_includes_helpers_constants_and_stdlib(index):
+        unit, reason = eb.build_unit(index, "changed")
+>       assert reason is None
+E       AssertionError: assert 'third_party_import:re' is None
+
+tests/test_external_bugsinpy.py:98: AssertionError
+______________________ test_unsafe_os_call_is_ineligible _______________________
+
+index = <experiments.final.external_bugsinpy._ModuleIndex object at 0x10b216cd0>
+
+    def test_unsafe_os_call_is_ineligible(index):
+>       assert eb.build_unit(index, "deletes")[1] == "unsafe_os_call:os.remove"
+E       AssertionError: assert 'third_party_import:os' == 'unsafe_os_call:os.remove'
+E         
+E         - unsafe_os_call:os.remove
+E         + third_party_import:os
+
+tests/test_external_bugsinpy.py:114: AssertionError
+=============================== warnings summary ===============================
+tests/test_integrity.py::TestBenchmarkValidity::test_generated_variants_compile
+tests/test_integrity.py::TestSourceCompiles::test_all_first_party_source_compiles
+  /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/benchmark/datasets/v6/variants/val/graph_cycle_detect_dfs__sc1_s0_p0.py:37: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+    if result is not 2 and result[0]:
+
+tests/test_integrity.py::TestBenchmarkValidity::test_generated_variants_compile
+tests/test_integrity.py::TestSourceCompiles::test_all_first_party_source_compiles
+  /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/benchmark/datasets/v6/variants/val/graph_cycle_detect_dfs__sc1_s1_p0.py:37: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+    if result is not 0 and result[0]:
+
+tests/test_integrity.py::TestBenchmarkValidity::test_generated_variants_compile
+tests/test_integrity.py::TestSourceCompiles::test_all_first_party_source_compiles
+  /Users/manassakthivel/Desktop/SBG-FINALREVIEW/SBG/benchmark/datasets/v6/variants/val/graph_cycle_detect_dfs__sc1_s2_p0.py:37: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+    if result is not 0 and result[0]:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_external_bugsinpy.py::test_unit_closure_includes_helpers_constants_and_stdlib
+FAILED tests/test_external_bugsinpy.py::test_unsafe_os_call_is_ineligible - A...
+2 failed, 655 passed, 6 warnings in 54.83s
+EXIT=1

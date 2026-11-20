@@ -1,0 +1,18 @@
+\begin{table*}[!t]
+\caption{Experimental design by research question. All label-dependent analyses use construction labels on development data.}
+\label{tab:design}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\begin{tabular}{|c|L{2.3cm}|L{2.5cm}|L{1.5cm}|L{2.4cm}|L{2.2cm}|L{2.6cm}|L{1.9cm}|}
+\hline
+RQ & Objective & Data & Unit & Metrics & Comparators & Analysis & Main limitation \\
+\hline
+1 & Integrity and reproducible analysis & Attack and probe suites (macOS, Linux); Linux and macOS analysis outputs on the same records & Attack; analysis run & Outcome category; numerical agreement & Pre-hardening suite; other platform & Classification of recorded outcomes; diff of saved outputs & Author-written attacks; Linux run lacks host metadata \\
+2 & \ers{} conformance & 312 records $\times$ 6 predictors $\times$ 10 perturbations; 30-pair real-execution analogue & Trial & Pass / fail / N/A; responses beyond tolerance & Fitted model, probe, stub, V7-B recorded and recomputed & Counts from the property matrix; pre/post profile fix & Post-hoc edits; constant gate features \\
+3 & Observed risk of rules & 258 labeled pairs & Pair & $\hat\cov$, $\hat\R$, worst case & B1--B6 & Cluster bootstrap (10,000) & Construction labels; one dominant cluster \\
+4 & Incremental value & 258 labeled pairs; 85 soft / 61 strict eligible & Pair (out-of-fold) & $\hat\R(c^\ast)$; Brier; log loss; calibration slope & B3, B6, B7, B9; ablations & Grouped 5-fold CV; paired cluster bootstrap; Holm; MDE & Underpowered (MDE $\approx$16\,pp) \\
+5 & Scope of evaluation evidence & Five executed settings and the excluded artifact (Section~\ref{sec:res-rq5}); five-dataset generator code; cross-platform outputs & Setting; record; activity & Executed vs.\ asserted; agreement & Repository reports & Static audit of code, manifests and outputs & No held-out benchmark evaluation exists \\
+\hline
+\end{tabular}
+\end{table*}

@@ -1,0 +1,24 @@
+{
+  "hypothesis": "H8",
+  "claim": "AUROC(hybrid_v2_correct) > AUROC(dynamic_v2_only)",
+  "protocol": "Paired bootstrap n=1000, seed=42. Same pair indices resampled for both systems.",
+  "b07_dynamic_auroc": 0.528183,
+  "b08_hybrid_auroc": 0.528183,
+  "delta_b08_minus_b07": 0.0,
+  "paired_bootstrap_ci_95_on_delta": [
+    0.0,
+    0.0
+  ],
+  "p_one_sided_hybrid_beats_dynamic": 1.0,
+  "independent_ci_b07": [
+    0.49749,
+    0.579375
+  ],
+  "independent_ci_b08": [
+    0.49588,
+    0.578761
+  ],
+  "b08_w_static_selected": 0.0,
+  "verdict": "NOT_SUPPORTED",
+  "bug_4_note": "Prior audit used independent Hanley-McNeil SE. Paired bootstrap is methodologically correct for this paired evaluation. CI on delta = [0.0000, 0.0000]. Zero is inside the CI \u2014 H8 NOT_SUPPORTED."
+}

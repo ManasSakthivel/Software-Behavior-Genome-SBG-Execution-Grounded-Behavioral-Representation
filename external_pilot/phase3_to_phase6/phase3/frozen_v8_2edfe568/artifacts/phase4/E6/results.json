@@ -1,0 +1,209 @@
+{
+  "experiment": "E6",
+  "timestamp": "2026-08-20T06:16:04Z",
+  "hypothesis_addressed": [
+    "H2"
+  ],
+  "n_test_pairs": 744,
+  "baseline_table_sorted_by_auroc": [
+    {
+      "baseline": "B02",
+      "name": "B02",
+      "f1": 0.659459,
+      "auroc": 0.552845,
+      "auprc": 0.47793,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.509315,
+        0.592881
+      ],
+      "threshold": 1.000001
+    },
+    {
+      "baseline": "B06",
+      "name": "B06",
+      "f1": 0.659459,
+      "auroc": 0.504554,
+      "auprc": 0.481404,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.487899,
+        0.567415
+      ],
+      "threshold": 1.000001
+    },
+    {
+      "baseline": "B03",
+      "name": "B03",
+      "f1": 0.659459,
+      "auroc": 0.461315,
+      "auprc": 0.445228,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.425356,
+        0.507328
+      ],
+      "threshold": 1.000001
+    },
+    {
+      "baseline": "B08",
+      "name": "B08",
+      "f1": 0.659459,
+      "auroc": 0.423664,
+      "auprc": 0.421863,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.401193,
+        0.482963
+      ],
+      "threshold": 1.000001
+    },
+    {
+      "baseline": "B01",
+      "name": "B01",
+      "f1": 0.58427,
+      "auroc": 0.404263,
+      "auprc": 0.415352,
+      "ci_f1": [
+        0.545648,
+        0.618619
+      ],
+      "ci_auroc": [
+        0.368512,
+        0.445702
+      ],
+      "threshold": 0.9970344700102589
+    },
+    {
+      "baseline": "B04",
+      "name": "B04",
+      "f1": 0.659459,
+      "auroc": 0.399305,
+      "auprc": 0.405839,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.368233,
+        0.447124
+      ],
+      "threshold": 1.000001
+    },
+    {
+      "baseline": "B05",
+      "name": "B05",
+      "f1": 0.546032,
+      "auroc": 0.369395,
+      "auprc": 0.401414,
+      "ci_f1": [
+        0.505006,
+        0.584456
+      ],
+      "ci_auroc": [
+        0.329148,
+        0.41064
+      ],
+      "threshold": 0.9864636196024941
+    },
+    {
+      "baseline": "B07",
+      "name": "B07",
+      "f1": 0.659459,
+      "auroc": 0.349112,
+      "auprc": 0.383177,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.307101,
+        0.382993
+      ],
+      "threshold": 1.000001
+    }
+  ],
+  "pairwise_effects_B08_vs_others": {
+    "B08_vs_B01": {
+      "delta_f1": 0.0752,
+      "delta_auroc": 0.0194,
+      "cohens_h_f1": 0.1552,
+      "sbg_wins_f1": true,
+      "sbg_wins_auroc": true
+    },
+    "B08_vs_B02": {
+      "delta_f1": 0.0,
+      "delta_auroc": -0.1292,
+      "cohens_h_f1": 0.0,
+      "sbg_wins_f1": false,
+      "sbg_wins_auroc": false
+    },
+    "B08_vs_B03": {
+      "delta_f1": 0.0,
+      "delta_auroc": -0.0377,
+      "cohens_h_f1": 0.0,
+      "sbg_wins_f1": false,
+      "sbg_wins_auroc": false
+    },
+    "B08_vs_B04": {
+      "delta_f1": 0.0,
+      "delta_auroc": 0.0244,
+      "cohens_h_f1": 0.0,
+      "sbg_wins_f1": false,
+      "sbg_wins_auroc": true
+    },
+    "B08_vs_B05": {
+      "delta_f1": 0.1134,
+      "delta_auroc": 0.0543,
+      "cohens_h_f1": 0.2324,
+      "sbg_wins_f1": true,
+      "sbg_wins_auroc": true
+    },
+    "B08_vs_B06": {
+      "delta_f1": 0.0,
+      "delta_auroc": -0.0809,
+      "cohens_h_f1": 0.0,
+      "sbg_wins_f1": false,
+      "sbg_wins_auroc": false
+    },
+    "B08_vs_B07": {
+      "delta_f1": 0.0,
+      "delta_auroc": 0.0746,
+      "cohens_h_f1": 0.0,
+      "sbg_wins_f1": false,
+      "sbg_wins_auroc": true
+    }
+  },
+  "mcnemar_B08_vs_B02": {
+    "b": 0,
+    "c": 0,
+    "statistic": 0.0,
+    "p_value": 1.0,
+    "significant": false,
+    "note": "b+c=0 \u2014 classifiers agree on all disagreements"
+  },
+  "b02_threshold_used": 1.000001,
+  "b08_threshold_used": 1.000001,
+  "h2_verdict": {
+    "status": "NOT_SUPPORTED",
+    "sbg_auroc": 0.4237,
+    "best_baseline_auroc": 0.5528,
+    "delta_auroc": -0.1292,
+    "mcnemar_significant": false,
+    "interpretation": "Full SBG AUROC=0.4237 vs best baseline AUROC=0.5528. H2 is NOT SUPPORTED. McNemar test: p=1.000000 (not significant at \u03b1=0.0017)."
+  },
+  "finding": "Full SBG AUROC=0.4237 vs best baseline AUROC=0.5528. H2 is NOT SUPPORTED. McNemar test: p=1.000000 (not significant at \u03b1=0.0017).",
+  "seed": 42
+}

@@ -1,0 +1,180 @@
+{
+ "note": "DEVELOPMENT/EXPLORATORY feasibility; all data non-pristine; no thresholds tuned",
+ "bugsinpy_units": {
+  "n_pairs": 55,
+  "n_not_driven": 9,
+  "n_projects": 12,
+  "n_runnable": 44,
+  "runnable_projects": 12,
+  "verdicts": {
+   "DIVERGENT_OBSERVABLE": 6,
+   "INSUFFICIENT": 24,
+   "NO_DIVERGENCE_OBSERVED": 16,
+   "NOT_DRIVEN": 9
+  },
+  "insufficient_reasons": {
+   "changed_region_not_activated": 21,
+   "nondeterministic": 1,
+   "import_error": 1,
+   "unobservable_outcome": 1,
+   "class unit (engine supports top-level functions only)": 8,
+   "entry_policy: UnsupportedSignature": 1
+  },
+  "frac_insufficient": 0.436,
+  "det_confirmed_frac": 0.978,
+  "activation_frac": 0.326,
+  "levels": {
+   "S2": 15,
+   "S1": 1
+  },
+  "determinism": {
+   "n_rerun": 46,
+   "identical": 46,
+   "diffs": []
+  },
+  "wall_s": {
+   "median": 3.67,
+   "p90": 3.89,
+   "total": 157.2
+  },
+  "engine_crashes": [],
+  "confusion": {
+   "REAL_BUGFIX": {
+    "DIVERGENT_OBSERVABLE": 6,
+    "INSUFFICIENT": 24,
+    "NO_DIVERGENCE_OBSERVED/S2": 15,
+    "NO_DIVERGENCE_OBSERVED/S1": 1,
+    "NOT_DRIVEN": 9
+   }
+  }
+ },
+ "quixbugs": {
+  "n_pairs": 31,
+  "n_not_driven": 0,
+  "n_projects": 1,
+  "n_runnable": 30,
+  "runnable_projects": 1,
+  "verdicts": {
+   "INSUFFICIENT": 4,
+   "DIVERGENT_OBSERVABLE": 27
+  },
+  "insufficient_reasons": {
+   "resource_limit": 2,
+   "changed_region_not_activated": 2
+  },
+  "frac_insufficient": 0.129,
+  "det_confirmed_frac": 1.0,
+  "activation_frac": 0.903,
+  "levels": {},
+  "determinism": {
+   "n_rerun": 31,
+   "identical": 31,
+   "diffs": []
+  },
+  "wall_s": {
+   "median": 2.22,
+   "p90": 3.63,
+   "total": 117.7
+  },
+  "engine_crashes": [],
+  "confusion": {
+   "BUGGY_VS_FIXED": {
+    "INSUFFICIENT": 4,
+    "DIVERGENT_OBSERVABLE": 27
+   }
+  }
+ },
+ "quixbugs_neg": {
+  "n_pairs": 85,
+  "n_not_driven": 0,
+  "n_projects": 1,
+  "n_runnable": 54,
+  "runnable_projects": 1,
+  "verdicts": {
+   "NO_DIVERGENCE_OBSERVED": 47,
+   "INSUFFICIENT": 37,
+   "DIVERGENT_OBSERVABLE": 1
+  },
+  "insufficient_reasons": {
+   "unsupported_signature": 31,
+   "changed_region_not_activated": 3,
+   "resource_limit": 3
+  },
+  "frac_insufficient": 0.435,
+  "det_confirmed_frac": 1.0,
+  "activation_frac": 0.6,
+  "levels": {
+   "S1": 3,
+   "S2": 44
+  },
+  "determinism": {
+   "n_rerun": 25,
+   "identical": 25,
+   "diffs": []
+  },
+  "wall_s": {
+   "median": 2.47,
+   "p90": 3.88,
+   "total": 225.1
+  },
+  "engine_crashes": [],
+  "confusion": {
+   "SYN_EQUIVALENT": {
+    "NO_DIVERGENCE_OBSERVED/S1": 3,
+    "INSUFFICIENT": 37,
+    "NO_DIVERGENCE_OBSERVED/S2": 44,
+    "DIVERGENT_OBSERVABLE": 1
+   }
+  }
+ },
+ "synthetic": {
+  "n_pairs": 150,
+  "n_not_driven": 0,
+  "n_projects": 101,
+  "n_runnable": 132,
+  "runnable_projects": 96,
+  "verdicts": {
+   "NO_DIVERGENCE_OBSERVED": 45,
+   "DIVERGENT_OBSERVABLE": 50,
+   "INSUFFICIENT": 55
+  },
+  "insufficient_reasons": {
+   "changed_region_not_activated": 34,
+   "unsupported_signature": 18,
+   "resource_limit": 2,
+   "nondeterministic": 1
+  },
+  "frac_insufficient": 0.367,
+  "det_confirmed_frac": 0.993,
+  "activation_frac": 0.647,
+  "levels": {
+   "S2": 32,
+   "S1": 13
+  },
+  "determinism": {
+   "n_rerun": 0,
+   "identical": 0,
+   "diffs": []
+  },
+  "wall_s": {
+   "median": 3.48,
+   "p90": 3.65,
+   "total": 448.4
+  },
+  "engine_crashes": [],
+  "confusion": {
+   "CHANGED": {
+    "NO_DIVERGENCE_OBSERVED/S1": 5,
+    "DIVERGENT_OBSERVABLE": 49,
+    "INSUFFICIENT": 16,
+    "NO_DIVERGENCE_OBSERVED/S2": 8
+   },
+   "EQUIVALENT": {
+    "NO_DIVERGENCE_OBSERVED/S2": 24,
+    "INSUFFICIENT": 39,
+    "NO_DIVERGENCE_OBSERVED/S1": 8,
+    "DIVERGENT_OBSERVABLE": 1
+   }
+  }
+ }
+}

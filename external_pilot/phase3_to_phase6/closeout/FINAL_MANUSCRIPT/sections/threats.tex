@@ -1,0 +1,28 @@
+\section{Threats to Validity}\label{sec:threats}
+
+Table~\ref{tab:threatsval} lists the threats by type, with their effect on the conclusions and the mitigation in place.
+
+\begin{table*}[!t]
+\caption{Threats to validity.}
+\label{tab:threatsval}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{1.6cm}|L{4.6cm}|L{4.4cm}|L{5.0cm}|}
+\hline
+Type & Threat & Effect on conclusions & Mitigation and residual \\
+\hline
+Construct & Construction labels replace adjudication; QuixBugs labels and evidence share inputs & Risks may be biased in either direction; downward in QuixBugs & All risks labelled as construction-label risks; adjudication protocol implemented, not run \\
+Construct & Influence feature is a reachability proxy; three gate features constant & Profile measures fewer dimensions than designed & Gate features examined only through P7--P9; stated as limitation \\
+Construct & Perturbations are post-hoc edits & $\Delta_j$ describes the estimator, not programs & Execution-level analogue for P2/P5/P6 on 30 pairs (exploratory) \\
+Internal & Corpus examined during design; two method changes followed results on the same records & Optimistic bias for \sbg{} & Inner-fold selection; results still negative; changes disclosed \\
+Internal & Matched coverage is transductive; strict bootstrap degenerate at $c^\ast$ & Not a deployable operating point & Deployable thresholds reported separately; strict intervals not interpreted \\
+External & Small generated Python functions and QuixBugs; one cluster holds 43.8\% of labels; BugsInPy units (12 projects) executed but unlabelled; Python only; one held-out test split on the generated benchmark, one run; no held-out external benchmark & No generalisation & Stated in abstract and RQ5; five-dataset artifact invalid as external evidence (label-derived outcomes; stub predictor) \\
+Conclusion & Underpowered (MDE $\approx$16\,pp); secondary analyses unadjusted & Negative result inconclusive & Power analysis; Holm adjustment; seeds not pooled; no equivalence claim \\
+Security & macOS executed; Linux probes mostly undecided, no host metadata, no post-fix re-run; author-written attacks & Security position is platform- and suite-bound & Undecided runs not counted as isolation; SENSE04b reported as open \\
+Artifact & Internal reports contained unsupported figures & Risk of propagating them & Every number traced to a machine-readable source; unsupported values excluded (Section~\ref{sec:repro}) \\
+\hline
+\end{tabular}
+\end{table*}
+
+Two of these threats deserve emphasis. First, the corpus was not held out: the integrity-first ordering of the trust gate and the relevant-evidence profile fix were both responses to \ers{} results on the same records. This favours \sbg{}, yet its predictive comparison remained negative. Second, every number in this paper was recomputed or counted from machine-readable records. Values that existed only in report text are listed as excluded in the replication package.

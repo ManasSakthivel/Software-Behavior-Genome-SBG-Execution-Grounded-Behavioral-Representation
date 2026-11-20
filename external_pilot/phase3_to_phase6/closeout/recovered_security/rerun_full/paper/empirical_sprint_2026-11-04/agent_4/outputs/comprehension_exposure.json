@@ -1,0 +1,756 @@
+{
+ "benchmark/corpus/base_programs": {
+  "n_programs": 64,
+  "programs_with_inlinable_comp": 36,
+  "total_inlinable_comps": 92,
+  "per_program": {
+   "api_event_bus.py": {
+    "inlinable_comps": 2,
+    "genexps": 1
+   },
+   "api_mock_http_client.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "api_rate_limiter.py": {
+    "inlinable_comps": 2,
+    "genexps": 1
+   },
+   "api_rest_crud_mock.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "conc_producer_consumer.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "conc_read_write_lock.py": {
+    "inlinable_comps": 2,
+    "genexps": 1
+   },
+   "conc_thread_safe_counter.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "ds_binary_search_tree.py": {
+    "inlinable_comps": 4,
+    "genexps": 0
+   },
+   "ds_hash_table.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_lru_cache.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_min_heap.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_stack_queue.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_trie.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "err_assert_guard.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "err_circuit_breaker.py": {
+    "inlinable_comps": 0,
+    "genexps": 2
+   },
+   "err_result_type.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "err_retry_backoff.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "err_validation_chain.py": {
+    "inlinable_comps": 0,
+    "genexps": 2
+   },
+   "file_binary_encoder.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "file_config_parser.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "file_csv_aggregator.py": {
+    "inlinable_comps": 8,
+    "genexps": 0
+   },
+   "file_log_processor.py": {
+    "inlinable_comps": 4,
+    "genexps": 0
+   },
+   "file_word_count_stream.py": {
+    "inlinable_comps": 1,
+    "genexps": 1
+   },
+   "fsm_connection_pool.py": {
+    "inlinable_comps": 2,
+    "genexps": 4
+   },
+   "fsm_order_lifecycle.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "fsm_parser_state.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "fsm_traffic_light.py": {
+    "inlinable_comps": 2,
+    "genexps": 1
+   },
+   "fsm_vending_machine.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "graph_bellman_ford.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "graph_bfs_shortest_path.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "graph_connected_components.py": {
+    "inlinable_comps": 3,
+    "genexps": 2
+   },
+   "graph_cycle_detect_dfs.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "graph_dijkstra.py": {
+    "inlinable_comps": 0,
+    "genexps": 2
+   },
+   "graph_topological_sort.py": {
+    "inlinable_comps": 3,
+    "genexps": 1
+   },
+   "math_dynamic_programming.py": {
+    "inlinable_comps": 2,
+    "genexps": 1
+   },
+   "math_fibonacci.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_matrix_ops.py": {
+    "inlinable_comps": 10,
+    "genexps": 4
+   },
+   "math_numerical_integration.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_polynomial.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_prime_sieve.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_statistics.py": {
+    "inlinable_comps": 0,
+    "genexps": 3
+   },
+   "parse_ini_config.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "parse_json_subset.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "parse_recursive_descent.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "res_cache_ttl.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "res_memory_allocator.py": {
+    "inlinable_comps": 4,
+    "genexps": 2
+   },
+   "res_object_pool.py": {
+    "inlinable_comps": 1,
+    "genexps": 2
+   },
+   "res_task_scheduler.py": {
+    "inlinable_comps": 2,
+    "genexps": 4
+   },
+   "sort_binary_search.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_counting_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_heapsort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_insertion_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_mergesort.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "sort_quicksort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_radix_sort.py": {
+    "inlinable_comps": 1,
+    "genexps": 1
+   },
+   "sort_timsort_runs.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "sort_topk_select.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "str_anagram_groups.py": {
+    "inlinable_comps": 6,
+    "genexps": 1
+   },
+   "str_edit_distance.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "str_kmp_search.py": {
+    "inlinable_comps": 1,
+    "genexps": 2
+   },
+   "str_palindrome.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_run_length_encode.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_tokenizer.py": {
+    "inlinable_comps": 3,
+    "genexps": 2
+   },
+   "str_word_frequency.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   }
+  }
+ },
+ "benchmark/corpus/fresh_programs": {
+  "n_programs": 121,
+  "programs_with_inlinable_comp": 52,
+  "total_inlinable_comps": 73,
+  "per_program": {
+   "ds_bloom_filter_sim.py": {
+    "inlinable_comps": 0,
+    "genexps": 6
+   },
+   "ds_circular_buffer.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_deque_ops.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_fenwick_tree.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "ds_frequency_sort.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_interval_merge.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_lfu_simulation.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_min_heap_array.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_ranked_set.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_ring_buffer_stats.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_rle_encode.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_segment_tree_sum.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_skip_list_search.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "ds_sparse_matrix_csr.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_sparse_table.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "ds_stack_min.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "ds_trie_prefix_count.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_two_sum.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "ds_union_find.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_alien_dict.py": {
+    "inlinable_comps": 4,
+    "genexps": 0
+   },
+   "graph_bellman_ford.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_bipartite_check.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "graph_center_finder.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "graph_condensation.py": {
+    "inlinable_comps": 2,
+    "genexps": 2
+   },
+   "graph_course_schedule.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "graph_cycle_detection_dfs.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_degree_sequence.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_flood_fill.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_has_eulerian_path.py": {
+    "inlinable_comps": 1,
+    "genexps": 1
+   },
+   "graph_min_cost_path.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_mst_kruskal.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "graph_network_delay.py": {
+    "inlinable_comps": 1,
+    "genexps": 1
+   },
+   "graph_num_islands.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_num_provinces.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "graph_path_exists.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "graph_phone_combos.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "graph_scc_tarjan.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "graph_topological_kahn.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "graph_word_ladder.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "math_catalan_number.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_coin_change.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_collatz_length.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_count_primes.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_count_set_bits.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_digital_root.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_extended_gcd.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_fib_matrix.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_gcd_lcm.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_gray_code.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_happy_number.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_josephus.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_jump_game.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_knapsack_01.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_largest_rect_hist.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_lis_length.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_matrix_chain.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "math_matrix_determinant.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "math_max_product_subarray.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_max_subarray.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_median_two_sorted.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "math_missing_numbers.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_nth_permutation.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "math_nth_ugly_number.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_nthroot_newton.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_pascal_row.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_perfect_numbers.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_power_modular.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_power_of_two_list.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_rotate_matrix.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "math_spiral_matrix.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_staircase_ways.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "math_subset_sum_exists.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_sum_squares.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_trailing_zeros.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_tribonacci.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "math_unique_paths.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "math_ways_to_change.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "sort_bitonic_sort.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "sort_bucket_sort.py": {
+    "inlinable_comps": 3,
+    "genexps": 0
+   },
+   "sort_chunk_merge.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "sort_cocktail_shaker_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_comb_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_counting_sort_keys.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_cycle_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_gnome_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_gravity_bead.py": {
+    "inlinable_comps": 2,
+    "genexps": 2
+   },
+   "sort_odd_even_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_pancake.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_patience_sort.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "sort_pigeonhole_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_radix_sort_lsd.py": {
+    "inlinable_comps": 2,
+    "genexps": 0
+   },
+   "sort_shellsort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_stooge_sort.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "sort_strand_sort.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "sort_tree_sort.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_atoi_manual.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_bracket_balance.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_caesar_cipher.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_compress_spaces.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_count_subseq.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_decode_run_length.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_decode_ways.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_first_unique_char.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_group_anagrams.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_interleave_check.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_ip_validate.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_is_number_valid.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_justify_text.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_kmp_search.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_levenshtein_distance.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_longest_common_prefix.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_longest_no_repeat.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_min_window_substr.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_rabin_karp_hash.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_reverse_words.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_roman_numeral.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_string_multiply.py": {
+    "inlinable_comps": 0,
+    "genexps": 1
+   },
+   "str_vowel_count.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   },
+   "str_wildcard_match.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_word_break_dp.py": {
+    "inlinable_comps": 1,
+    "genexps": 0
+   },
+   "str_zigzag_encode.py": {
+    "inlinable_comps": 0,
+    "genexps": 0
+   }
+  }
+ }
+}

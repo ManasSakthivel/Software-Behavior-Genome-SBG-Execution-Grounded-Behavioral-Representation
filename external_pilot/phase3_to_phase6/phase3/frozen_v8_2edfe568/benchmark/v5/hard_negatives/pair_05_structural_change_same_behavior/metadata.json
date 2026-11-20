@@ -1,0 +1,10 @@
+{
+  "pair_id": "pair_05_structural_change_same_behavior",
+  "ground_truth": "EQUIV",
+  "shortcut_defeated": "structural_similarity",
+  "description": "Base is a single 30-line monolithic function. Variant extracts the same logic into 4 helper functions, tripling the number of function calls. A structural-similarity shortcut sees very different ASTs and call graphs, and wrongly labels this CHANGED.",
+  "expected_exception_fraction_same": true,
+  "expected_call_count_same": false,
+  "expected_volume_same": false,
+  "boundary_inputs_required": false
+}

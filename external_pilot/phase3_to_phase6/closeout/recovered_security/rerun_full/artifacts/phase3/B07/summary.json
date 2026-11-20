@@ -1,0 +1,42 @@
+{
+  "baseline": "B07_STATIC_SBG",
+  "description": "Static-only SBG (CONTROL + DATA + ERROR dimensions)",
+  "dimensions": [
+    "CONTROL",
+    "DATA",
+    "ERROR"
+  ],
+  "weights_used": {
+    "CONTROL": 0.444444,
+    "DATA": 0.333333,
+    "ERROR": 0.222222
+  },
+  "optimal_threshold": 0.0,
+  "dev_metrics": {
+    "threshold": 0.0,
+    "f1": 0.6557,
+    "precision": 0.4878,
+    "recall": 1.0,
+    "accuracy": 0.4878,
+    "auroc": 0.3426,
+    "auprc": 0.4436,
+    "tp": 300,
+    "fp": 315,
+    "fn": 0,
+    "tn": 0
+  },
+  "test_metrics": {
+    "threshold": 0.0,
+    "f1": 0.6738,
+    "precision": 0.5081,
+    "recall": 1.0,
+    "accuracy": 0.5081,
+    "auroc": 0.3415,
+    "auprc": 0.445,
+    "tp": 378,
+    "fp": 366,
+    "fn": 0,
+    "tn": 0
+  },
+  "timestamp": "2026-08-20T04:00:40Z"
+}

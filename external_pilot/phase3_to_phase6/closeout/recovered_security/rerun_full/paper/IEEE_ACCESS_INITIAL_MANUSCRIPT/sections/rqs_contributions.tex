@@ -1,0 +1,13 @@
+\section{Research Questions and Contributions}\label{sec:rqs}
+\textbf{Research questions.} RQ1: can a closed three-verdict contract with replayable witnesses be implemented for Python functions? RQ2: does making \NDO{} conditional on a recorded sufficiency level reduce false assurance relative to a same-budget differential baseline, and at what cost in detection and abstention? RQ3: does repetition, replay and control alternation add value over plain repetition? RQ4: did the corrected determinism configuration avoid increasing quarantined (self-inconsistent) inputs? RQ5: does the approach generalise across projects? RQ6: what is the runtime overhead?
+
+\textbf{Answers available from this work (all exploratory).} RQ1: yes, as software; the implementation-conformance status against 135 specification rules is 78 conforming, 30 partially, 7 deviating, 14 not implemented, 2 unverifiable and 4 deferred to Phase 3 (Section~\ref{sec:approach}; a conformance count, not a quality claim). RQ2: false assurance is lower than B1 (13/106 versus 24/106) but the reduction is entirely abstention, detection is not improved, and the +10 point rule is not met (Section~\ref{sec:results}). RQ3: not answerable; B1+rep equals B1 on all primary outcomes and ablations change no verdict (Section~\ref{sec:ablation}). RQ4: supported only weakly (1 versus 2 pairs, confounded). RQ5: \NE{}. RQ6: about $1.6\times$ B1 and about $1.02\times$ B1+rep on a 40-pair subset (Section~\ref{sec:runtime}).
+
+\textbf{Contributions (defensible claims only).}
+\begin{enumerate}
+\item A three-valued verdict contract in which an equivalence verdict cannot be emitted by the code (a naming guarantee, not a semantic one).
+\item A record schema for witnesses and sufficiency records in a content-addressed, hash-chained evidence log with a \texttt{verify} command that re-derives the verdict from recorded facts. The chain is unkeyed and is not tamper-proof (Section~\ref{sec:evidence}).
+\item An implementation of sufficiency levels S0--S2 with unvalidated thresholds; S3 is specified but refused.
+\item A pre-registered, local evaluation protocol (E1, E3--E7) and its results on 321 non-pristine pairs, including null and negative findings.
+\end{enumerate}
+We do \emph{not} claim that V7-B is novel in any single component, outperforms any tool, discriminates correct from incorrect verdicts through its sufficiency levels, is deterministic, is tamper-proof, is OS-isolated, or generalises. The integration of existing ideas under one record contract is the only design-level contribution, and its benefit is unmeasured.

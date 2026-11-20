@@ -1,0 +1,230 @@
+{
+ "bugsinpy": {
+  "n_rows": 200,
+  "n_eval": 147,
+  "n_pos": 41,
+  "n_neg": 106,
+  "n_clusters": 39,
+  "n_pos_clusters": 39,
+  "auroc": 0.4099171652093879,
+  "ci": [
+   0.326232,
+   0.493946
+  ],
+  "ci_nclusters": 39,
+  "pos_zero_sbg_v5": 21,
+  "pos_zero_sbg_temporal": 26,
+  "pos_zero_sbg_v3": 23,
+  "pos_zero_sbg_state": 23,
+  "neg_zero_v5": 31,
+  "pos_mean_v5": 0.13481471241463414,
+  "neg_mean_v5": 0.22014648132075473,
+  "neg_by_transf": {
+   "SP-2": {
+    "n": 40,
+    "mean": 0.2753,
+    "zero": 3
+   },
+   "SP-3": {
+    "n": 29,
+    "mean": 0.2034,
+    "zero": 6
+   },
+   "SP-6": {
+    "n": 7,
+    "mean": 0.0,
+    "zero": 7
+   },
+   "SP-1": {
+    "n": 17,
+    "mean": 0.2795,
+    "zero": 6
+   },
+   "SP-4": {
+    "n": 13,
+    "mean": 0.1287,
+    "zero": 9
+   }
+  },
+  "auroc_excl_SP2_neg": 0.4715447154471545,
+  "auroc_excl_SP2_neg_ci": [
+   0.380863,
+   0.561661
+  ],
+  "pos_zero_ids": [
+   "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_obj_to_commands::real_fix",
+   "ansible/11::lib/ansible/modules/network/ios/ios_banner.py::map_params_to_obj::real_fix",
+   "ansible/15::lib/ansible/modules/network/eos/eos_eapi.py::map_obj_to_commands::real_fix",
+   "keras/9::docs/autogen.py::process_list_block::real_fix",
+   "pandas/18::pandas/core/window/common.py::validate_baseindexer_support::real_fix",
+   "pandas/22::pandas/core/window/common.py::validate_baseindexer_support::real_fix",
+   "pandas/167::pandas/core/indexing.py::convert_to_index_sliceable::real_fix",
+   "scrapy/2::scrapy/utils/datatypes.py::LocalCache::real_fix",
+   "scrapy/36::scrapy/utils/misc.py::create_instance::real_fix",
+   "spacy/4::spacy/cli/converters/conllu2json.py::read_conllx::real_fix",
+   "spacy/7::spacy/util.py::filter_spans::real_fix",
+   "thefuck/10::thefuck/rules/man.py::get_new_command::real_fix",
+   "thefuck/27::thefuck/rules/open.py::get_new_command::real_fix",
+   "thefuck/32::thefuck/rules/ls_lah.py::match::real_fix",
+   "tqdm/9::tqdm/_tqdm.py::format_sizeof::real_fix",
+   "youtube-dl/15::youtube_dl/utils.py::js_to_json::real_fix",
+   "youtube-dl/17::youtube_dl/utils.py::cli_bool_option::real_fix",
+   "youtube-dl/25::youtube_dl/utils.py::js_to_json::real_fix",
+   "youtube-dl/27::youtube_dl/utils.py::parse_dfxp_time_expr::real_fix",
+   "youtube-dl/35::youtube_dl/utils.py::unified_strdate::real_fix",
+   "youtube-dl/41::youtube_dl/utils.py::unified_strdate::real_fix"
+  ],
+  "label_nonbinary": [
+   0,
+   1
+  ]
+ },
+ "quixbugs_canonical": {
+  "n_rows": 152,
+  "n_eval": 152,
+  "n_pos": 40,
+  "n_neg": 112,
+  "n_clusters": 40,
+  "n_pos_clusters": 40,
+  "auroc": 0.38772321428571427,
+  "ci": [
+   0.284659,
+   0.503378
+  ],
+  "ci_nclusters": 40,
+  "pos_zero_sbg_v5": 32,
+  "pos_zero_sbg_temporal": 35,
+  "pos_zero_sbg_v3": 34,
+  "pos_zero_sbg_state": 32,
+  "neg_zero_v5": 55,
+  "pos_mean_v5": 0.03434074915,
+  "neg_mean_v5": 0.009021814946428567,
+  "neg_by_transf": {
+   "sp_negative:SP-1": {
+    "n": 30,
+    "mean": 0.0016,
+    "zero": 28
+   },
+   "sp_negative:SP-2": {
+    "n": 40,
+    "mean": 0.0138,
+    "zero": 9
+   },
+   "sp_negative:SP-3": {
+    "n": 33,
+    "mean": 0.0124,
+    "zero": 9
+   },
+   "sp_negative:SP-6": {
+    "n": 9,
+    "mean": 0.0,
+    "zero": 9
+   }
+  },
+  "auroc_excl_SP2_neg": 0.45069444444444445,
+  "auroc_excl_SP2_neg_ci": [
+   0.360069,
+   0.547297
+  ],
+  "pos_zero_ids": [
+   "quixbugs__bitcount__bug__canonical",
+   "quixbugs__breadth_first_search__bug__canonical",
+   "quixbugs__bucketsort__bug__canonical",
+   "quixbugs__depth_first_search__bug__canonical",
+   "quixbugs__detect_cycle__bug__canonical",
+   "quixbugs__find_in_sorted__bug__canonical",
+   "quixbugs__flatten__bug__canonical",
+   "quixbugs__gcd__bug__canonical",
+   "quixbugs__get_factors__bug__canonical",
+   "quixbugs__hanoi__bug__canonical",
+   "quixbugs__is_valid_parenthesization__bug__canonical",
+   "quixbugs__kheapsort__bug__canonical",
+   "quixbugs__knapsack__bug__canonical",
+   "quixbugs__kth__bug__canonical",
+   "quixbugs__levenshtein__bug__canonical",
+   "quixbugs__lis__bug__canonical",
+   "quixbugs__minimum_spanning_tree__bug__canonical",
+   "quixbugs__next_palindrome__bug__canonical",
+   "quixbugs__pascal__bug__canonical",
+   "quixbugs__possible_change__bug__canonical",
+   "quixbugs__reverse_linked_list__bug__canonical",
+   "quixbugs__rpn_eval__bug__canonical",
+   "quixbugs__shortest_path_length__bug__canonical",
+   "quixbugs__shortest_path_lengths__bug__canonical",
+   "quixbugs__shortest_paths__bug__canonical",
+   "quixbugs__shunting_yard__bug__canonical",
+   "quixbugs__sieve__bug__canonical",
+   "quixbugs__sqrt__bug__canonical",
+   "quixbugs__subsequences__bug__canonical",
+   "quixbugs__to_base__bug__canonical",
+   "quixbugs__topological_ordering__bug__canonical",
+   "quixbugs__wrap__bug__canonical"
+  ],
+  "label_nonbinary": [
+   0,
+   1
+  ]
+ },
+ "quixbugs_declared": {
+  "n_rows": 152,
+  "n_eval": 99,
+  "n_pos": 24,
+  "n_neg": 75,
+  "n_clusters": 28,
+  "n_pos_clusters": 24,
+  "auroc": 0.7022222222222222,
+  "ci": [
+   0.583636,
+   0.816576
+  ],
+  "ci_nclusters": 28,
+  "pos_zero_sbg_v5": 8,
+  "pos_zero_sbg_temporal": 15,
+  "pos_zero_sbg_v3": 11,
+  "pos_zero_sbg_state": 9,
+  "neg_zero_v5": 46,
+  "pos_mean_v5": 0.07847717683333334,
+  "neg_mean_v5": 0.006152063440000001,
+  "neg_by_transf": {
+   "sp_negative:SP-1": {
+    "n": 19,
+    "mean": 0.0028,
+    "zero": 15
+   },
+   "sp_negative:SP-2": {
+    "n": 27,
+    "mean": 0.0051,
+    "zero": 23
+   },
+   "sp_negative:SP-3": {
+    "n": 23,
+    "mean": 0.0118,
+    "zero": 2
+   },
+   "sp_negative:SP-6": {
+    "n": 6,
+    "mean": 0.0,
+    "zero": 6
+   }
+  },
+  "auroc_excl_SP2_neg": 0.6684027777777778,
+  "auroc_excl_SP2_neg_ci": [
+   0.531556,
+   0.796875
+  ],
+  "pos_zero_ids": [
+   "quixbugs__flatten__bug__declared",
+   "quixbugs__get_factors__bug__declared",
+   "quixbugs__hanoi__bug__declared",
+   "quixbugs__is_valid_parenthesization__bug__declared",
+   "quixbugs__kheapsort__bug__declared",
+   "quixbugs__next_palindrome__bug__declared",
+   "quixbugs__rpn_eval__bug__declared",
+   "quixbugs__to_base__bug__declared"
+  ],
+  "label_nonbinary": [
+   0,
+   1
+  ]
+ }
+}

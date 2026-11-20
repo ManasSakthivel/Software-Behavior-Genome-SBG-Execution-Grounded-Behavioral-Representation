@@ -1,0 +1,358 @@
+{
+  "artifact": "DRIVER_SYNTHESIS_VALIDATION",
+  "protocol": "output_free_v7",
+  "supported_domain": "Top-level Python classes whose constructor and methods take only parameters annotated (or unannotated) with types in the fixed v6 battery families: int, float, str, bool, list-like, dict-like. Constructors must be defined in the program itself (or absent with no external base). Driven by bounded, deterministic round-robin method sequences of length 8 from 11 battery-indexed starting states. Not supported: parameters of callable, IO, iterator or custom-object type; constructors inherited from external bases; abstract and exception classes; async methods; properties; required keyword-only parameters (called positionally, they fail).",
+  "n_cases": 13,
+  "n_cases_passed": 13,
+  "synthesis": {
+    "expected_driven": 8,
+    "correctly_driven": 8,
+    "expected_rejected": 4,
+    "correctly_rejected": 4
+  },
+  "traces": {
+    "n": 101,
+    "completed": 88,
+    "program_exception": 11,
+    "timeout": 2,
+    "invalid_driver_call": 0,
+    "execution_success_rate": 0.8713,
+    "timeout_rate": 0.0198,
+    "invalid_driver_rate": 0.0
+  },
+  "cases": [
+    {
+      "case": "valid_constructor",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "harness_frames_invisible": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "class:Counter",
+        "exception_fraction": 0.0
+      },
+      "trace_outcomes": {
+        "completed": 11
+      },
+      "passed": true
+    },
+    {
+      "case": "invalid_constructor",
+      "checks": {
+        "driven_classes": true,
+        "static_exclusions": true,
+        "failure_kind": true
+      },
+      "record": {
+        "ok": false,
+        "failure_kind": "unsupported_signature",
+        "entry_discovery": null,
+        "exception_fraction": null
+      },
+      "trace_outcomes": {},
+      "passed": true
+    },
+    {
+      "case": "valid_method",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "harness_frames_invisible": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "class:Greeter",
+        "exception_fraction": 0.0
+      },
+      "trace_outcomes": {
+        "completed": 11
+      },
+      "passed": true
+    },
+    {
+      "case": "invalid_method",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "harness_frames_invisible": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "class:Mapper",
+        "exception_fraction": 0.0
+      },
+      "trace_outcomes": {
+        "completed": 11
+      },
+      "passed": true
+    },
+    {
+      "case": "state_transition",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "harness_frames_invisible": true,
+        "calls_per_trace": true,
+        "private_helper_traced": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "class:Light",
+        "exception_fraction": 0.0
+      },
+      "trace_outcomes": {
+        "completed": 11
+      },
+      "passed": true
+    },
+    {
+      "case": "repeated_call",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "harness_frames_invisible": true,
+        "calls_per_trace": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "class:Accumulator",
+        "exception_fraction": 0.0
+      },
+      "trace_outcomes": {
+        "completed": 11
+      },
+      "passed": true
+    },
+    {
+      "case": "argument_type_mismatch",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "exception_fraction": true,
+        "harness_frames_invisible": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "class:Sizer",
+        "exception_fraction": 1.0
+      },
+      "trace_outcomes": {
+        "program_exception": 11
+      },
+      "passed": true
+    },
+    {
+      "case": "unsupported_abstract",
+      "checks": {
+        "driven_classes": true,
+        "static_exclusions": true,
+        "failure_kind": true
+      },
+      "record": {
+        "ok": false,
+        "failure_kind": "unsupported_signature",
+        "entry_discovery": null,
+        "exception_fraction": null
+      },
+      "trace_outcomes": {},
+      "passed": true
+    },
+    {
+      "case": "unsupported_exception_class",
+      "checks": {
+        "driven_classes": true,
+        "static_exclusions": true,
+        "failure_kind": true
+      },
+      "record": {
+        "ok": false,
+        "failure_kind": "unsupported_signature",
+        "entry_discovery": null,
+        "exception_fraction": null
+      },
+      "trace_outcomes": {},
+      "passed": true
+    },
+    {
+      "case": "unsupported_external_base",
+      "checks": {
+        "driven_classes": true,
+        "static_exclusions": true,
+        "failure_kind": true
+      },
+      "record": {
+        "ok": false,
+        "failure_kind": "unsupported_signature",
+        "entry_discovery": null,
+        "exception_fraction": null
+      },
+      "trace_outcomes": {},
+      "passed": true
+    },
+    {
+      "case": "nonterminating_method",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "failure_kind": true,
+        "harness_frames_invisible": true
+      },
+      "record": {
+        "ok": false,
+        "failure_kind": "nonterminating",
+        "entry_discovery": "class:Spinner",
+        "exception_fraction": null
+      },
+      "trace_outcomes": {
+        "timeout": 2
+      },
+      "passed": true
+    },
+    {
+      "case": "result_never_read",
+      "checks": {
+        "driven_classes": true,
+        "eligible_methods": true,
+        "execution_ok": true,
+        "exception_fraction": true,
+        "harness_frames_invisible": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "class:Factory,Poison",
+        "exception_fraction": 0.0
+      },
+      "trace_outcomes": {
+        "completed": 22
+      },
+      "passed": true
+    },
+    {
+      "case": "function_tier_takes_precedence",
+      "checks": {
+        "function_tier_selected": true,
+        "execution_ok": true,
+        "harness_frames_invisible": true,
+        "deterministic": true
+      },
+      "record": {
+        "ok": true,
+        "failure_kind": null,
+        "entry_discovery": "annotated:total",
+        "exception_fraction": 0.0
+      },
+      "trace_outcomes": {
+        "completed": 11
+      },
+      "passed": true
+    }
+  ],
+  "corpus_coverage_static": {
+    "function": [
+      "conc_thread_safe_counter",
+      "err_assert_guard",
+      "err_result_type",
+      "err_retry_backoff",
+      "err_validation_chain",
+      "file_binary_encoder",
+      "file_csv_aggregator",
+      "file_log_processor",
+      "file_word_count_stream",
+      "fsm_parser_state",
+      "graph_bellman_ford",
+      "graph_bfs_shortest_path",
+      "graph_connected_components",
+      "graph_cycle_detect_dfs",
+      "graph_dijkstra",
+      "graph_topological_sort",
+      "math_dynamic_programming",
+      "math_fibonacci",
+      "math_matrix_ops",
+      "math_polynomial",
+      "math_prime_sieve",
+      "math_statistics",
+      "parse_ini_config",
+      "parse_json_subset",
+      "parse_recursive_descent",
+      "sort_binary_search",
+      "sort_counting_sort",
+      "sort_heapsort",
+      "sort_insertion_sort",
+      "sort_mergesort",
+      "sort_quicksort",
+      "sort_radix_sort",
+      "sort_timsort_runs",
+      "sort_topk_select",
+      "str_anagram_groups",
+      "str_edit_distance",
+      "str_kmp_search",
+      "str_palindrome",
+      "str_run_length_encode",
+      "str_tokenizer",
+      "str_word_frequency"
+    ],
+    "class": [
+      "api_event_bus",
+      "api_mock_http_client",
+      "api_rate_limiter",
+      "api_rest_crud_mock",
+      "conc_read_write_lock",
+      "ds_binary_search_tree",
+      "ds_hash_table",
+      "ds_lru_cache",
+      "ds_min_heap",
+      "ds_stack_queue",
+      "ds_trie",
+      "err_circuit_breaker",
+      "file_config_parser",
+      "fsm_connection_pool",
+      "fsm_order_lifecycle",
+      "fsm_traffic_light",
+      "fsm_vending_machine",
+      "res_cache_ttl",
+      "res_memory_allocator",
+      "res_task_scheduler"
+    ],
+    "none": {
+      "conc_producer_consumer": {
+        "module": "no synthesisable function and no class"
+      },
+      "math_numerical_integration": {
+        "module": "no synthesisable function and no class"
+      },
+      "res_object_pool": {
+        "ObjectPool": "constructor_parameter_not_synthesisable",
+        "PoolError": "exception_class",
+        "_PoolObject": "private_or_test_class"
+      }
+    },
+    "counts": {
+      "function": 41,
+      "class": 20,
+      "none": 3
+    }
+  }
+}

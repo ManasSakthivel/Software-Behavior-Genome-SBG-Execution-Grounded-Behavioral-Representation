@@ -1,0 +1,2670 @@
+{
+  "benchmark_version": "v10_independent",
+  "generator": "benchmark/scripts/generate_v10_independent.py",
+  "programs_requested": [
+    "ds_min_heap_array",
+    "ds_ranked_set",
+    "ds_union_find",
+    "graph_alien_dict",
+    "graph_cycle_detection_dfs",
+    "graph_network_delay",
+    "graph_topological_kahn",
+    "math_coin_change",
+    "math_fib_matrix",
+    "math_knapsack_01",
+    "sort_bitonic_sort",
+    "sort_gnome_sort",
+    "sort_gravity_bead",
+    "sort_pancake",
+    "sort_radix_sort_lsd",
+    "sort_stooge_sort",
+    "sort_tree_sort",
+    "str_decode_run_length",
+    "str_group_anagrams"
+  ],
+  "per_program": {
+    "ds_min_heap_array": {
+      "equivalent": 16,
+      "changed": 16
+    },
+    "ds_ranked_set": {
+      "equivalent": 19,
+      "changed": 19
+    },
+    "ds_union_find": {
+      "equivalent": 15,
+      "changed": 15
+    },
+    "graph_alien_dict": {
+      "equivalent": 7,
+      "changed": 7
+    },
+    "graph_cycle_detection_dfs": {
+      "equivalent": 17,
+      "changed": 17
+    },
+    "graph_network_delay": {
+      "equivalent": 18,
+      "changed": 18
+    },
+    "graph_topological_kahn": {
+      "equivalent": 18,
+      "changed": 18
+    },
+    "math_coin_change": {
+      "equivalent": 19,
+      "changed": 19
+    },
+    "math_fib_matrix": {
+      "equivalent": 15,
+      "changed": 15
+    },
+    "math_knapsack_01": {
+      "equivalent": 24,
+      "changed": 24
+    },
+    "sort_bitonic_sort": {
+      "equivalent": 19,
+      "changed": 19
+    },
+    "sort_gnome_sort": {
+      "equivalent": 16,
+      "changed": 16
+    },
+    "sort_gravity_bead": {
+      "equivalent": 19,
+      "changed": 19
+    },
+    "sort_pancake": {
+      "equivalent": 19,
+      "changed": 19
+    },
+    "sort_radix_sort_lsd": {
+      "equivalent": 18,
+      "changed": 18
+    },
+    "sort_stooge_sort": {
+      "equivalent": 15,
+      "changed": 15
+    },
+    "sort_tree_sort": {
+      "equivalent": 18,
+      "changed": 18
+    },
+    "str_decode_run_length": {
+      "equivalent": 15,
+      "changed": 15
+    },
+    "str_group_anagrams": {
+      "equivalent": 15,
+      "changed": 15
+    }
+  },
+  "n_pairs": 644,
+  "n_matched_sets": 322,
+  "n_programs_with_pairs": 19,
+  "rejections_by_stage": {
+    "eq_check": 316,
+    "eq_oracle": 32,
+    "ch_none": 14
+  },
+  "rejections_by_sp_and_stage": {
+    "SP-1|ch_none": 2,
+    "SP-1|eq_check": 6,
+    "SP-10|eq_check": 57,
+    "SP-11|eq_check": 39,
+    "SP-11|eq_oracle": 15,
+    "SP-12|eq_check": 56,
+    "SP-2|ch_none": 2,
+    "SP-3|ch_none": 2,
+    "SP-4|ch_none": 2,
+    "SP-5|ch_none": 2,
+    "SP-5|eq_check": 21,
+    "SP-6|ch_none": 2,
+    "SP-6|eq_check": 3,
+    "SP-7|eq_check": 57,
+    "SP-8|ch_none": 2,
+    "SP-8|eq_check": 20,
+    "SP-8|eq_oracle": 17,
+    "SP-9|eq_check": 57
+  },
+  "rejection_log": [
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-1",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-1",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_min_heap_array",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_ranked_set",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-5",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "ds_union_find",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-1",
+      "seed": 1,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-1",
+      "seed": 2,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-2",
+      "seed": 1,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-2",
+      "seed": 2,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-3",
+      "seed": 1,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-3",
+      "seed": 2,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-4",
+      "seed": 1,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-4",
+      "seed": 2,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-6",
+      "seed": 1,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-6",
+      "seed": 2,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "ch_none",
+      "reason": "no SC type yielded an oracle-validated composed CHANGED"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_alien_dict",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-5",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_cycle_detection_dfs",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_network_delay",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-1",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-1",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-1",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "graph_topological_kahn",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_coin_change",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-5",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_fib_matrix",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "math_knapsack_01",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_bitonic_sort",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-5",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gnome_sort",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_gravity_bead",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_pancake",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-1",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_radix_sort_lsd",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-5",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_stooge_sort",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "sort_tree_sort",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-5",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-8",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-8",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-8",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_decode_run_length",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-5",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-5",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-5",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-6",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-6",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-6",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-7",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-7",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-7",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-9",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-9",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-9",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-10",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-10",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-10",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-11",
+      "seed": 0,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-11",
+      "seed": 1,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-11",
+      "seed": 2,
+      "stage": "eq_oracle",
+      "reason": "output differs from base (label noise) or unusable"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-12",
+      "seed": 0,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-12",
+      "seed": 1,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    },
+    {
+      "program": "str_group_anagrams",
+      "sp": "SP-12",
+      "seed": 2,
+      "stage": "eq_check",
+      "reason": "no_op: normalised AST identical to base"
+    }
+  ],
+  "pair_file_sha256": "476c3efffcf4a20c9cf92212b932b03b29c64ca8e505742710a0da7555d53735",
+  "scored": false,
+  "note": "labels validated by a dynamic oracle on the protocol inputs; no SBG score or edit size was read"
+}

@@ -1,0 +1,198 @@
+% SBG V8 -- IEEE Access manuscript, condensed working version (about 10 two-column pages).
+% Built with tectonic (XeTeX) in a scratch copy; see BUILD_NOTE.txt. Source of truth: closeout/manuscript_final.
+\documentclass{ieeeaccess}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\makeatletter
+\AtBeginDocument{\DeclareMathVersion{bold}
+\SetSymbolFont{operators}{bold}{T1}{times}{b}{n}
+\SetSymbolFont{NewLetters}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathrm}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathit}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathbf}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{pcr}{b}{n}
+\SetSymbolFont{symbols}{bold}{OMS}{cmsy}{b}{n}
+\renewcommand\boldmath{\@nomath\boldmath\mathversion{bold}}}
+\makeatother
+
+\input{macros}
+
+
+\begin{document}
+\history{}
+\doi{}
+
+\title{How Far Can a No-Divergence Verdict Be Trusted? False-Assurance Risk, Evidence Response Signatures, and a Pilot Study in Differential Regression Testing}
+
+\author{\uppercase{Manas Sakthivel}}
+
+\tfootnote{This work received no specific external funding.}
+
+\markboth
+{Sakthivel: How Far Can a No-Divergence Verdict Be Trusted?}
+{Sakthivel: How Far Can a No-Divergence Verdict Be Trusted?}
+
+
+\begin{abstract}
+An empty difference set in differential regression testing is often read as reassurance, but it shows only that the inputs produced no difference on the compared channels. We treat this verdict as a selective prediction and define its false-assurance risk relative to a declared observation boundary and adjudication budget, distinct from equivalence. Risk measured under a narrower boundary lower-bounds risk under a wider one. Verdicts issued on unvalidated evidence can be forced by an adversary, so integrity must gate every verdict. Conformance of a risk estimator to evidence-response properties is logically independent of accuracy. We implement it in SBG~V8, with an integrity-first abstaining rule and an Evidence Response Signature (ERS) of eight label-free properties. On 312 executed development pairs (258 with construction labels), plain differential testing had an observed false-assurance risk of 0.169. A sufficiency gate withheld two thirds of those verdicts without lowering the risk. The ERS exposed a profile defect that aggregate metrics missed, and that the predecessor ignored tampered evidence. The richer evidence was not shown to improve prediction: at matched coverage it differed from coverage-only calibration by 1.6 percentage points (95\% interval $-6.6$ to $+16.3$), and only differences near 16 points were detectable. On a single run on a separate test split (956 pairs), the composite score had an area under the ROC curve (AUROC) of 0.694, below 0.876 for reversed edit size. The declared verdict criterion was not met; no independent held-out evaluation was established. The data are single-language and unadjudicated.
+\end{abstract}
+
+\begin{keywords}
+Differential testing, regression testing, false assurance, selective prediction, evidence integrity, software verification.
+\end{keywords}
+
+\titlepgskip=-21pt
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+Running an old and a new version of a program on the same inputs and comparing their behavior is a widely used way to check a change~\cite{evans2007differential,mckeeman1998differential}. A disagreement is actionable: the differing input can be replayed and inspected. Agreement is harder to interpret. An empty difference set arises when the change preserved behavior, but also when the inputs never reached the changed code, reached it in only one observable way, or differed only on a channel that was not compared. Developers and pipelines that treat ``no difference'' as a pass routinely read it as reassurance.
+
+We ask how reliable that reassurance is. We call the verdict issued when a comparison observes no divergence \NDOfull{} (\NDO{}) and ask how often it is wrong. We do not ask whether the versions are equivalent; that is undecidable in general~\cite{godlin2009regression,lahiri2012symdiff}. We ask instead: given the evidence behind an \NDO{} verdict, how likely is it that an independent examination within a declared observation boundary and adjudication budget would find a divergence? We call this probability the \emph{false-assurance risk} of the verdict.
+
+An \NDO{} verdict is the conjunction of six claims, each of which can fail: \emph{observation} (no executed input differed on the compared channels), \emph{sufficiency} (the inputs reached the changed code in enough distinct ways), \emph{integrity} (the recorded evidence is what was observed), \emph{provenance} (inputs were not derived from labels), \emph{responsiveness} (the judgment reacts correctly when evidence weakens or is tampered with), and \emph{equivalence}. Testing establishes only the first claim. This paper concerns claims 2--5 and how much they change the probability that the first claim misleads (Remark~\ref{rem:equiv}).
+
+Our contributions are: (C1) a false-assurance estimand, separated from equivalence, with propositions on boundaries, integrity and conformance; (C2) a change-conditioned evidence profile and an abstaining decision rule (\cec{}); (C3) the \ers{} conformance test; (C4) a trust architecture with a bounded threat model; (C5) a matched-coverage evaluation protocol with a power analysis; and (C6) an evidence audit that excludes a template-generated artifact. Table~\ref{tab:contrib} maps each contribution to its research question and evidence. The results are mixed, and we report them as they are:
+\begin{itemize}
+\item Plain differential testing had an observed false-assurance risk of 0.169 (31 of 183 \NDO{} verdicts).
+\item The predecessor's sufficiency gate abstained on two thirds of those verdicts without lowering the rate (0.213).
+\item As a label-free conformance test, \ers{} found a real defect in the evidence profile, reproduced it in an exploratory real-execution matrix whose run directories are absent, and showed that the predecessor ignored integrity failures.
+\item The richer evidence was not shown to help prediction: the primary contrast was $+1.6$ percentage points (pp), and the study could detect only differences near 16 pp.
+\end{itemize}
+A corpus the project had called an external ``five-dataset'' artifact was template-generated with outcomes set from labels, used a stub predictor, executed no benchmark program and had no human verdicts; we exclude it.
+
+\input{kept/tab_contrib}
+
+\section{Related Work}\label{sec:background}
+Trusting an \NDO{} verdict requires answers to four questions: how divergences are searched for, when the absence of a failure is informative, how the risk of an accepted verdict is estimated, and whether the evidence and the estimator can be trusted. Table~\ref{tab:positioning} compares \sbg{} with the closest works. All comparisons are conceptual unless a baseline here implements the idea; no prior tool was executed.
+
+\paragraph*{Searching for divergences} Differential testing runs comparable systems on the same inputs~\cite{mckeeman1998differential}; in regression testing the old version is the reference~\cite{evans2007differential}. Shadow symbolic execution solves for divergent inputs~\cite{cadar2014shadow,palikareva2016shadow}, and NEZHA guides differential fuzzing by behavioral diversity~\cite{petsios2017nezha}. Differential regression testing has been applied to REST APIs~\cite{godefroid2020differential}. LLM-based tools now generate regression-revealing tests for pull requests~\cite{pradel2026testora,hu2026difftestgen,lecong2026patchguru,fu2026orion}. These tools are evaluated on the divergences they expose, and their output when nothing is found is an empty set whose ambiguity Evans and Savoia noted without quantifying it~\cite{evans2007differential}. One generator reports detecting behavioral differences on most of the pull requests in its benchmark~\cite{hu2026difftestgen}; its output is measured on the divergences it exposes and records no verdict for the rest. SemaDiff, a preprint, labels a commit semantics-preserving when all generated tests agree; on 183 labeled Java commits it reports 75.95\% accuracy and 58.89\% recall~\cite{ayub2026semadiff}. That is dataset-level accuracy of an agreement rule, our baseline B1, not a conditional risk per verdict.
+
+\paragraph*{When absence of failure is informative} Coverage and mutation analyses assess how strong a passing test suite is, but coverage is at best moderately correlated with fault detection once suite size is controlled~\cite{inozemtseva2014coverage,kochhar2015code}. Mutation scores have been studied against real faults~\cite{papadakis2018mutation}. Checked coverage counts only statements that influence an oracle check~\cite{schuler2011assessing}, and pseudo-tested methods are covered methods whose bodies can be removed without a test failing~\cite{niedermayr2016will,veraperez2019comprehensive}. A fault reveals itself only if it is executed, infects the state, and propagates to an observed output (the PIE model: propagation, infection, execution); passing executions also mislead through coincidental correctness~\cite{schuler2011assessing}. These streams explain why an empty difference set can mislead, but their output is a score for one version, not a conditional error probability for a version pair.
+
+\paragraph*{Estimating the risk of accepted verdicts} A selective classifier may abstain, and its quality is the risk among accepted predictions as a function of coverage~\cite{elyaniv2010foundations,geifman2017selective}. Risk-control guarantees rely on independent and identically distributed (i.i.d.) or exchangeable calibration data~\cite{bates2021distribution,angelopoulos2024conformal}. Change pairs cluster by project; in our corpus one cluster holds 43.8\% of the labeled data. We therefore use a project-cluster bootstrap and claim no finite-sample guarantee.
+
+\paragraph*{Trusting the evidence and the estimator} Attestation frameworks certify artifacts and build steps~\cite{torresarias2019intoto,slsa2023spec,lamb2022reproducible}. They do not certify runtime observations made inside a process that the program under test also controls. Perturbation-based validation has targeted programs, suites and coverage measures. We found no declared property set for an estimator of verdict reliability. Schuler and Zeller's evidence deletion~\cite{schuler2011assessing} is the direct precursor of our property P1.
+
+\paragraph*{Gap} We found no method that provides all three of: a per-verdict false-assurance estimand relative to a declared boundary and budget, separated formally from equivalence; an estimate built on evidence that includes integrity, behind a rule that forged evidence cannot satisfy; and a label-free conformance test that detects controlled degradations of that evidence. We claim novelty for none of the ingredients individually. The contribution is the reformulation of ``no difference found'' as a selective prediction about evidence, the propositions it yields, and an evaluation that reports where the combination did and did not help.
+
+\input{kept/tab_positioning}
+
+\section{Problem Formulation and Method}\label{sec:problem}\label{sec:approach}
+Let $P,P'$ be a base and a variant with a common entry point, and $c=(P,P')$ a change pair. An observation boundary $\obs\subseteq\{\textit{outcome},\textit{exception},\textit{side\_effect},\textit{api}\}$ names the channels compared. The evidence $\Ev$ of a change consists of per-input records, the changed units, and metadata. The integrity flag $\iota(\Ev)$ is 1 only if the evidence directory validates. The decision procedure $V(\Ev)$ returns one of \DIV{}, \NDO{} or \INS{} (insufficient or untrusted evidence). The false-assurance estimand is
+\[
+\R=P(F{=}1\mid \NDO{}),
+\]
+where $F{=}1$ means that an independent examination within $\obs$ and the adjudication budget finds a divergence.
+
+\begin{proposition}[Monotonicity]\label{prop:mono}
+Fix a set $S$ of changes on which $V$ issued \NDO{}. If $\obs\subseteq\obs'$ and $\budget\preceq\budget'$, then $\R_{\obs,\budget}(S)\le\R_{\obs',\budget'}(S)$, where $\R_{\obs,\budget}(S)$ is the share of $S$ adjudicated divergent under $(\obs,\budget)$.
+\end{proposition}
+\emph{Proof.} A divergence visible on the channels in $\obs$ is also visible on $\obs'$, and a larger budget adjudicates at least as many changes as divergent. The numerator of $\R_{\obs,\budget}(S)$ therefore cannot decrease, while the denominator $|S|$ is fixed.
+
+\begin{proposition}[Integrity must gate every verdict]\label{prop:integrity}
+Let $V$ be any decision procedure and suppose a record $\Ev^\ast$ with $\iota(\Ev^\ast)=0$ satisfies $V(\Ev^\ast)=v\neq\INS{}$. Then an evidence adversary can make $V$ return $v$ on every change.
+\end{proposition}
+\emph{Proof.} An adversary without the anchor key can write evidence with $\iota=0$ that reproduces $\Ev^\ast$ for each change, so $V$ returns $v$ on every change. If $v=\NDO{}$, the adversary chooses divergent changes and receives \NDO{} on all of them, so the risk is $1$. If $v=\DIV{}$, the adversary forces divergence verdicts on equivalent changes.
+
+\begin{proposition}[Conformance and accuracy are independent]\label{prop:indep}
+(i) Some procedure passes every \ers{} property with coverage $0$. (ii) For every estimator $g$ and property $j$ there is an estimator $g'$ that agrees with $g$ on the support of the evidence distribution, so it has the same risk, coverage, Brier score, log loss and calibration there, yet fails property $j$ on some perturbed record.
+\end{proposition}
+\emph{Proof.} (i) An estimator that always abstains has coverage $0$ and can pass a property only by abstention, which the ERS reports separately. (ii) Set $g'=g$ on the support. At a perturbed record $T_j(\Ev)$ off the support, choose $g'$ to violate property $j$'s pass condition: for an invariance, by more than the tolerance; for a monotone property, by a margin that keeps the verdict \NDO{} where the record is eligible. Every metric on the support depends on $g'$ only through its values there, so the metrics coincide.
+
+\begin{proposition}[Random abstention preserves expected risk]\label{prop:random}
+Let $V$ issue \NDO{} on a set $S$ of $n$ changes, $m$ of which have $F{=}1$. Let $V_k$ keep a uniformly random subset of $S$ of fixed size $k\le n$. Then the expected risk among the verdicts kept by $V_k$ equals $m/n$.
+\end{proposition}
+\emph{Proof.} Each change is kept with probability $k/n$, so the expected number of kept changes with $F{=}1$ is $mk/n$. Dividing by the fixed count $k$ gives $m/n$.
+
+\begin{remark}\label{rem:equiv}
+Equivalence on all inputs is out of reach of any finite observation, so \NDO{} never establishes equivalence.
+\end{remark}
+The method has four components. A change-conditioned evidence profile $\prof(\Ev)$ summarizes how the executed inputs reached the changed units (15 features). An integrity-first decision rule issues \NDO{} only when integrity holds and the calibrated estimate of $\R$ is below a threshold; otherwise it abstains. The ERS is a set of eight properties tested by evidence perturbations (Section~\ref{sec:ers}). Evidence is sealed by a controller-held anchor: a keyed-hash message authentication code (HMAC) over the digests of the evidence files, with the key never present in the evaluated process. The soft blocker policy (v8.0) tolerates an unactivated changed region or an exhausted budget; the strict policy (v8.0s) tolerates neither, and v8.1 additionally requires that the predecessor's fixed gate would issue \NDO{}. Under the strict policy, both v8.0s and v8.1 are confined to the 61 labeled pairs that the predecessor's gate issues \NDO{} on, so they coincide on those pairs.
+
+\section{Evidence Response Signature}\label{sec:ers}
+An estimator of verdict reliability should respond in a known direction to its evidence, and its failures should not be hidden by abstention. Table~\ref{tab:ersprops} defines the eight properties, which include invariance to irrelevant evidence (P2), monotone response to relevant evidence and reproducibility (P1, P1b, P5), divergence responsiveness (P6), and integrity rejection (P8). A trial that cannot be applied counts as not applicable, not as a pass, and passes earned by abstention are reported separately. The perturbations are applied post hoc to recorded evidence and, in an exploratory real-execution analogue, to executed pairs. They test response, not causal effects.
+
+\input{kept/tab_ersprops}
+
+\section{Trusted Evidence Collection}\label{sec:trust}
+We consider three adversaries, ADV-1 to ADV-3. ADV-1 is an adversarial program under test running in the evaluated process inside the operating-system sandbox; it may patch the harness, close file descriptors, terminate abruptly, or try to sense analysis. ADV-2 is a keyless post-hoc writer that can modify evidence files and recompute hash chains but cannot read the anchor key. ADV-3 is an evidence substituter that replaces a pair's evidence with genuine evidence from a different program. Holders of the anchor key, host or kernel compromise, native-code attacks on the in-process harness, side channels and sandbox escape are out of scope, and we make no claim of isolation against arbitrary programs. Attack identifiers A01--A17 and A07c follow the repository. The three evaluation-awareness probes are written PR-04, PR-06 and PR-08 (renamed from P04, P06 and P08 in the repository) so that they are not confused with the ERS properties P6 and P8. The ERS properties are P1--P9 and P1b.
+
+\section{Evaluation Design}\label{sec:design}
+We ask five research questions. RQ1 asks whether the collector produces integrity-checked evidence whose analysis reproduces, and which attacks are blocked, detected or successful. RQ2 asks whether the estimators satisfy the eight ERS properties and whether the matrix detects defects. RQ3 asks how often no-divergence verdicts of plain differential testing and of rule-based gates conceal a labeled change. RQ4 asks whether \cec{}, with or without \ers{} features, lowers false-assurance risk or improves probabilistic accuracy at matched coverage. RQ5 asks which evaluation settings were executed and what each establishes. Table~\ref{tab:design} gives the design by question.
+
+The development corpus contains 312 pairs executed by the collector: 150 synthetic pairs from 101 programs, 116 QuixBugs-derived pairs from 31 programs, and 46 function-level BugsInPy units from 43 bugs in 12 projects~\cite{lin2017quixbugs,widyasari2020bugsinpy}. Only the synthetic and QuixBugs pairs carry construction labels, which gives 258 labeled pairs (Table~\ref{tab:corpus}). All data are development data, examined during design, and the study is a pilot rather than a validation. Independent human adjudication has been designed and implemented but not executed, so every label here is a construction label.
+
+Matched coverage fixes the coverage of each comparison at $c^\ast=61/258=0.236$, the coverage of the predecessor gate. Intervals are 95\% percentile intervals from a project-cluster bootstrap with 10{,}000 resamples unless stated, and paired contrasts use the same resamples. The three-test family and the eight-contrast family are corrected by the Holm procedure. The three-test family is declared in the project's design notes and is not externally registered. The minimum detectable effect (MDE) at 80\% power, with a design effect of 1.48, sizes the study. The 61 reference verdicts fall into 34 clusters with an intraclass correlation coefficient (ICC) of 0.61.
+
+\input{kept/tab_design}
+
+\input{kept/tab_corpus}
+
+\section{Results}\label{sec:results}
+Numbers are for cross-validation seed 0 on the Linux branch unless stated otherwise. No analysis was re-run for this paper; each value is read from existing machine-readable outputs.
+
+\paragraph*{RQ1: integrity and reproducibility} The development records file is byte-identical on the Linux and macOS branches. The statistical analysis reproduces across platforms: point estimates agree to $10^{-9}$ for seeds 0--2 under both blocker policies (reported by the project; not re-run for this paper), and the intervals differ only through the number of bootstrap resamples. The macOS test suite passed 247 tests, with 8 skipped and 2 expected failures. On the original suite of 15 attacks, before hardening, 3 were blocked, 9 detected, 1 had no effect and 2 succeeded. Re-run at the final commit on macOS, the 25 attacks and probes gave 3 blocked, 15 detected, 5 with no effect and 2 succeeded (Table~\ref{tab:security}). Ten detections force \INS{} through the trust gate. Five are detection only: A01, A02, A07, PR-06 and SENSE04c are caught only by optional checks, and the effective verdict remains a false \NDO{}. The two successes are the out-of-scope key-holder forgery (PR-08) and SENSE04b, which reads the variant's real path from compiled code objects and produces a false \NDO{} with no check firing; the SENSE04 fix is therefore partial. A17, a tee record forged with a guessed nonce, turns a true \DIV{} into \INS{}: a denial of a true divergence, not a false assurance. A Linux probe suite, run before the SENSE04 fix, detected all 51 tamper probes. Of 74 isolation probes, 8 left the true verdict intact, one (SENSE04) produced a false \NDO{}, and 65 ended in \INS{} with no recorded cause after about 0.2 s. The 65 undecided runs are fail-safe but are not evidence of isolation. Against ADV-1 to ADV-3, the verified position is fail-safe integrity against keyless post-hoc writers, prevention of the tested result-channel and standard-output attacks, detection but not prevention of in-process harness forgery and evidence substitution, and at least one open channel.
+
+\input{kept/tab_security}
+
+\paragraph*{RQ2: conformance to the ERS} The all-feature probe, an unfitted model that reads every profile feature with its declared sign, failed irrelevant-evidence invariance (P2) on 109 of 227 applicable records: appending inputs that reached only unchanged lines lowered its risk by up to 0.32. The cause was the profile, whose quantity and diversity features counted inputs that reach no changed unit. After the fix the probe passed P2 on all 227 records, with no other cell changed. The fitted model passed P2 throughout, but essentially through one feature (\code{mu\_min}), so its P4, P7 and P9 passes are vacuous. In the exploratory real-execution analogue, real irrelevant inputs were found for 7 of 30 pairs. There the probe failed P2 five times, with risk reductions of 0.087--0.095. All six predictors passed the real P5 analogue on all 30 pairs. For none of the 20 primary pairs did a label-blind generator find a discriminating input for real P6. On one of the 10 supplementary pairs it did, and the predictor passed that check. The analogue therefore reproduces the post-hoc defect, but it is too small to establish it. The matrix also separates decision procedures. Replaying the recorded predecessor verdict fails divergence responsiveness (P6) on 71 records; its 157 passes rest on stored \INS{} verdicts, that is, on abstention credit. It fails integrity rejection (P8) on 155 records. The trust gate passes P8 on all 312 records by construction; it was added after a first run showed the same failures for an earlier version.
+
+\paragraph*{RQ3: observed false-assurance risk}\label{sec:res-rq3} Plain differential testing (B1) issued \NDO{} on 183 of 258 labeled pairs (coverage 0.709). Of these, 31 had $Y{=}1$, an observed risk of 0.169 [0.086, 0.354]: roughly one in six ``no difference'' outcomes concealed a labeled behavioral change. The predecessor's gate (B3) issued 61 verdicts (coverage 0.236), 13 of them wrong, a risk of 0.213 [0.090, 0.457]. It abstained on 122 of the 183 B1 verdicts without lowering the risk among those that remained. Coverage gates B4 and B5 issued 141 and 144 verdicts, at 0.121 [0.044, 0.343] and 0.125 [0.052, 0.343]. The intervals overlap substantially. Counting unlabeled \NDO{} pairs as false assurances gives worst-case risks of 0.333 (B1), 0.324 (B3), 0.225 (B4) and 0.227 (B5). By Proposition~\ref{prop:random}, the expected risk of random abstention equals B1's 0.169 at any coverage. The gate lowered the count of false assurances from 31 to 13 but not their rate.
+
+\paragraph*{RQ4: incremental value at matched coverage}\label{sec:res-rq4} Table~\ref{tab:stats} lists every contrast. At $c^\ast$ under the soft policy, the full \cec{} model (B8) has risk 0.213 [0.124, 0.392], against 0.230 for coverage-only calibration (B7), 0.292 for B9 and 0.295 for multiplicity alone. The primary contrast, B7 minus B8, is $+1.6$ pp [$-6.6$, $+16.3$]. \textbf{H2 is not supported}: the primary contrast is below the 5-pp margin, and its interval includes zero and effects up to 16 pp. B8 ties the predecessor gate (0.0 pp [$-6.2$, $+16.2$]) and is 4.4 pp above random abstention ($-4.4$ [$-11.5$, $+9.7$]). For log loss on the 85 eligible pairs, the profile improves on coverage-only calibration by $+0.003$ [$-0.083$, $+0.058$] (H1a), and the ERS features improve on the profile-only model by $+0.030$ [$-0.014$, $+0.085$] (H3). Neither interval excludes zero. Across five seeds the primary difference is $+1.6$, $+1.6$, $+3.3$, $-4.1$ and $-4.9$ pp (mean $-0.5$ pp), so its sign is not stable. Under the strict policy every calibrated model is confined to the predecessor's 61 pairs, and its matched contrasts are zero by construction and are not interpreted. A placebo test that permutes the ERS features placed the observed gain above the 95th permutation percentile in five of six policy--seed runs ($p$ 0.01--0.03; $p=0.21$ in the sixth). We regard this as weak, unadjusted evidence that the ERS features carry some signal, not as evidence of improvement. Calibration slopes are unstable at this sample size. When thresholds are chosen as specified, no calibrated model issues any \NDO{} at target risks of 0.10 or 0.15, except multiplicity-only, which issues one. With 61 issued verdicts, the design detects paired differences of 13.5, 16.5 and 21 pp at discordant shares of 0.10, 0.15 and 0.25. Detecting 5 pp would need about 460, 690 or 1{,}160 issued verdicts, 8 to 19 times the present set.
+
+\input{kept/tab_ablation}
+
+\input{kept/tab_stats}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_risk_coverage.pdf}
+\caption{Risk--coverage curves for the calibrated models (out-of-fold, seed 0) under soft and strict blocker policies, with rule baselines as points (95\% project-cluster bootstrap intervals). The vertical line marks $c^\ast=61/258$.}
+\label{fig:riskcov}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_ablation_forest.pdf}
+\caption{Paired contrasts with full \cec{} (B8) at matched coverage (left, pp) and in out-of-fold log loss (right). Positive values favor B8. Dots: seed 0 with 95\% intervals; ticks: seeds 1--4. The dotted line marks the 5-pp margin of H2.}
+\label{fig:forest}
+\end{figure}
+
+\paragraph*{RQ5: scope of the evaluation evidence}\label{sec:res-rq5} Five evaluation settings were executed in one language; apart from the single-run test split below, all are development data. The BugsInPy units are the only real-project changes. They have no labels, so they enter RQ2 and descriptive analyses but not the risk estimates. Under the predecessor's gate they received 6 \DIV{}, 8 \NDO{} and 32 \INS{} verdicts, an abstention rate of 70\%, against 48\% (127 of 266) in the synthetic and QuixBugs arms. The five-dataset artifact has 250 records from 12 hand-written templates, with commit identifiers that are SHA-1 digests of literal strings, 180 Java records that were not compiled or run, outcomes set from labels, and a stub predictor. It has no human verdicts (0 of 250), so it is invalid as external-validation evidence and is excluded. Cross-platform evidence shows that the analysis is reproducible. It does not show reproducible evidence collection on two platforms: the development records do not record the collection platform, and the Linux isolation results lack host metadata.
+
+\paragraph*{Single-run test-split evaluation} The repository records one run of the frozen evaluation script on a separate v8 test split: 956 scored pairs from 22 programs (547 changed, 409 equivalent), after a pre-scoring exclusion of four programs. The split is not independent of the development data, since it shares its generator design with the development corpus, and the run was not replicated. The composite score \texttt{sbg\_v5} reached AUROC 0.694 (95\% cluster-bootstrap interval 0.659--0.727). Reversed edit size reached 0.876 (0.859--0.892), and two learned predictors reached 0.751 and 0.771. The paired difference between the composite score and reversed edit size was $-0.182$ ($-0.220$ to $-0.144$; Holm-adjusted $p=0.006$). Within exact edit-size strata the composite score reached AUROC 0.776 (0.722--0.825), above a label-shuffle noise floor with 95th percentile 0.528. The declared verdict is \emph{not demonstrated}: the stratified criterion was met, but the composite score did not beat the best baseline with an interval above zero. A post hoc component comparison, observed after this result, is exploratory and is not reported as a finding.
+
+\section{Discussion and Threats to Validity}\label{sec:discussion}
+About one in six plain no-difference outcomes concealed a labeled change, and about one in five of the predecessor gate's reassuring verdicts did. The magnitude depends on construction labels and small generated programs, so it does not transfer. What transfers is that abstention is not reliability: the gate issued a third as many verdicts as plain differential testing without lowering the rate of false assurance among them. Its apparent reduction from 31 to 13 false assurances follows almost entirely from issuing fewer verdicts (Proposition~\ref{prop:random}). Any proposal that withholds verdicts should report risk at matched coverage against random abstention. The ERS is useful as a conformance test. It found a profile defect that no aggregate metric revealed, distinguished stored from recomputed verdicts, and made the fitted model's dependence on one feature visible. These checks need no labels.
+
+The data give no evidence of improvement, since no primary interval excludes zero. They give no evidence of no improvement, because the intervals admit advantages of up to 16 pp. They give no evidence of equivalence, which would require a pre-specified margin and an interval inside it; no such margin was declared. Three design facts further limit the predictive comparison: the fitted model keeps essentially one feature (multiplicity); provenance, integrity and environment were constant in training; and the influence feature is a reachability proxy, much weaker than checked coverage.
+
+The corpus was not held out. The integrity-first ordering and the profile fix were both responses to ERS results on the same records, which favors \sbg{}; its predictive comparison remained negative. The corpus was examined repeatedly during design, and the labels are not adjudicated. In the QuixBugs arm the same declared inputs produce both label and evidence, so behavior-changing pairs almost always yield a witness, which understates risk there. The single-run test split is not an independent replication. Values were read from machine-readable outputs or from the source tables cited in the text; the cross-platform agreement figure is reported by the project and was not re-run. Threats are summarized in the supplementary material.
+
+\section{Reproducibility and Data Availability}\label{sec:repro}
+The project repository is public at \url{https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation}. The development records (\code{datasets/v8/dev\_records.jsonl}), the held-out test pairs (\code{artifacts/final/pairs\_v8test\_output\_free\_v8.jsonl}), the frozen threshold files (\code{artifacts/final/THRESHOLD\_FROZEN.json} and \code{artifacts/final/THRESHOLD\_V8\_FROZEN.json}), and the real-execution matrix with its manifests (\code{results/v8\_mac\_perturb/realexec\_matrix.json} and \code{results/v8\_mac\_perturb/realexec\_20261118/}) are on branch \code{research/v8-linux-validation}, which also contains the frozen implementation at commit \code{2edfe568}. Branch \code{research/v8-mac-hardening} (head \code{8e28f601}) contains the macOS placebo, frozen-threshold and profile-fix results. The per-run execution directories behind the real-execution matrix are not in the repository. The security re-run output, its producing script, and the statistics recomputation script and summary are not in the public repository; they are available from the authors on request. Supplementary tables are available from the authors on request.
+
+Two frozen decision thresholds differ and the discrepancy is unresolved. The freeze manifest declares $\tau^\ast=0.072905$, and the held-out test record uses $\tau=0.040511$, derived on development data. Both values are preserved, and neither is claimed as the validated operating point. The frozen V8 test-suite run is incomplete: of 806 collected tests, 372 passed and none failed among those run; one test stalled and the run was stopped, and the remaining 433 were not run. This paper does not rely on that run.
+
+\label{sec:conclusion}
+An empty difference set is evidence that no divergence was observed on the inputs that were run, within the channels that were watched. We treated the corresponding verdict as a selective prediction, defined its false-assurance risk relative to a declared boundary and budget, separated it from equivalence, and showed that risk under a narrower boundary lower-bounds risk under a wider one. On 312 development pairs, plain differential testing gave false assurance in about one in six no-difference verdicts, and a gate that abstained heavily did not lower that rate. The ERS found a real profile defect that aggregate metrics missed. Whether richer evidence improves risk estimates remains open, and answering it requires an independently adjudicated external corpus of several hundred to over a thousand issued verdicts. No such evaluation has been carried out, and the single-run test-split result was not demonstrated.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+
+\EOD
+\end{document}

@@ -1,0 +1,33 @@
+% Shared notation. Verdict names follow the implementation (sbgv8/, sbgv7/).
+\newcommand{\NDO}{NDO}
+\newcommand{\DIV}{DIV}
+\newcommand{\INS}{INS}
+\newcommand{\NDOfull}{\texttt{NO\_DIVERGENCE\_OBSERVED}}
+\newcommand{\DIVfull}{\texttt{DIVERGENT\_OBSERVABLE}}
+\newcommand{\INSfull}{\texttt{INSUFFICIENT}}
+\newcommand{\sbg}{SBG~V8}
+\newcommand{\ers}{ERS}
+\newcommand{\cec}{CEC}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\Rhat}{\widehat{\mathcal{R}}}
+\newcommand{\obs}{\mathcal{O}}
+\newcommand{\budget}{\mathcal{B}}
+\newcommand{\Ev}{\mathcal{E}}
+\newcommand{\prof}{\phi}
+\newcommand{\cov}{\kappa}
+\newcommand{\pp}{\,pp}
+\newcommand{\code}[1]{\texttt{#1}}
+% Breakable underscore and slash inside long code paths in tables.
+\DeclareRobustCommand{\bus}{\textunderscore\allowbreak}
+\newcommand{\bcode}[1]{{\def\_{\bus}\def\/{/\allowbreak}\texttt{#1}}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Theorem-like environments (plain LaTeX; the ieeeaccess class does not load amsthm).
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+% Ragged-right algorithm bodies (narrow IEEE column).
+\usepackage{etoolbox}
+\AtBeginEnvironment{algorithmic}{\raggedright}

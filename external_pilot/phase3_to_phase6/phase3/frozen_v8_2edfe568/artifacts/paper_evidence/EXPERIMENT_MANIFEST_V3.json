@@ -1,0 +1,113 @@
+{
+ "artifact": "EXPERIMENT_MANIFEST_V3",
+ "repository": "https://github.com/ManasSakthivel/Software-Behavior-Genome-SBG-Execution-Grounded-Behavioral-Representation",
+ "branch": "remediation/sbg-v3",
+ "base_commit_at_generation": "1b41e208241c76e347acddbe5c951849a35c2a5a",
+ "python": {
+  "venv": "../venvs/py313/bin/python",
+  "version": "CPython 3.13.5",
+  "requirements_lock": {
+   "path": "requirements-lock.txt",
+   "sha256": "c25aba80f1521902486d3e31cd2e664282c0177039377d641c254d36377a883f"
+  }
+ },
+ "environment": {
+  "PYTHONHASHSEED": "0 for all scoring",
+  "platform": "macOS arm64"
+ },
+ "freezes": {
+  "v8": {
+   "path": "artifacts/final/FREEZE_V8.json",
+   "sha256": "d42ac74d37272c9a42df1546e3d26d228be7d1f9494e8334fc563338ea7859dc"
+  },
+  "v8_amendment2": {
+   "path": "artifacts/final/FREEZE_V8_AMENDMENT2.json",
+   "sha256": "aa2028ad8cf68c57ead56a1fc93efcfc0487b7887d447eb82eda65f22e95a4af"
+  },
+  "v9": {
+   "path": "artifacts/final/FREEZE_V9.json",
+   "sha256": "19d4460ace0384e8892287075a9108d201a40d1c602a7f2f38ae972638968c8a"
+  },
+  "v9_models": {
+   "path": "artifacts/final/V9_MODELS_FROZEN.json",
+   "sha256": "010394dadc91c47ac53e9741a0faf5144c1bb33df34c5d21752e97cb22438cc8"
+  },
+  "v8_threshold": {
+   "path": "artifacts/final/THRESHOLD_V8_FROZEN.json",
+   "sha256": "65a98c5decf2b501d907411e1d911f9fb228cb862a2530c79ec3e50124c011bb"
+  }
+ },
+ "scripts": {
+  "evaluate_v8.py": {
+   "path": "experiments/final/evaluate_v8.py",
+   "sha256": "34f303afc2423838d2cdb44c513248dbdb6b5c91eb1cc3791774183f3dc7996d"
+  },
+  "evaluate_v9.py": {
+   "path": "experiments/final/evaluate_v9.py",
+   "sha256": "096e030a8d184a64e6c0c4fde065ce9001a147be016b262413064c30e83958dc"
+  },
+  "run_chunked.py": {
+   "path": "experiments/final/run_chunked.py",
+   "sha256": "7d8e67ffbb6403128c33885ca201acf2bae5839f87b89f742a954eb96d2bef21"
+  },
+  "audit_label_generation.py": {
+   "path": "experiments/final/audit_label_generation.py",
+   "sha256": "1ee44ebf0e5ea6bb074bcd59687f3af23772c8247a6703bc9364e196803e9043"
+  },
+  "rescore_external_v8.py": {
+   "path": "experiments/final/rescore_external_v8.py",
+   "sha256": "0559a6d719e971a4de8672f21f75f417d12fb6fa28f9c02d8b13eb33c3741037"
+  },
+  "diagnose_hashseed.py": {
+   "path": "experiments/final/diagnose_hashseed.py",
+   "sha256": "965a5279ee41a13a26f0f61fcf0dc0638a063829bcad8e540051be0ca6e64ae8"
+  },
+  "make_freeze_v9.py": {
+   "path": "experiments/final/make_freeze_v9.py",
+   "sha256": "ebca8a0b59c49f137fc92798353825ce1c545d9f744337da6fd2ac9d77b86b5f"
+  },
+  "audit_external_negatives.py": {
+   "path": "experiments/final/audit_external_negatives.py",
+   "sha256": "f07f611601428795fd3aac2d8dbabec12ebce75a5fbf50204ba617a986543c69"
+  },
+  "verify_trace_v3.py": {
+   "path": "experiments/final/verify_trace_v3.py",
+   "sha256": "51e7865c918a115251ad52074c1f3acaebc7c492c00c7ad23e1353654e0d78bd"
+  },
+  "build_remediation_evidence.py": {
+   "path": "experiments/final/build_remediation_evidence.py",
+   "sha256": "b3ffd8422806513eea1679ded257a0a4f218f176b73055a1a4cce50a2f232ff4"
+  },
+  "benchmark/scripts/generate_v9_composed.py": {
+   "path": "benchmark/scripts/generate_v9_composed.py",
+   "sha256": "b32ff6168ecd093c216fbd544473bc560d89775cbc6d0b2a23a97e637187b712"
+  }
+ },
+ "runs": {
+  "v8_test_single": "V8_TEST_EVALUATION.json (prior session; burned, final)",
+  "v8_train_score": "run_chunked.py --split train --protocol output_free_v8 -> pairs_v8train_output_free_v8.jsonl",
+  "v8_val_score": "run_chunked.py --split val ... -> pairs_v8val_output_free_v8.jsonl",
+  "v9c_train_dev_val_score": "run_chunked.py --dataset-label v9c ... -> pairs_v9c_{train,dev,val}_output_free_v8.jsonl",
+  "v9_evaluations": "evaluate_v9.py --split {train,dev,val} (val executed once after FREEZE_V9 commit 6dd5a0f)",
+  "label_audit": "audit_label_generation.py (uses no SBG scores)",
+  "external_rescore": "rescore_external_v8.py --workers 4"
+ },
+ "reproduction": [
+  "PYTHONHASHSEED=0 ../venvs/py313/bin/python experiments/final/evaluate_v9.py --split val  # reads frozen scored pairs; no re-scoring",
+  "../venvs/py313/bin/python experiments/final/audit_label_generation.py",
+  "PYTHONHASHSEED=0 ../venvs/py313/bin/python experiments/final/rescore_external_v8.py --workers 4",
+  "../venvs/py313/bin/python experiments/final/diagnose_hashseed.py",
+  "../venvs/py313/bin/python experiments/final/audit_external_negatives.py",
+  "../venvs/py313/bin/python experiments/final/verify_trace_v3.py",
+  "../venvs/py313/bin/python experiments/final/build_remediation_evidence.py",
+  "../venvs/py313/bin/python -m pytest sbg/ tests/ -q",
+  "../venvs/py313/bin/python experiments/final/consistency_check.py",
+  "../venvs/py313/bin/python experiments/final/stanford_gate.py",
+  "../venvs/py313/bin/python experiments/final/data_integrity.py --dataset benchmark/datasets/v8 --strict"
+ ],
+ "not_run": [
+  "v9 test split (not generated: no further unseen-program split is available that is not the burned v8 test; generating one from v8 test programs would reuse them)",
+  "Java QuixBugs",
+  "real-bug transfer re-run with warm-up extraction (see cold_start_probe.json)"
+ ]
+}

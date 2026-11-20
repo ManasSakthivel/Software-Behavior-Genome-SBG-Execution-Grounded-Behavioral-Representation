@@ -1,0 +1,15 @@
+digraph workflow {
+ graph [fontname="Helvetica", fontsize=11, rankdir=TB]; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#e8f1fa"]; edge [fontname="Helvetica", fontsize=9];
+ legend [shape=plaintext, style="", fillcolor=white, label="solid blue = implemented (docs/architecture/V7B_IMPLEMENTATION.md)\ndashed grey = NOT IMPLEMENTED (shown for the spec only)"];
+ a [label="Inputs: base.py, variant.py, entry,\ninputs.json, config"];
+ b [label="Eligibility: identical bytes?\n(yes -> ineligible:identical, exit 3)"];
+ c [label="Changed regions (changed_lines)"];
+ d [label="Per input: r_det=3 repeats per side\n(sandboxed fresh child each)"];
+ e [label="Compare on C_obs"];
+ f [label="Differ: r_replay=5 fresh replays,\nk_alt=3 control alternations if control-sensitive"];
+ g [label="Activation: changed units hit by\ndeterministic SAME inputs; branch coverage"];
+ h [label="decide.py: verdict + S-level"];
+ i [label="Evidence log + verdict.json"];
+ x [label="Early stop at first CONFIRMED_DIFF;\nbudget: cpu seconds (60 headline)", shape=note, fillcolor="#fffbe6"];
+ a -> b -> c -> d -> e; e -> f [label="diff"]; e -> g [label="same"]; f -> h; g -> h; h -> i; x -> d [style=dotted, arrowhead=none];
+}

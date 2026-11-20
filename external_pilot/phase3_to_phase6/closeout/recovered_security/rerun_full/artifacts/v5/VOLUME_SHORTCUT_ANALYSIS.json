@@ -1,0 +1,78 @@
+{
+  "experiment": "VOLUME_SHORTCUT_ANALYSIS",
+  "version": "v5",
+  "shortcut_auroc_comparison": {
+    "exception_fraction": 0.567,
+    "wall_time_ms": 0.553269,
+    "call_count": 0.553066,
+    "n_functions": 0.552862,
+    "combined_shortcut": 0.564943,
+    "full_sbg_v3": 0.539906,
+    "random_baseline": 0.499588,
+    "noise_floor_95pct": 0.537747
+  },
+  "volume_proxy_classification": [
+    {
+      "name": "coverage_size",
+      "weight_in_genome": 0.2,
+      "type": "PURE_VOLUME",
+      "note": "Absolute line count"
+    },
+    {
+      "name": "call_freq_L1",
+      "weight_in_genome": 0.25,
+      "type": "VOLUME_SENSITIVE",
+      "note": "Normalized but total call count drives histogram"
+    },
+    {
+      "name": "call_depth_mean",
+      "weight_in_genome": 0.1,
+      "type": "VOLUME_PROXY",
+      "note": "Grows with call stack size"
+    },
+    {
+      "name": "call_bigrams",
+      "weight_in_genome": 0.25,
+      "type": "BEHAVIORAL",
+      "note": "Order-sensitive, less volume-correlated"
+    },
+    {
+      "name": "exception_rate",
+      "weight_in_genome": 0.1,
+      "type": "MIXED",
+      "note": "Genuine signal but competes with volume"
+    }
+  ],
+  "volume_fraction_of_genome": 0.55,
+  "behavioral_fraction_of_genome": 0.25,
+  "contamination_assessment": {
+    "genuine_signal_fraction": 0.4,
+    "contamination_fraction": 0.6,
+    "evidence": [
+      "wall_time_ms (pure volume) AUROC=0.553 beats full SBG=0.540",
+      "call_count_total (pure volume) AUROC=0.553 beats full SBG",
+      "removing coverage (volume) IMPROVES AUROC by +0.010",
+      "call_bigrams (behavioral) alone AUROC=0.545 \u2014 marginal over random",
+      "BUT regression evaluator: 9/9 silent bugs detected by output oracle only"
+    ]
+  },
+  "hard_negatives_evidence": {
+    "exception_fraction_fooled_by": "7/12 hard negative pairs",
+    "volume_fooled_by": "5/12 hard negative pairs",
+    "oracle_correct_on": "12/12 hard negative pairs",
+    "conclusion": "Behavioral comparison captures information missed by shortcuts; but current SBG genome doesnt fully exploit this"
+  },
+  "recommendation": "VOLUME_CONTROLLED_REDESIGN",
+  "volume_controlled_design": {
+    "description": "Normalize coverage by call_count (coverage/call_count = branch_density), remove raw call_count from features",
+    "new_weights": {
+      "call_bigrams": 0.35,
+      "branch_density": 0.15,
+      "exception_rate": 0.15,
+      "exception_types": 0.15,
+      "call_depth": 0.1,
+      "consistency": 0.1
+    },
+    "expected_improvement": "Remove volume-shortcut contamination; SBG above shortcut baseline if behavioral features are genuinely informative"
+  }
+}

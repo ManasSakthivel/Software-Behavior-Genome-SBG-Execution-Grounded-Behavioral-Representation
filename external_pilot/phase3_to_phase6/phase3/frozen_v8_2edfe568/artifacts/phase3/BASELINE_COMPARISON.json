@@ -1,0 +1,155 @@
+{
+  "baselines": {
+    "B01": {
+      "f1": 0.58427,
+      "auroc": 0.404263,
+      "auprc": 0.415352,
+      "accuracy": 0.452957,
+      "precision": 0.466558,
+      "recall": 0.781421,
+      "ci_f1": [
+        0.545648,
+        0.618619
+      ],
+      "ci_auroc": [
+        0.368512,
+        0.445702
+      ],
+      "n_samples": 744,
+      "threshold": 0.9970344700102589
+    },
+    "B02": {
+      "f1": 0.659459,
+      "auroc": 0.552845,
+      "auprc": 0.47793,
+      "accuracy": 0.491935,
+      "precision": 0.491935,
+      "recall": 1.0,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.509315,
+        0.592881
+      ],
+      "n_samples": 744,
+      "threshold": 1.000001
+    },
+    "B03": {
+      "f1": 0.659459,
+      "auroc": 0.461315,
+      "auprc": 0.445228,
+      "accuracy": 0.491935,
+      "precision": 0.491935,
+      "recall": 1.0,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.425356,
+        0.507328
+      ],
+      "n_samples": 744,
+      "threshold": 1.000001
+    },
+    "B04": {
+      "f1": 0.659459,
+      "auroc": 0.399305,
+      "auprc": 0.405839,
+      "accuracy": 0.491935,
+      "precision": 0.491935,
+      "recall": 1.0,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.368233,
+        0.447124
+      ],
+      "n_samples": 744,
+      "threshold": 1.000001
+    },
+    "B05": {
+      "f1": 0.546032,
+      "auroc": 0.369395,
+      "auprc": 0.401414,
+      "accuracy": 0.423387,
+      "precision": 0.445596,
+      "recall": 0.704918,
+      "ci_f1": [
+        0.505006,
+        0.584456
+      ],
+      "ci_auroc": [
+        0.329148,
+        0.41064
+      ],
+      "n_samples": 744,
+      "threshold": 0.9864636196024941
+    },
+    "B06": {
+      "f1": 0.659459,
+      "auroc": 0.504554,
+      "auprc": 0.481404,
+      "accuracy": 0.491935,
+      "precision": 0.491935,
+      "recall": 1.0,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.487899,
+        0.567415
+      ],
+      "n_samples": 744,
+      "threshold": 1.000001
+    },
+    "B07": {
+      "f1": 0.659459,
+      "auroc": 0.349112,
+      "auprc": 0.383177,
+      "accuracy": 0.491935,
+      "precision": 0.491935,
+      "recall": 1.0,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.307101,
+        0.382993
+      ],
+      "n_samples": 744,
+      "threshold": 1.000001
+    },
+    "B08": {
+      "f1": 0.659459,
+      "auroc": 0.423664,
+      "auprc": 0.421863,
+      "accuracy": 0.491935,
+      "precision": 0.491935,
+      "recall": 1.0,
+      "ci_f1": [
+        0.626039,
+        0.688987
+      ],
+      "ci_auroc": [
+        0.401193,
+        0.482963
+      ],
+      "n_samples": 744,
+      "threshold": 1.000001
+    }
+  },
+  "best_baseline": "B02",
+  "sbg_f1": 0.659459,
+  "best_baseline_f1": 0.659459,
+  "delta_f1_sbg_minus_best": 0.0,
+  "delta_auroc_sbg_minus_best": -0.129181,
+  "test_pairs": 744,
+  "fairness_note": "All baselines evaluated on identical test split. Threshold selected on DEV only. Test set accessed once after threshold frozen."
+}

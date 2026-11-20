@@ -1,0 +1,10 @@
+\section{Datasets}\label{sec:datasets}
+All 321 pairs are exposed or non-pristine: QuixBugs and BugsInPy are widely used benchmarks and were used in earlier evaluations of this programme, the synthetic pairs were scored by earlier-generation systems, and V7-B was shaped on them. There is no independent holdout and benchmark exposure cannot be excluded. They are development data, not evidence of field performance. The arms are (Table~\ref{tab:datasets}):
+\begin{itemize}
+\item \textbf{QuixBugs buggy/fixed} (31 pairs): inputs from the benchmark's declared test cases, outputs unused. Truth: divergent for the 29 pairs whose declared tests fail on the buggy and pass on the fixed version (a test-replay oracle independent of V7-B and the baselines); two are unlabelled. QuixBugs counts as one project.
+\item \textbf{QuixBugs semantics-preserving negatives} (85): the fixed version against a generator-made semantics-preserving variant; label ``no observed difference''; one suspect.
+\item \textbf{Synthetic changed} (78) and \textbf{synthetic equivalent} (72): generator labels; ``equivalent'' means equivalent under a looser equality than the V7-B boundary, so a witnessed pair may be a label artefact. Divergence in ``changed'' pairs may lie outside the sampled inputs.
+\item \textbf{BugsInPy units} (55): real fixes, extracted single-file functions, run on synthetic battery inputs rather than project tests; nine class units are not driven. No defensible truth label exists, so all are excluded from primary denominators.
+\end{itemize}
+Six suspect labels are tagged and excluded but never relabelled. The primary denominators are 106 divergent-labelled and 152 no-difference-labelled pairs (258); 57 unlabelled pairs are excluded. The divergent pairs span 78 project clusters and the no-difference pairs 69; the largest cluster has 29 pairs (QuixBugs). Synthetic ``projects'' are generator base programs. No real independent project-level run exists.
+\input{tables/P_datasets}

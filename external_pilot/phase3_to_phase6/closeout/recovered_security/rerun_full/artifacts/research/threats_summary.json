@@ -1,0 +1,392 @@
+{
+  "agent": "0D",
+  "generated": "2025",
+  "source_document": "docs/research/THREATS_TO_VALIDITY.md",
+  "cross_references": [
+    "docs/research/FORMAL_MODEL.md",
+    "docs/research/PRIOR_ART_MATRIX.md",
+    "artifacts/research/formal_model_summary.json",
+    "artifacts/research/prior_art_summary.json"
+  ],
+  "methodology": "Wohlin et al. — Experimentation in Software Engineering, validity taxonomy",
+  "total_threats": 32,
+  "threat_categories": {
+    "internal_validity": 8,
+    "external_validity": 6,
+    "construct_validity": 5,
+    "conclusion_validity": 6,
+    "reliability": 4
+  },
+  "high_severity_threats": [
+    {
+      "id": "IV-01",
+      "category": "Internal Validity",
+      "title": "Structural Similarity Confounding Behavioral Similarity",
+      "affected_hypotheses": ["H1", "H2", "H6"],
+      "affected_definitions": ["Def-9-CONTROL", "Def-16-EXECUTION"],
+      "description": "CONTROL and EXECUTION genome dimensions are derived from control-flow structure. Programs that are structurally similar (same code, refactored versions) trivially produce similar genome components regardless of semantic equivalence. Low D(G1,G2) may reflect structural proximity rather than semantic equivalence.",
+      "mitigation": "Ablation study comparing full genome vs. purely structural baseline vs. purely behavioral dimensions; test on structure-preserving but semantics-changing transformations; include structurally-similar hard negatives for H6.",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": null
+    },
+    {
+      "id": "IV-02",
+      "category": "Internal Validity",
+      "title": "Oracle / Ground-Truth Reliability",
+      "affected_hypotheses": ["H1", "H2", "H5"],
+      "affected_definitions": ["Def-19-SemanticEquivalence"],
+      "description": "H5 precision/recall is measured against a gold-standard test suite T*. The oracle is itself imperfect: Defects4J labels depend on test coverage. Bugs not caught by T* are labeled 'no regression', causing genuine SBG detections to count as false positives. Circular dependency between oracle and SBG evaluation.",
+      "mitigation": "Supplement with mutation-testing-confirmed ground truth (PIT/Pitest); use formal verification for small calibration set; report results split by oracle-confidence level.",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": null
+    },
+    {
+      "id": "IV-03",
+      "category": "Internal Validity",
+      "title": "Measurement Bias from Dynamic Analysis Instrumentation",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "affected_definitions": ["Def-1-Environment", "Def-5-ExecutionTrace", "Def-12-RESOURCE", "Def-13-TEMPORAL"],
+      "description": "Instrumentation (Valgrind, Pin) alters runtime behavior: probe effect on TEMPORAL/RESOURCE, Heisenberg effect on concurrency scheduling, shadow memory overhead. The instrumented genome differs from the native genome. Differential overhead between programs may be mis-attributed to behavioral differences.",
+      "mitigation": "Normalize differences, not absolute values; exclude TEMPORAL/RESOURCE when overhead ratio differs >5%; use hardware performance counters as alternative; report probe overhead as experimental variable.",
+      "residual_risk": "MEDIUM for CONTROL/DATA/INTERACTION; MEDIUM-HIGH for TEMPORAL/RESOURCE",
+      "formal_model_acknowledgment": "A1 (environment stability)"
+    },
+    {
+      "id": "IV-04",
+      "category": "Internal Validity",
+      "title": "Input Distribution Sensitivity",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5"],
+      "affected_definitions": ["Def-4-InputDistribution", "Def-6-ObservableBehavior", "Def-7-GenomeExtraction", "A3", "A7", "OP-1"],
+      "description": "Genome G(P) = Phi(P, I) is parameterized over input distribution I. Rare-event code paths are undersampled under production distribution. H2 formally requires S to cover regression-triggering inputs; if mu_I(Delta) ~= 0, H2 fails. Different experimenters using different distributions get different D(G1,G2) values — results are not reproducible across input choices.",
+      "mitigation": "Report results for all 4 canonical distributions (I_U, I_prod, I_cov, I_adv); conduct input distribution sensitivity analysis; use coverage-guided fuzzing for H2/H5; pin input generation protocol in replication package.",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": "A3, A7, OP-1, H2 formal dependency on Delta coverage"
+    },
+    {
+      "id": "IV-05",
+      "category": "Internal Validity",
+      "title": "Non-Determinism and Execution Flakiness",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "affected_definitions": ["A6-Determinism", "Def-21-TraceAggregation"],
+      "description": "Assumption A6 requires determinism given fixed input and environment. Violated in practice by ASLR (address randomization), thread scheduling non-determinism, Python/Java hash randomization, and network/file timing. Non-determinism creates false positive regression detections when two executions of the same program produce distant genomes.",
+      "mitigation": "Disable ASLR, fix random seeds, serialize multi-threaded programs; measure intra-version genome variance Var[G(P)] as noise floor; use relative TEMPORAL features; implement confidence-weighted distance D_conf (OP-3).",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": "A6, OP-3"
+    },
+    {
+      "id": "EV-01",
+      "category": "External Validity",
+      "title": "Benchmark Non-Representativeness",
+      "affected_hypotheses": ["H1", "H2", "H5"],
+      "affected_definitions": ["H5-RecallPrecision"],
+      "description": "Defects4J covers 17 Java open-source projects with good test coverage — not representative of enterprise software, embedded systems, or concurrent server code. Bugs are 'confirmed-fixed' type, biasing toward detectable bugs. Java-only scope means H3 cannot be evaluated on Defects4J. Results may not generalize.",
+      "mitigation": "Add BugsInPy, TypeScript mutations, C/C++ CVE-verified pairs; include at least one non-library server benchmark; build dedicated cross-language equivalence benchmark for H3.",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": null
+    },
+    {
+      "id": "EV-02",
+      "category": "External Validity",
+      "title": "Generalization to Real-World Programs",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "affected_definitions": ["Def-2-Program", "A5-FiniteTraces", "OP-1"],
+      "description": "Long-running servers have unbounded traces; timeout T_max introduces truncation bias. Interactive programs require simulated users. Programs with external dependencies have non-reproducible side effects. Micro-services have distributed execution that does not fit the single-program model. Large programs produce high-dimensional genomes that are computationally intractable.",
+      "mitigation": "Scope evaluation explicitly to single-process, non-interactive, bounded-execution programs; study truncation bias as function of T_max; describe scaling path via program slicing.",
+      "residual_risk": "HIGH (fundamental — must be disclosed as scope boundary)",
+      "formal_model_acknowledgment": "A5"
+    },
+    {
+      "id": "EV-04",
+      "category": "External Validity",
+      "title": "Scalability to Large Programs",
+      "affected_hypotheses": ["H5"],
+      "affected_definitions": ["Def-9-CONTROL-GED-NP-hard", "Def-11-STATE-isomorphism", "OP-2"],
+      "description": "Graph edit distance for CONTROL is NP-hard; heap graph isomorphism for STATE is GI-hard; Wasserstein-1 for TEMPORAL is expensive. Genome vector dimension grows with program size making cross-program comparison infeasible without dimensionality reduction. Results on small benchmarks do not imply tractability on large programs.",
+      "mitigation": "Use approximate GED; replace exact heap isomorphism with abstract heap summaries; use LSH/sketch structures for dimensionality reduction; report scaling analysis.",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": "OP-2"
+    },
+    {
+      "id": "EV-06",
+      "category": "External Validity",
+      "title": "Input Space Coverage in Practice",
+      "affected_hypotheses": ["H2", "H5"],
+      "affected_definitions": ["OP-1", "A7"],
+      "description": "Minimum sample size N* for genome convergence is unknown (OP-1). For complex programs (compilers, parsers) even large N may not cover regression-triggering inputs. H2 is fundamentally coupled to input coverage — incomparable to static analysis on bounded programs.",
+      "mitigation": "Report input coverage (branch/path coverage) as covariate; use coverage-guided fuzzing as primary distribution; derive empirical N* convergence curve.",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": "OP-1, A7, H2 formal dependency"
+    },
+    {
+      "id": "CV-01",
+      "category": "Construct Validity",
+      "title": "Behavioral Distance Does Not Capture Semantic Difference",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "affected_definitions": ["Def-18-BehavioralDistance", "Def-19-SemanticEquivalence"],
+      "description": "D(G1,G2) = 0 does not imply P1 ≡_S P2 (acknowledged in formal model). D(G1,G2) > 0 does not imply an observable behavioral difference exists. The genome is a proxy for semantic difference with no proof of validity. Positive distance may be purely measurement noise or input distribution mismatch.",
+      "mitigation": "Frame all claims as 'genome distance > theta predicts behavioral difference under I'; validate D against formal equivalence checkers on small programs; report D as probabilistic predictor with calibrated confidence intervals.",
+      "residual_risk": "MEDIUM (fundamental — Rice's theorem; only framing of claims can be made precise)",
+      "formal_model_acknowledgment": "Remark R7, Rice's theorem, Def 19 relationship statement"
+    },
+    {
+      "id": "CV-05",
+      "category": "Construct Validity",
+      "title": "Cross-Language Behavioral Equivalence as a Construct",
+      "affected_hypotheses": ["H3"],
+      "affected_definitions": ["Def-19-EquivAcrossLanguages", "OP-4"],
+      "description": "No canonicalization C_E(G(P)) can be simultaneously complete (retaining all semantically relevant features) and abstract enough (eliminating all language-specific noise). CONTROL call graph nodes use language-specific identifiers (OP-4 unresolved). DATA reflects type system differences. H3 is the highest-risk hypothesis with only theoretical support.",
+      "mitigation": "Resolve OP-4 before claiming H3; validate H3 on minimal testable cross-language pair first; state H3 is exploratory/preliminary.",
+      "residual_risk": "HIGH (OP-4 unresolved; cross-language behavioral equivalence remains an open research problem)",
+      "formal_model_acknowledgment": "OP-4, H3 caveats, OP-6"
+    },
+    {
+      "id": "CL-01",
+      "category": "Conclusion Validity",
+      "title": "Insufficient Statistical Power",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "affected_definitions": ["OP-1", "H5-RecallPrecision"],
+      "description": "No power analysis exists for SBG experiments. Large intra-version genome variance (from non-determinism) reduces signal-to-noise ratio. Defects4J program pairs from the same codebase are not independent samples. Testing H5 claims (recall >= 0.80, precision >= 0.70) on a small correlated benchmark is likely underpowered.",
+      "mitigation": "Conduct a priori power analysis; report confidence intervals on all precision/recall/distance values; use clustered standard errors for within-codebase pairs; treat codebase as clustering variable in mixed-effects models.",
+      "residual_risk": "MEDIUM",
+      "formal_model_acknowledgment": null
+    },
+    {
+      "id": "CL-02",
+      "category": "Conclusion Validity",
+      "title": "Multiple Hypothesis Testing",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "affected_definitions": ["All hypotheses"],
+      "description": "Six hypotheses tested across 8 dimensions, multiple benchmarks, and multiple input distributions. Without multiple comparisons correction, FWER across ~72 tests makes false discovery virtually certain. A single p < 0.05 result in this family is not meaningful without correction.",
+      "mitigation": "Pre-register primary hypothesis and test per H1-H6; apply Holm-Bonferroni or BH-FDR correction; distinguish confirmatory from exploratory analyses; report adjusted p-values.",
+      "residual_risk": "LOW (fully addressable with standard statistical practice)",
+      "formal_model_acknowledgment": null
+    },
+    {
+      "id": "RL-01",
+      "category": "Reliability",
+      "title": "Reproducibility Across Machines and Environments",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "affected_definitions": ["Def-1-Environment", "A1", "A6"],
+      "description": "Genome measurements are environment-sensitive (g_R, g_T are explicitly E-sensitive). The same program pair may produce different D(G1,G2) on different machines. Regression thresholds calibrated on one machine are miscalibrated on another. Genome archives (CG-3 supply-chain use case) become stale when deployment environment changes.",
+      "mitigation": "Provide fully containerized replication environment with pinned OS/compiler/runtime; report full E specification for all experiments; conduct cross-machine reproducibility study; use relative normalization for TEMPORAL/RESOURCE.",
+      "residual_risk": "MEDIUM (TEMPORAL and RESOURCE retain fundamental environment sensitivity)",
+      "formal_model_acknowledgment": "Def-1, A1, N2, R5"
+    }
+  ],
+  "medium_severity_threats": [
+    {
+      "id": "IV-06",
+      "category": "Internal Validity",
+      "title": "Test Data Leakage and Benchmark Contamination",
+      "affected_hypotheses": ["H5", "H6"],
+      "description": "Threshold epsilon and theta* selected using same benchmark used for evaluation — optimistic bias in reported recall/precision.",
+      "mitigation": "Strict train/validate/test split; k-fold cross-validation partitioned by program not version pair.",
+      "residual_risk": "LOW"
+    },
+    {
+      "id": "IV-07",
+      "category": "Internal Validity",
+      "title": "Threshold Selection Bias",
+      "affected_hypotheses": ["H1", "H2", "H3", "H5", "H6"],
+      "description": "Five thresholds (epsilon_stable, epsilon_detect, epsilon_xlang, theta*, epsilon_collision) have no principled derivation. Different choices can flip a result from supporting to refuting a hypothesis. Optimal thresholds are dimension-dependent but a single composite threshold is used.",
+      "mitigation": "Report full precision-recall curves; derive thresholds from noise floor measurement; use two-threshold decision model with indeterminate zone.",
+      "residual_risk": "LOW-MEDIUM"
+    },
+    {
+      "id": "IV-08",
+      "category": "Internal Validity",
+      "title": "Compiler and Optimizer Confound",
+      "affected_hypotheses": ["H1", "H3"],
+      "description": "Different compiler/optimizer versions change EXECUTION and RESOURCE genome features without any semantic program change. Recompilation at different optimization levels confounds genome changes with refactoring changes.",
+      "mitigation": "Fix compiler version and optimization flags; exclude optimization-sensitive EXECUTION features in cross-language comparisons.",
+      "residual_risk": "LOW"
+    },
+    {
+      "id": "EV-03",
+      "category": "External Validity",
+      "title": "Generalization Across Programming Paradigms",
+      "affected_hypotheses": ["H3", "H1", "H2"],
+      "description": "CONTROL dimension is designed for imperative/OO programs. Functional languages express computation via HOF/closures/lazy evaluation — call graphs are unstable. Logic programs have no call graph. H3 validated only on Python/Java does not generalize to Haskell, Erlang, Prolog.",
+      "mitigation": "Scope to imperative/OO languages; enumerate unsupported paradigms; propose g_C reformulation for functional languages.",
+      "residual_risk": "MEDIUM"
+    },
+    {
+      "id": "EV-05",
+      "category": "External Validity",
+      "title": "Language and Ecosystem Coverage Limitations",
+      "affected_hypotheses": ["H3", "H1", "H2"],
+      "description": "Validation on Python+Java only does not cover non-GC languages (C/C++, Rust), Windows syscall patterns, or memory-management paradigm differences. EXECUTION dimension excluded from cross-language comparison reduces the genome from 8 to 7 dimensions, changing the metric's semantics.",
+      "mitigation": "Enumerate exact validated language set; build and validate C_E canonicalization before use; test on at least one non-GC language.",
+      "residual_risk": "MEDIUM"
+    },
+    {
+      "id": "CV-02",
+      "category": "Construct Validity",
+      "title": "Individual Dimensions May Not Measure What They Claim",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "description": "CONTROL: dominant utility loops may mask semantic control-path changes. STATE: insufficient heap abstraction makes g_S insensitive to memory-safety regressions. TEMPORAL: conflates algorithmic complexity with hardware effects. ERROR: exception types are language-runtime-specific. EXECUTION: coverage vector is static-like, not frequency-sensitive.",
+      "mitigation": "Per-dimension sensitivity analysis; cross-validate with domain experts; build exception taxonomy alignment for cross-language ERROR comparison.",
+      "residual_risk": "MEDIUM"
+    },
+    {
+      "id": "CV-03",
+      "category": "Construct Validity",
+      "title": "Independence and Equal Weighting of 8 Dimensions",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "description": "CONTROL and EXECUTION are correlated (both from location visits). DATA and STATE are correlated (heap-stored values). RESOURCE and TEMPORAL are correlated (instruction count vs. time). Uniform weights upweight correlated dimensions and treat semantically unequal changes as equal.",
+      "mitigation": "Compute pairwise dimension correlation matrix; explore learned weights; consider PCA decorrelation before aggregation.",
+      "residual_risk": "LOW-MEDIUM"
+    },
+    {
+      "id": "CV-04",
+      "category": "Construct Validity",
+      "title": "Normalization Changes What Is Being Measured",
+      "affected_hypotheses": ["H3", "H4"],
+      "description": "Normalization (Definition 22) changes D from measuring actual behavioral difference to measuring normalized-representation difference. SPECint normalization suppresses algorithmic complexity differences. OP-6 (temporal normalization across architectures) is unresolved.",
+      "mitigation": "Validate normalization does not suppress real differences; report raw and normalized distances separately; use relative features for TEMPORAL as OP-6 partial mitigation.",
+      "residual_risk": "MEDIUM"
+    },
+    {
+      "id": "CL-03",
+      "category": "Conclusion Validity",
+      "title": "Mismatched Statistical Tests",
+      "affected_hypotheses": ["H1", "H2", "H5"],
+      "description": "D is bounded [0,1], concentrated near 0 for stable programs — likely non-Normal and skewed. Parametric t-tests on non-Normal distributions produce invalid p-values. H5's precision/recall requires McNemar or paired test against a baseline, not standalone reporting.",
+      "mitigation": "Report empirical D distributions first; default to non-parametric tests; compare H5 against non-trivial baseline with McNemar's test.",
+      "residual_risk": "LOW"
+    },
+    {
+      "id": "CL-04",
+      "category": "Conclusion Validity",
+      "title": "Effect Size Not Reported",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "description": "Statistical significance does not imply practical significance. A result with Delta_D = 0.003 may be statistically significant but engineeringly useless. Conversely, a large practical effect may be underpowered. SBG's hypotheses make magnitude claims (epsilon <= 0.05, recall >= 0.80) that require effect size reporting.",
+      "mitigation": "Report Cohen's d for all two-sample comparisons; 95% CI on all precision/recall/F1 values; explicitly distinguish statistical from practical significance.",
+      "residual_risk": "LOW"
+    },
+    {
+      "id": "CL-05",
+      "category": "Conclusion Validity",
+      "title": "Overfitting to Benchmark Characteristics",
+      "affected_hypotheses": ["H5", "H6"],
+      "description": "The 8-dimension model design and distance function choices were made with knowledge of Java/Defects4J-style programs. The model may be implicitly tuned to OO library code, JUnit test harnesses, and specific bug patterns prevalent in that corpus.",
+      "mitigation": "Evaluate on a completely different ecosystem benchmark (not Java, not curated university dataset); pre-register model design before seeing benchmark results; ablation study over design choices.",
+      "residual_risk": "MEDIUM"
+    },
+    {
+      "id": "CL-06",
+      "category": "Conclusion Validity",
+      "title": "Aggregation Conceals Dimension-Level Failures",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "description": "Composite D = F(d_C, ..., d_U) with uniform weights allows passing dimensions to mask failing dimensions. Noisy dimensions (TEMPORAL, RESOURCE) dilute diagnostic dimensions (CONTROL, INTERACTION). A regression on 1 of 8 dimensions produces D = max/8, which may fall below threshold theta.",
+      "mitigation": "Report per-dimension distances individually; evaluate dimension-level AUC-ROC; identify which dimensions contribute to correct vs. incorrect classifications.",
+      "residual_risk": "LOW"
+    },
+    {
+      "id": "RL-02",
+      "category": "Reliability",
+      "title": "Randomness in Dynamic Analysis",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "description": "Input sampling randomness, fuzzer non-determinism, and residual concurrency non-determinism make G(P) a stochastic process, not a deterministic function. Different seeds produce different genome estimates G_N(P) with non-trivial variance, especially for small N.",
+      "mitigation": "Fix all random seeds; run genome extraction 5+ times per version and report mean +/- std; treat genome as random variable; report genome variance as primary result.",
+      "residual_risk": "LOW-MEDIUM"
+    },
+    {
+      "id": "RL-03",
+      "category": "Reliability",
+      "title": "Version and Dependency Sensitivity",
+      "affected_hypotheses": ["H4", "H1"],
+      "description": "Library dependency updates change G(P) without any change to P's source code. In longitudinal comparisons, measured genome changes between versions P^k and P^(k+1) may be attributable to transitive dependency updates, not the program's own behavior change.",
+      "mitigation": "Lock all transitive dependencies (full lockfile); treat dependency version as explicit dimension; measure genome change for fixed P across library versions to quantify library-version contribution.",
+      "residual_risk": "LOW"
+    }
+  ],
+  "low_severity_threats": [
+    {
+      "id": "RL-04",
+      "category": "Reliability",
+      "title": "Instrumentation Tool Version Sensitivity",
+      "affected_hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6"],
+      "description": "Different versions of Valgrind/Pin/custom tracer may emit different trace formats, capture different events, or have different overhead profiles. Tool updates between experimental runs create apparent genome changes that are not real behavioral changes.",
+      "mitigation": "Pin instrumentation tool version in replication package; test genome stability across consecutive tool versions before deploying tool updates.",
+      "residual_risk": "LOW"
+    }
+  ],
+  "unmitigable_threats": [
+    {
+      "id": "CV-01",
+      "title": "D(G1,G2) Does Not Certify Semantic Equivalence",
+      "reason": "Rice's theorem — full semantic equivalence is undecidable for Turing-complete languages; OP-2 is unresolved for all but trivial programs.",
+      "disclosure_strategy": "Always frame SBG as an empirical approximation, not a semantic decision procedure. Never claim D = 0 implies P1 ≡_S P2."
+    },
+    {
+      "id": "IV-04-residual",
+      "title": "Rare-Trigger Behavioral Differences Are Undetectable",
+      "reason": "No finite sample covers all behavioral differences; inputs triggering mu_I(Delta) ~= 0 bugs will never be sampled from I_prod.",
+      "disclosure_strategy": "State sensitivity bounds explicitly; measure input coverage as a covariate in all H2/H5 experiments; use I_adv to bound the coverage gap."
+    },
+    {
+      "id": "EV-02-residual",
+      "title": "Long-Running, Interactive, and Distributed Programs Are Out of Scope",
+      "reason": "Timeout-bounded trace extraction cannot capture behaviors emerging over long execution horizons; multi-process programs violate Definition 2's single-program model.",
+      "disclosure_strategy": "Explicitly scope all claims to: single-process, non-interactive, execution-time < T_max, no external stateful dependencies."
+    },
+    {
+      "id": "EV-03-residual",
+      "title": "Functional and Logic Paradigms Are Not Supported",
+      "reason": "CONTROL dimension (g_C) is definitionally OO/imperative-centric; call graphs are not meaningful or stable constructs in functional or logic paradigms.",
+      "disclosure_strategy": "Enumerate supported paradigms explicitly in the paper scope section; do not claim generality beyond imperative/OO languages without a formal paradigm extension."
+    },
+    {
+      "id": "CV-05-residual",
+      "title": "Cross-Language Behavioral Equivalence (H3) Depends on Unresolved OP-4",
+      "reason": "No formal cross-language procedure alignment mapping exists; CONTROL dimension g_C cannot be compared across language boundaries without it.",
+      "disclosure_strategy": "Mark H3 as exploratory/preliminary; validate only on dimensions that do not require procedure-level alignment (DATA g_D, INTERACTION g_X, ERROR g_E); do not claim confirmed cross-language genome equivalence."
+    }
+  ],
+  "threats_grounded_in_formal_model": {
+    "A3": "IV-04 (Input Independence Violation)",
+    "A6": "IV-05 (Non-Determinism)",
+    "A7": "IV-04, EV-06 (Sample Sufficiency)",
+    "A1": "IV-08 (Compiler Confound), RL-01 (Reproducibility)",
+    "A5": "EV-02 (Finite Traces Assumption)",
+    "A8": "CV-02 (Heap Abstraction, STATE dimension)",
+    "A9": "CV-02 (Clock Resolution, TEMPORAL dimension)",
+    "A10": "IV-01 (Location Alignment, CONTROL dimension)",
+    "OP-1": "IV-04, EV-06 (Sample Size Unknown)",
+    "OP-2": "EV-04 (NP-hard GED, GI-hard isomorphism)",
+    "OP-3": "IV-05 (Confidence-weighted distance not yet defined)",
+    "OP-4": "CV-05 (Cross-language procedure alignment unresolved)",
+    "OP-5": "CV-02 (Heap abstraction selection unprincipled)",
+    "OP-6": "CV-04, EV-05 (Temporal normalization across architectures)",
+    "R7-Rices-Theorem": "CV-01 (D cannot certify semantic equivalence)",
+    "Def-17-GED-NP-hard": "EV-04 (Scalability)",
+    "N2-Resource-Environment-Sensitivity": "RL-01 (Reproducibility)",
+    "R5-TEMPORAL-Environment-Sensitivity": "RL-01 (Reproducibility), IV-03 (Instrumentation Bias)"
+  },
+  "severity_counts": {
+    "HIGH": 14,
+    "MEDIUM": 14,
+    "LOW": 4
+  },
+  "hypotheses_threat_map": {
+    "H1-Stability": ["IV-01", "IV-02", "IV-03", "IV-04", "IV-05", "IV-08", "EV-01", "CV-01", "CV-02", "CL-01", "CL-02", "RL-01", "RL-03"],
+    "H2-Sensitivity": ["IV-02", "IV-03", "IV-04", "IV-05", "EV-01", "EV-04", "EV-06", "CV-01", "CL-01", "CL-02", "CL-03", "RL-01"],
+    "H3-CrossLanguage": ["IV-03", "IV-08", "EV-03", "EV-05", "CV-04", "CV-05", "CL-02", "RL-01"],
+    "H4-Versioning": ["IV-04", "IV-05", "CV-04", "CL-02", "RL-01", "RL-03"],
+    "H5-RegressionOracle": ["IV-02", "IV-03", "IV-04", "IV-05", "IV-06", "EV-01", "EV-02", "EV-04", "EV-06", "CV-01", "CL-01", "CL-02", "CL-03", "CL-05", "RL-01"],
+    "H6-Uniqueness": ["IV-01", "IV-05", "IV-06", "CL-02", "RL-01"]
+  },
+  "key_recommendations_priority_order": [
+    "1. CL-02: Pre-register experiments and apply FDR correction before conducting any evaluation — zero cost, prevents false discovery.",
+    "2. IV-05: Measure intra-version genome variance (noise floor) before making any inter-version distance claim.",
+    "3. IV-04: Report input coverage as a covariate in all H2/H5 experiments.",
+    "4. CL-01: Conduct a priori power analysis; report confidence intervals on all metrics.",
+    "5. IV-01: Run structural-baseline ablation to disentangle structural from behavioral signal.",
+    "6. IV-02: Supplement Defects4J with mutation-testing-confirmed ground truth.",
+    "7. CV-01: Frame all claims as probabilistic predictors, not semantic certificates.",
+    "8. CV-05: Resolve OP-4 or explicitly mark H3 as exploratory.",
+    "9. RL-01: Provide containerized replication environment with full environment specification.",
+    "10. CL-06: Report per-dimension distances alongside composite D in all experiments."
+  ]
+}

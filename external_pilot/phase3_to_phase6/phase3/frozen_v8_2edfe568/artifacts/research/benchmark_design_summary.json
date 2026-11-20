@@ -1,0 +1,441 @@
+{
+  "agent": "0F",
+  "generated": "2025",
+  "source_document": "docs/research/BENCHMARK_DESIGN.md",
+  "formal_model_dependency": "docs/research/FORMAL_MODEL.md",
+  "hypotheses_evaluated": ["H1", "H2", "H3", "H5", "H6"],
+
+  "corpus_categories": [
+    {
+      "id": "C1",
+      "name": "Sorting and Order Statistics",
+      "programs_min": 8,
+      "rationale": "Dense control flow, data-dependent branching, well-studied mutation space",
+      "primary_dimensions": ["CONTROL", "DATA"]
+    },
+    {
+      "id": "C2",
+      "name": "String Processing and Parsing",
+      "programs_min": 8,
+      "rationale": "Character-level data flow; rich DATA dimension variation; off-by-one sensitivity",
+      "primary_dimensions": ["DATA", "INTERACTION"]
+    },
+    {
+      "id": "C3",
+      "name": "Graph Algorithms",
+      "programs_min": 8,
+      "rationale": "Complex control flow, path-dependent behavior, loop iteration distributions",
+      "primary_dimensions": ["CONTROL", "STATE"]
+    },
+    {
+      "id": "C4",
+      "name": "Numerical / Scientific Computation",
+      "programs_min": 8,
+      "rationale": "Numerically sensitive data flow; small mutations change output distributions",
+      "primary_dimensions": ["DATA", "ERROR"]
+    },
+    {
+      "id": "C5",
+      "name": "Data Structure Operations",
+      "programs_min": 8,
+      "rationale": "State transitions are semantically significant; heap topology variation",
+      "primary_dimensions": ["STATE", "RESOURCE"]
+    },
+    {
+      "id": "C6",
+      "name": "File and Stream I/O Processing",
+      "programs_min": 6,
+      "rationale": "System call patterns and I/O volumes are observationally meaningful",
+      "primary_dimensions": ["INTERACTION", "RESOURCE"]
+    },
+    {
+      "id": "C7",
+      "name": "Concurrent / Parallel Programs",
+      "programs_min": 6,
+      "rationale": "Thread interleaving, shared-state access; TEMPORAL and EXECUTION dimensions stressed",
+      "primary_dimensions": ["TEMPORAL", "EXECUTION"],
+      "note": "Determinism enforced via fixed thread count + PRNG seed (Assumption A6)"
+    },
+    {
+      "id": "C8",
+      "name": "Cryptographic Primitives",
+      "programs_min": 6,
+      "rationale": "Bit-level correctness; high sensitivity to any semantic change; true hard negatives",
+      "primary_dimensions": ["DATA", "INTERACTION"]
+    },
+    {
+      "id": "C9",
+      "name": "Compression Algorithms",
+      "programs_min": 5,
+      "rationale": "Interplay of DATA, RESOURCE, INTERACTION; known-equivalent implementations across languages",
+      "primary_dimensions": ["DATA", "RESOURCE", "INTERACTION"]
+    },
+    {
+      "id": "C10",
+      "name": "Search and Constraint Satisfaction",
+      "programs_min": 5,
+      "rationale": "Backtracking, pruning, solution enumeration; control flow structure is semantically critical",
+      "primary_dimensions": ["CONTROL", "DATA"]
+    },
+    {
+      "id": "C11",
+      "name": "System / OS Interface Programs",
+      "programs_min": 5,
+      "rationale": "System call vocabulary, resource usage patterns; exercises INTERACTION and RESOURCE directly",
+      "primary_dimensions": ["INTERACTION", "RESOURCE"]
+    },
+    {
+      "id": "C12",
+      "name": "Compiler / Interpreter Front-Ends (Small)",
+      "programs_min": 5,
+      "rationale": "Multi-phase control flow with well-defined I/O; known equivalent implementations exist",
+      "primary_dimensions": ["CONTROL", "STATE", "DATA"]
+    }
+  ],
+
+  "target_base_programs": 78,
+  "minimum_viable_base_programs": 50,
+  "category_count": 12,
+
+  "semantics_preserving_types": [
+    {
+      "id": "SP-1",
+      "name": "Rename (Identifier Substitution)",
+      "difficulty": "Easy",
+      "primary_dimensions_affected": [],
+      "description": "Replace all occurrences of a variable/function name consistently"
+    },
+    {
+      "id": "SP-2",
+      "name": "Comment and Documentation Change",
+      "difficulty": "Easy",
+      "primary_dimensions_affected": [],
+      "description": "Add, remove, or modify any non-executable annotation"
+    },
+    {
+      "id": "SP-3",
+      "name": "Reorder Independent Statements",
+      "difficulty": "Moderate",
+      "primary_dimensions_affected": ["TEMPORAL"],
+      "description": "Swap two statements with no data dependency"
+    },
+    {
+      "id": "SP-4",
+      "name": "Loop Normalization",
+      "difficulty": "Easy",
+      "primary_dimensions_affected": ["CONTROL"],
+      "description": "Transform for <-> while loops preserving iteration count and body semantics"
+    },
+    {
+      "id": "SP-5",
+      "name": "Constant Folding / Expression Simplification",
+      "difficulty": "Easy",
+      "primary_dimensions_affected": ["DATA"],
+      "description": "Replace a constant expression with its pre-computed value"
+    },
+    {
+      "id": "SP-6",
+      "name": "Dead Code Elimination",
+      "difficulty": "Moderate",
+      "primary_dimensions_affected": ["EXECUTION"],
+      "description": "Remove code that never executes under any reachable input"
+    },
+    {
+      "id": "SP-7",
+      "name": "Extract Method / Inline Method",
+      "difficulty": "Moderate",
+      "primary_dimensions_affected": ["CONTROL"],
+      "description": "Refactor code into/out of a function without changing execution semantics"
+    },
+    {
+      "id": "SP-8",
+      "name": "Equivalent Data Structure Substitution",
+      "difficulty": "Hard",
+      "primary_dimensions_affected": ["STATE", "RESOURCE"],
+      "description": "Replace data structure with another providing identical semantics for used operations"
+    },
+    {
+      "id": "SP-9",
+      "name": "Algorithm Substitution (Equivalent Complexity Class)",
+      "difficulty": "Very Hard",
+      "primary_dimensions_affected": ["CONTROL", "DATA", "TEMPORAL"],
+      "description": "Replace algorithm with provably output-equivalent alternative"
+    },
+    {
+      "id": "SP-10",
+      "name": "Compiler Optimization Flag Change",
+      "difficulty": "Hard",
+      "primary_dimensions_affected": ["EXECUTION", "TEMPORAL"],
+      "description": "Recompile with different optimization flags (e.g., -O0 vs -O2)"
+    },
+    {
+      "id": "SP-11",
+      "name": "Exception Handling Refactor (Equivalent)",
+      "difficulty": "Moderate",
+      "primary_dimensions_affected": ["ERROR"],
+      "description": "Restructure try/catch blocks without changing which exceptions propagate"
+    },
+    {
+      "id": "SP-12",
+      "name": "Logging / Instrumentation Addition (Non-Observable)",
+      "difficulty": "Easy/Moderate",
+      "primary_dimensions_affected": ["INTERACTION"],
+      "description": "Add logging calls that write to a log sink excluded from observable output oracle"
+    }
+  ],
+
+  "semantics_changing_types": [
+    {
+      "id": "SC-1",
+      "name": "Off-by-One Error (Boundary Mutation)",
+      "difficulty": "Hard",
+      "hard_negative": true,
+      "primary_dimensions_affected": ["CONTROL", "DATA"],
+      "description": "Change loop bound or array index by +/-1"
+    },
+    {
+      "id": "SC-2",
+      "name": "Arithmetic Operator Replacement",
+      "difficulty": "Easy",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["DATA"],
+      "description": "Replace one binary arithmetic operator with another"
+    },
+    {
+      "id": "SC-3",
+      "name": "Boolean Condition Negation",
+      "difficulty": "Easy",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["CONTROL"],
+      "description": "Negate a branch condition"
+    },
+    {
+      "id": "SC-4",
+      "name": "Wrong Comparison Operator",
+      "difficulty": "Moderate",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["CONTROL"],
+      "description": "Replace < with <= or == in a semantic comparison"
+    },
+    {
+      "id": "SC-5",
+      "name": "Variable Swap (Data Flow Mutation)",
+      "difficulty": "Moderate",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["DATA"],
+      "description": "Replace reference to variable x with reference to variable y at use sites"
+    },
+    {
+      "id": "SC-6",
+      "name": "Return Value Change",
+      "difficulty": "Easy",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["DATA", "INTERACTION"],
+      "description": "Alter a return statement to return a different value or expression"
+    },
+    {
+      "id": "SC-7",
+      "name": "Missing Null / Bounds Check",
+      "difficulty": "Hard",
+      "hard_negative": true,
+      "primary_dimensions_affected": ["ERROR", "CONTROL"],
+      "description": "Delete an explicit guard condition"
+    },
+    {
+      "id": "SC-8",
+      "name": "Loop Termination Condition Change",
+      "difficulty": "Moderate",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["CONTROL"],
+      "description": "Change a loop to terminate early or not on certain inputs"
+    },
+    {
+      "id": "SC-9",
+      "name": "Algorithm Logic Mutation (Step Omission)",
+      "difficulty": "Hard",
+      "hard_negative": true,
+      "primary_dimensions_affected": ["CONTROL", "DATA"],
+      "description": "Remove a logically required step from an algorithm"
+    },
+    {
+      "id": "SC-10",
+      "name": "Exception Suppression",
+      "difficulty": "Hard",
+      "hard_negative": true,
+      "primary_dimensions_affected": ["ERROR"],
+      "description": "Swallow an exception that should propagate"
+    },
+    {
+      "id": "SC-11",
+      "name": "State Initialization Change",
+      "difficulty": "Easy",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["DATA", "STATE"],
+      "description": "Alter initial state or variable initialization value"
+    },
+    {
+      "id": "SC-12",
+      "name": "Resource Leak Introduction",
+      "difficulty": "Hard",
+      "hard_negative": true,
+      "primary_dimensions_affected": ["RESOURCE"],
+      "description": "Remove a resource-release call (file close, memory free, lock release)"
+    },
+    {
+      "id": "SC-13",
+      "name": "Concurrency Mutation (Race Condition)",
+      "difficulty": "Very Hard",
+      "hard_negative": true,
+      "primary_dimensions_affected": ["TEMPORAL", "EXECUTION"],
+      "description": "Remove a synchronization primitive"
+    },
+    {
+      "id": "SC-14",
+      "name": "Cross-Language Semantic Port Error",
+      "difficulty": "Hard",
+      "hard_negative": false,
+      "primary_dimensions_affected": ["DATA", "INTERACTION"],
+      "description": "Introduce a known semantic difference when porting between languages"
+    }
+  ],
+
+  "target_sp_pairs": 3200,
+  "target_sc_pairs": 3200,
+  "target_total_pairs": 6400,
+  "minimum_viable_sp_pairs": 2000,
+  "minimum_viable_sc_pairs": 2000,
+  "minimum_viable_total_pairs": 4000,
+  "hard_negative_fraction": 0.30,
+  "hard_negative_pairs_recommended": 960,
+  "hard_negative_pairs_minimum": 600,
+
+  "ground_truth_method": "Four-tier provenance chain: GT-T1 (formal proof, confidence >= 0.999), GT-T2 (exhaustive partition test, confidence >= 0.990), GT-T3 (certified tool + differential test N>=1000, confidence >= 0.950), GT-T4 (broad differential test + expert review, confidence >= 0.900). SC labels additionally require at least one witnessed input discrepancy for hard SC types.",
+
+  "ground_truth_tiers": {
+    "GT-T1": {
+      "method": "Formal equivalence proof (regression verifier, SYMDIFF, Frama-C Wp)",
+      "confidence": 0.999,
+      "applicability": "Simple to moderate C/C++ and Java programs <= 200 LOC"
+    },
+    "GT-T2": {
+      "method": "Exhaustive / complete partition differential testing",
+      "confidence": 0.990,
+      "applicability": "Programs with finite or symbolically partitionable input spaces"
+    },
+    "GT-T3": {
+      "method": "Certified transformation tool + N>=1000 differential test",
+      "confidence": 0.950,
+      "applicability": "SP transformations applied by certified tools (compiler, refactoring tool)"
+    },
+    "GT-T4": {
+      "method": "Broad differential test N>=1000 + expert reviewer + second reviewer for test split",
+      "confidence": 0.900,
+      "applicability": "Complex programs where formal tools are unavailable"
+    }
+  },
+
+  "split_strategy": {
+    "train": {
+      "fraction": 0.50,
+      "target_pairs": 3200,
+      "purpose": "Model/threshold learning"
+    },
+    "dev": {
+      "fraction": 0.15,
+      "target_pairs": 960,
+      "purpose": "Hyperparameter tuning, early stopping"
+    },
+    "validation": {
+      "fraction": 0.15,
+      "target_pairs": 960,
+      "purpose": "Unbiased intermediate evaluation; frozen after initial population"
+    },
+    "test": {
+      "fraction": 0.20,
+      "target_pairs": 1280,
+      "purpose": "Final held-out evaluation; used once"
+    },
+    "stratification_axes": [
+      "category",
+      "transformation_type",
+      "difficulty_class",
+      "ground_truth_tier"
+    ],
+    "leakage_prevention": [
+      "Split assignment at base program level (not pair level)",
+      "No base program appears in both train and test",
+      "Transformation-symmetric pairs excluded from different splits",
+      "Cross-language pairs treated as single units for split assignment",
+      "Validation and test splits frozen after initial population"
+    ],
+    "class_balance": {
+      "target_sp_sc_ratio": "1:1",
+      "tolerance_train_dev": 0.10,
+      "tolerance_val_test": 0.05
+    }
+  },
+
+  "difficulty_distribution_targets": {
+    "easy": 0.25,
+    "moderate": 0.35,
+    "hard": 0.30,
+    "very_hard": 0.10
+  },
+
+  "quality_metrics": {
+    "label_reliability_target": 0.95,
+    "difficulty_distribution_balance_target_nats": 1.5,
+    "type_coverage_score_target": 0.80,
+    "hard_negative_discriminability_target": 0.70
+  },
+
+  "statistical_justification": {
+    "alpha": 0.0017,
+    "alpha_derivation": "Bonferroni correction: 0.01 / 6 hypotheses H1-H6",
+    "z_alpha_over_2": 3.12,
+    "test_set_size_minimum": 800,
+    "test_set_size_recommended": 1280,
+    "margin_of_error": 0.05,
+    "confidence": 0.95,
+    "power": 0.80,
+    "system_difference_detectable": 0.10,
+    "method": "Proportion estimation (Fleiss) + McNemar test power analysis at Bonferroni-corrected alpha = 0.0017",
+    "calculation": "Required discordant pairs at alpha=0.0017 = (3.120+0.842)^2 / 1^2 ≈ 15.70; ratio vs alpha=0.05 is 15.70/7.85 = 2.0; 80 discordant × 2 = 160 discordant; at 20% discordance rate: 160/0.20 = 800 total minimum test pairs",
+    "note": "Minimum viable test set (800 pairs) is powered for 10% system differences at alpha=0.0017. Recommended test set (1280 pairs) provides margin. Previous alpha=0.05 figure of 400 pairs was insufficient under Bonferroni correction."
+  },
+
+  "languages_required": 6,
+  "language_pairs_for_h3": [
+    "Python-Java",
+    "Python-C",
+    "Java-C",
+    "Python-Go",
+    "Java-Rust",
+    "C-Go"
+  ],
+
+  "determinism_policy": {
+    "prng_seed": 42,
+    "timeout_seconds": 30,
+    "float_rounding": "IEEE 754 round-to-nearest-even",
+    "locale": "UTF-8",
+    "timezone": "UTC",
+    "thread_policy": "Fixed count + deterministic round-robin for C7 programs",
+    "formal_basis": "Assumption A6 (FORMAL_MODEL.md)"
+  },
+
+  "tooling_recommendations": {
+    "formal_verification": ["Godlin-Strichman regression verifier", "SYMDIFF (Lahiri et al. CAV 2012)", "Frama-C Wp plugin"],
+    "differential_testing": ["AFL++ comparison mode", "custom harness"],
+    "input_generation": ["AFL++", "libFuzzer", "manual boundary cases"],
+    "mutation_application": ["PIT (Java)", "mutmut (Python)", "custom AST transformer"],
+    "pdg_analysis": ["Joern", "Soot"],
+    "stratified_split": ["scikit-multilearn iterative stratification"]
+  },
+
+  "prior_art_connections": {
+    "mutation_testing_foundation": ["[27] Jia & Harman TSE 2011", "[28] Just et al. Defects4J ISSTA 2014", "[29] Coles et al. PIT ICST 2016"],
+    "regression_verification": ["[16] Godlin & Strichman DAC 2009", "[19] Lahiri et al. SYMDIFF CAV 2012"],
+    "behavioral_differential_testing": ["[5] Bayer et al. TTAnalyze NDSS 2009", "[1] Luo et al. TIFS 2017"]
+  }
+}

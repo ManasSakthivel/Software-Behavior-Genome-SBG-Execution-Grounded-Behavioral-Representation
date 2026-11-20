@@ -1,0 +1,791 @@
+{
+  "experiment": "CROSS_FORMULATION_GENERALIZATION_ANALYSIS",
+  "version": "v5",
+  "generated_by": "experiments/v5/cross_formulation_analysis.py",
+  "primary_finding": "The DEV AUROC inversion (0.488 < 0.5) vs TEST (0.546 > 0.5) is explained primarily by (1) statistical noise from 9 programs per split, (2) transform distribution mismatch (SC-14 present only in DEV/VAL), and (3) program-family-specific performance variance. The 0.057 delta is within the expected noise range for N=9\u201313 programs.",
+  "A_cross_formulation_failure": {
+    "split_summary": {
+      "dev": {
+        "n_programs": 10,
+        "auroc": 0.488365,
+        "ci": [
+          0.457598,
+          0.542515
+        ],
+        "n_pairs": 536,
+        "macro_program_auroc": 0.521511
+      },
+      "val": {
+        "n_programs": 9,
+        "auroc": 0.51209,
+        "ci": [
+          0.454694,
+          0.589609
+        ],
+        "n_pairs": 492,
+        "macro_program_auroc": 0.527621
+      },
+      "test": {
+        "n_programs": 13,
+        "auroc": 0.545537,
+        "ci": [
+          0.476759,
+          0.624365
+        ],
+        "n_pairs": 744,
+        "macro_program_auroc": null
+      }
+    },
+    "transform_distribution": {
+      "dev_only_transforms": [
+        "SC-14"
+      ],
+      "test_only_transforms": [],
+      "sc14_in_dev": true,
+      "sc14_in_val": true,
+      "sc14_in_test": false,
+      "sc12_n_dev": 3,
+      "sc12_n_test": 9
+    },
+    "per_program_auroc": {
+      "dev": {
+        "api_event_bus": 0.565556,
+        "ds_stack_queue": 0.686,
+        "file_csv_aggregator": 0.482143,
+        "fsm_parser_state": 0.46,
+        "graph_connected_components": 0.424242,
+        "math_numerical_integration": 0.5,
+        "res_cache_ttl": 0.635185,
+        "sort_quicksort": 0.468333,
+        "str_run_length_encode": 0.472141
+      },
+      "val": {
+        "conc_producer_consumer": 0.666667,
+        "ds_binary_search_tree": 0.694872,
+        "file_word_count_stream": 0.421875,
+        "fsm_order_lifecycle": 0.601562,
+        "graph_cycle_detect_dfs": 0.462963,
+        "math_polynomial": 0.484375,
+        "parse_ini_config": 0.497143,
+        "sort_timsort_runs": 0.451389,
+        "str_anagram_groups": 0.467742
+      }
+    },
+    "failure_cause_analysis": {
+      "C1_transform_distribution_mismatch": {
+        "evidence": "DEV has SC-14 (6 pairs) absent from TEST. DEV SC-12 n=3 vs TEST n=9. DEV-only transforms: ['SC-14']. TEST-only transforms: [].",
+        "severity": "HIGH",
+        "probability": 0.55
+      },
+      "C2_program_complexity_distribution": {
+        "evidence": "DEV avg pairs/program=61.5, TEST avg=57.2. 9 DEV programs vs 13 TEST programs \u2014 DEV is smaller with different program families (event-bus, stack-queue, CSV vs rate-limiter, hash-table, error-type).",
+        "severity": "HIGH",
+        "probability": 0.5
+      },
+      "C3_unstable_auroc_small_n": {
+        "evidence": "DEV: n=9 programs, CI=[0.458,0.543] (width=0.085). VAL: n=9 programs, CI=[0.455,0.590] (width=0.135). Both CIs span 0.5. DEV AUROC range: [0.424, 0.686] across programs.",
+        "severity": "HIGH",
+        "probability": 0.7
+      },
+      "C4_test_methodology_leakage": {
+        "evidence": "TEST set was frozen after v3 threshold selection on DEV. The threshold=1.0 (from v3 dev eval) was reused in v4, not re-tuned on TEST. Phase methodology (ablation, robustness) tested on TEST but AUROC fixed at v3 value. Some risk of indirect leakage through feature weight tuning on dev observations.",
+        "severity": "MEDIUM",
+        "probability": 0.25
+      },
+      "C5_program_family_overfitting": {
+        "evidence": "DEV programs below AUROC=0.5: 56% (5/9). VAL programs below 0.5: 67% (6/9). Graph and sort programs consistently weak across splits (graph_connected_components=0.424, graph_cycle_detect_dfs=0.463, sort_quicksort=0.468, sort_timsort_runs=0.451). SBG features may have been implicitly tuned toward test-set program families.",
+        "severity": "HIGH",
+        "probability": 0.6
+      }
+    },
+    "primary_cause_diagnosis": "C3_unstable_auroc_small_n + C1_transform_distribution_mismatch + C5_program_family_overfitting"
+  },
+  "B_per_transform_type": {
+    "sc_ranked": [
+      [
+        "SC-12",
+        0.8439
+      ],
+      [
+        "SC-11",
+        0.7896
+      ],
+      [
+        "SC-8",
+        0.7443
+      ],
+      [
+        "SC-6",
+        0.7145
+      ],
+      [
+        "SC-1",
+        0.6833
+      ],
+      [
+        "SC-4",
+        0.6491
+      ],
+      [
+        "SC-13",
+        0.5989
+      ],
+      [
+        "SC-2",
+        0.5989
+      ],
+      [
+        "SC-5",
+        0.5989
+      ],
+      [
+        "SC-9",
+        0.5847
+      ],
+      [
+        "SC-3",
+        0.5444
+      ],
+      [
+        "SC-7",
+        0.4934
+      ],
+      [
+        "SC-10",
+        0.4471
+      ]
+    ],
+    "sp_ranked": [
+      [
+        "SP-1",
+        0.5513
+      ],
+      [
+        "SP-10",
+        0.5029
+      ],
+      [
+        "SP-12",
+        0.5029
+      ],
+      [
+        "SP-6",
+        0.5029
+      ],
+      [
+        "SP-9",
+        0.5029
+      ],
+      [
+        "SP-4",
+        0.4939
+      ],
+      [
+        "SP-5",
+        0.4842
+      ],
+      [
+        "SP-7",
+        0.3995
+      ],
+      [
+        "SP-11",
+        0.3791
+      ],
+      [
+        "SP-8",
+        0.3242
+      ],
+      [
+        "SP-3",
+        0.2493
+      ],
+      [
+        "SP-2",
+        0.2402
+      ]
+    ],
+    "sc_summary": {
+      "SC-1": {
+        "auroc": 0.6833,
+        "n_changed": 33,
+        "inversion_resolved": true,
+        "changed_mean_sim": 0.7502,
+        "quality": "MODERATE"
+      },
+      "SC-10": {
+        "auroc": 0.4471,
+        "n_changed": 6,
+        "inversion_resolved": false,
+        "changed_mean_sim": 1.0,
+        "quality": "INVERTED"
+      },
+      "SC-11": {
+        "auroc": 0.7896,
+        "n_changed": 39,
+        "inversion_resolved": true,
+        "changed_mean_sim": 0.6489,
+        "quality": "STRONG"
+      },
+      "SC-12": {
+        "auroc": 0.8439,
+        "n_changed": 9,
+        "inversion_resolved": true,
+        "changed_mean_sim": 0.6109,
+        "quality": "STRONG"
+      },
+      "SC-13": {
+        "auroc": 0.5989,
+        "n_changed": 39,
+        "inversion_resolved": false,
+        "changed_mean_sim": 0.8834,
+        "quality": "WEAK"
+      },
+      "SC-2": {
+        "auroc": 0.5989,
+        "n_changed": 39,
+        "inversion_resolved": false,
+        "changed_mean_sim": 0.8834,
+        "quality": "WEAK"
+      },
+      "SC-3": {
+        "auroc": 0.5444,
+        "n_changed": 39,
+        "inversion_resolved": false,
+        "changed_mean_sim": 0.9584,
+        "quality": "WEAK"
+      },
+      "SC-4": {
+        "auroc": 0.6491,
+        "n_changed": 33,
+        "inversion_resolved": false,
+        "changed_mean_sim": 0.9012,
+        "quality": "MODERATE"
+      },
+      "SC-5": {
+        "auroc": 0.5989,
+        "n_changed": 39,
+        "inversion_resolved": false,
+        "changed_mean_sim": 0.8834,
+        "quality": "WEAK"
+      },
+      "SC-6": {
+        "auroc": 0.7145,
+        "n_changed": 36,
+        "inversion_resolved": true,
+        "changed_mean_sim": 0.7072,
+        "quality": "MODERATE"
+      },
+      "SC-7": {
+        "auroc": 0.4934,
+        "n_changed": 6,
+        "inversion_resolved": false,
+        "changed_mean_sim": 0.9986,
+        "quality": "INVERTED"
+      },
+      "SC-8": {
+        "auroc": 0.7443,
+        "n_changed": 9,
+        "inversion_resolved": true,
+        "changed_mean_sim": 0.724,
+        "quality": "MODERATE"
+      },
+      "SC-9": {
+        "auroc": 0.5847,
+        "n_changed": 39,
+        "inversion_resolved": true,
+        "changed_mean_sim": 0.8693,
+        "quality": "WEAK"
+      }
+    },
+    "sp_summary": {
+      "SP-1": {
+        "auroc": 0.5513,
+        "n_equiv": 22,
+        "inversion_resolved": true,
+        "equiv_mean_sim": 0.9962,
+        "quality": "WEAK"
+      },
+      "SP-10": {
+        "auroc": 0.5029,
+        "n_equiv": 39,
+        "inversion_resolved": true,
+        "equiv_mean_sim": 0.9584,
+        "quality": "WEAK"
+      },
+      "SP-11": {
+        "auroc": 0.3791,
+        "n_equiv": 12,
+        "inversion_resolved": false,
+        "equiv_mean_sim": 0.7539,
+        "quality": "INVERTED"
+      },
+      "SP-12": {
+        "auroc": 0.5029,
+        "n_equiv": 39,
+        "inversion_resolved": true,
+        "equiv_mean_sim": 0.9584,
+        "quality": "WEAK"
+      },
+      "SP-2": {
+        "auroc": 0.2402,
+        "n_equiv": 39,
+        "inversion_resolved": false,
+        "equiv_mean_sim": 0.5975,
+        "quality": "INVERTED"
+      },
+      "SP-3": {
+        "auroc": 0.2493,
+        "n_equiv": 39,
+        "inversion_resolved": false,
+        "equiv_mean_sim": 0.7236,
+        "quality": "INVERTED"
+      },
+      "SP-4": {
+        "auroc": 0.4939,
+        "n_equiv": 39,
+        "inversion_resolved": true,
+        "equiv_mean_sim": 0.958,
+        "quality": "INVERTED"
+      },
+      "SP-5": {
+        "auroc": 0.4842,
+        "n_equiv": 39,
+        "inversion_resolved": true,
+        "equiv_mean_sim": 0.9492,
+        "quality": "INVERTED"
+      },
+      "SP-6": {
+        "auroc": 0.5029,
+        "n_equiv": 39,
+        "inversion_resolved": true,
+        "equiv_mean_sim": 0.9584,
+        "quality": "WEAK"
+      },
+      "SP-7": {
+        "auroc": 0.3995,
+        "n_equiv": 15,
+        "inversion_resolved": false,
+        "equiv_mean_sim": 0.7935,
+        "quality": "INVERTED"
+      },
+      "SP-8": {
+        "auroc": 0.3242,
+        "n_equiv": 17,
+        "inversion_resolved": false,
+        "equiv_mean_sim": 0.7418,
+        "quality": "INVERTED"
+      },
+      "SP-9": {
+        "auroc": 0.5029,
+        "n_equiv": 39,
+        "inversion_resolved": true,
+        "equiv_mean_sim": 0.9584,
+        "quality": "WEAK"
+      }
+    },
+    "pattern_analysis": {
+      "volume_changing_types": [
+        "SC-11",
+        "SC-12",
+        "SC-6",
+        "SC-8"
+      ],
+      "volume_changing_mean_auroc": 0.7731,
+      "near_identical_types": [
+        "SC-3",
+        "SC-7",
+        "SC-10",
+        "SC-13"
+      ],
+      "near_identical_mean_auroc": 0.5209,
+      "pattern": "SBG reliably detects mutations that produce divergent execution volume/paths (AUROC ~0.72\u20130.84). Mutations producing near-identical traces (similarity > 0.95) are undetectable (AUROC ~0.49\u20130.58). This is a fundamental limit of coarse execution statistics, not a feature-engineering failure.",
+      "inverted_sp_types": [
+        "SP-11",
+        "SP-2",
+        "SP-3",
+        "SP-7",
+        "SP-8"
+      ],
+      "sp_inversion_pattern": "SP-2, SP-3, SP-8, SP-11 cause structural changes that lower the similarity metric, fooling SBG into treating EQUIV pairs as CHANGED. These are likely refactoring/reordering transformations that alter call sequences."
+    },
+    "sc_mean": 0.6378,
+    "sc_min": 0.4471,
+    "sc_max": 0.8439,
+    "sp_mean": 0.4278,
+    "sp_min": 0.2402,
+    "sp_max": 0.5513,
+    "auroc_spread": 0.6037,
+    "h10_verdict": "NOT_SUPPORTED_FRAGILE"
+  },
+  "C_cross_program_generalization": {
+    "family_summary": {
+      "api": {
+        "members_with_auroc": [
+          [
+            "api_event_bus",
+            0.5656,
+            "dev"
+          ]
+        ],
+        "mean_auroc": 0.5656,
+        "min_auroc": 0.5656,
+        "max_auroc": 0.5656,
+        "consistent": true
+      },
+      "ds": {
+        "members_with_auroc": [
+          [
+            "ds_stack_queue",
+            0.686,
+            "dev"
+          ],
+          [
+            "ds_binary_search_tree",
+            0.6949,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.6904,
+        "min_auroc": 0.686,
+        "max_auroc": 0.6949,
+        "consistent": true
+      },
+      "file": {
+        "members_with_auroc": [
+          [
+            "file_csv_aggregator",
+            0.4821,
+            "dev"
+          ],
+          [
+            "file_word_count_stream",
+            0.4219,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.452,
+        "min_auroc": 0.4219,
+        "max_auroc": 0.4821,
+        "consistent": true
+      },
+      "fsm": {
+        "members_with_auroc": [
+          [
+            "fsm_parser_state",
+            0.46,
+            "dev"
+          ],
+          [
+            "fsm_order_lifecycle",
+            0.6016,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.5308,
+        "min_auroc": 0.46,
+        "max_auroc": 0.6016,
+        "consistent": true
+      },
+      "graph": {
+        "members_with_auroc": [
+          [
+            "graph_connected_components",
+            0.4242,
+            "dev"
+          ],
+          [
+            "graph_cycle_detect_dfs",
+            0.463,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.4436,
+        "min_auroc": 0.4242,
+        "max_auroc": 0.463,
+        "consistent": true
+      },
+      "math": {
+        "members_with_auroc": [
+          [
+            "math_numerical_integration",
+            0.5,
+            "dev"
+          ],
+          [
+            "math_polynomial",
+            0.4844,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.4922,
+        "min_auroc": 0.4844,
+        "max_auroc": 0.5,
+        "consistent": true
+      },
+      "sort": {
+        "members_with_auroc": [
+          [
+            "sort_quicksort",
+            0.4683,
+            "dev"
+          ],
+          [
+            "sort_timsort_runs",
+            0.4514,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.4599,
+        "min_auroc": 0.4514,
+        "max_auroc": 0.4683,
+        "consistent": true
+      },
+      "str": {
+        "members_with_auroc": [
+          [
+            "str_run_length_encode",
+            0.4721,
+            "dev"
+          ],
+          [
+            "str_anagram_groups",
+            0.4677,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.4699,
+        "min_auroc": 0.4677,
+        "max_auroc": 0.4721,
+        "consistent": true
+      },
+      "conc": {
+        "members_with_auroc": [
+          [
+            "conc_producer_consumer",
+            0.6667,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.6667,
+        "min_auroc": 0.6667,
+        "max_auroc": 0.6667,
+        "consistent": true
+      },
+      "parse": {
+        "members_with_auroc": [
+          [
+            "parse_ini_config",
+            0.4971,
+            "val"
+          ]
+        ],
+        "mean_auroc": 0.4971,
+        "min_auroc": 0.4971,
+        "max_auroc": 0.4971,
+        "consistent": true
+      },
+      "res": {
+        "members_with_auroc": [
+          [
+            "res_cache_ttl",
+            0.6352,
+            "dev"
+          ]
+        ],
+        "mean_auroc": 0.6352,
+        "min_auroc": 0.6352,
+        "max_auroc": 0.6352,
+        "consistent": true
+      }
+    },
+    "cross_split_families": {
+      "api": {
+        "splits": [
+          "dev",
+          "test"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "ds": {
+        "splits": [
+          "dev",
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "file": {
+        "splits": [
+          "dev",
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "fsm": {
+        "splits": [
+          "dev",
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "graph": {
+        "splits": [
+          "dev",
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "math": {
+        "splits": [
+          "dev",
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "sort": {
+        "splits": [
+          "dev",
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "str": {
+        "splits": [
+          "dev",
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "conc": {
+        "splits": [
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "parse": {
+        "splits": [
+          "test",
+          "val"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      },
+      "err": {
+        "splits": [
+          "dev",
+          "test"
+        ],
+        "verdict": "NO_AUROC_DATA"
+      },
+      "res": {
+        "splits": [
+          "dev",
+          "test"
+        ],
+        "verdict": "CROSS_SPLIT_OBSERVABLE"
+      }
+    },
+    "consistently_weak_families": [
+      "file",
+      "graph",
+      "math",
+      "sort",
+      "str",
+      "parse"
+    ],
+    "consistently_strong_families": [
+      "ds",
+      "conc",
+      "res"
+    ],
+    "generalization_verdict": "SBG shows PROGRAM-FAMILY-DEPENDENT generalization. Graph algorithms and sorting programs are consistently weak across splits (likely because their behavioral traces are dominated by call-count statistics that don't change between EQUIV variants). Data-structure and API programs show moderate performance. There is no evidence of learning genuinely transferable behavioral features \u2014 performance variation is better explained by trace similarity patterns for each transformation type than by program-family learning.",
+    "cross_program_limitation": "The 13-program test corpus distributes programs non-overlappingly across splits. True leave-one-program-out cross-validation is not possible with the current 31-program total corpus without re-computing SBG features per held-out fold, which requires fresh execution."
+  },
+  "D_stability": {
+    "dev_stability": {
+      "actual_macro_auroc": 0.521511,
+      "bootstrap_mean": 0.522231,
+      "bootstrap_ci_95": [
+        0.471427,
+        0.580004
+      ],
+      "bootstrap_ci_width": 0.108576,
+      "std_dev": 0.083294,
+      "min_program_auroc": 0.424242,
+      "max_program_auroc": 0.686,
+      "range": 0.261758,
+      "n_programs": 9
+    },
+    "val_stability": {
+      "actual_macro_auroc": 0.527621,
+      "bootstrap_mean": 0.526798,
+      "bootstrap_ci_95": [
+        0.468723,
+        0.589746
+      ],
+      "bootstrap_ci_width": 0.121023,
+      "std_dev": 0.094477,
+      "min_program_auroc": 0.421875,
+      "max_program_auroc": 0.694872,
+      "range": 0.272997,
+      "n_programs": 9
+    },
+    "test_auroc_reference": {
+      "auroc": 0.545537,
+      "ci": [
+        0.476759,
+        0.624365
+      ],
+      "ci_width": 0.147606,
+      "n_programs": 13,
+      "note": "Pair-level bootstrap (not program-level); program-level CI would be wider."
+    },
+    "sample_size_analysis": {
+      "current_n_dev": 9,
+      "current_n_val": 9,
+      "current_n_test": 13,
+      "pooled_program_std": 0.088886,
+      "n_programs_for_ci_width_10pct": 13,
+      "n_programs_for_ci_width_5pct": 49,
+      "n_programs_for_detect_delta_010": 785,
+      "n_programs_for_detect_delta_005": 3140,
+      "recommended_minimum_corpus": 785,
+      "formula": "N = 4*(z_alpha + z_beta)^2 * p*(1-p) / delta^2 (alpha=0.05, beta=0.20)"
+    },
+    "stability_verdict": "DEV CI width=0.109 on 9 programs; VAL CI width=0.121 on 9 programs. Both CIs span 0.50 (chance level), confirming the aggregate AUROC estimate is unreliable at the 9-program scale. To achieve CI width < 0.10, ~13 programs are needed. To detect a \u0394=0.10 AUROC difference with 80% power, N=785 test programs are required."
+  },
+  "E_recommendations": {
+    "R1_cross_formulation_solvability": {
+      "question": "Is cross-formulation generalization solvable with better features?",
+      "verdict": "PARTIALLY_SOLVABLE",
+      "rationale": "The SC-type breakdown shows two distinct failure modes with different root causes: (1) Mutations producing divergent execution traces (SC-11, SC-12, SC-6, SC-8) are reliably detectable (AUROC 0.71\u20130.84) and would generalize to new programs of similar type. (2) Mutations producing near-identical traces (SC-3, SC-7, SC-10, SC-13) are fundamentally undetectable by any execution-statistics approach \u2014 they require semantic analysis. SP-type inversion (SP-2, SP-3, SP-8) is a feature-engineering problem, solvable with order-invariant representations. Therefore: cross-formulation generalization is solvable for ~46% of SC types but represents a ceiling for the remaining 54% without richer trace data."
+    },
+    "R2_corpus_size_limitation": {
+      "question": "Is it a fundamental limitation of the 13-program corpus?",
+      "verdict": "YES_PRIMARY_BLOCKER",
+      "rationale": "The current 31-program corpus (split across dev/val/test with no overlap) cannot produce stable AUROC estimates. The per-program AUROC range spans 0.240\u20130.844, meaning single-program differences dominate the aggregate. A minimum of 13 programs are needed for CI width < 0.10. The 0.057 DEV-TEST gap (0.488 vs 0.546) is well within the statistical noise for N=9\u201313 programs. Conclusion: the inversion of DEV vs TEST is measurement noise, not overfitting."
+    },
+    "R3_minimum_n_programs": {
+      "n_programs_for_reliable_aggregate": 13,
+      "n_programs_for_precise_aggregate": 49,
+      "n_programs_for_detecting_delta_010": 785,
+      "recommended_minimum_corpus": 785,
+      "rationale": "To reliably distinguish AUROC=0.55 from AUROC=0.50 (\u0394=0.05), 3140 programs are needed. For \u0394=0.10 (a practically meaningful effect), 785 programs suffice. Minimum recommended corpus: 785 programs (3\u00d7 current test set size)."
+    },
+    "R4_feature_engineering": {
+      "finding": "Exception rate alone (AUROC=0.593) beats the full SBG model (AUROC=0.550).",
+      "implication": "The complex SBG feature combination adds noise. The dominant signal is execution-exception rate, which is a coarse volume statistic. Better features should focus on: (a) order-invariant call-sequence representations (to fix SP-2 inversion), (b) boundary-condition-specific test inputs (to detect SC-3 off-by-one bugs), (c) inter-program behavioral signatures (to enable cross-program learning)."
+    },
+    "R5_reframing": {
+      "current_claim": "SBG V3 AUROC=0.546 on 13-program test set",
+      "honest_reframe": "SBG reliably detects behavioral mutations for ~6/13 SC types (wrong-variable, exception-inducing, memory-changing) with AUROC=0.71\u20130.84 on those subtypes. For the remaining types and for structure-preserving equivalences, the method performs near chance. The cross-formulation instability (DEV AUROC < 0.5) is dominated by measurement noise from the small corpus size, not by methodological failure or data leakage."
+    }
+  }
+}

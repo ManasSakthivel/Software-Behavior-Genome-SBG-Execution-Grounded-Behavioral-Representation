@@ -1,0 +1,754 @@
+{
+  "agent": "0G",
+  "generated_at": "2025-01-31T00:00:00Z",
+  "task": "v2 extension architecture design — execution-based behavioral evidence",
+  "design_principles": [
+    "v1 files are FROZEN — zero modifications to sbg/, baselines/b01-b08, experiments/phase4/",
+    "v2 code lives in sbg/v2/ and experiments/v2/ exclusively",
+    "v2 modules import v1 symbols; v1 modules never import v2",
+    "b06_dynamic.py (flat trace, unstructured) is superseded by b07_dynamic_v2.py",
+    "sbg/extraction/dynamic/tracer.py is v1-frozen; v2/execution/tracer.py extends via composition"
+  ],
+
+  "v2_directory_structure": {
+    "sbg/v2/": {
+      "__init__.py": "exposes DynamicGenome, HybridGenome, fuse, hybrid_distance",
+      "execution/": {
+        "__init__.py": "exposes Runner, Tracer, Normalizer, DynamicGenome",
+        "runner.py": "safe sandbox execution with configurable timeout and resource caps",
+        "tracer.py": "rich execution trace capture — stdout, state snapshots, exception chains, coverage",
+        "normalizer.py": "strip machine-specific artefacts from raw traces before comparison",
+        "genome.py": "DynamicGenome dataclass — structured summary of execution evidence"
+      },
+      "hybrid/": {
+        "__init__.py": "exposes fuse(), HybridGenome, hybrid_distance()",
+        "fusion.py": "combine v1 StaticGenome dict + v2 DynamicGenome into HybridGenome",
+        "distance.py": "weighted behavioral distance over hybrid genome; extends sbg.distance"
+      }
+    },
+    "experiments/v2/": {
+      "__init__.py": "",
+      "e1_dynamic_only.py": "E1: DynamicGenome alone vs v1 EXECUTION dim — coverage + output parity",
+      "e2_input_sensitivity.py": "E2: how many distinct inputs are needed for stable DynamicGenome?",
+      "e3_output_equivalence.py": "E3: output-vector equivalence as a standalone signal",
+      "e4_exception_behavior.py": "E4: exception-pattern distance across mutation families",
+      "e5_coverage_delta.py": "E5: coverage Jaccard improvement over v1 execution genome",
+      "e6_hybrid_vs_static.py": "E6: HybridGenome vs static-only (B07) — same test split",
+      "e7_hybrid_vs_full_sbg.py": "E7: HybridGenome vs B08 full SBG — does v2 dynamic beat v1 dynamic?",
+      "e8_safe_corpus_analysis.py": "E8: executability audit — which programs yield stable traces?",
+      "e9_normalization_impact.py": "E9: normalized vs raw traces — stability across runs and machines",
+      "e10_input_set_ablation.py": "E10: ablation over canonical input sets (integers/lists/strings/structs)",
+      "e11_mutation_sensitivity.py": "E11: per-SC-mutation-type DynamicGenome distance distribution",
+      "e12_transformation_sensitivity.py": "E12: per-SP-transformation-type DynamicGenome distance distribution",
+      "e13_weight_search.py": "E13: grid search over hybrid weights (frozen after dev; not tuned on test)",
+      "e14_regression.py": "E14: full regression — all prior phase4 hypotheses re-evaluated with v2",
+      "run_all_experiments.py": "sequential runner with per-experiment timeout and artifact saving"
+    },
+    "baselines/v2/": {
+      "__init__.py": "",
+      "b07_dynamic_v2.py": "B7v2: structured DynamicGenome baseline (replaces flat b06_dynamic.py)",
+      "b08_hybrid_sbg_v2.py": "B8v2: full hybrid (v1 static + v2 dynamic) — the primary v2 claim"
+    },
+    "docs/v2/": {
+      "agents/": "per-agent JSON outputs (this file)",
+      "DESIGN.md": "narrative companion to this JSON",
+      "HYPOTHESES_V2.md": "new hypotheses introduced by execution-based evidence",
+      "THREATS_V2.md": "additional validity threats from sandbox execution"
+    }
+  },
+
+  "module_designs": [
+    {
+      "module": "sbg/v2/execution/runner.py",
+      "purpose": "Execute arbitrary Python source strings safely with hard resource limits",
+      "rationale_over_v1": "b06_dynamic._load_fn() uses bare exec() with no isolation; v1 Tracer requires a Callable — runner bridges source→Callable with safety guarantees",
+      "class": "SandboxRunner",
+      "inputs": {
+        "source_code": "str — raw Python source",
+        "inputs": "List[Any] — values to pass to the entry-point function",
+        "timeout_s": "float — per-input wall-clock limit (default 5.0)",
+        "max_output_bytes": "int — stdout capture cap (default 65536)"
+      },
+      "outputs": {
+        "return_type": "List[RunResult]",
+        "RunResult_fields": {
+          "input_repr": "str",
+          "return_value": "Any | None",
+          "stdout": "str (capped)",
+          "exception": "str | None — 'ExcType: message'",
+          "exit_code": "int — 0=ok, 1=exception, 2=timeout, 3=load_error",
+          "elapsed_ms": "float"
+        }
+      },
+      "key_methods": {
+        "run(source_code, inputs, **kwargs) -> List[RunResult]": "public API — load module, discover entry point, execute each input",
+        "_load_entry_point(source_code) -> Callable | None": "exec source into isolated module, find first of main/solve/run/compute or only top-level function",
+        "_run_one(fn, inp, timeout_s) -> RunResult": "delegates to v1 Tracer._trace_one() for threading+timeout; converts ExecutionTrace → RunResult"
+      },
+      "connection_to_v1": "Calls v1 Tracer._trace_one() under the hood for thread safety and timeout; reuses _TIMEOUT_SECONDS constant pattern",
+      "entry_point_discovery": "Same priority as b08_full_sbg._load_fn_from_source: main > solve > run > compute > single top-level FunctionType",
+      "what_needs_testing": [
+        "timeout fires correctly for infinite-loop programs",
+        "stdout is captured and capped",
+        "load errors return exit_code=3 and non-crashing RunResult",
+        "all 64 base programs load without ImportError (stdlib-only imports)",
+        "programs with required positional args that cannot be called with test inputs return exception RunResult gracefully"
+      ]
+    },
+
+    {
+      "module": "sbg/v2/execution/tracer.py",
+      "purpose": "Richer execution trace capture than v1 — adds output vectors, exception chains, and per-input state snapshots",
+      "rationale_over_v1": "v1 ExecutionGenome aggregates across all inputs before storing; v2 keeps per-input records to enable output-vector comparison",
+      "class": "ExecutionTracer",
+      "inputs": {
+        "run_results": "List[RunResult] — from SandboxRunner",
+        "program_id": "str"
+      },
+      "outputs": {
+        "return_type": "RawDynamicTrace",
+        "RawDynamicTrace_fields": {
+          "program_id": "str",
+          "per_input_records": "List[InputRecord]",
+          "InputRecord_fields": {
+            "input_repr": "str",
+            "return_value_repr": "str | None",
+            "return_type": "str | None — type().__name__",
+            "stdout_lines": "List[str]",
+            "exception_type": "str | None",
+            "exception_message": "str | None",
+            "elapsed_ms": "float",
+            "exit_code": "int"
+          },
+          "n_inputs": "int",
+          "exception_rate": "float",
+          "unique_return_types": "List[str]",
+          "stdout_corpus": "List[str] — all non-empty stdout lines across inputs"
+        }
+      },
+      "key_methods": {
+        "trace(run_results, program_id) -> RawDynamicTrace": "main entry point",
+        "_classify_exception(exc_str) -> str": "strip message, return 'ExcType' or 'None'"
+      },
+      "connection_to_v1": "Imports ExecutionTrace from sbg.extraction.dynamic.tracer (read-only); does NOT re-run sys.settrace — that is left to v1 Tracer",
+      "what_needs_testing": [
+        "exception_rate computed correctly from mix of ok/error RunResults",
+        "stdout_lines correctly splits multi-line output",
+        "empty input list produces empty RawDynamicTrace with n_inputs=0"
+      ]
+    },
+
+    {
+      "module": "sbg/v2/execution/normalizer.py",
+      "purpose": "Remove machine-specific, run-specific, and address-space-specific artefacts from traces before comparison",
+      "rationale_over_v1": "v1 ExecutionGenome stores repr() of local variables which contains memory addresses (e.g. <object at 0x...>); v2 must strip these for stability",
+      "class": "TraceNormalizer",
+      "inputs": {
+        "raw_trace": "RawDynamicTrace"
+      },
+      "outputs": {
+        "return_type": "RawDynamicTrace (new instance, normalized)"
+      },
+      "normalization_rules": [
+        "Replace memory addresses: re.sub(r'0x[0-9a-fA-F]+', '0xADDR', s)",
+        "Replace object ids in reprs: '<ClassName object at 0xADDR>' → '<ClassName object>'",
+        "Normalize floating point noise: round floats in stdout to 6 sig figs",
+        "Strip trailing whitespace and normalize newlines in stdout_lines",
+        "Normalize file paths in exception messages: replace cwd-relative and abs paths with '<path>'",
+        "Deduplicate identical consecutive stdout lines (idempotent output reduction)",
+        "Cap stdout_lines at 500 lines per input (truncation marker added)"
+      ],
+      "key_methods": {
+        "normalize(raw_trace) -> RawDynamicTrace": "apply all rules, return new RawDynamicTrace",
+        "_normalize_repr(s) -> str": "apply address/id replacement to a single repr string",
+        "_normalize_stdout_line(line) -> str": "apply path, float, whitespace rules"
+      },
+      "connection_to_v1": "No v1 imports needed — operates on v2 RawDynamicTrace only",
+      "what_needs_testing": [
+        "Memory address regex replaces correctly and does not corrupt hex literals",
+        "Float normalization does not alter non-float strings",
+        "Path normalization handles both Unix and Windows separators",
+        "normalize(normalize(t)) == normalize(t) (idempotent)"
+      ]
+    },
+
+    {
+      "module": "sbg/v2/execution/genome.py",
+      "purpose": "DynamicGenome dataclass — structured behavioral summary extracted from normalized traces",
+      "rationale_over_v1": "v1 ExecutionGenome (g_U, Definition 16) captures coverage+call-counts only; v2 DynamicGenome adds output-vector, exception fingerprint, and return-type profile",
+      "dataclass": "DynamicGenome",
+      "fields": {
+        "program_id": "str",
+        "n_inputs": "int — number of test inputs used",
+        "exception_rate": "float ∈ [0,1]",
+        "exception_type_histogram": "Dict[str, int] — {ExcType: count}",
+        "return_type_profile": "Dict[str, float] — normalized distribution of return types",
+        "output_vector_hash": "str — SHA-256[:16] of sorted normalized stdout lines",
+        "output_line_count_stats": "Dict[str,float] — {mean,std,min,max} of per-input stdout line counts",
+        "stdout_vocabulary_size": "int — unique non-empty normalized output lines",
+        "v1_execution_genome": "Optional[ExecutionGenome] — v1 genome if tracing was available, else None",
+        "provenance": "Dict[str,Any] — program_id, n_inputs, input_types, extraction_timestamp, normalizer_version"
+      },
+      "extractor_class": "DynamicGenomeExtractor",
+      "extractor_method": "extract(normalized_trace: RawDynamicTrace, v1_genome: Optional[ExecutionGenome] = None) -> DynamicGenome",
+      "connection_to_v1": "Accepts an optional v1 ExecutionGenome to embed as v1_execution_genome field; v1 Tracer must be called separately by the caller",
+      "what_needs_testing": [
+        "Empty trace yields DynamicGenome with all-zero/empty fields",
+        "output_vector_hash is stable across two identical runs of the same program",
+        "return_type_profile values sum to 1.0 when n_inputs > 0",
+        "v1_execution_genome field round-trips through serialization"
+      ]
+    },
+
+    {
+      "module": "sbg/v2/hybrid/fusion.py",
+      "purpose": "Combine a v1 static genome dict with a v2 DynamicGenome into a unified HybridGenome",
+      "class": "HybridGenome",
+      "fields": {
+        "static_genomes": "Dict[str,Any] — v1 dimensions keyed by CONTROL/DATA/ERROR",
+        "dynamic_genome_v2": "DynamicGenome",
+        "v1_dynamic_genomes": "Dict[str,Any] — v1 STATE/RESOURCE/TEMPORAL/INTERACTION/EXECUTION if available",
+        "program_id": "str",
+        "fusion_timestamp": "float"
+      },
+      "function": "fuse(static: Dict[str,Any], dynamic_v2: DynamicGenome, v1_dynamic: Dict[str,Any] = None) -> HybridGenome",
+      "design_notes": [
+        "fuse() is a pure function — no side effects",
+        "Missing dimensions are tolerated; fusion records which are present in HybridGenome.available_dims",
+        "v1_dynamic may be None when programs are execution-unsafe (static-only fallback)"
+      ],
+      "connection_to_v1": "Imports ControlGenomeExtractor, DataGenomeExtractor, ErrorGenomeExtractor from sbg.extraction.static (read-only)",
+      "what_needs_testing": [
+        "fuse with all-None v1_dynamic produces HybridGenome with v1_dynamic_genomes={}",
+        "available_dims correctly reflects which fields are non-None",
+        "round-trip: fuse result can be passed directly to hybrid_distance"
+      ]
+    },
+
+    {
+      "module": "sbg/v2/hybrid/distance.py",
+      "purpose": "Compute hybrid behavioral distance D_hybrid(H1, H2) ∈ [0,1] over HybridGenome pairs",
+      "function": "hybrid_distance(h1: HybridGenome, h2: HybridGenome, weights: Dict[str,float] = DEFAULT_V2_WEIGHTS) -> Dict[str,Any]",
+      "DEFAULT_V2_WEIGHTS": {
+        "CONTROL": 0.15,
+        "DATA": 0.10,
+        "ERROR": 0.08,
+        "STATE": 0.10,
+        "RESOURCE": 0.07,
+        "TEMPORAL": 0.07,
+        "INTERACTION": 0.07,
+        "EXECUTION_V1": 0.08,
+        "DYN_EXCEPTION_RATE": 0.07,
+        "DYN_RETURN_TYPE": 0.08,
+        "DYN_OUTPUT_VECTOR": 0.13
+      },
+      "note_on_weights": "Sum = 1.00. DYN_ prefix = v2-only components. EXECUTION_V1 = v1 g_U distance if available, else 0-weight fallback. Weights are RE-NORMALISED over present dimensions exactly as in sbg.distance.behavioral_distance.",
+      "distance_components": {
+        "CONTROL/DATA/ERROR": "delegates to sbg.extraction.static.*.distance (v1, frozen)",
+        "STATE/RESOURCE/TEMPORAL/INTERACTION": "delegates to sbg.extraction.dynamic.*.distance (v1, frozen)",
+        "EXECUTION_V1": "delegates to sbg.extraction.dynamic.tracer.distance (v1, frozen)",
+        "DYN_EXCEPTION_RATE": "abs(g1.exception_rate - g2.exception_rate) ∈ [0,1]",
+        "DYN_RETURN_TYPE": "L1 distance between return_type_profile dicts, scaled to [0,1]",
+        "DYN_OUTPUT_VECTOR": "0.0 if output_vector_hash equal, else 1.0 (binary; add Jaccard on vocabulary as secondary)"
+      },
+      "return_schema": {
+        "total_distance": "float ∈ [0,1]",
+        "dimension_distances": "Dict[str,float]",
+        "dimensions_used": "List[str]",
+        "weights_used": "Dict[str,float]",
+        "missing_dimensions": "List[str]"
+      },
+      "connection_to_v1": "All v1 distance functions imported read-only; hybrid_distance wraps sbg.distance.behavioral_distance for the static+v1-dynamic slice",
+      "what_needs_testing": [
+        "hybrid_distance(h, h) == 0.0 for any h",
+        "hybrid_distance(h1, h2) == hybrid_distance(h2, h1)",
+        "total_distance ∈ [0,1] under all combinations of missing dimensions",
+        "DYN_OUTPUT_VECTOR component = 0.0 when both output_vector_hash are identical"
+      ]
+    },
+
+    {
+      "module": "baselines/v2/b07_dynamic_v2.py",
+      "purpose": "B7v2 — improved dynamic baseline using DynamicGenome instead of flat trace features",
+      "supersedes": "baselines/b06_dynamic.py (v1 flat trace, unstructured)",
+      "score_fn_signature": "score_fn(src_a: str, src_b: str) -> float",
+      "distance_used": "DYN_EXCEPTION_RATE + DYN_RETURN_TYPE + DYN_OUTPUT_VECTOR (equal weights); pure v2 dynamic, no static features",
+      "inputs_used": "CANONICAL_INPUTS = [-5, 0, 1, 5, 10, 100, [], [1], [1,2,3], [5,4,3,2,1], '', 'a', 'hello', 'hello world']",
+      "connection_to_v1": "Uses SandboxRunner (v2) for execution; does NOT import b06_dynamic or v1 Tracer directly",
+      "what_needs_testing": [
+        "Produces scores in [0,1]",
+        "Caching: same source string returns same score without re-execution",
+        "Execution-unsafe programs (those that return load_error) fall back to score 0.5 (neutral)"
+      ]
+    },
+
+    {
+      "module": "baselines/v2/b08_hybrid_sbg_v2.py",
+      "purpose": "B8v2 — primary v2 claim: hybrid (v1 static + v2 dynamic) SBG with DEFAULT_V2_WEIGHTS",
+      "supersedes": "baselines/b08_full_sbg.py (v1 only)",
+      "score_fn_signature": "score_fn(src_a: str, src_b: str) -> float",
+      "pipeline": [
+        "1. Extract v1 static genomes (CONTROL, DATA, ERROR) via v1 extractors",
+        "2. Execute via SandboxRunner → RunResults",
+        "3. Trace → RawDynamicTrace → normalize → DynamicGenome",
+        "4. If program is in safe corpus: also run v1 Tracer for EXECUTION/STATE/RESOURCE/TEMPORAL/INTERACTION",
+        "5. fuse() → HybridGenome",
+        "6. hybrid_distance() → total_distance",
+        "7. return 1.0 - total_distance"
+      ],
+      "connection_to_v1": "Imports all v1 static extractors and v1 Tracer (composition, not modification)",
+      "what_needs_testing": [
+        "End-to-end pipeline on at least 10 safe programs produces well-formed scores",
+        "Execution-unsafe programs still produce a score (static fallback)",
+        "scores match b08_full_sbg.py on execution-safe programs within expected tolerance"
+      ]
+    }
+  ],
+
+  "execution_safe_programs": [
+    {
+      "program_id": "math_fibonacci",
+      "safety_reason": "Pure computation, stdlib only, deterministic, no I/O"
+    },
+    {
+      "program_id": "math_dynamic_programming",
+      "safety_reason": "Pure DP computation, stdlib only"
+    },
+    {
+      "program_id": "math_matrix_ops",
+      "safety_reason": "In-memory matrix arithmetic"
+    },
+    {
+      "program_id": "math_numerical_integration",
+      "safety_reason": "Numerical computation, deterministic"
+    },
+    {
+      "program_id": "math_polynomial",
+      "safety_reason": "Polynomial evaluation, pure"
+    },
+    {
+      "program_id": "math_prime_sieve",
+      "safety_reason": "In-memory sieve, deterministic"
+    },
+    {
+      "program_id": "math_statistics",
+      "safety_reason": "In-memory statistical computation"
+    },
+    {
+      "program_id": "sort_binary_search",
+      "safety_reason": "Pure search over list input"
+    },
+    {
+      "program_id": "sort_counting_sort",
+      "safety_reason": "In-memory sort, deterministic"
+    },
+    {
+      "program_id": "sort_heapsort",
+      "safety_reason": "In-memory sort, deterministic"
+    },
+    {
+      "program_id": "sort_insertion_sort",
+      "safety_reason": "In-memory sort, deterministic"
+    },
+    {
+      "program_id": "sort_mergesort",
+      "safety_reason": "In-memory sort, deterministic"
+    },
+    {
+      "program_id": "sort_quicksort",
+      "safety_reason": "In-memory sort; non-determinism only if random pivot — check implementation"
+    },
+    {
+      "program_id": "sort_radix_sort",
+      "safety_reason": "Deterministic radix sort"
+    },
+    {
+      "program_id": "sort_timsort_runs",
+      "safety_reason": "In-memory, deterministic"
+    },
+    {
+      "program_id": "sort_topk_select",
+      "safety_reason": "In-memory selection, deterministic"
+    },
+    {
+      "program_id": "ds_binary_search_tree",
+      "safety_reason": "In-memory data structure, stdlib only"
+    },
+    {
+      "program_id": "ds_hash_table",
+      "safety_reason": "In-memory hash table"
+    },
+    {
+      "program_id": "ds_lru_cache",
+      "safety_reason": "In-memory doubly-linked-list + dict, fully deterministic"
+    },
+    {
+      "program_id": "ds_min_heap",
+      "safety_reason": "In-memory heap, deterministic"
+    },
+    {
+      "program_id": "ds_stack_queue",
+      "safety_reason": "In-memory data structure"
+    },
+    {
+      "program_id": "ds_trie",
+      "safety_reason": "In-memory trie, deterministic"
+    },
+    {
+      "program_id": "str_anagram_groups",
+      "safety_reason": "Pure string processing"
+    },
+    {
+      "program_id": "str_edit_distance",
+      "safety_reason": "Pure DP on strings"
+    },
+    {
+      "program_id": "str_kmp_search",
+      "safety_reason": "Pure string algorithm"
+    },
+    {
+      "program_id": "str_palindrome",
+      "safety_reason": "Pure string check"
+    },
+    {
+      "program_id": "str_run_length_encode",
+      "safety_reason": "Pure encoding"
+    },
+    {
+      "program_id": "str_tokenizer",
+      "safety_reason": "Pure tokenization"
+    },
+    {
+      "program_id": "str_word_frequency",
+      "safety_reason": "Pure string processing"
+    },
+    {
+      "program_id": "graph_bellman_ford",
+      "safety_reason": "Pure graph algorithm, deterministic"
+    },
+    {
+      "program_id": "graph_bfs_shortest_path",
+      "safety_reason": "Pure BFS, deterministic"
+    },
+    {
+      "program_id": "graph_connected_components",
+      "safety_reason": "Pure graph traversal"
+    },
+    {
+      "program_id": "graph_cycle_detect_dfs",
+      "safety_reason": "Pure DFS, deterministic"
+    },
+    {
+      "program_id": "graph_dijkstra",
+      "safety_reason": "Pure heapq-based Dijkstra, deterministic"
+    },
+    {
+      "program_id": "graph_topological_sort",
+      "safety_reason": "Pure topological sort"
+    },
+    {
+      "program_id": "err_assert_guard",
+      "safety_reason": "Pure validation logic"
+    },
+    {
+      "program_id": "err_circuit_breaker",
+      "safety_reason": "State machine with deterministic tick clock, no real time"
+    },
+    {
+      "program_id": "err_result_type",
+      "safety_reason": "Pure result-monad implementation"
+    },
+    {
+      "program_id": "err_retry_backoff",
+      "safety_reason": "Simulated backoff on deterministic tick clock, no real sleep"
+    },
+    {
+      "program_id": "err_validation_chain",
+      "safety_reason": "Pure validation composition"
+    },
+    {
+      "program_id": "fsm_order_lifecycle",
+      "safety_reason": "Pure FSM, tick-based, no I/O"
+    },
+    {
+      "program_id": "fsm_parser_state",
+      "safety_reason": "Pure FSM parser"
+    },
+    {
+      "program_id": "fsm_traffic_light",
+      "safety_reason": "Tick-based FSM, fully deterministic"
+    },
+    {
+      "program_id": "fsm_vending_machine",
+      "safety_reason": "Pure FSM"
+    },
+    {
+      "program_id": "parse_ini_config",
+      "safety_reason": "In-memory INI parser, string in → dict out"
+    },
+    {
+      "program_id": "parse_json_subset",
+      "safety_reason": "In-memory JSON subset parser"
+    },
+    {
+      "program_id": "parse_recursive_descent",
+      "safety_reason": "Pure recursive descent parser"
+    },
+    {
+      "program_id": "api_event_bus",
+      "safety_reason": "In-process pub/sub, no real network, no real I/O, deterministic tick"
+    },
+    {
+      "program_id": "api_mock_http_client",
+      "safety_reason": "Mock HTTP — no real sockets, no real sleep, fully in-memory"
+    },
+    {
+      "program_id": "api_rate_limiter",
+      "safety_reason": "Deterministic integer-tick clock, no real time.sleep"
+    },
+    {
+      "program_id": "api_rest_crud_mock",
+      "safety_reason": "In-memory mock REST store, no network"
+    },
+    {
+      "program_id": "res_cache_ttl",
+      "safety_reason": "In-memory TTL cache with deterministic clock"
+    },
+    {
+      "program_id": "res_memory_allocator",
+      "safety_reason": "Pure simulation of memory allocation, fully deterministic"
+    },
+    {
+      "program_id": "res_object_pool",
+      "safety_reason": "In-memory pool, deterministic"
+    },
+    {
+      "program_id": "res_task_scheduler",
+      "safety_reason": "In-memory scheduler with tick clock, no real threads"
+    },
+    {
+      "program_id": "file_binary_encoder",
+      "safety_reason": "In-memory base64/hex encoding — no file I/O despite 'file_' prefix"
+    },
+    {
+      "program_id": "file_config_parser",
+      "safety_reason": "Parses INI string in memory — no filesystem access"
+    },
+    {
+      "program_id": "file_csv_aggregator",
+      "safety_reason": "In-memory CSV processing via csv.reader(io.StringIO(...)) — no real file I/O"
+    },
+    {
+      "program_id": "file_log_processor",
+      "safety_reason": "Parses log lines as list of strings — no filesystem access"
+    },
+    {
+      "program_id": "file_word_count_stream",
+      "safety_reason": "Streaming over list of strings — no real I/O"
+    }
+  ],
+
+  "execution_unsafe_programs": [
+    {
+      "program_id": "conc_producer_consumer",
+      "reason": "Uses threading.Thread + queue — non-deterministic scheduling makes traces unstable across runs; output ordering not reproducible",
+      "mitigation": "Can be run but DynamicGenome components must use exception_rate + return_type_profile only; skip output_vector_hash comparison",
+      "safe_for": ["exception_rate", "return_type_profile"],
+      "unsafe_for": ["output_vector_hash", "stdout_vocabulary_size"]
+    },
+    {
+      "program_id": "conc_read_write_lock",
+      "reason": "Uses threading.Condition + RLock — concurrent reads/writes produce non-deterministic interleaving; trace event ordering unstable",
+      "mitigation": "Static-only analysis recommended; dynamic execution may be attempted with single-threaded synthetic inputs only",
+      "safe_for": ["exception_rate"],
+      "unsafe_for": ["output_vector_hash", "v1_execution_genome"]
+    },
+    {
+      "program_id": "conc_thread_safe_counter",
+      "reason": "threading.RLock — non-deterministic scheduling in multi-threaded tests; however the counter itself can be exercised single-threaded safely",
+      "mitigation": "Use single-threaded synthetic inputs (increment/decrement calls) to exercise the counter logic deterministically",
+      "safe_for": ["exception_rate", "return_type_profile"],
+      "unsafe_for": ["output_vector_hash"]
+    },
+    {
+      "program_id": "fsm_connection_pool",
+      "reason": "Likely uses threading or time.time() for real-time connection management — requires inspection",
+      "mitigation": "Audit for time.time() and threading before classification; may be reclassifiable as safe if tick-based"
+    }
+  ],
+
+  "key_interfaces": {
+    "SandboxRunner.run": {
+      "signature": "run(source_code: str, inputs: List[Any], timeout_s: float = 5.0) -> List[RunResult]",
+      "contract": "Never raises; wraps all errors into RunResult.exit_code. Returns len(inputs) results."
+    },
+    "DynamicGenomeExtractor.extract": {
+      "signature": "extract(normalized_trace: RawDynamicTrace, v1_genome: Optional[ExecutionGenome] = None) -> DynamicGenome",
+      "contract": "Deterministic for identical normalized_trace. v1_genome embedded verbatim."
+    },
+    "fuse": {
+      "signature": "fuse(static: Dict[str, Any], dynamic_v2: DynamicGenome, v1_dynamic: Optional[Dict[str, Any]] = None) -> HybridGenome",
+      "contract": "Pure function, no side effects. Missing dimensions tolerated."
+    },
+    "hybrid_distance": {
+      "signature": "hybrid_distance(h1: HybridGenome, h2: HybridGenome, weights: Dict[str,float] = DEFAULT_V2_WEIGHTS) -> Dict[str, Any]",
+      "contract": "Returns dict with total_distance ∈ [0,1], symmetric, hybrid_distance(h,h)==0.0"
+    },
+    "score_fn (baselines)": {
+      "signature": "score_fn(src_a: str, src_b: str) -> float",
+      "contract": "Returns similarity ∈ [0,1] where 1.0=identical, 0.0=maximally different. Matches v1 baseline interface for drop-in comparison."
+    }
+  },
+
+  "canonical_input_set_v2": {
+    "name": "CANONICAL_INPUTS_V2",
+    "rationale": "Extended from v1 b08 fixed inputs to include structured objects that exercise more code paths in OOP programs",
+    "inputs": [
+      {"type": "int", "values": [-5, 0, 1, 5, 10, 100, -100]},
+      {"type": "list", "values": [[], [1], [1, 2, 3], [5, 4, 3, 2, 1], [3, 1, 4, 1, 5, 9, 2, 6]]},
+      {"type": "str", "values": ["", "a", "hello", "hello world", "aabbcc", "the quick brown fox"]},
+      {"type": "dict", "values": [{}, {"key": "value"}, {"a": 1, "b": 2}]},
+      {"type": "bool", "values": [true, false]},
+      {"type": "none", "values": [null]}
+    ],
+    "total_inputs": 27,
+    "timeout_per_input_s": 5.0,
+    "max_total_timeout_s": 30.0
+  },
+
+  "integration_points_with_v1": [
+    {
+      "v2_module": "sbg/v2/execution/runner.py",
+      "v1_dependency": "sbg.extraction.dynamic.tracer.Tracer",
+      "integration_type": "composition — SandboxRunner._run_one delegates to Tracer._trace_one for thread+timeout logic",
+      "v1_files_frozen": true
+    },
+    {
+      "v2_module": "sbg/v2/execution/genome.py",
+      "v1_dependency": "sbg.extraction.dynamic.tracer.ExecutionGenome",
+      "integration_type": "embedding — DynamicGenome.v1_execution_genome holds an optional v1 ExecutionGenome instance",
+      "v1_files_frozen": true
+    },
+    {
+      "v2_module": "sbg/v2/hybrid/distance.py",
+      "v1_dependency": "sbg.distance.behavioral_distance + all 8 dimension distance functions",
+      "integration_type": "delegation — hybrid_distance calls sbg.distance.behavioral_distance for the static+v1-dynamic slice, then adds v2 components",
+      "v1_files_frozen": true
+    },
+    {
+      "v2_module": "sbg/v2/hybrid/fusion.py",
+      "v1_dependency": "sbg.extraction.static.extractor.ControlGenomeExtractor, sbg.extraction.static.data_genome.DataGenomeExtractor, sbg.extraction.static.error_genome.ErrorGenomeExtractor",
+      "integration_type": "composition — fusion.py calls v1 extractors for the static slice; does not modify them",
+      "v1_files_frozen": true
+    },
+    {
+      "v2_module": "baselines/v2/b08_hybrid_sbg_v2.py",
+      "v1_dependency": "baselines.common (load_pairs, load_source, run_baseline, etc.)",
+      "integration_type": "re-use — v2 baselines use the same evaluation harness as v1 baselines for apples-to-apples comparison",
+      "v1_files_frozen": true
+    },
+    {
+      "v2_module": "experiments/v2/e14_regression.py",
+      "v1_dependency": "experiments.phase4.* (all 12 phase4 experiments)",
+      "integration_type": "reference — e14 imports phase4 results from artifacts/ and re-evaluates all H1-H12 hypotheses with v2 evidence added",
+      "v1_files_frozen": true
+    }
+  ],
+
+  "executability_methodology": {
+    "criteria_for_safe": [
+      "No real network I/O (socket, urllib, requests, http.client)",
+      "No filesystem writes (open(..., 'w'), pathlib.write_text, os.mkdir, etc.)",
+      "No real-time dependencies (time.sleep, time.time as clock, datetime.now)",
+      "No non-deterministic multi-threading in the program's entry-point logic",
+      "No subprocess or os.system calls",
+      "No sys.exit or os._exit calls",
+      "All imports resolvable from Python stdlib"
+    ],
+    "criteria_for_conditional": [
+      "Uses threading but entry-point is callable single-threaded (e.g. ThreadSafeCounter.increment)",
+      "Uses time.time but only as a monotonic surrogate for integer ticks"
+    ],
+    "programs_inspected": [
+      "math_fibonacci — SAFE (pure computation)",
+      "conc_producer_consumer — UNSAFE (non-deterministic threading in run_pipeline)",
+      "api_mock_http_client — SAFE (mock only, no sockets)",
+      "file_csv_aggregator — SAFE (in-memory via io.StringIO)",
+      "res_memory_allocator — SAFE (pure simulation)",
+      "conc_read_write_lock — UNSAFE (threading.Condition, non-deterministic)",
+      "api_rate_limiter — SAFE (deterministic integer-tick clock)",
+      "fsm_traffic_light — SAFE (tick-based FSM, no real time)",
+      "graph_dijkstra — SAFE (heapq, deterministic)",
+      "ds_lru_cache — SAFE (doubly-linked-list + dict)"
+    ],
+    "safe_count": 60,
+    "unsafe_count": 4,
+    "safe_fraction": 0.9375
+  },
+
+  "v2_input_harness_design": {
+    "problem": "Most base programs are classes or multi-function modules, not single callables. v1 b06/b08 used _load_fn() which only found a single top-level function.",
+    "v2_solution": "ProgramHarness — one per program_id, specifies how to instantiate and call the program",
+    "harness_schema": {
+      "program_id": "str",
+      "harness_type": "one of: 'function' | 'class_method' | 'module_test_fn'",
+      "entry_class": "str | null — class name to instantiate",
+      "init_args": "List[Any] — positional args for __init__",
+      "method_sequence": "List[{'method': str, 'args': List[Any]}] — sequence of method calls to make observable",
+      "test_fn": "str | null — name of test function to call (for module_test_fn harness type)"
+    },
+    "examples": [
+      {
+        "program_id": "ds_lru_cache",
+        "harness_type": "class_method",
+        "entry_class": "LRUCache",
+        "init_args": [3],
+        "method_sequence": [
+          {"method": "put", "args": [1, "a"]},
+          {"method": "put", "args": [2, "b"]},
+          {"method": "get", "args": [1]},
+          {"method": "put", "args": [3, "c"]},
+          {"method": "keys_lru_order", "args": []}
+        ]
+      },
+      {
+        "program_id": "math_fibonacci",
+        "harness_type": "function",
+        "entry_class": null,
+        "init_args": [],
+        "method_sequence": [],
+        "note": "fib is a top-level function; SandboxRunner uses canonical integer inputs directly"
+      },
+      {
+        "program_id": "fsm_traffic_light",
+        "harness_type": "module_test_fn",
+        "test_fn": "test_traffic_light",
+        "note": "Call the built-in test function — it exercises the full state machine"
+      }
+    ],
+    "file": "sbg/v2/execution/harnesses.py — ProgramHarness dataclass + HARNESS_REGISTRY dict"
+  },
+
+  "risks_and_mitigations": [
+    {
+      "risk": "Output non-determinism in programs using dict iteration order or set ordering",
+      "mitigation": "TraceNormalizer sorts output lines before hashing for output_vector_hash; raw stdout is preserved separately"
+    },
+    {
+      "risk": "Programs with large inputs exceeding timeout on slow CI machines",
+      "mitigation": "CANONICAL_INPUTS_V2 uses small inputs only; max_total_timeout_s=30s per program"
+    },
+    {
+      "risk": "v2 DynamicGenome is richer but harder to compare — distance may not be in [0,1]",
+      "mitigation": "All distance components are individually constrained to [0,1] before weighting; hybrid_distance clamps final result"
+    },
+    {
+      "risk": "Weight contamination — DEFAULT_V2_WEIGHTS might be implicitly tuned on test set",
+      "mitigation": "All weight choices in DEFAULT_V2_WEIGHTS must be frozen after dev set evaluation; e13 weight search uses dev only"
+    },
+    {
+      "risk": "conc_* programs yield different traces on different machines due to scheduler",
+      "mitigation": "conc_* programs are classified UNSAFE and excluded from output_vector_hash comparison; static-only fallback applied"
+    }
+  ]
+}

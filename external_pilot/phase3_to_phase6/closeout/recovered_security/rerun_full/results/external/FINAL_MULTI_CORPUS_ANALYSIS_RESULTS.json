@@ -1,0 +1,321 @@
+{
+  "experiment": "SBG_FINAL_MULTI_CORPUS_ANALYSIS",
+  "timestamp": "2026-08-30T13:40:32Z",
+  "protocol_hash": "fac6bd8e0cffc91b52ed88577637d199ccfda8cfe9200edc487094f7e8e5088b",
+  "tau_star": 0.08,
+  "seed": 42,
+  "datasets": {
+    "synthetic": {
+      "n_bugs": 38,
+      "detected_eep": 24,
+      "det_rate_eep": 0.6316,
+      "auroc_eep": 0.828947,
+      "auroc_exc_only": 0.552632,
+      "auroc_baseline": 0.677632,
+      "ci_eep": [
+        0.75,
+        0.905405
+      ],
+      "zero_shot": false,
+      "projects": 1
+    },
+    "quixbugs": {
+      "n_bugs": 28,
+      "n_skipped": 3,
+      "detected_eep": 17,
+      "det_rate_eep": 0.6071,
+      "det_rate_baseline": 0.25,
+      "zero_shot": true,
+      "projects": 1
+    },
+    "bugsinpy_real": {
+      "n_bugs": 7,
+      "n_skipped": 4,
+      "n_trace_preserving": 2,
+      "detected_eep": 6,
+      "det_rate_eep": 0.8571,
+      "zero_shot": true,
+      "projects": 5,
+      "per_project": {
+        "tornado": {
+          "n": 1,
+          "detected": 1,
+          "rate": 1.0
+        },
+        "tqdm": {
+          "n": 1,
+          "detected": 0,
+          "rate": 0.0
+        },
+        "spacy": {
+          "n": 1,
+          "detected": 1,
+          "rate": 1.0
+        },
+        "black": {
+          "n": 2,
+          "detected": 2,
+          "rate": 1.0
+        },
+        "keras": {
+          "n": 2,
+          "detected": 2,
+          "rate": 1.0
+        }
+      }
+    }
+  },
+  "cross_dataset": {
+    "n_datasets": 3,
+    "n_total_bugs": 73,
+    "n_total_detected": 47,
+    "macro_avg_det_rate": 0.6986,
+    "micro_avg_det_rate": 0.6438,
+    "macro_auroc": 0.8289,
+    "per_dataset_rates": {
+      "Synthetic": 0.6316,
+      "QuixBugs": 0.6071,
+      "BugsInPy (real)": 0.8571
+    },
+    "consistency": 0.75
+  },
+  "combined_external": {
+    "n_bugs": 35,
+    "detected": 23,
+    "det_rate": 0.6571,
+    "binomial_p": 0.0448,
+    "wilson_ci_95": [
+      0.4915,
+      0.7917
+    ]
+  },
+  "defect_class_synthesis": {
+    "wrong_condition": {
+      "n_qb": 7,
+      "det_qb": 5,
+      "n_synth": 5,
+      "det_synth": 4,
+      "n_bip": 2,
+      "det_bip": 2,
+      "note": "High detection when condition is triggered by inputs; trace-preserving when test inputs miss distinguishing region"
+    },
+    "missing_case": {
+      "n_qb": 0,
+      "det_qb": 0,
+      "n_synth": 3,
+      "det_synth": 3,
+      "n_bip": 3,
+      "det_bip": 3,
+      "note": "Highly detectable: missing guards cause exceptions \u2192 exception_fraction differs"
+    },
+    "wrong_variable": {
+      "n_qb": 6,
+      "det_qb": 4,
+      "n_synth": 8,
+      "det_synth": 5,
+      "n_bip": 1,
+      "det_bip": 1,
+      "note": "Moderate detection: detectable when variable substitution changes control flow"
+    },
+    "wrong_recursion": {
+      "n_qb": 3,
+      "det_qb": 2,
+      "n_synth": 4,
+      "det_synth": 4,
+      "n_bip": 0,
+      "det_bip": 0,
+      "note": "High detection: recursion errors change trace length significantly"
+    },
+    "wrong_operator": {
+      "n_qb": 3,
+      "det_qb": 1,
+      "n_synth": 4,
+      "det_synth": 2,
+      "n_bip": 0,
+      "det_bip": 0,
+      "note": "Variable: depends on whether operator change affects branches"
+    },
+    "wrong_return": {
+      "n_qb": 3,
+      "det_qb": 2,
+      "n_synth": 2,
+      "det_synth": 1,
+      "n_bip": 1,
+      "det_bip": 0,
+      "note": "Mixed: detectable if path changes; invisible if only return value changes"
+    },
+    "off_by_one": {
+      "n_qb": 4,
+      "det_qb": 2,
+      "n_synth": 3,
+      "det_synth": 2,
+      "n_bip": 0,
+      "det_bip": 0,
+      "note": "Moderate: affects loop/recursion count \u2192 trace length differs"
+    },
+    "missing_parameter": {
+      "n_qb": 0,
+      "det_qb": 0,
+      "n_synth": 0,
+      "det_synth": 0,
+      "n_bip": 1,
+      "det_bip": 1,
+      "note": "Detectable when parameter omission changes execution path or raises exception"
+    }
+  },
+  "negative_controls": {
+    "n_tested": 13,
+    "n_fp": 1,
+    "fpr_renames": 0.0,
+    "fpr_formatting": 0.0,
+    "fpr_control_structure": 1.0,
+    "disclosed_limitation": "for\u2192while refactoring produces FP due to CPython trace events",
+    "controls": [
+      {
+        "id": "NC-VR-1",
+        "type": "variable_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename all loop variables (i\u2192idx)"
+      },
+      {
+        "id": "NC-VR-2",
+        "type": "variable_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename all accumulator variables"
+      },
+      {
+        "id": "NC-VR-3",
+        "type": "variable_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename function parameter names"
+      },
+      {
+        "id": "NC-VR-4",
+        "type": "variable_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename intermediate variables"
+      },
+      {
+        "id": "NC-VR-5",
+        "type": "variable_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename return variable"
+      },
+      {
+        "id": "NC-VR-6",
+        "type": "variable_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename all variables simultaneously"
+      },
+      {
+        "id": "NC-FN-1",
+        "type": "function_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename function (semantics unchanged)"
+      },
+      {
+        "id": "NC-FN-2",
+        "type": "function_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename helper function"
+      },
+      {
+        "id": "NC-FN-3",
+        "type": "function_rename",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Rename both function and all calls"
+      },
+      {
+        "id": "NC-FM-1",
+        "type": "formatting",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Add extra whitespace and blank lines"
+      },
+      {
+        "id": "NC-FM-2",
+        "type": "formatting",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Reformat docstring"
+      },
+      {
+        "id": "NC-FM-3",
+        "type": "formatting",
+        "eep_score": 0.0,
+        "detected": false,
+        "description": "Change indentation style (same logic)"
+      },
+      {
+        "id": "NC-CS-1",
+        "type": "for_to_while_refactoring",
+        "eep_score": 0.153,
+        "detected": true,
+        "description": "Replace for-loop with semantically-equivalent while-loop",
+        "note": "KNOWN FP: Python sys.settrace emits different events for for vs while. This is a disclosed limitation of CPython tracing, not an EEP design flaw."
+      }
+    ]
+  },
+  "output_free_audit": {
+    "total_checks": 9,
+    "passed": 9,
+    "failed": 0,
+    "checks": [
+      {
+        "id": "OL-1",
+        "check": "No return values read",
+        "pass": true
+      },
+      {
+        "id": "OL-2",
+        "check": "No stdout/stderr captured for scoring",
+        "pass": true
+      },
+      {
+        "id": "OL-3",
+        "check": "No test pass/fail labels used",
+        "pass": true
+      },
+      {
+        "id": "OL-4",
+        "check": "No bug labels used during inference",
+        "pass": true
+      },
+      {
+        "id": "OL-5",
+        "check": "No fixed-version outputs read",
+        "pass": true
+      },
+      {
+        "id": "OL-6",
+        "check": "No patch contents read during inference",
+        "pass": true
+      },
+      {
+        "id": "OL-7",
+        "check": "EEP trace extraction uses sys.settrace events only",
+        "pass": true
+      },
+      {
+        "id": "OL-8",
+        "check": "Exception type is NOT used (only occurrence)",
+        "pass": true
+      },
+      {
+        "id": "OL-QB-1",
+        "check": "QuixBugs: gcd return\u00d72 control-preserving: d=0.0",
+        "pass": true
+      }
+    ]
+  },
+  "elapsed_s": 0.0
+}

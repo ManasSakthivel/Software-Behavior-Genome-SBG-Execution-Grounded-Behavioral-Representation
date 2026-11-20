@@ -1,0 +1,15 @@
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{Risk--coverage (decided verdicts only; risk = errors/decided against generator or test-oracle labels). The V7-B S3 row contains only witnessed divergences because S3 is refused by configuration and no NO\_DIVERGENCE\_OBSERVED is issued at that level. Source: \path{results/v7b_phase2_summary/p2_e3_20261118_092700/statistics/risk_coverage.csv}.}\label{tab:riskcov}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrr}
+\hline
+System & Min. level for NDO & Coverage & Risk [CI] & Decided \\
+\hline
+B1 & none & 1.000 & 0.271 [0.210, 0.331] & 258/258 \\
+V7-B & none & 0.527 & 0.096 [0.038, 0.212] & 136/258 \\
+V7-B & S1 & 0.527 & 0.096 [0.039, 0.210] & 136/258 \\
+V7-B & S2 & 0.465 & 0.067 [0.023, 0.167] & 120/258 \\
+V7-B & S3 & 0.291 & 0.000 [0.000, 0.000] & 75/258 \\
+\hline
+\end{tabular}}
+\end{table}

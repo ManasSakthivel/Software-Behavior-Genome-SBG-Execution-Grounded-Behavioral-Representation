@@ -1,0 +1,25 @@
+{
+ "variant": "V4",
+ "cfg": {
+  "budget": {
+   "cpu_seconds": 60,
+   "per_run": {
+    "cpu_s": 2,
+    "wall_s": 5
+   }
+  },
+  "repeat": {
+   "r_det": 1,
+   "r_replay": 1,
+   "k_alt": 0
+  }
+ },
+ "fold_fd1": true,
+ "workers": 4,
+ "arms": [
+  "quixbugs",
+  "quixbugs_neg",
+  "synthetic",
+  "bugsinpy_units"
+ ]
+}

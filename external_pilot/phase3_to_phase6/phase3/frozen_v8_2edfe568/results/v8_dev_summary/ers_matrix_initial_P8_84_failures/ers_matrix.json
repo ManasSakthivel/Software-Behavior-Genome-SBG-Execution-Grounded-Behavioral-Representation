@@ -1,0 +1,389 @@
+{
+ "counts": {
+  "P1": {
+   "pass": 16,
+   "fail": 0,
+   "na": 296
+  },
+  "P2": {
+   "pass": 227,
+   "fail": 0,
+   "na": 85
+  },
+  "P3": {
+   "pass": 262,
+   "fail": 0,
+   "na": 50
+  },
+  "P4": {
+   "pass": 178,
+   "fail": 0,
+   "na": 134
+  },
+  "P5": {
+   "pass": 176,
+   "fail": 0,
+   "na": 136
+  },
+  "P6": {
+   "pass": 228,
+   "fail": 0,
+   "na": 84
+  },
+  "P7": {
+   "pass": 178,
+   "fail": 0,
+   "na": 134
+  },
+  "P8": {
+   "pass": 228,
+   "fail": 84,
+   "na": 0
+  },
+  "P9": {
+   "pass": 228,
+   "fail": 0,
+   "na": 84
+  }
+ },
+ "failures": [
+  [
+   "bugsinpy_units:ansible__7__lib_ansible_module_utils_network_eos_config_vlans_vlans_py__generate_commands",
+   "P8"
+  ],
+  [
+   "bugsinpy_units:black__23__black_py__assert_equivalent",
+   "P8"
+  ],
+  [
+   "bugsinpy_units:httpie__1__httpie_downloads_py__get_unique_filename",
+   "P8"
+  ],
+  [
+   "bugsinpy_units:thefuck__18__thefuck_rules_sudo_py__match",
+   "P8"
+  ],
+  [
+   "bugsinpy_units:thefuck__20__thefuck_rules_dirty_unzip_py__zip_file",
+   "P8"
+  ],
+  [
+   "bugsinpy_units:youtube_dl__6__youtube_dl_utils_py__parse_dfxp_time_expr",
+   "P8"
+  ],
+  [
+   "quixbugs:bucketsort",
+   "P8"
+  ],
+  [
+   "quixbugs:find_first_in_sorted",
+   "P8"
+  ],
+  [
+   "quixbugs:find_in_sorted",
+   "P8"
+  ],
+  [
+   "quixbugs:gcd",
+   "P8"
+  ],
+  [
+   "quixbugs:get_factors",
+   "P8"
+  ],
+  [
+   "quixbugs:hanoi",
+   "P8"
+  ],
+  [
+   "quixbugs:is_valid_parenthesization",
+   "P8"
+  ],
+  [
+   "quixbugs:knapsack",
+   "P8"
+  ],
+  [
+   "quixbugs:kth",
+   "P8"
+  ],
+  [
+   "quixbugs:lcs_length",
+   "P8"
+  ],
+  [
+   "quixbugs:levenshtein",
+   "P8"
+  ],
+  [
+   "quixbugs:lis",
+   "P8"
+  ],
+  [
+   "quixbugs:longest_common_subsequence",
+   "P8"
+  ],
+  [
+   "quixbugs:max_sublist_sum",
+   "P8"
+  ],
+  [
+   "quixbugs:mergesort",
+   "P8"
+  ],
+  [
+   "quixbugs:next_palindrome",
+   "P8"
+  ],
+  [
+   "quixbugs:next_permutation",
+   "P8"
+  ],
+  [
+   "quixbugs:pascal",
+   "P8"
+  ],
+  [
+   "quixbugs:possible_change",
+   "P8"
+  ],
+  [
+   "quixbugs:powerset",
+   "P8"
+  ],
+  [
+   "quixbugs:quicksort",
+   "P8"
+  ],
+  [
+   "quixbugs:rpn_eval",
+   "P8"
+  ],
+  [
+   "quixbugs:shunting_yard",
+   "P8"
+  ],
+  [
+   "quixbugs:sieve",
+   "P8"
+  ],
+  [
+   "quixbugs:subsequences",
+   "P8"
+  ],
+  [
+   "quixbugs:to_base",
+   "P8"
+  ],
+  [
+   "quixbugs:wrap",
+   "P8"
+  ],
+  [
+   "quixbugs_neg:levenshtein__sp-6_s0",
+   "P8"
+  ],
+  [
+   "synthetic:dev__ds_deque_ops__sc11_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:dev__graph_has_eulerian_path__sc3_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:dev__sort_cocktail_shaker_sort__sc5_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:dev__str_first_unique_char__sc5_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__ds_bloom_filter_sim__sc6_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__ds_ranked_set__sc10+sp3_s0",
+   "P8"
+  ],
+  [
+   "synthetic:test__ds_sparse_matrix_csr__sc8_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__graph_cycle_detection_dfs__sc1+sp6_s2",
+   "P8"
+  ],
+  [
+   "synthetic:test__graph_mst_kruskal__sc5_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__graph_num_islands__sc4_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__graph_topological_kahn__sc10+sp5_s0",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_coin_change__sc2+sp6_s0",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_count_set_bits__sc13_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_count_set_bits__sp-11_s2",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_fib_matrix__sc2+sp1_s1",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_gcd_lcm__sc6_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_josephus__sc13_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_jump_game__sc8_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__math_knapsack_01__sc1+sp11_s2",
+   "P8"
+  ],
+  [
+   "synthetic:test__sort_chunk_merge__sc2_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__sort_pancake__sc5+sp6_s2",
+   "P8"
+  ],
+  [
+   "synthetic:test__sort_stooge_sort__sc2+sp6_s1",
+   "P8"
+  ],
+  [
+   "synthetic:test__str_decode_ways__sc3_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:test__str_group_anagrams__sc5+sp4_s2",
+   "P8"
+  ],
+  [
+   "synthetic:train__ds_lfu_simulation__sc12_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__ds_ring_buffer_stats__sc13_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__ds_sparse_table__sc5_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__graph_center_finder__sc11_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__graph_condensation__sc8_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__graph_phone_combos__sc11_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_extended_gcd__sc6_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_matrix_chain__sc3_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_max_product_subarray__sc2_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_max_subarray__sc6_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_nth_ugly_number__sc3_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_power_of_two_list__sc6_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_sum_squares__sc11_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_trailing_zeros__sc5_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__math_unique_paths__sc1_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__sort_shellsort__sc11_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__sort_strand_sort__sc11_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__str_bracket_balance__sc13_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__str_longest_common_prefix__sc5_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__str_longest_no_repeat__sc13_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__str_min_window_substr__sc11_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:train__str_vowel_count__sc10_s1_p0",
+   "P8"
+  ],
+  [
+   "synthetic:val__graph_scc_tarjan__sc11_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:val__math_largest_rect_hist__sc11_s0_p0",
+   "P8"
+  ],
+  [
+   "synthetic:val__math_ways_to_change__sc11_s2_p0",
+   "P8"
+  ],
+  [
+   "synthetic:val__sort_patience_sort__sc13_s1_p0",
+   "P8"
+  ]
+ ],
+ "n_records": 312,
+ "markdown": "| Perturbation | Name | Mode | Pass | Fail | N/A |\n|---|---|---|---|---|---|\n| P1 | relevant-evidence deletion | post-hoc | 16 | 0 | 296 |\n| P2 | irrelevant augmentation | post-hoc (synthetic recorded input; real execution needs collector) | 227 | 0 | 85 |\n| P3 | duplicate augmentation | post-hoc | 262 | 0 | 50 |\n| P4 | observation masking | post-hoc | 178 | 0 | 134 |\n| P5 | reproducibility-budget degradation | post-hoc (synthetic recorded input; real execution needs collector) | 176 | 0 | 136 |\n| P6 | independent discriminating evidence | post-hoc (synthetic recorded input; real execution needs collector) | 228 | 0 | 84 |\n| P7 | provenance degradation | post-hoc | 178 | 0 | 134 |\n| P8 | integrity violation | post-hoc | 228 | 84 | 0 |\n| P9 | environment inconsistency | post-hoc | 228 | 0 | 84 |"
+}

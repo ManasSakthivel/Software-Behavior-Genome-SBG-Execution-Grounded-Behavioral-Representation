@@ -1,0 +1,709 @@
+% SBG V8 -- IEEE Access manuscript bibliography (IEEEtran-compatible).
+% Every entry re-verified 2026-11-19 (Crossref DOI metadata, arXiv API, or publisher/venue page).
+% Verification source per key: LITERATURE_COMPARISON_REGISTER.md. Preprints carry a note.
+
+% ---------------- (A) Differential testing, regression comparison, shadow execution ----------------
+
+@article{mckeeman1998differential,
+  author  = {McKeeman, William M.},
+  title   = {Differential Testing for Software},
+  journal = {Digital Technical Journal},
+  volume  = {10},
+  number  = {1},
+  pages   = {100--107},
+  year    = {1998},
+  url     = {https://web.archive.org/web/20061031200115/http://www.hpl.hp.com/hpjournal/dtj/vol10num1/vol10num1art9.pdf}
+}
+
+@inproceedings{evans2007differential,
+  author    = {Evans, Robert B. and Savoia, Alberto},
+  title     = {Differential Testing: A New Approach to Change Detection},
+  booktitle = {Proc. 6th Joint Meeting of the European Software Engineering Conf. and the ACM SIGSOFT Symp. on the Foundations of Software Engineering (ESEC/FSE)},
+  pages     = {549--552},
+  year      = {2007},
+  doi       = {10.1145/1287624.1287707}
+}
+
+@inproceedings{cadar2014shadow,
+  author    = {Cadar, Cristian and Palikareva, Hristina},
+  title     = {Shadow Symbolic Execution for Better Testing of Evolving Software},
+  booktitle = {Companion Proc. 36th Int. Conf. on Software Engineering (ICSE)},
+  pages     = {432--435},
+  year      = {2014},
+  doi       = {10.1145/2591062.2591104}
+}
+
+@inproceedings{palikareva2016shadow,
+  author    = {Palikareva, Hristina and Kuchta, Tomasz and Cadar, Cristian},
+  title     = {Shadow of a Doubt: Testing for Divergences Between Software Versions},
+  booktitle = {Proc. 38th Int. Conf. on Software Engineering (ICSE)},
+  pages     = {1181--1192},
+  year      = {2016},
+  doi       = {10.1145/2884781.2884845}
+}
+
+@article{kuchta2018shadow,
+  author  = {Kuchta, Tomasz and Palikareva, Hristina and Cadar, Cristian},
+  title   = {Shadow Symbolic Execution for Testing Software Patches},
+  journal = {ACM Trans. Softw. Eng. Methodol.},
+  volume  = {27},
+  number  = {3},
+  pages   = {1--32},
+  year    = {2018},
+  doi     = {10.1145/3208952}
+}
+
+@inproceedings{jin2010automated,
+  author    = {Jin, Wei and Orso, Alessandro and Xie, Tao},
+  title     = {Automated Behavioral Regression Testing},
+  booktitle = {Proc. 3rd Int. Conf. on Software Testing, Verification and Validation (ICST)},
+  pages     = {137--146},
+  year      = {2010},
+  doi       = {10.1109/ICST.2010.64}
+}
+
+@inproceedings{santelices2008testsuite,
+  author    = {Santelices, Raul and Chittimalli, Pavan Kumar and Apiwattanapong, Taweesup and Orso, Alessandro and Harrold, Mary Jean},
+  title     = {Test-Suite Augmentation for Evolving Software},
+  booktitle = {Proc. 23rd IEEE/ACM Int. Conf. on Automated Software Engineering (ASE)},
+  pages     = {218--227},
+  year      = {2008},
+  doi       = {10.1109/ASE.2008.32}
+}
+
+@inproceedings{taneja2008diffgen,
+  author    = {Taneja, Kunal and Xie, Tao},
+  title     = {{DiffGen}: Automated Regression Unit-Test Generation},
+  booktitle = {Proc. 23rd IEEE/ACM Int. Conf. on Automated Software Engineering (ASE)},
+  pages     = {407--410},
+  year      = {2008},
+  doi       = {10.1109/ASE.2008.60}
+}
+
+@inproceedings{godefroid2020differential,
+  author    = {Godefroid, Patrice and Lehmann, Daniel and Polishchuk, Marina},
+  title     = {Differential Regression Testing for {REST} {APIs}},
+  booktitle = {Proc. 29th ACM SIGSOFT Int. Symp. on Software Testing and Analysis (ISSTA)},
+  pages     = {312--323},
+  year      = {2020},
+  doi       = {10.1145/3395363.3397374}
+}
+
+@article{rothermel1996analyzing,
+  author  = {Rothermel, Gregg and Harrold, Mary Jean},
+  title   = {Analyzing Regression Test Selection Techniques},
+  journal = {IEEE Trans. Softw. Eng.},
+  volume  = {22},
+  number  = {8},
+  pages   = {529--551},
+  year    = {1996},
+  doi     = {10.1109/32.536955}
+}
+
+@article{yoo2012regression,
+  author  = {Yoo, Shin and Harman, Mark},
+  title   = {Regression Testing Minimization, Selection and Prioritization: A Survey},
+  journal = {Softw. Test. Verif. Reliab.},
+  volume  = {22},
+  number  = {2},
+  pages   = {67--120},
+  year    = {2012},
+  doi     = {10.1002/stvr.430}
+}
+
+@inproceedings{le2014compiler,
+  author    = {Le, Vu and Afshari, Mehrdad and Su, Zhendong},
+  title     = {Compiler Validation via Equivalence Modulo Inputs},
+  booktitle = {Proc. 35th ACM SIGPLAN Conf. on Programming Language Design and Implementation (PLDI)},
+  pages     = {216--226},
+  year      = {2014},
+  doi       = {10.1145/2594291.2594334}
+}
+
+@inproceedings{petsios2017nezha,
+  author    = {Petsios, Theofilos and Tang, Adrian and Stolfo, Salvatore and Keromytis, Angelos D. and Jana, Suman},
+  title     = {{NEZHA}: Efficient Domain-Independent Differential Testing},
+  booktitle = {Proc. IEEE Symp. on Security and Privacy (S\&P)},
+  pages     = {615--632},
+  year      = {2017},
+  doi       = {10.1109/SP.2017.27}
+}
+
+% ---------------- (B) Test adequacy, coverage, mutation ----------------
+
+@article{zhu1997software,
+  author  = {Zhu, Hong and Hall, Patrick A. V. and May, John H. R.},
+  title   = {Software Unit Test Coverage and Adequacy},
+  journal = {ACM Comput. Surv.},
+  volume  = {29},
+  number  = {4},
+  pages   = {366--427},
+  year    = {1997},
+  doi     = {10.1145/267580.267590}
+}
+
+@inproceedings{inozemtseva2014coverage,
+  author    = {Inozemtseva, Laura and Holmes, Reid},
+  title     = {Coverage is Not Strongly Correlated with Test Suite Effectiveness},
+  booktitle = {Proc. 36th Int. Conf. on Software Engineering (ICSE)},
+  pages     = {435--445},
+  year      = {2014},
+  doi       = {10.1145/2568225.2568271}
+}
+
+@inproceedings{gopinath2014code,
+  author    = {Gopinath, Rahul and Jensen, Carlos and Groce, Alex},
+  title     = {Code Coverage for Suite Evaluation by Developers},
+  booktitle = {Proc. 36th Int. Conf. on Software Engineering (ICSE)},
+  pages     = {72--82},
+  year      = {2014},
+  doi       = {10.1145/2568225.2568278}
+}
+
+@inproceedings{kochhar2015code,
+  author    = {Kochhar, Pavneet Singh and Thung, Ferdian and Lo, David},
+  title     = {Code Coverage and Test Suite Effectiveness: Empirical Study with Real Bugs in Large Systems},
+  booktitle = {Proc. IEEE 22nd Int. Conf. on Software Analysis, Evolution, and Reengineering (SANER)},
+  pages     = {560--564},
+  year      = {2015},
+  doi       = {10.1109/SANER.2015.7081877}
+}
+
+@inproceedings{chekam2017empirical,
+  author    = {Chekam, Thierry Titcheu and Papadakis, Mike and Le Traon, Yves and Harman, Mark},
+  title     = {An Empirical Study on Mutation, Statement and Branch Coverage Fault Revelation that Avoids the Unreliable Clean Program Assumption},
+  booktitle = {Proc. IEEE/ACM 39th Int. Conf. on Software Engineering (ICSE)},
+  pages     = {597--608},
+  year      = {2017},
+  doi       = {10.1109/ICSE.2017.61}
+}
+
+@article{jia2011analysis,
+  author  = {Jia, Yue and Harman, Mark},
+  title   = {An Analysis and Survey of the Development of Mutation Testing},
+  journal = {IEEE Trans. Softw. Eng.},
+  volume  = {37},
+  number  = {5},
+  pages   = {649--678},
+  year    = {2011},
+  doi     = {10.1109/TSE.2010.62}
+}
+
+@incollection{papadakis2019mutation,
+  author    = {Papadakis, Mike and Kintis, Marinos and Zhang, Jie and Jia, Yue and Le Traon, Yves and Harman, Mark},
+  title     = {Mutation Testing Advances: An Analysis and Survey},
+  booktitle = {Advances in Computers},
+  volume    = {112},
+  publisher = {Elsevier},
+  pages     = {275--378},
+  year      = {2019},
+  doi       = {10.1016/bs.adcom.2018.03.015}
+}
+
+@inproceedings{just2014mutants,
+  author    = {Just, Ren{\'e} and Jalali, Darioush and Inozemtseva, Laura and Ernst, Michael D. and Holmes, Reid and Fraser, Gordon},
+  title     = {Are Mutants a Valid Substitute for Real Faults in Software Testing?},
+  booktitle = {Proc. 22nd ACM SIGSOFT Int. Symp. on Foundations of Software Engineering (FSE)},
+  pages     = {654--665},
+  year      = {2014},
+  doi       = {10.1145/2635868.2635929}
+}
+
+@inproceedings{papadakis2018mutation,
+  author    = {Papadakis, Mike and Shin, Donghwan and Yoo, Shin and Bae, Doo-Hwan},
+  title     = {Are Mutation Scores Correlated with Real Fault Detection? {A} Large Scale Empirical Study on the Relationship Between Mutants and Real Faults},
+  booktitle = {Proc. 40th Int. Conf. on Software Engineering (ICSE)},
+  pages     = {537--548},
+  year      = {2018},
+  doi       = {10.1145/3180155.3180183}
+}
+
+% ---------------- (C) Test oracle problem, metamorphic testing ----------------
+
+@article{barr2015oracle,
+  author  = {Barr, Earl T. and Harman, Mark and McMinn, Phil and Shahbaz, Muzammil and Yoo, Shin},
+  title   = {The Oracle Problem in Software Testing: A Survey},
+  journal = {IEEE Trans. Softw. Eng.},
+  volume  = {41},
+  number  = {5},
+  pages   = {507--525},
+  year    = {2015},
+  doi     = {10.1109/TSE.2014.2372785}
+}
+
+@article{chen2018metamorphic,
+  author  = {Chen, Tsong Yueh and Kuo, Fei-Ching and Liu, Huai and Poon, Pak-Lok and Towey, Dave and Tse, T. H. and Zhou, Zhi Quan},
+  title   = {Metamorphic Testing: A Review of Challenges and Opportunities},
+  journal = {ACM Comput. Surv.},
+  volume  = {51},
+  number  = {1},
+  pages   = {1--27},
+  year    = {2019},
+  doi     = {10.1145/3143561}
+}
+
+@article{segura2016survey,
+  author  = {Segura, Sergio and Fraser, Gordon and Sanchez, Ana B. and Ruiz-Cort{\'e}s, Antonio},
+  title   = {A Survey on Metamorphic Testing},
+  journal = {IEEE Trans. Softw. Eng.},
+  volume  = {42},
+  number  = {9},
+  pages   = {805--824},
+  year    = {2016},
+  doi     = {10.1109/TSE.2016.2532875}
+}
+
+% ---------------- (D) Oracle adequacy, pseudo-tested methods, behavioural adequacy ----------------
+
+@inproceedings{schuler2011assessing,
+  author    = {Schuler, David and Zeller, Andreas},
+  title     = {Assessing Oracle Quality with Checked Coverage},
+  booktitle = {Proc. 4th IEEE Int. Conf. on Software Testing, Verification and Validation (ICST)},
+  pages     = {90--99},
+  year      = {2011},
+  doi       = {10.1109/ICST.2011.32}
+}
+
+@article{schuler2013checked,
+  author  = {Schuler, David and Zeller, Andreas},
+  title   = {Checked Coverage: An Indicator for Oracle Quality},
+  journal = {Softw. Test. Verif. Reliab.},
+  volume  = {23},
+  number  = {7},
+  pages   = {531--551},
+  year    = {2013},
+  doi     = {10.1002/stvr.1497}
+}
+
+@inproceedings{niedermayr2016will,
+  author    = {Niedermayr, Rainer and Juergens, Elmar and Wagner, Stefan},
+  title     = {Will My Tests Tell Me if {I} Break This Code?},
+  booktitle = {Proc. Int. Workshop on Continuous Software Evolution and Delivery (CSED)},
+  pages     = {23--29},
+  year      = {2016},
+  doi       = {10.1145/2896941.2896944}
+}
+
+@inproceedings{veraperez2018descartes,
+  author    = {Vera-P{\'e}rez, Oscar Luis and Monperrus, Martin and Baudry, Benoit},
+  title     = {Descartes: A {PITest} Engine to Detect Pseudo-Tested Methods: Tool Demonstration},
+  booktitle = {Proc. 33rd ACM/IEEE Int. Conf. on Automated Software Engineering (ASE)},
+  pages     = {908--911},
+  year      = {2018},
+  doi       = {10.1145/3238147.3240474}
+}
+
+@article{veraperez2019comprehensive,
+  author  = {Vera-P{\'e}rez, Oscar Luis and Danglot, Benjamin and Monperrus, Martin and Baudry, Benoit},
+  title   = {A Comprehensive Study of Pseudo-Tested Methods},
+  journal = {Empir. Softw. Eng.},
+  volume  = {24},
+  number  = {3},
+  pages   = {1195--1225},
+  year    = {2019},
+  doi     = {10.1007/s10664-018-9653-2}
+}
+
+@inproceedings{fraser2012behaviourally,
+  author    = {Fraser, Gordon and Walkinshaw, Neil},
+  title     = {Behaviourally Adequate Software Testing},
+  booktitle = {Proc. 5th IEEE Int. Conf. on Software Testing, Verification and Validation (ICST)},
+  pages     = {300--309},
+  year      = {2012},
+  doi       = {10.1109/ICST.2012.110}
+}
+
+@article{fraser2015assessing,
+  author  = {Fraser, Gordon and Walkinshaw, Neil},
+  title   = {Assessing and Generating Test Sets in Terms of Behavioural Adequacy},
+  journal = {Softw. Test. Verif. Reliab.},
+  volume  = {25},
+  number  = {8},
+  pages   = {749--780},
+  year    = {2015},
+  doi     = {10.1002/stvr.1575}
+}
+
+@inproceedings{zhang2015assertions,
+  author    = {Zhang, Yucheng and Mesbah, Ali},
+  title     = {Assertions are Strongly Correlated with Test Suite Effectiveness},
+  booktitle = {Proc. 10th Joint Meeting on Foundations of Software Engineering (ESEC/FSE)},
+  pages     = {214--224},
+  year      = {2015},
+  doi       = {10.1145/2786805.2786858}
+}
+
+@misc{paul2026beyond,
+  author        = {Paul, Partha Protim and Holmes, Reid},
+  title         = {Beyond Coverage and Kill Scores: Empirically Measuring Test Suite Behavioural Gaps},
+  year          = {2026},
+  eprint        = {2606.10417},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2606.10417},
+  note          = {arXiv preprint (not peer reviewed)}
+}
+
+% ---------------- (E) Selective classification, calibration, conformal risk control ----------------
+
+@article{chow1970optimum,
+  author  = {Chow, C. K.},
+  title   = {On Optimum Recognition Error and Reject Tradeoff},
+  journal = {IEEE Trans. Inf. Theory},
+  volume  = {16},
+  number  = {1},
+  pages   = {41--46},
+  year    = {1970},
+  doi     = {10.1109/TIT.1970.1054406}
+}
+
+@article{elyaniv2010foundations,
+  author  = {El-Yaniv, Ran and Wiener, Yair},
+  title   = {On the Foundations of Noise-free Selective Classification},
+  journal = {J. Mach. Learn. Res.},
+  volume  = {11},
+  number  = {53},
+  pages   = {1605--1641},
+  year    = {2010},
+  url     = {https://www.jmlr.org/papers/v11/el-yaniv10a.html}
+}
+
+@inproceedings{geifman2017selective,
+  author    = {Geifman, Yonatan and El-Yaniv, Ran},
+  title     = {Selective Classification for Deep Neural Networks},
+  booktitle = {Advances in Neural Information Processing Systems 30 (NIPS)},
+  pages     = {4878--4887},
+  year      = {2017},
+  url       = {https://papers.nips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html}
+}
+
+@inproceedings{guo2017calibration,
+  author    = {Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger, Kilian Q.},
+  title     = {On Calibration of Modern Neural Networks},
+  booktitle = {Proc. 34th Int. Conf. on Machine Learning (ICML)},
+  series    = {Proc. Mach. Learn. Res.},
+  volume    = {70},
+  pages     = {1321--1330},
+  year      = {2017},
+  url       = {https://proceedings.mlr.press/v70/guo17a.html}
+}
+
+@article{brier1950verification,
+  author  = {Brier, Glenn W.},
+  title   = {Verification of Forecasts Expressed in Terms of Probability},
+  journal = {Monthly Weather Rev.},
+  volume  = {78},
+  number  = {1},
+  pages   = {1--3},
+  year    = {1950},
+  doi     = {10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2}
+}
+
+@inproceedings{niculescumizil2005predicting,
+  author    = {Niculescu-Mizil, Alexandru and Caruana, Rich},
+  title     = {Predicting Good Probabilities with Supervised Learning},
+  booktitle = {Proc. 22nd Int. Conf. on Machine Learning (ICML)},
+  pages     = {625--632},
+  year      = {2005},
+  doi       = {10.1145/1102351.1102430}
+}
+
+@article{bates2021distribution,
+  author  = {Bates, Stephen and Angelopoulos, Anastasios and Lei, Lihua and Malik, Jitendra and Jordan, Michael},
+  title   = {Distribution-free, Risk-controlling Prediction Sets},
+  journal = {J. ACM},
+  volume  = {68},
+  number  = {6},
+  pages   = {1--34},
+  year    = {2021},
+  doi     = {10.1145/3478535}
+}
+
+@inproceedings{angelopoulos2024conformal,
+  author    = {Angelopoulos, Anastasios N. and Bates, Stephen and Fisch, Adam and Lei, Lihua and Schuster, Tal},
+  title     = {Conformal Risk Control},
+  booktitle = {Proc. 12th Int. Conf. on Learning Representations (ICLR)},
+  year      = {2024},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2024/hash/f3549ef9b5ff520a7e41ff3cc306ab2b-Abstract-Conference.html}
+}
+
+@article{hendrickx2024machine,
+  author  = {Hendrickx, Kilian and Perini, Lorenzo and Van der Plas, Dries and Meert, Wannes and Davis, Jesse},
+  title   = {Machine Learning with a Reject Option: A Survey},
+  journal = {Mach. Learn.},
+  volume  = {113},
+  number  = {5},
+  pages   = {3073--3110},
+  year    = {2024},
+  doi     = {10.1007/s10994-024-06534-x}
+}
+
+% ---------------- (F) Supply chain, reproducibility, flaky tests ----------------
+
+@article{lamb2022reproducible,
+  author  = {Lamb, Chris and Zacchiroli, Stefano},
+  title   = {Reproducible Builds: Increasing the Integrity of Software Supply Chains},
+  journal = {IEEE Softw.},
+  volume  = {39},
+  number  = {2},
+  pages   = {62--70},
+  year    = {2022},
+  doi     = {10.1109/MS.2021.3073045}
+}
+
+@inproceedings{torresarias2019intoto,
+  author    = {Torres-Arias, Santiago and Afzali, Hammad and Kuppusamy, Trishank Karthik and Curtmola, Reza and Cappos, Justin},
+  title     = {in-toto: Providing Farm-to-Table Guarantees for Bits and Bytes},
+  booktitle = {Proc. 28th USENIX Security Symp.},
+  pages     = {1393--1410},
+  year      = {2019},
+  url       = {https://www.usenix.org/conference/usenixsecurity19/presentation/torres-arias}
+}
+
+@misc{slsa2023spec,
+  author       = {{SLSA Project}},
+  title        = {{SLSA} Specification, Version 1.0},
+  howpublished = {The Linux Foundation, Community Specification},
+  url          = {https://slsa.dev/spec/v1.0/},
+  note         = {Industry specification, not peer reviewed; accessed Nov. 19, 2026}
+}
+
+@inproceedings{luo2014empirical,
+  author    = {Luo, Qingzhou and Hariri, Farah and Eloussi, Lamyaa and Marinov, Darko},
+  title     = {An Empirical Analysis of Flaky Tests},
+  booktitle = {Proc. 22nd ACM SIGSOFT Int. Symp. on Foundations of Software Engineering (FSE)},
+  pages     = {643--653},
+  year      = {2014},
+  doi       = {10.1145/2635868.2635920}
+}
+
+@article{parry2022survey,
+  author  = {Parry, Owain and Kapfhammer, Gregory M. and Hilton, Michael and McMinn, Phil},
+  title   = {A Survey of Flaky Tests},
+  journal = {ACM Trans. Softw. Eng. Methodol.},
+  volume  = {31},
+  number  = {1},
+  pages   = {1--74},
+  year    = {2022},
+  doi     = {10.1145/3476105}
+}
+
+% ---------------- (G) Benchmarks and critiques ----------------
+
+@inproceedings{just2014defects4j,
+  author    = {Just, Ren{\'e} and Jalali, Darioush and Ernst, Michael D.},
+  title     = {{Defects4J}: A Database of Existing Faults to Enable Controlled Testing Studies for {Java} Programs},
+  booktitle = {Proc. Int. Symp. on Software Testing and Analysis (ISSTA)},
+  pages     = {437--440},
+  year      = {2014},
+  doi       = {10.1145/2610384.2628055}
+}
+
+@inproceedings{widyasari2020bugsinpy,
+  author    = {Widyasari, Ratnadira and Sim, Sheng Qin and Lok, Camellia and Qi, Haodi and Phan, Jack and Tay, Qijin and Tan, Constance and Wee, Fiona and Tan, Jodie Ethelda and Yieh, Yuheng and Goh, Brian and Thung, Ferdian and Kang, Hong Jin and Hoang, Thong and Lo, David and Ouh, Eng Lieh},
+  title     = {{BugsInPy}: A Database of Existing Bugs in {Python} Programs to Enable Controlled Testing and Debugging Studies},
+  booktitle = {Proc. 28th ACM Joint Meeting on European Software Engineering Conf. and Symp. on the Foundations of Software Engineering (ESEC/FSE)},
+  pages     = {1556--1560},
+  year      = {2020},
+  doi       = {10.1145/3368089.3417943}
+}
+
+@inproceedings{madeiral2019bears,
+  author    = {Madeiral, Fernanda and Urli, Simon and Maia, Marcelo and Monperrus, Martin},
+  title     = {{BEARS}: An Extensible {Java} Bug Benchmark for Automatic Program Repair Studies},
+  booktitle = {Proc. IEEE 26th Int. Conf. on Software Analysis, Evolution and Reengineering (SANER)},
+  pages     = {468--478},
+  year      = {2019},
+  doi       = {10.1109/SANER.2019.8667991}
+}
+
+@inproceedings{tomassi2019bugswarm,
+  author    = {Tomassi, David A. and Dmeiri, Naji and Wang, Yichen and Bhowmick, Antara and Liu, Yen-Chuan and Devanbu, Premkumar T. and Vasilescu, Bogdan and Rubio-Gonz{\'a}lez, Cindy},
+  title     = {{BugSwarm}: Mining and Continuously Growing a Dataset of Reproducible Failures and Fixes},
+  booktitle = {Proc. IEEE/ACM 41st Int. Conf. on Software Engineering (ICSE)},
+  pages     = {339--349},
+  year      = {2019},
+  doi       = {10.1109/ICSE.2019.00048}
+}
+
+@inproceedings{saha2018bugsjar,
+  author    = {Saha, Ripon K. and Lyu, Yingjun and Lam, Wing and Yoshida, Hiroaki and Prasad, Mukul R.},
+  title     = {{Bugs.jar}: A Large-Scale, Diverse Dataset of Real-World {Java} Bugs},
+  booktitle = {Proc. 15th Int. Conf. on Mining Software Repositories (MSR)},
+  pages     = {10--13},
+  year      = {2018},
+  doi       = {10.1145/3196398.3196473}
+}
+
+@misc{durieux2019critical,
+  author        = {Durieux, Thomas and Abreu, Rui},
+  title         = {Critical Review of {BugSwarm} for Fault Localization and Program Repair},
+  year          = {2019},
+  eprint        = {1905.09375},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/1905.09375},
+  note          = {arXiv preprint; no peer-reviewed venue could be verified}
+}
+
+@misc{tomassi2019note,
+  author        = {Tomassi, David A. and Rubio-Gonz{\'a}lez, Cindy},
+  title         = {A Note About: Critical Review of {BugSwarm} for Fault Localization and Program Repair},
+  year          = {2019},
+  eprint        = {1910.13058},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/1910.13058},
+  note          = {arXiv preprint (not peer reviewed)}
+}
+
+@inproceedings{godlin2009regression,
+  author    = {Godlin, Benny and Strichman, Ofer},
+  title     = {Regression Verification},
+  booktitle = {Proc. 46th Annual Design Automation Conf. (DAC)},
+  pages     = {466--471},
+  year      = {2009},
+  doi       = {10.1145/1629911.1630034}
+}
+
+@inproceedings{lahiri2012symdiff,
+  author    = {Lahiri, Shuvendu K. and Hawblitzel, Chris and Kawaguchi, Ming and Reb{\^e}lo, Henrique},
+  title     = {{SYMDIFF}: A Language-Agnostic Semantic Diff Tool for Imperative Programs},
+  booktitle = {Computer Aided Verification (CAV)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {7358},
+  pages     = {712--717},
+  year      = {2012},
+  doi       = {10.1007/978-3-642-31424-7_54}
+}
+
+@inproceedings{felsing2014automating,
+  author    = {Felsing, Dennis and Grebing, Sarah and Klebanov, Vladimir and R{\"u}mmer, Philipp and Ulbrich, Mattias},
+  title     = {Automating Regression Verification},
+  booktitle = {Proc. 29th ACM/IEEE Int. Conf. on Automated Software Engineering (ASE)},
+  pages     = {349--360},
+  year      = {2014},
+  doi       = {10.1145/2642937.2642987}
+}
+
+@inproceedings{malik2021automatically,
+  author    = {Malik, Viktor and Vojnar, Tomas},
+  title     = {Automatically Checking Semantic Equivalence between Versions of Large-Scale {C} Projects},
+  booktitle = {Proc. 14th IEEE Conf. on Software Testing, Verification and Validation (ICST)},
+  pages     = {329--339},
+  year      = {2021},
+  doi       = {10.1109/ICST49551.2021.00045}
+}
+
+@inproceedings{claessen2000quickcheck,
+  author    = {Claessen, Koen and Hughes, John},
+  title     = {{QuickCheck}: A Lightweight Tool for Random Testing of {Haskell} Programs},
+  booktitle = {Proc. 5th ACM SIGPLAN Int. Conf. on Functional Programming (ICFP)},
+  pages     = {268--279},
+  year      = {2000},
+  doi       = {10.1145/351240.351266}
+}
+
+@article{maciver2019hypothesis,
+  author  = {MacIver, David R. and Hatfield-Dodds, Zac and {Many Contributors}},
+  title   = {Hypothesis: A New Approach to Property-Based Testing},
+  journal = {J. Open Source Softw.},
+  volume  = {4},
+  number  = {43},
+  pages   = {1891},
+  year    = {2019},
+  doi     = {10.21105/joss.01891}
+}
+
+@article{schafer2024empirical,
+  author  = {Sch{\"a}fer, Max and Nadi, Sarah and Eghbali, Aryaz and Tip, Frank},
+  title   = {An Empirical Evaluation of Using Large Language Models for Automated Unit Test Generation},
+  journal = {IEEE Trans. Softw. Eng.},
+  volume  = {50},
+  number  = {1},
+  pages   = {85--105},
+  year    = {2024},
+  doi     = {10.1109/TSE.2023.3334955}
+}
+
+@inproceedings{pradel2026testora,
+  author    = {Pradel, Michael},
+  title     = {Testora: Using Natural Language Intent to Detect Behavioral Regressions},
+  booktitle = {Proc. IEEE/ACM 48th Int. Conf. on Software Engineering (ICSE)},
+  pages     = {3169--3181},
+  year      = {2026},
+  doi       = {10.1145/3744916.3764527}
+}
+
+@article{liu2026evaluating,
+  author  = {Liu, Jing and Lee, Seongmin and Losiouk, Eleonora and B{\"o}hme, Marcel},
+  title   = {Evaluating {LLM}-Based Regression Test Generation},
+  journal = {Proc. ACM Softw. Eng.},
+  volume  = {3},
+  number  = {FSE},
+  pages   = {2744--2766},
+  year    = {2026},
+  doi     = {10.1145/3808129}
+}
+
+@article{etemadi2025mokav,
+  author  = {Etemadi, Khashayar and Mohammadi, Bardia and Su, Zhendong and Monperrus, Martin},
+  title   = {Mokav: Execution-Driven Differential Testing with {LLMs}},
+  journal = {J. Syst. Softw.},
+  volume  = {230},
+  pages   = {112571},
+  year    = {2025},
+  doi     = {10.1016/j.jss.2025.112571}
+}
+
+@misc{hu2026difftestgen,
+  author        = {Hu, Huimin and Cadar, Cristian and Pradel, Michael},
+  title         = {{DiffTestGen}: Change-Directed {LLM}-Based Testing for Exposing Behavioral Differences},
+  year          = {2026},
+  eprint        = {2607.16024},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2607.16024},
+  note          = {arXiv preprint (not peer reviewed)}
+}
+
+@misc{lecong2026patchguru,
+  author        = {Le-Cong, Thanh and Le, Bach and Murray, Toby and Pradel, Michael and Cadar, Cristian},
+  title         = {{PatchGuru}: Patch Oracle Inference from Natural Language Artifacts with Large Language Models},
+  year          = {2026},
+  eprint        = {2602.05270},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2602.05270},
+  note          = {arXiv preprint 2602.05270 (not peer reviewed)}
+}
+
+@misc{fu2026orion,
+  author        = {Fu, Yiwen and Qi, Binhang and Li, Xiao and Liu, Runlin and Sun, Hailong and Gao, Xiang},
+  title         = {Behavioral Regression Detection for Pull Requests via Structured Oracles},
+  year          = {2026},
+  eprint        = {2610.35223},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2610.35223},
+  note          = {arXiv preprint (not peer reviewed)}
+}
+
+@misc{ayub2026semadiff,
+  author        = {Ayub, Maha and Konstantinou, Michael and Khanfir, Ahmed and Tsantalis, Nikolaos and Papadakis, Mike},
+  title         = {{SemaDiff}: Identifying Semantic-Changing Commits with Generated Code and Tests},
+  year          = {2026},
+  eprint        = {2607.13111},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2607.13111},
+  note          = {arXiv preprint (not peer reviewed)}
+}
+
+@inproceedings{lin2017quixbugs,
+  author    = {Lin, Derrick and Koppel, James and Chen, Angela and Solar-Lezama, Armando},
+  title     = {{QuixBugs}: A Multi-Lingual Program Repair Benchmark Set Based on the {Quixey} Challenge},
+  booktitle = {Proceedings Companion of the 2017 ACM SIGPLAN International Conference on Systems, Programming, Languages, and Applications: Software for Humanity (SPLASH Companion)},
+  pages     = {55--56},
+  year      = {2017},
+  doi       = {10.1145/3135932.3135941}
+}
+
+
+
+
+
+

@@ -1,0 +1,239 @@
+{
+  "experiment": "ADVERSARIAL_REVIEW_V5",
+  "version": "v5",
+  "timestamp": "2025-07-09T00:00:00Z",
+  "grounded_in": [
+    "docs/v4/V4_FINAL_SCIENTIFIC_REPORT.md",
+    "docs/v4/V4_HOSTILE_REVIEW.md",
+    "artifacts/v4/FINAL_RESULTS.json",
+    "artifacts/v4/FEATURE_ABLATION.json",
+    "artifacts/v4/SHORTCUT_CONTROLS.json",
+    "artifacts/v5/REGRESSION_EVALUATION_RESULTS.json",
+    "artifacts/v5/HARD_NEGATIVE_BENCHMARK_DESIGN.json"
+  ],
+  "reviewers": [
+    {
+      "id": "R1",
+      "role": "Statistics Expert",
+      "verdict": "MAJOR_REVISION",
+      "summary": "Statistical analysis has significant problems. AUROC CI lower bound crosses 0.5, Holm-Bonferroni only H7/H9 survive, McNemar degenerate.",
+      "p0_issues": [
+        {
+          "issue": "AUROC=0.546 with CI=[0.477, 0.624]. Lower bound 0.477 < 0.5 means the claim 'better than chance' is not statistically established at 95% confidence.",
+          "fix": "Report that the primary hypothesis is NOT statistically supported at α=0.05 on the test set. Use cluster bootstrap as reported, but be explicit about what the CI means."
+        },
+        {
+          "issue": "Only H7 and H9 survive Holm-Bonferroni correction from 12 hypotheses. H12 (regression) does NOT survive at α_corr=0.0042.",
+          "fix": "Restrict headline claims to H7 (dynamic > static) and H9 (inversion resolved). Do not claim regression detection is supported."
+        },
+        {
+          "issue": "exception_fraction (0.593) beats full SBG (0.546) by a statistically significant margin. This directly contradicts the central claim that behavioral genome adds information.",
+          "fix": "Present exception_fraction as the primary baseline. The central finding should be reframed: 'exception rate is the dominant predictor; multi-dimensional genome provides marginal but non-significant lift.'"
+        }
+      ],
+      "p1_issues": [
+        {"issue": "McNemar test with b=c=0 is degenerate (p=1.0). Cannot use McNemar for paired comparisons."},
+        {"issue": "DEV AUROC=0.488 (below chance) while TEST AUROC=0.546. This spread suggests test set selection bias."},
+        {"issue": "Bootstrap clusters by base program (13 programs on test set). Very few clusters → CI is unstable."},
+        {"issue": "Multiple comparison correction applied retroactively, not pre-registered."},
+        {"issue": "Effect size (Cohen's d) never reported — AUROC alone is insufficient for claim magnitude."}
+      ]
+    },
+    {
+      "id": "R2",
+      "role": "Machine Learning Expert",
+      "verdict": "REJECT",
+      "summary": "No competitive ML baseline. CodeBERT evaluated zero-shot only (AUROC=0.37). Fine-tuned models would likely achieve 0.80+. SBG is not competitive with modern ML.",
+      "p0_issues": [
+        {
+          "issue": "CodeBERT evaluated zero-shot with no fine-tuning. The claim 'CodeBERT AUROC=0.37 worse than SBG=0.54' is misleading — fine-tuned CodeBERT on this task would achieve dramatically higher AUROC.",
+          "fix": "Either fine-tune CodeBERT/GraphCodeBERT on the training set with cross-validation, or explicitly frame the comparison as 'unsupervised SBG vs zero-shot CodeBERT' and remove claims about ML competitiveness."
+        },
+        {
+          "issue": "No supervised learning baseline is evaluated. Even logistic regression on exception_fraction would likely achieve AUROC=0.65+.",
+          "fix": "Add: LR(exception_fraction), LR(all_shortcuts), SVM(dynamic_features), gradient boosting on extracted features."
+        },
+        {
+          "issue": "The AUROC gap between SBG (0.546) and best shortcut (0.593) is negative: SBG LOSES to simple features. This is the opposite of what the paper claims.",
+          "fix": "Reframe central contribution as negative result or restrict to the hard-negative benchmark where SBG outperforms shortcuts."
+        }
+      ],
+      "p1_issues": [
+        {"issue": "Feature engineering is ad-hoc — weights chosen without systematic optimization."},
+        {"issue": "No ablation of individual genome dimensions with statistical testing."},
+        {"issue": "No comparison to program embeddings (code2vec, code2seq, InferCode)."},
+        {"issue": "Hard negative results (oracle 12/12) are the strongest finding — they should be the primary evaluation, not the aggregate AUROC."},
+        {"issue": "No cross-validation — single test set split with N=13 programs."}
+      ]
+    },
+    {
+      "id": "R3",
+      "role": "Programming Languages Expert",
+      "verdict": "MAJOR_REVISION",
+      "summary": "Formal model is reasonable but behavioral distance is not a pseudometric as claimed. Cross-language claims are unsupported.",
+      "p0_issues": [
+        {
+          "issue": "The formal model claims behavioral_distance is a pseudometric (d(x,y)=0 ↔ x≡y up to semantics-preserving transforms). This is NOT proven. The actual distance function is an ad-hoc weighted average of heterogeneous metrics — triangle inequality is not guaranteed.",
+          "fix": "Either prove the pseudometric properties formally, or remove the pseudometric claim and call it 'a similarity function designed to approximate behavioral distance.'"
+        },
+        {
+          "issue": "Cross-language claims (language-agnostic genome) are unsupported: no actual Java execution occurs. Python-only evaluation cannot support language-agnostic claims.",
+          "fix": "Remove all cross-language claims from the abstract and contributions. Report cross-language as future work. V5 Java executor now exists — integrate it."
+        },
+        {
+          "issue": "'Semantics-preserving transformation' is used operationally (by construction) not formally (proven). SP-2 achieves mean_sim=0.587 — not actually invariant.",
+          "fix": "Rename to 'intended semantics-preserving transformations' and acknowledge that invariance is an empirical goal, not a proven property."
+        }
+      ],
+      "p1_issues": [
+        {"issue": "ε-semantic equivalence is undefined formally — what is ε?"},
+        {"issue": "The 'behavioral fingerprint' framing borrows from cryptographic fingerprinting; behavioral notion is much weaker here."},
+        {"issue": "No formal proof that the genome captures any information about semantic equivalence classes."},
+        {"issue": "Branch coverage (not just line coverage) is needed for meaningful program semantics — not implemented."},
+        {"issue": "Temporal genome design is sound but not evaluated; only design exists."}
+      ]
+    },
+    {
+      "id": "R4",
+      "role": "Software Engineering Expert",
+      "verdict": "MAJOR_REVISION",
+      "summary": "Practical utility unclear. Existing tools (diff, AST diff, fuzzing) solve similar problems better. The benchmark is too small for software engineering claims.",
+      "p0_issues": [
+        {
+          "issue": "What software engineering problem does SBG solve better than existing tools? `diff` + exception analysis is trivially implementable and likely achieves similar AUROC at zero cost.",
+          "fix": "Define the specific SE problem (regression detection, refactoring safety, test generation) and show SBG performs better than the cheapest practical alternative for that problem."
+        },
+        {
+          "issue": "N=13 test programs. ICSE/FSE require 50-500+ subjects for generalization claims.",
+          "fix": "V5 benchmark expansion created 31 new programs — run the full evaluation on expanded corpus before submission."
+        },
+        {
+          "issue": "SC-3 detection rate of 7.5% is catastrophic for a claimed 'semantic change detector.' Off-by-one bugs in production code would be entirely missed.",
+          "fix": "Integrate input-guided execution (V5 module exists) which achieves ~74% detection on SC-3 pairs. This is a solvable problem."
+        }
+      ],
+      "p1_issues": [
+        {"issue": "No evaluation on real-world code changes (PRs, commits). Synthetic benchmark limits external validity."},
+        {"issue": "Runtime cost not adequately justified — 50-200ms per pair at scale is expensive."},
+        {"issue": "No integration path to CI/CD systems where this would actually be used."},
+        {"issue": "Benchmark programs are all under 200 lines. Real-world programs are 1000-100000 lines."},
+        {"issue": "No comparison to actual regression test suites (pytest, unittest) for detecting behavioral changes."}
+      ]
+    },
+    {
+      "id": "R5",
+      "role": "Benchmark Design Expert",
+      "verdict": "MAJOR_REVISION",
+      "summary": "Benchmark has serious validity issues. N=13 test programs, SC-3 contamination (v2), transformation balance unclear.",
+      "p0_issues": [
+        {
+          "issue": "13 test programs is insufficient. Bootstrap CI on 13 clusters has massive variance (CI width ~0.147 for AUROC on test set). Any AUROC claim within ±0.15 of 0.5 is statistically unreliable.",
+          "fix": "Expand test set to minimum 50 programs. V5 created 31 new programs — run evaluation. Report per-program AUROC distribution, not just aggregate."
+        },
+        {
+          "issue": "DEV AUROC=0.488 (below chance) while VAL=0.512 and TEST=0.546. This 0.058 spread exceeds the claimed effect size. Test set may be a favorable fluctuation.",
+          "fix": "Report all three splits and acknowledge the instability. Cross-validate by holding out different program subsets."
+        },
+        {
+          "issue": "SC-3 benchmark contamination in V2 (76.9% cosmetic quote-changes mislabeled CHANGED) was corrected but only 38 verified pairs remain. This is not enough for reliable SC-3 AUROC estimation.",
+          "fix": "Generate 100+ verified SC-3 pairs with boundary-input validation. V5 input_guided_executor can verify these automatically."
+        }
+      ],
+      "p1_issues": [
+        {"issue": "Transformation type balance not reported — some types may dominate aggregate AUROC."},
+        {"issue": "Difficulty stratification is not systematic — easy/hard not defined."},
+        {"issue": "Program family clustering needs formal definition — which programs are 'in the same family'?"},
+        {"issue": "Ground truth validation: 69.6% semantic oracle agreement is low — 30% label noise."},
+        {"issue": "Near-duplicate detection methodology not described."}
+      ]
+    },
+    {
+      "id": "R6",
+      "role": "Behavioral Methodology Expert",
+      "verdict": "MAJOR_REVISION",
+      "summary": "The core behavioral claim is undermined by exception_fraction dominance. If a one-bit feature beats the full genome, the 'behavioral' framing is questionable.",
+      "p0_issues": [
+        {
+          "issue": "exception_fraction (AUROC=0.593) beating full behavioral genome (AUROC=0.546) means the complex representation adds negative value. This fundamentally undermines 'behavioral genome' as a contribution.",
+          "fix": "The V5 regression evaluation shows a counter-finding: 9/9 silent bugs (invisible to exception+volume) are detected by behavioral output oracle. This should be the primary result — it demonstrates genuine behavioral information beyond shortcuts."
+        },
+        {
+          "issue": "Aggregate AUROC on the main benchmark is below exception_fraction — a one-bit feature. The 'behavioral' information in SBG is apparently not being used by the current feature engineering.",
+          "fix": "Show that the V5 hard-negative benchmark demonstrates behavioral superiority: oracle 12/12, exception_fraction 5/12, volume 7/12. This is the stronger and more defensible result."
+        },
+        {
+          "issue": "The benchmark itself is designed around SP/SC transforms that may not test 'behavioral' differences but rather 'structural' ones. SC-3 (operator swap) changes semantics but not behavior unless the right inputs are used.",
+          "fix": "Separate behavioral detectability (with boundary inputs) from structural detectability. Report both."
+        }
+      ],
+      "p1_issues": [
+        {"issue": "No causal analysis: does exception_fraction CAUSE SBG to underperform (mediator), or is it a confound?"},
+        {"issue": "Behavioral distance has no calibration — what does 0.3 distance mean? Is it linearly related to semantic difference?"},
+        {"issue": "Input sampling (canonical inputs) is not tied to behavioral coverage — using 8 fixed inputs misses most semantic differences."},
+        {"issue": "The genome doesn't distinguish programs that raise exceptions for the RIGHT reason vs WRONG reason."},
+        {"issue": "State-transition genome (V5) not yet evaluated — this could change the picture."}
+      ]
+    },
+    {
+      "id": "R7",
+      "role": "Reproducibility Expert",
+      "verdict": "MINOR_REVISION",
+      "summary": "Mostly reproducible with minor issues. pytest not in README, 2 figure scripts are stubs, SHA-256 not in manifests for primary results.",
+      "p0_issues": [
+        {
+          "issue": "V5 reproduction_check reports FAIL: 'benchmark_data' check fails and 'determinism' check errors.",
+          "fix": "Fix the reproduction check script and verify that benchmarks/datasets are all present and seeded correctly."
+        }
+      ],
+      "p1_issues": [
+        {"issue": "pytest dependency not in README — `python3 -m pytest sbg/ -q` silently fails without it."},
+        {"issue": "fig4_hard_negative.py and fig5_robustness.py are PLACEHOLDER stubs — figures cannot be reproduced."},
+        {"issue": "FINAL_RESULTS.json, v3/FINAL_RESULTS.json, v4/FINAL_RESULTS.json have no SHA-256 in manifest."},
+        {"issue": "Python 3.9+ required but not stated — 3.11 fixed a C stack overflow."},
+        {"issue": "CPython-only (sys.settrace) — not documented, breaks on PyPy."}
+      ]
+    },
+    {
+      "id": "R8",
+      "role": "Top-Tier Conference Reviewer (ICSE/FSE/NeurIPS)",
+      "verdict": "REJECT_WITH_INVITATION_TO_RESUBMIT",
+      "summary": "Interesting research direction with honest methodology, but primary claim (behavioral genome > shortcuts) is not supported. Negative results are scientifically valuable but need clearer framing. Hard negative + regression results are genuinely interesting.",
+      "p0_issues": [
+        {
+          "issue": "The paper's title/framing claims 'behavioral genome detects semantic changes' but the primary result is the OPPOSITE: exception_fraction beats the full genome. The contribution must be reframed.",
+          "fix": "Reframe as: (1) We establish negative result: volume shortcuts dominate execution-trace-based genomes on synthetic benchmarks. (2) We demonstrate positive result: on silent bugs and hard negatives, behavioral comparison detects changes that shortcuts miss. (3) We provide the benchmark itself as a contribution."
+        },
+        {
+          "issue": "AUROC on 13-program test set with CI crossing 0.5 is not a publishable primary result at ICSE/FSE.",
+          "fix": "Expand to 50+ programs before submission. Run on V5 expanded benchmark."
+        },
+        {
+          "issue": "Two critical prior art gaps: Piech et al. ICML 2015 (identical pipeline: execution traces → behavioral vectors → distance) and Sumner et al. OOPSLA 2011 (lossless execution trace comparison for regression detection). Both are absent from all prior art documentation.",
+          "fix": "Add both to prior art. Differentiate SBG from Piech 2015 (cross-version comparison vs. student program clustering) and Sumner 2011 (lossy compression with formal distance vs. lossless comparison)."
+        }
+      ],
+      "p1_issues": [
+        {"issue": "No real-world evaluation. V5 regression_evaluator shows 14/15 detection with behavioral oracle — this should be the primary experiment."},
+        {"issue": "Java execution now exists (V5) but cross-language evaluation not run."},
+        {"issue": "SC-3 input-guided exposure (V5) achieves ~74% detection vs 7.5% current — this should be reported as a key improvement."},
+        {"issue": "The hard negative benchmark (12/12 oracle correct, shortcuts fooled on 5-7/12) is the strongest experimental result — it should be prominent in the paper."},
+        {"issue": "Venue: ICSE/FSE REJECT, MSR/ISSTA CONDITIONAL_ACCEPT with revisions."}
+      ]
+    }
+  ],
+  "consolidated_verdict": "BORDERLINE_REJECT_AT_TOP_VENUES_CONDITIONAL_ACCEPT_AT_MSR_ISSTA",
+  "minimum_for_publication": [
+    "Expand test corpus to 50+ programs",
+    "Add Piech 2015 and Sumner 2011 to prior art with differentiation",
+    "Fix reproduction check failures",
+    "Reframe primary contribution as (1) hard-negative benchmark superiority + (2) regression detection with behavioral oracle + (3) negative result on aggregate AUROC",
+    "Evaluate input-guided SC-3 exposure (V5 module exists)",
+    "Run Java execution cross-language evaluation (V5 infrastructure exists)",
+    "Fine-tune a supervised baseline (LR on exception_fraction at minimum)",
+    "Add McNemar replacement (bootstrap paired test)"
+  ],
+  "strongest_positive": "Hard negative benchmark: behavioral oracle 12/12 correct while exception_fraction fails on 7/12 and volume fails on 5/12. This demonstrates genuine behavioral information beyond shortcuts. Combined with regression evaluator: 9/9 silent bugs detected by output comparison but missed by both exception and volume shortcuts. This is a clear, defensible, and important scientific finding.",
+  "strongest_negative": "On the primary aggregate benchmark (N=744 pairs, 13 programs), exception_fraction alone (AUROC=0.593) beats the full multi-dimensional behavioral genome (AUROC=0.546). The entire V1-V3 research program built a complex representation that a one-bit feature outperforms. The confidence interval for SBG AUROC crosses 0.5 (CI lower=0.477). DEV AUROC=0.488 is below chance. The central claim that behavioral genome adds information is not supported on the primary benchmark.",
+  "recommended_reframing": "The paper's strongest scientific contribution is NOT 'SBG detects semantic changes better than baselines on aggregate benchmarks' — that claim is NOT supported. The strongest contributions are: (1) NEGATIVE RESULT: execution-volume shortcuts dominate execution-trace-based behavioral genomes on synthetic SC/SP benchmarks. This is an important finding. (2) POSITIVE RESULT: behavioral output oracle detects 14/15 real regressions, 9/9 of which are invisible to exception+volume shortcuts. (3) HARD NEGATIVE BENCHMARK: demonstrates conditions under which behavioral comparison works and shortcuts fail. (4) BENCHMARK: 3,577-pair SC/SP benchmark with 24 transform types, honest methodology, pre-registered hypotheses.",
+  "recommended_venue": "MSR_PRIMARY, ISSTA_SECONDARY, ICSE_FSE_ONLY_AFTER_FULL_REVISIONS"
+}

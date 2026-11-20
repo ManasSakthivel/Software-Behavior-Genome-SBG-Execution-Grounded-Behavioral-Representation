@@ -1,0 +1,120 @@
+{
+  "version": "v2",
+  "generated_at": "2025-07-07T00:00:00Z",
+  "registration_date": "Pre-registered before any V2 execution (SAFEGUARD-1)",
+  "experiments": [
+    {
+      "id": "E-V1",
+      "name": "V1 Baseline Comparison",
+      "script": "baselines/run_all_baselines.py",
+      "hypothesis": "V1 baseline",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/phase3/B01", "artifacts/phase3/B02", "artifacts/phase3/B03", "artifacts/phase3/B04", "artifacts/phase3/B05", "artifacts/phase3/B06", "artifacts/phase3/B07", "artifacts/phase3/B08"],
+      "primary_metric": "AUROC",
+      "n_test_pairs": 744,
+      "sealed": true
+    },
+    {
+      "id": "E-B06-FAIR",
+      "name": "B06 Fair V2 (SAFEGUARD-5)",
+      "script": "baselines/v2/b06_fair_v2.py",
+      "hypothesis": "H7 (representation comparison)",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/v2/B06_FAIR/results_test.json", "artifacts/v2/B06_FAIR/results_dev.json"],
+      "primary_metric": "AUROC=0.504966",
+      "n_test_pairs": 744,
+      "sealed": true,
+      "safeguards": ["SAFEGUARD-5"]
+    },
+    {
+      "id": "E-B07",
+      "name": "B07 Dynamic V2",
+      "script": "baselines/v2/b07_dynamic_v2.py",
+      "hypothesis": "H7, H9",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/v2/B07/results_test.json", "artifacts/v2/B07/results_dev.json"],
+      "primary_metric": "AUROC=0.531023",
+      "n_test_pairs": 744,
+      "sealed": true,
+      "safeguards": ["SAFEGUARD-3", "SAFEGUARD-6 (n_runs=5)"]
+    },
+    {
+      "id": "E-B08-CORRECT",
+      "name": "B08 Hybrid V2 Correct (full v1 behavioral_distance)",
+      "script": "baselines/v2/b08_hybrid_v2_correct.py",
+      "hypothesis": "H8",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/v2/B08_CORRECT/results_test.json", "artifacts/v2/B08_CORRECT/results_dev.json"],
+      "primary_metric": "AUROC=0.528096",
+      "weight_selection": "DEV-only grid search; selected w_static=0.0",
+      "n_test_pairs": 744,
+      "sealed": true,
+      "safeguards": ["SAFEGUARD-1 (preregistered grid)"]
+    },
+    {
+      "id": "E-NOISE-FLOOR",
+      "name": "Noise Floor Analysis (SAFEGUARD-6)",
+      "script": "experiments/v2/noise_floor.py",
+      "hypothesis": "stability criterion CV<=0.05",
+      "status": "PARTIAL (1/10 programs)",
+      "artifacts": ["artifacts/v2/NOISE_FLOOR_RESULTS.json"],
+      "result": "All 8 fields stable (CV=0.0); 9 programs FILE_NOT_FOUND",
+      "safeguards": ["SAFEGUARD-6"]
+    },
+    {
+      "id": "E-HARD-NEG",
+      "name": "Hard Negative Analysis (SAFEGUARD-4)",
+      "script": "experiments/v2/hard_negative_analysis.py",
+      "hypothesis": "H9 stratified (SC-3, SC-11)",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/v2/HARD_NEGATIVE_RESULTS.json"],
+      "result": "SC-3 NOT_SUPPORTED (delta=+0.083); SC-11 SUPPORTED (delta=-0.227)",
+      "safeguards": ["SAFEGUARD-4"]
+    },
+    {
+      "id": "E-ROBUSTNESS",
+      "name": "H10 Robustness Analysis",
+      "script": "experiments/v2/robustness_analysis.py",
+      "hypothesis": "H10",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/v2/ROBUSTNESS_RESULTS.json"],
+      "result": "H10=NOT_SUPPORTED_FRAGILE; B07 spread=0.311 (criterion=0.10)"
+    },
+    {
+      "id": "E-REGRESSION",
+      "name": "H12 Regression Detection Benchmark",
+      "script": "experiments/v2/regression_benchmark.py",
+      "hypothesis": "H12",
+      "status": "COMPLETE (INSUFFICIENT_EVIDENCE)",
+      "artifacts": ["artifacts/v2/REGRESSION_RESULTS.json"],
+      "result": "Benchmark design flaw: 55 regression pairs, 0 control pairs; AUROC undefined"
+    },
+    {
+      "id": "E-LEAKAGE",
+      "name": "Leakage Audit V2",
+      "script": "experiments/v2/leakage_audit_v2.py",
+      "hypothesis": "test set integrity",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/v2/LEAKAGE_AUDIT_V2.json"],
+      "result": "CLEAN_WITH_WARNINGS"
+    },
+    {
+      "id": "E-STATS",
+      "name": "Statistical Methodology Audit",
+      "script": "experiments/v2/statistical_audit.py",
+      "hypothesis": "methodology verification",
+      "status": "COMPLETE (structural audit; effect sizes pending)",
+      "artifacts": ["artifacts/v2/STATISTICAL_METHODOLOGY_AUDIT.json"],
+      "result": "5 PASS, 6 ISSUES (non-blocking for primary conclusions)"
+    },
+    {
+      "id": "E-ADVERSARIAL",
+      "name": "Adversarial Review (10 reviewers)",
+      "script": null,
+      "hypothesis": "research quality gate",
+      "status": "COMPLETE",
+      "artifacts": ["artifacts/v2/ADVERSARIAL_REVIEWS.json"],
+      "result": "P0=4, P1=5, P2=1; all P0/P1 documented with mitigations"
+    }
+  ]
+}

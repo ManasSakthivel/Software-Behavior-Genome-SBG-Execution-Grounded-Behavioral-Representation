@@ -1,0 +1,42 @@
+{
+  "reviewer": "G \u2014 Reproducibility",
+  "overall_assessment": "The use of stdlib-only code is excellent for reproducibility. Seeds are set consistently (SEED=42). The main reproducibility concern is dynamic execution and Java validation. Phase 7 should add a REPRODUCIBILITY.md with explicit instructions.",
+  "p0": 0,
+  "p1": 0,
+  "p2": 2,
+  "p3": 2,
+  "findings": [
+    {
+      "severity": "P2",
+      "title": "Dynamic genome requires executing arbitrary Python code",
+      "detail": "The Tracer (sbg/extraction/dynamic/tracer.py) executes programs in-process with importlib. This creates security concerns for untrusted code and means reproducibility depends on Python version, platform, and installed third-party libraries. The fixed timeout (5s) varies across hardware.",
+      "reproducible": true,
+      "fix_applied": true,
+      "fix_notes": "DOCUMENTED. Benchmark programs use stdlib only. The test isolation fix (TEST_ISOLATION_FIX.json) documents a platform-specific bug that was fixed."
+    },
+    {
+      "severity": "P2",
+      "title": "Java programs in Phase 5 cannot be automatically executed",
+      "detail": "Phase 5 Java corpus was validated by hand inspection, not by running JUnit tests. A CI pipeline with javac + junit would be needed for full reproducibility.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Known limitation documented in Phase 5 gate."
+    },
+    {
+      "severity": "P3",
+      "title": "Experiment scripts require specific Python 3.x version",
+      "detail": "The scripts use f-strings, ast.unparse (Python 3.9+), and dataclasses. Minimum Python version is not explicitly stated in README.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "README should document Python >=3.9 requirement."
+    },
+    {
+      "severity": "P3",
+      "title": "No requirements.txt or environment specification",
+      "detail": "The project uses only stdlib, which is good for reproducibility. However, there is no explicit requirements.txt confirming zero external deps.",
+      "reproducible": true,
+      "fix_applied": false,
+      "fix_notes": "Easy to add. All code uses stdlib only."
+    }
+  ]
+}

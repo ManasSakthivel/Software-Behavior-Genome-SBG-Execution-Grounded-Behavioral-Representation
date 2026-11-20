@@ -1,0 +1,240 @@
+{
+  "gate": "PHASE_0",
+  "status": "PASS",
+  "timestamp": "2025-07-14T00:00:00Z",
+  "agent": "0-INTEGRATION",
+
+  "research_question_defined": true,
+  "formal_model_defined": true,
+  "prior_art_count": 40,
+
+  "closest_prior_work": [
+    "Luo et al. — Semantics-Based Obfuscation-Resilient Binary Diffing (IEEE TIFS 2017)",
+    "Godlin & Strichman — Regression Verification (DAC 2009)",
+    "Lahiri et al. — SYMDIFF (CAV 2012)",
+    "Bayer et al. — TTAnalyze / Scalable Behavior-Based Malware Clustering (NDSS 2009)",
+    "Yamaguchi et al. — Joern / Code Property Graphs (IEEE S&P 2014)",
+    "Cummins et al. — ProGraML (ICML 2021)"
+  ],
+
+  "novelty_gap": "No prior work defines (1) a formally specified, multi-dimensional, normalized pseudometric on execution-trace-derived behavioral features with dimension-specific distance justifications and explicit metric-space assumptions, (2) a versioned, queryable longitudinal behavioral genome tracking a program's full behavioral profile across its entire release history, or (3) a test-suite-free regression oracle using unsupervised behavioral distance — the last being empirically unvalidated but novel as a claim. All prior behavioral fingerprinting is malware-oriented and one-shot; all prior regression verification is formal/static and language-specific; all prior multi-representation systems (Joern, ProGraML) are static. The dynamic behavioral pseudometric analog with formal properties does not exist in any reviewed prior work.",
+
+  "novelty_verdict": "MODERATE",
+  "novelty_verdict_justification": "Two claims survive all adversarial attacks with HIGH confidence (S1: formal behavioral pseudometric; S2: longitudinal behavioral genome). One claim is novel but empirically unproven (S3: test-suite-free regression oracle — H5). One claim is credible but narrower than originally stated (S4: cross-language equivalence, restricted to 3–5 of 8 dimensions due to unresolved OP-4 and OP-6). One claim is a vision claim only (S5: behavioral supply-chain artifact). The project has a legitimate and non-redundant contribution; it requires sharpening around S1, S2, and — after empirical validation — S3. Path to STRONG verdict: validate H5 empirically and confirm the multi-dimensional structure outperforms all single-dimension baselines.",
+
+  "hypotheses_defined": true,
+  "hypotheses_count": 6,
+  "sub_hypotheses_count": 5,
+  "research_questions_count": 10,
+
+  "benchmark_strategy_defined": true,
+  "target_pairs": 6400,
+  "minimum_viable_pairs": 4000,
+  "target_base_programs": 78,
+  "minimum_viable_base_programs": 50,
+  "corpus_categories": 12,
+  "transformation_types_sp": 12,
+  "transformation_types_sc": 14,
+  "hard_negative_fraction": 0.30,
+  "languages_required": 6,
+
+  "statistical_strategy_defined": true,
+  "statistical_notes": "Bonferroni-corrected alpha = 0.0017 for H1-H6. Non-parametric tests (Mann-Whitney, Kruskal-Wallis, McNemar, DeLong) specified per hypothesis. Bootstrap 95% CI required on all primary metrics. Power analysis re-run at alpha = 0.0017 in BENCHMARK_DESIGN.md §7.1: minimum test pairs = 800, recommended test pairs = 1280. Consistent with RESEARCH_HYPOTHESES.md.",
+
+  "major_threats": [
+    "IV-05: Non-determinism and execution flakiness — Assumption A6 (determinism) is violated by the majority of production software; intra-version genome variance has not been measured",
+    "IV-04: Rare-trigger behavioral differences are undetectable — bugs triggered by mu_I(Delta) ~= 0 inputs will never be sampled from I_prod regardless of D",
+    "EV-02: Long-running, interactive, and distributed programs are out of scope — timeout-bounded extraction cannot capture behaviors over long horizons",
+    "CV-01: D(G1,G2) does not certify semantic equivalence — Rice's theorem; D is an empirical approximation only",
+    "CV-05: Cross-language behavioral equivalence (H3/H4) depends on unresolved OP-4 — no formal cross-language procedure alignment exists for CONTROL dimension",
+    "EV-03: Functional and logic paradigms are not supported — CONTROL dimension (g_C) is definitionally OO/imperative-centric",
+    "IV-01: Structural similarity may confound behavioral similarity — CONTROL and EXECUTION dimensions derived from control-flow structure",
+    "IV-02: Oracle/ground-truth reliability — Defects4J labels depend on test coverage; genuine SBG detections may count as false positives",
+    "IV-03: Measurement bias from dynamic analysis instrumentation — probe effect on TEMPORAL/RESOURCE dimensions",
+    "EV-04: Scalability — GED for CONTROL is NP-hard; heap isomorphism for STATE is GI-hard; results on small benchmarks may not imply tractability on large programs"
+  ],
+
+  "unmitigable_threats": [
+    "CV-01: D(G1,G2) does not certify semantic equivalence (Rice's theorem — undecidability; OP-2 unresolved)",
+    "IV-04-residual: Rare-trigger behavioral differences are undetectable under finite sampling from I_prod",
+    "EV-02-residual: Long-running, interactive, and distributed programs are out of scope by definition",
+    "EV-03-residual: Functional and logic paradigms are not supported without a formal CONTROL dimension extension",
+    "CV-05-residual: Full 8-dimension cross-language comparison blocked by OP-4 (no formal cross-language procedure alignment)"
+  ],
+
+  "open_problems_blocking_phase_1": [
+    "OP-1: Minimum sample size N* for reliable genome estimation — assumed N=200 pending SH-3 validation; must be confirmed before H1-H6 experiments",
+    "OP-4: Cross-language procedure alignment for CONTROL dimension — blocks full H4 claim; H4 must be restricted to g_D + g_X + exploratory g_C until resolved",
+    "OP-6: Temporal normalization across architectures — blocks cross-language TEMPORAL/RESOURCE comparison; these dimensions must be excluded from cross-language experiments"
+  ],
+
+  "open_problems_non_blocking": [
+    "OP-2: Decidability of epsilon-semantic equivalence for finite programs",
+    "OP-3: Confidence-weighted genome distance D_conf (Welch t-statistic analog)",
+    "OP-5: Principled heap abstraction selection for STATE dimension"
+  ],
+
+  "unresolved_questions": [
+    "What is the intra-version genome variance Var[G(P)] for the benchmark programs? (must be measured as a noise floor before any inter-version claim)",
+    "Does the 8-dimensional structured distance outperform a learned behavioral embedding trained on execution trace features? (Attack 7 settling experiment — required for publication, not for Phase 1 start)",
+    "Does the multi-dimensional architecture outperform all single-dimension baselines on Defects4J? (Attack 3 ablation — this is H6 and is a Phase 1 experiment, but the answer determines whether the architecture is justified on discriminability or interpretability grounds)",
+    "What fraction of Defects4J regressions are rare-trigger (mu_I(Delta) < 0.01)? (SH-2 stratification — determines realistic H5 recall ceiling under I_prod)"
+  ],
+
+  "cross_document_inconsistencies": [
+    {
+      "id": "INC-1",
+      "severity": "CRITICAL",
+      "description": "Hypothesis numbering mismatch between FORMAL_MODEL.md (H1-H6) and RESEARCH_HYPOTHESES.md (H1-H6). Labels H2, H3, H4, H6 are assigned to different hypotheses in each document. FORMAL_MODEL H2=Sensitivity, RESEARCH_HYPOTHESES H2=Outperforms Baselines. FORMAL_MODEL H3=Cross-Language, RESEARCH_HYPOTHESES H3=Robustness Under Refactoring. FORMAL_MODEL H4=Versioning, RESEARCH_HYPOTHESES H4=Cross-Language. FORMAL_MODEL H6=Uniqueness, RESEARCH_HYPOTHESES H6=Multi-Dimensional Value.",
+      "resolution": "Adopt FORMAL_MODEL.md H-numbering as canonical before Phase 1 begins. Update all downstream documents to use consistent labels."
+    },
+    {
+      "id": "INC-2",
+      "severity": "SERIOUS",
+      "description": "RESEARCH_HYPOTHESES.md H4 (Cross-Language) includes g_C as a primary portable dimension. NOVELTY_ANALYSIS.md Attack 4 and THREATS_TO_VALIDITY.md CV-05 both establish that g_C is problematic cross-language due to unresolved OP-4 (no cross-language procedure alignment). The effective cross-language portable dimension set should be {g_D, g_X} with g_C as exploratory/partial, not a confirmed primary dimension.",
+      "resolution": "Update RESEARCH_HYPOTHESES.md H4 to list {g_D, g_X} as confirmed portable dimensions and g_C as exploratory. Explicitly mark g_T, g_R, g_U as excluded from all cross-language comparisons."
+    },
+    {
+      "id": "INC-3",
+      "severity": "MODERATE",
+      "description": "BENCHMARK_DESIGN.md does not specify a cross-language equivalent pair count in its minimum viable table. RESEARCH_HYPOTHESES.md H4 requires at least 35 equivalent pairs per language pair (5 language pairs = 175 minimum cross-language pairs). This count is absent from BENCHMARK_DESIGN.md §7.",
+      "resolution": "Add cross-language equivalent pair count to BENCHMARK_DESIGN.md minimum viable table: 175 minimum (35 per language pair x 5 pairs), 250 recommended."
+    },
+    {
+      "id": "INC-4",
+      "severity": "MODERATE",
+      "description": "BENCHMARK_DESIGN.md does not describe a real-repository version history corpus for FORMAL_MODEL H4 / SH-4 (monotonicity). RESEARCH_HYPOTHESES.md SH-4 requires 10 GitHub projects with >=100 commits each. This corpus is entirely missing from BENCHMARK_DESIGN.md scope.",
+      "resolution": "Add a separate SH-4 corpus section to BENCHMARK_DESIGN.md specifying 10 GitHub projects with >=100 commits; or document as a separate Phase 1 corpus preparation task."
+    },
+    {
+      "id": "INC-5",
+      "severity": "MODERATE",
+      "description": "Statistical significance threshold mismatch: BENCHMARK_DESIGN.md §7.1 power analysis uses alpha = 0.05 for sample size derivation; RESEARCH_HYPOTHESES.md uses Bonferroni-corrected alpha = 0.0017 for all H1-H6 tests. The minimum viable test set (400 pairs) is powered for alpha = 0.05, not alpha = 0.0017. Under the corrected alpha, power may be insufficient at 400 pairs.",
+      "resolution": "BENCHMARK_DESIGN.md must re-run McNemar power analysis at alpha = 0.0017. If 400 pairs is insufficient, increase target or explicitly accept lower power and document the limitation."
+    },
+    {
+      "id": "INC-6",
+      "severity": "MODERATE",
+      "description": "FORMAL_MODEL.md H6 is 'Behavioral Genome Uniqueness' (collision rate). RESEARCH_HYPOTHESES.md H6 is 'Multi-Dimensional Value' (dimension ablation). These are different hypotheses with the same label. The uniqueness claim is addressed in RESEARCH_HYPOTHESES.md only as RQ10 (exploratory), not as a confirmatory hypothesis.",
+      "resolution": "Rename RESEARCH_HYPOTHESES.md H6 to H6-MV and add H6-U for uniqueness/collision as a separate confirmatory hypothesis mapped to FORMAL_MODEL H6. Reconcile with canonical H-numbering from INC-1 resolution."
+    },
+    {
+      "id": "INC-7",
+      "severity": "MINOR",
+      "description": "threats_summary.json severity_counts conflates initial severity with residual severity. Fourteen entries marked 'HIGH' include entries with residual_risk = 'MEDIUM' after mitigation. Two entries (EV-02, CV-05) have residual_risk = 'HIGH' (fundamental/unmitigable) but are categorized alongside mitigable threats.",
+      "resolution": "Distinguish initial severity from residual risk in all downstream threat tracking. For Phase 1 prioritization, use residual risk."
+    }
+  ],
+
+  "recommendation": "CONDITIONAL PASS. Phase 0 has produced a formally grounded research foundation: a precise research question, a complete formal model with 22 definitions and 6 hypotheses, a comprehensive prior art survey (40 works across 10 domains), a rigorous adversarial novelty review (MODERATE verdict with two HIGH-confidence surviving claims), a detailed threats analysis (32 threats, 5 unmitigable), operationalized hypotheses with power analyses, and a statistically justified benchmark design. However, three conditions must be satisfied before Phase 1 execution begins: (1) the hypothesis numbering must be canonicalized — the current H1-H6 mismatch between FORMAL_MODEL.md and RESEARCH_HYPOTHESES.md is a critical execution risk; (2) the intra-version genome variance (noise floor) must be measured as a preliminary experiment before any inter-version distance is interpreted; (3) BENCHMARK_DESIGN.md must be updated to include cross-language pair counts and must re-run the power analysis at alpha = 0.0017. All five unmitigable threats must be disclosed as scope limitations in any publication. The cross-language hypothesis (FORMAL_MODEL H3 / RESEARCH_HYPOTHESES H4) must be formally marked as exploratory/preliminary until OP-4 is resolved.",
+
+  "blocking_issues": [],
+
+  "fixes_applied": [
+    "FIX-1 (resolves INC-1): FORMAL_MODEL.md H2-H6 relabeled to match canonical numbering from master SBG prompt. H2 is now 'Structured SBG Discriminative Power Over Baselines', H3 is now 'Behavioral Genome Robustness Under Refactoring', H4 is now 'Cross-Language Behavioral Generalization', H5 is now 'Behavioral Genome Regression Detection', H6 is now 'Multi-Dimensional Behavioral Value'. Formal mathematical content preserved; headings and cross-references updated. RESEARCH_HYPOTHESES.md verified as already matching canonical numbering — no changes required.",
+    "FIX-2 (resolves INC-2): RESEARCH_HYPOTHESES.md H4 portable dimension set changed from {g_C, g_D, g_X} to {g_D, g_X} (confirmed portable). g_C marked EXPLORATORY/PRELIMINARY with explicit note citing OP-4 (cross-language procedure alignment is an unresolved open problem). Primary D_xlang test statistic now uses only {g_D, g_X} with w_D = w_X = 1/2. FORMAL_MODEL.md H4 (formerly H3) updated to explicitly state g_C is excluded from primary confirmatory test with EXPLORATORY label. g_T, g_R, g_U explicitly excluded from cross-language comparisons.",
+    "FIX-3 (resolves INC-5): BENCHMARK_DESIGN.md §7.1 power analysis updated to use Bonferroni-corrected alpha = 0.0017 (= 0.01/6). Calculation shown explicitly: z_alpha/2 = 3.12; required discordant pairs scale by ratio (3.120+0.842)^2/(1.960+0.842)^2 = 15.70/7.85 = 2.0x; minimum test pairs updated from 400 to 800; recommended test pairs updated from 640 to 1280. Total pair counts scaled accordingly: minimum_viable_total_pairs updated from 2000 to 4000; target_total_pairs updated from 3200 to 6400. artifacts/research/benchmark_design_summary.json updated to reflect all revised counts and the corrected statistical parameters."
+  ],
+
+  "phase_1_prerequisites": [
+    "1. Canonicalize hypothesis numbering: adopt FORMAL_MODEL.md H1-H6 labels throughout all documents (resolves INC-1)",
+    "2. Update RESEARCH_HYPOTHESES.md H4 (Cross-Language) to explicitly restrict portable dimensions to {g_D, g_X} with g_C exploratory; exclude g_T, g_R, g_U from all cross-language comparisons (resolves INC-2)",
+    "3. Add cross-language pair count (175 minimum, 250 recommended) to BENCHMARK_DESIGN.md minimum viable table (resolves INC-3)",
+    "4. Document SH-4 version history corpus (10 GitHub projects, >=100 commits) as a separate corpus specification in BENCHMARK_DESIGN.md or as a standalone corpus preparation task (resolves INC-4)",
+    "5. Re-run BENCHMARK_DESIGN.md McNemar power analysis at alpha = 0.0017; confirm test set size or adjust targets accordingly (resolves INC-5)",
+    "6. Pre-register primary hypotheses H1 and H5 (regression oracle) at OSF or AsPredicted before any genome extraction begins (addresses CL-02)",
+    "7. Execute SH-3 (convergence rate experiment) first to confirm N = 200 is sufficient; no H1-H6 experiments start until N is empirically validated (addresses OP-1)",
+    "8. Measure intra-version genome variance Var[G(P)] as a preliminary experiment on the benchmark corpus before any inter-version D comparisons are reported (addresses IV-05 noise floor)",
+    "9. Define and document the containerized reproducibility environment (OS version, compiler, runtime, PRNG = 42, locale = UTF-8, timezone = UTC, thread policy) before first genome extraction run (addresses RL-01)",
+    "10. Formally mark FORMAL_MODEL H3 / H4 (Cross-Language) as exploratory/preliminary in all Phase 1 documentation until OP-4 is resolved; do not include it in the primary confirmatory hypothesis list for any publication (addresses CV-05 and INC-2)",
+    "11. All claims must be framed as empirical approximations, not semantic decision procedures; D(G1,G2) < theta predicts behavioral equivalence probabilistically — it does not certify it (addresses CV-01)",
+    "12. Scope limitations must be explicitly stated: single-process, non-interactive, bounded execution (T_max = 30s), deterministic programs under controlled execution, imperative/OO paradigms only (addresses EV-02, EV-03)"
+  ],
+
+  "formal_model_summary": {
+    "definitions_count": 22,
+    "propositions_count": 3,
+    "assumptions_count": 10,
+    "open_problems_count": 6,
+    "genome_dimensions": 8,
+    "dimension_distance_functions": {
+      "CONTROL": "weighted L1 + graph edit distance",
+      "DATA": "Jensen-Shannon divergence",
+      "STATE": "structural graph distance (isomorphism-based)",
+      "RESOURCE": "normalized L2",
+      "TEMPORAL": "Wasserstein-1",
+      "ERROR": "weighted L1",
+      "INTERACTION": "JSD for n-grams + Jaccard for access maps",
+      "EXECUTION": "Hamming for coverage + L1 for histograms"
+    },
+    "metric_type": "pseudometric (Proposition 1)",
+    "metric_bounds": "[0, 1]",
+    "undecidability_acknowledged": true
+  },
+
+  "benchmark_summary": {
+    "corpus_categories": 12,
+    "target_base_programs": 78,
+    "minimum_viable_base_programs": 50,
+    "sp_transformation_types": 12,
+    "sc_mutation_types": 14,
+    "target_total_pairs": 6400,
+    "minimum_viable_total_pairs": 4000,
+    "test_split_pairs_target": 1280,
+    "test_split_pairs_minimum": 800,
+    "hard_negative_fraction": 0.30,
+    "ground_truth_tiers": 4,
+    "languages_required": 6,
+    "language_pairs_for_cross_language": 6,
+    "split_strategy": "50/15/15/20 train/dev/val/test by base program",
+    "determinism_policy": "PRNG seed = 42, T_max = 30s, IEEE 754 rounding, UTF-8 locale, UTC timezone",
+    "statistical_alpha": 0.0017,
+    "statistical_alpha_derivation": "Bonferroni correction: 0.01 / 6 hypotheses",
+    "statistical_power_at_alpha_0.0017": 0.80
+  },
+
+  "hypotheses_coverage_check": {
+    "H1_stability": {
+      "formally_defined": true,
+      "operationalized": true,
+      "benchmark_addresses": true,
+      "threats_catalogued": true,
+      "notes": "Formally H1 in both FORMAL_MODEL and RESEARCH_HYPOTHESES. Consistent. N sufficiency (SH-3) must be confirmed first."
+    },
+    "H2_sensitivity_or_baselines": {
+      "formally_defined": true,
+      "operationalized": true,
+      "benchmark_addresses": true,
+      "threats_catalogued": true,
+      "notes": "LABEL CONFLICT: FORMAL_MODEL H2 = Sensitivity; RESEARCH_HYPOTHESES H2 = Outperforms Baselines. These are different claims. FORMAL_MODEL H2 (Sensitivity) is operationalized as RESEARCH_HYPOTHESES H5 (Oracle). Must be resolved by INC-1."
+    },
+    "H3_cross_language_or_refactoring": {
+      "formally_defined": true,
+      "operationalized": true,
+      "benchmark_addresses": true,
+      "threats_catalogued": true,
+      "notes": "LABEL CONFLICT: FORMAL_MODEL H3 = Cross-Language Equivalence; RESEARCH_HYPOTHESES H3 = Robustness Under Refactoring. Both are valid hypotheses but with different labels. Cross-language claim requires OP-4 resolution; must be marked exploratory. Refactoring robustness is well-defined and testable. Resolve INC-1."
+    },
+    "H4_versioning_or_cross_language": {
+      "formally_defined": true,
+      "operationalized": true,
+      "benchmark_addresses": "PARTIAL — no version history corpus in BENCHMARK_DESIGN.md",
+      "threats_catalogued": true,
+      "notes": "LABEL CONFLICT: FORMAL_MODEL H4 = Versioning (monotonicity); RESEARCH_HYPOTHESES H4 = Cross-Language Generalization. BENCHMARK_DESIGN missing SH-4/versioning corpus. Cross-language scope over-claims CONTROL dimension portability (INC-2). Resolve INC-1, INC-2, INC-4."
+    },
+    "H5_regression_oracle": {
+      "formally_defined": true,
+      "operationalized": true,
+      "benchmark_addresses": true,
+      "threats_catalogued": true,
+      "notes": "Consistent in both FORMAL_MODEL and RESEARCH_HYPOTHESES. Primary falsifiable claim. Most threats concentrated here (15 of 32 threats affect H5 per hypotheses_threat_map). Empirically unvalidated — this is the key Phase 1 deliverable."
+    },
+    "H6_uniqueness_or_multidim": {
+      "formally_defined": true,
+      "operationalized": true,
+      "benchmark_addresses": true,
+      "threats_catalogued": true,
+      "notes": "LABEL CONFLICT: FORMAL_MODEL H6 = Uniqueness/Collision; RESEARCH_HYPOTHESES H6 = Multi-Dimensional Value. Uniqueness addressed only in RQ10 (exploratory). Multi-dimensional value (ablation) is confirmatory in RESEARCH_HYPOTHESES.md. Both are important; both should be confirmatory. Resolve INC-1, INC-6."
+    }
+  }
+}

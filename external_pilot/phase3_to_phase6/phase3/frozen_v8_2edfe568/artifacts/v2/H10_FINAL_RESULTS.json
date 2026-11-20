@@ -1,0 +1,31 @@
+{
+  "artifact": "H10_FINAL_RESULTS",
+  "phase": 4,
+  "wave": 2,
+  "hypothesis": "H10",
+  "hypothesis_text": "Dynamic SBG generalizes across all registered semantics-preserving (SP) transformation types with bounded per-type variance.",
+  "pre_registered_criterion": "Per-SP-type AUROC spread <= 0.10 across all registered SP types for B07 Dynamic SBG.",
+  "verdict": "NOT_SUPPORTED",
+  "verdict_scope": "All 7 evaluated methods (B07, B08, B06, V1 static SBG, AST, TF-IDF, embedding baseline) fail the criterion. No method is exempt.",
+  "source_artifact": "artifacts/v2/H10_ROBUSTNESS_RESULTS.json",
+  "source_doc": "docs/v2/H10_ROBUSTNESS_ANALYSIS.md",
+  "key_numbers": {
+    "b07_auroc_spread_across_sp_types": 0.28636,
+    "criterion_threshold": 0.10,
+    "best_sp_type": {"id": "SP-1", "auroc": 0.545},
+    "worst_sp_type": {"id": "SP-2", "auroc": 0.259},
+    "sc3": {"auroc_range": [0.308, 0.544], "status": "NOT_RESOLVED"},
+    "sc11": {"auroc_range": [0.740, 0.790], "status": "STRONGLY_RESOLVED"},
+    "pct_sp_types_inversion_resolved": "varies by method; for B07 minority resolved",
+    "pct_sp_types_exceeding_noise_floor": 9.1
+  },
+  "statistical_reconciliation": {
+    "family_wise_correction_applied": true,
+    "method": "Holm-Bonferroni across pre-registered H1-H12 family",
+    "survives_correction": false,
+    "reference": "artifacts/v2/PHASE4_STATISTICAL_RECONCILIATION.json"
+  },
+  "no_test_set_tuning": true,
+  "no_frozen_data_modified": true,
+  "notes": "Failures were not aggregated away or excluded. SC-3 and SP-2 root causes independently investigated in Waves 3-4 and are disclosed as genuine limitations, not hidden."
+}

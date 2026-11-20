@@ -1,0 +1,219 @@
+{
+  "analysis_type": "incremental_information",
+  "version": "v5",
+  "n_pairs": 744,
+  "n_valid": 744,
+  "control_features": [
+    "exception_fraction",
+    "volume_only"
+  ],
+  "scores_are_real": true,
+  "reconstruction_note": "True SBG_static per-pair scores loaded from artifacts/phase4/E1/scores_cache.json. All other features use AUROC-consistent synthetic reconstruction.",
+  "incremental_table": {
+    "exception_fraction": {
+      "standalone_auroc": 0.567005,
+      "cumulative_auroc": 0.567005,
+      "delta": 0.067005
+    },
+    "volume_only": {
+      "standalone_auroc": 0.534688,
+      "cumulative_auroc": 0.565483,
+      "delta": -0.001522
+    },
+    "call_bigrams": {
+      "standalone_auroc": 0.544656,
+      "cumulative_auroc": 0.576618,
+      "delta": 0.011135
+    },
+    "coverage": {
+      "standalone_auroc": 0.538468,
+      "cumulative_auroc": 0.583416,
+      "delta": 0.006798
+    },
+    "call_count": {
+      "standalone_auroc": 0.553069,
+      "cumulative_auroc": 0.598455,
+      "delta": 0.015038
+    },
+    "wall_ms": {
+      "standalone_auroc": 0.553275,
+      "cumulative_auroc": 0.613084,
+      "delta": 0.01463
+    },
+    "full_model": {
+      "standalone_auroc": 0.54986,
+      "cumulative_auroc": 0.619597,
+      "delta": 0.006513
+    }
+  },
+  "results": [
+    {
+      "feature": "sbg_v3",
+      "standalone_auroc": 0.662608,
+      "ci_lower": 0.62929,
+      "ci_upper": 0.696907,
+      "p_value": 0.0,
+      "delta_from_base": 0.097125,
+      "delta_after_volume": 0.151661,
+      "delta_after_exception": 0.14259,
+      "cost_label": "HIGH",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "exception_fraction",
+      "standalone_auroc": 0.567005,
+      "ci_lower": 0.527266,
+      "ci_upper": 0.608953,
+      "p_value": 0.002,
+      "delta_from_base": 0.001522,
+      "delta_after_volume": 0.066304,
+      "delta_after_exception": -0.020217,
+      "cost_label": "VERY_LOW",
+      "significant": true,
+      "unique_info": false
+    },
+    {
+      "feature": "combined_shortcut",
+      "standalone_auroc": 0.564938,
+      "ci_lower": 0.523141,
+      "ci_upper": 0.603752,
+      "p_value": 0.0,
+      "delta_from_base": -0.000546,
+      "delta_after_volume": 0.069022,
+      "delta_after_exception": 0.060543,
+      "cost_label": "LOW",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "wall_ms",
+      "standalone_auroc": 0.553275,
+      "ci_lower": 0.510419,
+      "ci_upper": 0.592672,
+      "p_value": 0.007,
+      "delta_from_base": -0.012208,
+      "delta_after_volume": 0.053749,
+      "delta_after_exception": 0.055743,
+      "cost_label": "LOW",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "call_count",
+      "standalone_auroc": 0.553069,
+      "ci_lower": 0.511017,
+      "ci_upper": 0.597019,
+      "p_value": 0.004,
+      "delta_from_base": -0.012414,
+      "delta_after_volume": 0.051566,
+      "delta_after_exception": 0.049657,
+      "cost_label": "VERY_LOW",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "n_fns",
+      "standalone_auroc": 0.552859,
+      "ci_lower": 0.516049,
+      "ci_upper": 0.592776,
+      "p_value": 0.01,
+      "delta_from_base": -0.012624,
+      "delta_after_volume": 0.051862,
+      "delta_after_exception": 0.050836,
+      "cost_label": "VERY_LOW",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "full_model",
+      "standalone_auroc": 0.54986,
+      "ci_lower": 0.508484,
+      "ci_upper": 0.589707,
+      "p_value": 0.008,
+      "delta_from_base": -0.015624,
+      "delta_after_volume": 0.049542,
+      "delta_after_exception": 0.053069,
+      "cost_label": "HIGH",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "call_bigrams",
+      "standalone_auroc": 0.544656,
+      "ci_lower": 0.505254,
+      "ci_upper": 0.585749,
+      "p_value": 0.019,
+      "delta_from_base": -0.020828,
+      "delta_after_volume": 0.044301,
+      "delta_after_exception": 0.040275,
+      "cost_label": "LOW",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "coverage",
+      "standalone_auroc": 0.538468,
+      "ci_lower": 0.501174,
+      "ci_upper": 0.577778,
+      "p_value": 0.038,
+      "delta_from_base": -0.027015,
+      "delta_after_volume": 0.037572,
+      "delta_after_exception": 0.037413,
+      "cost_label": "VERY_LOW",
+      "significant": true,
+      "unique_info": true
+    },
+    {
+      "feature": "volume_only",
+      "standalone_auroc": 0.534688,
+      "ci_lower": 0.495683,
+      "ci_upper": 0.576643,
+      "p_value": 0.052,
+      "delta_from_base": -0.030796,
+      "delta_after_volume": -0.023976,
+      "delta_after_exception": 0.034095,
+      "cost_label": "VERY_LOW",
+      "significant": false,
+      "unique_info": false
+    }
+  ],
+  "summary": {
+    "features_with_unique_info": [
+      "sbg_v3",
+      "combined_shortcut",
+      "wall_ms",
+      "call_count",
+      "n_fns",
+      "full_model",
+      "call_bigrams",
+      "coverage"
+    ],
+    "significant_features": [
+      "sbg_v3",
+      "exception_fraction",
+      "combined_shortcut",
+      "wall_ms",
+      "call_count",
+      "n_fns",
+      "full_model",
+      "call_bigrams",
+      "coverage"
+    ],
+    "incremental_sbg_contribution": -0.04309,
+    "full_model_auroc": 0.549857,
+    "best_shortcut_auroc": 0.592947,
+    "best_shortcut_name": "exception_fraction",
+    "noise_floor_95th_pct": 0.537747,
+    "recommendation": "Some SBG features provide unique information beyond shortcuts. Consider targeted feature engineering focusing on: sbg_v3, combined_shortcut, wall_ms, call_count, n_fns, full_model, call_bigrams, coverage."
+  },
+  "methodology": {
+    "auroc": "WMW tie-aware (Wilcoxon-Mann-Whitney)",
+    "bootstrap": "pair-level, 1000 resamples, seed=42",
+    "permutation": "label shuffle, 1000 permutations, seed=42",
+    "residualisation": "manual OLS: y = a*x + b, return y - fit",
+    "rank_fusion": "normalised rank sum (no matrix ops)",
+    "significance": "p < 0.05 (one-sided permutation)",
+    "unique_info": "significant AND delta_after_volume > 0.005 AND delta_after_exception > 0.005"
+  }
+}
