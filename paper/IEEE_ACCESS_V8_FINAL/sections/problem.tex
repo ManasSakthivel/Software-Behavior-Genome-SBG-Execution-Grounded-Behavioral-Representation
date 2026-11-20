@@ -1,0 +1,51 @@
+\section{Problem Formulation}\label{sec:problem}
+
+\subsection{Observations, Divergence and Evidence}
+A \emph{change} is a pair $c=(P,P')$ of a base and a variant program with a common entry point. Let $\obs$ denote the declared \emph{observation boundary}: the set of channels on which behaviour is compared. In \sbg{}, $\obs \subseteq \{\textit{outcome}, \textit{exception}, \textit{side\_effect}, \textit{api}\}$, where \textit{outcome} is the canonicalised, non-truncated result of the call, \textit{exception} the typed result kind (normal return or exception type), \textit{side\_effect} the captured standard output, files written, module globals and argument mutations, and \textit{api} the recorded signature of the entry point (\code{sbgv8/adapter.py}). For an input $x$, $o_{\obs}(P,x)$ is the canonical observation of $P$ on $x$ restricted to $\obs$. The change \emph{diverges observably on $x$} if $o_{\obs}(P,x) \neq o_{\obs}(P',x)$ and the difference is reproducible.
+
+The \emph{evidence} for a change is a finite record $\Ev = (I, U_c, \textit{meta})$ where $I$ is a multiset of per-input records. Each $i \in I$ carries an outcome (\code{SAME}, \code{CONFIRMED\_DIFF}, or a non-comparable status such as \code{QUARANTINED} or \code{NO\_RUN}), the set of executed lines and branch directions on each side, an observation fingerprint, the channels actually captured, a determinism flag and repeat count, and a provenance label. $U_c$ is the set of changed units (changed lines on either side). The metadata record whether the execution environment was consistent across runs and whether the evidence passed integrity validation (Section~\ref{sec:trust}).
+
+\subsection{Verdicts}
+A decision procedure maps evidence to one of three verdicts:
+\begin{itemize}
+\item \DIVfull{} (\DIV{}): some input produced a confirmed, reproducible observable divergence; the input is a witness.
+\item \NDOfull{} (\NDO{}): no divergence was observed and the evidence was judged adequate to report this.
+\item \INSfull{} (\INS{}): the procedure abstains, because the evidence is inadequate, non-reproducible, untrusted or out of scope.
+\end{itemize}
+A \DIV{} verdict carries its own witness and can be checked by replay. An \NDO{} verdict carries no witness; its reliability is the subject of this paper. \NDO{} is \emph{observation-conditioned}: it states that, on the inputs run and within $\obs$, no divergence was seen. It does not state that $P$ and $P'$ are equivalent.
+
+\subsection{The False-Assurance Estimand}
+Let $\budget$ denote an \emph{evaluation budget}: the resources and procedure an independent adjudicator may use to search for a divergence of $c$ within $\obs$ (for example, a fixed time allowance, access to the patch and to the benchmark's tests, and the freedom to construct further inputs). Adjudication returns $A(c;\obs,\budget)\in\{\textit{div},\textit{nodiv},\textit{unresolved}\}$. For a change on which the procedure issued \NDO{}, define the false-assurance indicator
+\begin{equation}
+F = \mathbf{1}\left[A(c;\obs,\budget)=\textit{div}\right].
+\label{eq:F}
+\end{equation}
+The \emph{false-assurance risk} of a decision procedure on a population of changes $\mathcal{C}$ is
+\begin{equation}
+\R \;=\; P\!\left(F=1 \,\middle|\, V(\Ev)=\NDO{}\right), \qquad c\sim\mathcal{C},
+\label{eq:R}
+\end{equation}
+and its \emph{coverage} is
+\begin{equation}
+\cov \;=\; P\!\left(V(\Ev)=\NDO{}\right).
+\label{eq:kappa}
+\end{equation}
+In the terminology of selective classification~\cite{elyaniv2010foundations,geifman2017selective}, $\R$ is the selective risk of the \NDO{} decision at coverage $\cov$. The estimand is relative to three declared quantities: the observation boundary $\obs$, the budget $\budget$ and the change population $\mathcal{C}$. Changing any of them changes $\R$.
+
+Three properties of Eq.~\eqref{eq:R} shape the evaluation.
+\begin{enumerate}
+\item \emph{It is not an equivalence statement.} $\R=0$ on a population does not imply that any change in it is behaviour-preserving: divergences outside $\obs$, or beyond the reach of $\budget$, are not counted. Because adjudication is itself bounded, and assuming adjudicators do not report spurious divergences, the measured $\R$ is a lower bound on the rate at which \NDO{} verdicts conceal divergence in the wider sense.
+\item \emph{Unresolved adjudications must be accounted for, not dropped silently.} With $n_d$, $n_u$ and $n_n$ the numbers of \NDO{} verdicts adjudicated \textit{div}, \textit{unresolved} and \textit{nodiv}, we report the complete-case estimate $n_d/(n_d+n_n)$ together with the worst-case bound $(n_d+n_u)/(n_d+n_u+n_n)$ and the optimistic bound $n_d/(n_d+n_u+n_n)$.
+\item \emph{Risk depends on coverage.} A procedure that issues fewer \NDO{} verdicts can have lower observed risk without discriminating better. Comparisons of $\R$ are therefore only meaningful at matched $\cov$ (Section~\ref{sec:design}).
+\end{enumerate}
+
+\subsection{Estimating Risk from Evidence}
+\sbg{} estimates risk per verdict. A profile map $\prof$ turns evidence into a feature vector (Section~\ref{sec:approach}); a calibrated model $g$ yields
+\begin{equation}
+\Rhat(\Ev) \;=\; g\!\left(\prof(\Ev)\right) \;\approx\; P\!\left(F=1 \,\middle|\, \prof(\Ev),\ \Ev\text{ eligible}\right),
+\label{eq:rhat}
+\end{equation}
+and the decision rule issues \NDO{} if and only if the evidence is eligible (no blocking condition, Section~\ref{sec:approach}), no witness exists, integrity holds and $\Rhat(\Ev)\le\tau$, abstaining otherwise. The threshold $\tau$ trades coverage against risk. If $g$ were perfectly calibrated, the risk among issued verdicts would be the mean of $\Rhat$ over them; the evaluation checks whether this is approximately so.
+
+\subsection{Labels Used in This Study}
+The estimand is defined by independent adjudication. In the development study reported here, $F$ is replaced by a \emph{construction label} $Y$: for synthetic pairs, the generator's record of whether the injected change alters behaviour on the declared domain; for QuixBugs pairs, whether the benchmark's tests distinguish the buggy and fixed versions (negative pairs are identical-behaviour variants by construction). These labels are not adjudications under $(\obs,\budget)$, they were visible to the authors during design, and for the QuixBugs arm the same declared inputs feed both the label and the evidence. All empirical risks in this paper are therefore risks with respect to construction labels on development data. A blinded two-adjudicator protocol that produces $A(c;\obs,\budget)$ has been implemented but not yet executed (Section~\ref{sec:repro}).

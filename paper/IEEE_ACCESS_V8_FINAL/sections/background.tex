@@ -1,0 +1,100 @@
+\section{Background and Related Work}\label{sec:background}
+
+This section reviews six lines of work that bear on the reliability of no-divergence verdicts and positions \sbg{} against each. Table~\ref{tab:capability} summarises capabilities, Table~\ref{tab:method} compares methods, and Table~\ref{tab:benchmarks} records the benchmarks used in this area. Every cell in these tables refers to the cited sources; a ``No'' means that the capability is outside the stated scope of that line of work, not that it is impossible to add.
+
+\subsection{Differential and Regression Testing}
+Differential testing runs several implementations, or several versions of one implementation, on the same inputs and treats disagreement as a symptom~\cite{mckeeman1998differential}. In the regression setting the old version serves as the reference: BERT generates unit tests and compares the behaviour of two versions value by value~\cite{jin2010automated}, DiffGen generates tests that target the changed code~\cite{taneja2008diffgen}, and directed test-suite augmentation steers test generation towards inputs that propagate the effect of a change~\cite{santelices2008testsuite}. Shadow symbolic execution runs the two versions in lock-step on a unified representation and solves for inputs on which they diverge~\cite{cadar2014shadow,palikareva2016shadow,kuchta2018shadow}; NEZHA uses behavioural asymmetries to guide differential fuzzing~\cite{petsios2017nezha}; equivalence modulo inputs derives test variants that must behave identically on a given input~\cite{le2014compiler}. Godefroid et al.\ apply differential fuzzing to regression detection in cloud services~\cite{godefroid2020differential}. Regression test selection decides which existing tests to re-run~\cite{rothermel1996analyzing,yoo2012regression}. Recent tools use large language models to generate regression-revealing tests for pull requests~\cite{pradel2026testora,hu2026difftestgen,lecong2026patchguru,fu2026orion,etemadi2025mokav,liu2026evaluating,schafer2024empirical}.
+
+These techniques are designed to \emph{find} divergences. Their output when no divergence is found is an empty set, and Evans and Savoia noted that this outcome is ambiguous~\cite{evans2007differential}. The closest work to ours on the interpretation of agreement is SemaDiff~\cite{ayub2026semadiff}, which labels a commit semantics-preserving when all generated tests agree on both versions and measures the accuracy of that label on manually annotated commits. SemaDiff reports a dataset-level accuracy of the agreement rule; \sbg{} instead estimates a per-verdict conditional risk from the evidence behind each verdict, abstains when the evidence is weak, and tests whether the estimate responds correctly to evidence perturbations. An ``all inputs agree $\Rightarrow$ no divergence'' rule is exactly our plain differential-testing baseline (B1, Section~\ref{sec:design}).
+
+\subsection{Test Adequacy: Coverage and Mutation}
+Coverage criteria describe how much of a program a test set exercises~\cite{zhu1997software}. Large studies found that coverage is at best moderately correlated with fault-detection effectiveness once suite size is controlled~\cite{inozemtseva2014coverage,gopinath2014code,kochhar2015code}, and that the relationship depends on the criterion and the faults considered~\cite{chekam2017empirical}. Mutation analysis evaluates whether a test set would detect seeded faults~\cite{jia2011analysis,papadakis2019mutation}; mutants are coupled to real faults to a useful degree~\cite{just2014mutants}, although mutation scores can be inflated by subsumed mutants and suite size~\cite{papadakis2018mutation}. Mutation analysis therefore already evaluates the strength of a ``no failure observed'' outcome, and we credit it as such in Table~\ref{tab:capability}. Its object, however, is the test suite of one program version and a population of seeded faults; it does not yield a probability that a particular no-divergence verdict on a particular real version pair is wrong. \sbg{} uses coverage of the changed code (activation, branch coverage) as features, and the coverage-only calibrated model is the main baseline against which the richer profile is compared.
+
+\subsection{Oracle Adequacy and Behavioural Adequacy}
+A test that executes code but checks nothing produces a passing outcome that means little. The test-oracle problem is surveyed by Barr et al.~\cite{barr2015oracle}; metamorphic testing alleviates it by checking relations between executions~\cite{chen2018metamorphic,segura2016survey}. Checked coverage measures the statements whose results actually influence an oracle check, and was validated by removing assertions and observing the response of the metric~\cite{schuler2011assessing,schuler2013checked}; this evidence-deletion validation is the direct precursor of our perturbation P1. Pseudo-tested methods are covered methods whose bodies can be removed without any test failing~\cite{niedermayr2016will,veraperez2018descartes,veraperez2019comprehensive}. Assertion density and coverage have been studied jointly as predictors of effectiveness~\cite{zhang2015assertions}. BESTEST assesses behavioural adequacy by inferring a model from test executions and estimating its accuracy by held-out validation~\cite{fraser2012behaviourally,fraser2015assessing}. Recent work measures behavioural gaps between documented and tested behaviour~\cite{paul2026beyond}. Our observable-influence feature is a much weaker reachability proxy than checked coverage (Section~\ref{sec:approach}); we flag this as a limitation rather than a contribution.
+
+\subsection{Regression Verification}
+Regression verification proves that two versions are equivalent, or equivalent on a restricted domain, using deductive or symbolic reasoning~\cite{godlin2009regression,lahiri2012symdiff,felsing2014automating,malik2021automatically}. Its verdicts are proofs and need no risk estimate; it is outside the observational setting studied here and outside Table~\ref{tab:capability}. Property-based testing frameworks~\cite{claessen2000quickcheck,maciver2019hypothesis} generate the kind of input evidence that \sbg{} consumes but do not interpret agreement.
+
+\subsection{Selective Prediction, Calibration and Risk Control}
+A selective classifier may abstain; its quality is described by the risk among accepted predictions as a function of coverage~\cite{chow1970optimum,elyaniv2010foundations,geifman2017selective,hendrickx2024machine}. The false-assurance risk defined in Section~\ref{sec:problem} is the selective risk of the \NDO{} decision. Probabilistic predictions are evaluated by proper scoring rules such as the Brier score~\cite{brier1950verification} and log loss, and by calibration diagnostics~\cite{niculescumizil2005predicting,guo2017calibration}. Distribution-free risk control provides finite-sample guarantees under exchangeability~\cite{bates2021distribution,angelopoulos2024conformal}. Project-clustered software data violate exchangeability at the pair level, so we do not claim such guarantees; the threshold rule in \sbg{} uses a project-cluster bootstrap bound instead (Section~\ref{sec:approach}).
+
+\subsection{Execution Integrity, Provenance and Reproducibility}
+Supply-chain frameworks such as in-toto~\cite{torresarias2019intoto} and SLSA~\cite{slsa2023spec} attest which steps produced an artifact and detect tampering through signed metadata; reproducible builds make artifacts independently re-derivable~\cite{lamb2022reproducible}. Flaky tests show that a single execution is not always reproducible evidence~\cite{luo2014empirical,parry2022survey}. These works treat provenance and integrity as properties to verify, not as inputs to a risk estimate. \sbg{} uses integrity and provenance status as both: as hard gates on the verdict and as features of the evidence profile whose effect is tested by perturbations P7 and P8.
+
+\subsection{Positioning}
+In the sources we reviewed we did not find a method that combines the following: a conditional false-assurance estimand for a no-divergence verdict on a specific version pair within a declared observation boundary; an estimate of that risk from a change-conditioned evidence profile that includes provenance and integrity signals; and a protocol that checks whether the estimate responds as expected to controlled perturbations of the evidence. Each ingredient adapts established ideas---selective risk~\cite{elyaniv2010foundations,geifman2017selective}, evidence deletion~\cite{schuler2011assessing}, attestation~\cite{torresarias2019intoto}---and we claim no novelty for any single one. Whether their combination reduces false assurance is an empirical question; Section~\ref{sec:results} reports that, on the development data, it did not demonstrably do so.
+
+\begin{table*}[!t]
+\caption{Capability comparison. Y = stated, evaluated capability of that line of work; P = partial, narrower or indirect; N = outside its stated scope; -- = not established in the sources reviewed. The \sbg{} column records the design; Section~\ref{sec:results} reports which capabilities were empirically supported. Regression verification, which yields proofs rather than observational verdicts, is excluded.}
+\label{tab:capability}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|L{3.6cm}|c|c|c|c|c|c|c|}
+\hline
+Capability & \makecell{Differential\\testing} & \makecell{Coverage\\adequacy} & \makecell{Mutation\\adequacy} & \makecell{Checked cov.,\\pseudo-tested} & \makecell{Selective pred.,\\conformal} & \makecell{Provenance\\(in-toto, SLSA)} & \sbg{} \\
+\hline
+Detects observable divergence & Y~\cite{mckeeman1998differential,jin2010automated} & N & P~\cite{jia2011analysis} & N & N & N & Y \\
+Evaluates empty difference sets & P~\cite{evans2007differential,ayub2026semadiff} & N & P~\cite{jia2011analysis} & Y~\cite{niedermayr2016will} & P~\cite{geifman2017selective} & N & Y \\
+Explicit false-assurance estimand & N & N & N & N & Y (generic)~\cite{elyaniv2010foundations} & N & Y \\
+Evidence diversity characterisation & P~\cite{petsios2017nezha} & P~\cite{zhu1997software} & N & P~\cite{fraser2015assessing} & N & N & Y \\
+Evidence perturbation response & N & -- & P~\cite{jia2011analysis} & P~\cite{schuler2011assessing} & -- & N & Y \\
+Provenance sensitivity & N & N & N & N & N & Y~\cite{torresarias2019intoto} & Y \\
+Integrity sensitivity & N & N & N & N & N & Y~\cite{torresarias2019intoto,lamb2022reproducible} & Y \\
+Matched-coverage risk comparison & N & N & N & N & Y~\cite{geifman2017selective} & N & Y \\
+Abstention-aware verdicts & N & N & N & N & Y~\cite{chow1970optimum,hendrickx2024machine} & N & Y \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\caption{Methodological comparison of representative approaches (qualitative; no numerical comparison is implied).}
+\label{tab:method}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{2.05cm}|L{1.9cm}|L{2.05cm}|L{1.95cm}|L{1.75cm}|L{2.05cm}|L{1.9cm}|L{2.1cm}|}
+\hline
+Approach & Objective & Input evidence & Decision mechanism & Output & Key assumptions & Evaluation & Main limitation \\
+\hline
+BERT, differential unit testing~\cite{jin2010automated,evans2007differential} & Expose behavioural change & Generated unit tests on two versions & Value comparison & Difference set & Old version is a valid reference & Case studies, Java & Empty set uninterpreted \\
+\hline
+Shadow symbolic execution~\cite{palikareva2016shadow} & Find divergence-revealing inputs & Unified program, symbolic paths & Constraint solving & Divergent inputs & Solver scales to the patch & CoREBench patches (C) & Non-divergence not quantified \\
+\hline
+LLM regression testing~\cite{pradel2026testora,hu2026difftestgen} & Detect regressions in pull requests & LLM tests, PR text & Differential run, LLM classification & Regression reports & LLM output informative & Real PRs, developer confirmation & No risk for clean PRs \\
+\hline
+SemaDiff~\cite{ayub2026semadiff} (preprint) & Label commits semantics-preserving & Generated tests on pre/post & All tests agree & Binary label & Tests reach the change & 183 annotated Java commits & No per-verdict risk or abstention \\
+\hline
+Mutation analysis~\cite{jia2011analysis,just2014mutants} & Estimate fault-detection strength & Suite and seeded mutants & Kill or survive & Mutation score & Mutant--fault coupling & Correlation with real faults & Single version; proxy, not conditional risk \\
+\hline
+Checked coverage, pseudo-tested methods~\cite{schuler2011assessing,veraperez2019comprehensive} & Assess oracle adequacy & Dynamic slices, extreme mutation & Influence on checks & Percentage, method list & Assertions are the oracle & Java projects, assertion removal & No probability semantics \\
+\hline
+BESTEST~\cite{fraser2015assessing} & Behavioural adequacy & Executions $\to$ inferred model & Held-out model accuracy & Adequacy score & Learnability reflects behaviour & 18 Java classes & Small evaluation \\
+\hline
+Selective prediction, conformal risk control~\cite{geifman2017selective,angelopoulos2024conformal} & Bound error among accepted predictions & Scores and labels & Threshold for target risk & Accept / abstain & Exchangeable calibration data & Vision and NLP benchmarks & Exchangeability violated by clustering \\
+\hline
+\textbf{\sbg{}} (this paper) & Estimate false-assurance risk of \NDO{} & Change-conditioned evidence profile from sandboxed runs & Calibrated logistic risk, bootstrap threshold, trust gates & \DIV{} / \NDO{} with risk / \INS{} & Adjudicated labels within a declared boundary & Project-grouped CV, matched coverage, P1--P9 & Pilot data only; adjudication pending \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table}[!t]
+\caption{Benchmarks in this area (literature-reported sizes from the benchmark papers; not re-measured and not ranked against \sbg{}). Only the QuixBugs- and BugsInPy-derived arms enter the \sbg{} development corpus.}
+\label{tab:benchmarks}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{1.45cm}|L{0.95cm}|L{2.1cm}|L{2.6cm}|}
+\hline
+Benchmark & Language & Original size & Use in this paper \\
+\hline
+Defects4J~\cite{just2014defects4j} & Java & 357 bugs, 5 projects & Not used (external corpus pending) \\
+BugsInPy~\cite{widyasari2020bugsinpy} & Python & 493 bugs, 17 projects & 46 executed unit pairs, unlabelled (development) \\
+QuixBugs~\cite{lin2017quixbugs} & Python, Java & 40 programs & 116 pairs incl.\ negatives (development) \\
+Bears~\cite{madeiral2019bears} & Java & 251 bugs, 72 projects & Not used \\
+BugSwarm~\cite{tomassi2019bugswarm} & Java, Python & 3{,}091 build pairs & Not used; suitability disputed~\cite{durieux2019critical,tomassi2019note} \\
+Bugs.jar~\cite{saha2018bugsjar} & Java & 1{,}158 bugs, 8 projects & Not used \\
+\hline
+\end{tabular}
+\end{table}

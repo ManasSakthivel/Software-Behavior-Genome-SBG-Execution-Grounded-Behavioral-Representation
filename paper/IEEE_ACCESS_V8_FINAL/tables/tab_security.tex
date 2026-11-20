@@ -1,0 +1,22 @@
+% Sources: research/v8-mac-hardening results/v8_mac_security/attack_suite_{before,after}.json; audit/security_rerun_darwin.json;
+% results/v8/linux/expanded_security_suite_results.json; classification in audit/security_outcomes.json (scripts/build_security_outcomes.py).
+\begin{table}[!t]
+\caption{Adversarial evaluation outcomes. Controls excluded. ``Det.\ only'' counts detections by optional reviewer checks that leave a false \NDO{} as the effective verdict.}
+\label{tab:security}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{|L{2.15cm}|c|c|c|c|c|c|}
+\hline
+Suite (platform) & $n$ & Blocked & \makecell{Detected\\(det.\ only)} & \makecell{No\\effect} & Succ. & \makecell{\INS{},\\cause\\unrec.} \\
+\hline
+Original, before hardening (macOS) & 15 & 3 & 9 (4) & 1 & 2 & -- \\
+Original + hardening attacks, after (macOS) & 19 & 3 & 14 (4) & 1 & 1 & -- \\
+Re-run at final commit incl.\ sensing probes (macOS) & 25 & 3 & 15 (5) & 5 & 2 & -- \\
+Tamper probes (Linux) & 51 & 0 & 51 (5) & 0 & 0 & -- \\
+Isolation probes (Linux, pre-fix) & 74 & 0 & 0 & 8 & 1 & 65 \\
+\hline
+\end{tabular}
+\\[2pt]
+\parbox{\columnwidth}{\scriptsize The 51 Linux tamper probes comprise 24 distinct operations. The 65 Linux isolation probes recorded as \INS{} carry no cause, completed in about 0.2\,s, and include probes that should have produced \DIV{}; they are fail-safe but are not evidence of isolation. No post-remediation Linux re-run artifact exists.}
+\end{table}

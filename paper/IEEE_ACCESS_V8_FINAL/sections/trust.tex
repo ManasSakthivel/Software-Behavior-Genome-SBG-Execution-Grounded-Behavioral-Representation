@@ -1,0 +1,26 @@
+\section{Trusted Execution and Evidence Integrity}\label{sec:trust}
+
+An \NDO{} verdict is only as trustworthy as the evidence behind it. A program under test runs inside the analysis and could, deliberately or accidentally, interfere with the observations from which the verdict is derived. This section describes how \sbg{} collects and seals evidence, and states the threat model under which the mechanisms are claimed to work. Section~\ref{sec:results} reports the adversarial evaluation.
+
+\subsection{Threat Model}
+We consider three adversaries.
+\begin{enumerate}
+\item[A1)] \emph{An adversarial program under test.} Python code running in the evaluated process, with the same user identity as the analysis, inside the operating-system sandbox. It may patch the harness, write to or close file descriptors, terminate abruptly, or try to sense whether it is being analysed and behave differently.
+\item[A2)] \emph{A post-hoc evidence writer without the anchor key.} A party that can modify files in the evidence directory after the run, including recomputing hash chains, but cannot read the controller's anchor key.
+\item[A3)] \emph{An evidence substituter.} A party that replaces a pair's evidence with genuine evidence produced for a different program.
+\end{enumerate}
+Out of scope are: holders of the anchor key (including any process running as the controller user that can read it); host, kernel or sandbox-runtime compromise; native-code attacks on the in-process harness; side channels; and sandbox escape. We make no claim of isolation against arbitrary adversarial programs.
+
+\subsection{Mechanisms}
+\paragraph*{Process roles} The \emph{controller} runs the unmodified V7-B runner, holds the anchor key and a session nonce, and never executes evaluated code. Each run of $P$ or $P'$ is an \emph{evaluated process}: a fresh child in its own process group, with CPU, file-descriptor, file-size and core-dump limits, a resident-memory watchdog, a wall-clock timeout, an allow-listed environment that excludes the key, and an operating-system sandbox. On macOS the sandbox is a \code{sandbox-exec} profile that denies network access and confines writes to a working directory; on Linux it is \code{bwrap} with a read-only root bind, a writable working directory and network unsharing, or \code{unshare --net} as a fallback. The implementation applies no PID, user or IPC namespace, no seccomp filter and no cgroup limit, and it does not invoke a container runtime.
+
+\paragraph*{Authenticated result channel} The child returns its result as a frame authenticated with HMAC-SHA256 under a fresh per-run key that is passed over a pipe closed before user code starts. Standard output is never treated as protocol, so a frame forged on standard output has no effect.
+
+\paragraph*{Independent capture} V7-B's harness captures standard output inside the evaluated process, where the program can tamper with it. \sbg{} interposes a small stub that tees every write to the real file descriptor 2 as a nonce-framed record before the harness sees it. The controller parses these records and compares them with what the harness reported; a mismatch, a missing record or a foreign record marks the run as untrusted. Because the tee shares the evaluated process's address space, a program that replaces the output stream object itself, or reads the per-run nonce and forges consistent records, is not detected; this is a documented limit.
+
+\paragraph*{Sealing and validation} Each evidence directory contains the V7-B hash-chained log, the verdict, a sidecar with per-input hits and branches bound to the log head, a capture record with one parent-side entry per spawned run, and an anchor: an HMAC-SHA256 under the controller's key over the SHA-256 digests of the other four files. The validator checks exact schemas, the binding of sidecar and capture to the log, sequence contiguity, nonce uniqueness, per-run status, timings and output digests, and the anchor. Only this validator feeds the integrity flag and hence the trust gate of Section~\ref{sec:approach}.
+
+\paragraph*{Optional reviewer checks} Three further checks report issues without changing the verdict: \emph{shadow re-observation}, which re-executes the pair with an independent minimal runner and canonicaliser in the sandbox and compares return values; \emph{source binding}, which compares the recorded program digests against sources supplied by the reviewer; and a pinned log head supplied out of band. These checks provide \emph{detection}; they do not \emph{prevent} a false verdict unless a reviewer acts on them.
+
+\subsection{Detection versus Prevention}
+We use four outcome categories throughout. An attack is \emph{blocked} if the effective verdict is forced to \INS{} by the engine or the trust gate; \emph{detected} if some check fires; \emph{without effect} if the true verdict is preserved; and \emph{successful} if a false or altered verdict results with no check firing. A detected attack whose detector is an optional reviewer check leaves the effective verdict unchanged, and we report it as detection only. A blocked attack that turns a true \DIV{} into \INS{} is a denial of a true divergence, not a false assurance; we report it separately.

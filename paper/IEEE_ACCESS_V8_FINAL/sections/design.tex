@@ -1,0 +1,86 @@
+\section{Experimental Design}\label{sec:design}
+
+\subsection{Research Questions}
+\begin{itemize}
+\item[RQ1)] \emph{Coverage--risk trade-off of decision rules.} How do plain differential testing, the V7-B sufficiency gate and coverage-based gates trade \NDO{} coverage against false-assurance risk?
+\item[RQ2)] \emph{Value of the evidence profile and of \ers{} features.} At matched coverage, does \cec{}, with or without \ers{} features, reduce false-assurance risk or improve probabilistic accuracy relative to coverage-only calibration and the rule baselines?
+\item[RQ3)] \emph{Conformance to the Evidence Response Signature.} Do the \sbg{} estimators and decision rules satisfy the eight \ers{} properties on real evidence records, and does the property matrix detect defects?
+\item[RQ4)] \emph{Evidence integrity under attack.} Within the declared threat model, which attacks on the evidence are blocked, detected only, without effect, or successful?
+\end{itemize}
+RQ1 and RQ2 use construction labels; RQ3 and RQ4 do not use labels at all.
+
+\subsection{Evaluation Stages and Their Status}
+Table~\ref{tab:stages} separates the stages of the evaluation programme and their status at the time of writing. Only the development study and the security evaluation contribute results to this paper.
+
+\begin{table}[!t]
+\caption{Evaluation stages and their status. Only completed stages contribute results.}
+\label{tab:stages}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|L{2.5cm}|L{3.1cm}|L{1.6cm}|}
+\hline
+Stage & Content & Status \\
+\hline
+Development study & 312 executed pairs, construction labels; RQ1--RQ3 & Completed (exploratory) \\
+\ers{} property matrix & Post-hoc P1--P9 on all 312 records, six estimators & Completed \\
+Security evaluation & Attack and probe suites; RQ4 & Completed on macOS; Linux partial \\
+External execution corpus & Real benchmark checkouts executed by the collector & Not started \\
+Prediction lock & Hash-sealed predictions before adjudication & Implemented; no valid locked set \\
+Human adjudication & Blinded two-adjudicator protocol, Cohen's $\kappa$ & Implemented; not executed \\
+Confirmatory statistics & $\R$ with adjudicated $F$ on held-out data & Pending \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Development Corpus}
+Table~\ref{tab:corpus} describes the corpus. Every pair was executed by the \sbg{} collector, which invokes the V7-B engine as a subprocess; all 312 runs completed with exit status 0, yielding 1{,}976 input records. Synthetic pairs are generated variants of small algorithmic programs, labelled by the generator as behaviour-changing or behaviour-preserving on the declared input domain. QuixBugs pairs~\cite{lin2017quixbugs} are buggy/fixed versions labelled by whether the benchmark's tests distinguish them; QuixBugs negatives are behaviour-preserving variants by construction. The BugsInPy-derived pairs are function-level extractions from BugsInPy bugs~\cite{widyasari2020bugsinpy}; the development manifest lists 55 such extractions among 321 candidate pairs, but only 46 (and 312 pairs overall) have evidence records, and the run outputs available to us do not record why the other nine produced none; no label could be established for them, so they are excluded from all risk estimates and appear only in the label-free analyses (RQ3).
+
+The project structure is highly concentrated. Each synthetic program is its own cluster, while all 113 labelled QuixBugs pairs share one cluster, which therefore contains 43.8\% of the labelled data. The cluster bootstrap treats it as a single draw.
+
+\begin{table}[!t]
+\caption{Development corpus by arm (\code{datasets/v8/dev\_records.jsonl}). V7-B verdicts are the predecessor's fixed-gate verdicts; ``\NDO{} (miss)'' counts labelled \NDO{} verdicts and, in parentheses, those with label $Y{=}1$.}
+\label{tab:corpus}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+Arm & Pairs & Clusters & $Y{=}1$ & $Y{=}0$ & Unlab. & V7-B \DIV{} & \NDO{} (miss) \\
+\hline
+Synthetic & 150 & 101 & 77 & 68 & 5 & 50 & 37 (13) \\
+QuixBugs & 31 & \multirow{2}{*}{1} & 29 & 0 & 2 & 27 & 0 (0) \\
+QuixBugs neg. & 85 & & 0 & 84 & 1 & 1 & 24 (0) \\
+BugsInPy-derived & 46 & 12 & -- & -- & 46 & 6 & -- \\
+\hline
+Total & 312 & 114 & 106 & 152 & 54 & 84 & 61 (13) \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph*{Consequences for interpretation} Three properties of the corpus limit what it can show. (i)~All 13 false-assurance cases under the V7-B gate are synthetic pairs; the QuixBugs arm contributes only correct \NDO{} verdicts on negative pairs. (ii)~In the QuixBugs arm the same declared inputs produce both the label and the evidence, so a behaviour-changing QuixBugs pair almost always yields a witness and rarely reaches \NDO{}, which understates false-assurance risk there. (iii)~The corpus was examined repeatedly during design. The study is therefore a pilot on design-exposed data, not a validation.
+
+\subsection{Baselines and Ablations}
+All systems are evaluated on the same 258 labelled pairs with the same denominators.
+\begin{itemize}
+\item[B1)] \emph{Plain differential testing}: \NDO{} unless a witness exists. This is the ``all inputs agree'' rule.
+\item[B2)] \emph{B1 with repetition}: a witness must be deterministic; any quarantined input yields \INS{}.
+\item[B3)] \emph{V7-B sufficiency gate}: the predecessor's fixed verdict.
+\item[B4)] \emph{Coverage-only gate}: \NDO{} iff full activation and the branch-coverage floor hold.
+\item[B5)] \emph{Coverage-gated B1}: B1, but \NDO{} only under full activation.
+\item[B6)] \emph{Random abstention}: B1-issuable pairs abstained at random to the matched coverage (1{,}000 draws).
+\item[B7)] \emph{Coverage-only calibration}: the logistic model on activation and branch coverage only.
+\item[B8)] \emph{Full \cec{}}: all fifteen profile features plus the nine \ers{} responses.
+\item[B9)] \emph{\cec{} without \ers{}}: all fifteen profile features.
+\end{itemize}
+Two further ablations isolate multiplicity: coverage plus multiplicity, and multiplicity only. B7--B9 and the ablations are each evaluated under the soft (v8.0) and strict (v8.0s) blocker policies.
+
+\subsection{Metrics}
+For rule baselines we report coverage $\hat\cov$ (the share of the 258 labelled pairs issued \NDO{}) and the observed false-assurance risk $\hat\R$ (the share of issued \NDO{} verdicts with $Y{=}1$). For calibrated models we report out-of-fold Brier score and log loss on eligible pairs, the calibration slope and intercept from a logistic recalibration of the out-of-fold predictions, reliability diagrams with quantile bins, and risk--coverage curves.
+
+\paragraph*{Matched coverage} The primary comparison fixes coverage at $c^\ast = 61/258 = 0.236$, the coverage of the V7-B gate (B3). Each calibrated model issues \NDO{} to its lowest-risk eligible pairs until coverage equals $c^\ast$ (61 pairs), ranking within each outer fold because risks from different fold models are not comparable, and issuing fractionally at ties so that the operating point is exact and deterministic. This is a transductive diagnostic of ranking quality, not a deployable threshold. Deployable thresholds are evaluated separately with the nested bootstrap rule of Section~\ref{sec:approach} at $\alpha\in\{0.10,0.15\}$.
+
+\subsection{Statistical Methodology}
+Calibrated models are evaluated by project-grouped five-fold cross-validation, so that no project contributes to both fitting and evaluation of the same prediction; hyperparameters and thresholds are selected on inner folds only. Uncertainty is quantified by a percentile project-cluster bootstrap with 10{,}000 resamples, resampling clusters with replacement. Paired contrasts between systems are bootstrapped jointly. The pre-registered primary family compares full \cec{} (B8) at $c^\ast$ with B7, B3 and B6 and is Holm-adjusted. All bootstrap $p$-values are one-sided (alternative: B8 has lower risk or log loss). For this paper we additionally recomputed a wider family of eight contrasts per blocker policy (four on matched risk, four on log loss) and Holm-adjusted it; we report this more conservative adjustment. Five cross-validation seeds (fold assignments 0--4) are reported to show variability; they are replicates over the same pairs, not independent samples, and are not pooled for inference. Power is assessed by the minimum detectable paired difference at 80\% power and two-sided $\alpha=0.05$, using the intra-cluster correlation estimated from the V7-B \NDO{} set.
+
+\paragraph*{Pre-registered hypotheses} The statistical analysis plan, fixed before evaluation, specified: (H2, primary) at matched coverage, full \cec{} reduces false-assurance risk relative to coverage-only calibration by at least 5 percentage points with a one-sided 97.5\% lower bound above zero; (H1a, secondary) the full profile improves out-of-fold log loss over coverage-only calibration (B9 vs.\ B7); (H3, secondary) \ers{} features improve log loss and matched risk over the profile alone (B8 vs.\ B9); and (H4) calibration slope and intercept, declared not assessable without an independent holdout.
